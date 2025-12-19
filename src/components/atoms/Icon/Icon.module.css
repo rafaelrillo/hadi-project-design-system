@@ -1,0 +1,42 @@
+/* Path: src/components/atoms/Icon/Icon.module.css */
+/* Terminal Theme Version */
+
+/* Base icon styles */
+.icon {
+  flex-shrink: 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Color variants */
+.colorDefault {
+  color: var(--foreground);
+}
+
+.colorSecondary {
+  color: var(--foreground-muted);
+}
+
+.colorPrimary {
+  color: var(--primary);
+}
+
+.colorBrand {
+  color: var(--primary);
+}
+
+.colorDestructive {
+  color: var(--destructive);
+}
+
+.colorSuccess {
+  color: var(--success);
+}
+
+.colorWarning {
+  color: var(--warning);
+}
+
+.colorMuted {
+  color: var(--foreground-subtle);
+}

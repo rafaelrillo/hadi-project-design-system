@@ -1,0 +1,68 @@
+/* src/styles/globals.css */
+/* ============================================
+   GLOBAL STYLES - Reset y Base
+   ============================================
+
+   Las variables de tema estan en theme.css
+   Este archivo solo contiene reset y estilos base.
+
+   ============================================ */
+
+/* Reset basico */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  text-rendering: optimizeLegibility;
+}
+
+img, picture, video, canvas {
+  display: block;
+  max-width: 100%;
+}
+
+/* SVG necesita ser tratado de forma diferente para charts y otros componentes */
+svg:not([class*="nivo"]) {
+  display: block;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Utility classes */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

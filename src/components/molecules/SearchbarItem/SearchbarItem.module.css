@@ -1,0 +1,109 @@
+/* Path: src/components/molecules/SearchbarItem/SearchbarItem.module.css */
+/* Terminal Theme Version */
+
+/* SearchbarItem container */
+.container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  background-color: var(--background-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  transition: all var(--transition-fast);
+  overflow: hidden;
+}
+
+.containerFocused {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-glow-sm);
+}
+
+.containerDisabled {
+  background-color: var(--background-tertiary);
+  opacity: 0.5;
+}
+
+/* Search icon button */
+.searchIconButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  cursor: pointer;
+  color: var(--foreground-muted);
+  background: transparent;
+  border: none;
+  transition: all var(--transition-fast);
+}
+
+.searchIconButton:hover:not(:disabled) {
+  color: var(--primary);
+}
+
+.searchIconButton:disabled {
+  color: var(--foreground-subtle);
+  cursor: not-allowed;
+}
+
+/* Input */
+.input {
+  flex: 1;
+  height: 40px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-size: var(--text-cuerpo-1);
+  font-weight: var(--font-weight-normal);
+  color: var(--foreground);
+  font-family: var(--font-mono);
+  line-height: var(--line-height-default);
+  padding: 0 8px;
+  cursor: text;
+}
+
+.input::placeholder {
+  color: var(--foreground-subtle);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.input:disabled {
+  color: var(--foreground-subtle);
+  cursor: not-allowed;
+}
+
+.input:disabled::placeholder {
+  color: var(--foreground-subtle);
+}
+
+/* Clear button */
+.clearButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin-right: 4px;
+  flex-shrink: 0;
+  cursor: pointer;
+  color: var(--foreground-muted);
+  background-color: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.clearButton:hover:not(:disabled) {
+  background-color: var(--background-tertiary);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.clearButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

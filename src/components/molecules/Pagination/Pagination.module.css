@@ -1,0 +1,147 @@
+/* Path: src/components/molecules/Pagination/Pagination.module.css */
+/* Terminal Theme Version */
+
+/* Pagination container */
+.container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+}
+
+/* Button base styles */
+.button {
+  height: 40px;
+  min-width: 40px;
+  padding: 0 12px;
+  font-size: var(--text-cuerpo-1);
+  font-weight: var(--font-weight-normal);
+  color: var(--foreground);
+  background-color: var(--background-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  line-height: var(--line-height-default);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  outline: none;
+  text-transform: uppercase;
+}
+
+.button:hover:not(:disabled) {
+  background-color: var(--background-tertiary);
+  border-color: var(--primary);
+  color: var(--primary);
+  box-shadow: var(--shadow-glow-sm);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.button:disabled {
+  background-color: var(--background-tertiary);
+  color: var(--foreground-subtle);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Page number base */
+.pageNumber {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  font-size: var(--text-cuerpo-2);
+  font-weight: var(--font-weight-normal);
+  color: var(--foreground-muted);
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  line-height: var(--line-height-default);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  outline: none;
+}
+
+.pageNumber:hover:not(:disabled):not(.pageNumberActive) {
+  background-color: var(--background-tertiary);
+  color: var(--foreground);
+  border-color: var(--border);
+}
+
+.pageNumber:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Active page number */
+.pageNumberActive {
+  border: 1px solid var(--primary);
+  font-weight: var(--font-weight-semibold);
+  color: var(--primary);
+  background-color: var(--accent);
+  box-shadow: var(--shadow-glow-sm);
+}
+
+/* Disabled page number */
+.pageNumber:disabled {
+  color: var(--foreground-subtle);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Arrow buttons */
+.arrowButton {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  font-size: var(--text-cuerpo-2);
+  color: var(--foreground-muted);
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  outline: none;
+}
+
+.arrowButton:hover:not(:disabled) {
+  background-color: var(--background-tertiary);
+  color: var(--primary);
+  border-color: var(--border);
+}
+
+.arrowButton:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.arrowButton:disabled {
+  color: var(--foreground-subtle);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Ellipsis */
+.ellipsis {
+  height: 40px;
+  min-width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-cuerpo-1);
+  color: var(--foreground-muted);
+  font-family: var(--font-mono);
+}

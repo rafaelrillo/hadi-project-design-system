@@ -1,0 +1,60 @@
+/* src/components/terminal/TerminalWindow/TerminalWindow.module.css */
+/* Terminal Theme Version */
+
+.window {
+  background-color: var(--background-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: var(--background-tertiary);
+  border-bottom: 1px solid var(--border);
+}
+
+.controls {
+  display: flex;
+  gap: 6px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--border);
+}
+
+.dot[data-color="red"] {
+  background-color: var(--destructive);
+}
+
+.dot[data-color="yellow"] {
+  background-color: var(--warning);
+}
+
+.dot[data-color="green"] {
+  background-color: var(--success);
+}
+
+.title {
+  font-family: var(--font-mono);
+  font-size: var(--text-cuerpo-2);
+  color: var(--foreground-muted);
+  flex: 1;
+  text-align: center;
+}
+
+.spacer {
+  width: 52px;
+}
+
+.content {
+  padding: var(--spacing-md);
+  min-height: 100px;
+}

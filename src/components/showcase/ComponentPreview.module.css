@@ -1,0 +1,31 @@
+/* Path: src/components/showcase/ComponentPreview.module.css */
+/* Terminal Theme Version */
+
+.container {
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-card);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-elements);
+  align-items: flex-start;
+  border: 1px solid var(--border);
+}
+
+/* Background variants */
+.bgWhite {
+  background-color: var(--background-secondary);
+}
+
+.bgGray {
+  background-color: var(--background-tertiary);
+}
+
+.bgTransparent {
+  background-color: transparent;
+  border: 1px dashed var(--border);
+}
+
+/* Dark variant for contrast */
+.bgDark {
+  background-color: var(--background);
+}

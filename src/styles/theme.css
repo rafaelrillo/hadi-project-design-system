@@ -1,0 +1,225 @@
+/* src/styles/theme.css */
+/* ============================================
+   TERMINAL THEME - ASCII/Hacker Aesthetic
+   ============================================
+
+   Para cambiar de tema, solo modifica este archivo.
+   Los componentes consumen estas variables automaticamente.
+
+   ============================================ */
+
+:root {
+  /* ==========================================
+     COLORES PRIMARIOS - TERMINAL
+     ==========================================
+     Reemplazan: --primary, --primary-dark, --accent
+  */
+  --primary: #FF6600;
+  --primary-dark: #CC5200;
+  --primary-light: #FF983F;
+  --accent: rgba(255, 102, 0, 0.15);
+  --accent-glow: rgba(255, 102, 0, 0.5);
+
+
+  /* ==========================================
+     COLORES BASE - DARK MODE
+     ==========================================
+     Reemplazan: --background, --foreground, --secondary
+  */
+  --background: #000000;
+  --background-secondary: #0a0a0a;
+  --background-tertiary: #111111;
+  --foreground: #FFFFFF;
+  --foreground-muted: #888888;
+  --foreground-subtle: #555555;
+  --secondary: #0a0a0a;
+
+
+  /* ==========================================
+     BORDES Y LINEAS
+     ==========================================
+     Reemplazan: --border, --muted
+  */
+  --border: #333333;
+  --border-focus: var(--primary);
+  --border-hover: #555555;
+  --muted: #333333;
+  --grid-line: #1a1a1a;
+
+
+  /* ==========================================
+     COLORES DE ESTADO
+     ==========================================
+     Reemplazan: --success, --warning, --destructive
+  */
+  --success: #00FF41;
+  --success-light: rgba(0, 255, 65, 0.15);
+  --success-glow: rgba(0, 255, 65, 0.5);
+
+  --warning: #FFB800;
+  --warning-light: rgba(255, 184, 0, 0.15);
+  --warning-glow: rgba(255, 184, 0, 0.5);
+
+  --destructive: #FF3333;
+  --destructive-dark: #CC0000;
+  --destructive-light: rgba(255, 51, 51, 0.15);
+  --destructive-glow: rgba(255, 51, 51, 0.5);
+
+  --info: #00BFFF;
+  --info-glow: rgba(0, 191, 255, 0.5);
+
+
+  /* ==========================================
+     COLORES DE MARCA
+     ==========================================
+  */
+  --brand-red: #FF6600;
+
+
+  /* ==========================================
+     ESCALA DE GRISES (compatibilidad)
+     ==========================================
+  */
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+  --color-gray-5: #111111;
+  --color-gray-4: #1a1a1a;
+  --color-gray-3: #333333;
+  --color-gray-2: #888888;
+  --color-gray-1: #FFFFFF;
+
+
+  /* ==========================================
+     TIPOGRAFIA
+     ==========================================
+  */
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  --font-display: var(--font-mono);
+
+  /* Tamanos (mantener nombres existentes) */
+  --text-siglas: 24px;
+  --text-titulo-1: 18px;
+  --text-titulo-2: 16px;
+  --text-cuerpo-1: 14px;
+  --text-cuerpo-2: 12px;
+
+  /* Extras para terminal */
+  --text-xs: 10px;
+  --text-sm: 12px;
+  --text-base: 14px;
+  --text-lg: 16px;
+  --text-xl: 18px;
+  --text-2xl: 24px;
+  --text-3xl: 32px;
+  --text-4xl: 48px;
+
+  /* Pesos */
+  --font-weight-bold: 700;
+  --font-weight-semibold: 600;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+
+  /* Line height */
+  --line-height-default: 1.2;
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+
+  /* ==========================================
+     ESPACIADO
+     ==========================================
+     Mantener nombres existentes
+  */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  --spacing-3xl: 64px;
+
+  --content-padding: 24px;
+  --gap-elements: 16px;
+  --container-padding: 20px;
+
+
+  /* ==========================================
+     BORDER RADIUS
+     ==========================================
+     Mas angulares para estetica terminal
+  */
+  --radius: 2px;
+  --radius-card: 4px;
+  --radius-none: 0px;
+  --radius-sm: 2px;
+
+
+  /* ==========================================
+     SOMBRAS / GLOW
+     ==========================================
+  */
+  --elevation-sm: 0 0 10px rgba(255, 102, 0, 0.1);
+  --elevation-md: 0 0 20px rgba(255, 102, 0, 0.15);
+  --elevation-lg: 0 0 30px rgba(255, 102, 0, 0.2);
+
+  --shadow-sm: var(--elevation-sm);
+  --shadow-md: var(--elevation-md);
+  --shadow-lg: var(--elevation-lg);
+
+  --shadow-glow-sm: 0 0 10px var(--accent-glow);
+  --shadow-glow-md: 0 0 20px var(--accent-glow);
+  --shadow-glow-lg: 0 0 30px var(--accent-glow);
+
+  --shadow-inset: inset 0 0 20px rgba(0, 0, 0, 0.5);
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.5);
+
+
+  /* ==========================================
+     ICONOGRAFIA
+     ==========================================
+  */
+  --icon-size-lg: 32px;
+  --icon-size-md: 24px;
+  --icon-size-sm: 20px;
+  --icon-size-xs: 16px;
+
+
+  /* ==========================================
+     GRID
+     ==========================================
+  */
+  --grid-columns: 24;
+  --grid-gap: 20px;
+
+
+  /* ==========================================
+     TRANSICIONES
+     ==========================================
+  */
+  --transition-fast: 100ms ease;
+  --transition-normal: 200ms ease;
+  --transition-slow: 300ms ease;
+
+
+  /* ==========================================
+     EFECTOS CRT
+     ==========================================
+  */
+  --crt-scanline-opacity: 0.1;
+  --crt-flicker-intensity: 0.03;
+  --crt-glow-spread: 2px;
+}
+
+/* ==========================================
+   ANIMACIONES GLOBALES
+   ==========================================
+*/
+@keyframes hueRotate {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}

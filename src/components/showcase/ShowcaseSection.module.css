@@ -1,0 +1,31 @@
+/* Path: src/components/showcase/ShowcaseSection.module.css */
+/* Terminal Theme Version */
+
+.section {
+  background-color: var(--background-secondary);
+  padding: 30px;
+  border-radius: var(--radius-card);
+  margin-bottom: var(--spacing-lg);
+  border: 1px solid var(--border);
+}
+
+.title {
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-lg);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.titleWithDescription {
+  margin-bottom: var(--spacing-sm);
+}
+
+.description {
+  font-size: var(--text-cuerpo-2);
+  color: var(--foreground-muted);
+  margin-bottom: var(--spacing-lg);
+  font-family: var(--font-mono);
+}

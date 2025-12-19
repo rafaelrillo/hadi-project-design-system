@@ -1,0 +1,71 @@
+/* Path: src/components/organisms/Searchbar/Searchbar.module.css */
+/* Terminal Theme Version */
+
+/* Container */
+.container {
+  display: flex;
+  gap: var(--gap-elements);
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 40px;
+  background-color: transparent;
+  font-family: var(--font-mono);
+}
+
+/* Product Key Section */
+.productKeyContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.productName {
+  font-size: var(--text-siglas);
+  font-weight: var(--font-weight-bold);
+  color: var(--primary);
+  line-height: var(--line-height-default);
+  font-family: var(--font-mono);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 10px var(--accent-glow);
+}
+
+.version {
+  font-size: var(--text-cuerpo-2);
+  font-weight: var(--font-weight-normal);
+  color: var(--foreground-muted);
+  line-height: var(--line-height-default);
+  font-family: var(--font-mono);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Filters Section */
+.filtersContainer {
+  display: flex;
+  gap: var(--gap-elements);
+  align-items: center;
+  flex: 1;
+}
+
+.dropdownContainer {
+  position: relative;
+  height: 40px;
+  width: 192px;
+}
+
+.textInputContainer {
+  height: 40px;
+  width: 297px;
+}
+
+/* Search Button */
+.searchButton {
+  width: 192px;
+  flex-shrink: 0;
+  border-radius: var(--radius);
+}

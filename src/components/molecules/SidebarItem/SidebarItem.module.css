@@ -1,0 +1,101 @@
+/* Path: src/components/molecules/SidebarItem/SidebarItem.module.css */
+/* Terminal Theme Version */
+
+/* SidebarItem container */
+.container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 16px;
+  font-size: var(--text-cuerpo-1);
+  font-weight: var(--font-weight-normal);
+  color: var(--foreground-muted);
+  background-color: transparent;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  line-height: var(--line-height-default);
+  text-decoration: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  transition: all var(--transition-fast);
+  outline: none;
+  user-select: none;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.container:hover:not(.disabled) {
+  background-color: var(--background-tertiary);
+  color: var(--foreground);
+}
+
+.container:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: -2px;
+}
+
+/* Active state */
+.active {
+  font-weight: var(--font-weight-semibold);
+  color: var(--primary);
+  background-color: var(--accent);
+}
+
+/* Disabled state */
+.disabled {
+  color: var(--foreground-subtle);
+  cursor: not-allowed;
+  background-color: transparent;
+}
+
+/* Left bar indicator */
+.leftBar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background-color: var(--primary);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+
+.leftBarVisible {
+  opacity: 1;
+}
+
+/* Icon container */
+.iconContainer {
+  margin-right: 12px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+/* Label */
+.label {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Badge */
+.badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  font-size: 10px;
+  font-weight: var(--font-weight-bold);
+  color: var(--background);
+  background-color: var(--primary);
+  border-radius: var(--radius-sm);
+  margin-left: 8px;
+  box-shadow: var(--shadow-glow-sm);
+}

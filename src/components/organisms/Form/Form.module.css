@@ -1,0 +1,27 @@
+/* Path: src/components/organisms/Form/Form.module.css */
+/* Terminal Theme Version */
+
+/* Form */
+.form {
+  width: 100%;
+  font-family: var(--font-mono);
+}
+
+/* Fields Container */
+.fieldsContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--gap-elements);
+}
+
+.twoColumns {
+  grid-template-columns: 1fr 1fr;
+}
+
+/* Footer */
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--gap-elements);
+  margin-top: var(--spacing-lg);
+}

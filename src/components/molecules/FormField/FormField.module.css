@@ -1,0 +1,48 @@
+/* Path: src/components/molecules/FormField/FormField.module.css */
+/* Terminal Theme Version */
+
+/* FormField container */
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  width: 100%;
+}
+
+/* Label */
+.label {
+  font-size: var(--text-cuerpo-2);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground-muted);
+  font-family: var(--font-mono);
+  line-height: var(--line-height-default);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Required asterisk */
+.required {
+  color: var(--destructive);
+  text-shadow: 0 0 5px var(--destructive-glow);
+}
+
+/* Helper text */
+.helperText {
+  font-size: var(--text-cuerpo-2);
+  font-weight: var(--font-weight-normal);
+  color: var(--foreground-subtle);
+  font-family: var(--font-mono);
+  line-height: var(--line-height-default);
+  margin: 0;
+}
+
+/* Error message */
+.errorMessage {
+  font-size: var(--text-cuerpo-2);
+  font-weight: var(--font-weight-normal);
+  color: var(--destructive);
+  font-family: var(--font-mono);
+  line-height: var(--line-height-default);
+  margin: 0;
+}

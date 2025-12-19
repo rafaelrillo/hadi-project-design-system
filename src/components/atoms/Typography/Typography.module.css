@@ -1,0 +1,86 @@
+/* Path: src/components/atoms/Typography/Typography.module.css */
+/* Terminal Theme Version */
+
+/* Base typography styles */
+.base {
+  font-family: var(--font-mono);
+  line-height: var(--line-height-default);
+  color: var(--foreground);
+  margin: 0;
+}
+
+/* Heading1 - h1 18px Bold */
+.heading1 {
+  composes: base;
+  font-size: var(--text-titulo-1);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Heading2 - h2 16px Bold */
+.heading2 {
+  composes: base;
+  font-size: var(--text-titulo-2);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Heading3 - h3 16px Semibold */
+.heading3 {
+  composes: base;
+  font-size: var(--text-titulo-2);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* Heading4 - h4 14px Semibold */
+.heading4 {
+  composes: base;
+  font-size: var(--text-cuerpo-1);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Paragraph - p 14px Regular */
+.paragraph {
+  composes: base;
+  font-size: var(--text-cuerpo-1);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+}
+
+/* Label - label 12px Regular */
+.label {
+  composes: base;
+  font-size: var(--text-cuerpo-2);
+  font-weight: var(--font-weight-normal);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--foreground-muted);
+}
+
+/* ProductKey - 24px Bold, Orange (terminal branding) */
+.productKey {
+  font-family: var(--font-mono);
+  font-size: var(--text-siglas);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-default);
+  color: var(--primary);
+  margin: 0;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Code - monospace styling */
+.code {
+  composes: base;
+  font-size: var(--text-cuerpo-2);
+  font-weight: var(--font-weight-normal);
+  background-color: var(--background-tertiary);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+}

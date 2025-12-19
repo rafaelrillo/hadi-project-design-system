@@ -1,0 +1,87 @@
+/* Path: src/components/atoms/Input/Textarea.module.css */
+/* Terminal Theme Version */
+
+/* Textarea container */
+.container {
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* Textarea base styles */
+.textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: 11.5px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: var(--text-cuerpo-1);
+  font-family: var(--font-mono);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-default);
+  color: var(--foreground);
+  background-color: var(--background-secondary);
+  cursor: text;
+  box-sizing: border-box;
+  resize: vertical;
+  transition: all var(--transition-fast);
+  outline: none;
+}
+
+.textarea::placeholder {
+  color: var(--foreground-subtle);
+}
+
+/* With counter - extra padding at bottom */
+.textareaWithCounter {
+  padding-bottom: 28px;
+}
+
+/* Hover state */
+.textarea:hover:not(:disabled):not(:focus) {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-glow-sm);
+}
+
+/* Focus state */
+.textarea:focus {
+  border-color: var(--primary);
+  outline: 2px solid var(--primary);
+  outline-offset: -1px;
+  box-shadow: var(--shadow-glow-sm);
+}
+
+/* Disabled state */
+.textarea:disabled {
+  background-color: var(--background-tertiary);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Error state */
+.textareaError {
+  border-color: var(--destructive);
+}
+
+.textareaError:hover:not(:disabled):not(:focus) {
+  border-color: var(--destructive);
+  box-shadow: 0 0 10px var(--destructive-glow);
+}
+
+.textareaError:focus {
+  border-color: var(--destructive);
+  outline-color: var(--destructive);
+  box-shadow: 0 0 10px var(--destructive-glow);
+}
+
+/* Character counter */
+.counter {
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+  font-size: var(--text-cuerpo-2);
+  font-family: var(--font-mono);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-default);
+  color: var(--foreground-subtle);
+  pointer-events: none;
+}

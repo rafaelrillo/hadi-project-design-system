@@ -1,0 +1,37 @@
+/* Path: src/components/atoms/Checkbox/Checkbox.module.css */
+/* Terminal Theme Version */
+
+/* Checkbox base styles */
+.checkbox {
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  accent-color: var(--primary);
+  margin: 0;
+  box-sizing: border-box;
+  background-color: var(--background-secondary);
+  transition: all var(--transition-fast);
+}
+
+.checkbox:hover:not(:disabled) {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-glow-sm);
+}
+
+.checkbox:checked {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.checkbox:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.checkbox:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  background-color: var(--background-tertiary);
+}

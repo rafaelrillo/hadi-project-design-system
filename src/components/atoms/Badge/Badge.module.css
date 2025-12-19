@@ -1,0 +1,93 @@
+/* src/components/atoms/Badge/Badge.module.css */
+/* Terminal Theme Version */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-family: var(--font-mono);
+  font-size: var(--text-cuerpo-2);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 2px 8px;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  white-space: nowrap;
+  line-height: var(--line-height-default);
+}
+
+/* Default variant */
+.default {
+  background-color: var(--background-tertiary);
+  border-color: var(--border);
+  color: var(--foreground);
+}
+
+/* Primary variant */
+.primary {
+  background-color: var(--accent);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* Success variant */
+.success {
+  background-color: var(--success-light);
+  border-color: var(--success);
+  color: var(--success);
+}
+
+/* Error variant */
+.error {
+  background-color: var(--destructive-light);
+  border-color: var(--destructive);
+  color: var(--destructive);
+}
+
+/* Warning variant */
+.warning {
+  background-color: var(--warning-light);
+  border-color: var(--warning);
+  color: var(--warning);
+}
+
+/* Info variant */
+.info {
+  background-color: rgba(0, 191, 255, 0.15);
+  border-color: var(--info);
+  color: var(--info);
+}
+
+/* Neutral variant */
+.neutral {
+  background-color: var(--background-tertiary);
+  border-color: var(--border);
+  color: var(--foreground-muted);
+}
+
+/* Outlined variant modifier */
+.outlined {
+  background-color: transparent;
+}
+
+/* With dot indicator */
+.withDot::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: currentColor;
+  box-shadow: 0 0 6px currentColor;
+}
+
+/* Sizes */
+.sm {
+  font-size: var(--text-xs);
+  padding: 1px 6px;
+}
+
+.lg {
+  font-size: var(--text-cuerpo-1);
+  padding: 4px 12px;
+}

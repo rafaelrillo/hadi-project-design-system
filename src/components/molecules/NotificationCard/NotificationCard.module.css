@@ -1,0 +1,101 @@
+/* Path: src/components/molecules/NotificationCard/NotificationCard.module.css */
+/* Terminal Theme Version */
+
+/* NotificationCard container */
+.container {
+  border-radius: var(--radius);
+  padding: 15px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  position: relative;
+  box-shadow: var(--shadow-card);
+  font-family: var(--font-mono);
+  border: 1px solid var(--border);
+}
+
+/* Variant styles */
+.variantSuccess {
+  background-color: var(--background-secondary);
+  border-color: var(--success);
+  box-shadow: 0 0 10px var(--success-glow);
+}
+
+.variantError {
+  background-color: var(--background-secondary);
+  border-color: var(--destructive);
+  box-shadow: 0 0 10px var(--destructive-glow);
+}
+
+.variantWarning {
+  background-color: var(--background-secondary);
+  border-color: var(--warning);
+  box-shadow: 0 0 10px var(--warning-glow);
+}
+
+.variantInfo {
+  background-color: var(--background-secondary);
+  border-color: var(--primary);
+  box-shadow: var(--shadow-glow-sm);
+}
+
+/* Icon container */
+.iconContainer {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  margin-top: 2px;
+}
+
+/* Content */
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Title */
+.title {
+  font-size: var(--text-cuerpo-1);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  font-family: var(--font-mono);
+  line-height: var(--line-height-default);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* Message */
+.message {
+  font-size: var(--text-cuerpo-2);
+  font-weight: var(--font-weight-normal);
+  color: var(--foreground-muted);
+  font-family: var(--font-mono);
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Close button */
+.closeButton {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+  color: var(--foreground-muted);
+}
+
+.closeButton:hover {
+  background-color: var(--background-tertiary);
+  border-color: var(--primary);
+  color: var(--primary);
+}

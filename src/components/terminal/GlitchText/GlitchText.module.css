@@ -1,0 +1,8 @@
+/* src/components/terminal/GlitchText/GlitchText.module.css */
+/* Terminal Theme Version */
+
+.glitch {
+  font-family: var(--font-mono);
+  display: inline-block;
+  position: relative;
+}
