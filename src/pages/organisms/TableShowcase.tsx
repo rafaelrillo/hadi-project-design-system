@@ -1,5 +1,5 @@
 // Path: src/pages/organisms/TableShowcase.tsx
-// Terminal Theme Version
+// SENTINEL Design System
 import { useState } from 'react';
 import { Table, TableColumn, TableRow } from '../../components/organisms/Table';
 import { ShowcaseSection } from '../../components/showcase';

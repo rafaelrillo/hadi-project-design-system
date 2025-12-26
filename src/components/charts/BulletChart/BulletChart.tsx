@@ -1,6 +1,6 @@
-// src/components/charts/BulletChart/BulletChart.tsx
+// Path: src/components/charts/BulletChart/BulletChart.tsx
 import { ResponsiveBullet } from '@nivo/bullet';
-import { terminalChartTheme } from '../theme';
+import { sentinelChartTheme } from '../theme';
 import styles from './BulletChart.module.css';
 
 export interface BulletDatum {
@@ -43,13 +43,14 @@ export function BulletChart({
 
   if (!data || data.length === 0) {
     return (
-      <div className={getClassName()} style={{ height }}>
+      <div className={getClassName()} style={{ height: `${height}px` }}>
         <div style={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           height: '100%',
-          color: '#888888',
+          color: 'var(--sentinel-text-tertiary)',
+          fontFamily: 'var(--sentinel-font-primary)',
           fontSize: '14px'
         }}>
           No data available
@@ -59,7 +60,7 @@ export function BulletChart({
   }
 
   return (
-    <div className={getClassName()} style={{ height }}>
+    <div className={getClassName()} style={{ height: `${height}px` }}>
       <ResponsiveBullet
         data={data}
         margin={{ top: 30, right: 30, bottom: 30, left: 100 }}
@@ -74,7 +75,7 @@ export function BulletChart({
         markerSize={0.8}
         animate={true}
         motionConfig="gentle"
-        theme={terminalChartTheme}
+        theme={sentinelChartTheme}
       />
     </div>
   );

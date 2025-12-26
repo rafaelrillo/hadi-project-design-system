@@ -1,80 +1,108 @@
 /* Path: src/components/molecules/MenuItem/MenuItem.module.css */
-/* Terminal Theme Version */
+/* ═══════════════════════════════════════════════════════════════════════════════
+   SENTINEL DESIGN SYSTEM - MenuItem Component
 
-/* MenuItem container */
+   Menu navigation item with icon and label
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   CONTAINER
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .container {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 12px 16px;
+  gap: var(--sentinel-space-3);
+  padding: var(--sentinel-space-3) var(--sentinel-space-4);
   background-color: transparent;
   border: none;
-  border-radius: var(--radius);
+  border-radius: var(--sentinel-radius-md);
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: var(--sentinel-transition-normal);
   width: 100%;
   text-decoration: none;
   position: relative;
-  font-family: var(--font-mono);
+  font-family: var(--sentinel-font-primary);
 }
 
 .container:hover:not(.disabled):not(.active) {
-  background-color: var(--background-tertiary);
+  background-color: var(--sentinel-bg-overlay);
 }
 
 .container:focus-visible {
-  outline: 2px solid var(--primary);
+  outline: 2px solid var(--sentinel-accent-primary);
   outline-offset: -2px;
 }
 
-/* Active state */
+/* ─────────────────────────────────────────────────────────────────────────────
+   ACTIVE STATE
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .active {
-  background-color: var(--accent);
+  background-color: var(--sentinel-accent-subtle);
 }
 
-/* Disabled state */
+/* ─────────────────────────────────────────────────────────────────────────────
+   DISABLED STATE
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .disabled {
   cursor: not-allowed;
-  opacity: 0.5;
 }
 
-/* Icon container */
+/* ─────────────────────────────────────────────────────────────────────────────
+   ICON CONTAINER
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .iconContainer {
   display: flex;
   align-items: center;
   flex-shrink: 0;
+  color: var(--sentinel-text-tertiary);
 }
 
-/* Label */
+.active .iconContainer {
+  color: var(--sentinel-accent-primary);
+}
+
+.disabled .iconContainer {
+  color: var(--sentinel-text-disabled);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   LABEL
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .label {
-  font-size: var(--text-cuerpo-1);
-  font-weight: var(--font-weight-normal);
-  color: var(--foreground);
-  font-family: var(--font-mono);
-  line-height: var(--line-height-default);
+  font-size: var(--sentinel-text-sm);
+  font-weight: var(--sentinel-font-normal);
+  color: var(--sentinel-text-primary);
+  font-family: var(--sentinel-font-primary);
+  line-height: 1.5;
   flex: 1;
   text-align: left;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
 }
 
 .labelActive {
-  font-weight: var(--font-weight-semibold);
-  color: var(--primary);
+  font-weight: var(--sentinel-font-medium);
+  color: var(--sentinel-accent-primary);
 }
 
 .labelDisabled {
-  color: var(--foreground-subtle);
+  color: var(--sentinel-text-disabled);
 }
 
-/* Badge */
+/* ─────────────────────────────────────────────────────────────────────────────
+   BADGE
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .badge {
-  font-size: var(--text-cuerpo-2);
-  font-weight: var(--font-weight-bold);
-  background-color: var(--primary);
-  color: var(--background);
-  padding: 2px 8px;
-  border-radius: var(--radius-sm);
+  font-size: 10px;
+  font-weight: var(--sentinel-font-semibold);
+  background-color: var(--sentinel-accent-primary);
+  color: var(--sentinel-bg-base);
+  padding: 2px var(--sentinel-space-2);
+  border-radius: var(--sentinel-radius-full);
   margin-left: auto;
-  box-shadow: var(--shadow-glow-sm);
+  font-family: var(--sentinel-font-mono);
 }

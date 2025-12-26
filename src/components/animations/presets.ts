@@ -1,5 +1,5 @@
 // src/components/animations/presets.ts
-// Framer Motion animation presets for terminal/dark theme
+// Framer Motion animation presets for SENTINEL design system
 
 import type { Variants, Transition } from 'framer-motion';
 
@@ -36,15 +36,15 @@ export const gentleTransition: Transition = {
 
 export const cardHover = {
   whileHover: {
-    borderColor: '#FF6600',
-    boxShadow: '0 0 15px rgba(255, 102, 0, 0.2)'
+    borderColor: 'var(--sentinel-accent-primary, #5ba3a5)',
+    boxShadow: '0 0 15px rgba(91, 163, 165, 0.2)'
   },
   transition: { duration: 0.2 }
 };
 
 export const glowHover = {
   whileHover: {
-    boxShadow: '0 0 20px rgba(255, 102, 0, 0.4)'
+    boxShadow: '0 0 20px rgba(91, 163, 165, 0.4)'
   },
   transition: { duration: 0.2 }
 };
@@ -159,7 +159,7 @@ export const slideExitRight: Variants = {
 };
 
 // ============================================
-// LOG/TERMINAL ANIMATIONS
+// DATA REVEAL ANIMATIONS
 // ============================================
 
 export const logEntryReveal: Variants = {
@@ -171,7 +171,7 @@ export const logEntryReveal: Variants = {
   }
 };
 
-export const terminalLineAppear: Variants = {
+export const dataLineAppear: Variants = {
   hidden: { opacity: 0, y: 5 },
   visible: {
     opacity: 1,
@@ -179,3 +179,6 @@ export const terminalLineAppear: Variants = {
     transition: { duration: 0.2 }
   }
 };
+
+// Legacy alias for backwards compatibility
+export const terminalLineAppear = dataLineAppear;

@@ -1,5 +1,5 @@
 // Path: src/pages/molecules/FormFieldShowcase.tsx
-// Terminal Theme Version
+// SENTINEL Design System
 import React, { useState } from 'react';
 import { FormField } from '../../components/molecules/FormField';
 import { InputText, Textarea, InputDropdown, DropdownOption } from '../../components/atoms/Input';

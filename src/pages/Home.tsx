@@ -134,7 +134,7 @@ export function Home() {
     },
     {
       title: 'Charts',
-      description: 'Visualizaciones de datos con estilo terminal. Line charts, bar charts, stat cards, sparklines.',
+      description: 'Visualizaciones de datos financieros. Line charts, bar charts, stat cards, sparklines.',
       count: 14,
       icon: LineChart,
       link: '/charts',
@@ -157,10 +157,10 @@ export function Home() {
       {/* Header */}
       <header style={headerStyles}>
         <h1 style={titleStyles}>
-          Design System
+          SENTINEL Design System
         </h1>
         <p style={subtitleStyles}>
-          Robot Resources UI v1.0.0
+          Investment Observatory v2.0.0
         </p>
       </header>
 

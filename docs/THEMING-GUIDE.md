@@ -1,4 +1,4 @@
-# Guía de Theming - Robot Resources Design System
+# Guía de Theming - SENTINEL Design System
 
 **Documento de referencia para aplicar distintos estilos al proyecto**
 
@@ -86,9 +86,9 @@ main.tsx
 #### Colores Primarios
 
 ```css
---primary: rgba(0, 96, 129, 1);           /* Azul Institucional #006081 */
+--primary: rgba(0, 96, 129, 1);           /* Azul Institucional #5ba3a5 */
 --primary-dark: rgba(0, 79, 107, 1);      /* Azul Oscuro #004F6B */
---accent: rgba(212, 247, 255, 1);         /* Azul Claro #D4F7FF */
+--accent: rgba(212, 247, 255, 1);         /* Background Elevated #1a2332 */
 ```
 
 #### Colores Secundarios
@@ -97,13 +97,13 @@ main.tsx
 --secondary: rgba(255, 255, 255, 1);      /* Blanco #FFFFFF */
 --destructive: rgba(181, 0, 0, 1);        /* Rojo #B50000 */
 --destructive-dark: rgba(139, 0, 0, 1);   /* Rojo Oscuro #8B0000 */
---destructive-light: rgba(252, 212, 212, 1); /* Rojo Claro #FCD4D4 */
+--destructive-light: rgba(252, 212, 212, 1); /* Accent Light #FCD4D4 */
 ```
 
 #### Colores de Marca
 
 ```css
---brand-red: rgba(218, 41, 28, 1);        /* Rojo Institucional #DA291C */
+--brand-red: rgba(218, 41, 28, 1);        /* Accent Primary #5ba3a5 */
 ```
 
 #### Colores de Estado
@@ -221,7 +221,7 @@ main.tsx
 ```css
 /* src/styles/globals.css */
 
-/* Tema por defecto (Claro) */
+/* Tema por defecto (light) */
 :root {
   --primary: rgba(0, 96, 129, 1);
   --background: rgba(235, 235, 235, 1);
@@ -316,7 +316,7 @@ src/styles/
 import './styles/globals.css';
 
 // Cargar tema dinámicamente
-const theme = localStorage.getItem('theme') || 'claro';
+const theme = localStorage.getItem('theme') || 'light';
 import(`./styles/themes/${theme}.css`);
 ```
 
@@ -380,13 +380,13 @@ export const useTheme = () => useContext(ThemeContext);
 
 ### Ejemplo 1: Cambiar Colores de la Marca
 
-**Objetivo**: Cambiar de azul Claro a verde corporativo.
+**Objetivo**: Cambiar de azul SENTINEL a verde corporativo.
 
 ```css
 /* src/styles/globals.css */
 
 :root {
-  /* ANTES (Claro) */
+  /* ANTES (SENTINEL) */
   /* --primary: rgba(0, 96, 129, 1); */
   /* --primary-dark: rgba(0, 79, 107, 1); */
   /* --accent: rgba(212, 247, 255, 1); */

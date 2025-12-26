@@ -1,4 +1,4 @@
-# Component Library - Robot Resources v1.0.1
+# Component Library - SENTINEL v2.0.0
 
 **Catálogo completo de componentes del Design System**
 
@@ -71,11 +71,11 @@ Componente de botón reutilizable con 4 variantes principales.
 
 | Variante      | Default BG  | Default Text | Hover BG    | Disabled BG | Disabled Text |
 | ------------- | ----------- | ------------ | ----------- | ----------- | ------------- |
-| Primary       | `#006081`   | `#FFFFFF`    | `#004F6B`   | `#D0D0D0`   | `#6A6A6A`     |
-| Secondary     | `#FFFFFF`   | `#006081`    | `#D4F7FF`   | `#FFFFFF`   | `#D0D0D0`     |
+| Primary       | `#5ba3a5`   | `#FFFFFF`    | `#004F6B`   | `#D0D0D0`   | `#6A6A6A`     |
+| Secondary     | `#FFFFFF`   | `#5ba3a5`    | `#1a2332`   | `#FFFFFF`   | `#D0D0D0`     |
 | Destructive   | `#B50000`   | `#FFFFFF`    | `#8B0000`   | `#D0D0D0`   | `#6A6A6A`     |
 
-**Secondary**: Incluye borde `1px solid #006081`
+**Secondary**: Incluye borde `1px solid #5ba3a5`
 
 #### Props TypeScript
 
@@ -111,7 +111,7 @@ export function Button({
       height: '40px',
       padding: '7.5px 20px',
       borderRadius: variant === 'with-icon' ? '10px' : '5px',
-      border: variant === 'secondary' ? '1px solid #006081' : 'none',
+      border: variant === 'secondary' ? '1px solid #5ba3a5' : 'none',
       cursor: disabled ? 'not-allowed' : 'pointer',
       transition: 'background-color 200ms ease',
       fontFamily: "'Open Sans', sans-serif",
@@ -126,19 +126,19 @@ export function Button({
 
     const variants = {
       primary: {
-        backgroundColor: disabled ? '#D0D0D0' : '#006081',
+        backgroundColor: disabled ? '#D0D0D0' : '#5ba3a5',
         color: disabled ? '#6A6A6A' : '#FFFFFF'
       },
       secondary: {
         backgroundColor: '#FFFFFF',
-        color: disabled ? '#D0D0D0' : '#006081'
+        color: disabled ? '#D0D0D0' : '#5ba3a5'
       },
       destructive: {
         backgroundColor: disabled ? '#D0D0D0' : '#B50000',
         color: disabled ? '#6A6A6A' : '#FFFFFF'
       },
       'with-icon': {
-        backgroundColor: disabled ? '#D0D0D0' : '#006081',
+        backgroundColor: disabled ? '#D0D0D0' : '#5ba3a5',
         color: disabled ? '#6A6A6A' : '#FFFFFF',
         boxShadow: '0px 2px 8px 0px rgba(0,0,0,0.1)'
       }
@@ -166,7 +166,7 @@ export function Button({
 
 - `aria-label`: Requerido si el botón solo tiene icono
 - `disabled`: Estado disabled con cursor `not-allowed`
-- Focus state: `outline: 2px solid #006081`
+- Focus state: `outline: 2px solid #5ba3a5`
 - Navegación: `Tab`, `Enter/Space` para activar
 
 ---
@@ -398,8 +398,8 @@ Wrapper para iconos de Lucide React con tamaños y colores estandarizados.
 **Colores predefinidos:**
 - `default`: #222222 (Gris 1)
 - `secondary`: #6A6A6A (Gris 2)
-- `primary`: #006081 (Azul)
-- `brand`: #DA291C (Rojo Claro)
+- `primary`: #5ba3a5 (Azul)
+- `brand`: #5ba3a5 (Accent Light)
 - `destructive`: #B50000 (Rojo)
 - `success`: #0B7329 (Verde)
 - `warning`: #FAB400 (Naranja)
@@ -435,8 +435,8 @@ const sizeMap = {
 const colorMap = {
   default: '#222222',
   secondary: '#6A6A6A',
-  primary: '#006081',
-  brand: '#DA291C',
+  primary: '#5ba3a5',
+  brand: '#5ba3a5',
   destructive: '#B50000',
   success: '#0B7329',
   warning: '#FAB400',
@@ -508,7 +508,7 @@ export function Badge({ children, variant = 'neutral' }: BadgeProps) {
     success: { bg: '#CEE6C6', color: '#0B7329' },
     error: { bg: '#FFD4D4', color: '#B50000' },
     warning: { bg: '#FFFCE0', color: '#FAB400' },
-    info: { bg: '#D4F7FF', color: '#006081' },
+    info: { bg: '#1a2332', color: '#5ba3a5' },
     neutral: { bg: '#F5F5F5', color: '#6A6A6A' }
   };
 
@@ -604,7 +604,7 @@ Componentes wrapper para elementos tipográficos con estilos del DS aplicados.
 - `Heading4` (h4) - 14px Semibold
 - `Paragraph` (p) - 14px Regular
 - `Label` (label) - 12px Regular
-- `ProductKey` - 24px Bold, Rojo #DA291C
+- `ProductKey` - 24px Bold, Rojo #5ba3a5
 
 ---
 
@@ -642,7 +642,7 @@ Tarjeta informativa con borde superior de color según estado.
 | `success` | `#0B7329`    | Datos positivos, objetivos OK    |
 | `warning` | `#FAB400`    | Datos que requieren atención     |
 | `error`   | `#B50000`    | Datos críticos, errores          |
-| `neutral` | `#006081`    | Datos informativos generales     |
+| `neutral` | `#5ba3a5`    | Datos informativos generales     |
 
 #### Props TypeScript
 
@@ -663,7 +663,7 @@ export function Card({ label, value, variant = 'neutral' }: CardProps) {
     success: '#0B7329',
     warning: '#FAB400',
     error: '#B50000',
-    neutral: '#006081'
+    neutral: '#5ba3a5'
   };
 
   return (
@@ -853,9 +853,9 @@ Barra de navegación principal fija en el lado izquierdo de la pantalla.
 
 #### Los 5 Componentes Esenciales
 
-1. **Isotipo Claro** - Logo rojo (#DA291C), 24px
+1. **Logo SENTINEL** - Logo rojo (#5ba3a5), 24px
 2. **Menús de Navegación** - Iconos de secciones principales
-3. **Usuario** - Icono de usuario (rojo #DA291C)
+3. **Usuario** - Icono de usuario (rojo #5ba3a5)
 4. **Logs** - Abre drawer de historial
 5. **Cerrar Sesión** - Logout
 
@@ -883,9 +883,9 @@ Barra de navegación principal fija en el lado izquierdo de la pantalla.
 | Estado    | Background | Icono     | Indicador                           |
 | --------- | ---------- | --------- | ----------------------------------- |
 | Default   | `#FFFFFF`  | `#222222` | Ninguno                             |
-| Hover     | `#FFFFFF`  | `#222222` | Barra azul 4px izquierda (#006081)  |
-| Focus     | `#FFFFFF`  | `#222222` | Ring azul 2px inset (#006081)       |
-| Active    | `#006081`  | `#FFFFFF` | Fondo azul completo                 |
+| Hover     | `#FFFFFF`  | `#222222` | Barra azul 4px izquierda (#5ba3a5)  |
+| Focus     | `#FFFFFF`  | `#222222` | Ring azul 2px inset (#5ba3a5)       |
+| Active    | `#5ba3a5`  | `#FFFFFF` | Fondo azul completo                 |
 | Disabled  | `#F5F5F5`  | `#D0D0D0` | Cursor not-allowed                  |
 
 #### Props TypeScript
@@ -949,7 +949,7 @@ Barra de búsqueda modular formada por Product Key + Inputs + Botón.
 **Siglas:**
 - Font size: `24px`
 - Font weight: `700` (Bold)
-- Color: `#DA291C` **OBLIGATORIO**
+- Color: `#5ba3a5` **OBLIGATORIO**
 - Line height: `1.2`
 
 **Versión:**
@@ -982,7 +982,7 @@ Barra de búsqueda modular formada por Product Key + Inputs + Botón.
 **Dimensiones:**
 - Height: `40px` **FIJA**
 - Width: `192px`
-- Background: `#006081`
+- Background: `#5ba3a5`
 - Border radius: `10px`
 - Shadow: `0px 2px 8px 0px rgba(0,0,0,0.1)`
 - Padding: `7.5px 20px`
@@ -1083,7 +1083,7 @@ Tablas de datos con 3 formatos según cantidad de columnas.
 - Sin bordes
 - Filas alternadas: `#EBEBEB` (Gris 4) y `#FFFFFF`
 - Border radius por fila: `5px`
-- **Fila seleccionada**: Border-left `6px solid #006081`
+- **Fila seleccionada**: Border-left `6px solid #5ba3a5`
 
 #### Estados de Filas
 
@@ -1091,8 +1091,8 @@ Tablas de datos con 3 formatos según cantidad de columnas.
 | --------- | ---------- | --------------------------- |
 | Default   | `#FFFFFF`  | Según formato               |
 | Hover     | `#F5F5F5`  | -                           |
-| Focus     | -          | Outline `2px #006081`       |
-| Selected  | `#D4F7FF`  | -                           |
+| Focus     | -          | Outline `2px #5ba3a5`       |
+| Selected  | `#1a2332`  | -                           |
 | Alt (0%)  | `#EBEBEB`  | -                           |
 
 ---
@@ -1130,7 +1130,7 @@ Ventanas modales para mostrar contenido superpuesto.
 #### Header (Obligatorio)
 
 **Estilos:**
-- Border-bottom: `2px solid #006081` **OBLIGATORIO**
+- Border-bottom: `2px solid #5ba3a5` **OBLIGATORIO**
 - Padding: `20px` (horizontal) `10px` (vertical)
 - Display: `flex`
 - Justify-content: `space-between`
@@ -1216,8 +1216,8 @@ Componente de paginación para tablas y listas.
 
 **Estados:**
 - Default: `#FFFFFF` bg, `#222222` text, `1px solid #D0D0D0`
-- Active: `#006081` bg, `#FFFFFF` text, no border
-- Hover: `#D4F7FF` bg
+- Active: `#5ba3a5` bg, `#FFFFFF` text, no border
+- Hover: `#1a2332` bg
 - Disabled: `#F5F5F5` bg, `#D0D0D0` text
 
 **Tipografía:**
@@ -1226,5 +1226,5 @@ Componente de paginación para tablas y listas.
 
 ---
 
-**Versión**: Robot Resources v1.0.1
+**Versión**: SENTINEL v2.0.0
 **Última actualización**: 29 de octubre, 2025

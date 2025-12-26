@@ -1,8 +1,8 @@
-# Design System Robot Resources v1.0.1
+# Design System SENTINEL v2.0.0
 
 **Versión**: 1.0.1
 **Última actualización**: 29 de octubre, 2025
-**Ecosistema**: Digital de Claro (Telecomunicaciones)
+**Ecosistema**: Investment Analysis Platform
 **Tipo de Aplicaciones**: SPA (Single Page Application)
 **Enfoque**: System-First, priorizando reutilización de componentes
 
@@ -37,7 +37,7 @@
 ### Fundamentos Base
 
 - **Accesibilidad**: AAA en contraste de colores
-- **Visual distinta**: Diferenciación del Claro Atlas
+- **Visual distinta**: Diferenciación del standard design systems
 - **Consistencia**: Uso coherente de tokens y componentes
 - **Escalabilidad**: Sistema preparado para crecer
 
@@ -69,8 +69,8 @@ Principales elementos interactivos y notificaciones informativas.
 
 | Nombre             | Hex     | RGBA                   | Uso                                                 | Variable CSS         |
 | ------------------ | ------- | ---------------------- | --------------------------------------------------- | -------------------- |
-| Azul Claro         | #D4F7FF | rgba(212, 247, 255, 1) | Estados hover, backgrounds suaves                   | `--accent`           |
-| **Azul Institucional** | **#006081** | **rgba(0, 96, 129, 1)** | **Botones, links, elementos activos (COLOR PRINCIPAL)** | `--primary`          |
+| Background Elevated         | #1a2332 | rgba(212, 247, 255, 1) | Estados hover, backgrounds suaves                   | `--accent`           |
+| **Azul Institucional** | **#5ba3a5** | **rgba(0, 96, 129, 1)** | **Botones, links, elementos activos (COLOR PRINCIPAL)** | `--primary`          |
 | Azul Oscuro        | #004F6B | rgba(0, 79, 107, 1)    | Estados pressed, énfasis adicional                  | `--primary-dark`     |
 
 #### **Colores Secundarios**
@@ -79,8 +79,8 @@ Uso limitado para acciones irreversibles y elementos de marca.
 
 | Nombre             | Hex     | RGBA                   | Uso                                                     | Variable CSS         |
 | ------------------ | ------- | ---------------------- | ------------------------------------------------------- | -------------------- |
-| Rojo Claro         | #FCD4D4 | rgba(252, 212, 212, 1) | Backgrounds de error suaves                             | `--destructive-light`|
-| **Rojo Institucional** | **#DA291C** | **rgba(218, 41, 28, 1)**   | **SOLO para elementos que refieran a Claro como marca (Product Key)** | `--brand-red`        |
+| Accent Light         | #FCD4D4 | rgba(252, 212, 212, 1) | Backgrounds de error suaves                             | `--destructive-light`|
+| **Accent Primary** | **#5ba3a5** | **rgba(218, 41, 28, 1)**   | **SOLO para elementos que elementos de branding SENTINEL (Product Key)** | `--brand-red`        |
 | Rojo               | #B50000 | rgba(181, 0, 0, 1)     | Eliminaciones, cancelaciones, errores                   | `--destructive`      |
 | Rojo Oscuro        | #8B0000 | rgba(139, 0, 0, 1)     | Estados críticos                                        | `--destructive-dark` |
 
@@ -99,18 +99,18 @@ Uso limitado para acciones irreversibles y elementos de marca.
 
 ```css
 /* Colores Primarios */
---primary: rgba(0, 96, 129, 1);           /* Azul Institucional #006081 */
+--primary: rgba(0, 96, 129, 1);           /* Azul Institucional #5ba3a5 */
 --primary-dark: rgba(0, 79, 107, 1);      /* Azul Oscuro #004F6B */
---accent: rgba(212, 247, 255, 1);         /* Azul Claro #D4F7FF */
+--accent: rgba(212, 247, 255, 1);         /* Background Elevated #1a2332 */
 
 /* Colores Secundarios */
 --secondary: rgba(255, 255, 255, 1);      /* Blanco #FFFFFF */
 --destructive: rgba(181, 0, 0, 1);        /* Rojo #B50000 */
 --destructive-dark: rgba(139, 0, 0, 1);   /* Rojo Oscuro #8B0000 */
---destructive-light: rgba(252, 212, 212, 1); /* Rojo Claro #FCD4D4 */
+--destructive-light: rgba(252, 212, 212, 1); /* Accent Light #FCD4D4 */
 
 /* Colores de Marca */
---brand-red: rgba(218, 41, 28, 1);        /* Rojo Institucional #DA291C */
+--brand-red: rgba(218, 41, 28, 1);        /* Accent Primary #5ba3a5 */
 
 /* Colores de Estado */
 --success: rgba(11, 115, 41, 1);          /* Verde #0B7329 */
@@ -132,20 +132,20 @@ Uso limitado para acciones irreversibles y elementos de marca.
 
 ### Reglas de Uso de Colores
 
-#### ⚠️ CRÍTICO: Rojo Institucional (#DA291C)
+#### ⚠️ CRÍTICO: Accent Primary (#5ba3a5)
 
 **USO EXCLUSIVO PARA:**
 - Product Key (siglas de 3 letras)
-- Isotipo de Claro en Sidebar
+- Logo SENTINEL en Sidebar
 - Icono de Usuario en Sidebar
-- Elementos que representan la marca Claro
+- Elementos que representan la marca SENTINEL
 
 **NUNCA USAR PARA:**
 - Botones de acción
 - Estados de error
 - Elementos interactivos generales
 
-#### Azul Institucional (#006081)
+#### Azul Institucional (#5ba3a5)
 
 **USO PRINCIPAL:**
 - Botones primarios
@@ -234,7 +234,7 @@ Uso limitado para acciones irreversibles y elementos de marca.
 
 | Elemento    | Nombre | Weight   | Font-size | Color           | Uso                                 |
 | ----------- | ------ | -------- | --------- | --------------- | ----------------------------------- |
-| Product Key | Siglas | Bold/700 | 24px      | #DA291C (Rojo)  | **SOLO** para la Key del producto   |
+| Product Key | Siglas | Bold/700 | 24px      | #5ba3a5 (Rojo)  | **SOLO** para la Key del producto   |
 | Version     | Label  | Regular  | 12px      | #6A6A6A (Gris 2)| Versión debajo de la Key            |
 
 ### Estilos Globales (globals.css)
@@ -344,8 +344,8 @@ import { Search, User, LogOut } from 'lucide-react';
 | --------------------- | ----------- | --------- | ---------------- |
 | Por defecto           | Gris 1      | #222222   | `--foreground`   |
 | Secundario            | Gris 2      | #6A6A6A   | `--color-gray-2` |
-| Primario/Activo       | Azul        | #006081   | `--primary`      |
-| Marca Claro           | Rojo        | #DA291C   | `--brand-red`    |
+| Primario/Activo       | Azul        | #5ba3a5   | `--primary`      |
+| Marca SENTINEL           | Rojo        | #5ba3a5   | `--brand-red`    |
 | Error                 | Rojo        | #B50000   | `--destructive`  |
 | Éxito                 | Verde       | #0B7329   | `--success`      |
 | Advertencia           | Naranja     | #FAB400   | `--warning`      |
@@ -650,7 +650,7 @@ Todos los componentes interactivos deben incluir:
 ```css
 /* Focus ring estándar */
 &:focus-visible {
-  outline: 2px solid var(--primary);  /* #006081 */
+  outline: 2px solid var(--primary);  /* #5ba3a5 */
   outline-offset: 2px;
 }
 ```
@@ -665,5 +665,5 @@ El design system usa `40px` de altura para inputs y botones, que es aceptable si
 
 ---
 
-**Versión**: Robot Resources v1.0.1
+**Versión**: SENTINEL v2.0.0
 **Última actualización**: 29 de octubre, 2025

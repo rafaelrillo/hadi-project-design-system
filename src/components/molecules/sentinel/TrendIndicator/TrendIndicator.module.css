@@ -1,0 +1,153 @@
+/* Path: src/components/molecules/sentinel/TrendIndicator/TrendIndicator.module.css */
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   TREND INDICATOR
+   Simple trend indicator for specific metrics
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.container {
+  background: var(--sentinel-bg-elevated);
+  border: 1px solid var(--sentinel-border-subtle);
+  border-radius: var(--sentinel-radius-md);
+  padding: 16px;
+  transition: border-color var(--sentinel-transition-fast);
+}
+
+.container:hover {
+  border-color: var(--sentinel-border-default);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   SIZE VARIANTS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.sm {
+  padding: 12px;
+}
+
+.sm .label {
+  font-size: 10px;
+}
+
+.sm .value {
+  font-size: var(--sentinel-font-lg);
+}
+
+.sm .trendIcon {
+  font-size: 12px;
+}
+
+.md {
+  padding: 16px;
+}
+
+.lg {
+  padding: 20px;
+}
+
+.lg .value {
+  font-size: var(--sentinel-font-2xl);
+}
+
+.lg .trendIcon {
+  font-size: 18px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   LABEL
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.label {
+  display: block;
+  font-family: var(--sentinel-font-primary);
+  font-size: var(--sentinel-font-xs);
+  font-weight: 400;
+  color: var(--sentinel-text-secondary);
+  margin-bottom: 6px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   VALUE ROW
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.valueRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.value {
+  font-family: var(--sentinel-font-mono);
+  font-size: var(--sentinel-font-xl);
+  font-weight: 500;
+  color: var(--sentinel-text-primary);
+  letter-spacing: -0.01em;
+}
+
+.trendIcon {
+  font-size: 14px;
+  opacity: 0.8;
+  transition: opacity var(--sentinel-transition-fast);
+}
+
+.container:hover .trendIcon {
+  opacity: 1;
+}
+
+.trendIcon.up {
+  color: var(--sentinel-status-positive-text);
+}
+
+.trendIcon.down {
+  color: var(--sentinel-status-negative-text);
+}
+
+.trendIcon.stable {
+  color: var(--sentinel-text-tertiary);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   CHANGE ROW
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.changeRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.change {
+  font-family: var(--sentinel-font-mono);
+  font-size: var(--sentinel-font-xs);
+  font-weight: 500;
+  color: var(--sentinel-text-secondary);
+}
+
+.change.positive {
+  color: var(--sentinel-status-positive-text);
+}
+
+.change.negative {
+  color: var(--sentinel-status-negative-text);
+}
+
+.period {
+  font-family: var(--sentinel-font-primary);
+  font-size: var(--sentinel-font-xs);
+  color: var(--sentinel-text-tertiary);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   REDUCED MOTION
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  .container {
+    transition: none;
+  }
+
+  .trendIcon {
+    transition: none;
+  }
+}

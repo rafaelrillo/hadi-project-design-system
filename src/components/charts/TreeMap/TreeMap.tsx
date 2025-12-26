@@ -1,6 +1,6 @@
-// src/components/charts/TreeMap/TreeMap.tsx
+// Path: src/components/charts/TreeMap/TreeMap.tsx
 import { ResponsiveTreeMap } from '@nivo/treemap';
-import { terminalChartTheme, terminalChartColors } from '../theme';
+import { sentinelChartTheme, sentinelChartColors } from '../theme';
 import styles from './TreeMap.module.css';
 
 export interface TreeMapNode {
@@ -26,7 +26,7 @@ export interface TreeMapProps {
 export function TreeMap({
   data,
   height = 400,
-  colors = terminalChartColors,
+  colors = sentinelChartColors,
   tile = 'squarify',
   innerPadding = 2,
   outerPadding = 2,
@@ -43,13 +43,14 @@ export function TreeMap({
 
   if (!data || !data.children || data.children.length === 0) {
     return (
-      <div className={getClassName()} style={{ height }}>
+      <div className={getClassName()} style={{ height: `${height}px` }}>
         <div style={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           height: '100%',
-          color: '#888888',
+          color: 'var(--sentinel-text-tertiary)',
+          fontFamily: 'var(--sentinel-font-primary)',
           fontSize: '14px'
         }}>
           No data available
@@ -59,7 +60,7 @@ export function TreeMap({
   }
 
   return (
-    <div className={getClassName()} style={{ height }}>
+    <div className={getClassName()} style={{ height: `${height}px` }}>
       <ResponsiveTreeMap
         data={data}
         identity="name"
@@ -79,7 +80,7 @@ export function TreeMap({
         parentLabelTextColor={{ from: 'color', modifiers: [['brighter', 2]] }}
         animate={true}
         motionConfig="gentle"
-        theme={terminalChartTheme}
+        theme={sentinelChartTheme}
       />
     </div>
   );

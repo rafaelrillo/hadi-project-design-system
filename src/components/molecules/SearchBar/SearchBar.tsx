@@ -71,7 +71,10 @@ export function SearchBar({
   return (
     <div className={styles.container}>
       <div className={styles.searchIconContainer}>
-        <Search size={18} color={disabled ? '#D0D0D0' : '#6A6A6A'} />
+        <Search
+          size={18}
+          color={disabled ? 'var(--sentinel-text-disabled)' : 'var(--sentinel-text-tertiary)'}
+        />
       </div>
       <input
         type="text"
@@ -90,7 +93,7 @@ export function SearchBar({
           aria-label="Limpiar búsqueda"
           type="button"
         >
-          <X size={16} color="#6A6A6A" />
+          <X size={16} color="var(--sentinel-text-tertiary)" />
         </button>
       )}
     </div>

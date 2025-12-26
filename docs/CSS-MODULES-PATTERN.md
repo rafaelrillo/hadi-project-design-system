@@ -1,4 +1,4 @@
-# Patrón de CSS Modules - Robot Resources Design System
+# Patrón de CSS Modules - SENTINEL Design System
 
 Este documento explica el patrón de CSS Modules implementado en el proyecto.
 
@@ -73,7 +73,7 @@ ComponentName/
 
 /* Variantes */
 .primary {
-  background-color: #006081;
+  background-color: #5ba3a5;
   color: #FFFFFF;
 }
 
@@ -83,8 +83,8 @@ ComponentName/
 
 .secondary {
   background-color: #FFFFFF;
-  color: #006081;
-  border: 1px solid #006081;
+  color: #5ba3a5;
+  border: 1px solid #5ba3a5;
 }
 
 /* Estados */
@@ -95,7 +95,7 @@ ComponentName/
 }
 
 .button:focus {
-  outline: 2px solid #006081;
+  outline: 2px solid #5ba3a5;
   outline-offset: 2px;
 }
 ```
@@ -238,7 +238,7 @@ expect(button).toHaveClass('primary');
 expect(button.className).toContain('button');
 
 // NO verificar estilos inline (ya no existen)
-expect(button).toHaveStyle({ backgroundColor: '#006081' });
+expect(button).toHaveStyle({ backgroundColor: '#5ba3a5' });
 ```
 
 ---
@@ -296,8 +296,8 @@ Para valores que cambian según props pero tienen un default:
 ### Colores
 ```css
 /* Institucionales */
---color-primary: #006081;      /* Azul Claro */
---color-brand: #DA291C;        /* Rojo Claro (solo logo/product key) */
+--color-primary: #5ba3a5;      /* Background Elevated */
+--color-brand: #5ba3a5;        /* Accent Light (solo logo/product key) */
 
 /* Estados */
 --color-success: #0B7329;

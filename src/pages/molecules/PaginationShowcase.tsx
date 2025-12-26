@@ -1,5 +1,5 @@
 // Path: src/pages/molecules/PaginationShowcase.tsx
-// Terminal Theme Version
+// SENTINEL Design System
 import React, { useState } from 'react';
 import { Pagination } from '../../components/molecules/Pagination';
 import { ShowcaseSection, ComponentPreview } from '../../components/showcase';

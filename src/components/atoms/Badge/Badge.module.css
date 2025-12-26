@@ -1,93 +1,165 @@
-/* src/components/atoms/Badge/Badge.module.css */
-/* Terminal Theme Version */
+/* Path: src/components/atoms/Badge/Badge.module.css */
+/* ═══════════════════════════════════════════════════════════════════════════════
+   SENTINEL DESIGN SYSTEM - Badge Component
+
+   Status indicators and labels
+   Clean, minimal styling with subtle backgrounds
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   BASE BADGE
+   ───────────────────────────────────────────────────────────────────────────── */
 
 .badge {
   display: inline-flex;
   align-items: center;
-  gap: var(--spacing-xs);
-  font-family: var(--font-mono);
-  font-size: var(--text-cuerpo-2);
-  font-weight: var(--font-weight-medium);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding: 2px 8px;
-  border-radius: var(--radius);
+  gap: var(--sentinel-space-1);
+  font-family: var(--sentinel-font-mono);
+  font-size: var(--sentinel-text-xs);
+  font-weight: var(--sentinel-font-medium);
+  letter-spacing: 0.02em;
+  padding: var(--sentinel-space-1) var(--sentinel-space-2);
+  border-radius: var(--sentinel-radius-sm);
   border: 1px solid transparent;
   white-space: nowrap;
-  line-height: var(--line-height-default);
+  line-height: 1.4;
 }
 
-/* Default variant */
+/* ─────────────────────────────────────────────────────────────────────────────
+   VARIANT: DEFAULT
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .default {
-  background-color: var(--background-tertiary);
-  border-color: var(--border);
-  color: var(--foreground);
+  background-color: var(--sentinel-bg-subtle);
+  border-color: var(--sentinel-border-default);
+  color: var(--sentinel-text-primary);
 }
 
-/* Primary variant */
+/* ─────────────────────────────────────────────────────────────────────────────
+   VARIANT: PRIMARY (Accent)
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .primary {
-  background-color: var(--accent);
-  border-color: var(--primary);
-  color: var(--primary);
+  background-color: var(--sentinel-accent-subtle);
+  border-color: transparent;
+  color: var(--sentinel-accent-primary);
 }
 
-/* Success variant */
+/* ─────────────────────────────────────────────────────────────────────────────
+   VARIANT: SUCCESS (Positive)
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .success {
-  background-color: var(--success-light);
-  border-color: var(--success);
-  color: var(--success);
+  background-color: var(--sentinel-status-positive-subtle);
+  border-color: transparent;
+  color: var(--sentinel-status-positive-text);
 }
 
-/* Error variant */
+/* ─────────────────────────────────────────────────────────────────────────────
+   VARIANT: ERROR (Negative)
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .error {
-  background-color: var(--destructive-light);
-  border-color: var(--destructive);
-  color: var(--destructive);
+  background-color: var(--sentinel-status-negative-subtle);
+  border-color: transparent;
+  color: var(--sentinel-status-negative-text);
 }
 
-/* Warning variant */
+/* ─────────────────────────────────────────────────────────────────────────────
+   VARIANT: WARNING
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .warning {
-  background-color: var(--warning-light);
-  border-color: var(--warning);
-  color: var(--warning);
+  background-color: var(--sentinel-status-warning-subtle);
+  border-color: transparent;
+  color: var(--sentinel-status-warning-text);
 }
 
-/* Info variant */
+/* ─────────────────────────────────────────────────────────────────────────────
+   VARIANT: INFO
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .info {
-  background-color: rgba(0, 191, 255, 0.15);
-  border-color: var(--info);
-  color: var(--info);
+  background-color: var(--sentinel-status-info-subtle);
+  border-color: transparent;
+  color: var(--sentinel-status-info-text);
 }
 
-/* Neutral variant */
+/* ─────────────────────────────────────────────────────────────────────────────
+   VARIANT: NEUTRAL
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .neutral {
-  background-color: var(--background-tertiary);
-  border-color: var(--border);
-  color: var(--foreground-muted);
+  background-color: var(--sentinel-bg-subtle);
+  border-color: transparent;
+  color: var(--sentinel-text-secondary);
 }
 
-/* Outlined variant modifier */
+/* ─────────────────────────────────────────────────────────────────────────────
+   MODIFIER: OUTLINED
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .outlined {
   background-color: transparent;
 }
 
-/* With dot indicator */
+.outlined.primary {
+  border-color: var(--sentinel-accent-primary);
+}
+
+.outlined.success {
+  border-color: var(--sentinel-status-positive);
+}
+
+.outlined.error {
+  border-color: var(--sentinel-status-negative);
+}
+
+.outlined.warning {
+  border-color: var(--sentinel-status-warning);
+}
+
+.outlined.info {
+  border-color: var(--sentinel-status-info);
+}
+
+.outlined.neutral {
+  border-color: var(--sentinel-border-default);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   WITH DOT INDICATOR
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .withDot::before {
   content: "";
   width: 6px;
   height: 6px;
   border-radius: 50%;
   background-color: currentColor;
-  box-shadow: 0 0 6px currentColor;
+  flex-shrink: 0;
 }
 
-/* Sizes */
+/* ─────────────────────────────────────────────────────────────────────────────
+   SIZES
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .sm {
-  font-size: var(--text-xs);
-  padding: 1px 6px;
+  font-size: 10px;
+  padding: 2px var(--sentinel-space-1);
+}
+
+.sm.withDot::before {
+  width: 5px;
+  height: 5px;
 }
 
 .lg {
-  font-size: var(--text-cuerpo-1);
-  padding: 4px 12px;
+  font-size: var(--sentinel-text-sm);
+  padding: var(--sentinel-space-1) var(--sentinel-space-3);
+}
+
+.lg.withDot::before {
+  width: 7px;
+  height: 7px;
 }

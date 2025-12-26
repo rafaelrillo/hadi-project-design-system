@@ -1,5 +1,5 @@
 // Path: src/pages/organisms/ModalShowcase.tsx
-// Terminal Theme Version
+// SENTINEL Design System
 import React, { useState } from 'react';
 import { Modal } from '../../components/organisms/Modal';
 import { Button } from '../../components/atoms/Button';

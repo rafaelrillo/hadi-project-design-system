@@ -1,36 +1,46 @@
-/* src/components/atoms/Button/Button.module.css */
-/* Terminal Theme Version */
+/* Path: src/components/atoms/Button/Button.module.css */
+/* ═══════════════════════════════════════════════════════════════════════════════
+   SENTINEL DESIGN SYSTEM - Button Component
+
+   Clean, professional buttons with subtle interactions
+   No glowing effects - uses smooth transitions and color shifts
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   BASE BUTTON
+   ───────────────────────────────────────────────────────────────────────────── */
 
 .button {
-  font-family: var(--font-mono);
-  font-size: var(--text-cuerpo-1);
-  font-weight: var(--font-weight-medium);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  padding: 8px var(--spacing-lg);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
+  font-family: var(--sentinel-font-primary);
+  font-size: var(--sentinel-text-sm);
+  font-weight: var(--sentinel-font-medium);
+  line-height: 1;
+  letter-spacing: 0.01em;
+  padding: var(--sentinel-space-2) var(--sentinel-space-4);
+  border: 1px solid var(--sentinel-border-default);
+  border-radius: var(--sentinel-radius-md);
   background-color: transparent;
-  color: var(--foreground);
+  color: var(--sentinel-text-primary);
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: var(--sentinel-transition-normal);
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0;
   height: 40px;
+  white-space: nowrap;
+  user-select: none;
 }
 
 .button:focus-visible {
-  outline: 2px solid var(--primary);
+  outline: 2px solid var(--sentinel-accent-primary);
   outline-offset: 2px;
 }
 
 .button:hover:not(:disabled) {
-  border-color: var(--primary);
-  color: var(--primary);
-  box-shadow: var(--shadow-glow-sm);
+  border-color: var(--sentinel-accent-primary);
+  color: var(--sentinel-accent-primary);
 }
 
 .button:active:not(:disabled) {
@@ -38,7 +48,9 @@
 }
 
 .button:disabled {
-  opacity: 0.5;
+  background-color: var(--sentinel-bg-subtle);
+  border-color: var(--sentinel-border-subtle);
+  color: var(--sentinel-text-tertiary);
   cursor: not-allowed;
 }
 
@@ -46,118 +58,175 @@
   outline: none;
 }
 
-/* Gap when icon is present */
+/* ─────────────────────────────────────────────────────────────────────────────
+   ICON SUPPORT
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .buttonWithIcon {
-  gap: var(--spacing-sm);
+  gap: var(--sentinel-space-2);
 }
 
-/* Primary */
+/* ─────────────────────────────────────────────────────────────────────────────
+   VARIANT: PRIMARY
+   Filled accent button - main call to action
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .primary {
-  background-color: var(--primary);
-  border-color: var(--primary);
-  color: var(--background);
+  background-color: var(--sentinel-accent-primary);
+  border-color: var(--sentinel-accent-primary);
+  color: var(--sentinel-bg-base);
 }
 
 .primary:hover:not(:disabled) {
-  background-color: var(--primary-dark);
-  border-color: var(--primary-dark);
-  color: var(--background);
-  box-shadow: var(--shadow-glow-md);
+  background-color: var(--sentinel-accent-secondary);
+  border-color: var(--sentinel-accent-secondary);
+  color: var(--sentinel-bg-base);
+}
+
+.primary:active:not(:disabled) {
+  background-color: var(--sentinel-accent-tertiary);
+  border-color: var(--sentinel-accent-tertiary);
 }
 
 .primary:disabled {
-  background-color: var(--muted);
-  border-color: var(--muted);
-  color: var(--foreground-subtle);
+  background-color: var(--sentinel-bg-subtle);
+  border-color: var(--sentinel-bg-subtle);
+  color: var(--sentinel-text-tertiary);
 }
 
-/* Secondary */
+/* ─────────────────────────────────────────────────────────────────────────────
+   VARIANT: SECONDARY
+   Outlined/subtle button - secondary actions
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .secondary {
-  background-color: transparent;
-  border-color: var(--foreground);
-  color: var(--foreground);
+  background-color: var(--sentinel-bg-elevated);
+  border-color: var(--sentinel-border-default);
+  color: var(--sentinel-text-primary);
 }
 
 .secondary:hover:not(:disabled) {
-  background-color: var(--foreground);
-  color: var(--background);
+  background-color: var(--sentinel-bg-overlay);
+  border-color: var(--sentinel-border-strong);
+  color: var(--sentinel-text-primary);
+}
+
+.secondary:active:not(:disabled) {
+  background-color: var(--sentinel-bg-subtle);
 }
 
 .secondary:disabled {
-  background-color: transparent;
-  color: var(--foreground-subtle);
-  border-color: var(--foreground-subtle);
+  background-color: var(--sentinel-bg-subtle);
+  border-color: var(--sentinel-border-subtle);
+  color: var(--sentinel-text-tertiary);
 }
 
-/* Ghost */
+/* ─────────────────────────────────────────────────────────────────────────────
+   VARIANT: GHOST
+   Minimal button - tertiary actions
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .ghost {
   border-color: transparent;
   background-color: transparent;
+  color: var(--sentinel-text-secondary);
 }
 
 .ghost:hover:not(:disabled) {
-  border-color: var(--border);
-  background-color: var(--background-tertiary);
+  background-color: var(--sentinel-bg-elevated);
+  border-color: transparent;
+  color: var(--sentinel-text-primary);
 }
 
-/* Destructive */
-.destructive {
-  border-color: var(--destructive);
-  color: var(--destructive);
+.ghost:active:not(:disabled) {
+  background-color: var(--sentinel-bg-overlay);
+}
+
+.ghost:disabled {
   background-color: transparent;
+  border-color: transparent;
+  color: var(--sentinel-text-disabled);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   VARIANT: DESTRUCTIVE
+   Danger/delete actions
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.destructive {
+  background-color: transparent;
+  border-color: var(--sentinel-status-negative);
+  color: var(--sentinel-status-negative-text);
 }
 
 .destructive:hover:not(:disabled) {
-  background-color: var(--destructive);
-  color: var(--background);
-  box-shadow: 0 0 15px var(--destructive-glow);
+  background-color: var(--sentinel-status-negative);
+  border-color: var(--sentinel-status-negative);
+  color: var(--sentinel-bg-base);
+}
+
+.destructive:active:not(:disabled) {
+  background-color: var(--sentinel-status-negative);
+  opacity: 0.9;
 }
 
 .destructive:disabled {
   background-color: transparent;
-  border-color: var(--foreground-subtle);
-  color: var(--foreground-subtle);
+  border-color: var(--sentinel-border-subtle);
+  color: var(--sentinel-text-tertiary);
 }
 
-/* With-icon variant */
+/* ─────────────────────────────────────────────────────────────────────────────
+   VARIANT: WITH-ICON
+   Primary style with icon support (for backwards compatibility)
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .withIcon {
-  background-color: var(--primary);
-  border-color: var(--primary);
-  color: var(--background);
-  box-shadow: var(--shadow-glow-sm);
+  background-color: var(--sentinel-accent-primary);
+  border-color: var(--sentinel-accent-primary);
+  color: var(--sentinel-bg-base);
+  gap: var(--sentinel-space-2);
 }
 
 .withIcon:hover:not(:disabled) {
-  background-color: var(--primary-dark);
-  border-color: var(--primary-dark);
-  box-shadow: var(--shadow-glow-md);
+  background-color: var(--sentinel-accent-secondary);
+  border-color: var(--sentinel-accent-secondary);
 }
 
 .withIcon:disabled {
-  background-color: var(--muted);
-  border-color: var(--muted);
-  color: var(--foreground-subtle);
-  box-shadow: none;
+  background-color: var(--sentinel-bg-subtle);
+  border-color: var(--sentinel-bg-subtle);
+  color: var(--sentinel-text-tertiary);
 }
 
-/* Sizes */
+/* ─────────────────────────────────────────────────────────────────────────────
+   SIZES
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .sm {
-  font-size: var(--text-cuerpo-2);
-  padding: 4px var(--spacing-md);
+  font-size: var(--sentinel-text-xs);
+  padding: var(--sentinel-space-1) var(--sentinel-space-3);
   height: 32px;
+  border-radius: var(--sentinel-radius-sm);
 }
 
 .md {
-  font-size: var(--text-cuerpo-1);
-  padding: 8px var(--spacing-lg);
+  font-size: var(--sentinel-text-sm);
+  padding: var(--sentinel-space-2) var(--sentinel-space-4);
   height: 40px;
+  border-radius: var(--sentinel-radius-md);
 }
 
 .lg {
-  font-size: var(--text-titulo-2);
-  padding: 12px var(--spacing-xl);
+  font-size: var(--sentinel-text-base);
+  padding: var(--sentinel-space-3) var(--sentinel-space-6);
   height: 48px;
+  border-radius: var(--sentinel-radius-md);
 }
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   MODIFIERS
+   ───────────────────────────────────────────────────────────────────────────── */
 
 /* Full width */
 .fullWidth {
@@ -166,14 +235,38 @@
 
 /* Icon only */
 .iconOnly {
-  padding: 8px;
+  padding: var(--sentinel-space-2);
   aspect-ratio: 1;
 }
 
 .iconOnly.sm {
-  padding: 4px;
+  padding: var(--sentinel-space-1);
 }
 
 .iconOnly.lg {
-  padding: 12px;
+  padding: var(--sentinel-space-3);
+}
+
+/* Loading state */
+.loading {
+  pointer-events: none;
+  position: relative;
+  color: transparent;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: sentinel-rotate 800ms linear infinite;
+}
+
+@keyframes sentinel-rotate {
+  to {
+    transform: rotate(360deg);
+  }
 }

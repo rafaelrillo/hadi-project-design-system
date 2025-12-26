@@ -1,7 +1,7 @@
 // Path: src/pages/charts/LineChartsShowcase.tsx
 import React from 'react';
 import { LineChart } from '../../components/charts/LineChart';
-import { ShowcaseSection, ComponentPreview } from '../../components/showcase';
+import { ShowcaseSection } from '../../components/showcase';
 
 export function LineChartsShowcase() {
   const pageHeaderStyles: React.CSSProperties = { marginBottom: '32px' };
@@ -34,27 +34,21 @@ export function LineChartsShowcase() {
       </header>
 
       <ShowcaseSection title="LineChart Básico" description="Gráfico de línea con múltiples series">
-        <ComponentPreview>
-          <div style={{ height: '350px', width: '100%' }}>
-            <LineChart data={lineData} enableArea={false} />
-          </div>
-        </ComponentPreview>
+        <div style={{ height: '350px', width: '100%', backgroundColor: 'var(--sentinel-bg-elevated)', borderRadius: 'var(--sentinel-radius-md)', padding: '16px' }}>
+          <LineChart data={lineData} height={318} enableArea={false} />
+        </div>
       </ShowcaseSection>
 
       <ShowcaseSection title="Area Chart" description="Gráfico de área con relleno">
-        <ComponentPreview>
-          <div style={{ height: '350px', width: '100%' }}>
-            <LineChart data={lineData} enableArea={true} />
-          </div>
-        </ComponentPreview>
+        <div style={{ height: '350px', width: '100%', backgroundColor: 'var(--sentinel-bg-elevated)', borderRadius: 'var(--sentinel-radius-md)', padding: '16px' }}>
+          <LineChart data={lineData} height={318} enableArea={true} />
+        </div>
       </ShowcaseSection>
 
       <ShowcaseSection title="Sin Puntos" description="Línea sin marcadores de puntos">
-        <ComponentPreview>
-          <div style={{ height: '350px', width: '100%' }}>
-            <LineChart data={lineData} enableArea={false} enablePoints={false} />
-          </div>
-        </ComponentPreview>
+        <div style={{ height: '350px', width: '100%', backgroundColor: 'var(--sentinel-bg-elevated)', borderRadius: 'var(--sentinel-radius-md)', padding: '16px' }}>
+          <LineChart data={lineData} height={318} enableArea={false} enablePoints={false} />
+        </div>
       </ShowcaseSection>
     </div>
   );

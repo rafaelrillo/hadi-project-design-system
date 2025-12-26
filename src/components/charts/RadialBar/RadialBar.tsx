@@ -1,6 +1,7 @@
-// src/components/charts/RadialBar/RadialBar.tsx
+// Path: src/components/charts/RadialBar/RadialBar.tsx
+// SENTINEL Design System - Radial Bar Chart
 import { ResponsiveRadialBar } from '@nivo/radial-bar';
-import { terminalChartTheme, terminalChartColors } from '../theme';
+import { sentinelChartTheme, sentinelChartColors } from '../theme';
 import styles from './RadialBar.module.css';
 
 export interface RadialBarDataItem {
@@ -26,7 +27,7 @@ export interface RadialBarProps {
 export function RadialBar({
   data,
   height = 300,
-  colors = terminalChartColors,
+  colors = sentinelChartColors,
   maxValue = 'auto',
   startAngle = 0,
   endAngle = 270,
@@ -45,14 +46,15 @@ export function RadialBar({
 
   if (!data || data.length === 0) {
     return (
-      <div className={getClassName()} style={{ height }}>
+      <div className={getClassName()} style={{ height: `${height}px` }}>
         <div style={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           height: '100%',
-          color: '#888888',
-          fontSize: '14px'
+          color: 'var(--sentinel-text-tertiary)',
+          fontSize: '14px',
+          fontFamily: 'var(--sentinel-font-primary)'
         }}>
           No data available
         </div>
@@ -61,7 +63,7 @@ export function RadialBar({
   }
 
   return (
-    <div className={getClassName()} style={{ height }}>
+    <div className={getClassName()} style={{ height: `${height}px` }}>
       <ResponsiveRadialBar
         data={data}
         maxValue={maxValue}
@@ -79,7 +81,7 @@ export function RadialBar({
         circularAxisOuter={{ tickSize: 5, tickPadding: 12, tickRotation: 0 }}
         animate={true}
         motionConfig="gentle"
-        theme={terminalChartTheme}
+        theme={sentinelChartTheme}
       />
     </div>
   );

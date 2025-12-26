@@ -1,5 +1,5 @@
 // Path: src/pages/atoms/TypographyShowcase.tsx
-// Terminal Theme Version
+// SENTINEL Design System
 import type { CSSProperties } from 'react';
 import { Heading1, Heading2, Heading3, Heading4, Paragraph, Label, ProductKey } from '../../components/atoms/Typography';
 import { ShowcaseSection, ComponentPreview } from '../../components/showcase';
@@ -126,15 +126,15 @@ export function TypographyShowcase() {
       {/* ProductKey */}
       <ShowcaseSection
         title="ProductKey"
-        description="ProductKey - 24px Bold, Color naranja para branding terminal"
+        description="ProductKey - 24px Bold, Color accent para branding"
       >
         <ComponentPreview>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', alignItems: 'flex-start' }}>
-            <ProductKey>Robot Resources</ProductKey>
-            <ProductKey>Design System v1.0.0</ProductKey>
+            <ProductKey>SENTINEL</ProductKey>
+            <ProductKey>Design System v2.0.0</ProductKey>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <ProductKey>RR</ProductKey>
-              <Paragraph>Terminal Design System</Paragraph>
+              <ProductKey>SNT</ProductKey>
+              <Paragraph>Investment Observatory</Paragraph>
             </div>
           </div>
         </ComponentPreview>
@@ -148,8 +148,8 @@ export function TypographyShowcase() {
         <ComponentPreview>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', width: '100%', maxWidth: '700px' }}>
             <div>
-              <ProductKey>Robot Resources</ProductKey>
-              <Paragraph style={{ marginTop: '8px', color: 'var(--foreground-muted)' }}>Design System v1.0.0</Paragraph>
+              <ProductKey>SENTINEL</ProductKey>
+              <Paragraph style={{ marginTop: '8px', color: 'var(--foreground-muted)' }}>Design System v2.0.0</Paragraph>
             </div>
 
             <div style={{ borderTop: '1px solid var(--border)', paddingTop: '20px' }}>

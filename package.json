@@ -1,8 +1,8 @@
 {
-  "name": "claro-helios-boilerplate",
-  "version": "1.0.1",
+  "name": "sentinel-design-system",
+  "version": "1.0.0",
   "type": "module",
-  "description": "Base project for building microfrontends with the Robot Resources Design System",
+  "description": "SENTINEL Design System - Investment analysis and recommendation platform UI components",
   "overrides": {
     "@testing-library/react": {
       "react": "^19.0.0",

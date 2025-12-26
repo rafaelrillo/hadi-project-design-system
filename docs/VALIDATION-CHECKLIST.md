@@ -1,4 +1,4 @@
-# Validation Checklist - Robot Resources v1.0.1
+# Validation Checklist - SENTINEL v2.0.0
 
 **Checklist completo para validar adherencia al Design System**
 
@@ -57,14 +57,14 @@
 
 #### Colores
 
-- [ ] **Rojo Institucional (#DA291C) SOLO para:**
+- [ ] **Accent Primary (#5ba3a5) SOLO para:**
   - [ ] Product Key (siglas de 3 letras)
-  - [ ] Isotipo de Claro en Sidebar
+  - [ ] Logo SENTINEL en Sidebar
   - [ ] Icono de Usuario en Sidebar
   - [ ] **NUNCA** en botones de acción
   - [ ] **NUNCA** en estados de error
 
-- [ ] **Azul Institucional (#006081) para:**
+- [ ] **Azul Institucional (#5ba3a5) para:**
   - [ ] Botones primarios
   - [ ] Links y elementos activos
   - [ ] Bordes de modales
@@ -73,7 +73,7 @@
   - [ ] Éxito: Verde (#0B7329)
   - [ ] Error: Rojo (#B50000)
   - [ ] Advertencia: Naranja (#FAB400)
-  - [ ] Info: Azul (#006081)
+  - [ ] Info: Azul (#5ba3a5)
 
 #### Tipografía
 
@@ -121,8 +121,8 @@
 - [ ] **Tipografía**: 16px Semibold
 - [ ] **Gap con icono**: 10px
 - [ ] **Variantes correctas**:
-  - [ ] Primary: #006081 bg, #FFFFFF text
-  - [ ] Secondary: #FFFFFF bg, #006081 text, borde 1px
+  - [ ] Primary: #5ba3a5 bg, #FFFFFF text
+  - [ ] Secondary: #FFFFFF bg, #5ba3a5 text, borde 1px
   - [ ] Destructive: #B50000 bg, #FFFFFF text
 - [ ] **Estados**:
   - [ ] Hover: cambio de color
@@ -161,16 +161,16 @@
 - [ ] **Background**: #FFFFFF
 - [ ] **Shadow**: `0px 2px 8px 0px rgba(0,0,0,0.1)`
 - [ ] **5 componentes obligatorios**:
-  - [ ] Isotipo Claro (rojo #DA291C)
+  - [ ] Logo SENTINEL (rojo #5ba3a5)
   - [ ] Menús de navegación
-  - [ ] Usuario (rojo #DA291C)
+  - [ ] Usuario (rojo #5ba3a5)
   - [ ] Logs
   - [ ] Cerrar sesión
 - [ ] **Estados de menú**:
   - [ ] Default: #FFFFFF bg, #222222 icono
   - [ ] Hover: barra azul 4px izquierda
   - [ ] Focus: ring azul 2px inset
-  - [ ] Active: #006081 bg, #FFFFFF icono
+  - [ ] Active: #5ba3a5 bg, #FFFFFF icono
   - [ ] Disabled: #F5F5F5 bg, #D0D0D0 icono
 
 ---
@@ -187,7 +187,7 @@
 #### Estructura
 
 - [ ] **Product Key obligatorio** (izquierda)
-  - [ ] Siglas: 24px Bold #DA291C
+  - [ ] Siglas: 24px Bold #5ba3a5
   - [ ] Versión: 12px Regular #6A6A6A (debajo)
 
 - [ ] **Gap entre elementos**: 20px
@@ -206,7 +206,7 @@
 - [ ] **Botón Buscar**
   - [ ] Altura: 40px FIJA
   - [ ] Width: 192px
-  - [ ] Background: #006081
+  - [ ] Background: #5ba3a5
   - [ ] Border radius: 10px
   - [ ] Tipografía: 16px Semibold #FFFFFF
   - [ ] Icono: 24px blanco
@@ -224,7 +224,7 @@
 - [ ] **Padding**: 0 0 20px 0
 
 - [ ] **Header obligatorio**:
-  - [ ] Border-bottom: 2px solid #006081 **OBLIGATORIO**
+  - [ ] Border-bottom: 2px solid #5ba3a5 **OBLIGATORIO**
   - [ ] Padding: 20px (horizontal) 10px (vertical)
   - [ ] Título: h1 (18px Semibold)
   - [ ] Icono cerrar: 16px
@@ -266,12 +266,12 @@
 - [ ] **Estados de fila**:
   - [ ] Default: #FFFFFF
   - [ ] Hover: #F5F5F5
-  - [ ] Focus: outline 2px #006081
-  - [ ] Selected: #D4F7FF
+  - [ ] Focus: outline 2px #5ba3a5
+  - [ ] Selected: #1a2332
   - [ ] Alt (Border 0%): #EBEBEB
 
 - [ ] **Fila seleccionada (Border 0%)**:
-  - [ ] Border-left: 6px solid #006081
+  - [ ] Border-left: 6px solid #5ba3a5
 
 ---
 
@@ -288,7 +288,7 @@
   - [ ] Success: #0B7329
   - [ ] Warning: #FAB400
   - [ ] Error: #B50000
-  - [ ] Neutral: #006081
+  - [ ] Neutral: #5ba3a5
 
 - [ ] **Tipografía**:
   - [ ] Label: 12px Regular #6A6A6A (centrado)
@@ -326,7 +326,7 @@
 - [ ] **Header**:
   - [ ] h1: Título del formulario
   - [ ] Padding: 20px 0
-  - [ ] Border-bottom: 2px solid #006081
+  - [ ] Border-bottom: 2px solid #5ba3a5
 
 - [ ] **Form Body**:
   - [ ] Padding-top: 20px
@@ -367,7 +367,7 @@
   - [ ] Justify-content: space-between
   - [ ] Align-items: center
   - [ ] Padding: 20px 0
-  - [ ] Border-bottom: 2px solid #006081
+  - [ ] Border-bottom: 2px solid #5ba3a5
   - [ ] h1 + Botón "+ Nuevo" (opcional)
 
 - [ ] **Table**:
@@ -395,7 +395,7 @@
   - [ ] Display: flex
   - [ ] Justify-content: space-between
   - [ ] h1 + Botones [Editar] [Eliminar]
-  - [ ] Border-bottom: 2px solid #006081
+  - [ ] Border-bottom: 2px solid #5ba3a5
 
 - [ ] **Sections**:
   - [ ] h2 para subtítulos de sección
@@ -425,7 +425,7 @@
   - [ ] Esc: cierra modal/tooltip
 
 - [ ] **Focus states visibles**:
-  - [ ] Outline: 2px solid #006081
+  - [ ] Outline: 2px solid #5ba3a5
   - [ ] Outline-offset: 2px
 
 - [ ] **ARIA attributes**:
@@ -559,5 +559,5 @@ Antes de considerar el código terminado:
 
 ---
 
-**Versión**: Robot Resources v1.0.1
+**Versión**: SENTINEL v2.0.0
 **Última actualización**: 6 de diciembre, 2025

@@ -1,30 +1,28 @@
 // Path: src/pages/styles/SpacingShowcase.tsx
-// Terminal Theme Version
+// SENTINEL Design System - Spacing
 import React from 'react';
 import { ShowcaseSection, ComponentPreview } from '../../components/showcase';
 
 export function SpacingShowcase() {
   const pageHeaderStyles: React.CSSProperties = {
-    marginBottom: '32px'
+    marginBottom: '48px'
   };
 
   const titleStyles: React.CSSProperties = {
-    fontSize: '28px',
-    fontWeight: 700,
-    color: 'var(--primary)',
-    marginBottom: '8px',
-    fontFamily: 'var(--font-mono)',
-    textTransform: 'uppercase',
-    letterSpacing: '0.1em',
-    textShadow: '0 0 15px var(--accent-glow)'
+    fontSize: '32px',
+    fontWeight: 300,
+    color: 'var(--sentinel-text-primary)',
+    marginBottom: '12px',
+    fontFamily: 'var(--sentinel-font-primary)',
+    letterSpacing: '-0.02em'
   };
 
   const descStyles: React.CSSProperties = {
     fontSize: '14px',
-    color: 'var(--foreground-muted)',
-    fontFamily: 'var(--font-mono)',
-    textTransform: 'uppercase',
-    letterSpacing: '0.03em'
+    color: 'var(--sentinel-text-secondary)',
+    fontFamily: 'var(--sentinel-font-primary)',
+    lineHeight: 1.6,
+    maxWidth: '600px'
   };
 
   interface SpacingToken {
@@ -39,9 +37,9 @@ export function SpacingShowcase() {
     return (
       <div style={{
         padding: '16px',
-        backgroundColor: 'var(--background-secondary)',
-        borderRadius: 'var(--radius)',
-        border: '1px solid var(--border)',
+        backgroundColor: 'var(--sentinel-bg-elevated)',
+        borderRadius: 'var(--sentinel-radius-md)',
+        border: '1px solid var(--sentinel-border-subtle)',
         marginBottom: '12px'
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '12px' }}>
@@ -49,10 +47,9 @@ export function SpacingShowcase() {
           <div style={{
             width: token.value,
             height: '40px',
-            backgroundColor: 'var(--primary)',
-            borderRadius: 'var(--radius-sm)',
-            position: 'relative',
-            boxShadow: 'var(--shadow-glow-sm)'
+            backgroundColor: 'var(--sentinel-accent-primary)',
+            borderRadius: 'var(--sentinel-radius-sm)',
+            position: 'relative'
           }}>
             <div style={{
               position: 'absolute',
@@ -60,10 +57,10 @@ export function SpacingShowcase() {
               left: '50%',
               transform: 'translate(-50%, -50%)',
               fontSize: '10px',
-              color: 'var(--background)',
+              color: 'var(--sentinel-bg-base)',
               fontWeight: 600,
               whiteSpace: 'nowrap',
-              fontFamily: 'var(--font-mono)'
+              fontFamily: 'var(--sentinel-font-mono)'
             }}>
               {token.pixels}
             </div>
@@ -73,28 +70,27 @@ export function SpacingShowcase() {
           <div style={{ flex: 1 }}>
             <div style={{
               fontSize: '14px',
-              fontWeight: 600,
-              color: 'var(--foreground)',
+              fontWeight: 500,
+              color: 'var(--sentinel-text-primary)',
               marginBottom: '4px',
-              fontFamily: 'var(--font-mono)',
-              textTransform: 'uppercase'
+              fontFamily: 'var(--sentinel-font-primary)'
             }}>
               {token.name}
             </div>
-            <div style={{ fontSize: '12px', color: 'var(--foreground-muted)', marginBottom: '2px', fontFamily: 'var(--font-mono)' }}>
+            <div style={{ fontSize: '12px', color: 'var(--sentinel-text-secondary)', marginBottom: '2px', fontFamily: 'var(--sentinel-font-primary)' }}>
               <code style={{
-                backgroundColor: 'var(--background-tertiary)',
+                backgroundColor: 'var(--sentinel-bg-subtle)',
                 padding: '2px 6px',
-                borderRadius: 'var(--radius-sm)',
-                border: '1px solid var(--border)',
-                color: 'var(--primary)'
+                borderRadius: 'var(--sentinel-radius-sm)',
+                color: 'var(--sentinel-accent-primary)',
+                fontFamily: 'var(--sentinel-font-mono)'
               }}>
                 var({token.variable})
               </code>
               {' = '}
               {token.value}
             </div>
-            <div style={{ fontSize: '11px', color: 'var(--foreground-subtle)', fontStyle: 'italic', fontFamily: 'var(--font-mono)' }}>
+            <div style={{ fontSize: '11px', color: 'var(--sentinel-text-tertiary)', fontStyle: 'italic', fontFamily: 'var(--sentinel-font-primary)' }}>
               {token.usage}
             </div>
           </div>
@@ -109,14 +105,14 @@ export function SpacingShowcase() {
       variable: '--spacing-xs',
       value: '5px',
       pixels: '5px',
-      usage: 'Espaciado mínimo entre elementos muy próximos'
+      usage: 'Espaciado minimo entre elementos muy proximos'
     },
     {
       name: 'Small',
       variable: '--spacing-sm',
       value: '10px',
       pixels: '10px',
-      usage: 'Espaciado pequeño entre elementos relacionados'
+      usage: 'Espaciado pequeno entre elementos relacionados'
     },
     {
       name: 'Medium',
@@ -130,7 +126,7 @@ export function SpacingShowcase() {
       variable: '--spacing-lg',
       value: '20px',
       pixels: '20px',
-      usage: 'Espaciado estándar entre elementos y secciones'
+      usage: 'Espaciado estandar entre elementos y secciones'
     },
     {
       name: 'Extra Large',
@@ -144,7 +140,7 @@ export function SpacingShowcase() {
       variable: '--spacing-2xl',
       value: '40px',
       pixels: '40px',
-      usage: 'Espaciado extra grande para separación de bloques'
+      usage: 'Espaciado extra grande para separacion de bloques'
     }
   ];
 
@@ -154,14 +150,14 @@ export function SpacingShowcase() {
       variable: '--content-padding',
       value: '30px',
       pixels: '30px',
-      usage: 'Padding hacia cada lado del área de contenido principal'
+      usage: 'Padding hacia cada lado del area de contenido principal'
     },
     {
       name: 'Gap Elements',
       variable: '--gap-elements',
       value: '20px',
       pixels: '20px',
-      usage: 'Gap estándar entre elementos (grid, flex)'
+      usage: 'Gap estandar entre elementos (grid, flex)'
     },
     {
       name: 'Container Padding',
@@ -175,9 +171,9 @@ export function SpacingShowcase() {
   return (
     <div>
       <header style={pageHeaderStyles}>
-        <h1 style={titleStyles}>&gt; Spacing_</h1>
+        <h1 style={titleStyles}>Spacing</h1>
         <p style={descStyles}>
-          // Sistema de espaciado consistente basado en escala de 5px
+          Consistent spacing system based on a 5px scale for maintaining visual rhythm and hierarchy.
         </p>
       </header>
 
@@ -196,7 +192,7 @@ export function SpacingShowcase() {
 
       <ShowcaseSection
         title="Espaciados Especiales"
-        description="Tokens específicos para áreas de contenido y contenedores"
+        description="Tokens especificos para areas de contenido y contenedores"
       >
         <ComponentPreview>
           <div>
@@ -207,27 +203,27 @@ export function SpacingShowcase() {
         </ComponentPreview>
       </ShowcaseSection>
 
-      <ShowcaseSection title="Uso de Variables CSS">
+      <ShowcaseSection title="Usage Example">
         <div style={{
           padding: '24px',
-          backgroundColor: 'var(--background-secondary)',
-          borderRadius: 'var(--radius)',
-          border: '1px solid var(--border)',
-          fontSize: '12px',
+          backgroundColor: 'var(--sentinel-bg-elevated)',
+          borderRadius: 'var(--sentinel-radius-lg)',
+          border: '1px solid var(--sentinel-border-subtle)',
+          fontSize: '13px',
           lineHeight: '1.8',
-          fontFamily: 'var(--font-mono)'
+          fontFamily: 'var(--sentinel-font-mono)'
         }}>
           <div style={{
             marginBottom: '12px',
-            fontSize: '14px',
-            fontWeight: 600,
-            fontFamily: 'var(--font-mono)',
-            color: 'var(--foreground)',
-            textTransform: 'uppercase'
+            fontSize: '12px',
+            fontWeight: 500,
+            fontFamily: 'var(--sentinel-font-primary)',
+            color: 'var(--sentinel-text-tertiary)',
+            letterSpacing: '0.05em'
           }}>
-            // Ejemplo de uso:
+            EXAMPLE USAGE
           </div>
-          <pre style={{ margin: 0, color: 'var(--foreground-muted)' }}>
+          <pre style={{ margin: 0, color: 'var(--sentinel-text-secondary)' }}>
 {`.card {
   padding: var(--container-padding);
   margin-bottom: var(--spacing-lg);

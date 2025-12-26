@@ -1,7 +1,15 @@
 /* Path: src/components/organisms/Modal/Modal.module.css */
-/* Terminal Theme Version */
+/* ═══════════════════════════════════════════════════════════════════════════════
+   SENTINEL DESIGN SYSTEM - Modal Component
 
-/* Overlay */
+   Dialog and drawer overlays with smooth animations
+   Clean, professional styling without glowing effects
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   OVERLAY
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .overlay {
   position: fixed;
   top: 0;
@@ -9,112 +17,156 @@
   right: 0;
   bottom: 0;
   display: flex;
-  z-index: 1000;
-  font-family: var(--font-mono);
+  z-index: var(--sentinel-z-modal);
+  font-family: var(--sentinel-font-primary);
 }
 
 .overlayCenter {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(5, 6, 10, 0.85);
   align-items: center;
   justify-content: center;
+  animation: sentinel-fade-in 200ms ease-out;
 }
 
 .overlayDrawer {
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(5, 6, 10, 0.7);
   align-items: flex-start;
   justify-content: flex-end;
 }
 
-/* Modal */
+/* ─────────────────────────────────────────────────────────────────────────────
+   MODAL CONTAINER
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .modal {
-  background-color: var(--background-secondary);
-  border: 1px solid var(--border);
+  background-color: var(--sentinel-bg-elevated);
+  border: 1px solid var(--sentinel-border-default);
   display: flex;
   flex-direction: column;
-  box-shadow: var(--shadow-card), var(--shadow-glow-sm);
+  box-shadow: var(--sentinel-shadow-xl);
 }
 
 .modalCenter {
-  border-radius: var(--radius-card);
+  border-radius: var(--sentinel-radius-xl);
   width: 90%;
-  max-width: 600px;
-  max-height: 90vh;
-  padding: 0 0 var(--spacing-lg) 0;
-  animation: fadeIn 200ms ease-out;
+  max-width: 560px;
+  max-height: 85vh;
+  animation: sentinel-scale-in 300ms var(--sentinel-ease-out);
 }
 
 .modalDrawer {
   width: 50%;
-  max-width: 960px;
+  max-width: 800px;
   height: 100vh;
-  animation: slideInRight 200ms ease-out;
-  border-left: 1px solid var(--primary);
-  box-shadow: -10px 0 30px var(--accent-glow);
+  animation: sentinel-slide-in-right 400ms var(--sentinel-ease-out);
+  border-left: 1px solid var(--sentinel-border-strong);
 }
 
-/* Header */
+/* Size variants for center modal */
+.modalSm {
+  max-width: 400px;
+}
+
+.modalLg {
+  max-width: 720px;
+}
+
+.modalXl {
+  max-width: 960px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   HEADER
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: var(--spacing-md) var(--spacing-lg);
-  border-bottom: 1px solid var(--primary);
-  background-color: var(--background-tertiary);
+  padding: var(--sentinel-space-4) var(--sentinel-space-5);
+  border-bottom: 1px solid var(--sentinel-border-subtle);
+  background-color: var(--sentinel-bg-overlay);
   flex-shrink: 0;
 }
 
 .title {
-  font-size: var(--text-titulo-1);
-  font-weight: var(--font-weight-bold);
-  color: var(--foreground);
+  font-size: var(--sentinel-text-lg);
+  font-weight: var(--sentinel-font-semibold);
+  color: var(--sentinel-text-primary);
   margin: 0;
-  font-family: var(--font-mono);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  font-family: var(--sentinel-font-primary);
+  line-height: 1.3;
 }
 
 .closeButton {
   background: none;
   border: 1px solid transparent;
   cursor: pointer;
-  padding: 4px;
+  padding: var(--sentinel-space-1);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--foreground-muted);
-  transition: all var(--transition-fast);
-  border-radius: var(--radius-sm);
+  color: var(--sentinel-text-tertiary);
+  transition: var(--sentinel-transition-fast);
+  border-radius: var(--sentinel-radius-sm);
+  width: 32px;
+  height: 32px;
 }
 
 .closeButton:hover {
-  color: var(--primary);
-  border-color: var(--primary);
-  box-shadow: var(--shadow-glow-sm);
+  color: var(--sentinel-text-primary);
+  background-color: var(--sentinel-bg-subtle);
 }
 
-/* Body */
+.closeButton:focus-visible {
+  outline: 2px solid var(--sentinel-accent-primary);
+  outline-offset: 2px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   BODY
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .body {
-  padding: var(--spacing-lg);
+  padding: var(--sentinel-space-5);
   flex: 1;
   overflow-y: auto;
+  color: var(--sentinel-text-secondary);
+  font-size: var(--sentinel-text-sm);
+  line-height: 1.6;
 }
 
-/* Footer */
+/* ─────────────────────────────────────────────────────────────────────────────
+   FOOTER
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .footer {
-  padding: 0 var(--spacing-lg) var(--spacing-lg) var(--spacing-lg);
+  padding: var(--sentinel-space-4) var(--sentinel-space-5);
   display: flex;
-  gap: var(--gap-elements);
+  gap: var(--sentinel-space-3);
   justify-content: flex-end;
   flex-shrink: 0;
-  border-top: 1px solid var(--border);
-  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--sentinel-border-subtle);
+  background-color: var(--sentinel-bg-overlay);
 }
 
-/* Animations */
-@keyframes fadeIn {
+/* ─────────────────────────────────────────────────────────────────────────────
+   ANIMATIONS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@keyframes sentinel-fade-in {
   from {
     opacity: 0;
-    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes sentinel-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
   }
   to {
     opacity: 1;
@@ -122,11 +174,23 @@
   }
 }
 
-@keyframes slideInRight {
+@keyframes sentinel-slide-in-right {
   from {
     transform: translateX(100%);
   }
   to {
     transform: translateX(0);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   REDUCED MOTION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .modalCenter,
+  .modalDrawer,
+  .overlayCenter {
+    animation: none;
   }
 }

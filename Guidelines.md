@@ -1,4 +1,4 @@
-# Design System Robot Resources v1.0.1 - Especificaciones de Diseño
+# Design System SENTINEL v2.0.0 - Especificaciones de Diseño
 
 ## 📋 Tabla de Contenidos
 
@@ -30,8 +30,8 @@
 
 ### Contexto
 
-- **Design System**: Robot Resources v1.0.1
-- **Ecosistema**: Digital de Claro (Telecomunicaciones)
+- **Design System**: SENTINEL v2.0.0
+- **Ecosistema**: Investment Analysis Platform
 - **Tipo de Aplicaciones**: SPA (Single Page Application)
 - **Enfoque**: System-First, priorizando reutilización de componentes
 - **Estándar de Accesibilidad**: WCAG 2.1 AA (se busca AAA en contraste de colores)
@@ -39,7 +39,7 @@
 ### Fundamentos Base
 
 - **Accesibilidad**: AAA en contraste de colores
-- **Visual distinta**: Diferenciación del Claro Atlas
+- **Visual distinta**: Diferenciación del standard design systems
 - **Consistencia**: Uso coherente de tokens y componentes
 - **Escalabilidad**: Sistema preparado para crecer
 
@@ -97,8 +97,8 @@ Principales elementos interactivos y notificaciones informativas.
 
 | Nombre             | Hex     | RGBA                   | Uso                                                 |
 | ------------------ | ------- | ---------------------- | --------------------------------------------------- |
-| Azul Claro         | #D4F7FF | rgba(212, 247, 255, 1) | Estados hover, backgrounds suaves                   |
-| Azul Institucional | #006081 | rgba(0, 96, 129, 1)    | Botones, links, elementos activos (COLOR PRINCIPAL) |
+| Background Elevated         | #1a2332 | rgba(212, 247, 255, 1) | Estados hover, backgrounds suaves                   |
+| Azul Institucional | #5ba3a5 | rgba(0, 96, 129, 1)    | Botones, links, elementos activos (COLOR PRINCIPAL) |
 | Azul Oscuro        | #004F6B | rgba(0, 79, 107, 1)    | Estados pressed, énfasis adicional                  |
 
 #### **Colores Secundarios**
@@ -107,8 +107,8 @@ Uso limitado para acciones irreversibles y elementos de marca.
 
 | Nombre             | Hex     | RGBA                   | Uso                                                     |
 | ------------------ | ------- | ---------------------- | ------------------------------------------------------- |
-| Rojo Claro         | #FFD4D4 | rgba(252, 212, 212, 1) | Backgrounds de error suaves                             |
-| Rojo Institucional | #DA291C | rgba(218, 41, 28, 1)   | **SOLO** para elementos que refieran a Claro como marca |
+| Accent Light         | #FFD4D4 | rgba(252, 212, 212, 1) | Backgrounds de error suaves                             |
+| Accent Primary | #5ba3a5 | rgba(218, 41, 28, 1)   | **SOLO** para elementos que elementos de branding SENTINEL |
 | Rojo               | #B50000 | rgba(181, 0, 0, 1)     | Eliminaciones, cancelaciones, errores                   |
 | Rojo Oscuro        | #8B0000 | rgba(139, 0, 0, 1)     | Estados críticos                                        |
 
@@ -416,7 +416,7 @@ line-height: 120%;
 letter-spacing: 0%;
 
 /* Color - OBLIGATORIO */
-color: #DA291C; /* Rojo Institucional */
+color: #5ba3a5; /* Accent Primary */
 ```
 
 ### Versionado
@@ -444,10 +444,10 @@ Con el constante desarrollo es de vital importancia **mostrar la versión actual
     fontFamily: "'Open Sans', sans-serif",
     fontSize: "24px",
     fontWeight: 700,
-    color: "#DA291C",
+    color: "#5ba3a5",
     lineHeight: 1.2
   }}>
-    GDM
+    SENTINEL Analytics
   </span>
 
   {/* Versionado (opcional pero recomendado) */}
@@ -529,7 +529,7 @@ La Searchbar es el componente principal para:
 
 ```
 ┌────────────────────────────────────────────────────────────────┐
-│  GDM     [Estado  ▼]  [AR ▼]  [Buscar por ▼]  [Número...]     │
+│  SENTINEL Analytics     [Estado  ▼]  [AR ▼]  [Buscar por ▼]  [Número...]     │
 │  v.1.0.0                                            🔍 Buscar   │
 └────────────────────────────────────────────────────────────────┘
 ```
@@ -541,8 +541,8 @@ La Searchbar es el componente principal para:
 │                                                                     │
 │  Key                                                                │
 │  ↓                                                                  │
-│  GDM      ← 40px →  ← 40px →  ← 40px →  ← 40px →    ← 40px →      │
-│  v1.0.0   [Input▼]  [Input▼]  [Input▼]  [Input ]    [🔍 Botón]    │
+│  SENTINEL Analytics      ← 40px →  ← 40px →  ← 40px →  ← 40px →    ← 40px →      │
+│  v2.0.0   [Input▼]  [Input▼]  [Input▼]  [Input ]    [🔍 Botón]    │
 │           └──────┘  └──────┘  └──────┘  └──────┘    └─────────┘    │
 │           ↑ 40px    ↑ 40px    ↑ 40px    ↑ 40px      ↑ 40px        │
 │           FIJA      FIJA      FIJA      FIJA        FIJA          │
@@ -609,10 +609,10 @@ El único componente que **SIEMPRE debe estar presente**.
     fontFamily: "'Open Sans', sans-serif",
     fontSize: "24px",
     fontWeight: 700,
-    color: "#DA291C",
+    color: "#5ba3a5",
     lineHeight: 1.2
   }}>
-    GDM
+    SENTINEL Analytics
   </p>
   <p style={{
     fontFamily: "'Open Sans', sans-serif",
@@ -746,7 +746,7 @@ Botón que ejecuta la búsqueda.
 
 ```tsx
 <button style={{
-  backgroundColor: '#006081',
+  backgroundColor: '#5ba3a5',
   borderRadius: '10px',
   padding: '7.5px 20px',
   width: '192px',
@@ -776,7 +776,7 @@ Botón que ejecuta la búsqueda.
 
 - **Altura**: `40px` (**FIJA** - nunca cambiar)
 - **Ancho**: `192px`
-- **Background**: `#006081` (azul primario)
+- **Background**: `#5ba3a5` (azul primario)
 - **Border Radius**: `10px`
 - **Shadow**: `0px 2px 8px 0px rgba(0,0,0,0.1)`
 - **Padding**: `7.5px 20px`
@@ -815,7 +815,7 @@ Botón que ejecuta la búsqueda.
 
 ```tsx
 export function Searchbar({
-  productName = "GDM",
+  productName = "SENTINEL",
   version = "v.1.0.0",
   onSearch
 }) {
@@ -839,7 +839,7 @@ export function Searchbar({
           fontFamily: "'Open Sans', sans-serif",
           fontSize: "24px",
           fontWeight: 700,
-          color: "#DA291C",
+          color: "#5ba3a5",
           lineHeight: 1.2
         }}>
           {productName}
@@ -943,7 +943,7 @@ export function Searchbar({
         <button
           onClick={onSearch}
           style={{
-            backgroundColor: '#006081',
+            backgroundColor: '#5ba3a5',
             borderRadius: '10px',
             padding: '7.5px 20px',
             width: '192px',
@@ -1012,9 +1012,9 @@ justify-content: space-between;
 
 ### Los 5 Componentes Esenciales
 
-#### **1. Isotipo Claro (Logo Rojo)**
+#### **1. Logo SENTINEL (Logo Rojo)**
 
-El logo de Claro que identifica la marca. **SIEMPRE en rojo institucional**.
+El logo de SENTINEL que identifica la marca. **SIEMPRE en rojo institucional**.
 
 ```tsx
 <div style={{
@@ -1025,14 +1025,14 @@ El logo de Claro que identifica la marca. **SIEMPRE en rojo institucional**.
   padding: '28px 16px',
   width: '100%'
 }}>
-  {/* Icono SVG - 24px - Color #DA291C */}
+  {/* Icono SVG - 24px - Color #5ba3a5 */}
 </div>
 ```
 
 **Especificaciones:**
 - **Padding**: `28px 16px` (vertical mayor que horizontal)
 - **Icono**: `24px`
-- **Color**: `#DA291C` (rojo institucional) - **OBLIGATORIO**
+- **Color**: `#5ba3a5` (rojo institucional) - **OBLIGATORIO**
 - Sin estados de interacción (no es clickeable)
 
 #### **2. Menús Generales (Navegación)**
@@ -1044,9 +1044,9 @@ Iconos de las principales secciones de la aplicación.
 | Estado               | Background  | Icono       | Indicador                                |
 | -------------------- | ----------- | ----------- | ---------------------------------------- |
 | **Default**          | `#FFFFFF`   | `#222222`   | Ninguno                                  |
-| **Hover**            | `#FFFFFF`   | `#222222`   | Barra azul 4px a la izquierda (#006081)  |
-| **Focus**            | `#FFFFFF`   | `#222222`   | Ring azul 2px inset (#006081)            |
-| **Active/Pressed**   | `#006081`   | `#FFFFFF`   | Fondo azul completo                      |
+| **Hover**            | `#FFFFFF`   | `#222222`   | Barra azul 4px a la izquierda (#5ba3a5)  |
+| **Focus**            | `#FFFFFF`   | `#222222`   | Ring azul 2px inset (#5ba3a5)            |
+| **Active/Pressed**   | `#5ba3a5`   | `#FFFFFF`   | Fondo azul completo                      |
 | **Disabled**         | `#F5F5F5`   | `#D0D0D0`   | Cursor not-allowed                       |
 
 #### **3. Usuario**
@@ -1055,7 +1055,7 @@ Muestra información del usuario logueado. **Icono siempre en rojo institucional
 
 **Especificaciones:**
 - **Icono**: `24px`
-- **Color icono**: `#DA291C` (rojo institucional) - **SIEMPRE**
+- **Color icono**: `#5ba3a5` (rojo institucional) - **SIEMPRE**
 - **Estados**: Solo hover y focus (NO tiene estado activo)
 
 #### **4. Logs (Historial)**
@@ -1110,7 +1110,7 @@ padding: 5px;
 max-width: 300px;
 ```
 
-#### **2. Tooltip Light (Claro)**
+#### **2. Tooltip Light**
 
 Para usar sobre **fondos oscuros** (negro, azul oscuro).
 
@@ -1162,7 +1162,7 @@ El botón por defecto para la **acción principal** de cada contexto.
 
 ```css
 /* Estilos visuales */
-background: #006081;  /* Azul principal */
+background: #5ba3a5;  /* Azul principal */
 color: #FFFFFF;  /* Blanco */
 border: none;
 border-radius: 5px;  /* Elemento contenido */
@@ -1211,13 +1211,13 @@ export function Button({
 
     const variants = {
       primary: {
-        backgroundColor: disabled ? '#D0D0D0' : '#006081',
+        backgroundColor: disabled ? '#D0D0D0' : '#5ba3a5',
         color: disabled ? '#6A6A6A' : '#FFFFFF'
       },
       secondary: {
         backgroundColor: '#FFFFFF',
-        color: '#006081',
-        border: '1px solid #006081'
+        color: '#5ba3a5',
+        border: '1px solid #5ba3a5'
       },
       destructive: {
         backgroundColor: disabled ? '#D0D0D0' : '#B50000',
@@ -1242,14 +1242,14 @@ Botón para **acciones secundarias** o de cancelación.
 
 ```css
 background: #FFFFFF;
-color: #006081;
-border: 1px solid #006081;
+color: #5ba3a5;
+border: 1px solid #5ba3a5;
 border-radius: 5px;
 height: 40px;
 padding: 7.5px 20px;
 
 /* Hover */
-background: #D4F7FF;  /* Azul claro */
+background: #1a2332;  /* Azul claro */
 ```
 
 ### 🔴 Botón Destructivo (Eliminar)
@@ -1273,7 +1273,7 @@ background: #8B0000;  /* Rojo oscuro */
 Botón que combina **icono + texto**.
 
 ```css
-background: #006081;
+background: #5ba3a5;
 color: #FFFFFF;
 border: none;
 border-radius: 10px;  /* Flotante */
@@ -1314,7 +1314,7 @@ height: 24px;
 
 ### Header
 
-- **Borde inferior**: 2px solid #006081 (OBLIGATORIO)
+- **Borde inferior**: 2px solid #5ba3a5 (OBLIGATORIO)
 - **Padding**: 20px (horizontal) 10px (vertical)
 - **Título**: h1 (18px Semibold)
 - **Icono cerrar**: 16px
@@ -1353,7 +1353,7 @@ height: 24px;
 | Éxito       | #CEE6C6    | #0B7329    | 24px   | 3-4s     |
 | Error       | #FFD4D4    | #B50000    | 24px   | 5s       |
 | Advertencia | #FFFCE0    | #FAB400    | 24px   | 4-5s     |
-| Información | #D4F7FF    | #006081    | 24px   | 3s       |
+| Información | #1a2332    | #5ba3a5    | 24px   | 3s       |
 
 ### 2. Notificaciones Globales
 
@@ -1421,7 +1421,7 @@ height: 24px;
 - **Sin bordes**
 - **Filas alternas**: Gris 4 (#EBEBEB) y Blanco
 - **Border radius**: 5px por fila
-- **Fila seleccionada**: Border-left 6px solid #006081
+- **Fila seleccionada**: Border-left 6px solid #5ba3a5
 
 ### Especificaciones Comunes
 
@@ -1437,8 +1437,8 @@ height: 24px;
 
 - **Default**: #FFFFFF o #EBEBEB (alternado en Border 0%)
 - **Hover**: #F5F5F5
-- **Focus**: outline 2px #006081
-- **Selected**: #D4F7FF
+- **Focus**: outline 2px #5ba3a5
+- **Selected**: #1a2332
 
 ---
 
@@ -1460,7 +1460,7 @@ height: 24px;
 | Success | #0B7329     | Datos positivos, objetivos OK    |
 | Warning | #FAB400     | Datos que requieren atención     |
 | Error   | #B50000     | Datos críticos, errores          |
-| Neutral | #006081     | Datos informativos generales     |
+| Neutral | #5ba3a5     | Datos informativos generales     |
 
 ### Tipografía
 
@@ -1520,7 +1520,7 @@ Todos los componentes interactivos deben incluir:
 
 ---
 
-**Versión**: Robot Resources v1.0.1  
+**Versión**: SENTINEL v2.0.0  
 **Última actualización**: 29 de octubre, 2025
 
 

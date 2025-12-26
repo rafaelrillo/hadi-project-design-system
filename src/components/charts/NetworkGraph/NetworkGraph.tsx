@@ -1,6 +1,6 @@
-// src/components/charts/NetworkGraph/NetworkGraph.tsx
+// Path: src/components/charts/NetworkGraph/NetworkGraph.tsx
 import { ResponsiveNetwork } from '@nivo/network';
-import { terminalChartTheme, terminalChartColors } from '../theme';
+import { sentinelChartTheme, sentinelChartColors } from '../theme';
 import styles from './NetworkGraph.module.css';
 
 export interface NetworkNode {
@@ -35,7 +35,7 @@ export interface NetworkGraphProps {
 export function NetworkGraph({
   data,
   height = 400,
-  nodeColor = terminalChartColors[0],
+  nodeColor = sentinelChartColors[0],
   linkColor = '#333333',
   linkThickness = 2,
   repulsivity = 6,
@@ -51,13 +51,14 @@ export function NetworkGraph({
 
   if (!data || !data.nodes || data.nodes.length === 0) {
     return (
-      <div className={getClassName()} style={{ height }}>
+      <div className={getClassName()} style={{ height: `${height}px` }}>
         <div style={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           height: '100%',
-          color: '#888888',
+          color: 'var(--sentinel-text-tertiary)',
+          fontFamily: 'var(--sentinel-font-primary)',
           fontSize: '14px'
         }}>
           No data available
@@ -67,7 +68,7 @@ export function NetworkGraph({
   }
 
   return (
-    <div className={getClassName()} style={{ height }}>
+    <div className={getClassName()} style={{ height: `${height}px` }}>
       <ResponsiveNetwork
         data={data}
         margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
@@ -84,7 +85,7 @@ export function NetworkGraph({
         linkThickness={linkThickness}
         linkBlendMode="normal"
         motionConfig="gentle"
-        theme={terminalChartTheme}
+        theme={sentinelChartTheme}
       />
     </div>
   );

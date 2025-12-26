@@ -1,6 +1,6 @@
-// src/components/charts/CalendarHeatmap/CalendarHeatmap.tsx
+// Path: src/components/charts/CalendarHeatmap/CalendarHeatmap.tsx
 import { ResponsiveCalendar } from '@nivo/calendar';
-import { terminalChartTheme } from '../theme';
+import { sentinelChartTheme } from '../theme';
 import styles from './CalendarHeatmap.module.css';
 
 export interface CalendarDatum {
@@ -49,13 +49,14 @@ export function CalendarHeatmap({
 
   if (!data || data.length === 0) {
     return (
-      <div className={getClassName()} style={{ height }}>
+      <div className={getClassName()} style={{ height: `${height}px` }}>
         <div style={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           height: '100%',
-          color: '#888888',
+          color: 'var(--sentinel-text-tertiary)',
+          fontFamily: 'var(--sentinel-font-primary)',
           fontSize: '14px'
         }}>
           No data available
@@ -65,7 +66,7 @@ export function CalendarHeatmap({
   }
 
   return (
-    <div className={getClassName()} style={{ height }}>
+    <div className={getClassName()} style={{ height: `${height}px` }}>
       <ResponsiveCalendar
         data={data}
         from={from}
@@ -80,7 +81,7 @@ export function CalendarHeatmap({
         monthBorderColor="transparent"
         dayBorderWidth={1}
         dayBorderColor="#000000"
-        theme={terminalChartTheme}
+        theme={sentinelChartTheme}
       />
     </div>
   );

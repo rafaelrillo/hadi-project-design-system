@@ -1,6 +1,7 @@
-// src/components/charts/RadarChart/RadarChart.tsx
+// Path: src/components/charts/RadarChart/RadarChart.tsx
+// SENTINEL Design System - Radar Chart
 import { ResponsiveRadar } from '@nivo/radar';
-import { terminalChartTheme, terminalChartColors } from '../theme';
+import { sentinelChartTheme, sentinelChartColors } from '../theme';
 import styles from './RadarChart.module.css';
 
 export interface RadarChartProps {
@@ -20,7 +21,7 @@ export function RadarChart({
   keys,
   indexBy,
   height = 300,
-  colors = terminalChartColors,
+  colors = sentinelChartColors,
   fillOpacity = 0.25,
   dotSize = 8,
   enableDots = true,
@@ -34,14 +35,15 @@ export function RadarChart({
 
   if (!data || data.length === 0) {
     return (
-      <div className={getClassName()} style={{ height }}>
+      <div className={getClassName()} style={{ height: `${height}px` }}>
         <div style={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           height: '100%',
-          color: '#888888',
-          fontSize: '14px'
+          color: 'var(--sentinel-text-tertiary)',
+          fontSize: '14px',
+          fontFamily: 'var(--sentinel-font-primary)'
         }}>
           No data available
         </div>
@@ -50,7 +52,7 @@ export function RadarChart({
   }
 
   return (
-    <div className={getClassName()} style={{ height }}>
+    <div className={getClassName()} style={{ height: `${height}px` }}>
       <ResponsiveRadar
         data={data}
         keys={keys}
@@ -73,7 +75,7 @@ export function RadarChart({
         blendMode="normal"
         animate={true}
         motionConfig="gentle"
-        theme={terminalChartTheme}
+        theme={sentinelChartTheme}
       />
     </div>
   );

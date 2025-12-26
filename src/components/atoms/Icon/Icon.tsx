@@ -1,3 +1,4 @@
+// Path: src/components/atoms/Icon/Icon.tsx
 import { LucideIcon } from 'lucide-react';
 import styles from './Icon.module.css';
 
@@ -16,15 +17,17 @@ const sizeMap = {
   lg: 32
 };
 
+// Using CSS custom properties for SENTINEL theming
 const colorMap: Record<string, string> = {
-  default: '#E0E0E0',      // var(--foreground)
-  secondary: '#888888',    // var(--foreground-muted)
-  primary: '#FF6600',      // var(--primary)
-  destructive: '#FF3333',  // var(--error)
-  success: '#00FF41',      // var(--success)
-  warning: '#FFB800',      // var(--warning)
-  info: '#00BFFF',         // var(--info)
-  muted: '#555555'         // muted gray
+  default: 'var(--sentinel-text-primary)',
+  secondary: 'var(--sentinel-text-secondary)',
+  primary: 'var(--sentinel-accent-primary)',
+  brand: 'var(--sentinel-accent-primary)',
+  destructive: 'var(--sentinel-status-negative)',
+  success: 'var(--sentinel-status-positive)',
+  warning: 'var(--sentinel-status-warning)',
+  info: 'var(--sentinel-accent-secondary)',
+  muted: 'var(--sentinel-text-tertiary)'
 };
 
 export function Icon({

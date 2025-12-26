@@ -1,6 +1,6 @@
-// src/components/charts/BumpChart/BumpChart.tsx
+// Path: src/components/charts/BumpChart/BumpChart.tsx
 import { ResponsiveBump, type BumpDatum, type BumpSerie } from '@nivo/bump';
-import { terminalChartTheme, terminalChartColors } from '../theme';
+import { sentinelChartTheme, sentinelChartColors } from '../theme';
 import styles from './BumpChart.module.css';
 
 export type BumpSeriesData = BumpDatum;
@@ -24,7 +24,7 @@ export interface BumpChartProps {
 export function BumpChart({
   data,
   height = 350,
-  colors = terminalChartColors,
+  colors = sentinelChartColors,
   lineWidth = 3,
   activeLineWidth = 6,
   inactiveLineWidth = 1,
@@ -43,13 +43,14 @@ export function BumpChart({
 
   if (!data || data.length === 0) {
     return (
-      <div className={getClassName()} style={{ height }}>
+      <div className={getClassName()} style={{ height: `${height}px` }}>
         <div style={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           height: '100%',
-          color: '#888888',
+          color: 'var(--sentinel-text-tertiary)',
+          fontFamily: 'var(--sentinel-font-primary)',
           fontSize: '14px'
         }}>
           No data available
@@ -59,7 +60,7 @@ export function BumpChart({
   }
 
   return (
-    <div className={getClassName()} style={{ height }}>
+    <div className={getClassName()} style={{ height: `${height}px` }}>
       <ResponsiveBump
         data={data}
         margin={{ top: 40, right: 100, bottom: 40, left: 60 }}
@@ -88,7 +89,7 @@ export function BumpChart({
         enableGridY={enableGridY}
         animate={true}
         motionConfig="gentle"
-        theme={terminalChartTheme}
+        theme={sentinelChartTheme}
       />
     </div>
   );

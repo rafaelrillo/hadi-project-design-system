@@ -1,59 +1,71 @@
-/* src/components/organisms/Table/Table.module.css */
-/* Terminal Theme Version */
+/* Path: src/components/organisms/Table/Table.module.css */
+/* ═══════════════════════════════════════════════════════════════════════════════
+   SENTINEL DESIGN SYSTEM - Table Component
 
-/* Table Wrapper */
+   Data table with clean, professional styling
+   Optimized for financial/analytical data display
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   TABLE WRAPPER
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .tableWrapper {
   width: 100%;
   overflow-x: auto;
-  background-color: var(--background-secondary);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-card);
+  background-color: var(--sentinel-bg-elevated);
+  border: 1px solid var(--sentinel-border-default);
+  border-radius: var(--sentinel-radius-lg);
 }
 
-/* Table */
+/* ─────────────────────────────────────────────────────────────────────────────
+   TABLE
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .table {
-  --table-row-height: 40px;
+  --table-row-height: 44px;
   width: 100%;
   border-collapse: collapse;
-  font-family: var(--font-mono);
-  font-size: var(--text-cuerpo-1);
-  background-color: var(--background-secondary);
+  font-family: var(--sentinel-font-mono);
+  font-size: var(--sentinel-text-sm);
+  background-color: var(--sentinel-bg-elevated);
 }
 
 .tableCompact {
-  --table-row-height: 32px;
+  --table-row-height: 36px;
 }
 
 .tableFull {
-  border: 1px solid var(--border);
-  border-radius: var(--radius-card);
+  border: 1px solid var(--sentinel-border-default);
+  border-radius: var(--sentinel-radius-lg);
   overflow: hidden;
 }
 
-/* Table Header */
+/* ─────────────────────────────────────────────────────────────────────────────
+   TABLE HEADER
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .thead {
-  background-color: var(--background-tertiary);
-  border-bottom: 1px solid var(--border);
+  background-color: var(--sentinel-bg-overlay);
+  border-bottom: 1px solid var(--sentinel-border-default);
 }
 
-/* Table Header Cell */
 .th {
-  padding: var(--spacing-md) var(--spacing-lg);
+  padding: var(--sentinel-space-3) var(--sentinel-space-4);
   height: var(--table-row-height);
   text-align: left;
-  font-weight: var(--font-weight-semibold);
-  font-size: var(--text-cuerpo-2);
-  color: var(--foreground-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  font-weight: var(--sentinel-font-semibold);
+  font-size: var(--sentinel-text-xs);
+  color: var(--sentinel-text-secondary);
+  letter-spacing: 0.03em;
   white-space: nowrap;
-  font-family: var(--font-mono);
-  background-color: var(--background-tertiary);
+  font-family: var(--sentinel-font-primary);
+  background-color: var(--sentinel-bg-overlay);
 }
 
 /* Fixed width cells for checkbox/expand */
 .thFixedWidth {
-  width: 40px;
+  width: 44px;
 }
 
 /* Text alignment */
@@ -70,69 +82,74 @@
 }
 
 .thFull {
-  border: 1px solid var(--border);
+  border: 1px solid var(--sentinel-border-subtle);
 }
 
 .thBottom {
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--sentinel-border-default);
 }
 
 .thNone {
   border-bottom: none;
 }
 
-/* Sortable */
+/* Sortable header */
 .thSortable {
   cursor: pointer;
   user-select: none;
+  transition: var(--sentinel-transition-fast);
 }
 
 .thSortable:hover {
-  color: var(--primary);
+  color: var(--sentinel-accent-primary);
 }
 
 .thSorted {
-  color: var(--primary);
+  color: var(--sentinel-accent-primary);
 }
 
-/* Table Body */
+/* ─────────────────────────────────────────────────────────────────────────────
+   TABLE BODY
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .tbody tr {
-  border-bottom: 1px solid var(--border);
-  transition: background-color var(--transition-fast);
+  border-bottom: 1px solid var(--sentinel-border-subtle);
+  transition: background-color var(--sentinel-transition-fast);
 }
 
 .tbody tr:last-child {
   border-bottom: none;
 }
 
-/* Table Row */
+/* ─────────────────────────────────────────────────────────────────────────────
+   TABLE ROW
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .tr {
-  background-color: var(--background-secondary);
+  background-color: var(--sentinel-bg-elevated);
   cursor: default;
-  transition: background-color var(--transition-fast);
+  transition: background-color var(--sentinel-transition-fast);
 }
 
 .trHovered,
 .tr:hover {
-  background-color: var(--background-tertiary);
+  background-color: var(--sentinel-bg-overlay);
 }
 
 .trSelected {
-  background-color: var(--accent);
-  border-color: var(--primary);
+  background-color: var(--sentinel-accent-subtle);
 }
 
 .trAlternate {
-  background-color: var(--background-tertiary);
+  background-color: var(--sentinel-bg-overlay);
 }
 
 .trRounded {
-  border-radius: var(--radius);
+  border-radius: var(--sentinel-radius-md);
 }
 
 .trSelectedIndicator {
-  border-left: 3px solid var(--primary);
-  box-shadow: inset 3px 0 0 var(--primary);
+  border-left: 3px solid var(--sentinel-accent-primary);
 }
 
 .trClickable {
@@ -140,118 +157,138 @@
 }
 
 .trFocused {
-  outline: 2px solid var(--primary);
+  outline: 2px solid var(--sentinel-accent-primary);
   outline-offset: -2px;
 }
 
-/* Table Cell */
+/* ─────────────────────────────────────────────────────────────────────────────
+   TABLE CELL
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .td {
-  padding: var(--spacing-md) var(--spacing-lg);
+  padding: var(--sentinel-space-3) var(--sentinel-space-4);
   height: var(--table-row-height);
-  font-size: var(--text-cuerpo-2);
-  font-weight: var(--font-weight-normal);
-  color: var(--foreground);
-  font-family: var(--font-mono);
+  font-size: var(--sentinel-text-sm);
+  font-weight: var(--sentinel-font-normal);
+  color: var(--sentinel-text-primary);
+  font-family: var(--sentinel-font-mono);
   text-align: left;
   vertical-align: middle;
 }
 
-/* Fixed width cells for checkbox/expand */
+/* Fixed width cells */
 .tdFixedWidth {
-  width: 40px;
+  width: 44px;
 }
 
 .tdFull {
-  border: 1px solid var(--border);
+  border: 1px solid var(--sentinel-border-subtle);
 }
 
 .tdBottom {
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--sentinel-border-subtle);
 }
 
-/* Actions Container */
+/* ─────────────────────────────────────────────────────────────────────────────
+   ACTIONS
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .actionsContainer {
   display: inline-flex;
-  gap: 8px;
-  margin-left: 8px;
+  gap: var(--sentinel-space-2);
+  margin-left: var(--sentinel-space-2);
 }
 
-/* Action Button */
 .actionButton {
   background: none;
   border: none;
   cursor: pointer;
-  padding: 4px;
+  padding: var(--sentinel-space-1);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--foreground-muted);
-  transition: all var(--transition-fast);
-  border-radius: var(--radius-sm);
+  color: var(--sentinel-text-tertiary);
+  transition: var(--sentinel-transition-fast);
+  border-radius: var(--sentinel-radius-sm);
 }
 
 .actionButton:hover {
-  color: var(--primary);
-  background-color: var(--accent);
+  color: var(--sentinel-accent-primary);
+  background-color: var(--sentinel-accent-subtle);
 }
 
 .actionButtonDestructive {
-  color: var(--destructive);
+  color: var(--sentinel-status-negative-text);
 }
 
 .actionButtonDestructive:hover {
-  color: var(--destructive);
-  background-color: var(--destructive-light);
+  color: var(--sentinel-status-negative);
+  background-color: var(--sentinel-status-negative-subtle);
 }
 
-/* Expand Button */
+/* ─────────────────────────────────────────────────────────────────────────────
+   EXPAND BUTTON
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .expandButton {
   background: none;
   border: none;
   cursor: pointer;
-  padding: 4px;
+  padding: var(--sentinel-space-1);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--foreground-muted);
-  transition: all var(--transition-fast);
-  width: 20px;
-  height: 20px;
+  color: var(--sentinel-text-tertiary);
+  transition: var(--sentinel-transition-fast);
+  width: 24px;
+  height: 24px;
 }
 
 .expandButton:hover {
-  color: var(--primary);
+  color: var(--sentinel-accent-primary);
 }
 
-/* Expanded Cell */
+/* ─────────────────────────────────────────────────────────────────────────────
+   EXPANDED CELL
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .expandedCell {
-  padding: var(--spacing-md);
-  background-color: var(--background-tertiary);
-  border-left: 2px solid var(--primary);
+  padding: var(--sentinel-space-4);
+  background-color: var(--sentinel-bg-overlay);
+  border-left: 3px solid var(--sentinel-accent-primary);
 }
 
 .expandedCellBorder {
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--sentinel-border-subtle);
 }
 
-/* Striped rows */
+/* ─────────────────────────────────────────────────────────────────────────────
+   STRIPED ROWS
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .striped .tbody tr:nth-child(even) {
-  background-color: var(--background-tertiary);
+  background-color: var(--sentinel-bg-overlay);
 }
 
-/* Empty state */
+/* ─────────────────────────────────────────────────────────────────────────────
+   EMPTY STATE
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .empty {
-  padding: var(--spacing-2xl);
+  padding: var(--sentinel-space-12);
   text-align: center;
-  color: var(--foreground-muted);
+  color: var(--sentinel-text-secondary);
 }
 
 .emptyIcon {
-  margin-bottom: var(--spacing-md);
-  color: var(--foreground-subtle);
+  margin-bottom: var(--sentinel-space-3);
+  color: var(--sentinel-text-tertiary);
 }
 
-/* Loading */
+/* ─────────────────────────────────────────────────────────────────────────────
+   LOADING STATE
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .loading {
   position: relative;
   min-height: 200px;
@@ -260,21 +297,40 @@
 .loadingOverlay {
   position: absolute;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(10, 11, 16, 0.8);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--primary);
+  color: var(--sentinel-accent-primary);
 }
 
-/* Checkbox column */
+/* ─────────────────────────────────────────────────────────────────────────────
+   SPECIAL CELLS
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .checkboxCell {
-  width: 40px;
+  width: 44px;
   text-align: center;
 }
 
-/* Actions column */
 .actionsCell {
   width: 100px;
   text-align: right;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   NUMERICAL DATA STYLING
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.tdNumeric {
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.tdPositive {
+  color: var(--sentinel-status-positive-text);
+}
+
+.tdNegative {
+  color: var(--sentinel-status-negative-text);
 }

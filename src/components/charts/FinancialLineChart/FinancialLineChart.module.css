@@ -1,0 +1,121 @@
+/* Path: src/components/charts/FinancialLineChart/FinancialLineChart.module.css */
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   FINANCIAL LINE CHART
+   Investment-focused line chart with enhanced tooltips and markers
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.container {
+  width: 100%;
+  position: relative;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   EMPTY STATE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.emptyState {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--sentinel-text-tertiary);
+  font-size: var(--sentinel-font-sm);
+  font-family: var(--sentinel-font-primary);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   CUSTOM TOOLTIP
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.tooltip {
+  background: var(--sentinel-bg-overlay);
+  border: 1px solid var(--sentinel-border-default);
+  border-radius: var(--sentinel-radius-md);
+  padding: 0;
+  overflow: hidden;
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+  min-width: 160px;
+}
+
+.tooltipHeader {
+  padding: 10px 14px;
+  background: var(--sentinel-bg-subtle);
+  border-bottom: 1px solid var(--sentinel-border-subtle);
+  font-family: var(--sentinel-font-mono);
+  font-size: var(--sentinel-font-xs);
+  font-weight: 500;
+  color: var(--sentinel-text-secondary);
+  letter-spacing: 0.02em;
+}
+
+.tooltipContent {
+  padding: 8px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tooltipRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tooltipColor {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.tooltipLabel {
+  flex: 1;
+  font-family: var(--sentinel-font-primary);
+  font-size: var(--sentinel-font-xs);
+  color: var(--sentinel-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tooltipValue {
+  font-family: var(--sentinel-font-mono);
+  font-size: var(--sentinel-font-sm);
+  font-weight: 600;
+  color: var(--sentinel-text-primary);
+  letter-spacing: -0.01em;
+  text-align: right;
+  min-width: 60px;
+}
+
+/* Positive/Negative value colors */
+.tooltipValue[data-positive="true"] {
+  color: var(--sentinel-status-positive-text);
+}
+
+.tooltipValue[data-positive="false"] {
+  color: var(--sentinel-status-negative-text);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   CHART AREA STYLING VIA GLOBAL OVERRIDES
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Crosshair styling */
+.container :global(.nivo-crosshair-line) {
+  stroke: var(--sentinel-accent-primary);
+  stroke-opacity: 0.3;
+  stroke-dasharray: 4 4;
+}
+
+/* Point hover styling */
+.container :global(circle[r="6"]) {
+  transition: r 150ms ease-out;
+}
+
+.container :global(circle[r="6"]:hover) {
+  r: 8;
+}

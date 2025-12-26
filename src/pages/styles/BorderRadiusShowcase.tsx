@@ -1,30 +1,28 @@
 // Path: src/pages/styles/BorderRadiusShowcase.tsx
-// Terminal Theme Version
+// SENTINEL Design System - Border Radius
 import React from 'react';
 import { ShowcaseSection, ComponentPreview } from '../../components/showcase';
 
 export function BorderRadiusShowcase() {
   const pageHeaderStyles: React.CSSProperties = {
-    marginBottom: '32px'
+    marginBottom: '48px'
   };
 
   const titleStyles: React.CSSProperties = {
-    fontSize: '28px',
-    fontWeight: 700,
-    color: 'var(--primary)',
-    marginBottom: '8px',
-    fontFamily: 'var(--font-mono)',
-    textTransform: 'uppercase',
-    letterSpacing: '0.1em',
-    textShadow: '0 0 15px var(--accent-glow)'
+    fontSize: '32px',
+    fontWeight: 300,
+    color: 'var(--sentinel-text-primary)',
+    marginBottom: '12px',
+    fontFamily: 'var(--sentinel-font-primary)',
+    letterSpacing: '-0.02em'
   };
 
   const descStyles: React.CSSProperties = {
     fontSize: '14px',
-    color: 'var(--foreground-muted)',
-    fontFamily: 'var(--font-mono)',
-    textTransform: 'uppercase',
-    letterSpacing: '0.03em'
+    color: 'var(--sentinel-text-secondary)',
+    fontFamily: 'var(--sentinel-font-primary)',
+    lineHeight: 1.6,
+    maxWidth: '600px'
   };
 
   interface RadiusToken {
@@ -39,40 +37,39 @@ export function BorderRadiusShowcase() {
     return (
       <div style={{
         padding: '24px',
-        backgroundColor: 'var(--background-secondary)',
-        borderRadius: 'var(--radius)',
-        border: '1px solid var(--border)',
+        backgroundColor: 'var(--sentinel-bg-elevated)',
+        borderRadius: 'var(--sentinel-radius-md)',
+        border: '1px solid var(--sentinel-border-subtle)',
         marginBottom: '20px'
       }}>
         <div style={{ marginBottom: '20px' }}>
           <div style={{
             fontSize: '16px',
-            fontWeight: 600,
-            color: 'var(--foreground)',
+            fontWeight: 500,
+            color: 'var(--sentinel-text-primary)',
             marginBottom: '8px',
-            fontFamily: 'var(--font-mono)',
-            textTransform: 'uppercase'
+            fontFamily: 'var(--sentinel-font-primary)'
           }}>
             {token.name}
           </div>
-          <div style={{ fontSize: '12px', color: 'var(--foreground-muted)', marginBottom: '4px', fontFamily: 'var(--font-mono)' }}>
+          <div style={{ fontSize: '12px', color: 'var(--sentinel-text-secondary)', marginBottom: '4px', fontFamily: 'var(--sentinel-font-primary)' }}>
             <code style={{
-              backgroundColor: 'var(--background-tertiary)',
+              backgroundColor: 'var(--sentinel-bg-subtle)',
               padding: '2px 6px',
-              borderRadius: 'var(--radius-sm)',
-              border: '1px solid var(--border)',
-              color: 'var(--primary)'
+              borderRadius: 'var(--sentinel-radius-sm)',
+              color: 'var(--sentinel-accent-primary)',
+              fontFamily: 'var(--sentinel-font-mono)'
             }}>
               var({token.variable})
             </code>
             {' = '}
             {token.value}
           </div>
-          <div style={{ fontSize: '11px', color: 'var(--foreground-subtle)', fontStyle: 'italic', marginBottom: '12px', fontFamily: 'var(--font-mono)' }}>
+          <div style={{ fontSize: '11px', color: 'var(--sentinel-text-tertiary)', fontStyle: 'italic', marginBottom: '12px', fontFamily: 'var(--sentinel-font-primary)' }}>
             {token.usage}
           </div>
-          <div style={{ fontSize: '11px', color: 'var(--foreground-muted)', fontFamily: 'var(--font-mono)' }}>
-            <strong style={{ color: 'var(--primary)' }}>Ejemplos:</strong> {token.examples.join(', ')}
+          <div style={{ fontSize: '11px', color: 'var(--sentinel-text-secondary)', fontFamily: 'var(--sentinel-font-primary)' }}>
+            <strong style={{ color: 'var(--sentinel-text-primary)' }}>Examples:</strong> {token.examples.join(', ')}
           </div>
         </div>
 
@@ -87,16 +84,15 @@ export function BorderRadiusShowcase() {
           <div style={{
             width: '100px',
             height: '100px',
-            backgroundColor: 'var(--primary)',
+            backgroundColor: 'var(--sentinel-accent-primary)',
             borderRadius: token.value,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            color: 'var(--background)',
+            color: 'var(--sentinel-bg-base)',
             fontSize: '12px',
             fontWeight: 600,
-            fontFamily: 'var(--font-mono)',
-            boxShadow: 'var(--shadow-glow-sm)'
+            fontFamily: 'var(--sentinel-font-mono)'
           }}>
             {token.value}
           </div>
@@ -105,16 +101,16 @@ export function BorderRadiusShowcase() {
           <div style={{
             width: '160px',
             height: '60px',
-            backgroundColor: 'var(--accent)',
-            border: '2px solid var(--primary)',
+            backgroundColor: 'var(--sentinel-bg-subtle)',
+            border: '2px solid var(--sentinel-accent-primary)',
             borderRadius: token.value,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            color: 'var(--primary)',
+            color: 'var(--sentinel-accent-primary)',
             fontSize: '12px',
-            fontWeight: 600,
-            fontFamily: 'var(--font-mono)'
+            fontWeight: 500,
+            fontFamily: 'var(--sentinel-font-primary)'
           }}>
             RECTANGLE
           </div>
@@ -122,15 +118,13 @@ export function BorderRadiusShowcase() {
           {/* Button sample */}
           <div style={{
             padding: '10px 20px',
-            backgroundColor: 'var(--primary)',
-            color: 'var(--background)',
+            backgroundColor: 'var(--sentinel-accent-primary)',
+            color: 'var(--sentinel-bg-base)',
             borderRadius: token.value,
             fontSize: '14px',
-            fontWeight: 600,
+            fontWeight: 500,
             cursor: 'pointer',
-            fontFamily: 'var(--font-mono)',
-            textTransform: 'uppercase',
-            boxShadow: 'var(--shadow-glow-sm)'
+            fontFamily: 'var(--sentinel-font-primary)'
           }}>
             Button
           </div>
@@ -141,33 +135,47 @@ export function BorderRadiusShowcase() {
 
   const radiusTokens: RadiusToken[] = [
     {
-      name: 'Radius SM (Minimal)',
-      variable: '--radius-sm',
-      value: '2px',
-      usage: 'Bordes mínimos para badges y chips',
-      examples: ['Badges', 'Tags', 'Code blocks']
+      name: 'Radius Small',
+      variable: '--sentinel-radius-sm',
+      value: '4px',
+      usage: 'Subtle rounding for small elements',
+      examples: ['Badges', 'Tags', 'Code blocks', 'Chips']
     },
     {
-      name: 'Radius (Standard)',
-      variable: '--radius',
-      value: '4px',
-      usage: 'Radio estándar para la mayoría de componentes',
-      examples: ['Buttons', 'Inputs', 'Cards', 'Modales']
+      name: 'Radius Medium',
+      variable: '--sentinel-radius-md',
+      value: '8px',
+      usage: 'Standard radius for most components',
+      examples: ['Buttons', 'Inputs', 'Cards', 'Dropdowns']
+    },
+    {
+      name: 'Radius Large',
+      variable: '--sentinel-radius-lg',
+      value: '12px',
+      usage: 'Softer corners for larger elements',
+      examples: ['Modals', 'Panels', 'Large cards']
+    },
+    {
+      name: 'Radius Full',
+      variable: '--sentinel-radius-full',
+      value: '9999px',
+      usage: 'Fully rounded for circular elements',
+      examples: ['Pills', 'Avatars', 'Circular buttons']
     }
   ];
 
   return (
     <div>
       <header style={pageHeaderStyles}>
-        <h1 style={titleStyles}>&gt; Border Radius_</h1>
+        <h1 style={titleStyles}>Border Radius</h1>
         <p style={descStyles}>
-          // Sistema de bordes angular para estética terminal
+          A consistent radius scale for creating a cohesive, modern interface with appropriate softness at each scale.
         </p>
       </header>
 
       <ShowcaseSection
-        title="Tokens de Border Radius"
-        description="Bordes mínimos para mantener estética angular de terminal"
+        title="Radius Scale"
+        description="Progressive border radius values for different component sizes"
       >
         <ComponentPreview>
           <div>
@@ -179,109 +187,159 @@ export function BorderRadiusShowcase() {
       </ShowcaseSection>
 
       <ShowcaseSection
-        title="Comparación Visual"
-        description="Diferencia entre radius-sm (2px) y radius (4px)"
+        title="Visual Comparison"
+        description="Side-by-side comparison of radius values"
       >
         <ComponentPreview>
           <div style={{
-            backgroundColor: 'var(--background-tertiary)',
+            backgroundColor: 'var(--sentinel-bg-subtle)',
             padding: '40px',
-            borderRadius: 'var(--radius)',
-            border: '1px solid var(--border)',
+            borderRadius: 'var(--sentinel-radius-lg)',
+            border: '1px solid var(--sentinel-border-subtle)',
             display: 'flex',
             gap: '40px',
             justifyContent: 'center',
             alignItems: 'center',
             flexWrap: 'wrap'
           }}>
-            {/* 2px sample */}
-            <div style={{ textAlign: 'center' }}>
-              <div style={{
-                width: '120px',
-                height: '120px',
-                backgroundColor: 'var(--primary)',
-                borderRadius: '2px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: 'var(--background)',
-                fontSize: '14px',
-                fontWeight: 600,
-                marginBottom: '12px',
-                fontFamily: 'var(--font-mono)',
-                boxShadow: 'var(--shadow-glow-sm)'
-              }}>
-                2px
-              </div>
-              <div style={{ fontSize: '12px', color: 'var(--foreground-muted)', fontFamily: 'var(--font-mono)', textTransform: 'uppercase' }}>
-                Minimal
-              </div>
-            </div>
-
             {/* 4px sample */}
             <div style={{ textAlign: 'center' }}>
               <div style={{
-                width: '120px',
-                height: '120px',
-                backgroundColor: 'var(--primary)',
+                width: '100px',
+                height: '100px',
+                backgroundColor: 'var(--sentinel-accent-primary)',
                 borderRadius: '4px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                color: 'var(--background)',
+                color: 'var(--sentinel-bg-base)',
                 fontSize: '14px',
-                fontWeight: 600,
+                fontWeight: 500,
                 marginBottom: '12px',
-                fontFamily: 'var(--font-mono)',
-                boxShadow: 'var(--shadow-glow-sm)'
+                fontFamily: 'var(--sentinel-font-mono)'
               }}>
                 4px
               </div>
-              <div style={{ fontSize: '12px', color: 'var(--foreground-muted)', fontFamily: 'var(--font-mono)', textTransform: 'uppercase' }}>
-                Standard
+              <div style={{ fontSize: '12px', color: 'var(--sentinel-text-secondary)', fontFamily: 'var(--sentinel-font-primary)' }}>
+                Small
+              </div>
+            </div>
+
+            {/* 8px sample */}
+            <div style={{ textAlign: 'center' }}>
+              <div style={{
+                width: '100px',
+                height: '100px',
+                backgroundColor: 'var(--sentinel-accent-primary)',
+                borderRadius: '8px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'var(--sentinel-bg-base)',
+                fontSize: '14px',
+                fontWeight: 500,
+                marginBottom: '12px',
+                fontFamily: 'var(--sentinel-font-mono)'
+              }}>
+                8px
+              </div>
+              <div style={{ fontSize: '12px', color: 'var(--sentinel-text-secondary)', fontFamily: 'var(--sentinel-font-primary)' }}>
+                Medium
+              </div>
+            </div>
+
+            {/* 12px sample */}
+            <div style={{ textAlign: 'center' }}>
+              <div style={{
+                width: '100px',
+                height: '100px',
+                backgroundColor: 'var(--sentinel-accent-primary)',
+                borderRadius: '12px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'var(--sentinel-bg-base)',
+                fontSize: '14px',
+                fontWeight: 500,
+                marginBottom: '12px',
+                fontFamily: 'var(--sentinel-font-mono)'
+              }}>
+                12px
+              </div>
+              <div style={{ fontSize: '12px', color: 'var(--sentinel-text-secondary)', fontFamily: 'var(--sentinel-font-primary)' }}>
+                Large
+              </div>
+            </div>
+
+            {/* Full sample */}
+            <div style={{ textAlign: 'center' }}>
+              <div style={{
+                width: '100px',
+                height: '100px',
+                backgroundColor: 'var(--sentinel-accent-primary)',
+                borderRadius: '9999px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'var(--sentinel-bg-base)',
+                fontSize: '14px',
+                fontWeight: 500,
+                marginBottom: '12px',
+                fontFamily: 'var(--sentinel-font-mono)'
+              }}>
+                Full
+              </div>
+              <div style={{ fontSize: '12px', color: 'var(--sentinel-text-secondary)', fontFamily: 'var(--sentinel-font-primary)' }}>
+                Circular
               </div>
             </div>
           </div>
         </ComponentPreview>
       </ShowcaseSection>
 
-      <ShowcaseSection title="Uso de Variables CSS">
+      <ShowcaseSection title="Usage Example">
         <div style={{
           padding: '24px',
-          backgroundColor: 'var(--background-secondary)',
-          borderRadius: 'var(--radius)',
-          border: '1px solid var(--border)',
-          fontSize: '12px',
+          backgroundColor: 'var(--sentinel-bg-elevated)',
+          borderRadius: 'var(--sentinel-radius-lg)',
+          border: '1px solid var(--sentinel-border-subtle)',
+          fontSize: '13px',
           lineHeight: '1.8',
-          fontFamily: 'var(--font-mono)'
+          fontFamily: 'var(--sentinel-font-mono)'
         }}>
           <div style={{
             marginBottom: '12px',
-            fontSize: '14px',
-            fontWeight: 600,
-            fontFamily: 'var(--font-mono)',
-            color: 'var(--foreground)',
-            textTransform: 'uppercase'
+            fontSize: '12px',
+            fontWeight: 500,
+            fontFamily: 'var(--sentinel-font-primary)',
+            color: 'var(--sentinel-text-tertiary)',
+            letterSpacing: '0.05em'
           }}>
-            // Ejemplo de uso:
+            EXAMPLE USAGE
           </div>
-          <pre style={{ margin: 0, color: 'var(--foreground-muted)' }}>
-{`/* Elementos pequeños (2px) */
+          <pre style={{ margin: 0, color: 'var(--sentinel-text-secondary)' }}>
+{`/* Small elements */
 .badge {
-  border-radius: var(--radius-sm);
+  border-radius: var(--sentinel-radius-sm);
 }
 
-/* Elementos estándar (4px) */
+/* Standard components */
 .button {
-  border-radius: var(--radius);
+  border-radius: var(--sentinel-radius-md);
 }
 
 .card {
-  border-radius: var(--radius);
+  border-radius: var(--sentinel-radius-md);
 }
 
-.input {
-  border-radius: var(--radius);
+/* Large containers */
+.modal {
+  border-radius: var(--sentinel-radius-lg);
+}
+
+/* Circular elements */
+.avatar {
+  border-radius: var(--sentinel-radius-full);
 }`}
           </pre>
         </div>

@@ -1,5 +1,5 @@
 // Path: src/pages/organisms/SidebarShowcase.tsx
-// Terminal Theme Version
+// SENTINEL Design System
 import React, { useState } from 'react';
 import { Sidebar } from '../../components/organisms/Sidebar';
 import { ShowcaseSection, ComponentPreview } from '../../components/showcase';
@@ -31,10 +31,10 @@ export function SidebarShowcase() {
     letterSpacing: '0.03em'
   };
 
-  const TerminalLogo = () => (
+  const SentinelLogo = () => (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 19h8"></path>
-      <path d="m4 17 6-6-6-6"></path>
+      <circle cx="12" cy="12" r="10"></circle>
+      <path d="M12 6v6l4 2"></path>
     </svg>
   );
 
@@ -87,7 +87,7 @@ export function SidebarShowcase() {
         <ComponentPreview>
           <div style={{ height: '500px', position: 'relative' }}>
             <Sidebar
-              productLogo={<TerminalLogo />}
+              productLogo={<SentinelLogo />}
               menuItems={menuItems}
               userIcon={<User size={24} color="var(--primary)" />}
               onLogsClick={() => console.log('Ver logs')}
@@ -106,7 +106,7 @@ export function SidebarShowcase() {
           <div style={{ display: 'flex', gap: '20px', height: '400px' }}>
             <div style={{ position: 'relative' }}>
               <Sidebar
-                productLogo={<TerminalLogo />}
+                productLogo={<SentinelLogo />}
                 menuItems={[
                   { icon: Home, label: 'Home', isActive: true },
                   { icon: FileText, label: 'Docs' },
@@ -135,7 +135,7 @@ export function SidebarShowcase() {
         <ComponentPreview>
           <div style={{ height: '500px', position: 'relative' }}>
             <Sidebar
-              productLogo={<TerminalLogo />}
+              productLogo={<SentinelLogo />}
               menuItems={menuItems}
               userIcon={<User size={24} color="var(--primary)" />}
               onLogsClick={() => alert('Ver logs del sistema')}
@@ -154,7 +154,7 @@ export function SidebarShowcase() {
           <div style={{ display: 'flex', height: '600px' }}>
             <div style={{ position: 'relative' }}>
               <Sidebar
-                productLogo={<TerminalLogo />}
+                productLogo={<SentinelLogo />}
                 menuItems={menuItems}
                 userIcon={<User size={24} color="var(--primary)" />}
                 onLogsClick={() => alert('Ver logs')}

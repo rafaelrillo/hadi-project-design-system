@@ -1,6 +1,6 @@
-// src/components/charts/HeatMap/HeatMap.tsx
+// Path: src/components/charts/HeatMap/HeatMap.tsx
 import { ResponsiveHeatMap } from '@nivo/heatmap';
-import { terminalChartTheme } from '../theme';
+import { sentinelChartTheme } from '../theme';
 import styles from './HeatMap.module.css';
 
 export interface HeatMapDataItem {
@@ -50,13 +50,14 @@ export function HeatMap({
 
   if (!data || data.length === 0) {
     return (
-      <div className={getClassName()} style={{ height }}>
+      <div className={getClassName()} style={{ height: `${height}px` }}>
         <div style={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           height: '100%',
-          color: '#888888',
+          color: 'var(--sentinel-text-tertiary)',
+          fontFamily: 'var(--sentinel-font-primary)',
           fontSize: '14px'
         }}>
           No data available
@@ -66,7 +67,7 @@ export function HeatMap({
   }
 
   return (
-    <div className={getClassName()} style={{ height }}>
+    <div className={getClassName()} style={{ height: `${height}px` }}>
       <ResponsiveHeatMap
         data={data}
         margin={{ top: 60, right: 60, bottom: 60, left: 60 }}
@@ -98,7 +99,7 @@ export function HeatMap({
         animate={true}
         motionConfig="gentle"
         hoverTarget="cell"
-        theme={terminalChartTheme}
+        theme={sentinelChartTheme}
       />
     </div>
   );

@@ -1,37 +1,34 @@
 // Path: src/pages/styles/ColorsShowcase.tsx
-// Terminal Theme Version
+// SENTINEL Design System - Color Palette
 import React from 'react';
 import { ShowcaseSection, ComponentPreview } from '../../components/showcase';
 
 export function ColorsShowcase() {
   const pageHeaderStyles: React.CSSProperties = {
-    marginBottom: '32px'
+    marginBottom: '48px'
   };
 
   const titleStyles: React.CSSProperties = {
-    fontSize: '28px',
-    fontWeight: 700,
-    color: 'var(--primary)',
-    marginBottom: '8px',
-    fontFamily: 'var(--font-mono)',
-    textTransform: 'uppercase',
-    letterSpacing: '0.1em',
-    textShadow: '0 0 15px var(--accent-glow)'
+    fontSize: '32px',
+    fontWeight: 300,
+    color: 'var(--sentinel-text-primary)',
+    marginBottom: '12px',
+    fontFamily: 'var(--sentinel-font-primary)',
+    letterSpacing: '-0.02em'
   };
 
   const descStyles: React.CSSProperties = {
     fontSize: '14px',
-    color: 'var(--foreground-muted)',
-    fontFamily: 'var(--font-mono)',
-    textTransform: 'uppercase',
-    letterSpacing: '0.03em'
+    color: 'var(--sentinel-text-secondary)',
+    fontFamily: 'var(--sentinel-font-primary)',
+    lineHeight: 1.6,
+    maxWidth: '600px'
   };
 
   interface ColorToken {
     name: string;
     variable: string;
-    hex: string;
-    rgb: string;
+    value: string;
     description?: string;
   }
 
@@ -42,58 +39,54 @@ export function ColorsShowcase() {
         alignItems: 'center',
         gap: '16px',
         padding: '16px',
-        backgroundColor: 'var(--background-secondary)',
-        borderRadius: 'var(--radius)',
-        border: '1px solid var(--border)',
-        marginBottom: '12px'
+        backgroundColor: 'var(--sentinel-bg-elevated)',
+        borderRadius: 'var(--sentinel-radius-md)',
+        border: '1px solid var(--sentinel-border-subtle)',
+        marginBottom: '8px'
       }}>
-        {/* Color Square */}
         <div style={{
-          width: '60px',
-          height: '60px',
-          borderRadius: 'var(--radius-sm)',
-          backgroundColor: color.hex,
-          border: '1px solid var(--border)',
-          flexShrink: 0,
-          boxShadow: color.hex === '#FF6600' ? '0 0 15px rgba(255, 102, 0, 0.5)' : 'none'
+          width: '56px',
+          height: '56px',
+          borderRadius: 'var(--sentinel-radius-md)',
+          backgroundColor: `var(${color.variable})`,
+          border: '1px solid var(--sentinel-border-subtle)',
+          flexShrink: 0
         }} />
-
-        {/* Color Info */}
         <div style={{ flex: 1 }}>
           <div style={{
             fontSize: '14px',
-            fontWeight: 600,
-            color: 'var(--foreground)',
+            fontWeight: 500,
+            color: 'var(--sentinel-text-primary)',
             marginBottom: '4px',
-            fontFamily: 'var(--font-mono)',
-            textTransform: 'uppercase'
+            fontFamily: 'var(--sentinel-font-primary)'
           }}>
             {color.name}
           </div>
-          <div style={{ fontSize: '12px', color: 'var(--foreground-muted)', marginBottom: '2px', fontFamily: 'var(--font-mono)' }}>
-            <code style={{
-              backgroundColor: 'var(--background-tertiary)',
-              padding: '2px 6px',
-              borderRadius: 'var(--radius-sm)',
-              border: '1px solid var(--border)',
-              color: 'var(--primary)'
-            }}>
-              var({color.variable})
-            </code>
-          </div>
-          <div style={{ fontSize: '12px', color: 'var(--foreground-muted)', marginBottom: '2px', fontFamily: 'var(--font-mono)' }}>
-            {color.hex}
-          </div>
-          <div style={{ fontSize: '12px', color: 'var(--foreground-muted)', fontFamily: 'var(--font-mono)' }}>
-            {color.rgb}
+          <code style={{
+            display: 'inline-block',
+            fontSize: '12px',
+            backgroundColor: 'var(--sentinel-bg-subtle)',
+            padding: '2px 8px',
+            borderRadius: 'var(--sentinel-radius-sm)',
+            color: 'var(--sentinel-accent-primary)',
+            fontFamily: 'var(--sentinel-font-mono)',
+            marginBottom: '4px'
+          }}>
+            var({color.variable})
+          </code>
+          <div style={{
+            fontSize: '12px',
+            color: 'var(--sentinel-text-tertiary)',
+            fontFamily: 'var(--sentinel-font-mono)'
+          }}>
+            {color.value}
           </div>
           {color.description && (
             <div style={{
-              fontSize: '11px',
-              color: 'var(--foreground-subtle)',
+              fontSize: '12px',
+              color: 'var(--sentinel-text-secondary)',
               marginTop: '4px',
-              fontStyle: 'italic',
-              fontFamily: 'var(--font-mono)'
+              fontFamily: 'var(--sentinel-font-primary)'
             }}>
               {color.description}
             </div>
@@ -103,147 +96,76 @@ export function ColorsShowcase() {
     );
   };
 
-  const primaryColors: ColorToken[] = [
-    {
-      name: 'Primary (Orange)',
-      variable: '--primary',
-      hex: '#FF6600',
-      rgb: 'rgba(255, 102, 0, 1)',
-      description: 'Color principal del tema terminal - Acentos y elementos interactivos'
-    },
-    {
-      name: 'Accent',
-      variable: '--accent',
-      hex: '#1A0A00',
-      rgb: 'rgba(26, 10, 0, 1)',
-      description: 'Fondo de elementos activos - Variante oscura del primario'
-    },
-    {
-      name: 'Accent Glow',
-      variable: '--accent-glow',
-      hex: 'rgba(255, 102, 0, 0.4)',
-      rgb: 'rgba(255, 102, 0, 0.4)',
-      description: 'Efecto glow para elementos primarios'
-    }
-  ];
-
   const backgroundColors: ColorToken[] = [
-    {
-      name: 'Background',
-      variable: '--background',
-      hex: '#000000',
-      rgb: 'rgba(0, 0, 0, 1)',
-      description: 'Fondo principal - Negro puro'
-    },
-    {
-      name: 'Background Secondary',
-      variable: '--background-secondary',
-      hex: '#0D0D0D',
-      rgb: 'rgba(13, 13, 13, 1)',
-      description: 'Fondo de cards y paneles'
-    },
-    {
-      name: 'Background Tertiary',
-      variable: '--background-tertiary',
-      hex: '#1A1A1A',
-      rgb: 'rgba(26, 26, 26, 1)',
-      description: 'Fondo de inputs y elementos interactivos'
-    }
+    { name: 'Void', variable: '--sentinel-bg-void', value: '#05060a', description: 'Deepest background' },
+    { name: 'Base', variable: '--sentinel-bg-base', value: '#0a0b10', description: 'Main background' },
+    { name: 'Elevated', variable: '--sentinel-bg-elevated', value: '#10121a', description: 'Cards and panels' },
+    { name: 'Overlay', variable: '--sentinel-bg-overlay', value: '#161822', description: 'Modals and overlays' },
+    { name: 'Subtle', variable: '--sentinel-bg-subtle', value: '#1c1e2a', description: 'Subtle backgrounds' },
+    { name: 'Interactive', variable: '--sentinel-bg-interactive', value: '#22253a', description: 'Interactive elements' },
   ];
 
-  const foregroundColors: ColorToken[] = [
-    {
-      name: 'Foreground',
-      variable: '--foreground',
-      hex: '#FFFFFF',
-      rgb: 'rgba(255, 255, 255, 1)',
-      description: 'Texto principal - Blanco puro'
-    },
-    {
-      name: 'Foreground Muted',
-      variable: '--foreground-muted',
-      hex: '#B3B3B3',
-      rgb: 'rgba(179, 179, 179, 1)',
-      description: 'Texto secundario'
-    },
-    {
-      name: 'Foreground Subtle',
-      variable: '--foreground-subtle',
-      hex: '#666666',
-      rgb: 'rgba(102, 102, 102, 1)',
-      description: 'Texto terciario y placeholders'
-    }
+  const textColors: ColorToken[] = [
+    { name: 'Primary', variable: '--sentinel-text-primary', value: '#e8eaed', description: 'Main text' },
+    { name: 'Secondary', variable: '--sentinel-text-secondary', value: '#9aa0a6', description: 'Secondary text' },
+    { name: 'Tertiary', variable: '--sentinel-text-tertiary', value: '#5f6368', description: 'Tertiary/muted text' },
+    { name: 'Disabled', variable: '--sentinel-text-disabled', value: '#3c4043', description: 'Disabled text' },
+  ];
+
+  const accentColors: ColorToken[] = [
+    { name: 'Accent Primary', variable: '--sentinel-accent-primary', value: '#5ba3a5', description: 'Primary accent (teal)' },
+    { name: 'Accent Secondary', variable: '--sentinel-accent-secondary', value: '#4a8a8c', description: 'Secondary accent' },
+    { name: 'Accent Subtle', variable: '--sentinel-accent-subtle', value: 'rgba(91, 163, 165, 0.15)', description: 'Subtle accent bg' },
   ];
 
   const statusColors: ColorToken[] = [
-    {
-      name: 'Success',
-      variable: '--success',
-      hex: '#00FF00',
-      rgb: 'rgba(0, 255, 0, 1)',
-      description: 'Estados de éxito - Verde terminal'
-    },
-    {
-      name: 'Destructive',
-      variable: '--destructive',
-      hex: '#FF0000',
-      rgb: 'rgba(255, 0, 0, 1)',
-      description: 'Errores y acciones destructivas'
-    },
-    {
-      name: 'Warning',
-      variable: '--warning',
-      hex: '#FFFF00',
-      rgb: 'rgba(255, 255, 0, 1)',
-      description: 'Advertencias - Amarillo terminal'
-    }
+    { name: 'Positive', variable: '--sentinel-status-positive', value: '#4a9a7c', description: 'Success states' },
+    { name: 'Positive Text', variable: '--sentinel-status-positive-text', value: '#6bb89a', description: 'Positive text' },
+    { name: 'Negative', variable: '--sentinel-status-negative', value: '#b85c5c', description: 'Error states' },
+    { name: 'Negative Text', variable: '--sentinel-status-negative-text', value: '#d17878', description: 'Negative text' },
+    { name: 'Warning', variable: '--sentinel-status-warning', value: '#c4a35a', description: 'Warning states' },
+    { name: 'Warning Text', variable: '--sentinel-status-warning-text', value: '#d9bc78', description: 'Warning text' },
+    { name: 'Info', variable: '--sentinel-status-info', value: '#5a8fb8', description: 'Info states' },
+    { name: 'Info Text', variable: '--sentinel-status-info-text', value: '#78a8cc', description: 'Info text' },
+  ];
+
+  const marketColors: ColorToken[] = [
+    { name: 'Bull', variable: '--sentinel-market-bull', value: '#4a9a7c', description: 'Bullish market state' },
+    { name: 'Bear', variable: '--sentinel-market-bear', value: '#b85c5c', description: 'Bearish market state' },
+    { name: 'Neutral', variable: '--sentinel-market-neutral', value: '#5ba3a5', description: 'Neutral market state' },
+    { name: 'Uncertain', variable: '--sentinel-market-uncertain', value: '#6b7280', description: 'Uncertain market state' },
+  ];
+
+  const riskColors: ColorToken[] = [
+    { name: 'Risk Low', variable: '--sentinel-risk-low', value: '#4a9a7c', description: 'Low risk level' },
+    { name: 'Risk Moderate', variable: '--sentinel-risk-moderate', value: '#5ba3a5', description: 'Moderate risk level' },
+    { name: 'Risk Elevated', variable: '--sentinel-risk-elevated', value: '#c4a35a', description: 'Elevated risk level' },
+    { name: 'Risk High', variable: '--sentinel-risk-high', value: '#c47a5a', description: 'High risk level' },
+    { name: 'Risk Severe', variable: '--sentinel-risk-severe', value: '#b85c5c', description: 'Severe risk level' },
   ];
 
   const borderColors: ColorToken[] = [
-    {
-      name: 'Border',
-      variable: '--border',
-      hex: '#333333',
-      rgb: 'rgba(51, 51, 51, 1)',
-      description: 'Bordes de componentes'
-    },
-    {
-      name: 'Border Hover',
-      variable: '--border-hover',
-      hex: '#FF6600',
-      rgb: 'rgba(255, 102, 0, 1)',
-      description: 'Bordes en estado hover'
-    }
+    { name: 'Border Subtle', variable: '--sentinel-border-subtle', value: 'rgba(255, 255, 255, 0.06)', description: 'Subtle borders' },
+    { name: 'Border Default', variable: '--sentinel-border-default', value: 'rgba(255, 255, 255, 0.1)', description: 'Default borders' },
+    { name: 'Border Strong', variable: '--sentinel-border-strong', value: 'rgba(255, 255, 255, 0.16)', description: 'Strong borders' },
   ];
 
   return (
     <div>
       <header style={pageHeaderStyles}>
-        <h1 style={titleStyles}>&gt; Colors_</h1>
+        <h1 style={titleStyles}>Color Palette</h1>
         <p style={descStyles}>
-          // Paleta de colores del tema terminal
+          SENTINEL uses a desaturated, professional color palette designed for financial interfaces.
+          Colors are calm and confident, avoiding alarming or distracting hues.
         </p>
       </header>
 
       <ShowcaseSection
-        title="Colores Primarios"
-        description="Orange (#FF6600) - Color principal del sistema"
+        title="Background Colors"
+        description="Layered backgrounds create depth and hierarchy"
       >
         <ComponentPreview>
-          <div>
-            {primaryColors.map((color) => (
-              <ColorSwatch key={color.variable} color={color} />
-            ))}
-          </div>
-        </ComponentPreview>
-      </ShowcaseSection>
-
-      <ShowcaseSection
-        title="Fondos"
-        description="Escala de negros para fondos y paneles"
-      >
-        <ComponentPreview>
-          <div>
+          <div style={{ width: '100%' }}>
             {backgroundColors.map((color) => (
               <ColorSwatch key={color.variable} color={color} />
             ))}
@@ -252,12 +174,12 @@ export function ColorsShowcase() {
       </ShowcaseSection>
 
       <ShowcaseSection
-        title="Texto"
-        description="Escala de blancos y grises para texto"
+        title="Text Colors"
+        description="Typography hierarchy from primary to disabled"
       >
         <ComponentPreview>
-          <div>
-            {foregroundColors.map((color) => (
+          <div style={{ width: '100%' }}>
+            {textColors.map((color) => (
               <ColorSwatch key={color.variable} color={color} />
             ))}
           </div>
@@ -265,11 +187,24 @@ export function ColorsShowcase() {
       </ShowcaseSection>
 
       <ShowcaseSection
-        title="Estados"
-        description="Colores para feedback y estados del sistema"
+        title="Accent Colors"
+        description="Teal accent for interactive elements and focus states"
       >
         <ComponentPreview>
-          <div>
+          <div style={{ width: '100%' }}>
+            {accentColors.map((color) => (
+              <ColorSwatch key={color.variable} color={color} />
+            ))}
+          </div>
+        </ComponentPreview>
+      </ShowcaseSection>
+
+      <ShowcaseSection
+        title="Status Colors"
+        description="Semantic colors for system feedback"
+      >
+        <ComponentPreview>
+          <div style={{ width: '100%' }}>
             {statusColors.map((color) => (
               <ColorSwatch key={color.variable} color={color} />
             ))}
@@ -278,11 +213,37 @@ export function ColorsShowcase() {
       </ShowcaseSection>
 
       <ShowcaseSection
-        title="Bordes"
-        description="Colores para bordes y separadores"
+        title="Market State Colors"
+        description="Visual indicators for market conditions"
       >
         <ComponentPreview>
-          <div>
+          <div style={{ width: '100%' }}>
+            {marketColors.map((color) => (
+              <ColorSwatch key={color.variable} color={color} />
+            ))}
+          </div>
+        </ComponentPreview>
+      </ShowcaseSection>
+
+      <ShowcaseSection
+        title="Risk Level Colors"
+        description="Graduated scale for risk visualization"
+      >
+        <ComponentPreview>
+          <div style={{ width: '100%' }}>
+            {riskColors.map((color) => (
+              <ColorSwatch key={color.variable} color={color} />
+            ))}
+          </div>
+        </ComponentPreview>
+      </ShowcaseSection>
+
+      <ShowcaseSection
+        title="Border Colors"
+        description="Subtle borders for separation without distraction"
+      >
+        <ComponentPreview>
+          <div style={{ width: '100%' }}>
             {borderColors.map((color) => (
               <ColorSwatch key={color.variable} color={color} />
             ))}
@@ -290,43 +251,34 @@ export function ColorsShowcase() {
         </ComponentPreview>
       </ShowcaseSection>
 
-      <ShowcaseSection title="Uso de Variables CSS">
+      <ShowcaseSection title="Usage Example">
         <div style={{
           padding: '24px',
-          backgroundColor: 'var(--background-secondary)',
-          borderRadius: 'var(--radius)',
-          border: '1px solid var(--border)',
-          fontSize: '12px',
+          backgroundColor: 'var(--sentinel-bg-elevated)',
+          borderRadius: 'var(--sentinel-radius-lg)',
+          border: '1px solid var(--sentinel-border-subtle)',
+          fontSize: '13px',
           lineHeight: '1.8',
-          fontFamily: 'var(--font-mono)'
+          fontFamily: 'var(--sentinel-font-mono)'
         }}>
-          <div style={{
-            marginBottom: '12px',
-            fontSize: '14px',
-            fontWeight: 600,
-            fontFamily: 'var(--font-mono)',
-            color: 'var(--foreground)',
-            textTransform: 'uppercase'
-          }}>
-            // Ejemplo de uso:
-          </div>
-          <pre style={{ margin: 0, color: 'var(--foreground-muted)' }}>
-{`.terminal-button {
-  background-color: var(--primary);
-  color: var(--background);
-  border: 1px solid var(--primary);
-  box-shadow: var(--shadow-glow-sm);
+          <pre style={{ margin: 0, color: 'var(--sentinel-text-secondary)' }}>
+{`.sentinel-card {
+  background-color: var(--sentinel-bg-elevated);
+  border: 1px solid var(--sentinel-border-subtle);
+  color: var(--sentinel-text-primary);
 }
 
-.terminal-card {
-  background-color: var(--background-secondary);
-  border: 1px solid var(--border);
-  color: var(--foreground);
+.sentinel-button-primary {
+  background-color: var(--sentinel-accent-primary);
+  color: var(--sentinel-bg-base);
 }
 
-.error-state {
-  color: var(--destructive);
-  text-shadow: 0 0 10px var(--destructive-glow);
+.market-indicator.bullish {
+  color: var(--sentinel-market-bull);
+}
+
+.risk-badge.high {
+  background-color: var(--sentinel-risk-high);
 }`}
           </pre>
         </div>

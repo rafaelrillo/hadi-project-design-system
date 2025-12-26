@@ -29,7 +29,6 @@ import {
   Copy,
   Circle,
   Image,
-  Terminal,
   LineChart,
   Sparkles,
   MousePointer,
@@ -43,6 +42,7 @@ import {
   TrendingUp,
   PieChart
 } from 'lucide-react';
+
 export function ShowcaseLayout() {
   const location = useLocation();
   const [expandedGroup, setExpandedGroup] = useState<string | null>(null);
@@ -50,17 +50,17 @@ export function ShowcaseLayout() {
   // Detectar qué grupo debe estar abierto basándose en la ruta actual
   useEffect(() => {
     const path = location.pathname;
-    if (path.startsWith('/styles')) {
+    if (path.includes('/showcase/styles')) {
       setExpandedGroup('styles');
-    } else if (path.startsWith('/atoms')) {
+    } else if (path.includes('/showcase/atoms')) {
       setExpandedGroup('atoms');
-    } else if (path.startsWith('/molecules')) {
+    } else if (path.includes('/showcase/molecules')) {
       setExpandedGroup('molecules');
-    } else if (path.startsWith('/organisms')) {
+    } else if (path.includes('/showcase/organisms')) {
       setExpandedGroup('organisms');
-    } else if (path.startsWith('/charts')) {
+    } else if (path.includes('/showcase/charts')) {
       setExpandedGroup('charts');
-    } else if (path.startsWith('/animations')) {
+    } else if (path.includes('/showcase/animations')) {
       setExpandedGroup('animations');
     } else {
       setExpandedGroup(null);
@@ -74,14 +74,14 @@ export function ShowcaseLayout() {
   const layoutStyles: React.CSSProperties = {
     display: 'flex',
     minHeight: '100vh',
-    backgroundColor: 'var(--background)',
-    fontFamily: 'var(--font-mono)'
+    backgroundColor: 'var(--sentinel-bg-base)',
+    fontFamily: 'var(--sentinel-font-primary)'
   };
 
   const sidebarStyles: React.CSSProperties = {
     width: '280px',
-    backgroundColor: 'var(--background-secondary)',
-    borderRight: '1px solid var(--border)',
+    backgroundColor: 'var(--sentinel-bg-elevated)',
+    borderRight: '1px solid var(--sentinel-border-subtle)',
     position: 'fixed',
     left: 0,
     top: 0,
@@ -92,34 +92,48 @@ export function ShowcaseLayout() {
 
   const logoContainerStyles: React.CSSProperties = {
     padding: '20px 16px',
-    borderBottom: '1px solid var(--border)',
+    borderBottom: '1px solid var(--sentinel-border-subtle)',
     display: 'flex',
     flexDirection: 'column',
-    gap: '12px'
+    gap: '8px'
   };
 
   const logoSvgContainerStyles: React.CSSProperties = {
     display: 'flex',
     alignItems: 'center',
-    gap: '8px'
+    gap: '12px'
+  };
+
+  const logoMarkStyles: React.CSSProperties = {
+    width: '32px',
+    height: '32px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(91, 163, 165, 0.1)',
+    border: '1px solid var(--sentinel-accent-primary)',
+    borderRadius: 'var(--sentinel-radius-md)',
+    fontFamily: 'var(--sentinel-font-mono)',
+    fontSize: '14px',
+    fontWeight: 600,
+    color: 'var(--sentinel-accent-primary)'
   };
 
   const logoTextStyles: React.CSSProperties = {
-    fontSize: '16px',
-    fontWeight: 700,
-    color: 'var(--primary)',
+    fontSize: '14px',
+    fontWeight: 400,
+    color: 'var(--sentinel-text-primary)',
     margin: 0,
-    fontFamily: 'var(--font-mono)',
-    textTransform: 'uppercase',
-    letterSpacing: '0.1em'
+    fontFamily: 'var(--sentinel-font-primary)',
+    letterSpacing: '0.15em'
   };
 
   const versionStyles: React.CSSProperties = {
     fontSize: '11px',
     fontWeight: 400,
-    color: 'var(--foreground-muted)',
-    margin: '4px 0 0 0',
-    fontFamily: 'var(--font-mono)'
+    color: 'var(--sentinel-text-tertiary)',
+    margin: 0,
+    fontFamily: 'var(--sentinel-font-mono)'
   };
 
   const navStyles: React.CSSProperties = {
@@ -131,15 +145,13 @@ export function ShowcaseLayout() {
     alignItems: 'center',
     gap: '10px',
     padding: '12px 16px',
-    color: 'var(--foreground)',
+    color: 'var(--sentinel-text-primary)',
     textDecoration: 'none',
-    fontFamily: 'var(--font-mono)',
+    fontFamily: 'var(--sentinel-font-primary)',
     fontSize: '14px',
-    fontWeight: 600,
+    fontWeight: 500,
     transition: 'all 200ms',
-    borderLeft: '3px solid transparent',
-    textTransform: 'uppercase',
-    letterSpacing: '0.05em'
+    borderLeft: '3px solid transparent'
   };
 
   const contentStyles: React.CSSProperties = {
@@ -147,64 +159,64 @@ export function ShowcaseLayout() {
     flex: 1,
     padding: '40px',
     minHeight: '100vh',
-    backgroundColor: 'var(--background)'
+    backgroundColor: 'var(--sentinel-bg-base)'
   };
 
   const atomsItems = [
-    { path: '/atoms/button', label: 'Button', icon: Square },
-    { path: '/atoms/input', label: 'Input', icon: Type },
-    { path: '/atoms/checkbox', label: 'Checkbox', icon: CheckSquare },
-    { path: '/atoms/badge', label: 'Badge', icon: Tag },
-    { path: '/atoms/typography', label: 'Typography', icon: FileText },
-    { path: '/atoms/icon-tooltip', label: 'Icon & Tooltip', icon: Lightbulb }
+    { path: '/showcase/atoms/button', label: 'Button', icon: Square },
+    { path: '/showcase/atoms/input', label: 'Input', icon: Type },
+    { path: '/showcase/atoms/checkbox', label: 'Checkbox', icon: CheckSquare },
+    { path: '/showcase/atoms/badge', label: 'Badge', icon: Tag },
+    { path: '/showcase/atoms/typography', label: 'Typography', icon: FileText },
+    { path: '/showcase/atoms/icon-tooltip', label: 'Icon & Tooltip', icon: Lightbulb }
   ];
 
   const moleculesItems = [
-    { path: '/molecules/card', label: 'Card', icon: CreditCard },
-    { path: '/molecules/form-field', label: 'FormField', icon: FileCheck },
-    { path: '/molecules/menu-item', label: 'MenuItem', icon: List },
-    { path: '/molecules/sidebar-item', label: 'SidebarItem', icon: Menu },
-    { path: '/molecules/pagination', label: 'Pagination', icon: ArrowLeftRight },
-    { path: '/molecules/notification-card', label: 'NotificationCard', icon: Bell },
-    { path: '/molecules/search-bar', label: 'SearchBar', icon: Search },
-    { path: '/molecules/searchbar-item', label: 'SearchbarItem', icon: Filter }
+    { path: '/showcase/molecules/card', label: 'Card', icon: CreditCard },
+    { path: '/showcase/molecules/form-field', label: 'FormField', icon: FileCheck },
+    { path: '/showcase/molecules/menu-item', label: 'MenuItem', icon: List },
+    { path: '/showcase/molecules/sidebar-item', label: 'SidebarItem', icon: Menu },
+    { path: '/showcase/molecules/pagination', label: 'Pagination', icon: ArrowLeftRight },
+    { path: '/showcase/molecules/notification-card', label: 'NotificationCard', icon: Bell },
+    { path: '/showcase/molecules/search-bar', label: 'SearchBar', icon: Search },
+    { path: '/showcase/molecules/searchbar-item', label: 'SearchbarItem', icon: Filter }
   ];
 
   const organismsItems = [
-    { path: '/organisms/sidebar', label: 'Sidebar', icon: PanelLeft },
-    { path: '/organisms/searchbar', label: 'Searchbar', icon: Search },
-    { path: '/organisms/table', label: 'Table', icon: Table2 },
-    { path: '/organisms/modal', label: 'Modal', icon: SquareStack },
-    { path: '/organisms/form', label: 'Form', icon: FileCheck },
-    { path: '/organisms/paginated-table', label: 'PaginatedTable', icon: Layers }
+    { path: '/showcase/organisms/sidebar', label: 'Sidebar', icon: PanelLeft },
+    { path: '/showcase/organisms/searchbar', label: 'Searchbar', icon: Search },
+    { path: '/showcase/organisms/table', label: 'Table', icon: Table2 },
+    { path: '/showcase/organisms/modal', label: 'Modal', icon: SquareStack },
+    { path: '/showcase/organisms/form', label: 'Form', icon: FileCheck },
+    { path: '/showcase/organisms/paginated-table', label: 'PaginatedTable', icon: Layers }
   ];
 
   const stylesItems = [
-    { path: '/styles/colors', label: 'Colors', icon: Palette },
-    { path: '/styles/typography', label: 'Typography', icon: Type },
-    { path: '/styles/spacing', label: 'Spacing', icon: Ruler },
-    { path: '/styles/shadows', label: 'Shadows', icon: Copy },
-    { path: '/styles/border-radius', label: 'Border Radius', icon: Circle },
-    { path: '/styles/icons', label: 'Icons', icon: Image }
+    { path: '/showcase/styles/colors', label: 'Colors', icon: Palette },
+    { path: '/showcase/styles/typography', label: 'Typography', icon: Type },
+    { path: '/showcase/styles/spacing', label: 'Spacing', icon: Ruler },
+    { path: '/showcase/styles/shadows', label: 'Shadows', icon: Copy },
+    { path: '/showcase/styles/border-radius', label: 'Border Radius', icon: Circle },
+    { path: '/showcase/styles/icons', label: 'Icons', icon: Image }
   ];
 
   const chartsItems = [
-    { path: '/charts', label: 'Overview', icon: LineChart },
-    { path: '/charts/line', label: 'Line & Area', icon: Activity },
-    { path: '/charts/comparison', label: 'Comparison', icon: Target },
-    { path: '/charts/progress', label: 'Progress', icon: PieChart },
-    { path: '/charts/distribution', label: 'Distribution', icon: Grid3X3 },
-    { path: '/charts/flow', label: 'Flow', icon: Network },
-    { path: '/charts/correlation', label: 'Correlation', icon: TrendingUp }
+    { path: '/showcase/charts', label: 'Overview', icon: LineChart },
+    { path: '/showcase/charts/line', label: 'Line & Area', icon: Activity },
+    { path: '/showcase/charts/comparison', label: 'Comparison', icon: Target },
+    { path: '/showcase/charts/progress', label: 'Progress', icon: PieChart },
+    { path: '/showcase/charts/distribution', label: 'Distribution', icon: Grid3X3 },
+    { path: '/showcase/charts/flow', label: 'Flow', icon: Network },
+    { path: '/showcase/charts/correlation', label: 'Correlation', icon: TrendingUp }
   ];
 
   const animationsItems = [
-    { path: '/animations', label: 'Overview', icon: Sparkles },
-    { path: '/animations/hover', label: 'Hover & Tap', icon: MousePointer },
-    { path: '/animations/entry', label: 'Entry', icon: LayoutGrid },
-    { path: '/animations/scroll', label: 'Scroll', icon: ScrollText },
-    { path: '/animations/layout', label: 'Layout', icon: Layers },
-    { path: '/animations/drag', label: 'Drag', icon: Move }
+    { path: '/showcase/animations', label: 'Overview', icon: Sparkles },
+    { path: '/showcase/animations/hover', label: 'Hover & Tap', icon: MousePointer },
+    { path: '/showcase/animations/entry', label: 'Entry', icon: LayoutGrid },
+    { path: '/showcase/animations/scroll', label: 'Scroll', icon: ScrollText },
+    { path: '/showcase/animations/layout', label: 'Layout', icon: Layers },
+    { path: '/showcase/animations/drag', label: 'Drag', icon: Move }
   ];
 
   return (
@@ -214,10 +226,10 @@ export function ShowcaseLayout() {
         {/* Logo */}
         <div style={logoContainerStyles}>
           <div style={logoSvgContainerStyles}>
-            <Terminal size={24} color="var(--primary)" />
-            <h1 style={logoTextStyles}>Robot Resources</h1>
+            <div style={logoMarkStyles}>S</div>
+            <h1 style={logoTextStyles}>SENTINEL</h1>
           </div>
-          <p style={versionStyles}>// Terminal Theme v1.0</p>
+          <p style={versionStyles}>Design System v2.0</p>
         </div>
 
         {/* Navigation */}
@@ -227,18 +239,39 @@ export function ShowcaseLayout() {
             to="/"
             style={homeItemStyles}
             onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = 'var(--background-tertiary)';
-              e.currentTarget.style.borderLeftColor = 'var(--primary)';
-              e.currentTarget.style.color = 'var(--primary)';
+              e.currentTarget.style.backgroundColor = 'var(--sentinel-bg-subtle)';
+              e.currentTarget.style.borderLeftColor = 'var(--sentinel-accent-primary)';
+              e.currentTarget.style.color = 'var(--sentinel-accent-primary)';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.backgroundColor = 'transparent';
               e.currentTarget.style.borderLeftColor = 'transparent';
-              e.currentTarget.style.color = 'var(--foreground)';
+              e.currentTarget.style.color = 'var(--sentinel-text-primary)';
             }}
           >
             <Home size={18} />
             <span>Home</span>
+          </Link>
+
+          {/* SENTINEL Components Link */}
+          <Link
+            to="/showcase/sentinel"
+            style={{
+              ...homeItemStyles,
+              color: 'var(--sentinel-accent-primary)',
+              fontWeight: 600
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = 'var(--sentinel-bg-subtle)';
+              e.currentTarget.style.borderLeftColor = 'var(--sentinel-accent-primary)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = 'transparent';
+              e.currentTarget.style.borderLeftColor = 'transparent';
+            }}
+          >
+            <BarChart3 size={18} />
+            <span>SENTINEL Components</span>
           </Link>
 
           {/* Styles Group */}

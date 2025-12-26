@@ -1,31 +1,31 @@
 /* Path: src/components/showcase/ShowcaseSection.module.css */
-/* Terminal Theme Version */
+/* SENTINEL Design System Version */
 
 .section {
-  background-color: var(--background-secondary);
-  padding: 30px;
-  border-radius: var(--radius-card);
-  margin-bottom: var(--spacing-lg);
-  border: 1px solid var(--border);
+  background-color: var(--sentinel-bg-elevated);
+  padding: var(--sentinel-space-6);
+  border-radius: var(--sentinel-radius-lg);
+  margin-bottom: var(--sentinel-space-6);
+  border: 1px solid var(--sentinel-border-subtle);
 }
 
 .title {
-  font-size: var(--text-xl);
-  font-weight: var(--font-weight-bold);
-  color: var(--foreground);
-  margin-bottom: var(--spacing-lg);
-  font-family: var(--font-mono);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  font-size: var(--sentinel-text-lg);
+  font-weight: var(--sentinel-font-semibold);
+  color: var(--sentinel-text-primary);
+  margin-bottom: var(--sentinel-space-4);
+  font-family: var(--sentinel-font-primary);
+  letter-spacing: -0.01em;
 }
 
 .titleWithDescription {
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: var(--sentinel-space-2);
 }
 
 .description {
-  font-size: var(--text-cuerpo-2);
-  color: var(--foreground-muted);
-  margin-bottom: var(--spacing-lg);
-  font-family: var(--font-mono);
+  font-size: var(--sentinel-text-sm);
+  color: var(--sentinel-text-secondary);
+  margin-bottom: var(--sentinel-space-4);
+  font-family: var(--sentinel-font-primary);
+  line-height: 1.5;
 }

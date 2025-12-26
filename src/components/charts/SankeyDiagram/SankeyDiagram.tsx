@@ -1,6 +1,6 @@
-// src/components/charts/SankeyDiagram/SankeyDiagram.tsx
+// Path: src/components/charts/SankeyDiagram/SankeyDiagram.tsx
 import { ResponsiveSankey } from '@nivo/sankey';
-import { terminalChartTheme, terminalChartColors } from '../theme';
+import { sentinelChartTheme, sentinelChartColors } from '../theme';
 import styles from './SankeyDiagram.module.css';
 
 export interface SankeyNode {
@@ -36,7 +36,7 @@ export interface SankeyDiagramProps {
 export function SankeyDiagram({
   data,
   height = 400,
-  colors = terminalChartColors,
+  colors = sentinelChartColors,
   layout = 'horizontal',
   nodeThickness = 18,
   nodeSpacing = 24,
@@ -54,13 +54,14 @@ export function SankeyDiagram({
 
   if (!data || !data.nodes || data.nodes.length === 0) {
     return (
-      <div className={getClassName()} style={{ height }}>
+      <div className={getClassName()} style={{ height: `${height}px` }}>
         <div style={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           height: '100%',
-          color: '#888888',
+          color: 'var(--sentinel-text-tertiary)',
+          fontFamily: 'var(--sentinel-font-primary)',
           fontSize: '14px'
         }}>
           No data available
@@ -70,7 +71,7 @@ export function SankeyDiagram({
   }
 
   return (
-    <div className={getClassName()} style={{ height }}>
+    <div className={getClassName()} style={{ height: `${height}px` }}>
       <ResponsiveSankey
         data={data}
         margin={{ top: 20, right: 140, bottom: 20, left: 20 }}
@@ -92,7 +93,7 @@ export function SankeyDiagram({
         labelTextColor={{ from: 'color', modifiers: [['brighter', 1]] }}
         animate={true}
         motionConfig="gentle"
-        theme={terminalChartTheme}
+        theme={sentinelChartTheme}
       />
     </div>
   );

@@ -1,5 +1,5 @@
 // Path: src/pages/atoms/CheckboxShowcase.tsx
-// Terminal Theme Version
+// SENTINEL Design System
 import React, { useState } from 'react';
 import { Checkbox } from '../../components/atoms/Checkbox';
 import { ShowcaseSection, ComponentPreview } from '../../components/showcase';

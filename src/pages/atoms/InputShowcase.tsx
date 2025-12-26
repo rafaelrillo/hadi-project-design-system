@@ -1,5 +1,5 @@
 // Path: src/pages/atoms/InputShowcase.tsx
-// Terminal Theme Version
+// SENTINEL Design System
 import React, { useState } from 'react';
 import { InputText, InputDropdown, Textarea, DropdownOption } from '../../components/atoms/Input';
 import { ShowcaseSection, ComponentPreview } from '../../components/showcase';

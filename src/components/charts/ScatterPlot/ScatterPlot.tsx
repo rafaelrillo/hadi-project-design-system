@@ -1,6 +1,6 @@
-// src/components/charts/ScatterPlot/ScatterPlot.tsx
+// Path: src/components/charts/ScatterPlot/ScatterPlot.tsx
 import { ResponsiveScatterPlot } from '@nivo/scatterplot';
-import { terminalChartTheme, terminalChartColors } from '../theme';
+import { sentinelChartTheme, sentinelChartColors } from '../theme';
 import styles from './ScatterPlot.module.css';
 
 export interface ScatterPlotDatum {
@@ -28,7 +28,7 @@ export interface ScatterPlotProps {
 export function ScatterPlot({
   data,
   height = 350,
-  colors = terminalChartColors,
+  colors = sentinelChartColors,
   nodeSize = 10,
   enableGridX = true,
   enableGridY = true,
@@ -44,13 +44,14 @@ export function ScatterPlot({
 
   if (!data || data.length === 0) {
     return (
-      <div className={getClassName()} style={{ height }}>
+      <div className={getClassName()} style={{ height: `${height}px` }}>
         <div style={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           height: '100%',
-          color: '#888888',
+          color: 'var(--sentinel-text-tertiary)',
+          fontFamily: 'var(--sentinel-font-primary)',
           fontSize: '14px'
         }}>
           No data available
@@ -60,7 +61,7 @@ export function ScatterPlot({
   }
 
   return (
-    <div className={getClassName()} style={{ height }}>
+    <div className={getClassName()} style={{ height: `${height}px` }}>
       <ResponsiveScatterPlot
         data={data}
         margin={{ top: 20, right: 20, bottom: 70, left: 70 }}
@@ -89,7 +90,7 @@ export function ScatterPlot({
         useMesh={true}
         animate={true}
         motionConfig="gentle"
-        theme={terminalChartTheme}
+        theme={sentinelChartTheme}
       />
     </div>
   );

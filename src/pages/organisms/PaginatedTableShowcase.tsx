@@ -1,5 +1,5 @@
 // Path: src/pages/organisms/PaginatedTableShowcase.tsx
-// Terminal Theme Version
+// SENTINEL Design System
 import React, { useState } from 'react';
 import { PaginatedTable } from '../../components/organisms/PaginatedTable';
 import { TableColumn, TableRow } from '../../components/organisms/Table';
@@ -75,31 +75,31 @@ export function PaginatedTableShowcase() {
       'Pablo Reyes'
     ][i],
     email: [
-      'juan.perez@claro.com',
-      'maria.garcia@claro.com',
-      'carlos.lopez@claro.com',
-      'ana.martinez@claro.com',
-      'pedro.rodriguez@claro.com',
-      'laura.fernandez@claro.com',
-      'diego.gonzalez@claro.com',
-      'sofia.sanchez@claro.com',
-      'miguel.torres@claro.com',
-      'carmen.diaz@claro.com',
-      'jorge.ramirez@claro.com',
-      'isabel.castro@claro.com',
-      'roberto.flores@claro.com',
-      'patricia.morales@claro.com',
-      'fernando.ruiz@claro.com',
-      'lucia.jimenez@claro.com',
-      'andres.alvarez@claro.com',
-      'valentina.romero@claro.com',
-      'javier.nunez@claro.com',
-      'daniela.medina@claro.com',
-      'ricardo.herrera@claro.com',
-      'gabriela.vargas@claro.com',
-      'martin.silva@claro.com',
-      'camila.ortiz@claro.com',
-      'pablo.reyes@claro.com'
+      'juan.perez@example.com',
+      'maria.garcia@example.com',
+      'carlos.lopez@example.com',
+      'ana.martinez@example.com',
+      'pedro.rodriguez@example.com',
+      'laura.fernandez@example.com',
+      'diego.gonzalez@example.com',
+      'sofia.sanchez@example.com',
+      'miguel.torres@example.com',
+      'carmen.diaz@example.com',
+      'jorge.ramirez@example.com',
+      'isabel.castro@example.com',
+      'roberto.flores@example.com',
+      'patricia.morales@example.com',
+      'fernando.ruiz@example.com',
+      'lucia.jimenez@example.com',
+      'andres.alvarez@example.com',
+      'valentina.romero@example.com',
+      'javier.nunez@example.com',
+      'daniela.medina@example.com',
+      'ricardo.herrera@example.com',
+      'gabriela.vargas@example.com',
+      'martin.silva@example.com',
+      'camila.ortiz@example.com',
+      'pablo.reyes@example.com'
     ][i],
     role: ['Admin', 'Usuario', 'Editor', 'Viewer'][i % 4],
     status: i % 3 === 0 ? 'Activo' : i % 3 === 1 ? 'Inactivo' : 'Pendiente',

@@ -1,6 +1,6 @@
-// src/components/charts/ChordDiagram/ChordDiagram.tsx
+// Path: src/components/charts/ChordDiagram/ChordDiagram.tsx
 import { ResponsiveChord } from '@nivo/chord';
-import { terminalChartTheme, terminalChartColors } from '../theme';
+import { sentinelChartTheme, sentinelChartColors } from '../theme';
 import styles from './ChordDiagram.module.css';
 
 export interface ChordDiagramProps {
@@ -21,7 +21,7 @@ export function ChordDiagram({
   matrix,
   keys,
   height = 400,
-  colors = terminalChartColors,
+  colors = sentinelChartColors,
   innerRadiusRatio = 0.96,
   innerRadiusOffset = 0.02,
   padAngle = 0.02,
@@ -38,13 +38,14 @@ export function ChordDiagram({
 
   if (!matrix || matrix.length === 0) {
     return (
-      <div className={getClassName()} style={{ height }}>
+      <div className={getClassName()} style={{ height: `${height}px` }}>
         <div style={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           height: '100%',
-          color: '#888888',
+          color: 'var(--sentinel-text-tertiary)',
+          fontFamily: 'var(--sentinel-font-primary)',
           fontSize: '14px'
         }}>
           No data available
@@ -54,7 +55,7 @@ export function ChordDiagram({
   }
 
   return (
-    <div className={getClassName()} style={{ height }}>
+    <div className={getClassName()} style={{ height: `${height}px` }}>
       <ResponsiveChord
         data={matrix}
         keys={keys}
@@ -73,7 +74,7 @@ export function ChordDiagram({
         labelTextColor={{ from: 'color', modifiers: [['brighter', 1]] }}
         animate={true}
         motionConfig="gentle"
-        theme={terminalChartTheme}
+        theme={sentinelChartTheme}
       />
     </div>
   );

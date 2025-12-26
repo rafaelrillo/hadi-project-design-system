@@ -1,29 +1,39 @@
 /* Path: src/components/atoms/Input/InputDropdown.module.css */
-/* Terminal Theme Version */
+/* ═══════════════════════════════════════════════════════════════════════════════
+   SENTINEL DESIGN SYSTEM - InputDropdown Component
 
-/* InputDropdown container */
+   Dropdown/select input with clean styling
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   CONTAINER
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .container {
   height: 40px;
   position: relative;
   box-sizing: border-box;
 }
 
-/* Trigger button base styles */
+/* ─────────────────────────────────────────────────────────────────────────────
+   TRIGGER BUTTON
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .trigger {
   width: 100%;
   height: 40px;
-  padding: 8px 36px 8px 12px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  font-size: var(--text-cuerpo-1);
-  font-family: var(--font-mono);
-  font-weight: var(--font-weight-normal);
-  line-height: var(--line-height-default);
-  color: var(--foreground);
-  background-color: var(--background-secondary);
+  padding: var(--sentinel-space-2) 36px var(--sentinel-space-2) var(--sentinel-space-3);
+  border: 1px solid var(--sentinel-border-default);
+  border-radius: var(--sentinel-radius-md);
+  font-size: var(--sentinel-text-sm);
+  font-family: var(--sentinel-font-mono);
+  font-weight: var(--sentinel-font-normal);
+  line-height: 1.5;
+  color: var(--sentinel-text-primary);
+  background-color: var(--sentinel-bg-elevated);
   cursor: pointer;
   box-sizing: border-box;
-  transition: all var(--transition-fast);
+  transition: var(--sentinel-transition-normal);
   text-align: left;
   display: flex;
   align-items: center;
@@ -31,86 +41,97 @@
   overflow: hidden;
   text-overflow: ellipsis;
   outline: none;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
 }
 
 /* Placeholder color */
 .triggerPlaceholder {
-  color: var(--foreground-subtle);
+  color: var(--sentinel-text-tertiary);
 }
 
 /* Hover state */
 .trigger:hover:not(:disabled) {
-  border-color: var(--primary);
-  box-shadow: var(--shadow-glow-sm);
+  border-color: var(--sentinel-border-strong);
+  background-color: var(--sentinel-bg-overlay);
 }
 
 /* Open state */
 .triggerOpen {
-  border-color: var(--primary);
-  outline: 2px solid var(--primary);
-  outline-offset: -1px;
-  box-shadow: var(--shadow-glow-sm);
+  border-color: var(--sentinel-accent-primary);
+  background-color: var(--sentinel-bg-overlay);
+}
+
+/* Focus state */
+.trigger:focus-visible {
+  outline: 2px solid var(--sentinel-accent-primary);
+  outline-offset: 2px;
 }
 
 /* Disabled state */
 .trigger:disabled {
-  background-color: var(--background-tertiary);
+  background-color: var(--sentinel-bg-subtle);
+  border-color: var(--sentinel-border-subtle);
+  color: var(--sentinel-text-disabled);
   cursor: not-allowed;
-  opacity: 0.5;
 }
 
-/* Icon container */
+/* ─────────────────────────────────────────────────────────────────────────────
+   ICON CONTAINER
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .iconContainer {
   position: absolute;
-  right: 12px;
+  right: var(--sentinel-space-3);
   top: 50%;
   transform: translateY(-50%);
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   pointer-events: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform var(--transition-fast);
+  transition: transform var(--sentinel-transition-normal);
+  color: var(--sentinel-text-secondary);
 }
 
 .iconContainerOpen {
   transform: translateY(-50%) rotate(180deg);
 }
 
-/* Dropdown menu */
+/* ─────────────────────────────────────────────────────────────────────────────
+   DROPDOWN MENU
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .dropdownMenu {
   position: absolute;
   top: 100%;
   left: 0;
   right: 0;
-  background-color: var(--background-secondary);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-card);
+  background-color: var(--sentinel-bg-overlay);
+  border: 1px solid var(--sentinel-border-default);
+  border-radius: var(--sentinel-radius-md);
+  box-shadow: var(--sentinel-shadow-lg);
   max-height: 240px;
   overflow-y: auto;
-  z-index: 1000;
+  z-index: var(--sentinel-z-dropdown);
   box-sizing: border-box;
-  margin-top: 4px;
+  margin-top: var(--sentinel-space-1);
 }
 
-/* Option item */
+/* ─────────────────────────────────────────────────────────────────────────────
+   OPTIONS
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .option {
-  padding: var(--spacing-sm) 12px;
-  font-size: var(--text-cuerpo-1);
-  font-family: var(--font-mono);
-  font-weight: var(--font-weight-normal);
-  line-height: var(--line-height-default);
-  color: var(--foreground);
-  background-color: var(--background-secondary);
+  padding: var(--sentinel-space-2) var(--sentinel-space-3);
+  font-size: var(--sentinel-text-sm);
+  font-family: var(--sentinel-font-mono);
+  font-weight: var(--sentinel-font-normal);
+  line-height: 1.5;
+  color: var(--sentinel-text-primary);
+  background-color: transparent;
   cursor: pointer;
-  transition: all var(--transition-fast);
-  border-bottom: 1px solid var(--border);
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
+  transition: var(--sentinel-transition-fast);
+  border-bottom: 1px solid var(--sentinel-border-subtle);
 }
 
 .option:last-child {
@@ -119,20 +140,28 @@
 
 /* Option selected */
 .optionSelected {
-  background-color: var(--accent);
-  color: var(--primary);
+  background-color: var(--sentinel-accent-subtle);
+  color: var(--sentinel-accent-primary);
 }
 
 /* Option hovered */
 .optionHovered {
-  background-color: var(--background-tertiary);
+  background-color: var(--sentinel-bg-subtle);
 }
 
-/* Chevron icon */
+/* Option selected + hovered */
+.optionSelected.optionHovered {
+  background-color: var(--sentinel-accent-subtle);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   CHEVRON ICON
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .chevronIcon {
-  stroke: var(--foreground);
+  stroke: var(--sentinel-text-secondary);
 }
 
 .chevronIconDisabled {
-  stroke: var(--foreground-subtle);
+  stroke: var(--sentinel-text-disabled);
 }

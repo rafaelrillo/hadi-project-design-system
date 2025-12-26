@@ -1,5 +1,5 @@
 // Path: src/pages/atoms/IconTooltipShowcase.tsx
-// Terminal Theme Version
+// SENTINEL Design System
 import React from 'react';
 import { Icon } from '../../components/atoms/Icon';
 import { Tooltip } from '../../components/atoms/Tooltip';
@@ -70,7 +70,7 @@ export function IconTooltipShowcase() {
       {/* Icon Colors */}
       <ShowcaseSection
         title="Colores de Iconos"
-        description="Colores predefinidos del tema terminal"
+        description="Colores predefinidos del tema SENTINEL"
       >
         <ComponentPreview>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px', width: '100%' }}>
@@ -154,7 +154,7 @@ export function IconTooltipShowcase() {
         <ComponentPreview>
           <div style={{ display: 'flex', gap: '40px', alignItems: 'center' }}>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
-              <Tooltip content="Tooltip oscuro con fondo terminal" variant="dark">
+              <Tooltip content="Tooltip oscuro con fondo oscuro" variant="dark">
                 <Icon icon={Info} size="md" color="primary" />
               </Tooltip>
               <span style={{ fontSize: '12px', color: 'var(--foreground-muted)', fontFamily: 'var(--font-mono)', textTransform: 'uppercase' }}>Dark (hover)</span>

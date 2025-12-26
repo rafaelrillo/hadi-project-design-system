@@ -1,4 +1,4 @@
-# Claude Implementation Guide - Robot Resources v1.0.1
+# Claude Implementation Guide - SENTINEL v2.0.0
 
 **Guía completa para que Claude genere código que cumple 100% con el Design System**
 
@@ -82,11 +82,11 @@ VALIDATION-CHECKLIST.md   ← Verificación final
 <div style={{ height: '50px' }}>
 ```
 
-#### 3. Rojo Institucional (#DA291C)
+#### 3. Accent Primary (#5ba3a5)
 
 **USO EXCLUSIVO PARA:**
 - Product Key (siglas de 3 letras)
-- Isotipo de Claro en Sidebar
+- Logo SENTINEL en Sidebar
 - Icono de Usuario en Sidebar
 
 **NUNCA para:**
@@ -96,12 +96,12 @@ VALIDATION-CHECKLIST.md   ← Verificación final
 
 ```tsx
 // ✅ CORRECTO - Product Key
-<span style={{ color: '#DA291C', fontSize: '24px', fontWeight: 700 }}>
-  GDM
+<span style={{ color: '#5ba3a5', fontSize: '24px', fontWeight: 700 }}>
+  SENTINEL Analytics
 </span>
 
 // ❌ INCORRECTO - Botón de acción
-<button style={{ backgroundColor: '#DA291C' }}>
+<button style={{ backgroundColor: '#5ba3a5' }}>
   Eliminar
 </button>
 ```
@@ -240,7 +240,7 @@ export function Button({
       height: '40px',
       padding: '7.5px 20px',
       borderRadius: '5px',
-      border: variant === 'secondary' ? '1px solid #006081' : 'none',
+      border: variant === 'secondary' ? '1px solid #5ba3a5' : 'none',
       cursor: disabled ? 'not-allowed' : 'pointer',
       transition: 'background-color 200ms ease',
       fontFamily: "'Open Sans', sans-serif",
@@ -251,12 +251,12 @@ export function Button({
 
     const variants = {
       primary: {
-        backgroundColor: disabled ? '#D0D0D0' : '#006081',
+        backgroundColor: disabled ? '#D0D0D0' : '#5ba3a5',
         color: disabled ? '#6A6A6A' : '#FFFFFF'
       },
       secondary: {
         backgroundColor: '#FFFFFF',
-        color: disabled ? '#D0D0D0' : '#006081'
+        color: disabled ? '#D0D0D0' : '#5ba3a5'
       },
       destructive: {
         backgroundColor: disabled ? '#D0D0D0' : '#B50000',
@@ -297,7 +297,7 @@ export function UsersList() {
     <MainLayout
       searchbar={
         <Searchbar
-          productName="GDM"
+          productName="SENTINEL"
           version="v.1.0.0"
           filters={[
             {
@@ -320,7 +320,7 @@ export function UsersList() {
         { icon: 'Home', label: 'Dashboard', href: '/', active: false },
         { icon: 'Users', label: 'Usuarios', href: '/users', active: true }
       ]}
-      productName="GDM"
+      productName="SENTINEL"
       version="v.1.0.0"
     >
       {/* Container principal */}
@@ -336,7 +336,7 @@ export function UsersList() {
           justifyContent: 'space-between',
           alignItems: 'center',
           padding: '20px 0',
-          borderBottom: '2px solid #006081'
+          borderBottom: '2px solid #5ba3a5'
         }}>
           <h1>Usuarios</h1>
           <Button variant="primary" icon={<Plus size={24} />}>
@@ -386,7 +386,7 @@ Crear pantalla de [NOMBRE] que muestre una tabla con [DATOS].
 **Especificaciones técnicas:**
 - Altura Searchbar: 40px FIJA
 - Formato tabla: [Border 100% / Border 50% / Border 0%] (según cantidad de columnas)
-- Product Key en rojo institucional (#DA291C)
+- Product Key en rojo institucional (#5ba3a5)
 ```
 
 ### Template 2: Nuevo Formulario
@@ -444,7 +444,7 @@ Crear dashboard con las siguientes métricas:
   {/* Header con border inferior azul */}
   <div style={{
     padding: '20px 0',
-    borderBottom: '2px solid #006081'
+    borderBottom: '2px solid #5ba3a5'
   }}>
     <h1>Título de la Pantalla</h1>
   </div>
@@ -464,7 +464,7 @@ Crear dashboard con las siguientes métricas:
   justifyContent: 'space-between',
   alignItems: 'center',
   padding: '20px 0',
-  borderBottom: '2px solid #006081'
+  borderBottom: '2px solid #5ba3a5'
 }}>
   <h1>Título</h1>
   <Button variant="primary">Acción</Button>
@@ -555,11 +555,11 @@ Crear dashboard con las siguientes métricas:
 }}>
 ```
 
-### ❌ Anti-Pattern 3: Rojo Institucional en Botones
+### ❌ Anti-Pattern 3: Accent Primary en Botones
 
 ```tsx
 // ❌ INCORRECTO
-<button style={{ backgroundColor: '#DA291C' }}>Eliminar</button>
+<button style={{ backgroundColor: '#5ba3a5' }}>Eliminar</button>
 
 // ✅ CORRECTO
 <button style={{ backgroundColor: '#B50000' }}>Eliminar</button>
@@ -636,5 +636,5 @@ Antes de entregar código, verificar:
 
 ---
 
-**Versión**: Robot Resources v1.0.1
+**Versión**: SENTINEL v2.0.0
 **Última actualización**: 29 de octubre, 2025

@@ -56,7 +56,11 @@ export function SidebarItem({
     (isActive) && styles.leftBarVisible
   );
 
-  const iconColor = disabled ? '#D0D0D0' : isActive ? '#006081' : '#222222';
+  const iconColor = disabled
+    ? 'var(--sentinel-text-disabled)'
+    : isActive
+    ? 'var(--sentinel-accent-primary)'
+    : 'var(--sentinel-text-secondary)';
 
   const Component = href ? 'a' : 'button';
 

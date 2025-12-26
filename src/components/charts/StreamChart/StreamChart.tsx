@@ -1,6 +1,6 @@
-// src/components/charts/StreamChart/StreamChart.tsx
+// Path: src/components/charts/StreamChart/StreamChart.tsx
 import { ResponsiveStream } from '@nivo/stream';
-import { terminalChartTheme, terminalChartColors } from '../theme';
+import { sentinelChartTheme, sentinelChartColors } from '../theme';
 import styles from './StreamChart.module.css';
 
 export interface StreamChartProps {
@@ -21,7 +21,7 @@ export function StreamChart({
   data,
   keys,
   height = 350,
-  colors = terminalChartColors,
+  colors = sentinelChartColors,
   curve = 'catmullRom',
   offsetType = 'silhouette',
   fillOpacity = 0.85,
@@ -38,13 +38,14 @@ export function StreamChart({
 
   if (!data || data.length === 0) {
     return (
-      <div className={getClassName()} style={{ height }}>
+      <div className={getClassName()} style={{ height: `${height}px` }}>
         <div style={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           height: '100%',
-          color: '#888888',
+          color: 'var(--sentinel-text-tertiary)',
+          fontFamily: 'var(--sentinel-font-primary)',
           fontSize: '14px'
         }}>
           No data available
@@ -54,7 +55,7 @@ export function StreamChart({
   }
 
   return (
-    <div className={getClassName()} style={{ height }}>
+    <div className={getClassName()} style={{ height: `${height}px` }}>
       <ResponsiveStream
         data={data}
         keys={keys}
@@ -91,7 +92,7 @@ export function StreamChart({
         ]}
         animate={true}
         motionConfig="gentle"
-        theme={terminalChartTheme}
+        theme={sentinelChartTheme}
       />
     </div>
   );

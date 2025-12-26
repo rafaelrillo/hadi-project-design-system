@@ -1,4 +1,4 @@
-# Architecture - Robot Resources v1.0.1
+# Architecture - SENTINEL v2.0.0
 
 **Arquitectura del proyecto y estructura de carpetas**
 
@@ -114,7 +114,7 @@ Atoms → Molecules → Organisms → Templates → Pages
 ## Estructura de Carpetas
 
 ```
-claro-helios-project/
+sentinel-design-system/
 ├── public/                  # Assets estáticos
 ├── src/
 │   ├── assets/             # Imágenes, íconos, fuentes
@@ -421,13 +421,13 @@ export default function Button({ children }: ButtonProps) {
 
 ```css
 /* ✅ Correcto */
---primary: #006081;
+--primary: #5ba3a5;
 --text-titulo-1: 18px;
 --spacing-lg: 20px;
 --border-radius-card: 10px;
 
 /* ❌ Incorrecto */
---Primary: #006081;
+--Primary: #5ba3a5;
 --textTitulo1: 18px;
 --spacing_large: 20px;
 ```
@@ -616,5 +616,5 @@ import { Button } from '../../../components/atoms/Button/Button';
 
 ---
 
-**Versión**: Robot Resources v1.0.1
+**Versión**: SENTINEL v2.0.0
 **Última actualización**: 29 de octubre, 2025

@@ -1,225 +1,711 @@
 /* src/styles/theme.css */
-/* ============================================
-   TERMINAL THEME - ASCII/Hacker Aesthetic
-   ============================================
+/* ═══════════════════════════════════════════════════════════════════════════════
+   SENTINEL DESIGN SYSTEM - Theme Tokens v1.0.0
 
-   Para cambiar de tema, solo modifica este archivo.
-   Los componentes consumen estas variables automaticamente.
+   Sistema de análisis y recomendación de inversiones
+   Estética: Observatorio / Centro de monitoreo / Complejidad silenciosa
 
-   ============================================ */
+   Paleta: "Observatorio Nocturno"
+   - Fondos: Azules muy oscuros, casi negros con profundidad
+   - Acento: Cyan/teal institucional, desaturado
+   - Texto: Escala de grises fríos
+   - Estados: Colores semánticos conservadores, nunca alarmistas
+
+   ═══════════════════════════════════════════════════════════════════════════════ */
 
 :root {
-  /* ==========================================
-     COLORES PRIMARIOS - TERMINAL
-     ==========================================
-     Reemplazan: --primary, --primary-dark, --accent
-  */
-  --primary: #FF6600;
-  --primary-dark: #CC5200;
-  --primary-light: #FF983F;
-  --accent: rgba(255, 102, 0, 0.15);
-  --accent-glow: rgba(255, 102, 0, 0.5);
+  /* ─────────────────────────────────────────────────────────────────────────────
+     SUPERFICIES Y FONDOS
+     Sentinel usa un tema oscuro con capas de profundidad
+     El "void" es el negro más profundo, cada capa agrega luz sutil
+     ───────────────────────────────────────────────────────────────────────────── */
 
+  --sentinel-bg-void: #05060a;           /* El fondo más profundo, el "vacío" */
+  --sentinel-bg-base: #0a0b10;           /* Fondo principal de la aplicación */
+  --sentinel-bg-elevated: #10121a;       /* Cards, paneles elevados */
+  --sentinel-bg-overlay: #161822;        /* Modales, overlays */
+  --sentinel-bg-subtle: #1c1e2a;         /* Hover states, fondos sutiles */
+  --sentinel-bg-interactive: #22253a;    /* Fondos de elementos interactivos */
 
-  /* ==========================================
-     COLORES BASE - DARK MODE
-     ==========================================
-     Reemplazan: --background, --foreground, --secondary
-  */
-  --background: #000000;
-  --background-secondary: #0a0a0a;
-  --background-tertiary: #111111;
-  --foreground: #FFFFFF;
-  --foreground-muted: #888888;
-  --foreground-subtle: #555555;
-  --secondary: #0a0a0a;
+  /* Fondos con transparencia (para capas) */
+  --sentinel-bg-glass: rgba(10, 11, 16, 0.85);
+  --sentinel-bg-scrim: rgba(5, 6, 10, 0.7);
 
+  /* ─────────────────────────────────────────────────────────────────────────────
+     TEXTO - Jerarquía tipográfica
+     Grises fríos con tinte azul muy sutil
+     ───────────────────────────────────────────────────────────────────────────── */
 
-  /* ==========================================
-     BORDES Y LINEAS
-     ==========================================
-     Reemplazan: --border, --muted
-  */
-  --border: #333333;
-  --border-focus: var(--primary);
-  --border-hover: #555555;
-  --muted: #333333;
-  --grid-line: #1a1a1a;
+  --sentinel-text-primary: #e8eaed;      /* Texto principal, máximo contraste */
+  --sentinel-text-secondary: #9aa0a6;    /* Texto secundario, labels */
+  --sentinel-text-tertiary: #5f6368;     /* Texto terciario, hints, placeholders */
+  --sentinel-text-disabled: #3c4043;     /* Texto deshabilitado */
+  --sentinel-text-inverse: #0a0b10;      /* Texto sobre fondos de acento */
+  --sentinel-text-link: #7ecbcc;         /* Links - acento pero legible */
 
+  /* ─────────────────────────────────────────────────────────────────────────────
+     BORDES Y LÍNEAS
+     Sutiles, casi invisibles, crean estructura sin ruido
+     ───────────────────────────────────────────────────────────────────────────── */
 
-  /* ==========================================
-     COLORES DE ESTADO
-     ==========================================
-     Reemplazan: --success, --warning, --destructive
-  */
-  --success: #00FF41;
-  --success-light: rgba(0, 255, 65, 0.15);
-  --success-glow: rgba(0, 255, 65, 0.5);
+  --sentinel-border-subtle: rgba(255, 255, 255, 0.06);   /* Bordes casi invisibles */
+  --sentinel-border-default: rgba(255, 255, 255, 0.1);   /* Bordes estándar */
+  --sentinel-border-strong: rgba(255, 255, 255, 0.16);   /* Bordes con énfasis */
+  --sentinel-border-focus: #5ba3a5;                       /* Focus rings - acento */
 
-  --warning: #FFB800;
-  --warning-light: rgba(255, 184, 0, 0.15);
-  --warning-glow: rgba(255, 184, 0, 0.5);
+  /* ─────────────────────────────────────────────────────────────────────────────
+     ACENTO - El color distintivo de Sentinel
+     Cyan/Teal institucional, desaturado pero distintivo
+     Usar con moderación extrema - el acento habla cuando aparece
+     ───────────────────────────────────────────────────────────────────────────── */
 
-  --destructive: #FF3333;
-  --destructive-dark: #CC0000;
-  --destructive-light: rgba(255, 51, 51, 0.15);
-  --destructive-glow: rgba(255, 51, 51, 0.5);
+  --sentinel-accent-primary: #5ba3a5;       /* Acento principal - teal institucional */
+  --sentinel-accent-secondary: #4a8a8c;     /* Acento hover/pressed */
+  --sentinel-accent-tertiary: #3a7072;      /* Acento terciario */
+  --sentinel-accent-subtle: rgba(91, 163, 165, 0.15);   /* Versión muy sutil */
+  --sentinel-accent-glow: rgba(91, 163, 165, 0.3);      /* Para efectos de glow */
+  --sentinel-accent-muted: rgba(91, 163, 165, 0.6);     /* Versión apagada */
 
-  --info: #00BFFF;
-  --info-glow: rgba(0, 191, 255, 0.5);
+  /* HSL components for dynamic color manipulation */
+  --sentinel-accent-teal-h: 182;
+  --sentinel-accent-teal-s: 29%;
+  --sentinel-accent-teal-l: 50%;
 
+  /* ─────────────────────────────────────────────────────────────────────────────
+     ESTADOS SEMÁNTICOS
+     Conservadores, no alarmistas - Sentinel no grita
+     Colores desaturados que informan sin provocar ansiedad
+     ───────────────────────────────────────────────────────────────────────────── */
 
-  /* ==========================================
-     COLORES DE MARCA
-     ==========================================
-  */
-  --brand-red: #FF6600;
+  /* Positivo/Ganancia - Verde institucional, NO verde neón */
+  --sentinel-status-positive: #4a9a7c;
+  --sentinel-status-positive-subtle: rgba(74, 154, 124, 0.15);
+  --sentinel-status-positive-text: #6bb89a;
 
+  /* Negativo/Pérdida - Rojo apagado, NO alarma */
+  --sentinel-status-negative: #b85c5c;
+  --sentinel-status-negative-subtle: rgba(184, 92, 92, 0.15);
+  --sentinel-status-negative-text: #d17878;
 
-  /* ==========================================
-     ESCALA DE GRISES (compatibilidad)
-     ==========================================
-  */
-  --color-white: #FFFFFF;
-  --color-black: #000000;
-  --color-gray-5: #111111;
-  --color-gray-4: #1a1a1a;
-  --color-gray-3: #333333;
-  --color-gray-2: #888888;
-  --color-gray-1: #FFFFFF;
+  /* Advertencia - Ámbar suave */
+  --sentinel-status-warning: #c4a35a;
+  --sentinel-status-warning-subtle: rgba(196, 163, 90, 0.15);
+  --sentinel-status-warning-text: #d9bc78;
 
+  /* Informativo - Azul neutro */
+  --sentinel-status-info: #5a8fb8;
+  --sentinel-status-info-subtle: rgba(90, 143, 184, 0.15);
+  --sentinel-status-info-text: #78a8cc;
 
-  /* ==========================================
-     TIPOGRAFIA
-     ==========================================
-  */
-  --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
-  --font-display: var(--font-mono);
+  /* Neutral - Sin cambio significativo */
+  --sentinel-status-neutral: #6b7280;
+  --sentinel-status-neutral-subtle: rgba(107, 114, 128, 0.15);
 
-  /* Tamanos (mantener nombres existentes) */
-  --text-siglas: 24px;
-  --text-titulo-1: 18px;
-  --text-titulo-2: 16px;
-  --text-cuerpo-1: 14px;
-  --text-cuerpo-2: 12px;
+  /* ─────────────────────────────────────────────────────────────────────────────
+     NIVELES DE RIESGO (específico de Sentinel)
+     Escala de 5 niveles, gradiente controlado
+     Del azul calmo al ámbar/terracota, nunca al rojo alarma
+     ───────────────────────────────────────────────────────────────────────────── */
 
-  /* Extras para terminal */
-  --text-xs: 10px;
-  --text-sm: 12px;
-  --text-base: 14px;
-  --text-lg: 16px;
-  --text-xl: 18px;
-  --text-2xl: 24px;
-  --text-3xl: 32px;
-  --text-4xl: 48px;
+  --sentinel-risk-low: #4a9a7c;           /* Riesgo bajo - verde teal */
+  --sentinel-risk-moderate: #5ba3a5;      /* Riesgo moderado - cyan (acento) */
+  --sentinel-risk-elevated: #c4a35a;      /* Riesgo elevado - ámbar */
+  --sentinel-risk-high: #c47a5a;          /* Riesgo alto - terracota */
+  --sentinel-risk-severe: #b85c5c;        /* Riesgo severo - coral apagado */
 
-  /* Pesos */
-  --font-weight-bold: 700;
-  --font-weight-semibold: 600;
-  --font-weight-medium: 500;
-  --font-weight-normal: 400;
+  /* Fondos sutiles para cada nivel */
+  --sentinel-risk-low-bg: rgba(74, 154, 124, 0.1);
+  --sentinel-risk-moderate-bg: rgba(91, 163, 165, 0.1);
+  --sentinel-risk-elevated-bg: rgba(196, 163, 90, 0.1);
+  --sentinel-risk-high-bg: rgba(196, 122, 90, 0.1);
+  --sentinel-risk-severe-bg: rgba(184, 92, 92, 0.1);
 
-  /* Line height */
-  --line-height-default: 1.2;
-  --line-height-tight: 1.2;
-  --line-height-normal: 1.5;
-  --line-height-relaxed: 1.75;
+  /* ─────────────────────────────────────────────────────────────────────────────
+     NIVEL DE CONFIANZA DEL SISTEMA
+     Indica qué tan seguro está Sentinel de su análisis
+     ───────────────────────────────────────────────────────────────────────────── */
 
+  --sentinel-confidence-high: #5ba3a5;     /* Confianza alta - acento */
+  --sentinel-confidence-medium: #7a8a8c;   /* Confianza media - gris-teal */
+  --sentinel-confidence-low: #5f6368;      /* Confianza baja - gris */
 
-  /* ==========================================
+  /* ─────────────────────────────────────────────────────────────────────────────
+     ESTADOS DEL MERCADO
+     Bull, Bear, Neutral, Uncertain
+     ───────────────────────────────────────────────────────────────────────────── */
+
+  --sentinel-market-bull: #4a9a7c;         /* Mercado alcista */
+  --sentinel-market-bear: #b85c5c;         /* Mercado bajista */
+  --sentinel-market-neutral: #5ba3a5;      /* Mercado neutral */
+  --sentinel-market-uncertain: #6b7280;    /* Incertidumbre */
+
+  /* ─────────────────────────────────────────────────────────────────────────────
+     CHARTS Y VISUALIZACIÓN DE DATOS
+     Paleta armónica para series de datos
+     Colores distinguibles pero que no compiten entre sí
+     ───────────────────────────────────────────────────────────────────────────── */
+
+  --sentinel-chart-1: #5ba3a5;          /* Serie 1 - acento principal */
+  --sentinel-chart-2: #7ecbcc;          /* Serie 2 - acento claro */
+  --sentinel-chart-3: #4a9a7c;          /* Serie 3 - verde teal */
+  --sentinel-chart-4: #5a8fb8;          /* Serie 4 - azul */
+  --sentinel-chart-5: #8b7ec7;          /* Serie 5 - púrpura suave */
+  --sentinel-chart-6: #c4a35a;          /* Serie 6 - ámbar */
+  --sentinel-chart-7: #c47a5a;          /* Serie 7 - terracota */
+  --sentinel-chart-8: #b85c5c;          /* Serie 8 - coral */
+
+  --sentinel-chart-grid: rgba(255, 255, 255, 0.06);      /* Líneas de grid */
+  --sentinel-chart-axis: #5f6368;                         /* Texto de ejes */
+  --sentinel-chart-tooltip-bg: #1c1e2a;                   /* Fondo de tooltips */
+  --sentinel-chart-tooltip-border: rgba(255, 255, 255, 0.1);
+  --sentinel-chart-crosshair: rgba(91, 163, 165, 0.5);   /* Línea de crosshair */
+
+  /* ─────────────────────────────────────────────────────────────────────────────
+     TIPOGRAFÍA - Fuentes
+     Inter para UI general (claridad, legibilidad)
+     Display para títulos hero (personalidad)
+     Mono para datos financieros (precisión)
+     ───────────────────────────────────────────────────────────────────────────── */
+
+  /* Font Families */
+  --sentinel-font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --sentinel-font-display: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --sentinel-font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', 'Consolas', monospace;
+
+  /* ─────────────────────────────────────────────────────────────────────────────
+     TIPOGRAFÍA - Escala
+     Basada en 16px, escala armónica
+     ───────────────────────────────────────────────────────────────────────────── */
+
+  --sentinel-text-xs: 0.75rem;      /* 12px */
+  --sentinel-text-sm: 0.875rem;     /* 14px */
+  --sentinel-text-base: 1rem;       /* 16px */
+  --sentinel-text-lg: 1.125rem;     /* 18px */
+  --sentinel-text-xl: 1.25rem;      /* 20px */
+  --sentinel-text-2xl: 1.5rem;      /* 24px */
+  --sentinel-text-3xl: 1.875rem;    /* 30px */
+  --sentinel-text-4xl: 2.25rem;     /* 36px */
+  --sentinel-text-5xl: 3rem;        /* 48px */
+  --sentinel-text-6xl: 3.75rem;     /* 60px */
+
+  /* Compatibilidad con sistema anterior */
+  --text-siglas: var(--sentinel-text-2xl);
+  --text-titulo-1: var(--sentinel-text-lg);
+  --text-titulo-2: var(--sentinel-text-base);
+  --text-cuerpo-1: var(--sentinel-text-sm);
+  --text-cuerpo-2: var(--sentinel-text-xs);
+
+  /* ─────────────────────────────────────────────────────────────────────────────
+     TIPOGRAFÍA - Pesos
+     ───────────────────────────────────────────────────────────────────────────── */
+
+  --sentinel-font-light: 300;
+  --sentinel-font-regular: 400;
+  --sentinel-font-medium: 500;
+  --sentinel-font-semibold: 600;
+  --sentinel-font-bold: 700;
+
+  /* Compatibilidad */
+  --font-weight-light: var(--sentinel-font-light);
+  --font-weight-normal: var(--sentinel-font-regular);
+  --font-weight-medium: var(--sentinel-font-medium);
+  --font-weight-semibold: var(--sentinel-font-semibold);
+  --font-weight-bold: var(--sentinel-font-bold);
+
+  /* ─────────────────────────────────────────────────────────────────────────────
+     TIPOGRAFÍA - Line Heights
+     ───────────────────────────────────────────────────────────────────────────── */
+
+  --sentinel-leading-none: 1;
+  --sentinel-leading-tight: 1.25;
+  --sentinel-leading-snug: 1.375;
+  --sentinel-leading-normal: 1.5;
+  --sentinel-leading-relaxed: 1.625;
+  --sentinel-leading-loose: 2;
+
+  /* Compatibilidad */
+  --line-height-default: var(--sentinel-leading-normal);
+  --line-height-tight: var(--sentinel-leading-tight);
+  --line-height-normal: var(--sentinel-leading-normal);
+  --line-height-relaxed: var(--sentinel-leading-relaxed);
+
+  /* ─────────────────────────────────────────────────────────────────────────────
+     TIPOGRAFÍA - Letter Spacing
+     ───────────────────────────────────────────────────────────────────────────── */
+
+  --sentinel-tracking-tighter: -0.05em;
+  --sentinel-tracking-tight: -0.025em;
+  --sentinel-tracking-normal: 0;
+  --sentinel-tracking-wide: 0.025em;
+  --sentinel-tracking-wider: 0.05em;
+  --sentinel-tracking-widest: 0.1em;
+
+  /* ─────────────────────────────────────────────────────────────────────────────
      ESPACIADO
-     ==========================================
-     Mantener nombres existentes
-  */
-  --spacing-xs: 4px;
-  --spacing-sm: 8px;
-  --spacing-md: 16px;
-  --spacing-lg: 24px;
-  --spacing-xl: 32px;
-  --spacing-2xl: 48px;
-  --spacing-3xl: 64px;
+     Escala consistente basada en 4px
+     ───────────────────────────────────────────────────────────────────────────── */
 
-  --content-padding: 24px;
-  --gap-elements: 16px;
-  --container-padding: 20px;
+  --sentinel-space-0: 0;
+  --sentinel-space-px: 1px;
+  --sentinel-space-0-5: 0.125rem;   /* 2px */
+  --sentinel-space-1: 0.25rem;      /* 4px */
+  --sentinel-space-1-5: 0.375rem;   /* 6px */
+  --sentinel-space-2: 0.5rem;       /* 8px */
+  --sentinel-space-2-5: 0.625rem;   /* 10px */
+  --sentinel-space-3: 0.75rem;      /* 12px */
+  --sentinel-space-3-5: 0.875rem;   /* 14px */
+  --sentinel-space-4: 1rem;         /* 16px */
+  --sentinel-space-5: 1.25rem;      /* 20px */
+  --sentinel-space-6: 1.5rem;       /* 24px */
+  --sentinel-space-7: 1.75rem;      /* 28px */
+  --sentinel-space-8: 2rem;         /* 32px */
+  --sentinel-space-9: 2.25rem;      /* 36px */
+  --sentinel-space-10: 2.5rem;      /* 40px */
+  --sentinel-space-11: 2.75rem;     /* 44px */
+  --sentinel-space-12: 3rem;        /* 48px */
+  --sentinel-space-14: 3.5rem;      /* 56px */
+  --sentinel-space-16: 4rem;        /* 64px */
+  --sentinel-space-20: 5rem;        /* 80px */
+  --sentinel-space-24: 6rem;        /* 96px */
+  --sentinel-space-28: 7rem;        /* 112px */
+  --sentinel-space-32: 8rem;        /* 128px */
 
+  /* Espaciado semántico */
+  --sentinel-space-component: var(--sentinel-space-4);
+  --sentinel-space-card: var(--sentinel-space-6);
+  --sentinel-space-section: var(--sentinel-space-10);
+  --sentinel-space-page: var(--sentinel-space-8);
 
-  /* ==========================================
-     BORDER RADIUS
-     ==========================================
-     Mas angulares para estetica terminal
-  */
-  --radius: 2px;
-  --radius-card: 4px;
-  --radius-none: 0px;
-  --radius-sm: 2px;
+  /* Compatibilidad */
+  --spacing-xs: var(--sentinel-space-1);
+  --spacing-sm: var(--sentinel-space-2);
+  --spacing-md: var(--sentinel-space-4);
+  --spacing-lg: var(--sentinel-space-6);
+  --spacing-xl: var(--sentinel-space-8);
+  --spacing-2xl: var(--sentinel-space-12);
+  --spacing-3xl: var(--sentinel-space-16);
 
+  --content-padding: var(--sentinel-space-6);
+  --gap-elements: var(--sentinel-space-4);
+  --container-padding: var(--sentinel-space-5);
 
-  /* ==========================================
-     SOMBRAS / GLOW
-     ==========================================
-  */
-  --elevation-sm: 0 0 10px rgba(255, 102, 0, 0.1);
-  --elevation-md: 0 0 20px rgba(255, 102, 0, 0.15);
-  --elevation-lg: 0 0 30px rgba(255, 102, 0, 0.2);
+  /* ─────────────────────────────────────────────────────────────────────────────
+     BORDES Y RADIOS
+     Ligeramente redondeados, profesional pero no frío
+     ───────────────────────────────────────────────────────────────────────────── */
 
-  --shadow-sm: var(--elevation-sm);
-  --shadow-md: var(--elevation-md);
-  --shadow-lg: var(--elevation-lg);
+  --sentinel-radius-none: 0;
+  --sentinel-radius-sm: 4px;
+  --sentinel-radius-md: 6px;
+  --sentinel-radius-lg: 8px;
+  --sentinel-radius-xl: 12px;
+  --sentinel-radius-2xl: 16px;
+  --sentinel-radius-3xl: 24px;
+  --sentinel-radius-full: 9999px;
 
-  --shadow-glow-sm: 0 0 10px var(--accent-glow);
-  --shadow-glow-md: 0 0 20px var(--accent-glow);
-  --shadow-glow-lg: 0 0 30px var(--accent-glow);
+  /* Compatibilidad */
+  --radius: var(--sentinel-radius-md);
+  --radius-card: var(--sentinel-radius-lg);
+  --radius-sm: var(--sentinel-radius-sm);
+  --radius-none: var(--sentinel-radius-none);
 
-  --shadow-inset: inset 0 0 20px rgba(0, 0, 0, 0.5);
-  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.5);
+  /* ─────────────────────────────────────────────────────────────────────────────
+     SOMBRAS
+     Sutiles, para crear profundidad sin drama
+     En tema oscuro, las sombras son más sobre capas que sobre luz
+     ───────────────────────────────────────────────────────────────────────────── */
 
+  --sentinel-shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --sentinel-shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 2px -1px rgba(0, 0, 0, 0.4);
+  --sentinel-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.4);
+  --sentinel-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
+  --sentinel-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+  --sentinel-shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  --sentinel-shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.3);
 
-  /* ==========================================
-     ICONOGRAFIA
-     ==========================================
-  */
-  --icon-size-lg: 32px;
-  --icon-size-md: 24px;
-  --icon-size-sm: 20px;
-  --icon-size-xs: 16px;
+  /* Sombras con glow de acento */
+  --sentinel-shadow-glow-sm: 0 0 10px var(--sentinel-accent-glow);
+  --sentinel-shadow-glow-md: 0 0 20px var(--sentinel-accent-glow);
+  --sentinel-shadow-glow-lg: 0 0 30px var(--sentinel-accent-glow);
 
+  /* Sombras especiales */
+  --sentinel-shadow-card: 0 4px 20px rgba(0, 0, 0, 0.3);
+  --sentinel-shadow-modal: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+  --sentinel-shadow-dropdown: 0 10px 40px rgba(0, 0, 0, 0.5);
 
-  /* ==========================================
+  /* Compatibilidad */
+  --elevation-sm: var(--sentinel-shadow-sm);
+  --elevation-md: var(--sentinel-shadow-md);
+  --elevation-lg: var(--sentinel-shadow-lg);
+  --shadow-sm: var(--sentinel-shadow-sm);
+  --shadow-md: var(--sentinel-shadow-md);
+  --shadow-lg: var(--sentinel-shadow-lg);
+  --shadow-card: var(--sentinel-shadow-card);
+
+  /* ─────────────────────────────────────────────────────────────────────────────
+     ANIMACIONES Y TRANSICIONES
+     Sentinel: lentas, atmosféricas, nunca bruscas
+     Las animaciones refuerzan la calma, no crean urgencia
+     ───────────────────────────────────────────────────────────────────────────── */
+
+  /* Duraciones (más largas que lo típico) */
+  --sentinel-duration-instant: 100ms;
+  --sentinel-duration-fast: 200ms;
+  --sentinel-duration-normal: 400ms;
+  --sentinel-duration-slow: 700ms;
+  --sentinel-duration-slower: 1000ms;
+  --sentinel-duration-slowest: 2000ms;      /* Fondos, respiración */
+  --sentinel-duration-glacial: 4000ms;      /* Gradientes muy lentos */
+  --sentinel-duration-ambient: 8000ms;      /* Animaciones ambientales */
+
+  /* Easings - suaves, nunca abruptos */
+  --sentinel-ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --sentinel-ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --sentinel-ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --sentinel-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --sentinel-ease-smooth: cubic-bezier(0.45, 0, 0.15, 1);
+  --sentinel-ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --sentinel-ease-spring: cubic-bezier(0.155, 1.105, 0.295, 1.12);
+
+  /* Transiciones compuestas */
+  --sentinel-transition-instant: all var(--sentinel-duration-instant) var(--sentinel-ease-default);
+  --sentinel-transition-fast: all var(--sentinel-duration-fast) var(--sentinel-ease-default);
+  --sentinel-transition-normal: all var(--sentinel-duration-normal) var(--sentinel-ease-default);
+  --sentinel-transition-slow: all var(--sentinel-duration-slow) var(--sentinel-ease-smooth);
+  --sentinel-transition-slower: all var(--sentinel-duration-slower) var(--sentinel-ease-smooth);
+  --sentinel-transition-atmosphere: all var(--sentinel-duration-slowest) var(--sentinel-ease-smooth);
+
+  /* Compatibilidad */
+  --transition-fast: var(--sentinel-transition-fast);
+  --transition-normal: var(--sentinel-transition-normal);
+  --transition-slow: var(--sentinel-transition-slow);
+
+  /* ─────────────────────────────────────────────────────────────────────────────
+     ICONOGRAFÍA
+     ───────────────────────────────────────────────────────────────────────────── */
+
+  --sentinel-icon-xs: 12px;
+  --sentinel-icon-sm: 16px;
+  --sentinel-icon-md: 20px;
+  --sentinel-icon-lg: 24px;
+  --sentinel-icon-xl: 32px;
+  --sentinel-icon-2xl: 40px;
+
+  /* Compatibilidad */
+  --icon-size-xs: var(--sentinel-icon-sm);
+  --icon-size-sm: var(--sentinel-icon-md);
+  --icon-size-md: var(--sentinel-icon-lg);
+  --icon-size-lg: var(--sentinel-icon-xl);
+
+  /* ─────────────────────────────────────────────────────────────────────────────
+     Z-INDEX
+     Escala ordenada para capas
+     ───────────────────────────────────────────────────────────────────────────── */
+
+  --sentinel-z-behind: -1;
+  --sentinel-z-base: 0;
+  --sentinel-z-elevated: 10;
+  --sentinel-z-dropdown: 50;
+  --sentinel-z-sticky: 100;
+  --sentinel-z-overlay: 200;
+  --sentinel-z-modal: 300;
+  --sentinel-z-popover: 400;
+  --sentinel-z-tooltip: 500;
+  --sentinel-z-notification: 600;
+  --sentinel-z-max: 9999;
+
+  /* ─────────────────────────────────────────────────────────────────────────────
      GRID
-     ==========================================
-  */
+     Sistema flexible
+     ───────────────────────────────────────────────────────────────────────────── */
+
+  --sentinel-grid-columns: 12;
+  --sentinel-grid-gap: var(--sentinel-space-6);
+
+  /* Compatibilidad */
   --grid-columns: 24;
-  --grid-gap: 20px;
+  --grid-gap: var(--sentinel-grid-gap);
 
+  /* ─────────────────────────────────────────────────────────────────────────────
+     COMPONENTES ESPECÍFICOS
+     Valores para componentes comunes
+     ───────────────────────────────────────────────────────────────────────────── */
 
-  /* ==========================================
-     TRANSICIONES
-     ==========================================
-  */
-  --transition-fast: 100ms ease;
-  --transition-normal: 200ms ease;
-  --transition-slow: 300ms ease;
+  /* Input/Button heights */
+  --sentinel-input-height-sm: 32px;
+  --sentinel-input-height-md: 40px;
+  --sentinel-input-height-lg: 48px;
 
+  /* Sidebar */
+  --sentinel-sidebar-width: 64px;
+  --sentinel-sidebar-width-expanded: 240px;
 
-  /* ==========================================
-     EFECTOS CRT
-     ==========================================
-  */
-  --crt-scanline-opacity: 0.1;
-  --crt-flicker-intensity: 0.03;
-  --crt-glow-spread: 2px;
+  /* Searchbar */
+  --sentinel-searchbar-height: 40px;
+
+  /* ─────────────────────────────────────────────────────────────────────────────
+     COMPATIBILIDAD CON SISTEMA ANTERIOR
+     Mapeo de variables antiguas a nuevas
+     ───────────────────────────────────────────────────────────────────────────── */
+
+  /* Colores principales */
+  --primary: var(--sentinel-accent-primary);
+  --primary-dark: var(--sentinel-accent-secondary);
+  --primary-light: var(--sentinel-accent-muted);
+  --accent: var(--sentinel-accent-subtle);
+  --accent-glow: var(--sentinel-accent-glow);
+
+  /* Fondos */
+  --background: var(--sentinel-bg-base);
+  --background-secondary: var(--sentinel-bg-elevated);
+  --background-tertiary: var(--sentinel-bg-overlay);
+  --foreground: var(--sentinel-text-primary);
+  --foreground-muted: var(--sentinel-text-secondary);
+  --foreground-subtle: var(--sentinel-text-tertiary);
+  --secondary: var(--sentinel-bg-elevated);
+
+  /* Bordes */
+  --border: var(--sentinel-border-default);
+  --border-focus: var(--sentinel-border-focus);
+  --border-hover: var(--sentinel-border-strong);
+  --muted: var(--sentinel-border-subtle);
+  --grid-line: var(--sentinel-chart-grid);
+
+  /* Estados */
+  --success: var(--sentinel-status-positive);
+  --success-light: var(--sentinel-status-positive-subtle);
+  --success-glow: rgba(74, 154, 124, 0.5);
+
+  --warning: var(--sentinel-status-warning);
+  --warning-light: var(--sentinel-status-warning-subtle);
+  --warning-glow: rgba(196, 163, 90, 0.5);
+
+  --destructive: var(--sentinel-status-negative);
+  --destructive-dark: #a04a4a;
+  --destructive-light: var(--sentinel-status-negative-subtle);
+  --destructive-glow: rgba(184, 92, 92, 0.5);
+
+  --info: var(--sentinel-status-info);
+  --info-glow: rgba(90, 143, 184, 0.5);
+
+  /* Grises (compatibilidad) */
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-gray-5: var(--sentinel-bg-elevated);
+  --color-gray-4: var(--sentinel-bg-overlay);
+  --color-gray-3: var(--sentinel-border-default);
+  --color-gray-2: var(--sentinel-text-tertiary);
+  --color-gray-1: var(--sentinel-text-primary);
+
+  /* Font (compatibilidad) */
+  --font-mono: var(--sentinel-font-mono);
+  --font-display: var(--sentinel-font-display);
+
+  /* ─────────────────────────────────────────────────────────────────────────────
+     ALIAS FOR COMPONENTS
+     ───────────────────────────────────────────────────────────────────────────── */
+
+  /* Font size aliases used by components */
+  --sentinel-font-xs: var(--sentinel-text-xs);
+  --sentinel-font-sm: var(--sentinel-text-sm);
+  --sentinel-font-base: var(--sentinel-text-base);
+  --sentinel-font-lg: var(--sentinel-text-lg);
+  --sentinel-font-xl: var(--sentinel-text-xl);
+  --sentinel-font-2xl: var(--sentinel-text-2xl);
+  --sentinel-font-3xl: var(--sentinel-text-3xl);
+
+  /* Spacing aliases */
+  --sentinel-spacing-xs: var(--sentinel-space-1);
+  --sentinel-spacing-sm: var(--sentinel-space-2);
+  --sentinel-spacing-md: var(--sentinel-space-4);
+  --sentinel-spacing-lg: var(--sentinel-space-6);
+  --sentinel-spacing-xl: var(--sentinel-space-8);
+
+  /* Radius aliases */
+  --sentinel-radius-xs: 2px;
+
+  /* Focus ring */
+  --sentinel-focus-ring: rgba(91, 163, 165, 0.4);
+
+  /* Interactive states */
+  --sentinel-bg-interactive-hover: var(--sentinel-bg-subtle);
 }
 
-/* ==========================================
-   ANIMACIONES GLOBALES
-   ==========================================
-*/
-@keyframes hueRotate {
+/* ═══════════════════════════════════════════════════════════════════════════════
+   KEYFRAMES ATMOSFÉRICOS
+   Animaciones sutiles que dan vida al sistema sin crear distracción
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* Respiración sutil para fondos - muy lenta, casi imperceptible */
+@keyframes sentinel-breathe {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.97;
+  }
+}
+
+/* Pulso muy sutil para elementos activos */
+@keyframes sentinel-pulse-subtle {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.005);
+    opacity: 0.95;
+  }
+}
+
+/* Pulso para indicador de sistema activo */
+@keyframes sentinel-system-pulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+/* Gradiente que se desplaza imperceptiblemente */
+@keyframes sentinel-gradient-shift {
   0% {
-    filter: hue-rotate(0deg);
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
   }
   100% {
-    filter: hue-rotate(360deg);
+    background-position: 0% 50%;
   }
+}
+
+/* Fade in desde abajo (para datos que emergen) */
+@keyframes sentinel-emerge {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade in simple */
+@keyframes sentinel-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Fade in con escala sutil */
+@keyframes sentinel-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Glow pulsante muy sutil */
+@keyframes sentinel-glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 15px var(--sentinel-accent-glow);
+  }
+  50% {
+    box-shadow: 0 0 25px var(--sentinel-accent-glow);
+  }
+}
+
+/* Shimmer para loading states */
+@keyframes sentinel-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Rotación lenta para indicadores */
+@keyframes sentinel-rotate-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Blink sutil para cursor o indicadores */
+@keyframes sentinel-blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+/* Float sutil para elementos destacados */
+@keyframes sentinel-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   CLASES UTILITARIAS PARA ANIMACIONES
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.sentinel-animate-breathe {
+  animation: sentinel-breathe var(--sentinel-duration-ambient) var(--sentinel-ease-smooth) infinite;
+}
+
+.sentinel-animate-pulse {
+  animation: sentinel-pulse-subtle var(--sentinel-duration-slowest) var(--sentinel-ease-smooth) infinite;
+}
+
+.sentinel-animate-system-pulse {
+  animation: sentinel-system-pulse 2s var(--sentinel-ease-smooth) infinite;
+}
+
+.sentinel-animate-emerge {
+  animation: sentinel-emerge var(--sentinel-duration-slow) var(--sentinel-ease-out) forwards;
+}
+
+.sentinel-animate-fade-in {
+  animation: sentinel-fade-in var(--sentinel-duration-normal) var(--sentinel-ease-out) forwards;
+}
+
+.sentinel-animate-scale-in {
+  animation: sentinel-scale-in var(--sentinel-duration-normal) var(--sentinel-ease-out) forwards;
+}
+
+.sentinel-animate-glow {
+  animation: sentinel-glow-pulse var(--sentinel-duration-slowest) var(--sentinel-ease-smooth) infinite;
+}
+
+.sentinel-animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--sentinel-bg-elevated) 0%,
+    var(--sentinel-bg-subtle) 50%,
+    var(--sentinel-bg-elevated) 100%
+  );
+  background-size: 200% 100%;
+  animation: sentinel-shimmer 2s linear infinite;
 }

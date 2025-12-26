@@ -1,81 +1,106 @@
 /* Path: src/components/molecules/SidebarItem/SidebarItem.module.css */
-/* Terminal Theme Version */
+/* ═══════════════════════════════════════════════════════════════════════════════
+   SENTINEL DESIGN SYSTEM - SidebarItem Component
 
-/* SidebarItem container */
+   Navigation item for sidebar menus
+   Clean styling with active state indicator
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   CONTAINER
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .container {
   position: relative;
   display: flex;
   align-items: center;
   height: 40px;
-  padding: 0 16px;
-  font-size: var(--text-cuerpo-1);
-  font-weight: var(--font-weight-normal);
-  color: var(--foreground-muted);
+  padding: 0 var(--sentinel-space-4);
+  font-size: var(--sentinel-text-sm);
+  font-weight: var(--sentinel-font-normal);
+  color: var(--sentinel-text-secondary);
   background-color: transparent;
   cursor: pointer;
-  font-family: var(--font-mono);
-  line-height: var(--line-height-default);
+  font-family: var(--sentinel-font-primary);
+  line-height: 1.5;
   text-decoration: none;
   border: none;
   width: 100%;
   text-align: left;
-  transition: all var(--transition-fast);
+  transition: var(--sentinel-transition-normal);
   outline: none;
   user-select: none;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
 }
 
 .container:hover:not(.disabled) {
-  background-color: var(--background-tertiary);
-  color: var(--foreground);
+  background-color: var(--sentinel-bg-overlay);
+  color: var(--sentinel-text-primary);
 }
 
 .container:focus-visible {
-  outline: 2px solid var(--primary);
+  outline: 2px solid var(--sentinel-accent-primary);
   outline-offset: -2px;
 }
 
-/* Active state */
+/* ─────────────────────────────────────────────────────────────────────────────
+   ACTIVE STATE
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .active {
-  font-weight: var(--font-weight-semibold);
-  color: var(--primary);
-  background-color: var(--accent);
+  font-weight: var(--sentinel-font-medium);
+  color: var(--sentinel-accent-primary);
+  background-color: var(--sentinel-accent-subtle);
 }
 
-/* Disabled state */
+.active:hover {
+  background-color: var(--sentinel-accent-subtle);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   DISABLED STATE
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .disabled {
-  color: var(--foreground-subtle);
+  color: var(--sentinel-text-disabled);
   cursor: not-allowed;
   background-color: transparent;
 }
 
-/* Left bar indicator */
+/* ─────────────────────────────────────────────────────────────────────────────
+   LEFT BAR INDICATOR
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .leftBar {
   position: absolute;
   left: 0;
   top: 0;
   bottom: 0;
   width: 3px;
-  background-color: var(--primary);
+  background-color: var(--sentinel-accent-primary);
   opacity: 0;
-  transition: opacity var(--transition-fast);
-  box-shadow: 0 0 10px var(--accent-glow);
+  transition: opacity var(--sentinel-transition-normal);
 }
 
 .leftBarVisible {
   opacity: 1;
 }
 
-/* Icon container */
+/* ─────────────────────────────────────────────────────────────────────────────
+   ICON CONTAINER
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .iconContainer {
-  margin-right: 12px;
+  margin-right: var(--sentinel-space-3);
   flex-shrink: 0;
   display: flex;
   align-items: center;
+  color: currentColor;
 }
 
-/* Label */
+/* ─────────────────────────────────────────────────────────────────────────────
+   LABEL
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .label {
   flex: 1;
   overflow: hidden;
@@ -83,19 +108,22 @@
   white-space: nowrap;
 }
 
-/* Badge */
+/* ─────────────────────────────────────────────────────────────────────────────
+   BADGE
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .badge {
   display: flex;
   align-items: center;
   justify-content: center;
   min-width: 20px;
   height: 20px;
-  padding: 0 6px;
+  padding: 0 var(--sentinel-space-1);
   font-size: 10px;
-  font-weight: var(--font-weight-bold);
-  color: var(--background);
-  background-color: var(--primary);
-  border-radius: var(--radius-sm);
-  margin-left: 8px;
-  box-shadow: var(--shadow-glow-sm);
+  font-weight: var(--sentinel-font-semibold);
+  color: var(--sentinel-bg-base);
+  background-color: var(--sentinel-accent-primary);
+  border-radius: var(--sentinel-radius-full);
+  margin-left: var(--sentinel-space-2);
+  font-family: var(--sentinel-font-mono);
 }

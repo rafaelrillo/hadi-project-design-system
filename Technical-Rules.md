@@ -1,4 +1,4 @@
-# Design System Robot Resources v1.0.1 - Especificaciones de Desarrollo
+# Design System SENTINEL v2.0.0 - Especificaciones de Desarrollo
 
 ## Stack Tecnológico
 

@@ -1,0 +1,258 @@
+/* Path: src/components/organisms/sentinel/ConfidenceLevel/ConfidenceLevel.module.css */
+/* ═══════════════════════════════════════════════════════════════════════════════
+   SENTINEL DESIGN SYSTEM - ConfidenceLevel
+
+   Circular indicator showing system analysis confidence
+   Compact and elegant with ring progress visualization
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   CONTAINER
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sentinel-space-3);
+  padding: var(--sentinel-space-4);
+  background-color: var(--sentinel-bg-elevated);
+  border: 1px solid var(--sentinel-border-default);
+  border-radius: var(--sentinel-radius-lg);
+  font-family: var(--sentinel-font-primary);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   SIZE VARIANTS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.sm {
+  padding: var(--sentinel-space-3);
+  gap: var(--sentinel-space-2);
+}
+
+.sm .ringContainer {
+  width: 72px;
+  height: 72px;
+}
+
+.sm .levelText {
+  font-size: var(--sentinel-text-sm);
+}
+
+.md .ringContainer {
+  width: 96px;
+  height: 96px;
+}
+
+.lg {
+  padding: var(--sentinel-space-5);
+  gap: var(--sentinel-space-4);
+}
+
+.lg .ringContainer {
+  width: 120px;
+  height: 120px;
+}
+
+.lg .levelText {
+  font-size: var(--sentinel-text-xl);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   LEVEL COLORS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.high {
+  --confidence-color: var(--sentinel-accent-primary);
+  --confidence-color-rgb: 91, 163, 165;
+}
+
+.medium {
+  --confidence-color: var(--sentinel-text-secondary);
+  --confidence-color-rgb: 154, 160, 166;
+}
+
+.low {
+  --confidence-color: var(--sentinel-status-warning);
+  --confidence-color-rgb: 196, 163, 90;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   LABEL
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.label {
+  font-size: var(--sentinel-text-xs);
+  font-weight: var(--sentinel-font-medium);
+  color: var(--sentinel-text-tertiary);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   RING CONTAINER
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.ringContainer {
+  position: relative;
+  width: 96px;
+  height: 96px;
+}
+
+.ring {
+  width: 100%;
+  height: 100%;
+}
+
+/* Background ring */
+.ringBg {
+  stroke: var(--sentinel-bg-subtle);
+}
+
+/* Progress ring */
+.ringProgress {
+  stroke: var(--confidence-color);
+  transition: stroke-dashoffset 700ms var(--sentinel-ease-smooth),
+              stroke 700ms var(--sentinel-ease-smooth);
+}
+
+/* Glow effect */
+.ringGlow {
+  stroke: var(--confidence-color);
+  opacity: 0.2;
+  filter: blur(3px);
+  transition: stroke-dashoffset 700ms var(--sentinel-ease-smooth),
+              stroke 700ms var(--sentinel-ease-smooth);
+}
+
+.animated .ringProgress {
+  animation: ringPulse 4s ease-in-out infinite;
+}
+
+@keyframes ringPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   RING CENTER
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.ringCenter {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.percentageText {
+  font-size: var(--sentinel-text-lg);
+  font-weight: var(--sentinel-font-semibold);
+  font-family: var(--sentinel-font-mono);
+  color: var(--confidence-color);
+  transition: color 700ms var(--sentinel-ease-smooth);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   LEVEL INDICATOR (bars alternative to percentage)
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.levelIndicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.levelBars {
+  display: flex;
+  gap: 4px;
+  align-items: flex-end;
+  height: 24px;
+}
+
+.bar {
+  width: 6px;
+  background-color: var(--sentinel-bg-subtle);
+  border-radius: 2px;
+  transition: background-color 700ms var(--sentinel-ease-smooth),
+              height 300ms var(--sentinel-ease-smooth);
+}
+
+.bar:nth-child(1) {
+  height: 8px;
+}
+
+.bar:nth-child(2) {
+  height: 14px;
+}
+
+.bar:nth-child(3) {
+  height: 20px;
+}
+
+.barActive {
+  background-color: var(--confidence-color);
+}
+
+.animated .barActive {
+  animation: barPulse 3s ease-in-out infinite;
+}
+
+@keyframes barPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   LEVEL DISPLAY
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.levelDisplay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.levelText {
+  font-size: var(--sentinel-text-base);
+  font-weight: var(--sentinel-font-semibold);
+  color: var(--confidence-color);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  transition: color 700ms var(--sentinel-ease-smooth);
+}
+
+.percentageSubtext {
+  font-size: var(--sentinel-text-xs);
+  color: var(--sentinel-text-tertiary);
+  text-transform: lowercase;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   REDUCED MOTION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .animated .ringProgress,
+  .animated .barActive {
+    animation: none;
+  }
+
+  .ringProgress,
+  .ringGlow,
+  .bar,
+  .levelText {
+    transition: none;
+  }
+}

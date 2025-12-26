@@ -1,5 +1,5 @@
 // Path: src/pages/molecules/CardShowcase.tsx
-// Terminal Theme Version
+// SENTINEL Design System
 import { Card } from '../../components/molecules/Card';
 import { Button } from '../../components/atoms/Button';
 import { Badge } from '../../components/atoms/Badge';

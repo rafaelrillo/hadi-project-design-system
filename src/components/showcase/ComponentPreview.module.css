@@ -1,31 +1,32 @@
 /* Path: src/components/showcase/ComponentPreview.module.css */
-/* Terminal Theme Version */
+/* SENTINEL Design System Version */
 
 .container {
-  padding: var(--spacing-lg);
-  border-radius: var(--radius-card);
+  padding: var(--sentinel-space-6);
+  border-radius: var(--sentinel-radius-md);
   display: flex;
   flex-wrap: wrap;
-  gap: var(--gap-elements);
+  gap: var(--sentinel-space-4);
   align-items: flex-start;
-  border: 1px solid var(--border);
+  border: 1px solid var(--sentinel-border-subtle);
+  background-color: var(--sentinel-bg-base);
 }
 
 /* Background variants */
 .bgWhite {
-  background-color: var(--background-secondary);
+  background-color: var(--sentinel-bg-elevated);
 }
 
 .bgGray {
-  background-color: var(--background-tertiary);
+  background-color: var(--sentinel-bg-subtle);
 }
 
 .bgTransparent {
   background-color: transparent;
-  border: 1px dashed var(--border);
+  border: 1px dashed var(--sentinel-border-default);
 }
 
 /* Dark variant for contrast */
 .bgDark {
-  background-color: var(--background);
+  background-color: var(--sentinel-bg-base);
 }

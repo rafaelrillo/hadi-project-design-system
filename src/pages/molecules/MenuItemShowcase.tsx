@@ -1,5 +1,5 @@
 // Path: src/pages/molecules/MenuItemShowcase.tsx
-// Terminal Theme Version
+// SENTINEL Design System
 import { useState } from 'react';
 import { MenuItem } from '../../components/molecules/MenuItem';
 import { ShowcaseSection, ComponentPreview } from '../../components/showcase';

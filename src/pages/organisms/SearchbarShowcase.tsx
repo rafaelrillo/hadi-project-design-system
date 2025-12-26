@@ -1,5 +1,5 @@
 // Path: src/pages/organisms/SearchbarShowcase.tsx
-// Terminal Theme Version
+// SENTINEL Design System
 import React, { useState } from 'react';
 import { Searchbar } from '../../components/organisms/Searchbar';
 import { ShowcaseSection, ComponentPreview } from '../../components/showcase';
@@ -74,7 +74,7 @@ export function SearchbarShowcase() {
         <ComponentPreview>
           <div style={{ width: '100%' }}>
             <Searchbar
-              productName="Robot Resources"
+              productName="SENTINEL"
               version="v1.0.1"
               onSearch={() => alert('Búsqueda ejecutada')}
             />
@@ -90,7 +90,7 @@ export function SearchbarShowcase() {
         <ComponentPreview>
           <div style={{ width: '100%' }}>
             <Searchbar
-              productName="Robot Resources"
+              productName="SENTINEL"
               version="v1.0.1"
               filters={[
                 {
@@ -114,7 +114,7 @@ export function SearchbarShowcase() {
         <ComponentPreview>
           <div style={{ width: '100%' }}>
             <Searchbar
-              productName="Robot Resources"
+              productName="SENTINEL"
               version="v1.0.1"
               filters={[
                 {
@@ -139,7 +139,7 @@ export function SearchbarShowcase() {
         <ComponentPreview>
           <div style={{ width: '100%' }}>
             <Searchbar
-              productName="Robot Resources"
+              productName="SENTINEL"
               version="v1.0.1"
               filters={[
                 {
@@ -221,7 +221,7 @@ export function SearchbarShowcase() {
         <ComponentPreview>
           <div style={{ width: '100%' }}>
             <Searchbar
-              productName="Robot Resources"
+              productName="SENTINEL"
               version="v1.0.1"
               filters={[
                 {
@@ -249,7 +249,7 @@ export function SearchbarShowcase() {
         <ComponentPreview>
           <div style={{ width: '100%', padding: '24px', backgroundColor: 'var(--background-secondary)', borderRadius: 'var(--radius)', border: '1px solid var(--border)' }}>
             <Searchbar
-              productName="Robot Resources"
+              productName="SENTINEL"
               version="Design System v1.0.1"
               filters={[
                 {

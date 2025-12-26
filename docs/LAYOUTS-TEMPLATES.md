@@ -1,4 +1,4 @@
-# Layouts & Templates - Robot Resources v1.0.1
+# Layouts & Templates - SENTINEL v2.0.0
 
 **Layouts y templates de pantalla**
 
@@ -98,7 +98,7 @@ export function MainLayout({
     <div style={{ display: 'flex', minHeight: '100vh' }}>
       {/* Sidebar */}
       <Sidebar
-        productLogo={<TerminalLogo />}
+        productLogo={<SentinelLogo />}
         menuItems={sidebarMenuItems}
         userIcon={<User />}
         onLogsClick={() => {}}
@@ -146,7 +146,7 @@ Layout para páginas de autenticación (Login, Register, Reset Password).
 │                                                             │
 │                    ┌──────────────────┐                     │
 │                    │                  │                     │
-│                    │   LOGO TERMINAL     │                     │
+│                    │   LOGO SENTINEL     │                     │
 │                    │                  │                     │
 │                    │   FORM CARD      │                     │
 │                    │                  │                     │
@@ -310,7 +310,7 @@ Template para pantallas con formularios de creación/edición.
 **Header:**
 - h1: `18px Semibold #222222`
 - Padding: `20px 0`
-- Border-bottom: `2px solid #006081`
+- Border-bottom: `2px solid #5ba3a5`
 
 **Form Body:**
 - Padding-top: `20px`
@@ -379,7 +379,7 @@ Template para pantallas con tablas de datos.
 - Justify-content: `space-between`
 - Align-items: `center`
 - Padding: `20px 0`
-- Border-bottom: `2px solid #006081`
+- Border-bottom: `2px solid #5ba3a5`
 
 **Table:**
 - Margin-top: `20px`
@@ -443,7 +443,7 @@ Template para pantallas de detalle/visualización de un item.
 - Justify-content: `space-between`
 - Align-items: `center`
 - Padding: `20px 0`
-- Border-bottom: `2px solid #006081`
+- Border-bottom: `2px solid #5ba3a5`
 
 **Sections:**
 - Margin-top: `20px`
@@ -460,5 +460,5 @@ Template para pantallas de detalle/visualización de un item.
 
 ---
 
-**Versión**: Robot Resources v1.0.1
+**Versión**: SENTINEL v2.0.0
 **Última actualización**: 29 de octubre, 2025

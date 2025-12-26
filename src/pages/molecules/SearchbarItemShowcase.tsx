@@ -1,5 +1,5 @@
 // Path: src/pages/molecules/SearchbarItemShowcase.tsx
-// Terminal Theme Version
+// SENTINEL Design System
 import React, { useState } from 'react';
 import { SearchbarItem } from '../../components/molecules/SearchbarItem';
 import { ShowcaseSection, ComponentPreview } from '../../components/showcase';

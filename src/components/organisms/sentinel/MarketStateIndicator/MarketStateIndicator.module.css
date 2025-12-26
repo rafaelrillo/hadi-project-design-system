@@ -1,0 +1,333 @@
+/* Path: src/components/organisms/sentinel/MarketStateIndicator/MarketStateIndicator.module.css */
+/* ═══════════════════════════════════════════════════════════════════════════════
+   SENTINEL DESIGN SYSTEM - MarketStateIndicator
+
+   Core component displaying current market state
+   Prominent yet calm - the heartbeat of the observatory
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   CONTAINER
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sentinel-space-3);
+  padding: var(--sentinel-space-6);
+  background-color: var(--sentinel-bg-elevated);
+  border: 1px solid var(--sentinel-border-default);
+  border-radius: var(--sentinel-radius-xl);
+  font-family: var(--sentinel-font-primary);
+  position: relative;
+  overflow: hidden;
+  transition: border-color 700ms var(--sentinel-ease-smooth);
+}
+
+/* Subtle top accent based on state */
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: currentColor;
+  opacity: 0.6;
+  transition: opacity 700ms var(--sentinel-ease-smooth);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   SIZE VARIANTS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.sm {
+  padding: var(--sentinel-space-4);
+  gap: var(--sentinel-space-2);
+}
+
+.sm .visual {
+  width: 100px;
+  height: 56px;
+}
+
+.sm .stateLabel {
+  font-size: var(--sentinel-text-lg);
+}
+
+.md {
+  /* Default styles */
+}
+
+.md .visual {
+  width: 140px;
+  height: 80px;
+}
+
+.lg {
+  padding: var(--sentinel-space-8);
+  gap: var(--sentinel-space-4);
+}
+
+.lg .visual {
+  width: 180px;
+  height: 100px;
+}
+
+.lg .stateLabel {
+  font-size: var(--sentinel-text-3xl);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   STATE COLORS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.bullish {
+  color: var(--sentinel-market-bull);
+  --state-color: var(--sentinel-market-bull);
+  --state-color-rgb: 74, 154, 124;
+}
+
+.bearish {
+  color: var(--sentinel-market-bear);
+  --state-color: var(--sentinel-market-bear);
+  --state-color-rgb: 184, 92, 92;
+}
+
+.neutral {
+  color: var(--sentinel-market-neutral);
+  --state-color: var(--sentinel-market-neutral);
+  --state-color-rgb: 91, 163, 165;
+}
+
+.uncertain {
+  color: var(--sentinel-market-uncertain);
+  --state-color: var(--sentinel-market-uncertain);
+  --state-color-rgb: 107, 114, 128;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   VISUAL CONTAINER
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.visualContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.visual {
+  position: relative;
+  width: 140px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   BACKGROUND GLOW
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.glow {
+  position: absolute;
+  inset: -20%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(var(--state-color-rgb), 0.15) 0%,
+    rgba(var(--state-color-rgb), 0.05) 40%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.animated .glow {
+  animation: breatheGlow 4s ease-in-out infinite;
+}
+
+@keyframes breatheGlow {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   WAVEFORM SVG
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.waveform {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.wavePath {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: d 700ms var(--sentinel-ease-smooth);
+}
+
+/* Back layer - most subtle */
+.waveBack {
+  stroke: var(--state-color);
+  stroke-width: 1.5;
+  opacity: 0.2;
+}
+
+/* Mid layer */
+.waveMid {
+  stroke: var(--state-color);
+  stroke-width: 2;
+  opacity: 0.4;
+}
+
+/* Front layer - most prominent */
+.waveFront {
+  stroke: var(--state-color);
+  stroke-width: 2.5;
+  opacity: 0.9;
+}
+
+.animated .waveFront {
+  animation: wavePulse 4s ease-in-out infinite;
+}
+
+@keyframes wavePulse {
+  0%, 100% {
+    opacity: 0.9;
+    stroke-width: 2.5;
+  }
+  50% {
+    opacity: 1;
+    stroke-width: 3;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   TERMINAL POINT
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.statusPoint {
+  fill: var(--state-color);
+  transition: cx 700ms var(--sentinel-ease-smooth),
+              cy 700ms var(--sentinel-ease-smooth);
+}
+
+.animated .statusPoint {
+  animation: pointPulse 3s ease-in-out infinite;
+}
+
+@keyframes pointPulse {
+  0%, 100% {
+    r: 4;
+    opacity: 1;
+  }
+  50% {
+    r: 5;
+    opacity: 0.8;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   SVG GRADIENT STOPS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.gradientStart {
+  stop-color: var(--state-color);
+  stop-opacity: 0.3;
+}
+
+.gradientMid {
+  stop-color: var(--state-color);
+  stop-opacity: 0.7;
+}
+
+.gradientEnd {
+  stop-color: var(--state-color);
+  stop-opacity: 1;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   HORIZON LINE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.horizon {
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  top: 50%;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    var(--sentinel-border-subtle) 20%,
+    var(--sentinel-border-subtle) 80%,
+    transparent 100%
+  );
+  opacity: 0.5;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   STATE LABEL
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.stateLabel {
+  font-size: var(--sentinel-text-2xl);
+  font-weight: var(--sentinel-font-semibold);
+  color: var(--state-color);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: color 700ms var(--sentinel-ease-smooth);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   META INFORMATION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sentinel-space-1);
+  text-align: center;
+}
+
+.label {
+  font-size: var(--sentinel-text-xs);
+  font-weight: var(--sentinel-font-medium);
+  color: var(--sentinel-text-tertiary);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.description {
+  font-size: var(--sentinel-text-sm);
+  color: var(--sentinel-text-secondary);
+}
+
+.timestamp {
+  font-size: var(--sentinel-text-xs);
+  color: var(--sentinel-text-tertiary);
+  font-family: var(--sentinel-font-mono);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   REDUCED MOTION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .animated .glow,
+  .animated .waveFront,
+  .animated .statusPoint {
+    animation: none;
+  }
+}

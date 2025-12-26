@@ -1,5 +1,5 @@
 /* Path: src/components/atoms/Typography/Typography.module.css */
-/* Terminal Theme Version */
+/* SENTINEL Design System */
 
 /* Base typography styles */
 .base {
@@ -61,7 +61,7 @@
   color: var(--foreground-muted);
 }
 
-/* ProductKey - 24px Bold, Orange (terminal branding) */
+/* ProductKey - 24px Bold, Orange (accent branding) */
 .productKey {
   font-family: var(--font-mono);
   font-size: var(--text-siglas);

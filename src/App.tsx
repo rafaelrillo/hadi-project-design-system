@@ -1,8 +1,9 @@
 // Path: src/App.tsx
-import { useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ShowcaseLayout } from './layouts/ShowcaseLayout';
 import { Home } from './pages/Home';
+import { Landing } from './pages/Landing';
+import { SentinelShowcase } from './pages/sentinel/SentinelShowcase';
 
 // Styles
 import {
@@ -61,27 +62,18 @@ import {
   DragAnimationsShowcase
 } from './pages/animations';
 
-// Componente para redirigir al home al cargar la app
-function RedirectToHome() {
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  useEffect(() => {
-    if (location.pathname !== '/') {
-      navigate('/', { replace: true });
-    }
-  }, []);
-
-  return null;
-}
-
 function AppRoutes() {
   return (
-    <>
-      <RedirectToHome />
-      <Routes>
-        <Route path="/" element={<ShowcaseLayout />}>
-          <Route index element={<Home />} />
+    <Routes>
+      {/* Landing Page - Root */}
+      <Route path="/" element={<Landing />} />
+
+      {/* SENTINEL Showcase - Standalone */}
+      <Route path="/showcase/sentinel" element={<SentinelShowcase />} />
+
+      {/* Showcase Layout Routes */}
+      <Route path="/showcase" element={<ShowcaseLayout />}>
+        <Route index element={<Home />} />
 
           {/* Styles */}
           <Route path="styles/colors" element={<ColorsShowcase />} />
@@ -135,7 +127,6 @@ function AppRoutes() {
           <Route path="animations/drag" element={<DragAnimationsShowcase />} />
         </Route>
       </Routes>
-    </>
   );
 }
 

@@ -1,12 +1,15 @@
-// src/components/charts/LineChart/LineChart.tsx
-import { ResponsiveLine } from '@nivo/line';
+// Path: src/components/charts/LineChart/LineChart.tsx
+// SENTINEL Design System - Line Chart
+import { Line } from '@nivo/line';
 import type { LineSeries } from '@nivo/line';
-import { terminalChartTheme, terminalChartColors } from '../theme';
+import { sentinelChartTheme, sentinelChartColors } from '../theme';
 import styles from './LineChart.module.css';
+import { useRef, useState, useEffect } from 'react';
 
 export interface LineChartProps {
   data: LineSeries[];
   height?: number;
+  width?: number;
   enableArea?: boolean;
   enablePoints?: boolean;
   className?: string;
@@ -15,10 +18,30 @@ export interface LineChartProps {
 export function LineChart({
   data,
   height = 300,
+  width: propWidth,
   enableArea = true,
   enablePoints = true,
   className = ''
 }: LineChartProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [containerWidth, setContainerWidth] = useState<number>(0);
+
+  useEffect(() => {
+    if (containerRef.current) {
+      const updateWidth = () => {
+        if (containerRef.current) {
+          setContainerWidth(containerRef.current.offsetWidth);
+        }
+      };
+      updateWidth();
+
+      const resizeObserver = new ResizeObserver(updateWidth);
+      resizeObserver.observe(containerRef.current);
+
+      return () => resizeObserver.disconnect();
+    }
+  }, []);
+
   const getClassName = (): string => {
     const classes = [styles.container];
     if (className) classes.push(className);
@@ -28,14 +51,15 @@ export function LineChart({
   // Ensure data is valid
   if (!data || data.length === 0) {
     return (
-      <div className={getClassName()} style={{ height }}>
+      <div ref={containerRef} className={getClassName()} style={{ height: `${height}px`, width: propWidth ? `${propWidth}px` : '100%' }}>
         <div style={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           height: '100%',
-          color: '#888888',
-          fontSize: '14px'
+          color: 'var(--sentinel-text-tertiary)',
+          fontSize: '14px',
+          fontFamily: 'var(--sentinel-font-primary)'
         }}>
           No data available
         </div>
@@ -43,12 +67,39 @@ export function LineChart({
     );
   }
 
+  const chartWidth = propWidth || containerWidth;
+
+  // Don't render chart until we have width
+  if (!chartWidth) {
+    return (
+      <div
+        ref={containerRef}
+        className={getClassName()}
+        style={{
+          height: `${height}px`,
+          width: propWidth ? `${propWidth}px` : '100%',
+          position: 'relative'
+        }}
+      />
+    );
+  }
+
   return (
-    <div className={getClassName()} style={{ height }}>
-      <ResponsiveLine
+    <div
+      ref={containerRef}
+      className={getClassName()}
+      style={{
+        height: `${height}px`,
+        width: propWidth ? `${propWidth}px` : '100%',
+        position: 'relative'
+      }}
+    >
+      <Line
         data={data}
-        colors={terminalChartColors}
-        margin={{ top: 20, right: 20, bottom: 50, left: 50 }}
+        width={chartWidth}
+        height={height}
+        colors={sentinelChartColors}
+        margin={{ top: 20, right: 30, bottom: 50, left: 60 }}
         xScale={{ type: 'point' }}
         yScale={{ type: 'linear', min: 'auto', max: 'auto' }}
         curve="monotoneX"
@@ -65,14 +116,16 @@ export function LineChart({
         }}
         enableGridX={false}
         enableGridY={true}
-        theme={terminalChartTheme}
+        theme={sentinelChartTheme}
         pointSize={enablePoints ? 8 : 0}
         pointColor={{ from: 'serieColor' }}
         pointBorderWidth={2}
         pointBorderColor={{ from: 'serieColor' }}
         enableArea={enableArea}
-        areaOpacity={0.1}
+        areaOpacity={0.15}
         useMesh={true}
+        animate={true}
+        motionConfig="gentle"
       />
     </div>
   );

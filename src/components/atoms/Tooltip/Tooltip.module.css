@@ -1,34 +1,45 @@
 /* Path: src/components/atoms/Tooltip/Tooltip.module.css */
-/* Terminal Theme Version */
+/* ═══════════════════════════════════════════════════════════════════════════════
+   SENTINEL DESIGN SYSTEM - Tooltip Component
 
-/* Tooltip container */
+   Information tooltips with clean, subtle styling
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   CONTAINER
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .container {
   position: relative;
   display: inline-block;
   width: fit-content;
 }
 
-/* Tooltip base styles */
+/* ─────────────────────────────────────────────────────────────────────────────
+   TOOLTIP BASE
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .tooltip {
   position: absolute;
-  z-index: 1000;
+  z-index: var(--sentinel-z-tooltip);
   pointer-events: none;
-  max-width: 300px;
-  padding: var(--spacing-xs) var(--spacing-sm);
-  border-radius: var(--radius);
-  font-size: var(--text-cuerpo-2);
-  font-weight: var(--font-weight-medium);
-  font-family: var(--font-mono);
-  line-height: var(--line-height-default);
+  max-width: 280px;
+  padding: var(--sentinel-space-2) var(--sentinel-space-3);
+  border-radius: var(--sentinel-radius-md);
+  font-size: var(--sentinel-text-xs);
+  font-weight: var(--sentinel-font-medium);
+  font-family: var(--sentinel-font-primary);
+  line-height: 1.5;
   white-space: normal;
   word-wrap: break-word;
   text-align: center;
-  transition: opacity var(--transition-fast);
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
+  transition: opacity var(--sentinel-transition-fast);
 }
 
-/* Visibility states */
+/* ─────────────────────────────────────────────────────────────────────────────
+   VISIBILITY STATES
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .tooltipHidden {
   opacity: 0;
   visibility: hidden;
@@ -39,50 +50,59 @@
   visibility: visible;
 }
 
-/* Position: top */
+/* ─────────────────────────────────────────────────────────────────────────────
+   POSITIONS
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .positionTop {
   bottom: calc(100% + 8px);
   left: 50%;
   transform: translateX(-50%);
 }
 
-/* Position: bottom */
 .positionBottom {
   top: calc(100% + 8px);
   left: 50%;
   transform: translateX(-50%);
 }
 
-/* Position: left */
 .positionLeft {
   right: calc(100% + 8px);
   top: 50%;
   transform: translateY(-50%);
 }
 
-/* Position: right */
 .positionRight {
   left: calc(100% + 8px);
   top: 50%;
   transform: translateY(-50%);
 }
 
-/* Variant: dark */
+/* ─────────────────────────────────────────────────────────────────────────────
+   VARIANT: DARK (default)
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .variantDark {
-  background-color: var(--background-tertiary);
-  color: var(--foreground);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-card);
+  background-color: var(--sentinel-bg-overlay);
+  color: var(--sentinel-text-primary);
+  border: 1px solid var(--sentinel-border-default);
+  box-shadow: var(--sentinel-shadow-lg);
 }
 
-/* Variant: light */
+/* ─────────────────────────────────────────────────────────────────────────────
+   VARIANT: LIGHT
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .variantLight {
-  background-color: var(--foreground);
-  color: var(--background);
-  box-shadow: var(--shadow-glow-sm);
+  background-color: var(--sentinel-text-primary);
+  color: var(--sentinel-bg-base);
+  box-shadow: var(--sentinel-shadow-md);
 }
 
-/* Arrow base */
+/* ─────────────────────────────────────────────────────────────────────────────
+   ARROW
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .arrow {
   position: absolute;
   width: 6px;
@@ -91,15 +111,13 @@
   z-index: -1;
 }
 
-/* Arrow dark */
 .arrowDark {
-  background-color: var(--background-tertiary);
-  border: 1px solid var(--border);
+  background-color: var(--sentinel-bg-overlay);
+  border: 1px solid var(--sentinel-border-default);
 }
 
-/* Arrow light */
 .arrowLight {
-  background-color: var(--foreground);
+  background-color: var(--sentinel-text-primary);
 }
 
 /* Arrow positions */

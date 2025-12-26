@@ -95,8 +95,8 @@ describe('Typography Components', () => {
 
   describe('ProductKey', () => {
     it('should render as span element', () => {
-      render(<ProductKey>CLARO</ProductKey>);
-      const productKey = screen.getByText('CLARO');
+      render(<ProductKey>SENTINEL</ProductKey>);
+      const productKey = screen.getByText('SENTINEL');
       expect(productKey).toBeInTheDocument();
       expect(productKey.tagName).toBe('SPAN');
     });

@@ -1,5 +1,5 @@
 // Path: src/pages/atoms/BadgeShowcase.tsx
-// Terminal Theme Version
+// SENTINEL Design System
 import React from 'react';
 import { Badge } from '../../components/atoms/Badge';
 import { ShowcaseSection, ComponentPreview } from '../../components/showcase';

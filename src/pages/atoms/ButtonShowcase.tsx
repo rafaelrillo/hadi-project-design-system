@@ -1,5 +1,5 @@
 // Path: src/pages/atoms/ButtonShowcase.tsx
-// Terminal Theme Version
+// SENTINEL Design System
 import React from 'react';
 import { Button } from '../../components/atoms/Button';
 import { ShowcaseSection, ComponentPreview } from '../../components/showcase';
@@ -68,7 +68,7 @@ export function ButtonShowcase() {
       {/* Destructive Buttons */}
       <ShowcaseSection
         title="Destructive Buttons"
-        description="Acciones irreversibles - Rojo terminal"
+        description="Acciones irreversibles - Rojo destructive"
       >
         <ComponentPreview>
           <Button variant="destructive">Eliminar</Button>

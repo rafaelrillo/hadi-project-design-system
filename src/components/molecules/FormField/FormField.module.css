@@ -1,48 +1,62 @@
 /* Path: src/components/molecules/FormField/FormField.module.css */
-/* Terminal Theme Version */
+/* ═══════════════════════════════════════════════════════════════════════════════
+   SENTINEL DESIGN SYSTEM - FormField Component
 
-/* FormField container */
+   Form field wrapper with label and helper text
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   CONTAINER
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .container {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-xs);
+  gap: var(--sentinel-space-1);
   width: 100%;
 }
 
-/* Label */
+/* ─────────────────────────────────────────────────────────────────────────────
+   LABEL
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .label {
-  font-size: var(--text-cuerpo-2);
-  font-weight: var(--font-weight-medium);
-  color: var(--foreground-muted);
-  font-family: var(--font-mono);
-  line-height: var(--line-height-default);
+  font-size: var(--sentinel-text-sm);
+  font-weight: var(--sentinel-font-medium);
+  color: var(--sentinel-text-secondary);
+  font-family: var(--sentinel-font-primary);
+  line-height: 1.5;
   margin: 0;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
 }
 
 /* Required asterisk */
 .required {
-  color: var(--destructive);
-  text-shadow: 0 0 5px var(--destructive-glow);
+  color: var(--sentinel-status-negative-text);
+  margin-left: var(--sentinel-space-1);
 }
 
-/* Helper text */
+/* ─────────────────────────────────────────────────────────────────────────────
+   HELPER TEXT
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .helperText {
-  font-size: var(--text-cuerpo-2);
-  font-weight: var(--font-weight-normal);
-  color: var(--foreground-subtle);
-  font-family: var(--font-mono);
-  line-height: var(--line-height-default);
+  font-size: var(--sentinel-text-xs);
+  font-weight: var(--sentinel-font-normal);
+  color: var(--sentinel-text-tertiary);
+  font-family: var(--sentinel-font-primary);
+  line-height: 1.5;
   margin: 0;
 }
 
-/* Error message */
+/* ─────────────────────────────────────────────────────────────────────────────
+   ERROR MESSAGE
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .errorMessage {
-  font-size: var(--text-cuerpo-2);
-  font-weight: var(--font-weight-normal);
-  color: var(--destructive);
-  font-family: var(--font-mono);
-  line-height: var(--line-height-default);
+  font-size: var(--sentinel-text-xs);
+  font-weight: var(--sentinel-font-normal);
+  color: var(--sentinel-status-negative-text);
+  font-family: var(--sentinel-font-primary);
+  line-height: 1.5;
   margin: 0;
 }

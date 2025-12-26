@@ -1,4 +1,4 @@
-# Technical Stack - Robot Resources v1.0.1
+# Technical Stack - SENTINEL v2.0.0
 
 **Stack tecnológico y configuraciones del proyecto**
 
@@ -52,7 +52,7 @@
 
 ```json
 {
-  "name": "claro-helios-project",
+  "name": "sentinel-design-system",
   "version": "1.0.1",
   "type": "module",
   "scripts": {
@@ -426,7 +426,7 @@ npm run test:e2e:headless # Ejecuta Cypress en modo headless
 
 ```tsx
 <div style={{
-  backgroundColor: '#006081',
+  backgroundColor: '#5ba3a5',
   color: '#FFFFFF',
   padding: '20px',
   borderRadius: '10px'
@@ -512,5 +512,5 @@ export default defineConfig({
 
 ---
 
-**Versión**: Robot Resources v1.0.1
+**Versión**: SENTINEL v2.0.0
 **Última actualización**: 29 de octubre, 2025

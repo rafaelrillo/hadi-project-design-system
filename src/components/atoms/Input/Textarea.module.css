@@ -1,87 +1,98 @@
 /* Path: src/components/atoms/Input/Textarea.module.css */
-/* Terminal Theme Version */
+/* ═══════════════════════════════════════════════════════════════════════════════
+   SENTINEL DESIGN SYSTEM - Textarea Component
 
-/* Textarea container */
+   Multi-line text input
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   CONTAINER
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .container {
   position: relative;
   box-sizing: border-box;
 }
 
-/* Textarea base styles */
+/* ─────────────────────────────────────────────────────────────────────────────
+   TEXTAREA BASE
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .textarea {
   width: 100%;
   min-height: 80px;
-  padding: 11.5px 12px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  font-size: var(--text-cuerpo-1);
-  font-family: var(--font-mono);
-  font-weight: var(--font-weight-normal);
-  line-height: var(--line-height-default);
-  color: var(--foreground);
-  background-color: var(--background-secondary);
+  padding: var(--sentinel-space-3);
+  border: 1px solid var(--sentinel-border-default);
+  border-radius: var(--sentinel-radius-md);
+  font-size: var(--sentinel-text-sm);
+  font-family: var(--sentinel-font-mono);
+  font-weight: var(--sentinel-font-normal);
+  line-height: 1.6;
+  color: var(--sentinel-text-primary);
+  background-color: var(--sentinel-bg-elevated);
   cursor: text;
   box-sizing: border-box;
   resize: vertical;
-  transition: all var(--transition-fast);
+  transition: var(--sentinel-transition-normal);
   outline: none;
 }
 
 .textarea::placeholder {
-  color: var(--foreground-subtle);
+  color: var(--sentinel-text-tertiary);
 }
 
 /* With counter - extra padding at bottom */
 .textareaWithCounter {
-  padding-bottom: 28px;
+  padding-bottom: var(--sentinel-space-8);
 }
 
 /* Hover state */
 .textarea:hover:not(:disabled):not(:focus) {
-  border-color: var(--primary);
-  box-shadow: var(--shadow-glow-sm);
+  border-color: var(--sentinel-border-strong);
 }
 
 /* Focus state */
 .textarea:focus {
-  border-color: var(--primary);
-  outline: 2px solid var(--primary);
-  outline-offset: -1px;
-  box-shadow: var(--shadow-glow-sm);
+  border-color: var(--sentinel-accent-primary);
+  background-color: var(--sentinel-bg-overlay);
 }
 
 /* Disabled state */
 .textarea:disabled {
-  background-color: var(--background-tertiary);
+  background-color: var(--sentinel-bg-subtle);
+  border-color: var(--sentinel-border-subtle);
+  color: var(--sentinel-text-disabled);
   cursor: not-allowed;
-  opacity: 0.5;
 }
 
-/* Error state */
+/* ─────────────────────────────────────────────────────────────────────────────
+   ERROR STATE
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .textareaError {
-  border-color: var(--destructive);
+  border-color: var(--sentinel-status-negative);
 }
 
 .textareaError:hover:not(:disabled):not(:focus) {
-  border-color: var(--destructive);
-  box-shadow: 0 0 10px var(--destructive-glow);
+  border-color: var(--sentinel-status-negative);
 }
 
 .textareaError:focus {
-  border-color: var(--destructive);
-  outline-color: var(--destructive);
-  box-shadow: 0 0 10px var(--destructive-glow);
+  border-color: var(--sentinel-status-negative);
 }
 
-/* Character counter */
+/* ─────────────────────────────────────────────────────────────────────────────
+   CHARACTER COUNTER
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .counter {
   position: absolute;
-  bottom: 8px;
-  right: 12px;
-  font-size: var(--text-cuerpo-2);
-  font-family: var(--font-mono);
-  font-weight: var(--font-weight-normal);
-  line-height: var(--line-height-default);
-  color: var(--foreground-subtle);
+  bottom: var(--sentinel-space-2);
+  right: var(--sentinel-space-3);
+  font-size: var(--sentinel-text-xs);
+  font-family: var(--sentinel-font-mono);
+  font-weight: var(--sentinel-font-normal);
+  line-height: 1.5;
+  color: var(--sentinel-text-tertiary);
   pointer-events: none;
 }

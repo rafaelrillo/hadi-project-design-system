@@ -1,92 +1,120 @@
-/* src/components/atoms/Input/InputText.module.css */
-/* Terminal Theme Version */
+/* Path: src/components/atoms/Input/InputText.module.css */
+/* ═══════════════════════════════════════════════════════════════════════════════
+   SENTINEL DESIGN SYSTEM - InputText Component
+
+   Clean text input with subtle focus states
+   Uses monospace font for data entry
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   CONTAINER
+   ───────────────────────────────────────────────────────────────────────────── */
 
 .container {
   position: relative;
   width: 100%;
 }
 
+/* ─────────────────────────────────────────────────────────────────────────────
+   BASE INPUT
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .input {
   width: 100%;
   height: 40px;
-  font-family: var(--font-mono);
-  font-size: var(--text-cuerpo-1);
-  padding: 10px var(--spacing-md);
-  background-color: var(--background-secondary);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  color: var(--foreground);
-  transition: all var(--transition-fast);
+  font-family: var(--sentinel-font-mono);
+  font-size: var(--sentinel-text-sm);
+  padding: var(--sentinel-space-2) var(--sentinel-space-3);
+  background-color: var(--sentinel-bg-elevated);
+  border: 1px solid var(--sentinel-border-default);
+  border-radius: var(--sentinel-radius-md);
+  color: var(--sentinel-text-primary);
+  transition: var(--sentinel-transition-normal);
   box-sizing: border-box;
   outline: none;
 }
 
 .input::placeholder {
-  color: var(--foreground-subtle);
+  color: var(--sentinel-text-tertiary);
 }
 
 .input:hover:not(:disabled):not(:focus) {
-  border-color: var(--border-hover);
+  border-color: var(--sentinel-border-strong);
 }
 
 .input:focus {
-  border-color: var(--primary);
-  box-shadow: var(--shadow-glow-sm);
+  border-color: var(--sentinel-accent-primary);
+  background-color: var(--sentinel-bg-overlay);
 }
 
 .input:disabled {
-  opacity: 0.5;
+  background-color: var(--sentinel-bg-subtle);
+  border-color: var(--sentinel-border-subtle);
+  color: var(--sentinel-text-disabled);
   cursor: not-allowed;
-  background-color: var(--background-tertiary);
 }
 
-/* Error state */
+/* ─────────────────────────────────────────────────────────────────────────────
+   ERROR STATE
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .inputError {
-  border-color: var(--destructive);
+  border-color: var(--sentinel-status-negative);
 }
 
 .inputError:hover:not(:disabled):not(:focus) {
-  border-color: var(--destructive);
+  border-color: var(--sentinel-status-negative);
 }
 
 .inputError:focus {
-  border-color: var(--destructive);
-  box-shadow: 0 0 10px var(--destructive-glow);
+  border-color: var(--sentinel-status-negative);
+  background-color: var(--sentinel-bg-overlay);
 }
 
-/* Success state */
+/* ─────────────────────────────────────────────────────────────────────────────
+   SUCCESS STATE
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .inputSuccess {
-  border-color: var(--success);
+  border-color: var(--sentinel-status-positive);
 }
 
 .inputSuccess:focus {
-  border-color: var(--success);
-  box-shadow: 0 0 10px var(--success-glow);
+  border-color: var(--sentinel-status-positive);
+  background-color: var(--sentinel-bg-overlay);
 }
 
-/* With icon */
+/* ─────────────────────────────────────────────────────────────────────────────
+   WITH ICON
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .inputWithIcon {
   padding-left: 40px;
 }
 
 .icon {
   position: absolute;
-  left: var(--spacing-md);
+  left: var(--sentinel-space-3);
   top: 50%;
   transform: translateY(-50%);
-  color: var(--foreground-muted);
+  color: var(--sentinel-text-tertiary);
   pointer-events: none;
 }
 
-/* Sizes */
+/* ─────────────────────────────────────────────────────────────────────────────
+   SIZES
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .inputSm {
   height: 32px;
-  font-size: var(--text-cuerpo-2);
-  padding: 6px var(--spacing-sm);
+  font-size: var(--sentinel-text-xs);
+  padding: var(--sentinel-space-1) var(--sentinel-space-2);
+  border-radius: var(--sentinel-radius-sm);
 }
 
 .inputLg {
   height: 48px;
-  font-size: var(--text-titulo-2);
-  padding: 14px var(--spacing-lg);
+  font-size: var(--sentinel-text-base);
+  padding: var(--sentinel-space-3) var(--sentinel-space-4);
+  border-radius: var(--sentinel-radius-md);
 }

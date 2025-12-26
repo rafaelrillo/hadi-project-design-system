@@ -1,5 +1,5 @@
 // Path: src/pages/molecules/NotificationCardShowcase.tsx
-// Terminal Theme Version
+// SENTINEL Design System
 import React, { useState } from 'react';
 import { NotificationCard } from '../../components/molecules/NotificationCard';
 import { ShowcaseSection, ComponentPreview } from '../../components/showcase';

@@ -1,5 +1,5 @@
 // Path: src/pages/molecules/SidebarItemShowcase.tsx
-// Terminal Theme Version
+// SENTINEL Design System
 import React, { useState } from 'react';
 import { SidebarItem } from '../../components/molecules/SidebarItem';
 import { ShowcaseSection, ComponentPreview } from '../../components/showcase';

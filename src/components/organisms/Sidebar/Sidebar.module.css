@@ -1,18 +1,26 @@
 /* Path: src/components/organisms/Sidebar/Sidebar.module.css */
-/* Terminal Theme Version */
+/* ═══════════════════════════════════════════════════════════════════════════════
+   SENTINEL DESIGN SYSTEM - Sidebar Component
 
-/* Sidebar Container */
+   Fixed navigation sidebar with icon-based menu
+   Clean, minimal styling
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   SIDEBAR CONTAINER
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .sidebar {
   left: 0;
   top: 0;
   width: 56px;
-  background-color: var(--background-secondary);
-  border-right: 1px solid var(--border);
+  background-color: var(--sentinel-bg-elevated);
+  border-right: 1px solid var(--sentinel-border-default);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  z-index: 40;
-  font-family: var(--font-mono);
+  z-index: var(--sentinel-z-sticky);
+  font-family: var(--sentinel-font-primary);
   position: fixed;
   height: 100vh;
 }
@@ -28,7 +36,10 @@
   height: 100vh;
 }
 
-/* Section */
+/* ─────────────────────────────────────────────────────────────────────────────
+   SECTION
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .section {
   display: flex;
   flex-direction: column;
@@ -36,19 +47,25 @@
   width: 100%;
 }
 
-/* Logo Container */
+/* ─────────────────────────────────────────────────────────────────────────────
+   LOGO CONTAINER
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .logoContainer {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 56px;
   height: 56px;
-  padding: 16px;
+  padding: var(--sentinel-space-3);
   flex-shrink: 0;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--sentinel-border-subtle);
 }
 
-/* Menu Item Container */
+/* ─────────────────────────────────────────────────────────────────────────────
+   MENU ITEM
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .menuItemContainer {
   position: relative;
   width: 100%;
@@ -57,7 +74,6 @@
   justify-content: center;
 }
 
-/* Menu Item Button */
 .menuItemButton {
   position: relative;
   display: flex;
@@ -68,55 +84,73 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: var(--sentinel-transition-normal);
   outline: none;
-  color: var(--foreground-muted);
+  color: var(--sentinel-text-tertiary);
   text-decoration: none;
 }
 
 .menuItemButton:hover {
-  background-color: var(--background-tertiary);
-  color: var(--primary);
+  background-color: var(--sentinel-bg-overlay);
+  color: var(--sentinel-accent-primary);
+}
+
+.menuItemButton:focus-visible {
+  outline: 2px solid var(--sentinel-accent-primary);
+  outline-offset: -2px;
 }
 
 .menuItemActive {
-  background-color: var(--accent);
-  color: var(--primary);
+  background-color: var(--sentinel-accent-subtle);
+  color: var(--sentinel-accent-primary);
 }
 
 .menuItemDisabled {
-  color: var(--foreground-subtle);
+  color: var(--sentinel-text-disabled);
   cursor: not-allowed;
 }
 
-/* Left Bar Indicator */
+.menuItemDisabled:hover {
+  background-color: transparent;
+  color: var(--sentinel-text-disabled);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   LEFT BAR INDICATOR
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .leftBar {
   position: absolute;
   left: 0;
   top: 0;
   bottom: 0;
   width: 3px;
-  background-color: var(--primary);
+  background-color: var(--sentinel-accent-primary);
   opacity: 0;
-  transition: opacity var(--transition-fast);
-  box-shadow: 0 0 10px var(--accent-glow);
+  transition: opacity var(--sentinel-transition-normal);
 }
 
 .leftBarVisible {
   opacity: 1;
 }
 
-/* User Icon Container */
+/* ─────────────────────────────────────────────────────────────────────────────
+   USER ICON CONTAINER
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .userIconContainer {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 56px;
   height: 56px;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--sentinel-border-subtle);
 }
 
-/* Action Button (Logs, Logout) */
+/* ─────────────────────────────────────────────────────────────────────────────
+   ACTION BUTTON
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .actionButton {
   width: 56px;
   height: 56px;
@@ -126,12 +160,17 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
-  color: var(--foreground-muted);
-  transition: all var(--transition-fast);
+  color: var(--sentinel-text-tertiary);
+  transition: var(--sentinel-transition-normal);
   padding: 0;
 }
 
 .actionButton:hover {
-  color: var(--primary);
-  background-color: var(--background-tertiary);
+  color: var(--sentinel-accent-primary);
+  background-color: var(--sentinel-bg-overlay);
+}
+
+.actionButton:focus-visible {
+  outline: 2px solid var(--sentinel-accent-primary);
+  outline-offset: -2px;
 }

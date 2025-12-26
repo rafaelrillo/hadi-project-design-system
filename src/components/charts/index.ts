@@ -1,23 +1,45 @@
-// src/components/charts/index.ts
-// Fase 1 - Base Charts
+// Path: src/components/charts/index.ts
+// ═══════════════════════════════════════════════════════════════════════════════
+// CHART COMPONENTS
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// Base Charts
 export * from './LineChart';
 export * from './StatCard';
 export * from './RadarChart';
 export * from './RadialBar';
 export * from './HeatMap';
 
-// Fase 2 - Flow & Time Charts
+// Flow & Time Charts
 export * from './SankeyDiagram';
 export * from './CalendarHeatmap';
 export * from './TreeMap';
 export * from './BumpChart';
 
-// Fase 3 - Advanced Charts
+// Advanced Charts
 export * from './NetworkGraph';
 export * from './ChordDiagram';
 export * from './StreamChart';
 export * from './ScatterPlot';
 export * from './BulletChart';
 
-// Theme
-export { terminalChartTheme, terminalChartColors } from './theme';
+// SENTINEL Financial Charts
+export * from './FinancialLineChart';
+
+// Theme - SENTINEL tokens
+export {
+  sentinelChartTheme,
+  sentinelChartColors,
+  sentinelColors,
+  sentinelSequentialColors,
+  sentinelDivergingColors,
+  sentinelRiskColors,
+  sentinelMarketColors,
+  lineChartDefaults,
+  barChartDefaults,
+  pieChartDefaults,
+  heatmapDefaults,
+  // Backwards compatibility
+  terminalChartTheme,
+  terminalChartColors,
+} from './theme';

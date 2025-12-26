@@ -1,5 +1,5 @@
 // Path: src/pages/organisms/FormShowcase.tsx
-// Terminal Theme Version
+// SENTINEL Design System
 import React, { useState } from 'react';
 import { Form } from '../../components/organisms/Form';
 import { FormField } from '../../components/molecules/FormField';
