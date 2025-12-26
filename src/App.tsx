@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { ShowcaseLayout } from './layouts/ShowcaseLayout';
 import { Home } from './pages/Home';
-import { GDM } from './pages/GDM';
 
 // Styles
 import {
@@ -52,15 +51,6 @@ import {
   CorrelationChartsShowcase
 } from './pages/charts';
 
-// Terminal
-import {
-  TerminalShowcase,
-  GlitchShowcase,
-  TypewriterShowcase,
-  AsciiBoxShowcase,
-  TerminalWindowShowcase
-} from './pages/terminal';
-
 // Animations
 import {
   AnimationsShowcase,
@@ -77,7 +67,7 @@ function RedirectToHome() {
   const location = useLocation();
 
   useEffect(() => {
-    if (location.pathname !== '/' && location.pathname !== '/gdm') {
+    if (location.pathname !== '/') {
       navigate('/', { replace: true });
     }
   }, []);
@@ -136,13 +126,6 @@ function AppRoutes() {
           <Route path="charts/flow" element={<FlowChartsShowcase />} />
           <Route path="charts/correlation" element={<CorrelationChartsShowcase />} />
 
-          {/* Terminal */}
-          <Route path="terminal" element={<TerminalShowcase />} />
-          <Route path="terminal/glitch" element={<GlitchShowcase />} />
-          <Route path="terminal/typewriter" element={<TypewriterShowcase />} />
-          <Route path="terminal/ascii-box" element={<AsciiBoxShowcase />} />
-          <Route path="terminal/window" element={<TerminalWindowShowcase />} />
-
           {/* Animations */}
           <Route path="animations" element={<AnimationsShowcase />} />
           <Route path="animations/hover" element={<HoverAnimationsShowcase />} />
@@ -151,9 +134,6 @@ function AppRoutes() {
           <Route path="animations/layout" element={<LayoutAnimationsShowcase />} />
           <Route path="animations/drag" element={<DragAnimationsShowcase />} />
         </Route>
-
-        {/* GDM Application */}
-        <Route path="/gdm" element={<GDM />} />
       </Routes>
     </>
   );

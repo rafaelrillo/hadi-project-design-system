@@ -41,9 +41,7 @@
     "lucide-react": "latest",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-powerglitch": "^1.1.0",
     "react-router-dom": "^6.20.0",
-    "react-type-animation": "^3.2.0",
     "zustand": "^5.0.3"
   },
   "devDependencies": {

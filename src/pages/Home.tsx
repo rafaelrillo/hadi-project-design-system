@@ -1,9 +1,7 @@
 // Path: src/pages/Home.tsx
-// Terminal Theme Version
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Box, Layers, BarChart3, ArrowRight, LineChart, Terminal, Sparkles } from 'lucide-react';
-import { GlitchText } from '../components/terminal/GlitchText/GlitchText';
+import { Box, Layers, BarChart3, ArrowRight, LineChart, Sparkles } from 'lucide-react';
 
 export function Home() {
   const headerStyles: React.CSSProperties = {
@@ -144,23 +142,13 @@ export function Home() {
       glow: 'var(--warning-glow)'
     },
     {
-      title: 'Terminal',
-      description: 'Efectos y componentes con estética de terminal. Glitch text, typewriter, ASCII art, scanlines.',
-      count: 4,
-      icon: Terminal,
-      link: '/terminal',
-      color: 'var(--warning)',
-      glow: 'var(--warning-glow)'
-    },
-    {
       title: 'Animations',
       description: 'Sistema de animaciones y transiciones. Efectos de entrada, salida, hover y microinteracciones.',
       count: 7,
       icon: Sparkles,
       link: '/animations',
       color: 'var(--warning)',
-      glow: 'var(--warning-glow)',
-      glitch: 'always'
+      glow: 'var(--warning-glow)'
     }
   ];
 
@@ -169,10 +157,10 @@ export function Home() {
       {/* Header */}
       <header style={headerStyles}>
         <h1 style={titleStyles}>
-          &gt; <GlitchText intensity="medium" as="span">Design System_</GlitchText>
+          Design System
         </h1>
         <p style={subtitleStyles}>
-          // Robot Resources UI v1.0.0 - Terminal Theme
+          Robot Resources UI v1.0.0
         </p>
       </header>
 
@@ -260,13 +248,7 @@ export function Home() {
                 e.currentTarget.style.boxShadow = 'none';
               }}
             >
-              {category.glitch ? (
-                <GlitchText as="div" intensity="high" playMode={category.glitch === 'always' ? 'always' : 'hover'}>
-                  {cardContent}
-                </GlitchText>
-              ) : (
-                cardContent
-              )}
+              {cardContent}
             </Link>
           );
         })}

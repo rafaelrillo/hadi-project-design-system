@@ -32,7 +32,6 @@ import {
   Terminal,
   LineChart,
   Sparkles,
-  Zap,
   MousePointer,
   Move,
   ScrollText,
@@ -42,11 +41,8 @@ import {
   Target,
   Grid3X3,
   TrendingUp,
-  PieChart,
-  Keyboard
+  PieChart
 } from 'lucide-react';
-import { GlitchText } from '../components/terminal/GlitchText/GlitchText';
-
 export function ShowcaseLayout() {
   const location = useLocation();
   const [expandedGroup, setExpandedGroup] = useState<string | null>(null);
@@ -62,8 +58,6 @@ export function ShowcaseLayout() {
       setExpandedGroup('molecules');
     } else if (path.startsWith('/organisms')) {
       setExpandedGroup('organisms');
-    } else if (path.startsWith('/terminal')) {
-      setExpandedGroup('terminal');
     } else if (path.startsWith('/charts')) {
       setExpandedGroup('charts');
     } else if (path.startsWith('/animations')) {
@@ -194,14 +188,6 @@ export function ShowcaseLayout() {
     { path: '/styles/icons', label: 'Icons', icon: Image }
   ];
 
-  const terminalItems = [
-    { path: '/terminal', label: 'Overview', icon: Terminal },
-    { path: '/terminal/glitch', label: 'GlitchText', icon: Zap },
-    { path: '/terminal/typewriter', label: 'TypewriterText', icon: Keyboard },
-    { path: '/terminal/ascii-box', label: 'AsciiBox', icon: Box },
-    { path: '/terminal/window', label: 'TerminalWindow', icon: SquareStack }
-  ];
-
   const chartsItems = [
     { path: '/charts', label: 'Overview', icon: LineChart },
     { path: '/charts/line', label: 'Line & Area', icon: Activity },
@@ -228,9 +214,7 @@ export function ShowcaseLayout() {
         {/* Logo */}
         <div style={logoContainerStyles}>
           <div style={logoSvgContainerStyles}>
-            <GlitchText intensity="low" playMode="always">
-              <Terminal size={24} color="var(--primary)" />
-            </GlitchText>
+            <Terminal size={24} color="var(--primary)" />
             <h1 style={logoTextStyles}>Robot Resources</h1>
           </div>
           <p style={versionStyles}>// Terminal Theme v1.0</p>
@@ -291,15 +275,6 @@ export function ShowcaseLayout() {
             items={organismsItems}
             isExpanded={expandedGroup === 'organisms'}
             onToggle={() => handleToggleGroup('organisms')}
-          />
-
-          {/* Terminal Group */}
-          <SidebarGroup
-            title="Terminal"
-            icon={Terminal}
-            items={terminalItems}
-            isExpanded={expandedGroup === 'terminal'}
-            onToggle={() => handleToggleGroup('terminal')}
           />
 
           {/* Charts Group */}
