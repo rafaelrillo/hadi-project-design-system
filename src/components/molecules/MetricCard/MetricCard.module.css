@@ -1,0 +1,480 @@
+/* Path: src/components/molecules/MetricCard/MetricCard.module.css */
+/* ═══════════════════════════════════════════════════════════════════════════════
+   SENTINEL DESIGN SYSTEM - MetricCard Component
+
+   Versatile card for displaying KPIs with context, trends, and visualizations
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   BASE STYLES
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.metricCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sentinel-space-3);
+  padding: var(--sentinel-space-4);
+  background-color: var(--sentinel-bg-elevated);
+  border: 1px solid var(--sentinel-border-subtle);
+  border-radius: var(--sentinel-radius-lg);
+  transition: var(--sentinel-transition-normal);
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   VARIANTS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.variantDefault {
+  background-color: var(--sentinel-bg-elevated);
+  border-color: var(--sentinel-border-subtle);
+}
+
+.variantOutlined {
+  background-color: transparent;
+  border-color: var(--sentinel-border-default);
+}
+
+.variantFilled {
+  background-color: var(--sentinel-bg-overlay);
+  border-color: transparent;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   SIZES
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.sizeSm {
+  padding: var(--sentinel-space-3);
+  gap: var(--sentinel-space-2);
+}
+
+.sizeSm .title {
+  font-size: var(--sentinel-text-xs);
+}
+
+.sizeSm .value {
+  font-size: var(--sentinel-text-xl);
+}
+
+.sizeMd {
+  padding: var(--sentinel-space-4);
+  gap: var(--sentinel-space-3);
+}
+
+.sizeLg {
+  padding: var(--sentinel-space-6);
+  gap: var(--sentinel-space-4);
+}
+
+.sizeLg .title {
+  font-size: var(--sentinel-text-sm);
+}
+
+.sizeLg .value {
+  font-size: var(--sentinel-text-4xl);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   STATUS COLORS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.statusSuccess {
+  border-left: 3px solid var(--sentinel-status-positive);
+}
+
+.statusWarning {
+  border-left: 3px solid var(--sentinel-status-warning);
+}
+
+.statusError {
+  border-left: 3px solid var(--sentinel-status-negative);
+}
+
+.statusInfo {
+  border-left: 3px solid var(--sentinel-status-info);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   INTERACTIVE STATE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.interactive {
+  cursor: pointer;
+}
+
+.interactive:hover {
+  border-color: var(--sentinel-border-default);
+  background-color: var(--sentinel-bg-overlay);
+  transform: translateY(-1px);
+  box-shadow: var(--sentinel-shadow-md);
+}
+
+.interactive:focus {
+  outline: none;
+}
+
+.interactive:focus-visible {
+  outline: 2px solid var(--sentinel-accent-primary);
+  outline-offset: 2px;
+}
+
+.interactive:active {
+  transform: translateY(0);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   HEADER
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--sentinel-space-3);
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: var(--sentinel-space-2);
+  min-width: 0;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  color: var(--sentinel-text-tertiary);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--sentinel-font-primary);
+  font-size: var(--sentinel-text-xs);
+  font-weight: var(--sentinel-font-medium);
+  color: var(--sentinel-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: var(--sentinel-leading-tight);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   SPARKLINE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.sparkline {
+  flex-shrink: 0;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   VALUE ROW
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.valueRow {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sentinel-space-3);
+  flex-wrap: wrap;
+}
+
+.value {
+  font-family: var(--sentinel-font-mono);
+  font-size: var(--sentinel-text-2xl);
+  font-weight: var(--sentinel-font-semibold);
+  color: var(--sentinel-text-primary);
+  line-height: var(--sentinel-leading-none);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   TREND
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.trend {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sentinel-space-1);
+  padding: var(--sentinel-space-1) var(--sentinel-space-2);
+  border-radius: var(--sentinel-radius-full);
+  font-family: var(--sentinel-font-mono);
+  font-size: var(--sentinel-text-xs);
+  font-weight: var(--sentinel-font-medium);
+}
+
+.trendPositive {
+  background-color: var(--sentinel-status-positive-subtle);
+  color: var(--sentinel-status-positive-text);
+}
+
+.trendNegative {
+  background-color: var(--sentinel-status-negative-subtle);
+  color: var(--sentinel-status-negative-text);
+}
+
+.trendNeutral {
+  background-color: var(--sentinel-status-neutral-subtle);
+  color: var(--sentinel-text-secondary);
+}
+
+.trendIcon {
+  flex-shrink: 0;
+}
+
+.trendValue {
+  font-variant-numeric: tabular-nums;
+}
+
+.trendLabel {
+  color: var(--sentinel-text-tertiary);
+  font-family: var(--sentinel-font-primary);
+  font-size: var(--sentinel-text-xs);
+  margin-left: var(--sentinel-space-1);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   PREVIOUS VALUE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.previousValue {
+  font-family: var(--sentinel-font-primary);
+  font-size: var(--sentinel-text-xs);
+  color: var(--sentinel-text-tertiary);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   PROGRESS BAR
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.progressContainer {
+  display: flex;
+  align-items: center;
+  gap: var(--sentinel-space-2);
+}
+
+.progressBar {
+  flex: 1;
+  height: 6px;
+  background-color: var(--sentinel-bg-interactive);
+  border-radius: var(--sentinel-radius-full);
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background-color: var(--sentinel-accent-primary);
+  border-radius: var(--sentinel-radius-full);
+  transition: width var(--sentinel-duration-slow) var(--sentinel-ease-out);
+}
+
+.progressLabel {
+  flex-shrink: 0;
+  font-family: var(--sentinel-font-mono);
+  font-size: var(--sentinel-text-xs);
+  color: var(--sentinel-text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   DISTRIBUTION BAR
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.distributionContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sentinel-space-2);
+}
+
+.distributionBar {
+  display: flex;
+  height: 8px;
+  border-radius: var(--sentinel-radius-full);
+  overflow: hidden;
+}
+
+.distributionSegment {
+  height: 100%;
+  min-width: 4px;
+  transition: width var(--sentinel-duration-slow) var(--sentinel-ease-out);
+}
+
+.distributionLegend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sentinel-space-3);
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: var(--sentinel-space-1);
+}
+
+.legendDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.legendLabel {
+  font-family: var(--sentinel-font-primary);
+  font-size: var(--sentinel-text-xs);
+  color: var(--sentinel-text-secondary);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   COMPARISON
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.comparison {
+  display: flex;
+  align-items: center;
+  gap: var(--sentinel-space-2);
+  padding-top: var(--sentinel-space-2);
+  border-top: 1px solid var(--sentinel-border-subtle);
+  font-family: var(--sentinel-font-primary);
+  font-size: var(--sentinel-text-xs);
+}
+
+.comparisonLabel {
+  color: var(--sentinel-text-tertiary);
+}
+
+.comparisonValue {
+  color: var(--sentinel-text-secondary);
+  font-family: var(--sentinel-font-mono);
+}
+
+.comparisonDiff {
+  font-family: var(--sentinel-font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.comparisonDiffPositive {
+  color: var(--sentinel-status-positive-text);
+}
+
+.comparisonDiffNegative {
+  color: var(--sentinel-status-negative-text);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   FOOTER / ACTION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-top: var(--sentinel-space-2);
+  margin-top: auto;
+}
+
+.actionButton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sentinel-space-1);
+  padding: var(--sentinel-space-1) var(--sentinel-space-2);
+  background: none;
+  border: none;
+  border-radius: var(--sentinel-radius-sm);
+  color: var(--sentinel-accent-primary);
+  font-family: var(--sentinel-font-primary);
+  font-size: var(--sentinel-text-xs);
+  font-weight: var(--sentinel-font-medium);
+  cursor: pointer;
+  transition: var(--sentinel-transition-fast);
+}
+
+.actionButton:hover {
+  background-color: var(--sentinel-accent-subtle);
+}
+
+.actionButton:focus-visible {
+  outline: 2px solid var(--sentinel-accent-primary);
+  outline-offset: 2px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   LOADING STATE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.loading {
+  min-height: 120px;
+}
+
+.loadingContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.loadingSpinner {
+  color: var(--sentinel-accent-primary);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   ERROR STATE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.hasError {
+  border-color: var(--sentinel-status-negative-subtle);
+}
+
+.errorContent {
+  display: flex;
+  align-items: center;
+  gap: var(--sentinel-space-2);
+  padding: var(--sentinel-space-2);
+}
+
+.errorIcon {
+  color: var(--sentinel-status-negative);
+  flex-shrink: 0;
+}
+
+.errorMessage {
+  font-family: var(--sentinel-font-primary);
+  font-size: var(--sentinel-text-sm);
+  color: var(--sentinel-status-negative-text);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   REDUCED MOTION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .metricCard,
+  .progressFill,
+  .distributionSegment,
+  .actionButton {
+    transition: none;
+  }
+
+  .loadingSpinner {
+    animation: none;
+  }
+
+  .interactive:hover {
+    transform: none;
+  }
+}

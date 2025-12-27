@@ -1,0 +1,169 @@
+/* Path: src/components/atoms/Skeleton/Skeleton.module.css */
+
+.skeleton {
+  background-color: var(--sentinel-bg-subtle);
+  border-radius: var(--sentinel-radius-sm);
+}
+
+/* Variants */
+.text {
+  height: 1em;
+  border-radius: var(--sentinel-radius-sm);
+}
+
+.circular {
+  border-radius: 50%;
+}
+
+.rectangular {
+  border-radius: var(--sentinel-radius-md);
+}
+
+.card {
+  border-radius: var(--sentinel-radius-lg);
+  min-height: 100px;
+}
+
+/* Animations */
+.pulse {
+  animation: skeleton-pulse 2s ease-in-out infinite;
+}
+
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--sentinel-bg-elevated) 50%,
+    transparent
+  );
+  animation: skeleton-shimmer 1.5s infinite;
+}
+
+.none {
+  animation: none;
+}
+
+@keyframes skeleton-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes skeleton-shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Text container for multiple lines */
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sentinel-space-2);
+}
+
+/* Preset: Indicator Skeleton */
+.indicatorSkeleton {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sentinel-space-2);
+  padding: var(--sentinel-space-4);
+  background-color: var(--sentinel-bg-elevated);
+  border: 1px solid var(--sentinel-border-subtle);
+  border-radius: var(--sentinel-radius-lg);
+  min-width: 150px;
+}
+
+/* Preset: Card Skeleton */
+.cardSkeleton {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sentinel-space-4);
+  padding: var(--sentinel-space-5);
+  background-color: var(--sentinel-bg-elevated);
+  border: 1px solid var(--sentinel-border-subtle);
+  border-radius: var(--sentinel-radius-lg);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--sentinel-space-3);
+}
+
+.cardHeaderText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sentinel-space-1);
+}
+
+.cardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--sentinel-space-3);
+  border-top: 1px solid var(--sentinel-border-subtle);
+}
+
+/* Preset: Chart Skeleton */
+.chartSkeleton {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sentinel-space-4);
+  padding: var(--sentinel-space-5);
+  background-color: var(--sentinel-bg-elevated);
+  border: 1px solid var(--sentinel-border-subtle);
+  border-radius: var(--sentinel-radius-lg);
+}
+
+.chartHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chartArea {
+  flex: 1;
+  min-height: 200px;
+}
+
+/* Preset: Table Row Skeleton */
+.tableRowSkeleton {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: var(--sentinel-space-4);
+  padding: var(--sentinel-space-3) var(--sentinel-space-4);
+  border-bottom: 1px solid var(--sentinel-border-subtle);
+}
+
+/* Preset: Metric Card Skeleton */
+.metricCardSkeleton {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sentinel-space-2);
+  padding: var(--sentinel-space-4);
+  background-color: var(--sentinel-bg-elevated);
+  border: 1px solid var(--sentinel-border-subtle);
+  border-radius: var(--sentinel-radius-lg);
+}
+
+.metricTrend {
+  display: flex;
+  align-items: center;
+  gap: var(--sentinel-space-2);
+  margin-top: var(--sentinel-space-1);
+}

@@ -1,0 +1,158 @@
+/* Path: src/components/atoms/LoadingScreen/LoadingScreen.module.css */
+
+.container {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--sentinel-bg-base);
+  z-index: var(--sentinel-z-modal);
+}
+
+.content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sentinel-space-6);
+}
+
+/* Logo */
+.logoContainer {
+  position: relative;
+}
+
+.logo {
+  width: 80px;
+  height: 80px;
+}
+
+.outerRing {
+  animation: rotate 20s linear infinite;
+  transform-origin: center;
+}
+
+.middleRing {
+  animation: rotate 15s linear infinite reverse;
+  transform-origin: center;
+}
+
+.centerDot {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.scanLine {
+  animation: rotate 4s linear infinite;
+  transform-origin: 50px 50px;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Title */
+.title {
+  font-family: var(--sentinel-font-primary);
+  font-size: var(--sentinel-text-2xl);
+  font-weight: var(--sentinel-font-bold);
+  color: var(--sentinel-accent-primary);
+  letter-spacing: 0.3em;
+  margin: 0;
+}
+
+/* Message */
+.messageContainer {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.message {
+  font-family: var(--sentinel-font-mono);
+  font-size: var(--sentinel-text-sm);
+  color: var(--sentinel-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.dots {
+  display: flex;
+  margin-left: 2px;
+}
+
+.dot {
+  font-family: var(--sentinel-font-mono);
+  font-size: var(--sentinel-text-sm);
+  color: var(--sentinel-text-tertiary);
+  animation: blink 1.4s infinite;
+}
+
+.dot:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes blink {
+  0%, 20% {
+    opacity: 0;
+  }
+  40%, 100% {
+    opacity: 1;
+  }
+}
+
+/* Progress bar */
+.progressBar {
+  width: 200px;
+  height: 2px;
+  background-color: var(--sentinel-bg-elevated);
+  border-radius: var(--sentinel-radius-full);
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  width: 30%;
+  background: linear-gradient(
+    90deg,
+    var(--sentinel-accent-primary),
+    var(--sentinel-accent-secondary)
+  );
+  border-radius: var(--sentinel-radius-full);
+  animation: progress 1.5s ease-in-out infinite;
+}
+
+@keyframes progress {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(250%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}

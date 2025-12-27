@@ -40,7 +40,10 @@ import {
   Target,
   Grid3X3,
   TrendingUp,
-  PieChart
+  PieChart,
+  Gauge,
+  LayoutDashboard,
+  MessageSquare
 } from 'lucide-react';
 
 export function ShowcaseLayout() {
@@ -179,7 +182,8 @@ export function ShowcaseLayout() {
     { path: '/showcase/molecules/pagination', label: 'Pagination', icon: ArrowLeftRight },
     { path: '/showcase/molecules/notification-card', label: 'NotificationCard', icon: Bell },
     { path: '/showcase/molecules/search-bar', label: 'SearchBar', icon: Search },
-    { path: '/showcase/molecules/searchbar-item', label: 'SearchbarItem', icon: Filter }
+    { path: '/showcase/molecules/searchbar-item', label: 'SearchbarItem', icon: Filter },
+    { path: '/showcase/molecules/metric-card', label: 'MetricCard', icon: Gauge }
   ];
 
   const organismsItems = [
@@ -188,7 +192,9 @@ export function ShowcaseLayout() {
     { path: '/showcase/organisms/table', label: 'Table', icon: Table2 },
     { path: '/showcase/organisms/modal', label: 'Modal', icon: SquareStack },
     { path: '/showcase/organisms/form', label: 'Form', icon: FileCheck },
-    { path: '/showcase/organisms/paginated-table', label: 'PaginatedTable', icon: Layers }
+    { path: '/showcase/organisms/paginated-table', label: 'PaginatedTable', icon: Layers },
+    { path: '/showcase/organisms/data-grid', label: 'DataGrid', icon: LayoutDashboard },
+    { path: '/showcase/organisms/toast', label: 'Toast', icon: MessageSquare }
   ];
 
   const stylesItems = [

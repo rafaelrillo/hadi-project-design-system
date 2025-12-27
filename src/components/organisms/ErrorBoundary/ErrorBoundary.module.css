@@ -1,0 +1,87 @@
+/* Path: src/components/organisms/ErrorBoundary/ErrorBoundary.module.css */
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  padding: var(--sentinel-space-8);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 400px;
+}
+
+.iconContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  background-color: var(--sentinel-status-warning-subtle);
+  border-radius: 50%;
+  margin-bottom: var(--sentinel-space-5);
+}
+
+.icon {
+  color: var(--sentinel-status-warning);
+  opacity: 0.8;
+}
+
+.title {
+  font-family: var(--sentinel-font-primary);
+  font-size: var(--sentinel-text-xl);
+  font-weight: var(--sentinel-font-semibold);
+  color: var(--sentinel-text-primary);
+  margin: 0 0 var(--sentinel-space-3) 0;
+}
+
+.description {
+  font-size: var(--sentinel-text-sm);
+  color: var(--sentinel-text-secondary);
+  line-height: 1.6;
+  margin: 0 0 var(--sentinel-space-5) 0;
+}
+
+.details {
+  width: 100%;
+  padding: var(--sentinel-space-4);
+  background-color: var(--sentinel-bg-subtle);
+  border: 1px solid var(--sentinel-border-subtle);
+  border-radius: var(--sentinel-radius-md);
+  margin-bottom: var(--sentinel-space-5);
+  text-align: left;
+}
+
+.errorName {
+  font-family: var(--sentinel-font-mono);
+  font-size: var(--sentinel-text-xs);
+  color: var(--sentinel-status-warning);
+  margin: 0 0 var(--sentinel-space-2) 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.errorMessage {
+  font-family: var(--sentinel-font-mono);
+  font-size: var(--sentinel-text-xs);
+  color: var(--sentinel-text-tertiary);
+  margin: 0;
+  word-break: break-word;
+}
+
+.actions {
+  display: flex;
+  gap: var(--sentinel-space-3);
+}
+
+.retryButton,
+.homeButton {
+  display: flex;
+  align-items: center;
+  gap: var(--sentinel-space-2);
+}

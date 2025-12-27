@@ -1,0 +1,89 @@
+/* Path: src/components/molecules/Tabs/Tabs.module.css */
+
+.tabs {
+  display: flex;
+  gap: var(--sentinel-space-1);
+  background-color: var(--sentinel-bg-elevated);
+  padding: var(--sentinel-space-1);
+  border-radius: var(--sentinel-radius-lg);
+  border: 1px solid var(--sentinel-border-subtle);
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  gap: var(--sentinel-space-2);
+  padding: var(--sentinel-space-2) var(--sentinel-space-4);
+  border: none;
+  background: transparent;
+  color: var(--sentinel-text-secondary);
+  font-family: var(--sentinel-font-primary);
+  font-size: var(--sentinel-text-sm);
+  font-weight: var(--sentinel-font-medium);
+  border-radius: var(--sentinel-radius-md);
+  cursor: pointer;
+  transition: var(--sentinel-transition-fast);
+  white-space: nowrap;
+}
+
+.tab:hover:not(.disabled):not(.active) {
+  background-color: var(--sentinel-bg-subtle);
+  color: var(--sentinel-text-primary);
+}
+
+.tab:focus-visible {
+  outline: 2px solid var(--sentinel-accent-primary);
+  outline-offset: 2px;
+}
+
+.tab.active {
+  background-color: var(--sentinel-accent-subtle);
+  color: var(--sentinel-accent-primary);
+}
+
+.tab.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.icon {
+  flex-shrink: 0;
+}
+
+.label {
+  line-height: 1.2;
+}
+
+/* Variants */
+.pills {
+  background: transparent;
+  border: none;
+  padding: 0;
+  gap: var(--sentinel-space-2);
+}
+
+.pills .tab {
+  background-color: var(--sentinel-bg-elevated);
+  border: 1px solid var(--sentinel-border-subtle);
+}
+
+.pills .tab:hover:not(.disabled):not(.active) {
+  border-color: var(--sentinel-border-default);
+}
+
+.pills .tab.active {
+  background-color: var(--sentinel-accent-primary);
+  color: var(--sentinel-text-inverse);
+  border-color: var(--sentinel-accent-primary);
+}
+
+/* Sizes */
+.sm .tab {
+  padding: var(--sentinel-space-1-5) var(--sentinel-space-3);
+  font-size: var(--sentinel-text-xs);
+}
+
+.lg .tab {
+  padding: var(--sentinel-space-3) var(--sentinel-space-5);
+  font-size: var(--sentinel-text-base);
+}

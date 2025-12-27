@@ -1,66 +1,92 @@
 // Path: src/App.tsx
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Suspense, lazy } from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { ShowcaseLayout } from './layouts/ShowcaseLayout';
 import { Home } from './pages/Home';
 import { Landing } from './pages/Landing';
-import { SentinelShowcase } from './pages/sentinel/SentinelShowcase';
 
-// Styles
-import {
-  ColorsShowcase,
-  TypographyShowcase as TypographyStylesShowcase,
-  SpacingShowcase,
-  ShadowsShowcase,
-  BorderRadiusShowcase,
-  IconsShowcase
-} from './pages/styles';
+// Loading Screen for Suspense fallback
+import { LoadingScreen } from './components/atoms/LoadingScreen';
+
+// App Layout (small, load immediately)
+import { AppLayout } from './pages/app';
+
+// Lazy load heavy pages
+const LoginPage = lazy(() => import('./pages/app/LoginPage').then(m => ({ default: m.LoginPage })));
+const DashboardPage = lazy(() => import('./pages/app/DashboardPage').then(m => ({ default: m.DashboardPage })));
+const SentinelShowcase = lazy(() => import('./pages/sentinel/SentinelShowcase').then(m => ({ default: m.SentinelShowcase })));
+const Level4Showcase = lazy(() => import('./pages/sentinel/Level4Showcase').then(m => ({ default: m.Level4Showcase })));
+
+// Styles (can be lazy loaded)
+const ColorsShowcase = lazy(() => import('./pages/styles').then(m => ({ default: m.ColorsShowcase })));
+const TypographyStylesShowcase = lazy(() => import('./pages/styles').then(m => ({ default: m.TypographyShowcase })));
+const SpacingShowcase = lazy(() => import('./pages/styles').then(m => ({ default: m.SpacingShowcase })));
+const ShadowsShowcase = lazy(() => import('./pages/styles').then(m => ({ default: m.ShadowsShowcase })));
+const BorderRadiusShowcase = lazy(() => import('./pages/styles').then(m => ({ default: m.BorderRadiusShowcase })));
+const IconsShowcase = lazy(() => import('./pages/styles').then(m => ({ default: m.IconsShowcase })));
 
 // Atoms
-import { ButtonShowcase } from './pages/atoms/ButtonShowcase';
-import { InputShowcase } from './pages/atoms/InputShowcase';
-import { CheckboxShowcase } from './pages/atoms/CheckboxShowcase';
-import { BadgeShowcase } from './pages/atoms/BadgeShowcase';
-import { TypographyShowcase } from './pages/atoms/TypographyShowcase';
-import { IconTooltipShowcase } from './pages/atoms/IconTooltipShowcase';
+const ButtonShowcase = lazy(() => import('./pages/atoms/ButtonShowcase').then(m => ({ default: m.ButtonShowcase })));
+const InputShowcase = lazy(() => import('./pages/atoms/InputShowcase').then(m => ({ default: m.InputShowcase })));
+const CheckboxShowcase = lazy(() => import('./pages/atoms/CheckboxShowcase').then(m => ({ default: m.CheckboxShowcase })));
+const BadgeShowcase = lazy(() => import('./pages/atoms/BadgeShowcase').then(m => ({ default: m.BadgeShowcase })));
+const TypographyShowcase = lazy(() => import('./pages/atoms/TypographyShowcase').then(m => ({ default: m.TypographyShowcase })));
+const IconTooltipShowcase = lazy(() => import('./pages/atoms/IconTooltipShowcase').then(m => ({ default: m.IconTooltipShowcase })));
 
 // Molecules
-import { CardShowcase } from './pages/molecules/CardShowcase';
-import { FormFieldShowcase } from './pages/molecules/FormFieldShowcase';
-import { MenuItemShowcase } from './pages/molecules/MenuItemShowcase';
-import { SidebarItemShowcase } from './pages/molecules/SidebarItemShowcase';
-import { NotificationCardShowcase } from './pages/molecules/NotificationCardShowcase';
-import { PaginationShowcase } from './pages/molecules/PaginationShowcase';
-import { SearchBarShowcase } from './pages/molecules/SearchBarShowcase';
-import { SearchbarItemShowcase } from './pages/molecules/SearchbarItemShowcase';
+const CardShowcase = lazy(() => import('./pages/molecules/CardShowcase').then(m => ({ default: m.CardShowcase })));
+const FormFieldShowcase = lazy(() => import('./pages/molecules/FormFieldShowcase').then(m => ({ default: m.FormFieldShowcase })));
+const MenuItemShowcase = lazy(() => import('./pages/molecules/MenuItemShowcase').then(m => ({ default: m.MenuItemShowcase })));
+const SidebarItemShowcase = lazy(() => import('./pages/molecules/SidebarItemShowcase').then(m => ({ default: m.SidebarItemShowcase })));
+const NotificationCardShowcase = lazy(() => import('./pages/molecules/NotificationCardShowcase').then(m => ({ default: m.NotificationCardShowcase })));
+const PaginationShowcase = lazy(() => import('./pages/molecules/PaginationShowcase').then(m => ({ default: m.PaginationShowcase })));
+const SearchBarShowcase = lazy(() => import('./pages/molecules/SearchBarShowcase').then(m => ({ default: m.SearchBarShowcase })));
+const SearchbarItemShowcase = lazy(() => import('./pages/molecules/SearchbarItemShowcase').then(m => ({ default: m.SearchbarItemShowcase })));
+const MetricCardShowcase = lazy(() => import('./pages/molecules/MetricCardShowcase').then(m => ({ default: m.MetricCardShowcase })));
 
 // Organisms
-import { TableShowcase } from './pages/organisms/TableShowcase';
-import { SidebarShowcase } from './pages/organisms/SidebarShowcase';
-import { SearchbarShowcase } from './pages/organisms/SearchbarShowcase';
-import { ModalShowcase } from './pages/organisms/ModalShowcase';
-import { FormShowcase } from './pages/organisms/FormShowcase';
-import { PaginatedTableShowcase } from './pages/organisms/PaginatedTableShowcase';
+const TableShowcase = lazy(() => import('./pages/organisms/TableShowcase').then(m => ({ default: m.TableShowcase })));
+const SidebarShowcase = lazy(() => import('./pages/organisms/SidebarShowcase').then(m => ({ default: m.SidebarShowcase })));
+const SearchbarShowcase = lazy(() => import('./pages/organisms/SearchbarShowcase').then(m => ({ default: m.SearchbarShowcase })));
+const ModalShowcase = lazy(() => import('./pages/organisms/ModalShowcase').then(m => ({ default: m.ModalShowcase })));
+const FormShowcase = lazy(() => import('./pages/organisms/FormShowcase').then(m => ({ default: m.FormShowcase })));
+const PaginatedTableShowcase = lazy(() => import('./pages/organisms/PaginatedTableShowcase').then(m => ({ default: m.PaginatedTableShowcase })));
+const DataGridShowcase = lazy(() => import('./pages/organisms/DataGridShowcase').then(m => ({ default: m.DataGridShowcase })));
+const ToastShowcase = lazy(() => import('./pages/organisms/ToastShowcase').then(m => ({ default: m.ToastShowcase })));
 
-// Charts
-import {
-  ChartsShowcase,
-  LineChartsShowcase,
-  ComparisonChartsShowcase,
-  ProgressChartsShowcase,
-  DistributionChartsShowcase,
-  FlowChartsShowcase,
-  CorrelationChartsShowcase
-} from './pages/charts';
+// Charts (heavy - always lazy)
+const ChartsShowcase = lazy(() => import('./pages/charts').then(m => ({ default: m.ChartsShowcase })));
+const LineChartsShowcase = lazy(() => import('./pages/charts').then(m => ({ default: m.LineChartsShowcase })));
+const ComparisonChartsShowcase = lazy(() => import('./pages/charts').then(m => ({ default: m.ComparisonChartsShowcase })));
+const ProgressChartsShowcase = lazy(() => import('./pages/charts').then(m => ({ default: m.ProgressChartsShowcase })));
+const DistributionChartsShowcase = lazy(() => import('./pages/charts').then(m => ({ default: m.DistributionChartsShowcase })));
+const FlowChartsShowcase = lazy(() => import('./pages/charts').then(m => ({ default: m.FlowChartsShowcase })));
+const CorrelationChartsShowcase = lazy(() => import('./pages/charts').then(m => ({ default: m.CorrelationChartsShowcase })));
 
 // Animations
-import {
-  AnimationsShowcase,
-  HoverAnimationsShowcase,
-  EntryAnimationsShowcase,
-  ScrollAnimationsShowcase,
-  LayoutAnimationsShowcase,
-  DragAnimationsShowcase
-} from './pages/animations';
+const AnimationsShowcase = lazy(() => import('./pages/animations').then(m => ({ default: m.AnimationsShowcase })));
+const HoverAnimationsShowcase = lazy(() => import('./pages/animations').then(m => ({ default: m.HoverAnimationsShowcase })));
+const EntryAnimationsShowcase = lazy(() => import('./pages/animations').then(m => ({ default: m.EntryAnimationsShowcase })));
+const ScrollAnimationsShowcase = lazy(() => import('./pages/animations').then(m => ({ default: m.ScrollAnimationsShowcase })));
+const LayoutAnimationsShowcase = lazy(() => import('./pages/animations').then(m => ({ default: m.LayoutAnimationsShowcase })));
+const DragAnimationsShowcase = lazy(() => import('./pages/animations').then(m => ({ default: m.DragAnimationsShowcase })));
+
+// Simple loading spinner for showcase pages
+function ShowcaseLoader() {
+  return (
+    <div style={{
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      height: '50vh',
+      color: 'var(--sentinel-text-tertiary)',
+      fontFamily: 'var(--sentinel-font-mono)',
+      fontSize: '14px',
+    }}>
+      Loading...
+    </div>
+  );
+}
 
 function AppRoutes() {
   return (
@@ -68,65 +94,92 @@ function AppRoutes() {
       {/* Landing Page - Root */}
       <Route path="/" element={<Landing />} />
 
+      {/* SENTINEL App - Investment Analysis Application */}
+      <Route path="/app" element={<AppLayout />}>
+        <Route index element={<Navigate to="dashboard" replace />} />
+        <Route path="login" element={
+          <Suspense fallback={<LoadingScreen message="Loading login" />}>
+            <LoginPage />
+          </Suspense>
+        } />
+        <Route path="dashboard" element={
+          <Suspense fallback={<LoadingScreen message="Initializing dashboard" />}>
+            <DashboardPage />
+          </Suspense>
+        } />
+      </Route>
+
       {/* SENTINEL Showcase - Standalone */}
-      <Route path="/showcase/sentinel" element={<SentinelShowcase />} />
+      <Route path="/showcase/sentinel" element={
+        <Suspense fallback={<LoadingScreen message="Loading showcase" />}>
+          <SentinelShowcase />
+        </Suspense>
+      } />
+      <Route path="/showcase/sentinel/level4" element={
+        <Suspense fallback={<LoadingScreen message="Loading showcase" />}>
+          <Level4Showcase />
+        </Suspense>
+      } />
 
       {/* Showcase Layout Routes */}
       <Route path="/showcase" element={<ShowcaseLayout />}>
         <Route index element={<Home />} />
 
-          {/* Styles */}
-          <Route path="styles/colors" element={<ColorsShowcase />} />
-          <Route path="styles/typography" element={<TypographyStylesShowcase />} />
-          <Route path="styles/spacing" element={<SpacingShowcase />} />
-          <Route path="styles/shadows" element={<ShadowsShowcase />} />
-          <Route path="styles/border-radius" element={<BorderRadiusShowcase />} />
-          <Route path="styles/icons" element={<IconsShowcase />} />
+        {/* Styles */}
+        <Route path="styles/colors" element={<Suspense fallback={<ShowcaseLoader />}><ColorsShowcase /></Suspense>} />
+        <Route path="styles/typography" element={<Suspense fallback={<ShowcaseLoader />}><TypographyStylesShowcase /></Suspense>} />
+        <Route path="styles/spacing" element={<Suspense fallback={<ShowcaseLoader />}><SpacingShowcase /></Suspense>} />
+        <Route path="styles/shadows" element={<Suspense fallback={<ShowcaseLoader />}><ShadowsShowcase /></Suspense>} />
+        <Route path="styles/border-radius" element={<Suspense fallback={<ShowcaseLoader />}><BorderRadiusShowcase /></Suspense>} />
+        <Route path="styles/icons" element={<Suspense fallback={<ShowcaseLoader />}><IconsShowcase /></Suspense>} />
 
-          {/* Atoms */}
-          <Route path="atoms/button" element={<ButtonShowcase />} />
-          <Route path="atoms/input" element={<InputShowcase />} />
-          <Route path="atoms/checkbox" element={<CheckboxShowcase />} />
-          <Route path="atoms/badge" element={<BadgeShowcase />} />
-          <Route path="atoms/typography" element={<TypographyShowcase />} />
-          <Route path="atoms/icon-tooltip" element={<IconTooltipShowcase />} />
+        {/* Atoms */}
+        <Route path="atoms/button" element={<Suspense fallback={<ShowcaseLoader />}><ButtonShowcase /></Suspense>} />
+        <Route path="atoms/input" element={<Suspense fallback={<ShowcaseLoader />}><InputShowcase /></Suspense>} />
+        <Route path="atoms/checkbox" element={<Suspense fallback={<ShowcaseLoader />}><CheckboxShowcase /></Suspense>} />
+        <Route path="atoms/badge" element={<Suspense fallback={<ShowcaseLoader />}><BadgeShowcase /></Suspense>} />
+        <Route path="atoms/typography" element={<Suspense fallback={<ShowcaseLoader />}><TypographyShowcase /></Suspense>} />
+        <Route path="atoms/icon-tooltip" element={<Suspense fallback={<ShowcaseLoader />}><IconTooltipShowcase /></Suspense>} />
 
-          {/* Molecules */}
-          <Route path="molecules/card" element={<CardShowcase />} />
-          <Route path="molecules/form-field" element={<FormFieldShowcase />} />
-          <Route path="molecules/menu-item" element={<MenuItemShowcase />} />
-          <Route path="molecules/sidebar-item" element={<SidebarItemShowcase />} />
-          <Route path="molecules/pagination" element={<PaginationShowcase />} />
-          <Route path="molecules/notification-card" element={<NotificationCardShowcase />} />
-          <Route path="molecules/search-bar" element={<SearchBarShowcase />} />
-          <Route path="molecules/searchbar-item" element={<SearchbarItemShowcase />} />
+        {/* Molecules */}
+        <Route path="molecules/card" element={<Suspense fallback={<ShowcaseLoader />}><CardShowcase /></Suspense>} />
+        <Route path="molecules/form-field" element={<Suspense fallback={<ShowcaseLoader />}><FormFieldShowcase /></Suspense>} />
+        <Route path="molecules/menu-item" element={<Suspense fallback={<ShowcaseLoader />}><MenuItemShowcase /></Suspense>} />
+        <Route path="molecules/sidebar-item" element={<Suspense fallback={<ShowcaseLoader />}><SidebarItemShowcase /></Suspense>} />
+        <Route path="molecules/pagination" element={<Suspense fallback={<ShowcaseLoader />}><PaginationShowcase /></Suspense>} />
+        <Route path="molecules/notification-card" element={<Suspense fallback={<ShowcaseLoader />}><NotificationCardShowcase /></Suspense>} />
+        <Route path="molecules/search-bar" element={<Suspense fallback={<ShowcaseLoader />}><SearchBarShowcase /></Suspense>} />
+        <Route path="molecules/searchbar-item" element={<Suspense fallback={<ShowcaseLoader />}><SearchbarItemShowcase /></Suspense>} />
+        <Route path="molecules/metric-card" element={<Suspense fallback={<ShowcaseLoader />}><MetricCardShowcase /></Suspense>} />
 
-          {/* Organisms */}
-          <Route path="organisms/sidebar" element={<SidebarShowcase />} />
-          <Route path="organisms/table" element={<TableShowcase />} />
-          <Route path="organisms/searchbar" element={<SearchbarShowcase />} />
-          <Route path="organisms/modal" element={<ModalShowcase />} />
-          <Route path="organisms/form" element={<FormShowcase />} />
-          <Route path="organisms/paginated-table" element={<PaginatedTableShowcase />} />
+        {/* Organisms */}
+        <Route path="organisms/sidebar" element={<Suspense fallback={<ShowcaseLoader />}><SidebarShowcase /></Suspense>} />
+        <Route path="organisms/table" element={<Suspense fallback={<ShowcaseLoader />}><TableShowcase /></Suspense>} />
+        <Route path="organisms/searchbar" element={<Suspense fallback={<ShowcaseLoader />}><SearchbarShowcase /></Suspense>} />
+        <Route path="organisms/modal" element={<Suspense fallback={<ShowcaseLoader />}><ModalShowcase /></Suspense>} />
+        <Route path="organisms/form" element={<Suspense fallback={<ShowcaseLoader />}><FormShowcase /></Suspense>} />
+        <Route path="organisms/paginated-table" element={<Suspense fallback={<ShowcaseLoader />}><PaginatedTableShowcase /></Suspense>} />
+        <Route path="organisms/data-grid" element={<Suspense fallback={<ShowcaseLoader />}><DataGridShowcase /></Suspense>} />
+        <Route path="organisms/toast" element={<Suspense fallback={<ShowcaseLoader />}><ToastShowcase /></Suspense>} />
 
-          {/* Charts */}
-          <Route path="charts" element={<ChartsShowcase />} />
-          <Route path="charts/line" element={<LineChartsShowcase />} />
-          <Route path="charts/comparison" element={<ComparisonChartsShowcase />} />
-          <Route path="charts/progress" element={<ProgressChartsShowcase />} />
-          <Route path="charts/distribution" element={<DistributionChartsShowcase />} />
-          <Route path="charts/flow" element={<FlowChartsShowcase />} />
-          <Route path="charts/correlation" element={<CorrelationChartsShowcase />} />
+        {/* Charts */}
+        <Route path="charts" element={<Suspense fallback={<ShowcaseLoader />}><ChartsShowcase /></Suspense>} />
+        <Route path="charts/line" element={<Suspense fallback={<ShowcaseLoader />}><LineChartsShowcase /></Suspense>} />
+        <Route path="charts/comparison" element={<Suspense fallback={<ShowcaseLoader />}><ComparisonChartsShowcase /></Suspense>} />
+        <Route path="charts/progress" element={<Suspense fallback={<ShowcaseLoader />}><ProgressChartsShowcase /></Suspense>} />
+        <Route path="charts/distribution" element={<Suspense fallback={<ShowcaseLoader />}><DistributionChartsShowcase /></Suspense>} />
+        <Route path="charts/flow" element={<Suspense fallback={<ShowcaseLoader />}><FlowChartsShowcase /></Suspense>} />
+        <Route path="charts/correlation" element={<Suspense fallback={<ShowcaseLoader />}><CorrelationChartsShowcase /></Suspense>} />
 
-          {/* Animations */}
-          <Route path="animations" element={<AnimationsShowcase />} />
-          <Route path="animations/hover" element={<HoverAnimationsShowcase />} />
-          <Route path="animations/entry" element={<EntryAnimationsShowcase />} />
-          <Route path="animations/scroll" element={<ScrollAnimationsShowcase />} />
-          <Route path="animations/layout" element={<LayoutAnimationsShowcase />} />
-          <Route path="animations/drag" element={<DragAnimationsShowcase />} />
-        </Route>
-      </Routes>
+        {/* Animations */}
+        <Route path="animations" element={<Suspense fallback={<ShowcaseLoader />}><AnimationsShowcase /></Suspense>} />
+        <Route path="animations/hover" element={<Suspense fallback={<ShowcaseLoader />}><HoverAnimationsShowcase /></Suspense>} />
+        <Route path="animations/entry" element={<Suspense fallback={<ShowcaseLoader />}><EntryAnimationsShowcase /></Suspense>} />
+        <Route path="animations/scroll" element={<Suspense fallback={<ShowcaseLoader />}><ScrollAnimationsShowcase /></Suspense>} />
+        <Route path="animations/layout" element={<Suspense fallback={<ShowcaseLoader />}><LayoutAnimationsShowcase /></Suspense>} />
+        <Route path="animations/drag" element={<Suspense fallback={<ShowcaseLoader />}><DragAnimationsShowcase /></Suspense>} />
+      </Route>
+    </Routes>
   );
 }
 

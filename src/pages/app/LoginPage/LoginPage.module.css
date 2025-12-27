@@ -1,0 +1,126 @@
+/* Path: src/pages/app/LoginPage/LoginPage.module.css */
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sentinel-space-6);
+  padding: var(--sentinel-space-8);
+  max-width: 420px;
+  width: 100%;
+}
+
+.logoContainer {
+  margin-bottom: var(--sentinel-space-4);
+}
+
+.logo {
+  width: 120px;
+  height: 120px;
+  filter: drop-shadow(0 0 20px var(--sentinel-accent-glow));
+}
+
+.scanLine {
+  transform-origin: 60px 60px;
+  animation: scan 4s linear infinite;
+}
+
+@keyframes scan {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.title {
+  font-family: var(--sentinel-font-primary);
+  font-size: var(--sentinel-text-4xl);
+  font-weight: var(--sentinel-font-semibold);
+  color: var(--sentinel-text-primary);
+  letter-spacing: 0.2em;
+  text-align: center;
+  margin: 0;
+}
+
+.subtitle {
+  font-family: var(--sentinel-font-mono);
+  font-size: var(--sentinel-text-xs);
+  color: var(--sentinel-text-tertiary);
+  letter-spacing: 0.15em;
+  text-align: center;
+  margin-top: var(--sentinel-space-2);
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sentinel-space-5);
+  padding: var(--sentinel-space-6);
+  background: var(--sentinel-bg-elevated);
+  border: 1px solid var(--sentinel-border-subtle);
+  border-radius: var(--sentinel-radius-xl);
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sentinel-space-2);
+}
+
+.label {
+  font-family: var(--sentinel-font-primary);
+  font-size: var(--sentinel-text-sm);
+  font-weight: var(--sentinel-font-medium);
+  color: var(--sentinel-text-secondary);
+}
+
+.error {
+  font-size: var(--sentinel-text-sm);
+  color: var(--sentinel-status-negative);
+  text-align: center;
+  margin: 0;
+}
+
+.submitButton {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sentinel-space-2);
+  margin-top: var(--sentinel-space-2);
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.hint {
+  font-family: var(--sentinel-font-mono);
+  font-size: var(--sentinel-text-xs);
+  color: var(--sentinel-text-tertiary);
+  text-align: center;
+  margin: 0;
+}

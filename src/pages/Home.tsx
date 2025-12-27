@@ -1,11 +1,34 @@
 // Path: src/pages/Home.tsx
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Box, Layers, BarChart3, ArrowRight, LineChart, Sparkles } from 'lucide-react';
+import { Box, Layers, BarChart3, ArrowRight, LineChart, Sparkles, LogIn } from 'lucide-react';
 
 export function Home() {
   const headerStyles: React.CSSProperties = {
-    marginBottom: '20px'
+    marginBottom: '20px',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start'
+  };
+
+  const loginButtonStyles: React.CSSProperties = {
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: '8px',
+    padding: '12px 24px',
+    backgroundColor: 'var(--accent)',
+    color: 'var(--foreground)',
+    border: '1px solid var(--primary)',
+    borderRadius: 'var(--radius)',
+    fontSize: '13px',
+    fontWeight: 600,
+    fontFamily: 'var(--font-mono)',
+    textTransform: 'uppercase',
+    letterSpacing: '0.05em',
+    textDecoration: 'none',
+    cursor: 'pointer',
+    transition: 'all 0.2s ease',
+    boxShadow: '0 0 15px var(--accent-glow)'
   };
 
   const titleStyles: React.CSSProperties = {
@@ -156,12 +179,33 @@ export function Home() {
     <div>
       {/* Header */}
       <header style={headerStyles}>
-        <h1 style={titleStyles}>
-          SENTINEL Design System
-        </h1>
-        <p style={subtitleStyles}>
-          Investment Observatory v2.0.0
-        </p>
+        <div>
+          <h1 style={titleStyles}>
+            SENTINEL Design System
+          </h1>
+          <p style={subtitleStyles}>
+            Investment Observatory v2.0.0
+          </p>
+        </div>
+        <Link
+          to="/app/login"
+          style={loginButtonStyles}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.backgroundColor = 'var(--primary)';
+            e.currentTarget.style.color = 'var(--background)';
+            e.currentTarget.style.boxShadow = '0 0 25px var(--accent-glow)';
+            e.currentTarget.style.transform = 'translateY(-2px)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.backgroundColor = 'var(--accent)';
+            e.currentTarget.style.color = 'var(--foreground)';
+            e.currentTarget.style.boxShadow = '0 0 15px var(--accent-glow)';
+            e.currentTarget.style.transform = 'translateY(0)';
+          }}
+        >
+          <LogIn size={16} />
+          Launch App
+        </Link>
       </header>
 
       {/* Stats */}

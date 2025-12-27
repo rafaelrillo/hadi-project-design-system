@@ -1,0 +1,377 @@
+/* Path: src/components/organisms/Toast/Toast.module.css */
+/* ═══════════════════════════════════════════════════════════════════════════════
+   SENTINEL DESIGN SYSTEM - Toast Notification System
+
+   Toast notifications for user feedback
+   Supports multiple types, positions, and actions
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   CONTAINER
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.toastContainer {
+  position: fixed;
+  z-index: var(--sentinel-z-notification);
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;
+  padding: var(--sentinel-space-4);
+  max-width: 420px;
+  width: 100%;
+}
+
+/* Position variants */
+.positionTopLeft {
+  top: 0;
+  left: 0;
+}
+
+.positionTopCenter {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.positionTopRight {
+  top: 0;
+  right: 0;
+}
+
+.positionBottomLeft {
+  bottom: 0;
+  left: 0;
+}
+
+.positionBottomCenter {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.positionBottomRight {
+  bottom: 0;
+  right: 0;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   TOAST ITEM
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.toast {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sentinel-space-3);
+  padding: var(--sentinel-space-4);
+  background-color: var(--sentinel-bg-overlay);
+  border: 1px solid var(--sentinel-border-default);
+  border-radius: var(--sentinel-radius-lg);
+  box-shadow: var(--sentinel-shadow-lg);
+  pointer-events: auto;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   TYPE VARIANTS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.typeDefault {
+  border-left: 3px solid var(--sentinel-accent-primary);
+}
+
+.typeDefault .toastIcon {
+  color: var(--sentinel-accent-primary);
+}
+
+.typeSuccess {
+  border-left: 3px solid var(--sentinel-status-positive);
+  background-color: color-mix(in srgb, var(--sentinel-status-positive) 5%, var(--sentinel-bg-overlay));
+}
+
+.typeSuccess .toastIcon {
+  color: var(--sentinel-status-positive);
+}
+
+.typeError {
+  border-left: 3px solid var(--sentinel-status-negative);
+  background-color: color-mix(in srgb, var(--sentinel-status-negative) 5%, var(--sentinel-bg-overlay));
+}
+
+.typeError .toastIcon {
+  color: var(--sentinel-status-negative);
+}
+
+.typeWarning {
+  border-left: 3px solid var(--sentinel-status-warning);
+  background-color: color-mix(in srgb, var(--sentinel-status-warning) 5%, var(--sentinel-bg-overlay));
+}
+
+.typeWarning .toastIcon {
+  color: var(--sentinel-status-warning);
+}
+
+.typeInfo {
+  border-left: 3px solid var(--sentinel-status-info);
+  background-color: color-mix(in srgb, var(--sentinel-status-info) 5%, var(--sentinel-bg-overlay));
+}
+
+.typeInfo .toastIcon {
+  color: var(--sentinel-status-info);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   ICON
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.toastIcon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   CONTENT
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.toastContent {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sentinel-space-1);
+}
+
+.toastTitle {
+  margin: 0;
+  font-family: var(--sentinel-font-primary);
+  font-size: var(--sentinel-text-sm);
+  font-weight: var(--sentinel-font-semibold);
+  color: var(--sentinel-text-primary);
+  line-height: var(--sentinel-leading-tight);
+}
+
+.toastDescription {
+  margin: 0;
+  font-family: var(--sentinel-font-primary);
+  font-size: var(--sentinel-text-sm);
+  color: var(--sentinel-text-secondary);
+  line-height: var(--sentinel-leading-normal);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   ACTION BUTTON
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.toastAction {
+  align-self: flex-start;
+  margin-top: var(--sentinel-space-2);
+  padding: var(--sentinel-space-1) var(--sentinel-space-3);
+  background-color: var(--sentinel-accent-subtle);
+  border: 1px solid var(--sentinel-accent-primary);
+  border-radius: var(--sentinel-radius-md);
+  color: var(--sentinel-accent-primary);
+  font-family: var(--sentinel-font-primary);
+  font-size: var(--sentinel-text-xs);
+  font-weight: var(--sentinel-font-medium);
+  cursor: pointer;
+  transition: var(--sentinel-transition-fast);
+}
+
+.toastAction:hover {
+  background-color: var(--sentinel-accent-primary);
+  color: var(--sentinel-text-inverse);
+}
+
+.toastAction:focus-visible {
+  outline: 2px solid var(--sentinel-accent-primary);
+  outline-offset: 2px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   DISMISS BUTTON
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.toastDismiss {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: var(--sentinel-radius-sm);
+  color: var(--sentinel-text-tertiary);
+  cursor: pointer;
+  transition: var(--sentinel-transition-fast);
+}
+
+.toastDismiss:hover {
+  color: var(--sentinel-text-primary);
+  background-color: var(--sentinel-bg-subtle);
+}
+
+.toastDismiss:focus-visible {
+  outline: 2px solid var(--sentinel-accent-primary);
+  outline-offset: 2px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   ANIMATIONS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.hidden {
+  opacity: 0;
+  transform: translateY(8px) scale(0.95);
+}
+
+/* Enter animations */
+.enterLeft {
+  animation: slideInLeft var(--sentinel-duration-normal) var(--sentinel-ease-out) forwards;
+}
+
+.enterRight {
+  animation: slideInRight var(--sentinel-duration-normal) var(--sentinel-ease-out) forwards;
+}
+
+.enterCenter {
+  animation: slideInDown var(--sentinel-duration-normal) var(--sentinel-ease-out) forwards;
+}
+
+/* Exit animations */
+.exitLeft {
+  animation: slideOutLeft var(--sentinel-duration-fast) var(--sentinel-ease-in) forwards;
+}
+
+.exitRight {
+  animation: slideOutRight var(--sentinel-duration-fast) var(--sentinel-ease-in) forwards;
+}
+
+.exitCenter {
+  animation: slideOutUp var(--sentinel-duration-fast) var(--sentinel-ease-in) forwards;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes slideOutLeft {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+@keyframes slideOutUp {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   REDUCED MOTION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .enterLeft,
+  .enterRight,
+  .enterCenter,
+  .exitLeft,
+  .exitRight,
+  .exitCenter {
+    animation: none;
+  }
+
+  .toast {
+    opacity: 1;
+    transform: none;
+  }
+
+  .hidden {
+    opacity: 0;
+    transform: none;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   RESPONSIVE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 480px) {
+  .toastContainer {
+    max-width: 100%;
+    padding: var(--sentinel-space-3);
+  }
+
+  .positionTopLeft,
+  .positionTopRight,
+  .positionTopCenter {
+    left: 0;
+    right: 0;
+    transform: none;
+  }
+
+  .positionBottomLeft,
+  .positionBottomRight,
+  .positionBottomCenter {
+    left: 0;
+    right: 0;
+    transform: none;
+  }
+
+  .toast {
+    border-radius: var(--sentinel-radius-md);
+  }
+}

@@ -1,0 +1,380 @@
+/* Path: src/components/organisms/sentinel/PerformanceChart/PerformanceChart.module.css */
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   PERFORMANCE CHART - Level 4 Depth Component
+   Historical performance visualization with SENTINEL aesthetic
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.container {
+  background: var(--sentinel-bg-elevated);
+  border: 1px solid var(--sentinel-border-subtle);
+  border-radius: var(--sentinel-radius-lg, 12px);
+  overflow: hidden;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   HEADER
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--sentinel-border-subtle);
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.titleSection {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.title {
+  font-family: var(--sentinel-font-primary);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--sentinel-text-primary);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.subtitle {
+  font-family: var(--sentinel-font-primary);
+  font-size: 13px;
+  color: var(--sentinel-text-secondary);
+  margin: 0;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   TIME RANGE SELECTOR
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.rangeSelector {
+  display: flex;
+  gap: 2px;
+  background: var(--sentinel-bg-subtle);
+  padding: 3px;
+  border-radius: var(--sentinel-radius-sm, 6px);
+}
+
+.rangeButton {
+  padding: 6px 12px;
+  background: transparent;
+  border: none;
+  border-radius: var(--sentinel-radius-xs, 4px);
+  font-family: var(--sentinel-font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--sentinel-text-tertiary);
+  cursor: pointer;
+  transition: all 200ms;
+}
+
+.rangeButton:hover {
+  color: var(--sentinel-text-secondary);
+  background: var(--sentinel-bg-interactive);
+}
+
+.rangeButton.active {
+  color: var(--sentinel-accent-primary);
+  background: var(--sentinel-bg-elevated);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   METRICS BAR
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.metricsBar {
+  display: flex;
+  gap: 32px;
+  padding: 16px 24px;
+  background: var(--sentinel-bg-base);
+  border-bottom: 1px solid var(--sentinel-border-subtle);
+  overflow-x: auto;
+}
+
+.metricItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.metricLabel {
+  font-family: var(--sentinel-font-primary);
+  font-size: 11px;
+  color: var(--sentinel-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.metricValue {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.metricNumber {
+  font-family: var(--sentinel-font-mono);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--sentinel-text-primary);
+}
+
+.metricNumber.positive {
+  color: var(--sentinel-status-positive);
+}
+
+.metricNumber.negative {
+  color: var(--sentinel-status-negative);
+}
+
+.metricTrend {
+  display: flex;
+  align-items: center;
+}
+
+.metricTrend.positive {
+  color: var(--sentinel-status-positive);
+}
+
+.metricTrend.negative {
+  color: var(--sentinel-status-negative);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   CHART
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.chartWrapper {
+  padding: 16px 24px;
+}
+
+.chart {
+  width: 100%;
+  height: auto;
+}
+
+.gridLine {
+  stroke: var(--sentinel-border-subtle);
+  stroke-width: 1;
+  opacity: 0.5;
+}
+
+.zeroLine {
+  stroke: var(--sentinel-text-disabled);
+  stroke-width: 1;
+  stroke-dasharray: 4 4;
+}
+
+.axisLabel {
+  font-family: var(--sentinel-font-mono);
+  font-size: 10px;
+  fill: var(--sentinel-text-tertiary);
+}
+
+.line {
+  transition: opacity 200ms;
+}
+
+.areaFill {
+  opacity: 0.08;
+}
+
+.dataPoint {
+  opacity: 0;
+  cursor: pointer;
+  transition: all 200ms;
+}
+
+.chart:hover .dataPoint {
+  opacity: 1;
+}
+
+.dataPoint:hover {
+  transform-origin: center;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   TOOLTIP
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.tooltip {
+  pointer-events: none;
+}
+
+.tooltipBg {
+  fill: var(--sentinel-bg-elevated);
+  stroke: var(--sentinel-border-default);
+  stroke-width: 1;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
+}
+
+.tooltipDate {
+  font-family: var(--sentinel-font-primary);
+  font-size: 10px;
+  fill: var(--sentinel-text-tertiary);
+}
+
+.tooltipValue {
+  font-family: var(--sentinel-font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  fill: var(--sentinel-text-primary);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   LEGEND
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.legend {
+  display: flex;
+  gap: 24px;
+  padding: 12px 24px;
+  border-top: 1px solid var(--sentinel-border-subtle);
+  flex-wrap: wrap;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legendLine {
+  width: 20px;
+  height: 3px;
+  border-radius: 2px;
+}
+
+.legendLine.dashed {
+  background: repeating-linear-gradient(
+    to right,
+    currentColor 0,
+    currentColor 4px,
+    transparent 4px,
+    transparent 8px
+  );
+  height: 2px;
+}
+
+.legendLabel {
+  font-family: var(--sentinel-font-primary);
+  font-size: 12px;
+  color: var(--sentinel-text-secondary);
+}
+
+.benchmarkTag {
+  font-family: var(--sentinel-font-mono);
+  font-size: 9px;
+  color: var(--sentinel-text-tertiary);
+  text-transform: uppercase;
+  padding: 2px 6px;
+  background: var(--sentinel-bg-subtle);
+  border-radius: var(--sentinel-radius-xs, 4px);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   FOOTER
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  background: var(--sentinel-bg-base);
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.footerInfo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--sentinel-font-primary);
+  font-size: 11px;
+  color: var(--sentinel-text-tertiary);
+}
+
+.footerInfo svg {
+  flex-shrink: 0;
+  color: var(--sentinel-text-disabled);
+}
+
+.footerNote {
+  font-family: var(--sentinel-font-mono);
+  font-size: 10px;
+  color: var(--sentinel-text-tertiary);
+  font-style: italic;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   EMPTY STATE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 48px 24px;
+  color: var(--sentinel-text-tertiary);
+}
+
+.emptyState svg {
+  opacity: 0.5;
+}
+
+.emptyState p {
+  font-family: var(--sentinel-font-primary);
+  font-size: 14px;
+  margin: 0;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   RESPONSIVE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .rangeSelector {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .metricsBar {
+    gap: 24px;
+  }
+
+  .legend {
+    gap: 16px;
+  }
+
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   REDUCED MOTION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .rangeButton,
+  .line,
+  .dataPoint {
+    transition: none;
+  }
+}
