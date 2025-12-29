@@ -1,0 +1,39 @@
+/* Path: src/components/atoms/StatCounter/StatCounter.module.css */
+
+.statCounter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--sentinel-space-2);
+}
+
+.value {
+  font-family: var(--sentinel-font-mono);
+  font-size: var(--sentinel-text-4xl);
+  font-weight: var(--sentinel-font-bold);
+  color: var(--sentinel-accent-primary);
+  letter-spacing: -0.02em;
+  text-shadow: 0 0 30px var(--sentinel-accent-glow);
+  line-height: 1;
+}
+
+.label {
+  font-family: var(--sentinel-font-primary);
+  font-size: var(--sentinel-text-sm);
+  font-weight: var(--sentinel-font-medium);
+  color: var(--sentinel-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .value {
+    font-size: var(--sentinel-text-3xl);
+  }
+
+  .label {
+    font-size: var(--sentinel-text-xs);
+  }
+}

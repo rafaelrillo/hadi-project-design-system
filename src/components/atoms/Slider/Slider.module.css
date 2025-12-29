@@ -1,0 +1,232 @@
+/* Path: src/components/atoms/Slider/Slider.module.css */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--sentinel-text-secondary);
+}
+
+.sliderWrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.minLabel,
+.maxLabel {
+  font-size: 12px;
+  font-family: var(--sentinel-font-mono);
+  color: var(--sentinel-text-tertiary);
+  min-width: 40px;
+}
+
+.minLabel {
+  text-align: right;
+}
+
+.maxLabel {
+  text-align: left;
+}
+
+/* Track */
+.track {
+  flex: 1;
+  position: relative;
+  height: 6px;
+  background: var(--sentinel-bg-elevated);
+  border-radius: 3px;
+  cursor: pointer;
+  touch-action: none;
+}
+
+.disabled .track {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Fill */
+.fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: var(--sentinel-accent-primary);
+  border-radius: 3px;
+  transition: width 0.05s ease-out;
+  pointer-events: none;
+}
+
+.dragging .fill {
+  transition: none;
+}
+
+/* Thumb */
+.thumb {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 18px;
+  height: 18px;
+  background: var(--sentinel-bg-surface);
+  border: 2px solid var(--sentinel-accent-primary);
+  border-radius: 50%;
+  cursor: grab;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  z-index: 1;
+}
+
+.thumb:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+  box-shadow: 0 0 0 4px rgba(var(--sentinel-accent-primary-rgb, 91, 163, 165), 0.15);
+}
+
+.thumb:focus {
+  outline: none;
+  transform: translate(-50%, -50%) scale(1.1);
+  box-shadow: 0 0 0 4px rgba(var(--sentinel-accent-primary-rgb, 91, 163, 165), 0.25);
+}
+
+.dragging .thumb {
+  cursor: grabbing;
+  transform: translate(-50%, -50%) scale(1.15);
+  transition: none;
+}
+
+.disabled .thumb {
+  cursor: not-allowed;
+  border-color: var(--sentinel-text-tertiary);
+}
+
+/* Tooltip */
+.tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 8px;
+  background: var(--sentinel-bg-elevated);
+  border: 1px solid var(--sentinel-border-default);
+  border-radius: var(--sentinel-radius-sm);
+  font-size: 12px;
+  font-family: var(--sentinel-font-mono);
+  font-weight: 500;
+  color: var(--sentinel-text-primary);
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.15s ease, visibility 0.15s ease;
+  pointer-events: none;
+  box-shadow: var(--sentinel-shadow-md);
+}
+
+.tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: var(--sentinel-border-default);
+}
+
+.thumb:hover .tooltip,
+.thumb:focus .tooltip,
+.dragging .tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Tick marks */
+.ticks {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 8px;
+  pointer-events: none;
+}
+
+.tick {
+  position: absolute;
+  top: 4px;
+  width: 1px;
+  height: 4px;
+  background: var(--sentinel-border-default);
+  transform: translateX(-50%);
+}
+
+/* Size variants */
+.sizeSm .track {
+  height: 4px;
+}
+
+.sizeSm .thumb {
+  width: 14px;
+  height: 14px;
+}
+
+.sizeSm .tooltip {
+  font-size: 11px;
+  padding: 2px 6px;
+}
+
+.sizeLg .track {
+  height: 8px;
+}
+
+.sizeLg .thumb {
+  width: 22px;
+  height: 22px;
+}
+
+.sizeLg .tooltip {
+  font-size: 13px;
+  padding: 6px 10px;
+}
+
+/* Color variants */
+.variantSuccess .fill {
+  background: var(--sentinel-status-positive);
+}
+
+.variantSuccess .thumb {
+  border-color: var(--sentinel-status-positive);
+}
+
+.variantSuccess .thumb:hover,
+.variantSuccess .thumb:focus {
+  box-shadow: 0 0 0 4px rgba(var(--sentinel-status-positive-rgb, 74, 154, 124), 0.15);
+}
+
+.variantWarning .fill {
+  background: var(--sentinel-status-warning);
+}
+
+.variantWarning .thumb {
+  border-color: var(--sentinel-status-warning);
+}
+
+.variantWarning .thumb:hover,
+.variantWarning .thumb:focus {
+  box-shadow: 0 0 0 4px rgba(var(--sentinel-status-warning-rgb, 196, 163, 90), 0.15);
+}
+
+.variantError .fill {
+  background: var(--sentinel-status-negative);
+}
+
+.variantError .thumb {
+  border-color: var(--sentinel-status-negative);
+}
+
+.variantError .thumb:hover,
+.variantError .thumb:focus {
+  box-shadow: 0 0 0 4px rgba(var(--sentinel-status-negative-rgb, 184, 92, 92), 0.15);
+}

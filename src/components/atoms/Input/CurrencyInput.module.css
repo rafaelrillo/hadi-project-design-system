@@ -1,0 +1,123 @@
+/* Path: src/components/atoms/Input/CurrencyInput.module.css */
+
+.container {
+  display: flex;
+  align-items: center;
+  background: var(--sentinel-bg-input, var(--sentinel-bg-elevated));
+  border: 1px solid var(--sentinel-border-default);
+  border-radius: var(--sentinel-radius-md);
+  transition: all var(--sentinel-duration-fast) var(--sentinel-ease-default);
+  overflow: hidden;
+}
+
+.container:hover:not(.disabled) {
+  border-color: var(--sentinel-border-hover);
+}
+
+.focused {
+  border-color: var(--sentinel-accent-primary);
+  box-shadow: 0 0 0 2px rgba(var(--sentinel-accent-primary-rgb, 91, 163, 165), 0.15);
+}
+
+.error {
+  border-color: var(--sentinel-status-negative);
+}
+
+.error.focused {
+  box-shadow: 0 0 0 2px rgba(var(--sentinel-status-negative-rgb, 184, 92, 92), 0.15);
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: var(--sentinel-bg-surface);
+}
+
+/* Symbol */
+.symbol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  color: var(--sentinel-text-secondary);
+  font-family: var(--sentinel-font-mono);
+  font-weight: 500;
+  background: var(--sentinel-bg-surface);
+  border-right: 1px solid var(--sentinel-border-subtle);
+  user-select: none;
+}
+
+/* Input */
+.input {
+  flex: 1;
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--sentinel-text-primary);
+  font-family: var(--sentinel-font-mono);
+  font-weight: 500;
+  text-align: right;
+}
+
+.input::placeholder {
+  color: var(--sentinel-text-tertiary);
+}
+
+.input:disabled {
+  cursor: not-allowed;
+}
+
+/* Size variants */
+.sizeSm {
+  height: 32px;
+}
+
+.sizeSm .symbol {
+  font-size: 12px;
+  padding: 0 8px;
+}
+
+.sizeSm .input {
+  font-size: 13px;
+  padding: 0 10px;
+}
+
+.sizeMd {
+  height: 40px;
+}
+
+.sizeMd .symbol {
+  font-size: 14px;
+  padding: 0 12px;
+}
+
+.sizeMd .input {
+  font-size: 14px;
+  padding: 0 12px;
+}
+
+.sizeLg {
+  height: 48px;
+}
+
+.sizeLg .symbol {
+  font-size: 16px;
+  padding: 0 16px;
+}
+
+.sizeLg .input {
+  font-size: 18px;
+  padding: 0 16px;
+}
+
+/* Remove spinner buttons from number inputs */
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.input[type='number'] {
+  -moz-appearance: textfield;
+}

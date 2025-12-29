@@ -10,10 +10,17 @@ import { LoadingScreen } from './components/atoms/LoadingScreen';
 
 // App Layout (small, load immediately)
 import { AppLayout } from './pages/app';
+import { DashboardLayout } from './layouts/DashboardLayout';
 
 // Lazy load heavy pages
 const LoginPage = lazy(() => import('./pages/app/LoginPage').then(m => ({ default: m.LoginPage })));
 const DashboardPage = lazy(() => import('./pages/app/DashboardPage').then(m => ({ default: m.DashboardPage })));
+const PortfolioView = lazy(() => import('./pages/app/PortfolioView').then(m => ({ default: m.PortfolioView })));
+const PortfolioBuilder = lazy(() => import('./pages/app/PortfolioBuilder').then(m => ({ default: m.PortfolioBuilder })));
+const RecommendationsView = lazy(() => import('./pages/app/RecommendationsView').then(m => ({ default: m.RecommendationsView })));
+const WalletView = lazy(() => import('./pages/app/WalletView').then(m => ({ default: m.WalletView })));
+const NewsView = lazy(() => import('./pages/app/NewsView').then(m => ({ default: m.NewsView })));
+const ChatView = lazy(() => import('./pages/app/ChatView').then(m => ({ default: m.ChatView })));
 const SentinelShowcase = lazy(() => import('./pages/sentinel/SentinelShowcase').then(m => ({ default: m.SentinelShowcase })));
 const Level4Showcase = lazy(() => import('./pages/sentinel/Level4Showcase').then(m => ({ default: m.Level4Showcase })));
 
@@ -102,11 +109,51 @@ function AppRoutes() {
             <LoginPage />
           </Suspense>
         } />
-        <Route path="dashboard" element={
-          <Suspense fallback={<LoadingScreen message="Initializing dashboard" />}>
-            <DashboardPage />
-          </Suspense>
-        } />
+
+        {/* Dashboard with sidebar navigation */}
+        <Route path="dashboard" element={<DashboardLayout />}>
+          <Route index element={
+            <Suspense fallback={<LoadingScreen message="Initializing dashboard" />}>
+              <DashboardPage />
+            </Suspense>
+          } />
+          <Route path="portfolio" element={
+            <Suspense fallback={<LoadingScreen message="Loading portfolio" />}>
+              <PortfolioView />
+            </Suspense>
+          } />
+          <Route path="portfolio/builder" element={
+            <Suspense fallback={<LoadingScreen message="Loading portfolio builder" />}>
+              <PortfolioBuilder />
+            </Suspense>
+          } />
+          <Route path="recommendations" element={
+            <Suspense fallback={<LoadingScreen message="Loading recommendations" />}>
+              <RecommendationsView />
+            </Suspense>
+          } />
+          <Route path="wallet" element={
+            <Suspense fallback={<LoadingScreen message="Loading wallet" />}>
+              <WalletView />
+            </Suspense>
+          } />
+          <Route path="news" element={
+            <Suspense fallback={<LoadingScreen message="Loading news" />}>
+              <NewsView />
+            </Suspense>
+          } />
+          <Route path="chat" element={
+            <Suspense fallback={<LoadingScreen message="Loading AI assistant" />}>
+              <ChatView />
+            </Suspense>
+          } />
+          <Route path="settings" element={
+            <div style={{ padding: '24px', color: 'var(--sentinel-text-secondary)' }}>
+              <h2>Settings</h2>
+              <p>Coming soon...</p>
+            </div>
+          } />
+        </Route>
       </Route>
 
       {/* SENTINEL Showcase - Standalone */}

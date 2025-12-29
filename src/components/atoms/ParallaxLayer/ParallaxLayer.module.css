@@ -1,0 +1,5 @@
+/* Path: src/components/atoms/ParallaxLayer/ParallaxLayer.module.css */
+
+.parallaxLayer {
+  will-change: transform;
+}

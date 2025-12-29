@@ -7,3 +7,6 @@ export type { InputDropdownProps, DropdownOption } from './InputDropdown';
 
 export { Textarea } from './Textarea';
 export type { TextareaProps } from './Textarea';
+
+export { CurrencyInput } from './CurrencyInput';
+export type { CurrencyInputProps } from './CurrencyInput';

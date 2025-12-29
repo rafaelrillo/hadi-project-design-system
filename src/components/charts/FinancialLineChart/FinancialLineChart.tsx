@@ -24,6 +24,7 @@ export interface FinancialLineChartProps {
   xAxisLabel?: string;
   className?: string;
   animate?: boolean;
+  colors?: string[];
 }
 
 // Default financial number formatter
@@ -81,6 +82,7 @@ export function FinancialLineChart({
   xAxisLabel,
   className = '',
   animate = true,
+  colors = sentinelChartColors,
 }: FinancialLineChartProps) {
   const containerClasses = [styles.container, className].filter(Boolean).join(' ');
 
@@ -159,12 +161,12 @@ export function FinancialLineChart({
     <div className={containerClasses} style={{ height: `${height}px` }}>
       <ResponsiveLine
         data={data}
-        colors={sentinelChartColors}
+        colors={colors}
         margin={{
           top: 20,
           right: 30,
           bottom: xAxisLabel ? 60 : 40,
-          left: yAxisLabel ? 70 : 55,
+          left: yAxisLabel ? 90 : 55,
         }}
         xScale={{ type: 'point' }}
         yScale={{
@@ -189,7 +191,7 @@ export function FinancialLineChart({
           tickPadding: 12,
           tickRotation: 0,
           legend: yAxisLabel,
-          legendOffset: -55,
+          legendOffset: -75,
           legendPosition: 'middle',
           format: (value) => formatValue(value as number),
         }}

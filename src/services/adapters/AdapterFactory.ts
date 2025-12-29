@@ -2,6 +2,7 @@
 
 import { MarketDataAdapter } from './types';
 import { FinnhubAdapter } from './FinnhubAdapter';
+import { TiingoAdapter } from '../tiingo/TiingoAdapter';
 import { MockAdapter } from './MockAdapter';
 import { config, type MarketApiProvider } from '../../config/env';
 
@@ -68,6 +69,8 @@ export class AdapterFactory {
         return !!config.financialApis.polygon.apiKey;
       case 'twelvedata':
         return !!config.financialApis.twelveData.apiKey;
+      case 'tiingo':
+        return !!config.financialApis.tiingo.apiKey;
       case 'mock':
         return true;
       default:
@@ -114,6 +117,18 @@ export class AdapterFactory {
           '[AdapterFactory] Twelve Data adapter not implemented, using mock'
         );
         return new MockAdapter();
+      }
+
+      case 'tiingo': {
+        const apiKey = config.financialApis.tiingo.apiKey;
+        if (!apiKey) {
+          console.warn(
+            '[AdapterFactory] Tiingo API key not configured, using mock'
+          );
+          return new MockAdapter();
+        }
+        console.log('[AdapterFactory] Using Tiingo adapter');
+        return new TiingoAdapter(apiKey);
       }
 
       case 'mock':

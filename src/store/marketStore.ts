@@ -85,9 +85,19 @@ export const useMarketStore = create<MarketStoreState & MarketActions>()((set, g
   fetchStocks: async () => {
     set({ isLoading: true, error: null });
 
+    // Create timeout promise (10 seconds max)
+    const timeoutPromise = new Promise<never>((_, reject) =>
+      setTimeout(() => reject(new Error("API request timeout")), 10000)
+    );
+
     try {
       console.log(`[MarketStore] Fetching stocks via ${marketService.getAdapterName()}...`);
-      const stocks = await marketService.getStocks();
+
+      // Race between actual fetch and timeout
+      const stocks = await Promise.race([
+        marketService.getStocks(),
+        timeoutPromise,
+      ]);
 
       set({
         stocks,
@@ -102,10 +112,11 @@ export const useMarketStore = create<MarketStoreState & MarketActions>()((set, g
       get().updateIndicators();
     } catch (error) {
       console.error("[MarketStore] Error fetching stocks:", error);
+      // Keep the mock data already in state, just update loading status
       set({
-        error: "Failed to fetch market data",
+        error: "Failed to fetch market data - using cached data",
         isLoading: false,
-        dataSource: "mock (fallback)",
+        dataSource: "Mock (cached)",
       });
     }
   },

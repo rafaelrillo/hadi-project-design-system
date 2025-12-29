@@ -1,0 +1,198 @@
+/* Path: src/pages/Landing/components/LandingFooter/LandingFooter.module.css */
+
+.footer {
+  position: relative;
+  z-index: 1;
+  background-color: var(--sentinel-bg-void);
+  border-top: 1px solid var(--sentinel-border-subtle);
+  padding: var(--sentinel-space-16) var(--sentinel-space-6);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: var(--sentinel-space-12);
+  margin-bottom: var(--sentinel-space-12);
+}
+
+/* Brand Column */
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sentinel-space-4);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--sentinel-space-3);
+}
+
+.logoMark {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--sentinel-accent-primary), var(--sentinel-accent-secondary));
+  border-radius: var(--sentinel-radius-sm);
+  font-family: var(--sentinel-font-mono);
+  font-size: var(--sentinel-text-base);
+  font-weight: var(--sentinel-font-bold);
+  color: var(--sentinel-bg-base);
+}
+
+.logoText {
+  font-family: var(--sentinel-font-mono);
+  font-size: var(--sentinel-text-lg);
+  font-weight: var(--sentinel-font-semibold);
+  color: var(--sentinel-text-primary);
+  letter-spacing: 0.15em;
+}
+
+.tagline {
+  font-family: var(--sentinel-font-mono);
+  font-size: var(--sentinel-text-sm);
+  color: var(--sentinel-accent-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0;
+}
+
+.description {
+  font-family: var(--sentinel-font-primary);
+  font-size: var(--sentinel-text-sm);
+  color: var(--sentinel-text-tertiary);
+  font-style: italic;
+  margin: 0;
+}
+
+/* Social Links */
+.socialLinks {
+  display: flex;
+  gap: var(--sentinel-space-3);
+  margin-top: var(--sentinel-space-2);
+}
+
+.socialLink {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--sentinel-bg-elevated);
+  border: 1px solid var(--sentinel-border-subtle);
+  border-radius: var(--sentinel-radius-sm);
+  color: var(--sentinel-text-secondary);
+  transition: all var(--sentinel-duration-fast);
+}
+
+.socialLink:hover {
+  color: var(--sentinel-accent-primary);
+  border-color: var(--sentinel-accent-primary);
+  background-color: var(--sentinel-accent-subtle);
+}
+
+/* Link Columns */
+.linkColumn {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sentinel-space-4);
+}
+
+.columnTitle {
+  font-family: var(--sentinel-font-mono);
+  font-size: var(--sentinel-text-xs);
+  font-weight: var(--sentinel-font-semibold);
+  color: var(--sentinel-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0;
+}
+
+.linkList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sentinel-space-2);
+}
+
+.link {
+  font-family: var(--sentinel-font-primary);
+  font-size: var(--sentinel-text-sm);
+  color: var(--sentinel-text-tertiary);
+  text-decoration: none;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+  transition: color var(--sentinel-duration-fast);
+}
+
+.link:hover {
+  color: var(--sentinel-text-primary);
+}
+
+/* Bottom Bar */
+.bottomBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--sentinel-space-8);
+  border-top: 1px solid var(--sentinel-border-subtle);
+}
+
+.copyright {
+  font-family: var(--sentinel-font-mono);
+  font-size: var(--sentinel-text-xs);
+  color: var(--sentinel-text-tertiary);
+  margin: 0;
+}
+
+.version {
+  font-family: var(--sentinel-font-mono);
+  font-size: var(--sentinel-text-xs);
+  color: var(--sentinel-text-tertiary);
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sentinel-space-8);
+  }
+
+  .brand {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: var(--sentinel-space-12) var(--sentinel-space-4);
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: var(--sentinel-space-8);
+  }
+
+  .brand {
+    grid-column: span 1;
+  }
+
+  .bottomBar {
+    flex-direction: column;
+    gap: var(--sentinel-space-2);
+    text-align: center;
+  }
+}

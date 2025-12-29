@@ -1,0 +1,216 @@
+/* Path: src/components/molecules/sentinel/Stepper/Stepper.module.css */
+
+/* Container */
+.container {
+  display: flex;
+  width: 100%;
+}
+
+.horizontal {
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.vertical {
+  flex-direction: column;
+}
+
+/* Step */
+.step {
+  display: flex;
+  position: relative;
+}
+
+.horizontal .step {
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+}
+
+.horizontal .step:last-child {
+  flex: 0;
+}
+
+.vertical .step {
+  flex-direction: row;
+  align-items: flex-start;
+  padding-bottom: 24px;
+}
+
+.vertical .step:last-child {
+  padding-bottom: 0;
+}
+
+/* Indicator */
+.indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 2px solid var(--sentinel-border-default);
+  background: var(--sentinel-bg-surface);
+  color: var(--sentinel-text-tertiary);
+  cursor: default;
+  transition: all var(--sentinel-duration-fast) var(--sentinel-ease-default);
+}
+
+/* Size variants */
+.sizeSm .indicator {
+  width: 24px;
+  height: 24px;
+  font-size: 11px;
+}
+
+.sizeMd .indicator {
+  width: 32px;
+  height: 32px;
+  font-size: 13px;
+}
+
+.sizeLg .indicator {
+  width: 40px;
+  height: 40px;
+  font-size: 15px;
+}
+
+/* Status variants */
+.completed .indicator {
+  background: var(--sentinel-accent-primary);
+  border-color: var(--sentinel-accent-primary);
+  color: white;
+}
+
+.active .indicator {
+  background: var(--sentinel-bg-elevated);
+  border-color: var(--sentinel-accent-primary);
+  color: var(--sentinel-accent-primary);
+  box-shadow: 0 0 0 4px rgba(var(--sentinel-accent-primary-rgb, 91, 163, 165), 0.15);
+}
+
+.pending .indicator {
+  background: var(--sentinel-bg-surface);
+  border-color: var(--sentinel-border-default);
+  color: var(--sentinel-text-tertiary);
+}
+
+/* Clickable */
+.clickable .indicator {
+  cursor: pointer;
+}
+
+.clickable .indicator:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 0 4px rgba(var(--sentinel-accent-primary-rgb, 91, 163, 165), 0.2);
+}
+
+.clickable .indicator:active {
+  transform: scale(0.98);
+}
+
+/* Number */
+.number {
+  font-family: var(--sentinel-font-mono);
+  font-weight: 600;
+}
+
+/* Dot */
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+/* Content */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.horizontal .content {
+  align-items: center;
+  text-align: center;
+  margin-top: 8px;
+}
+
+.vertical .content {
+  margin-left: 12px;
+  padding-top: 4px;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--sentinel-text-secondary);
+  transition: color var(--sentinel-duration-fast) var(--sentinel-ease-default);
+}
+
+.active .label {
+  color: var(--sentinel-text-primary);
+  font-weight: 600;
+}
+
+.completed .label {
+  color: var(--sentinel-text-primary);
+}
+
+.description {
+  font-size: 11px;
+  color: var(--sentinel-text-tertiary);
+  max-width: 120px;
+}
+
+.horizontal .description {
+  max-width: 100px;
+}
+
+/* Connector */
+.connector {
+  position: absolute;
+  background: var(--sentinel-border-default);
+  transition: background var(--sentinel-duration-fast) var(--sentinel-ease-default);
+}
+
+.connectorCompleted {
+  background: var(--sentinel-accent-primary);
+}
+
+/* Horizontal connector */
+.horizontal .connector {
+  top: 15px; /* Half of medium indicator height minus border */
+  left: calc(50% + 20px);
+  right: calc(-50% + 20px);
+  height: 2px;
+}
+
+.horizontal.sizeSm .connector {
+  top: 11px;
+  left: calc(50% + 16px);
+  right: calc(-50% + 16px);
+}
+
+.horizontal.sizeLg .connector {
+  top: 19px;
+  left: calc(50% + 24px);
+  right: calc(-50% + 24px);
+}
+
+/* Vertical connector */
+.vertical .connector {
+  left: 15px; /* Half of medium indicator width minus border */
+  top: 36px;
+  bottom: 4px;
+  width: 2px;
+}
+
+.vertical.sizeSm .connector {
+  left: 11px;
+  top: 28px;
+}
+
+.vertical.sizeLg .connector {
+  left: 19px;
+  top: 44px;
+}

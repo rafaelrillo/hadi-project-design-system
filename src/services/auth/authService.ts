@@ -130,6 +130,7 @@ class AuthService {
       email: credentials.email,
       name: credentials.email.split("@")[0],
       role: "analyst",
+      plan: "b2c",
       preferences: {
         riskProfile: "moderate",
         theme: "dark",
@@ -152,6 +153,7 @@ class AuthService {
       email: "demo@sentinel.app",
       name: "Demo User",
       role: "analyst",
+      plan: "b2c",
       preferences: {
         riskProfile: "moderate",
         theme: "dark",

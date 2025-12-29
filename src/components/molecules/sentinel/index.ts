@@ -50,3 +50,43 @@ export type { RiskProfileSelectorProps, RiskProfile } from './RiskProfileSelecto
 // AllocationSummary - Portfolio allocation breakdown
 export { AllocationSummary } from './AllocationSummary';
 export type { AllocationSummaryProps, AllocationItem } from './AllocationSummary';
+
+// ─────────────────────────────────────────────────────────────────────────────
+// PORTFOLIO BUILDER COMPONENTS
+// ─────────────────────────────────────────────────────────────────────────────
+
+// StockSearchResult - Search result item with add action
+export { StockSearchResult } from './StockSearchResult';
+export type { StockSearchResultProps } from './StockSearchResult';
+
+// SelectedStockCard - Card for selected stocks with remove action
+export { SelectedStockCard } from './SelectedStockCard';
+export type { SelectedStockCardProps } from './SelectedStockCard';
+
+// AllocationSlider - Slider for allocation percentage
+export { AllocationSlider } from './AllocationSlider';
+export type { AllocationSliderProps } from './AllocationSlider';
+
+// Stepper - Multi-step progress indicator
+export { Stepper } from './Stepper';
+export type { StepperProps, Step } from './Stepper';
+
+// NewsCard - News article card with sentiment
+export { NewsCard } from './NewsCard';
+export type { NewsCardProps } from './NewsCard';
+
+// TradeModal - Modal for executing trades
+export { TradeModal } from './TradeModal';
+export type { TradeModalProps, TradeOrder, TradeType, OrderType, AmountType } from './TradeModal';
+
+// PositionRow - Portfolio position row
+export { PositionRow } from './PositionRow';
+export type { PositionRowProps } from './PositionRow';
+
+// TransactionRow - Transaction history row
+export { TransactionRow } from './TransactionRow';
+export type { TransactionRowProps, TransactionType, TransactionStatus } from './TransactionRow';
+
+// DateRangePicker - Date range selection component
+export { DateRangePicker } from './DateRangePicker';
+export type { DateRangePickerProps, DateRange, DatePreset } from './DateRangePicker';

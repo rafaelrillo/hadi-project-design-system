@@ -5,7 +5,7 @@
  * All environment variables are typed and validated here
  */
 
-export type MarketApiProvider = 'finnhub' | 'alphavantage' | 'polygon' | 'twelvedata' | 'mock';
+export type MarketApiProvider = 'finnhub' | 'alphavantage' | 'polygon' | 'twelvedata' | 'tiingo' | 'mock';
 
 export const config = {
   api: {
@@ -41,6 +41,13 @@ export const config = {
       baseUrl: 'https://api.twelvedata.com',
       rateLimit: 8, // calls per minute
     },
+
+    tiingo: {
+      apiKey: import.meta.env.VITE_TIINGO_API_KEY || '',
+      baseUrl: import.meta.env.VITE_TIINGO_BASE_URL || '/api/tiingo', // Uses proxy to avoid CORS
+      directBaseUrl: 'https://api.tiingo.com',
+      rateLimit: 500, // requests per hour
+    },
   },
 
   features: {
@@ -74,7 +81,7 @@ export const isRealTimeEnabled = (): boolean => {
 
 // Helper to check if any API key is configured
 export const hasValidApiKey = (): boolean => {
-  const { primary, finnhub, alphaVantage, polygon, twelveData } = config.financialApis;
+  const { primary, finnhub, alphaVantage, polygon, twelveData, tiingo } = config.financialApis;
 
   switch (primary) {
     case 'finnhub':
@@ -85,6 +92,8 @@ export const hasValidApiKey = (): boolean => {
       return !!polygon.apiKey;
     case 'twelvedata':
       return !!twelveData.apiKey;
+    case 'tiingo':
+      return !!tiingo.apiKey;
     default:
       return false;
   }
@@ -92,7 +101,7 @@ export const hasValidApiKey = (): boolean => {
 
 // Get the active API configuration
 export const getActiveApiConfig = () => {
-  const { primary, finnhub, alphaVantage, polygon, twelveData } = config.financialApis;
+  const { primary, finnhub, alphaVantage, polygon, twelveData, tiingo } = config.financialApis;
 
   switch (primary) {
     case 'finnhub':
@@ -103,6 +112,8 @@ export const getActiveApiConfig = () => {
       return polygon;
     case 'twelvedata':
       return twelveData;
+    case 'tiingo':
+      return tiingo;
     default:
       return null;
   }

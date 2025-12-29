@@ -4,6 +4,7 @@ import { persist } from "zustand/middleware";
 
 export type UserRole = "analyst" | "admin" | "viewer";
 export type RiskProfile = "conservative" | "moderate" | "aggressive";
+export type UserPlan = "free" | "b2c" | "b2b";
 
 export interface UserPreferences {
   riskProfile: RiskProfile;
@@ -18,6 +19,7 @@ export interface User {
   name: string;
   avatar?: string;
   role: UserRole;
+  plan: UserPlan;
   preferences: UserPreferences;
 }
 
@@ -57,11 +59,13 @@ export const useAuthStore = create<AuthState & AuthActions>()(
         await new Promise((resolve) => setTimeout(resolve, 1500));
 
         // Accept any email/password for demo
+        // Default to b2c plan for demo access to all features
         const user: User = {
           id: "user-1",
           email,
           name: email.split("@")[0],
           role: "analyst",
+          plan: "b2c",
           preferences: defaultPreferences,
         };
 

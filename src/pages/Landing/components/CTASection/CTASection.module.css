@@ -1,0 +1,139 @@
+/* Path: src/pages/Landing/components/CTASection/CTASection.module.css */
+
+.section {
+  position: relative;
+  padding: var(--sentinel-space-24) var(--sentinel-space-6);
+  overflow: hidden;
+  background-color: var(--sentinel-bg-void);
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.content {
+  text-align: center;
+}
+
+.title {
+  font-family: var(--sentinel-font-mono);
+  font-size: var(--sentinel-text-3xl);
+  font-weight: var(--sentinel-font-bold);
+  color: var(--sentinel-text-primary);
+  letter-spacing: 0.1em;
+  margin: 0 0 var(--sentinel-space-4);
+}
+
+.subtitle {
+  font-family: var(--sentinel-font-primary);
+  font-size: var(--sentinel-text-lg);
+  color: var(--sentinel-text-secondary);
+  margin: 0 0 var(--sentinel-space-8);
+}
+
+.form {
+  display: flex;
+  gap: var(--sentinel-space-3);
+  margin-bottom: var(--sentinel-space-4);
+}
+
+.inputWrapper {
+  flex: 1;
+}
+
+.input {
+  width: 100%;
+}
+
+.submitButton {
+  white-space: nowrap;
+}
+
+.disclaimer {
+  font-family: var(--sentinel-font-primary);
+  font-size: var(--sentinel-text-sm);
+  color: var(--sentinel-text-tertiary);
+  margin: 0;
+}
+
+.successMessage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sentinel-space-4);
+  padding: var(--sentinel-space-8);
+  background-color: var(--sentinel-bg-elevated);
+  border: 1px solid var(--sentinel-status-positive);
+  border-radius: var(--sentinel-radius-lg);
+  margin-bottom: var(--sentinel-space-4);
+}
+
+.checkmark {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--sentinel-status-positive);
+  color: var(--sentinel-bg-base);
+  border-radius: 50%;
+  font-size: var(--sentinel-text-2xl);
+  font-weight: var(--sentinel-font-bold);
+}
+
+.successMessage p {
+  font-family: var(--sentinel-font-primary);
+  font-size: var(--sentinel-text-base);
+  color: var(--sentinel-text-primary);
+  margin: 0;
+}
+
+.glowOrb {
+  position: absolute;
+  bottom: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(
+    circle,
+    var(--sentinel-accent-glow) 0%,
+    transparent 70%
+  );
+  opacity: 0.3;
+  pointer-events: none;
+  animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.2;
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: translateX(-50%) scale(1.1);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .section {
+    padding: var(--sentinel-space-16) var(--sentinel-space-4);
+  }
+
+  .title {
+    font-size: var(--sentinel-text-2xl);
+  }
+
+  .form {
+    flex-direction: column;
+  }
+
+  .submitButton {
+    width: 100%;
+  }
+}

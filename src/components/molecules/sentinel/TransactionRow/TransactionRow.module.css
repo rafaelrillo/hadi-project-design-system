@@ -1,0 +1,214 @@
+/* Path: src/components/molecules/sentinel/TransactionRow/TransactionRow.module.css */
+
+.container {
+  display: grid;
+  grid-template-columns: auto 2fr 1.5fr 1.2fr auto 1fr;
+  gap: 16px;
+  align-items: center;
+  padding: 16px 20px;
+  background: var(--sentinel-bg-elevated);
+  border-bottom: 1px solid var(--sentinel-border-subtle);
+  transition: background var(--sentinel-duration-fast) var(--sentinel-ease-default);
+}
+
+.container:last-child {
+  border-bottom: none;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.clickable:hover {
+  background: var(--sentinel-bg-hover);
+}
+
+.compact {
+  grid-template-columns: auto 2fr 1.2fr auto 1fr;
+  padding: 12px 16px;
+}
+
+/* Type Icon */
+.typeIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--sentinel-radius-md);
+}
+
+.typeIcon.buy {
+  background: rgba(var(--sentinel-status-positive-rgb, 129, 199, 132), 0.1);
+  color: var(--sentinel-status-positive);
+}
+
+.typeIcon.sell {
+  background: rgba(var(--sentinel-status-negative-rgb, 229, 115, 115), 0.1);
+  color: var(--sentinel-status-negative);
+}
+
+.compact .typeIcon {
+  width: 32px;
+  height: 32px;
+}
+
+/* Transaction Info */
+.transactionInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.mainInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.typeLabel {
+  font-size: 13px;
+  color: var(--sentinel-text-secondary);
+}
+
+.ticker {
+  font-family: var(--sentinel-font-mono);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--sentinel-text-primary);
+}
+
+.name {
+  font-size: 12px;
+  color: var(--sentinel-text-tertiary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Details */
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.shares {
+  font-family: var(--sentinel-font-mono);
+  font-size: 13px;
+  color: var(--sentinel-text-primary);
+}
+
+.price {
+  font-size: 12px;
+  color: var(--sentinel-text-tertiary);
+}
+
+/* Total */
+.totalInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.total {
+  font-family: var(--sentinel-font-mono);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.total.positive {
+  color: var(--sentinel-status-positive);
+}
+
+.total.negative {
+  color: var(--sentinel-status-negative);
+}
+
+.fee {
+  font-size: 11px;
+  color: var(--sentinel-text-tertiary);
+}
+
+/* Status */
+.status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: var(--sentinel-radius-sm);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.status.pending {
+  background: rgba(var(--sentinel-status-warning-rgb, 255, 183, 77), 0.1);
+  color: var(--sentinel-status-warning);
+}
+
+.status.completed {
+  background: rgba(var(--sentinel-status-positive-rgb, 129, 199, 132), 0.1);
+  color: var(--sentinel-status-positive);
+}
+
+.status.failed {
+  background: rgba(var(--sentinel-status-negative-rgb, 229, 115, 115), 0.1);
+  color: var(--sentinel-status-negative);
+}
+
+.status.cancelled {
+  background: var(--sentinel-bg-surface);
+  color: var(--sentinel-text-tertiary);
+}
+
+.statusLabel {
+  text-transform: capitalize;
+}
+
+/* Timestamp */
+.timestamp {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.date {
+  font-size: 13px;
+  color: var(--sentinel-text-primary);
+}
+
+.time {
+  font-size: 11px;
+  color: var(--sentinel-text-tertiary);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .container {
+    grid-template-columns: auto 1.5fr 1fr auto;
+  }
+
+  .details,
+  .timestamp {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    grid-template-columns: auto 1fr auto;
+    gap: 12px;
+    padding: 12px 16px;
+  }
+
+  .status {
+    display: none;
+  }
+
+  .totalInfo {
+    align-items: flex-end;
+  }
+}

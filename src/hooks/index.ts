@@ -3,3 +3,4 @@
 export * from "./useSimulatedMarket";
 export * from "./useKeyboardShortcuts";
 export * from "./useApi";
+export * from "./useNews";
