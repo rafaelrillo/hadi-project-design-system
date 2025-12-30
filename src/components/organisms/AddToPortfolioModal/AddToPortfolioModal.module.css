@@ -1,0 +1,509 @@
+/* Path: src/components/organisms/AddToPortfolioModal/AddToPortfolioModal.module.css */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   FOOTER
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   STEPS INDICATOR
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.stepsIndicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--sentinel-border-subtle);
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stepNumber {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--sentinel-bg-surface);
+  border: 2px solid var(--sentinel-border-default);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--sentinel-text-tertiary);
+  transition: all var(--sentinel-duration-fast) var(--sentinel-ease-default);
+}
+
+.step.active .stepNumber {
+  background: var(--sentinel-accent-primary);
+  border-color: var(--sentinel-accent-primary);
+  color: white;
+}
+
+.step.completed .stepNumber {
+  background: var(--sentinel-status-positive);
+  border-color: var(--sentinel-status-positive);
+  color: white;
+}
+
+.stepLabel {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--sentinel-text-tertiary);
+  transition: color var(--sentinel-duration-fast) var(--sentinel-ease-default);
+}
+
+.step.active .stepLabel {
+  color: var(--sentinel-text-primary);
+}
+
+.step.completed .stepLabel {
+  color: var(--sentinel-status-positive);
+}
+
+.stepLine {
+  width: 40px;
+  height: 2px;
+  background: var(--sentinel-border-default);
+  margin: 0 4px;
+}
+
+.step.completed + .step .stepLine,
+.step.active .stepLine {
+  background: var(--sentinel-accent-primary);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   STOCK HEADER
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.stockHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  background: var(--sentinel-bg-surface);
+  border-radius: var(--sentinel-radius-md);
+  margin-bottom: 24px;
+}
+
+.stockInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stockTicker {
+  font-family: var(--sentinel-font-mono);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--sentinel-text-primary);
+}
+
+.stockName {
+  font-size: 13px;
+  color: var(--sentinel-text-secondary);
+}
+
+.stockPrice {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.priceLabel {
+  font-size: 11px;
+  color: var(--sentinel-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.priceValue {
+  font-family: var(--sentinel-font-mono);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--sentinel-text-primary);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   STEP CONTENT
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.stepContent {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sectionTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--sentinel-text-primary);
+  margin: 0;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   PORTFOLIO LIST
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.portfolioList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.portfolioOption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  background: var(--sentinel-bg-surface);
+  border: 1px solid var(--sentinel-border-default);
+  border-radius: var(--sentinel-radius-md);
+  cursor: pointer;
+  transition: all var(--sentinel-duration-fast) var(--sentinel-ease-default);
+}
+
+.portfolioOption:hover {
+  border-color: var(--sentinel-border-hover);
+  background: var(--sentinel-bg-hover);
+}
+
+.portfolioOption.selected {
+  border-color: var(--sentinel-accent-primary);
+  background: rgba(var(--sentinel-accent-primary-rgb, 91, 163, 165), 0.1);
+}
+
+.portfolioInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: left;
+}
+
+.portfolioName {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--sentinel-text-primary);
+}
+
+.portfolioValue {
+  font-family: var(--sentinel-font-mono);
+  font-size: 13px;
+  color: var(--sentinel-text-secondary);
+}
+
+.portfolioCheck {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--sentinel-accent-primary);
+  color: white;
+  opacity: 0;
+  transition: opacity var(--sentinel-duration-fast) var(--sentinel-ease-default);
+}
+
+.portfolioOption.selected .portfolioCheck {
+  opacity: 1;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   AMOUNT INPUT
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.amountInput {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: var(--sentinel-bg-surface);
+  border: 1px solid var(--sentinel-border-default);
+  border-radius: var(--sentinel-radius-md);
+  transition: border-color var(--sentinel-duration-fast) var(--sentinel-ease-default);
+}
+
+.amountInput:focus-within {
+  border-color: var(--sentinel-accent-primary);
+}
+
+.currencySymbol {
+  font-family: var(--sentinel-font-mono);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--sentinel-text-secondary);
+}
+
+.input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--sentinel-font-mono);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--sentinel-text-primary);
+}
+
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.recommendedAmount {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: rgba(var(--sentinel-accent-primary-rgb, 91, 163, 165), 0.1);
+  border-radius: var(--sentinel-radius-sm);
+  font-size: 13px;
+  color: var(--sentinel-text-secondary);
+}
+
+.recommendedAmount svg {
+  color: var(--sentinel-accent-primary);
+}
+
+.useRecommended {
+  margin-left: auto;
+  padding: 4px 12px;
+  background: var(--sentinel-accent-primary);
+  border: none;
+  border-radius: var(--sentinel-radius-sm);
+  font-size: 12px;
+  font-weight: 500;
+  color: white;
+  cursor: pointer;
+  transition: opacity var(--sentinel-duration-fast) var(--sentinel-ease-default);
+}
+
+.useRecommended:hover {
+  opacity: 0.9;
+}
+
+.sharesPreview {
+  font-family: var(--sentinel-font-mono);
+  font-size: 13px;
+  color: var(--sentinel-text-tertiary);
+  text-align: right;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   BENEFITS GRID
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.benefitsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.benefitCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  background: var(--sentinel-bg-surface);
+  border: 1px solid var(--sentinel-border-subtle);
+  border-radius: var(--sentinel-radius-md);
+}
+
+.benefitIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(var(--sentinel-accent-primary-rgb, 91, 163, 165), 0.1);
+  border-radius: var(--sentinel-radius-md);
+  color: var(--sentinel-accent-primary);
+  flex-shrink: 0;
+}
+
+.benefitContent {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.benefitLabel {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--sentinel-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.benefitValue {
+  font-family: var(--sentinel-font-mono);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--sentinel-text-primary);
+}
+
+.benefitValue.positive {
+  color: var(--sentinel-status-positive);
+}
+
+.benefitDetail {
+  font-size: 12px;
+  color: var(--sentinel-text-secondary);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   IMPACT SUMMARY
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.impactSummary {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  background: rgba(var(--sentinel-accent-primary-rgb, 91, 163, 165), 0.1);
+  border: 1px solid rgba(var(--sentinel-accent-primary-rgb, 91, 163, 165), 0.2);
+  border-radius: var(--sentinel-radius-md);
+  color: var(--sentinel-accent-primary);
+}
+
+.impactText {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--sentinel-text-secondary);
+}
+
+.impactText strong {
+  color: var(--sentinel-text-primary);
+}
+
+.highlight {
+  font-weight: 600;
+  color: var(--sentinel-accent-primary);
+  text-transform: capitalize;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   CONFIRMATION CARD
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.confirmationCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 24px;
+  background: var(--sentinel-bg-surface);
+  border: 1px solid var(--sentinel-border-subtle);
+  border-radius: var(--sentinel-radius-lg);
+}
+
+.confirmHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.confirmIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  background: rgba(var(--sentinel-status-positive-rgb, 129, 199, 132), 0.15);
+  border-radius: 50%;
+  color: var(--sentinel-status-positive);
+}
+
+.confirmTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--sentinel-text-primary);
+  margin: 0;
+}
+
+.confirmDetails {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  background: var(--sentinel-bg-base);
+  border-radius: var(--sentinel-radius-md);
+}
+
+.confirmRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.confirmLabel {
+  font-size: 13px;
+  color: var(--sentinel-text-secondary);
+}
+
+.confirmValue {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--sentinel-text-primary);
+}
+
+.confirmFooter {
+  padding-top: 16px;
+  border-top: 1px solid var(--sentinel-border-subtle);
+  width: 100%;
+  text-align: center;
+}
+
+.expectedReturn {
+  font-size: 14px;
+  color: var(--sentinel-text-secondary);
+}
+
+.positive {
+  color: var(--sentinel-status-positive);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   RESPONSIVE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 600px) {
+  .benefitsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .stepsIndicator {
+    gap: 4px;
+  }
+
+  .stepLabel {
+    display: none;
+  }
+
+  .stepLine {
+    width: 24px;
+  }
+}

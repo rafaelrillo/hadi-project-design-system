@@ -5,9 +5,7 @@ import {
   LayoutDashboard,
   PieChart,
   TrendingUp,
-  Wallet,
   Newspaper,
-  MessageSquare,
   Settings,
   type LucideIcon,
 } from 'lucide-react';
@@ -52,20 +50,12 @@ const RecommendationsView = lazy(() =>
   import('../pages/app/RecommendationsView').then((m) => ({ default: m.RecommendationsView }))
 );
 
-// Wallet View (Sprint 4)
-const WalletView = lazy(() =>
-  import('../pages/app/WalletView').then((m) => ({ default: m.WalletView }))
-);
 
 // News View (Sprint 5)
 const NewsView = lazy(() =>
   import('../pages/app/NewsView').then((m) => ({ default: m.NewsView }))
 );
 
-// Chat View (Sprint 5)
-const ChatView = lazy(() =>
-  import('../pages/app/ChatView').then((m) => ({ default: m.ChatView }))
-);
 
 // Settings View - Placeholder until implemented
 const SettingsPlaceholder = () => (
@@ -140,27 +130,11 @@ export const dashboardRoutes: DashboardRoute[] = [
     showInNav: true,
   },
   {
-    path: '/app/dashboard/wallet',
-    name: 'Wallet',
-    icon: Wallet,
-    element: WalletView,
-    showInNav: true,
-    requiredPlan: 'b2c',
-  },
-  {
     path: '/app/dashboard/news',
     name: 'News',
     icon: Newspaper,
     element: NewsView,
     showInNav: true,
-  },
-  {
-    path: '/app/dashboard/chat',
-    name: 'AI Assistant',
-    icon: MessageSquare,
-    element: ChatView,
-    showInNav: true,
-    requiredPlan: 'b2c',
   },
   {
     path: '/app/dashboard/settings',

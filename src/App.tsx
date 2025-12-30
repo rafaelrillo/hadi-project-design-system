@@ -18,9 +18,7 @@ const DashboardPage = lazy(() => import('./pages/app/DashboardPage').then(m => (
 const PortfolioView = lazy(() => import('./pages/app/PortfolioView').then(m => ({ default: m.PortfolioView })));
 const PortfolioBuilder = lazy(() => import('./pages/app/PortfolioBuilder').then(m => ({ default: m.PortfolioBuilder })));
 const RecommendationsView = lazy(() => import('./pages/app/RecommendationsView').then(m => ({ default: m.RecommendationsView })));
-const WalletView = lazy(() => import('./pages/app/WalletView').then(m => ({ default: m.WalletView })));
 const NewsView = lazy(() => import('./pages/app/NewsView').then(m => ({ default: m.NewsView })));
-const ChatView = lazy(() => import('./pages/app/ChatView').then(m => ({ default: m.ChatView })));
 const SentinelShowcase = lazy(() => import('./pages/sentinel/SentinelShowcase').then(m => ({ default: m.SentinelShowcase })));
 const Level4Showcase = lazy(() => import('./pages/sentinel/Level4Showcase').then(m => ({ default: m.Level4Showcase })));
 
@@ -132,19 +130,9 @@ function AppRoutes() {
               <RecommendationsView />
             </Suspense>
           } />
-          <Route path="wallet" element={
-            <Suspense fallback={<LoadingScreen message="Loading wallet" />}>
-              <WalletView />
-            </Suspense>
-          } />
           <Route path="news" element={
             <Suspense fallback={<LoadingScreen message="Loading news" />}>
               <NewsView />
-            </Suspense>
-          } />
-          <Route path="chat" element={
-            <Suspense fallback={<LoadingScreen message="Loading AI assistant" />}>
-              <ChatView />
             </Suspense>
           } />
           <Route path="settings" element={

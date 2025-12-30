@@ -2,18 +2,18 @@
 
 import { useState, useMemo } from 'react';
 import {
-  Newspaper,
   RefreshCw,
-  Filter,
   Search,
   TrendingUp,
   TrendingDown,
   Minus,
   Grid,
   List,
+  Newspaper,
 } from 'lucide-react';
 import { NewsCard } from '@/components/molecules/sentinel/NewsCard';
 import { Button } from '@/components/atoms/Button';
+import { Dropdown } from '@/components/atoms/Dropdown';
 import { useNews } from '@/hooks/useNews';
 import styles from './NewsView.module.css';
 
@@ -29,7 +29,7 @@ type ViewMode = 'grid' | 'list';
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function NewsView() {
-  const { news, loading, refresh } = useNews({ limit: 20 });
+  const { news, loading, refresh } = useNews({ limit: 8 });
   const [searchQuery, setSearchQuery] = useState('');
   const [sentimentFilter, setSentimentFilter] = useState<SentimentFilter>('all');
   const [viewMode, setViewMode] = useState<ViewMode>('grid');
@@ -88,28 +88,11 @@ export function NewsView() {
 
   return (
     <div className={styles.container}>
-      {/* Header */}
-      <header className={styles.header}>
-        <div className={styles.headerTop}>
-          <div className={styles.headerTitle}>
-            <Newspaper size={24} className={styles.headerIcon} />
-            <div>
-              <h1 className={styles.title}>Market News</h1>
-              <p className={styles.subtitle}>Stay informed with the latest market updates</p>
-            </div>
-          </div>
-          <Button
-            variant="secondary"
-            onClick={handleRefresh}
-            disabled={isRefreshing || loading}
-            icon={<RefreshCw size={16} className={isRefreshing ? styles.spinner : ''} />}
-          >
-            Refresh
-          </Button>
-        </div>
-
-        {/* Stats */}
-        <div className={styles.stats}>
+      {/* Actions Bar */}
+      <div className={styles.actionsBar}>
+        {/* Stats Card */}
+        <div className={styles.statsCard}>
+          <div className={styles.stats}>
           <div className={styles.statItem}>
             <span className={styles.statValue}>{stats.total}</span>
             <span className={styles.statLabel}>Total</span>
@@ -129,8 +112,17 @@ export function NewsView() {
             <span className={styles.statValue}>{stats.neutral}</span>
             <span className={styles.statLabel}>Neutral</span>
           </div>
+          </div>
         </div>
-      </header>
+        <Button
+          variant="secondary"
+          onClick={handleRefresh}
+          disabled={isRefreshing || loading}
+          icon={<RefreshCw size={16} className={isRefreshing ? styles.spinner : ''} />}
+        >
+          Refresh
+        </Button>
+      </div>
 
       {/* Toolbar */}
       <div className={styles.toolbar}>
@@ -148,19 +140,16 @@ export function NewsView() {
 
         {/* Filters */}
         <div className={styles.filters}>
-          <div className={styles.filterGroup}>
-            <Filter size={16} />
-            <select
-              value={sentimentFilter}
-              onChange={(e) => setSentimentFilter(e.target.value as SentimentFilter)}
-              className={styles.filterSelect}
-            >
-              <option value="all">All Sentiment</option>
-              <option value="bullish">Bullish</option>
-              <option value="bearish">Bearish</option>
-              <option value="neutral">Neutral</option>
-            </select>
-          </div>
+          <Dropdown
+            value={sentimentFilter}
+            onChange={(value) => setSentimentFilter(value as SentimentFilter)}
+            options={[
+              { value: 'all', label: 'All Sentiment' },
+              { value: 'bullish', label: 'Bullish' },
+              { value: 'bearish', label: 'Bearish' },
+              { value: 'neutral', label: 'Neutral' },
+            ]}
+          />
 
           {/* View Mode Toggle */}
           <div className={styles.viewToggle}>
@@ -183,7 +172,7 @@ export function NewsView() {
       </div>
 
       {/* Content */}
-      <main className={styles.main}>
+      <div className={styles.main}>
         {loading ? (
           <div className={styles.loadingState}>
             <RefreshCw size={32} className={styles.spinner} />
@@ -206,7 +195,7 @@ export function NewsView() {
             ))}
           </div>
         )}
-      </main>
+      </div>
     </div>
   );
 }

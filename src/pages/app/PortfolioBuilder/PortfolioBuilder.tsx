@@ -1,13 +1,15 @@
 // Path: src/pages/app/PortfolioBuilder/PortfolioBuilder.tsx
 
 import { useState, useMemo, useCallback } from 'react';
-import { Search, ArrowLeft, ArrowRight, Check, Briefcase } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Search, ArrowLeft, ArrowRight, Check, Briefcase, GitCompare } from 'lucide-react';
 import { Stepper, Step } from '@/components/molecules/sentinel/Stepper';
 import { StockSearchResult } from '@/components/molecules/sentinel/StockSearchResult';
 import { SelectedStockCard } from '@/components/molecules/sentinel/SelectedStockCard';
 import { AllocationSlider } from '@/components/molecules/sentinel/AllocationSlider';
 import { RiskProfileSelector, RiskProfile } from '@/components/molecules/sentinel/RiskProfileSelector';
 import { Button } from '@/components/atoms/Button';
+import { RadarChart } from '@/components/charts/RadarChart';
 import styles from './PortfolioBuilder.module.css';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -49,10 +51,20 @@ const MOCK_STOCKS: Stock[] = [
   { ticker: 'JPM', name: 'JPMorgan Chase & Co.', price: 195.46, change: 1.23, changePercent: 0.63, exchange: 'NYSE' },
 ];
 
+// Current portfolio for comparison
+const CURRENT_PORTFOLIO = [
+  { ticker: 'AAPL', name: 'Apple Inc.', allocation: 22.34, value: 4468 },
+  { ticker: 'MSFT', name: 'Microsoft Corporation', allocation: 22.73, value: 4547 },
+  { ticker: 'GOOGL', name: 'Alphabet Inc.', allocation: 21.27, value: 4254 },
+  { ticker: 'NVDA', name: 'NVIDIA Corporation', allocation: 19.81, value: 3962 },
+  { ticker: 'AMZN', name: 'Amazon.com Inc.', allocation: 13.37, value: 2674 },
+];
+
 const STEPS: Step[] = [
   { id: 'profile', label: 'Profile', description: 'Set your risk tolerance' },
   { id: 'select', label: 'Select Stocks', description: 'Choose your investments' },
   { id: 'allocate', label: 'Allocate', description: 'Set percentages' },
+  { id: 'compare', label: 'Compare', description: 'Compare with current' },
   { id: 'review', label: 'Review', description: 'Confirm your portfolio' },
 ];
 
@@ -137,7 +149,9 @@ export function PortfolioBuilder() {
       case 2: // Allocate
         const totalAllocation = config.stocks.reduce((sum, s) => sum + s.allocation, 0);
         return Math.abs(totalAllocation - 100) < 0.1;
-      case 3: // Review
+      case 3: // Compare
+        return true;
+      case 4: // Review
         return true;
       default:
         return false;
@@ -343,8 +357,125 @@ export function PortfolioBuilder() {
           </div>
         )}
 
-        {/* Step 3: Review */}
+        {/* Step 3: Compare */}
         {currentStep === 3 && (
+          <div className={styles.stepContent}>
+            <h2 className={styles.stepTitle}>Compare Portfolios</h2>
+            <p className={styles.stepDescription}>
+              See how your new portfolio compares to your current holdings.
+            </p>
+
+            <div className={styles.comparisonContainer}>
+              {/* Radar Chart Comparison */}
+              <div className={styles.radarChartSection}>
+                <h3 className={styles.chartSectionTitle}>Portfolio Analysis</h3>
+                <RadarChart
+                  data={[
+                    { metric: 'Performance', 'Current Portfolio': 72, 'New Portfolio': config.riskProfile === 'aggressive' ? 85 : config.riskProfile === 'moderate' ? 78 : 65 },
+                    { metric: 'Risk Level', 'Current Portfolio': 55, 'New Portfolio': config.riskProfile === 'aggressive' ? 80 : config.riskProfile === 'moderate' ? 55 : 30 },
+                    { metric: 'Diversification', 'Current Portfolio': 68, 'New Portfolio': Math.min(config.stocks.length * 15, 90) },
+                    { metric: 'Growth Potential', 'Current Portfolio': 70, 'New Portfolio': config.riskProfile === 'aggressive' ? 90 : config.riskProfile === 'moderate' ? 75 : 55 },
+                    { metric: 'Stability', 'Current Portfolio': 75, 'New Portfolio': config.riskProfile === 'aggressive' ? 45 : config.riskProfile === 'moderate' ? 70 : 90 },
+                  ]}
+                  keys={['Current Portfolio', 'New Portfolio']}
+                  indexBy="metric"
+                  height={350}
+                  fillOpacity={0.3}
+                />
+              </div>
+
+              {/* Comparison Chart */}
+              <div className={styles.comparisonChart}>
+                <div className={styles.chartHeader}>
+                  <span className={styles.chartLegend}>
+                    <span className={styles.legendDot} data-type="current" />
+                    Current Portfolio
+                  </span>
+                  <span className={styles.chartLegend}>
+                    <span className={styles.legendDot} data-type="new" />
+                    New Portfolio
+                  </span>
+                </div>
+                <div className={styles.barChart}>
+                  {/* Get all unique tickers from both portfolios */}
+                  {(() => {
+                    const allTickers = new Set([
+                      ...CURRENT_PORTFOLIO.map(p => p.ticker),
+                      ...config.stocks.map(s => s.ticker)
+                    ]);
+                    return Array.from(allTickers).map(ticker => {
+                      const current = CURRENT_PORTFOLIO.find(p => p.ticker === ticker);
+                      const newStock = config.stocks.find(s => s.ticker === ticker);
+                      const currentAlloc = current?.allocation || 0;
+                      const newAlloc = newStock?.allocation || 0;
+                      const maxAlloc = Math.max(currentAlloc, newAlloc, 30);
+
+                      return (
+                        <div key={ticker} className={styles.barRow}>
+                          <span className={styles.barLabel}>{ticker}</span>
+                          <div className={styles.barGroup}>
+                            <div className={styles.barWrapper}>
+                              <div
+                                className={styles.bar}
+                                data-type="current"
+                                style={{ width: `${(currentAlloc / maxAlloc) * 100}%` }}
+                              />
+                              <span className={styles.barValue}>{currentAlloc.toFixed(1)}%</span>
+                            </div>
+                            <div className={styles.barWrapper}>
+                              <div
+                                className={styles.bar}
+                                data-type="new"
+                                style={{ width: `${(newAlloc / maxAlloc) * 100}%` }}
+                              />
+                              <span className={styles.barValue}>{newAlloc.toFixed(1)}%</span>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    });
+                  })()}
+                </div>
+              </div>
+
+              {/* Summary Comparison */}
+              <div className={styles.comparisonSummary}>
+                <div className={styles.summaryColumn}>
+                  <h3 className={styles.summaryTitle}>Current Portfolio</h3>
+                  <div className={styles.summaryStats}>
+                    <div className={styles.statItem}>
+                      <span className={styles.statLabel}>Stocks</span>
+                      <span className={styles.statValue}>{CURRENT_PORTFOLIO.length}</span>
+                    </div>
+                    <div className={styles.statItem}>
+                      <span className={styles.statLabel}>Total Value</span>
+                      <span className={styles.statValue}>$20,000</span>
+                    </div>
+                  </div>
+                </div>
+                <div className={styles.summaryDivider}>
+                  <GitCompare size={20} />
+                </div>
+                <div className={styles.summaryColumn}>
+                  <h3 className={styles.summaryTitle}>New Portfolio</h3>
+                  <div className={styles.summaryStats}>
+                    <div className={styles.statItem}>
+                      <span className={styles.statLabel}>Stocks</span>
+                      <span className={styles.statValue}>{config.stocks.length}</span>
+                    </div>
+                    <div className={styles.statItem}>
+                      <span className={styles.statLabel}>Investment</span>
+                      <span className={styles.statValue}>${config.investmentAmount.toLocaleString()}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Step 4: Review */}
+        {currentStep === 4 && (
           <div className={styles.stepContent}>
             <h2 className={styles.stepTitle}>Review Your Portfolio</h2>
             <p className={styles.stepDescription}>

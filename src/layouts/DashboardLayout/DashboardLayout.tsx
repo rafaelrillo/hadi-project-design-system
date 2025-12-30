@@ -1,19 +1,19 @@
 // Path: src/layouts/DashboardLayout/DashboardLayout.tsx
 
-import { Outlet, NavLink, useNavigate } from 'react-router-dom';
+import { Outlet, NavLink, useNavigate, useLocation } from 'react-router-dom';
 import {
-  LayoutDashboard,
-  PieChart,
+  Home,
+  Briefcase,
   TrendingUp,
-  Wallet,
   Newspaper,
-  MessageSquare,
   Settings,
   LogOut,
   User,
+  type LucideIcon,
 } from 'lucide-react';
 
 import { useAuthStore } from '../../store';
+import { AtmosphericBackground } from '../../components/atoms/sentinel';
 
 import styles from './DashboardLayout.module.css';
 
@@ -21,14 +21,21 @@ import styles from './DashboardLayout.module.css';
 // NAV ITEMS
 // ─────────────────────────────────────────────────────────────────────────────
 
-const navItems = [
-  { path: '/app/dashboard', icon: LayoutDashboard, label: 'Home', end: true },
-  { path: '/app/dashboard/portfolio', icon: PieChart, label: 'Portfolio' },
+interface NavItem {
+  path: string;
+  icon: LucideIcon;
+  label: string;
+  end?: boolean;
+}
+
+const navItems: NavItem[] = [
+  { path: '/app/dashboard', icon: Home, label: 'Home', end: true },
+  { path: '/app/dashboard/portfolio', icon: Briefcase, label: 'Portfolio' },
   { path: '/app/dashboard/recommendations', icon: TrendingUp, label: 'Recommendations' },
-  { path: '/app/dashboard/wallet', icon: Wallet, label: 'Wallet' },
   { path: '/app/dashboard/news', icon: Newspaper, label: 'News' },
-  { path: '/app/dashboard/chat', icon: MessageSquare, label: 'AI Chat' },
 ];
+
+const settingsItem: NavItem = { path: '/app/dashboard/settings', icon: Settings, label: 'Settings' };
 
 // ─────────────────────────────────────────────────────────────────────────────
 // COMPONENT
@@ -36,7 +43,30 @@ const navItems = [
 
 export function DashboardLayout() {
   const navigate = useNavigate();
+  const location = useLocation();
   const { logout } = useAuthStore();
+
+  // Get current section based on path
+  const getCurrentSection = (): NavItem => {
+    const path = location.pathname;
+
+    // Check settings first
+    if (path.includes('/settings')) return settingsItem;
+
+    // Check nav items (portfolio/builder should match portfolio)
+    for (const item of navItems) {
+      if (item.end) {
+        if (path === item.path) return item;
+      } else {
+        if (path.startsWith(item.path)) return item;
+      }
+    }
+
+    return navItems[0]; // Default to Home
+  };
+
+  const currentSection = getCurrentSection();
+  const CurrentIcon = currentSection.icon;
 
   const handleLogout = () => {
     logout();
@@ -44,11 +74,15 @@ export function DashboardLayout() {
   };
 
   return (
-    <div className={styles.layout}>
-      {/* Sidebar */}
-      <aside className={styles.sidebar}>
+    <>
+      {/* Atmospheric Background - Creates depth and "breathing" effect */}
+      <AtmosphericBackground variant="subtle" animated />
+
+      <div className={styles.layout}>
+        {/* Sidebar */}
+        <aside className={styles.sidebar}>
         <div className={styles.sidebarLogo}>
-          <span className={styles.logoText}>S</span>
+          <img src="/sentinel-favicon.svg" alt="Sentinel" className={styles.logoImage} />
         </div>
 
         <nav className={styles.sidebarNav}>
@@ -94,8 +128,8 @@ export function DashboardLayout() {
         {/* Header */}
         <header className={styles.header}>
           <div className={styles.headerLeft}>
-            <h1 className={styles.title}>SENTINEL</h1>
-            <span className={styles.version}>v2.0.0</span>
+            <CurrentIcon size={22} className={styles.headerIcon} />
+            <h1 className={styles.title}>{currentSection.label}</h1>
           </div>
         </header>
 
@@ -105,5 +139,6 @@ export function DashboardLayout() {
         </div>
       </main>
     </div>
+    </>
   );
 }

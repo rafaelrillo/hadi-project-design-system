@@ -6,7 +6,6 @@ import {
   TrendingDown,
   AlertCircle,
   RefreshCw,
-  Filter,
   ChevronDown,
   ChevronUp,
   Target,
@@ -15,13 +14,67 @@ import {
 } from 'lucide-react';
 import { NewsCard } from '@/components/molecules/sentinel/NewsCard';
 import { Button } from '@/components/atoms/Button';
+import { AddToPortfolioModal, StockToAdd } from '@/components/organisms/AddToPortfolioModal';
 import { recommendationEngine } from '@/services/recommendations';
-import { useNews } from '@/hooks/useNews';
 import type {
   DailyRecommendations,
   StockRecommendation,
 } from '@/services/recommendations';
 import styles from './RecommendationsView.module.css';
+
+// ─────────────────────────────────────────────────────────────────────────────
+// MOCK NEWS PER TICKER
+// ─────────────────────────────────────────────────────────────────────────────
+
+interface MockNewsItem {
+  id: string;
+  title: string;
+  description: string;
+  source: string;
+  publishedDate: string;
+  url: string;
+  tickers: string[];
+  tags: string[];
+  sentiment: number;
+}
+
+const NEWS_TEMPLATES = [
+  {
+    title: '{company} Reports Strong Quarterly Earnings, Beats Estimates',
+    description: '{company} announced quarterly results that exceeded analyst expectations, with revenue growth driven by strong demand across key segments.',
+    source: 'Bloomberg',
+    tags: ['Earnings', 'Financial Results'],
+    sentiment: 0.6,
+  },
+  {
+    title: 'Analysts Upgrade {ticker} Following Product Launch Announcement',
+    description: 'Multiple Wall Street analysts have raised their price targets for {company} after the company unveiled new products expected to drive future growth.',
+    source: 'Reuters',
+    tags: ['Analyst Ratings', 'Product Launch'],
+    sentiment: 0.5,
+  },
+  {
+    title: '{company} Expands Market Share in Key Growth Sectors',
+    description: 'Recent market data shows {company} gaining significant market share, positioning the company well for continued growth in the coming quarters.',
+    source: 'Financial Times',
+    tags: ['Market Analysis', 'Growth'],
+    sentiment: 0.4,
+  },
+];
+
+function generateMockNewsForTicker(ticker: string, companyName: string): MockNewsItem[] {
+  return NEWS_TEMPLATES.map((template, index) => ({
+    id: `${ticker}-news-${index}`,
+    title: template.title.replace('{company}', companyName).replace('{ticker}', ticker),
+    description: template.description.replace('{company}', companyName).replace('{ticker}', ticker),
+    source: template.source,
+    publishedDate: new Date(Date.now() - (index + 1) * 3 * 60 * 60 * 1000).toISOString(),
+    url: '#',
+    tickers: [ticker],
+    tags: template.tags,
+    sentiment: template.sentiment,
+  }));
+}
 
 // ─────────────────────────────────────────────────────────────────────────────
 // COMPONENT
@@ -34,12 +87,9 @@ export function RecommendationsView() {
   const [expandedCard, setExpandedCard] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<'buy' | 'sell'>('buy');
 
-  // Fetch news from Tiingo (with mock fallback)
-  const { news, loading: newsLoading } = useNews({
-    limit: 6,
-    autoRefresh: true,
-    refreshInterval: 300000, // 5 minutes
-  });
+  // Modal state
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedStock, setSelectedStock] = useState<StockToAdd | null>(null);
 
   // Fetch recommendations
   const fetchRecommendations = async () => {
@@ -82,11 +132,32 @@ export function RecommendationsView() {
     setExpandedCard(expandedCard === ticker ? null : ticker);
   };
 
+  // Open add to portfolio modal
+  const handleAddToPortfolio = (rec: StockRecommendation) => {
+    setSelectedStock({
+      ticker: rec.ticker,
+      name: rec.name,
+      currentPrice: rec.currentPrice,
+      score: rec.score,
+      expectedReturn: rec.priceTarget?.expectedReturn ?? 15,
+    });
+    setIsModalOpen(true);
+  };
+
+  // Handle portfolio investment confirmation
+  const handleConfirmInvestment = (portfolioId: string, amount: number) => {
+    console.log(`Adding ${selectedStock?.ticker} to portfolio ${portfolioId} with $${amount}`);
+    // Here you would call your API to add the stock to the portfolio
+  };
+
   // Render recommendation card
   const renderRecommendationCard = (rec: StockRecommendation) => {
     const isExpanded = expandedCard === rec.ticker;
     const isBuy = rec.action === 'buy';
     const isPositive = rec.priceChangePercent >= 0;
+
+    // Generate mock news for this ticker
+    const tickerNews = generateMockNewsForTicker(rec.ticker, rec.name);
 
     return (
       <div
@@ -187,9 +258,22 @@ export function RecommendationsView() {
 
             {/* Action Button */}
             <div className={styles.cardActions}>
-              <Button variant={isBuy ? 'primary' : 'destructive'}>
-                {isBuy ? 'Add to Watchlist' : 'View Details'}
+              <Button
+                variant={isBuy ? 'primary' : 'destructive'}
+                onClick={() => handleAddToPortfolio(rec)}
+              >
+                {isBuy ? 'Add to Portfolio' : 'View Details'}
               </Button>
+            </div>
+
+            {/* Related News for this ticker */}
+            <div className={styles.cardNews}>
+              <h4 className={styles.cardNewsTitle}>Related News</h4>
+              <div className={styles.cardNewsList}>
+                {tickerNews.map((item) => (
+                  <NewsCard key={item.id} {...item} compact />
+                ))}
+              </div>
             </div>
           </div>
         )}
@@ -226,29 +310,23 @@ export function RecommendationsView() {
 
   return (
     <div className={styles.container}>
-      {/* Header */}
-      <header className={styles.header}>
-        <div className={styles.headerTop}>
-          <div className={styles.headerTitle}>
-            <TrendingUp size={24} className={styles.headerIcon} />
-            <div>
-              <h1 className={styles.title}>Daily Recommendations</h1>
-              <p className={styles.subtitle}>
-                Generated {new Date(recommendations.generatedAt).toLocaleTimeString()}
-              </p>
-            </div>
-          </div>
-          <Button
-            variant="secondary"
-            onClick={fetchRecommendations}
-            icon={<RefreshCw size={16} />}
-          >
-            Refresh
-          </Button>
-        </div>
+      {/* Actions Bar */}
+      <div className={styles.actionsBar}>
+        <span className={styles.generatedTime}>
+          Generated {new Date(recommendations.generatedAt).toLocaleTimeString()}
+        </span>
+        <Button
+          variant="secondary"
+          onClick={fetchRecommendations}
+          icon={<RefreshCw size={16} />}
+        >
+          Refresh
+        </Button>
+      </div>
 
-        {/* Market Summary */}
-        <div className={styles.marketSummary}>
+      {/* Market Summary */}
+      <div className={styles.marketSummaryCard}>
+        <div className={styles.marketSummaryTop}>
           <div className={`${styles.marketState} ${styles[marketStateInfo.className]}`}>
             <MarketIcon size={20} />
             <span className={styles.marketLabel}>
@@ -266,14 +344,13 @@ export function RecommendationsView() {
             <span className={styles.riskValue}>{recommendations.marketSummary.riskLevel}%</span>
           </div>
         </div>
-
         <p className={styles.marketDescription}>
           {recommendations.marketSummary.description}
         </p>
-      </header>
+      </div>
 
       {/* Main Content */}
-      <main className={styles.main}>
+      <div className={styles.main}>
         {/* Recommendations Section */}
         <section className={styles.recommendationsSection}>
           {/* Tabs */}
@@ -301,36 +378,15 @@ export function RecommendationsView() {
               : recommendations.topSells.map(renderRecommendationCard)}
           </div>
         </section>
+      </div>
 
-        {/* News Section */}
-        <section className={styles.newsSection}>
-          <div className={styles.newsSectionHeader}>
-            <h2 className={styles.sectionTitle}>Related News</h2>
-            <button className={styles.filterButton}>
-              <Filter size={16} />
-              Filter
-            </button>
-          </div>
-          <div className={styles.newsList}>
-            {newsLoading ? (
-              <div className={styles.loadingState}>
-                <RefreshCw size={20} className={styles.spinner} />
-                <p>Loading news...</p>
-              </div>
-            ) : news.length > 0 ? (
-              news.map((item) => (
-                <NewsCard
-                  key={item.id}
-                  {...item}
-                  compact
-                />
-              ))
-            ) : (
-              <p className={styles.noNews}>No news available</p>
-            )}
-          </div>
-        </section>
-      </main>
+      {/* Add to Portfolio Modal */}
+      <AddToPortfolioModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        stock={selectedStock}
+        onConfirm={handleConfirmInvestment}
+      />
     </div>
   );
 }

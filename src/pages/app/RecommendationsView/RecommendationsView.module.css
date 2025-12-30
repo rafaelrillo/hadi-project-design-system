@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   min-height: 100%;
-  background: var(--sentinel-bg-base);
+  padding: 24px;
 }
 
 /* Loading & Error States */
@@ -28,49 +28,33 @@
   to { transform: rotate(360deg); }
 }
 
-/* Header */
-.header {
-  padding: 24px 32px;
-  background: var(--sentinel-bg-elevated);
-  border-bottom: 1px solid var(--sentinel-border-subtle);
-}
-
-.headerTop {
+/* Actions Bar */
+.actionsBar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
-.headerTitle {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.headerIcon {
-  color: var(--sentinel-accent-primary);
-}
-
-.title {
-  font-size: 24px;
-  font-weight: 600;
-  color: var(--sentinel-text-primary);
-  margin: 0;
-}
-
-.subtitle {
+.generatedTime {
   font-size: 13px;
-  color: var(--sentinel-text-tertiary);
-  margin: 4px 0 0;
+  color: var(--sentinel-text-secondary);
 }
 
-/* Market Summary */
-.marketSummary {
+/* Market Summary Card */
+.marketSummaryCard {
+  background: var(--sentinel-bg-elevated);
+  border: 1px solid var(--sentinel-border-subtle);
+  border-radius: var(--sentinel-radius-lg);
+  padding: 20px 24px;
+  margin-bottom: 24px;
+}
+
+.marketSummaryTop {
   display: flex;
   align-items: center;
   gap: 32px;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .marketState {
@@ -156,17 +140,10 @@
 
 /* Main */
 .main {
-  display: grid;
-  grid-template-columns: 1fr 380px;
+  display: flex;
+  flex-direction: column;
   gap: 24px;
-  padding: 24px 32px;
   flex: 1;
-}
-
-@media (max-width: 1200px) {
-  .main {
-    grid-template-columns: 1fr;
-  }
 }
 
 /* Recommendations Section */
@@ -543,6 +520,36 @@
 .cardActions {
   padding-top: 8px;
   border-top: 1px solid var(--sentinel-border-subtle);
+}
+
+/* Card News Section */
+.cardNews {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid var(--sentinel-border-subtle);
+}
+
+.cardNewsTitle {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--sentinel-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.cardNewsList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+@media (max-width: 900px) {
+  .cardNewsList {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* News Section */

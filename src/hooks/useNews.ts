@@ -105,6 +105,28 @@ const MOCK_NEWS: NewsItem[] = [
     tags: ['Market Outlook', 'Earnings'],
     sentiment: 0.5,
   },
+  {
+    id: '7',
+    title: 'Amazon Web Services launches new AI-powered analytics tools',
+    description: 'AWS unveiled a suite of machine learning tools designed to help businesses analyze data more efficiently and make better predictions.',
+    source: 'TechCrunch',
+    publishedDate: new Date(Date.now() - 14 * 60 * 60 * 1000).toISOString(),
+    url: 'https://techcrunch.com',
+    tickers: ['AMZN', 'MSFT', 'GOOGL'],
+    tags: ['Cloud Computing', 'AI'],
+    sentiment: 0.55,
+  },
+  {
+    id: '8',
+    title: 'Semiconductor stocks rally on strong demand forecast',
+    description: 'Chip makers see shares rise as industry analysts predict continued strong demand for semiconductors driven by AI and data center expansion.',
+    source: 'Barron\'s',
+    publishedDate: new Date(Date.now() - 16 * 60 * 60 * 1000).toISOString(),
+    url: 'https://barrons.com',
+    tickers: ['NVDA', 'AMD', 'INTC', 'TSM'],
+    tags: ['Semiconductors', 'Technology'],
+    sentiment: 0.65,
+  },
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────

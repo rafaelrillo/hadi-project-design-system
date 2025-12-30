@@ -1,8 +1,8 @@
 // Path: src/pages/app/PortfolioView/PortfolioView.tsx
 
 import { useState, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
-  Briefcase,
   TrendingUp,
   TrendingDown,
   DollarSign,
@@ -12,6 +12,7 @@ import {
   MoreVertical,
   Plus,
   RefreshCw,
+  Clock,
 } from 'lucide-react';
 import { AllocationSummary } from '@/components/molecules/sentinel/AllocationSummary';
 import { Button } from '@/components/atoms/Button';
@@ -132,6 +133,7 @@ const MOCK_SUMMARY: PortfolioSummary = {
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function PortfolioView() {
+  const navigate = useNavigate();
   const [selectedPeriod, setSelectedPeriod] = useState<'1D' | '1W' | '1M' | '3M' | '1Y' | 'ALL'>('1D');
   const [sortBy, setSortBy] = useState<'allocation' | 'gainLoss' | 'dayChange'>('allocation');
   const [isRefreshing, setIsRefreshing] = useState(false);
@@ -168,32 +170,8 @@ export function PortfolioView() {
 
   return (
     <div className={styles.container}>
-      {/* Header */}
-      <header className={styles.header}>
-        <div className={styles.headerTop}>
-          <div className={styles.headerTitle}>
-            <Briefcase size={24} className={styles.headerIcon} />
-            <div>
-              <h1 className={styles.title}>My Portfolio</h1>
-              <p className={styles.subtitle}>Paper Trading Account</p>
-            </div>
-          </div>
-          <div className={styles.headerActions}>
-            <Button
-              variant="secondary"
-              onClick={handleRefresh}
-              disabled={isRefreshing}
-              icon={<RefreshCw size={16} className={isRefreshing ? styles.spinning : ''} />}
-            >
-              Refresh
-            </Button>
-            <Button variant="primary" icon={<Plus size={16} />}>
-              Add Position
-            </Button>
-          </div>
-        </div>
-
-        {/* Summary Cards */}
+      {/* Summary Section with Actions */}
+      <div className={styles.summarySection}>
         <div className={styles.summaryGrid}>
           <div className={styles.summaryCard}>
             <div className={styles.summaryIcon}>
@@ -249,10 +227,30 @@ export function PortfolioView() {
             </div>
           </div>
         </div>
-      </header>
+
+        {/* Actions */}
+        <div className={styles.actionsCard}>
+          <Button
+            variant="ghost"
+            onClick={handleRefresh}
+            disabled={isRefreshing}
+            icon={<RefreshCw size={16} className={isRefreshing ? styles.spinning : ''} />}
+          >
+            Refresh
+          </Button>
+          <div className={styles.actionsDivider} />
+          <Button
+            variant="primary"
+            icon={<Plus size={16} />}
+            onClick={() => navigate('/app/dashboard/portfolio/builder')}
+          >
+            Create New Portfolio
+          </Button>
+        </div>
+      </div>
 
       {/* Main Content */}
-      <main className={styles.main}>
+      <div className={styles.main}>
         {/* Allocation Chart */}
         <section className={styles.allocationSection}>
           <h2 className={styles.sectionTitle}>Allocation</h2>
@@ -354,7 +352,7 @@ export function PortfolioView() {
             </button>
           ))}
         </div>
-      </main>
+      </div>
     </div>
   );
 }

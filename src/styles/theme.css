@@ -343,6 +343,42 @@
   --shadow-card: var(--sentinel-shadow-card);
 
   /* ─────────────────────────────────────────────────────────────────────────────
+     GLASSMORPHISM
+     Efectos de vidrio, transparencias y brillos sutiles
+     Para crear profundidad y jerarquía visual
+     ───────────────────────────────────────────────────────────────────────────── */
+
+  --sentinel-glass-light: rgba(255, 255, 255, 0.03);
+  --sentinel-glass-medium: rgba(255, 255, 255, 0.05);
+  --sentinel-glass-heavy: rgba(255, 255, 255, 0.08);
+  --sentinel-glass-accent: rgba(91, 163, 165, 0.05);
+  --sentinel-glass-accent-strong: rgba(91, 163, 165, 0.1);
+
+  /* Gradientes de borde con luz */
+  --sentinel-border-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(91, 163, 165, 0.1) 100%);
+  --sentinel-border-gradient-subtle: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(91, 163, 165, 0.06) 100%);
+
+  /* Highlights internos (efecto de luz superior) */
+  --sentinel-inner-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  --sentinel-inner-highlight-strong: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+  /* Sombras con glow de acento */
+  --sentinel-shadow-glow-accent: 0 4px 20px rgba(0, 0, 0, 0.3), 0 0 30px rgba(91, 163, 165, 0.15);
+  --sentinel-shadow-glow-accent-strong: 0 4px 24px rgba(0, 0, 0, 0.4), 0 0 40px rgba(91, 163, 165, 0.2);
+
+  /* Glow por estado semántico */
+  --sentinel-glow-positive: 0 0 30px rgba(74, 154, 124, 0.2);
+  --sentinel-glow-negative: 0 0 30px rgba(184, 92, 92, 0.2);
+  --sentinel-glow-warning: 0 0 30px rgba(196, 163, 90, 0.2);
+  --sentinel-glow-info: 0 0 30px rgba(90, 143, 184, 0.2);
+
+  /* Backdrop blur values */
+  --sentinel-blur-sm: blur(8px);
+  --sentinel-blur-md: blur(12px);
+  --sentinel-blur-lg: blur(20px);
+  --sentinel-blur-xl: blur(40px);
+
+  /* ─────────────────────────────────────────────────────────────────────────────
      ANIMACIONES Y TRANSICIONES
      Sentinel: lentas, atmosféricas, nunca bruscas
      Las animaciones refuerzan la calma, no crean urgencia
