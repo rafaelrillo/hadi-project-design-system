@@ -3,9 +3,10 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  padding: 24px;
-  min-height: 100%;
+  gap: 16px;
+  padding: 20px;
+  height: 100%;
+  overflow: hidden;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -16,14 +17,15 @@
   background: var(--sentinel-bg-elevated);
   border: 1px solid var(--sentinel-border-subtle);
   border-radius: var(--sentinel-radius-lg);
-  padding: 24px;
+  padding: 20px;
+  flex-shrink: 0;
 }
 
 .chartHeader {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
 .chartTitle {
@@ -88,7 +90,9 @@
 .bottomGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  gap: 16px;
+  flex: 1;
+  min-height: 0;
 }
 
 @media (max-width: 1024px) {
@@ -105,16 +109,19 @@
   background: var(--sentinel-bg-elevated);
   border: 1px solid var(--sentinel-border-subtle);
   border-radius: var(--sentinel-radius-lg);
-  padding: 20px;
+  padding: 16px;
   display: flex;
   flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
 }
 
 .cardHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
+  flex-shrink: 0;
 }
 
 .cardTitle {
@@ -138,18 +145,22 @@
 .recommendationsList {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
 }
 
 .recommendationItem {
   display: grid;
-  grid-template-columns: 40px 1fr auto auto;
+  grid-template-columns: 32px 1fr auto auto;
   align-items: center;
-  gap: 16px;
-  padding: 12px 16px;
+  gap: 10px;
+  padding: 8px 10px;
   background: var(--sentinel-bg-surface);
   border-radius: var(--sentinel-radius-md);
   transition: background var(--sentinel-duration-fast) var(--sentinel-ease-default);
+  flex-shrink: 0;
 }
 
 .recommendationItem:hover {
@@ -217,15 +228,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 8px 12px;
+  padding: 6px 10px;
   background: rgba(var(--sentinel-accent-primary-rgb, 91, 163, 165), 0.1);
   border-radius: var(--sentinel-radius-sm);
-  min-width: 50px;
+  min-width: 44px;
 }
 
 .scoreValue {
   font-family: var(--sentinel-font-mono);
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
   color: var(--sentinel-accent-primary);
   line-height: 1;
@@ -246,8 +257,10 @@
 .newsList {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
   flex: 1;
+  min-height: 0;
+  overflow: hidden;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────

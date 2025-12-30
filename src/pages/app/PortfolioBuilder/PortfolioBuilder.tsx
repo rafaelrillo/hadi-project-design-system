@@ -1,7 +1,6 @@
 // Path: src/pages/app/PortfolioBuilder/PortfolioBuilder.tsx
 
 import { useState, useMemo, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Search, ArrowLeft, ArrowRight, Check, Briefcase, GitCompare } from 'lucide-react';
 import { Stepper, Step } from '@/components/molecules/sentinel/Stepper';
 import { StockSearchResult } from '@/components/molecules/sentinel/StockSearchResult';

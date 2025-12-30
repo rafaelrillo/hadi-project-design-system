@@ -9,10 +9,8 @@ import {
   ChevronDown,
   ChevronUp,
   Target,
-  Shield,
   Zap,
 } from 'lucide-react';
-import { NewsCard } from '@/components/molecules/sentinel/NewsCard';
 import { Button } from '@/components/atoms/Button';
 import { AddToPortfolioModal, StockToAdd } from '@/components/organisms/AddToPortfolioModal';
 import { recommendationEngine } from '@/services/recommendations';
@@ -21,60 +19,6 @@ import type {
   StockRecommendation,
 } from '@/services/recommendations';
 import styles from './RecommendationsView.module.css';
-
-// ─────────────────────────────────────────────────────────────────────────────
-// MOCK NEWS PER TICKER
-// ─────────────────────────────────────────────────────────────────────────────
-
-interface MockNewsItem {
-  id: string;
-  title: string;
-  description: string;
-  source: string;
-  publishedDate: string;
-  url: string;
-  tickers: string[];
-  tags: string[];
-  sentiment: number;
-}
-
-const NEWS_TEMPLATES = [
-  {
-    title: '{company} Reports Strong Quarterly Earnings, Beats Estimates',
-    description: '{company} announced quarterly results that exceeded analyst expectations, with revenue growth driven by strong demand across key segments.',
-    source: 'Bloomberg',
-    tags: ['Earnings', 'Financial Results'],
-    sentiment: 0.6,
-  },
-  {
-    title: 'Analysts Upgrade {ticker} Following Product Launch Announcement',
-    description: 'Multiple Wall Street analysts have raised their price targets for {company} after the company unveiled new products expected to drive future growth.',
-    source: 'Reuters',
-    tags: ['Analyst Ratings', 'Product Launch'],
-    sentiment: 0.5,
-  },
-  {
-    title: '{company} Expands Market Share in Key Growth Sectors',
-    description: 'Recent market data shows {company} gaining significant market share, positioning the company well for continued growth in the coming quarters.',
-    source: 'Financial Times',
-    tags: ['Market Analysis', 'Growth'],
-    sentiment: 0.4,
-  },
-];
-
-function generateMockNewsForTicker(ticker: string, companyName: string): MockNewsItem[] {
-  return NEWS_TEMPLATES.map((template, index) => ({
-    id: `${ticker}-news-${index}`,
-    title: template.title.replace('{company}', companyName).replace('{ticker}', ticker),
-    description: template.description.replace('{company}', companyName).replace('{ticker}', ticker),
-    source: template.source,
-    publishedDate: new Date(Date.now() - (index + 1) * 3 * 60 * 60 * 1000).toISOString(),
-    url: '#',
-    tickers: [ticker],
-    tags: template.tags,
-    sentiment: template.sentiment,
-  }));
-}
 
 // ─────────────────────────────────────────────────────────────────────────────
 // COMPONENT
@@ -156,9 +100,6 @@ export function RecommendationsView() {
     const isBuy = rec.action === 'buy';
     const isPositive = rec.priceChangePercent >= 0;
 
-    // Generate mock news for this ticker
-    const tickerNews = generateMockNewsForTicker(rec.ticker, rec.name);
-
     return (
       <div
         key={rec.ticker}
@@ -201,78 +142,58 @@ export function RecommendationsView() {
         {/* Expanded Content */}
         {isExpanded && (
           <div className={styles.cardExpanded}>
-            {/* Price Target */}
-            {rec.priceTarget && (
-              <div className={styles.priceTarget}>
-                <div className={styles.targetRow}>
-                  <Target size={16} />
-                  <span className={styles.targetLabel}>Price Target</span>
-                  <span className={styles.targetValue}>
-                    ${rec.priceTarget.price.toFixed(2)}
-                    <span className={isBuy ? styles.positive : styles.negative}>
-                      ({isBuy ? '+' : ''}{rec.priceTarget.expectedReturn.toFixed(1)}%)
-                    </span>
-                  </span>
+            {/* Left: Info | Right: Action */}
+            <div className={styles.expandedLayout}>
+              {/* Left Column - Info */}
+              <div className={styles.expandedInfo}>
+                {/* Metrics Row */}
+                <div className={styles.metricsRow}>
+                  {rec.priceTarget && (
+                    <>
+                      <div className={styles.metric}>
+                        <span className={styles.metricLabel}>Target Price</span>
+                        <span className={styles.metricValue}>${rec.priceTarget.price.toFixed(2)}</span>
+                      </div>
+                      <div className={styles.metric}>
+                        <span className={styles.metricLabel}>Expected Return</span>
+                        <span className={`${styles.metricValue} ${isBuy ? styles.positive : styles.negative}`}>
+                          {isBuy ? '+' : ''}{rec.priceTarget.expectedReturn.toFixed(1)}%
+                        </span>
+                      </div>
+                      {rec.priceTarget.stopLoss && (
+                        <div className={styles.metric}>
+                          <span className={styles.metricLabel}>Stop Loss</span>
+                          <span className={styles.metricValue}>${rec.priceTarget.stopLoss.toFixed(2)}</span>
+                        </div>
+                      )}
+                    </>
+                  )}
                 </div>
-                {rec.priceTarget.stopLoss && (
-                  <div className={styles.targetRow}>
-                    <Shield size={16} />
-                    <span className={styles.targetLabel}>Stop Loss</span>
-                    <span className={styles.targetValue}>
-                      ${rec.priceTarget.stopLoss.toFixed(2)}
-                    </span>
-                  </div>
-                )}
-              </div>
-            )}
 
-            {/* Rationale */}
-            <div className={styles.rationale}>
-              <h4 className={styles.rationaleTitle}>Analysis</h4>
-              <p className={styles.rationaleText}>{rec.rationale}</p>
-            </div>
+                {/* Rationale */}
+                <p className={styles.rationaleText}>{rec.rationale}</p>
 
-            {/* Factors */}
-            <div className={styles.factors}>
-              <h4 className={styles.factorsTitle}>Contributing Factors</h4>
-              <div className={styles.factorsList}>
-                {rec.factors.map((factor) => (
-                  <div
-                    key={factor.name}
-                    className={`${styles.factorItem} ${factor.signal > 0 ? styles.factorPositive : factor.signal < 0 ? styles.factorNegative : styles.factorNeutral}`}
-                  >
-                    <span className={styles.factorName}>{factor.name}</span>
-                    <div className={styles.factorBar}>
-                      <div
-                        className={styles.factorFill}
-                        style={{ width: `${Math.abs(factor.signal) * 100}%` }}
-                      />
+                {/* Signals */}
+                <div className={styles.signalsList}>
+                  {rec.factors.slice(0, 3).map((factor) => (
+                    <div key={factor.name} className={styles.signalItem}>
+                      <span className={styles.signalName}>{factor.name}</span>
+                      <span className={`${styles.signalValue} ${factor.signal > 0 ? styles.positive : styles.negative}`}>
+                        {factor.signal > 0 ? '+' : ''}{(factor.signal * 100).toFixed(0)}%
+                      </span>
                     </div>
-                    <span className={styles.factorSignal}>
-                      {factor.signal > 0 ? '+' : ''}{(factor.signal * 100).toFixed(0)}%
-                    </span>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
 
-            {/* Action Button */}
-            <div className={styles.cardActions}>
-              <Button
-                variant={isBuy ? 'primary' : 'destructive'}
-                onClick={() => handleAddToPortfolio(rec)}
-              >
-                {isBuy ? 'Add to Portfolio' : 'View Details'}
-              </Button>
-            </div>
-
-            {/* Related News for this ticker */}
-            <div className={styles.cardNews}>
-              <h4 className={styles.cardNewsTitle}>Related News</h4>
-              <div className={styles.cardNewsList}>
-                {tickerNews.map((item) => (
-                  <NewsCard key={item.id} {...item} compact />
-                ))}
+              {/* Right Column - Action */}
+              <div className={styles.expandedAction} onClick={(e) => e.stopPropagation()}>
+                <Button
+                  variant={isBuy ? 'primary' : 'destructive'}
+                  onClick={() => handleAddToPortfolio(rec)}
+                >
+                  {isBuy ? 'Add to Portfolio' : 'View Details'}
+                </Button>
               </div>
             </div>
           </div>

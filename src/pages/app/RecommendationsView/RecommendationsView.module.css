@@ -3,8 +3,10 @@
 .container {
   display: flex;
   flex-direction: column;
-  min-height: 100%;
-  padding: 24px;
+  height: 100%;
+  padding: 20px;
+  overflow: hidden;
+  gap: 16px;
 }
 
 /* Loading & Error States */
@@ -33,7 +35,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 24px;
+  flex-shrink: 0;
 }
 
 .generatedTime {
@@ -46,8 +48,8 @@
   background: var(--sentinel-bg-elevated);
   border: 1px solid var(--sentinel-border-subtle);
   border-radius: var(--sentinel-radius-lg);
-  padding: 20px 24px;
-  margin-bottom: 24px;
+  padding: 16px 20px;
+  flex-shrink: 0;
 }
 
 .marketSummaryTop {
@@ -142,15 +144,20 @@
 .main {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 16px;
   flex: 1;
+  min-height: 0;
+  overflow: hidden;
 }
 
 /* Recommendations Section */
 .recommendationsSection {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
 }
 
 /* Tabs */
@@ -161,6 +168,7 @@
   background: var(--sentinel-bg-surface);
   border-radius: var(--sentinel-radius-md);
   width: fit-content;
+  flex-shrink: 0;
 }
 
 .tab {
@@ -193,7 +201,10 @@
 .recList {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
 }
 
 /* Recommendation Card */
@@ -365,190 +376,137 @@
 
 /* Expanded Card Content */
 .cardExpanded {
-  padding: 0 20px 20px;
+  padding: 16px 20px;
   border-top: 1px solid var(--sentinel-border-subtle);
-  margin-top: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
 }
 
-.priceTarget {
+/* Two Column Layout: Info | Action */
+.expandedLayout {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 16px;
-  background: var(--sentinel-bg-surface);
-  border-radius: var(--sentinel-radius-md);
+  gap: 24px;
+  align-items: flex-start;
 }
 
-.targetRow {
+.expandedInfo {
+  flex: 1;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: 12px;
-  color: var(--sentinel-text-secondary);
+  min-width: 0;
 }
 
-.targetLabel {
-  font-size: 13px;
-}
-
-.targetValue {
-  margin-left: auto;
-  font-family: var(--sentinel-font-mono);
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--sentinel-text-primary);
+.expandedAction {
+  flex-shrink: 0;
   display: flex;
   align-items: center;
-  gap: 6px;
+  padding-left: 24px;
+  border-left: 1px solid var(--sentinel-border-subtle);
 }
 
-.targetValue .positive {
-  color: var(--sentinel-status-positive);
-  font-size: 12px;
+/* Metrics Row */
+.metricsRow {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
 }
 
-.targetValue .negative {
-  color: var(--sentinel-status-negative);
-  font-size: 12px;
-}
-
-.rationale {
+.metric {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 2px;
 }
 
-.rationaleTitle,
-.factorsTitle {
-  font-size: 12px;
+.metricLabel {
+  font-size: 10px;
   font-weight: 600;
   color: var(--sentinel-text-tertiary);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin: 0;
 }
 
+.metricValue {
+  font-family: var(--sentinel-font-mono);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--sentinel-text-primary);
+}
+
+.metricValue.positive {
+  color: var(--sentinel-status-positive);
+}
+
+.metricValue.negative {
+  color: var(--sentinel-status-negative);
+}
+
+.metricValue.high {
+  color: var(--sentinel-status-positive);
+}
+
+.metricValue.medium {
+  color: var(--sentinel-status-warning);
+}
+
+.metricValue.low {
+  color: var(--sentinel-text-tertiary);
+}
+
+/* Rationale */
 .rationaleText {
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.5;
   color: var(--sentinel-text-secondary);
   margin: 0;
 }
 
-.factors {
+/* Signals */
+.signalsList {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.factorsList {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
   gap: 8px;
+  flex-wrap: wrap;
 }
 
-.factorItem {
+.signalItem {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
+  gap: 6px;
+  padding: 4px 8px;
   background: var(--sentinel-bg-surface);
   border-radius: var(--sentinel-radius-sm);
 }
 
-.factorName {
-  font-size: 12px;
+.signalName {
+  font-size: 11px;
   color: var(--sentinel-text-secondary);
-  flex-shrink: 0;
-  min-width: 100px;
 }
 
-.factorBar {
-  flex: 1;
-  height: 4px;
-  background: var(--sentinel-bg-base);
-  border-radius: 2px;
-  overflow: hidden;
-}
-
-.factorFill {
-  height: 100%;
-  border-radius: 2px;
-  transition: width var(--sentinel-duration-normal) var(--sentinel-ease-default);
-}
-
-.factorPositive .factorFill {
-  background: var(--sentinel-status-positive);
-}
-
-.factorNegative .factorFill {
-  background: var(--sentinel-status-negative);
-}
-
-.factorNeutral .factorFill {
-  background: var(--sentinel-text-tertiary);
-}
-
-.factorSignal {
+.signalValue {
   font-family: var(--sentinel-font-mono);
   font-size: 11px;
   font-weight: 600;
-  min-width: 40px;
-  text-align: right;
 }
 
-.factorPositive .factorSignal {
+.signalValue.positive {
   color: var(--sentinel-status-positive);
 }
 
-.factorNegative .factorSignal {
+.signalValue.negative {
   color: var(--sentinel-status-negative);
 }
 
-.factorNeutral .factorSignal {
-  color: var(--sentinel-text-tertiary);
-}
-
+/* Responsive */
 @media (max-width: 768px) {
-  .factorsList {
-    grid-template-columns: 1fr;
+  .expandedLayout {
+    flex-direction: column;
+    gap: 16px;
   }
-}
 
-.cardActions {
-  padding-top: 8px;
-  border-top: 1px solid var(--sentinel-border-subtle);
-}
-
-/* Card News Section */
-.cardNews {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding-top: 16px;
-  border-top: 1px solid var(--sentinel-border-subtle);
-}
-
-.cardNewsTitle {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--sentinel-text-tertiary);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin: 0;
-}
-
-.cardNewsList {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-}
-
-@media (max-width: 900px) {
-  .cardNewsList {
-    grid-template-columns: 1fr;
+  .expandedAction {
+    padding-left: 0;
+    padding-top: 12px;
+    border-left: none;
+    border-top: 1px solid var(--sentinel-border-subtle);
+    width: 100%;
   }
 }
 

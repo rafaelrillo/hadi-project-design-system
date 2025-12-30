@@ -142,7 +142,7 @@ export function DashboardPage() {
         </div>
         <FinancialLineChart
           data={performanceComparisonData}
-          height={320}
+          height={260}
           enableArea={true}
           enablePoints={true}
           showZeroLine={false}

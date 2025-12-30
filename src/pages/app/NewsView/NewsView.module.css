@@ -3,8 +3,10 @@
 .container {
   display: flex;
   flex-direction: column;
-  min-height: 100%;
-  padding: 24px;
+  height: 100%;
+  padding: 20px;
+  overflow: hidden;
+  gap: 16px;
 }
 
 /* Actions Bar */
@@ -12,7 +14,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 24px;
+  flex-shrink: 0;
 }
 
 .statsCard {
@@ -72,11 +74,11 @@
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 16px;
+  padding: 12px 16px;
   background: var(--sentinel-bg-elevated);
   border: 1px solid var(--sentinel-border-subtle);
   border-radius: var(--sentinel-radius-md);
-  margin-bottom: 24px;
+  flex-shrink: 0;
 }
 
 /* Search */
@@ -201,6 +203,8 @@
 /* Main */
 .main {
   flex: 1;
+  min-height: 0;
+  overflow-y: auto;
 }
 
 /* States */
