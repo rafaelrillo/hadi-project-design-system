@@ -28,6 +28,9 @@ const TOP_RECOMMENDATIONS = [
   { ticker: 'AAPL', name: 'Apple Inc.', score: 85, change: 1.39, price: 178.72 },
 ];
 
+// Mobile shows only top 4 recommendations
+const MOBILE_TOP_RECOMMENDATIONS = TOP_RECOMMENDATIONS.slice(0, 4);
+
 // ─────────────────────────────────────────────────────────────────────────────
 // COMPONENT
 // ─────────────────────────────────────────────────────────────────────────────
@@ -105,33 +108,32 @@ export function DashboardPage() {
   if (isMobile) {
     return (
       <div className={styles.mobileContainer}>
-        {/* Mobile Chart Card - Sentinel Portfolio */}
-        <div className={styles.mobileChartCard}>
-          {/* Portfolio Header - Label left, values right */}
+        {/* Portfolio Value Card */}
+        <div className={styles.mobileValueCard}>
+          <div className={styles.mobileValueTop}>
+            <Briefcase size={18} className={styles.mobileValueIcon} />
+            <span className={styles.mobileValueLabel}>Sentinel Portfolio</span>
+          </div>
           {performanceMetrics && (
-            <div className={styles.mobilePortfolioHeader}>
-              <span className={styles.mobilePortfolioLabel}>
-                <Briefcase size={16} />
-                Sentinel Portfolio
+            <div className={styles.mobileValueBottom}>
+              <span className={styles.mobileValueAmount}>${performanceMetrics.sentinelValue}</span>
+              <span
+                className={styles.mobileValueChange}
+                data-positive={parseFloat(performanceMetrics.sentinelReturn) >= 0}
+              >
+                {parseFloat(performanceMetrics.sentinelReturn) >= 0 ? '+' : ''}
+                {performanceMetrics.sentinelReturn}%
               </span>
-              <div className={styles.mobilePortfolioValues}>
-                <span className={styles.mobilePortfolioValue}>${performanceMetrics.sentinelValue}</span>
-                <span
-                  className={styles.mobilePortfolioChange}
-                  data-positive={parseFloat(performanceMetrics.sentinelReturn) >= 0}
-                >
-                  {parseFloat(performanceMetrics.sentinelReturn) >= 0 ? '+' : ''}
-                  {performanceMetrics.sentinelReturn}%
-                </span>
-              </div>
             </div>
           )}
+        </div>
 
-          {/* Chart */}
+        {/* Chart Card */}
+        <div className={styles.mobileChartCard}>
           <div className={styles.mobileChartWrapper}>
             <FinancialLineChart
               data={performanceComparisonData}
-              height={130}
+              height={110}
               enableArea={true}
               areaSeriesIndex={0}
               enablePoints={false}
@@ -141,8 +143,6 @@ export function DashboardPage() {
               minimal={true}
             />
           </div>
-
-          {/* Legend */}
           <div className={styles.mobileLegend}>
             <div className={styles.mobileLegendItem}>
               <img src="/sentinel-favicon.svg" alt="" className={styles.mobileLegendLogo} />
@@ -159,46 +159,47 @@ export function DashboardPage() {
           </div>
         </div>
 
-        {/* Mobile Recommendations */}
-        <div className={styles.mobileSection}>
-          <div className={styles.mobileSectionHeader}>
-            <h3 className={styles.mobileSectionTitle}>
-              <TrendingUp size={16} />
-              Top Picks
-            </h3>
+        {/* Top Picks */}
+        <div className={styles.mobilePicksCard}>
+          <div className={styles.mobilePicksHeader}>
+            <TrendingUp size={16} className={styles.mobilePicksIcon} />
+            <span className={styles.mobilePicksTitle}>Top Picks</span>
+            <button
+              className={styles.mobilePicksMore}
+              onClick={() => navigate('/app/dashboard/recommendations')}
+            >
+              View All
+              <ArrowRight size={12} />
+            </button>
           </div>
-          <div className={styles.mobileRecommendations}>
-            {TOP_RECOMMENDATIONS.map((rec) => (
-              <div key={rec.ticker} className={styles.mobileRecCard}>
-                <div className={styles.mobileRecLeft}>
-                  <span className={styles.mobileRecTicker}>{rec.ticker}</span>
-                  <span className={styles.mobileRecName}>{rec.name}</span>
+          <div className={styles.mobilePicksList}>
+            {MOBILE_TOP_RECOMMENDATIONS.map((rec, index) => (
+              <div key={rec.ticker} className={styles.mobilePickItem}>
+                <span className={styles.mobilePickRank}>#{index + 1}</span>
+                <div className={styles.mobilePickInfo}>
+                  <span className={styles.mobilePickTicker}>{rec.ticker}</span>
                 </div>
-                <div className={styles.mobileRecRight}>
-                  <span className={styles.mobileRecPrice}>${rec.price.toFixed(2)}</span>
-                  <span
-                    className={styles.mobileRecChange}
-                    data-positive={rec.change >= 0}
-                  >
-                    {rec.change >= 0 ? '+' : ''}{rec.change.toFixed(2)}%
-                  </span>
-                </div>
+                <span className={styles.mobilePickPrice}>${rec.price.toFixed(0)}</span>
+                <span
+                  className={styles.mobilePickChange}
+                  data-positive={rec.change >= 0}
+                >
+                  {rec.change >= 0 ? '+' : ''}{rec.change.toFixed(2)}%
+                </span>
               </div>
             ))}
           </div>
         </div>
 
-        {/* News Preview Card */}
+        {/* News Card */}
         <div
           className={styles.mobileNewsCard}
           onClick={() => navigate('/app/dashboard/news')}
         >
-          <div className={styles.mobileNewsLeft}>
-            <Newspaper size={18} />
-            <div className={styles.mobileNewsContent}>
-              <span className={styles.mobileNewsTitle}>Latest News</span>
-              <span className={styles.mobileNewsCount}>{news.length} articles today</span>
-            </div>
+          <Newspaper size={18} className={styles.mobileNewsIcon} />
+          <div className={styles.mobileNewsContent}>
+            <span className={styles.mobileNewsTitle}>Latest News</span>
+            <span className={styles.mobileNewsCount}>{news.length} articles</span>
           </div>
           <ArrowRight size={16} className={styles.mobileNewsArrow} />
         </div>

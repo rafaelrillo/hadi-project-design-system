@@ -222,16 +222,49 @@
 
 @media (max-width: 768px) {
   .section {
-    padding: var(--sentinel-space-16) var(--sentinel-space-4);
+    padding: var(--sentinel-space-12) var(--sentinel-space-4);
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header {
+    margin-bottom: var(--sentinel-space-8);
   }
 
   .title {
-    font-size: var(--sentinel-text-2xl);
+    font-size: var(--sentinel-text-xl);
+  }
+
+  .subtitle {
+    font-size: var(--sentinel-text-sm);
+  }
+
+  .columns {
+    width: 100%;
+    max-width: 320px;
+    margin-bottom: var(--sentinel-space-8);
+  }
+
+  .noiseColumn,
+  .signalColumn {
+    padding: var(--sentinel-space-4);
   }
 
   .signalCard {
     flex-direction: column;
     align-items: flex-start;
     gap: var(--sentinel-space-1);
+  }
+
+  .quote {
+    padding: var(--sentinel-space-4);
+  }
+
+  .quote p {
+    font-size: var(--sentinel-text-base);
   }
 }

@@ -288,113 +288,224 @@
 .mobileContainer {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding: 12px;
+  gap: 8px;
+  padding: 10px 12px;
   height: 100%;
   overflow: hidden;
 }
 
-/* Chart Card - Combined metrics + chart + legend */
-.mobileChartCard {
+/* Portfolio Value Card */
+.mobileValueCard {
   background: var(--sentinel-bg-elevated);
   border: 1px solid var(--sentinel-border-subtle);
   border-radius: var(--sentinel-radius-lg);
-  padding: 12px 14px;
+  padding: 14px 16px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
   flex-shrink: 0;
 }
 
-/* Portfolio Header - Sentinel Portfolio */
-.mobilePortfolioHeader {
+.mobileValueTop {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-.mobilePortfolioLabel {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--sentinel-font-primary);
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--sentinel-text-primary);
-  letter-spacing: -0.01em;
-}
-
-.mobilePortfolioLabel svg {
-  color: var(--sentinel-accent-primary);
-}
-
-.mobilePortfolioValues {
-  display: flex;
-  align-items: baseline;
   gap: 8px;
 }
 
-.mobilePortfolioValue {
+.mobileValueIcon {
+  color: var(--sentinel-accent-primary);
+}
+
+.mobileValueLabel {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--sentinel-text-secondary);
+}
+
+.mobileValueBottom {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.mobileValueAmount {
   font-family: var(--sentinel-font-mono);
-  font-size: 20px;
+  font-size: 28px;
   font-weight: 700;
   color: var(--sentinel-text-primary);
   letter-spacing: -0.02em;
 }
 
-.mobilePortfolioChange {
+.mobileValueChange {
   font-family: var(--sentinel-font-mono);
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
 }
 
-.mobilePortfolioChange[data-positive="true"] {
+.mobileValueChange[data-positive="true"] {
   color: var(--sentinel-status-positive);
 }
 
-.mobilePortfolioChange[data-positive="false"] {
+.mobileValueChange[data-positive="false"] {
   color: var(--sentinel-status-negative);
 }
 
+/* Chart Card */
+.mobileChartCard {
+  background: var(--sentinel-bg-elevated);
+  border: 1px solid var(--sentinel-border-subtle);
+  border-radius: var(--sentinel-radius-lg);
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
 .mobileChartWrapper {
-  margin: 0 -8px;
-  margin-top: 4px;
+  margin: 0 -6px;
 }
 
 .mobileLegend {
   display: flex;
   justify-content: center;
-  gap: 14px;
-  padding-top: 4px;
+  gap: 12px;
+  padding-top: 2px;
 }
 
 .mobileLegendItem {
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 11px;
+  gap: 5px;
+  font-size: 10px;
   color: var(--sentinel-text-secondary);
 }
 
 .mobileLegendDot {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   flex-shrink: 0;
 }
 
 .mobileLegendLogo {
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
   flex-shrink: 0;
 }
 
-/* News Preview Card */
+/* Top Picks Card */
+.mobilePicksCard {
+  background: var(--sentinel-bg-elevated);
+  border: 1px solid var(--sentinel-border-subtle);
+  border-radius: var(--sentinel-radius-lg);
+  padding: 12px 14px;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.mobilePicksHeader {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 10px;
+  flex-shrink: 0;
+}
+
+.mobilePicksIcon {
+  color: var(--sentinel-accent-primary);
+}
+
+.mobilePicksTitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--sentinel-text-primary);
+  flex: 1;
+}
+
+.mobilePicksMore {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--sentinel-accent-primary);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mobilePicksList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.mobilePickItem {
+  display: grid;
+  grid-template-columns: 28px 1fr auto auto;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  background: var(--sentinel-bg-surface);
+  border-radius: var(--sentinel-radius-md);
+  flex-shrink: 0;
+}
+
+.mobilePickRank {
+  font-family: var(--sentinel-font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--sentinel-accent-primary);
+}
+
+.mobilePickInfo {
+  min-width: 0;
+}
+
+.mobilePickTicker {
+  font-family: var(--sentinel-font-mono);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--sentinel-text-primary);
+}
+
+.mobilePickPrice {
+  font-family: var(--sentinel-font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--sentinel-text-secondary);
+}
+
+.mobilePickChange {
+  font-family: var(--sentinel-font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  min-width: 54px;
+  text-align: right;
+}
+
+.mobilePickChange[data-positive="true"] {
+  color: var(--sentinel-status-positive);
+}
+
+.mobilePickChange[data-positive="false"] {
+  color: var(--sentinel-status-negative);
+}
+
+/* News Card */
 .mobileNewsCard {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 12px;
   padding: 12px 14px;
   background: var(--sentinel-bg-elevated);
   border: 1px solid var(--sentinel-border-subtle);
@@ -410,20 +521,16 @@
   transform: scale(0.99);
 }
 
-.mobileNewsLeft {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.mobileNewsLeft > svg {
+.mobileNewsIcon {
   color: var(--sentinel-accent-primary);
+  flex-shrink: 0;
 }
 
 .mobileNewsContent {
   display: flex;
   flex-direction: column;
   gap: 2px;
+  flex: 1;
 }
 
 .mobileNewsTitle {
@@ -439,101 +546,5 @@
 
 .mobileNewsArrow {
   color: var(--sentinel-text-tertiary);
-}
-
-.mobileSection {
-  background: var(--sentinel-bg-elevated);
-  border: 1px solid var(--sentinel-border-subtle);
-  border-radius: var(--sentinel-radius-lg);
-  padding: 12px 14px;
-  flex: 1;
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-.mobileSectionHeader {
-  margin-bottom: 8px;
   flex-shrink: 0;
-}
-
-.mobileSectionTitle {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--sentinel-text-primary);
-  margin: 0;
-}
-
-.mobileSectionTitle svg {
-  color: var(--sentinel-accent-primary);
-}
-
-.mobileRecommendations {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  flex: 1;
-  min-height: 0;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-.mobileRecCard {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 12px;
-  background: var(--sentinel-bg-surface);
-  border-radius: var(--sentinel-radius-md);
-  flex-shrink: 0;
-}
-
-.mobileRecLeft {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.mobileRecTicker {
-  font-family: var(--sentinel-font-mono);
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--sentinel-text-primary);
-}
-
-.mobileRecName {
-  font-size: 12px;
-  color: var(--sentinel-text-secondary);
-}
-
-.mobileRecRight {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 2px;
-}
-
-.mobileRecPrice {
-  font-family: var(--sentinel-font-mono);
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--sentinel-text-primary);
-}
-
-.mobileRecChange {
-  font-family: var(--sentinel-font-mono);
-  font-size: 12px;
-  font-weight: 500;
-}
-
-.mobileRecChange[data-positive="true"] {
-  color: var(--sentinel-status-positive);
-}
-
-.mobileRecChange[data-positive="false"] {
-  color: var(--sentinel-status-negative);
 }

@@ -178,7 +178,7 @@ export function NewsView() {
                       <div className={styles.mobileNewsMetaLeft}>
                         <span className={styles.mobileNewsTime}>
                           <Clock size={10} />
-                          {item.publishedAt}
+                          {item.publishedDate}
                         </span>
                         {item.tickers.length > 0 && (
                           <div className={styles.mobileNewsTickers}>

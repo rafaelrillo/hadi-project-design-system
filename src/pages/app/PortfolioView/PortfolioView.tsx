@@ -319,7 +319,6 @@ export function PortfolioView() {
             </span>
             <Button
               variant="primary"
-              size="sm"
               icon={<Plus size={14} />}
               onClick={() => navigate('/app/dashboard/portfolio/builder')}
             >
@@ -346,7 +345,6 @@ export function PortfolioView() {
             outerPadding={0}
             enableLabels={true}
             enableParentLabel={false}
-            labelSkipSize={30}
           />
         </div>
 

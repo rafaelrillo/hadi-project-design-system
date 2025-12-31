@@ -96,10 +96,6 @@ export function DashboardLayout() {
         <div className={styles.mobileLayout}>
           <MobileHeader
             onMenuClick={() => setIsMoreMenuOpen(true)}
-            onNotificationClick={() => {}}
-            marketState="bullish"
-            riskLevel={35}
-            systemStatus="active"
           />
 
           <main className={styles.mobileContent}>

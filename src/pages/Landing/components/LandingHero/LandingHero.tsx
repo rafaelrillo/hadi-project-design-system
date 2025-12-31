@@ -1,16 +1,18 @@
 // Path: src/pages/Landing/components/LandingHero/LandingHero.tsx
 import { useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Monitor } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { MarketStateIndicator, RiskGauge, ConfidenceLevel } from '@/components/organisms/sentinel';
 import { Button } from '@/components/atoms/Button';
 import { useMarketStore } from '@/store';
+import { useIsMobile } from '@/hooks/useBreakpoint';
 import styles from './LandingHero.module.css';
 
 export function LandingHero() {
   const navigate = useNavigate();
   const controls = useAnimation();
+  const isMobile = useIsMobile();
 
   const { indicators, fetchStocks } = useMarketStore();
 
@@ -143,17 +145,35 @@ export function LandingHero() {
 
         {/* CTA */}
         <motion.div className={styles.ctaContainer} variants={itemVariants}>
-          <Button
-            variant="primary"
-            onClick={() => navigate('/showcase')}
-          >
-            Explore Design System
-          </Button>
+          {isMobile ? (
+            <div className={styles.disabledButtonWrapper}>
+              <Button
+                variant="primary"
+                disabled
+                onClick={() => {}}
+                className={styles.mobileButton}
+              >
+                Explore Design System
+              </Button>
+              <div className={styles.desktopOnlyHint}>
+                <Monitor size={12} />
+                <span>Desktop only</span>
+              </div>
+            </div>
+          ) : (
+            <Button
+              variant="primary"
+              onClick={() => navigate('/showcase')}
+            >
+              Explore Design System
+            </Button>
+          )}
           <Button
             variant="secondary"
-            onClick={scrollToFeatures}
+            onClick={() => navigate('/app/dashboard')}
+            className={isMobile ? styles.mobileButton : undefined}
           >
-            Learn More
+            Open App
           </Button>
         </motion.div>
 

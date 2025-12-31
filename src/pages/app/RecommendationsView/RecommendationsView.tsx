@@ -326,16 +326,15 @@ export function RecommendationsView() {
                     )}
 
                     {/* Action Button */}
-                    <Button
-                      variant={isBuy ? 'primary' : 'destructive'}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleAddToPortfolio(rec);
-                      }}
-                      className={styles.mobileRecButton}
-                    >
-                      {isBuy ? 'Add to Portfolio' : 'Sell'}
-                    </Button>
+                    <div onClick={(e) => e.stopPropagation()}>
+                      <Button
+                        variant={isBuy ? 'primary' : 'destructive'}
+                        onClick={() => handleAddToPortfolio(rec)}
+                        className={styles.mobileRecButton}
+                      >
+                        {isBuy ? 'Add to Portfolio' : 'Sell'}
+                      </Button>
+                    </div>
                   </div>
                 )}
               </div>
