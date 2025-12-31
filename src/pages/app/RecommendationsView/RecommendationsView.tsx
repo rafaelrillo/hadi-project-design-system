@@ -10,10 +10,14 @@ import {
   ChevronUp,
   Target,
   Zap,
+  Crosshair,
+  Percent,
+  ShieldAlert,
 } from 'lucide-react';
 import { Button } from '@/components/atoms/Button';
 import { AddToPortfolioModal, StockToAdd } from '@/components/organisms/AddToPortfolioModal';
 import { recommendationEngine } from '@/services/recommendations';
+import { useIsMobile } from '@/hooks/useBreakpoint';
 import type {
   DailyRecommendations,
   StockRecommendation,
@@ -25,6 +29,7 @@ import styles from './RecommendationsView.module.css';
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function RecommendationsView() {
+  const isMobile = useIsMobile();
   const [recommendations, setRecommendations] = useState<DailyRecommendations | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -229,6 +234,151 @@ export function RecommendationsView() {
     );
   }
 
+  // Mobile Layout
+  if (isMobile) {
+    return (
+      <div className={styles.mobileContainer}>
+        {/* Tabs */}
+        <div className={styles.mobileTabs}>
+          <button
+            className={`${styles.mobileTab} ${activeTab === 'buy' ? styles.mobileTabActive : ''}`}
+            onClick={() => setActiveTab('buy')}
+          >
+            <TrendingUp size={14} />
+            Top Buys
+          </button>
+          <button
+            className={`${styles.mobileTab} ${activeTab === 'sell' ? styles.mobileTabActive : ''}`}
+            onClick={() => setActiveTab('sell')}
+          >
+            <TrendingDown size={14} />
+            Top Sells
+          </button>
+        </div>
+
+        {/* Recommendation Cards - Accordion */}
+        <div className={styles.mobileRecList}>
+          {(activeTab === 'buy' ? recommendations.topBuys : recommendations.topSells).map((rec) => {
+            const isExpanded = expandedCard === rec.ticker;
+            const isBuy = rec.action === 'buy';
+            const isPositive = rec.priceChangePercent >= 0;
+
+            return (
+              <div
+                key={rec.ticker}
+                className={`${styles.mobileRecCard} ${isBuy ? styles.mobileRecCardBuy : styles.mobileRecCardSell} ${isExpanded ? styles.mobileRecCardExpanded : ''}`}
+              >
+                {/* Card Header - Always visible */}
+                <div className={styles.mobileRecRow} onClick={() => toggleCard(rec.ticker)}>
+                  <div className={styles.mobileRecInfo}>
+                    <span className={styles.mobileRecTicker}>{rec.ticker}</span>
+                    <span className={styles.mobileRecName}>{rec.name}</span>
+                  </div>
+                  <div className={styles.mobileRecPrice}>
+                    <span className={styles.mobileRecPriceValue}>${rec.currentPrice.toFixed(2)}</span>
+                    <span className={`${styles.mobileRecChange} ${isPositive ? styles.positive : styles.negative}`}>
+                      {isPositive ? '+' : ''}{rec.priceChangePercent.toFixed(2)}%
+                    </span>
+                  </div>
+                  <div className={styles.mobileRecScore}>
+                    <span className={`${styles.mobileRecScoreValue} ${isBuy ? styles.buyScore : styles.sellScore}`}>
+                      {rec.score}
+                    </span>
+                  </div>
+                  <ChevronDown
+                    size={16}
+                    className={`${styles.mobileRecChevron} ${isExpanded ? styles.mobileRecChevronOpen : ''}`}
+                  />
+                </div>
+
+                {/* Expanded Content */}
+                {isExpanded && (
+                  <div className={styles.mobileRecExpanded}>
+                    {/* Metrics Row */}
+                    {rec.priceTarget && (
+                      <div className={styles.mobileRecMetrics}>
+                        <div className={styles.mobileRecMetric}>
+                          <div className={styles.mobileRecMetricHeader}>
+                            <Crosshair size={12} className={styles.mobileRecMetricIcon} />
+                            <span className={styles.mobileRecMetricLabel}>Target</span>
+                          </div>
+                          <span className={styles.mobileRecMetricValue}>${rec.priceTarget.price.toFixed(2)}</span>
+                        </div>
+                        <div className={styles.mobileRecMetric}>
+                          <div className={styles.mobileRecMetricHeader}>
+                            <Percent size={12} className={`${styles.mobileRecMetricIcon} ${isBuy ? styles.positive : styles.negative}`} />
+                            <span className={styles.mobileRecMetricLabel}>Return</span>
+                          </div>
+                          <span className={`${styles.mobileRecMetricValue} ${isBuy ? styles.positive : styles.negative}`}>
+                            {isBuy ? '+' : ''}{rec.priceTarget.expectedReturn.toFixed(1)}%
+                          </span>
+                        </div>
+                        {rec.priceTarget.stopLoss && (
+                          <div className={styles.mobileRecMetric}>
+                            <div className={styles.mobileRecMetricHeader}>
+                              <ShieldAlert size={12} className={styles.mobileRecMetricIconWarning} />
+                              <span className={styles.mobileRecMetricLabel}>Stop</span>
+                            </div>
+                            <span className={styles.mobileRecMetricValue}>${rec.priceTarget.stopLoss.toFixed(2)}</span>
+                          </div>
+                        )}
+                      </div>
+                    )}
+
+                    {/* Action Button */}
+                    <Button
+                      variant={isBuy ? 'primary' : 'destructive'}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleAddToPortfolio(rec);
+                      }}
+                      className={styles.mobileRecButton}
+                    >
+                      {isBuy ? 'Add to Portfolio' : 'Sell'}
+                    </Button>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Market Summary - Bottom */}
+        <div className={styles.mobileMarketCard}>
+          <div className={styles.mobileMarketRow}>
+            <div className={`${styles.mobileMarketState} ${styles[marketStateInfo.className]}`}>
+              <MarketIcon size={14} />
+              <span>{recommendations.marketSummary.state}</span>
+            </div>
+            <div className={styles.mobileMarketRisk}>
+              <span className={styles.mobileMarketRiskLabel}>Risk</span>
+              <div className={styles.mobileMarketRiskBar}>
+                <div
+                  className={styles.mobileMarketRiskFill}
+                  data-risk-level={
+                    recommendations.marketSummary.riskLevel < 35 ? 'low' :
+                    recommendations.marketSummary.riskLevel < 65 ? 'medium' : 'high'
+                  }
+                  style={{ width: `${recommendations.marketSummary.riskLevel}%` }}
+                />
+              </div>
+              <span className={styles.mobileMarketRiskValue}>{recommendations.marketSummary.riskLevel}%</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Add to Portfolio Modal */}
+        <AddToPortfolioModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          stock={selectedStock}
+          onConfirm={handleConfirmInvestment}
+        />
+      </div>
+    );
+  }
+
+  // Desktop Layout
   return (
     <div className={styles.container}>
       {/* Actions Bar */}

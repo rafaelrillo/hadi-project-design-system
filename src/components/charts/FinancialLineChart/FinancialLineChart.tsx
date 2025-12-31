@@ -15,6 +15,7 @@ export interface FinancialLineChartProps {
   data: LineSeries[];
   height?: number;
   enableArea?: boolean;
+  areaSeriesIndex?: number; // Only show area for this series index (default: all)
   enablePoints?: boolean;
   showZeroLine?: boolean;
   markers?: ChartMarker[];
@@ -25,6 +26,7 @@ export interface FinancialLineChartProps {
   className?: string;
   animate?: boolean;
   colors?: string[];
+  minimal?: boolean; // Hide axes for compact display
 }
 
 // Default financial number formatter
@@ -73,6 +75,7 @@ export function FinancialLineChart({
   data,
   height = 300,
   enableArea = true,
+  areaSeriesIndex,
   enablePoints = false,
   showZeroLine = true,
   markers = [],
@@ -83,6 +86,7 @@ export function FinancialLineChart({
   className = '',
   animate = true,
   colors = sentinelChartColors,
+  minimal = false,
 }: FinancialLineChartProps) {
   const containerClasses = [styles.container, className].filter(Boolean).join(' ');
 
@@ -162,12 +166,15 @@ export function FinancialLineChart({
       <ResponsiveLine
         data={data}
         colors={colors}
-        margin={{
-          top: 20,
-          right: 30,
-          bottom: xAxisLabel ? 60 : 40,
-          left: yAxisLabel ? 90 : 55,
-        }}
+        margin={minimal
+          ? { top: 8, right: 8, bottom: 8, left: 8 }
+          : {
+              top: 20,
+              right: 30,
+              bottom: xAxisLabel ? 60 : 40,
+              left: yAxisLabel ? 90 : 55,
+            }
+        }
         xScale={{ type: 'point' }}
         yScale={{
           type: 'linear',
@@ -176,8 +183,8 @@ export function FinancialLineChart({
           stacked: false,
         }}
         curve="monotoneX"
-        lineWidth={2}
-        axisBottom={{
+        lineWidth={minimal ? 2.5 : 2}
+        axisBottom={minimal ? null : {
           tickSize: 0,
           tickPadding: 12,
           tickRotation: 0,
@@ -186,7 +193,7 @@ export function FinancialLineChart({
           legendPosition: 'middle',
           format: formatLabel,
         }}
-        axisLeft={{
+        axisLeft={minimal ? null : {
           tickSize: 0,
           tickPadding: 12,
           tickRotation: 0,
@@ -203,7 +210,7 @@ export function FinancialLineChart({
         pointBorderWidth={2}
         pointBorderColor={{ from: 'serieColor' }}
         enableArea={enableArea}
-        areaOpacity={0.08}
+        areaOpacity={minimal ? 0.25 : 0.08}
         areaBaselineValue={showZeroLine ? 0 : undefined}
         useMesh={true}
         enableSlices="x"
@@ -217,13 +224,31 @@ export function FinancialLineChart({
           {
             id: 'areaGradient',
             type: 'linearGradient',
-            colors: [
-              { offset: 0, color: 'inherit', opacity: 0.2 },
-              { offset: 100, color: 'inherit', opacity: 0 },
-            ],
+            colors: minimal
+              ? [
+                  { offset: 0, color: 'inherit', opacity: 0.4 },
+                  { offset: 50, color: 'inherit', opacity: 0.15 },
+                  { offset: 100, color: 'inherit', opacity: 0.02 },
+                ]
+              : [
+                  { offset: 0, color: 'inherit', opacity: 0.2 },
+                  { offset: 100, color: 'inherit', opacity: 0 },
+                ],
+          },
+          {
+            id: 'noArea',
+            type: 'linearGradient',
+            colors: [{ offset: 0, color: 'inherit', opacity: 0 }],
           },
         ]}
-        fill={[{ match: '*', id: 'areaGradient' }]}
+        fill={
+          areaSeriesIndex !== undefined
+            ? data.map((series, index) => ({
+                match: { id: series.id },
+                id: index === areaSeriesIndex ? 'areaGradient' : 'noArea',
+              }))
+            : [{ match: '*', id: 'areaGradient' }]
+        }
         crosshairType="cross"
       />
     </div>

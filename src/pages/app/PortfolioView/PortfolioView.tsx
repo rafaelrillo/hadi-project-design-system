@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/atoms/Button';
 import { TreeMap } from '@/components/charts';
+import { useIsMobile } from '@/hooks/useBreakpoint';
 import styles from './PortfolioView.module.css';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -267,6 +268,7 @@ const MOCK_PORTFOLIOS: Portfolio[] = [
 
 export function PortfolioView() {
   const navigate = useNavigate();
+  const isMobile = useIsMobile();
   const [selectedPortfolioId, setSelectedPortfolioId] = useState<string>(MOCK_PORTFOLIOS[0].id);
   const [sortBy, setSortBy] = useState<'allocation' | 'gainLoss' | 'dayChange'>('allocation');
 
@@ -302,6 +304,83 @@ export function PortfolioView() {
     };
   }, [selectedPortfolio]);
 
+  // Mobile Layout
+  if (isMobile) {
+    const isPositive = selectedPortfolio.totalGainLoss >= 0;
+
+    return (
+      <div className={styles.mobileContainer}>
+        {/* Mobile Header - Portfolio Value + New Button */}
+        <div className={styles.mobileHeader}>
+          <div className={styles.mobileHeaderTop}>
+            <span className={styles.mobileHeaderLabel}>
+              <Briefcase size={16} />
+              {selectedPortfolio.name}
+            </span>
+            <Button
+              variant="primary"
+              size="sm"
+              icon={<Plus size={14} />}
+              onClick={() => navigate('/app/dashboard/portfolio/builder')}
+            >
+              New
+            </Button>
+          </div>
+          <div className={styles.mobileHeaderValues}>
+            <span className={styles.mobileValue}>
+              ${selectedPortfolio.totalValue.toLocaleString('en-US', { minimumFractionDigits: 2 })}
+            </span>
+            <span className={`${styles.mobileChange} ${isPositive ? styles.positive : styles.negative}`}>
+              {isPositive ? '+' : ''}{selectedPortfolio.totalGainLossPercent.toFixed(2)}%
+            </span>
+          </div>
+        </div>
+
+        {/* Large TreeMap - No card container */}
+        <div className={styles.mobileTreemapLarge}>
+          <TreeMap
+            data={treemapData}
+            height={200}
+            tile="squarify"
+            innerPadding={3}
+            outerPadding={0}
+            enableLabels={true}
+            enableParentLabel={false}
+            labelSkipSize={30}
+          />
+        </div>
+
+        {/* Mobile Holdings List */}
+        <div className={styles.mobileHoldingsSection}>
+          <h3 className={styles.mobileHoldingsTitle}>Holdings</h3>
+          <div className={styles.mobileHoldings}>
+            {sortedPositions.map((position) => {
+              const isPosPositive = position.gainLoss >= 0;
+
+              return (
+                <div key={position.ticker} className={styles.mobileHoldingCard}>
+                  <div className={styles.mobileHoldingLeft}>
+                    <span className={styles.mobileHoldingTicker}>{position.ticker}</span>
+                    <span className={styles.mobileHoldingAllocation}>{position.allocation.toFixed(1)}%</span>
+                  </div>
+                  <div className={styles.mobileHoldingRight}>
+                    <span className={styles.mobileHoldingValue}>
+                      ${position.marketValue.toLocaleString('en-US', { minimumFractionDigits: 0 })}
+                    </span>
+                    <span className={`${styles.mobileHoldingChange} ${isPosPositive ? styles.positive : styles.negative}`}>
+                      {isPosPositive ? '+' : ''}{position.gainLossPercent.toFixed(2)}%
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Desktop Layout
   return (
     <div className={styles.container}>
       {/* Main Layout: Sidebar + Table */}

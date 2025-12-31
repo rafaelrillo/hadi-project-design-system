@@ -479,6 +479,16 @@
   /* Searchbar */
   --sentinel-searchbar-height: 40px;
 
+  /* Mobile */
+  --sentinel-mobile-header-height: 56px;
+  --sentinel-mobile-bottom-nav-height: 64px;
+  --sentinel-touch-target-min: 44px;
+  --sentinel-touch-target-comfortable: 48px;
+  --sentinel-safe-area-top: env(safe-area-inset-top, 0px);
+  --sentinel-safe-area-bottom: env(safe-area-inset-bottom, 0px);
+  --sentinel-safe-area-left: env(safe-area-inset-left, 0px);
+  --sentinel-safe-area-right: env(safe-area-inset-right, 0px);
+
   /* ─────────────────────────────────────────────────────────────────────────────
      COMPATIBILIDAD CON SISTEMA ANTERIOR
      Mapeo de variables antiguas a nuevas

@@ -245,24 +245,34 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 @media (max-width: 768px) {
-  .sidebar {
-    width: 56px;
-  }
-
-  .main {
-    margin-left: 56px;
-  }
-
-  .header {
-    padding: 0 16px;
-  }
-
-  .headerRight {
-    gap: 8px;
-  }
-
-  .dataSource,
-  .lastUpdate {
+  .layout {
     display: none;
   }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   MOBILE LAYOUT
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.mobileLayout {
+  display: none;
+  min-height: 100vh;
+  flex-direction: column;
+  background: transparent;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .mobileLayout {
+    display: flex;
+  }
+}
+
+.mobileContent {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-top: calc(var(--sentinel-mobile-header-height) + var(--sentinel-safe-area-top));
+  padding-bottom: calc(var(--sentinel-mobile-bottom-nav-height) + var(--sentinel-safe-area-bottom));
 }

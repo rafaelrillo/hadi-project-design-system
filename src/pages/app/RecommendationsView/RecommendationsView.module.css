@@ -562,7 +562,7 @@
   font-size: 14px;
 }
 
-/* Responsive */
+/* Responsive - Desktop fallback for tablets */
 @media (max-width: 768px) {
   .header {
     padding: 20px;
@@ -577,13 +577,313 @@
     align-items: flex-start;
     gap: 16px;
   }
-
-  .cardHeader {
-    grid-template-columns: 1fr auto auto;
-    gap: 12px;
-  }
-
-  .cardCenter {
-    display: none;
-  }
 }
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   MOBILE LAYOUT - Dedicated Structure
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.mobileContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 12px;
+  gap: 8px;
+  overflow: hidden;
+}
+
+/* Mobile Tabs */
+.mobileTabs {
+  display: flex;
+  gap: 4px;
+  padding: 3px;
+  background: var(--sentinel-bg-surface);
+  border-radius: var(--sentinel-radius-md);
+  flex-shrink: 0;
+}
+
+.mobileTab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 12px;
+  background: transparent;
+  border: none;
+  border-radius: var(--sentinel-radius-sm);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--sentinel-text-secondary);
+  cursor: pointer;
+  transition: all var(--sentinel-duration-fast) var(--sentinel-ease-default);
+}
+
+.mobileTab:active {
+  transform: scale(0.98);
+}
+
+.mobileTabActive {
+  background: var(--sentinel-bg-elevated);
+  color: var(--sentinel-text-primary);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Mobile Recommendation List */
+.mobileRecList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  min-height: 0;
+}
+
+/* Mobile Recommendation Card */
+.mobileRecCard {
+  background: var(--sentinel-bg-elevated);
+  border: 1px solid var(--sentinel-border-subtle);
+  border-radius: var(--sentinel-radius-md);
+  cursor: pointer;
+  transition: all var(--sentinel-duration-fast) var(--sentinel-ease-default);
+  -webkit-tap-highlight-color: transparent;
+  flex-shrink: 0;
+}
+
+.mobileRecCard:active {
+  transform: scale(0.99);
+  background: var(--sentinel-bg-hover);
+}
+
+.mobileRecCardBuy {
+  border-left: 3px solid var(--sentinel-status-positive);
+}
+
+.mobileRecCardSell {
+  border-left: 3px solid var(--sentinel-status-negative);
+}
+
+.mobileRecRow {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  gap: 10px;
+}
+
+.mobileRecInfo {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.mobileRecTicker {
+  font-family: var(--sentinel-font-mono);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--sentinel-text-primary);
+}
+
+.mobileRecName {
+  font-size: 11px;
+  color: var(--sentinel-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mobileRecPrice {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1px;
+}
+
+.mobileRecPriceValue {
+  font-family: var(--sentinel-font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--sentinel-text-primary);
+}
+
+.mobileRecChange {
+  font-family: var(--sentinel-font-mono);
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.mobileRecScore {
+  min-width: 36px;
+  text-align: center;
+}
+
+.mobileRecScoreValue {
+  font-family: var(--sentinel-font-mono);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.mobileRecChevron {
+  color: var(--sentinel-text-tertiary);
+  transition: transform var(--sentinel-duration-fast) var(--sentinel-ease-default);
+  flex-shrink: 0;
+}
+
+.mobileRecChevronOpen {
+  transform: rotate(180deg);
+}
+
+/* Expanded Card State */
+.mobileRecCardExpanded {
+  background: var(--sentinel-bg-hover);
+}
+
+/* Expanded Content - Accordion */
+.mobileRecExpanded {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+  border-top: 1px solid var(--sentinel-border-subtle);
+}
+
+.mobileRecMetrics {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.mobileRecMetric {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px 12px;
+  background: var(--sentinel-bg-surface);
+  border-radius: var(--sentinel-radius-md);
+}
+
+.mobileRecMetricHeader {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.mobileRecMetricIcon {
+  color: var(--sentinel-accent-primary);
+  flex-shrink: 0;
+}
+
+.mobileRecMetricIconWarning {
+  color: var(--sentinel-status-warning);
+  flex-shrink: 0;
+}
+
+.mobileRecMetricLabel {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--sentinel-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.mobileRecMetricValue {
+  font-family: var(--sentinel-font-mono);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--sentinel-text-primary);
+}
+
+.mobileRecButton {
+  width: 100%;
+}
+
+/* Mobile Market Card - Bottom */
+.mobileMarketCard {
+  background: var(--sentinel-bg-elevated);
+  border: 1px solid var(--sentinel-border-subtle);
+  border-radius: var(--sentinel-radius-md);
+  padding: 10px 12px;
+  flex-shrink: 0;
+}
+
+.mobileMarketRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.mobileMarketState {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  background: var(--sentinel-bg-surface);
+  border-radius: var(--sentinel-radius-sm);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--sentinel-text-secondary);
+  text-transform: capitalize;
+}
+
+.mobileMarketState.positive {
+  background: rgba(var(--sentinel-status-positive-rgb, 129, 199, 132), 0.1);
+  color: var(--sentinel-status-positive);
+}
+
+.mobileMarketState.negative {
+  background: rgba(var(--sentinel-status-negative-rgb, 229, 115, 115), 0.1);
+  color: var(--sentinel-status-negative);
+}
+
+.mobileMarketState.warning {
+  background: rgba(var(--sentinel-status-warning-rgb, 255, 183, 77), 0.1);
+  color: var(--sentinel-status-warning);
+}
+
+.mobileMarketRisk {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mobileMarketRiskLabel {
+  font-size: 11px;
+  color: var(--sentinel-text-tertiary);
+}
+
+.mobileMarketRiskBar {
+  width: 60px;
+  height: 4px;
+  background: var(--sentinel-bg-surface);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.mobileMarketRiskFill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width var(--sentinel-duration-normal) var(--sentinel-ease-default);
+}
+
+.mobileMarketRiskFill[data-risk-level="low"] {
+  background: var(--sentinel-status-positive);
+}
+
+.mobileMarketRiskFill[data-risk-level="medium"] {
+  background: var(--sentinel-status-warning);
+}
+
+.mobileMarketRiskFill[data-risk-level="high"] {
+  background: var(--sentinel-status-negative);
+}
+
+.mobileMarketRiskValue {
+  font-family: var(--sentinel-font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--sentinel-text-primary);
+  min-width: 28px;
+}
+

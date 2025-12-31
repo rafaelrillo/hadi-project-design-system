@@ -19,6 +19,11 @@ const PortfolioView = lazy(() => import('./pages/app/PortfolioView').then(m => (
 const PortfolioBuilder = lazy(() => import('./pages/app/PortfolioBuilder').then(m => ({ default: m.PortfolioBuilder })));
 const RecommendationsView = lazy(() => import('./pages/app/RecommendationsView').then(m => ({ default: m.RecommendationsView })));
 const NewsView = lazy(() => import('./pages/app/NewsView').then(m => ({ default: m.NewsView })));
+
+// Menu Pages (Placeholder)
+import { PlaceholderPage } from './pages/app/PlaceholderPage';
+import { User, Settings, Bell, Shield, HelpCircle } from 'lucide-react';
+
 const SentinelShowcase = lazy(() => import('./pages/sentinel/SentinelShowcase').then(m => ({ default: m.SentinelShowcase })));
 const Level4Showcase = lazy(() => import('./pages/sentinel/Level4Showcase').then(m => ({ default: m.Level4Showcase })));
 
@@ -135,11 +140,42 @@ function AppRoutes() {
               <NewsView />
             </Suspense>
           } />
+
+          {/* Menu Pages */}
+          <Route path="profile" element={
+            <PlaceholderPage
+              icon={User}
+              title="Profile"
+              description="Manage your account information and preferences"
+            />
+          } />
           <Route path="settings" element={
-            <div style={{ padding: '24px', color: 'var(--sentinel-text-secondary)' }}>
-              <h2>Settings</h2>
-              <p>Coming soon...</p>
-            </div>
+            <PlaceholderPage
+              icon={Settings}
+              title="Settings"
+              description="Configure app settings and notifications"
+            />
+          } />
+          <Route path="notifications" element={
+            <PlaceholderPage
+              icon={Bell}
+              title="Notifications"
+              description="View and manage your alerts and updates"
+            />
+          } />
+          <Route path="security" element={
+            <PlaceholderPage
+              icon={Shield}
+              title="Security"
+              description="Manage password, 2FA, and security settings"
+            />
+          } />
+          <Route path="help" element={
+            <PlaceholderPage
+              icon={HelpCircle}
+              title="Help & Support"
+              description="Get help, FAQs, and contact support"
+            />
           } />
         </Route>
       </Route>

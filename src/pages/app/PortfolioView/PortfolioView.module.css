@@ -522,3 +522,170 @@
     gap: 16px;
   }
 }
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   MOBILE LAYOUT
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.mobileContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px;
+  height: 100%;
+  overflow: hidden;
+}
+
+.mobileHeader {
+  background: var(--sentinel-bg-elevated);
+  border: 1px solid var(--sentinel-border-subtle);
+  border-radius: var(--sentinel-radius-lg);
+  padding: 12px 14px;
+  flex-shrink: 0;
+}
+
+.mobileHeaderTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.mobileHeaderLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--sentinel-text-primary);
+}
+
+.mobileHeaderLabel svg {
+  color: var(--sentinel-accent-primary);
+}
+
+.mobileHeaderValues {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.mobileValue {
+  font-family: var(--sentinel-font-mono);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--sentinel-text-primary);
+  letter-spacing: -0.02em;
+}
+
+.mobileChange {
+  font-family: var(--sentinel-font-mono);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.mobileChange.positive {
+  color: var(--sentinel-status-positive);
+}
+
+.mobileChange.negative {
+  color: var(--sentinel-status-negative);
+}
+
+/* Large TreeMap - No container */
+.mobileTreemapLarge {
+  flex-shrink: 0;
+  margin: 0 -4px;
+}
+
+/* Holdings Section */
+.mobileHoldingsSection {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.mobileHoldingsTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--sentinel-text-primary);
+  margin: 0 0 10px;
+  flex-shrink: 0;
+}
+
+.mobileHoldings {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.mobileHoldingCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  background: var(--sentinel-bg-elevated);
+  border: 1px solid var(--sentinel-border-subtle);
+  border-radius: var(--sentinel-radius-md);
+  flex-shrink: 0;
+}
+
+.mobileHoldingLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mobileHoldingTicker {
+  font-family: var(--sentinel-font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--sentinel-text-primary);
+  min-width: 50px;
+}
+
+.mobileHoldingAllocation {
+  font-family: var(--sentinel-font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--sentinel-text-tertiary);
+}
+
+.mobileHoldingName {
+  font-size: 12px;
+  color: var(--sentinel-text-secondary);
+}
+
+.mobileHoldingRight {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mobileHoldingValue {
+  font-family: var(--sentinel-font-mono);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--sentinel-text-primary);
+}
+
+.mobileHoldingChange {
+  font-family: var(--sentinel-font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  min-width: 55px;
+  text-align: right;
+}
+
+.mobileHoldingChange.positive {
+  color: var(--sentinel-status-positive);
+}
+
+.mobileHoldingChange.negative {
+  color: var(--sentinel-status-negative);
+}

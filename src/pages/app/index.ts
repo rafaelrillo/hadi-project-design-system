@@ -9,3 +9,4 @@ export { RecommendationsView } from "./RecommendationsView";
 export { WalletView } from "./WalletView";
 export { NewsView } from "./NewsView";
 export { ChatView } from "./ChatView";
+export { PlaceholderPage } from "./PlaceholderPage";

@@ -285,3 +285,301 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   MOBILE LAYOUT - Dedicated Structure
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.mobileContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 12px;
+  gap: 8px;
+  overflow: hidden;
+}
+
+/* Mobile Header */
+.mobileHeader {
+  flex-shrink: 0;
+}
+
+/* Mobile Search Bar */
+.mobileSearchBar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--sentinel-bg-elevated);
+  border: 1px solid var(--sentinel-border-subtle);
+  border-radius: var(--sentinel-radius-md);
+}
+
+.mobileSearchIcon {
+  color: var(--sentinel-text-tertiary);
+  flex-shrink: 0;
+}
+
+.mobileSearchInput {
+  flex: 1;
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  color: var(--sentinel-text-primary);
+  outline: none;
+}
+
+.mobileSearchInput::placeholder {
+  color: var(--sentinel-text-tertiary);
+}
+
+/* Mobile News List */
+.mobileNewsList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  min-height: 0;
+}
+
+.mobileLoading,
+.mobileEmpty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex: 1;
+  color: var(--sentinel-text-tertiary);
+  font-size: 13px;
+}
+
+/* Mobile News Card - Enhanced */
+.mobileNewsCard {
+  display: flex;
+  background: var(--sentinel-bg-elevated);
+  border: 1px solid var(--sentinel-border-subtle);
+  border-radius: var(--sentinel-radius-md);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.mobileNewsAccent {
+  width: 4px;
+  flex-shrink: 0;
+}
+
+.mobileNewsAccent[data-sentiment="bullish"] {
+  background: var(--sentinel-status-positive);
+}
+
+.mobileNewsAccent[data-sentiment="bearish"] {
+  background: var(--sentinel-status-negative);
+}
+
+.mobileNewsAccent[data-sentiment="neutral"] {
+  background: var(--sentinel-text-tertiary);
+}
+
+.mobileNewsBody {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Top Row */
+.mobileNewsTopRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.mobileNewsSourceRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mobileNewsSource {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--sentinel-accent-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.mobileNewsHot {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 5px;
+  background: linear-gradient(135deg, #ff6b35, #f7931e);
+  color: white;
+  border-radius: var(--sentinel-radius-xs);
+  text-transform: uppercase;
+}
+
+/* Sentiment Badge */
+.mobileNewsSentimentBadge {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: var(--sentinel-radius-sm);
+}
+
+.mobileNewsSentimentBadge[data-sentiment="bullish"] {
+  background: rgba(var(--sentinel-status-positive-rgb, 129, 199, 132), 0.15);
+  color: var(--sentinel-status-positive);
+}
+
+.mobileNewsSentimentBadge[data-sentiment="bearish"] {
+  background: rgba(var(--sentinel-status-negative-rgb, 229, 115, 115), 0.15);
+  color: var(--sentinel-status-negative);
+}
+
+.mobileNewsSentimentBadge[data-sentiment="neutral"] {
+  background: var(--sentinel-bg-surface);
+  color: var(--sentinel-text-tertiary);
+}
+
+/* Title */
+.mobileNewsTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--sentinel-text-primary);
+  margin: 0;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Description */
+.mobileNewsDesc {
+  font-size: 11px;
+  color: var(--sentinel-text-secondary);
+  margin: 0;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Bottom Row */
+.mobileNewsBottomRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2px;
+}
+
+.mobileNewsMetaLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mobileNewsTime {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  color: var(--sentinel-text-tertiary);
+}
+
+.mobileNewsTickers {
+  display: flex;
+  gap: 4px;
+}
+
+.mobileNewsTicker {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-family: var(--sentinel-font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  padding: 2px 5px;
+  background: rgba(var(--sentinel-accent-primary-rgb, 91, 163, 165), 0.1);
+  border-radius: var(--sentinel-radius-xs);
+  color: var(--sentinel-accent-primary);
+}
+
+.mobileNewsLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  background: var(--sentinel-bg-surface);
+  border: none;
+  border-radius: var(--sentinel-radius-sm);
+  color: var(--sentinel-text-tertiary);
+  cursor: pointer;
+  transition: all var(--sentinel-duration-fast) var(--sentinel-ease-default);
+}
+
+.mobileNewsLink:active {
+  background: var(--sentinel-bg-hover);
+  color: var(--sentinel-accent-primary);
+}
+
+/* Mobile Stats Bar - Bottom */
+.mobileStatsBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 10px 14px;
+  background: var(--sentinel-bg-elevated);
+  border: 1px solid var(--sentinel-border-subtle);
+  border-radius: var(--sentinel-radius-md);
+  flex-shrink: 0;
+}
+
+.mobileStat {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--sentinel-text-secondary);
+}
+
+.mobileStat.bullish {
+  color: var(--sentinel-status-positive);
+}
+
+.mobileStat.bearish {
+  color: var(--sentinel-status-negative);
+}
+
+.mobileStat.neutralStat {
+  color: var(--sentinel-text-tertiary);
+}
+
+.mobileStatDivider {
+  width: 1px;
+  height: 16px;
+  background: var(--sentinel-border-subtle);
+}
+
+.mobileStatValue {
+  font-family: var(--sentinel-font-mono);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.mobileStatLabel {
+  font-size: 11px;
+  color: var(--sentinel-text-secondary);
+}

@@ -1,0 +1,179 @@
+/* Path: src/styles/responsive.css */
+/* SENTINEL Responsive Utilities */
+
+/* ============================================
+   VISIBILITY UTILITIES
+   ============================================ */
+
+/* Hide on mobile, show on desktop */
+.hide-mobile {
+  display: none !important;
+}
+
+@media (min-width: 768px) {
+  .hide-mobile {
+    display: initial !important;
+  }
+}
+
+/* Show on mobile, hide on desktop */
+.show-mobile {
+  display: initial !important;
+}
+
+@media (min-width: 768px) {
+  .show-mobile {
+    display: none !important;
+  }
+}
+
+/* Hide on tablet and below */
+.hide-tablet {
+  display: none !important;
+}
+
+@media (min-width: 1024px) {
+  .hide-tablet {
+    display: initial !important;
+  }
+}
+
+/* ============================================
+   TOUCH UTILITIES
+   ============================================ */
+
+.touch-target {
+  min-height: var(--sentinel-touch-target-min);
+  min-width: var(--sentinel-touch-target-min);
+}
+
+.touch-target-comfortable {
+  min-height: var(--sentinel-touch-target-comfortable);
+  min-width: var(--sentinel-touch-target-comfortable);
+}
+
+/* Touch feedback */
+.touch-feedback {
+  -webkit-tap-highlight-color: transparent;
+  transition: transform var(--sentinel-duration-fast) var(--sentinel-ease-out),
+              opacity var(--sentinel-duration-fast) var(--sentinel-ease-out);
+}
+
+.touch-feedback:active {
+  transform: scale(0.97);
+  opacity: 0.8;
+}
+
+/* ============================================
+   SAFE AREA UTILITIES
+   ============================================ */
+
+.safe-area-top {
+  padding-top: var(--sentinel-safe-area-top);
+}
+
+.safe-area-bottom {
+  padding-bottom: var(--sentinel-safe-area-bottom);
+}
+
+.safe-area-inset {
+  padding-top: var(--sentinel-safe-area-top);
+  padding-bottom: var(--sentinel-safe-area-bottom);
+  padding-left: var(--sentinel-safe-area-left);
+  padding-right: var(--sentinel-safe-area-right);
+}
+
+/* ============================================
+   SCROLL UTILITIES
+   ============================================ */
+
+/* Horizontal scroll container (for cards, chips, etc.) */
+.scroll-x {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  gap: var(--sentinel-space-3);
+  padding-bottom: var(--sentinel-space-2); /* Prevent cut-off shadows */
+}
+
+.scroll-x::-webkit-scrollbar {
+  display: none;
+}
+
+/* Snap scrolling */
+.scroll-snap-x {
+  scroll-snap-type: x mandatory;
+}
+
+.scroll-snap-item {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   LAYOUT UTILITIES
+   ============================================ */
+
+/* Stack layout (vertical) */
+.stack {
+  display: flex;
+  flex-direction: column;
+}
+
+.stack-2 { gap: var(--sentinel-space-2); }
+.stack-3 { gap: var(--sentinel-space-3); }
+.stack-4 { gap: var(--sentinel-space-4); }
+.stack-6 { gap: var(--sentinel-space-6); }
+.stack-8 { gap: var(--sentinel-space-8); }
+
+/* Row layout (horizontal) */
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.row-2 { gap: var(--sentinel-space-2); }
+.row-3 { gap: var(--sentinel-space-3); }
+.row-4 { gap: var(--sentinel-space-4); }
+
+/* Space between */
+.justify-between {
+  justify-content: space-between;
+}
+
+/* Full width on mobile */
+.full-width-mobile {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .full-width-mobile {
+    width: auto;
+  }
+}
+
+/* ============================================
+   CONTAINER QUERIES (Modern browsers)
+   ============================================ */
+
+.container-query {
+  container-type: inline-size;
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .touch-feedback {
+    transition: none;
+  }
+
+  .touch-feedback:active {
+    transform: none;
+  }
+}

@@ -10,11 +10,16 @@ import {
   Grid,
   List,
   Newspaper,
+  Clock,
+  ExternalLink,
+  Flame,
+  Zap,
 } from 'lucide-react';
 import { NewsCard } from '@/components/molecules/sentinel/NewsCard';
 import { Button } from '@/components/atoms/Button';
 import { Dropdown } from '@/components/atoms/Dropdown';
 import { useNews } from '@/hooks/useNews';
+import { useIsMobile } from '@/hooks/useBreakpoint';
 import styles from './NewsView.module.css';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -34,6 +39,7 @@ export function NewsView() {
   const [sentimentFilter, setSentimentFilter] = useState<SentimentFilter>('all');
   const [viewMode, setViewMode] = useState<ViewMode>('grid');
   const [isRefreshing, setIsRefreshing] = useState(false);
+  const isMobile = useIsMobile();
 
   // Filter news
   const filteredNews = useMemo(() => {
@@ -86,6 +92,142 @@ export function NewsView() {
     setIsRefreshing(false);
   };
 
+  // Mobile news - limit to fit screen without scroll
+  const mobileNewsLimit = 4;
+  const mobileNews = filteredNews.slice(0, mobileNewsLimit);
+
+  // Get sentiment info
+  const getSentimentInfo = (sentiment: number) => {
+    if (sentiment > 0.2) return { label: 'Bullish', type: 'bullish' as const, icon: TrendingUp };
+    if (sentiment < -0.2) return { label: 'Bearish', type: 'bearish' as const, icon: TrendingDown };
+    return { label: 'Neutral', type: 'neutral' as const, icon: Minus };
+  };
+
+  // Mobile Layout
+  if (isMobile) {
+    return (
+      <div className={styles.mobileContainer}>
+        {/* Header with search */}
+        <div className={styles.mobileHeader}>
+          <div className={styles.mobileSearchBar}>
+            <Search size={16} className={styles.mobileSearchIcon} />
+            <input
+              type="text"
+              placeholder="Search news..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className={styles.mobileSearchInput}
+            />
+          </div>
+        </div>
+
+        {/* News List */}
+        <div className={styles.mobileNewsList}>
+          {loading ? (
+            <div className={styles.mobileLoading}>
+              <RefreshCw size={24} className={styles.spinner} />
+            </div>
+          ) : mobileNews.length === 0 ? (
+            <div className={styles.mobileEmpty}>
+              <Newspaper size={32} />
+              <span>No news found</span>
+            </div>
+          ) : (
+            mobileNews.map((item, index) => {
+              const sentimentInfo = getSentimentInfo(item.sentiment ?? 0);
+              const SentimentIcon = sentimentInfo.icon;
+              const isHot = index === 0; // First item is "hot"
+
+              return (
+                <div key={item.id} className={styles.mobileNewsCard}>
+                  {/* Left accent bar based on sentiment */}
+                  <div
+                    className={styles.mobileNewsAccent}
+                    data-sentiment={sentimentInfo.type}
+                  />
+
+                  <div className={styles.mobileNewsBody}>
+                    {/* Top row: Source + badges */}
+                    <div className={styles.mobileNewsTopRow}>
+                      <div className={styles.mobileNewsSourceRow}>
+                        <span className={styles.mobileNewsSource}>{item.source}</span>
+                        {isHot && (
+                          <span className={styles.mobileNewsHot}>
+                            <Flame size={10} />
+                            Hot
+                          </span>
+                        )}
+                      </div>
+                      <div
+                        className={styles.mobileNewsSentimentBadge}
+                        data-sentiment={sentimentInfo.type}
+                      >
+                        <SentimentIcon size={11} />
+                        <span>{sentimentInfo.label}</span>
+                      </div>
+                    </div>
+
+                    {/* Title */}
+                    <h4 className={styles.mobileNewsTitle}>{item.title}</h4>
+
+                    {/* Description */}
+                    <p className={styles.mobileNewsDesc}>{item.description}</p>
+
+                    {/* Bottom row: Time, tickers, link */}
+                    <div className={styles.mobileNewsBottomRow}>
+                      <div className={styles.mobileNewsMetaLeft}>
+                        <span className={styles.mobileNewsTime}>
+                          <Clock size={10} />
+                          {item.publishedAt}
+                        </span>
+                        {item.tickers.length > 0 && (
+                          <div className={styles.mobileNewsTickers}>
+                            {item.tickers.slice(0, 3).map((ticker) => (
+                              <span key={ticker} className={styles.mobileNewsTicker}>
+                                <Zap size={8} />
+                                {ticker}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                      <button className={styles.mobileNewsLink}>
+                        <ExternalLink size={12} />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              );
+            })
+          )}
+        </div>
+
+        {/* Stats Bar - Bottom */}
+        <div className={styles.mobileStatsBar}>
+          <div className={styles.mobileStat}>
+            <Newspaper size={14} />
+            <span className={styles.mobileStatValue}>{stats.total}</span>
+            <span className={styles.mobileStatLabel}>News</span>
+          </div>
+          <div className={styles.mobileStatDivider} />
+          <div className={`${styles.mobileStat} ${styles.bullish}`}>
+            <TrendingUp size={14} />
+            <span className={styles.mobileStatValue}>{stats.bullish}</span>
+          </div>
+          <div className={`${styles.mobileStat} ${styles.bearish}`}>
+            <TrendingDown size={14} />
+            <span className={styles.mobileStatValue}>{stats.bearish}</span>
+          </div>
+          <div className={`${styles.mobileStat} ${styles.neutralStat}`}>
+            <Minus size={14} />
+            <span className={styles.mobileStatValue}>{stats.neutral}</span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Desktop Layout
   return (
     <div className={styles.container}>
       {/* Actions Bar */}

@@ -1,5 +1,6 @@
 // Path: src/layouts/DashboardLayout/DashboardLayout.tsx
 
+import { useState } from 'react';
 import { Outlet, NavLink, useNavigate, useLocation } from 'react-router-dom';
 import {
   Home,
@@ -14,6 +15,10 @@ import {
 
 import { useAuthStore } from '../../store';
 import { AtmosphericBackground } from '../../components/atoms/sentinel';
+import { useIsMobile } from '../../hooks/useBreakpoint';
+import { MobileHeader } from '../../components/organisms/MobileHeader';
+import { BottomNavigation } from '../../components/organisms/BottomNavigation';
+import { MoreMenu } from '../../components/organisms/MoreMenu';
 
 import styles from './DashboardLayout.module.css';
 
@@ -41,10 +46,20 @@ const settingsItem: NavItem = { path: '/app/dashboard/settings', icon: Settings,
 // COMPONENT
 // ─────────────────────────────────────────────────────────────────────────────
 
+// Mobile navigation items
+const mobileNavItems = [
+  { id: 'home', label: 'Home', icon: <Home size={22} />, path: '/app/dashboard' },
+  { id: 'portfolio', label: 'Portfolio', icon: <Briefcase size={22} />, path: '/app/dashboard/portfolio' },
+  { id: 'recommendations', label: 'Recs', icon: <TrendingUp size={22} />, path: '/app/dashboard/recommendations' },
+  { id: 'news', label: 'News', icon: <Newspaper size={22} />, path: '/app/dashboard/news' },
+];
+
 export function DashboardLayout() {
   const navigate = useNavigate();
   const location = useLocation();
   const { logout } = useAuthStore();
+  const isMobile = useIsMobile();
+  const [isMoreMenuOpen, setIsMoreMenuOpen] = useState(false);
 
   // Get current section based on path
   const getCurrentSection = (): NavItem => {
@@ -73,6 +88,40 @@ export function DashboardLayout() {
     navigate('/app/login');
   };
 
+  // Mobile Layout
+  if (isMobile) {
+    return (
+      <>
+        <AtmosphericBackground variant="subtle" animated />
+        <div className={styles.mobileLayout}>
+          <MobileHeader
+            onMenuClick={() => setIsMoreMenuOpen(true)}
+            onNotificationClick={() => {}}
+            marketState="bullish"
+            riskLevel={35}
+            systemStatus="active"
+          />
+
+          <main className={styles.mobileContent}>
+            <Outlet />
+          </main>
+
+          <BottomNavigation
+            items={mobileNavItems}
+            onMoreClick={() => setIsMoreMenuOpen(true)}
+          />
+
+          <MoreMenu
+            isOpen={isMoreMenuOpen}
+            onClose={() => setIsMoreMenuOpen(false)}
+            onLogout={handleLogout}
+          />
+        </div>
+      </>
+    );
+  }
+
+  // Desktop Layout
   return (
     <>
       {/* Atmospheric Background - Creates depth and "breathing" effect */}

@@ -1,0 +1,28 @@
+/* Path: src/layouts/MobileLayout/MobileLayout.module.css */
+
+.layout {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--sentinel-bg-base);
+}
+
+.content {
+  flex: 1;
+  padding: var(--sentinel-mobile-content-padding);
+  padding-top: calc(var(--sentinel-mobile-header-height) + var(--sentinel-safe-area-top) + var(--sentinel-space-4));
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.content.withBottomNav {
+  padding-bottom: calc(var(--sentinel-mobile-bottom-nav-height) + var(--sentinel-safe-area-bottom) + var(--sentinel-space-4));
+}
+
+/* Hide on desktop - the ResponsiveLayout will handle switching */
+@media (min-width: 768px) {
+  .layout {
+    display: none;
+  }
+}

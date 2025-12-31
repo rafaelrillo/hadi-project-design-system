@@ -1,0 +1,44 @@
+/* Path: src/pages/app/PlaceholderPage/PlaceholderPage.module.css */
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 300px;
+  padding: 24px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: var(--sentinel-bg-elevated);
+  border: 1px solid var(--sentinel-border-subtle);
+  color: var(--sentinel-accent-primary);
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--sentinel-text-primary);
+  margin: 0;
+}
+
+.description {
+  font-size: 14px;
+  color: var(--sentinel-text-secondary);
+  margin: 0;
+  max-width: 280px;
+}
