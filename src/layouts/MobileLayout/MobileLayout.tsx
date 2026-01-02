@@ -43,7 +43,7 @@ export const MobileLayout: React.FC<MobileLayoutProps> = ({
       </main>
 
       {showBottomNav && (
-        <BottomNavigation onMoreClick={() => setIsMoreMenuOpen(true)} />
+        <BottomNavigation />
       )}
 
       <MoreMenu

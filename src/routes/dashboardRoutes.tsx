@@ -40,9 +40,9 @@ const PortfolioView = lazy(() =>
   import('../pages/app/PortfolioView').then((m) => ({ default: m.PortfolioView }))
 );
 
-// Portfolio Builder (Sprint 2)
-const PortfolioBuilder = lazy(() =>
-  import('../pages/app/PortfolioBuilder').then((m) => ({ default: m.PortfolioBuilder }))
+// Portfolio Simulator
+const PortfolioSimulator = lazy(() =>
+  import('../pages/app/PortfolioSimulator').then((m) => ({ default: m.PortfolioSimulator }))
 );
 
 // Recommendations View (Sprint 3)
@@ -115,10 +115,10 @@ export const dashboardRoutes: DashboardRoute[] = [
     requiredPlan: 'b2c',
   },
   {
-    path: '/app/dashboard/portfolio/builder',
-    name: 'Portfolio Builder',
+    path: '/app/dashboard/portfolio/simulator',
+    name: 'Portfolio Simulator',
     icon: PieChart,
-    element: PortfolioBuilder,
+    element: PortfolioSimulator,
     showInNav: false,
     requiredPlan: 'b2c',
   },

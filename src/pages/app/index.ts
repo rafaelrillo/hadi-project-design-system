@@ -3,7 +3,7 @@
 export { AppLayout } from "./AppLayout";
 export { LoginPage } from "./LoginPage";
 export { DashboardPage } from "./DashboardPage";
-export { PortfolioBuilder } from "./PortfolioBuilder";
+export { PortfolioSimulator } from "./PortfolioSimulator";
 export { PortfolioView } from "./PortfolioView";
 export { RecommendationsView } from "./RecommendationsView";
 export { WalletView } from "./WalletView";

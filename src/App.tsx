@@ -16,7 +16,7 @@ import { DashboardLayout } from './layouts/DashboardLayout';
 const LoginPage = lazy(() => import('./pages/app/LoginPage').then(m => ({ default: m.LoginPage })));
 const DashboardPage = lazy(() => import('./pages/app/DashboardPage').then(m => ({ default: m.DashboardPage })));
 const PortfolioView = lazy(() => import('./pages/app/PortfolioView').then(m => ({ default: m.PortfolioView })));
-const PortfolioBuilder = lazy(() => import('./pages/app/PortfolioBuilder').then(m => ({ default: m.PortfolioBuilder })));
+const PortfolioSimulator = lazy(() => import('./pages/app/PortfolioSimulator').then(m => ({ default: m.PortfolioSimulator })));
 const RecommendationsView = lazy(() => import('./pages/app/RecommendationsView').then(m => ({ default: m.RecommendationsView })));
 const NewsView = lazy(() => import('./pages/app/NewsView').then(m => ({ default: m.NewsView })));
 
@@ -125,9 +125,9 @@ function AppRoutes() {
               <PortfolioView />
             </Suspense>
           } />
-          <Route path="portfolio/builder" element={
-            <Suspense fallback={<LoadingScreen message="Loading portfolio builder" />}>
-              <PortfolioBuilder />
+          <Route path="portfolio/simulator" element={
+            <Suspense fallback={<LoadingScreen message="Loading portfolio simulator" />}>
+              <PortfolioSimulator />
             </Suspense>
           } />
           <Route path="recommendations" element={

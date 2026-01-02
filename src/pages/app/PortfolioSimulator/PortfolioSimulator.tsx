@@ -1,7 +1,7 @@
-// Path: src/pages/app/PortfolioBuilder/PortfolioBuilder.tsx
+// Path: src/pages/app/PortfolioSimulator/PortfolioSimulator.tsx
 
 import { useState, useMemo, useCallback } from 'react';
-import { Search, ArrowLeft, ArrowRight, Check, Briefcase, GitCompare } from 'lucide-react';
+import { Search, ArrowLeft, ArrowRight, Check, FlaskConical, GitCompare } from 'lucide-react';
 import { Stepper, Step } from '@/components/molecules/sentinel/Stepper';
 import { StockSearchResult } from '@/components/molecules/sentinel/StockSearchResult';
 import { SelectedStockCard } from '@/components/molecules/sentinel/SelectedStockCard';
@@ -9,7 +9,7 @@ import { AllocationSlider } from '@/components/molecules/sentinel/AllocationSlid
 import { RiskProfileSelector, RiskProfile } from '@/components/molecules/sentinel/RiskProfileSelector';
 import { Button } from '@/components/atoms/Button';
 import { RadarChart } from '@/components/charts/RadarChart';
-import styles from './PortfolioBuilder.module.css';
+import styles from './PortfolioSimulator.module.css';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // TYPES
@@ -71,7 +71,7 @@ const STEPS: Step[] = [
 // COMPONENT
 // ─────────────────────────────────────────────────────────────────────────────
 
-export function PortfolioBuilder() {
+export function PortfolioSimulator() {
   const [currentStep, setCurrentStep] = useState(0);
   const [searchQuery, setSearchQuery] = useState('');
   const [config, setConfig] = useState<PortfolioConfig>({
@@ -197,10 +197,10 @@ export function PortfolioBuilder() {
       {/* Header */}
       <header className={styles.header}>
         <div className={styles.headerContent}>
-          <Briefcase size={24} className={styles.headerIcon} />
+          <FlaskConical size={24} className={styles.headerIcon} />
           <div>
-            <h1 className={styles.title}>Portfolio Builder</h1>
-            <p className={styles.subtitle}>Create a custom investment portfolio</p>
+            <h1 className={styles.title}>Portfolio Simulator</h1>
+            <p className={styles.subtitle}>Simulate changes and compare with your current portfolio</p>
           </div>
         </div>
       </header>

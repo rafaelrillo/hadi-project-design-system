@@ -1,7 +1,7 @@
 // Path: src/layouts/DashboardLayout/DashboardLayout.tsx
 
 import { useState, useMemo, useEffect } from 'react';
-import { Outlet, NavLink, useNavigate, useLocation } from 'react-router-dom';
+import { Outlet, NavLink, useNavigate } from 'react-router-dom';
 import {
   Home,
   Briefcase,
@@ -41,7 +41,7 @@ const navItems: NavItem[] = [
   { path: '/app/dashboard/news', icon: Newspaper, label: 'News' },
 ];
 
-const settingsItem: NavItem = { path: '/app/dashboard/settings', icon: Settings, label: 'Settings' };
+// const settingsItem: NavItem = { path: '/app/dashboard/settings', icon: Settings, label: 'Settings' };
 
 // ─────────────────────────────────────────────────────────────────────────────
 // COMPONENT
@@ -57,7 +57,6 @@ const mobileNavItems = [
 
 export function DashboardLayout() {
   const navigate = useNavigate();
-  const location = useLocation();
   const { logout } = useAuthStore();
   const { holdings, fetchPortfolio } = usePortfolioStore();
   const isMobile = useIsMobile();
@@ -80,26 +79,19 @@ export function DashboardLayout() {
     }));
   }, [holdings]);
 
-  // Get current section based on path
-  const getCurrentSection = (): NavItem => {
-    const path = location.pathname;
-
-    // Check settings first
-    if (path.includes('/settings')) return settingsItem;
-
-    // Check nav items (portfolio/builder should match portfolio)
-    for (const item of navItems) {
-      if (item.end) {
-        if (path === item.path) return item;
-      } else {
-        if (path.startsWith(item.path)) return item;
-      }
-    }
-
-    return navItems[0]; // Default to Home
-  };
-
-  const currentSection = getCurrentSection();
+  // Get current section based on path (can be used for breadcrumbs or page titles)
+  // const getCurrentSection = (): NavItem => {
+  //   const path = location.pathname;
+  //   if (path.includes('/settings')) return settingsItem;
+  //   for (const item of navItems) {
+  //     if (item.end) {
+  //       if (path === item.path) return item;
+  //     } else {
+  //       if (path.startsWith(item.path)) return item;
+  //     }
+  //   }
+  //   return navItems[0];
+  // };
 
   const handleLogout = () => {
     logout();
