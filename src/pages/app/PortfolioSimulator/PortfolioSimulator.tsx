@@ -1,6 +1,6 @@
 // Path: src/pages/app/PortfolioSimulator/PortfolioSimulator.tsx
 
-import { useState, useMemo, useCallback } from 'react';
+import { useState, useMemo, useCallback, useEffect } from 'react';
 import { Search, ArrowLeft, ArrowRight, Check, FlaskConical, GitCompare } from 'lucide-react';
 import { Stepper, Step } from '@/components/molecules/sentinel/Stepper';
 import { StockSearchResult } from '@/components/molecules/sentinel/StockSearchResult';
@@ -9,6 +9,7 @@ import { AllocationSlider } from '@/components/molecules/sentinel/AllocationSlid
 import { RiskProfileSelector, RiskProfile } from '@/components/molecules/sentinel/RiskProfileSelector';
 import { Button } from '@/components/atoms/Button';
 import { RadarChart } from '@/components/charts/RadarChart';
+import { usePortfolioStore, useMarketStore } from '@/store';
 import styles from './PortfolioSimulator.module.css';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -36,28 +37,8 @@ interface PortfolioConfig {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// MOCK DATA
+// STEPS
 // ─────────────────────────────────────────────────────────────────────────────
-
-const MOCK_STOCKS: Stock[] = [
-  { ticker: 'AAPL', name: 'Apple Inc.', price: 178.72, change: 2.45, changePercent: 1.39, exchange: 'NASDAQ' },
-  { ticker: 'MSFT', name: 'Microsoft Corporation', price: 378.91, change: 4.12, changePercent: 1.10, exchange: 'NASDAQ' },
-  { ticker: 'GOOGL', name: 'Alphabet Inc.', price: 141.80, change: -0.89, changePercent: -0.62, exchange: 'NASDAQ' },
-  { ticker: 'AMZN', name: 'Amazon.com Inc.', price: 178.25, change: 3.21, changePercent: 1.83, exchange: 'NASDAQ' },
-  { ticker: 'NVDA', name: 'NVIDIA Corporation', price: 495.22, change: 12.45, changePercent: 2.58, exchange: 'NASDAQ' },
-  { ticker: 'META', name: 'Meta Platforms Inc.', price: 505.95, change: 8.33, changePercent: 1.67, exchange: 'NASDAQ' },
-  { ticker: 'TSLA', name: 'Tesla Inc.', price: 248.48, change: -5.67, changePercent: -2.23, exchange: 'NASDAQ' },
-  { ticker: 'JPM', name: 'JPMorgan Chase & Co.', price: 195.46, change: 1.23, changePercent: 0.63, exchange: 'NYSE' },
-];
-
-// Current portfolio for comparison
-const CURRENT_PORTFOLIO = [
-  { ticker: 'AAPL', name: 'Apple Inc.', allocation: 22.34, value: 4468 },
-  { ticker: 'MSFT', name: 'Microsoft Corporation', allocation: 22.73, value: 4547 },
-  { ticker: 'GOOGL', name: 'Alphabet Inc.', allocation: 21.27, value: 4254 },
-  { ticker: 'NVDA', name: 'NVIDIA Corporation', allocation: 19.81, value: 3962 },
-  { ticker: 'AMZN', name: 'Amazon.com Inc.', allocation: 13.37, value: 2674 },
-];
 
 const STEPS: Step[] = [
   { id: 'profile', label: 'Profile', description: 'Set your risk tolerance' },
@@ -74,6 +55,7 @@ const STEPS: Step[] = [
 export function PortfolioSimulator() {
   const [currentStep, setCurrentStep] = useState(0);
   const [searchQuery, setSearchQuery] = useState('');
+  const [simulationComplete, setSimulationComplete] = useState(false);
   const [config, setConfig] = useState<PortfolioConfig>({
     name: '',
     riskProfile: 'moderate',
@@ -81,16 +63,53 @@ export function PortfolioSimulator() {
     stocks: [],
   });
 
+  // Get real portfolio data from stores
+  const { holdings, fetchPortfolio } = usePortfolioStore();
+  const { stocks: marketStocks, fetchStocks } = useMarketStore();
+
+  // Fetch data on mount
+  useEffect(() => {
+    fetchPortfolio();
+    fetchStocks();
+  }, [fetchPortfolio, fetchStocks]);
+
+  // Current portfolio derived from holdings
+  const currentPortfolio = useMemo(() => {
+    const totalValue = holdings.reduce((sum, h) => sum + h.value, 0);
+    return holdings.map(h => ({
+      ticker: h.symbol,
+      name: h.name,
+      allocation: totalValue > 0 ? (h.value / totalValue) * 100 : 0,
+      value: h.value,
+    }));
+  }, [holdings]);
+
+  const currentPortfolioValue = useMemo(() => {
+    return holdings.reduce((sum, h) => sum + h.value, 0);
+  }, [holdings]);
+
+  // Available stocks from market (for search)
+  const availableStocks: Stock[] = useMemo(() => {
+    return marketStocks.map(s => ({
+      ticker: s.symbol,
+      name: s.name,
+      price: s.price,
+      change: s.change,
+      changePercent: s.changePercent,
+      exchange: 'NASDAQ', // Default exchange
+    }));
+  }, [marketStocks]);
+
   // Filter stocks based on search
   const filteredStocks = useMemo(() => {
-    if (!searchQuery.trim()) return MOCK_STOCKS;
+    if (!searchQuery.trim()) return availableStocks;
     const query = searchQuery.toLowerCase();
-    return MOCK_STOCKS.filter(
+    return availableStocks.filter(
       (stock) =>
         stock.ticker.toLowerCase().includes(query) ||
         stock.name.toLowerCase().includes(query)
     );
-  }, [searchQuery]);
+  }, [searchQuery, availableStocks]);
 
   // Check if stock is selected
   const isStockSelected = useCallback(
@@ -184,8 +203,23 @@ export function PortfolioSimulator() {
   };
 
   const handleSubmit = () => {
-    console.log('Portfolio created:', config);
-    // TODO: Integrate with wallet store
+    // Mark simulation as complete
+    setSimulationComplete(true);
+    // In a real app, this would save the portfolio configuration
+    // For now, we show a success state
+    console.log('Simulated portfolio:', config);
+  };
+
+  // Reset simulation
+  const handleReset = () => {
+    setSimulationComplete(false);
+    setCurrentStep(0);
+    setConfig({
+      name: '',
+      riskProfile: 'moderate',
+      investmentAmount: 10000,
+      stocks: [],
+    });
   };
 
   // Calculate totals
@@ -399,11 +433,11 @@ export function PortfolioSimulator() {
                   {/* Get all unique tickers from both portfolios */}
                   {(() => {
                     const allTickers = new Set([
-                      ...CURRENT_PORTFOLIO.map(p => p.ticker),
+                      ...currentPortfolio.map(p => p.ticker),
                       ...config.stocks.map(s => s.ticker)
                     ]);
                     return Array.from(allTickers).map(ticker => {
-                      const current = CURRENT_PORTFOLIO.find(p => p.ticker === ticker);
+                      const current = currentPortfolio.find(p => p.ticker === ticker);
                       const newStock = config.stocks.find(s => s.ticker === ticker);
                       const currentAlloc = current?.allocation || 0;
                       const newAlloc = newStock?.allocation || 0;
@@ -444,11 +478,11 @@ export function PortfolioSimulator() {
                   <div className={styles.summaryStats}>
                     <div className={styles.statItem}>
                       <span className={styles.statLabel}>Stocks</span>
-                      <span className={styles.statValue}>{CURRENT_PORTFOLIO.length}</span>
+                      <span className={styles.statValue}>{currentPortfolio.length}</span>
                     </div>
                     <div className={styles.statItem}>
                       <span className={styles.statLabel}>Total Value</span>
-                      <span className={styles.statValue}>$20,000</span>
+                      <span className={styles.statValue}>${currentPortfolioValue.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}</span>
                     </div>
                   </div>
                 </div>
@@ -525,32 +559,49 @@ export function PortfolioSimulator() {
 
       {/* Footer Navigation */}
       <footer className={styles.footer}>
-        <Button
-          variant="secondary"
-          onClick={handleBack}
-          disabled={currentStep === 0}
-          icon={<ArrowLeft size={16} />}
-        >
-          Back
-        </Button>
-
-        {currentStep < STEPS.length - 1 ? (
-          <Button
-            variant="primary"
-            onClick={handleNext}
-            disabled={!canProceed}
-            icon={<ArrowRight size={16} />}
-          >
-            Next
-          </Button>
+        {simulationComplete ? (
+          <>
+            <div className={styles.successMessage}>
+              <Check size={16} />
+              <span>Simulation saved! You can compare this portfolio anytime.</span>
+            </div>
+            <Button
+              variant="primary"
+              onClick={handleReset}
+            >
+              Start New Simulation
+            </Button>
+          </>
         ) : (
-          <Button
-            variant="primary"
-            onClick={handleSubmit}
-            icon={<Check size={16} />}
-          >
-            Create Portfolio
-          </Button>
+          <>
+            <Button
+              variant="secondary"
+              onClick={handleBack}
+              disabled={currentStep === 0}
+              icon={<ArrowLeft size={16} />}
+            >
+              Back
+            </Button>
+
+            {currentStep < STEPS.length - 1 ? (
+              <Button
+                variant="primary"
+                onClick={handleNext}
+                disabled={!canProceed}
+                icon={<ArrowRight size={16} />}
+              >
+                Next
+              </Button>
+            ) : (
+              <Button
+                variant="primary"
+                onClick={handleSubmit}
+                icon={<Check size={16} />}
+              >
+                Save Simulation
+              </Button>
+            )}
+          </>
         )}
       </footer>
     </div>

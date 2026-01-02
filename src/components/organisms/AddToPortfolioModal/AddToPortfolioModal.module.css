@@ -232,6 +232,50 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
+   PORTFOLIO SUMMARY (Single Portfolio Mode)
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.portfolioSummary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  background: var(--sentinel-bg-surface);
+  border: 1px solid var(--sentinel-border-default);
+  border-radius: var(--sentinel-radius-md);
+}
+
+.cashInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.cashLabel {
+  font-size: 11px;
+  color: var(--sentinel-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.cashValue {
+  font-family: var(--sentinel-font-numeric);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--sentinel-status-positive);
+  letter-spacing: var(--sentinel-tracking-led);
+}
+
+.errorMessage {
+  font-size: 12px;
+  color: var(--sentinel-status-negative);
+  padding: 8px 12px;
+  background: rgba(var(--sentinel-status-negative-rgb, 229, 115, 115), 0.1);
+  border-radius: var(--sentinel-radius-sm);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
    AMOUNT INPUT
    ───────────────────────────────────────────────────────────────────────────── */
 

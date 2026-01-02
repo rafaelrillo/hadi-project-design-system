@@ -18,6 +18,7 @@ import { Button } from '@/components/atoms/Button';
 import { AddToPortfolioModal, StockToAdd } from '@/components/organisms/AddToPortfolioModal';
 import { recommendationEngine } from '@/services/recommendations';
 import { useIsMobile } from '@/hooks/useBreakpoint';
+import { usePortfolioStore } from '@/store';
 import type {
   DailyRecommendations,
   StockRecommendation,
@@ -35,6 +36,10 @@ export function RecommendationsView() {
   const [error, setError] = useState<string | null>(null);
   const [expandedCard, setExpandedCard] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<'buy' | 'sell'>('buy');
+  const [tradeMessage, setTradeMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
+
+  // Portfolio store for executing trades
+  const { executeTrade } = usePortfolioStore();
 
   // Modal state
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -94,9 +99,40 @@ export function RecommendationsView() {
   };
 
   // Handle portfolio investment confirmation
-  const handleConfirmInvestment = (portfolioId: string, amount: number) => {
-    console.log(`Adding ${selectedStock?.ticker} to portfolio ${portfolioId} with $${amount}`);
-    // Here you would call your API to add the stock to the portfolio
+  const handleConfirmInvestment = async (_amount: number, shares: number) => {
+    if (!selectedStock) return;
+
+    try {
+      const result = await executeTrade({
+        symbol: selectedStock.ticker,
+        name: selectedStock.name,
+        type: 'buy',
+        shares,
+        price: selectedStock.currentPrice,
+        orderType: 'market',
+      });
+
+      if (result.success) {
+        setTradeMessage({
+          type: 'success',
+          text: result.message,
+        });
+        // Clear message after 5 seconds
+        setTimeout(() => setTradeMessage(null), 5000);
+      } else {
+        setTradeMessage({
+          type: 'error',
+          text: result.message,
+        });
+        setTimeout(() => setTradeMessage(null), 5000);
+      }
+    } catch (err) {
+      setTradeMessage({
+        type: 'error',
+        text: 'Failed to execute trade. Please try again.',
+      });
+      setTimeout(() => setTradeMessage(null), 5000);
+    }
   };
 
   // Render recommendation card
@@ -380,6 +416,13 @@ export function RecommendationsView() {
   // Desktop Layout
   return (
     <div className={styles.container}>
+      {/* Trade Message */}
+      {tradeMessage && (
+        <div className={`${styles.tradeMessage} ${styles[tradeMessage.type]}`}>
+          {tradeMessage.text}
+        </div>
+      )}
+
       {/* Actions Bar */}
       <div className={styles.actionsBar}>
         <span className={styles.generatedTime}>
@@ -430,14 +473,14 @@ export function RecommendationsView() {
               onClick={() => setActiveTab('buy')}
             >
               <TrendingUp size={16} />
-              Top 5 Buys
+              Top Buys
             </button>
             <button
               className={`${styles.tab} ${activeTab === 'sell' ? styles.activeTab : ''}`}
               onClick={() => setActiveTab('sell')}
             >
               <TrendingDown size={16} />
-              Top 5 Sells
+              Top Sells
             </button>
           </div>
 

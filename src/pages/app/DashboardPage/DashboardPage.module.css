@@ -134,6 +134,8 @@
 
 .chartWrapper {
   margin: 0 -12px;
+  overflow: hidden;
+  border-radius: var(--sentinel-radius-md);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -142,10 +144,16 @@
 
 .bottomGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   flex: 1;
   min-height: 0;
+}
+
+@media (max-width: 1200px) {
+  .bottomGrid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -199,6 +207,24 @@
   color: var(--sentinel-accent-primary);
 }
 
+/* Top Sells Card Title */
+.cardTitleSell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--sentinel-font-led);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--sentinel-text-tertiary);
+  letter-spacing: var(--sentinel-tracking-led);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.cardTitleSell svg {
+  color: var(--sentinel-status-negative);
+}
+
 /* ─────────────────────────────────────────────────────────────────────────────
    RECOMMENDATIONS LIST
    ───────────────────────────────────────────────────────────────────────────── */
@@ -234,6 +260,15 @@
   font-weight: 600;
   color: var(--sentinel-accent-primary);
   text-shadow: var(--sentinel-glow-accent);
+  letter-spacing: var(--sentinel-tracking-led);
+}
+
+.recRankSell {
+  font-family: var(--sentinel-font-numeric);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--sentinel-status-negative);
+  text-shadow: var(--sentinel-glow-negative);
   letter-spacing: var(--sentinel-tracking-led);
 }
 
@@ -439,6 +474,8 @@
 
 .mobileChartWrapper {
   margin: 0 -6px;
+  overflow: hidden;
+  border-radius: var(--sentinel-radius-sm);
 }
 
 .mobileLegend {
@@ -476,20 +513,19 @@
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--sentinel-radius-lg);
-  padding: 12px 14px;
-  flex: 1;
-  min-height: 0;
+  padding: 10px 12px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
 }
 
 .mobilePicksHeader {
   display: flex;
   align-items: center;
   gap: 6px;
-  margin-bottom: 10px;
+  margin-bottom: 6px;
   flex-shrink: 0;
 }
 
@@ -499,7 +535,7 @@
 
 .mobilePicksTitle {
   font-family: var(--sentinel-font-led);
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 600;
   color: var(--sentinel-text-primary);
   letter-spacing: var(--sentinel-tracking-led);
@@ -524,26 +560,22 @@
 .mobilePicksList {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  flex: 1;
-  min-height: 0;
-  overflow: hidden;
+  gap: 4px;
 }
 
 .mobilePickItem {
   display: grid;
-  grid-template-columns: 28px 1fr auto auto;
+  grid-template-columns: 24px 1fr auto auto;
   align-items: center;
-  gap: 8px;
-  padding: 8px 10px;
+  gap: 6px;
+  padding: 6px 8px;
   background: var(--sentinel-bg-surface);
-  border-radius: var(--sentinel-radius-md);
-  flex-shrink: 0;
+  border-radius: var(--sentinel-radius-sm);
 }
 
 .mobilePickRank {
   font-family: var(--sentinel-font-numeric);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
   color: var(--sentinel-accent-primary);
   text-shadow: var(--sentinel-glow-accent);
@@ -556,7 +588,7 @@
 
 .mobilePickTicker {
   font-family: var(--sentinel-font-ticker);
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 400;
   color: var(--sentinel-text-primary);
   letter-spacing: 0.08em;
@@ -564,7 +596,7 @@
 
 .mobilePickPrice {
   font-family: var(--sentinel-font-numeric);
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 400;
   color: var(--sentinel-text-secondary);
   letter-spacing: 0.05em;
@@ -572,9 +604,9 @@
 
 .mobilePickChange {
   font-family: var(--sentinel-font-numeric);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 400;
-  min-width: 54px;
+  min-width: 50px;
   text-align: right;
   letter-spacing: 0.05em;
 }
@@ -587,6 +619,19 @@
 .mobilePickChange[data-positive="false"] {
   color: var(--sentinel-status-negative);
   text-shadow: var(--sentinel-glow-negative);
+}
+
+/* Mobile Picks/Sells Grid */
+.mobilePicksGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* Sells Icon */
+.mobileSellsIcon {
+  color: var(--sentinel-status-negative);
 }
 
 /* News Card */

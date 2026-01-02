@@ -3,11 +3,9 @@
 import { useState, useMemo, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
-  TrendingUp,
-  TrendingDown,
   Briefcase,
   MoreVertical,
-  FlaskConical,
+  PieChart,
 } from 'lucide-react';
 import { Button } from '@/components/atoms/Button';
 import { TreeMap } from '@/components/charts';
@@ -97,11 +95,11 @@ export function PortfolioView() {
               My Portfolio
             </span>
             <Button
-              variant="secondary"
-              icon={<FlaskConical size={14} />}
+              variant="primary"
+              icon={<PieChart size={14} />}
               onClick={() => navigate('/app/dashboard/portfolio/simulator')}
             >
-              Simulate
+              Simulate Portfolio
             </Button>
           </div>
           <div className={styles.mobileHeaderValues}>
@@ -114,12 +112,12 @@ export function PortfolioView() {
           </div>
         </div>
 
-        {/* Large TreeMap - No card container */}
+        {/* TreeMap - Fixed height */}
         {holdings.length > 0 && (
           <div className={styles.mobileTreemapLarge}>
             <TreeMap
               data={treemapData}
-              height={200}
+              height={180}
               tile="squarify"
               innerPadding={3}
               outerPadding={0}
@@ -162,44 +160,53 @@ export function PortfolioView() {
   // Desktop Layout - Single Portfolio View
   return (
     <div className={styles.container}>
-      {/* Header */}
-      <div className={styles.header}>
-        <div className={styles.headerLeft}>
-          <div className={styles.headerIcon}>
-            <Briefcase size={24} />
-          </div>
-          <div className={styles.headerInfo}>
-            <h1 className={styles.headerTitle}>My Portfolio</h1>
-            <p className={styles.headerSubtitle}>{holdings.length} holdings</p>
-          </div>
-        </div>
-        <div className={styles.headerRight}>
-          <div className={styles.headerValues}>
-            <span className={styles.headerValue}>
-              ${portfolioTotals.totalValue.toLocaleString('en-US', { minimumFractionDigits: 2 })}
-            </span>
-            <span className={`${styles.headerChange} ${isPositive ? styles.positive : styles.negative}`}>
-              {isPositive ? <TrendingUp size={16} /> : <TrendingDown size={16} />}
-              {isPositive ? '+' : ''}${Math.abs(portfolioTotals.totalGain).toLocaleString('en-US', { minimumFractionDigits: 2 })}
-              <span className={styles.headerPercent}>
-                ({isPositive ? '+' : ''}{portfolioTotals.gainPercent.toFixed(2)}%)
-              </span>
-            </span>
+      {/* Card 1: Portfolio Summary */}
+      <div className={styles.card}>
+        <div className={styles.cardHeader}>
+          <div className={styles.cardHeaderLeft}>
+            <div className={styles.cardIcon}>
+              <Briefcase size={20} />
+            </div>
+            <h2 className={styles.cardTitle}>My Portfolio</h2>
+            <span className={styles.cardBadge}>{holdings.length} holdings</span>
           </div>
           <Button
             variant="primary"
-            icon={<FlaskConical size={16} />}
+            icon={<PieChart size={16} />}
             onClick={() => navigate('/app/dashboard/portfolio/simulator')}
           >
-            Simulate Changes
+            Simulate Portfolio
           </Button>
+        </div>
+        <div className={styles.summaryContent}>
+          <div className={styles.summaryMain}>
+            <span className={styles.summaryLabel}>Total Value</span>
+            <span className={styles.summaryValue}>
+              ${portfolioTotals.totalValue.toLocaleString('en-US', { minimumFractionDigits: 2 })}
+            </span>
+          </div>
+          <div className={styles.summaryStats}>
+            <div className={styles.summaryStat}>
+              <span className={styles.summaryStatLabel}>Total Gain/Loss</span>
+              <span className={`${styles.summaryStatValue} ${isPositive ? styles.positive : styles.negative}`}>
+                {isPositive ? '+' : ''}${Math.abs(portfolioTotals.totalGain).toLocaleString('en-US', { minimumFractionDigits: 2 })}
+                <span className={styles.summaryStatPercent}>
+                  ({isPositive ? '+' : ''}{portfolioTotals.gainPercent.toFixed(2)}%)
+                </span>
+              </span>
+            </div>
+            <div className={styles.summaryStat}>
+              <span className={styles.summaryStatLabel}>Cash Balance</span>
+              <span className={styles.summaryStatValue}>
+                ${summary.cashBalance.toLocaleString('en-US', { minimumFractionDigits: 2 })}
+              </span>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Main Content */}
-      <div className={styles.mainContent}>
-        {/* Holdings Table */}
-        <div className={styles.tableContainer}>
+      {/* Card 2: Holdings Table */}
+      <div className={styles.card}>
           <div className={styles.tableHeader}>
             <div className={styles.tableHeaderLeft}>
               <h2 className={styles.sectionTitle}>Holdings</h2>
@@ -271,41 +278,18 @@ export function PortfolioView() {
               })}
             </div>
           </div>
+      </div>
 
-          {/* Portfolio Summary Footer */}
-          <div className={styles.summaryFooter}>
-            <div className={styles.summaryItem}>
-              <span className={styles.summaryLabel}>Total Value</span>
-              <span className={styles.summaryValue}>
-                ${portfolioTotals.totalValue.toLocaleString('en-US', { minimumFractionDigits: 2 })}
-              </span>
-            </div>
-            <div className={styles.summaryItem}>
-              <span className={styles.summaryLabel}>Total Gain/Loss</span>
-              <span className={`${styles.summaryValue} ${isPositive ? styles.positive : styles.negative}`}>
-                {isPositive ? '+' : ''}
-                ${Math.abs(portfolioTotals.totalGain).toLocaleString('en-US', { minimumFractionDigits: 2 })}
-                <span className={styles.summaryPercent}>
-                  ({isPositive ? '+' : ''}{portfolioTotals.gainPercent.toFixed(2)}%)
-                </span>
-              </span>
-            </div>
-            <div className={styles.summaryItem}>
-              <span className={styles.summaryLabel}>Cash Balance</span>
-              <span className={styles.summaryValue}>
-                ${summary.cashBalance.toLocaleString('en-US', { minimumFractionDigits: 2 })}
-              </span>
-            </div>
+      {/* Card 3: Allocation Distribution */}
+      {holdings.length > 0 && (
+        <div className={styles.card}>
+          <div className={styles.cardHeader}>
+            <h2 className={styles.cardTitle}>Allocation Distribution</h2>
           </div>
-        </div>
-
-        {/* TreeMap - Allocation Visualization */}
-        {holdings.length > 0 && (
-          <div className={styles.treemapCard}>
-            <h3 className={styles.treemapTitle}>Allocation Distribution</h3>
+          <div className={styles.treemapContent}>
             <TreeMap
               data={treemapData}
-              height={180}
+              height={200}
               tile="squarify"
               innerPadding={2}
               outerPadding={4}
@@ -313,8 +297,8 @@ export function PortfolioView() {
               enableParentLabel={false}
             />
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }

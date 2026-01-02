@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { Modal } from '@/components/organisms/Modal';
 import { Button } from '@/components/atoms/Button';
+import { usePortfolioStore } from '@/store';
 import styles from './AddToPortfolioModal.module.css';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -27,28 +28,12 @@ export interface StockToAdd {
   expectedReturn: number;
 }
 
-export interface Portfolio {
-  id: string;
-  name: string;
-  totalValue: number;
-}
-
 export interface AddToPortfolioModalProps {
   isOpen: boolean;
   onClose: () => void;
   stock: StockToAdd | null;
-  onConfirm: (portfolioId: string, amount: number) => void;
+  onConfirm: (amount: number, shares: number) => void;
 }
-
-// ─────────────────────────────────────────────────────────────────────────────
-// MOCK PORTFOLIOS
-// ─────────────────────────────────────────────────────────────────────────────
-
-const MOCK_PORTFOLIOS: Portfolio[] = [
-  { id: '1', name: 'Main Portfolio', totalValue: 25000 },
-  { id: '2', name: 'Growth Portfolio', totalValue: 15000 },
-  { id: '3', name: 'Conservative Portfolio', totalValue: 10000 },
-];
 
 // ─────────────────────────────────────────────────────────────────────────────
 // COMPONENT
@@ -61,25 +46,28 @@ export function AddToPortfolioModal({
   onConfirm,
 }: AddToPortfolioModalProps) {
   const [currentStep, setCurrentStep] = useState(1);
-  const [selectedPortfolio, setSelectedPortfolio] = useState<string | null>(null);
   const [investmentAmount, setInvestmentAmount] = useState<number>(0);
 
+  // Get real portfolio data from store
+  const { summary, holdings } = usePortfolioStore();
+  const portfolioValue = holdings.reduce((sum, h) => sum + h.value, 0);
+  const cashBalance = summary.cashBalance;
+
   // Calculate recommended investment (5-10% of portfolio)
-  const selectedPortfolioData = MOCK_PORTFOLIOS.find((p) => p.id === selectedPortfolio);
   const recommendedAmount = useMemo(() => {
-    if (!selectedPortfolioData || !stock) return 0;
+    if (!stock || portfolioValue === 0) return 0;
     // Recommend 5-8% based on stock score
     const percentage = 0.05 + (stock.score / 100) * 0.03;
-    return Math.round(selectedPortfolioData.totalValue * percentage);
-  }, [selectedPortfolioData, stock]);
+    return Math.min(Math.round(portfolioValue * percentage), cashBalance);
+  }, [portfolioValue, stock, cashBalance]);
 
   // Calculate benefits
   const benefits = useMemo(() => {
-    if (!stock || !selectedPortfolioData || investmentAmount <= 0) return null;
+    if (!stock || portfolioValue === 0 || investmentAmount <= 0) return null;
 
     const shares = Math.floor(investmentAmount / stock.currentPrice);
     const actualInvestment = shares * stock.currentPrice;
-    const newAllocation = (actualInvestment / (selectedPortfolioData.totalValue + actualInvestment)) * 100;
+    const newAllocation = (actualInvestment / (portfolioValue + actualInvestment)) * 100;
     const expectedGain = actualInvestment * (stock.expectedReturn / 100);
 
     return {
@@ -90,33 +78,29 @@ export function AddToPortfolioModal({
       diversificationImpact: stock.score > 70 ? 'high' : stock.score > 50 ? 'medium' : 'low',
       riskReduction: Math.round(Math.random() * 5 + 2), // Mock: 2-7%
     };
-  }, [stock, selectedPortfolioData, investmentAmount]);
+  }, [stock, portfolioValue, investmentAmount]);
 
   // Reset state when modal closes
   const handleClose = () => {
     setCurrentStep(1);
-    setSelectedPortfolio(null);
     setInvestmentAmount(0);
     onClose();
   };
 
   // Handle confirm
   const handleConfirm = () => {
-    if (selectedPortfolio && investmentAmount > 0) {
-      onConfirm(selectedPortfolio, investmentAmount);
+    if (investmentAmount > 0 && benefits) {
+      onConfirm(benefits.actualInvestment, benefits.shares);
       handleClose();
     }
   };
 
-  // Set recommended amount when portfolio is selected
-  const handlePortfolioSelect = (portfolioId: string) => {
-    setSelectedPortfolio(portfolioId);
-    const portfolio = MOCK_PORTFOLIOS.find((p) => p.id === portfolioId);
-    if (portfolio && stock) {
-      const percentage = 0.05 + (stock.score / 100) * 0.03;
-      setInvestmentAmount(Math.round(portfolio.totalValue * percentage));
+  // Set initial recommended amount when modal opens
+  useMemo(() => {
+    if (isOpen && stock && investmentAmount === 0) {
+      setInvestmentAmount(recommendedAmount);
     }
-  };
+  }, [isOpen, stock, recommendedAmount, investmentAmount]);
 
   if (!stock) return null;
 
@@ -143,7 +127,7 @@ export function AddToPortfolioModal({
             <Button
               variant="primary"
               onClick={() => setCurrentStep(currentStep + 1)}
-              disabled={currentStep === 1 && (!selectedPortfolio || investmentAmount <= 0)}
+              disabled={currentStep === 1 && (investmentAmount <= 0 || investmentAmount > cashBalance)}
               icon={<ChevronRight size={16} />}
             >
               Continue
@@ -186,67 +170,63 @@ export function AddToPortfolioModal({
         </div>
       </div>
 
-      {/* Step 1: Select Portfolio & Amount */}
+      {/* Step 1: Investment Amount */}
       {currentStep === 1 && (
         <div className={styles.stepContent}>
+          {/* Portfolio Info */}
           <div className={styles.section}>
-            <h3 className={styles.sectionTitle}>Select Portfolio</h3>
-            <div className={styles.portfolioList}>
-              {MOCK_PORTFOLIOS.map((portfolio) => (
-                <button
-                  key={portfolio.id}
-                  className={`${styles.portfolioOption} ${
-                    selectedPortfolio === portfolio.id ? styles.selected : ''
-                  }`}
-                  onClick={() => handlePortfolioSelect(portfolio.id)}
-                >
-                  <div className={styles.portfolioInfo}>
-                    <span className={styles.portfolioName}>{portfolio.name}</span>
-                    <span className={styles.portfolioValue}>
-                      ${portfolio.totalValue.toLocaleString()}
-                    </span>
-                  </div>
-                  <div className={styles.portfolioCheck}>
-                    {selectedPortfolio === portfolio.id && <Check size={16} />}
-                  </div>
-                </button>
-              ))}
+            <div className={styles.portfolioSummary}>
+              <div className={styles.portfolioInfo}>
+                <span className={styles.portfolioName}>My Portfolio</span>
+                <span className={styles.portfolioValue}>
+                  ${portfolioValue.toLocaleString('en-US', { minimumFractionDigits: 0 })}
+                </span>
+              </div>
+              <div className={styles.cashInfo}>
+                <span className={styles.cashLabel}>Available Cash</span>
+                <span className={styles.cashValue}>
+                  ${cashBalance.toLocaleString('en-US', { minimumFractionDigits: 2 })}
+                </span>
+              </div>
             </div>
           </div>
 
-          {selectedPortfolio && (
-            <div className={styles.section}>
-              <h3 className={styles.sectionTitle}>Investment Amount</h3>
-              <div className={styles.amountInput}>
-                <span className={styles.currencySymbol}>$</span>
-                <input
-                  type="number"
-                  value={investmentAmount}
-                  onChange={(e) => setInvestmentAmount(Number(e.target.value))}
-                  className={styles.input}
-                  min={0}
-                  max={selectedPortfolioData?.totalValue}
-                />
-              </div>
-              <div className={styles.recommendedAmount}>
-                <Sparkles size={14} />
-                <span>
-                  Recommended: <strong>${recommendedAmount.toLocaleString()}</strong>
-                </span>
-                <button
-                  className={styles.useRecommended}
-                  onClick={() => setInvestmentAmount(recommendedAmount)}
-                >
-                  Use
-                </button>
-              </div>
-              {investmentAmount > 0 && stock && (
-                <div className={styles.sharesPreview}>
-                  ≈ {Math.floor(investmentAmount / stock.currentPrice)} shares
-                </div>
-              )}
+          <div className={styles.section}>
+            <h3 className={styles.sectionTitle}>Investment Amount</h3>
+            <div className={styles.amountInput}>
+              <span className={styles.currencySymbol}>$</span>
+              <input
+                type="number"
+                value={investmentAmount}
+                onChange={(e) => setInvestmentAmount(Number(e.target.value))}
+                className={styles.input}
+                min={0}
+                max={cashBalance}
+              />
             </div>
-          )}
+            <div className={styles.recommendedAmount}>
+              <Sparkles size={14} />
+              <span>
+                Recommended: <strong>${recommendedAmount.toLocaleString()}</strong>
+              </span>
+              <button
+                className={styles.useRecommended}
+                onClick={() => setInvestmentAmount(recommendedAmount)}
+              >
+                Use
+              </button>
+            </div>
+            {investmentAmount > cashBalance && (
+              <div className={styles.errorMessage}>
+                Insufficient funds. Max available: ${cashBalance.toLocaleString()}
+              </div>
+            )}
+            {investmentAmount > 0 && investmentAmount <= cashBalance && stock && (
+              <div className={styles.sharesPreview}>
+                ≈ {Math.floor(investmentAmount / stock.currentPrice)} shares
+              </div>
+            )}
+          </div>
         </div>
       )}
 
@@ -332,10 +312,6 @@ export function AddToPortfolioModal({
                 <span className={styles.confirmValue}>
                   {stock.ticker} - {stock.name}
                 </span>
-              </div>
-              <div className={styles.confirmRow}>
-                <span className={styles.confirmLabel}>Portfolio</span>
-                <span className={styles.confirmValue}>{selectedPortfolioData?.name}</span>
               </div>
               <div className={styles.confirmRow}>
                 <span className={styles.confirmLabel}>Amount</span>

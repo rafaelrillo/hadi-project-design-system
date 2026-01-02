@@ -5,8 +5,8 @@
   flex-direction: column;
   height: 100%;
   padding: 20px;
-  overflow: hidden;
   gap: 16px;
+  overflow: hidden;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -23,128 +23,150 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   HEADER
+   CARD - Base Card Style
    ───────────────────────────────────────────────────────────────────────────── */
 
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px 20px;
+.card {
   background: var(--sentinel-bg-elevated);
   border: 1px solid var(--sentinel-border-subtle);
   border-radius: var(--sentinel-radius-lg);
+  overflow: hidden;
   flex-shrink: 0;
 }
 
-.headerLeft {
+/* Holdings card needs to grow and have internal scroll */
+.card:nth-child(2) {
+  flex: 1;
+  min-height: 0;
   display: flex;
-  align-items: center;
-  gap: 14px;
+  flex-direction: column;
 }
 
-.headerIcon {
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--sentinel-border-subtle);
+}
+
+.cardHeaderLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cardIcon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
+  width: 36px;
+  height: 36px;
   background: var(--sentinel-accent-subtle);
   border-radius: var(--sentinel-radius-md);
   color: var(--sentinel-accent-primary);
 }
 
-.headerInfo {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.headerTitle {
-  font-family: var(--sentinel-font-display);
-  font-size: 20px;
+.cardTitle {
+  font-family: var(--sentinel-font-numeric);
+  font-size: 13px;
   font-weight: 600;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
+  text-transform: uppercase;
   margin: 0;
 }
 
-.headerSubtitle {
-  font-size: 13px;
-  color: var(--sentinel-text-secondary);
-  margin: 0;
+.cardBadge {
+  font-size: 12px;
+  color: var(--sentinel-text-tertiary);
+  padding: 4px 10px;
+  background: var(--sentinel-bg-surface);
+  border-radius: var(--sentinel-radius-sm);
 }
 
-.headerRight {
+/* ─────────────────────────────────────────────────────────────────────────────
+   CARD 1: SUMMARY CONTENT
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.summaryContent {
   display: flex;
   align-items: center;
-  gap: 24px;
+  justify-content: space-between;
+  padding: 20px;
+  gap: 32px;
 }
 
-.headerValues {
+.summaryMain {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  gap: 2px;
+  gap: 4px;
 }
 
-.headerValue {
+.summaryLabel {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--sentinel-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.summaryValue {
   font-family: var(--sentinel-font-numeric);
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 700;
   color: var(--sentinel-text-primary);
   letter-spacing: var(--sentinel-tracking-led);
 }
 
-.headerChange {
+.summaryStats {
   display: flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--sentinel-font-numeric);
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: var(--sentinel-tracking-led);
+  gap: 32px;
 }
 
-.headerChange.positive {
+.summaryStat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.summaryStatLabel {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--sentinel-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.summaryStatValue {
+  font-family: var(--sentinel-font-numeric);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.summaryStatValue.positive {
   color: var(--sentinel-status-positive);
   text-shadow: var(--sentinel-glow-positive);
 }
 
-.headerChange.negative {
+.summaryStatValue.negative {
   color: var(--sentinel-status-negative);
   text-shadow: var(--sentinel-glow-negative);
 }
 
-.headerPercent {
+.summaryStatPercent {
+  font-size: 12px;
   opacity: 0.8;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   MAIN CONTENT
+   CARD 2: HOLDINGS TABLE
    ───────────────────────────────────────────────────────────────────────────── */
-
-.mainContent {
-  display: flex;
-  gap: 16px;
-  flex: 1;
-  min-height: 0;
-  overflow: hidden;
-}
-
-/* ─────────────────────────────────────────────────────────────────────────────
-   TABLE CONTAINER - Holdings
-   ───────────────────────────────────────────────────────────────────────────── */
-
-.tableContainer {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  background: var(--sentinel-bg-elevated);
-  border: 1px solid var(--sentinel-border-subtle);
-  border-radius: var(--sentinel-radius-lg);
-  overflow: hidden;
-  min-width: 0;
-}
 
 .tableHeader {
   display: flex;
@@ -198,14 +220,11 @@
   border-color: var(--sentinel-accent-primary);
 }
 
-/* ─────────────────────────────────────────────────────────────────────────────
-   POSITIONS TABLE
-   ───────────────────────────────────────────────────────────────────────────── */
-
+/* Positions Table */
 .positionsTable {
-  flex: 1;
   display: flex;
   flex-direction: column;
+  flex: 1;
   min-height: 0;
   overflow: hidden;
 }
@@ -360,83 +379,11 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   SUMMARY FOOTER
+   CARD 3: TREEMAP
    ───────────────────────────────────────────────────────────────────────────── */
 
-.summaryFooter {
-  display: flex;
-  align-items: center;
-  gap: 32px;
-  padding: 14px 20px;
-  background: var(--sentinel-bg-surface);
-  border-top: 1px solid var(--sentinel-border-subtle);
-  flex-shrink: 0;
-}
-
-.summaryItem {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.summaryLabel {
-  font-size: 10px;
-  font-weight: 600;
-  color: var(--sentinel-text-tertiary);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.summaryValue {
-  font-family: var(--sentinel-font-numeric);
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--sentinel-text-primary);
-  letter-spacing: var(--sentinel-tracking-led);
-  display: flex;
-  align-items: baseline;
-  gap: 6px;
-}
-
-.summaryValue.positive {
-  color: var(--sentinel-status-positive);
-  text-shadow: var(--sentinel-glow-positive);
-}
-
-.summaryValue.negative {
-  color: var(--sentinel-status-negative);
-  text-shadow: var(--sentinel-glow-negative);
-}
-
-.summaryPercent {
-  font-size: 12px;
-  font-weight: 600;
-  opacity: 0.8;
-}
-
-/* ─────────────────────────────────────────────────────────────────────────────
-   TREEMAP CARD
-   ───────────────────────────────────────────────────────────────────────────── */
-
-.treemapCard {
-  width: 280px;
-  flex-shrink: 0;
-  background: var(--sentinel-bg-elevated);
-  border: 1px solid var(--sentinel-border-subtle);
-  border-radius: var(--sentinel-radius-lg);
-  padding: 14px 16px;
-  display: flex;
-  flex-direction: column;
-}
-
-.treemapTitle {
-  font-family: var(--sentinel-font-numeric);
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--sentinel-text-tertiary);
-  text-transform: uppercase;
-  letter-spacing: var(--sentinel-tracking-led);
-  margin: 0 0 12px;
+.treemapContent {
+  padding: 16px;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -453,18 +400,14 @@
     display: none;
   }
 
-  .treemapCard {
-    width: 240px;
+  .summaryContent {
+    flex-wrap: wrap;
   }
 }
 
 @media (max-width: 1024px) {
-  .mainContent {
-    flex-direction: column;
-  }
-
-  .treemapCard {
-    width: 100%;
+  .summaryStats {
+    gap: 20px;
   }
 }
 
@@ -473,15 +416,21 @@
     padding: 16px;
   }
 
-  .header {
+  .summaryContent {
     flex-direction: column;
     align-items: flex-start;
     gap: 16px;
   }
 
-  .headerRight {
+  .summaryStats {
     width: 100%;
     justify-content: space-between;
+  }
+
+  .cardHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
   }
 
   .tableHeaderRow,
@@ -492,11 +441,6 @@
   .colPrice,
   .colAllocation {
     display: none;
-  }
-
-  .summaryFooter {
-    gap: 16px;
-    flex-wrap: wrap;
   }
 }
 
@@ -511,6 +455,7 @@
   padding: 12px;
   height: 100%;
   overflow: hidden;
+  min-height: 0;
 }
 
 .mobileHeader {
@@ -573,18 +518,21 @@
   text-shadow: var(--sentinel-glow-negative);
 }
 
-/* Large TreeMap - No container */
+/* Large TreeMap - Fixed height */
 .mobileTreemapLarge {
-  flex-shrink: 0;
+  flex: 0 0 180px;
   margin: 0 -4px;
 }
 
-/* Holdings Section */
+/* Holdings Section - Takes remaining space */
 .mobileHoldingsSection {
   flex: 1;
   min-height: 0;
   display: flex;
   flex-direction: column;
+  background: var(--sentinel-bg-elevated);
+  border: 1px solid var(--sentinel-border-subtle);
+  border-radius: var(--sentinel-radius-lg);
   overflow: hidden;
 }
 
@@ -595,7 +543,8 @@
   color: var(--sentinel-text-primary);
   letter-spacing: var(--sentinel-tracking-led);
   text-transform: uppercase;
-  margin: 0 0 10px;
+  margin: 0;
+  padding: 12px 12px 10px;
   flex-shrink: 0;
 }
 
@@ -603,7 +552,9 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
+  padding: 0 12px 12px;
   flex: 1;
+  min-height: 0;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
@@ -613,7 +564,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 10px 12px;
-  background: var(--sentinel-bg-elevated);
+  background: var(--sentinel-bg-surface);
   border: 1px solid var(--sentinel-border-subtle);
   border-radius: var(--sentinel-radius-md);
   flex-shrink: 0;

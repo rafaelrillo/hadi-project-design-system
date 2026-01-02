@@ -269,11 +269,13 @@
 
 .mobileLayout {
   display: none;
-  min-height: 100vh;
+  height: 100vh;
+  height: 100dvh; /* Dynamic viewport height for mobile */
   flex-direction: column;
   background: transparent;
   position: relative;
   z-index: 1;
+  overflow: hidden;
 }
 
 @media (max-width: 768px) {
@@ -292,8 +294,10 @@
 
 .mobileContent {
   flex: 1;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
+  min-height: 0; /* Critical for flex children to shrink */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
   /* Header (56px) + Ticker (36px) + safe area */
   padding-top: calc(var(--sentinel-mobile-header-height) + 36px + var(--sentinel-safe-area-top));
   padding-bottom: calc(var(--sentinel-mobile-bottom-nav-height) + var(--sentinel-safe-area-bottom));

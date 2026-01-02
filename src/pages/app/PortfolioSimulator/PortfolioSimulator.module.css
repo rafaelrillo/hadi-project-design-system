@@ -587,3 +587,24 @@
   border-radius: 50%;
   color: var(--sentinel-accent-primary);
 }
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   SUCCESS MESSAGE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.successMessage {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: rgba(var(--sentinel-status-positive-rgb, 129, 199, 132), 0.15);
+  border: 1px solid rgba(var(--sentinel-status-positive-rgb, 129, 199, 132), 0.3);
+  border-radius: var(--sentinel-radius-md);
+  color: var(--sentinel-status-positive);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.successMessage svg {
+  flex-shrink: 0;
+}

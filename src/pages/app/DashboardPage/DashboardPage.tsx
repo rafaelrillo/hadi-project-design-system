@@ -1,13 +1,16 @@
 // Path: src/pages/app/DashboardPage/DashboardPage.tsx
 // SENTINEL 3.0 - Simple, Clean Dashboard
 
-import { useMemo } from 'react';
-import { TrendingUp, ArrowRight, Briefcase, Newspaper } from 'lucide-react';
+import { useMemo, useEffect } from 'react';
+import { TrendingUp, TrendingDown, ArrowRight, Briefcase, Newspaper } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 // Hooks
 import { useNews } from '../../../hooks/useNews';
 import { useIsMobile } from '../../../hooks/useBreakpoint';
+
+// Store
+import { usePortfolioStore } from '../../../store';
 
 // Components
 import { Button } from '../../../components/atoms/Button';
@@ -17,19 +20,16 @@ import { FinancialLineChart } from '../../../components/charts';
 import styles from './DashboardPage.module.css';
 
 // ─────────────────────────────────────────────────────────────────────────────
-// MOCK DATA - Top 5 Recommendations
+// MOCK DATA - Top Buys (stocks NOT in portfolio, recommended to buy)
 // ─────────────────────────────────────────────────────────────────────────────
 
-const TOP_RECOMMENDATIONS = [
-  { ticker: 'NVDA', name: 'NVIDIA Corporation', score: 94, change: 2.58, price: 495.22 },
-  { ticker: 'MSFT', name: 'Microsoft Corporation', score: 92, change: 1.10, price: 378.91 },
-  { ticker: 'GOOGL', name: 'Alphabet Inc.', score: 89, change: -0.62, price: 141.80 },
-  { ticker: 'AMZN', name: 'Amazon.com Inc.', score: 87, change: 1.83, price: 178.25 },
-  { ticker: 'AAPL', name: 'Apple Inc.', score: 85, change: 1.39, price: 178.72 },
+const TOP_BUYS = [
+  { ticker: 'META', name: 'Meta Platforms Inc.', score: 94, change: 2.15, price: 505.75 },
+  { ticker: 'AVGO', name: 'Broadcom Inc.', score: 91, change: 1.82, price: 168.45 },
+  { ticker: 'CRM', name: 'Salesforce Inc.', score: 88, change: 1.35, price: 272.30 },
+  { ticker: 'NFLX', name: 'Netflix Inc.', score: 86, change: 0.95, price: 478.20 },
+  { ticker: 'ADBE', name: 'Adobe Inc.', score: 84, change: 1.10, price: 524.80 },
 ];
-
-// Mobile shows only top 4 recommendations
-const MOBILE_TOP_RECOMMENDATIONS = TOP_RECOMMENDATIONS.slice(0, 4);
 
 // ─────────────────────────────────────────────────────────────────────────────
 // COMPONENT
@@ -40,6 +40,42 @@ export function DashboardPage() {
   const { news } = useNews({ limit: 3 });
   const isMobile = useIsMobile();
 
+  // Get real portfolio data
+  const { holdings, fetchPortfolio } = usePortfolioStore();
+
+  // Fetch portfolio on mount
+  useEffect(() => {
+    if (holdings.length === 0) {
+      fetchPortfolio();
+    }
+  }, [holdings.length, fetchPortfolio]);
+
+  // Top Sells = holdings sorted by worst daily performance (from actual portfolio)
+  const topSells = useMemo(() => {
+    return [...holdings]
+      .sort((a, b) => a.dayChangePercent - b.dayChangePercent) // Worst performers first
+      .slice(0, 5)
+      .map(h => ({
+        ticker: h.symbol,
+        name: h.name,
+        change: h.dayChangePercent,
+        price: h.currentPrice,
+      }));
+  }, [holdings]);
+
+  // Mobile shows only top 3
+  const mobileTopBuys = TOP_BUYS.slice(0, 3);
+  const mobileTopSells = topSells.slice(0, 3);
+
+  // Calculate real portfolio totals
+  const portfolioTotals = useMemo(() => {
+    const totalValue = holdings.reduce((sum, h) => sum + h.value, 0);
+    const totalGain = holdings.reduce((sum, h) => sum + h.gain, 0);
+    const totalCost = holdings.reduce((sum, h) => sum + h.costBasis, 0);
+    const gainPercent = totalCost > 0 ? (totalGain / totalCost) * 100 : 0;
+    return { totalValue, totalGain, gainPercent };
+  }, [holdings]);
+
   // Performance comparison chart data - SENTINEL vs alternatives
   const performanceComparisonData = useMemo(() => {
     const months = 12;
@@ -47,15 +83,21 @@ export function DashboardPage() {
 
     const sentinelData: Array<{ x: string; y: number }> = [];
     const sp500Data: Array<{ x: string; y: number }> = [];
+    const nasdaqData: Array<{ x: string; y: number }> = [];
     const bondsData: Array<{ x: string; y: number }> = [];
+    const goldData: Array<{ x: string; y: number }> = [];
 
     const sentinelReturns = [0.018, 0.012, 0.022, 0.008, 0.015, 0.019, 0.011, 0.016, 0.014, 0.020, 0.013, 0.017];
     const sp500Returns = [0.010, 0.005, 0.012, -0.003, 0.008, 0.011, 0.004, 0.009, 0.006, 0.010, 0.007, 0.008];
+    const nasdaqReturns = [0.012, 0.007, 0.014, -0.005, 0.010, 0.013, 0.005, 0.011, 0.008, 0.012, 0.009, 0.010];
     const bondsReturns = [0.003, 0.002, 0.004, 0.001, 0.003, 0.002, 0.003, 0.002, 0.004, 0.003, 0.002, 0.003];
+    const goldReturns = [0.004, 0.001, 0.005, 0.002, 0.002, 0.003, 0.001, 0.004, 0.002, 0.003, 0.001, 0.002];
 
     let sentinelValue = startValue;
     let sp500Value = startValue;
+    let nasdaqValue = startValue;
     let bondsValue = startValue;
+    let goldValue = startValue;
 
     for (let i = 0; i < months; i++) {
       const date = new Date();
@@ -64,43 +106,25 @@ export function DashboardPage() {
 
       sentinelValue = sentinelValue * (1 + sentinelReturns[i]);
       sp500Value = sp500Value * (1 + sp500Returns[i]);
+      nasdaqValue = nasdaqValue * (1 + nasdaqReturns[i]);
       bondsValue = bondsValue * (1 + bondsReturns[i]);
+      goldValue = goldValue * (1 + goldReturns[i]);
 
       sentinelData.push({ x: dateStr, y: Math.round(sentinelValue) });
       sp500Data.push({ x: dateStr, y: Math.round(sp500Value) });
+      nasdaqData.push({ x: dateStr, y: Math.round(nasdaqValue) });
       bondsData.push({ x: dateStr, y: Math.round(bondsValue) });
+      goldData.push({ x: dateStr, y: Math.round(goldValue) });
     }
 
     return [
       { id: 'SENTINEL', data: sentinelData },
+      { id: 'NASDAQ', data: nasdaqData },
       { id: 'S&P 500', data: sp500Data },
+      { id: 'Gold', data: goldData },
       { id: 'Bonds', data: bondsData },
     ];
   }, []);
-
-  // Calculate performance metrics
-  const performanceMetrics = useMemo(() => {
-    if (performanceComparisonData.length < 3) return null;
-
-    const sentinelData = performanceComparisonData[0].data;
-    const sp500Data = performanceComparisonData[1].data;
-
-    const sentinelStart = sentinelData[0]?.y || 10000;
-    const sentinelEnd = sentinelData[sentinelData.length - 1]?.y || 10000;
-    const sp500Start = sp500Data[0]?.y || 10000;
-    const sp500End = sp500Data[sp500Data.length - 1]?.y || 10000;
-
-    const sentinelReturn = ((sentinelEnd - sentinelStart) / sentinelStart) * 100;
-    const sp500Return = ((sp500End - sp500Start) / sp500Start) * 100;
-    const difference = sentinelReturn - sp500Return;
-
-    return {
-      sentinelReturn: sentinelReturn.toFixed(1),
-      sp500Return: sp500Return.toFixed(1),
-      difference: difference.toFixed(1),
-      sentinelValue: sentinelEnd.toLocaleString(),
-    };
-  }, [performanceComparisonData]);
 
   // Mobile Layout
   if (isMobile) {
@@ -110,20 +134,20 @@ export function DashboardPage() {
         <div className={styles.mobileValueCard}>
           <div className={styles.mobileValueTop}>
             <Briefcase size={18} className={styles.mobileValueIcon} />
-            <span className={styles.mobileValueLabel}>Sentinel Portfolio</span>
+            <span className={styles.mobileValueLabel}>My Portfolio</span>
           </div>
-          {performanceMetrics && (
-            <div className={styles.mobileValueBottom}>
-              <span className={styles.mobileValueAmount}>${performanceMetrics.sentinelValue}</span>
-              <span
-                className={styles.mobileValueChange}
-                data-positive={parseFloat(performanceMetrics.sentinelReturn) >= 0}
-              >
-                {parseFloat(performanceMetrics.sentinelReturn) >= 0 ? '+' : ''}
-                {performanceMetrics.sentinelReturn}%
-              </span>
-            </div>
-          )}
+          <div className={styles.mobileValueBottom}>
+            <span className={styles.mobileValueAmount}>
+              ${portfolioTotals.totalValue.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
+            </span>
+            <span
+              className={styles.mobileValueChange}
+              data-positive={portfolioTotals.gainPercent >= 0}
+            >
+              {portfolioTotals.gainPercent >= 0 ? '+' : ''}
+              {portfolioTotals.gainPercent.toFixed(1)}%
+            </span>
+          </div>
         </div>
 
         {/* Chart Card */}
@@ -131,13 +155,13 @@ export function DashboardPage() {
           <div className={styles.mobileChartWrapper}>
             <FinancialLineChart
               data={performanceComparisonData}
-              height={110}
+              height={160}
               enableArea={true}
               areaSeriesIndex={0}
               enablePoints={false}
               showZeroLine={false}
               formatValue={(value) => `$${value.toLocaleString()}`}
-              colors={['#5BA3A5', '#6b7280', '#4b5563']}
+              colors={['#5BA3A5', '#9b8ab8', '#7a99b8', '#b8a07a', '#a89878']}
               minimal={true}
             />
           </div>
@@ -147,45 +171,70 @@ export function DashboardPage() {
               <span>SENTINEL</span>
             </div>
             <div className={styles.mobileLegendItem}>
-              <span className={styles.mobileLegendDot} style={{ background: '#6b7280' }} />
+              <span className={styles.mobileLegendDot} style={{ background: '#9b8ab8' }} />
+              <span>NASDAQ</span>
+            </div>
+            <div className={styles.mobileLegendItem}>
+              <span className={styles.mobileLegendDot} style={{ background: '#7a99b8' }} />
               <span>S&P 500</span>
             </div>
             <div className={styles.mobileLegendItem}>
-              <span className={styles.mobileLegendDot} style={{ background: '#4b5563' }} />
+              <span className={styles.mobileLegendDot} style={{ background: '#b8a07a' }} />
+              <span>Gold</span>
+            </div>
+            <div className={styles.mobileLegendItem}>
+              <span className={styles.mobileLegendDot} style={{ background: '#a89878' }} />
               <span>Bonds</span>
             </div>
           </div>
         </div>
 
-        {/* Top Picks */}
-        <div className={styles.mobilePicksCard}>
-          <div className={styles.mobilePicksHeader}>
-            <TrendingUp size={16} className={styles.mobilePicksIcon} />
-            <span className={styles.mobilePicksTitle}>Top Picks</span>
-            <button
-              className={styles.mobilePicksMore}
-              onClick={() => navigate('/app/dashboard/recommendations')}
-            >
-              View All
-              <ArrowRight size={12} />
-            </button>
-          </div>
-          <div className={styles.mobilePicksList}>
-            {MOBILE_TOP_RECOMMENDATIONS.map((rec, index) => (
-              <div key={rec.ticker} className={styles.mobilePickItem}>
-                <span className={styles.mobilePickRank}>#{index + 1}</span>
-                <div className={styles.mobilePickInfo}>
+        {/* Top Buys & Sells Grid */}
+        <div className={styles.mobilePicksGrid}>
+          {/* Top Buys */}
+          <div className={styles.mobilePicksCard}>
+            <div className={styles.mobilePicksHeader}>
+              <TrendingUp size={16} className={styles.mobilePicksIcon} />
+              <span className={styles.mobilePicksTitle}>Top Buys</span>
+            </div>
+            <div className={styles.mobilePicksList}>
+              {mobileTopBuys.map((rec, index) => (
+                <div key={rec.ticker} className={styles.mobilePickItem}>
+                  <span className={styles.mobilePickRank}>#{index + 1}</span>
                   <span className={styles.mobilePickTicker}>{rec.ticker}</span>
+                  <span className={styles.mobilePickPrice}>${rec.price.toFixed(0)}</span>
+                  <span
+                    className={styles.mobilePickChange}
+                    data-positive={rec.change >= 0}
+                  >
+                    {rec.change >= 0 ? '+' : ''}{rec.change.toFixed(2)}%
+                  </span>
                 </div>
-                <span className={styles.mobilePickPrice}>${rec.price.toFixed(0)}</span>
-                <span
-                  className={styles.mobilePickChange}
-                  data-positive={rec.change >= 0}
-                >
-                  {rec.change >= 0 ? '+' : ''}{rec.change.toFixed(2)}%
-                </span>
-              </div>
-            ))}
+              ))}
+            </div>
+          </div>
+
+          {/* Top Sells - From actual portfolio */}
+          <div className={styles.mobilePicksCard} data-variant="sell">
+            <div className={styles.mobilePicksHeader}>
+              <TrendingDown size={16} className={styles.mobileSellsIcon} />
+              <span className={styles.mobilePicksTitle}>Top Sells</span>
+            </div>
+            <div className={styles.mobilePicksList}>
+              {mobileTopSells.map((rec, index) => (
+                <div key={rec.ticker} className={styles.mobilePickItem}>
+                  <span className={styles.mobilePickRank}>#{index + 1}</span>
+                  <span className={styles.mobilePickTicker}>{rec.ticker}</span>
+                  <span className={styles.mobilePickPrice}>${rec.price.toFixed(0)}</span>
+                  <span
+                    className={styles.mobilePickChange}
+                    data-positive={rec.change >= 0}
+                  >
+                    {rec.change >= 0 ? '+' : ''}{rec.change.toFixed(2)}%
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -214,20 +263,20 @@ export function DashboardPage() {
           <div className={styles.chartHeaderLeft}>
             <h2 className={styles.chartTitle}>
               <Briefcase size={14} />
-              Portfolio Performance
+              My Portfolio
             </h2>
-            {performanceMetrics && (
-              <div className={styles.chartMetrics}>
-                <span className={styles.chartMetricValue}>${performanceMetrics.sentinelValue}</span>
-                <span
-                  className={styles.chartMetricChange}
-                  data-positive={parseFloat(performanceMetrics.sentinelReturn) >= 0}
-                >
-                  {parseFloat(performanceMetrics.sentinelReturn) >= 0 ? '+' : ''}
-                  {performanceMetrics.sentinelReturn}%
-                </span>
-              </div>
-            )}
+            <div className={styles.chartMetrics}>
+              <span className={styles.chartMetricValue}>
+                ${portfolioTotals.totalValue.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
+              </span>
+              <span
+                className={styles.chartMetricChange}
+                data-positive={portfolioTotals.gainPercent >= 0}
+              >
+                {portfolioTotals.gainPercent >= 0 ? '+' : ''}
+                {portfolioTotals.gainPercent.toFixed(1)}%
+              </span>
+            </div>
           </div>
           {/* Legend - Top Right */}
           <div className={styles.chartLegend}>
@@ -236,11 +285,19 @@ export function DashboardPage() {
               <span>SENTINEL</span>
             </div>
             <div className={styles.chartLegendItem}>
-              <span className={styles.chartLegendDot} style={{ background: '#6b7280' }} />
+              <span className={styles.chartLegendDot} style={{ background: '#9b8ab8' }} />
+              <span>NASDAQ</span>
+            </div>
+            <div className={styles.chartLegendItem}>
+              <span className={styles.chartLegendDot} style={{ background: '#7a99b8' }} />
               <span>S&P 500</span>
             </div>
             <div className={styles.chartLegendItem}>
-              <span className={styles.chartLegendDot} style={{ background: '#4b5563' }} />
+              <span className={styles.chartLegendDot} style={{ background: '#b8a07a' }} />
+              <span>Gold</span>
+            </div>
+            <div className={styles.chartLegendItem}>
+              <span className={styles.chartLegendDot} style={{ background: '#a89878' }} />
               <span>Bonds</span>
             </div>
           </div>
@@ -254,20 +311,20 @@ export function DashboardPage() {
             enablePoints={false}
             showZeroLine={false}
             formatValue={(value) => `$${value.toLocaleString()}`}
-            colors={['#5BA3A5', '#6b7280', '#4b5563']}
+            colors={['#5BA3A5', '#9b8ab8', '#7a99b8', '#b8a07a', '#a89878']}
             minimal={true}
           />
         </div>
       </div>
 
-      {/* Bottom Grid - Two Cards */}
+      {/* Bottom Grid - Three Cards */}
       <div className={styles.bottomGrid}>
-        {/* Top 5 Recommendations */}
+        {/* Top Buys */}
         <div className={styles.card}>
           <div className={styles.cardHeader}>
             <h3 className={styles.cardTitle}>
               <TrendingUp size={18} />
-              Top Recommendations
+              Top Buys
             </h3>
             <Button
               variant="secondary"
@@ -278,26 +335,53 @@ export function DashboardPage() {
             </Button>
           </div>
           <div className={styles.recommendationsList}>
-            {TOP_RECOMMENDATIONS.map((rec, index) => (
+            {TOP_BUYS.map((rec, index) => (
               <div key={rec.ticker} className={styles.recommendationItem}>
                 <span className={styles.recRank}>#{index + 1}</span>
                 <div className={styles.recInfo}>
                   <span className={styles.recTicker}>{rec.ticker}</span>
-                  <span className={styles.recName}>{rec.name}</span>
                 </div>
-                <div className={styles.recPrice}>
-                  <span className={styles.recPriceValue}>${rec.price.toFixed(2)}</span>
-                  <span
-                    className={styles.recChange}
-                    data-positive={rec.change >= 0}
-                  >
-                    {rec.change >= 0 ? '+' : ''}{rec.change.toFixed(2)}%
-                  </span>
+                <span className={styles.recPriceValue}>${rec.price.toFixed(0)}</span>
+                <span
+                  className={styles.recChange}
+                  data-positive={rec.change >= 0}
+                >
+                  {rec.change >= 0 ? '+' : ''}{rec.change.toFixed(2)}%
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Top Sells - From actual portfolio */}
+        <div className={styles.card}>
+          <div className={styles.cardHeader}>
+            <h3 className={styles.cardTitleSell}>
+              <TrendingDown size={18} />
+              Top Sells
+            </h3>
+            <Button
+              variant="secondary"
+              onClick={() => navigate('/app/dashboard/portfolio')}
+              icon={<ArrowRight size={14} />}
+            >
+              View Portfolio
+            </Button>
+          </div>
+          <div className={styles.recommendationsList}>
+            {topSells.map((rec, index) => (
+              <div key={rec.ticker} className={styles.recommendationItem}>
+                <span className={styles.recRankSell}>#{index + 1}</span>
+                <div className={styles.recInfo}>
+                  <span className={styles.recTicker}>{rec.ticker}</span>
                 </div>
-                <div className={styles.recScore}>
-                  <span className={styles.scoreValue}>{rec.score}</span>
-                  <span className={styles.scoreLabel}>Score</span>
-                </div>
+                <span className={styles.recPriceValue}>${rec.price.toFixed(0)}</span>
+                <span
+                  className={styles.recChange}
+                  data-positive={rec.change >= 0}
+                >
+                  {rec.change >= 0 ? '+' : ''}{rec.change.toFixed(2)}%
+                </span>
               </div>
             ))}
           </div>
