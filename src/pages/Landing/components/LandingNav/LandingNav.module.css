@@ -42,11 +42,11 @@
 }
 
 .logoText {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-led);
   font-size: var(--sentinel-text-lg);
   font-weight: var(--sentinel-font-semibold);
   color: var(--sentinel-text-primary);
-  letter-spacing: 0.15em;
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 /* Desktop Navigation */

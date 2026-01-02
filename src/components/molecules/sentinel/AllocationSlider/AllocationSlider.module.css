@@ -41,11 +41,11 @@
 }
 
 .ticker {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-ticker);
   font-size: 14px;
   font-weight: 600;
   color: var(--sentinel-text-primary);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.08em;
 }
 
 .name {
@@ -81,10 +81,11 @@
   background: transparent;
   border: none;
   outline: none;
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 14px;
   font-weight: 600;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
   text-align: right;
   -moz-appearance: textfield;
 }
@@ -96,17 +97,19 @@
 }
 
 .percentSymbol {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 14px;
   font-weight: 600;
   color: var(--sentinel-text-secondary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .percentValue {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 14px;
   font-weight: 600;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 /* Track */
@@ -177,14 +180,17 @@
 }
 
 .price {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 12px;
   color: var(--sentinel-text-secondary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .dollarAmount {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 14px;
   font-weight: 600;
   color: var(--sentinel-accent-primary);
+  letter-spacing: var(--sentinel-tracking-led);
+  text-shadow: var(--sentinel-glow-accent);
 }

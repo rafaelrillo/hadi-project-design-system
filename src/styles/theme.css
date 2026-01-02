@@ -167,10 +167,10 @@
      Mono para datos financieros (precisión)
      ───────────────────────────────────────────────────────────────────────────── */
 
-  /* Font Families */
+  /* Font Families - SENTINEL Typography System */
   --sentinel-font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --sentinel-font-display: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --sentinel-font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  --sentinel-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --sentinel-font-mono: 'Space Mono', 'SF Mono', 'Fira Code', 'Consolas', monospace;
 
   /* ─────────────────────────────────────────────────────────────────────────────
      TIPOGRAFÍA - Escala
@@ -575,6 +575,98 @@
 
   /* Interactive states */
   --sentinel-bg-interactive-hover: var(--sentinel-bg-subtle);
+
+  /* ─────────────────────────────────────────────────────────────────────────────
+     SENTINEL 3.0 - STOCK MARKET TOKENS
+     Nuevos tokens para estética de pantallas financieras profesionales
+     ───────────────────────────────────────────────────────────────────────────── */
+
+  /* === DATA VISUALIZATION === */
+  --sentinel-data-glow: rgba(91, 163, 165, 0.25);
+  --sentinel-data-pulse: rgba(91, 163, 165, 0.4);
+
+  /* === TICKER TAPE === */
+  --sentinel-ticker-bg: #030406;
+  --sentinel-ticker-border: rgba(91, 163, 165, 0.15);
+  --sentinel-ticker-separator: rgba(255, 255, 255, 0.08);
+
+  /* === GRID SYSTEM === */
+  --sentinel-grid-line: rgba(255, 255, 255, 0.03);
+  --sentinel-grid-line-strong: rgba(255, 255, 255, 0.06);
+  --sentinel-grid-accent: rgba(91, 163, 165, 0.08);
+
+  /* === CANDLESTICK (Desaturados como SENTINEL) === */
+  --sentinel-candle-bullish: var(--sentinel-status-positive);
+  --sentinel-candle-bearish: var(--sentinel-status-negative);
+  --sentinel-candle-bullish-glow: rgba(74, 154, 124, 0.3);
+  --sentinel-candle-bearish-glow: rgba(184, 92, 92, 0.3);
+
+  /* === HEATMAP === */
+  --sentinel-heat-cold: #2563eb;
+  --sentinel-heat-cool: #3b82f6;
+  --sentinel-heat-neutral: #6b7280;
+  --sentinel-heat-warm: #c4a35a;
+  --sentinel-heat-hot: #b85c5c;
+
+  /* === DATA STATES === */
+  --sentinel-value-unchanged: var(--sentinel-text-secondary);
+  --sentinel-value-up: var(--sentinel-status-positive);
+  --sentinel-value-down: var(--sentinel-status-negative);
+  --sentinel-value-flash: rgba(255, 255, 255, 0.8);
+
+  /* === PANEL SYSTEM === */
+  --sentinel-panel-border: rgba(91, 163, 165, 0.1);
+  --sentinel-panel-header-bg: rgba(91, 163, 165, 0.05);
+  --sentinel-panel-divider: rgba(255, 255, 255, 0.04);
+
+  /* === SENTINEL TYPOGRAPHY SYSTEM ===
+
+     Space Grotesk: Títulos y headers - geométrica moderna con carácter atemporal
+     Space Mono: Tickers, símbolos y datos tabulares - monoespaciada elegante
+     DSEG7: Valores numéricos destacados - auténtico look LED de trading floor
+     Inter: UI general - máxima legibilidad
+  */
+
+  /* Títulos y headers */
+  --sentinel-font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Tickers y símbolos de acciones */
+  --sentinel-font-ticker: 'Space Mono', 'SF Mono', monospace;
+
+  /* Datos en tablas y contenido monoespaciado */
+  --sentinel-font-data: 'Space Mono', 'SF Mono', monospace;
+
+  /* Headers LED style (compatibilidad) */
+  --sentinel-font-led: 'Space Grotesk', 'Space Mono', monospace;
+
+  /* DotMatrix - valores numéricos estilo tablero de bolsa (self-hosted) */
+  --sentinel-font-numeric: 'DotMatrix', 'Space Mono', monospace;
+  /* DotMatrix Duo - puntos más densos, mejor legibilidad para texto */
+  --sentinel-font-dotmatrix-duo: 'DotMatrix Duo', 'DotMatrix', 'Space Mono', monospace;
+  /* DotMatrix Condensed - versión estrecha para espacios reducidos */
+  --sentinel-font-dotmatrix-condensed: 'DotMatrix Condensed', 'DotMatrix', 'Space Mono', monospace;
+
+  /* Escala comprimida para alta densidad */
+  --sentinel-data-xs: 10px;
+  --sentinel-data-sm: 11px;
+  --sentinel-data-base: 12px;
+  --sentinel-data-md: 13px;
+  --sentinel-data-lg: 14px;
+  --sentinel-data-xl: 16px;
+  --sentinel-data-2xl: 20px;
+  --sentinel-data-3xl: 28px;
+  --sentinel-data-4xl: 36px;
+  --sentinel-data-5xl: 48px;
+
+  /* Letter spacing para monospace */
+  --sentinel-tracking-data: 0em;
+  --sentinel-tracking-led: 0.05em;
+
+  /* LED Glow Effects */
+  --sentinel-glow-positive: 0 0 10px rgba(74, 154, 124, 0.5), 0 0 20px rgba(74, 154, 124, 0.3);
+  --sentinel-glow-negative: 0 0 10px rgba(184, 92, 92, 0.5), 0 0 20px rgba(184, 92, 92, 0.3);
+  --sentinel-glow-accent: 0 0 10px rgba(91, 163, 165, 0.5), 0 0 20px rgba(91, 163, 165, 0.3);
+  --sentinel-glow-neutral: 0 0 8px rgba(154, 160, 166, 0.3);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════════
@@ -710,6 +802,64 @@
   }
   50% {
     transform: translateY(-4px);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   SENTINEL 3.0 - STOCK MARKET KEYFRAMES
+   Animaciones para datos financieros en tiempo real
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* Valor que cambia - flash sutil */
+@keyframes sentinel-value-flash {
+  0% {
+    background-color: transparent;
+  }
+  15% {
+    background-color: var(--sentinel-data-pulse);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+/* Ticker scroll infinito */
+@keyframes sentinel-ticker-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Glow pulsante para datos activos */
+@keyframes sentinel-data-glow {
+  0%, 100% {
+    text-shadow: 0 0 0 transparent;
+  }
+  50% {
+    text-shadow: 0 0 8px var(--sentinel-data-glow);
+  }
+}
+
+/* Scan line retro (muy sutil) */
+@keyframes sentinel-scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+/* Data rain - caída de caracteres */
+@keyframes sentinel-data-rain {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
   }
 }
 

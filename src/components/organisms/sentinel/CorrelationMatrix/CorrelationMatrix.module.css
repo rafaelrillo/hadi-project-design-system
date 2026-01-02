@@ -56,9 +56,10 @@
   display: flex;
   align-items: center;
   gap: 4px;
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 10px;
   color: var(--sentinel-text-tertiary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .legendColor {
@@ -142,10 +143,11 @@
 }
 
 .headerLabel {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-ticker);
   font-size: inherit;
   font-weight: 500;
   color: var(--sentinel-text-secondary);
+  letter-spacing: 0.08em;
   writing-mode: vertical-rl;
   transform: rotate(180deg);
   text-overflow: ellipsis;
@@ -170,10 +172,11 @@
 }
 
 .rowLabel span {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-ticker);
   font-size: inherit;
   font-weight: 500;
   color: var(--sentinel-text-secondary);
+  letter-spacing: 0.08em;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -223,17 +226,19 @@
 }
 
 .cellValue {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: inherit;
   font-weight: 500;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .diagonalMark {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: inherit;
   color: var(--sentinel-text-disabled);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -281,10 +286,12 @@
 }
 
 .hoveredValue {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 13px;
   font-weight: 600;
   color: var(--sentinel-accent-primary);
+  letter-spacing: var(--sentinel-tracking-led);
+  text-shadow: var(--sentinel-glow-accent);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────

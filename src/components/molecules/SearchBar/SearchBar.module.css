@@ -30,7 +30,8 @@
   background-color: var(--sentinel-bg-elevated);
   border: 1px solid var(--sentinel-border-default);
   border-radius: var(--sentinel-radius-md);
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-led);
+  letter-spacing: var(--sentinel-tracking-led);
   outline: none;
   transition: var(--sentinel-transition-normal);
   line-height: 1.5;

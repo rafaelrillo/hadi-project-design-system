@@ -52,11 +52,12 @@
   padding: 6px 12px;
   background: var(--sentinel-accent-subtle);
   border-radius: var(--sentinel-radius-sm, 6px);
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 11px;
   color: var(--sentinel-accent-primary);
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  text-shadow: var(--sentinel-glow-accent);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -137,10 +138,11 @@
 }
 
 .rankNumber {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 14px;
   font-weight: 600;
   color: var(--sentinel-text-secondary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .periodInfo {
@@ -157,9 +159,10 @@
 }
 
 .periodDates {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 11px;
   color: var(--sentinel-text-tertiary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .periodMetrics {
@@ -186,14 +189,15 @@
 }
 
 .similarityValue {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 14px;
   font-weight: 600;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .similarityLabel {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 9px;
   color: var(--sentinel-text-tertiary);
   text-transform: uppercase;
@@ -201,21 +205,24 @@
 }
 
 .returnBadge {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 13px;
   font-weight: 500;
   padding: 4px 8px;
   border-radius: var(--sentinel-radius-sm, 6px);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .returnBadge[data-positive="true"] {
   color: var(--sentinel-status-positive-text);
   background: var(--sentinel-status-positive-subtle);
+  text-shadow: var(--sentinel-glow-positive);
 }
 
 .returnBadge[data-positive="false"] {
   color: var(--sentinel-status-negative-text);
   background: var(--sentinel-status-negative-subtle);
+  text-shadow: var(--sentinel-glow-negative);
 }
 
 .expandIcon {
@@ -272,7 +279,7 @@
 }
 
 .metricLabel {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 10px;
   color: var(--sentinel-text-tertiary);
   text-transform: uppercase;
@@ -280,18 +287,21 @@
 }
 
 .metricValue {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 14px;
   font-weight: 500;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .metricValue[data-positive="true"] {
   color: var(--sentinel-status-positive-text);
+  text-shadow: var(--sentinel-glow-positive);
 }
 
 .metricValue[data-positive="false"] {
   color: var(--sentinel-status-negative-text);
+  text-shadow: var(--sentinel-glow-negative);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -390,13 +400,14 @@
 }
 
 .eventDate {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 10px;
   color: var(--sentinel-text-tertiary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .eventMagnitude {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 9px;
   text-transform: uppercase;
   letter-spacing: 0.05em;

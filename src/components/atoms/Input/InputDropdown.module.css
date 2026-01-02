@@ -26,8 +26,9 @@
   border: 1px solid var(--sentinel-border-default);
   border-radius: var(--sentinel-radius-md);
   font-size: var(--sentinel-text-sm);
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-led);
   font-weight: var(--sentinel-font-normal);
+  letter-spacing: var(--sentinel-tracking-led);
   line-height: 1.5;
   color: var(--sentinel-text-primary);
   background-color: var(--sentinel-bg-elevated);
@@ -124,8 +125,9 @@
 .option {
   padding: var(--sentinel-space-2) var(--sentinel-space-3);
   font-size: var(--sentinel-text-sm);
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-led);
   font-weight: var(--sentinel-font-normal);
+  letter-spacing: var(--sentinel-tracking-led);
   line-height: 1.5;
   color: var(--sentinel-text-primary);
   background-color: transparent;

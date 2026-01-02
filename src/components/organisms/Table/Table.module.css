@@ -26,8 +26,9 @@
   --table-row-height: 44px;
   width: 100%;
   border-collapse: collapse;
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-led);
   font-size: var(--sentinel-text-sm);
+  letter-spacing: var(--sentinel-tracking-led);
   background-color: var(--sentinel-bg-elevated);
 }
 
@@ -171,7 +172,8 @@
   font-size: var(--sentinel-text-sm);
   font-weight: var(--sentinel-font-normal);
   color: var(--sentinel-text-primary);
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-led);
+  letter-spacing: var(--sentinel-tracking-led);
   text-align: left;
   vertical-align: middle;
 }
@@ -329,8 +331,10 @@
 
 .tdPositive {
   color: var(--sentinel-status-positive-text);
+  text-shadow: var(--sentinel-glow-positive);
 }
 
 .tdNegative {
   color: var(--sentinel-status-negative-text);
+  text-shadow: var(--sentinel-glow-negative);
 }

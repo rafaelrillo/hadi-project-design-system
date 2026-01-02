@@ -14,7 +14,8 @@
   background-color: var(--sentinel-bg-elevated);
   border: 1px solid var(--sentinel-border-subtle);
   border-radius: var(--sentinel-radius-sm);
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-led);
+  letter-spacing: var(--sentinel-tracking-led);
   transition: all var(--sentinel-transition-normal);
   overflow: hidden;
 }
@@ -63,7 +64,8 @@
   font-size: var(--sentinel-font-sm);
   font-weight: 400;
   color: var(--sentinel-text-primary);
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-led);
+  letter-spacing: var(--sentinel-tracking-led);
   line-height: 1.5;
   padding: 0 8px;
   cursor: text;

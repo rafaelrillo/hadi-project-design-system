@@ -46,11 +46,11 @@
 }
 
 .symbol {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-ticker);
   font-size: var(--sentinel-font-base);
   font-weight: 600;
   color: var(--sentinel-text-primary);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.08em;
 }
 
 .name {
@@ -61,23 +61,25 @@
 
 /* Action Badges */
 .actionBadge {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 11px;
   font-weight: 600;
   padding: 5px 10px;
   border-radius: var(--sentinel-radius-sm);
   text-transform: uppercase;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.05em;
 }
 
 .actionBuy {
   background: hsla(160, 40%, 45%, 0.12);
   color: var(--sentinel-status-positive-text);
+  text-shadow: var(--sentinel-glow-positive);
 }
 
 .actionSell {
   background: hsla(0, 40%, 55%, 0.12);
   color: var(--sentinel-status-negative-text);
+  text-shadow: var(--sentinel-glow-negative);
 }
 
 .actionHold {
@@ -115,10 +117,11 @@
 }
 
 .priceValue {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: var(--sentinel-font-sm);
   font-weight: 500;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
   display: flex;
   align-items: center;
   gap: 6px;
@@ -126,10 +129,12 @@
 
 .pricePositive {
   color: var(--sentinel-status-positive-text);
+  text-shadow: var(--sentinel-glow-positive);
 }
 
 .priceNegative {
   color: var(--sentinel-status-negative-text);
+  text-shadow: var(--sentinel-glow-negative);
 }
 
 .priceChange {
@@ -168,10 +173,11 @@
 }
 
 .confidenceValue {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: var(--sentinel-font-xs);
   font-weight: 500;
   color: var(--sentinel-text-secondary);
+  letter-spacing: var(--sentinel-tracking-led);
   min-width: 32px;
 }
 
@@ -212,7 +218,7 @@
 }
 
 .expandIcon {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-ticker);
   font-size: 14px;
   color: var(--sentinel-text-tertiary);
   opacity: 0.6;

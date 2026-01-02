@@ -81,3 +81,28 @@ export type {
   BacktestStatistic,
   BacktestTrade,
 } from './BacktestResults';
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// SENTINEL 3.0 - STOCK MARKET COMPONENTS
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// TickerTape - Real-time scrolling stock ticker
+export { TickerTape } from './TickerTape';
+export type { TickerTapeProps, TickerItem } from './TickerTape';
+
+// DataPanel - Multi-panel container with collapsible header
+export { DataPanel } from './DataPanel';
+export type { DataPanelProps } from './DataPanel';
+
+// FinancialTable - High-density data table with sorting
+export { FinancialTable } from './FinancialTable';
+export type {
+  FinancialTableProps,
+  FinancialColumn,
+  ColumnFormat,
+  SortDirection as FinancialTableSortDirection,
+} from './FinancialTable';
+
+// Watchlist - Stock watchlist with sparklines
+export { Watchlist } from './Watchlist';
+export type { WatchlistProps, WatchlistItem } from './Watchlist';

@@ -58,20 +58,21 @@
 }
 
 .errorName {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-led);
   font-size: var(--sentinel-text-xs);
   color: var(--sentinel-status-warning);
   margin: 0 0 var(--sentinel-space-2) 0;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .errorMessage {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-led);
   font-size: var(--sentinel-text-xs);
   color: var(--sentinel-text-tertiary);
   margin: 0;
   word-break: break-word;
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .actions {

@@ -73,10 +73,11 @@
 }
 
 .ticker {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-ticker);
   font-size: 15px;
   font-weight: 700;
   color: var(--sentinel-text-primary);
+  letter-spacing: 0.08em;
 }
 
 .name {
@@ -95,9 +96,10 @@
 }
 
 .shares {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 13px;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .price {
@@ -114,17 +116,20 @@
 }
 
 .total {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 15px;
   font-weight: 600;
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .total.positive {
   color: var(--sentinel-status-positive);
+  text-shadow: var(--sentinel-glow-positive);
 }
 
 .total.negative {
   color: var(--sentinel-status-negative);
+  text-shadow: var(--sentinel-glow-negative);
 }
 
 .fee {

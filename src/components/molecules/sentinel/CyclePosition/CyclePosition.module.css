@@ -36,9 +36,10 @@
 }
 
 .confidence {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: var(--sentinel-font-xs);
   color: var(--sentinel-text-tertiary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────

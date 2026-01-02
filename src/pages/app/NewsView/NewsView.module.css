@@ -58,9 +58,10 @@
 }
 
 .statValue {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 16px;
   font-weight: 600;
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .statLabel {
@@ -507,9 +508,10 @@
   display: flex;
   align-items: center;
   gap: 2px;
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-ticker);
   font-size: 9px;
   font-weight: 600;
+  letter-spacing: 0.08em;
   padding: 2px 5px;
   background: rgba(var(--sentinel-accent-primary-rgb, 91, 163, 165), 0.1);
   border-radius: var(--sentinel-radius-xs);
@@ -574,9 +576,10 @@
 }
 
 .mobileStatValue {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 14px;
   font-weight: 700;
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .mobileStatLabel {

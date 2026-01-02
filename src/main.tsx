@@ -5,6 +5,7 @@ import { App } from './App';
 
 // Estilos en orden correcto
 import './styles/globals.css';               // Reset y base
+import './styles/fonts.css';                 // DotMatrix font family (self-hosted)
 import './styles/theme.css';                 // Variables del tema SENTINEL
 import './styles/typography/sentinel.css';   // Tipografía SENTINEL
 

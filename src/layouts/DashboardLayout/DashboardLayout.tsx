@@ -1,6 +1,6 @@
 // Path: src/layouts/DashboardLayout/DashboardLayout.tsx
 
-import { useState } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { Outlet, NavLink, useNavigate, useLocation } from 'react-router-dom';
 import {
   Home,
@@ -13,8 +13,9 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 
-import { useAuthStore } from '../../store';
+import { useAuthStore, usePortfolioStore } from '../../store';
 import { AtmosphericBackground } from '../../components/atoms/sentinel';
+import { TickerTape, type TickerItem } from '../../components/organisms/sentinel';
 import { useIsMobile } from '../../hooks/useBreakpoint';
 import { MobileHeader } from '../../components/organisms/MobileHeader';
 import { BottomNavigation } from '../../components/organisms/BottomNavigation';
@@ -58,8 +59,26 @@ export function DashboardLayout() {
   const navigate = useNavigate();
   const location = useLocation();
   const { logout } = useAuthStore();
+  const { holdings, fetchPortfolio } = usePortfolioStore();
   const isMobile = useIsMobile();
   const [isMoreMenuOpen, setIsMoreMenuOpen] = useState(false);
+
+  // Fetch portfolio on mount
+  useEffect(() => {
+    if (holdings.length === 0) {
+      fetchPortfolio();
+    }
+  }, [holdings.length, fetchPortfolio]);
+
+  // Transform portfolio holdings to ticker items
+  const tickerItems: TickerItem[] = useMemo(() => {
+    return holdings.map((holding) => ({
+      symbol: holding.symbol,
+      price: holding.currentPrice,
+      change: holding.dayChange,
+      changePercent: holding.dayChangePercent,
+    }));
+  }, [holdings]);
 
   // Get current section based on path
   const getCurrentSection = (): NavItem => {
@@ -81,7 +100,6 @@ export function DashboardLayout() {
   };
 
   const currentSection = getCurrentSection();
-  const CurrentIcon = currentSection.icon;
 
   const handleLogout = () => {
     logout();
@@ -98,13 +116,23 @@ export function DashboardLayout() {
             onMenuClick={() => setIsMoreMenuOpen(true)}
           />
 
+          {/* Ticker Tape - Scrolling stock prices */}
+          {tickerItems.length > 0 && (
+            <TickerTape
+              items={tickerItems}
+              speed="normal"
+              variant="minimal"
+              pauseOnHover
+              className={styles.mobileTickerTape}
+            />
+          )}
+
           <main className={styles.mobileContent}>
             <Outlet />
           </main>
 
           <BottomNavigation
             items={mobileNavItems}
-            onMoreClick={() => setIsMoreMenuOpen(true)}
           />
 
           <MoreMenu
@@ -122,6 +150,17 @@ export function DashboardLayout() {
     <>
       {/* Atmospheric Background - Creates depth and "breathing" effect */}
       <AtmosphericBackground variant="subtle" animated />
+
+      {/* Ticker Tape - Full width scrolling stock prices */}
+      {tickerItems.length > 0 && (
+        <TickerTape
+          items={tickerItems}
+          speed="normal"
+          variant="detailed"
+          pauseOnHover
+          className={styles.tickerTape}
+        />
+      )}
 
       <div className={styles.layout}>
         {/* Sidebar */}
@@ -170,14 +209,6 @@ export function DashboardLayout() {
 
       {/* Main Content */}
       <main className={styles.main}>
-        {/* Header */}
-        <header className={styles.header}>
-          <div className={styles.headerLeft}>
-            <CurrentIcon size={22} className={styles.headerIcon} />
-            <h1 className={styles.title}>{currentSection.label}</h1>
-          </div>
-        </header>
-
         {/* Page Content */}
         <div className={styles.content}>
           <Outlet />

@@ -215,8 +215,9 @@
   border: 1px solid var(--sentinel-border-subtle);
   border-radius: var(--sentinel-radius-sm);
   color: var(--sentinel-text-primary);
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-led);
   font-size: var(--sentinel-text-sm);
+  letter-spacing: var(--sentinel-tracking-led);
   transition: var(--sentinel-transition-fast);
 }
 
@@ -299,8 +300,9 @@
   --table-row-height: 44px;
   width: 100%;
   border-collapse: collapse;
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-led);
   font-size: var(--sentinel-text-sm);
+  letter-spacing: var(--sentinel-tracking-led);
   background-color: var(--sentinel-bg-elevated);
 }
 
@@ -490,7 +492,8 @@
   font-size: var(--sentinel-text-sm);
   font-weight: var(--sentinel-font-regular);
   color: var(--sentinel-text-primary);
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-led);
+  letter-spacing: var(--sentinel-tracking-led);
   text-align: left;
   vertical-align: middle;
 }
@@ -586,9 +589,10 @@
 .tf {
   padding: var(--sentinel-space-3) var(--sentinel-space-4);
   height: var(--table-row-height);
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-led);
   font-size: var(--sentinel-text-sm);
   font-weight: var(--sentinel-font-semibold);
+  letter-spacing: var(--sentinel-tracking-led);
   color: var(--sentinel-text-primary);
   text-align: left;
   vertical-align: middle;
@@ -649,8 +653,9 @@
   border: 1px solid var(--sentinel-border-subtle);
   border-radius: var(--sentinel-radius-sm);
   color: var(--sentinel-text-primary);
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-led);
   font-size: var(--sentinel-text-sm);
+  letter-spacing: var(--sentinel-tracking-led);
   cursor: pointer;
   transition: var(--sentinel-transition-fast);
 }
@@ -719,8 +724,9 @@
   border: 1px solid transparent;
   border-radius: var(--sentinel-radius-sm);
   color: var(--sentinel-text-secondary);
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-led);
   font-size: var(--sentinel-text-sm);
+  letter-spacing: var(--sentinel-tracking-led);
   cursor: pointer;
   transition: var(--sentinel-transition-fast);
 }
@@ -744,7 +750,8 @@
   min-width: 32px;
   height: 32px;
   color: var(--sentinel-text-tertiary);
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-led);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────

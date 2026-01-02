@@ -1,4 +1,5 @@
 /* Path: src/pages/app/DashboardPage/DashboardPage.module.css */
+/* SENTINEL 3.0 - Clean, Simple Dashboard */
 
 .container {
   display: flex;
@@ -14,58 +15,89 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .mainChart {
-  background: var(--sentinel-bg-elevated);
-  border: 1px solid var(--sentinel-border-subtle);
+  background: rgba(16, 18, 26, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--sentinel-radius-lg);
-  padding: 20px;
+  padding: 24px;
   flex-shrink: 0;
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
 }
 
 .chartHeader {
   display: flex;
-  align-items: flex-start;
+  align-items: flex-end;
   justify-content: space-between;
-  margin-bottom: 12px;
+  margin-bottom: 24px;
 }
 
 .chartHeaderLeft {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 8px;
 }
 
 .chartTitle {
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--sentinel-text-primary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--sentinel-font-led);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--sentinel-text-tertiary);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   margin: 0;
+}
+
+.chartTitle svg {
+  color: var(--sentinel-accent-primary);
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
 }
 
 .chartMetrics {
   display: flex;
   align-items: baseline;
-  gap: 10px;
+  gap: 16px;
 }
 
 .chartMetricValue {
-  font-family: var(--sentinel-font-mono);
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--sentinel-text-primary);
+  font-family: var(--sentinel-font-numeric);
+  font-size: 42px;
+  font-weight: 400;
+  color: var(--sentinel-accent-primary);
+  letter-spacing: 0.02em;
+  line-height: 1;
+  text-shadow:
+    0 0 20px rgba(91, 163, 165, 0.5),
+    0 0 40px rgba(91, 163, 165, 0.25);
 }
 
 .chartMetricChange {
-  font-family: var(--sentinel-font-mono);
-  font-size: 14px;
-  font-weight: 600;
+  font-family: var(--sentinel-font-numeric);
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  padding-bottom: 2px;
 }
 
 .chartMetricChange[data-positive="true"] {
-  color: var(--sentinel-status-positive);
+  color: var(--sentinel-status-positive-text);
+  text-shadow:
+    0 0 12px rgba(107, 184, 154, 0.6),
+    0 0 24px rgba(107, 184, 154, 0.3);
 }
 
 .chartMetricChange[data-positive="false"] {
-  color: var(--sentinel-status-negative);
+  color: var(--sentinel-status-negative-text);
+  text-shadow:
+    0 0 12px rgba(209, 120, 120, 0.6),
+    0 0 24px rgba(209, 120, 120, 0.3);
 }
 
 /* Chart Legend - Desktop */
@@ -73,32 +105,35 @@
   display: flex;
   align-items: center;
   gap: 20px;
+  padding-bottom: 4px;
 }
 
 .chartLegendItem {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 13px;
+  gap: 6px;
+  font-family: var(--sentinel-font-led);
+  font-size: 12px;
   font-weight: 500;
   color: var(--sentinel-text-secondary);
+  letter-spacing: 0.04em;
 }
 
 .chartLegendLogo {
-  width: 16px;
-  height: 16px;
+  width: 12px;
+  height: 12px;
   flex-shrink: 0;
 }
 
 .chartLegendDot {
-  width: 10px;
-  height: 10px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   flex-shrink: 0;
 }
 
 .chartWrapper {
-  margin: 0 -8px;
+  margin: 0 -12px;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -124,14 +159,19 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .card {
-  background: var(--sentinel-bg-elevated);
-  border: 1px solid var(--sentinel-border-subtle);
+  background: rgba(16, 18, 26, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--sentinel-radius-lg);
   padding: 16px;
   display: flex;
   flex-direction: column;
   min-height: 0;
   overflow: hidden;
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
 }
 
 .cardHeader {
@@ -146,9 +186,12 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--sentinel-text-primary);
+  font-family: var(--sentinel-font-led);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--sentinel-text-tertiary);
+  letter-spacing: var(--sentinel-tracking-led);
+  text-transform: uppercase;
   margin: 0;
 }
 
@@ -186,10 +229,12 @@
 }
 
 .recRank {
-  font-family: var(--sentinel-font-mono);
-  font-size: 14px;
-  font-weight: 700;
+  font-family: var(--sentinel-font-numeric);
+  font-size: 13px;
+  font-weight: 600;
   color: var(--sentinel-accent-primary);
+  text-shadow: var(--sentinel-glow-accent);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .recInfo {
@@ -200,10 +245,11 @@
 }
 
 .recTicker {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-ticker);
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 400;
   color: var(--sentinel-text-primary);
+  letter-spacing: 0.08em;
 }
 
 .recName {
@@ -222,24 +268,28 @@
 }
 
 .recPriceValue {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 400;
   color: var(--sentinel-text-primary);
+  letter-spacing: 0.05em;
 }
 
 .recChange {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 400;
+  letter-spacing: 0.05em;
 }
 
 .recChange[data-positive="true"] {
   color: var(--sentinel-status-positive);
+  text-shadow: var(--sentinel-glow-positive);
 }
 
 .recChange[data-positive="false"] {
   color: var(--sentinel-status-negative);
+  text-shadow: var(--sentinel-glow-negative);
 }
 
 .recScore {
@@ -253,11 +303,13 @@
 }
 
 .scoreValue {
-  font-family: var(--sentinel-font-mono);
-  font-size: 16px;
-  font-weight: 700;
+  font-family: var(--sentinel-font-numeric);
+  font-size: 18px;
+  font-weight: 400;
   color: var(--sentinel-accent-primary);
   line-height: 1;
+  letter-spacing: 0.05em;
+  text-shadow: var(--sentinel-glow-accent);
 }
 
 .scoreLabel {
@@ -296,14 +348,19 @@
 
 /* Portfolio Value Card */
 .mobileValueCard {
-  background: var(--sentinel-bg-elevated);
-  border: 1px solid var(--sentinel-border-subtle);
+  background: rgba(16, 18, 26, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--sentinel-radius-lg);
-  padding: 14px 16px;
+  padding: 18px 16px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
   flex-shrink: 0;
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
 }
 
 .mobileValueTop {
@@ -317,49 +374,67 @@
 }
 
 .mobileValueLabel {
-  font-size: 14px;
+  font-family: var(--sentinel-font-led);
+  font-size: 11px;
   font-weight: 500;
-  color: var(--sentinel-text-secondary);
+  color: var(--sentinel-text-tertiary);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 .mobileValueBottom {
   display: flex;
   align-items: baseline;
-  gap: 10px;
+  gap: 14px;
 }
 
 .mobileValueAmount {
-  font-family: var(--sentinel-font-mono);
-  font-size: 28px;
-  font-weight: 700;
-  color: var(--sentinel-text-primary);
-  letter-spacing: -0.02em;
+  font-family: var(--sentinel-font-numeric);
+  font-size: 34px;
+  font-weight: 400;
+  color: var(--sentinel-accent-primary);
+  letter-spacing: 0.02em;
+  line-height: 1;
+  text-shadow:
+    0 0 16px rgba(91, 163, 165, 0.5),
+    0 0 32px rgba(91, 163, 165, 0.25);
 }
 
 .mobileValueChange {
-  font-family: var(--sentinel-font-mono);
-  font-size: 15px;
-  font-weight: 600;
+  font-family: var(--sentinel-font-numeric);
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  padding-bottom: 1px;
 }
 
 .mobileValueChange[data-positive="true"] {
-  color: var(--sentinel-status-positive);
+  color: var(--sentinel-status-positive-text);
+  text-shadow:
+    0 0 10px rgba(107, 184, 154, 0.6),
+    0 0 20px rgba(107, 184, 154, 0.3);
 }
 
 .mobileValueChange[data-positive="false"] {
-  color: var(--sentinel-status-negative);
+  color: var(--sentinel-status-negative-text);
+  text-shadow:
+    0 0 10px rgba(209, 120, 120, 0.6),
+    0 0 20px rgba(209, 120, 120, 0.3);
 }
 
 /* Chart Card */
 .mobileChartCard {
-  background: var(--sentinel-bg-elevated);
-  border: 1px solid var(--sentinel-border-subtle);
+  background: rgba(16, 18, 26, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--sentinel-radius-lg);
   padding: 10px 12px;
   display: flex;
   flex-direction: column;
   gap: 4px;
   flex-shrink: 0;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
 .mobileChartWrapper {
@@ -396,8 +471,10 @@
 
 /* Top Picks Card */
 .mobilePicksCard {
-  background: var(--sentinel-bg-elevated);
-  border: 1px solid var(--sentinel-border-subtle);
+  background: rgba(16, 18, 26, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--sentinel-radius-lg);
   padding: 12px 14px;
   flex: 1;
@@ -405,6 +482,7 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
 .mobilePicksHeader {
@@ -420,9 +498,12 @@
 }
 
 .mobilePicksTitle {
-  font-size: 15px;
+  font-family: var(--sentinel-font-led);
+  font-size: 13px;
   font-weight: 600;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
+  text-transform: uppercase;
   flex: 1;
 }
 
@@ -461,10 +542,12 @@
 }
 
 .mobilePickRank {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--sentinel-accent-primary);
+  text-shadow: var(--sentinel-glow-accent);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .mobilePickInfo {
@@ -472,33 +555,38 @@
 }
 
 .mobilePickTicker {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-ticker);
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 400;
   color: var(--sentinel-text-primary);
+  letter-spacing: 0.08em;
 }
 
 .mobilePickPrice {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 400;
   color: var(--sentinel-text-secondary);
+  letter-spacing: 0.05em;
 }
 
 .mobilePickChange {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 400;
   min-width: 54px;
   text-align: right;
+  letter-spacing: 0.05em;
 }
 
 .mobilePickChange[data-positive="true"] {
   color: var(--sentinel-status-positive);
+  text-shadow: var(--sentinel-glow-positive);
 }
 
 .mobilePickChange[data-positive="false"] {
   color: var(--sentinel-status-negative);
+  text-shadow: var(--sentinel-glow-negative);
 }
 
 /* News Card */
@@ -507,17 +595,20 @@
   align-items: center;
   gap: 12px;
   padding: 12px 14px;
-  background: var(--sentinel-bg-elevated);
-  border: 1px solid var(--sentinel-border-subtle);
+  background: rgba(16, 18, 26, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--sentinel-radius-lg);
   cursor: pointer;
   transition: all var(--sentinel-duration-fast) var(--sentinel-ease-default);
   -webkit-tap-highlight-color: transparent;
   flex-shrink: 0;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
 .mobileNewsCard:active {
-  background: var(--sentinel-bg-subtle);
+  background: rgba(28, 30, 42, 0.7);
   transform: scale(0.99);
 }
 
@@ -534,9 +625,12 @@
 }
 
 .mobileNewsTitle {
-  font-size: 14px;
+  font-family: var(--sentinel-font-led);
+  font-size: 13px;
   font-weight: 600;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
+  text-transform: uppercase;
 }
 
 .mobileNewsCount {

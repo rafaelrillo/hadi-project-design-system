@@ -4,7 +4,8 @@
 /* Form */
 .form {
   width: 100%;
-  font-family: var(--font-mono);
+  font-family: var(--sentinel-font-led);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 /* Fields Container */

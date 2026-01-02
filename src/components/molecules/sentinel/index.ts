@@ -90,3 +90,11 @@ export type { TransactionRowProps, TransactionType, TransactionStatus } from './
 // DateRangePicker - Date range selection component
 export { DateRangePicker } from './DateRangePicker';
 export type { DateRangePickerProps, DateRange, DatePreset } from './DateRangePicker';
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// SENTINEL 3.0 - STOCK MARKET MOLECULES
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// PriceDisplay - Value with change indicator and flash effect
+export { PriceDisplay } from './PriceDisplay';
+export type { PriceDisplayProps } from './PriceDisplay';

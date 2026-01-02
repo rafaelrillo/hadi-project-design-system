@@ -179,11 +179,15 @@
 }
 
 .percentageText {
-  font-size: var(--sentinel-text-lg);
-  font-weight: var(--sentinel-font-semibold);
-  font-family: var(--sentinel-font-mono);
+  font-size: var(--sentinel-text-xl);
+  font-weight: 600;
+  font-family: var(--sentinel-font-numeric);
   color: var(--confidence-color);
-  transition: color 700ms var(--sentinel-ease-smooth);
+  letter-spacing: var(--sentinel-tracking-led);
+  text-shadow: 0 0 15px rgba(var(--confidence-color-rgb), 0.6),
+               0 0 30px rgba(var(--confidence-color-rgb), 0.3);
+  transition: color 700ms var(--sentinel-ease-smooth),
+              text-shadow 700ms var(--sentinel-ease-smooth);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -252,12 +256,16 @@
 }
 
 .levelText {
+  font-family: var(--sentinel-font-numeric);
   font-size: var(--sentinel-text-base);
-  font-weight: var(--sentinel-font-semibold);
+  font-weight: 600;
   color: var(--confidence-color);
-  letter-spacing: 0.03em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  transition: color 700ms var(--sentinel-ease-smooth);
+  text-shadow: 0 0 12px rgba(var(--confidence-color-rgb), 0.5),
+               0 0 24px rgba(var(--confidence-color-rgb), 0.25);
+  transition: color 700ms var(--sentinel-ease-smooth),
+              text-shadow 700ms var(--sentinel-ease-smooth);
 }
 
 .percentageSubtext {

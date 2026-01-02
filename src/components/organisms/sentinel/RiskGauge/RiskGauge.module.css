@@ -307,37 +307,59 @@
 }
 
 .levelText {
+  font-family: var(--sentinel-font-numeric);
   font-size: var(--sentinel-text-xl);
-  font-weight: var(--sentinel-font-semibold);
-  letter-spacing: 0.05em;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .valueText {
   font-size: var(--sentinel-text-xs);
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   color: var(--sentinel-text-tertiary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
-/* Level colors */
+/* Level colors with LED glow */
 .levelDisplay.low {
   color: var(--sentinel-risk-low);
+}
+
+.levelDisplay.low .levelText {
+  text-shadow: 0 0 15px rgba(74, 154, 124, 0.6), 0 0 30px rgba(74, 154, 124, 0.3);
 }
 
 .levelDisplay.moderate {
   color: var(--sentinel-risk-moderate);
 }
 
+.levelDisplay.moderate .levelText {
+  text-shadow: 0 0 15px rgba(196, 163, 90, 0.6), 0 0 30px rgba(196, 163, 90, 0.3);
+}
+
 .levelDisplay.elevated {
   color: var(--sentinel-risk-elevated);
+}
+
+.levelDisplay.elevated .levelText {
+  text-shadow: 0 0 15px rgba(204, 136, 68, 0.6), 0 0 30px rgba(204, 136, 68, 0.3);
 }
 
 .levelDisplay.high {
   color: var(--sentinel-risk-high);
 }
 
+.levelDisplay.high .levelText {
+  text-shadow: 0 0 15px rgba(184, 92, 92, 0.6), 0 0 30px rgba(184, 92, 92, 0.3);
+}
+
 .levelDisplay.severe {
   color: var(--sentinel-risk-severe);
+}
+
+.levelDisplay.severe .levelText {
+  text-shadow: 0 0 15px rgba(153, 68, 68, 0.7), 0 0 30px rgba(153, 68, 68, 0.4);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────

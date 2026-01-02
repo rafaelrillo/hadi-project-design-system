@@ -89,7 +89,7 @@
   width: 180px;
   padding: 16px 24px;
   text-align: left;
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 10px;
   font-weight: 500;
   color: var(--sentinel-text-tertiary);
@@ -125,9 +125,10 @@
 }
 
 .periodDate {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 10px;
   color: var(--sentinel-text-tertiary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .currentBadge {
@@ -135,7 +136,7 @@
   padding: 2px 8px;
   background: var(--sentinel-accent-primary);
   color: var(--sentinel-text-inverse);
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 9px;
   font-weight: 600;
   text-transform: uppercase;
@@ -213,18 +214,20 @@
 }
 
 .value {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 14px;
   font-weight: 500;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .delta {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 10px;
+  letter-spacing: var(--sentinel-tracking-led);
   padding: 2px 6px;
   border-radius: var(--sentinel-radius-xs, 4px);
 }
@@ -245,9 +248,10 @@
 }
 
 .noData {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 14px;
   color: var(--sentinel-text-disabled);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────

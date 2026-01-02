@@ -9,12 +9,12 @@
 }
 
 .value {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: var(--sentinel-text-4xl);
   font-weight: var(--sentinel-font-bold);
   color: var(--sentinel-accent-primary);
-  letter-spacing: -0.02em;
-  text-shadow: 0 0 30px var(--sentinel-accent-glow);
+  letter-spacing: var(--sentinel-tracking-led);
+  text-shadow: var(--sentinel-glow-accent);
   line-height: 1;
 }
 

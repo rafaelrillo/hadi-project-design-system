@@ -17,11 +17,11 @@
 }
 
 .title {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-led);
   font-size: var(--sentinel-text-3xl);
   font-weight: var(--sentinel-font-bold);
   color: var(--sentinel-text-primary);
-  letter-spacing: 0.15em;
+  letter-spacing: var(--sentinel-tracking-led);
   margin: 0 0 var(--sentinel-space-4);
 }
 

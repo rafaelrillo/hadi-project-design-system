@@ -1,5 +1,5 @@
 // Path: src/pages/app/DashboardPage/DashboardPage.tsx
-// Overview/Home page for the SENTINEL Dashboard
+// SENTINEL 3.0 - Simple, Clean Dashboard
 
 import { useMemo } from 'react';
 import { TrendingUp, ArrowRight, Briefcase, Newspaper } from 'lucide-react';
@@ -41,7 +41,6 @@ export function DashboardPage() {
   const isMobile = useIsMobile();
 
   // Performance comparison chart data - SENTINEL vs alternatives
-  // Using seeded values to ensure SENTINEL is always on top
   const performanceComparisonData = useMemo(() => {
     const months = 12;
     const startValue = 10000;
@@ -50,7 +49,6 @@ export function DashboardPage() {
     const sp500Data: Array<{ x: string; y: number }> = [];
     const bondsData: Array<{ x: string; y: number }> = [];
 
-    // Predefined monthly returns to ensure consistent ordering
     const sentinelReturns = [0.018, 0.012, 0.022, 0.008, 0.015, 0.019, 0.011, 0.016, 0.014, 0.020, 0.013, 0.017];
     const sp500Returns = [0.010, 0.005, 0.012, -0.003, 0.008, 0.011, 0.004, 0.009, 0.006, 0.010, 0.007, 0.008];
     const bondsReturns = [0.003, 0.002, 0.004, 0.001, 0.003, 0.002, 0.003, 0.002, 0.004, 0.003, 0.002, 0.003];
@@ -207,14 +205,17 @@ export function DashboardPage() {
     );
   }
 
-  // Desktop Layout
+  // Desktop Layout - Simple Two Column
   return (
     <div className={styles.container}>
       {/* Main Chart - Full Width */}
       <div className={styles.mainChart}>
         <div className={styles.chartHeader}>
           <div className={styles.chartHeaderLeft}>
-            <h2 className={styles.chartTitle}>Portfolio Performance</h2>
+            <h2 className={styles.chartTitle}>
+              <Briefcase size={14} />
+              Portfolio Performance
+            </h2>
             {performanceMetrics && (
               <div className={styles.chartMetrics}>
                 <span className={styles.chartMetricValue}>${performanceMetrics.sentinelValue}</span>
@@ -305,7 +306,10 @@ export function DashboardPage() {
         {/* Latest News */}
         <div className={styles.card}>
           <div className={styles.cardHeader}>
-            <h3 className={styles.cardTitle}>Latest News</h3>
+            <h3 className={styles.cardTitle}>
+              <Newspaper size={18} />
+              Latest News
+            </h3>
             <Button
               variant="secondary"
               onClick={() => navigate('/app/dashboard/news')}

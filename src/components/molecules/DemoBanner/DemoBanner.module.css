@@ -22,10 +22,11 @@
 }
 
 .message {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-led);
   font-size: var(--sentinel-text-xs);
   color: var(--sentinel-accent-primary);
-  letter-spacing: 0.02em;
+  letter-spacing: var(--sentinel-tracking-led);
+  text-shadow: var(--sentinel-glow-accent);
 }
 
 .closeButton {

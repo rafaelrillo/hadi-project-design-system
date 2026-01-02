@@ -22,8 +22,9 @@
 .minLabel,
 .maxLabel {
   font-size: 12px;
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-led);
   color: var(--sentinel-text-tertiary);
+  letter-spacing: var(--sentinel-tracking-led);
   min-width: 40px;
 }
 
@@ -115,8 +116,9 @@
   border: 1px solid var(--sentinel-border-default);
   border-radius: var(--sentinel-radius-sm);
   font-size: 12px;
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-led);
   font-weight: 500;
+  letter-spacing: var(--sentinel-tracking-led);
   color: var(--sentinel-text-primary);
   white-space: nowrap;
   opacity: 0;

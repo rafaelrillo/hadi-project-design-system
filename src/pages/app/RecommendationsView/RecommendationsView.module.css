@@ -126,10 +126,11 @@
 }
 
 .riskValue {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 13px;
   font-weight: 600;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
   min-width: 36px;
 }
 
@@ -250,10 +251,11 @@
 }
 
 .ticker {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-ticker);
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 400;
   color: var(--sentinel-text-primary);
+  letter-spacing: 0.08em;
 }
 
 .exchange {
@@ -278,24 +280,28 @@
 }
 
 .price {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .change {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 13px;
   font-weight: 500;
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .change.positive {
   color: var(--sentinel-status-positive);
+  text-shadow: var(--sentinel-glow-positive);
 }
 
 .change.negative {
   color: var(--sentinel-status-negative);
+  text-shadow: var(--sentinel-glow-negative);
 }
 
 .cardRight {
@@ -319,17 +325,20 @@
 }
 
 .score {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 24px;
   font-weight: 700;
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .buyScore {
   color: var(--sentinel-status-positive);
+  text-shadow: var(--sentinel-glow-positive);
 }
 
 .sellScore {
   color: var(--sentinel-status-negative);
+  text-shadow: var(--sentinel-glow-negative);
 }
 
 .confidence {
@@ -425,18 +434,29 @@
 }
 
 .metricValue {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 16px;
   font-weight: 700;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .metricValue.positive {
   color: var(--sentinel-status-positive);
+  text-shadow: var(--sentinel-glow-positive);
 }
 
 .metricValue.negative {
   color: var(--sentinel-status-negative);
+  text-shadow: var(--sentinel-glow-negative);
+}
+
+.metricValue.target {
+  color: var(--sentinel-accent-primary);
+}
+
+.metricValue.stop {
+  color: var(--sentinel-status-warning);
 }
 
 .metricValue.high {
@@ -481,17 +501,20 @@
 }
 
 .signalValue {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 11px;
   font-weight: 600;
+  letter-spacing: 0.05em;
 }
 
 .signalValue.positive {
   color: var(--sentinel-status-positive);
+  text-shadow: var(--sentinel-glow-positive);
 }
 
 .signalValue.negative {
   color: var(--sentinel-status-negative);
+  text-shadow: var(--sentinel-glow-negative);
 }
 
 /* Responsive */
@@ -524,9 +547,12 @@
 }
 
 .sectionTitle {
-  font-size: 16px;
+  font-family: var(--sentinel-font-numeric);
+  font-size: 14px;
   font-weight: 600;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
+  text-transform: uppercase;
   margin: 0;
 }
 
@@ -678,10 +704,11 @@
 }
 
 .mobileRecTicker {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-ticker);
   font-size: 14px;
   font-weight: 600;
   color: var(--sentinel-text-primary);
+  letter-spacing: 0.08em;
 }
 
 .mobileRecName {
@@ -700,16 +727,28 @@
 }
 
 .mobileRecPriceValue {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 13px;
   font-weight: 600;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .mobileRecChange {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 11px;
   font-weight: 500;
+  letter-spacing: var(--sentinel-tracking-led);
+}
+
+.mobileRecChange.positive {
+  color: var(--sentinel-status-positive);
+  text-shadow: var(--sentinel-glow-positive);
+}
+
+.mobileRecChange.negative {
+  color: var(--sentinel-status-negative);
+  text-shadow: var(--sentinel-glow-negative);
 }
 
 .mobileRecScore {
@@ -718,9 +757,20 @@
 }
 
 .mobileRecScoreValue {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 18px;
   font-weight: 700;
+  letter-spacing: var(--sentinel-tracking-led);
+}
+
+.mobileRecScoreValue.buyScore {
+  color: var(--sentinel-status-positive);
+  text-shadow: var(--sentinel-glow-positive);
+}
+
+.mobileRecScoreValue.sellScore {
+  color: var(--sentinel-status-negative);
+  text-shadow: var(--sentinel-glow-negative);
 }
 
 .mobileRecChevron {
@@ -788,10 +838,29 @@
 }
 
 .mobileRecMetricValue {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 18px;
   font-weight: 700;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
+}
+
+.mobileRecMetricValue.target {
+  color: var(--sentinel-accent-primary);
+}
+
+.mobileRecMetricValue.positive {
+  color: var(--sentinel-status-positive);
+  text-shadow: var(--sentinel-glow-positive);
+}
+
+.mobileRecMetricValue.negative {
+  color: var(--sentinel-status-negative);
+  text-shadow: var(--sentinel-glow-negative);
+}
+
+.mobileRecMetricValue.stop {
+  color: var(--sentinel-status-warning);
 }
 
 .mobileRecButton {
@@ -880,10 +949,11 @@
 }
 
 .mobileMarketRiskValue {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 11px;
   font-weight: 600;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
   min-width: 28px;
 }
 

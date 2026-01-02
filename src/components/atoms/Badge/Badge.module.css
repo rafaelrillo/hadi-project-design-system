@@ -14,10 +14,10 @@
   display: inline-flex;
   align-items: center;
   gap: var(--sentinel-space-1);
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-led);
   font-size: var(--sentinel-text-xs);
   font-weight: var(--sentinel-font-medium);
-  letter-spacing: 0.02em;
+  letter-spacing: var(--sentinel-tracking-led);
   padding: var(--sentinel-space-1) var(--sentinel-space-2);
   border-radius: var(--sentinel-radius-sm);
   border: 1px solid transparent;
@@ -43,6 +43,7 @@
   background-color: var(--sentinel-accent-subtle);
   border-color: transparent;
   color: var(--sentinel-accent-primary);
+  text-shadow: var(--sentinel-glow-accent);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -53,6 +54,7 @@
   background-color: var(--sentinel-status-positive-subtle);
   border-color: transparent;
   color: var(--sentinel-status-positive-text);
+  text-shadow: var(--sentinel-glow-positive);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -63,6 +65,7 @@
   background-color: var(--sentinel-status-negative-subtle);
   border-color: transparent;
   color: var(--sentinel-status-negative-text);
+  text-shadow: var(--sentinel-glow-negative);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────

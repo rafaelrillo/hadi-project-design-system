@@ -64,9 +64,12 @@
 }
 
 .stepTitle {
-  font-size: 20px;
+  font-family: var(--sentinel-font-numeric);
+  font-size: 18px;
   font-weight: 600;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
+  text-transform: uppercase;
   margin: 0 0 8px;
 }
 
@@ -111,10 +114,11 @@
 }
 
 .currencySymbol {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 16px;
   font-weight: 600;
   color: var(--sentinel-text-secondary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .amountField {
@@ -122,10 +126,11 @@
   background: transparent;
   border: none;
   outline: none;
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 18px;
   font-weight: 600;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
   -moz-appearance: textfield;
 }
 
@@ -202,9 +207,12 @@
 }
 
 .selectedTitle {
-  font-size: 14px;
+  font-family: var(--sentinel-font-numeric);
+  font-size: 12px;
   font-weight: 600;
   color: var(--sentinel-text-secondary);
+  letter-spacing: var(--sentinel-tracking-led);
+  text-transform: uppercase;
   margin: 0;
 }
 
@@ -237,10 +245,11 @@
 }
 
 .allocationTotal {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 16px;
   font-weight: 600;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .allocationRemaining {
@@ -304,9 +313,12 @@
 }
 
 .reviewStocksTitle {
-  font-size: 14px;
+  font-family: var(--sentinel-font-numeric);
+  font-size: 12px;
   font-weight: 600;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
+  text-transform: uppercase;
   margin: 0;
   padding: 16px 20px;
   border-bottom: 1px solid var(--sentinel-border-subtle);
@@ -331,10 +343,11 @@
 }
 
 .reviewTicker {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-ticker);
   font-size: 14px;
   font-weight: 600;
   color: var(--sentinel-text-primary);
+  letter-spacing: 0.08em;
 }
 
 .reviewName {
@@ -349,16 +362,19 @@
 }
 
 .reviewAllocation {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 14px;
   font-weight: 600;
   color: var(--sentinel-accent-primary);
+  letter-spacing: var(--sentinel-tracking-led);
+  text-shadow: var(--sentinel-glow-accent);
 }
 
 .reviewAmount {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 14px;
   color: var(--sentinel-text-secondary);
+  letter-spacing: var(--sentinel-tracking-led);
   min-width: 100px;
   text-align: right;
 }
@@ -394,9 +410,12 @@
 }
 
 .chartSectionTitle {
-  font-size: 14px;
+  font-family: var(--sentinel-font-numeric);
+  font-size: 12px;
   font-weight: 600;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
+  text-transform: uppercase;
   margin: 0 0 16px;
 }
 
@@ -452,10 +471,11 @@
 }
 
 .barLabel {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-ticker);
   font-size: 13px;
   font-weight: 600;
   color: var(--sentinel-text-primary);
+  letter-spacing: 0.08em;
 }
 
 .barGroup {
@@ -488,9 +508,10 @@
 }
 
 .barValue {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 12px;
   color: var(--sentinel-text-secondary);
+  letter-spacing: var(--sentinel-tracking-led);
   min-width: 50px;
 }
 
@@ -522,9 +543,12 @@
 }
 
 .summaryTitle {
-  font-size: 14px;
+  font-family: var(--sentinel-font-numeric);
+  font-size: 12px;
   font-weight: 600;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
+  text-transform: uppercase;
   margin: 0;
 }
 
@@ -546,10 +570,11 @@
 }
 
 .statValue {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 14px;
   font-weight: 600;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .summaryDivider {

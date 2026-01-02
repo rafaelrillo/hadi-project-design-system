@@ -58,9 +58,10 @@
 }
 
 .modelVersion {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 11px;
   color: var(--sentinel-text-tertiary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .modelStats {
@@ -80,10 +81,11 @@
 }
 
 .statValue {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 14px;
   font-weight: 600;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .statLabel {
@@ -118,9 +120,10 @@
 }
 
 .statusValue {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 12px;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .detailsToggle {
@@ -210,9 +213,10 @@
   padding: 2px 6px;
   background: var(--sentinel-bg-interactive);
   border-radius: var(--sentinel-radius-xs, 4px);
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 10px;
   color: var(--sentinel-text-tertiary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .tab.active .tabCount {
@@ -246,7 +250,7 @@
 }
 
 .categoryTitle {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 10px;
   font-weight: 500;
   color: var(--sentinel-text-tertiary);
@@ -333,9 +337,10 @@
 }
 
 .weightValue {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 11px;
   color: var(--sentinel-text-tertiary);
+  letter-spacing: var(--sentinel-tracking-led);
   width: 40px;
   text-align: right;
 }
@@ -365,9 +370,10 @@
 }
 
 .lastUpdate {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 10px;
   color: var(--sentinel-text-tertiary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -407,9 +413,10 @@
 }
 
 .outputTrend {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 10px;
   text-transform: uppercase;
+  letter-spacing: var(--sentinel-tracking-led);
   padding: 2px 6px;
   border-radius: var(--sentinel-radius-xs, 4px);
 }
@@ -430,10 +437,11 @@
 }
 
 .outputValue {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 20px;
   font-weight: 500;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
   margin-bottom: 12px;
 }
 
@@ -465,9 +473,11 @@
 }
 
 .confidenceValue {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 11px;
   color: var(--sentinel-accent-primary);
+  letter-spacing: var(--sentinel-tracking-led);
+  text-shadow: var(--sentinel-glow-accent);
 }
 
 .emptyMessage {
@@ -497,7 +507,7 @@
 }
 
 .sectionTitle {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 11px;
   font-weight: 500;
   color: var(--sentinel-text-tertiary);
@@ -548,15 +558,17 @@
 }
 
 .versionLabel {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 12px;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .versionDate {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 12px;
   color: var(--sentinel-text-tertiary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .changesList {

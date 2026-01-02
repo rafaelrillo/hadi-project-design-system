@@ -1,0 +1,132 @@
+/* Path: src/components/molecules/sentinel/PriceDisplay/PriceDisplay.module.css */
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   PRICE DISPLAY
+   Valor con cambio porcentual y efecto flash
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.priceDisplay {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  font-family: var(--sentinel-font-numeric);
+  font-variant-numeric: tabular-nums;
+  transition: background-color var(--sentinel-duration-fast) var(--sentinel-ease-default);
+  padding: 2px 4px;
+  margin: -2px -4px;
+  border-radius: var(--sentinel-radius-sm);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   SIZE VARIANTS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.priceDisplay.sm .value {
+  font-size: var(--sentinel-data-sm);
+  font-weight: 500;
+}
+
+.priceDisplay.sm .change {
+  font-size: var(--sentinel-data-xs);
+}
+
+.priceDisplay.md .value {
+  font-size: var(--sentinel-data-lg);
+  font-weight: 600;
+}
+
+.priceDisplay.md .change {
+  font-size: var(--sentinel-data-sm);
+}
+
+.priceDisplay.lg .value {
+  font-size: var(--sentinel-data-xl);
+  font-weight: 600;
+}
+
+.priceDisplay.lg .change {
+  font-size: var(--sentinel-data-base);
+}
+
+.priceDisplay.xl .value {
+  font-size: var(--sentinel-data-2xl);
+  font-weight: 700;
+}
+
+.priceDisplay.xl .change {
+  font-size: var(--sentinel-data-md);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   VALUE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.value {
+  color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-data);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   CHANGE INDICATOR
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.change {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-weight: 500;
+}
+
+.change.positive {
+  color: var(--sentinel-value-up);
+}
+
+.change.negative {
+  color: var(--sentinel-value-down);
+}
+
+.change.neutral {
+  color: var(--sentinel-value-unchanged);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   FLASH ANIMATION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@keyframes flashUp {
+  0% { background-color: transparent; }
+  20% { background-color: rgba(74, 154, 124, 0.3); }
+  100% { background-color: transparent; }
+}
+
+@keyframes flashDown {
+  0% { background-color: transparent; }
+  20% { background-color: rgba(184, 92, 92, 0.3); }
+  100% { background-color: transparent; }
+}
+
+.priceDisplay.flashing.up {
+  animation: flashUp 500ms var(--sentinel-ease-default);
+}
+
+.priceDisplay.flashing.down {
+  animation: flashDown 500ms var(--sentinel-ease-default);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   RESPONSIVE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .priceDisplay {
+    gap: 6px;
+  }
+
+  .priceDisplay.lg .value {
+    font-size: var(--sentinel-data-lg);
+  }
+
+  .priceDisplay.xl .value {
+    font-size: var(--sentinel-data-xl);
+  }
+}

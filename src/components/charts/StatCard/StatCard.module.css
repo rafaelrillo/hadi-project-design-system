@@ -38,24 +38,28 @@
 }
 
 .value {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: var(--sentinel-text-2xl);
-  font-weight: 600;
+  font-weight: 400;
   color: var(--sentinel-text-primary);
+  letter-spacing: 0.05em;
   line-height: 1;
 }
 
 .change {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: var(--sentinel-text-xs);
   margin-top: var(--sentinel-space-2);
   color: var(--sentinel-text-tertiary);
+  letter-spacing: 0.05em;
 }
 
 .positive {
   color: var(--sentinel-status-positive);
+  text-shadow: var(--sentinel-glow-positive);
 }
 
 .negative {
   color: var(--sentinel-status-negative);
+  text-shadow: var(--sentinel-glow-negative);
 }

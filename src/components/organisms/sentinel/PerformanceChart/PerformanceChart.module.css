@@ -65,10 +65,11 @@
   background: transparent;
   border: none;
   border-radius: var(--sentinel-radius-xs, 4px);
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 11px;
   font-weight: 500;
   color: var(--sentinel-text-tertiary);
+  letter-spacing: var(--sentinel-tracking-led);
   cursor: pointer;
   transition: all 200ms;
 }
@@ -119,18 +120,21 @@
 }
 
 .metricNumber {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 16px;
   font-weight: 600;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .metricNumber.positive {
   color: var(--sentinel-status-positive);
+  text-shadow: var(--sentinel-glow-positive);
 }
 
 .metricNumber.negative {
   color: var(--sentinel-status-negative);
+  text-shadow: var(--sentinel-glow-negative);
 }
 
 .metricTrend {
@@ -172,9 +176,10 @@
 }
 
 .axisLabel {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 10px;
   fill: var(--sentinel-text-tertiary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .line {
@@ -221,10 +226,11 @@
 }
 
 .tooltipValue {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 12px;
   font-weight: 600;
   fill: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -269,10 +275,11 @@
 }
 
 .benchmarkTag {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 9px;
   color: var(--sentinel-text-tertiary);
   text-transform: uppercase;
+  letter-spacing: var(--sentinel-tracking-led);
   padding: 2px 6px;
   background: var(--sentinel-bg-subtle);
   border-radius: var(--sentinel-radius-xs, 4px);
@@ -307,9 +314,10 @@
 }
 
 .footerNote {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 10px;
   color: var(--sentinel-text-tertiary);
+  letter-spacing: var(--sentinel-tracking-led);
   font-style: italic;
 }
 

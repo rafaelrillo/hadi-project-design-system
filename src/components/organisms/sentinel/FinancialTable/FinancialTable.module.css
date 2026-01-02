@@ -1,0 +1,195 @@
+/* Path: src/components/organisms/sentinel/FinancialTable/FinancialTable.module.css */
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   FINANCIAL TABLE
+   Tabla estilo terminal financiero con alta densidad de datos
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.tableContainer {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.tableContainer.stickyHeader {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--sentinel-font-data);
+  font-size: var(--sentinel-data-base);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   HEADER
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.th {
+  padding: 10px 12px;
+  font-size: var(--sentinel-data-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--sentinel-text-tertiary);
+  background: var(--sentinel-panel-header-bg);
+  border-bottom: 1px solid var(--sentinel-panel-divider);
+  white-space: nowrap;
+  position: relative;
+}
+
+.stickyHeader .th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--sentinel-bg-elevated);
+}
+
+.th.sortable {
+  cursor: pointer;
+  user-select: none;
+  transition: background var(--sentinel-duration-fast) var(--sentinel-ease-default);
+}
+
+.th.sortable:hover {
+  background: var(--sentinel-grid-accent);
+}
+
+.th.sorted {
+  color: var(--sentinel-accent-primary);
+}
+
+.headerContent {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.sortIcon {
+  display: inline-flex;
+  color: var(--sentinel-text-tertiary);
+  opacity: 0.5;
+}
+
+.th.sorted .sortIcon {
+  color: var(--sentinel-accent-primary);
+  opacity: 1;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   CELLS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.td {
+  padding: 10px 12px;
+  color: var(--sentinel-text-primary);
+  border-bottom: 1px solid var(--sentinel-panel-divider);
+  white-space: nowrap;
+}
+
+/* Alignment */
+.align-left {
+  text-align: left;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.align-right {
+  text-align: right;
+}
+
+/* Change colors */
+.td.positive {
+  color: var(--sentinel-value-up);
+}
+
+.td.negative {
+  color: var(--sentinel-value-down);
+}
+
+.td.neutral {
+  color: var(--sentinel-value-unchanged);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   ROW STATES
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Striped */
+.table.striped tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Hoverable */
+.table.hoverable tbody tr {
+  transition: background var(--sentinel-duration-fast) var(--sentinel-ease-default);
+}
+
+.table.hoverable tbody tr:hover {
+  background: var(--sentinel-grid-accent);
+}
+
+/* Clickable */
+tbody tr.clickable {
+  cursor: pointer;
+}
+
+tbody tr.clickable:active {
+  background: rgba(91, 163, 165, 0.12);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   ROW HEIGHT VARIANTS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.table.compact .th,
+.table.compact .td {
+  padding: 6px 10px;
+  font-size: var(--sentinel-data-sm);
+}
+
+.table.default .th,
+.table.default .td {
+  padding: 10px 12px;
+}
+
+.table.comfortable .th,
+.table.comfortable .td {
+  padding: 14px 16px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   EMPTY STATE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  color: var(--sentinel-text-tertiary);
+  font-size: var(--sentinel-data-sm);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   RESPONSIVE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .th,
+  .td {
+    padding: 8px 10px;
+    font-size: var(--sentinel-data-sm);
+  }
+
+  .table.compact .th,
+  .table.compact .td {
+    padding: 6px 8px;
+    font-size: var(--sentinel-data-xs);
+  }
+}

@@ -109,27 +109,31 @@
 }
 
 .percentage {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: var(--sentinel-font-sm);
   font-weight: 600;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
   min-width: 36px;
   text-align: right;
 }
 
 .change {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: var(--sentinel-font-xs);
   font-weight: 400;
+  letter-spacing: var(--sentinel-tracking-led);
   white-space: nowrap;
 }
 
 .change.positive {
   color: var(--sentinel-status-positive-text);
+  text-shadow: var(--sentinel-glow-positive);
 }
 
 .change.negative {
   color: var(--sentinel-status-negative-text);
+  text-shadow: var(--sentinel-glow-negative);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -155,10 +159,11 @@
 }
 
 .totalValue {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: var(--sentinel-font-sm);
   font-weight: 600;
   color: var(--sentinel-text-secondary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════════

@@ -173,9 +173,10 @@
 }
 
 .ticker {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-ticker);
   font-size: 11px;
   font-weight: 600;
+  letter-spacing: 0.08em;
   padding: 2px 6px;
   background: rgba(var(--sentinel-accent-primary-rgb, 91, 163, 165), 0.1);
   color: var(--sentinel-accent-primary);

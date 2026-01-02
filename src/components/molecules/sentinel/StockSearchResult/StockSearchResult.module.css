@@ -42,11 +42,11 @@
 }
 
 .ticker {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-ticker);
   font-size: 14px;
   font-weight: 600;
   color: var(--sentinel-text-primary);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.08em;
 }
 
 .exchange {
@@ -77,27 +77,31 @@
 }
 
 .price {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 14px;
   font-weight: 600;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .change {
   display: flex;
   align-items: center;
   gap: 4px;
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 12px;
   font-weight: 500;
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .positive {
   color: var(--sentinel-status-positive);
+  text-shadow: var(--sentinel-glow-positive);
 }
 
 .negative {
   color: var(--sentinel-status-negative);
+  text-shadow: var(--sentinel-glow-negative);
 }
 
 .neutral {

@@ -221,19 +221,24 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .label {
-  font-weight: var(--sentinel-font-medium);
+  font-family: var(--sentinel-font-ticker);
+  font-weight: 500;
   color: var(--pulse-color);
-  letter-spacing: 0.03em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  transition: color 300ms var(--sentinel-ease-smooth);
+  text-shadow: 0 0 10px rgba(var(--pulse-color-rgb), 0.4);
+  transition: color 300ms var(--sentinel-ease-smooth),
+              text-shadow 300ms var(--sentinel-ease-smooth);
 }
 
 .idle .label {
   color: var(--sentinel-text-tertiary);
+  text-shadow: none;
 }
 
 .offline .label {
   color: var(--sentinel-text-disabled);
+  text-shadow: none;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────

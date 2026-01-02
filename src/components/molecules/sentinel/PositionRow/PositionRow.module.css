@@ -43,10 +43,11 @@
 }
 
 .ticker {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-ticker);
   font-size: 15px;
   font-weight: 700;
   color: var(--sentinel-text-primary);
+  letter-spacing: 0.08em;
 }
 
 .allocation {
@@ -74,10 +75,11 @@
 }
 
 .shares {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 14px;
   font-weight: 500;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .avgCost {
@@ -94,24 +96,28 @@
 }
 
 .price {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 14px;
   font-weight: 600;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .dayChange {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 12px;
   font-weight: 500;
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .dayChange.positive {
   color: var(--sentinel-status-positive);
+  text-shadow: var(--sentinel-glow-positive);
 }
 
 .dayChange.negative {
   color: var(--sentinel-status-negative);
+  text-shadow: var(--sentinel-glow-negative);
 }
 
 /* Value Info */
@@ -120,10 +126,11 @@
 }
 
 .marketValue {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 14px;
   font-weight: 600;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 /* Gain/Loss */
@@ -161,24 +168,28 @@
 }
 
 .gainLossAmount {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 14px;
   font-weight: 600;
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .gainLossPercent {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 11px;
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .gainLoss.positive .gainLossAmount,
 .gainLoss.positive .gainLossPercent {
   color: var(--sentinel-status-positive);
+  text-shadow: var(--sentinel-glow-positive);
 }
 
 .gainLoss.negative .gainLossAmount,
 .gainLoss.negative .gainLossPercent {
   color: var(--sentinel-status-negative);
+  text-shadow: var(--sentinel-glow-negative);
 }
 
 /* Actions */

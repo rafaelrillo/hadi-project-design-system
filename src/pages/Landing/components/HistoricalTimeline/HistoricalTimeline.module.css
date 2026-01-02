@@ -15,12 +15,13 @@
 
 .label {
   display: inline-block;
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-led);
   font-size: var(--sentinel-text-xs);
   font-weight: var(--sentinel-font-medium);
   color: var(--sentinel-accent-primary);
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: var(--sentinel-tracking-led);
+  text-shadow: var(--sentinel-glow-accent);
   padding: var(--sentinel-space-2) var(--sentinel-space-4);
   border: 1px solid var(--sentinel-accent-primary);
   border-radius: var(--sentinel-radius-full);
@@ -28,11 +29,11 @@
 }
 
 .title {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-led);
   font-size: var(--sentinel-text-4xl);
   font-weight: var(--sentinel-font-bold);
   color: var(--sentinel-text-primary);
-  letter-spacing: 0.05em;
+  letter-spacing: var(--sentinel-tracking-led);
   margin: 0 0 var(--sentinel-space-4);
 }
 
@@ -173,19 +174,20 @@
 
 .year {
   display: block;
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-led);
   font-size: var(--sentinel-text-lg);
   font-weight: var(--sentinel-font-bold);
+  letter-spacing: var(--sentinel-tracking-led);
   margin-bottom: var(--sentinel-space-1);
 }
 
 .eventTitle {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-led);
   font-size: var(--sentinel-text-sm);
   font-weight: var(--sentinel-font-semibold);
   color: var(--sentinel-text-primary);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--sentinel-tracking-led);
   margin: 0 0 var(--sentinel-space-2);
 }
 
@@ -203,8 +205,9 @@
   align-items: center;
   justify-content: center;
   padding-top: var(--sentinel-space-6);
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-led);
   font-size: var(--sentinel-text-sm);
+  letter-spacing: var(--sentinel-tracking-led);
   color: var(--sentinel-text-tertiary);
 }
 

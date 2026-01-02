@@ -19,12 +19,13 @@
 
 .label {
   display: inline-block;
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-led);
   font-size: var(--sentinel-text-xs);
   font-weight: var(--sentinel-font-medium);
   color: var(--sentinel-accent-primary);
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: var(--sentinel-tracking-led);
+  text-shadow: var(--sentinel-glow-accent);
   padding: var(--sentinel-space-2) var(--sentinel-space-4);
   border: 1px solid var(--sentinel-accent-primary);
   border-radius: var(--sentinel-radius-full);
@@ -32,11 +33,11 @@
 }
 
 .title {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-led);
   font-size: var(--sentinel-text-4xl);
   font-weight: var(--sentinel-font-bold);
   color: var(--sentinel-text-primary);
-  letter-spacing: 0.05em;
+  letter-spacing: var(--sentinel-tracking-led);
   margin: 0 0 var(--sentinel-space-4);
 }
 
@@ -62,12 +63,12 @@
   display: flex;
   align-items: center;
   gap: var(--sentinel-space-2);
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-led);
   font-size: var(--sentinel-text-sm);
   font-weight: var(--sentinel-font-semibold);
   color: var(--sentinel-text-secondary);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: var(--sentinel-tracking-led);
   margin: 0 0 var(--sentinel-space-6);
 }
 
@@ -110,12 +111,13 @@
 }
 
 .noiseWord {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-led);
   font-size: var(--sentinel-text-xs);
   font-weight: var(--sentinel-font-medium);
   color: var(--sentinel-status-negative);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--sentinel-tracking-led);
+  text-shadow: var(--sentinel-glow-negative);
   padding: var(--sentinel-space-1) var(--sentinel-space-2);
   background-color: rgba(239, 68, 68, 0.08);
   border: 1px solid rgba(239, 68, 68, 0.2);
@@ -139,12 +141,13 @@
 }
 
 .arrowText {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-led);
   font-size: var(--sentinel-text-2xs);
   font-weight: var(--sentinel-font-bold);
   color: var(--sentinel-accent-primary);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: var(--sentinel-tracking-led);
+  text-shadow: var(--sentinel-glow-accent);
 }
 
 .arrowIcon {
@@ -176,10 +179,12 @@
 }
 
 .signalValue {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-led);
   font-size: var(--sentinel-text-xl);
   font-weight: var(--sentinel-font-bold);
   color: var(--sentinel-status-positive);
+  letter-spacing: var(--sentinel-tracking-led);
+  text-shadow: var(--sentinel-glow-positive);
 }
 
 .signalLabel {

@@ -77,11 +77,11 @@
 }
 
 .value {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: var(--sentinel-font-xl);
   font-weight: 500;
   color: var(--sentinel-text-primary);
-  letter-spacing: -0.01em;
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .trendIcon {
@@ -118,18 +118,21 @@
 }
 
 .change {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: var(--sentinel-font-xs);
   font-weight: 500;
   color: var(--sentinel-text-secondary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .change.positive {
   color: var(--sentinel-status-positive-text);
+  text-shadow: var(--sentinel-glow-positive);
 }
 
 .change.negative {
   color: var(--sentinel-status-negative-text);
+  text-shadow: var(--sentinel-glow-negative);
 }
 
 .period {

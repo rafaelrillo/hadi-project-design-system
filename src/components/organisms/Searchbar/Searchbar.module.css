@@ -10,7 +10,8 @@
   width: 100%;
   height: 40px;
   background-color: transparent;
-  font-family: var(--font-mono);
+  font-family: var(--sentinel-font-led);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 /* Product Key Section */
@@ -26,11 +27,11 @@
   font-weight: var(--font-weight-bold);
   color: var(--primary);
   line-height: var(--line-height-default);
-  font-family: var(--font-mono);
+  font-family: var(--sentinel-font-ticker);
   margin: 0;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  text-shadow: 0 0 10px var(--accent-glow);
+  letter-spacing: 0.08em;
+  text-shadow: var(--sentinel-glow-accent);
 }
 
 .version {
@@ -38,10 +39,10 @@
   font-weight: var(--font-weight-normal);
   color: var(--foreground-muted);
   line-height: var(--line-height-default);
-  font-family: var(--font-mono);
+  font-family: var(--sentinel-font-led);
   margin: 0;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 /* Filters Section */

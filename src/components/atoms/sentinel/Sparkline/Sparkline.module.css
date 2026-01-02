@@ -1,0 +1,102 @@
+/* Path: src/components/atoms/sentinel/Sparkline/Sparkline.module.css */
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   SPARKLINE
+   Mini gráfico de línea inline para mostrar tendencias
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.sparkline {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.noData {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: var(--sentinel-text-tertiary);
+  font-size: var(--sentinel-data-xs);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   LINE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.line {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   FILL AREA
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.fill {
+  opacity: 0.15;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   DOT (last point)
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.dot {
+  opacity: 0.9;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   COLOR VARIANTS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Positive (uptrend) */
+.sparkline.positive .line {
+  stroke: var(--sentinel-status-positive);
+}
+
+.sparkline.positive .fill {
+  fill: var(--sentinel-status-positive);
+}
+
+.sparkline.positive .dot {
+  fill: var(--sentinel-status-positive);
+}
+
+/* Negative (downtrend) */
+.sparkline.negative .line {
+  stroke: var(--sentinel-status-negative);
+}
+
+.sparkline.negative .fill {
+  fill: var(--sentinel-status-negative);
+}
+
+.sparkline.negative .dot {
+  fill: var(--sentinel-status-negative);
+}
+
+/* Neutral */
+.sparkline.neutral .line {
+  stroke: var(--sentinel-text-tertiary);
+}
+
+.sparkline.neutral .fill {
+  fill: var(--sentinel-text-tertiary);
+}
+
+.sparkline.neutral .dot {
+  fill: var(--sentinel-text-tertiary);
+}
+
+/* Accent */
+.sparkline.accent .line {
+  stroke: var(--sentinel-accent-primary);
+}
+
+.sparkline.accent .fill {
+  fill: var(--sentinel-accent-primary);
+}
+
+.sparkline.accent .dot {
+  fill: var(--sentinel-accent-primary);
+}

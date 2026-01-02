@@ -48,7 +48,7 @@
 
 /* Title */
 .title {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-led);
   font-size: clamp(3rem, 8vw, 5rem);
   font-weight: var(--sentinel-font-bold);
   color: var(--sentinel-text-primary);
@@ -105,10 +105,10 @@
   background: var(--sentinel-bg-glass);
   border: 1px solid var(--sentinel-border-subtle);
   border-radius: var(--sentinel-radius-full);
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-ticker);
   font-size: 11px;
   color: var(--sentinel-text-tertiary);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.05em;
 }
 
 .desktopOnlyHint svg {
@@ -143,7 +143,7 @@
   display: flex;
   align-items: center;
   gap: var(--sentinel-space-2);
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-ticker);
   font-size: var(--sentinel-text-xs);
   color: var(--sentinel-text-tertiary);
   text-transform: uppercase;
@@ -183,7 +183,7 @@
   border: none;
   color: var(--sentinel-text-tertiary);
   cursor: pointer;
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-ticker);
   font-size: var(--sentinel-text-xs);
   text-transform: uppercase;
   letter-spacing: 0.1em;

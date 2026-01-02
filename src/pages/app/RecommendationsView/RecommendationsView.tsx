@@ -157,7 +157,7 @@ export function RecommendationsView() {
                     <>
                       <div className={styles.metric}>
                         <span className={styles.metricLabel}>Target Price</span>
-                        <span className={styles.metricValue}>${rec.priceTarget.price.toFixed(2)}</span>
+                        <span className={`${styles.metricValue} ${styles.target}`}>${rec.priceTarget.price.toFixed(2)}</span>
                       </div>
                       <div className={styles.metric}>
                         <span className={styles.metricLabel}>Expected Return</span>
@@ -168,7 +168,7 @@ export function RecommendationsView() {
                       {rec.priceTarget.stopLoss && (
                         <div className={styles.metric}>
                           <span className={styles.metricLabel}>Stop Loss</span>
-                          <span className={styles.metricValue}>${rec.priceTarget.stopLoss.toFixed(2)}</span>
+                          <span className={`${styles.metricValue} ${styles.stop}`}>${rec.priceTarget.stopLoss.toFixed(2)}</span>
                         </div>
                       )}
                     </>
@@ -302,7 +302,7 @@ export function RecommendationsView() {
                             <Crosshair size={12} className={styles.mobileRecMetricIcon} />
                             <span className={styles.mobileRecMetricLabel}>Target</span>
                           </div>
-                          <span className={styles.mobileRecMetricValue}>${rec.priceTarget.price.toFixed(2)}</span>
+                          <span className={`${styles.mobileRecMetricValue} ${styles.target}`}>${rec.priceTarget.price.toFixed(2)}</span>
                         </div>
                         <div className={styles.mobileRecMetric}>
                           <div className={styles.mobileRecMetricHeader}>
@@ -319,7 +319,7 @@ export function RecommendationsView() {
                               <ShieldAlert size={12} className={styles.mobileRecMetricIconWarning} />
                               <span className={styles.mobileRecMetricLabel}>Stop</span>
                             </div>
-                            <span className={styles.mobileRecMetricValue}>${rec.priceTarget.stopLoss.toFixed(2)}</span>
+                            <span className={`${styles.mobileRecMetricValue} ${styles.stop}`}>${rec.priceTarget.stopLoss.toFixed(2)}</span>
                           </div>
                         )}
                       </div>

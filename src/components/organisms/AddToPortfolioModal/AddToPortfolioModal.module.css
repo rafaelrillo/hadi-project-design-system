@@ -105,10 +105,11 @@
 }
 
 .stockTicker {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-ticker);
   font-size: 18px;
   font-weight: 700;
   color: var(--sentinel-text-primary);
+  letter-spacing: 0.08em;
 }
 
 .stockName {
@@ -131,10 +132,11 @@
 }
 
 .priceValue {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 20px;
   font-weight: 700;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -206,9 +208,10 @@
 }
 
 .portfolioValue {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 13px;
   color: var(--sentinel-text-secondary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .portfolioCheck {
@@ -248,10 +251,11 @@
 }
 
 .currencySymbol {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 18px;
   font-weight: 600;
   color: var(--sentinel-text-secondary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .input {
@@ -259,10 +263,11 @@
   background: transparent;
   border: none;
   outline: none;
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 18px;
   font-weight: 600;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .input::-webkit-outer-spin-button,
@@ -304,10 +309,11 @@
 }
 
 .sharesPreview {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 13px;
   color: var(--sentinel-text-tertiary);
   text-align: right;
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -357,14 +363,16 @@
 }
 
 .benefitValue {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 18px;
   font-weight: 700;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .benefitValue.positive {
   color: var(--sentinel-status-positive);
+  text-shadow: var(--sentinel-glow-positive);
 }
 
 .benefitDetail {
@@ -484,6 +492,7 @@
 
 .positive {
   color: var(--sentinel-status-positive);
+  text-shadow: var(--sentinel-glow-positive);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────

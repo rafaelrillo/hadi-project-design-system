@@ -45,9 +45,12 @@
 }
 
 .sidebarTitle {
-  font-size: 14px;
+  font-family: var(--sentinel-font-numeric);
+  font-size: 12px;
   font-weight: 600;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
+  text-transform: uppercase;
   margin: 0;
 }
 
@@ -145,27 +148,31 @@
 }
 
 .portfolioValue {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 14px;
   font-weight: 600;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .portfolioChange {
   display: flex;
   align-items: center;
   gap: 4px;
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 12px;
   font-weight: 500;
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .portfolioChange.positive {
   color: var(--sentinel-status-positive);
+  text-shadow: var(--sentinel-glow-positive);
 }
 
 .portfolioChange.negative {
   color: var(--sentinel-status-negative);
+  text-shadow: var(--sentinel-glow-negative);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -199,9 +206,12 @@
 }
 
 .sectionTitle {
-  font-size: 16px;
+  font-family: var(--sentinel-font-numeric);
+  font-size: 14px;
   font-weight: 600;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
+  text-transform: uppercase;
   margin: 0;
 }
 
@@ -299,10 +309,11 @@
 }
 
 .ticker {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-ticker);
   font-size: 13px;
   font-weight: 600;
   color: var(--sentinel-text-primary);
+  letter-spacing: 0.08em;
 }
 
 .name {
@@ -316,25 +327,29 @@
 .colShares,
 .colPrice,
 .colValue {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 12px;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .colReturn {
   display: flex;
   flex-direction: column;
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 12px;
   font-weight: 500;
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .colReturn.positive {
   color: var(--sentinel-status-positive);
+  text-shadow: var(--sentinel-glow-positive);
 }
 
 .colReturn.negative {
   color: var(--sentinel-status-negative);
+  text-shadow: var(--sentinel-glow-negative);
 }
 
 .percent {
@@ -369,9 +384,10 @@
 }
 
 .allocationPercent {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 11px;
   color: var(--sentinel-text-secondary);
+  letter-spacing: var(--sentinel-tracking-led);
   min-width: 40px;
   text-align: right;
 }
@@ -424,10 +440,11 @@
 }
 
 .summaryValue {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 16px;
   font-weight: 700;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
   display: flex;
   align-items: baseline;
   gap: 6px;
@@ -435,10 +452,12 @@
 
 .summaryValue.positive {
   color: var(--sentinel-status-positive);
+  text-shadow: var(--sentinel-glow-positive);
 }
 
 .summaryValue.negative {
   color: var(--sentinel-status-negative);
+  text-shadow: var(--sentinel-glow-negative);
 }
 
 .summaryPercent {
@@ -458,11 +477,12 @@
 }
 
 .treemapTitle {
+  font-family: var(--sentinel-font-numeric);
   font-size: 11px;
   font-weight: 600;
   color: var(--sentinel-text-tertiary);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--sentinel-tracking-led);
   margin: 0 0 10px;
 }
 
@@ -571,25 +591,29 @@
 }
 
 .mobileValue {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 22px;
   font-weight: 700;
   color: var(--sentinel-text-primary);
-  letter-spacing: -0.02em;
+  letter-spacing: var(--sentinel-tracking-led);
+  text-shadow: var(--sentinel-glow-neutral);
 }
 
 .mobileChange {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 14px;
   font-weight: 600;
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .mobileChange.positive {
   color: var(--sentinel-status-positive);
+  text-shadow: var(--sentinel-glow-positive);
 }
 
 .mobileChange.negative {
   color: var(--sentinel-status-negative);
+  text-shadow: var(--sentinel-glow-negative);
 }
 
 /* Large TreeMap - No container */
@@ -608,9 +632,12 @@
 }
 
 .mobileHoldingsTitle {
-  font-size: 14px;
+  font-family: var(--sentinel-font-numeric);
+  font-size: 12px;
   font-weight: 600;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
+  text-transform: uppercase;
   margin: 0 0 10px;
   flex-shrink: 0;
 }
@@ -642,18 +669,20 @@
 }
 
 .mobileHoldingTicker {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-ticker);
   font-size: 14px;
   font-weight: 700;
   color: var(--sentinel-text-primary);
+  letter-spacing: 0.08em;
   min-width: 50px;
 }
 
 .mobileHoldingAllocation {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 12px;
   font-weight: 500;
   color: var(--sentinel-text-tertiary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .mobileHoldingName {
@@ -668,24 +697,28 @@
 }
 
 .mobileHoldingValue {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 14px;
   font-weight: 600;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .mobileHoldingChange {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 12px;
   font-weight: 600;
+  letter-spacing: var(--sentinel-tracking-led);
   min-width: 55px;
   text-align: right;
 }
 
 .mobileHoldingChange.positive {
   color: var(--sentinel-status-positive);
+  text-shadow: var(--sentinel-glow-positive);
 }
 
 .mobileHoldingChange.negative {
   color: var(--sentinel-status-negative);
+  text-shadow: var(--sentinel-glow-negative);
 }

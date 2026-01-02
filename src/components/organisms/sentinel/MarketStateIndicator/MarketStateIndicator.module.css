@@ -304,12 +304,16 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .stateLabel {
+  font-family: var(--sentinel-font-numeric);
   font-size: var(--sentinel-text-2xl);
-  font-weight: var(--sentinel-font-semibold);
+  font-weight: 600;
   color: var(--state-color);
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  transition: color 700ms var(--sentinel-ease-smooth);
+  text-shadow: 0 0 20px rgba(var(--state-color-rgb), 0.5),
+               0 0 40px rgba(var(--state-color-rgb), 0.3);
+  transition: color 700ms var(--sentinel-ease-smooth),
+              text-shadow 700ms var(--sentinel-ease-smooth);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -340,7 +344,8 @@
 .timestamp {
   font-size: var(--sentinel-text-xs);
   color: var(--sentinel-text-tertiary);
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-ticker);
+  letter-spacing: 0.05em;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────

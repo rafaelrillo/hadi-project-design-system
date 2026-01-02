@@ -41,26 +41,28 @@
   justify-content: center;
   background: linear-gradient(135deg, var(--sentinel-accent-primary), var(--sentinel-accent-secondary));
   border-radius: var(--sentinel-radius-sm);
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-led);
   font-size: var(--sentinel-text-base);
   font-weight: var(--sentinel-font-bold);
   color: var(--sentinel-bg-base);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .logoText {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-led);
   font-size: var(--sentinel-text-lg);
   font-weight: var(--sentinel-font-semibold);
   color: var(--sentinel-text-primary);
-  letter-spacing: 0.15em;
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .tagline {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-led);
   font-size: var(--sentinel-text-sm);
   color: var(--sentinel-accent-primary);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: var(--sentinel-tracking-led);
+  text-shadow: var(--sentinel-glow-accent);
   margin: 0;
 }
 
@@ -106,12 +108,12 @@
 }
 
 .columnTitle {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-led);
   font-size: var(--sentinel-text-xs);
   font-weight: var(--sentinel-font-semibold);
   color: var(--sentinel-text-secondary);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: var(--sentinel-tracking-led);
   margin: 0;
 }
 
@@ -151,16 +153,18 @@
 }
 
 .copyright {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-led);
   font-size: var(--sentinel-text-xs);
   color: var(--sentinel-text-tertiary);
+  letter-spacing: var(--sentinel-tracking-led);
   margin: 0;
 }
 
 .version {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-led);
   font-size: var(--sentinel-text-xs);
   color: var(--sentinel-text-tertiary);
+  letter-spacing: var(--sentinel-tracking-led);
   margin: 0;
 }
 

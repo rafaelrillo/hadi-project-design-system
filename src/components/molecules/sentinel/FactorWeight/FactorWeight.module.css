@@ -130,10 +130,11 @@
 }
 
 .weight {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: var(--sentinel-font-xs);
   font-weight: 500;
   color: var(--sentinel-text-secondary);
+  letter-spacing: var(--sentinel-tracking-led);
   min-width: 36px;
   text-align: right;
 }

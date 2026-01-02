@@ -96,24 +96,26 @@
 
 .actionBadge {
   flex-shrink: 0;
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: var(--sentinel-font-xs);
   font-weight: 600;
   padding: 6px 10px;
   border-radius: var(--sentinel-radius-sm);
   text-transform: uppercase;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.05em;
 }
 
 /* Action badge variants - subtle, never screaming */
 .actionBuy {
   background: hsla(160, 40%, 45%, 0.12);
   color: var(--sentinel-status-positive-text);
+  text-shadow: var(--sentinel-glow-positive);
 }
 
 .actionSell {
   background: hsla(0, 40%, 55%, 0.12);
   color: var(--sentinel-status-negative-text);
+  text-shadow: var(--sentinel-glow-negative);
 }
 
 .actionHold {
@@ -172,10 +174,11 @@
 }
 
 .footerValue {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: var(--sentinel-font-sm);
   font-weight: 500;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════════

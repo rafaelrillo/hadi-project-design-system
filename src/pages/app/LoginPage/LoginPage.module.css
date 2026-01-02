@@ -46,20 +46,21 @@
 }
 
 .title {
-  font-family: var(--sentinel-font-primary);
+  font-family: var(--sentinel-font-numeric);
   font-size: var(--sentinel-text-4xl);
   font-weight: var(--sentinel-font-semibold);
   color: var(--sentinel-text-primary);
   letter-spacing: 0.2em;
   text-align: center;
+  text-shadow: var(--sentinel-glow-accent);
   margin: 0;
 }
 
 .subtitle {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: var(--sentinel-text-xs);
   color: var(--sentinel-text-tertiary);
-  letter-spacing: 0.15em;
+  letter-spacing: var(--sentinel-tracking-led);
   text-align: center;
   margin-top: var(--sentinel-space-2);
 }
@@ -118,9 +119,10 @@
 }
 
 .hint {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: var(--sentinel-text-xs);
   color: var(--sentinel-text-tertiary);
+  letter-spacing: var(--sentinel-tracking-led);
   text-align: center;
   margin: 0;
 }

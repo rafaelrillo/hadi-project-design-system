@@ -110,8 +110,9 @@
 
 /* Number */
 .number {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-weight: 600;
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 /* Dot */

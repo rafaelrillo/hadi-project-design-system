@@ -127,18 +127,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 64px;
+  height: 56px;
   padding: 0 24px;
-  /* Glassmorphism effect */
-  background: linear-gradient(
-    90deg,
-    rgba(16, 18, 26, 0.85) 0%,
-    rgba(16, 18, 26, 0.8) 100%
-  );
+  background: rgba(10, 11, 16, 0.9);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  box-shadow: var(--sentinel-inner-highlight);
+  border-bottom: 1px solid var(--sentinel-border-subtle);
   flex-shrink: 0;
 }
 
@@ -153,11 +147,12 @@
 }
 
 .title {
-  font-family: var(--sentinel-font-sans);
-  font-size: 18px;
-  font-weight: 600;
+  font-family: var(--sentinel-font-numeric);
+  font-size: 17px;
+  font-weight: 700;
   color: var(--sentinel-text-primary);
-  letter-spacing: 0;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   margin: 0;
 }
 
@@ -201,22 +196,22 @@
 }
 
 .liveText {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-led);
   font-size: 11px;
   font-weight: 500;
   color: var(--sentinel-text-secondary);
-  letter-spacing: 0.05em;
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .dataSource {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-led);
   font-size: 10px;
   font-weight: 500;
   color: var(--sentinel-text-tertiary);
   padding: 4px 8px;
   background: var(--sentinel-bg-surface);
   border-radius: var(--sentinel-radius-sm);
-  letter-spacing: 0.05em;
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .dataSource.realApi {
@@ -225,9 +220,10 @@
 }
 
 .lastUpdate {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-led);
   font-size: 11px;
   color: var(--sentinel-text-tertiary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -238,6 +234,23 @@
   flex: 1;
   overflow: hidden;
   background: transparent; /* Allow AtmosphericBackground to show through */
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   TICKER TAPE (SENTINEL 3.0)
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.tickerTape {
+  position: fixed;
+  top: 0;
+  left: 64px; /* After sidebar */
+  right: 0;
+  z-index: var(--sentinel-z-sticky);
+}
+
+/* Adjust main content when ticker is present */
+.layout .main {
+  padding-top: 40px; /* Height of ticker */
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -269,10 +282,19 @@
   }
 }
 
+.mobileTickerTape {
+  position: fixed;
+  top: calc(var(--sentinel-mobile-header-height) + var(--sentinel-safe-area-top));
+  left: 0;
+  right: 0;
+  z-index: calc(var(--sentinel-z-sticky) - 1);
+}
+
 .mobileContent {
   flex: 1;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  padding-top: calc(var(--sentinel-mobile-header-height) + var(--sentinel-safe-area-top));
+  /* Header (56px) + Ticker (36px) + safe area */
+  padding-top: calc(var(--sentinel-mobile-header-height) + 36px + var(--sentinel-safe-area-top));
   padding-bottom: calc(var(--sentinel-mobile-bottom-nav-height) + var(--sentinel-safe-area-bottom));
 }

@@ -6,7 +6,6 @@ import {
   Briefcase,
   TrendingUp,
   Newspaper,
-  MoreHorizontal
 } from 'lucide-react';
 import styles from './BottomNavigation.module.css';
 
@@ -21,8 +20,6 @@ export interface NavItem {
 export interface BottomNavigationProps {
   /** Custom navigation items (optional, uses defaults if not provided) */
   items?: NavItem[];
-  /** Handler for "More" button */
-  onMoreClick?: () => void;
 }
 
 const defaultItems: NavItem[] = [
@@ -34,7 +31,6 @@ const defaultItems: NavItem[] = [
 
 export const BottomNavigation: React.FC<BottomNavigationProps> = ({
   items = defaultItems,
-  onMoreClick,
 }) => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -72,17 +68,6 @@ export const BottomNavigation: React.FC<BottomNavigationProps> = ({
           <span className={styles.label}>{item.label}</span>
         </button>
       ))}
-
-      <button
-        className={styles.navItem}
-        onClick={onMoreClick}
-        aria-label="More options"
-      >
-        <span className={styles.icon}>
-          <MoreHorizontal size={22} />
-        </span>
-        <span className={styles.label}>More</span>
-      </button>
     </nav>
   );
 };

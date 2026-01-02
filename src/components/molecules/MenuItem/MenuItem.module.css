@@ -104,5 +104,7 @@
   padding: 2px var(--sentinel-space-2);
   border-radius: var(--sentinel-radius-full);
   margin-left: auto;
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-led);
+  letter-spacing: var(--sentinel-tracking-led);
+  text-shadow: var(--sentinel-glow-accent);
 }

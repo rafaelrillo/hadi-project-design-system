@@ -39,10 +39,11 @@
 }
 
 .ticker {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-ticker);
   font-size: 18px;
   font-weight: 700;
   color: var(--sentinel-text-primary);
+  letter-spacing: 0.08em;
 }
 
 .name {
@@ -84,10 +85,11 @@
 }
 
 .price {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 20px;
   font-weight: 700;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 /* Type Tabs */
@@ -201,10 +203,11 @@
 
 .inputPrefix {
   padding-left: 12px;
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 16px;
   font-weight: 600;
   color: var(--sentinel-text-secondary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .input {
@@ -213,10 +216,11 @@
   background: transparent;
   border: none;
   outline: none;
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 16px;
   font-weight: 600;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
   -moz-appearance: textfield;
 }
 
@@ -282,10 +286,11 @@
 }
 
 .estimateValue {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 14px;
   font-weight: 600;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 /* Error */

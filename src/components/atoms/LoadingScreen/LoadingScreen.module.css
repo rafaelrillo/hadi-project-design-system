@@ -68,11 +68,12 @@
 
 /* Title */
 .title {
-  font-family: var(--sentinel-font-primary);
+  font-family: var(--sentinel-font-led);
   font-size: var(--sentinel-text-2xl);
   font-weight: var(--sentinel-font-bold);
   color: var(--sentinel-accent-primary);
   letter-spacing: 0.3em;
+  text-shadow: var(--sentinel-glow-accent);
   margin: 0;
 }
 
@@ -84,11 +85,11 @@
 }
 
 .message {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-led);
   font-size: var(--sentinel-text-sm);
   color: var(--sentinel-text-tertiary);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .dots {
@@ -97,7 +98,7 @@
 }
 
 .dot {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-led);
   font-size: var(--sentinel-text-sm);
   color: var(--sentinel-text-tertiary);
   animation: blink 1.4s infinite;

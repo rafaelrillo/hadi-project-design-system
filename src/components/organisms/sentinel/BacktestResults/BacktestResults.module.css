@@ -49,9 +49,10 @@
 }
 
 .period {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 12px;
   color: var(--sentinel-text-tertiary);
+  letter-spacing: var(--sentinel-tracking-led);
   margin: 2px 0 0 0;
 }
 
@@ -63,18 +64,20 @@
 }
 
 .resultValue {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 28px;
   font-weight: 600;
-  letter-spacing: -0.02em;
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .resultValue.positive {
   color: var(--sentinel-status-positive);
+  text-shadow: var(--sentinel-glow-positive);
 }
 
 .resultValue.negative {
   color: var(--sentinel-status-negative);
+  text-shadow: var(--sentinel-glow-negative);
 }
 
 .benchmarkComparison {
@@ -125,24 +128,28 @@
 }
 
 .cardValue {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 20px;
   font-weight: 600;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .cardValue.positive {
   color: var(--sentinel-status-positive);
+  text-shadow: var(--sentinel-glow-positive);
 }
 
 .cardValue.negative {
   color: var(--sentinel-status-negative);
+  text-shadow: var(--sentinel-glow-negative);
 }
 
 .cardSubtext {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 10px;
   color: var(--sentinel-text-tertiary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -155,7 +162,7 @@
 }
 
 .sectionTitle {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 11px;
   font-weight: 500;
   color: var(--sentinel-text-tertiary);
@@ -209,9 +216,10 @@
 }
 
 .statsCount {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 10px;
   color: var(--sentinel-text-tertiary);
+  letter-spacing: var(--sentinel-tracking-led);
   padding: 2px 6px;
   background: var(--sentinel-bg-subtle);
   border-radius: var(--sentinel-radius-xs, 4px);
@@ -270,16 +278,18 @@
 }
 
 .statValue {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 14px;
   font-weight: 500;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .statBenchmark {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 10px;
   color: var(--sentinel-text-tertiary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .statDescription {
@@ -305,9 +315,10 @@
 }
 
 .tradesCount {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 11px;
   color: var(--sentinel-text-tertiary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .tradesTable {
@@ -326,7 +337,7 @@
 }
 
 .headerCell {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 10px;
   font-weight: 500;
   color: var(--sentinel-text-tertiary);
@@ -363,19 +374,21 @@
 }
 
 .cellSymbol {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-ticker);
   font-size: 13px;
   font-weight: 500;
   color: var(--sentinel-text-primary);
+  letter-spacing: 0.08em;
 }
 
 .cellType {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 10px;
   font-weight: 500;
   padding: 2px 6px;
   border-radius: var(--sentinel-radius-xs, 4px);
   text-align: center;
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .cellType.long {
@@ -392,9 +405,10 @@
   display: flex;
   flex-direction: column;
   gap: 2px;
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 12px;
   color: var(--sentinel-text-primary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .cellDate {
@@ -403,26 +417,30 @@
 }
 
 .cellDays {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 12px;
   color: var(--sentinel-text-secondary);
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .cellPnl,
 .cellReturn {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: 12px;
   font-weight: 500;
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .cellPnl.positive,
 .cellReturn.positive {
   color: var(--sentinel-status-positive);
+  text-shadow: var(--sentinel-glow-positive);
 }
 
 .cellPnl.negative,
 .cellReturn.negative {
   color: var(--sentinel-status-negative);
+  text-shadow: var(--sentinel-glow-negative);
 }
 
 .showMoreButton {

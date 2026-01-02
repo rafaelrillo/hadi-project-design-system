@@ -48,13 +48,18 @@ function FinancialTooltip({
   slice,
   formatValue,
 }: SliceTooltipProps<LineSeries> & { formatValue: (value: number) => string }) {
+  // Sort points by value (highest first)
+  const sortedPoints = [...slice.points].sort(
+    (a, b) => (Number(b.data.y) || 0) - (Number(a.data.y) || 0)
+  );
+
   return (
     <div className={styles.tooltip}>
       <div className={styles.tooltipHeader}>
         {String(slice.points[0]?.data.x ?? '')}
       </div>
       <div className={styles.tooltipContent}>
-        {slice.points.map((point: Point<LineSeries>) => (
+        {sortedPoints.map((point: Point<LineSeries>) => (
           <div key={point.id} className={styles.tooltipRow}>
             <span
               className={styles.tooltipColor}

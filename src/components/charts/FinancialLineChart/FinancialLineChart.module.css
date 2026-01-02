@@ -44,11 +44,11 @@
   padding: 10px 14px;
   background: var(--sentinel-bg-subtle);
   border-bottom: 1px solid var(--sentinel-border-subtle);
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-led);
   font-size: var(--sentinel-font-xs);
   font-weight: 500;
   color: var(--sentinel-text-secondary);
-  letter-spacing: 0.02em;
+  letter-spacing: var(--sentinel-tracking-led);
 }
 
 .tooltipContent {
@@ -82,11 +82,11 @@
 }
 
 .tooltipValue {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-numeric);
   font-size: var(--sentinel-font-sm);
   font-weight: 600;
   color: var(--sentinel-text-primary);
-  letter-spacing: -0.01em;
+  letter-spacing: var(--sentinel-tracking-led);
   text-align: right;
   min-width: 60px;
 }
@@ -94,10 +94,12 @@
 /* Positive/Negative value colors */
 .tooltipValue[data-positive="true"] {
   color: var(--sentinel-status-positive-text);
+  text-shadow: var(--sentinel-glow-positive);
 }
 
 .tooltipValue[data-positive="false"] {
   color: var(--sentinel-status-negative-text);
+  text-shadow: var(--sentinel-glow-negative);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
