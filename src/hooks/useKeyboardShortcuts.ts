@@ -108,7 +108,7 @@ export function useDashboardShortcuts({
 export const DASHBOARD_SHORTCUTS: Shortcut[] = [
   { key: "1", description: "Go to Overview", action: () => {} },
   { key: "2", description: "Go to Portfolio", action: () => {} },
-  { key: "3", description: "Go to Recommendations", action: () => {} },
+  { key: "3", description: "Go to Calibrate", action: () => {} },
   { key: "4", description: "Go to Market", action: () => {} },
   { key: "5", description: "Go to Analysis", action: () => {} },
   { key: "R", description: "Refresh data", action: () => {} },

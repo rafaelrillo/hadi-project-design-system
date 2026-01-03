@@ -37,7 +37,7 @@ interface NavItem {
 const navItems: NavItem[] = [
   { path: '/app/dashboard', icon: Home, label: 'Home', end: true },
   { path: '/app/dashboard/portfolio', icon: Briefcase, label: 'Portfolio' },
-  { path: '/app/dashboard/recommendations', icon: TrendingUp, label: 'Recommendations' },
+  { path: '/app/dashboard/recommendations', icon: TrendingUp, label: 'Calibrate' },
   { path: '/app/dashboard/news', icon: Newspaper, label: 'News' },
 ];
 
@@ -51,7 +51,7 @@ const navItems: NavItem[] = [
 const mobileNavItems = [
   { id: 'home', label: 'Home', icon: <Home size={22} />, path: '/app/dashboard' },
   { id: 'portfolio', label: 'Portfolio', icon: <Briefcase size={22} />, path: '/app/dashboard/portfolio' },
-  { id: 'recommendations', label: 'Recs', icon: <TrendingUp size={22} />, path: '/app/dashboard/recommendations' },
+  { id: 'calibrate', label: 'Calibrate', icon: <TrendingUp size={22} />, path: '/app/dashboard/recommendations' },
   { id: 'news', label: 'News', icon: <Newspaper size={22} />, path: '/app/dashboard/news' },
 ];
 

@@ -21,6 +21,7 @@ export interface TreeMapProps {
   enableParentLabel?: boolean;
   borderWidth?: number;
   className?: string;
+  labelFormat?: 'name' | 'value' | 'both';
 }
 
 export function TreeMap({
@@ -33,7 +34,8 @@ export function TreeMap({
   enableLabels = true,
   enableParentLabel = true,
   borderWidth = 1,
-  className = ''
+  className = '',
+  labelFormat = 'name'
 }: TreeMapProps) {
   const getClassName = (): string => {
     const classes = [styles.container];
@@ -59,6 +61,20 @@ export function TreeMap({
     );
   }
 
+  // Custom label function based on labelFormat
+  const getLabel = (node: { id: string; formattedValue: string | number }) => {
+    switch (labelFormat) {
+      case 'name':
+        return node.id;
+      case 'value':
+        return String(node.formattedValue);
+      case 'both':
+        return `${node.id}\n${node.formattedValue}`;
+      default:
+        return node.id;
+    }
+  };
+
   return (
     <div className={getClassName()} style={{ height: `${height}px` }}>
       <ResponsiveTreeMap
@@ -73,6 +89,7 @@ export function TreeMap({
         borderWidth={borderWidth}
         borderColor={{ from: 'color', modifiers: [['darker', 0.5]] }}
         enableLabel={enableLabels}
+        label={getLabel}
         labelSkipSize={12}
         labelTextColor={{ from: 'color', modifiers: [['brighter', 2]] }}
         enableParentLabel={enableParentLabel}

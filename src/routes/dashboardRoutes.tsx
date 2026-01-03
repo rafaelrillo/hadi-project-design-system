@@ -124,7 +124,7 @@ export const dashboardRoutes: DashboardRoute[] = [
   },
   {
     path: '/app/dashboard/recommendations',
-    name: 'Recommendations',
+    name: 'Calibrate',
     icon: TrendingUp,
     element: RecommendationsView,
     showInNav: true,

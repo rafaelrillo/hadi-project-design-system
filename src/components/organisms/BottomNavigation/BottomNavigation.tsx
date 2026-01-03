@@ -25,7 +25,7 @@ export interface BottomNavigationProps {
 const defaultItems: NavItem[] = [
   { id: 'home', label: 'Home', icon: <Home size={22} />, path: '/app/dashboard' },
   { id: 'portfolio', label: 'Portfolio', icon: <Briefcase size={22} />, path: '/app/dashboard/portfolio' },
-  { id: 'recommendations', label: 'Recs', icon: <TrendingUp size={22} />, path: '/app/dashboard/recommendations' },
+  { id: 'calibrate', label: 'Calibrate', icon: <TrendingUp size={22} />, path: '/app/dashboard/recommendations' },
   { id: 'news', label: 'News', icon: <Newspaper size={22} />, path: '/app/dashboard/news' },
 ];
 
