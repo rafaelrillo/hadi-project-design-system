@@ -1,4 +1,12 @@
 /* Path: src/pages/app/RecommendationsView/RecommendationsView.module.css */
+/* ═══════════════════════════════════════════════════════════════════════════════
+   SENTINEL DESIGN SYSTEM v3.2 - Recommendations View
+
+   GLASS-NEUMORPHISM - Frosted glass recommendations interface
+   - Semi-transparent glass backgrounds
+   - Luminous borders
+   - Neumorphic depth
+   ═══════════════════════════════════════════════════════════════════════════════ */
 
 .container {
   display: flex;
@@ -30,13 +38,17 @@
   to { transform: rotate(360deg); }
 }
 
-/* Trade Message */
+/* Trade Message - Glass tinted */
 .tradeMessage {
   padding: 12px 16px;
   border-radius: var(--sentinel-radius-md);
   font-size: 14px;
   font-weight: 500;
   animation: slideIn 0.3s ease-out;
+  position: relative;
+
+  backdrop-filter: blur(var(--sentinel-blur-sm));
+  -webkit-backdrop-filter: blur(var(--sentinel-blur-sm));
 }
 
 @keyframes slideIn {
@@ -51,15 +63,17 @@
 }
 
 .tradeMessage.success {
-  background: rgba(var(--sentinel-status-positive-rgb, 129, 199, 132), 0.15);
+  background: rgba(74, 222, 128, 0.1);
   color: var(--sentinel-status-positive);
-  border: 1px solid rgba(var(--sentinel-status-positive-rgb, 129, 199, 132), 0.3);
+  border: 1px solid rgba(74, 222, 128, 0.3);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .tradeMessage.error {
-  background: rgba(var(--sentinel-status-negative-rgb, 229, 115, 115), 0.15);
+  background: rgba(248, 113, 113, 0.1);
   color: var(--sentinel-status-negative);
-  border: 1px solid rgba(var(--sentinel-status-negative-rgb, 229, 115, 115), 0.3);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 /* Actions Bar */
@@ -75,13 +89,44 @@
   color: var(--sentinel-text-secondary);
 }
 
-/* Market Summary Card */
+/* ─────────────────────────────────────────────────────────────────────────────
+   MARKET SUMMARY CARD - Glass-Neumorphic
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .marketSummaryCard {
-  background: var(--sentinel-bg-elevated);
-  border: 1px solid var(--sentinel-border-subtle);
+  background: var(--sentinel-glass-bg);
+  border: 1px solid var(--sentinel-glass-border);
   border-radius: var(--sentinel-radius-lg);
   padding: 16px 20px;
   flex-shrink: 0;
+  position: relative;
+
+  backdrop-filter: blur(var(--sentinel-blur-md));
+  -webkit-backdrop-filter: blur(var(--sentinel-blur-md));
+
+  box-shadow:
+    var(--sentinel-shadow-card),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Luminous top edge */
+.marketSummaryCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.15),
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  border-radius: var(--sentinel-radius-lg) var(--sentinel-radius-lg) 0 0;
+  pointer-events: none;
 }
 
 .marketSummaryTop {
@@ -96,31 +141,36 @@
   align-items: center;
   gap: 8px;
   padding: 8px 16px;
-  background: var(--sentinel-bg-surface);
+  background: var(--sentinel-glass-inset);
   border-radius: var(--sentinel-radius-md);
   font-size: 14px;
   color: var(--sentinel-text-secondary);
+
+  box-shadow: var(--sentinel-neu-pressed-xs);
 }
 
 .marketState.positive {
-  background: rgba(var(--sentinel-status-positive-rgb, 129, 199, 132), 0.1);
+  background: rgba(74, 222, 128, 0.1);
   color: var(--sentinel-status-positive);
+  border: 1px solid rgba(74, 222, 128, 0.2);
 }
 
 .marketState.negative {
-  background: rgba(var(--sentinel-status-negative-rgb, 229, 115, 115), 0.1);
+  background: rgba(248, 113, 113, 0.1);
   color: var(--sentinel-status-negative);
+  border: 1px solid rgba(248, 113, 113, 0.2);
 }
 
 .marketState.warning {
-  background: rgba(var(--sentinel-status-warning-rgb, 255, 183, 77), 0.1);
+  background: rgba(251, 191, 36, 0.1);
   color: var(--sentinel-status-warning);
+  border: 1px solid rgba(251, 191, 36, 0.2);
 }
 
 .marketState.neutral {
-  background: rgba(156, 163, 175, 0.2);
+  background: var(--sentinel-glass-inset);
   color: var(--sentinel-text-secondary);
-  border: 1px solid rgba(156, 163, 175, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .marketLabel strong {
@@ -141,9 +191,10 @@
 .riskBar {
   width: 120px;
   height: 6px;
-  background: var(--sentinel-bg-surface);
+  background: var(--sentinel-glass-inset);
   border-radius: 3px;
   overflow: hidden;
+  box-shadow: var(--sentinel-neu-pressed-xs);
 }
 
 .riskFill {
@@ -194,15 +245,20 @@
   overflow: hidden;
 }
 
-/* Tabs */
+/* ─────────────────────────────────────────────────────────────────────────────
+   TABS - Glass-Neumorphic
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .tabs {
   display: flex;
   gap: 8px;
   padding: 4px;
-  background: var(--sentinel-bg-surface);
+  background: var(--sentinel-glass-inset);
   border-radius: var(--sentinel-radius-md);
   width: fit-content;
   flex-shrink: 0;
+
+  box-shadow: var(--sentinel-neu-pressed-sm);
 }
 
 .tab {
@@ -222,13 +278,15 @@
 
 .tab:hover {
   color: var(--sentinel-text-primary);
-  background: var(--sentinel-bg-hover);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .activeTab {
-  background: var(--sentinel-bg-elevated);
+  background: var(--sentinel-glass-elevated);
   color: var(--sentinel-text-primary);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow:
+    var(--sentinel-neu-elevated-sm),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 /* Recommendation List */
@@ -241,25 +299,47 @@
   overflow-y: auto;
 }
 
-/* Recommendation Card */
+/* ─────────────────────────────────────────────────────────────────────────────
+   RECOMMENDATION CARD - Glass-Neumorphic
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .recCard {
-  background: var(--sentinel-bg-elevated);
-  border: 1px solid var(--sentinel-border-subtle);
+  background: var(--sentinel-glass-bg);
+  border: 1px solid var(--sentinel-glass-border);
   border-radius: var(--sentinel-radius-lg);
   overflow: hidden;
   transition: all var(--sentinel-duration-fast) var(--sentinel-ease-default);
+  position: relative;
+
+  backdrop-filter: blur(var(--sentinel-blur-md));
+  -webkit-backdrop-filter: blur(var(--sentinel-blur-md));
+
+  box-shadow:
+    var(--sentinel-shadow-card),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .recCard:hover {
-  border-color: var(--sentinel-border-hover);
+  border-color: var(--sentinel-glass-border-hover);
+  box-shadow:
+    var(--sentinel-shadow-card-hover),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .buyCard {
-  border-left: 3px solid var(--sentinel-status-positive);
+  border-left: 3px solid rgba(74, 222, 128, 0.6);
+  box-shadow:
+    var(--sentinel-shadow-card),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    inset 3px 0 15px rgba(74, 222, 128, 0.05);
 }
 
 .sellCard {
-  border-left: 3px solid var(--sentinel-status-negative);
+  border-left: 3px solid rgba(248, 113, 113, 0.6);
+  box-shadow:
+    var(--sentinel-shadow-card),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    inset 3px 0 15px rgba(248, 113, 113, 0.05);
 }
 
 .cardHeader {
@@ -295,7 +375,7 @@
   font-size: 10px;
   font-weight: 500;
   padding: 2px 6px;
-  background: var(--sentinel-bg-surface);
+  background: var(--sentinel-glass-inset);
   color: var(--sentinel-text-tertiary);
   border-radius: var(--sentinel-radius-xs);
 }
@@ -329,12 +409,10 @@
 
 .change.positive {
   color: var(--sentinel-status-positive);
-  text-shadow: var(--sentinel-glow-positive);
 }
 
 .change.negative {
   color: var(--sentinel-status-negative);
-  text-shadow: var(--sentinel-glow-negative);
 }
 
 .cardRight {
@@ -366,12 +444,10 @@
 
 .buyScore {
   color: var(--sentinel-status-positive);
-  text-shadow: var(--sentinel-glow-positive);
 }
 
 .sellScore {
   color: var(--sentinel-status-negative);
-  text-shadow: var(--sentinel-glow-negative);
 }
 
 .confidence {
@@ -383,17 +459,17 @@
 }
 
 .confidence.high {
-  background: rgba(var(--sentinel-status-positive-rgb, 129, 199, 132), 0.15);
+  background: rgba(74, 222, 128, 0.15);
   color: var(--sentinel-status-positive);
 }
 
 .confidence.medium {
-  background: rgba(var(--sentinel-status-warning-rgb, 255, 183, 77), 0.15);
+  background: rgba(251, 191, 36, 0.15);
   color: var(--sentinel-status-warning);
 }
 
 .confidence.low {
-  background: var(--sentinel-bg-surface);
+  background: var(--sentinel-glass-inset);
   color: var(--sentinel-text-tertiary);
 }
 
@@ -403,7 +479,7 @@
   justify-content: center;
   width: 32px;
   height: 32px;
-  background: transparent;
+  background: rgba(255, 255, 255, 0.04);
   border: none;
   border-radius: var(--sentinel-radius-sm);
   color: var(--sentinel-text-tertiary);
@@ -412,14 +488,20 @@
 }
 
 .expandButton:hover {
-  background: var(--sentinel-bg-surface);
-  color: var(--sentinel-text-primary);
+  background: rgba(91, 163, 165, 0.15);
+  color: var(--sentinel-accent-primary);
 }
 
-/* Expanded Card Content */
+/* ─────────────────────────────────────────────────────────────────────────────
+   EXPANDED CARD CONTENT - Glass Inset
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .cardExpanded {
   padding: 16px 20px;
-  border-top: 1px solid var(--sentinel-border-subtle);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  background: var(--sentinel-glass-inset);
+
+  box-shadow: var(--sentinel-neu-pressed-xs);
 }
 
 /* Two Column Layout: Info | Action */
@@ -442,7 +524,7 @@
   display: flex;
   align-items: center;
   padding-left: 24px;
-  border-left: 1px solid var(--sentinel-border-subtle);
+  border-left: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 /* Metrics Row */
@@ -476,12 +558,10 @@
 
 .metricValue.positive {
   color: var(--sentinel-status-positive);
-  text-shadow: var(--sentinel-glow-positive);
 }
 
 .metricValue.negative {
   color: var(--sentinel-status-negative);
-  text-shadow: var(--sentinel-glow-negative);
 }
 
 .metricValue.target {
@@ -512,7 +592,7 @@
   margin: 0;
 }
 
-/* Signals */
+/* Signals - Glass pills */
 .signalsList {
   display: flex;
   gap: 8px;
@@ -524,8 +604,11 @@
   align-items: center;
   gap: 6px;
   padding: 4px 8px;
-  background: var(--sentinel-bg-surface);
+  background: var(--sentinel-glass-inset);
   border-radius: var(--sentinel-radius-sm);
+
+  backdrop-filter: blur(var(--sentinel-blur-xs));
+  -webkit-backdrop-filter: blur(var(--sentinel-blur-xs));
 }
 
 .signalName {
@@ -542,12 +625,10 @@
 
 .signalValue.positive {
   color: var(--sentinel-status-positive);
-  text-shadow: var(--sentinel-glow-positive);
 }
 
 .signalValue.negative {
   color: var(--sentinel-status-negative);
-  text-shadow: var(--sentinel-glow-negative);
 }
 
 /* Responsive */
@@ -561,7 +642,7 @@
     padding-left: 0;
     padding-top: 12px;
     border-left: none;
-    border-top: 1px solid var(--sentinel-border-subtle);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
     width: 100%;
   }
 }
@@ -594,17 +675,20 @@
   align-items: center;
   gap: 6px;
   padding: 8px 12px;
-  background: var(--sentinel-bg-surface);
-  border: 1px solid var(--sentinel-border-default);
+  background: var(--sentinel-glass-bg);
+  border: 1px solid var(--sentinel-glass-border);
   border-radius: var(--sentinel-radius-sm);
   font-size: 13px;
   color: var(--sentinel-text-secondary);
   cursor: pointer;
   transition: all var(--sentinel-duration-fast) var(--sentinel-ease-default);
+
+  backdrop-filter: blur(var(--sentinel-blur-sm));
+  -webkit-backdrop-filter: blur(var(--sentinel-blur-sm));
 }
 
 .filterButton:hover {
-  border-color: var(--sentinel-border-hover);
+  border-color: var(--sentinel-glass-border-hover);
   color: var(--sentinel-text-primary);
 }
 
@@ -639,7 +723,7 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   MOBILE LAYOUT - Dedicated Structure
+   MOBILE LAYOUT - Glass-Neumorphic
    ───────────────────────────────────────────────────────────────────────────── */
 
 .mobileContainer {
@@ -651,14 +735,16 @@
   overflow: hidden;
 }
 
-/* Mobile Tabs */
+/* Mobile Tabs - Glass inset */
 .mobileTabs {
   display: flex;
   gap: 4px;
   padding: 3px;
-  background: var(--sentinel-bg-surface);
+  background: var(--sentinel-glass-inset);
   border-radius: var(--sentinel-radius-md);
   flex-shrink: 0;
+
+  box-shadow: var(--sentinel-neu-pressed-sm);
 }
 
 .mobileTab {
@@ -683,9 +769,11 @@
 }
 
 .mobileTabActive {
-  background: var(--sentinel-bg-elevated);
+  background: var(--sentinel-glass-elevated);
   color: var(--sentinel-text-primary);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow:
+    var(--sentinel-neu-elevated-sm),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 /* Mobile Recommendation List */
@@ -697,28 +785,43 @@
   min-height: 0;
 }
 
-/* Mobile Recommendation Card */
+/* Mobile Recommendation Card - Glass */
 .mobileRecCard {
-  background: var(--sentinel-bg-elevated);
-  border: 1px solid var(--sentinel-border-subtle);
+  background: var(--sentinel-glass-bg);
+  border: 1px solid var(--sentinel-glass-border);
   border-radius: var(--sentinel-radius-md);
   cursor: pointer;
   transition: all var(--sentinel-duration-fast) var(--sentinel-ease-default);
   -webkit-tap-highlight-color: transparent;
   flex-shrink: 0;
+
+  backdrop-filter: blur(var(--sentinel-blur-md));
+  -webkit-backdrop-filter: blur(var(--sentinel-blur-md));
+
+  box-shadow:
+    var(--sentinel-shadow-card),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .mobileRecCard:active {
   transform: scale(0.99);
-  background: var(--sentinel-bg-hover);
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .mobileRecCardBuy {
-  border-left: 3px solid var(--sentinel-status-positive);
+  border-left: 3px solid rgba(74, 222, 128, 0.6);
+  box-shadow:
+    var(--sentinel-shadow-card),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    inset 3px 0 10px rgba(74, 222, 128, 0.05);
 }
 
 .mobileRecCardSell {
-  border-left: 3px solid var(--sentinel-status-negative);
+  border-left: 3px solid rgba(248, 113, 113, 0.6);
+  box-shadow:
+    var(--sentinel-shadow-card),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    inset 3px 0 10px rgba(248, 113, 113, 0.05);
 }
 
 .mobileRecRow {
@@ -776,12 +879,10 @@
 
 .mobileRecChange.positive {
   color: var(--sentinel-status-positive);
-  text-shadow: var(--sentinel-glow-positive);
 }
 
 .mobileRecChange.negative {
   color: var(--sentinel-status-negative);
-  text-shadow: var(--sentinel-glow-negative);
 }
 
 .mobileRecScore {
@@ -798,12 +899,10 @@
 
 .mobileRecScoreValue.buyScore {
   color: var(--sentinel-status-positive);
-  text-shadow: var(--sentinel-glow-positive);
 }
 
 .mobileRecScoreValue.sellScore {
   color: var(--sentinel-status-negative);
-  text-shadow: var(--sentinel-glow-negative);
 }
 
 .mobileRecChevron {
@@ -818,16 +917,19 @@
 
 /* Expanded Card State */
 .mobileRecCardExpanded {
-  background: var(--sentinel-bg-hover);
+  background: rgba(255, 255, 255, 0.02);
 }
 
-/* Expanded Content - Accordion */
+/* Expanded Content - Glass inset */
 .mobileRecExpanded {
   display: flex;
   flex-direction: column;
   gap: 10px;
   padding: 12px;
-  border-top: 1px solid var(--sentinel-border-subtle);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  background: var(--sentinel-glass-inset);
+
+  box-shadow: var(--sentinel-neu-pressed-xs);
 }
 
 .mobileRecMetrics {
@@ -842,8 +944,12 @@
   flex-direction: column;
   gap: 4px;
   padding: 10px 12px;
-  background: var(--sentinel-bg-surface);
+  background: var(--sentinel-glass-bg);
+  border: 1px solid rgba(255, 255, 255, 0.04);
   border-radius: var(--sentinel-radius-md);
+
+  backdrop-filter: blur(var(--sentinel-blur-sm));
+  -webkit-backdrop-filter: blur(var(--sentinel-blur-sm));
 }
 
 .mobileRecMetricHeader {
@@ -855,11 +961,13 @@
 .mobileRecMetricIcon {
   color: var(--sentinel-accent-primary);
   flex-shrink: 0;
+  filter: drop-shadow(0 0 3px rgba(91, 163, 165, 0.4));
 }
 
 .mobileRecMetricIconWarning {
   color: var(--sentinel-status-warning);
   flex-shrink: 0;
+  filter: drop-shadow(0 0 3px rgba(251, 191, 36, 0.4));
 }
 
 .mobileRecMetricLabel {
@@ -884,12 +992,10 @@
 
 .mobileRecMetricValue.positive {
   color: var(--sentinel-status-positive);
-  text-shadow: var(--sentinel-glow-positive);
 }
 
 .mobileRecMetricValue.negative {
   color: var(--sentinel-status-negative);
-  text-shadow: var(--sentinel-glow-negative);
 }
 
 .mobileRecMetricValue.stop {
@@ -900,13 +1006,21 @@
   width: 100%;
 }
 
-/* Mobile Market Card - Bottom */
+/* Mobile Market Card - Glass */
 .mobileMarketCard {
-  background: var(--sentinel-bg-elevated);
-  border: 1px solid var(--sentinel-border-subtle);
+  background: var(--sentinel-glass-bg);
+  border: 1px solid var(--sentinel-glass-border);
   border-radius: var(--sentinel-radius-md);
   padding: 10px 12px;
   flex-shrink: 0;
+  position: relative;
+
+  backdrop-filter: blur(var(--sentinel-blur-md));
+  -webkit-backdrop-filter: blur(var(--sentinel-blur-md));
+
+  box-shadow:
+    var(--sentinel-shadow-card),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .mobileMarketRow {
@@ -921,7 +1035,7 @@
   align-items: center;
   gap: 6px;
   padding: 5px 10px;
-  background: var(--sentinel-bg-surface);
+  background: var(--sentinel-glass-inset);
   border-radius: var(--sentinel-radius-sm);
   font-size: 12px;
   font-weight: 500;
@@ -930,24 +1044,27 @@
 }
 
 .mobileMarketState.positive {
-  background: rgba(var(--sentinel-status-positive-rgb, 129, 199, 132), 0.1);
+  background: rgba(74, 222, 128, 0.1);
   color: var(--sentinel-status-positive);
+  border: 1px solid rgba(74, 222, 128, 0.2);
 }
 
 .mobileMarketState.negative {
-  background: rgba(var(--sentinel-status-negative-rgb, 229, 115, 115), 0.1);
+  background: rgba(248, 113, 113, 0.1);
   color: var(--sentinel-status-negative);
+  border: 1px solid rgba(248, 113, 113, 0.2);
 }
 
 .mobileMarketState.warning {
-  background: rgba(var(--sentinel-status-warning-rgb, 255, 183, 77), 0.1);
+  background: rgba(251, 191, 36, 0.1);
   color: var(--sentinel-status-warning);
+  border: 1px solid rgba(251, 191, 36, 0.2);
 }
 
 .mobileMarketState.neutral {
-  background: rgba(156, 163, 175, 0.2);
+  background: var(--sentinel-glass-inset);
   color: var(--sentinel-text-secondary);
-  border: 1px solid rgba(156, 163, 175, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .mobileMarketRisk {
@@ -964,9 +1081,10 @@
 .mobileMarketRiskBar {
   width: 60px;
   height: 4px;
-  background: var(--sentinel-bg-surface);
+  background: var(--sentinel-glass-inset);
   border-radius: 2px;
   overflow: hidden;
+  box-shadow: var(--sentinel-neu-pressed-xs);
 }
 
 .mobileMarketRiskFill {
@@ -996,3 +1114,29 @@
   min-width: 28px;
 }
 
+/* ─────────────────────────────────────────────────────────────────────────────
+   REDUCED MOTION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation: none;
+  }
+
+  .tradeMessage {
+    animation: none;
+  }
+
+  .tab,
+  .activeTab,
+  .recCard,
+  .expandButton,
+  .filterButton,
+  .mobileTab,
+  .mobileRecCard,
+  .mobileRecChevron,
+  .riskFill,
+  .mobileMarketRiskFill {
+    transition: none;
+  }
+}

@@ -1,21 +1,54 @@
 /* Path: src/components/organisms/Table/Table.module.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   SENTINEL DESIGN SYSTEM - Table Component
+   SENTINEL DESIGN SYSTEM v3.2 - Table Component
 
-   Data table with clean, professional styling
-   Optimized for financial/analytical data display
+   GLASS-NEUMORPHISM - Frosted glass data tables
+   - Semi-transparent glass backgrounds
+   - Luminous borders
+   - Subtle neumorphic depth
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   TABLE WRAPPER
+   TABLE WRAPPER - Glass container
    ───────────────────────────────────────────────────────────────────────────── */
 
 .tableWrapper {
   width: 100%;
   overflow-x: auto;
-  background-color: var(--sentinel-bg-elevated);
-  border: 1px solid var(--sentinel-border-default);
+  background: var(--sentinel-glass-bg);
+  border: 1px solid var(--sentinel-glass-border);
   border-radius: var(--sentinel-radius-lg);
+  position: relative;
+
+  /* Glass blur */
+  backdrop-filter: blur(var(--sentinel-blur-md));
+  -webkit-backdrop-filter: blur(var(--sentinel-blur-md));
+
+  /* Subtle elevation */
+  box-shadow:
+    var(--sentinel-shadow-card),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Luminous top edge */
+.tableWrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.15),
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  border-radius: var(--sentinel-radius-lg) var(--sentinel-radius-lg) 0 0;
+  pointer-events: none;
+  z-index: 1;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -29,7 +62,7 @@
   font-family: var(--sentinel-font-led);
   font-size: var(--sentinel-text-sm);
   letter-spacing: var(--sentinel-tracking-led);
-  background-color: var(--sentinel-bg-elevated);
+  background: transparent;
 }
 
 .tableCompact {
@@ -37,18 +70,18 @@
 }
 
 .tableFull {
-  border: 1px solid var(--sentinel-border-default);
+  border: 1px solid var(--sentinel-glass-border);
   border-radius: var(--sentinel-radius-lg);
   overflow: hidden;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   TABLE HEADER
+   TABLE HEADER - Glass surface
    ───────────────────────────────────────────────────────────────────────────── */
 
 .thead {
-  background-color: var(--sentinel-bg-overlay);
-  border-bottom: 1px solid var(--sentinel-border-default);
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .th {
@@ -61,7 +94,7 @@
   letter-spacing: 0.03em;
   white-space: nowrap;
   font-family: var(--sentinel-font-primary);
-  background-color: var(--sentinel-bg-overlay);
+  background: transparent;
 }
 
 /* Fixed width cells for checkbox/expand */
@@ -83,11 +116,11 @@
 }
 
 .thFull {
-  border: 1px solid var(--sentinel-border-subtle);
+  border: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .thBottom {
-  border-bottom: 1px solid var(--sentinel-border-default);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .thNone {
@@ -98,11 +131,12 @@
 .thSortable {
   cursor: pointer;
   user-select: none;
-  transition: var(--sentinel-transition-fast);
+  transition: all 0.15s ease;
 }
 
 .thSortable:hover {
   color: var(--sentinel-accent-primary);
+  background: rgba(255, 255, 255, 0.02);
 }
 
 .thSorted {
@@ -114,8 +148,8 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .tbody tr {
-  border-bottom: 1px solid var(--sentinel-border-subtle);
-  transition: background-color var(--sentinel-transition-fast);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  transition: background-color 0.15s ease;
 }
 
 .tbody tr:last-child {
@@ -127,22 +161,22 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .tr {
-  background-color: var(--sentinel-bg-elevated);
+  background: transparent;
   cursor: default;
-  transition: background-color var(--sentinel-transition-fast);
+  transition: background-color 0.15s ease;
 }
 
 .trHovered,
 .tr:hover {
-  background-color: var(--sentinel-bg-overlay);
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .trSelected {
-  background-color: var(--sentinel-accent-subtle);
+  background: rgba(91, 163, 165, 0.1);
 }
 
 .trAlternate {
-  background-color: var(--sentinel-bg-overlay);
+  background: rgba(255, 255, 255, 0.015);
 }
 
 .trRounded {
@@ -150,7 +184,8 @@
 }
 
 .trSelectedIndicator {
-  border-left: 3px solid var(--sentinel-accent-primary);
+  border-left: 3px solid rgba(91, 163, 165, 0.6);
+  box-shadow: inset 3px 0 10px rgba(91, 163, 165, 0.05);
 }
 
 .trClickable {
@@ -158,8 +193,8 @@
 }
 
 .trFocused {
-  outline: 2px solid var(--sentinel-accent-primary);
-  outline-offset: -2px;
+  outline: none;
+  box-shadow: inset 0 0 0 2px rgba(91, 163, 165, 0.3);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -184,15 +219,15 @@
 }
 
 .tdFull {
-  border: 1px solid var(--sentinel-border-subtle);
+  border: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .tdBottom {
-  border-bottom: 1px solid var(--sentinel-border-subtle);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   ACTIONS
+   ACTIONS - Glass buttons
    ───────────────────────────────────────────────────────────────────────────── */
 
 .actionsContainer {
@@ -202,7 +237,7 @@
 }
 
 .actionButton {
-  background: none;
+  background: rgba(255, 255, 255, 0.04);
   border: none;
   cursor: pointer;
   padding: var(--sentinel-space-1);
@@ -210,22 +245,22 @@
   align-items: center;
   justify-content: center;
   color: var(--sentinel-text-tertiary);
-  transition: var(--sentinel-transition-fast);
+  transition: all 0.15s ease;
   border-radius: var(--sentinel-radius-sm);
 }
 
 .actionButton:hover {
   color: var(--sentinel-accent-primary);
-  background-color: var(--sentinel-accent-subtle);
+  background: rgba(91, 163, 165, 0.15);
 }
 
 .actionButtonDestructive {
-  color: var(--sentinel-status-negative-text);
+  color: var(--sentinel-status-negative);
 }
 
 .actionButtonDestructive:hover {
   color: var(--sentinel-status-negative);
-  background-color: var(--sentinel-status-negative-subtle);
+  background: rgba(248, 113, 113, 0.15);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -241,27 +276,31 @@
   align-items: center;
   justify-content: center;
   color: var(--sentinel-text-tertiary);
-  transition: var(--sentinel-transition-fast);
+  transition: all 0.15s ease;
   width: 24px;
   height: 24px;
+  border-radius: var(--sentinel-radius-sm);
 }
 
 .expandButton:hover {
   color: var(--sentinel-accent-primary);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   EXPANDED CELL
+   EXPANDED CELL - Glass inset
    ───────────────────────────────────────────────────────────────────────────── */
 
 .expandedCell {
   padding: var(--sentinel-space-4);
-  background-color: var(--sentinel-bg-overlay);
-  border-left: 3px solid var(--sentinel-accent-primary);
+  background: var(--sentinel-glass-inset);
+  border-left: 3px solid rgba(91, 163, 165, 0.5);
+
+  box-shadow: var(--sentinel-neu-pressed-xs);
 }
 
 .expandedCellBorder {
-  border-bottom: 1px solid var(--sentinel-border-subtle);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -269,7 +308,7 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .striped .tbody tr:nth-child(even) {
-  background-color: var(--sentinel-bg-overlay);
+  background: rgba(255, 255, 255, 0.02);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -288,7 +327,7 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   LOADING STATE
+   LOADING STATE - Glass overlay
    ───────────────────────────────────────────────────────────────────────────── */
 
 .loading {
@@ -299,11 +338,14 @@
 .loadingOverlay {
   position: absolute;
   inset: 0;
-  background-color: rgba(10, 11, 16, 0.8);
+  background: rgba(10, 11, 16, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--sentinel-accent-primary);
+
+  backdrop-filter: blur(var(--sentinel-blur-sm));
+  -webkit-backdrop-filter: blur(var(--sentinel-blur-sm));
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -330,11 +372,23 @@
 }
 
 .tdPositive {
-  color: var(--sentinel-status-positive-text);
-  text-shadow: var(--sentinel-glow-positive);
+  color: var(--sentinel-status-positive);
 }
 
 .tdNegative {
-  color: var(--sentinel-status-negative-text);
-  text-shadow: var(--sentinel-glow-negative);
+  color: var(--sentinel-status-negative);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   REDUCED MOTION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .tbody tr,
+  .tr,
+  .thSortable,
+  .actionButton,
+  .expandButton {
+    transition: none;
+  }
 }

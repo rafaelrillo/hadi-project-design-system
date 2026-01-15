@@ -31,6 +31,18 @@ body {
   min-height: 100vh;
   min-height: 100dvh;
   text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Glass-Neumorphism Base */
+  background: var(--sentinel-bg-void);
+  color: var(--sentinel-text-primary);
+  font-family: var(--sentinel-font-primary);
+
+  /* Atmospheric gradient overlay */
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(91, 163, 165, 0.08), transparent 50%),
+    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(91, 163, 165, 0.04), transparent 50%);
 }
 
 /* Media defaults - SVG excluded to allow Nivo charts to work properly */
@@ -359,3 +371,94 @@ p {
 .z-50 { z-index: var(--sentinel-z-dropdown); }
 .z-modal { z-index: var(--sentinel-z-modal); }
 .z-tooltip { z-index: var(--sentinel-z-tooltip); }
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   GLASS-NEUMORPHISM UTILITIES
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Glass backgrounds */
+.glass {
+  background: var(--sentinel-glass-bg);
+  backdrop-filter: blur(var(--sentinel-blur-md));
+  -webkit-backdrop-filter: blur(var(--sentinel-blur-md));
+  border: 1px solid var(--sentinel-glass-border);
+}
+
+.glass-elevated {
+  background: var(--sentinel-glass-elevated);
+  backdrop-filter: blur(var(--sentinel-blur-lg));
+  -webkit-backdrop-filter: blur(var(--sentinel-blur-lg));
+  border: 1px solid var(--sentinel-glass-border);
+  box-shadow:
+    var(--sentinel-neu-elevated-md),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.glass-inset {
+  background: var(--sentinel-glass-inset);
+  backdrop-filter: blur(var(--sentinel-blur-sm));
+  -webkit-backdrop-filter: blur(var(--sentinel-blur-sm));
+  box-shadow: var(--sentinel-neu-pressed-sm);
+}
+
+/* Glass panel - for main content areas */
+.glass-panel {
+  background: var(--sentinel-glass-bg);
+  backdrop-filter: blur(var(--sentinel-blur-md));
+  -webkit-backdrop-filter: blur(var(--sentinel-blur-md));
+  border: 1px solid var(--sentinel-glass-border);
+  border-radius: var(--sentinel-radius-lg);
+  box-shadow:
+    var(--sentinel-shadow-card),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  position: relative;
+}
+
+/* Add luminous top edge to glass-panel */
+.glass-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.15),
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  border-radius: var(--sentinel-radius-lg) var(--sentinel-radius-lg) 0 0;
+  pointer-events: none;
+}
+
+/* Neumorphic utilities */
+.neu-elevated {
+  box-shadow: var(--sentinel-neu-elevated-md);
+}
+
+.neu-pressed {
+  box-shadow: var(--sentinel-neu-pressed-md);
+}
+
+/* Blur utilities */
+.blur-sm { backdrop-filter: blur(var(--sentinel-blur-sm)); -webkit-backdrop-filter: blur(var(--sentinel-blur-sm)); }
+.blur-md { backdrop-filter: blur(var(--sentinel-blur-md)); -webkit-backdrop-filter: blur(var(--sentinel-blur-md)); }
+.blur-lg { backdrop-filter: blur(var(--sentinel-blur-lg)); -webkit-backdrop-filter: blur(var(--sentinel-blur-lg)); }
+.blur-xl { backdrop-filter: blur(var(--sentinel-blur-xl)); -webkit-backdrop-filter: blur(var(--sentinel-blur-xl)); }
+
+/* Inner highlight utility */
+.inner-highlight {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* Luminous border utilities */
+.border-luminous {
+  border-color: var(--sentinel-glass-border);
+}
+
+.border-luminous-hover:hover {
+  border-color: var(--sentinel-glass-border-hover);
+}

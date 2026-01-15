@@ -1,13 +1,15 @@
 /* Path: src/components/organisms/Modal/Modal.module.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   SENTINEL DESIGN SYSTEM - Modal Component
+   SENTINEL DESIGN SYSTEM v3.2 - Modal Component
 
-   Dialog and drawer overlays with smooth animations
-   Clean, professional styling without glowing effects
+   GLASS-NEUMORPHISM - Frosted glass overlays with depth
+   - Heavy backdrop blur for glass effect
+   - Neumorphic elevation on modal
+   - Luminous borders and edges
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   OVERLAY
+   OVERLAY - Frosted backdrop
    ───────────────────────────────────────────────────────────────────────────── */
 
 .overlay {
@@ -22,28 +24,66 @@
 }
 
 .overlayCenter {
-  background-color: rgba(5, 6, 10, 0.85);
+  background-color: rgba(5, 6, 10, 0.75);
   align-items: center;
   justify-content: center;
   animation: sentinel-fade-in 200ms ease-out;
+
+  /* Glass blur on overlay */
+  backdrop-filter: blur(var(--sentinel-blur-sm));
+  -webkit-backdrop-filter: blur(var(--sentinel-blur-sm));
 }
 
 .overlayDrawer {
-  background-color: rgba(5, 6, 10, 0.7);
+  background-color: rgba(5, 6, 10, 0.6);
   align-items: flex-start;
   justify-content: flex-end;
+
+  backdrop-filter: blur(var(--sentinel-blur-xs));
+  -webkit-backdrop-filter: blur(var(--sentinel-blur-xs));
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   MODAL CONTAINER
+   MODAL CONTAINER - Glass-Neumorphic Elevated
    ───────────────────────────────────────────────────────────────────────────── */
 
 .modal {
-  background-color: var(--sentinel-bg-elevated);
-  border: 1px solid var(--sentinel-border-default);
+  background: var(--sentinel-glass-elevated);
+  border: 1px solid var(--sentinel-glass-border);
   display: flex;
   flex-direction: column;
-  box-shadow: var(--sentinel-shadow-xl);
+  position: relative;
+  overflow: hidden;
+
+  /* Strong glass blur */
+  backdrop-filter: blur(var(--sentinel-blur-xl));
+  -webkit-backdrop-filter: blur(var(--sentinel-blur-xl));
+
+  /* Neumorphic elevation + glow */
+  box-shadow:
+    var(--sentinel-neu-elevated-lg),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 0 60px rgba(0, 0, 0, 0.5);
+}
+
+/* Luminous top edge */
+.modal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+  pointer-events: none;
+  z-index: 10;
 }
 
 .modalCenter {
@@ -59,7 +99,8 @@
   max-width: 800px;
   height: 100vh;
   animation: sentinel-slide-in-right 400ms var(--sentinel-ease-out);
-  border-left: 1px solid var(--sentinel-border-strong);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0;
 }
 
 /* Size variants for center modal */
@@ -76,7 +117,7 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   HEADER
+   HEADER - Glass surface
    ───────────────────────────────────────────────────────────────────────────── */
 
 .header {
@@ -84,8 +125,8 @@
   justify-content: space-between;
   align-items: center;
   padding: var(--sentinel-space-4) var(--sentinel-space-5);
-  border-bottom: 1px solid var(--sentinel-border-subtle);
-  background-color: var(--sentinel-bg-overlay);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.02);
   flex-shrink: 0;
 }
 
@@ -99,7 +140,7 @@
 }
 
 .closeButton {
-  background: none;
+  background: rgba(255, 255, 255, 0.04);
   border: 1px solid transparent;
   cursor: pointer;
   padding: var(--sentinel-space-1);
@@ -115,12 +156,13 @@
 
 .closeButton:hover {
   color: var(--sentinel-text-primary);
-  background-color: var(--sentinel-bg-subtle);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--sentinel-glass-border);
 }
 
 .closeButton:focus-visible {
-  outline: 2px solid var(--sentinel-accent-primary);
-  outline-offset: 2px;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(91, 163, 165, 0.3);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -137,7 +179,7 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   FOOTER
+   FOOTER - Glass surface
    ───────────────────────────────────────────────────────────────────────────── */
 
 .footer {
@@ -146,8 +188,8 @@
   gap: var(--sentinel-space-3);
   justify-content: flex-end;
   flex-shrink: 0;
-  border-top: 1px solid var(--sentinel-border-subtle);
-  background-color: var(--sentinel-bg-overlay);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.02);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -192,5 +234,9 @@
   .modalDrawer,
   .overlayCenter {
     animation: none;
+  }
+
+  .closeButton {
+    transition: none;
   }
 }

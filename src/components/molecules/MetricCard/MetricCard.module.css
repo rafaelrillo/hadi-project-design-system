@@ -1,38 +1,43 @@
 /* Path: src/components/molecules/MetricCard/MetricCard.module.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   SENTINEL DESIGN SYSTEM - MetricCard Component
+   SENTINEL DESIGN SYSTEM v3.2 - MetricCard Component
 
-   Versatile card for displaying KPIs with context, trends, and visualizations
+   GLASS-NEUMORPHISM - Premium KPI cards with frosted depth
+   - Semi-transparent glass backgrounds
+   - Neumorphic elevation + inner highlights
+   - Luminous borders and edges
+   - Progress bars with inset glass
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   BASE STYLES
+   BASE STYLES - Glass-Neumorphic Elevated
    ───────────────────────────────────────────────────────────────────────────── */
 
 .metricCard {
   display: flex;
   flex-direction: column;
-  gap: var(--sentinel-space-3);
-  padding: var(--sentinel-space-4);
-  /* Glassmorphism effect */
-  background: linear-gradient(
-    135deg,
-    rgba(16, 18, 26, 0.9) 0%,
-    rgba(16, 18, 26, 0.7) 100%
-  );
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: var(--sentinel-radius-lg);
-  box-shadow: var(--sentinel-inner-highlight), var(--sentinel-shadow-card);
-  transition: var(--sentinel-transition-normal);
+  gap: 12px;
+  padding: 20px;
+  background: var(--sentinel-glass-bg);
+  border: 1px solid var(--sentinel-glass-border);
+  border-radius: var(--sentinel-radius-card);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   text-decoration: none;
   color: inherit;
   position: relative;
   overflow: hidden;
+
+  /* Glass blur effect */
+  backdrop-filter: blur(var(--sentinel-blur-md));
+  -webkit-backdrop-filter: blur(var(--sentinel-blur-md));
+
+  /* Neumorphic elevated shadow + inner highlight */
+  box-shadow:
+    var(--sentinel-shadow-card),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
-/* Top light line effect */
+/* Luminous top edge */
 .metricCard::before {
   content: '';
   position: absolute;
@@ -42,11 +47,15 @@
   height: 1px;
   background: linear-gradient(
     90deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.1) 50%,
-    transparent 100%
+    transparent,
+    rgba(255, 255, 255, 0.12),
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.12),
+    transparent
   );
+  border-radius: var(--sentinel-radius-card) var(--sentinel-radius-card) 0 0;
   pointer-events: none;
+  z-index: 1;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -54,18 +63,28 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .variantDefault {
-  background-color: var(--sentinel-bg-elevated);
-  border-color: var(--sentinel-border-subtle);
+  background: var(--sentinel-glass-bg);
+  border-color: var(--sentinel-glass-border);
 }
 
 .variantOutlined {
-  background-color: transparent;
-  border-color: var(--sentinel-border-default);
+  background: transparent;
+  border-color: var(--sentinel-glass-border);
+  backdrop-filter: none;
+  box-shadow: none;
+}
+
+.variantOutlined::before {
+  display: none;
 }
 
 .variantFilled {
-  background-color: var(--sentinel-bg-overlay);
-  border-color: transparent;
+  background: var(--sentinel-glass-elevated);
+  border-color: rgba(255, 255, 255, 0.1);
+
+  box-shadow:
+    var(--sentinel-neu-elevated-md),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -104,27 +123,43 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   STATUS COLORS
+   STATUS COLORS - Glass tinted borders
    ───────────────────────────────────────────────────────────────────────────── */
 
 .statusSuccess {
-  border-left: 3px solid var(--sentinel-status-positive);
+  border-left: 3px solid rgba(74, 222, 128, 0.6);
+  box-shadow:
+    var(--sentinel-shadow-card),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    inset 3px 0 15px rgba(74, 222, 128, 0.05);
 }
 
 .statusWarning {
-  border-left: 3px solid var(--sentinel-status-warning);
+  border-left: 3px solid rgba(251, 191, 36, 0.6);
+  box-shadow:
+    var(--sentinel-shadow-card),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    inset 3px 0 15px rgba(251, 191, 36, 0.05);
 }
 
 .statusError {
-  border-left: 3px solid var(--sentinel-status-negative);
+  border-left: 3px solid rgba(248, 113, 113, 0.6);
+  box-shadow:
+    var(--sentinel-shadow-card),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    inset 3px 0 15px rgba(248, 113, 113, 0.05);
 }
 
 .statusInfo {
-  border-left: 3px solid var(--sentinel-status-info);
+  border-left: 3px solid rgba(96, 165, 250, 0.6);
+  box-shadow:
+    var(--sentinel-shadow-card),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    inset 3px 0 15px rgba(96, 165, 250, 0.05);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   INTERACTIVE STATE
+   INTERACTIVE STATE - Enhanced Glass-Neumorphism
    ───────────────────────────────────────────────────────────────────────────── */
 
 .interactive {
@@ -132,23 +167,15 @@
 }
 
 .interactive:hover {
-  border-color: rgba(91, 163, 165, 0.3);
-  background: linear-gradient(
-    135deg,
-    rgba(16, 18, 26, 0.95) 0%,
-    rgba(22, 24, 34, 0.85) 100%
-  );
+  background: var(--sentinel-glass-bg-hover);
+  border-color: var(--sentinel-glass-border-hover);
   transform: translateY(-2px);
-  box-shadow: var(--sentinel-inner-highlight), var(--sentinel-shadow-glow-accent);
-}
 
-.interactive:hover::before {
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(91, 163, 165, 0.2) 50%,
-    transparent 100%
-  );
+  /* Enhanced glass elevation on hover */
+  box-shadow:
+    var(--sentinel-shadow-card-hover),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 0 30px rgba(0, 0, 0, 0.2);
 }
 
 .interactive:focus {
@@ -156,12 +183,19 @@
 }
 
 .interactive:focus-visible {
-  outline: 2px solid var(--sentinel-accent-primary);
-  outline-offset: 2px;
+  outline: none;
+  border-color: var(--sentinel-glass-border-focus);
+  box-shadow:
+    var(--sentinel-shadow-card),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 0 0 3px rgba(91, 163, 165, 0.2);
 }
 
 .interactive:active {
   transform: translateY(0);
+  box-shadow:
+    var(--sentinel-neu-elevated-sm),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -226,7 +260,7 @@
 }
 
 .value {
-  font-family: var(--sentinel-font-numeric);
+  font-family: var(--sentinel-font-mono);
   font-size: var(--sentinel-text-2xl);
   font-weight: 400;
   color: var(--sentinel-text-primary);
@@ -236,7 +270,7 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   TREND
+   TREND - Glass pills
    ───────────────────────────────────────────────────────────────────────────── */
 
 .trend {
@@ -245,26 +279,31 @@
   gap: var(--sentinel-space-1);
   padding: var(--sentinel-space-1) var(--sentinel-space-2);
   border-radius: var(--sentinel-radius-full);
-  font-family: var(--sentinel-font-led);
+  font-family: var(--sentinel-font-mono);
   font-size: var(--sentinel-text-xs);
   font-weight: var(--sentinel-font-medium);
-  letter-spacing: var(--sentinel-tracking-led);
+  letter-spacing: 0.02em;
+
+  /* Glass effect for trend pills */
+  backdrop-filter: blur(var(--sentinel-blur-xs));
+  -webkit-backdrop-filter: blur(var(--sentinel-blur-xs));
 }
 
 .trendPositive {
-  background-color: var(--sentinel-status-positive-subtle);
-  color: var(--sentinel-status-positive-text);
-  text-shadow: var(--sentinel-glow-positive);
+  background: rgba(74, 222, 128, 0.12);
+  border: 1px solid rgba(74, 222, 128, 0.25);
+  color: var(--sentinel-status-positive);
 }
 
 .trendNegative {
-  background-color: var(--sentinel-status-negative-subtle);
-  color: var(--sentinel-status-negative-text);
-  text-shadow: var(--sentinel-glow-negative);
+  background: rgba(248, 113, 113, 0.12);
+  border: 1px solid rgba(248, 113, 113, 0.25);
+  color: var(--sentinel-status-negative);
 }
 
 .trendNeutral {
-  background-color: var(--sentinel-status-neutral-subtle);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--sentinel-glass-border);
   color: var(--sentinel-text-secondary);
 }
 
@@ -294,7 +333,7 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   PROGRESS BAR
+   PROGRESS BAR - Glass-Neumorphic Pressed
    ───────────────────────────────────────────────────────────────────────────── */
 
 .progressContainer {
@@ -306,29 +345,38 @@
 .progressBar {
   flex: 1;
   height: 6px;
-  background-color: var(--sentinel-bg-interactive);
+  background: var(--sentinel-glass-inset);
   border-radius: var(--sentinel-radius-full);
   overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+
+  /* Neumorphic pressed/inset shadow */
+  box-shadow: var(--sentinel-neu-pressed-xs);
 }
 
 .progressFill {
   height: 100%;
-  background-color: var(--sentinel-accent-primary);
+  background: linear-gradient(
+    90deg,
+    rgba(91, 163, 165, 0.6),
+    rgba(91, 163, 165, 0.8)
+  );
   border-radius: var(--sentinel-radius-full);
   transition: width var(--sentinel-duration-slow) var(--sentinel-ease-out);
+  box-shadow: 0 0 10px rgba(91, 163, 165, 0.4);
 }
 
 .progressLabel {
   flex-shrink: 0;
-  font-family: var(--sentinel-font-led);
+  font-family: var(--sentinel-font-mono);
   font-size: var(--sentinel-text-xs);
   color: var(--sentinel-text-secondary);
-  letter-spacing: var(--sentinel-tracking-led);
+  letter-spacing: 0.02em;
   font-variant-numeric: tabular-nums;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   DISTRIBUTION BAR
+   DISTRIBUTION BAR - Glass-Neumorphic
    ───────────────────────────────────────────────────────────────────────────── */
 
 .distributionContainer {
@@ -342,6 +390,11 @@
   height: 8px;
   border-radius: var(--sentinel-radius-full);
   overflow: hidden;
+  background: var(--sentinel-glass-inset);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+
+  /* Neumorphic pressed shadow */
+  box-shadow: var(--sentinel-neu-pressed-xs);
 }
 
 .distributionSegment {
@@ -367,6 +420,7 @@
   height: 8px;
   border-radius: 50%;
   flex-shrink: 0;
+  box-shadow: 0 0 6px currentColor;
 }
 
 .legendLabel {
@@ -384,7 +438,7 @@
   align-items: center;
   gap: var(--sentinel-space-2);
   padding-top: var(--sentinel-space-2);
-  border-top: 1px solid var(--sentinel-border-subtle);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
   font-family: var(--sentinel-font-primary);
   font-size: var(--sentinel-text-xs);
 }
@@ -395,24 +449,22 @@
 
 .comparisonValue {
   color: var(--sentinel-text-secondary);
-  font-family: var(--sentinel-font-numeric);
+  font-family: var(--sentinel-font-mono);
   letter-spacing: 0.05em;
 }
 
 .comparisonDiff {
-  font-family: var(--sentinel-font-led);
+  font-family: var(--sentinel-font-mono);
   font-variant-numeric: tabular-nums;
-  letter-spacing: var(--sentinel-tracking-led);
+  letter-spacing: 0.02em;
 }
 
 .comparisonDiffPositive {
-  color: var(--sentinel-status-positive-text);
-  text-shadow: var(--sentinel-glow-positive);
+  color: var(--sentinel-status-positive);
 }
 
 .comparisonDiffNegative {
-  color: var(--sentinel-status-negative-text);
-  text-shadow: var(--sentinel-glow-negative);
+  color: var(--sentinel-status-negative);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -432,8 +484,8 @@
   align-items: center;
   gap: var(--sentinel-space-1);
   padding: var(--sentinel-space-1) var(--sentinel-space-2);
-  background: none;
-  border: none;
+  background: rgba(91, 163, 165, 0.1);
+  border: 1px solid rgba(91, 163, 165, 0.2);
   border-radius: var(--sentinel-radius-sm);
   color: var(--sentinel-accent-primary);
   font-family: var(--sentinel-font-primary);
@@ -441,15 +493,20 @@
   font-weight: var(--sentinel-font-medium);
   cursor: pointer;
   transition: var(--sentinel-transition-fast);
+
+  backdrop-filter: blur(var(--sentinel-blur-xs));
+  -webkit-backdrop-filter: blur(var(--sentinel-blur-xs));
 }
 
 .actionButton:hover {
-  background-color: var(--sentinel-accent-subtle);
+  background: rgba(91, 163, 165, 0.2);
+  border-color: rgba(91, 163, 165, 0.35);
+  box-shadow: 0 2px 10px rgba(91, 163, 165, 0.2);
 }
 
 .actionButton:focus-visible {
-  outline: 2px solid var(--sentinel-accent-primary);
-  outline-offset: 2px;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(91, 163, 165, 0.3);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -470,6 +527,7 @@
 .loadingSpinner {
   color: var(--sentinel-accent-primary);
   animation: spin 1s linear infinite;
+  filter: drop-shadow(0 0 6px rgba(91, 163, 165, 0.4));
 }
 
 @keyframes spin {
@@ -486,7 +544,11 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .hasError {
-  border-color: var(--sentinel-status-negative-subtle);
+  border-color: rgba(248, 113, 113, 0.3);
+  box-shadow:
+    var(--sentinel-shadow-card),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    inset 0 0 20px rgba(248, 113, 113, 0.05);
 }
 
 .errorContent {
@@ -504,7 +566,7 @@
 .errorMessage {
   font-family: var(--sentinel-font-primary);
   font-size: var(--sentinel-text-sm);
-  color: var(--sentinel-status-negative-text);
+  color: var(--sentinel-status-negative);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────

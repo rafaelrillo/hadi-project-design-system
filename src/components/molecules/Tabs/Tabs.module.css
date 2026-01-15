@@ -1,89 +1,222 @@
 /* Path: src/components/molecules/Tabs/Tabs.module.css */
+/* ═══════════════════════════════════════════════════════════════════════════════
+   SENTINEL DESIGN SYSTEM v3.2 - Tabs Component
+
+   GLASS-NEUMORPHISM - Tab navigation with glass depth
+   - Container: Inset glass (sunken)
+   - Active tab: Elevated glass (floating out)
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   TABS CONTAINER - Glass-Neumorphic Pressed
+   ───────────────────────────────────────────────────────────────────────────── */
 
 .tabs {
   display: flex;
-  gap: var(--sentinel-space-1);
-  background-color: var(--sentinel-bg-elevated);
-  padding: var(--sentinel-space-1);
-  border-radius: var(--sentinel-radius-lg);
-  border: 1px solid var(--sentinel-border-subtle);
+  gap: 4px;
+  background: var(--sentinel-glass-inset);
+  padding: 4px;
+  border-radius: var(--sentinel-radius-md);
+  border: 1px solid var(--sentinel-glass-border);
+
+  /* Glass blur */
+  backdrop-filter: blur(var(--sentinel-blur-sm));
+  -webkit-backdrop-filter: blur(var(--sentinel-blur-sm));
+
+  /* Neumorphic pressed shadow */
+  box-shadow: var(--sentinel-neu-pressed-sm);
 }
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   TAB ITEM
+   ───────────────────────────────────────────────────────────────────────────── */
 
 .tab {
   display: flex;
   align-items: center;
-  gap: var(--sentinel-space-2);
-  padding: var(--sentinel-space-2) var(--sentinel-space-4);
+  gap: 8px;
+  padding: 10px 16px;
   border: none;
   background: transparent;
-  color: var(--sentinel-text-secondary);
+  color: var(--sentinel-text-muted);
   font-family: var(--sentinel-font-primary);
-  font-size: var(--sentinel-text-sm);
+  font-size: 12px;
   font-weight: var(--sentinel-font-medium);
-  border-radius: var(--sentinel-radius-md);
+  border-radius: var(--sentinel-radius-sm);
   cursor: pointer;
-  transition: var(--sentinel-transition-fast);
+  transition: all 0.2s ease;
   white-space: nowrap;
 }
 
 .tab:hover:not(.disabled):not(.active) {
-  background-color: var(--sentinel-bg-subtle);
-  color: var(--sentinel-text-primary);
+  color: var(--sentinel-text-secondary);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .tab:focus-visible {
-  outline: 2px solid var(--sentinel-accent-primary);
-  outline-offset: 2px;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(91, 163, 165, 0.3);
 }
 
+/* Active tab - Glass-Neumorphic elevated */
 .tab.active {
-  background-color: var(--sentinel-accent-subtle);
-  color: var(--sentinel-accent-primary);
+  color: var(--sentinel-text-primary);
+  background: var(--sentinel-glass-bg);
+
+  /* Glass blur on active */
+  backdrop-filter: blur(var(--sentinel-blur-sm));
+  -webkit-backdrop-filter: blur(var(--sentinel-blur-sm));
+
+  /* Elevated + inner highlight */
+  box-shadow:
+    var(--sentinel-neu-elevated-xs),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .tab.disabled {
-  opacity: 0.5;
+  opacity: 0.4;
   cursor: not-allowed;
 }
 
+/* ─────────────────────────────────────────────────────────────────────────────
+   TAB PARTS
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .icon {
   flex-shrink: 0;
+  opacity: 0.8;
+}
+
+.tab.active .icon {
+  opacity: 1;
 }
 
 .label {
   line-height: 1.2;
 }
 
-/* Variants */
+/* ─────────────────────────────────────────────────────────────────────────────
+   VARIANT: PILLS - Glass pill tabs
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .pills {
   background: transparent;
   border: none;
   padding: 0;
-  gap: var(--sentinel-space-2);
+  gap: 8px;
+  backdrop-filter: none;
+  box-shadow: none;
 }
 
 .pills .tab {
-  background-color: var(--sentinel-bg-elevated);
-  border: 1px solid var(--sentinel-border-subtle);
+  background: var(--sentinel-glass-bg);
+  border: 1px solid var(--sentinel-glass-border);
+  border-radius: var(--sentinel-radius-full);
+  padding: 8px 16px;
+
+  backdrop-filter: blur(var(--sentinel-blur-sm));
+  -webkit-backdrop-filter: blur(var(--sentinel-blur-sm));
+
+  box-shadow:
+    var(--sentinel-neu-elevated-xs),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .pills .tab:hover:not(.disabled):not(.active) {
-  border-color: var(--sentinel-border-default);
+  border-color: var(--sentinel-glass-border-hover);
+  background: var(--sentinel-glass-bg-hover);
+  box-shadow:
+    var(--sentinel-neu-elevated-sm),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .pills .tab.active {
-  background-color: var(--sentinel-accent-primary);
-  color: var(--sentinel-text-inverse);
-  border-color: var(--sentinel-accent-primary);
+  background: rgba(91, 163, 165, 0.25);
+  color: white;
+  border-color: rgba(91, 163, 165, 0.4);
+
+  box-shadow:
+    var(--sentinel-neu-elevated-sm),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 4px 15px rgba(91, 163, 165, 0.3);
 }
 
-/* Sizes */
+/* ─────────────────────────────────────────────────────────────────────────────
+   VARIANT: UNDERLINE - Minimal (no glass)
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.underline {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--sentinel-border-subtle);
+  border-radius: 0;
+  padding: 0;
+  gap: 0;
+  backdrop-filter: none;
+  box-shadow: none;
+}
+
+.underline .tab {
+  padding: 12px 20px;
+  border-radius: 0;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  backdrop-filter: none;
+}
+
+.underline .tab:hover:not(.disabled):not(.active) {
+  background: transparent;
+  color: var(--sentinel-text-secondary);
+}
+
+.underline .tab.active {
+  background: transparent;
+  color: var(--sentinel-accent-primary);
+  border-bottom-color: var(--sentinel-accent-primary);
+  box-shadow: none;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   SIZES
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .sm .tab {
-  padding: var(--sentinel-space-1-5) var(--sentinel-space-3);
-  font-size: var(--sentinel-text-xs);
+  padding: 8px 12px;
+  font-size: 11px;
+}
+
+.sm.pills .tab {
+  padding: 6px 12px;
 }
 
 .lg .tab {
-  padding: var(--sentinel-space-3) var(--sentinel-space-5);
-  font-size: var(--sentinel-text-base);
+  padding: 12px 20px;
+  font-size: 14px;
+}
+
+.lg.pills .tab {
+  padding: 10px 20px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   FULL WIDTH
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.fullWidth {
+  width: 100%;
+}
+
+.fullWidth .tab {
+  flex: 1;
+  justify-content: center;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   REDUCED MOTION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .tab {
+    transition: none;
+  }
 }

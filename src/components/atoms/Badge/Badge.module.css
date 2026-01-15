@@ -1,28 +1,35 @@
 /* Path: src/components/atoms/Badge/Badge.module.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   SENTINEL DESIGN SYSTEM - Badge Component
+   SENTINEL DESIGN SYSTEM v3.2 - Badge Component
 
-   Status indicators and labels
-   Clean, minimal styling with subtle backgrounds
+   GLASS-NEUMORPHISM - Small glass status indicators
+   - Semi-transparent glass backgrounds
+   - Subtle neumorphic elevation
+   - Luminous borders
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   BASE BADGE
+   BASE BADGE - Glass-Neumorphic
    ───────────────────────────────────────────────────────────────────────────── */
 
 .badge {
   display: inline-flex;
   align-items: center;
-  gap: var(--sentinel-space-1);
-  font-family: var(--sentinel-font-led);
-  font-size: var(--sentinel-text-xs);
+  gap: 6px;
+  font-family: var(--sentinel-font-primary);
+  font-size: 12px;
   font-weight: var(--sentinel-font-medium);
-  letter-spacing: var(--sentinel-tracking-led);
-  padding: var(--sentinel-space-1) var(--sentinel-space-2);
-  border-radius: var(--sentinel-radius-sm);
+  letter-spacing: 0.02em;
+  padding: 6px 12px;
+  border-radius: var(--sentinel-radius-full);
   border: 1px solid transparent;
   white-space: nowrap;
-  line-height: 1.4;
+  line-height: 1.2;
+  transition: all 0.2s ease;
+
+  /* Glass blur */
+  backdrop-filter: blur(var(--sentinel-blur-xs));
+  -webkit-backdrop-filter: blur(var(--sentinel-blur-xs));
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -30,9 +37,13 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .default {
-  background-color: var(--sentinel-bg-subtle);
-  border-color: var(--sentinel-border-default);
+  background: var(--sentinel-glass-bg);
+  border-color: var(--sentinel-glass-border);
   color: var(--sentinel-text-primary);
+
+  box-shadow:
+    var(--sentinel-neu-elevated-xs),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -40,10 +51,13 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .primary {
-  background-color: var(--sentinel-accent-subtle);
-  border-color: transparent;
+  background: rgba(91, 163, 165, 0.15);
+  border-color: rgba(91, 163, 165, 0.3);
   color: var(--sentinel-accent-primary);
-  text-shadow: var(--sentinel-glow-accent);
+
+  box-shadow:
+    var(--sentinel-neu-elevated-xs),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -51,10 +65,13 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .success {
-  background-color: var(--sentinel-status-positive-subtle);
-  border-color: transparent;
-  color: var(--sentinel-status-positive-text);
-  text-shadow: var(--sentinel-glow-positive);
+  background: rgba(74, 222, 128, 0.12);
+  border-color: rgba(74, 222, 128, 0.25);
+  color: var(--sentinel-status-positive);
+
+  box-shadow:
+    var(--sentinel-neu-elevated-xs),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -62,10 +79,13 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .error {
-  background-color: var(--sentinel-status-negative-subtle);
-  border-color: transparent;
-  color: var(--sentinel-status-negative-text);
-  text-shadow: var(--sentinel-glow-negative);
+  background: rgba(248, 113, 113, 0.12);
+  border-color: rgba(248, 113, 113, 0.25);
+  color: var(--sentinel-status-negative);
+
+  box-shadow:
+    var(--sentinel-neu-elevated-xs),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -73,9 +93,13 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .warning {
-  background-color: var(--sentinel-status-warning-subtle);
-  border-color: transparent;
-  color: var(--sentinel-status-warning-text);
+  background: rgba(251, 191, 36, 0.12);
+  border-color: rgba(251, 191, 36, 0.25);
+  color: var(--sentinel-status-warning);
+
+  box-shadow:
+    var(--sentinel-neu-elevated-xs),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -83,9 +107,13 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .info {
-  background-color: var(--sentinel-status-info-subtle);
-  border-color: transparent;
-  color: var(--sentinel-status-info-text);
+  background: rgba(96, 165, 250, 0.12);
+  border-color: rgba(96, 165, 250, 0.25);
+  color: var(--sentinel-status-info);
+
+  box-shadow:
+    var(--sentinel-neu-elevated-xs),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -93,17 +121,21 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .neutral {
-  background-color: var(--sentinel-bg-subtle);
-  border-color: transparent;
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--sentinel-border-subtle);
   color: var(--sentinel-text-secondary);
+  backdrop-filter: none;
+  box-shadow: none;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   MODIFIER: OUTLINED
+   MODIFIER: OUTLINED - No glass fill
    ───────────────────────────────────────────────────────────────────────────── */
 
 .outlined {
-  background-color: transparent;
+  background: transparent;
+  backdrop-filter: none;
+  box-shadow: none;
 }
 
 .outlined.primary {
@@ -131,6 +163,65 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
+   MODIFIER: SOLID - Strong glass with glow
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.solid.primary {
+  background: rgba(91, 163, 165, 0.4);
+  border-color: rgba(91, 163, 165, 0.6);
+  color: white;
+
+  box-shadow:
+    var(--sentinel-neu-elevated-xs),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 2px 10px rgba(91, 163, 165, 0.3);
+}
+
+.solid.success {
+  background: rgba(74, 222, 128, 0.35);
+  border-color: rgba(74, 222, 128, 0.5);
+  color: white;
+
+  box-shadow:
+    var(--sentinel-neu-elevated-xs),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 2px 10px rgba(74, 222, 128, 0.3);
+}
+
+.solid.error {
+  background: rgba(248, 113, 113, 0.35);
+  border-color: rgba(248, 113, 113, 0.5);
+  color: white;
+
+  box-shadow:
+    var(--sentinel-neu-elevated-xs),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 2px 10px rgba(248, 113, 113, 0.3);
+}
+
+.solid.warning {
+  background: rgba(251, 191, 36, 0.35);
+  border-color: rgba(251, 191, 36, 0.5);
+  color: #0a0a0c;
+
+  box-shadow:
+    var(--sentinel-neu-elevated-xs),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 2px 10px rgba(251, 191, 36, 0.3);
+}
+
+.solid.info {
+  background: rgba(96, 165, 250, 0.35);
+  border-color: rgba(96, 165, 250, 0.5);
+  color: white;
+
+  box-shadow:
+    var(--sentinel-neu-elevated-xs),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 2px 10px rgba(96, 165, 250, 0.3);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
    WITH DOT INDICATOR
    ───────────────────────────────────────────────────────────────────────────── */
 
@@ -141,6 +232,28 @@
   border-radius: 50%;
   background-color: currentColor;
   flex-shrink: 0;
+  box-shadow: 0 0 6px currentColor;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   WITH PULSE ANIMATION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.withPulse::before {
+  animation: badge-pulse 2s ease-in-out infinite;
+}
+
+@keyframes badge-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 6px currentColor;
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(0.9);
+    box-shadow: 0 0 10px currentColor;
+  }
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -149,7 +262,8 @@
 
 .sm {
   font-size: 10px;
-  padding: 2px var(--sentinel-space-1);
+  padding: 4px 8px;
+  border-radius: var(--sentinel-radius-full);
 }
 
 .sm.withDot::before {
@@ -158,11 +272,26 @@
 }
 
 .lg {
-  font-size: var(--sentinel-text-sm);
-  padding: var(--sentinel-space-1) var(--sentinel-space-3);
+  font-size: 13px;
+  padding: 8px 14px;
+  border-radius: var(--sentinel-radius-full);
 }
 
 .lg.withDot::before {
   width: 7px;
   height: 7px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   REDUCED MOTION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .badge {
+    transition: none;
+  }
+
+  .withPulse::before {
+    animation: none;
+  }
 }

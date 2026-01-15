@@ -1,35 +1,56 @@
 /* Path: src/components/atoms/Dropdown/Dropdown.module.css */
+/* ═══════════════════════════════════════════════════════════════════════════════
+   SENTINEL DESIGN SYSTEM v3.2 - Dropdown Component
+
+   GLASS-NEUMORPHISM - Frosted glass dropdowns with depth
+   - Trigger: Inset glass (like input)
+   - Menu: Elevated glass with strong blur
+   ═══════════════════════════════════════════════════════════════════════════════ */
 
 .dropdown {
   position: relative;
   display: inline-block;
 }
 
+/* ─────────────────────────────────────────────────────────────────────────────
+   TRIGGER - Glass-Neumorphic Pressed
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .trigger {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  padding: 10px 14px;
+  padding: 12px 16px;
   min-width: 150px;
-  background: var(--sentinel-bg-surface);
-  border: 1px solid var(--sentinel-border-default);
+  background: var(--sentinel-glass-inset);
+  border: 1px solid var(--sentinel-glass-border);
   border-radius: var(--sentinel-radius-md);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
   color: var(--sentinel-text-primary);
   cursor: pointer;
-  transition: all var(--sentinel-duration-fast) var(--sentinel-ease-default);
+  transition: all 0.2s ease;
+
+  /* Glass blur */
+  backdrop-filter: blur(var(--sentinel-blur-sm));
+  -webkit-backdrop-filter: blur(var(--sentinel-blur-sm));
+
+  /* Neumorphic pressed shadow */
+  box-shadow: var(--sentinel-shadow-input);
 }
 
 .trigger:hover {
-  border-color: var(--sentinel-border-hover);
-  background: var(--sentinel-bg-hover);
+  border-color: var(--sentinel-glass-border-hover);
+  background: var(--sentinel-glass-inset-focus);
 }
 
 .trigger.open {
-  border-color: var(--sentinel-accent-primary);
-  box-shadow: 0 0 0 2px rgba(var(--sentinel-accent-primary-rgb, 91, 163, 165), 0.15);
+  border-color: var(--sentinel-glass-border-focus);
+  box-shadow:
+    var(--sentinel-shadow-input),
+    0 0 0 3px rgba(91, 163, 165, 0.15),
+    inset 0 0 15px rgba(91, 163, 165, 0.05);
 }
 
 .value {
@@ -37,70 +58,110 @@
   text-align: left;
 }
 
+.placeholder {
+  color: var(--sentinel-text-muted);
+}
+
 .icon {
   color: var(--sentinel-text-tertiary);
-  transition: transform var(--sentinel-duration-fast) var(--sentinel-ease-default);
+  transition: transform 0.2s ease;
 }
 
 .trigger.open .icon {
   transform: rotate(180deg);
+  color: var(--sentinel-accent-primary);
 }
 
-/* Menu */
+/* ─────────────────────────────────────────────────────────────────────────────
+   MENU - Glass-Neumorphic Elevated
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .menu {
   position: absolute;
-  top: calc(100% + 4px);
+  top: calc(100% + 8px);
   left: 0;
   right: 0;
-  background: var(--sentinel-bg-elevated);
-  border: 1px solid var(--sentinel-border-default);
+  background: var(--sentinel-glass-elevated);
+  border: 1px solid var(--sentinel-glass-border);
   border-radius: var(--sentinel-radius-md);
-  box-shadow: var(--sentinel-shadow-lg);
   overflow: hidden;
-  z-index: 100;
-  animation: dropdownFadeIn 150ms var(--sentinel-ease-out);
+  z-index: var(--sentinel-z-dropdown);
+  animation: dropdownFadeIn 0.15s ease;
+
+  /* Strong glass blur */
+  backdrop-filter: blur(var(--sentinel-blur-lg));
+  -webkit-backdrop-filter: blur(var(--sentinel-blur-lg));
+
+  /* Neumorphic elevation + glow */
+  box-shadow:
+    var(--sentinel-shadow-dropdown),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 0 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Luminous top edge */
+.menu::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    rgba(255, 255, 255, 0.25),
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+  pointer-events: none;
+  z-index: 1;
 }
 
 @keyframes dropdownFadeIn {
   from {
     opacity: 0;
-    transform: translateY(-4px);
+    transform: translateY(-8px) scale(0.98);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
-/* Option */
+/* ─────────────────────────────────────────────────────────────────────────────
+   OPTIONS
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .option {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 10px 14px;
+  padding: 12px 16px;
   background: transparent;
   border: none;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
   color: var(--sentinel-text-secondary);
   cursor: pointer;
-  transition: all var(--sentinel-duration-fast) var(--sentinel-ease-default);
+  transition: all 0.15s ease;
   text-align: left;
 }
 
 .option:hover {
-  background: var(--sentinel-bg-hover);
+  background: rgba(255, 255, 255, 0.06);
   color: var(--sentinel-text-primary);
 }
 
 .option.selected {
-  background: rgba(var(--sentinel-accent-primary-rgb, 91, 163, 165), 0.1);
+  background: var(--sentinel-glass-accent);
   color: var(--sentinel-accent-primary);
 }
 
 .option:not(:last-child) {
-  border-bottom: 1px solid var(--sentinel-border-subtle);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .optionLabel {
@@ -109,4 +170,46 @@
 
 .checkIcon {
   color: var(--sentinel-accent-primary);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   SIZES
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.sm .trigger {
+  padding: 8px 12px;
+  font-size: 13px;
+  min-width: 120px;
+}
+
+.sm .option {
+  padding: 8px 12px;
+  font-size: 13px;
+}
+
+.lg .trigger {
+  padding: 14px 18px;
+  font-size: 15px;
+  min-width: 180px;
+}
+
+.lg .option {
+  padding: 14px 18px;
+  font-size: 15px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   REDUCED MOTION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .trigger,
+  .icon,
+  .option {
+    transition: none;
+  }
+
+  .menu {
+    animation: none;
+  }
 }

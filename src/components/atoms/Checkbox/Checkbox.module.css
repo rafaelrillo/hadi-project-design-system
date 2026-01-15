@@ -1,9 +1,9 @@
 /* Path: src/components/atoms/Checkbox/Checkbox.module.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   SENTINEL DESIGN SYSTEM - Checkbox Component
+   SENTINEL DESIGN SYSTEM v3.0 - Checkbox Component
 
-   Form checkbox input
-   Clean styling with accent color
+   Form checkbox input with premium styling
+   Clean dark recessed style
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -11,39 +11,98 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .checkbox {
+  appearance: none;
+  -webkit-appearance: none;
   width: 18px;
   height: 18px;
   border: 1px solid var(--sentinel-border-default);
-  border-radius: var(--sentinel-radius-sm);
+  border-radius: 6px;
   cursor: pointer;
-  accent-color: var(--sentinel-accent-primary);
   margin: 0;
   box-sizing: border-box;
-  background-color: var(--sentinel-bg-elevated);
-  transition: var(--sentinel-transition-fast);
+  background: rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+  position: relative;
+  box-shadow: var(--sentinel-shadow-inner);
 }
 
 .checkbox:hover:not(:disabled) {
-  border-color: var(--sentinel-accent-primary);
+  border-color: var(--sentinel-border-strong);
 }
 
 .checkbox:checked {
-  background-color: var(--sentinel-accent-primary);
+  background: linear-gradient(145deg, var(--sentinel-accent-primary), var(--sentinel-accent-secondary));
   border-color: var(--sentinel-accent-primary);
+  box-shadow:
+    0 2px 8px rgba(91, 163, 165, 0.3),
+    var(--sentinel-shadow-highlight);
+}
+
+.checkbox:checked::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 5px;
+  height: 9px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
 }
 
 .checkbox:focus-visible {
-  outline: 2px solid var(--sentinel-accent-primary);
-  outline-offset: 2px;
+  outline: none;
+  box-shadow:
+    var(--sentinel-shadow-inner),
+    0 0 0 3px rgba(91, 163, 165, 0.2);
+}
+
+.checkbox:checked:focus-visible {
+  box-shadow:
+    0 2px 8px rgba(91, 163, 165, 0.3),
+    var(--sentinel-shadow-highlight),
+    0 0 0 3px rgba(91, 163, 165, 0.2);
 }
 
 .checkbox:disabled {
   cursor: not-allowed;
-  background-color: var(--sentinel-bg-subtle);
+  background: rgba(255, 255, 255, 0.02);
   border-color: var(--sentinel-border-subtle);
+  box-shadow: none;
 }
 
 .checkbox:disabled:checked {
-  background-color: var(--sentinel-text-disabled);
+  background: var(--sentinel-text-disabled);
   border-color: var(--sentinel-text-disabled);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   CONTAINER WITH LABEL
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.container {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.container:has(.checkbox:disabled) {
+  cursor: not-allowed;
+}
+
+.label {
+  font-family: var(--sentinel-font-primary);
+  font-size: 14px;
+  color: var(--sentinel-text-secondary);
+  user-select: none;
+  transition: color 0.2s ease;
+}
+
+.container:hover .label {
+  color: var(--sentinel-text-primary);
+}
+
+.container:has(.checkbox:disabled) .label {
+  color: var(--sentinel-text-disabled);
 }

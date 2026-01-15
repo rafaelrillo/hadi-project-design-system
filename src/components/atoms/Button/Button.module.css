@@ -1,13 +1,16 @@
 /* Path: src/components/atoms/Button/Button.module.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   SENTINEL DESIGN SYSTEM - Button Component
+   SENTINEL DESIGN SYSTEM v3.2 - Button Component
 
-   Clean, professional buttons with subtle interactions
-   No glowing effects - uses smooth transitions and color shifts
+   GLASS-NEUMORPHISM - Tactile glass buttons with depth
+   - Semi-transparent backgrounds with blur
+   - Luminous borders and inner highlights
+   - Neumorphic shadows for floating effect
+   - Press state transitions to inset
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   BASE BUTTON
+   BASE BUTTON - Glass-Neumorphic
    ───────────────────────────────────────────────────────────────────────────── */
 
 .button {
@@ -16,46 +19,68 @@
   font-weight: var(--sentinel-font-medium);
   line-height: 1;
   letter-spacing: 0.01em;
-  padding: var(--sentinel-space-2) var(--sentinel-space-4);
-  border: 1px solid var(--sentinel-border-default);
-  border-radius: var(--sentinel-radius-md);
-  background-color: transparent;
-  color: var(--sentinel-text-primary);
+  padding: 12px 24px;
+  border: 1px solid var(--sentinel-glass-border);
+  border-radius: var(--sentinel-radius-button);
+  background: var(--sentinel-glass-bg);
+  color: var(--sentinel-text-secondary);
   cursor: pointer;
-  transition: var(--sentinel-transition-normal);
+  transition: all 0.2s ease;
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0;
-  height: 40px;
+  height: 44px;
   white-space: nowrap;
   user-select: none;
+
+  /* Glass effect */
+  backdrop-filter: blur(var(--sentinel-blur-sm));
+  -webkit-backdrop-filter: blur(var(--sentinel-blur-sm));
+
+  /* Neumorphic shadow + inner highlight */
+  box-shadow:
+    var(--sentinel-shadow-button),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
 .button:focus-visible {
-  outline: 2px solid var(--sentinel-accent-primary);
-  outline-offset: 2px;
+  outline: none;
+  border-color: var(--sentinel-glass-border-focus);
+  box-shadow:
+    var(--sentinel-shadow-button),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 0 0 3px rgba(91, 163, 165, 0.2);
 }
 
 .button:hover:not(:disabled) {
-  border-color: var(--sentinel-accent-primary);
-  color: var(--sentinel-accent-primary);
+  background: var(--sentinel-glass-bg-hover);
+  border-color: var(--sentinel-glass-border-hover);
+  color: var(--sentinel-text-primary);
+
+  box-shadow:
+    var(--sentinel-shadow-button-hover),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .button:active:not(:disabled) {
-  transform: scale(0.98);
+  transform: translateY(1px);
+  background: var(--sentinel-glass-bg-active);
+
+  /* Press into surface */
+  box-shadow:
+    var(--sentinel-shadow-button-active),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
 }
 
 .button:disabled {
-  background-color: var(--sentinel-bg-subtle);
+  background: rgba(255, 255, 255, 0.02);
   border-color: var(--sentinel-border-subtle);
-  color: var(--sentinel-text-tertiary);
+  color: var(--sentinel-text-disabled);
   cursor: not-allowed;
-}
-
-.button:disabled:focus {
-  outline: none;
+  backdrop-filter: none;
+  box-shadow: none;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -67,136 +92,242 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   VARIANT: PRIMARY
-   Filled accent button - main call to action
+   VARIANT: PRIMARY - Accent glass with glow
    ───────────────────────────────────────────────────────────────────────────── */
 
 .primary {
-  background-color: var(--sentinel-accent-primary);
-  border-color: var(--sentinel-accent-primary);
-  color: var(--sentinel-bg-base);
+  background: rgba(91, 163, 165, 0.25);
+  border-color: rgba(91, 163, 165, 0.4);
+  color: white;
+
+  box-shadow:
+    var(--sentinel-neu-elevated-sm),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 4px 20px rgba(91, 163, 165, 0.3);
 }
 
 .primary:hover:not(:disabled) {
-  background-color: var(--sentinel-accent-secondary);
-  border-color: var(--sentinel-accent-secondary);
-  color: var(--sentinel-bg-base);
+  background: rgba(91, 163, 165, 0.35);
+  border-color: rgba(91, 163, 165, 0.5);
+  color: white;
+  transform: translateY(-1px);
+
+  box-shadow:
+    var(--sentinel-neu-hover-sm),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 6px 30px rgba(91, 163, 165, 0.4);
 }
 
 .primary:active:not(:disabled) {
-  background-color: var(--sentinel-accent-tertiary);
-  border-color: var(--sentinel-accent-tertiary);
+  transform: translateY(1px);
+  background: rgba(91, 163, 165, 0.4);
+
+  box-shadow:
+    var(--sentinel-neu-active),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 2px 10px rgba(91, 163, 165, 0.2);
+}
+
+.primary:focus-visible {
+  box-shadow:
+    var(--sentinel-neu-elevated-sm),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 4px 20px rgba(91, 163, 165, 0.3),
+    0 0 0 3px rgba(91, 163, 165, 0.3);
 }
 
 .primary:disabled {
-  background-color: var(--sentinel-bg-subtle);
-  border-color: var(--sentinel-bg-subtle);
-  color: var(--sentinel-text-tertiary);
+  background: rgba(255, 255, 255, 0.03);
+  border-color: var(--sentinel-border-subtle);
+  color: var(--sentinel-text-disabled);
+  box-shadow: none;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   VARIANT: SECONDARY
-   Outlined/subtle button - secondary actions
+   VARIANT: SECONDARY - Subtle glass
    ───────────────────────────────────────────────────────────────────────────── */
 
 .secondary {
-  background-color: var(--sentinel-bg-elevated);
-  border-color: var(--sentinel-border-default);
-  color: var(--sentinel-text-primary);
+  background: var(--sentinel-glass-bg);
+  border-color: var(--sentinel-glass-border);
+  color: var(--sentinel-text-secondary);
+
+  box-shadow:
+    var(--sentinel-neu-elevated-xs),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .secondary:hover:not(:disabled) {
-  background-color: var(--sentinel-bg-overlay);
-  border-color: var(--sentinel-border-strong);
+  background: var(--sentinel-glass-bg-hover);
+  border-color: var(--sentinel-glass-border-hover);
   color: var(--sentinel-text-primary);
+
+  box-shadow:
+    var(--sentinel-neu-elevated-sm),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .secondary:active:not(:disabled) {
-  background-color: var(--sentinel-bg-subtle);
+  box-shadow:
+    var(--sentinel-neu-active),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
 }
 
 .secondary:disabled {
-  background-color: var(--sentinel-bg-subtle);
+  background: rgba(255, 255, 255, 0.02);
   border-color: var(--sentinel-border-subtle);
-  color: var(--sentinel-text-tertiary);
+  color: var(--sentinel-text-disabled);
+  box-shadow: none;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   VARIANT: GHOST
-   Minimal button - tertiary actions
+   VARIANT: GHOST - No glass, minimal
    ───────────────────────────────────────────────────────────────────────────── */
 
 .ghost {
   border-color: transparent;
-  background-color: transparent;
+  background: transparent;
   color: var(--sentinel-text-secondary);
+  backdrop-filter: none;
+  box-shadow: none;
 }
 
 .ghost:hover:not(:disabled) {
-  background-color: var(--sentinel-bg-elevated);
+  background: rgba(255, 255, 255, 0.05);
   border-color: transparent;
   color: var(--sentinel-text-primary);
+  box-shadow: none;
 }
 
 .ghost:active:not(:disabled) {
-  background-color: var(--sentinel-bg-overlay);
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .ghost:disabled {
-  background-color: transparent;
+  background: transparent;
   border-color: transparent;
   color: var(--sentinel-text-disabled);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   VARIANT: DESTRUCTIVE
-   Danger/delete actions
+   VARIANT: DESTRUCTIVE - Red glass with glow
    ───────────────────────────────────────────────────────────────────────────── */
 
 .destructive {
-  background-color: transparent;
-  border-color: var(--sentinel-status-negative);
-  color: var(--sentinel-status-negative-text);
+  background: rgba(248, 113, 113, 0.1);
+  border-color: rgba(248, 113, 113, 0.25);
+  color: var(--sentinel-status-negative);
+
+  box-shadow:
+    var(--sentinel-neu-elevated-xs),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .destructive:hover:not(:disabled) {
-  background-color: var(--sentinel-status-negative);
-  border-color: var(--sentinel-status-negative);
-  color: var(--sentinel-bg-base);
+  background: rgba(248, 113, 113, 0.25);
+  border-color: rgba(248, 113, 113, 0.5);
+  color: white;
+
+  box-shadow:
+    var(--sentinel-neu-elevated-sm),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 4px 20px rgba(248, 113, 113, 0.3);
 }
 
 .destructive:active:not(:disabled) {
-  background-color: var(--sentinel-status-negative);
-  opacity: 0.9;
+  transform: translateY(1px);
+  box-shadow:
+    var(--sentinel-neu-active),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .destructive:disabled {
-  background-color: transparent;
+  background: transparent;
   border-color: var(--sentinel-border-subtle);
-  color: var(--sentinel-text-tertiary);
+  color: var(--sentinel-text-disabled);
+  box-shadow: none;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   VARIANT: WITH-ICON
-   Primary style with icon support (for backwards compatibility)
+   VARIANT: SUCCESS - Green glass with glow
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.success {
+  background: rgba(74, 222, 128, 0.1);
+  border-color: rgba(74, 222, 128, 0.25);
+  color: var(--sentinel-status-positive);
+
+  box-shadow:
+    var(--sentinel-neu-elevated-xs),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.success:hover:not(:disabled) {
+  background: rgba(74, 222, 128, 0.25);
+  border-color: rgba(74, 222, 128, 0.5);
+  color: white;
+
+  box-shadow:
+    var(--sentinel-neu-elevated-sm),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 4px 20px rgba(74, 222, 128, 0.3);
+}
+
+.success:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow:
+    var(--sentinel-neu-active),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.success:disabled {
+  background: transparent;
+  border-color: var(--sentinel-border-subtle);
+  color: var(--sentinel-text-disabled);
+  box-shadow: none;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   VARIANT: WITH-ICON - Primary with icon
    ───────────────────────────────────────────────────────────────────────────── */
 
 .withIcon {
-  background-color: var(--sentinel-accent-primary);
-  border-color: var(--sentinel-accent-primary);
-  color: var(--sentinel-bg-base);
+  background: rgba(91, 163, 165, 0.25);
+  border-color: rgba(91, 163, 165, 0.4);
+  color: white;
   gap: var(--sentinel-space-2);
+
+  box-shadow:
+    var(--sentinel-neu-elevated-sm),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 4px 20px rgba(91, 163, 165, 0.3);
 }
 
 .withIcon:hover:not(:disabled) {
-  background-color: var(--sentinel-accent-secondary);
-  border-color: var(--sentinel-accent-secondary);
+  background: rgba(91, 163, 165, 0.35);
+  border-color: rgba(91, 163, 165, 0.5);
+  transform: translateY(-1px);
+
+  box-shadow:
+    var(--sentinel-neu-hover-sm),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 6px 30px rgba(91, 163, 165, 0.4);
+}
+
+.withIcon:active:not(:disabled) {
+  transform: translateY(1px);
+
+  box-shadow:
+    var(--sentinel-neu-active),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 2px 10px rgba(91, 163, 165, 0.2);
 }
 
 .withIcon:disabled {
-  background-color: var(--sentinel-bg-subtle);
-  border-color: var(--sentinel-bg-subtle);
-  color: var(--sentinel-text-tertiary);
+  background: rgba(255, 255, 255, 0.03);
+  border-color: var(--sentinel-border-subtle);
+  color: var(--sentinel-text-disabled);
+  box-shadow: none;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -205,22 +336,22 @@
 
 .sm {
   font-size: var(--sentinel-text-xs);
-  padding: var(--sentinel-space-1) var(--sentinel-space-3);
-  height: 32px;
+  padding: 8px 16px;
+  height: 36px;
   border-radius: var(--sentinel-radius-sm);
 }
 
 .md {
   font-size: var(--sentinel-text-sm);
-  padding: var(--sentinel-space-2) var(--sentinel-space-4);
-  height: 40px;
+  padding: 12px 24px;
+  height: 44px;
   border-radius: var(--sentinel-radius-md);
 }
 
 .lg {
   font-size: var(--sentinel-text-base);
-  padding: var(--sentinel-space-3) var(--sentinel-space-6);
-  height: 48px;
+  padding: 14px 28px;
+  height: 52px;
   border-radius: var(--sentinel-radius-md);
 }
 
@@ -233,18 +364,19 @@
   width: 100%;
 }
 
-/* Icon only */
+/* Icon only - circular glass button */
 .iconOnly {
-  padding: var(--sentinel-space-2);
+  padding: 12px;
   aspect-ratio: 1;
+  border-radius: var(--sentinel-radius-full);
 }
 
 .iconOnly.sm {
-  padding: var(--sentinel-space-1);
+  padding: 8px;
 }
 
 .iconOnly.lg {
-  padding: var(--sentinel-space-3);
+  padding: 14px;
 }
 
 /* Loading state */
@@ -268,5 +400,24 @@
 @keyframes sentinel-rotate {
   to {
     transform: rotate(360deg);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   REDUCED MOTION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+
+  .button:hover:not(:disabled),
+  .button:active:not(:disabled) {
+    transform: none;
+  }
+
+  .loading::after {
+    animation: none;
   }
 }

@@ -1,8 +1,11 @@
 /* Path: src/components/atoms/Tooltip/Tooltip.module.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   SENTINEL DESIGN SYSTEM - Tooltip Component
+   SENTINEL DESIGN SYSTEM v3.2 - Tooltip Component
 
-   Information tooltips with clean, subtle styling
+   GLASS-NEUMORPHISM - Elevated floating glass tooltips
+   - Strong backdrop blur for visibility
+   - Neumorphic elevation
+   - Luminous borders
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -16,7 +19,7 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   TOOLTIP BASE
+   TOOLTIP BASE - Glass-Neumorphic Elevated
    ───────────────────────────────────────────────────────────────────────────── */
 
 .tooltip {
@@ -24,16 +27,16 @@
   z-index: var(--sentinel-z-tooltip);
   pointer-events: none;
   max-width: 280px;
-  padding: var(--sentinel-space-2) var(--sentinel-space-3);
+  padding: 10px 14px;
   border-radius: var(--sentinel-radius-md);
-  font-size: var(--sentinel-text-xs);
+  font-size: 12px;
   font-weight: var(--sentinel-font-medium);
   font-family: var(--sentinel-font-primary);
   line-height: 1.5;
   white-space: normal;
   word-wrap: break-word;
   text-align: center;
-  transition: opacity var(--sentinel-transition-fast);
+  transition: all 0.15s ease;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -43,11 +46,13 @@
 .tooltipHidden {
   opacity: 0;
   visibility: hidden;
+  transform: scale(0.95);
 }
 
 .tooltipVisible {
   opacity: 1;
   visibility: visible;
+  transform: scale(1);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -55,38 +60,83 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .positionTop {
-  bottom: calc(100% + 8px);
+  bottom: calc(100% + 10px);
   left: 50%;
   transform: translateX(-50%);
+}
+
+.positionTop.tooltipHidden {
+  transform: translateX(-50%) scale(0.95);
 }
 
 .positionBottom {
-  top: calc(100% + 8px);
+  top: calc(100% + 10px);
   left: 50%;
   transform: translateX(-50%);
 }
 
+.positionBottom.tooltipHidden {
+  transform: translateX(-50%) scale(0.95);
+}
+
 .positionLeft {
-  right: calc(100% + 8px);
+  right: calc(100% + 10px);
   top: 50%;
   transform: translateY(-50%);
+}
+
+.positionLeft.tooltipHidden {
+  transform: translateY(-50%) scale(0.95);
 }
 
 .positionRight {
-  left: calc(100% + 8px);
+  left: calc(100% + 10px);
   top: 50%;
   transform: translateY(-50%);
 }
 
+.positionRight.tooltipHidden {
+  transform: translateY(-50%) scale(0.95);
+}
+
 /* ─────────────────────────────────────────────────────────────────────────────
-   VARIANT: DARK (default)
+   VARIANT: DARK (default) - Glass-Neumorphic
    ───────────────────────────────────────────────────────────────────────────── */
 
 .variantDark {
-  background-color: var(--sentinel-bg-overlay);
+  background: var(--sentinel-glass-elevated);
   color: var(--sentinel-text-primary);
-  border: 1px solid var(--sentinel-border-default);
-  box-shadow: var(--sentinel-shadow-lg);
+  border: 1px solid var(--sentinel-glass-border);
+
+  /* Strong glass blur */
+  backdrop-filter: blur(var(--sentinel-blur-lg));
+  -webkit-backdrop-filter: blur(var(--sentinel-blur-lg));
+
+  /* Neumorphic elevation + glow */
+  box-shadow:
+    var(--sentinel-neu-elevated-md),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Luminous top edge */
+.variantDark::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+  border-radius: var(--sentinel-radius-md) var(--sentinel-radius-md) 0 0;
+  pointer-events: none;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -94,9 +144,16 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .variantLight {
-  background-color: var(--sentinel-text-primary);
-  color: var(--sentinel-bg-base);
-  box-shadow: var(--sentinel-shadow-md);
+  background: rgba(255, 255, 255, 0.9);
+  color: #0a0a0c;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+  backdrop-filter: blur(var(--sentinel-blur-md));
+  -webkit-backdrop-filter: blur(var(--sentinel-blur-md));
+
+  box-shadow:
+    var(--sentinel-shadow-lg),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -105,50 +162,64 @@
 
 .arrow {
   position: absolute;
-  width: 6px;
-  height: 6px;
+  width: 10px;
+  height: 10px;
   transform: rotate(45deg);
   z-index: -1;
 }
 
 .arrowDark {
-  background-color: var(--sentinel-bg-overlay);
-  border: 1px solid var(--sentinel-border-default);
+  background: var(--sentinel-glass-elevated);
+  border: 1px solid var(--sentinel-glass-border);
+
+  backdrop-filter: blur(var(--sentinel-blur-md));
+  -webkit-backdrop-filter: blur(var(--sentinel-blur-md));
 }
 
 .arrowLight {
-  background-color: var(--sentinel-text-primary);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 /* Arrow positions */
 .arrowTop {
-  bottom: -3px;
+  bottom: -5px;
   left: 50%;
-  margin-left: -3px;
+  margin-left: -5px;
   border-top: none;
   border-left: none;
 }
 
 .arrowBottom {
-  top: -3px;
+  top: -5px;
   left: 50%;
-  margin-left: -3px;
+  margin-left: -5px;
   border-bottom: none;
   border-right: none;
 }
 
 .arrowLeft {
-  right: -3px;
+  right: -5px;
   top: 50%;
-  margin-top: -3px;
+  margin-top: -5px;
   border-left: none;
   border-bottom: none;
 }
 
 .arrowRight {
-  left: -3px;
+  left: -5px;
   top: 50%;
-  margin-top: -3px;
+  margin-top: -5px;
   border-right: none;
   border-top: none;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   REDUCED MOTION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .tooltip {
+    transition: none;
+  }
 }
