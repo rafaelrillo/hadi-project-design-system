@@ -34,6 +34,7 @@ const SpacingShowcase = lazy(() => import('./pages/styles').then(m => ({ default
 const ShadowsShowcase = lazy(() => import('./pages/styles').then(m => ({ default: m.ShadowsShowcase })));
 const BorderRadiusShowcase = lazy(() => import('./pages/styles').then(m => ({ default: m.BorderRadiusShowcase })));
 const IconsShowcase = lazy(() => import('./pages/styles').then(m => ({ default: m.IconsShowcase })));
+const LightEngineShowcase = lazy(() => import('./pages/styles').then(m => ({ default: m.LightEngineShowcase })));
 
 // Atoms
 const ButtonShowcase = lazy(() => import('./pages/atoms/ButtonShowcase').then(m => ({ default: m.ButtonShowcase })));
@@ -217,6 +218,7 @@ function AppRoutes() {
         <Route path="styles/shadows" element={<Suspense fallback={<ShowcaseLoader />}><ShadowsShowcase /></Suspense>} />
         <Route path="styles/border-radius" element={<Suspense fallback={<ShowcaseLoader />}><BorderRadiusShowcase /></Suspense>} />
         <Route path="styles/icons" element={<Suspense fallback={<ShowcaseLoader />}><IconsShowcase /></Suspense>} />
+        <Route path="styles/light-engine" element={<Suspense fallback={<ShowcaseLoader />}><LightEngineShowcase /></Suspense>} />
 
         {/* Atoms */}
         <Route path="atoms/button" element={<Suspense fallback={<ShowcaseLoader />}><ButtonShowcase /></Suspense>} />

@@ -373,6 +373,7 @@ import { usePortfolioStore } from '@store/portfolioStore';
 
 ### Completadas
 - [x] Cambiar libreria de charts (de Nivo a ECharts) ✅
+- [x] Implementar Light Engine con sombras dinamicas ✅
 
 ### Backlog
 <!-- Ideas futuras -->
@@ -380,6 +381,30 @@ import { usePortfolioStore } from '@store/portfolioStore';
 ---
 
 ## DECISIONES TOMADAS
+
+**[2025-01-15] Light Engine - Sistema de Iluminación Dinámica**
+- **Decisión**: Implementar un motor de iluminación unificado basado en los principios de Josh W. Comeau
+- **Inspiración**: https://www.joshwcomeau.com/css/designing-shadows/
+- **Filosofía**:
+  - UNA sola fuente de luz global para todos los elementos
+  - Ratio consistente: offset-y = 2x offset-x
+  - Sombras en capas (layered) para profundidad realista
+  - Color-matched shadows (nunca negro puro)
+- **Archivos creados**:
+  - `src/styles/light-engine.css` - Sistema CSS con variables y utility classes
+  - `src/pages/styles/LightEngineShowcase.tsx` - Documentación interactiva
+- **Características**:
+  - 5 niveles de elevación layered (`--elevation-1` a `--elevation-5`)
+  - 5 niveles neumórficos (`--neu-elevation-1` a `--neu-elevation-5`)
+  - 4 niveles glass (`--glass-elevation-1` a `--glass-elevation-4`)
+  - Sombras color-matched por contexto (positive, negative, warning, accent, info)
+  - Clases interactivas (`.elevation-interactive`, `.neu-interactive`, `.glass-interactive`)
+- **Demo dinámica** en Home.tsx:
+  - Luz animada orbitando la página
+  - Controles de velocidad y ángulo manual
+  - Todas las sombras responden en tiempo real usando trigonometría
+  - Fórmulas: `shadowX = cos(angle) × distance`, `shadowY = sin(angle) × distance`
+- **Border radius unificado**: 15px en todos los contenedores
 
 **[2025-01-14] Migración de Nivo a ECharts**
 - **Decisión**: Reemplazar completamente Nivo por ECharts como librería de gráficos

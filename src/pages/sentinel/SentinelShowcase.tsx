@@ -40,7 +40,7 @@ export function SentinelShowcase() {
     fontWeight: 300,
     color: 'var(--sentinel-text-primary)',
     marginBottom: '12px',
-    fontFamily: 'var(--sentinel-font-primary)',
+    fontFamily: 'var(--sentinel-font-display)',
     letterSpacing: '-0.02em',
   };
 
@@ -49,8 +49,8 @@ export function SentinelShowcase() {
     color: 'var(--sentinel-text-secondary)',
     fontFamily: 'var(--sentinel-font-primary)',
     fontWeight: 400,
-    maxWidth: '600px',
-    lineHeight: 1.6,
+    maxWidth: '700px',
+    lineHeight: 1.7,
   };
 
   const sectionHeaderStyles: CSSProperties = {
@@ -64,6 +64,20 @@ export function SentinelShowcase() {
     textTransform: 'uppercase' as const,
     borderBottom: '1px solid var(--sentinel-border-subtle)',
     paddingBottom: '12px',
+  };
+
+  // Light Engine demo box styles
+  const lightEngineBoxBase: CSSProperties = {
+    width: '120px',
+    height: '120px',
+    backgroundColor: 'var(--sentinel-bg-surface)',
+    borderRadius: 'var(--sentinel-radius-lg)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'column',
+    gap: '6px',
+    transition: 'transform 400ms cubic-bezier(0.4, 0, 0.2, 1)',
   };
 
   // Sample data - using YYYY-MM-DD format for lightweight-charts
@@ -113,9 +127,152 @@ export function SentinelShowcase() {
         <h1 style={titleStyles}>SENTINEL Components</h1>
         <p style={descStyles}>
           Complete component library for the SENTINEL investment analysis interface.
-          Organized by information hierarchy: Core, Context, and Action.
+          Powered by the Light Engine - a unified shadow system based on Josh Comeau's principles.
+          One light source, consistent ratios, layered depth.
         </p>
       </header>
+
+      {/* ============================================ */}
+      {/* LIGHT ENGINE DEMONSTRATION */}
+      {/* ============================================ */}
+      <FadeIn direction="up" delay={0.1}>
+        <h2 style={sectionHeaderStyles}>Light Engine System</h2>
+      </FadeIn>
+
+      <ScrollReveal>
+        <ShowcaseSection
+          title="Unified Light Source"
+          description="All shadows share the same light direction (top-left) with consistent offset ratios. Hover to see interactive states."
+        >
+          <ComponentPreview>
+            <div style={{
+              backgroundColor: 'var(--sentinel-bg-base)',
+              padding: '48px',
+              borderRadius: 'var(--sentinel-radius-xl)',
+              display: 'flex',
+              gap: '24px',
+              justifyContent: 'center',
+              flexWrap: 'wrap'
+            }}>
+              {/* Layered Shadows */}
+              <div style={{ textAlign: 'center' }}>
+                <div className="elevation-interactive" style={lightEngineBoxBase}>
+                  <span style={{ fontFamily: 'var(--sentinel-font-display)', fontSize: '14px', fontWeight: 600, color: 'var(--sentinel-text-primary)' }}>
+                    Layered
+                  </span>
+                  <span style={{ fontFamily: 'var(--sentinel-font-mono)', fontSize: '10px', color: 'var(--sentinel-text-tertiary)' }}>
+                    5 capas
+                  </span>
+                </div>
+                <p style={{ marginTop: '8px', fontSize: '11px', color: 'var(--sentinel-text-tertiary)' }}>Cards, Panels</p>
+              </div>
+
+              {/* Neumorphic */}
+              <div style={{ textAlign: 'center' }}>
+                <div className="neu-interactive" style={{ ...lightEngineBoxBase, backgroundColor: 'var(--sentinel-bg-base)' }}>
+                  <span style={{ fontFamily: 'var(--sentinel-font-display)', fontSize: '14px', fontWeight: 600, color: 'var(--sentinel-text-primary)' }}>
+                    Neumorphic
+                  </span>
+                  <span style={{ fontFamily: 'var(--sentinel-font-mono)', fontSize: '10px', color: 'var(--sentinel-text-tertiary)' }}>
+                    dual shadow
+                  </span>
+                </div>
+                <p style={{ marginTop: '8px', fontSize: '11px', color: 'var(--sentinel-text-tertiary)' }}>Buttons, Controls</p>
+              </div>
+
+              {/* Glass */}
+              <div style={{ textAlign: 'center' }}>
+                <div className="glass-interactive" style={{
+                  ...lightEngineBoxBase,
+                  backgroundColor: 'var(--sentinel-glass-bg)',
+                  backdropFilter: 'blur(12px)',
+                  border: '1px solid var(--sentinel-glass-border)',
+                }}>
+                  <span style={{ fontFamily: 'var(--sentinel-font-display)', fontSize: '14px', fontWeight: 600, color: 'var(--sentinel-text-primary)' }}>
+                    Glass
+                  </span>
+                  <span style={{ fontFamily: 'var(--sentinel-font-mono)', fontSize: '10px', color: 'var(--sentinel-text-tertiary)' }}>
+                    + reflection
+                  </span>
+                </div>
+                <p style={{ marginTop: '8px', fontSize: '11px', color: 'var(--sentinel-text-tertiary)' }}>Overlays, Modals</p>
+              </div>
+
+              {/* Inset */}
+              <div style={{ textAlign: 'center' }}>
+                <div className="neu-inset-2" style={{ ...lightEngineBoxBase, backgroundColor: 'var(--sentinel-bg-base)' }}>
+                  <span style={{ fontFamily: 'var(--sentinel-font-display)', fontSize: '14px', fontWeight: 600, color: 'var(--sentinel-text-primary)' }}>
+                    Inset
+                  </span>
+                  <span style={{ fontFamily: 'var(--sentinel-font-mono)', fontSize: '10px', color: 'var(--sentinel-text-tertiary)' }}>
+                    recessed
+                  </span>
+                </div>
+                <p style={{ marginTop: '8px', fontSize: '11px', color: 'var(--sentinel-text-tertiary)' }}>Inputs, Wells</p>
+              </div>
+            </div>
+          </ComponentPreview>
+        </ShowcaseSection>
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <ShowcaseSection
+          title="Color-Matched Shadows"
+          description="Shadows inherit the hue of their context, never pure black. This prevents the 'grey fog' effect."
+        >
+          <ComponentPreview>
+            <div style={{
+              backgroundColor: 'var(--sentinel-bg-base)',
+              padding: '48px',
+              borderRadius: 'var(--sentinel-radius-xl)',
+              display: 'flex',
+              gap: '24px',
+              justifyContent: 'center',
+              flexWrap: 'wrap'
+            }}>
+              <div className="shadow-positive" style={{
+                ...lightEngineBoxBase,
+                backgroundColor: 'var(--sentinel-status-positive-subtle)',
+                border: '1px solid var(--sentinel-status-positive-border)',
+              }}>
+                <span style={{ fontSize: '12px', fontWeight: 600, color: 'var(--sentinel-status-positive-text)' }}>Positive</span>
+              </div>
+
+              <div className="shadow-negative" style={{
+                ...lightEngineBoxBase,
+                backgroundColor: 'var(--sentinel-status-negative-subtle)',
+                border: '1px solid var(--sentinel-status-negative-border)',
+              }}>
+                <span style={{ fontSize: '12px', fontWeight: 600, color: 'var(--sentinel-status-negative-text)' }}>Negative</span>
+              </div>
+
+              <div className="shadow-warning" style={{
+                ...lightEngineBoxBase,
+                backgroundColor: 'var(--sentinel-status-warning-subtle)',
+                border: '1px solid var(--sentinel-status-warning-border)',
+              }}>
+                <span style={{ fontSize: '12px', fontWeight: 600, color: 'var(--sentinel-status-warning-text)' }}>Warning</span>
+              </div>
+
+              <div className="shadow-accent" style={{
+                ...lightEngineBoxBase,
+                backgroundColor: 'var(--sentinel-accent-subtle)',
+                border: '1px solid var(--sentinel-border-accent)',
+              }}>
+                <span style={{ fontSize: '12px', fontWeight: 600, color: 'var(--sentinel-accent-primary)' }}>Accent</span>
+              </div>
+
+              <div className="shadow-info" style={{
+                ...lightEngineBoxBase,
+                backgroundColor: 'var(--sentinel-status-info-subtle)',
+                border: '1px solid var(--sentinel-status-info-border)',
+              }}>
+                <span style={{ fontSize: '12px', fontWeight: 600, color: 'var(--sentinel-status-info-text)' }}>Info</span>
+              </div>
+            </div>
+          </ComponentPreview>
+        </ShowcaseSection>
+      </ScrollReveal>
 
       {/* ============================================ */}
       {/* LEVEL 1: CORE INDICATORS (with animations) */}

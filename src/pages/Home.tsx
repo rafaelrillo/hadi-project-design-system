@@ -1,314 +1,264 @@
 // Path: src/pages/Home.tsx
+// SENTINEL Design System Home - Powered by Dynamic Light Engine
+import { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import {
   LogIn, TrendingUp, DollarSign, BarChart2, Activity,
-  Bell, Settings, ChevronRight, Zap, Star, ArrowUpRight
+  Bell, Settings, ChevronRight, Zap, Star, ArrowUpRight,
+  Sun, Pause, Play
 } from 'lucide-react';
 
 // ═══════════════════════════════════════════════════════════════════════════
-// GLASS TEXTURES - Texturas que dan materialidad al vidrio
+// DYNAMIC LIGHT ENGINE SYSTEM
+//
+// La luz se mueve alrededor del viewport, y todas las sombras responden
+// dinamicamente a su posicion. Formulas basadas en trigonometria real.
 // ═══════════════════════════════════════════════════════════════════════════
-
-// Textura de grano fino - simula imperfecciones del vidrio real
-const grainTexture = `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)'/%3E%3C/svg%3E")`;
-
-// Textura de micro-puntos - patrón sutil que da "cuerpo" al material
-const dotPattern = `url("data:image/svg+xml,%3Csvg width='4' height='4' viewBox='0 0 4 4' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='1' cy='1' r='0.5' fill='%23000' fill-opacity='0.03'/%3E%3C/svg%3E")`;
-
-// ═══════════════════════════════════════════════════════════════════════════
-// COLOR GLASS SYSTEM - Sistema de vidrio con color y refracción de luz
-// Fórmulas basadas en física de luz: la sombra hereda el tono del vidrio
-// ═══════════════════════════════════════════════════════════════════════════
-
-interface GlassColor {
-  h: number;  // Hue (0-360)
-  s: number;  // Saturation (0-100)
-  l: number;  // Lightness (0-100)
-}
-
-// Fórmula de sombra: mismo tono, saturación reducida al 60%, luminosidad al 35%
-// Simula cómo la luz atraviesa vidrio coloreado y proyecta sombra del mismo tono
-const getShadowColor = (color: GlassColor, opacity: number): string => {
-  const shadowL = color.l * 0.35;  // Oscurecer significativamente
-  const shadowS = color.s * 0.6;   // Reducir saturación para sombra natural
-  return `hsla(${color.h}, ${shadowS}%, ${shadowL}%, ${opacity})`;
-};
-
-// Fórmula de tinte: mismo tono, saturación ajustada, luminosidad alta
-// Para el gradiente interno del vidrio
-const getTintColor = (color: GlassColor, opacity: number, lightnessBoost = 0): string => {
-  const tintL = Math.min(100, color.l + lightnessBoost);
-  return `hsla(${color.h}, ${color.s}%, ${tintL}%, ${opacity})`;
-};
-
-// Colores de vidrio predefinidos (HSL)
-const glassColors = {
-  // Neutral - vidrio claro con toque frío
-  neutral: { h: 210, s: 15, l: 70 },
-  // Teal - accent principal de SENTINEL
-  teal: { h: 175, s: 35, l: 55 },
-  // Success - vidrio verde sutil
-  success: { h: 145, s: 30, l: 50 },
-  // Warning - vidrio ámbar cálido
-  warning: { h: 35, s: 40, l: 55 },
-  // Danger - vidrio con tinte rosado
-  danger: { h: 355, s: 35, l: 55 },
-  // Info - vidrio azulado
-  info: { h: 215, s: 35, l: 55 },
-};
 
 export function Home() {
   // ═══════════════════════════════════════════════════════════════════════════
-  // NEUMORPHISM CONFIG - Valores de neumorphism.io
-  // Color: #e0e5ec | Radius: 50px | Distance: 20px | Blur: 60px
+  // DYNAMIC LIGHT STATE
+  // El angulo de la luz (0-360 grados) determina la direccion de las sombras
   // ═══════════════════════════════════════════════════════════════════════════
-  const NEU = {
+  const [lightAngle, setLightAngle] = useState(135); // Empieza arriba-izquierda
+  const [isAnimating, setIsAnimating] = useState(true);
+  const [animationSpeed, setAnimationSpeed] = useState(0.3); // grados por frame
+
+  // Animar la luz orbitando
+  useEffect(() => {
+    if (!isAnimating) return;
+
+    const animate = () => {
+      setLightAngle((prev) => (prev + animationSpeed) % 360);
+    };
+
+    const intervalId = setInterval(animate, 16); // ~60fps
+    return () => clearInterval(intervalId);
+  }, [isAnimating, animationSpeed]);
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // SHADOW CALCULATIONS
+  // Convertir el angulo de luz a offsets X/Y para las sombras
+  // La sombra se proyecta en direccion OPUESTA a la luz
+  // ═══════════════════════════════════════════════════════════════════════════
+  const shadowOffsets = useMemo(() => {
+    // Convertir angulo a radianes (la sombra va en direccion opuesta)
+    const shadowAngle = (lightAngle + 180) * (Math.PI / 180);
+
+    // Calcular offsets normalizados (-1 a 1)
+    const x = Math.cos(shadowAngle);
+    const y = Math.sin(shadowAngle);
+
+    return { x, y, angle: lightAngle };
+  }, [lightAngle]);
+
+  // Posicion visual de la luz (para el indicador)
+  const lightPosition = useMemo(() => {
+    const rad = lightAngle * (Math.PI / 180);
+    // Posicion en un circulo alrededor del viewport
+    const x = 50 + Math.cos(rad) * 45; // 50% +/- 45%
+    const y = 50 + Math.sin(rad) * 45;
+    return { x, y };
+  }, [lightAngle]);
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // DYNAMIC SHADOW GENERATORS
+  // Estas funciones generan sombras basadas en la posicion actual de la luz
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  const LIGHT = {
     base: '#e0e5ec',
-    shadowDark: '#bebebe',
-    shadowLight: '#ffffff',
-    distance: 20,
-    blur: 60,
-    radius: 50,
+    shadowDark: 'hsl(220 15% 72%)',
+    shadowLight: 'hsl(0 0% 100%)',
+  };
+
+  // Generar sombra neumorphica elevada
+  const getNeuPanelShadow = (distance: number, blur: number): string => {
+    const { x, y } = shadowOffsets;
+    // Highlight en direccion de la luz (inverso de la sombra)
+    const hlX = -x * distance;
+    const hlY = -y * distance;
+    // Sombra en direccion opuesta a la luz
+    const shX = x * distance;
+    const shY = y * distance;
+
+    return `
+      ${hlX}px ${hlY}px ${blur}px ${LIGHT.shadowLight},
+      ${shX}px ${shY}px ${blur}px ${LIGHT.shadowDark}
+    `;
+  };
+
+  // Generar sombra neumorphica inset
+  const getNeuInsetShadow = (distance: number, blur: number): string => {
+    const { x, y } = shadowOffsets;
+    const shX = x * distance;
+    const shY = y * distance;
+
+    return `
+      inset ${shX}px ${shY}px ${blur}px ${LIGHT.shadowDark},
+      inset ${-shX}px ${-shY}px ${blur}px ${LIGHT.shadowLight}
+    `;
+  };
+
+  // Generar sombra layered (multicapa) dinamica
+  const getLayeredShadow = (hue: number, sat: number): string => {
+    const { x, y } = shadowOffsets;
+    const layers = [
+      { dist: 0.5, blur: 1, opacity: 0.12 },
+      { dist: 1, blur: 2, opacity: 0.10 },
+      { dist: 2, blur: 4, opacity: 0.08 },
+      { dist: 4, blur: 8, opacity: 0.06 },
+    ];
+
+    return layers.map(layer =>
+      `${x * layer.dist}px ${y * layer.dist * 1.5}px ${layer.blur}px hsla(${hue}, ${sat * 0.6}%, 35%, ${layer.opacity})`
+    ).join(',\n      ');
+  };
+
+  // Generar reflexion de luz en glass
+  const getGlassReflection = (): string => {
+    const { x, y } = shadowOffsets;
+    // El highlight va en la direccion de la luz (inverso de la sombra)
+    const hlX = -x;
+    const hlY = -y;
+
+    // Determinar que bordes iluminar basado en la direccion de la luz
+    const topHighlight = hlY < 0 ? 0.6 : 0.2;
+    const leftHighlight = hlX < 0 ? 0.4 : 0.15;
+
+    return `
+      inset 0 ${hlY < 0 ? '-1px' : '1px'} 0 hsla(0, 0%, 100%, ${topHighlight}),
+      inset ${hlX < 0 ? '-1px' : '1px'} 0 0 hsla(0, 0%, 100%, ${leftHighlight})
+    `;
   };
 
   // ═══════════════════════════════════════════════════════════════════════════
-  // BACKGROUND - Color base sólido
+  // DYNAMIC STYLES
   // ═══════════════════════════════════════════════════════════════════════════
+
   const pageBackground: React.CSSProperties = {
     minHeight: '100vh',
     padding: '40px',
-    background: NEU.base,
+    background: LIGHT.base,
+    position: 'relative',
+    overflow: 'hidden',
   };
 
-  // ═══════════════════════════════════════════════════════════════════════════
-  // NEU PANEL (Raised/Convex) - Sobresale de la superficie
-  // box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff
-  // ═══════════════════════════════════════════════════════════════════════════
   const neuPanel: React.CSSProperties = {
-    background: NEU.base,
-    borderRadius: `${NEU.radius}px`,
+    background: LIGHT.base,
+    borderRadius: '15px',
     padding: '32px',
-    boxShadow: `
-      ${NEU.distance}px ${NEU.distance}px ${NEU.blur}px ${NEU.shadowDark},
-      -${NEU.distance}px -${NEU.distance}px ${NEU.blur}px ${NEU.shadowLight}
-    `,
+    boxShadow: getNeuPanelShadow(20, 60),
     position: 'relative' as const,
-  };
-
-  // ═══════════════════════════════════════════════════════════════════════════
-  // NEU INSET (Pressed/Concave) - Hundido a MEDIA PROFUNDIDAD del padre
-  // Si raised = 20px/60px, inset = 10px/30px (mitad exacta)
-  // ═══════════════════════════════════════════════════════════════════════════
-  const HALF = {
-    distance: NEU.distance / 2,  // 10px
-    blur: NEU.blur / 2,          // 30px
-    radius: NEU.radius / 2,      // 25px
+    transition: 'box-shadow 50ms linear',
   };
 
   const neuInset: React.CSSProperties = {
-    background: NEU.base,
-    borderRadius: `${HALF.radius}px`,
-    boxShadow: `
-      inset ${HALF.distance}px ${HALF.distance}px ${HALF.blur}px ${NEU.shadowDark},
-      inset -${HALF.distance}px -${HALF.distance}px ${HALF.blur}px ${NEU.shadowLight}
-    `,
-  };
-
-  // Variante pequeña - un tercio de profundidad
-  const THIRD = {
-    distance: Math.round(NEU.distance / 3),  // ~7px
-    blur: Math.round(NEU.blur / 3),          // 20px
-    radius: Math.round(NEU.radius / 3),      // ~17px
+    background: LIGHT.base,
+    borderRadius: '15px',
+    boxShadow: getNeuInsetShadow(5, 15),
+    transition: 'box-shadow 50ms linear',
   };
 
   const neuInsetSm: React.CSSProperties = {
-    background: NEU.base,
-    borderRadius: `${THIRD.radius}px`,
-    boxShadow: `
-      inset ${THIRD.distance}px ${THIRD.distance}px ${THIRD.blur}px ${NEU.shadowDark},
-      inset -${THIRD.distance}px -${THIRD.distance}px ${THIRD.blur}px ${NEU.shadowLight}
-    `,
+    background: LIGHT.base,
+    borderRadius: '15px',
+    boxShadow: getNeuInsetShadow(3, 8),
+    transition: 'box-shadow 50ms linear',
   };
 
-  // ═══════════════════════════════════════════════════════════════════════════
-  // LAYER 2: COLORED GLASS SYSTEM - Sistema de capas con pseudo-elementos
-  //
-  // Estructura de capas (de abajo hacia arriba):
-  // 1. glassBase      → Color sólido base con opacidad mínima (fundamento)
-  // 2. glassGradient  → Gradiente que da variación de intensidad
-  // 3. glassTexture   → Grano/puntos que dan materialidad
-  // 4. glassHighlight → Refracción de luz superior
-  // 5. Contenido      → El contenido real del elemento
-  // ═══════════════════════════════════════════════════════════════════════════
-
-  // Contenedor principal del glass - solo estructura, sin color
-  const createGlassContainer = (color: GlassColor): React.CSSProperties => ({
-    backdropFilter: 'blur(3px) saturate(140%)',
-    WebkitBackdropFilter: 'blur(3px) saturate(140%)',
-    borderRadius: '8px',
-    border: `1px solid ${getTintColor(color, 0.35, 35)}`,
-    // SOMBRA COLOREADA - más intensa
+  // Glass con sombras dinamicas
+  const glassCard = (hue: number, sat: number): React.CSSProperties => ({
+    background: `
+      linear-gradient(
+        ${lightAngle + 45}deg,
+        hsla(${hue}, ${sat}%, 70%, 0.28) 0%,
+        hsla(${hue}, ${sat}%, 65%, 0.12) 50%,
+        hsla(${hue}, ${sat}%, 60%, 0.20) 100%
+      )
+    `,
+    backdropFilter: 'blur(8px) saturate(140%)',
+    WebkitBackdropFilter: 'blur(8px) saturate(140%)',
+    borderRadius: '15px',
+    border: `1px solid hsla(${hue}, ${sat}%, 80%, 0.35)`,
     boxShadow: `
-      0 4px 20px ${getShadowColor(color, 0.25)},
-      0 2px 6px ${getShadowColor(color, 0.18)}
+      ${getGlassReflection()},
+      ${getLayeredShadow(hue, sat)}
     `,
     position: 'relative' as const,
     overflow: 'hidden' as const,
-    // Background transparente - las capas internas dan el color
-    background: 'transparent',
+    transition: 'box-shadow 50ms linear, background 100ms linear',
   });
 
-  // CAPA 1: Color base sólido - fundamento del vidrio
-  // Opacidad media-alta, asegura presencia fuerte del color
-  const createGlassBase = (color: GlassColor): React.CSSProperties => ({
-    position: 'absolute' as const,
-    inset: 0,
-    background: getTintColor(color, 0.25, 15), // Color sólido más intenso
-    borderRadius: 'inherit',
-    pointerEvents: 'none' as const,
-  });
-
-  // CAPA 2: Gradiente de intensidad - da vida y movimiento
-  // Varía la intensidad del color con valores más altos
-  const createGlassGradient = (color: GlassColor): React.CSSProperties => ({
-    position: 'absolute' as const,
-    inset: 0,
-    background: `
-      linear-gradient(
-        125deg,
-        ${getTintColor(color, 0.3, 30)} 0%,
-        ${getTintColor(color, 0.1, 20)} 30%,
-        ${getTintColor(color, 0.05, 15)} 50%,
-        ${getTintColor(color, 0.12, 20)} 70%,
-        ${getTintColor(color, 0.25, 25)} 100%
-      )
-    `,
-    borderRadius: 'inherit',
-    pointerEvents: 'none' as const,
-  });
-
-  // CAPA 3: Textura de grano - materialidad del vidrio
-  const glassTexture: React.CSSProperties = {
-    position: 'absolute' as const,
-    inset: 0,
-    background: `
-      ${grainTexture},
-      ${dotPattern}
-    `,
-    backgroundSize: '200px 200px, 4px 4px',
-    opacity: 0.12,
-    mixBlendMode: 'multiply' as const,
-    pointerEvents: 'none' as const,
-    borderRadius: 'inherit',
-  };
-
-  // CAPA 4: Highlight superior - refracción de luz
-  const glassHighlight: React.CSSProperties = {
-    position: 'absolute' as const,
-    top: 0,
-    left: '10%',
-    right: '10%',
-    height: '1px',
-    background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent)',
-    pointerEvents: 'none' as const,
-  };
-
-  // Inner highlight en el borde inferior (refracción secundaria)
-  const createGlassInnerGlow = (color: GlassColor): React.CSSProperties => ({
-    position: 'absolute' as const,
-    bottom: 0,
-    left: '15%',
-    right: '15%',
-    height: '1px',
-    background: `linear-gradient(90deg, transparent, ${getTintColor(color, 0.5, 45)}, transparent)`,
-    pointerEvents: 'none' as const,
-  });
-
-  // Función helper que retorna todas las capas para un color
-  const getGlassLayers = (color: GlassColor) => ({
-    container: createGlassContainer(color),
-    base: createGlassBase(color),
-    gradient: createGlassGradient(color),
-    texture: glassTexture,
-    highlight: glassHighlight,
-    innerGlow: createGlassInnerGlow(color),
-  });
-
-  // Pre-generar capas para variantes comunes
-  const glassTealLayers = getGlassLayers(glassColors.teal);
-  const glassDangerLayers = getGlassLayers(glassColors.danger);
-
-  // Glass button con sistema de color
-  const createGlassButton = (color: GlassColor): React.CSSProperties => ({
-    display: 'inline-flex',
-    alignItems: 'center',
-    gap: '8px',
-    padding: '14px 28px',
-    background: `
-      linear-gradient(
-        135deg,
-        ${getTintColor(color, 0.2, 30)} 0%,
-        ${getTintColor(color, 0.08, 20)} 50%,
-        ${getTintColor(color, 0.15, 25)} 100%
-      )
-    `,
-    backdropFilter: 'blur(3px) saturate(120%)',
-    WebkitBackdropFilter: 'blur(3px) saturate(120%)',
-    border: `1px solid ${getTintColor(color, 0.18, 35)}`,
-    borderRadius: '6px',
-    color: '#2D3436',
-    fontSize: '14px',
-    fontWeight: 600,
-    fontFamily: 'var(--sentinel-font-mono)',
-    textDecoration: 'none',
-    cursor: 'pointer',
-    transition: 'all 0.3s ease',
-    boxShadow: `
-      0 2px 8px ${getShadowColor(color, 0.12)},
-      inset 0 1px 0 ${getTintColor(color, 0.3, 40)}
-    `,
-    position: 'relative' as const,
-    overflow: 'hidden' as const,
-  });
-
-  const glassButton = createGlassButton(glassColors.teal);
-
-  // Glass badge con sistema de color
-  const createGlassBadge = (color: GlassColor): React.CSSProperties => ({
+  const glassBadge = (hue: number, sat: number): React.CSSProperties => ({
     display: 'inline-flex',
     alignItems: 'center',
     gap: '4px',
     padding: '6px 12px',
     background: `
       linear-gradient(
-        90deg,
-        ${getTintColor(color, 0.2, 25)} 0%,
-        ${getTintColor(color, 0.1, 20)} 50%,
-        ${getTintColor(color, 0.15, 25)} 100%
+        ${lightAngle}deg,
+        hsla(${hue}, ${sat}%, 65%, 0.25) 0%,
+        hsla(${hue}, ${sat}%, 60%, 0.12) 50%,
+        hsla(${hue}, ${sat}%, 65%, 0.20) 100%
       )
     `,
-    backdropFilter: 'blur(2px)',
-    WebkitBackdropFilter: 'blur(2px)',
-    border: `1px solid ${getTintColor(color, 0.15, 30)}`,
-    borderRadius: '12px',
+    backdropFilter: 'blur(4px)',
+    WebkitBackdropFilter: 'blur(4px)',
+    border: `1px solid hsla(${hue}, ${sat}%, 75%, 0.25)`,
+    borderRadius: '15px',
     fontSize: '12px',
     fontWeight: 600,
-    color: '#2D3436',
-    boxShadow: `0 1px 4px ${getShadowColor(color, 0.1)}`,
-    position: 'relative' as const,
-    overflow: 'hidden' as const,
+    color: `hsl(${hue}, ${sat * 0.8}%, 30%)`,
+    boxShadow: `
+      ${getGlassReflection()},
+      ${shadowOffsets.x * 1}px ${shadowOffsets.y * 2}px 4px hsla(${hue}, ${sat * 0.5}%, 40%, 0.12)
+    `,
+    transition: 'box-shadow 50ms linear',
   });
 
+  const glassButton: React.CSSProperties = {
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: '8px',
+    padding: '14px 28px',
+    background: `
+      linear-gradient(
+        ${lightAngle + 45}deg,
+        hsla(175, 35%, 60%, 0.28) 0%,
+        hsla(175, 35%, 55%, 0.12) 50%,
+        hsla(175, 35%, 60%, 0.22) 100%
+      )
+    `,
+    backdropFilter: 'blur(8px) saturate(120%)',
+    WebkitBackdropFilter: 'blur(8px) saturate(120%)',
+    border: '1px solid hsla(175, 35%, 75%, 0.30)',
+    borderRadius: '15px',
+    color: '#2D3436',
+    fontSize: '14px',
+    fontWeight: 600,
+    fontFamily: 'var(--sentinel-font-mono)',
+    textDecoration: 'none',
+    cursor: 'pointer',
+    transition: 'transform 400ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 50ms linear',
+    boxShadow: `
+      ${getGlassReflection()},
+      ${getLayeredShadow(175, 35)}
+    `,
+  };
+
   // ═══════════════════════════════════════════════════════════════════════════
-  // TIPOGRAFÍA
+  // TYPOGRAPHY
   // ═══════════════════════════════════════════════════════════════════════════
   const title: React.CSSProperties = {
-    fontSize: '36px',
+    fontSize: '42px',
     fontWeight: 700,
     color: '#2D3436',
     fontFamily: 'var(--sentinel-font-display)',
     letterSpacing: '0.02em',
     margin: 0,
+    textShadow: `${-shadowOffsets.x}px ${-shadowOffsets.y}px 0 rgba(255,255,255,0.8), ${shadowOffsets.x}px ${shadowOffsets.y * 2}px 2px rgba(0,0,0,0.08)`,
+    transition: 'text-shadow 50ms linear',
   };
 
   const subtitle: React.CSSProperties = {
@@ -319,21 +269,24 @@ export function Home() {
   };
 
   const sectionTitle: React.CSSProperties = {
-    fontSize: '13px',
+    fontSize: '12px',
     fontWeight: 600,
     color: '#4A9A9C',
     fontFamily: 'var(--sentinel-font-mono)',
     textTransform: 'uppercase' as const,
-    letterSpacing: '0.1em',
+    letterSpacing: '0.12em',
     marginBottom: '20px',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '8px',
   };
 
   const cardTitle: React.CSSProperties = {
-    fontSize: '18px',
+    fontSize: '20px',
     fontWeight: 600,
     color: '#2D3436',
     fontFamily: 'var(--sentinel-font-display)',
-    marginBottom: '20px',
+    marginBottom: '24px',
   };
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -342,6 +295,119 @@ export function Home() {
   return (
     <div style={pageBackground}>
       {/* ════════════════════════════════════════════════════════════════════
+          DYNAMIC LIGHT INDICATOR - Orbiting sun
+          ════════════════════════════════════════════════════════════════════ */}
+      <div
+        style={{
+          position: 'absolute',
+          left: `${lightPosition.x}%`,
+          top: `${lightPosition.y}%`,
+          transform: 'translate(-50%, -50%)',
+          width: '60px',
+          height: '60px',
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(251,191,36,0.9) 0%, rgba(251,191,36,0.4) 40%, transparent 70%)',
+          boxShadow: '0 0 60px rgba(251,191,36,0.6), 0 0 120px rgba(251,191,36,0.3)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 100,
+          pointerEvents: 'none',
+          transition: 'left 16ms linear, top 16ms linear',
+        }}
+      >
+        <Sun size={28} style={{ color: '#FCD34D' }} />
+      </div>
+
+      {/* Light rays emanating from source */}
+      <div
+        style={{
+          position: 'absolute',
+          left: `${lightPosition.x}%`,
+          top: `${lightPosition.y}%`,
+          transform: 'translate(-50%, -50%)',
+          width: '400px',
+          height: '400px',
+          background: `conic-gradient(from ${lightAngle}deg, transparent 0deg, rgba(251,191,36,0.08) 20deg, transparent 40deg, transparent 360deg)`,
+          borderRadius: '50%',
+          pointerEvents: 'none',
+          zIndex: 1,
+        }}
+      />
+
+      {/* ════════════════════════════════════════════════════════════════════
+          LIGHT CONTROLS
+          ════════════════════════════════════════════════════════════════════ */}
+      <div style={{
+        position: 'fixed',
+        bottom: '24px',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '16px',
+        padding: '12px 24px',
+        background: 'rgba(255,255,255,0.9)',
+        backdropFilter: 'blur(12px)',
+        borderRadius: '15px',
+        boxShadow: '0 4px 24px rgba(0,0,0,0.15)',
+        zIndex: 1000,
+        fontFamily: 'var(--sentinel-font-mono)',
+        fontSize: '12px',
+      }}>
+        <button
+          onClick={() => setIsAnimating(!isAnimating)}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '6px',
+            padding: '8px 16px',
+            background: isAnimating ? '#4A9A9C' : '#636E72',
+            color: 'white',
+            border: 'none',
+            borderRadius: '15px',
+            cursor: 'pointer',
+            fontSize: '12px',
+            fontWeight: 600,
+          }}
+        >
+          {isAnimating ? <Pause size={14} /> : <Play size={14} />}
+          {isAnimating ? 'Pause' : 'Play'}
+        </button>
+
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <span style={{ color: '#636E72' }}>Speed:</span>
+          <input
+            type="range"
+            min="0.1"
+            max="2"
+            step="0.1"
+            value={animationSpeed}
+            onChange={(e) => setAnimationSpeed(parseFloat(e.target.value))}
+            style={{ width: '80px', cursor: 'pointer' }}
+          />
+        </div>
+
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <span style={{ color: '#636E72' }}>Angle:</span>
+          <input
+            type="range"
+            min="0"
+            max="360"
+            value={lightAngle}
+            onChange={(e) => {
+              setIsAnimating(false);
+              setLightAngle(parseFloat(e.target.value));
+            }}
+            style={{ width: '100px', cursor: 'pointer' }}
+          />
+          <span style={{ color: '#2D3436', fontWeight: 600, minWidth: '36px' }}>
+            {Math.round(lightAngle)}°
+          </span>
+        </div>
+      </div>
+
+      {/* ════════════════════════════════════════════════════════════════════
           HERO HEADER
           ════════════════════════════════════════════════════════════════════ */}
       <header style={{
@@ -349,85 +415,121 @@ export function Home() {
         justifyContent: 'space-between',
         alignItems: 'flex-start',
         marginBottom: '48px',
-        position: 'relative' as const,
+        marginTop: '20px',
+        position: 'relative',
+        zIndex: 10,
       }}>
         <div>
           <h1 style={title}>SENTINEL</h1>
-          <p style={subtitle}>Design System • Neumorphism + Glass</p>
+          <p style={subtitle}>Dynamic Light Engine Demo</p>
         </div>
 
-        {/* Glass Button - flotando */}
-        <Link
-          to="/app/login"
-          style={glassButton}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.transform = 'translateY(-2px)';
-            e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.15)';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform = 'translateY(0)';
-            e.currentTarget.style.boxShadow = '0 4px 16px rgba(0, 0, 0, 0.1)';
-          }}
-        >
+        <Link to="/app/login" style={glassButton}>
           <LogIn size={18} />
           Launch App
         </Link>
       </header>
 
       {/* ════════════════════════════════════════════════════════════════════
-          MAIN GRID - Showcasing hierarchy
+          MAIN GRID
           ════════════════════════════════════════════════════════════════════ */}
       <div style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))',
         gap: '32px',
         marginBottom: '48px',
+        position: 'relative',
+        zIndex: 10,
       }}>
 
         {/* ──────────────────────────────────────────────────────────────────
-            CARD 1: Neumorphic Panel con Insets
+            CARD 1: Neumorphic Demo
             ────────────────────────────────────────────────────────────────── */}
         <div style={neuPanel}>
-          <h3 style={sectionTitle}>Neumorphic Base</h3>
+          <h3 style={sectionTitle}>
+            <span style={{
+              width: '8px',
+              height: '8px',
+              borderRadius: '50%',
+              background: `linear-gradient(${lightAngle}deg, #fff, #4A9A9C)`,
+              boxShadow: '0 1px 3px rgba(74,154,156,0.3)',
+            }} />
+            Neumorphic Shadows
+          </h3>
           <h2 style={cardTitle}>Portfolio Overview</h2>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            {/* Inset con datos */}
-            <div style={{ ...neuInset, padding: '16px', display: 'flex', alignItems: 'center', gap: '16px' }}>
-              <div style={{ ...neuInsetSm, width: '48px', height: '48px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{ ...neuInset, padding: '20px', display: 'flex', alignItems: 'center', gap: '16px' }}>
+              <div style={{ ...neuInsetSm, width: '52px', height: '52px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <DollarSign size={24} color="#4A9A9C" />
               </div>
               <div>
-                <div style={{ fontSize: '24px', fontWeight: 700, color: '#2D3436', fontFamily: 'var(--sentinel-font-mono)' }}>
+                <div style={{ fontSize: '28px', fontWeight: 700, color: '#2D3436', fontFamily: 'var(--sentinel-font-mono)' }}>
                   $124,500
                 </div>
                 <div style={{ fontSize: '12px', color: '#636E72' }}>Total Value</div>
               </div>
             </div>
 
-            {/* Inset con datos */}
-            <div style={{ ...neuInset, padding: '16px', display: 'flex', alignItems: 'center', gap: '16px' }}>
-              <div style={{ ...neuInsetSm, width: '48px', height: '48px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{ ...neuInset, padding: '20px', display: 'flex', alignItems: 'center', gap: '16px' }}>
+              <div style={{ ...neuInsetSm, width: '52px', height: '52px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <TrendingUp size={24} color="#22C55E" />
               </div>
               <div>
-                <div style={{ fontSize: '24px', fontWeight: 700, color: '#22C55E', fontFamily: 'var(--sentinel-font-mono)' }}>
+                <div style={{ fontSize: '28px', fontWeight: 700, color: '#22C55E', fontFamily: 'var(--sentinel-font-mono)' }}>
                   +12.5%
                 </div>
                 <div style={{ fontSize: '12px', color: '#636E72' }}>Monthly Return</div>
               </div>
             </div>
           </div>
+
+          {/* Elevation Demo with dynamic shadows */}
+          <div style={{ marginTop: '24px', display: 'flex', gap: '12px', justifyContent: 'center' }}>
+            {[1, 2, 3, 4, 5].map((level) => (
+              <div
+                key={level}
+                style={{
+                  width: '48px',
+                  height: '48px',
+                  background: LIGHT.base,
+                  borderRadius: '15px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '11px',
+                  fontWeight: 600,
+                  color: '#636E72',
+                  fontFamily: 'var(--sentinel-font-mono)',
+                  boxShadow: getNeuPanelShadow(level * 3, level * 8),
+                  transition: 'box-shadow 50ms linear',
+                }}
+              >
+                {level}
+              </div>
+            ))}
+          </div>
+          <div style={{ textAlign: 'center', marginTop: '8px', fontSize: '10px', color: '#9BA4B0', fontFamily: 'var(--sentinel-font-mono)' }}>
+            Dynamic Elevation 1-5
+          </div>
         </div>
 
         {/* ──────────────────────────────────────────────────────────────────
-            CARD 2: Neumorphic Panel + Glass Overlay (DEMO jerarquía)
+            CARD 2: Glass with dynamic light reflection
             ────────────────────────────────────────────────────────────────── */}
         <div style={{ ...neuPanel, overflow: 'visible' }}>
-          <h3 style={sectionTitle}>Glass Overlay Demo</h3>
+          <h3 style={sectionTitle}>
+            <span style={{
+              width: '8px',
+              height: '8px',
+              borderRadius: '50%',
+              background: `linear-gradient(${lightAngle}deg, #fff, #EF4444)`,
+              boxShadow: '0 1px 3px rgba(239,68,68,0.3)',
+            }} />
+            Glass Light Reflection
+          </h3>
           <h2 style={cardTitle}>Performance</h2>
 
-          {/* Área de chart hundida */}
           <div style={{
             ...neuInset,
             height: '140px',
@@ -440,32 +542,32 @@ export function Home() {
             <BarChart2 size={48} strokeWidth={1.5} />
           </div>
 
-          {/* Stats en inset */}
           <div style={{
             ...neuInset,
-            padding: '14px 20px',
+            padding: '16px 24px',
             display: 'flex',
             justifyContent: 'space-around',
           }}>
-            <div style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: '14px', fontWeight: 600, color: '#2D3436' }}>S&P 500</div>
-              <div style={{ fontSize: '13px', color: '#22C55E', fontWeight: 600 }}>+8.2%</div>
-            </div>
-            <div style={{ width: '1px', background: 'rgba(163, 177, 198, 0.3)' }} />
-            <div style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: '14px', fontWeight: 600, color: '#2D3436' }}>NASDAQ</div>
-              <div style={{ fontSize: '13px', color: '#22C55E', fontWeight: 600 }}>+11.4%</div>
-            </div>
-            <div style={{ width: '1px', background: 'rgba(163, 177, 198, 0.3)' }} />
-            <div style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: '14px', fontWeight: 600, color: '#2D3436' }}>Portfolio</div>
-              <div style={{ fontSize: '13px', color: '#22C55E', fontWeight: 600 }}>+12.5%</div>
-            </div>
+            {[
+              { label: 'S&P 500', value: '+8.2%' },
+              { label: 'NASDAQ', value: '+11.4%' },
+              { label: 'Portfolio', value: '+12.5%' },
+            ].map((item, i, arr) => (
+              <div key={item.label} style={{ display: 'flex', alignItems: 'center', gap: i < arr.length - 1 ? '20px' : 0 }}>
+                <div style={{ textAlign: 'center' }}>
+                  <div style={{ fontSize: '13px', fontWeight: 600, color: '#2D3436' }}>{item.label}</div>
+                  <div style={{ fontSize: '14px', color: '#22C55E', fontWeight: 700 }}>{item.value}</div>
+                </div>
+                {i < arr.length - 1 && (
+                  <div style={{ width: '1px', height: '30px', background: 'rgba(163, 177, 198, 0.3)' }} />
+                )}
+              </div>
+            ))}
           </div>
 
-          {/* GLASS POPUP - Sistema de capas completo (danger) */}
+          {/* Glass Overlay - watch the reflection move! */}
           <div style={{
-            ...glassDangerLayers.container,
+            ...glassCard(355, 35),
             position: 'absolute' as const,
             top: '-12px',
             right: '-12px',
@@ -475,56 +577,55 @@ export function Home() {
             gap: '8px',
             zIndex: 10,
           }}>
-            {/* Sistema de capas del vidrio */}
-            <div style={glassDangerLayers.base} />
-            <div style={glassDangerLayers.gradient} />
-            <div style={glassDangerLayers.texture} />
-            <div style={glassDangerLayers.highlight} />
-            <div style={glassDangerLayers.innerGlow} />
-            {/* Contenido */}
-            <Bell size={16} color="#c45a5a" style={{ position: 'relative' }} />
-            <span style={{ fontSize: '13px', fontWeight: 600, color: '#2D3436', position: 'relative' }}>3 Alerts</span>
+            <Bell size={16} color="#c45a5a" />
+            <span style={{ fontSize: '13px', fontWeight: 600, color: '#7a2c2c' }}>3 Alerts</span>
             <div style={{
               width: '8px',
               height: '8px',
               borderRadius: '50%',
               background: '#EF4444',
               boxShadow: '0 0 8px rgba(239, 68, 68, 0.5)',
-              position: 'relative',
             }} />
           </div>
         </div>
 
         {/* ──────────────────────────────────────────────────────────────────
-            CARD 3: Glass-heavy Card (máxima elevación)
+            CARD 3: Color-Matched Dynamic Shadows
             ────────────────────────────────────────────────────────────────── */}
         <div style={{ ...neuPanel, overflow: 'visible' }}>
-          <h3 style={sectionTitle}>Interactive Elements</h3>
+          <h3 style={sectionTitle}>
+            <span style={{
+              width: '8px',
+              height: '8px',
+              borderRadius: '50%',
+              background: `linear-gradient(${lightAngle}deg, #fff, #22C55E)`,
+              boxShadow: '0 1px 3px rgba(34,197,94,0.3)',
+            }} />
+            Color-Matched Shadows
+          </h3>
           <h2 style={cardTitle}>Quick Actions</h2>
 
-          {/* Glass badges - cada uno con su color y sombra correspondiente */}
-          <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' as const, marginBottom: '20px' }}>
-            <span style={{ ...createGlassBadge(glassColors.success), color: '#2d6a4f' }}>
+          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' as const, marginBottom: '24px' }}>
+            <span style={glassBadge(145, 40)}>
               <Zap size={12} /> Active
             </span>
-            <span style={{ ...createGlassBadge(glassColors.teal), color: '#2d5a5c' }}>
+            <span style={glassBadge(175, 35)}>
               <Star size={12} /> Premium
             </span>
-            <span style={{ ...createGlassBadge(glassColors.info), color: '#2d4a6a' }}>
+            <span style={glassBadge(215, 40)}>
               <ArrowUpRight size={12} /> +24%
             </span>
           </div>
 
-          {/* Lista con items en inset - badges con vidrio coloreado */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             {[
-              { symbol: 'AAPL', action: 'BUY', glassColor: glassColors.success, textColor: '#1e5631' },
-              { symbol: 'GOOGL', action: 'SELL', glassColor: glassColors.danger, textColor: '#7a2c2c' },
-              { symbol: 'MSFT', action: 'HOLD', glassColor: glassColors.warning, textColor: '#6b4c1a' },
-            ].map((item, i) => (
-              <div key={i} style={{
+              { symbol: 'AAPL', action: 'BUY', hue: 145, sat: 40 },
+              { symbol: 'GOOGL', action: 'SELL', hue: 355, sat: 35 },
+              { symbol: 'MSFT', action: 'HOLD', hue: 35, sat: 45 },
+            ].map((item) => (
+              <div key={item.symbol} style={{
                 ...neuInset,
-                padding: '12px 16px',
+                padding: '14px 18px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
@@ -535,20 +636,16 @@ export function Home() {
                     {item.symbol}
                   </span>
                 </div>
-                {/* Glass action badge - sombra del color del vidrio */}
-                <span style={{
-                  ...createGlassBadge(item.glassColor),
-                  color: item.textColor,
-                }}>
+                <span style={glassBadge(item.hue, item.sat)}>
                   {item.action}
                 </span>
               </div>
             ))}
           </div>
 
-          {/* Glass floating notification - Sistema de capas (teal) */}
+          {/* Glass notification - teal */}
           <div style={{
-            ...glassTealLayers.container,
+            ...glassCard(175, 35),
             position: 'absolute' as const,
             bottom: '-16px',
             left: '50%',
@@ -560,151 +657,73 @@ export function Home() {
             whiteSpace: 'nowrap' as const,
             zIndex: 10,
           }}>
-            {/* Sistema de capas del vidrio */}
-            <div style={glassTealLayers.base} />
-            <div style={glassTealLayers.gradient} />
-            <div style={glassTealLayers.texture} />
-            <div style={glassTealLayers.highlight} />
-            <div style={glassTealLayers.innerGlow} />
-            {/* Contenido */}
-            <Settings size={14} color="#3d7a7c" style={{ animation: 'spin 4s linear infinite', position: 'relative' }} />
-            <span style={{ fontSize: '12px', color: '#2d5a5c', position: 'relative' }}>Auto-rebalancing enabled</span>
-            <ChevronRight size={14} color="#4A9A9C" style={{ position: 'relative' }} />
+            <Settings size={14} color="#3d7a7c" style={{ animation: 'spin 4s linear infinite' }} />
+            <span style={{ fontSize: '12px', color: '#2d5a5c', fontWeight: 500 }}>Auto-rebalancing enabled</span>
+            <ChevronRight size={14} color="#4A9A9C" />
           </div>
         </div>
       </div>
 
       {/* ════════════════════════════════════════════════════════════════════
-          CSS REFERENCE SECTION
+          LIGHT ENGINE INFO
           ════════════════════════════════════════════════════════════════════ */}
-      <div style={neuPanel}>
-        <h3 style={sectionTitle}>CSS Reference</h3>
+      <div style={{ ...neuPanel, position: 'relative', zIndex: 10 }}>
+        <h3 style={sectionTitle}>
+          <Sun size={14} style={{ color: '#F59E0B' }} />
+          Dynamic Light Engine
+        </h3>
 
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-          gap: '24px'
+          gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+          gap: '24px',
+          marginBottom: '24px',
         }}>
-          {/* Neu Panel Reference */}
           <div style={{ ...neuInset, padding: '20px' }}>
-            <div style={{ fontSize: '12px', fontWeight: 600, color: '#4A9A9C', marginBottom: '12px', fontFamily: 'var(--sentinel-font-mono)' }}>
-              NEU-PANEL (Layer 1)
+            <div style={{ fontSize: '13px', fontWeight: 700, color: '#4A9A9C', marginBottom: '8px' }}>
+              Real-time Calculations
             </div>
-            <pre style={{
-              fontSize: '11px',
-              color: '#2D3436',
-              fontFamily: 'var(--sentinel-font-mono)',
-              lineHeight: '1.7',
-              margin: 0,
-              whiteSpace: 'pre-wrap',
-            }}>
-{`background: #E0E5EC;
-border-radius: 24px;
-box-shadow:
-  -12px -12px 24px rgba(255,255,255,0.8),
-  12px 12px 24px rgba(163,177,198,0.6);`}
-            </pre>
+            <p style={{ fontSize: '12px', color: '#636E72', lineHeight: 1.6, margin: 0 }}>
+              Shadow X = cos(angle) × distance<br/>
+              Shadow Y = sin(angle) × distance<br/>
+              Highlight = opposite direction
+            </p>
           </div>
 
-          {/* Neu Inset Reference */}
           <div style={{ ...neuInset, padding: '20px' }}>
-            <div style={{ fontSize: '12px', fontWeight: 600, color: '#4A9A9C', marginBottom: '12px', fontFamily: 'var(--sentinel-font-mono)' }}>
-              NEU-INSET (Layer 1.5)
+            <div style={{ fontSize: '13px', fontWeight: 700, color: '#4A9A9C', marginBottom: '8px' }}>
+              Glass Reflections
             </div>
-            <pre style={{
-              fontSize: '11px',
-              color: '#2D3436',
-              fontFamily: 'var(--sentinel-font-mono)',
-              lineHeight: '1.7',
-              margin: 0,
-              whiteSpace: 'pre-wrap',
-            }}>
-{`background: #E0E5EC;
-border-radius: 16px;
-box-shadow:
-  inset 5px 5px 10px rgba(163,177,198,0.5),
-  inset -5px -5px 10px rgba(255,255,255,0.7);`}
-            </pre>
+            <p style={{ fontSize: '12px', color: '#636E72', lineHeight: 1.6, margin: 0 }}>
+              Light-facing edges get brighter highlights.<br/>
+              Gradient direction follows light angle.<br/>
+              Shadow color matches glass hue.
+            </p>
           </div>
 
-          {/* Glass Panel Reference - Sistema de capas (teal) */}
-          <div style={{ ...glassTealLayers.container, padding: '20px' }}>
-            {/* Sistema completo de capas */}
-            <div style={glassTealLayers.base} />
-            <div style={glassTealLayers.gradient} />
-            <div style={glassTealLayers.texture} />
-            <div style={glassTealLayers.highlight} />
-            <div style={glassTealLayers.innerGlow} />
-            <div style={{ fontSize: '12px', fontWeight: 600, color: '#2d5a5c', marginBottom: '12px', fontFamily: 'var(--sentinel-font-mono)', position: 'relative' as const }}>
-              LAYERED GLASS (5 capas)
+          <div style={{ ...glassCard(175, 35), padding: '20px' }}>
+            <div style={{ fontSize: '13px', fontWeight: 700, color: '#2d5a5c', marginBottom: '8px' }}>
+              Current Light: {Math.round(lightAngle)}°
             </div>
-            <pre style={{
-              fontSize: '11px',
-              color: '#2D3436',
-              fontFamily: 'var(--sentinel-font-mono)',
-              lineHeight: '1.7',
-              margin: 0,
-              whiteSpace: 'pre-wrap',
-              position: 'relative' as const,
-            }}>
-{`1. Base    → color sólido (0.12)
-2. Gradient → intensidades
-3. Texture  → grano multiply
-4. Highlight→ refracción top
-5. InnerGlow→ refracción bottom`}
-            </pre>
+            <p style={{ fontSize: '12px', color: '#3d6a6c', lineHeight: 1.6, margin: 0 }}>
+              X offset: {shadowOffsets.x.toFixed(2)}<br/>
+              Y offset: {shadowOffsets.y.toFixed(2)}<br/>
+              {isAnimating ? 'Animating...' : 'Paused'}
+            </p>
           </div>
         </div>
 
-        {/* Colored Glass Showcase - Sistema de capas para cada variante */}
-        <div style={{ marginTop: '32px', padding: '24px', ...neuInset }}>
-          <div style={{ fontSize: '12px', fontWeight: 600, color: '#4A9A9C', marginBottom: '16px', fontFamily: 'var(--sentinel-font-mono)' }}>
-            COLORED GLASS VARIANTS - Base sólida + gradiente de intensidad
-          </div>
-          <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' as const, justifyContent: 'center' }}>
-            {[
-              { color: glassColors.neutral, name: 'Neutral', textColor: '#4a5568' },
-              { color: glassColors.teal, name: 'Teal', textColor: '#2d5a5c' },
-              { color: glassColors.success, name: 'Success', textColor: '#1e5631' },
-              { color: glassColors.warning, name: 'Warning', textColor: '#6b4c1a' },
-              { color: glassColors.danger, name: 'Danger', textColor: '#7a2c2c' },
-              { color: glassColors.info, name: 'Info', textColor: '#2d4a6a' },
-            ].map((variant) => {
-              const layers = getGlassLayers(variant.color);
-              return (
-                <div
-                  key={variant.name}
-                  style={{
-                    ...layers.container,
-                    width: '100px',
-                    height: '60px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                >
-                  {/* 5 capas del sistema */}
-                  <div style={layers.base} />
-                  <div style={layers.gradient} />
-                  <div style={layers.texture} />
-                  <div style={layers.highlight} />
-                  <div style={layers.innerGlow} />
-                  <span style={{
-                    fontSize: '11px',
-                    fontWeight: 600,
-                    color: variant.textColor,
-                    position: 'relative' as const,
-                  }}>
-                    {variant.name}
-                  </span>
-                </div>
-              );
-            })}
-          </div>
+        <div style={{ textAlign: 'center' }}>
+          <Link
+            to="/showcase/styles/light-engine"
+            style={glassButton}
+          >
+            View Full Documentation
+            <ChevronRight size={16} />
+          </Link>
         </div>
       </div>
 
-      {/* Keyframes for animations */}
       <style>{`
         @keyframes spin {
           from { transform: rotate(0deg); }

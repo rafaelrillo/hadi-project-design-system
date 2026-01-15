@@ -1,0 +1,452 @@
+/* ═══════════════════════════════════════════════════════════════════════════════
+   SENTINEL LIGHT ENGINE v1.0
+
+   Un motor de iluminacion unificado basado en los principios de Josh W. Comeau
+   para crear sombras profesionales y consistentes en todo el design system.
+
+   Filosofia:
+   - UNA sola fuente de luz global para todos los elementos
+   - Sombras en capas (layered) para profundidad realista
+   - Sombras con color (no negro puro) que respetan el contexto
+   - Ratio consistente: offset-y = 2x offset-x (luz arriba-izquierda)
+   - Elevacion afecta: offset, blur, y opacidad
+
+   Inspirado por: https://www.joshwcomeau.com/css/designing-shadows/
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ─────────────────────────────────────────────────────────────────────────────
+     LIGHT SOURCE CONFIGURATION
+
+     La fuente de luz esta posicionada arriba y a la izquierda.
+     Todos los elementos proyectan sombras hacia abajo-derecha.
+
+     Ratio: Por cada 1px horizontal, 2px vertical
+     Esto crea una luz natural como si viniera de una ventana alta
+     ───────────────────────────────────────────────────────────────────────────── */
+
+  /* Angulo de la luz (grados desde arriba) - para calculos futuros */
+  --light-angle: 135deg;
+
+  /* Ratio de offset: vertical = horizontal * ratio */
+  --light-offset-ratio: 2;
+
+  /* Intensidad base de la luz (afecta opacidad de sombras) */
+  --light-intensity: 1;
+
+  /* Ambiente (0 = luz dura, 1 = luz muy difusa) */
+  --light-ambient: 0.3;
+
+  /* ─────────────────────────────────────────────────────────────────────────────
+     SHADOW COLOR SYSTEM
+
+     Las sombras NO son negras puras. Toman el tono del contexto.
+     Usamos HSL para poder modificar solo saturacion y luminosidad.
+
+     Regla: La sombra debe tener el mismo HUE que el fondo,
+     con saturacion reducida y luminosidad baja.
+     ───────────────────────────────────────────────────────────────────────────── */
+
+  /* Color base para sombras en contexto neutro (gris-azulado) */
+  --shadow-color-h: 220;
+  --shadow-color-s: 30%;
+  --shadow-color-l: 25%;
+
+  /* Shorthand para usar en hsl() */
+  --shadow-color: var(--shadow-color-h) var(--shadow-color-s) var(--shadow-color-l);
+
+  /* Variantes de color de sombra por contexto */
+  --shadow-color-warm: 15 25% 25%;      /* Para fondos calidos */
+  --shadow-color-cool: 210 35% 20%;     /* Para fondos frios */
+  --shadow-color-accent: 181 30% 25%;   /* Para elementos con acento teal */
+
+  /* ─────────────────────────────────────────────────────────────────────────────
+     ELEVATION SYSTEM - LAYERED SHADOWS
+
+     Cada nivel de elevacion tiene multiples capas de sombra.
+     Las capas crean profundidad progresiva y realismo.
+
+     Formula por capa:
+     - offset-x: base * 2^layer
+     - offset-y: offset-x * ratio (2)
+     - blur: offset-y (aproximadamente igual al offset vertical)
+     - opacity: decrece con cada capa (mas lejos = mas difuso)
+     ───────────────────────────────────────────────────────────────────────────── */
+
+  /* === ELEVATION 1: Elementos apenas elevados (badges, chips) === */
+  --elevation-1:
+    0.5px 1px 1px hsl(var(--shadow-color) / 0.12),
+    1px 2px 2px hsl(var(--shadow-color) / 0.08);
+
+  /* === ELEVATION 2: Elevacion sutil (botones, inputs hover) === */
+  --elevation-2:
+    0.5px 1px 1px hsl(var(--shadow-color) / 0.10),
+    1px 2px 2px hsl(var(--shadow-color) / 0.10),
+    2px 4px 4px hsl(var(--shadow-color) / 0.10);
+
+  /* === ELEVATION 3: Elevacion media (cards, paneles) === */
+  --elevation-3:
+    0.5px 1px 1px hsl(var(--shadow-color) / 0.07),
+    1px 2px 2px hsl(var(--shadow-color) / 0.07),
+    2px 4px 4px hsl(var(--shadow-color) / 0.07),
+    4px 8px 8px hsl(var(--shadow-color) / 0.07);
+
+  /* === ELEVATION 4: Elevacion alta (dropdowns, popovers) === */
+  --elevation-4:
+    0.5px 1px 1px hsl(var(--shadow-color) / 0.06),
+    1px 2px 2px hsl(var(--shadow-color) / 0.06),
+    2px 4px 4px hsl(var(--shadow-color) / 0.06),
+    4px 8px 8px hsl(var(--shadow-color) / 0.06),
+    8px 16px 16px hsl(var(--shadow-color) / 0.06);
+
+  /* === ELEVATION 5: Elevacion maxima (modales, dialogs) === */
+  --elevation-5:
+    0.5px 1px 1px hsl(var(--shadow-color) / 0.04),
+    1px 2px 2px hsl(var(--shadow-color) / 0.04),
+    2px 4px 4px hsl(var(--shadow-color) / 0.04),
+    4px 8px 8px hsl(var(--shadow-color) / 0.04),
+    8px 16px 16px hsl(var(--shadow-color) / 0.04),
+    16px 32px 32px hsl(var(--shadow-color) / 0.04);
+
+  /* ─────────────────────────────────────────────────────────────────────────────
+     NEUMORPHIC LIGHT ENGINE
+
+     Neumorfismo dinamico con la misma fuente de luz.
+     Dos sombras opuestas: highlight (arriba-izq) y shadow (abajo-der)
+
+     La luz viene de arriba-izquierda, entonces:
+     - Highlight: offset negativo (hacia arriba-izquierda)
+     - Shadow: offset positivo (hacia abajo-derecha)
+     ───────────────────────────────────────────────────────────────────────────── */
+
+  /* Colores para neumorfismo light theme */
+  --neu-highlight-color: 0 0% 100%;     /* Blanco puro para highlights */
+  --neu-shadow-color: 220 30% 65%;      /* Gris-azulado para sombras */
+
+  /* === NEU ELEVATION 1: Sutil elevacion === */
+  --neu-elevation-1:
+    -2px -2px 4px hsl(var(--neu-highlight-color) / 0.7),
+    2px 4px 6px hsl(var(--neu-shadow-color) / 0.25);
+
+  /* === NEU ELEVATION 2: Elevacion moderada === */
+  --neu-elevation-2:
+    -3px -3px 6px hsl(var(--neu-highlight-color) / 0.75),
+    3px 6px 10px hsl(var(--neu-shadow-color) / 0.30);
+
+  /* === NEU ELEVATION 3: Elevacion media-alta === */
+  --neu-elevation-3:
+    -4px -4px 8px hsl(var(--neu-highlight-color) / 0.8),
+    4px 8px 14px hsl(var(--neu-shadow-color) / 0.35);
+
+  /* === NEU ELEVATION 4: Alta elevacion === */
+  --neu-elevation-4:
+    -6px -6px 12px hsl(var(--neu-highlight-color) / 0.85),
+    6px 12px 20px hsl(var(--neu-shadow-color) / 0.40);
+
+  /* === NEU ELEVATION 5: Maxima elevacion === */
+  --neu-elevation-5:
+    -8px -8px 16px hsl(var(--neu-highlight-color) / 0.9),
+    8px 16px 28px hsl(var(--neu-shadow-color) / 0.45);
+
+  /* === NEU INSET: Elementos hundidos (inputs, wells) === */
+  --neu-inset-1:
+    inset 1px 2px 3px hsl(var(--neu-shadow-color) / 0.20),
+    inset -1px -1px 2px hsl(var(--neu-highlight-color) / 0.6);
+
+  --neu-inset-2:
+    inset 2px 4px 6px hsl(var(--neu-shadow-color) / 0.25),
+    inset -2px -2px 4px hsl(var(--neu-highlight-color) / 0.7);
+
+  --neu-inset-3:
+    inset 3px 6px 10px hsl(var(--neu-shadow-color) / 0.30),
+    inset -3px -3px 6px hsl(var(--neu-highlight-color) / 0.8);
+
+  /* ─────────────────────────────────────────────────────────────────────────────
+     GLASS LIGHT ENGINE
+
+     El vidrio refleja y refracta la luz.
+     - Reflejo superior: highlight en la direccion de la luz
+     - Sombra inferior: proyectada en direccion opuesta
+     - El color del vidrio tinta la sombra
+     ───────────────────────────────────────────────────────────────────────────── */
+
+  /* Reflejo de luz en vidrio (borde superior iluminado) */
+  --glass-light-reflection:
+    inset 0 1px 0 hsl(0 0% 100% / 0.5),
+    inset 1px 0 0 hsl(0 0% 100% / 0.3);
+
+  /* Reflejo mas intenso para vidrio elevado */
+  --glass-light-reflection-strong:
+    inset 0 1px 1px hsl(0 0% 100% / 0.7),
+    inset 1px 0 1px hsl(0 0% 100% / 0.4),
+    inset 0 2px 4px hsl(0 0% 100% / 0.2);
+
+  /* === GLASS ELEVATION 1: Vidrio sutil === */
+  --glass-elevation-1:
+    var(--glass-light-reflection),
+    0.5px 1px 2px hsl(var(--shadow-color) / 0.08),
+    1px 2px 4px hsl(var(--shadow-color) / 0.06);
+
+  /* === GLASS ELEVATION 2: Vidrio flotante === */
+  --glass-elevation-2:
+    var(--glass-light-reflection),
+    0.5px 1px 2px hsl(var(--shadow-color) / 0.07),
+    1px 2px 4px hsl(var(--shadow-color) / 0.07),
+    2px 4px 8px hsl(var(--shadow-color) / 0.07);
+
+  /* === GLASS ELEVATION 3: Vidrio prominente === */
+  --glass-elevation-3:
+    var(--glass-light-reflection-strong),
+    0.5px 1px 2px hsl(var(--shadow-color) / 0.06),
+    1px 2px 4px hsl(var(--shadow-color) / 0.06),
+    2px 4px 8px hsl(var(--shadow-color) / 0.06),
+    4px 8px 16px hsl(var(--shadow-color) / 0.06);
+
+  /* === GLASS ELEVATION 4: Vidrio de overlay === */
+  --glass-elevation-4:
+    var(--glass-light-reflection-strong),
+    0.5px 1px 2px hsl(var(--shadow-color) / 0.05),
+    1px 2px 4px hsl(var(--shadow-color) / 0.05),
+    2px 4px 8px hsl(var(--shadow-color) / 0.05),
+    4px 8px 16px hsl(var(--shadow-color) / 0.05),
+    8px 16px 32px hsl(var(--shadow-color) / 0.05);
+
+  /* ─────────────────────────────────────────────────────────────────────────────
+     COLOR-TINTED SHADOWS
+
+     Sombras que heredan el color del elemento.
+     Utiles para botones, badges y elementos con color de fondo.
+     ───────────────────────────────────────────────────────────────────────────── */
+
+  /* Positive/Success - Verde */
+  --shadow-positive:
+    0.5px 1px 1px hsl(145 40% 25% / 0.12),
+    1px 2px 2px hsl(145 40% 25% / 0.10),
+    2px 4px 4px hsl(145 40% 25% / 0.08),
+    4px 8px 8px hsl(145 40% 25% / 0.06);
+
+  /* Negative/Error - Rojo */
+  --shadow-negative:
+    0.5px 1px 1px hsl(0 50% 35% / 0.15),
+    1px 2px 2px hsl(0 50% 35% / 0.12),
+    2px 4px 4px hsl(0 50% 35% / 0.10),
+    4px 8px 8px hsl(0 50% 35% / 0.08);
+
+  /* Warning - Ambar */
+  --shadow-warning:
+    0.5px 1px 1px hsl(38 50% 30% / 0.14),
+    1px 2px 2px hsl(38 50% 30% / 0.11),
+    2px 4px 4px hsl(38 50% 30% / 0.09),
+    4px 8px 8px hsl(38 50% 30% / 0.07);
+
+  /* Accent - Teal */
+  --shadow-accent:
+    0.5px 1px 1px hsl(181 35% 30% / 0.15),
+    1px 2px 2px hsl(181 35% 30% / 0.12),
+    2px 4px 4px hsl(181 35% 30% / 0.10),
+    4px 8px 8px hsl(181 35% 30% / 0.08);
+
+  /* Info - Azul */
+  --shadow-info:
+    0.5px 1px 1px hsl(210 50% 30% / 0.14),
+    1px 2px 2px hsl(210 50% 30% / 0.11),
+    2px 4px 4px hsl(210 50% 30% / 0.09),
+    4px 8px 8px hsl(210 50% 30% / 0.07);
+
+  /* ─────────────────────────────────────────────────────────────────────────────
+     INTERACTIVE STATES
+
+     Transiciones suaves para hover, active, focus.
+     Las sombras responden al estado sin animarse directamente
+     (animamos transform en lugar de box-shadow para performance).
+     ───────────────────────────────────────────────────────────────────────────── */
+
+  /* Hover: elevacion incrementada (usar con transform: translateY(-2px)) */
+  --elevation-hover:
+    0.5px 1px 1px hsl(var(--shadow-color) / 0.05),
+    1px 2px 2px hsl(var(--shadow-color) / 0.05),
+    2px 4px 4px hsl(var(--shadow-color) / 0.05),
+    4px 8px 8px hsl(var(--shadow-color) / 0.05),
+    8px 16px 16px hsl(var(--shadow-color) / 0.05),
+    12px 24px 24px hsl(var(--shadow-color) / 0.05);
+
+  /* Active/Pressed: reduccion de elevacion */
+  --elevation-pressed:
+    0.5px 1px 1px hsl(var(--shadow-color) / 0.15),
+    1px 2px 2px hsl(var(--shadow-color) / 0.10);
+
+  /* Focus: sombra con glow de acento */
+  --elevation-focus:
+    var(--elevation-3),
+    0 0 0 3px hsl(181 35% 45% / 0.25);
+
+  /* ─────────────────────────────────────────────────────────────────────────────
+     TRANSITION TOKENS
+
+     Transiciones optimizadas. NUNCA animar box-shadow directamente.
+     En su lugar, animar transform y opacity.
+     ───────────────────────────────────────────────────────────────────────────── */
+
+  --transition-elevation: transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-elevation-fast: transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-shadow-swap: box-shadow 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   UTILITY CLASSES
+
+   Clases de utilidad para aplicar el sistema de iluminacion
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* === Elevaciones Layered === */
+.elevation-1 { box-shadow: var(--elevation-1); }
+.elevation-2 { box-shadow: var(--elevation-2); }
+.elevation-3 { box-shadow: var(--elevation-3); }
+.elevation-4 { box-shadow: var(--elevation-4); }
+.elevation-5 { box-shadow: var(--elevation-5); }
+
+/* === Elevaciones Neumorficas === */
+.neu-elevation-1 { box-shadow: var(--neu-elevation-1); }
+.neu-elevation-2 { box-shadow: var(--neu-elevation-2); }
+.neu-elevation-3 { box-shadow: var(--neu-elevation-3); }
+.neu-elevation-4 { box-shadow: var(--neu-elevation-4); }
+.neu-elevation-5 { box-shadow: var(--neu-elevation-5); }
+
+/* === Inset Neumorficos === */
+.neu-inset-1 { box-shadow: var(--neu-inset-1); }
+.neu-inset-2 { box-shadow: var(--neu-inset-2); }
+.neu-inset-3 { box-shadow: var(--neu-inset-3); }
+
+/* === Elevaciones Glass === */
+.glass-elevation-1 { box-shadow: var(--glass-elevation-1); }
+.glass-elevation-2 { box-shadow: var(--glass-elevation-2); }
+.glass-elevation-3 { box-shadow: var(--glass-elevation-3); }
+.glass-elevation-4 { box-shadow: var(--glass-elevation-4); }
+
+/* === Sombras con Color === */
+.shadow-positive { box-shadow: var(--shadow-positive); }
+.shadow-negative { box-shadow: var(--shadow-negative); }
+.shadow-warning { box-shadow: var(--shadow-warning); }
+.shadow-accent { box-shadow: var(--shadow-accent); }
+.shadow-info { box-shadow: var(--shadow-info); }
+
+/* === Interactive Elevation === */
+.elevation-interactive {
+  box-shadow: var(--elevation-3);
+  transition: var(--transition-elevation);
+}
+
+.elevation-interactive:hover {
+  box-shadow: var(--elevation-hover);
+  transform: translateY(-2px);
+}
+
+.elevation-interactive:active {
+  box-shadow: var(--elevation-pressed);
+  transform: translateY(0);
+}
+
+/* === Neumorphic Interactive === */
+.neu-interactive {
+  box-shadow: var(--neu-elevation-2);
+  transition: var(--transition-elevation);
+}
+
+.neu-interactive:hover {
+  box-shadow: var(--neu-elevation-3);
+  transform: translateY(-1px);
+}
+
+.neu-interactive:active {
+  box-shadow: var(--neu-inset-1);
+  transform: translateY(0);
+}
+
+/* === Glass Interactive === */
+.glass-interactive {
+  box-shadow: var(--glass-elevation-2);
+  transition: var(--transition-elevation);
+}
+
+.glass-interactive:hover {
+  box-shadow: var(--glass-elevation-3);
+  transform: translateY(-2px);
+}
+
+.glass-interactive:active {
+  box-shadow: var(--glass-elevation-1);
+  transform: translateY(0);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   COMPONENT PRESETS
+
+   Sombras pre-configuradas para componentes comunes
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* Cards */
+.shadow-card {
+  box-shadow: var(--elevation-3);
+}
+
+.shadow-card-hover {
+  box-shadow: var(--elevation-4);
+}
+
+/* Buttons */
+.shadow-button {
+  box-shadow: var(--elevation-2);
+}
+
+.shadow-button-hover {
+  box-shadow: var(--elevation-3);
+}
+
+.shadow-button-pressed {
+  box-shadow: var(--elevation-1);
+}
+
+/* Inputs */
+.shadow-input {
+  box-shadow: var(--neu-inset-1);
+}
+
+.shadow-input-focus {
+  box-shadow: var(--neu-inset-1), 0 0 0 3px hsl(181 35% 45% / 0.2);
+}
+
+/* Dropdowns & Popovers */
+.shadow-dropdown {
+  box-shadow: var(--elevation-4);
+}
+
+/* Modals */
+.shadow-modal {
+  box-shadow: var(--elevation-5);
+}
+
+/* Tooltips */
+.shadow-tooltip {
+  box-shadow: var(--elevation-2);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   CONTEXTUAL SHADOW OVERRIDES
+
+   Para cambiar el color de sombra basado en el contexto del fondo
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* Contexto calido (backgrounds con tono ambar/naranja) */
+.shadow-context-warm {
+  --shadow-color: var(--shadow-color-warm);
+}
+
+/* Contexto frio (backgrounds con tono azul) */
+.shadow-context-cool {
+  --shadow-color: var(--shadow-color-cool);
+}
+
+/* Contexto accent (backgrounds con tono teal) */
+.shadow-context-accent {
+  --shadow-color: var(--shadow-color-accent);
+}
