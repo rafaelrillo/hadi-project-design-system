@@ -402,7 +402,7 @@
   gap: 32px;
 }
 
-.radarChartSection {
+.comparisonGridSection {
   background: var(--sentinel-bg-elevated);
   border: 1px solid var(--sentinel-border-subtle);
   border-radius: var(--sentinel-radius-lg);

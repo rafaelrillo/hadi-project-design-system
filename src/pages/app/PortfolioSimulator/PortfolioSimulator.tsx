@@ -8,7 +8,7 @@ import { SelectedStockCard } from '@/components/molecules/sentinel/SelectedStock
 import { AllocationSlider } from '@/components/molecules/sentinel/AllocationSlider';
 import { RiskProfileSelector, RiskProfile } from '@/components/molecules/sentinel/RiskProfileSelector';
 import { Button } from '@/components/atoms/Button';
-import { RadarChart } from '@/components/charts/RadarChart';
+import { ComparisonGrid } from '@/components/molecules/sentinel/ComparisonGrid';
 import { usePortfolioStore, useMarketStore } from '@/store';
 import styles from './PortfolioSimulator.module.css';
 
@@ -399,21 +399,19 @@ export function PortfolioSimulator() {
             </p>
 
             <div className={styles.comparisonContainer}>
-              {/* Radar Chart Comparison */}
-              <div className={styles.radarChartSection}>
+              {/* Comparison Grid */}
+              <div className={styles.comparisonGridSection}>
                 <h3 className={styles.chartSectionTitle}>Portfolio Analysis</h3>
-                <RadarChart
-                  data={[
-                    { metric: 'Performance', 'Current Portfolio': 72, 'New Portfolio': config.riskProfile === 'aggressive' ? 85 : config.riskProfile === 'moderate' ? 78 : 65 },
-                    { metric: 'Risk Level', 'Current Portfolio': 55, 'New Portfolio': config.riskProfile === 'aggressive' ? 80 : config.riskProfile === 'moderate' ? 55 : 30 },
-                    { metric: 'Diversification', 'Current Portfolio': 68, 'New Portfolio': Math.min(config.stocks.length * 15, 90) },
-                    { metric: 'Growth Potential', 'Current Portfolio': 70, 'New Portfolio': config.riskProfile === 'aggressive' ? 90 : config.riskProfile === 'moderate' ? 75 : 55 },
-                    { metric: 'Stability', 'Current Portfolio': 75, 'New Portfolio': config.riskProfile === 'aggressive' ? 45 : config.riskProfile === 'moderate' ? 70 : 90 },
+                <ComparisonGrid
+                  metrics={[
+                    { name: 'Performance', current: 72, new: config.riskProfile === 'aggressive' ? 85 : config.riskProfile === 'moderate' ? 78 : 65, format: 'percent', higherIsBetter: true },
+                    { name: 'Risk Level', current: 55, new: config.riskProfile === 'aggressive' ? 80 : config.riskProfile === 'moderate' ? 55 : 30, format: 'percent', higherIsBetter: false },
+                    { name: 'Diversification', current: 68, new: Math.min(config.stocks.length * 15, 90), format: 'percent', higherIsBetter: true },
+                    { name: 'Growth Potential', current: 70, new: config.riskProfile === 'aggressive' ? 90 : config.riskProfile === 'moderate' ? 75 : 55, format: 'percent', higherIsBetter: true },
+                    { name: 'Stability', current: 75, new: config.riskProfile === 'aggressive' ? 45 : config.riskProfile === 'moderate' ? 70 : 90, format: 'percent', higherIsBetter: true },
                   ]}
-                  keys={['Current Portfolio', 'New Portfolio']}
-                  indexBy="metric"
-                  height={350}
-                  fillOpacity={0.3}
+                  currentLabel="Current Portfolio"
+                  newLabel="New Portfolio"
                 />
               </div>
 

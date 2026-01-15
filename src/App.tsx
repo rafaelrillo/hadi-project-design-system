@@ -64,14 +64,28 @@ const PaginatedTableShowcase = lazy(() => import('./pages/organisms/PaginatedTab
 const DataGridShowcase = lazy(() => import('./pages/organisms/DataGridShowcase').then(m => ({ default: m.DataGridShowcase })));
 const ToastShowcase = lazy(() => import('./pages/organisms/ToastShowcase').then(m => ({ default: m.ToastShowcase })));
 
-// Charts (heavy - always lazy)
+// Charts - ECharts
 const ChartsShowcase = lazy(() => import('./pages/charts').then(m => ({ default: m.ChartsShowcase })));
-const LineChartsShowcase = lazy(() => import('./pages/charts').then(m => ({ default: m.LineChartsShowcase })));
-const ComparisonChartsShowcase = lazy(() => import('./pages/charts').then(m => ({ default: m.ComparisonChartsShowcase })));
-const ProgressChartsShowcase = lazy(() => import('./pages/charts').then(m => ({ default: m.ProgressChartsShowcase })));
-const DistributionChartsShowcase = lazy(() => import('./pages/charts').then(m => ({ default: m.DistributionChartsShowcase })));
-const FlowChartsShowcase = lazy(() => import('./pages/charts').then(m => ({ default: m.FlowChartsShowcase })));
-const CorrelationChartsShowcase = lazy(() => import('./pages/charts').then(m => ({ default: m.CorrelationChartsShowcase })));
+const CandlestickChartShowcase = lazy(() => import('./pages/charts').then(m => ({ default: m.CandlestickChartShowcase })));
+const LineChartShowcase = lazy(() => import('./pages/charts').then(m => ({ default: m.LineChartShowcase })));
+const BarChartShowcase = lazy(() => import('./pages/charts').then(m => ({ default: m.BarChartShowcase })));
+const PieChartShowcase = lazy(() => import('./pages/charts').then(m => ({ default: m.PieChartShowcase })));
+const RadarChartShowcase = lazy(() => import('./pages/charts').then(m => ({ default: m.RadarChartShowcase })));
+const GaugeChartShowcase = lazy(() => import('./pages/charts').then(m => ({ default: m.GaugeChartShowcase })));
+const SunburstChartShowcase = lazy(() => import('./pages/charts').then(m => ({ default: m.SunburstChartShowcase })));
+const TreeMapShowcase = lazy(() => import('./pages/charts').then(m => ({ default: m.TreeMapShowcase })));
+const HeatMapShowcase = lazy(() => import('./pages/charts').then(m => ({ default: m.HeatMapShowcase })));
+const ScatterChartShowcase = lazy(() => import('./pages/charts').then(m => ({ default: m.ScatterChartShowcase })));
+const SankeyChartShowcase = lazy(() => import('./pages/charts').then(m => ({ default: m.SankeyChartShowcase })));
+const FunnelChartShowcase = lazy(() => import('./pages/charts').then(m => ({ default: m.FunnelChartShowcase })));
+const GraphChartShowcase = lazy(() => import('./pages/charts').then(m => ({ default: m.GraphChartShowcase })));
+const CalendarChartShowcase = lazy(() => import('./pages/charts').then(m => ({ default: m.CalendarChartShowcase })));
+const BoxplotChartShowcase = lazy(() => import('./pages/charts').then(m => ({ default: m.BoxplotChartShowcase })));
+const ThemeRiverChartShowcase = lazy(() => import('./pages/charts').then(m => ({ default: m.ThemeRiverChartShowcase })));
+const ParallelChartShowcase = lazy(() => import('./pages/charts').then(m => ({ default: m.ParallelChartShowcase })));
+const TreeChartShowcase = lazy(() => import('./pages/charts').then(m => ({ default: m.TreeChartShowcase })));
+const EffectScatterChartShowcase = lazy(() => import('./pages/charts').then(m => ({ default: m.EffectScatterChartShowcase })));
+const PictorialBarChartShowcase = lazy(() => import('./pages/charts').then(m => ({ default: m.PictorialBarChartShowcase })));
 
 // Animations
 const AnimationsShowcase = lazy(() => import('./pages/animations').then(m => ({ default: m.AnimationsShowcase })));
@@ -233,14 +247,28 @@ function AppRoutes() {
         <Route path="organisms/data-grid" element={<Suspense fallback={<ShowcaseLoader />}><DataGridShowcase /></Suspense>} />
         <Route path="organisms/toast" element={<Suspense fallback={<ShowcaseLoader />}><ToastShowcase /></Suspense>} />
 
-        {/* Charts */}
+        {/* Charts - ECharts */}
         <Route path="charts" element={<Suspense fallback={<ShowcaseLoader />}><ChartsShowcase /></Suspense>} />
-        <Route path="charts/line" element={<Suspense fallback={<ShowcaseLoader />}><LineChartsShowcase /></Suspense>} />
-        <Route path="charts/comparison" element={<Suspense fallback={<ShowcaseLoader />}><ComparisonChartsShowcase /></Suspense>} />
-        <Route path="charts/progress" element={<Suspense fallback={<ShowcaseLoader />}><ProgressChartsShowcase /></Suspense>} />
-        <Route path="charts/distribution" element={<Suspense fallback={<ShowcaseLoader />}><DistributionChartsShowcase /></Suspense>} />
-        <Route path="charts/flow" element={<Suspense fallback={<ShowcaseLoader />}><FlowChartsShowcase /></Suspense>} />
-        <Route path="charts/correlation" element={<Suspense fallback={<ShowcaseLoader />}><CorrelationChartsShowcase /></Suspense>} />
+        <Route path="charts/candlestick" element={<Suspense fallback={<ShowcaseLoader />}><CandlestickChartShowcase /></Suspense>} />
+        <Route path="charts/line" element={<Suspense fallback={<ShowcaseLoader />}><LineChartShowcase /></Suspense>} />
+        <Route path="charts/bar" element={<Suspense fallback={<ShowcaseLoader />}><BarChartShowcase /></Suspense>} />
+        <Route path="charts/pie" element={<Suspense fallback={<ShowcaseLoader />}><PieChartShowcase /></Suspense>} />
+        <Route path="charts/radar" element={<Suspense fallback={<ShowcaseLoader />}><RadarChartShowcase /></Suspense>} />
+        <Route path="charts/gauge" element={<Suspense fallback={<ShowcaseLoader />}><GaugeChartShowcase /></Suspense>} />
+        <Route path="charts/sunburst" element={<Suspense fallback={<ShowcaseLoader />}><SunburstChartShowcase /></Suspense>} />
+        <Route path="charts/treemap" element={<Suspense fallback={<ShowcaseLoader />}><TreeMapShowcase /></Suspense>} />
+        <Route path="charts/heatmap" element={<Suspense fallback={<ShowcaseLoader />}><HeatMapShowcase /></Suspense>} />
+        <Route path="charts/scatter" element={<Suspense fallback={<ShowcaseLoader />}><ScatterChartShowcase /></Suspense>} />
+        <Route path="charts/sankey" element={<Suspense fallback={<ShowcaseLoader />}><SankeyChartShowcase /></Suspense>} />
+        <Route path="charts/funnel" element={<Suspense fallback={<ShowcaseLoader />}><FunnelChartShowcase /></Suspense>} />
+        <Route path="charts/graph" element={<Suspense fallback={<ShowcaseLoader />}><GraphChartShowcase /></Suspense>} />
+        <Route path="charts/calendar" element={<Suspense fallback={<ShowcaseLoader />}><CalendarChartShowcase /></Suspense>} />
+        <Route path="charts/boxplot" element={<Suspense fallback={<ShowcaseLoader />}><BoxplotChartShowcase /></Suspense>} />
+        <Route path="charts/themeriver" element={<Suspense fallback={<ShowcaseLoader />}><ThemeRiverChartShowcase /></Suspense>} />
+        <Route path="charts/parallel" element={<Suspense fallback={<ShowcaseLoader />}><ParallelChartShowcase /></Suspense>} />
+        <Route path="charts/tree" element={<Suspense fallback={<ShowcaseLoader />}><TreeChartShowcase /></Suspense>} />
+        <Route path="charts/effectscatter" element={<Suspense fallback={<ShowcaseLoader />}><EffectScatterChartShowcase /></Suspense>} />
+        <Route path="charts/pictorialbar" element={<Suspense fallback={<ShowcaseLoader />}><PictorialBarChartShowcase /></Suspense>} />
 
         {/* Animations */}
         <Route path="animations" element={<Suspense fallback={<ShowcaseLoader />}><AnimationsShowcase /></Suspense>} />

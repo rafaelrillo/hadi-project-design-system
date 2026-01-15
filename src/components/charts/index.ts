@@ -3,42 +3,59 @@
 // CHART COMPONENTS
 // ═══════════════════════════════════════════════════════════════════════════════
 
-// Base Charts
-export * from './LineChart';
+// ─────────────────────────────────────────────────────────────────────────────
+// ECHARTS - Primary Chart Library
+// Full-featured charts with SENTINEL theme integration
+// ─────────────────────────────────────────────────────────────────────────────
+
+// Re-export everything from echarts (prefixed exports available)
+export * from './echarts';
+
+// ─────────────────────────────────────────────────────────────────────────────
+// LIGHTWEIGHT CHARTS - TradingView Financial Charts (Legacy)
+// Specialized financial charts - being phased out in favor of ECharts
+// ─────────────────────────────────────────────────────────────────────────────
+
+// Base Chart Wrapper (Lightweight Charts)
+export * from './LightweightChart';
+
+// SENTINEL Financial Charts (Legacy - use ECharts CandlestickChart instead)
+// Re-export FinancialLineChart with renamed SeriesData type to avoid conflict with ECharts SeriesData
+export { FinancialLineChart } from './FinancialLineChart';
+export type { FinancialLineChartProps, SeriesData as LWSeriesData } from './FinancialLineChart';
+// Rename to avoid conflict with ECharts CandlestickChart
+export { CandlestickChart as LWCandlestickChart } from './CandlestickChart';
+export type { CandlestickChartProps as LWCandlestickChartProps } from './CandlestickChart';
+export * from './BaselineChart';
+export * from './HistogramChart';
+// BarChart exports OHLCData too, so we explicitly export to avoid conflict
+export { BarChart as LWBarChart } from './BarChart';
+export type { BarChartProps as LWBarChartProps } from './BarChart';
+
+// Stats and Info
 export * from './StatCard';
-export * from './RadarChart';
-export * from './RadialBar';
-export * from './HeatMap';
 
-// Flow & Time Charts
-export * from './SankeyDiagram';
-export * from './CalendarHeatmap';
-export * from './TreeMap';
-export * from './BumpChart';
-
-// Advanced Charts
-export * from './NetworkGraph';
-export * from './ChordDiagram';
-export * from './StreamChart';
-export * from './ScatterPlot';
-export * from './BulletChart';
-
-// SENTINEL Financial Charts
-export * from './FinancialLineChart';
-
-// Theme - SENTINEL tokens
+// Theme - SENTINEL tokens for Lightweight Charts
 export {
+  // Main theme
+  chartTheme,
   sentinelChartTheme,
   sentinelChartColors,
-  sentinelColors,
+  sentinelColors as lwSentinelColors,
+  // Color schemes
   sentinelSequentialColors,
   sentinelDivergingColors,
   sentinelRiskColors,
   sentinelMarketColors,
-  lineChartDefaults,
-  barChartDefaults,
-  pieChartDefaults,
-  heatmapDefaults,
+  // Series options
+  lineSeriesOptions,
+  areaSeriesOptions,
+  candlestickSeriesOptions,
+  histogramSeriesOptions,
+  // Helpers
+  getAreaSeriesOptions,
+  getLineSeriesOptions,
+  formatFinancialValue,
   // Backwards compatibility
   terminalChartTheme,
   terminalChartColors,

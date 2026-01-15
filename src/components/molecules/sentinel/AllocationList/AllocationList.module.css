@@ -1,0 +1,135 @@
+/* Path: src/components/molecules/sentinel/AllocationList/AllocationList.module.css */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sentinel-space-3);
+}
+
+.compact {
+  gap: var(--sentinel-space-2);
+}
+
+.emptyState {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sentinel-space-8);
+  color: var(--sentinel-text-tertiary);
+  font-size: var(--sentinel-font-sm);
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sentinel-space-2);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sentinel-space-3);
+}
+
+.symbolGroup {
+  display: flex;
+  align-items: center;
+  gap: var(--sentinel-space-2);
+  min-width: 0;
+  flex: 1;
+}
+
+.colorDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.symbol {
+  font-family: var(--sentinel-font-mono);
+  font-size: var(--sentinel-font-sm);
+  font-weight: 600;
+  color: var(--sentinel-text-primary);
+  letter-spacing: 0.02em;
+}
+
+.name {
+  font-size: var(--sentinel-font-xs);
+  color: var(--sentinel-text-tertiary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.values {
+  display: flex;
+  align-items: center;
+  gap: var(--sentinel-space-3);
+  flex-shrink: 0;
+}
+
+.value {
+  font-family: var(--sentinel-font-mono);
+  font-size: var(--sentinel-font-sm);
+  color: var(--sentinel-text-secondary);
+}
+
+.change {
+  font-family: var(--sentinel-font-mono);
+  font-size: var(--sentinel-font-xs);
+  font-weight: 500;
+}
+
+.change.positive {
+  color: var(--sentinel-status-positive-text);
+}
+
+.change.negative {
+  color: var(--sentinel-status-negative-text);
+}
+
+.barContainer {
+  display: flex;
+  align-items: center;
+  gap: var(--sentinel-space-2);
+  height: 6px;
+}
+
+.bar {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 400ms var(--sentinel-easing-default);
+  opacity: 0.8;
+}
+
+.percent {
+  font-family: var(--sentinel-font-mono);
+  font-size: var(--sentinel-font-xs);
+  color: var(--sentinel-text-tertiary);
+  min-width: 40px;
+  text-align: right;
+}
+
+/* Compact mode adjustments */
+.compact .item {
+  gap: var(--sentinel-space-1);
+}
+
+.compact .symbol {
+  font-size: var(--sentinel-font-xs);
+}
+
+.compact .value {
+  font-size: var(--sentinel-font-xs);
+}
+
+.compact .barContainer {
+  height: 4px;
+}
+
+.compact .percent {
+  font-size: 10px;
+  min-width: 32px;
+}

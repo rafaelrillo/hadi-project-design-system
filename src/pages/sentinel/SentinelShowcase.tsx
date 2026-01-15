@@ -23,9 +23,6 @@ import {
   AllocationSummary,
 } from '../../components/molecules/sentinel';
 import { FinancialLineChart } from '../../components/charts/FinancialLineChart';
-import { RadarChart } from '../../components/charts/RadarChart';
-import { RadialBar } from '../../components/charts/RadialBar';
-import { HeatMap } from '../../components/charts/HeatMap';
 import { FadeIn, StaggerList, MotionCard, ScrollReveal } from '../../components/animations';
 import type { MarketState, RiskLevel } from '../../components/organisms/sentinel';
 import type { RiskProfile } from '../../components/molecules/sentinel';
@@ -69,46 +66,19 @@ export function SentinelShowcase() {
     paddingBottom: '12px',
   };
 
-  // Sample data
+  // Sample data - using YYYY-MM-DD format for lightweight-charts
   const financialData = [
     {
       id: 'Portfolio Value',
       data: [
-        { x: 'Jan', y: 100000 },
-        { x: 'Feb', y: 105000 },
-        { x: 'Mar', y: 98000 },
-        { x: 'Apr', y: 112000 },
-        { x: 'May', y: 108000 },
-        { x: 'Jun', y: 125000 },
+        { x: '2024-01-01', y: 100000 },
+        { x: '2024-02-01', y: 105000 },
+        { x: '2024-03-01', y: 98000 },
+        { x: '2024-04-01', y: 112000 },
+        { x: '2024-05-01', y: 108000 },
+        { x: '2024-06-01', y: 125000 },
       ],
     },
-  ];
-
-  // Radar chart data - Portfolio analysis dimensions
-  const radarData = [
-    { dimension: 'Volatility', current: 72, benchmark: 65 },
-    { dimension: 'Liquidity', current: 85, benchmark: 80 },
-    { dimension: 'Growth', current: 68, benchmark: 70 },
-    { dimension: 'Stability', current: 78, benchmark: 75 },
-    { dimension: 'Diversification', current: 82, benchmark: 85 },
-    { dimension: 'Risk-Adjusted', current: 74, benchmark: 72 },
-  ];
-
-  // RadialBar data - Sector allocation
-  const radialBarData = [
-    { id: 'Technology', data: [{ x: 'allocation', y: 35 }] },
-    { id: 'Healthcare', data: [{ x: 'allocation', y: 22 }] },
-    { id: 'Finance', data: [{ x: 'allocation', y: 18 }] },
-    { id: 'Energy', data: [{ x: 'allocation', y: 15 }] },
-    { id: 'Consumer', data: [{ x: 'allocation', y: 10 }] },
-  ];
-
-  // HeatMap data - Weekly performance by sector
-  const heatMapData = [
-    { id: 'Tech', data: [{ x: 'Mon', y: 12 }, { x: 'Tue', y: 8 }, { x: 'Wed', y: -3 }, { x: 'Thu', y: 15 }, { x: 'Fri', y: 6 }] },
-    { id: 'Health', data: [{ x: 'Mon', y: 5 }, { x: 'Tue', y: -2 }, { x: 'Wed', y: 7 }, { x: 'Thu', y: 3 }, { x: 'Fri', y: 9 }] },
-    { id: 'Finance', data: [{ x: 'Mon', y: -4 }, { x: 'Tue', y: 6 }, { x: 'Wed', y: 11 }, { x: 'Thu', y: -1 }, { x: 'Fri', y: 4 }] },
-    { id: 'Energy', data: [{ x: 'Mon', y: 8 }, { x: 'Tue', y: 14 }, { x: 'Wed', y: -6 }, { x: 'Thu', y: 2 }, { x: 'Fri', y: -3 }] },
   ];
 
   const sampleFactors = [
@@ -507,7 +477,7 @@ export function SentinelShowcase() {
       <ScrollReveal>
         <ShowcaseSection
           title="FinancialLineChart"
-          description="Investment-focused line chart with zero line and financial formatting"
+          description="Investment-focused line chart with financial formatting"
         >
           <FadeIn direction="up" delay={0.1}>
             <DepthLayer depth={2}>
@@ -516,77 +486,10 @@ export function SentinelShowcase() {
                   data={financialData}
                   height={300}
                   enableArea
-                  showZeroLine
-                  yAxisLabel="Value (USD)"
                   formatValue={(v) => `$${(v / 1000).toFixed(0)}K`}
                 />
               </div>
             </DepthLayer>
-          </FadeIn>
-        </ShowcaseSection>
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <ShowcaseSection
-          title="RadarChart - Portfolio Analysis"
-          description="Multi-dimensional comparison of portfolio metrics vs benchmark"
-        >
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
-            <FadeIn direction="left" delay={0}>
-              <MotionCard variant="glow">
-                <DepthLayer depth={2}>
-                  <div style={{ padding: '24px' }}>
-                    <div style={{ fontSize: '13px', color: 'var(--sentinel-text-secondary)', marginBottom: '16px', fontFamily: 'var(--sentinel-font-primary)' }}>
-                      Current Portfolio vs Benchmark
-                    </div>
-                    <RadarChart
-                      data={radarData}
-                      keys={['current', 'benchmark']}
-                      indexBy="dimension"
-                      height={280}
-                    />
-                  </div>
-                </DepthLayer>
-              </MotionCard>
-            </FadeIn>
-            <FadeIn direction="right" delay={0.1}>
-              <MotionCard variant="glow">
-                <DepthLayer depth={2}>
-                  <div style={{ padding: '24px' }}>
-                    <div style={{ fontSize: '13px', color: 'var(--sentinel-text-secondary)', marginBottom: '16px', fontFamily: 'var(--sentinel-font-primary)' }}>
-                      Sector Allocation Radial
-                    </div>
-                    <RadialBar
-                      data={radialBarData}
-                      height={280}
-                      maxValue={40}
-                    />
-                  </div>
-                </DepthLayer>
-              </MotionCard>
-            </FadeIn>
-          </div>
-        </ShowcaseSection>
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <ShowcaseSection
-          title="HeatMap - Weekly Sector Performance"
-          description="Visual matrix showing daily performance by sector"
-        >
-          <FadeIn direction="scale" delay={0.1}>
-            <MotionCard variant="scale">
-              <DepthLayer depth={2}>
-                <div style={{ padding: '24px' }}>
-                  <HeatMap
-                    data={heatMapData}
-                    height={250}
-                    colorScheme="oranges"
-                    enableLabels
-                  />
-                </div>
-              </DepthLayer>
-            </MotionCard>
           </FadeIn>
         </ShowcaseSection>
       </ScrollReveal>
@@ -633,7 +536,6 @@ export function SentinelShowcase() {
                         data={financialData}
                         height={250}
                         enableArea
-                        showZeroLine
                         formatValue={(v) => `$${(v / 1000).toFixed(0)}K`}
                       />
                     </FadeIn>

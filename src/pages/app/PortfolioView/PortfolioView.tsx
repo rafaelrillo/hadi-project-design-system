@@ -8,7 +8,7 @@ import {
   PieChart,
 } from 'lucide-react';
 import { Button } from '@/components/atoms/Button';
-import { TreeMap } from '@/components/charts';
+import { AllocationList } from '@/components/molecules/sentinel/AllocationList';
 import { useIsMobile } from '@/hooks/useBreakpoint';
 import { usePortfolioStore } from '@/store';
 import styles from './PortfolioView.module.css';
@@ -61,15 +61,15 @@ export function PortfolioView() {
     });
   }, [holdings, sortBy]);
 
-  // TreeMap data
-  const treemapData = useMemo(() => {
-    return {
-      name: 'Portfolio',
-      children: holdings.map((h) => ({
-        name: h.symbol,
-        value: h.value,
-      })),
-    };
+  // Allocation list data
+  const allocationData = useMemo(() => {
+    return holdings.map((h) => ({
+      symbol: h.symbol,
+      name: h.name,
+      value: h.value,
+      allocation: h.allocation,
+      change: h.dayChangePercent,
+    }));
   }, [holdings]);
 
   const isPositive = portfolioTotals.totalGain >= 0;
@@ -112,17 +112,15 @@ export function PortfolioView() {
           </div>
         </div>
 
-        {/* TreeMap - Fixed height */}
+        {/* Allocation List */}
         {holdings.length > 0 && (
-          <div className={styles.mobileTreemapLarge}>
-            <TreeMap
-              data={treemapData}
-              height={180}
-              tile="squarify"
-              innerPadding={3}
-              outerPadding={0}
-              enableLabels={true}
-              enableParentLabel={false}
+          <div className={styles.mobileAllocationList}>
+            <AllocationList
+              items={allocationData}
+              maxItems={5}
+              showValue={true}
+              showChange={true}
+              compact={true}
             />
           </div>
         )}
@@ -286,15 +284,11 @@ export function PortfolioView() {
           <div className={styles.cardHeader}>
             <h2 className={styles.cardTitle}>Allocation Distribution</h2>
           </div>
-          <div className={styles.treemapContent}>
-            <TreeMap
-              data={treemapData}
-              height={200}
-              tile="squarify"
-              innerPadding={2}
-              outerPadding={4}
-              enableLabels={true}
-              enableParentLabel={false}
+          <div className={styles.allocationContent}>
+            <AllocationList
+              items={allocationData}
+              showValue={true}
+              showChange={true}
             />
           </div>
         </div>

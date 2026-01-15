@@ -2,12 +2,32 @@
 
 /* ═══════════════════════════════════════════════════════════════════════════════
    FINANCIAL LINE CHART
-   Investment-focused line chart with enhanced tooltips and markers
+   Investment-focused line chart with enhanced tooltips (Lightweight Charts)
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 .container {
   width: 100%;
   position: relative;
+}
+
+.chartWrapper {
+  width: 100%;
+  height: 100%;
+}
+
+/* SENTINEL Watermark */
+.watermark {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  width: 20px;
+  height: 20px;
+  opacity: 0.25;
+  pointer-events: none;
+  z-index: 1;
+  background-image: url('/sentinel-favicon.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -29,6 +49,9 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .tooltip {
+  position: absolute;
+  z-index: 100;
+  pointer-events: none;
   background: var(--sentinel-bg-overlay);
   border: 1px solid var(--sentinel-border-default);
   border-radius: var(--sentinel-radius-md);
@@ -38,17 +61,18 @@
     0 10px 40px rgba(0, 0, 0, 0.5),
     0 0 0 1px rgba(255, 255, 255, 0.05);
   min-width: 160px;
+  transition: opacity 150ms ease-out;
 }
 
 .tooltipHeader {
   padding: 10px 14px;
   background: var(--sentinel-bg-subtle);
   border-bottom: 1px solid var(--sentinel-border-subtle);
-  font-family: var(--sentinel-font-led);
+  font-family: var(--sentinel-font-mono);
   font-size: var(--sentinel-font-xs);
   font-weight: 500;
   color: var(--sentinel-text-secondary);
-  letter-spacing: var(--sentinel-tracking-led);
+  letter-spacing: 0.02em;
 }
 
 .tooltipContent {
@@ -82,42 +106,11 @@
 }
 
 .tooltipValue {
-  font-family: var(--sentinel-font-numeric);
+  font-family: var(--sentinel-font-mono);
   font-size: var(--sentinel-font-sm);
   font-weight: 600;
   color: var(--sentinel-text-primary);
-  letter-spacing: var(--sentinel-tracking-led);
+  letter-spacing: 0.02em;
   text-align: right;
   min-width: 60px;
-}
-
-/* Positive/Negative value colors */
-.tooltipValue[data-positive="true"] {
-  color: var(--sentinel-status-positive-text);
-  text-shadow: var(--sentinel-glow-positive);
-}
-
-.tooltipValue[data-positive="false"] {
-  color: var(--sentinel-status-negative-text);
-  text-shadow: var(--sentinel-glow-negative);
-}
-
-/* ─────────────────────────────────────────────────────────────────────────────
-   CHART AREA STYLING VIA GLOBAL OVERRIDES
-   ───────────────────────────────────────────────────────────────────────────── */
-
-/* Crosshair styling */
-.container :global(.nivo-crosshair-line) {
-  stroke: var(--sentinel-accent-primary);
-  stroke-opacity: 0.3;
-  stroke-dasharray: 4 4;
-}
-
-/* Point hover styling */
-.container :global(circle[r="6"]) {
-  transition: r 150ms ease-out;
-}
-
-.container :global(circle[r="6"]:hover) {
-  r: 8;
 }

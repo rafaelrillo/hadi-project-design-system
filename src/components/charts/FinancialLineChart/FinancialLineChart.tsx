@@ -1,99 +1,230 @@
 // Path: src/components/charts/FinancialLineChart/FinancialLineChart.tsx
-import { ResponsiveLine } from '@nivo/line';
-import type { LineSeries, SliceTooltipProps, Point } from '@nivo/line';
-import { sentinelChartTheme, sentinelChartColors, sentinelColors } from '../theme';
+import { useRef, useEffect, useCallback, useState } from 'react';
+import {
+  createChart,
+  IChartApi,
+  ISeriesApi,
+  LineSeries,
+  AreaSeries,
+  LineData,
+  Time,
+  CrosshairMode,
+  ColorType,
+} from 'lightweight-charts';
+import {
+  chartTheme,
+  sentinelChartColors,
+  sentinelColors,
+  getAreaSeriesOptions,
+  getLineSeriesOptions,
+  formatFinancialValue,
+} from '../theme';
 import styles from './FinancialLineChart.module.css';
 
-export interface ChartMarker {
-  value: number | string;
-  label: string;
-  type?: 'event' | 'threshold' | 'target';
-  axis?: 'x' | 'y';
+export interface SeriesData {
+  id: string;
+  name?: string;
+  color?: string;
+  data: Array<{ x: string; y: number | null }>;
 }
 
 export interface FinancialLineChartProps {
-  data: LineSeries[];
+  data: SeriesData[];
   height?: number;
   enableArea?: boolean;
-  areaSeriesIndex?: number; // Only show area for this series index (default: all)
-  enablePoints?: boolean;
-  showZeroLine?: boolean;
-  markers?: ChartMarker[];
+  areaSeriesIndex?: number;
   formatValue?: (value: number) => string;
-  formatLabel?: (label: string | number) => string;
-  yAxisLabel?: string;
-  xAxisLabel?: string;
   className?: string;
-  animate?: boolean;
   colors?: string[];
-  minimal?: boolean; // Hide axes for compact display
+  minimal?: boolean;
 }
 
-// Default financial number formatter
-const defaultFormatValue = (value: number): string => {
-  if (Math.abs(value) >= 1000000000) {
-    return `${(value / 1000000000).toFixed(2)}B`;
-  }
-  if (Math.abs(value) >= 1000000) {
-    return `${(value / 1000000).toFixed(2)}M`;
-  }
-  if (Math.abs(value) >= 1000) {
-    return `${(value / 1000).toFixed(1)}K`;
-  }
-  return value.toFixed(2);
-};
-
-// Custom tooltip component with monospace numbers
-function FinancialTooltip({
-  slice,
-  formatValue,
-}: SliceTooltipProps<LineSeries> & { formatValue: (value: number) => string }) {
-  // Sort points by value (highest first)
-  const sortedPoints = [...slice.points].sort(
-    (a, b) => (Number(b.data.y) || 0) - (Number(a.data.y) || 0)
-  );
-
-  return (
-    <div className={styles.tooltip}>
-      <div className={styles.tooltipHeader}>
-        {String(slice.points[0]?.data.x ?? '')}
-      </div>
-      <div className={styles.tooltipContent}>
-        {sortedPoints.map((point: Point<LineSeries>) => (
-          <div key={point.id} className={styles.tooltipRow}>
-            <span
-              className={styles.tooltipColor}
-              style={{ backgroundColor: point.seriesColor }}
-            />
-            <span className={styles.tooltipLabel}>{String(point.seriesId)}</span>
-            <span className={styles.tooltipValue}>
-              {formatValue(Number(point.data.y) || 0)}
-            </span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+interface TooltipData {
+  time: string;
+  values: Array<{
+    name: string;
+    value: number;
+    color: string;
+  }>;
 }
 
 export function FinancialLineChart({
   data,
   height = 300,
   enableArea = true,
-  areaSeriesIndex,
-  enablePoints = false,
-  showZeroLine = true,
-  markers = [],
-  formatValue = defaultFormatValue,
-  formatLabel,
-  yAxisLabel,
-  xAxisLabel,
+  areaSeriesIndex = 0,
+  formatValue = formatFinancialValue,
   className = '',
-  animate = true,
   colors = sentinelChartColors,
   minimal = false,
 }: FinancialLineChartProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const chartRef = useRef<IChartApi | null>(null);
+  const seriesRefs = useRef<Map<string, ISeriesApi<'Line'> | ISeriesApi<'Area'>>>(new Map());
+  const [tooltip, setTooltip] = useState<TooltipData | null>(null);
+  const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
+
   const containerClasses = [styles.container, className].filter(Boolean).join(' ');
+
+  // Convert data to Lightweight Charts format
+  const convertData = useCallback((seriesData: SeriesData['data']): LineData[] => {
+    return seriesData
+      .filter((d) => d.y !== null)
+      .map((d) => ({
+        time: d.x as Time,
+        value: d.y as number,
+      }));
+  }, []);
+
+  // Initialize chart
+  useEffect(() => {
+    if (!containerRef.current) return;
+
+    const container = containerRef.current;
+
+    // Create chart with theme
+    chartRef.current = createChart(container, {
+      ...chartTheme,
+      width: container.clientWidth,
+      height,
+      layout: {
+        background: { type: ColorType.Solid, color: 'transparent' },
+        textColor: sentinelColors.textSecondary,
+        fontFamily: "'Inter', sans-serif",
+        fontSize: 11,
+        attributionLogo: false,
+      },
+      grid: {
+        vertLines: { visible: false },
+        horzLines: {
+          color: sentinelColors.borderSubtle,
+          style: 1,
+          visible: !minimal,
+        },
+      },
+      crosshair: {
+        mode: CrosshairMode.Normal,
+        vertLine: {
+          color: sentinelColors.accentPrimary,
+          width: 1,
+          style: 2,
+          labelVisible: !minimal,
+          labelBackgroundColor: sentinelColors.bgOverlay,
+        },
+        horzLine: {
+          color: sentinelColors.accentPrimary,
+          width: 1,
+          style: 2,
+          labelVisible: !minimal,
+          labelBackgroundColor: sentinelColors.bgOverlay,
+        },
+      },
+      rightPriceScale: {
+        visible: !minimal,
+        borderVisible: false,
+        scaleMargins: { top: 0.1, bottom: 0.1 },
+      },
+      timeScale: {
+        visible: !minimal,
+        borderVisible: false,
+        timeVisible: false,
+        fixLeftEdge: true,
+        fixRightEdge: true,
+      },
+      handleScale: false,
+      handleScroll: false,
+    });
+
+    // Add series for each data set
+    data.forEach((series, index) => {
+      if (!chartRef.current) return;
+
+      const color = series.color || colors[index % colors.length];
+      const isAreaSeries = enableArea && index === areaSeriesIndex;
+
+      if (isAreaSeries) {
+        const areaSeries = chartRef.current.addSeries(AreaSeries, {
+          ...getAreaSeriesOptions(color, 0.3),
+          priceLineVisible: false,
+          lastValueVisible: false,
+        });
+        areaSeries.setData(convertData(series.data));
+        seriesRefs.current.set(series.id, areaSeries);
+      } else {
+        const lineSeries = chartRef.current.addSeries(LineSeries, {
+          ...getLineSeriesOptions(color),
+          priceLineVisible: false,
+          lastValueVisible: false,
+        });
+        lineSeries.setData(convertData(series.data));
+        seriesRefs.current.set(series.id, lineSeries);
+      }
+    });
+
+    // Fit content
+    chartRef.current.timeScale().fitContent();
+
+    // Subscribe to crosshair move for tooltip
+    chartRef.current.subscribeCrosshairMove((param) => {
+      if (!param.time || !param.point || param.point.x < 0 || param.point.y < 0) {
+        setTooltip(null);
+        return;
+      }
+
+      const tooltipValues: TooltipData['values'] = [];
+
+      data.forEach((series, index) => {
+        const seriesApi = seriesRefs.current.get(series.id);
+        if (!seriesApi) return;
+
+        const dataPoint = param.seriesData.get(seriesApi);
+        if (dataPoint && 'value' in dataPoint) {
+          tooltipValues.push({
+            name: series.name || series.id,
+            value: dataPoint.value,
+            color: series.color || colors[index % colors.length],
+          });
+        }
+      });
+
+      if (tooltipValues.length > 0) {
+        // Sort by value descending
+        tooltipValues.sort((a, b) => b.value - a.value);
+
+        setTooltip({
+          time: String(param.time),
+          values: tooltipValues,
+        });
+        setTooltipPosition({
+          x: param.point.x,
+          y: param.point.y,
+        });
+      } else {
+        setTooltip(null);
+      }
+    });
+
+    // Handle resize
+    const handleResize = () => {
+      if (chartRef.current && containerRef.current) {
+        chartRef.current.applyOptions({
+          width: containerRef.current.clientWidth,
+        });
+      }
+    };
+
+    const resizeObserver = new ResizeObserver(handleResize);
+    resizeObserver.observe(container);
+
+    return () => {
+      resizeObserver.disconnect();
+      seriesRefs.current.clear();
+      if (chartRef.current) {
+        chartRef.current.remove();
+        chartRef.current = null;
+      }
+    };
+  }, [data, height, enableArea, areaSeriesIndex, colors, minimal, convertData]);
 
   // Handle empty data
   if (!data || data.length === 0) {
@@ -104,158 +235,36 @@ export function FinancialLineChart({
     );
   }
 
-  // Calculate min/max for Y axis to include zero if needed
-  let yMin: number | 'auto' = 'auto';
-  let yMax: number | 'auto' = 'auto';
-
-  if (showZeroLine) {
-    const allValues = data.flatMap((series) =>
-      series.data.map((d) => Number(d.y) || 0)
-    );
-    const dataMin = Math.min(...allValues);
-    const dataMax = Math.max(...allValues);
-
-    // Ensure zero is included
-    yMin = Math.min(0, dataMin);
-    yMax = Math.max(0, dataMax);
-
-    // Add padding
-    const range = yMax - yMin;
-    const padding = range * 0.1;
-    yMin = yMin - (yMin < 0 ? padding : 0);
-    yMax = yMax + padding;
-  }
-
-  // Build Nivo markers array
-  const nivoMarkers = [
-    // Zero line marker
-    ...(showZeroLine
-      ? [
-          {
-            axis: 'y' as const,
-            value: 0,
-            lineStyle: {
-              stroke: sentinelColors.borderDefault,
-              strokeWidth: 1,
-              strokeDasharray: '4 4',
-            },
-          },
-        ]
-      : []),
-    // Custom markers
-    ...markers.map((marker) => ({
-      axis: marker.axis || ('y' as const),
-      value: marker.value,
-      legend: marker.label,
-      legendOrientation: 'horizontal' as const,
-      legendPosition: 'top-right' as const,
-      lineStyle: {
-        stroke:
-          marker.type === 'threshold'
-            ? sentinelColors.warning
-            : marker.type === 'target'
-            ? sentinelColors.positive
-            : sentinelColors.accentPrimary,
-        strokeWidth: 1,
-        strokeDasharray: marker.type === 'event' ? '2 2' : '4 4',
-      },
-      textStyle: {
-        fill: sentinelColors.textSecondary,
-        fontSize: 10,
-      },
-    })),
-  ];
-
   return (
     <div className={containerClasses} style={{ height: `${height}px` }}>
-      <ResponsiveLine
-        data={data}
-        colors={colors}
-        margin={minimal
-          ? { top: 8, right: 8, bottom: 8, left: 8 }
-          : {
-              top: 20,
-              right: 30,
-              bottom: xAxisLabel ? 60 : 40,
-              left: yAxisLabel ? 90 : 55,
-            }
-        }
-        xScale={{ type: 'point' }}
-        yScale={{
-          type: 'linear',
-          min: yMin,
-          max: yMax,
-          stacked: false,
-        }}
-        curve="monotoneX"
-        lineWidth={minimal ? 2.5 : 2}
-        axisBottom={minimal ? null : {
-          tickSize: 0,
-          tickPadding: 12,
-          tickRotation: 0,
-          legend: xAxisLabel,
-          legendOffset: 45,
-          legendPosition: 'middle',
-          format: formatLabel,
-        }}
-        axisLeft={minimal ? null : {
-          tickSize: 0,
-          tickPadding: 12,
-          tickRotation: 0,
-          legend: yAxisLabel,
-          legendOffset: -75,
-          legendPosition: 'middle',
-          format: (value) => formatValue(value as number),
-        }}
-        enableGridX={false}
-        enableGridY={true}
-        theme={sentinelChartTheme}
-        pointSize={enablePoints ? 6 : 0}
-        pointColor={sentinelColors.bgElevated}
-        pointBorderWidth={2}
-        pointBorderColor={{ from: 'serieColor' }}
-        enableArea={enableArea}
-        areaOpacity={minimal ? 0.25 : 0.08}
-        areaBaselineValue={showZeroLine ? 0 : undefined}
-        useMesh={true}
-        enableSlices="x"
-        sliceTooltip={(props) => (
-          <FinancialTooltip {...props} formatValue={formatValue} />
-        )}
-        markers={nivoMarkers}
-        animate={animate}
-        motionConfig="gentle"
-        defs={[
-          {
-            id: 'areaGradient',
-            type: 'linearGradient',
-            colors: minimal
-              ? [
-                  { offset: 0, color: 'inherit', opacity: 0.4 },
-                  { offset: 50, color: 'inherit', opacity: 0.15 },
-                  { offset: 100, color: 'inherit', opacity: 0.02 },
-                ]
-              : [
-                  { offset: 0, color: 'inherit', opacity: 0.2 },
-                  { offset: 100, color: 'inherit', opacity: 0 },
-                ],
-          },
-          {
-            id: 'noArea',
-            type: 'linearGradient',
-            colors: [{ offset: 0, color: 'inherit', opacity: 0 }],
-          },
-        ]}
-        fill={
-          areaSeriesIndex !== undefined
-            ? data.map((series, index) => ({
-                match: { id: series.id },
-                id: index === areaSeriesIndex ? 'areaGradient' : 'noArea',
-              }))
-            : [{ match: '*', id: 'areaGradient' }]
-        }
-        crosshairType="cross"
-      />
+      <div ref={containerRef} className={styles.chartWrapper} />
+
+      {/* Custom tooltip */}
+      {tooltip && (
+        <div
+          className={styles.tooltip}
+          style={{
+            left: `${Math.min(tooltipPosition.x + 16, (containerRef.current?.clientWidth || 300) - 180)}px`,
+            top: `${Math.max(tooltipPosition.y - 60, 8)}px`,
+          }}
+        >
+          <div className={styles.tooltipHeader}>{tooltip.time}</div>
+          <div className={styles.tooltipContent}>
+            {tooltip.values.map((item, idx) => (
+              <div key={idx} className={styles.tooltipRow}>
+                <span
+                  className={styles.tooltipColor}
+                  style={{ backgroundColor: item.color }}
+                />
+                <span className={styles.tooltipLabel}>{item.name}</span>
+                <span className={styles.tooltipValue}>
+                  {formatValue(item.value)}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -35,12 +35,6 @@ import {
   Move,
   ScrollText,
   LayoutGrid,
-  Network,
-  Activity,
-  Target,
-  Grid3X3,
-  TrendingUp,
-  PieChart,
   Gauge,
   LayoutDashboard,
   MessageSquare
@@ -206,14 +200,35 @@ export function ShowcaseLayout() {
     { path: '/showcase/styles/icons', label: 'Icons', icon: Image }
   ];
 
+  // Charts - ECharts
   const chartsItems = [
     { path: '/showcase/charts', label: 'Overview', icon: LineChart },
-    { path: '/showcase/charts/line', label: 'Line & Area', icon: Activity },
-    { path: '/showcase/charts/comparison', label: 'Comparison', icon: Target },
-    { path: '/showcase/charts/progress', label: 'Progress', icon: PieChart },
-    { path: '/showcase/charts/distribution', label: 'Distribution', icon: Grid3X3 },
-    { path: '/showcase/charts/flow', label: 'Flow', icon: Network },
-    { path: '/showcase/charts/correlation', label: 'Correlation', icon: TrendingUp }
+    // Financial
+    { path: '/showcase/charts/candlestick', label: 'Candlestick', icon: LineChart },
+    { path: '/showcase/charts/line', label: 'Line', icon: LineChart },
+    { path: '/showcase/charts/bar', label: 'Bar', icon: LineChart },
+    // Circular
+    { path: '/showcase/charts/pie', label: 'Pie', icon: LineChart },
+    { path: '/showcase/charts/radar', label: 'Radar', icon: LineChart },
+    { path: '/showcase/charts/gauge', label: 'Gauge', icon: Gauge },
+    { path: '/showcase/charts/sunburst', label: 'Sunburst', icon: LineChart },
+    // Comparison
+    { path: '/showcase/charts/treemap', label: 'TreeMap', icon: LineChart },
+    { path: '/showcase/charts/heatmap', label: 'HeatMap', icon: LineChart },
+    { path: '/showcase/charts/scatter', label: 'Scatter', icon: LineChart },
+    // Flow
+    { path: '/showcase/charts/sankey', label: 'Sankey', icon: LineChart },
+    { path: '/showcase/charts/funnel', label: 'Funnel', icon: LineChart },
+    { path: '/showcase/charts/graph', label: 'Graph', icon: LineChart },
+    // Time & Stats
+    { path: '/showcase/charts/calendar', label: 'Calendar', icon: LineChart },
+    { path: '/showcase/charts/boxplot', label: 'Boxplot', icon: LineChart },
+    // Advanced
+    { path: '/showcase/charts/themeriver', label: 'ThemeRiver', icon: LineChart },
+    { path: '/showcase/charts/parallel', label: 'Parallel', icon: LineChart },
+    { path: '/showcase/charts/tree', label: 'Tree', icon: LineChart },
+    { path: '/showcase/charts/effectscatter', label: 'EffectScatter', icon: LineChart },
+    { path: '/showcase/charts/pictorialbar', label: 'PictorialBar', icon: LineChart },
   ];
 
   const animationsItems = [

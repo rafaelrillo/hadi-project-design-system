@@ -1,565 +1,1394 @@
 // Path: src/pages/charts/ChartsShowcase.tsx
-// SENTINEL Design System - Charts Showcase
-import React from 'react';
+import { ShowcaseSection } from '../../components/showcase';
+import {
+  CandlestickChart,
+  LineChart,
+  BarChart,
+  PieChart,
+  RadarChart,
+  GaugeChart,
+  TreeMap,
+  HeatMap,
+  ScatterChart,
+  SankeyChart,
+  FunnelChart,
+  SunburstChart,
+  GraphChart,
+  CalendarChart,
+  BoxplotChart,
+  ThemeRiverChart,
+  ParallelChart,
+  TreeChart,
+  EffectScatterChart,
+  PictorialBarChart,
+  pictorialSymbols,
+} from '../../components/charts/echarts';
 import { StatCard } from '../../components/charts/StatCard';
-import { LineChart } from '../../components/charts/LineChart';
-import { RadarChart } from '../../components/charts/RadarChart';
-import { RadialBar } from '../../components/charts/RadialBar';
-import { HeatMap } from '../../components/charts/HeatMap';
-import { SankeyDiagram } from '../../components/charts/SankeyDiagram';
-import { CalendarHeatmap } from '../../components/charts/CalendarHeatmap';
-import { TreeMap } from '../../components/charts/TreeMap';
-import { BumpChart } from '../../components/charts/BumpChart';
-import { NetworkGraph } from '../../components/charts/NetworkGraph';
-import { ChordDiagram } from '../../components/charts/ChordDiagram';
-import { StreamChart } from '../../components/charts/StreamChart';
-import { ScatterPlot } from '../../components/charts/ScatterPlot';
-import { BulletChart } from '../../components/charts/BulletChart';
-import { ShowcaseSection, ComponentPreview } from '../../components/showcase';
-import { TrendingDown, Users, DollarSign, Activity, ShoppingCart } from 'lucide-react';
+import {
+  TrendingUp,
+  TrendingDown,
+  DollarSign,
+  Activity,
+  BarChart3,
+  LineChart as LineIcon,
+  CandlestickChart as CandlestickIcon,
+  Percent,
+  Wallet,
+  PieChart as PieIcon,
+  Target,
+  Zap,
+  Grid3X3,
+  Network,
+  GitBranch,
+  Calendar,
+  Radar,
+  Gauge,
+  Layers,
+  Flame,
+  Sun,
+  BarChart2,
+  Waves,
+  SlidersHorizontal,
+  GitMerge,
+  Sparkles,
+  ImageIcon,
+} from 'lucide-react';
+import type { CSSProperties } from 'react';
 
-export function ChartsShowcase() {
-  const pageHeaderStyles: React.CSSProperties = {
-    marginBottom: '48px'
-  };
+// ─────────────────────────────────────────────────────────────────────────────
+// SAMPLE DATA - FINANCIAL
+// ─────────────────────────────────────────────────────────────────────────────
 
-  const titleStyles: React.CSSProperties = {
-    fontSize: '32px',
-    fontWeight: 300,
-    color: 'var(--sentinel-text-primary)',
-    marginBottom: '12px',
-    fontFamily: 'var(--sentinel-font-primary)',
-    letterSpacing: '-0.02em'
-  };
+const candlestickData = [
+  { time: '2024-12-01', open: 175.5, high: 178.2, low: 174.8, close: 177.3, volume: 45000000 },
+  { time: '2024-12-02', open: 177.3, high: 179.5, low: 176.2, close: 178.8, volume: 52000000 },
+  { time: '2024-12-03', open: 178.8, high: 180.0, low: 177.0, close: 177.5, volume: 48000000 },
+  { time: '2024-12-04', open: 177.5, high: 178.8, low: 175.0, close: 175.8, volume: 55000000 },
+  { time: '2024-12-05', open: 175.8, high: 177.2, low: 174.5, close: 176.9, volume: 42000000 },
+  { time: '2024-12-06', open: 176.9, high: 180.5, low: 176.5, close: 180.2, volume: 62000000 },
+  { time: '2024-12-09', open: 180.2, high: 182.0, low: 179.0, close: 181.5, volume: 58000000 },
+  { time: '2024-12-10', open: 181.5, high: 183.2, low: 180.5, close: 182.8, volume: 51000000 },
+  { time: '2024-12-11', open: 182.8, high: 184.0, low: 181.0, close: 181.2, volume: 47000000 },
+  { time: '2024-12-12', open: 181.2, high: 182.5, low: 179.5, close: 180.0, volume: 53000000 },
+  { time: '2024-12-13', open: 180.0, high: 181.8, low: 178.2, close: 181.5, volume: 49000000 },
+  { time: '2024-12-16', open: 181.5, high: 185.0, low: 181.0, close: 184.5, volume: 68000000 },
+  { time: '2024-12-17', open: 184.5, high: 186.2, low: 183.5, close: 185.8, volume: 72000000 },
+  { time: '2024-12-18', open: 185.8, high: 187.0, low: 184.0, close: 184.2, volume: 65000000 },
+  { time: '2024-12-19', open: 184.2, high: 185.5, low: 182.0, close: 182.5, volume: 58000000 },
+  { time: '2024-12-20', open: 182.5, high: 184.8, low: 182.0, close: 184.5, volume: 54000000 },
+];
 
-  const descStyles: React.CSSProperties = {
-    fontSize: '14px',
-    color: 'var(--sentinel-text-secondary)',
-    fontFamily: 'var(--sentinel-font-primary)',
-    lineHeight: 1.6
-  };
+const lineChartData = [
+  { time: '2024-01', value: 100000 },
+  { time: '2024-02', value: 105000 },
+  { time: '2024-03', value: 98000 },
+  { time: '2024-04', value: 112000 },
+  { time: '2024-05', value: 108000 },
+  { time: '2024-06', value: 125000 },
+  { time: '2024-07', value: 132000 },
+  { time: '2024-08', value: 128000 },
+  { time: '2024-09', value: 145000 },
+  { time: '2024-10', value: 152000 },
+  { time: '2024-11', value: 148000 },
+  { time: '2024-12', value: 165000 },
+];
 
-  const sectionHeaderStyles: React.CSSProperties = {
-    fontSize: '16px',
-    fontWeight: 500,
-    color: 'var(--sentinel-accent-primary)',
-    marginTop: '48px',
-    marginBottom: '24px',
-    fontFamily: 'var(--sentinel-font-primary)',
-    borderBottom: '1px solid var(--sentinel-border-subtle)',
-    paddingBottom: '8px'
-  };
-
-  // ============================================
-  // SAMPLE DATA
-  // ============================================
-
-  // LineChart data
-  const lineChartData = [
-    {
-      id: 'ventas',
-      data: [
-        { x: 'Ene', y: 120 }, { x: 'Feb', y: 150 }, { x: 'Mar', y: 180 },
-        { x: 'Abr', y: 140 }, { x: 'May', y: 200 }, { x: 'Jun', y: 250 },
-        { x: 'Jul', y: 230 }, { x: 'Ago', y: 280 }
-      ]
-    }
-  ];
-
-  const multiLineData = [
-    {
-      id: 'producto-a',
-      data: [
-        { x: 'Ene', y: 100 }, { x: 'Feb', y: 130 }, { x: 'Mar', y: 160 },
-        { x: 'Abr', y: 120 }, { x: 'May', y: 180 }, { x: 'Jun', y: 200 }
-      ]
-    },
-    {
-      id: 'producto-b',
-      data: [
-        { x: 'Ene', y: 80 }, { x: 'Feb', y: 110 }, { x: 'Mar', y: 90 },
-        { x: 'Abr', y: 150 }, { x: 'May', y: 130 }, { x: 'Jun', y: 170 }
-      ]
-    }
-  ];
-
-  // RadarChart data
-  const radarData = [
-    { metric: 'CPU', server1: 80, server2: 65 },
-    { metric: 'RAM', server1: 70, server2: 85 },
-    { metric: 'Disco', server1: 45, server2: 50 },
-    { metric: 'Red', server1: 90, server2: 75 },
-    { metric: 'I/O', server1: 60, server2: 70 }
-  ];
-
-  // RadialBar data
-  const radialBarData = [
-    { id: 'CPU', data: [{ x: 'usage', y: 75 }] },
-    { id: 'RAM', data: [{ x: 'usage', y: 60 }] },
-    { id: 'Disco', data: [{ x: 'usage', y: 45 }] },
-    { id: 'Red', data: [{ x: 'usage', y: 88 }] }
-  ];
-
-  // HeatMap data
-  const heatMapData = [
-    {
-      id: 'Server 1',
-      data: [
-        { x: '00:00', y: 45 }, { x: '04:00', y: 23 }, { x: '08:00', y: 78 },
-        { x: '12:00', y: 92 }, { x: '16:00', y: 85 }, { x: '20:00', y: 56 }
-      ]
-    },
-    {
-      id: 'Server 2',
-      data: [
-        { x: '00:00', y: 32 }, { x: '04:00', y: 18 }, { x: '08:00', y: 65 },
-        { x: '12:00', y: 88 }, { x: '16:00', y: 72 }, { x: '20:00', y: 41 }
-      ]
-    },
-    {
-      id: 'Server 3',
-      data: [
-        { x: '00:00', y: 55 }, { x: '04:00', y: 35 }, { x: '08:00', y: 82 },
-        { x: '12:00', y: 95 }, { x: '16:00', y: 78 }, { x: '20:00', y: 62 }
-      ]
-    }
-  ];
-
-  // Sankey data
-  const sankeyData = {
-    nodes: [
-      { id: 'API Gateway' },
-      { id: 'Auth Service' },
-      { id: 'User Service' },
-      { id: 'Database' },
-      { id: 'Cache' }
+const multiSeriesData = [
+  {
+    id: 'portfolio',
+    name: 'My Portfolio',
+    color: '#5ba3a5',
+    data: [
+      { x: '2024-01', y: 100 },
+      { x: '2024-02', y: 108 },
+      { x: '2024-03', y: 103 },
+      { x: '2024-04', y: 115 },
+      { x: '2024-05', y: 112 },
+      { x: '2024-06', y: 125 },
+      { x: '2024-07', y: 132 },
+      { x: '2024-08', y: 128 },
+      { x: '2024-09', y: 142 },
+      { x: '2024-10', y: 148 },
+      { x: '2024-11', y: 145 },
+      { x: '2024-12', y: 158 },
     ],
-    links: [
-      { source: 'API Gateway', target: 'Auth Service', value: 100 },
-      { source: 'API Gateway', target: 'User Service', value: 80 },
-      { source: 'Auth Service', target: 'Database', value: 60 },
-      { source: 'User Service', target: 'Database', value: 70 },
-      { source: 'User Service', target: 'Cache', value: 30 }
-    ]
-  };
+  },
+  {
+    id: 'spy',
+    name: 'S&P 500',
+    color: '#7ecbcc',
+    data: [
+      { x: '2024-01', y: 100 },
+      { x: '2024-02', y: 104 },
+      { x: '2024-03', y: 106 },
+      { x: '2024-04', y: 108 },
+      { x: '2024-05', y: 110 },
+      { x: '2024-06', y: 115 },
+      { x: '2024-07', y: 118 },
+      { x: '2024-08', y: 116 },
+      { x: '2024-09', y: 122 },
+      { x: '2024-10', y: 125 },
+      { x: '2024-11', y: 128 },
+      { x: '2024-12', y: 132 },
+    ],
+  },
+  {
+    id: 'nasdaq',
+    name: 'NASDAQ',
+    color: '#4a9a7c',
+    data: [
+      { x: '2024-01', y: 100 },
+      { x: '2024-02', y: 106 },
+      { x: '2024-03', y: 102 },
+      { x: '2024-04', y: 112 },
+      { x: '2024-05', y: 108 },
+      { x: '2024-06', y: 120 },
+      { x: '2024-07', y: 128 },
+      { x: '2024-08', y: 122 },
+      { x: '2024-09', y: 135 },
+      { x: '2024-10', y: 140 },
+      { x: '2024-11', y: 138 },
+      { x: '2024-12', y: 148 },
+    ],
+  },
+];
 
-  // Calendar data
-  const calendarData = [
-    { day: '2024-01-01', value: 5 }, { day: '2024-01-02', value: 12 },
-    { day: '2024-01-03', value: 8 }, { day: '2024-01-04', value: 15 },
-    { day: '2024-01-05', value: 3 }, { day: '2024-01-08', value: 20 },
-    { day: '2024-01-09', value: 18 }, { day: '2024-01-10', value: 25 },
-    { day: '2024-01-11', value: 10 }, { day: '2024-01-12', value: 8 },
-    { day: '2024-01-15', value: 30 }, { day: '2024-01-16', value: 22 },
-    { day: '2024-01-17', value: 15 }, { day: '2024-01-18', value: 28 },
-    { day: '2024-01-19', value: 12 }, { day: '2024-01-22', value: 35 },
-    { day: '2024-01-23', value: 40 }, { day: '2024-01-24', value: 18 },
-    { day: '2024-01-25', value: 25 }, { day: '2024-01-26', value: 20 },
-    { day: '2024-01-29', value: 45 }, { day: '2024-01-30', value: 38 },
-    { day: '2024-01-31', value: 42 }
-  ];
+// ─────────────────────────────────────────────────────────────────────────────
+// SAMPLE DATA - BAR CHART
+// ─────────────────────────────────────────────────────────────────────────────
 
-  // TreeMap data
-  const treeMapData = {
-    name: 'root',
+const barCategories = ['Tech', 'Healthcare', 'Finance', 'Energy', 'Consumer', 'Industrial'];
+const barData = [
+  { category: 'Tech', value: 45000 },
+  { category: 'Healthcare', value: 28000 },
+  { category: 'Finance', value: 35000 },
+  { category: 'Energy', value: 18000 },
+  { category: 'Consumer', value: 42000 },
+  { category: 'Industrial', value: 22000 },
+];
+
+const barMultiSeries = [
+  { name: '2023', data: [35000, 22000, 28000, 15000, 32000, 18000] },
+  { name: '2024', data: [45000, 28000, 35000, 18000, 42000, 22000] },
+];
+
+const monthlyReturns = [
+  { category: 'Jan', value: 2.5 },
+  { category: 'Feb', value: -1.2 },
+  { category: 'Mar', value: 3.8 },
+  { category: 'Apr', value: -0.5 },
+  { category: 'May', value: 1.9 },
+  { category: 'Jun', value: 4.2 },
+  { category: 'Jul', value: -2.1 },
+  { category: 'Aug', value: 0.8 },
+  { category: 'Sep', value: 3.5 },
+  { category: 'Oct', value: -1.8 },
+  { category: 'Nov', value: 2.2 },
+  { category: 'Dec', value: 5.1 },
+];
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SAMPLE DATA - CIRCULAR CHARTS
+// ─────────────────────────────────────────────────────────────────────────────
+
+const pieData = [
+  { name: 'US Stocks', value: 45000 },
+  { name: 'Int. Stocks', value: 25000 },
+  { name: 'Bonds', value: 18000 },
+  { name: 'REITs', value: 8000 },
+  { name: 'Cash', value: 4000 },
+];
+
+const radarIndicators = [
+  { name: 'Return', max: 100 },
+  { name: 'Risk', max: 100 },
+  { name: 'Sharpe', max: 100 },
+  { name: 'Volatility', max: 100 },
+  { name: 'Liquidity', max: 100 },
+  { name: 'Diversification', max: 100 },
+];
+
+const radarData = [
+  { name: 'Portfolio A', value: [85, 45, 78, 35, 90, 72], color: '#5ba3a5' },
+  { name: 'Portfolio B', value: [65, 70, 55, 68, 75, 85], color: '#c4a35a' },
+];
+
+const sunburstData = [
+  {
+    name: 'Equities',
     children: [
       {
-        name: 'src',
+        name: 'US',
         children: [
-          { name: 'components', value: 1200 },
-          { name: 'pages', value: 800 },
-          { name: 'utils', value: 400 }
-        ]
+          { name: 'Tech', value: 25000 },
+          { name: 'Healthcare', value: 12000 },
+          { name: 'Finance', value: 8000 },
+        ],
       },
-      { name: 'node_modules', value: 8500 },
-      { name: 'public', value: 300 },
-      { name: 'docs', value: 200 }
-    ]
-  };
-
-  // Bump data
-  const bumpData = [
-    { id: 'Server A', data: [{ x: 'Ene', y: 1 }, { x: 'Feb', y: 2 }, { x: 'Mar', y: 1 }, { x: 'Abr', y: 3 }] },
-    { id: 'Server B', data: [{ x: 'Ene', y: 2 }, { x: 'Feb', y: 1 }, { x: 'Mar', y: 3 }, { x: 'Abr', y: 1 }] },
-    { id: 'Server C', data: [{ x: 'Ene', y: 3 }, { x: 'Feb', y: 3 }, { x: 'Mar', y: 2 }, { x: 'Abr', y: 2 }] }
-  ];
-
-  // Network data
-  const networkData = {
-    nodes: [
-      { id: 'API Gateway', radius: 20, color: '#5ba3a5' },
-      { id: 'Load Balancer', radius: 18, color: '#5ba3a5' },
-      { id: 'Auth Service', radius: 14, color: '#5a8fb8' },
-      { id: 'OAuth Provider', radius: 10, color: '#5a8fb8' },
-      { id: 'Session Store', radius: 10, color: '#5a8fb8' },
-      { id: 'User Service', radius: 14, color: '#4a9a7c' },
-      { id: 'Order Service', radius: 14, color: '#4a9a7c' },
-      { id: 'Payment Service', radius: 12, color: '#4a9a7c' },
-      { id: 'Notification', radius: 10, color: '#4a9a7c' },
-      { id: 'PostgreSQL', radius: 14, color: '#c4a35a' },
-      { id: 'MongoDB', radius: 12, color: '#c4a35a' },
-      { id: 'Redis Cache', radius: 12, color: '#b85c5c' },
-      { id: 'Elasticsearch', radius: 10, color: '#c4a35a' },
-      { id: 'RabbitMQ', radius: 12, color: '#8b7ec7' },
-      { id: 'Kafka', radius: 12, color: '#8b7ec7' }
+      {
+        name: 'International',
+        children: [
+          { name: 'Europe', value: 15000 },
+          { name: 'Asia', value: 10000 },
+        ],
+      },
     ],
-    links: [
-      { source: 'Load Balancer', target: 'API Gateway', distance: 60 },
-      { source: 'API Gateway', target: 'Auth Service', distance: 80 },
-      { source: 'API Gateway', target: 'User Service', distance: 80 },
-      { source: 'API Gateway', target: 'Order Service', distance: 80 },
-      { source: 'Auth Service', target: 'OAuth Provider', distance: 50 },
-      { source: 'Auth Service', target: 'Session Store', distance: 50 },
-      { source: 'Auth Service', target: 'Redis Cache', distance: 60 },
-      { source: 'User Service', target: 'PostgreSQL', distance: 70 },
-      { source: 'User Service', target: 'Redis Cache', distance: 60 },
-      { source: 'User Service', target: 'Elasticsearch', distance: 70 },
-      { source: 'Order Service', target: 'MongoDB', distance: 70 },
-      { source: 'Order Service', target: 'Payment Service', distance: 60 },
-      { source: 'Order Service', target: 'RabbitMQ', distance: 60 },
-      { source: 'Payment Service', target: 'PostgreSQL', distance: 70 },
-      { source: 'Payment Service', target: 'Kafka', distance: 60 },
-      { source: 'RabbitMQ', target: 'Notification', distance: 50 },
-      { source: 'Kafka', target: 'Elasticsearch', distance: 60 },
-      { source: 'Kafka', target: 'Notification', distance: 60 }
-    ]
-  };
+  },
+  {
+    name: 'Fixed Income',
+    children: [
+      { name: 'Government', value: 12000 },
+      { name: 'Corporate', value: 8000 },
+    ],
+  },
+  { name: 'Cash', value: 10000 },
+];
 
-  // Chord data
-  const chordMatrix = [
-    [0, 50, 30, 20],
-    [50, 0, 40, 10],
-    [30, 40, 0, 25],
-    [20, 10, 25, 0]
-  ];
-  const chordKeys = ['API', 'Auth', 'User', 'DB'];
+// ─────────────────────────────────────────────────────────────────────────────
+// SAMPLE DATA - COMPARISON CHARTS
+// ─────────────────────────────────────────────────────────────────────────────
 
-  // Stream data
-  const streamData = [
-    { API: 10, DB: 20, Cache: 5 },
-    { API: 15, DB: 25, Cache: 8 },
-    { API: 12, DB: 18, Cache: 10 },
-    { API: 20, DB: 30, Cache: 12 },
-    { API: 18, DB: 22, Cache: 15 },
-    { API: 25, DB: 35, Cache: 18 },
-    { API: 22, DB: 28, Cache: 20 }
-  ];
+const treeMapData = [
+  {
+    name: 'Technology',
+    value: 45000,
+    children: [
+      { name: 'AAPL', value: 18000 },
+      { name: 'MSFT', value: 15000 },
+      { name: 'GOOGL', value: 12000 },
+    ],
+  },
+  {
+    name: 'Healthcare',
+    value: 28000,
+    children: [
+      { name: 'JNJ', value: 12000 },
+      { name: 'UNH', value: 10000 },
+      { name: 'PFE', value: 6000 },
+    ],
+  },
+  {
+    name: 'Finance',
+    value: 22000,
+    children: [
+      { name: 'JPM', value: 10000 },
+      { name: 'BAC', value: 8000 },
+      { name: 'GS', value: 4000 },
+    ],
+  },
+  { name: 'Energy', value: 15000 },
+  { name: 'Consumer', value: 12000 },
+];
 
-  // Scatter data
-  const scatterData = [
+const heatMapXCategories = ['AAPL', 'MSFT', 'GOOGL', 'AMZN', 'META'];
+const heatMapYCategories = ['AAPL', 'MSFT', 'GOOGL', 'AMZN', 'META'];
+const heatMapData = [
+  { x: 'AAPL', y: 'AAPL', value: 1.0 },
+  { x: 'AAPL', y: 'MSFT', value: 0.85 },
+  { x: 'AAPL', y: 'GOOGL', value: 0.72 },
+  { x: 'AAPL', y: 'AMZN', value: 0.68 },
+  { x: 'AAPL', y: 'META', value: 0.55 },
+  { x: 'MSFT', y: 'AAPL', value: 0.85 },
+  { x: 'MSFT', y: 'MSFT', value: 1.0 },
+  { x: 'MSFT', y: 'GOOGL', value: 0.78 },
+  { x: 'MSFT', y: 'AMZN', value: 0.62 },
+  { x: 'MSFT', y: 'META', value: 0.48 },
+  { x: 'GOOGL', y: 'AAPL', value: 0.72 },
+  { x: 'GOOGL', y: 'MSFT', value: 0.78 },
+  { x: 'GOOGL', y: 'GOOGL', value: 1.0 },
+  { x: 'GOOGL', y: 'AMZN', value: 0.75 },
+  { x: 'GOOGL', y: 'META', value: 0.82 },
+  { x: 'AMZN', y: 'AAPL', value: 0.68 },
+  { x: 'AMZN', y: 'MSFT', value: 0.62 },
+  { x: 'AMZN', y: 'GOOGL', value: 0.75 },
+  { x: 'AMZN', y: 'AMZN', value: 1.0 },
+  { x: 'AMZN', y: 'META', value: 0.58 },
+  { x: 'META', y: 'AAPL', value: 0.55 },
+  { x: 'META', y: 'MSFT', value: 0.48 },
+  { x: 'META', y: 'GOOGL', value: 0.82 },
+  { x: 'META', y: 'AMZN', value: 0.58 },
+  { x: 'META', y: 'META', value: 1.0 },
+];
+
+const scatterData = [
+  { x: 5.2, y: 12.5, size: 1, name: 'AAPL' },
+  { x: 8.1, y: 18.2, size: 1.2, name: 'NVDA' },
+  { x: 3.5, y: 8.8, size: 0.8, name: 'JNJ' },
+  { x: 6.8, y: 14.5, size: 1.1, name: 'MSFT' },
+  { x: 4.2, y: 9.2, size: 0.9, name: 'PG' },
+  { x: 9.5, y: 22.1, size: 1.5, name: 'TSLA' },
+  { x: 2.8, y: 6.5, size: 0.7, name: 'KO' },
+  { x: 7.2, y: 15.8, size: 1.0, name: 'GOOGL' },
+];
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SAMPLE DATA - FLOW CHARTS
+// ─────────────────────────────────────────────────────────────────────────────
+
+const sankeyData = {
+  nodes: [
+    { name: 'Salary' },
+    { name: 'Investments' },
+    { name: 'Dividends' },
+    { name: 'Portfolio' },
+    { name: 'Stocks' },
+    { name: 'Bonds' },
+    { name: 'Cash' },
+  ],
+  links: [
+    { source: 'Salary', target: 'Portfolio', value: 5000 },
+    { source: 'Investments', target: 'Portfolio', value: 2000 },
+    { source: 'Dividends', target: 'Portfolio', value: 800 },
+    { source: 'Portfolio', target: 'Stocks', value: 5500 },
+    { source: 'Portfolio', target: 'Bonds', value: 1500 },
+    { source: 'Portfolio', target: 'Cash', value: 800 },
+  ],
+};
+
+const funnelData = [
+  { name: 'Opportunities', value: 100 },
+  { name: 'Screened', value: 75 },
+  { name: 'Analyzed', value: 45 },
+  { name: 'Selected', value: 20 },
+  { name: 'Invested', value: 12 },
+];
+
+const graphData = {
+  nodes: [
+    { id: 'AAPL', name: 'Apple', value: 45, category: 0 },
+    { id: 'MSFT', name: 'Microsoft', value: 42, category: 0 },
+    { id: 'GOOGL', name: 'Google', value: 38, category: 0 },
+    { id: 'AMZN', name: 'Amazon', value: 35, category: 1 },
+    { id: 'META', name: 'Meta', value: 30, category: 0 },
+    { id: 'NVDA', name: 'NVIDIA', value: 48, category: 0 },
+    { id: 'TSLA', name: 'Tesla', value: 32, category: 1 },
+  ],
+  links: [
+    { source: 'AAPL', target: 'MSFT', value: 85 },
+    { source: 'AAPL', target: 'GOOGL', value: 72 },
+    { source: 'MSFT', target: 'GOOGL', value: 78 },
+    { source: 'GOOGL', target: 'META', value: 82 },
+    { source: 'NVDA', target: 'AAPL', value: 65 },
+    { source: 'NVDA', target: 'MSFT', value: 70 },
+    { source: 'TSLA', target: 'NVDA', value: 58 },
+    { source: 'AMZN', target: 'GOOGL', value: 75 },
+  ],
+  categories: [{ name: 'Tech' }, { name: 'Consumer' }],
+};
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SAMPLE DATA - CALENDAR
+// ─────────────────────────────────────────────────────────────────────────────
+
+const generateCalendarData = () => {
+  const data = [];
+  const startDate = new Date('2024-01-01');
+  for (let i = 0; i < 365; i++) {
+    const date = new Date(startDate);
+    date.setDate(startDate.getDate() + i);
+    const dateStr = date.toISOString().split('T')[0];
+    // Simulate trading activity (higher on weekdays)
+    const dayOfWeek = date.getDay();
+    const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
+    const value = isWeekend ? Math.random() * 20 : Math.random() * 80 + 20;
+    data.push({ date: dateStr, value: Math.round(value) });
+  }
+  return data;
+};
+
+const calendarData = generateCalendarData();
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SAMPLE DATA - BOXPLOT
+// ─────────────────────────────────────────────────────────────────────────────
+
+// BoxplotData.value is [min, Q1, median, Q3, max]
+const boxplotData = [
+  { name: 'AAPL', value: [145, 165, 178, 192, 210] as [number, number, number, number, number] },
+  { name: 'MSFT', value: [280, 320, 358, 390, 420] as [number, number, number, number, number] },
+  { name: 'GOOGL', value: [120, 135, 148, 162, 180] as [number, number, number, number, number] },
+  { name: 'AMZN', value: [130, 155, 172, 188, 205] as [number, number, number, number, number] },
+  { name: 'NVDA', value: [400, 520, 620, 750, 880] as [number, number, number, number, number] },
+];
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SAMPLE DATA - THEME RIVER (STREAM)
+// ─────────────────────────────────────────────────────────────────────────────
+
+const themeRiverData = [
+  { date: '2024-01-01', value: 30, name: 'Tech' },
+  { date: '2024-01-01', value: 25, name: 'Finance' },
+  { date: '2024-01-01', value: 20, name: 'Healthcare' },
+  { date: '2024-01-01', value: 15, name: 'Energy' },
+  { date: '2024-02-01', value: 35, name: 'Tech' },
+  { date: '2024-02-01', value: 22, name: 'Finance' },
+  { date: '2024-02-01', value: 25, name: 'Healthcare' },
+  { date: '2024-02-01', value: 12, name: 'Energy' },
+  { date: '2024-03-01', value: 40, name: 'Tech' },
+  { date: '2024-03-01', value: 28, name: 'Finance' },
+  { date: '2024-03-01', value: 22, name: 'Healthcare' },
+  { date: '2024-03-01', value: 18, name: 'Energy' },
+  { date: '2024-04-01', value: 45, name: 'Tech' },
+  { date: '2024-04-01', value: 24, name: 'Finance' },
+  { date: '2024-04-01', value: 28, name: 'Healthcare' },
+  { date: '2024-04-01', value: 14, name: 'Energy' },
+  { date: '2024-05-01', value: 50, name: 'Tech' },
+  { date: '2024-05-01', value: 30, name: 'Finance' },
+  { date: '2024-05-01', value: 26, name: 'Healthcare' },
+  { date: '2024-05-01', value: 20, name: 'Energy' },
+  { date: '2024-06-01', value: 48, name: 'Tech' },
+  { date: '2024-06-01', value: 32, name: 'Finance' },
+  { date: '2024-06-01', value: 30, name: 'Healthcare' },
+  { date: '2024-06-01', value: 16, name: 'Energy' },
+];
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SAMPLE DATA - PARALLEL
+// ─────────────────────────────────────────────────────────────────────────────
+
+const parallelDimensions = [
+  { name: 'P/E Ratio', min: 0, max: 50 },
+  { name: 'P/B Ratio', min: 0, max: 20 },
+  { name: 'Dividend Yield', min: 0, max: 8 },
+  { name: 'ROE %', min: 0, max: 50 },
+  { name: 'Debt/Equity', min: 0, max: 3 },
+  { name: 'Market Cap (B)', min: 0, max: 3000 },
+];
+
+const parallelData = [
+  { name: 'AAPL', value: [28.5, 45.2, 0.5, 147.9, 1.8, 2890] },
+  { name: 'MSFT', value: [35.2, 12.4, 0.8, 39.2, 0.4, 2750] },
+  { name: 'GOOGL', value: [25.8, 6.2, 0, 25.3, 0.1, 1680] },
+  { name: 'AMZN', value: [42.1, 8.5, 0, 17.8, 0.6, 1520] },
+  { name: 'META', value: [22.4, 7.8, 0.4, 28.1, 0.2, 980] },
+];
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SAMPLE DATA - TREE
+// ─────────────────────────────────────────────────────────────────────────────
+
+const treeData = {
+  name: 'Portfolio',
+  children: [
     {
-      id: 'Requests',
-      data: [
-        { x: 100, y: 45 }, { x: 200, y: 78 }, { x: 300, y: 120 },
-        { x: 150, y: 60 }, { x: 250, y: 95 }, { x: 350, y: 140 },
-        { x: 180, y: 72 }, { x: 280, y: 110 }
-      ]
+      name: 'Equities',
+      children: [
+        {
+          name: 'US Large Cap',
+          children: [
+            { name: 'AAPL', value: 15000 },
+            { name: 'MSFT', value: 12000 },
+            { name: 'GOOGL', value: 8000 },
+          ],
+        },
+        {
+          name: 'US Mid Cap',
+          children: [
+            { name: 'CRM', value: 5000 },
+            { name: 'SNOW', value: 3000 },
+          ],
+        },
+        {
+          name: 'International',
+          children: [
+            { name: 'TSM', value: 6000 },
+            { name: 'ASML', value: 4000 },
+          ],
+        },
+      ],
     },
     {
-      id: 'Errors',
-      data: [
-        { x: 120, y: 15 }, { x: 220, y: 25 }, { x: 320, y: 35 },
-        { x: 170, y: 20 }, { x: 270, y: 30 }
-      ]
-    }
-  ];
+      name: 'Fixed Income',
+      children: [
+        { name: 'Treasury Bonds', value: 20000 },
+        { name: 'Corporate Bonds', value: 10000 },
+        { name: 'Municipal Bonds', value: 5000 },
+      ],
+    },
+    {
+      name: 'Alternatives',
+      children: [
+        { name: 'Gold', value: 8000 },
+        { name: 'REITs', value: 4000 },
+      ],
+    },
+  ],
+};
 
-  // Bullet data
-  const bulletData = [
-    { id: 'Response Time', title: 'Response', subtitle: 'ms', ranges: [0, 100, 200, 300], measures: [150], markers: [200] },
-    { id: 'Throughput', title: 'Throughput', subtitle: 'req/s', ranges: [0, 500, 1000, 1500], measures: [800], markers: [1000] },
-    { id: 'Error Rate', title: 'Errors', subtitle: '%', ranges: [0, 2, 5, 10], measures: [1.5], markers: [2] }
-  ];
+// ─────────────────────────────────────────────────────────────────────────────
+// SAMPLE DATA - EFFECT SCATTER
+// ─────────────────────────────────────────────────────────────────────────────
 
+const effectScatterData = [
+  { name: 'High Alert', data: [
+    { x: 15, y: 85, value: 5, name: 'NVDA' },
+    { x: 22, y: 78, value: 4, name: 'AMD' },
+  ]},
+  { name: 'Watch List', data: [
+    { x: 8, y: 55, value: 2, name: 'AAPL' },
+    { x: 12, y: 62, value: 2.5, name: 'MSFT' },
+    { x: 18, y: 48, value: 1.5, name: 'GOOGL' },
+  ]},
+  { name: 'Stable', data: [
+    { x: 5, y: 30, value: 1, name: 'JNJ' },
+    { x: 3, y: 25, value: 1, name: 'PG' },
+    { x: 7, y: 35, value: 1.2, name: 'KO' },
+  ]},
+];
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SAMPLE DATA - PICTORIAL BAR
+// ─────────────────────────────────────────────────────────────────────────────
+
+const pictorialData = [
+  { name: 'Q1', value: 42000, symbol: pictorialSymbols.chart },
+  { name: 'Q2', value: 58000, symbol: pictorialSymbols.chart },
+  { name: 'Q3', value: 71000, symbol: pictorialSymbols.chart },
+  { name: 'Q4', value: 89000, symbol: pictorialSymbols.chart },
+];
+
+const pictorialKPIData = [
+  { name: 'Revenue', value: 85 },
+  { name: 'Profit', value: 72 },
+  { name: 'Growth', value: 93 },
+  { name: 'Retention', value: 78 },
+];
+
+// ─────────────────────────────────────────────────────────────────────────────
+// STYLES
+// ─────────────────────────────────────────────────────────────────────────────
+
+const pageHeaderStyles: CSSProperties = {
+  marginBottom: '48px',
+};
+
+const titleStyles: CSSProperties = {
+  fontSize: '32px',
+  fontWeight: 300,
+  color: 'var(--sentinel-text-primary)',
+  marginBottom: '12px',
+  fontFamily: 'var(--sentinel-font-primary)',
+  letterSpacing: '-0.02em',
+};
+
+const descStyles: CSSProperties = {
+  fontSize: '14px',
+  color: 'var(--sentinel-text-secondary)',
+  fontFamily: 'var(--sentinel-font-primary)',
+  fontWeight: 400,
+  maxWidth: '700px',
+  lineHeight: 1.6,
+};
+
+const sectionTitleStyles: CSSProperties = {
+  fontSize: '14px',
+  fontWeight: 600,
+  color: 'var(--sentinel-accent-primary)',
+  textTransform: 'uppercase',
+  letterSpacing: '0.1em',
+  marginBottom: '24px',
+  marginTop: '56px',
+  display: 'flex',
+  alignItems: 'center',
+  gap: '12px',
+  borderBottom: '1px solid var(--sentinel-border-subtle)',
+  paddingBottom: '12px',
+};
+
+const gridStyles: CSSProperties = {
+  display: 'grid',
+  gridTemplateColumns: 'repeat(4, 1fr)',
+  gap: '16px',
+  marginBottom: '32px',
+};
+
+const chartContainerStyles: CSSProperties = {
+  background: 'var(--sentinel-bg-elevated)',
+  border: '1px solid var(--sentinel-border-subtle)',
+  borderRadius: 'var(--sentinel-radius-lg)',
+  padding: '20px',
+};
+
+// ─────────────────────────────────────────────────────────────────────────────
+// COMPONENT
+// ─────────────────────────────────────────────────────────────────────────────
+
+export function ChartsShowcase() {
   return (
-    <div>
+    <div style={{ padding: '32px' }}>
       {/* Page Header */}
       <header style={pageHeaderStyles}>
         <h1 style={titleStyles}>Charts</h1>
         <p style={descStyles}>
-          14 data visualization components for financial and analytical interfaces
+          Comprehensive chart library powered by ECharts with full SENTINEL theme integration.
+          High-performance, interactive visualizations for financial data, comparisons, flows, and more.
         </p>
       </header>
 
-      {/* ============================================ */}
+      {/* ═══════════════════════════════════════════════════════════════════════ */}
       {/* STAT CARDS */}
-      {/* ============================================ */}
-      <h2 style={sectionHeaderStyles}>Stat Cards</h2>
+      {/* ═══════════════════════════════════════════════════════════════════════ */}
+      <h2 style={sectionTitleStyles}>
+        <Activity size={18} />
+        StatCard - Key Metrics
+      </h2>
+
+      <div style={gridStyles}>
+        <StatCard label="Portfolio Value" value="$165,420" change={12.5} trend="up" icon={DollarSign} />
+        <StatCard label="Daily P&L" value="+$2,340" change={1.8} trend="up" icon={TrendingUp} />
+        <StatCard label="Max Drawdown" value="-8.2%" change={-2.1} trend="down" icon={TrendingDown} />
+        <StatCard label="Win Rate" value="67%" change={3.5} trend="up" icon={Activity} />
+      </div>
+
+      <div style={gridStyles}>
+        <StatCard label="Total Return" value="+58.2%" change={5.2} trend="up" icon={Percent} />
+        <StatCard label="Cash Balance" value="$12,450" change={0} trend="neutral" icon={Wallet} />
+        <StatCard label="Allocation" value="85% Stocks" change={2.0} trend="up" icon={PieIcon} />
+        <StatCard label="Target Progress" value="78%" change={8.5} trend="up" icon={Target} />
+      </div>
+
+      {/* ═══════════════════════════════════════════════════════════════════════ */}
+      {/* FINANCIAL CHARTS */}
+      {/* ═══════════════════════════════════════════════════════════════════════ */}
+      <h2 style={sectionTitleStyles}>
+        <CandlestickIcon size={18} />
+        Financial Charts - CandlestickChart
+      </h2>
 
       <ShowcaseSection
-        title="StatCard - With Trends"
-        description="Metric cards with icons and percentage change"
+        title="Candlestick with Volume"
+        description="Full OHLC chart with volume histogram. Standard for stock analysis."
       >
-        <ComponentPreview>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px', width: '100%' }}>
-            <StatCard label="Users" value="12,543" icon={Users} change={12.5} trend="up" />
-            <StatCard label="Revenue" value="$23,450" icon={DollarSign} change={8.2} trend="up" />
-            <StatCard label="Bounce" value="32%" icon={TrendingDown} change={-5.3} trend="down" />
-            <StatCard label="Activity" value="89%" icon={Activity} change={5.7} trend="up" />
-          </div>
-        </ComponentPreview>
+        <div style={chartContainerStyles}>
+          <CandlestickChart data={candlestickData} height={400} showVolume />
+        </div>
       </ShowcaseSection>
 
-      {/* ============================================ */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
+        <ShowcaseSection title="Without Volume" description="Clean price action view.">
+          <div style={chartContainerStyles}>
+            <CandlestickChart data={candlestickData} height={280} showVolume={false} />
+          </div>
+        </ShowcaseSection>
+
+        <ShowcaseSection title="With DataZoom" description="Scrollable and zoomable.">
+          <div style={chartContainerStyles}>
+            <CandlestickChart data={candlestickData} height={280} showDataZoom />
+          </div>
+        </ShowcaseSection>
+      </div>
+
       {/* LINE CHARTS */}
-      {/* ============================================ */}
-      <h2 style={sectionHeaderStyles}>Line Charts</h2>
+      <h2 style={sectionTitleStyles}>
+        <LineIcon size={18} />
+        Financial Charts - LineChart
+      </h2>
 
       <ShowcaseSection
-        title="LineChart - Basic"
-        description="Line chart with area and points"
+        title="Area Chart"
+        description="Single series with gradient fill. Ideal for portfolio value over time."
       >
-        <div style={{ width: '100%', height: '300px', backgroundColor: 'var(--sentinel-bg-elevated)', borderRadius: 'var(--sentinel-radius-md)', padding: '16px' }}>
-          <LineChart data={lineChartData} height={268} enableArea={true} enablePoints={true} />
+        <div style={chartContainerStyles}>
+          <LineChart
+            data={lineChartData}
+            height={280}
+            enableArea
+            formatValue={(v) => `$${(v / 1000).toFixed(0)}K`}
+          />
         </div>
       </ShowcaseSection>
 
       <ShowcaseSection
-        title="LineChart - Multiple Series"
-        description="Comparison of multiple data sets"
+        title="Multi-Series Comparison"
+        description="Compare portfolio against benchmarks with multiple lines."
       >
-        <div style={{ width: '100%', height: '300px', backgroundColor: 'var(--sentinel-bg-elevated)', borderRadius: 'var(--sentinel-radius-md)', padding: '16px' }}>
-          <LineChart data={multiLineData} height={268} enableArea={true} enablePoints={true} />
+        <div style={chartContainerStyles}>
+          <LineChart
+            data={multiSeriesData}
+            height={320}
+            enableArea
+            formatValue={(v) => `${v.toFixed(0)}%`}
+          />
         </div>
       </ShowcaseSection>
 
-      {/* ============================================ */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
+        <ShowcaseSection title="Smooth Curves" description="Smooth interpolation.">
+          <div style={chartContainerStyles}>
+            <LineChart data={lineChartData} height={220} smooth formatValue={(v) => `$${(v / 1000).toFixed(0)}K`} />
+          </div>
+        </ShowcaseSection>
+
+        <ShowcaseSection title="Sparkline Mode" description="Minimal view without axes.">
+          <div style={chartContainerStyles}>
+            <LineChart data={lineChartData} height={100} minimal enableArea />
+          </div>
+        </ShowcaseSection>
+      </div>
+
+      {/* BAR CHARTS */}
+      <h2 style={sectionTitleStyles}>
+        <BarChart3 size={18} />
+        Financial Charts - BarChart
+      </h2>
+
+      <ShowcaseSection title="Sector Allocation" description="Vertical bar chart for category comparison.">
+        <div style={chartContainerStyles}>
+          <BarChart
+            categories={barCategories}
+            data={barData}
+            height={300}
+            formatValue={(v) => `$${(v / 1000).toFixed(0)}K`}
+          />
+        </div>
+      </ShowcaseSection>
+
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
+        <ShowcaseSection title="Horizontal Bars" description="Better for long category names.">
+          <div style={chartContainerStyles}>
+            <BarChart
+              categories={barCategories}
+              data={barData}
+              height={280}
+              horizontal
+              formatValue={(v) => `$${(v / 1000).toFixed(0)}K`}
+            />
+          </div>
+        </ShowcaseSection>
+
+        <ShowcaseSection title="Stacked Multi-Series" description="Year over year comparison.">
+          <div style={chartContainerStyles}>
+            <BarChart
+              categories={barCategories}
+              data={barMultiSeries}
+              height={280}
+              stacked
+              formatValue={(v) => `$${(v / 1000).toFixed(0)}K`}
+            />
+          </div>
+        </ShowcaseSection>
+      </div>
+
+      <ShowcaseSection title="Positive/Negative Coloring" description="Monthly returns with automatic coloring.">
+        <div style={chartContainerStyles}>
+          <BarChart
+            categories={monthlyReturns.map((d) => d.category)}
+            data={monthlyReturns}
+            height={280}
+            showPositiveNegative
+            formatValue={(v) => `${v > 0 ? '+' : ''}${v.toFixed(1)}%`}
+          />
+        </div>
+      </ShowcaseSection>
+
+      {/* ═══════════════════════════════════════════════════════════════════════ */}
+      {/* CIRCULAR CHARTS */}
+      {/* ═══════════════════════════════════════════════════════════════════════ */}
+      <h2 style={sectionTitleStyles}>
+        <PieIcon size={18} />
+        Circular Charts - PieChart
+      </h2>
+
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
+        <ShowcaseSection title="Pie Chart" description="Basic allocation view.">
+          <div style={chartContainerStyles}>
+            <PieChart data={pieData} height={280} formatValue={(v) => `$${(v / 1000).toFixed(0)}K`} />
+          </div>
+        </ShowcaseSection>
+
+        <ShowcaseSection title="Donut Chart" description="With center label.">
+          <div style={chartContainerStyles}>
+            <PieChart
+              data={pieData}
+              height={280}
+              variant="donut"
+              centerLabel="Total"
+              centerValue="$100K"
+              formatValue={(v) => `$${(v / 1000).toFixed(0)}K`}
+            />
+          </div>
+        </ShowcaseSection>
+
+        <ShowcaseSection title="Rose Diagram" description="Nightingale chart variant.">
+          <div style={chartContainerStyles}>
+            <PieChart data={pieData} height={280} variant="rose" formatValue={(v) => `$${(v / 1000).toFixed(0)}K`} />
+          </div>
+        </ShowcaseSection>
+      </div>
+
+      {/* RADAR CHART */}
+      <h2 style={sectionTitleStyles}>
+        <Radar size={18} />
+        Circular Charts - RadarChart
+      </h2>
+
+      <ShowcaseSection title="Portfolio Comparison" description="Multi-dimensional risk/return analysis.">
+        <div style={chartContainerStyles}>
+          <RadarChart indicators={radarIndicators} data={radarData} height={350} shape="polygon" />
+        </div>
+      </ShowcaseSection>
+
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
+        <ShowcaseSection title="Circle Shape" description="Smooth circular grid.">
+          <div style={chartContainerStyles}>
+            <RadarChart indicators={radarIndicators} data={[radarData[0]]} height={280} shape="circle" />
+          </div>
+        </ShowcaseSection>
+
+        <ShowcaseSection title="Polygon Shape" description="Angular grid lines.">
+          <div style={chartContainerStyles}>
+            <RadarChart indicators={radarIndicators} data={[radarData[1]]} height={280} shape="polygon" />
+          </div>
+        </ShowcaseSection>
+      </div>
+
+      {/* GAUGE CHART */}
+      <h2 style={sectionTitleStyles}>
+        <Gauge size={18} />
+        Circular Charts - GaugeChart
+      </h2>
+
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '24px' }}>
+        <ShowcaseSection title="Default" description="Standard gauge.">
+          <div style={chartContainerStyles}>
+            <GaugeChart data={{ value: 65, name: 'Score' }} height={200} />
+          </div>
+        </ShowcaseSection>
+
+        <ShowcaseSection title="Risk Variant" description="5-level risk scale.">
+          <div style={chartContainerStyles}>
+            <GaugeChart data={{ value: 72, name: 'Risk Level' }} height={200} variant="risk" />
+          </div>
+        </ShowcaseSection>
+
+        <ShowcaseSection title="Progress" description="Goal completion.">
+          <div style={chartContainerStyles}>
+            <GaugeChart data={{ value: 85, name: 'Progress' }} height={200} variant="progress" unit="%" />
+          </div>
+        </ShowcaseSection>
+
+        <ShowcaseSection title="Score" description="Performance score.">
+          <div style={chartContainerStyles}>
+            <GaugeChart data={{ value: 42, name: 'Alpha' }} height={200} variant="score" />
+          </div>
+        </ShowcaseSection>
+      </div>
+
+      {/* SUNBURST CHART */}
+      <h2 style={sectionTitleStyles}>
+        <Sun size={18} />
+        Circular Charts - SunburstChart
+      </h2>
+
+      <ShowcaseSection title="Hierarchical Allocation" description="Multi-level portfolio breakdown with drill-down.">
+        <div style={chartContainerStyles}>
+          <SunburstChart data={sunburstData} height={400} formatValue={(v) => `$${(v / 1000).toFixed(0)}K`} />
+        </div>
+      </ShowcaseSection>
+
+      {/* ═══════════════════════════════════════════════════════════════════════ */}
       {/* COMPARISON CHARTS */}
-      {/* ============================================ */}
-      <h2 style={sectionHeaderStyles}>Comparison Charts</h2>
+      {/* ═══════════════════════════════════════════════════════════════════════ */}
+      <h2 style={sectionTitleStyles}>
+        <Layers size={18} />
+        Comparison Charts - TreeMap
+      </h2>
 
       <ShowcaseSection
-        title="RadarChart - Server Metrics"
-        description="Multi-variable comparison on radial axes"
+        title="Portfolio Allocation"
+        description="Hierarchical view of holdings by sector and stock."
       >
-        <div style={{ width: '100%', height: '400px', backgroundColor: 'var(--sentinel-bg-elevated)', borderRadius: 'var(--sentinel-radius-md)', padding: '16px' }}>
-          <RadarChart data={radarData} keys={['server1', 'server2']} indexBy="metric" height={368} fillOpacity={0.3} />
+        <div style={chartContainerStyles}>
+          <TreeMap data={treeMapData} height={400} formatValue={(v) => `$${(v / 1000).toFixed(0)}K`} />
         </div>
       </ShowcaseSection>
 
-      <ShowcaseSection
-        title="BumpChart - Server Ranking"
-        description="Positions changing over time"
-      >
-        <div style={{ width: '100%', height: '350px', backgroundColor: 'var(--sentinel-bg-elevated)', borderRadius: 'var(--sentinel-radius-md)', padding: '16px' }}>
-          <BumpChart data={bumpData} height={318} />
+      {/* HEATMAP */}
+      <h2 style={sectionTitleStyles}>
+        <Grid3X3 size={18} />
+        Comparison Charts - HeatMap
+      </h2>
+
+      <ShowcaseSection title="Correlation Matrix" description="Stock correlation heatmap with sequential colors.">
+        <div style={chartContainerStyles}>
+          <HeatMap
+            data={heatMapData}
+            xCategories={heatMapXCategories}
+            yCategories={heatMapYCategories}
+            height={350}
+            colorScheme="sequential"
+          />
         </div>
       </ShowcaseSection>
 
-      {/* ============================================ */}
-      {/* PROGRESS CHARTS */}
-      {/* ============================================ */}
-      <h2 style={sectionHeaderStyles}>Progress Charts</h2>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
+        <ShowcaseSection title="Diverging Colors" description="For positive/negative values.">
+          <div style={chartContainerStyles}>
+            <HeatMap
+              data={heatMapData.map((d) => ({ ...d, value: d.value * 2 - 1 }))}
+              xCategories={heatMapXCategories}
+              yCategories={heatMapYCategories}
+              height={280}
+              colorScheme="diverging"
+              minValue={-1}
+              maxValue={1}
+            />
+          </div>
+        </ShowcaseSection>
 
-      <ShowcaseSection
-        title="RadialBar - Resource Usage"
-        description="Circular bars to show percentages"
-      >
-        <div style={{ width: '100%', height: '350px', backgroundColor: 'var(--sentinel-bg-elevated)', borderRadius: 'var(--sentinel-radius-md)', padding: '16px' }}>
-          <RadialBar data={radialBarData} height={318} endAngle={270} innerRadius={0.3} padding={0.3} />
+        <ShowcaseSection title="Without Values" description="Cleaner for large matrices.">
+          <div style={chartContainerStyles}>
+            <HeatMap
+              data={heatMapData}
+              xCategories={heatMapXCategories}
+              yCategories={heatMapYCategories}
+              height={280}
+              showValues={false}
+            />
+          </div>
+        </ShowcaseSection>
+      </div>
+
+      {/* SCATTER CHART */}
+      <h2 style={sectionTitleStyles}>
+        <Zap size={18} />
+        Comparison Charts - ScatterChart
+      </h2>
+
+      <ShowcaseSection title="Risk vs Return" description="Stock comparison with regression line.">
+        <div style={chartContainerStyles}>
+          <ScatterChart
+            data={scatterData}
+            height={350}
+            xAxisLabel="Risk (%)"
+            yAxisLabel="Return (%)"
+            showRegression
+          />
         </div>
       </ShowcaseSection>
 
-      <ShowcaseSection
-        title="BulletChart - KPIs vs Targets"
-        description="Current value vs target comparison"
-      >
-        <div style={{ width: '100%', height: '280px', backgroundColor: 'var(--sentinel-bg-elevated)', borderRadius: 'var(--sentinel-radius-md)', padding: '16px' }}>
-          <BulletChart data={bulletData} height={248} spacing={40} />
-        </div>
-      </ShowcaseSection>
-
-      {/* ============================================ */}
-      {/* DISTRIBUTION CHARTS */}
-      {/* ============================================ */}
-      <h2 style={sectionHeaderStyles}>Distribution Charts</h2>
-
-      <ShowcaseSection
-        title="HeatMap - Server Load"
-        description="Intensity matrix with colors"
-      >
-        <div style={{ width: '100%', height: '300px', backgroundColor: 'var(--sentinel-bg-elevated)', borderRadius: 'var(--sentinel-radius-md)', padding: '16px' }}>
-          <HeatMap data={heatMapData} height={268} colorScheme="oranges" />
-        </div>
-      </ShowcaseSection>
-
-      <ShowcaseSection
-        title="CalendarHeatmap - Daily Activity"
-        description="Calendar with days colored by intensity (GitHub style)"
-      >
-        <div style={{ width: '100%', height: '300px', backgroundColor: 'var(--sentinel-bg-elevated)', borderRadius: 'var(--sentinel-radius-md)', padding: '16px' }}>
-          <CalendarHeatmap data={calendarData} from="2024-01-01" to="2024-01-31" height={268} colorScheme="greens" />
-        </div>
-      </ShowcaseSection>
-
-      <ShowcaseSection
-        title="TreeMap - Disk Usage"
-        description="Hierarchical rectangles proportional to value"
-      >
-        <div style={{ width: '100%', height: '350px', backgroundColor: 'var(--sentinel-bg-elevated)', borderRadius: 'var(--sentinel-radius-md)', padding: '16px' }}>
-          <TreeMap data={treeMapData} height={318} />
-        </div>
-      </ShowcaseSection>
-
-      {/* ============================================ */}
+      {/* ═══════════════════════════════════════════════════════════════════════ */}
       {/* FLOW CHARTS */}
-      {/* ============================================ */}
-      <h2 style={sectionHeaderStyles}>Flow Charts</h2>
+      {/* ═══════════════════════════════════════════════════════════════════════ */}
+      <h2 style={sectionTitleStyles}>
+        <GitBranch size={18} />
+        Flow Charts - SankeyChart
+      </h2>
 
-      <ShowcaseSection
-        title="SankeyDiagram - Data Flow"
-        description="Flows between services with proportional width"
-      >
-        <div style={{ width: '100%', height: '400px', backgroundColor: 'var(--sentinel-bg-elevated)', borderRadius: 'var(--sentinel-radius-md)', padding: '16px' }}>
-          <SankeyDiagram data={sankeyData} height={368} />
+      <ShowcaseSection title="Capital Flow" description="Visualize money flow from sources to allocations.">
+        <div style={chartContainerStyles}>
+          <SankeyChart data={sankeyData} height={350} formatValue={(v) => `$${v.toLocaleString()}`} />
         </div>
       </ShowcaseSection>
 
-      <ShowcaseSection
-        title="ChordDiagram - Service Communication"
-        description="Circular relationships between entities"
-      >
-        <div style={{ width: '100%', height: '450px', backgroundColor: 'var(--sentinel-bg-elevated)', borderRadius: 'var(--sentinel-radius-md)', padding: '16px' }}>
-          <ChordDiagram matrix={chordMatrix} keys={chordKeys} height={418} />
+      {/* FUNNEL CHART */}
+      <h2 style={sectionTitleStyles}>
+        <Flame size={18} />
+        Flow Charts - FunnelChart
+      </h2>
+
+      <ShowcaseSection title="Investment Pipeline" description="From opportunities to executed investments.">
+        <div style={chartContainerStyles}>
+          <FunnelChart data={funnelData} height={350} />
         </div>
       </ShowcaseSection>
 
-      <ShowcaseSection
-        title="NetworkGraph - Microservices Architecture"
-        description="Complex topology with 15 colored nodes by type"
-      >
-        <div style={{ width: '100%', height: '500px', backgroundColor: 'var(--sentinel-bg-elevated)', borderRadius: 'var(--sentinel-radius-md)', padding: '16px' }}>
-          <NetworkGraph data={networkData} height={468} repulsivity={12} linkColor="var(--sentinel-border-default)" />
+      {/* GRAPH CHART */}
+      <h2 style={sectionTitleStyles}>
+        <Network size={18} />
+        Flow Charts - GraphChart
+      </h2>
+
+      <ShowcaseSection title="Stock Correlation Network" description="Force-directed graph showing relationships.">
+        <div style={chartContainerStyles}>
+          <GraphChart data={graphData} height={450} layout="force" draggable />
         </div>
       </ShowcaseSection>
 
-      {/* ============================================ */}
-      {/* CORRELATION CHARTS */}
-      {/* ============================================ */}
-      <h2 style={sectionHeaderStyles}>Correlation Charts</h2>
-
-      <ShowcaseSection
-        title="StreamChart - Temporal Distribution"
-        description="Stacked areas with organic flow"
-      >
-        <div style={{ width: '100%', height: '350px', backgroundColor: 'var(--sentinel-bg-elevated)', borderRadius: 'var(--sentinel-radius-md)', padding: '16px' }}>
-          <StreamChart data={streamData} keys={['API', 'DB', 'Cache']} height={318} />
-        </div>
-      </ShowcaseSection>
-
-      <ShowcaseSection
-        title="ScatterPlot - Latency vs Throughput"
-        description="X/Y coordinate points for correlations"
-      >
-        <div style={{ width: '100%', height: '350px', backgroundColor: 'var(--sentinel-bg-elevated)', borderRadius: 'var(--sentinel-radius-md)', padding: '16px' }}>
-          <ScatterPlot data={scatterData} height={318} axisBottomLabel="Requests" axisLeftLabel="Response Time (ms)" />
-        </div>
-      </ShowcaseSection>
-
-      {/* ============================================ */}
-      {/* DASHBOARD EXAMPLE */}
-      {/* ============================================ */}
-      <h2 style={sectionHeaderStyles}>Dashboard Example</h2>
-
-      <ShowcaseSection
-        title="Complete Control Panel"
-        description="Combination of multiple charts"
-      >
-        <ComponentPreview>
-          <div style={{
-            width: '100%',
-            padding: '24px',
-            backgroundColor: 'var(--sentinel-bg-elevated)',
-            borderRadius: 'var(--sentinel-radius-lg)',
-            border: '1px solid var(--sentinel-border-subtle)'
-          }}>
-            <h3 style={{
-              fontSize: '18px',
-              fontWeight: 500,
-              marginBottom: '20px',
-              color: 'var(--sentinel-text-primary)',
-              fontFamily: 'var(--sentinel-font-primary)'
-            }}>
-              System Monitor
-            </h3>
-
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px', marginBottom: '24px' }}>
-              <StatCard label="Users" value="12,543" icon={Users} change={12.5} trend="up" />
-              <StatCard label="Revenue" value="$45,230" icon={DollarSign} change={8.2} trend="up" />
-              <StatCard label="Orders" value="234" icon={ShoppingCart} change={-3.1} trend="down" />
-              <StatCard label="Activity" value="89%" icon={Activity} change={5.7} trend="up" />
-            </div>
-
-            <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '16px' }}>
-              <div style={{
-                backgroundColor: 'var(--sentinel-bg-subtle)',
-                borderRadius: 'var(--sentinel-radius-md)',
-                padding: '16px',
-                border: '1px solid var(--sentinel-border-subtle)'
-              }}>
-                <h4 style={{ fontSize: '14px', fontWeight: 500, marginBottom: '16px', color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-primary)' }}>
-                  Sales Trend
-                </h4>
-                <div style={{ height: '200px' }}>
-                  <LineChart data={lineChartData} height={200} />
-                </div>
-              </div>
-
-              <div style={{
-                backgroundColor: 'var(--sentinel-bg-subtle)',
-                borderRadius: 'var(--sentinel-radius-md)',
-                padding: '16px',
-                border: '1px solid var(--sentinel-border-subtle)'
-              }}>
-                <h4 style={{ fontSize: '14px', fontWeight: 500, marginBottom: '16px', color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-primary)' }}>
-                  Resource Usage
-                </h4>
-                <div style={{ height: '200px' }}>
-                  <RadialBar data={radialBarData} height={200} endAngle={270} />
-                </div>
-              </div>
-            </div>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
+        <ShowcaseSection title="Circular Layout" description="Organized circular arrangement.">
+          <div style={chartContainerStyles}>
+            <GraphChart data={graphData} height={350} layout="circular" />
           </div>
-        </ComponentPreview>
+        </ShowcaseSection>
+
+        <ShowcaseSection title="Force Layout" description="Physics-based positioning.">
+          <div style={chartContainerStyles}>
+            <GraphChart data={graphData} height={350} layout="force" repulsion={300} />
+          </div>
+        </ShowcaseSection>
+      </div>
+
+      {/* ═══════════════════════════════════════════════════════════════════════ */}
+      {/* TIME-BASED CHARTS */}
+      {/* ═══════════════════════════════════════════════════════════════════════ */}
+      <h2 style={sectionTitleStyles}>
+        <Calendar size={18} />
+        Time-based Charts - CalendarChart
+      </h2>
+
+      <ShowcaseSection title="Trading Activity" description="Year view of daily trading activity.">
+        <div style={chartContainerStyles}>
+          <CalendarChart data={calendarData} year={2024} height={200} />
+        </div>
       </ShowcaseSection>
 
-      {/* ============================================ */}
-      {/* TECHNICAL SPECS */}
-      {/* ============================================ */}
-      <h2 style={sectionHeaderStyles}>Technical Specs</h2>
+      {/* ═══════════════════════════════════════════════════════════════════════ */}
+      {/* STATISTICAL CHARTS */}
+      {/* ═══════════════════════════════════════════════════════════════════════ */}
+      <h2 style={sectionTitleStyles}>
+        <BarChart2 size={18} />
+        Statistical Charts - BoxplotChart
+      </h2>
 
-      <ShowcaseSection title="Available Components">
-        <div style={{ fontSize: '13px', color: 'var(--sentinel-text-primary)', lineHeight: '2', fontFamily: 'var(--sentinel-font-primary)' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px' }}>
-            <div>
-              <p><strong style={{ color: 'var(--sentinel-accent-primary)' }}>Base Charts:</strong></p>
-              <p>StatCard - Metrics with icons and trends</p>
-              <p>LineChart - Time series</p>
-              <p>RadarChart - Multi-variable comparison</p>
-              <p>RadialBar - Circular percentages</p>
-              <p>HeatMap - Intensity matrices</p>
-            </div>
-            <div>
-              <p><strong style={{ color: 'var(--sentinel-accent-primary)' }}>Flow Charts:</strong></p>
-              <p>SankeyDiagram - Data flows</p>
-              <p>ChordDiagram - Circular relationships</p>
-              <p>NetworkGraph - Network topology</p>
-              <p>TreeMap - Hierarchies</p>
-              <p>BumpChart - Temporal rankings</p>
-            </div>
-            <div>
-              <p><strong style={{ color: 'var(--sentinel-accent-primary)' }}>Time Charts:</strong></p>
-              <p>CalendarHeatmap - Daily activity</p>
-              <p>StreamChart - Temporal distribution</p>
-            </div>
-            <div>
-              <p><strong style={{ color: 'var(--sentinel-accent-primary)' }}>Analysis Charts:</strong></p>
-              <p>ScatterPlot - Correlations</p>
-              <p>BulletChart - KPIs vs targets</p>
-            </div>
+      <ShowcaseSection title="Stock Price Distributions" description="Boxplot showing min, Q1, median, Q3, max for each stock.">
+        <div style={chartContainerStyles}>
+          <BoxplotChart data={boxplotData} height={350} formatValue={(v) => `$${v.toFixed(0)}`} />
+        </div>
+      </ShowcaseSection>
+
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
+        <ShowcaseSection title="Horizontal Boxplot" description="Horizontal orientation for long names.">
+          <div style={chartContainerStyles}>
+            <BoxplotChart data={boxplotData} height={300} horizontal formatValue={(v) => `$${v.toFixed(0)}`} />
           </div>
+        </ShowcaseSection>
+
+        <ShowcaseSection title="Vertical Boxplot" description="Standard vertical orientation.">
+          <div style={chartContainerStyles}>
+            <BoxplotChart data={boxplotData.slice(0, 3)} height={300} formatValue={(v) => `$${v.toFixed(0)}`} />
+          </div>
+        </ShowcaseSection>
+      </div>
+
+      {/* ═══════════════════════════════════════════════════════════════════════ */}
+      {/* STREAM / RIVER CHARTS */}
+      {/* ═══════════════════════════════════════════════════════════════════════ */}
+      <h2 style={sectionTitleStyles}>
+        <Waves size={18} />
+        Stream Charts - ThemeRiverChart
+      </h2>
+
+      <ShowcaseSection title="Sector Allocation Over Time" description="Visualize how sector proportions change over time.">
+        <div style={chartContainerStyles}>
+          <ThemeRiverChart data={themeRiverData} height={350} formatValue={(v) => `${v}%`} />
+        </div>
+      </ShowcaseSection>
+
+      {/* ═══════════════════════════════════════════════════════════════════════ */}
+      {/* PARALLEL CHARTS */}
+      {/* ═══════════════════════════════════════════════════════════════════════ */}
+      <h2 style={sectionTitleStyles}>
+        <SlidersHorizontal size={18} />
+        Multi-Dimensional Charts - ParallelChart
+      </h2>
+
+      <ShowcaseSection title="Stock Metrics Comparison" description="Compare multiple financial metrics across stocks.">
+        <div style={chartContainerStyles}>
+          <ParallelChart dimensions={parallelDimensions} data={parallelData} height={400} lineOpacity={0.7} />
+        </div>
+      </ShowcaseSection>
+
+      {/* ═══════════════════════════════════════════════════════════════════════ */}
+      {/* TREE CHARTS */}
+      {/* ═══════════════════════════════════════════════════════════════════════ */}
+      <h2 style={sectionTitleStyles}>
+        <GitMerge size={18} />
+        Hierarchical Charts - TreeChart
+      </h2>
+
+      <ShowcaseSection title="Portfolio Structure" description="Visualize portfolio hierarchy with expandable nodes.">
+        <div style={chartContainerStyles}>
+          <TreeChart data={treeData} height={500} layout="orthogonal" orient="LR" initialExpandLevel={2} />
+        </div>
+      </ShowcaseSection>
+
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
+        <ShowcaseSection title="Top to Bottom" description="Vertical tree layout.">
+          <div style={chartContainerStyles}>
+            <TreeChart data={treeData} height={400} layout="orthogonal" orient="TB" initialExpandLevel={2} symbolSize={8} />
+          </div>
+        </ShowcaseSection>
+
+        <ShowcaseSection title="Radial Layout" description="Circular tree arrangement.">
+          <div style={chartContainerStyles}>
+            <TreeChart data={treeData} height={400} layout="radial" initialExpandLevel={3} symbolSize={8} />
+          </div>
+        </ShowcaseSection>
+      </div>
+
+      {/* ═══════════════════════════════════════════════════════════════════════ */}
+      {/* EFFECT SCATTER CHARTS */}
+      {/* ═══════════════════════════════════════════════════════════════════════ */}
+      <h2 style={sectionTitleStyles}>
+        <Sparkles size={18} />
+        Effect Charts - EffectScatterChart
+      </h2>
+
+      <ShowcaseSection title="Alert Levels" description="Highlight important data points with ripple effects.">
+        <div style={chartContainerStyles}>
+          <EffectScatterChart
+            data={effectScatterData}
+            height={400}
+            xAxisLabel="Volatility"
+            yAxisLabel="Momentum Score"
+            rippleScale={4}
+            ripplePeriod={2}
+          />
+        </div>
+      </ShowcaseSection>
+
+      {/* ═══════════════════════════════════════════════════════════════════════ */}
+      {/* PICTORIAL BAR CHARTS */}
+      {/* ═══════════════════════════════════════════════════════════════════════ */}
+      <h2 style={sectionTitleStyles}>
+        <ImageIcon size={18} />
+        Pictorial Charts - PictorialBarChart
+      </h2>
+
+      <ShowcaseSection title="Quarterly Revenue" description="Visual KPIs with custom symbols.">
+        <div style={chartContainerStyles}>
+          <PictorialBarChart
+            data={pictorialData}
+            height={300}
+            symbol={pictorialSymbols.chart}
+            formatValue={(v) => `$${(v / 1000).toFixed(0)}K`}
+          />
+        </div>
+      </ShowcaseSection>
+
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
+        <ShowcaseSection title="KPI Progress" description="Progress indicators with percentage fill.">
+          <div style={chartContainerStyles}>
+            <PictorialBarChart
+              data={pictorialKPIData}
+              height={280}
+              horizontal
+              maxValue={100}
+              formatValue={(v) => `${v}%`}
+            />
+          </div>
+        </ShowcaseSection>
+
+        <ShowcaseSection title="With Different Symbols" description="Custom SVG paths for each item.">
+          <div style={chartContainerStyles}>
+            <PictorialBarChart
+              data={[
+                { name: 'Users', value: 1250 },
+                { name: 'Revenue', value: 890 },
+                { name: 'Growth', value: 2100 },
+                { name: 'Savings', value: 1600 },
+              ]}
+              height={280}
+              symbol={pictorialSymbols.roundRect}
+              symbolSize={35}
+            />
+          </div>
+        </ShowcaseSection>
+      </div>
+
+      {/* ═══════════════════════════════════════════════════════════════════════ */}
+      {/* API REFERENCE */}
+      {/* ═══════════════════════════════════════════════════════════════════════ */}
+      <h2 style={sectionTitleStyles}>API Reference</h2>
+
+      <ShowcaseSection title="ECharts Components Overview">
+        <div
+          style={{
+            ...chartContainerStyles,
+            fontSize: '13px',
+            color: 'var(--sentinel-text-secondary)',
+            lineHeight: 1.8,
+          }}
+        >
+          <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+            <thead>
+              <tr style={{ borderBottom: '1px solid var(--sentinel-border-subtle)' }}>
+                <th
+                  style={{
+                    textAlign: 'left',
+                    padding: '12px 16px',
+                    color: 'var(--sentinel-accent-primary)',
+                    fontSize: '12px',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.05em',
+                  }}
+                >
+                  Component
+                </th>
+                <th
+                  style={{
+                    textAlign: 'left',
+                    padding: '12px 16px',
+                    color: 'var(--sentinel-accent-primary)',
+                    fontSize: '12px',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.05em',
+                  }}
+                >
+                  Category
+                </th>
+                <th
+                  style={{
+                    textAlign: 'left',
+                    padding: '12px 16px',
+                    color: 'var(--sentinel-accent-primary)',
+                    fontSize: '12px',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.05em',
+                  }}
+                >
+                  Use Case
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style={{ borderBottom: '1px solid var(--sentinel-border-subtle)' }}>
+                <td style={{ padding: '12px 16px', fontWeight: 500, color: 'var(--sentinel-text-primary)' }}>
+                  CandlestickChart
+                </td>
+                <td style={{ padding: '12px 16px' }}>Financial</td>
+                <td style={{ padding: '12px 16px' }}>OHLC price data, trading analysis</td>
+              </tr>
+              <tr style={{ borderBottom: '1px solid var(--sentinel-border-subtle)' }}>
+                <td style={{ padding: '12px 16px', fontWeight: 500, color: 'var(--sentinel-text-primary)' }}>
+                  LineChart
+                </td>
+                <td style={{ padding: '12px 16px' }}>Financial</td>
+                <td style={{ padding: '12px 16px' }}>Time series, trends, portfolio performance</td>
+              </tr>
+              <tr style={{ borderBottom: '1px solid var(--sentinel-border-subtle)' }}>
+                <td style={{ padding: '12px 16px', fontWeight: 500, color: 'var(--sentinel-text-primary)' }}>
+                  BarChart
+                </td>
+                <td style={{ padding: '12px 16px' }}>Financial</td>
+                <td style={{ padding: '12px 16px' }}>Category comparison, distributions</td>
+              </tr>
+              <tr style={{ borderBottom: '1px solid var(--sentinel-border-subtle)' }}>
+                <td style={{ padding: '12px 16px', fontWeight: 500, color: 'var(--sentinel-text-primary)' }}>
+                  PieChart
+                </td>
+                <td style={{ padding: '12px 16px' }}>Circular</td>
+                <td style={{ padding: '12px 16px' }}>Allocation, composition breakdown</td>
+              </tr>
+              <tr style={{ borderBottom: '1px solid var(--sentinel-border-subtle)' }}>
+                <td style={{ padding: '12px 16px', fontWeight: 500, color: 'var(--sentinel-text-primary)' }}>
+                  RadarChart
+                </td>
+                <td style={{ padding: '12px 16px' }}>Circular</td>
+                <td style={{ padding: '12px 16px' }}>Multi-dimensional comparison</td>
+              </tr>
+              <tr style={{ borderBottom: '1px solid var(--sentinel-border-subtle)' }}>
+                <td style={{ padding: '12px 16px', fontWeight: 500, color: 'var(--sentinel-text-primary)' }}>
+                  GaugeChart
+                </td>
+                <td style={{ padding: '12px 16px' }}>Circular</td>
+                <td style={{ padding: '12px 16px' }}>Risk levels, progress, scores</td>
+              </tr>
+              <tr style={{ borderBottom: '1px solid var(--sentinel-border-subtle)' }}>
+                <td style={{ padding: '12px 16px', fontWeight: 500, color: 'var(--sentinel-text-primary)' }}>
+                  SunburstChart
+                </td>
+                <td style={{ padding: '12px 16px' }}>Circular</td>
+                <td style={{ padding: '12px 16px' }}>Hierarchical data drill-down</td>
+              </tr>
+              <tr style={{ borderBottom: '1px solid var(--sentinel-border-subtle)' }}>
+                <td style={{ padding: '12px 16px', fontWeight: 500, color: 'var(--sentinel-text-primary)' }}>
+                  TreeMap
+                </td>
+                <td style={{ padding: '12px 16px' }}>Comparison</td>
+                <td style={{ padding: '12px 16px' }}>Portfolio allocation by size</td>
+              </tr>
+              <tr style={{ borderBottom: '1px solid var(--sentinel-border-subtle)' }}>
+                <td style={{ padding: '12px 16px', fontWeight: 500, color: 'var(--sentinel-text-primary)' }}>
+                  HeatMap
+                </td>
+                <td style={{ padding: '12px 16px' }}>Comparison</td>
+                <td style={{ padding: '12px 16px' }}>Correlation matrices, intensity data</td>
+              </tr>
+              <tr style={{ borderBottom: '1px solid var(--sentinel-border-subtle)' }}>
+                <td style={{ padding: '12px 16px', fontWeight: 500, color: 'var(--sentinel-text-primary)' }}>
+                  ScatterChart
+                </td>
+                <td style={{ padding: '12px 16px' }}>Comparison</td>
+                <td style={{ padding: '12px 16px' }}>Risk/return analysis, correlations</td>
+              </tr>
+              <tr style={{ borderBottom: '1px solid var(--sentinel-border-subtle)' }}>
+                <td style={{ padding: '12px 16px', fontWeight: 500, color: 'var(--sentinel-text-primary)' }}>
+                  SankeyChart
+                </td>
+                <td style={{ padding: '12px 16px' }}>Flow</td>
+                <td style={{ padding: '12px 16px' }}>Capital flows, money movement</td>
+              </tr>
+              <tr style={{ borderBottom: '1px solid var(--sentinel-border-subtle)' }}>
+                <td style={{ padding: '12px 16px', fontWeight: 500, color: 'var(--sentinel-text-primary)' }}>
+                  FunnelChart
+                </td>
+                <td style={{ padding: '12px 16px' }}>Flow</td>
+                <td style={{ padding: '12px 16px' }}>Conversion pipelines, processes</td>
+              </tr>
+              <tr style={{ borderBottom: '1px solid var(--sentinel-border-subtle)' }}>
+                <td style={{ padding: '12px 16px', fontWeight: 500, color: 'var(--sentinel-text-primary)' }}>
+                  GraphChart
+                </td>
+                <td style={{ padding: '12px 16px' }}>Flow</td>
+                <td style={{ padding: '12px 16px' }}>Network relationships, correlations</td>
+              </tr>
+              <tr style={{ borderBottom: '1px solid var(--sentinel-border-subtle)' }}>
+                <td style={{ padding: '12px 16px', fontWeight: 500, color: 'var(--sentinel-text-primary)' }}>
+                  CalendarChart
+                </td>
+                <td style={{ padding: '12px 16px' }}>Time-based</td>
+                <td style={{ padding: '12px 16px' }}>Activity heatmaps by date</td>
+              </tr>
+              <tr style={{ borderBottom: '1px solid var(--sentinel-border-subtle)' }}>
+                <td style={{ padding: '12px 16px', fontWeight: 500, color: 'var(--sentinel-text-primary)' }}>
+                  BoxplotChart
+                </td>
+                <td style={{ padding: '12px 16px' }}>Statistical</td>
+                <td style={{ padding: '12px 16px' }}>Distribution analysis, quartiles</td>
+              </tr>
+              <tr style={{ borderBottom: '1px solid var(--sentinel-border-subtle)' }}>
+                <td style={{ padding: '12px 16px', fontWeight: 500, color: 'var(--sentinel-text-primary)' }}>
+                  ThemeRiverChart
+                </td>
+                <td style={{ padding: '12px 16px' }}>Stream</td>
+                <td style={{ padding: '12px 16px' }}>Proportions over time, trends</td>
+              </tr>
+              <tr style={{ borderBottom: '1px solid var(--sentinel-border-subtle)' }}>
+                <td style={{ padding: '12px 16px', fontWeight: 500, color: 'var(--sentinel-text-primary)' }}>
+                  ParallelChart
+                </td>
+                <td style={{ padding: '12px 16px' }}>Multi-dimensional</td>
+                <td style={{ padding: '12px 16px' }}>Multi-metric comparison</td>
+              </tr>
+              <tr style={{ borderBottom: '1px solid var(--sentinel-border-subtle)' }}>
+                <td style={{ padding: '12px 16px', fontWeight: 500, color: 'var(--sentinel-text-primary)' }}>
+                  TreeChart
+                </td>
+                <td style={{ padding: '12px 16px' }}>Hierarchical</td>
+                <td style={{ padding: '12px 16px' }}>Org charts, decision trees</td>
+              </tr>
+              <tr style={{ borderBottom: '1px solid var(--sentinel-border-subtle)' }}>
+                <td style={{ padding: '12px 16px', fontWeight: 500, color: 'var(--sentinel-text-primary)' }}>
+                  EffectScatterChart
+                </td>
+                <td style={{ padding: '12px 16px' }}>Effect</td>
+                <td style={{ padding: '12px 16px' }}>Highlight points with animations</td>
+              </tr>
+              <tr>
+                <td style={{ padding: '12px 16px', fontWeight: 500, color: 'var(--sentinel-text-primary)' }}>
+                  PictorialBarChart
+                </td>
+                <td style={{ padding: '12px 16px' }}>Pictorial</td>
+                <td style={{ padding: '12px 16px' }}>Visual KPIs with custom symbols</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </ShowcaseSection>
     </div>
   );
 }
+
+export default ChartsShowcase;

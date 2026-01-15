@@ -102,7 +102,8 @@ export function DashboardPage() {
     for (let i = 0; i < months; i++) {
       const date = new Date();
       date.setMonth(date.getMonth() - (months - 1 - i));
-      const dateStr = date.toLocaleDateString('en-US', { month: 'short', year: '2-digit' });
+      // Format as YYYY-MM-DD for lightweight-charts compatibility
+      const dateStr = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-01`;
 
       sentinelValue = sentinelValue * (1 + sentinelReturns[i]);
       sp500Value = sp500Value * (1 + sp500Returns[i]);
@@ -158,8 +159,6 @@ export function DashboardPage() {
               height={160}
               enableArea={true}
               areaSeriesIndex={0}
-              enablePoints={false}
-              showZeroLine={false}
               formatValue={(value) => `$${value.toLocaleString()}`}
               colors={['#5BA3A5', '#9b8ab8', '#7a99b8', '#b8a07a', '#a89878']}
               minimal={true}
@@ -308,8 +307,6 @@ export function DashboardPage() {
             height={240}
             enableArea={true}
             areaSeriesIndex={0}
-            enablePoints={false}
-            showZeroLine={false}
             formatValue={(value) => `$${value.toLocaleString()}`}
             colors={['#5BA3A5', '#9b8ab8', '#7a99b8', '#b8a07a', '#a89878']}
             minimal={true}

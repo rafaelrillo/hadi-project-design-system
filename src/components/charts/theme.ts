@@ -1,11 +1,10 @@
 // Path: src/components/charts/theme.ts
 // ═══════════════════════════════════════════════════════════════════════════════
-// SENTINEL CHART THEME - Nivo Charts Configuration
+// SENTINEL CHART THEME - Lightweight Charts Configuration
 // ═══════════════════════════════════════════════════════════════════════════════
 //
 // IMPORTANT: These values should match the CSS variables in theme.css
-// Nivo requires JavaScript values, not CSS variables, so we duplicate
-// the theme values here. Keep in sync with:
+// Keep in sync with:
 //   - src/styles/theme.css
 //
 // Palette: "Observatorio Nocturno"
@@ -16,9 +15,11 @@
 //
 // ═══════════════════════════════════════════════════════════════════════════════
 
+import type { DeepPartial, ChartOptions } from 'lightweight-charts';
+import { ColorType } from 'lightweight-charts';
+
 // Font stacks
 const FONT_PRIMARY = "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
-const FONT_MONO = "'JetBrains Mono', 'SF Mono', 'Fira Code', 'Consolas', monospace";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // SENTINEL COLOR TOKENS
@@ -87,179 +88,127 @@ export const sentinelColors = {
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
-// SENTINEL CHART THEME
-// Complete theme configuration for Nivo charts
+// LIGHTWEIGHT CHARTS THEME
+// Complete theme configuration for TradingView Lightweight Charts
 // ─────────────────────────────────────────────────────────────────────────────
 
-export const sentinelChartTheme = {
-  background: 'transparent',
-
-  // Default text styles
-  text: {
-    fontSize: 12,
-    fill: sentinelColors.textSecondary,
+export const chartTheme: DeepPartial<ChartOptions> = {
+  layout: {
+    background: {
+      type: ColorType.Solid,
+      color: 'transparent',
+    },
+    textColor: sentinelColors.textSecondary,
     fontFamily: FONT_PRIMARY,
-    fontWeight: 400,
+    fontSize: 12,
+    attributionLogo: false, // Disable TradingView logo
   },
-
-  // Axis configuration
-  axis: {
-    domain: {
-      line: {
-        stroke: sentinelColors.borderSubtle,
-        strokeWidth: 1,
-      },
-    },
-    ticks: {
-      line: {
-        stroke: sentinelColors.borderSubtle,
-        strokeWidth: 1,
-      },
-      text: {
-        fill: sentinelColors.textTertiary,
-        fontSize: 11,
-        fontFamily: FONT_MONO,
-      },
-    },
-    legend: {
-      text: {
-        fill: sentinelColors.textSecondary,
-        fontSize: 12,
-        fontWeight: 500,
-        fontFamily: FONT_PRIMARY,
-      },
-    },
-  },
-
-  // Grid lines
   grid: {
-    line: {
-      stroke: sentinelColors.borderSubtle,
-      strokeWidth: 1,
+    vertLines: {
+      color: sentinelColors.borderSubtle,
+      style: 1, // Solid
+      visible: false,
+    },
+    horzLines: {
+      color: sentinelColors.borderSubtle,
+      style: 1,
+      visible: true,
     },
   },
-
-  // Legends
-  legends: {
-    text: {
-      fill: sentinelColors.textSecondary,
-      fontSize: 11,
-      fontFamily: FONT_PRIMARY,
-    },
-    ticks: {
-      line: {
-        stroke: sentinelColors.borderDefault,
-        strokeWidth: 1,
-      },
-      text: {
-        fill: sentinelColors.textTertiary,
-        fontSize: 10,
-      },
-    },
-  },
-
-  // Tooltip
-  tooltip: {
-    container: {
-      background: sentinelColors.bgOverlay,
-      color: sentinelColors.textPrimary,
-      fontSize: 12,
-      fontFamily: FONT_PRIMARY,
-      borderRadius: '8px',
-      border: `1px solid ${sentinelColors.borderDefault}`,
-      boxShadow: '0 10px 40px rgba(0, 0, 0, 0.5)',
-      padding: '12px 16px',
-    },
-    basic: {
-      whiteSpace: 'pre' as const,
-      display: 'flex' as const,
-      alignItems: 'center' as const,
-    },
-    chip: {
-      marginRight: 7,
-    },
-    table: {},
-    tableCell: {
-      padding: '3px 7px',
-    },
-    tableCellValue: {
-      fontWeight: 600,
-      fontFamily: FONT_MONO,
-    },
-  },
-
-  // Crosshair
   crosshair: {
-    line: {
-      stroke: sentinelColors.accentPrimary,
-      strokeWidth: 1,
-      strokeOpacity: 0.5,
-      strokeDasharray: '4 4',
+    mode: 1, // Normal
+    vertLine: {
+      color: sentinelColors.accentPrimary,
+      width: 1,
+      style: 2, // Dashed
+      labelBackgroundColor: sentinelColors.bgOverlay,
+    },
+    horzLine: {
+      color: sentinelColors.accentPrimary,
+      width: 1,
+      style: 2,
+      labelBackgroundColor: sentinelColors.bgOverlay,
     },
   },
+  timeScale: {
+    borderColor: sentinelColors.borderSubtle,
+    timeVisible: true,
+    secondsVisible: false,
+  },
+  rightPriceScale: {
+    borderColor: sentinelColors.borderSubtle,
+    scaleMargins: {
+      top: 0.1,
+      bottom: 0.1,
+    },
+  },
+  leftPriceScale: {
+    borderColor: sentinelColors.borderSubtle,
+    visible: false,
+  },
+  handleScale: {
+    axisPressedMouseMove: {
+      time: true,
+      price: true,
+    },
+  },
+  handleScroll: {
+    mouseWheel: true,
+    pressedMouseMove: true,
+    horzTouchDrag: true,
+    vertTouchDrag: true,
+  },
+};
 
-  // Annotations
-  annotations: {
-    text: {
-      fontSize: 13,
-      fill: sentinelColors.textSecondary,
-      fontFamily: FONT_PRIMARY,
-      outlineWidth: 2,
-      outlineColor: sentinelColors.bgBase,
-      outlineOpacity: 1,
-    },
-    link: {
-      stroke: sentinelColors.accentPrimary,
-      strokeWidth: 1,
-      outlineWidth: 2,
-      outlineColor: sentinelColors.bgBase,
-      outlineOpacity: 1,
-    },
-    outline: {
-      stroke: sentinelColors.accentPrimary,
-      strokeWidth: 2,
-      outlineWidth: 2,
-      outlineColor: sentinelColors.bgBase,
-      outlineOpacity: 1,
-    },
-    symbol: {
-      fill: sentinelColors.accentPrimary,
-      outlineWidth: 2,
-      outlineColor: sentinelColors.bgBase,
-      outlineOpacity: 1,
-    },
-  },
+// ─────────────────────────────────────────────────────────────────────────────
+// SERIES OPTIONS
+// Pre-configured options for different series types
+// ─────────────────────────────────────────────────────────────────────────────
 
-  // Labels
-  labels: {
-    text: {
-      fill: sentinelColors.textPrimary,
-      fontSize: 11,
-      fontWeight: 500,
-      fontFamily: FONT_MONO,
-    },
-  },
+export const lineSeriesOptions = {
+  color: sentinelColors.accentPrimary,
+  lineWidth: 2 as const,
+  lineStyle: 0, // Solid
+  crosshairMarkerVisible: true,
+  crosshairMarkerRadius: 4,
+  crosshairMarkerBorderColor: sentinelColors.accentPrimary,
+  crosshairMarkerBackgroundColor: sentinelColors.bgElevated,
+  crosshairMarkerBorderWidth: 2 as const,
+  lastValueVisible: true,
+  priceLineVisible: false,
+};
 
-  // Dots (for line/scatter charts)
-  dots: {
-    text: {
-      fill: sentinelColors.textPrimary,
-      fontSize: 10,
-      fontFamily: FONT_MONO,
-    },
-  },
+export const areaSeriesOptions = {
+  topColor: 'rgba(91, 163, 165, 0.4)',
+  bottomColor: 'rgba(91, 163, 165, 0.0)',
+  lineColor: sentinelColors.accentPrimary,
+  lineWidth: 2 as const,
+  lineStyle: 0,
+  crosshairMarkerVisible: true,
+  crosshairMarkerRadius: 4,
+  crosshairMarkerBorderColor: sentinelColors.accentPrimary,
+  crosshairMarkerBackgroundColor: sentinelColors.bgElevated,
+  crosshairMarkerBorderWidth: 2 as const,
+  lastValueVisible: true,
+  priceLineVisible: false,
+};
 
-  // Markers
-  markers: {
-    text: {
-      fill: sentinelColors.textSecondary,
-      fontSize: 11,
-      fontFamily: FONT_PRIMARY,
-      outlineWidth: 0,
-      outlineColor: 'transparent',
-      outlineOpacity: 0,
-    },
+export const candlestickSeriesOptions = {
+  upColor: sentinelColors.positive,
+  downColor: sentinelColors.negative,
+  borderUpColor: sentinelColors.positive,
+  borderDownColor: sentinelColors.negative,
+  wickUpColor: sentinelColors.positive,
+  wickDownColor: sentinelColors.negative,
+};
+
+export const histogramSeriesOptions = {
+  color: sentinelColors.accentPrimary,
+  priceFormat: {
+    type: 'volume' as const,
   },
+  priceLineVisible: false,
+  lastValueVisible: false,
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -320,71 +269,55 @@ export const sentinelMarketColors = {
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
-// CHART-SPECIFIC CONFIGURATIONS
-// Pre-configured options for specific chart types
+// HELPER FUNCTIONS
 // ─────────────────────────────────────────────────────────────────────────────
 
-// Line chart defaults
-export const lineChartDefaults = {
-  colors: sentinelChartColors,
-  theme: sentinelChartTheme,
-  lineWidth: 2,
-  pointSize: 6,
-  pointColor: sentinelColors.bgElevated,
-  pointBorderWidth: 2,
-  pointBorderColor: { from: 'serieColor' },
-  enableSlices: 'x' as const,
-  enableGridX: false,
-  enableGridY: true,
-  enableArea: false,
-  areaOpacity: 0.1,
-  curve: 'monotoneX' as const,
-  useMesh: true,
-};
+/**
+ * Get area series options with custom color
+ */
+export function getAreaSeriesOptions(color: string, opacity = 0.4) {
+  return {
+    ...areaSeriesOptions,
+    topColor: `${color}${Math.round(opacity * 255).toString(16).padStart(2, '0')}`,
+    bottomColor: `${color}00`,
+    lineColor: color,
+    crosshairMarkerBorderColor: color,
+  };
+}
 
-// Bar chart defaults
-export const barChartDefaults = {
-  colors: sentinelChartColors,
-  theme: sentinelChartTheme,
-  borderRadius: 4,
-  borderWidth: 0,
-  padding: 0.3,
-  enableGridX: false,
-  enableGridY: true,
-  labelTextColor: sentinelColors.textPrimary,
-};
+/**
+ * Get line series options with custom color
+ */
+export function getLineSeriesOptions(color: string) {
+  return {
+    ...lineSeriesOptions,
+    color,
+    crosshairMarkerBorderColor: color,
+  };
+}
 
-// Pie/Donut chart defaults
-export const pieChartDefaults = {
-  colors: sentinelChartColors,
-  theme: sentinelChartTheme,
-  innerRadius: 0.5,
-  padAngle: 0.7,
-  cornerRadius: 4,
-  borderWidth: 0,
-  enableArcLabels: false,
-  enableArcLinkLabels: true,
-  arcLinkLabelsColor: { from: 'color' },
-  arcLinkLabelsThickness: 1,
-  arcLinkLabelsTextColor: sentinelColors.textSecondary,
-};
-
-// Heatmap defaults
-export const heatmapDefaults = {
-  theme: sentinelChartTheme,
-  colors: sentinelSequentialColors,
-  emptyColor: sentinelColors.bgSubtle,
-  borderWidth: 1,
-  borderColor: sentinelColors.bgBase,
-  labelTextColor: sentinelColors.textPrimary,
-  cellOpacity: 1,
-  cellBorderWidth: 0,
-};
+/**
+ * Format financial values (K/M/B notation)
+ */
+export function formatFinancialValue(value: number): string {
+  const absValue = Math.abs(value);
+  if (absValue >= 1_000_000_000) {
+    return `${(value / 1_000_000_000).toFixed(1)}B`;
+  }
+  if (absValue >= 1_000_000) {
+    return `${(value / 1_000_000).toFixed(1)}M`;
+  }
+  if (absValue >= 1_000) {
+    return `${(value / 1_000).toFixed(1)}K`;
+  }
+  return value.toFixed(2);
+}
 
 // ─────────────────────────────────────────────────────────────────────────────
 // BACKWARDS COMPATIBILITY
 // Keep the old export names working
 // ─────────────────────────────────────────────────────────────────────────────
 
-export const terminalChartTheme = sentinelChartTheme;
+export const sentinelChartTheme = chartTheme;
+export const terminalChartTheme = chartTheme;
 export const terminalChartColors = sentinelChartColors;

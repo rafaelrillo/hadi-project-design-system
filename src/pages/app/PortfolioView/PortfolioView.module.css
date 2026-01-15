@@ -379,10 +379,10 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   CARD 3: TREEMAP
+   CARD 3: ALLOCATION
    ───────────────────────────────────────────────────────────────────────────── */
 
-.treemapContent {
+.allocationContent {
   padding: 16px;
 }
 
@@ -518,10 +518,12 @@
   text-shadow: var(--sentinel-glow-negative);
 }
 
-/* Large TreeMap - Fixed height */
-.mobileTreemapLarge {
-  flex: 0 0 180px;
-  margin: 0 -4px;
+/* Allocation List */
+.mobileAllocationList {
+  padding: var(--sentinel-space-4);
+  background: var(--sentinel-bg-elevated);
+  border: 1px solid var(--sentinel-border-subtle);
+  border-radius: var(--sentinel-radius-lg);
 }
 
 /* Holdings Section - Takes remaining space */
