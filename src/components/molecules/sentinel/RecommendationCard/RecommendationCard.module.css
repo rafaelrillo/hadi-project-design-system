@@ -6,15 +6,23 @@
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 .container {
-  background: var(--sentinel-bg-elevated);
-  border: 1px solid var(--sentinel-border-subtle);
+  background: var(--sentinel-glass-bg);
+  backdrop-filter: blur(var(--sentinel-blur-md));
+  -webkit-backdrop-filter: blur(var(--sentinel-blur-md));
+  border: 1px solid var(--sentinel-glass-border);
   border-radius: var(--sentinel-radius-md);
   overflow: hidden;
-  transition: border-color var(--sentinel-transition-normal);
+  transition: all var(--sentinel-transition-normal);
+  box-shadow:
+    var(--sentinel-neu-elevated-sm),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
 .container:hover {
-  border-color: var(--sentinel-border-default);
+  border-color: var(--sentinel-glass-border-hover);
+  box-shadow:
+    var(--sentinel-neu-elevated-md),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -107,15 +115,15 @@
 
 /* Action badge variants - subtle, never screaming */
 .actionBuy {
-  background: hsla(160, 40%, 45%, 0.12);
+  background: var(--sentinel-status-positive-subtle);
   color: var(--sentinel-status-positive-text);
-  text-shadow: var(--sentinel-glow-positive);
+  border: 1px solid var(--sentinel-status-positive-border);
 }
 
 .actionSell {
-  background: hsla(0, 40%, 55%, 0.12);
+  background: var(--sentinel-status-negative-subtle);
   color: var(--sentinel-status-negative-text);
-  text-shadow: var(--sentinel-glow-negative);
+  border: 1px solid var(--sentinel-status-negative-border);
 }
 
 .actionHold {

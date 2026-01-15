@@ -2,11 +2,11 @@
 /* ═══════════════════════════════════════════════════════════════════════════════
    SENTINEL DESIGN SYSTEM v3.2 - InputText Component
 
-   GLASS-NEUMORPHISM - Frosted glass inputs with inset depth
-   - Semi-transparent inset glass background
-   - Pressed neumorphic shadows (sunken into surface)
-   - Luminous borders on focus
-   - Backdrop blur for frosted effect
+   LIGHT NEUMORPHISM - Soft sculpted inputs on light surface
+   - Light inset backgrounds for pressed/sunken effect
+   - Dual-tone shadows (light highlight + dark shadow)
+   - Subtle accent glows on focus
+   - Clean, readable dark text on light backgrounds
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -19,7 +19,7 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   BASE INPUT - Glass-Neumorphic Pressed (Sunken)
+   BASE INPUT - Light Neumorphic Pressed (Sunken)
    ───────────────────────────────────────────────────────────────────────────── */
 
 .input {
@@ -29,20 +29,18 @@
   font-size: 14px;
   letter-spacing: 0;
   padding: 14px 16px;
-  background: var(--sentinel-glass-inset);
-  border: 1px solid var(--sentinel-glass-border);
+  background: rgba(220, 225, 230, 0.7);
+  border: 1px solid rgba(163, 177, 198, 0.3);
   border-radius: var(--sentinel-radius-input);
   color: var(--sentinel-text-primary);
   transition: all 0.2s ease;
   box-sizing: border-box;
   outline: none;
 
-  /* Glass blur effect */
-  backdrop-filter: blur(var(--sentinel-blur-sm));
-  -webkit-backdrop-filter: blur(var(--sentinel-blur-sm));
-
-  /* Neumorphic pressed/inset shadow */
-  box-shadow: var(--sentinel-shadow-input);
+  /* Light neumorphic inset shadow - pressed into surface */
+  box-shadow:
+    inset 3px 3px 6px rgba(163, 177, 198, 0.5),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.8);
 }
 
 .input::placeholder {
@@ -50,28 +48,30 @@
 }
 
 .input:hover:not(:disabled):not(:focus) {
-  border-color: var(--sentinel-glass-border-hover);
-  background: var(--sentinel-glass-inset-focus);
+  border-color: rgba(163, 177, 198, 0.5);
+  background: rgba(215, 220, 225, 0.75);
 }
 
 .input:focus {
-  border-color: var(--sentinel-glass-border-focus);
-  background: var(--sentinel-glass-inset-focus);
+  border-color: rgba(74, 154, 156, 0.6);
+  background: rgba(220, 225, 230, 0.8);
 
-  /* Pressed shadow + focus glow */
+  /* Pressed shadow + accent focus glow */
   box-shadow:
-    var(--sentinel-shadow-input),
-    0 0 0 3px rgba(91, 163, 165, 0.15),
-    inset 0 0 20px rgba(91, 163, 165, 0.05);
+    inset 3px 3px 6px rgba(163, 177, 198, 0.5),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.8),
+    0 0 0 3px rgba(74, 154, 156, 0.15),
+    0 0 12px rgba(74, 154, 156, 0.1);
 }
 
 .input:disabled {
-  background: rgba(255, 255, 255, 0.02);
-  border-color: var(--sentinel-border-subtle);
+  background: rgba(220, 225, 230, 0.4);
+  border-color: rgba(163, 177, 198, 0.2);
   color: var(--sentinel-text-disabled);
   cursor: not-allowed;
-  backdrop-filter: none;
-  box-shadow: none;
+  box-shadow:
+    inset 2px 2px 4px rgba(163, 177, 198, 0.3),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.5);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -79,22 +79,24 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .inputError {
-  border-color: rgba(248, 113, 113, 0.4);
+  border-color: rgba(184, 92, 92, 0.5);
   box-shadow:
-    var(--sentinel-shadow-input),
-    inset 0 0 15px rgba(248, 113, 113, 0.05);
+    inset 3px 3px 6px rgba(163, 177, 198, 0.5),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.8),
+    inset 0 0 8px rgba(184, 92, 92, 0.08);
 }
 
 .inputError:hover:not(:disabled):not(:focus) {
-  border-color: rgba(248, 113, 113, 0.6);
+  border-color: rgba(184, 92, 92, 0.7);
 }
 
 .inputError:focus {
   border-color: var(--sentinel-status-negative);
   box-shadow:
-    var(--sentinel-shadow-input),
-    0 0 0 3px rgba(248, 113, 113, 0.2),
-    inset 0 0 20px rgba(248, 113, 113, 0.08);
+    inset 3px 3px 6px rgba(163, 177, 198, 0.5),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.8),
+    0 0 0 3px rgba(184, 92, 92, 0.15),
+    0 0 12px rgba(184, 92, 92, 0.1);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -102,22 +104,24 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .inputSuccess {
-  border-color: rgba(74, 222, 128, 0.4);
+  border-color: rgba(74, 154, 124, 0.5);
   box-shadow:
-    var(--sentinel-shadow-input),
-    inset 0 0 15px rgba(74, 222, 128, 0.05);
+    inset 3px 3px 6px rgba(163, 177, 198, 0.5),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.8),
+    inset 0 0 8px rgba(74, 154, 124, 0.08);
 }
 
 .inputSuccess:hover:not(:disabled):not(:focus) {
-  border-color: rgba(74, 222, 128, 0.6);
+  border-color: rgba(74, 154, 124, 0.7);
 }
 
 .inputSuccess:focus {
   border-color: var(--sentinel-status-positive);
   box-shadow:
-    var(--sentinel-shadow-input),
-    0 0 0 3px rgba(74, 222, 128, 0.2),
-    inset 0 0 20px rgba(74, 222, 128, 0.08);
+    inset 3px 3px 6px rgba(163, 177, 198, 0.5),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.8),
+    0 0 0 3px rgba(74, 154, 124, 0.15),
+    0 0 12px rgba(74, 154, 124, 0.1);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -169,7 +173,9 @@
   font-size: 13px;
   padding: 10px 14px;
   border-radius: var(--sentinel-radius-sm);
-  box-shadow: var(--sentinel-neu-pressed-xs);
+  box-shadow:
+    inset 2px 2px 4px rgba(163, 177, 198, 0.5),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.8);
 }
 
 .inputSm.inputWithIcon {
@@ -181,7 +187,9 @@
   font-size: 15px;
   padding: 16px 18px;
   border-radius: var(--sentinel-radius-md);
-  box-shadow: var(--sentinel-neu-pressed-md);
+  box-shadow:
+    inset 4px 4px 8px rgba(163, 177, 198, 0.5),
+    inset -4px -4px 8px rgba(255, 255, 255, 0.8);
 }
 
 .inputLg.inputWithIcon {

@@ -71,20 +71,23 @@ export function ShowcaseLayout() {
   const layoutStyles: React.CSSProperties = {
     display: 'flex',
     minHeight: '100vh',
-    backgroundColor: 'var(--sentinel-bg-base)',
+    backgroundColor: 'transparent',
     fontFamily: 'var(--sentinel-font-primary)'
   };
 
   const sidebarStyles: React.CSSProperties = {
     width: '280px',
-    backgroundColor: 'var(--sentinel-bg-elevated)',
-    borderRight: '1px solid var(--sentinel-border-subtle)',
+    backgroundColor: 'rgba(255, 255, 255, 0.7)',
+    backdropFilter: 'blur(20px)',
+    WebkitBackdropFilter: 'blur(20px)',
+    borderRight: '1px solid rgba(255, 255, 255, 0.8)',
     position: 'fixed',
     left: 0,
     top: 0,
     height: '100vh',
     overflowY: 'auto',
-    zIndex: 100
+    zIndex: 100,
+    boxShadow: '4px 0 24px rgba(163, 177, 198, 0.15)'
   };
 
   const logoContainerStyles: React.CSSProperties = {
@@ -156,7 +159,7 @@ export function ShowcaseLayout() {
     flex: 1,
     padding: '40px',
     minHeight: '100vh',
-    backgroundColor: 'var(--sentinel-bg-base)'
+    backgroundColor: 'transparent'
   };
 
   const atomsItems = [

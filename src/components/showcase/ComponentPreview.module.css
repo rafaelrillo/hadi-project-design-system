@@ -8,25 +8,34 @@
   flex-wrap: wrap;
   gap: var(--sentinel-space-4);
   align-items: flex-start;
-  border: 1px solid var(--sentinel-border-subtle);
-  background-color: var(--sentinel-bg-base);
+  border: 1px solid rgba(163, 177, 198, 0.2);
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 /* Background variants */
 .bgWhite {
-  background-color: var(--sentinel-bg-elevated);
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .bgGray {
-  background-color: var(--sentinel-bg-subtle);
+  background: rgba(200, 210, 220, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .bgTransparent {
-  background-color: transparent;
-  border: 1px dashed var(--sentinel-border-default);
+  background: transparent;
+  backdrop-filter: none;
+  border: 1px dashed rgba(163, 177, 198, 0.4);
 }
 
 /* Dark variant for contrast */
 .bgDark {
-  background-color: var(--sentinel-bg-base);
+  background: rgba(45, 52, 54, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }

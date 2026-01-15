@@ -2,22 +2,22 @@
 /* ═══════════════════════════════════════════════════════════════════════════════
    SENTINEL DESIGN SYSTEM v3.2 - Sidebar Component
 
-   GLASS-NEUMORPHISM - Frosted glass navigation
-   - Semi-transparent glass background
-   - Luminous borders
-   - Elevated menu items on hover/active
+   LIGHT NEUMORPHIC THEME - Dark Contrast Sidebar
+   - Dark glass background for contrast against light main content
+   - Light text colors on dark surface
+   - Accent glows with updated teal color
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   SIDEBAR CONTAINER - Glass surface
+   SIDEBAR CONTAINER - Dark glass surface for contrast
    ───────────────────────────────────────────────────────────────────────────── */
 
 .sidebar {
   left: 0;
   top: 0;
   width: 56px;
-  background: var(--sentinel-glass-bg);
-  border-right: 1px solid var(--sentinel-glass-border);
+  background: var(--sentinel-sidebar-bg, rgba(20, 25, 35, 0.95));
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -27,13 +27,13 @@
   height: 100vh;
 
   /* Glass blur */
-  backdrop-filter: blur(var(--sentinel-blur-md));
-  -webkit-backdrop-filter: blur(var(--sentinel-blur-md));
+  backdrop-filter: blur(var(--sentinel-blur-md, 16px));
+  -webkit-backdrop-filter: blur(var(--sentinel-blur-md, 16px));
 
-  /* Subtle elevation */
+  /* Dark elevated shadow */
   box-shadow:
-    var(--sentinel-neu-elevated-sm),
-    inset -1px 0 0 rgba(255, 255, 255, 0.04);
+    4px 0 24px rgba(0, 0, 0, 0.25),
+    inset -1px 0 0 rgba(255, 255, 255, 0.05);
 }
 
 /* Position variants */
@@ -70,11 +70,11 @@
   height: 56px;
   padding: var(--sentinel-space-3);
   flex-shrink: 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   MENU ITEM - Glass-Neumorphic
+   MENU ITEM - Dark surface with light text
    ───────────────────────────────────────────────────────────────────────────── */
 
 .menuItemContainer {
@@ -97,28 +97,30 @@
   cursor: pointer;
   transition: all 0.2s ease;
   outline: none;
-  color: var(--sentinel-text-tertiary);
+  /* Light text on dark background */
+  color: var(--sentinel-sidebar-text, rgba(255, 255, 255, 0.6));
   text-decoration: none;
 }
 
 .menuItemButton:hover {
-  background: rgba(255, 255, 255, 0.06);
-  color: var(--sentinel-accent-primary);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--sentinel-accent-primary, #4a9a9c);
 }
 
 .menuItemButton:focus-visible {
   outline: none;
-  box-shadow: inset 0 0 0 2px rgba(91, 163, 165, 0.3);
+  box-shadow: inset 0 0 0 2px rgba(74, 154, 156, 0.4);
 }
 
-/* Active menu item - Glass elevated */
+/* Active menu item - Accent glow on dark surface */
 .menuItemActive {
-  background: rgba(91, 163, 165, 0.15);
-  color: var(--sentinel-accent-primary);
+  background: rgba(74, 154, 156, 0.18);
+  color: var(--sentinel-accent-primary, #4a9a9c);
 
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.15),
+    0 0 12px rgba(74, 154, 156, 0.2);
 }
 
 .menuItemActive::after {
@@ -128,23 +130,23 @@
   bottom: 12px;
   right: 0;
   width: 2px;
-  background: var(--sentinel-accent-primary);
+  background: var(--sentinel-accent-primary, #4a9a9c);
   border-radius: 2px 0 0 2px;
-  box-shadow: 0 0 8px rgba(91, 163, 165, 0.5);
+  box-shadow: 0 0 10px rgba(74, 154, 156, 0.6);
 }
 
 .menuItemDisabled {
-  color: var(--sentinel-text-disabled);
+  color: rgba(255, 255, 255, 0.25);
   cursor: not-allowed;
 }
 
 .menuItemDisabled:hover {
   background: transparent;
-  color: var(--sentinel-text-disabled);
+  color: rgba(255, 255, 255, 0.25);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   LEFT BAR INDICATOR
+   LEFT BAR INDICATOR - Accent glow
    ───────────────────────────────────────────────────────────────────────────── */
 
 .leftBar {
@@ -156,12 +158,12 @@
   background: linear-gradient(
     180deg,
     transparent,
-    var(--sentinel-accent-primary),
+    var(--sentinel-accent-primary, #4a9a9c),
     transparent
   );
   opacity: 0;
   transition: opacity 0.2s ease;
-  box-shadow: 0 0 10px rgba(91, 163, 165, 0.5);
+  box-shadow: 0 0 12px rgba(74, 154, 156, 0.6);
 }
 
 .leftBarVisible {
@@ -178,11 +180,11 @@
   justify-content: center;
   width: 56px;
   height: 56px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   ACTION BUTTON
+   ACTION BUTTON - Light text on dark surface
    ───────────────────────────────────────────────────────────────────────────── */
 
 .actionButton {
@@ -194,19 +196,19 @@
   background: transparent;
   border: none;
   cursor: pointer;
-  color: var(--sentinel-text-tertiary);
+  color: var(--sentinel-sidebar-text, rgba(255, 255, 255, 0.6));
   transition: all 0.2s ease;
   padding: 0;
 }
 
 .actionButton:hover {
-  color: var(--sentinel-accent-primary);
-  background: rgba(255, 255, 255, 0.06);
+  color: var(--sentinel-accent-primary, #4a9a9c);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .actionButton:focus-visible {
   outline: none;
-  box-shadow: inset 0 0 0 2px rgba(91, 163, 165, 0.3);
+  box-shadow: inset 0 0 0 2px rgba(74, 154, 156, 0.4);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────

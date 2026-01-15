@@ -52,14 +52,16 @@
   position: absolute;
   z-index: 100;
   pointer-events: none;
-  background: var(--sentinel-bg-overlay);
-  border: 1px solid var(--sentinel-border-default);
+  background: var(--sentinel-glass-elevated);
+  backdrop-filter: blur(var(--sentinel-blur-md));
+  -webkit-backdrop-filter: blur(var(--sentinel-blur-md));
+  border: 1px solid var(--sentinel-glass-border);
   border-radius: var(--sentinel-radius-md);
   padding: 0;
   overflow: hidden;
   box-shadow:
-    0 10px 40px rgba(0, 0, 0, 0.5),
-    0 0 0 1px rgba(255, 255, 255, 0.05);
+    var(--sentinel-neu-elevated-md),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
   min-width: 160px;
   transition: opacity 150ms ease-out;
 }

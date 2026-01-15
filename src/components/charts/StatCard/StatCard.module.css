@@ -6,16 +6,25 @@
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 .card {
-  background-color: var(--sentinel-bg-elevated);
-  border: 1px solid var(--sentinel-border-subtle);
+  background: var(--sentinel-glass-bg);
+  backdrop-filter: blur(var(--sentinel-blur-md));
+  -webkit-backdrop-filter: blur(var(--sentinel-blur-md));
+  border: 1px solid var(--sentinel-glass-border);
   border-radius: var(--sentinel-radius-md);
   padding: var(--sentinel-space-4);
   transition: all var(--sentinel-transition-normal);
+  box-shadow:
+    var(--sentinel-neu-elevated-sm),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  position: relative;
 }
 
 .card:hover {
-  border-color: var(--sentinel-border-default);
-  background-color: var(--sentinel-bg-subtle);
+  border-color: var(--sentinel-glass-border-hover);
+  background: var(--sentinel-glass-bg-hover);
+  box-shadow:
+    var(--sentinel-neu-elevated-md),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 .header {
@@ -56,10 +65,8 @@
 
 .positive {
   color: var(--sentinel-status-positive);
-  text-shadow: var(--sentinel-glow-positive);
 }
 
 .negative {
   color: var(--sentinel-status-negative);
-  text-shadow: var(--sentinel-glow-negative);
 }

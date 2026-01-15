@@ -2,15 +2,15 @@
 /* ═══════════════════════════════════════════════════════════════════════════════
    SENTINEL DESIGN SYSTEM v3.2 - MetricCard Component
 
-   GLASS-NEUMORPHISM - Premium KPI cards with frosted depth
-   - Semi-transparent glass backgrounds
-   - Neumorphic elevation + inner highlights
+   LIGHT NEUMORPHISM - Premium KPI cards with soft depth
+   - Semi-transparent light glass backgrounds
+   - Light neumorphic shadows with soft highlights
    - Luminous borders and edges
    - Progress bars with inset glass
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   BASE STYLES - Glass-Neumorphic Elevated
+   BASE STYLES - Light Neumorphic Elevated
    ───────────────────────────────────────────────────────────────────────────── */
 
 .metricCard {
@@ -18,8 +18,8 @@
   flex-direction: column;
   gap: 12px;
   padding: 20px;
-  background: var(--sentinel-glass-bg);
-  border: 1px solid var(--sentinel-glass-border);
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.8);
   border-radius: var(--sentinel-radius-card);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   text-decoration: none;
@@ -31,10 +31,11 @@
   backdrop-filter: blur(var(--sentinel-blur-md));
   -webkit-backdrop-filter: blur(var(--sentinel-blur-md));
 
-  /* Neumorphic elevated shadow + inner highlight */
+  /* Light neumorphic elevated shadow + inner highlight */
   box-shadow:
-    var(--sentinel-shadow-card),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    8px 8px 16px rgba(163, 177, 198, 0.35),
+    -8px -8px 16px rgba(255, 255, 255, 0.9),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
 /* Luminous top edge */
@@ -48,9 +49,9 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.12),
-    rgba(255, 255, 255, 0.2),
-    rgba(255, 255, 255, 0.12),
+    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 0.6),
     transparent
   );
   border-radius: var(--sentinel-radius-card) var(--sentinel-radius-card) 0 0;
@@ -63,13 +64,13 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .variantDefault {
-  background: var(--sentinel-glass-bg);
-  border-color: var(--sentinel-glass-border);
+  background: rgba(255, 255, 255, 0.6);
+  border-color: rgba(255, 255, 255, 0.8);
 }
 
 .variantOutlined {
   background: transparent;
-  border-color: var(--sentinel-glass-border);
+  border-color: rgba(163, 177, 198, 0.3);
   backdrop-filter: none;
   box-shadow: none;
 }
@@ -79,12 +80,13 @@
 }
 
 .variantFilled {
-  background: var(--sentinel-glass-elevated);
-  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(255, 255, 255, 0.9);
 
   box-shadow:
-    var(--sentinel-neu-elevated-md),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    10px 10px 20px rgba(163, 177, 198, 0.4),
+    -10px -10px 20px rgba(255, 255, 255, 0.95),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -123,43 +125,47 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   STATUS COLORS - Glass tinted borders
+   STATUS COLORS - Light neumorphic tinted borders
    ───────────────────────────────────────────────────────────────────────────── */
 
 .statusSuccess {
-  border-left: 3px solid rgba(74, 222, 128, 0.6);
+  border-left: 3px solid rgba(74, 222, 128, 0.7);
   box-shadow:
-    var(--sentinel-shadow-card),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06),
-    inset 3px 0 15px rgba(74, 222, 128, 0.05);
+    8px 8px 16px rgba(163, 177, 198, 0.35),
+    -8px -8px 16px rgba(255, 255, 255, 0.9),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    inset 3px 0 15px rgba(74, 222, 128, 0.1);
 }
 
 .statusWarning {
-  border-left: 3px solid rgba(251, 191, 36, 0.6);
+  border-left: 3px solid rgba(251, 191, 36, 0.7);
   box-shadow:
-    var(--sentinel-shadow-card),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06),
-    inset 3px 0 15px rgba(251, 191, 36, 0.05);
+    8px 8px 16px rgba(163, 177, 198, 0.35),
+    -8px -8px 16px rgba(255, 255, 255, 0.9),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    inset 3px 0 15px rgba(251, 191, 36, 0.1);
 }
 
 .statusError {
-  border-left: 3px solid rgba(248, 113, 113, 0.6);
+  border-left: 3px solid rgba(248, 113, 113, 0.7);
   box-shadow:
-    var(--sentinel-shadow-card),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06),
-    inset 3px 0 15px rgba(248, 113, 113, 0.05);
+    8px 8px 16px rgba(163, 177, 198, 0.35),
+    -8px -8px 16px rgba(255, 255, 255, 0.9),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    inset 3px 0 15px rgba(248, 113, 113, 0.1);
 }
 
 .statusInfo {
-  border-left: 3px solid rgba(96, 165, 250, 0.6);
+  border-left: 3px solid rgba(96, 165, 250, 0.7);
   box-shadow:
-    var(--sentinel-shadow-card),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06),
-    inset 3px 0 15px rgba(96, 165, 250, 0.05);
+    8px 8px 16px rgba(163, 177, 198, 0.35),
+    -8px -8px 16px rgba(255, 255, 255, 0.9),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    inset 3px 0 15px rgba(96, 165, 250, 0.1);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   INTERACTIVE STATE - Enhanced Glass-Neumorphism
+   INTERACTIVE STATE - Enhanced Light Neumorphism
    ───────────────────────────────────────────────────────────────────────────── */
 
 .interactive {
@@ -167,15 +173,16 @@
 }
 
 .interactive:hover {
-  background: var(--sentinel-glass-bg-hover);
-  border-color: var(--sentinel-glass-border-hover);
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(255, 255, 255, 0.9);
   transform: translateY(-2px);
 
-  /* Enhanced glass elevation on hover */
+  /* Enhanced light neumorphic elevation on hover */
   box-shadow:
-    var(--sentinel-shadow-card-hover),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1),
-    0 0 30px rgba(0, 0, 0, 0.2);
+    12px 12px 24px rgba(163, 177, 198, 0.4),
+    -12px -12px 24px rgba(255, 255, 255, 0.95),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    0 0 30px rgba(255, 255, 255, 0.5);
 }
 
 .interactive:focus {
@@ -184,18 +191,20 @@
 
 .interactive:focus-visible {
   outline: none;
-  border-color: var(--sentinel-glass-border-focus);
+  border-color: rgba(91, 163, 165, 0.5);
   box-shadow:
-    var(--sentinel-shadow-card),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 0 0 3px rgba(91, 163, 165, 0.2);
+    8px 8px 16px rgba(163, 177, 198, 0.35),
+    -8px -8px 16px rgba(255, 255, 255, 0.9),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    0 0 0 3px rgba(91, 163, 165, 0.25);
 }
 
 .interactive:active {
   transform: translateY(0);
   box-shadow:
-    var(--sentinel-neu-elevated-sm),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    4px 4px 8px rgba(163, 177, 198, 0.3),
+    -4px -4px 8px rgba(255, 255, 255, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -270,7 +279,7 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   TREND - Glass pills
+   TREND - Light glass pills
    ───────────────────────────────────────────────────────────────────────────── */
 
 .trend {
@@ -284,26 +293,26 @@
   font-weight: var(--sentinel-font-medium);
   letter-spacing: 0.02em;
 
-  /* Glass effect for trend pills */
+  /* Light glass effect for trend pills */
   backdrop-filter: blur(var(--sentinel-blur-xs));
   -webkit-backdrop-filter: blur(var(--sentinel-blur-xs));
 }
 
 .trendPositive {
-  background: rgba(74, 222, 128, 0.12);
-  border: 1px solid rgba(74, 222, 128, 0.25);
+  background: rgba(74, 222, 128, 0.15);
+  border: 1px solid rgba(74, 222, 128, 0.35);
   color: var(--sentinel-status-positive);
 }
 
 .trendNegative {
-  background: rgba(248, 113, 113, 0.12);
-  border: 1px solid rgba(248, 113, 113, 0.25);
+  background: rgba(248, 113, 113, 0.15);
+  border: 1px solid rgba(248, 113, 113, 0.35);
   color: var(--sentinel-status-negative);
 }
 
 .trendNeutral {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--sentinel-glass-border);
+  background: rgba(163, 177, 198, 0.1);
+  border: 1px solid rgba(163, 177, 198, 0.25);
   color: var(--sentinel-text-secondary);
 }
 
@@ -333,7 +342,7 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   PROGRESS BAR - Glass-Neumorphic Pressed
+   PROGRESS BAR - Light Neumorphic Pressed
    ───────────────────────────────────────────────────────────────────────────── */
 
 .progressContainer {
@@ -345,25 +354,27 @@
 .progressBar {
   flex: 1;
   height: 6px;
-  background: var(--sentinel-glass-inset);
+  background: rgba(163, 177, 198, 0.15);
   border-radius: var(--sentinel-radius-full);
   overflow: hidden;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.5);
 
-  /* Neumorphic pressed/inset shadow */
-  box-shadow: var(--sentinel-neu-pressed-xs);
+  /* Light neumorphic pressed/inset shadow */
+  box-shadow:
+    inset 2px 2px 4px rgba(163, 177, 198, 0.3),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.7);
 }
 
 .progressFill {
   height: 100%;
   background: linear-gradient(
     90deg,
-    rgba(91, 163, 165, 0.6),
-    rgba(91, 163, 165, 0.8)
+    rgba(91, 163, 165, 0.7),
+    rgba(91, 163, 165, 0.9)
   );
   border-radius: var(--sentinel-radius-full);
   transition: width var(--sentinel-duration-slow) var(--sentinel-ease-out);
-  box-shadow: 0 0 10px rgba(91, 163, 165, 0.4);
+  box-shadow: 0 0 10px rgba(91, 163, 165, 0.5);
 }
 
 .progressLabel {
@@ -376,7 +387,7 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   DISTRIBUTION BAR - Glass-Neumorphic
+   DISTRIBUTION BAR - Light Neumorphic
    ───────────────────────────────────────────────────────────────────────────── */
 
 .distributionContainer {
@@ -390,11 +401,13 @@
   height: 8px;
   border-radius: var(--sentinel-radius-full);
   overflow: hidden;
-  background: var(--sentinel-glass-inset);
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  background: rgba(163, 177, 198, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.5);
 
-  /* Neumorphic pressed shadow */
-  box-shadow: var(--sentinel-neu-pressed-xs);
+  /* Light neumorphic pressed shadow */
+  box-shadow:
+    inset 2px 2px 4px rgba(163, 177, 198, 0.3),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.7);
 }
 
 .distributionSegment {
@@ -438,7 +451,7 @@
   align-items: center;
   gap: var(--sentinel-space-2);
   padding-top: var(--sentinel-space-2);
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid rgba(163, 177, 198, 0.2);
   font-family: var(--sentinel-font-primary);
   font-size: var(--sentinel-text-xs);
 }
@@ -484,8 +497,8 @@
   align-items: center;
   gap: var(--sentinel-space-1);
   padding: var(--sentinel-space-1) var(--sentinel-space-2);
-  background: rgba(91, 163, 165, 0.1);
-  border: 1px solid rgba(91, 163, 165, 0.2);
+  background: rgba(91, 163, 165, 0.12);
+  border: 1px solid rgba(91, 163, 165, 0.25);
   border-radius: var(--sentinel-radius-sm);
   color: var(--sentinel-accent-primary);
   font-family: var(--sentinel-font-primary);
@@ -500,13 +513,15 @@
 
 .actionButton:hover {
   background: rgba(91, 163, 165, 0.2);
-  border-color: rgba(91, 163, 165, 0.35);
-  box-shadow: 0 2px 10px rgba(91, 163, 165, 0.2);
+  border-color: rgba(91, 163, 165, 0.4);
+  box-shadow:
+    4px 4px 8px rgba(163, 177, 198, 0.25),
+    -4px -4px 8px rgba(255, 255, 255, 0.8);
 }
 
 .actionButton:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px rgba(91, 163, 165, 0.3);
+  box-shadow: 0 0 0 2px rgba(91, 163, 165, 0.35);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -527,7 +542,7 @@
 .loadingSpinner {
   color: var(--sentinel-accent-primary);
   animation: spin 1s linear infinite;
-  filter: drop-shadow(0 0 6px rgba(91, 163, 165, 0.4));
+  filter: drop-shadow(0 0 6px rgba(91, 163, 165, 0.5));
 }
 
 @keyframes spin {
@@ -544,11 +559,12 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .hasError {
-  border-color: rgba(248, 113, 113, 0.3);
+  border-color: rgba(248, 113, 113, 0.4);
   box-shadow:
-    var(--sentinel-shadow-card),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04),
-    inset 0 0 20px rgba(248, 113, 113, 0.05);
+    8px 8px 16px rgba(163, 177, 198, 0.35),
+    -8px -8px 16px rgba(255, 255, 255, 0.9),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 0 20px rgba(248, 113, 113, 0.1);
 }
 
 .errorContent {

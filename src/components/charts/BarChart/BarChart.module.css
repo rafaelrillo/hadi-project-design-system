@@ -24,13 +24,18 @@
   position: absolute;
   top: 12px;
   left: 12px;
-  background: var(--sentinel-bg-overlay);
-  border: 1px solid var(--sentinel-border-default);
+  background: var(--sentinel-glass-elevated);
+  backdrop-filter: blur(var(--sentinel-blur-md));
+  -webkit-backdrop-filter: blur(var(--sentinel-blur-md));
+  border: 1px solid var(--sentinel-glass-border);
   border-radius: var(--sentinel-radius-md);
   padding: 12px;
   pointer-events: none;
   z-index: 10;
   min-width: 140px;
+  box-shadow:
+    var(--sentinel-neu-elevated-sm),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
 .tooltipHeader {

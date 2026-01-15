@@ -1,11 +1,12 @@
 /* Path: src/pages/app/DashboardPage/DashboardPage.module.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   SENTINEL DESIGN SYSTEM v3.2 - Dashboard Page
+   SENTINEL DESIGN SYSTEM v3.3 - Dashboard Page
 
-   GLASS-NEUMORPHISM - Frosted glass dashboard panels
-   - All panels use glass backgrounds with backdrop blur
-   - Neumorphic shadows for depth
-   - Luminous borders and edges
+   LIGHT GLASS-NEUMORPHISM - Frosted glass dashboard panels on light theme
+   - Light glass backgrounds with rgba(255,255,255,0.5-0.7)
+   - Soft neumorphic shadows using rgba(163,177,198,...)
+   - Inner highlights with rgba(255,255,255,0.7)
+   - Teal accent glows with rgba(74,154,156,...)
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 .container {
@@ -18,12 +19,12 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   MAIN CHART - Glass-Neumorphic Panel
+   MAIN CHART - Light Glass-Neumorphic Panel
    ───────────────────────────────────────────────────────────────────────────── */
 
 .mainChart {
-  background: var(--sentinel-glass-bg);
-  border: 1px solid var(--sentinel-glass-border);
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.8);
   border-radius: var(--sentinel-radius-lg);
   padding: 24px;
   flex-shrink: 0;
@@ -34,10 +35,11 @@
   backdrop-filter: blur(var(--sentinel-blur-md));
   -webkit-backdrop-filter: blur(var(--sentinel-blur-md));
 
-  /* Neumorphic elevation + inner highlight */
+  /* Light neumorphic elevation + inner highlight */
   box-shadow:
-    var(--sentinel-shadow-card),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    8px 8px 16px rgba(163, 177, 198, 0.35),
+    -8px -8px 16px rgba(255, 255, 255, 0.9),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
 /* Luminous top edge */
@@ -51,9 +53,9 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.1),
-    rgba(255, 255, 255, 0.18),
-    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0.8),
     transparent
   );
   border-radius: var(--sentinel-radius-lg) var(--sentinel-radius-lg) 0 0;
@@ -92,7 +94,7 @@
   flex-shrink: 0;
   width: 14px;
   height: 14px;
-  filter: drop-shadow(0 0 4px rgba(91, 163, 165, 0.4));
+  filter: drop-shadow(0 0 4px rgba(74, 154, 156, 0.5));
 }
 
 .chartMetrics {
@@ -109,8 +111,8 @@
   letter-spacing: 0.02em;
   line-height: 1;
   text-shadow:
-    0 0 20px rgba(91, 163, 165, 0.5),
-    0 0 40px rgba(91, 163, 165, 0.25);
+    0 0 20px rgba(74, 154, 156, 0.5),
+    0 0 40px rgba(74, 154, 156, 0.25);
 }
 
 .chartMetricChange {
@@ -199,12 +201,12 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   CARD - Glass-Neumorphic Panel
+   CARD - Light Glass-Neumorphic Panel
    ───────────────────────────────────────────────────────────────────────────── */
 
 .card {
-  background: var(--sentinel-glass-bg);
-  border: 1px solid var(--sentinel-glass-border);
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.7);
   border-radius: var(--sentinel-radius-lg);
   padding: 16px;
   display: flex;
@@ -217,10 +219,11 @@
   backdrop-filter: blur(var(--sentinel-blur-md));
   -webkit-backdrop-filter: blur(var(--sentinel-blur-md));
 
-  /* Neumorphic elevation + inner highlight */
+  /* Light neumorphic elevation + inner highlight */
   box-shadow:
-    var(--sentinel-shadow-card),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    6px 6px 12px rgba(163, 177, 198, 0.3),
+    -6px -6px 12px rgba(255, 255, 255, 0.85),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
 /* Luminous top edge */
@@ -234,9 +237,9 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.08),
-    rgba(255, 255, 255, 0.12),
-    rgba(255, 255, 255, 0.08),
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 0.7),
     transparent
   );
   border-radius: var(--sentinel-radius-lg) var(--sentinel-radius-lg) 0 0;
@@ -266,7 +269,7 @@
 
 .cardTitle svg {
   color: var(--sentinel-accent-primary);
-  filter: drop-shadow(0 0 4px rgba(91, 163, 165, 0.4));
+  filter: drop-shadow(0 0 4px rgba(74, 154, 156, 0.5));
 }
 
 /* Top Sells Card Title */
@@ -307,16 +310,22 @@
   align-items: center;
   gap: 10px;
   padding: 8px 10px;
-  background: var(--sentinel-glass-inset);
+  background: rgba(255, 255, 255, 0.4);
   border: 1px solid transparent;
   border-radius: var(--sentinel-radius-md);
   transition: all 0.15s ease;
   flex-shrink: 0;
+  box-shadow:
+    2px 2px 4px rgba(163, 177, 198, 0.2),
+    -2px -2px 4px rgba(255, 255, 255, 0.7);
 }
 
 .recommendationItem:hover {
-  background: rgba(255, 255, 255, 0.04);
-  border-color: var(--sentinel-glass-border);
+  background: rgba(255, 255, 255, 0.6);
+  border-color: rgba(255, 255, 255, 0.8);
+  box-shadow:
+    4px 4px 8px rgba(163, 177, 198, 0.25),
+    -4px -4px 8px rgba(255, 255, 255, 0.8);
 }
 
 .recRank {
@@ -324,7 +333,7 @@
   font-size: 13px;
   font-weight: 600;
   color: var(--sentinel-accent-primary);
-  text-shadow: 0 0 8px rgba(91, 163, 165, 0.5);
+  text-shadow: 0 0 8px rgba(74, 154, 156, 0.5);
   letter-spacing: var(--sentinel-tracking-led);
 }
 
@@ -392,19 +401,23 @@
   text-shadow: 0 0 6px rgba(248, 113, 113, 0.5);
 }
 
-/* Score badge - Glass pill */
+/* Score badge - Light Glass pill */
 .recScore {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 6px 10px;
-  background: rgba(91, 163, 165, 0.12);
-  border: 1px solid rgba(91, 163, 165, 0.2);
+  background: rgba(74, 154, 156, 0.12);
+  border: 1px solid rgba(74, 154, 156, 0.25);
   border-radius: var(--sentinel-radius-sm);
   min-width: 44px;
 
   backdrop-filter: blur(var(--sentinel-blur-xs));
   -webkit-backdrop-filter: blur(var(--sentinel-blur-xs));
+
+  box-shadow:
+    2px 2px 4px rgba(163, 177, 198, 0.15),
+    -2px -2px 4px rgba(255, 255, 255, 0.6);
 }
 
 .scoreValue {
@@ -414,7 +427,7 @@
   color: var(--sentinel-accent-primary);
   line-height: 1;
   letter-spacing: 0.05em;
-  text-shadow: 0 0 10px rgba(91, 163, 165, 0.5);
+  text-shadow: 0 0 10px rgba(74, 154, 156, 0.5);
 }
 
 .scoreLabel {
@@ -439,7 +452,7 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   MOBILE LAYOUT - Glass-Neumorphic
+   MOBILE LAYOUT - Light Glass-Neumorphic
    ───────────────────────────────────────────────────────────────────────────── */
 
 .mobileContainer {
@@ -451,10 +464,10 @@
   overflow: hidden;
 }
 
-/* Portfolio Value Card - Glass elevated */
+/* Portfolio Value Card - Light Glass elevated */
 .mobileValueCard {
-  background: var(--sentinel-glass-bg);
-  border: 1px solid var(--sentinel-glass-border);
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.8);
   border-radius: var(--sentinel-radius-lg);
   padding: 18px 16px;
   display: flex;
@@ -468,8 +481,9 @@
   -webkit-backdrop-filter: blur(var(--sentinel-blur-md));
 
   box-shadow:
-    var(--sentinel-shadow-card),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    6px 6px 12px rgba(163, 177, 198, 0.35),
+    -6px -6px 12px rgba(255, 255, 255, 0.9),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
 .mobileValueCard::before {
@@ -482,9 +496,9 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.1),
-    rgba(255, 255, 255, 0.15),
-    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0.8),
     transparent
   );
   pointer-events: none;
@@ -498,7 +512,7 @@
 
 .mobileValueIcon {
   color: var(--sentinel-accent-primary);
-  filter: drop-shadow(0 0 4px rgba(91, 163, 165, 0.4));
+  filter: drop-shadow(0 0 4px rgba(74, 154, 156, 0.5));
 }
 
 .mobileValueLabel {
@@ -524,8 +538,8 @@
   letter-spacing: 0.02em;
   line-height: 1;
   text-shadow:
-    0 0 16px rgba(91, 163, 165, 0.5),
-    0 0 32px rgba(91, 163, 165, 0.25);
+    0 0 16px rgba(74, 154, 156, 0.5),
+    0 0 32px rgba(74, 154, 156, 0.25);
 }
 
 .mobileValueChange {
@@ -550,10 +564,10 @@
     0 0 20px rgba(248, 113, 113, 0.3);
 }
 
-/* Chart Card - Glass */
+/* Chart Card - Light Glass */
 .mobileChartCard {
-  background: var(--sentinel-glass-bg);
-  border: 1px solid var(--sentinel-glass-border);
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.7);
   border-radius: var(--sentinel-radius-lg);
   padding: 10px 12px;
   display: flex;
@@ -566,8 +580,9 @@
   -webkit-backdrop-filter: blur(var(--sentinel-blur-md));
 
   box-shadow:
-    var(--sentinel-shadow-card),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    6px 6px 12px rgba(163, 177, 198, 0.3),
+    -6px -6px 12px rgba(255, 255, 255, 0.85),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
 .mobileChartWrapper {
@@ -605,10 +620,10 @@
   flex-shrink: 0;
 }
 
-/* Top Picks Card - Glass */
+/* Top Picks Card - Light Glass */
 .mobilePicksCard {
-  background: var(--sentinel-glass-bg);
-  border: 1px solid var(--sentinel-glass-border);
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.7);
   border-radius: var(--sentinel-radius-lg);
   padding: 10px 12px;
   display: flex;
@@ -621,8 +636,9 @@
   -webkit-backdrop-filter: blur(var(--sentinel-blur-md));
 
   box-shadow:
-    var(--sentinel-shadow-card),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    6px 6px 12px rgba(163, 177, 198, 0.3),
+    -6px -6px 12px rgba(255, 255, 255, 0.85),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
 .mobilePicksHeader {
@@ -635,7 +651,7 @@
 
 .mobilePicksIcon {
   color: var(--sentinel-accent-primary);
-  filter: drop-shadow(0 0 4px rgba(91, 163, 165, 0.4));
+  filter: drop-shadow(0 0 4px rgba(74, 154, 156, 0.5));
 }
 
 .mobilePicksTitle {
@@ -674,13 +690,16 @@
   align-items: center;
   gap: 6px;
   padding: 6px 8px;
-  background: var(--sentinel-glass-inset);
+  background: rgba(255, 255, 255, 0.4);
   border-radius: var(--sentinel-radius-sm);
   transition: background 0.15s ease;
+  box-shadow:
+    2px 2px 4px rgba(163, 177, 198, 0.2),
+    -2px -2px 4px rgba(255, 255, 255, 0.7);
 }
 
 .mobilePickItem:active {
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.6);
 }
 
 .mobilePickRank {
@@ -688,7 +707,7 @@
   font-size: 11px;
   font-weight: 600;
   color: var(--sentinel-accent-primary);
-  text-shadow: 0 0 6px rgba(91, 163, 165, 0.5);
+  text-shadow: 0 0 6px rgba(74, 154, 156, 0.5);
   letter-spacing: var(--sentinel-tracking-led);
 }
 
@@ -745,14 +764,14 @@
   filter: drop-shadow(0 0 4px rgba(248, 113, 113, 0.4));
 }
 
-/* News Card - Glass interactive */
+/* News Card - Light Glass interactive */
 .mobileNewsCard {
   display: flex;
   align-items: center;
   gap: 12px;
   padding: 12px 14px;
-  background: var(--sentinel-glass-bg);
-  border: 1px solid var(--sentinel-glass-border);
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.7);
   border-radius: var(--sentinel-radius-lg);
   cursor: pointer;
   transition: all 0.15s ease;
@@ -763,20 +782,25 @@
   -webkit-backdrop-filter: blur(var(--sentinel-blur-md));
 
   box-shadow:
-    var(--sentinel-shadow-card),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    6px 6px 12px rgba(163, 177, 198, 0.3),
+    -6px -6px 12px rgba(255, 255, 255, 0.85),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
 .mobileNewsCard:active {
-  background: var(--sentinel-glass-bg-active);
-  border-color: var(--sentinel-glass-border-hover);
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(255, 255, 255, 0.9);
   transform: scale(0.99);
+  box-shadow:
+    2px 2px 4px rgba(163, 177, 198, 0.2),
+    -2px -2px 4px rgba(255, 255, 255, 0.7),
+    inset 2px 2px 4px rgba(163, 177, 198, 0.1);
 }
 
 .mobileNewsIcon {
   color: var(--sentinel-accent-primary);
   flex-shrink: 0;
-  filter: drop-shadow(0 0 4px rgba(91, 163, 165, 0.4));
+  filter: drop-shadow(0 0 4px rgba(74, 154, 156, 0.5));
 }
 
 .mobileNewsContent {

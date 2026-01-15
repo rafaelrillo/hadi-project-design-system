@@ -2,96 +2,96 @@
 import * as echarts from 'echarts';
 
 // ═══════════════════════════════════════════════════════════════════════════════
-// SENTINEL ECHARTS THEME
-// "Observatorio Nocturno" - Dark, desaturated, professional
+// SENTINEL ECHARTS THEME v4.0
+// Light Neumorphism - Clean, professional, minimal
 // ═══════════════════════════════════════════════════════════════════════════════
 
 // ─────────────────────────────────────────────────────────────────────────────
-// COLOR TOKENS (matching theme.css and theme.ts)
+// COLOR TOKENS (matching theme.css light theme)
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const sentinelColors = {
-  // Backgrounds
-  bgVoid: '#05060a',
-  bgBase: '#0a0b10',
-  bgElevated: '#10121a',
-  bgOverlay: '#161822',
-  bgSubtle: '#1c1e2a',
-  bgInteractive: '#22253a',
+  // Backgrounds (Light Theme)
+  bgVoid: '#E5E5E5',
+  bgBase: '#E0E5EC',
+  bgElevated: '#FFFFFF',
+  bgOverlay: 'rgba(255, 255, 255, 0.95)',
+  bgSubtle: '#F0F4F8',
+  bgInteractive: 'rgba(255, 255, 255, 0.6)',
 
-  // Text
-  textPrimary: '#e8eaed',
-  textSecondary: '#9aa0a6',
-  textTertiary: '#5f6368',
-  textDisabled: '#3c4043',
+  // Text (Dark on Light)
+  textPrimary: '#2D3436',
+  textSecondary: '#5F6C7A',
+  textTertiary: '#8B9CAD',
+  textDisabled: '#B8C5D1',
 
-  // Borders
-  borderSubtle: 'rgba(255, 255, 255, 0.06)',
-  borderDefault: 'rgba(255, 255, 255, 0.1)',
-  borderStrong: 'rgba(255, 255, 255, 0.16)',
+  // Borders (Gray-based for light theme)
+  borderSubtle: 'rgba(163, 177, 198, 0.2)',
+  borderDefault: 'rgba(163, 177, 198, 0.35)',
+  borderStrong: 'rgba(163, 177, 198, 0.5)',
 
-  // Accent (Institutional Teal)
-  accentPrimary: '#5ba3a5',
-  accentSecondary: '#4a8a8c',
-  accentSubtle: 'rgba(91, 163, 165, 0.15)',
-  accentGlow: 'rgba(91, 163, 165, 0.3)',
+  // Accent (Institutional Teal - darker for contrast)
+  accentPrimary: '#4A9A9C',
+  accentSecondary: '#3D8587',
+  accentSubtle: 'rgba(74, 154, 156, 0.12)',
+  accentGlow: 'rgba(74, 154, 156, 0.25)',
 
-  // Status
-  positive: '#4a9a7c',
-  positiveSubtle: 'rgba(74, 154, 124, 0.15)',
-  negative: '#b85c5c',
-  negativeSubtle: 'rgba(184, 92, 92, 0.15)',
-  warning: '#c4a35a',
-  warningSubtle: 'rgba(196, 163, 90, 0.15)',
-  info: '#5a8fb8',
-  infoSubtle: 'rgba(90, 143, 184, 0.15)',
+  // Status (More saturated for light backgrounds)
+  positive: '#22C55E',
+  positiveSubtle: 'rgba(34, 197, 94, 0.15)',
+  negative: '#EF4444',
+  negativeSubtle: 'rgba(239, 68, 68, 0.15)',
+  warning: '#F59E0B',
+  warningSubtle: 'rgba(245, 158, 11, 0.15)',
+  info: '#3B82F6',
+  infoSubtle: 'rgba(59, 130, 246, 0.15)',
 
   // Risk levels
-  riskLow: '#4a9a7c',
-  riskModerate: '#5ba3a5',
-  riskElevated: '#c4a35a',
-  riskHigh: '#c47a5a',
-  riskSevere: '#b85c5c',
+  riskLow: '#22C55E',
+  riskModerate: '#4A9A9C',
+  riskElevated: '#F59E0B',
+  riskHigh: '#F97316',
+  riskSevere: '#EF4444',
 
   // Market states
-  marketBull: '#4a9a7c',
-  marketBear: '#b85c5c',
-  marketNeutral: '#5ba3a5',
-  marketUncertain: '#6b7280',
+  marketBull: '#22C55E',
+  marketBear: '#EF4444',
+  marketNeutral: '#4A9A9C',
+  marketUncertain: '#6B7280',
 };
 
-// 8-color harmonious palette for chart series
+// 8-color harmonious palette for chart series (adjusted for light bg)
 export const chartPalette = [
-  '#5ba3a5', // Teal accent (primary)
-  '#7ecbcc', // Light teal
-  '#4a9a7c', // Green-teal
-  '#5a8fb8', // Blue
-  '#8b7ec7', // Soft purple
-  '#c4a35a', // Amber
-  '#c47a5a', // Terracotta
-  '#b85c5c', // Coral
+  '#4A9A9C', // Teal accent (primary)
+  '#3D8587', // Dark teal
+  '#2E7D32', // Green
+  '#1976D2', // Blue
+  '#7B1FA2', // Purple
+  '#F57C00', // Orange
+  '#C2185B', // Pink
+  '#455A64', // Blue-gray
 ];
 
 // Sequential colors (light to dark teal)
 export const sequentialColors = [
-  '#a8d5d7',
-  '#8bc4c6',
-  '#6eb3b5',
-  '#5ba3a5',
-  '#4a8a8c',
-  '#3a7072',
-  '#2a5658',
+  '#B2DFDB',
+  '#80CBC4',
+  '#4DB6AC',
+  '#26A69A',
+  '#009688',
+  '#00897B',
+  '#00796B',
 ];
 
 // Diverging colors (negative to positive)
 export const divergingColors = [
-  '#b85c5c', // Negative
-  '#c47a5a',
-  '#c4a35a',
-  '#9aa0a6', // Neutral
-  '#5ba3a5',
-  '#4a9a7c',
-  '#3a8a6c', // Positive
+  '#EF4444', // Negative
+  '#F97316',
+  '#F59E0B',
+  '#9E9E9E', // Neutral
+  '#4A9A9C',
+  '#22C55E',
+  '#16A34A', // Positive
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -158,14 +158,14 @@ export const sentinelEChartsTheme: Record<string, unknown> = {
     backgroundColor: sentinelColors.bgOverlay,
     borderColor: sentinelColors.borderDefault,
     borderWidth: 1,
-    borderRadius: 6,
+    borderRadius: 12,
     padding: [12, 16],
     textStyle: {
       color: sentinelColors.textPrimary,
       fontFamily: "'Inter', sans-serif",
       fontSize: 12,
     },
-    extraCssText: 'box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);',
+    extraCssText: 'box-shadow: -8px -8px 16px rgba(255, 255, 255, 0.7), 8px 8px 16px rgba(163, 177, 198, 0.4);',
   },
 
   // Axis pointer (crosshair)
@@ -297,13 +297,13 @@ export const sentinelEChartsTheme: Record<string, unknown> = {
   bar: {
     barMaxWidth: 40,
     itemStyle: {
-      borderRadius: [2, 2, 0, 0],
+      borderRadius: [4, 4, 0, 0],
     },
     emphasis: {
       itemStyle: {
         shadowBlur: 10,
         shadowOffsetX: 0,
-        shadowColor: 'rgba(0, 0, 0, 0.3)',
+        shadowColor: 'rgba(163, 177, 198, 0.4)',
       },
     },
   },
@@ -311,7 +311,7 @@ export const sentinelEChartsTheme: Record<string, unknown> = {
   // Pie series
   pie: {
     itemStyle: {
-      borderColor: sentinelColors.bgBase,
+      borderColor: sentinelColors.bgElevated,
       borderWidth: 2,
     },
     label: {
@@ -328,7 +328,7 @@ export const sentinelEChartsTheme: Record<string, unknown> = {
       itemStyle: {
         shadowBlur: 20,
         shadowOffsetX: 0,
-        shadowColor: 'rgba(0, 0, 0, 0.4)',
+        shadowColor: 'rgba(163, 177, 198, 0.4)',
       },
     },
   },
@@ -471,13 +471,13 @@ export const sentinelEChartsTheme: Record<string, unknown> = {
     symbol: 'circle',
     symbolSize: 8,
     itemStyle: {
-      borderColor: sentinelColors.bgBase,
+      borderColor: sentinelColors.bgElevated,
       borderWidth: 1,
     },
     emphasis: {
       itemStyle: {
         shadowBlur: 10,
-        shadowColor: 'rgba(0, 0, 0, 0.3)',
+        shadowColor: 'rgba(163, 177, 198, 0.4)',
       },
     },
   },

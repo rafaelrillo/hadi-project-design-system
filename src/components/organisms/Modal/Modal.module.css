@@ -2,14 +2,14 @@
 /* ═══════════════════════════════════════════════════════════════════════════════
    SENTINEL DESIGN SYSTEM v3.2 - Modal Component
 
-   GLASS-NEUMORPHISM - Frosted glass overlays with depth
-   - Heavy backdrop blur for glass effect
-   - Neumorphic elevation on modal
-   - Luminous borders and edges
+   LIGHT NEUMORPHISM - Soft shadows on light surfaces
+   - Light frosted glass overlay
+   - Neumorphic shadows with light/dark contrast
+   - Soft inner highlights
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   OVERLAY - Frosted backdrop
+   OVERLAY - Light frosted backdrop
    ───────────────────────────────────────────────────────────────────────────── */
 
 .overlay {
@@ -24,7 +24,7 @@
 }
 
 .overlayCenter {
-  background-color: rgba(5, 6, 10, 0.75);
+  background-color: rgba(224, 229, 236, 0.85);
   align-items: center;
   justify-content: center;
   animation: sentinel-fade-in 200ms ease-out;
@@ -35,7 +35,7 @@
 }
 
 .overlayDrawer {
-  background-color: rgba(5, 6, 10, 0.6);
+  background-color: rgba(224, 229, 236, 0.7);
   align-items: flex-start;
   justify-content: flex-end;
 
@@ -44,12 +44,12 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   MODAL CONTAINER - Glass-Neumorphic Elevated
+   MODAL CONTAINER - Light Neumorphic Elevated
    ───────────────────────────────────────────────────────────────────────────── */
 
 .modal {
-  background: var(--sentinel-glass-elevated);
-  border: 1px solid var(--sentinel-glass-border);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.8);
   display: flex;
   flex-direction: column;
   position: relative;
@@ -59,11 +59,12 @@
   backdrop-filter: blur(var(--sentinel-blur-xl));
   -webkit-backdrop-filter: blur(var(--sentinel-blur-xl));
 
-  /* Neumorphic elevation + glow */
+  /* Light neumorphic elevation */
   box-shadow:
-    var(--sentinel-neu-elevated-lg),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 0 60px rgba(0, 0, 0, 0.5);
+    12px 12px 24px rgba(163, 177, 198, 0.5),
+    -12px -12px 24px rgba(255, 255, 255, 0.9),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 0 60px rgba(163, 177, 198, 0.2);
 }
 
 /* Luminous top edge */
@@ -77,9 +78,9 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.15),
-    rgba(255, 255, 255, 0.3),
-    rgba(255, 255, 255, 0.15),
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0.7),
     transparent
   );
   pointer-events: none;
@@ -99,7 +100,7 @@
   max-width: 800px;
   height: 100vh;
   animation: sentinel-slide-in-right 400ms var(--sentinel-ease-out);
-  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 1px solid rgba(163, 177, 198, 0.3);
   border-radius: 0;
 }
 
@@ -117,7 +118,7 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   HEADER - Glass surface
+   HEADER - Light glass surface
    ───────────────────────────────────────────────────────────────────────────── */
 
 .header {
@@ -125,8 +126,8 @@
   justify-content: space-between;
   align-items: center;
   padding: var(--sentinel-space-4) var(--sentinel-space-5);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid rgba(163, 177, 198, 0.2);
+  background: rgba(255, 255, 255, 0.5);
   flex-shrink: 0;
 }
 
@@ -140,7 +141,7 @@
 }
 
 .closeButton {
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.6);
   border: 1px solid transparent;
   cursor: pointer;
   padding: var(--sentinel-space-1);
@@ -152,17 +153,29 @@
   border-radius: var(--sentinel-radius-sm);
   width: 32px;
   height: 32px;
+
+  /* Subtle neumorphic shadow */
+  box-shadow:
+    3px 3px 6px rgba(163, 177, 198, 0.3),
+    -3px -3px 6px rgba(255, 255, 255, 0.8);
 }
 
 .closeButton:hover {
   color: var(--sentinel-text-primary);
-  background: rgba(255, 255, 255, 0.08);
-  border-color: var(--sentinel-glass-border);
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(163, 177, 198, 0.2);
+
+  box-shadow:
+    4px 4px 8px rgba(163, 177, 198, 0.4),
+    -4px -4px 8px rgba(255, 255, 255, 0.9);
 }
 
 .closeButton:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px rgba(91, 163, 165, 0.3);
+  box-shadow:
+    0 0 0 2px rgba(91, 163, 165, 0.3),
+    3px 3px 6px rgba(163, 177, 198, 0.3),
+    -3px -3px 6px rgba(255, 255, 255, 0.8);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -179,7 +192,7 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   FOOTER - Glass surface
+   FOOTER - Light glass surface
    ───────────────────────────────────────────────────────────────────────────── */
 
 .footer {
@@ -188,8 +201,8 @@
   gap: var(--sentinel-space-3);
   justify-content: flex-end;
   flex-shrink: 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  background: rgba(255, 255, 255, 0.02);
+  border-top: 1px solid rgba(163, 177, 198, 0.2);
+  background: rgba(255, 255, 255, 0.5);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────

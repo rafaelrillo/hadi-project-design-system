@@ -1,11 +1,11 @@
 /* Path: src/layouts/DashboardLayout/DashboardLayout.module.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   SENTINEL DESIGN SYSTEM v3.2 - Dashboard Layout
+   SENTINEL DESIGN SYSTEM v4.0 - Dashboard Layout
 
-   GLASS-NEUMORPHISM - Frosted glass layout system
-   - Sidebar: Heavy glass with neumorphic depth
-   - Header: Glass bar with subtle blur
-   - Content: Glass panels floating over atmospheric background
+   LIGHT NEUMORPHISM - Clean, minimal layout system
+   - Sidebar: Dark glass for contrast (maintained from dark theme)
+   - Header: Light glass bar with neumorphic shadows
+   - Content: Light panels with soft shadows
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 .layout {
@@ -18,7 +18,7 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   SIDEBAR - Glass-Neumorphic Heavy
+   SIDEBAR - Dark Glass (maintained for contrast in light theme)
    ───────────────────────────────────────────────────────────────────────────── */
 
 .sidebar {
@@ -31,23 +31,19 @@
   flex-direction: column;
   z-index: 100;
 
-  /* Heavy glass effect */
-  background: linear-gradient(
-    180deg,
-    rgba(12, 12, 18, 0.85) 0%,
-    rgba(8, 8, 14, 0.9) 100%
-  );
+  /* Dark glass for contrast against light background */
+  background: var(--sentinel-sidebar-bg);
 
   /* Strong blur for frosted effect */
   backdrop-filter: blur(var(--sentinel-blur-xl));
   -webkit-backdrop-filter: blur(var(--sentinel-blur-xl));
 
-  /* Luminous right border */
-  border-right: 1px solid var(--sentinel-glass-border);
+  /* Subtle right border */
+  border-right: 1px solid var(--sentinel-sidebar-border);
 
-  /* Neumorphic elevation + inner highlight */
+  /* Shadow to separate from light content */
   box-shadow:
-    4px 0 20px rgba(0, 0, 0, 0.4),
+    4px 0 24px rgba(0, 0, 0, 0.15),
     inset -1px 0 0 rgba(255, 255, 255, 0.04),
     inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
@@ -110,7 +106,7 @@
   gap: 8px;
 }
 
-/* Nav item - Glass button */
+/* Nav item - Dark sidebar button */
 .navItem {
   display: flex;
   align-items: center;
@@ -118,7 +114,7 @@
   width: 44px;
   height: 44px;
   border-radius: var(--sentinel-radius-md);
-  color: var(--sentinel-text-tertiary);
+  color: var(--sentinel-sidebar-text-muted);
   background: transparent;
   border: none;
   cursor: pointer;
@@ -128,19 +124,19 @@
 }
 
 .navItem:hover {
-  color: var(--sentinel-text-primary);
-  background: rgba(255, 255, 255, 0.06);
+  color: var(--sentinel-sidebar-text);
+  background: var(--sentinel-sidebar-bg-hover);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
-/* Active nav item - Glass elevated with glow */
+/* Active nav item - Accent glow on dark sidebar */
 .navItem.active {
   color: var(--sentinel-accent-primary);
-  background: rgba(91, 163, 165, 0.15);
+  background: var(--sentinel-sidebar-active-bg);
 
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.1),
-    0 0 20px rgba(91, 163, 165, 0.2);
+    0 0 20px rgba(74, 154, 156, 0.25);
 }
 
 /* Active indicator line */
@@ -154,7 +150,7 @@
   height: 24px;
   background: var(--sentinel-accent-primary);
   border-radius: 0 2px 2px 0;
-  box-shadow: 0 0 12px rgba(91, 163, 165, 0.6);
+  box-shadow: 0 0 12px rgba(74, 154, 156, 0.5);
 }
 
 .sidebarFooter {
@@ -180,7 +176,7 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   HEADER - Glass bar
+   HEADER - Light Neumorphic bar
    ───────────────────────────────────────────────────────────────────────────── */
 
 .header {
@@ -192,21 +188,21 @@
   flex-shrink: 0;
   position: relative;
 
-  /* Glass effect */
-  background: rgba(10, 10, 16, 0.7);
+  /* Light glass effect */
+  background: var(--sentinel-glass-bg);
   backdrop-filter: blur(var(--sentinel-blur-lg));
   -webkit-backdrop-filter: blur(var(--sentinel-blur-lg));
 
-  /* Bottom border luminous */
-  border-bottom: 1px solid var(--sentinel-glass-border);
+  /* Subtle bottom border */
+  border-bottom: 1px solid var(--sentinel-border-subtle);
 
-  /* Subtle shadow */
+  /* Light neumorphic shadow */
   box-shadow:
-    0 4px 20px rgba(0, 0, 0, 0.2),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.04);
+    0 4px 12px rgba(163, 177, 198, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
-/* Header top edge glow */
+/* Header top edge highlight */
 .header::before {
   content: '';
   position: absolute;
@@ -217,9 +213,9 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.08),
-    rgba(255, 255, 255, 0.12),
-    rgba(255, 255, 255, 0.08),
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 0.7),
     transparent
   );
 }
@@ -232,7 +228,7 @@
 
 .headerIcon {
   color: var(--sentinel-accent-primary);
-  filter: drop-shadow(0 0 6px rgba(91, 163, 165, 0.4));
+  filter: drop-shadow(0 0 4px rgba(74, 154, 156, 0.25));
 }
 
 .title {
@@ -282,13 +278,13 @@
 
 .liveDot.live {
   background: var(--sentinel-status-positive);
-  box-shadow: 0 0 8px rgba(74, 222, 128, 0.6);
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.5);
   animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 1; box-shadow: 0 0 8px rgba(74, 222, 128, 0.6); }
-  50% { opacity: 0.6; box-shadow: 0 0 12px rgba(74, 222, 128, 0.8); }
+  0%, 100% { opacity: 1; box-shadow: 0 0 8px rgba(34, 197, 94, 0.5); }
+  50% { opacity: 0.6; box-shadow: 0 0 12px rgba(34, 197, 94, 0.7); }
 }
 
 .liveText {
@@ -316,9 +312,9 @@
 }
 
 .dataSource.realApi {
-  color: var(--sentinel-status-positive);
-  background: rgba(74, 222, 128, 0.1);
-  border-color: rgba(74, 222, 128, 0.25);
+  color: var(--sentinel-status-positive-text);
+  background: var(--sentinel-status-positive-subtle);
+  border-color: var(--sentinel-status-positive-border);
 }
 
 .lastUpdate {

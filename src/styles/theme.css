@@ -1,61 +1,60 @@
 /* src/styles/theme.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   SENTINEL DESIGN SYSTEM - Theme Tokens v3.2.0
+   SENTINEL DESIGN SYSTEM - Theme Tokens v4.0.0
 
    Sistema de análisis y recomendación de inversiones
-   Estética: GLASS-NEUMORPHISM / Premium Financial
+   Estética: LIGHT NEUMORPHISM + GLASSMORPHISM / Premium Financial
 
    Filosofía de Diseño:
-   - GLASS-NEUMORPHISM: Cristal esmerilado con profundidad táctil
-   - Transparencia con blur: Elementos que dejan ver capas inferiores
-   - Profundidad dual: Sombras neumórficas + efecto de cristal
-   - Bordes luminosos: Reflejos sutiles que simulan luz en vidrio
-   - Elegancia etérea: Premium, moderno, sofisticado
+   - LIGHT NEUMORPHISM: Superficies suaves con profundidad táctil
+   - Sombras duales: Luz arriba-izquierda, oscuridad abajo-derecha
+   - Glassmorphism: Transparencia con blur para capas
+   - Elegancia minimalista: Limpio, premium, profesional
 
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 :root {
   /* ─────────────────────────────────────────────────────────────────────────────
-     SUPERFICIES Y FONDOS - Sistema Glass-Neumorphic
-     Combinación de transparencias con blur y sombras neumórficas
+     SUPERFICIES Y FONDOS - Sistema Light Neumorphic
+     Fondos claros con sombras suaves para profundidad
      ───────────────────────────────────────────────────────────────────────────── */
 
-  /* Base del sistema - Fondo sólido oscuro para contraste */
-  --sentinel-bg-void: #08080c;
-  --sentinel-bg-base: #0e0e14;           /* Base principal - casi negro */
-  --sentinel-bg-surface: #12121a;        /* Superficie base para elementos */
-  --sentinel-bg-raised: #16161e;         /* Elementos ligeramente elevados */
+  /* Base del sistema - Fondo gris cálido (no blanco puro) */
+  --sentinel-bg-void: #E5E5E5;
+  --sentinel-bg-base: #E0E5EC;           /* Base principal - gris neumórfico clásico */
+  --sentinel-bg-surface: #E8ECEF;        /* Superficie base para elementos */
+  --sentinel-bg-raised: #F0F4F8;         /* Elementos ligeramente elevados */
 
-  /* ═══ GLASS BACKGROUNDS - Transparentes con blur ═══ */
+  /* ═══ GLASS BACKGROUNDS - Muy transparentes para efecto frosted ═══ */
 
   /* Glass primario - para cards y contenedores */
-  --sentinel-glass-bg: rgba(20, 20, 28, 0.6);
-  --sentinel-glass-bg-hover: rgba(25, 25, 35, 0.7);
-  --sentinel-glass-bg-active: rgba(30, 30, 40, 0.75);
+  --sentinel-glass-bg: rgba(255, 255, 255, 0.35);
+  --sentinel-glass-bg-hover: rgba(255, 255, 255, 0.5);
+  --sentinel-glass-bg-active: rgba(255, 255, 255, 0.6);
 
   /* Glass elevado - para elementos flotantes */
-  --sentinel-glass-elevated: rgba(25, 25, 35, 0.7);
-  --sentinel-glass-elevated-hover: rgba(30, 30, 42, 0.8);
+  --sentinel-glass-elevated: rgba(255, 255, 255, 0.45);
+  --sentinel-glass-elevated-hover: rgba(255, 255, 255, 0.6);
 
   /* Glass hundido - para inputs y áreas recesadas */
-  --sentinel-glass-inset: rgba(8, 8, 12, 0.8);
-  --sentinel-glass-inset-focus: rgba(10, 10, 16, 0.85);
+  --sentinel-glass-inset: rgba(210, 218, 225, 0.5);
+  --sentinel-glass-inset-focus: rgba(220, 228, 235, 0.6);
 
   /* Glass con tinte de acento */
-  --sentinel-glass-accent: rgba(91, 163, 165, 0.08);
-  --sentinel-glass-accent-strong: rgba(91, 163, 165, 0.15);
+  --sentinel-glass-accent: rgba(74, 154, 156, 0.08);
+  --sentinel-glass-accent-strong: rgba(74, 154, 156, 0.15);
 
-  /* ═══ COLORES PARA SOMBRAS NEUMÓRFICAS ═══ */
-  --sentinel-neu-light: rgba(255, 255, 255, 0.08);
-  --sentinel-neu-dark: rgba(0, 0, 0, 0.6);
-  --sentinel-neu-light-strong: rgba(255, 255, 255, 0.15);
-  --sentinel-neu-dark-strong: rgba(0, 0, 0, 0.8);
+  /* ═══ COLORES PARA SOMBRAS NEUMÓRFICAS (LIGHT THEME) ═══ */
+  --sentinel-neu-light: rgba(255, 255, 255, 0.7);
+  --sentinel-neu-dark: rgba(163, 177, 198, 0.6);
+  --sentinel-neu-light-strong: rgba(255, 255, 255, 0.9);
+  --sentinel-neu-dark-strong: rgba(163, 177, 198, 0.8);
 
-  /* ═══ BORDES GLASS - Reflejos de luz en cristal ═══ */
-  --sentinel-glass-border: rgba(255, 255, 255, 0.08);
-  --sentinel-glass-border-hover: rgba(255, 255, 255, 0.12);
-  --sentinel-glass-border-focus: rgba(91, 163, 165, 0.4);
-  --sentinel-glass-border-glow: rgba(91, 163, 165, 0.3);
+  /* ═══ BORDES GLASS - Sutiles en light theme ═══ */
+  --sentinel-glass-border: rgba(255, 255, 255, 0.8);
+  --sentinel-glass-border-hover: rgba(255, 255, 255, 0.9);
+  --sentinel-glass-border-focus: rgba(74, 154, 156, 0.5);
+  --sentinel-glass-border-glow: rgba(74, 154, 156, 0.3);
 
   /* ═══ BACKDROP BLUR VALUES ═══ */
   --sentinel-blur-xs: 4px;
@@ -68,104 +67,104 @@
   --sentinel-bg-card: var(--sentinel-glass-bg);
   --sentinel-bg-card-hover: var(--sentinel-glass-bg-hover);
   --sentinel-bg-card-pressed: var(--sentinel-glass-inset);
-  --sentinel-bg-card-solid: #1a1a24;
+  --sentinel-bg-card-solid: #FFFFFF;
 
   --sentinel-bg-elevated: var(--sentinel-glass-elevated);
-  --sentinel-bg-elevated-solid: #1e1e28;
+  --sentinel-bg-elevated-solid: #FFFFFF;
 
-  --sentinel-bg-overlay: rgba(8, 8, 12, 0.9);
+  --sentinel-bg-overlay: rgba(224, 229, 236, 0.95);
   --sentinel-bg-modal: var(--sentinel-glass-elevated);
 
   --sentinel-bg-input: var(--sentinel-glass-inset);
-  --sentinel-bg-subtle: rgba(255, 255, 255, 0.03);
-  --sentinel-bg-subtle-hover: rgba(255, 255, 255, 0.06);
+  --sentinel-bg-subtle: rgba(163, 177, 198, 0.08);
+  --sentinel-bg-subtle-hover: rgba(163, 177, 198, 0.12);
   --sentinel-bg-interactive: var(--sentinel-glass-bg);
   --sentinel-bg-interactive-hover: var(--sentinel-glass-bg-hover);
 
-  --sentinel-bg-glass: rgba(22, 22, 30, 0.85);
-  --sentinel-bg-scrim: rgba(8, 8, 12, 0.85);
+  --sentinel-bg-glass: rgba(255, 255, 255, 0.7);
+  --sentinel-bg-scrim: rgba(224, 229, 236, 0.85);
 
   /* Gradientes atmosféricos de fondo */
-  --sentinel-ambient-top: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(91, 163, 165, 0.06), transparent);
-  --sentinel-ambient-bottom: radial-gradient(ellipse 60% 40% at 100% 100%, rgba(91, 163, 165, 0.03), transparent);
+  --sentinel-ambient-top: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(74, 154, 156, 0.08), transparent);
+  --sentinel-ambient-bottom: radial-gradient(ellipse 60% 40% at 100% 100%, rgba(74, 154, 156, 0.05), transparent);
 
   /* ─────────────────────────────────────────────────────────────────────────────
-     TEXTO - Jerarquía tipográfica
-     Usar rgba para blancos - nunca blanco puro
+     TEXTO - Jerarquía tipográfica (Light Theme)
+     Usar grises oscuros - nunca negro puro
      ───────────────────────────────────────────────────────────────────────────── */
 
-  --sentinel-text-primary: #ffffff;                  /* Texto principal */
-  --sentinel-text-secondary: rgba(255, 255, 255, 0.7);   /* Texto secundario, labels */
-  --sentinel-text-tertiary: rgba(255, 255, 255, 0.5);    /* Texto terciario, hints */
-  --sentinel-text-muted: rgba(255, 255, 255, 0.4);       /* Texto muy sutil */
-  --sentinel-text-disabled: rgba(255, 255, 255, 0.25);   /* Texto deshabilitado */
-  --sentinel-text-inverse: #0a0a0c;                  /* Texto sobre fondos de acento */
-  --sentinel-text-link: #6db4b6;                     /* Links - acento pero legible */
+  --sentinel-text-primary: #2D3436;                       /* Texto principal - gris oscuro */
+  --sentinel-text-secondary: rgba(45, 52, 54, 0.75);      /* Texto secundario, labels */
+  --sentinel-text-tertiary: rgba(45, 52, 54, 0.55);       /* Texto terciario, hints */
+  --sentinel-text-muted: rgba(45, 52, 54, 0.4);           /* Texto muy sutil */
+  --sentinel-text-disabled: rgba(45, 52, 54, 0.3);        /* Texto deshabilitado */
+  --sentinel-text-inverse: #FFFFFF;                       /* Texto sobre fondos oscuros/acento */
+  --sentinel-text-link: #3D8587;                          /* Links - acento más oscuro para contraste */
 
   /* ─────────────────────────────────────────────────────────────────────────────
-     BORDES Y LÍNEAS
-     Casi invisibles hasta el hover - siempre con transparencia
+     BORDES Y LÍNEAS (Light Theme)
+     Sutiles con grises - transparencia controlada
      ───────────────────────────────────────────────────────────────────────────── */
 
-  --sentinel-border-subtle: rgba(255, 255, 255, 0.04);   /* Bordes casi invisibles */
-  --sentinel-border-default: rgba(255, 255, 255, 0.08); /* Bordes estándar */
-  --sentinel-border-strong: rgba(255, 255, 255, 0.15);   /* Bordes con énfasis (hover) */
-  --sentinel-border-focus: #5ba3a5;                       /* Focus rings - acento */
-  --sentinel-border-accent: rgba(91, 163, 165, 0.3);     /* Bordes de acento */
+  --sentinel-border-subtle: rgba(163, 177, 198, 0.2);    /* Bordes casi invisibles */
+  --sentinel-border-default: rgba(163, 177, 198, 0.35); /* Bordes estándar */
+  --sentinel-border-strong: rgba(163, 177, 198, 0.5);    /* Bordes con énfasis (hover) */
+  --sentinel-border-focus: #4A9A9C;                       /* Focus rings - acento */
+  --sentinel-border-accent: rgba(74, 154, 156, 0.4);     /* Bordes de acento */
 
   /* ─────────────────────────────────────────────────────────────────────────────
-     ACENTO - El color distintivo de Sentinel
-     Teal institucional - usar con moderación
+     ACENTO - El color distintivo de Sentinel (Light Theme)
+     Teal institucional - ajustado para contraste en fondo claro
      ───────────────────────────────────────────────────────────────────────────── */
 
-  --sentinel-accent-primary: #5ba3a5;       /* Acento principal - teal institucional */
-  --sentinel-accent-hover: #6db4b6;         /* Acento hover - más claro */
-  --sentinel-accent-secondary: #4a8e90;     /* Acento pressed/secondary */
-  --sentinel-accent-tertiary: #3a7072;      /* Acento terciario */
-  --sentinel-accent-subtle: rgba(91, 163, 165, 0.15);   /* Versión muy sutil */
-  --sentinel-accent-glow: rgba(91, 163, 165, 0.4);      /* Para efectos de glow */
-  --sentinel-accent-muted: rgba(91, 163, 165, 0.6);     /* Versión apagada */
+  --sentinel-accent-primary: #4A9A9C;       /* Acento principal - más oscuro para contraste */
+  --sentinel-accent-hover: #3D8587;         /* Acento hover - aún más oscuro */
+  --sentinel-accent-secondary: #5BA3A5;     /* Acento secundario */
+  --sentinel-accent-tertiary: #6DB4B6;      /* Acento terciario - más claro */
+  --sentinel-accent-subtle: rgba(74, 154, 156, 0.12);   /* Versión muy sutil */
+  --sentinel-accent-glow: rgba(74, 154, 156, 0.25);     /* Para efectos de glow */
+  --sentinel-accent-muted: rgba(74, 154, 156, 0.5);     /* Versión apagada */
 
   /* HSL components for dynamic color manipulation */
-  --sentinel-accent-teal-h: 182;
-  --sentinel-accent-teal-s: 29%;
-  --sentinel-accent-teal-l: 50%;
+  --sentinel-accent-teal-h: 181;
+  --sentinel-accent-teal-s: 35%;
+  --sentinel-accent-teal-l: 45%;
 
   /* ─────────────────────────────────────────────────────────────────────────────
-     ESTADOS SEMÁNTICOS
-     Colores premium que informan con elegancia
+     ESTADOS SEMÁNTICOS (Light Theme)
+     Colores más saturados para contraste en fondo claro
      ───────────────────────────────────────────────────────────────────────────── */
 
-  /* Positivo/Ganancia - Verde elegante */
-  --sentinel-status-positive: #4ade80;
-  --sentinel-status-positive-subtle: rgba(74, 222, 128, 0.15);
-  --sentinel-status-positive-muted: rgba(74, 222, 128, 0.12);
-  --sentinel-status-positive-text: #4ade80;
-  --sentinel-status-positive-border: rgba(74, 222, 128, 0.2);
+  /* Positivo/Ganancia - Verde vibrante */
+  --sentinel-status-positive: #22C55E;
+  --sentinel-status-positive-subtle: rgba(34, 197, 94, 0.15);
+  --sentinel-status-positive-muted: rgba(34, 197, 94, 0.1);
+  --sentinel-status-positive-text: #16A34A;
+  --sentinel-status-positive-border: rgba(34, 197, 94, 0.3);
 
-  /* Negativo/Pérdida - Rojo elegante */
-  --sentinel-status-negative: #f87171;
-  --sentinel-status-negative-subtle: rgba(248, 113, 113, 0.15);
-  --sentinel-status-negative-muted: rgba(248, 113, 113, 0.12);
-  --sentinel-status-negative-text: #f87171;
-  --sentinel-status-negative-border: rgba(248, 113, 113, 0.2);
+  /* Negativo/Pérdida - Rojo vibrante */
+  --sentinel-status-negative: #EF4444;
+  --sentinel-status-negative-subtle: rgba(239, 68, 68, 0.15);
+  --sentinel-status-negative-muted: rgba(239, 68, 68, 0.1);
+  --sentinel-status-negative-text: #DC2626;
+  --sentinel-status-negative-border: rgba(239, 68, 68, 0.3);
 
-  /* Advertencia - Ámbar dorado */
-  --sentinel-status-warning: #fbbf24;
-  --sentinel-status-warning-subtle: rgba(251, 191, 36, 0.15);
-  --sentinel-status-warning-muted: rgba(251, 191, 36, 0.12);
-  --sentinel-status-warning-text: #fbbf24;
-  --sentinel-status-warning-border: rgba(251, 191, 36, 0.2);
+  /* Advertencia - Ámbar vibrante */
+  --sentinel-status-warning: #F59E0B;
+  --sentinel-status-warning-subtle: rgba(245, 158, 11, 0.15);
+  --sentinel-status-warning-muted: rgba(245, 158, 11, 0.1);
+  --sentinel-status-warning-text: #D97706;
+  --sentinel-status-warning-border: rgba(245, 158, 11, 0.3);
 
-  /* Informativo - Azul premium */
-  --sentinel-status-info: #60a5fa;
-  --sentinel-status-info-subtle: rgba(96, 165, 250, 0.15);
-  --sentinel-status-info-muted: rgba(96, 165, 250, 0.12);
-  --sentinel-status-info-text: #60a5fa;
-  --sentinel-status-info-border: rgba(96, 165, 250, 0.2);
+  /* Informativo - Azul vibrante */
+  --sentinel-status-info: #3B82F6;
+  --sentinel-status-info-subtle: rgba(59, 130, 246, 0.15);
+  --sentinel-status-info-muted: rgba(59, 130, 246, 0.1);
+  --sentinel-status-info-text: #2563EB;
+  --sentinel-status-info-border: rgba(59, 130, 246, 0.3);
 
-  /* Neutral - Sin cambio significativo */
-  --sentinel-status-neutral: #6b7280;
+  /* Neutral - Gris medio */
+  --sentinel-status-neutral: #6B7280;
   --sentinel-status-neutral-subtle: rgba(107, 114, 128, 0.15);
 
   /* ─────────────────────────────────────────────────────────────────────────────
@@ -207,25 +206,24 @@
   --sentinel-market-uncertain: #6b7280;    /* Incertidumbre */
 
   /* ─────────────────────────────────────────────────────────────────────────────
-     CHARTS Y VISUALIZACIÓN DE DATOS
-     Paleta armónica para series de datos
-     Colores distinguibles pero que no compiten entre sí
+     CHARTS Y VISUALIZACIÓN DE DATOS (Light Theme)
+     Paleta armónica con mayor saturación para fondos claros
      ───────────────────────────────────────────────────────────────────────────── */
 
-  --sentinel-chart-1: #5ba3a5;          /* Serie 1 - acento principal */
-  --sentinel-chart-2: #7ecbcc;          /* Serie 2 - acento claro */
-  --sentinel-chart-3: #4a9a7c;          /* Serie 3 - verde teal */
-  --sentinel-chart-4: #5a8fb8;          /* Serie 4 - azul */
-  --sentinel-chart-5: #8b7ec7;          /* Serie 5 - púrpura suave */
-  --sentinel-chart-6: #c4a35a;          /* Serie 6 - ámbar */
-  --sentinel-chart-7: #c47a5a;          /* Serie 7 - terracota */
-  --sentinel-chart-8: #b85c5c;          /* Serie 8 - coral */
+  --sentinel-chart-1: #4A9A9C;          /* Serie 1 - acento principal */
+  --sentinel-chart-2: #3D8587;          /* Serie 2 - acento oscuro */
+  --sentinel-chart-3: #2E7D32;          /* Serie 3 - verde */
+  --sentinel-chart-4: #1976D2;          /* Serie 4 - azul */
+  --sentinel-chart-5: #7B1FA2;          /* Serie 5 - púrpura */
+  --sentinel-chart-6: #F57C00;          /* Serie 6 - naranja */
+  --sentinel-chart-7: #C2185B;          /* Serie 7 - rosa */
+  --sentinel-chart-8: #455A64;          /* Serie 8 - gris azulado */
 
-  --sentinel-chart-grid: rgba(255, 255, 255, 0.06);      /* Líneas de grid */
-  --sentinel-chart-axis: #5f6368;                         /* Texto de ejes */
-  --sentinel-chart-tooltip-bg: #1c1e2a;                   /* Fondo de tooltips */
-  --sentinel-chart-tooltip-border: rgba(255, 255, 255, 0.1);
-  --sentinel-chart-crosshair: rgba(91, 163, 165, 0.5);   /* Línea de crosshair */
+  --sentinel-chart-grid: rgba(163, 177, 198, 0.25);       /* Líneas de grid */
+  --sentinel-chart-axis: #5F6C7A;                         /* Texto de ejes */
+  --sentinel-chart-tooltip-bg: #FFFFFF;                   /* Fondo de tooltips */
+  --sentinel-chart-tooltip-border: rgba(163, 177, 198, 0.3);
+  --sentinel-chart-crosshair: rgba(74, 154, 156, 0.6);   /* Línea de crosshair */
 
   /* ─────────────────────────────────────────────────────────────────────────────
      TIPOGRAFÍA - Fuentes
@@ -485,31 +483,31 @@
   --sentinel-shadow-dropdown: var(--sentinel-neu-elevated-lg);
   --sentinel-shadow-modal: var(--sentinel-neu-elevated-xl);
 
-  /* ═══ SOMBRAS TRADICIONALES (para compatibilidad) ═══ */
-  --sentinel-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.4);
-  --sentinel-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
-  --sentinel-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
-  --sentinel-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
-  --sentinel-shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.5);
-  --sentinel-shadow-2xl: 0 24px 48px rgba(0, 0, 0, 0.6);
+  /* ═══ SOMBRAS TRADICIONALES (Light Theme) ═══ */
+  --sentinel-shadow-xs: 0 1px 2px rgba(163, 177, 198, 0.25);
+  --sentinel-shadow-sm: 0 2px 8px rgba(163, 177, 198, 0.3);
+  --sentinel-shadow-md: 0 4px 16px rgba(163, 177, 198, 0.35);
+  --sentinel-shadow-lg: 0 8px 24px rgba(163, 177, 198, 0.4);
+  --sentinel-shadow-xl: 0 12px 32px rgba(163, 177, 198, 0.45);
+  --sentinel-shadow-2xl: 0 24px 48px rgba(163, 177, 198, 0.5);
 
   /* Inner shadow para focus rings */
-  --sentinel-shadow-inner: inset 0 2px 4px rgba(0, 0, 0, 0.3);
-  --sentinel-shadow-inner-strong: inset 0 4px 8px rgba(0, 0, 0, 0.4);
+  --sentinel-shadow-inner: inset 0 2px 4px rgba(163, 177, 198, 0.3);
+  --sentinel-shadow-inner-strong: inset 0 4px 8px rgba(163, 177, 198, 0.4);
 
   /* Highlight superior (sutil línea de luz) */
-  --sentinel-shadow-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  --sentinel-shadow-highlight-strong: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  --sentinel-shadow-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  --sentinel-shadow-highlight-strong: inset 0 1px 0 rgba(255, 255, 255, 0.8);
 
-  /* ═══ GLOW EFFECTS ═══ */
-  --sentinel-shadow-glow-sm: 0 0 10px rgba(91, 163, 165, 0.3);
-  --sentinel-shadow-glow-md: 0 0 20px rgba(91, 163, 165, 0.4);
-  --sentinel-shadow-glow-lg: 0 0 30px rgba(91, 163, 165, 0.5);
+  /* ═══ GLOW EFFECTS (Light Theme) ═══ */
+  --sentinel-shadow-glow-sm: 0 0 10px rgba(74, 154, 156, 0.2);
+  --sentinel-shadow-glow-md: 0 0 20px rgba(74, 154, 156, 0.25);
+  --sentinel-shadow-glow-lg: 0 0 30px rgba(74, 154, 156, 0.3);
 
-  --sentinel-glow-positive: 0 0 15px rgba(74, 222, 128, 0.4);
-  --sentinel-glow-negative: 0 0 15px rgba(248, 113, 113, 0.4);
-  --sentinel-glow-warning: 0 0 15px rgba(251, 191, 36, 0.4);
-  --sentinel-glow-info: 0 0 15px rgba(96, 165, 250, 0.4);
+  --sentinel-glow-positive: 0 0 15px rgba(34, 197, 94, 0.25);
+  --sentinel-glow-negative: 0 0 15px rgba(239, 68, 68, 0.25);
+  --sentinel-glow-warning: 0 0 15px rgba(245, 158, 11, 0.25);
+  --sentinel-glow-info: 0 0 15px rgba(59, 130, 246, 0.25);
 
   /* ═══ COMPATIBILIDAD ═══ */
   --elevation-sm: var(--sentinel-shadow-sm);
@@ -521,34 +519,33 @@
   --shadow-card: var(--sentinel-shadow-card);
 
   /* ─────────────────────────────────────────────────────────────────────────────
-     GLASSMORPHISM
-     Efectos de vidrio, transparencias y brillos sutiles
-     Para crear profundidad y jerarquía visual
+     GLASSMORPHISM (Light Theme)
+     Efectos de vidrio con blancos y transparencias
      ───────────────────────────────────────────────────────────────────────────── */
 
-  --sentinel-glass-light: rgba(255, 255, 255, 0.03);
-  --sentinel-glass-medium: rgba(255, 255, 255, 0.05);
-  --sentinel-glass-heavy: rgba(255, 255, 255, 0.08);
-  --sentinel-glass-accent: rgba(91, 163, 165, 0.05);
-  --sentinel-glass-accent-strong: rgba(91, 163, 165, 0.1);
+  --sentinel-glass-light: rgba(255, 255, 255, 0.4);
+  --sentinel-glass-medium: rgba(255, 255, 255, 0.55);
+  --sentinel-glass-heavy: rgba(255, 255, 255, 0.7);
+  --sentinel-glass-accent: rgba(74, 154, 156, 0.08);
+  --sentinel-glass-accent-strong: rgba(74, 154, 156, 0.15);
 
   /* Gradientes de borde con luz */
-  --sentinel-border-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(91, 163, 165, 0.1) 100%);
-  --sentinel-border-gradient-subtle: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(91, 163, 165, 0.06) 100%);
+  --sentinel-border-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(74, 154, 156, 0.2) 100%);
+  --sentinel-border-gradient-subtle: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(74, 154, 156, 0.1) 100%);
 
   /* Highlights internos (efecto de luz superior) */
-  --sentinel-inner-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  --sentinel-inner-highlight-strong: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  --sentinel-inner-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  --sentinel-inner-highlight-strong: inset 0 1px 0 rgba(255, 255, 255, 0.9);
 
   /* Sombras con glow de acento */
-  --sentinel-shadow-glow-accent: 0 4px 20px rgba(0, 0, 0, 0.3), 0 0 30px rgba(91, 163, 165, 0.15);
-  --sentinel-shadow-glow-accent-strong: 0 4px 24px rgba(0, 0, 0, 0.4), 0 0 40px rgba(91, 163, 165, 0.2);
+  --sentinel-shadow-glow-accent: 0 4px 20px rgba(163, 177, 198, 0.3), 0 0 30px rgba(74, 154, 156, 0.1);
+  --sentinel-shadow-glow-accent-strong: 0 4px 24px rgba(163, 177, 198, 0.4), 0 0 40px rgba(74, 154, 156, 0.15);
 
-  /* Glow por estado semántico */
-  --sentinel-glow-positive: 0 0 30px rgba(74, 154, 124, 0.2);
-  --sentinel-glow-negative: 0 0 30px rgba(184, 92, 92, 0.2);
-  --sentinel-glow-warning: 0 0 30px rgba(196, 163, 90, 0.2);
-  --sentinel-glow-info: 0 0 30px rgba(90, 143, 184, 0.2);
+  /* Glow por estado semántico (light theme) */
+  --sentinel-glow-positive: 0 0 30px rgba(34, 197, 94, 0.15);
+  --sentinel-glow-negative: 0 0 30px rgba(239, 68, 68, 0.15);
+  --sentinel-glow-warning: 0 0 30px rgba(245, 158, 11, 0.15);
+  --sentinel-glow-info: 0 0 30px rgba(59, 130, 246, 0.15);
 
   /* Backdrop blur values */
   --sentinel-blur-sm: blur(8px);
@@ -755,47 +752,47 @@
   --sentinel-bg-interactive-hover: var(--sentinel-bg-subtle);
 
   /* ─────────────────────────────────────────────────────────────────────────────
-     SENTINEL 3.0 - STOCK MARKET TOKENS
-     Nuevos tokens para estética de pantallas financieras profesionales
+     SENTINEL 4.0 - STOCK MARKET TOKENS (Light Theme)
+     Tokens para pantallas financieras en tema claro
      ───────────────────────────────────────────────────────────────────────────── */
 
   /* === DATA VISUALIZATION === */
-  --sentinel-data-glow: rgba(91, 163, 165, 0.25);
-  --sentinel-data-pulse: rgba(91, 163, 165, 0.4);
+  --sentinel-data-glow: rgba(74, 154, 156, 0.2);
+  --sentinel-data-pulse: rgba(74, 154, 156, 0.3);
 
-  /* === TICKER TAPE === */
-  --sentinel-ticker-bg: #030406;
-  --sentinel-ticker-border: rgba(91, 163, 165, 0.15);
-  --sentinel-ticker-separator: rgba(255, 255, 255, 0.08);
+  /* === TICKER TAPE (mantener oscuro para contraste) === */
+  --sentinel-ticker-bg: #1a1f2e;
+  --sentinel-ticker-border: rgba(74, 154, 156, 0.2);
+  --sentinel-ticker-separator: rgba(255, 255, 255, 0.1);
 
   /* === GRID SYSTEM === */
-  --sentinel-grid-line: rgba(255, 255, 255, 0.03);
-  --sentinel-grid-line-strong: rgba(255, 255, 255, 0.06);
-  --sentinel-grid-accent: rgba(91, 163, 165, 0.08);
+  --sentinel-grid-line: rgba(163, 177, 198, 0.15);
+  --sentinel-grid-line-strong: rgba(163, 177, 198, 0.25);
+  --sentinel-grid-accent: rgba(74, 154, 156, 0.12);
 
-  /* === CANDLESTICK (Desaturados como SENTINEL) === */
+  /* === CANDLESTICK === */
   --sentinel-candle-bullish: var(--sentinel-status-positive);
   --sentinel-candle-bearish: var(--sentinel-status-negative);
-  --sentinel-candle-bullish-glow: rgba(74, 154, 124, 0.3);
-  --sentinel-candle-bearish-glow: rgba(184, 92, 92, 0.3);
+  --sentinel-candle-bullish-glow: rgba(34, 197, 94, 0.2);
+  --sentinel-candle-bearish-glow: rgba(239, 68, 68, 0.2);
 
   /* === HEATMAP === */
-  --sentinel-heat-cold: #2563eb;
-  --sentinel-heat-cool: #3b82f6;
-  --sentinel-heat-neutral: #6b7280;
-  --sentinel-heat-warm: #c4a35a;
-  --sentinel-heat-hot: #b85c5c;
+  --sentinel-heat-cold: #1976D2;
+  --sentinel-heat-cool: #42A5F5;
+  --sentinel-heat-neutral: #9E9E9E;
+  --sentinel-heat-warm: #FF9800;
+  --sentinel-heat-hot: #E53935;
 
   /* === DATA STATES === */
   --sentinel-value-unchanged: var(--sentinel-text-secondary);
   --sentinel-value-up: var(--sentinel-status-positive);
   --sentinel-value-down: var(--sentinel-status-negative);
-  --sentinel-value-flash: rgba(255, 255, 255, 0.8);
+  --sentinel-value-flash: rgba(74, 154, 156, 0.3);
 
   /* === PANEL SYSTEM === */
-  --sentinel-panel-border: rgba(91, 163, 165, 0.1);
-  --sentinel-panel-header-bg: rgba(91, 163, 165, 0.05);
-  --sentinel-panel-divider: rgba(255, 255, 255, 0.04);
+  --sentinel-panel-border: rgba(163, 177, 198, 0.25);
+  --sentinel-panel-header-bg: rgba(74, 154, 156, 0.08);
+  --sentinel-panel-divider: rgba(163, 177, 198, 0.2);
 
   /* === SENTINEL TYPOGRAPHY SYSTEM ===
 
@@ -840,11 +837,19 @@
   --sentinel-tracking-data: 0em;
   --sentinel-tracking-led: 0.05em;
 
-  /* LED Glow Effects */
-  --sentinel-glow-positive: 0 0 10px rgba(74, 154, 124, 0.5), 0 0 20px rgba(74, 154, 124, 0.3);
-  --sentinel-glow-negative: 0 0 10px rgba(184, 92, 92, 0.5), 0 0 20px rgba(184, 92, 92, 0.3);
-  --sentinel-glow-accent: 0 0 10px rgba(91, 163, 165, 0.5), 0 0 20px rgba(91, 163, 165, 0.3);
-  --sentinel-glow-neutral: 0 0 8px rgba(154, 160, 166, 0.3);
+  /* LED Glow Effects (Light Theme - más sutiles) */
+  --sentinel-glow-positive: 0 0 8px rgba(34, 197, 94, 0.3), 0 0 16px rgba(34, 197, 94, 0.15);
+  --sentinel-glow-negative: 0 0 8px rgba(239, 68, 68, 0.3), 0 0 16px rgba(239, 68, 68, 0.15);
+  --sentinel-glow-accent: 0 0 8px rgba(74, 154, 156, 0.3), 0 0 16px rgba(74, 154, 156, 0.15);
+  --sentinel-glow-neutral: 0 0 6px rgba(107, 114, 128, 0.2);
+
+  /* ═══ SIDEBAR DARK THEME (Mantener oscuro para contraste) ═══ */
+  --sentinel-sidebar-bg: rgba(20, 25, 35, 0.95);
+  --sentinel-sidebar-bg-hover: rgba(30, 35, 48, 0.95);
+  --sentinel-sidebar-text: rgba(255, 255, 255, 0.85);
+  --sentinel-sidebar-text-muted: rgba(255, 255, 255, 0.6);
+  --sentinel-sidebar-border: rgba(255, 255, 255, 0.08);
+  --sentinel-sidebar-active-bg: rgba(74, 154, 156, 0.2);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════════

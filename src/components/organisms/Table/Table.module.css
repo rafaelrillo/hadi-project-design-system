@@ -2,21 +2,21 @@
 /* ═══════════════════════════════════════════════════════════════════════════════
    SENTINEL DESIGN SYSTEM v3.2 - Table Component
 
-   GLASS-NEUMORPHISM - Frosted glass data tables
-   - Semi-transparent glass backgrounds
-   - Luminous borders
-   - Subtle neumorphic depth
+   LIGHT NEUMORPHISM - Soft light glass data tables
+   - Light semi-transparent glass backgrounds
+   - Soft shadows with warm undertones
+   - Subtle neumorphic depth on light surfaces
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   TABLE WRAPPER - Glass container
+   TABLE WRAPPER - Light glass container
    ───────────────────────────────────────────────────────────────────────────── */
 
 .tableWrapper {
   width: 100%;
   overflow-x: auto;
-  background: var(--sentinel-glass-bg);
-  border: 1px solid var(--sentinel-glass-border);
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.7);
   border-radius: var(--sentinel-radius-lg);
   position: relative;
 
@@ -24,10 +24,11 @@
   backdrop-filter: blur(var(--sentinel-blur-md));
   -webkit-backdrop-filter: blur(var(--sentinel-blur-md));
 
-  /* Subtle elevation */
+  /* Light neumorphic elevation */
   box-shadow:
-    var(--sentinel-shadow-card),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    8px 8px 16px rgba(163, 177, 198, 0.35),
+    -8px -8px 16px rgba(255, 255, 255, 0.9),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
 /* Luminous top edge */
@@ -41,9 +42,9 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.1),
-    rgba(255, 255, 255, 0.15),
-    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.95),
+    rgba(255, 255, 255, 0.8),
     transparent
   );
   border-radius: var(--sentinel-radius-lg) var(--sentinel-radius-lg) 0 0;
@@ -70,18 +71,18 @@
 }
 
 .tableFull {
-  border: 1px solid var(--sentinel-glass-border);
+  border: 1px solid rgba(163, 177, 198, 0.2);
   border-radius: var(--sentinel-radius-lg);
   overflow: hidden;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   TABLE HEADER - Glass surface
+   TABLE HEADER - Light glass surface
    ───────────────────────────────────────────────────────────────────────────── */
 
 .thead {
-  background: rgba(255, 255, 255, 0.03);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.5);
+  border-bottom: 1px solid rgba(163, 177, 198, 0.25);
 }
 
 .th {
@@ -116,11 +117,11 @@
 }
 
 .thFull {
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(163, 177, 198, 0.15);
 }
 
 .thBottom {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(163, 177, 198, 0.25);
 }
 
 .thNone {
@@ -136,7 +137,7 @@
 
 .thSortable:hover {
   color: var(--sentinel-accent-primary);
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(255, 255, 255, 0.4);
 }
 
 .thSorted {
@@ -148,7 +149,7 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .tbody tr {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(163, 177, 198, 0.15);
   transition: background-color 0.15s ease;
 }
 
@@ -168,15 +169,15 @@
 
 .trHovered,
 .tr:hover {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.5);
 }
 
 .trSelected {
-  background: rgba(91, 163, 165, 0.1);
+  background: rgba(91, 163, 165, 0.15);
 }
 
 .trAlternate {
-  background: rgba(255, 255, 255, 0.015);
+  background: rgba(255, 255, 255, 0.3);
 }
 
 .trRounded {
@@ -185,7 +186,7 @@
 
 .trSelectedIndicator {
   border-left: 3px solid rgba(91, 163, 165, 0.6);
-  box-shadow: inset 3px 0 10px rgba(91, 163, 165, 0.05);
+  box-shadow: inset 3px 0 10px rgba(91, 163, 165, 0.1);
 }
 
 .trClickable {
@@ -194,7 +195,7 @@
 
 .trFocused {
   outline: none;
-  box-shadow: inset 0 0 0 2px rgba(91, 163, 165, 0.3);
+  box-shadow: inset 0 0 0 2px rgba(91, 163, 165, 0.4);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -219,15 +220,15 @@
 }
 
 .tdFull {
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(163, 177, 198, 0.15);
 }
 
 .tdBottom {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(163, 177, 198, 0.15);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   ACTIONS - Glass buttons
+   ACTIONS - Light glass buttons
    ───────────────────────────────────────────────────────────────────────────── */
 
 .actionsContainer {
@@ -237,7 +238,7 @@
 }
 
 .actionButton {
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.5);
   border: none;
   cursor: pointer;
   padding: var(--sentinel-space-1);
@@ -247,11 +248,17 @@
   color: var(--sentinel-text-tertiary);
   transition: all 0.15s ease;
   border-radius: var(--sentinel-radius-sm);
+  box-shadow:
+    2px 2px 4px rgba(163, 177, 198, 0.3),
+    -2px -2px 4px rgba(255, 255, 255, 0.8);
 }
 
 .actionButton:hover {
   color: var(--sentinel-accent-primary);
-  background: rgba(91, 163, 165, 0.15);
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow:
+    3px 3px 6px rgba(163, 177, 198, 0.35),
+    -3px -3px 6px rgba(255, 255, 255, 0.9);
 }
 
 .actionButtonDestructive {
@@ -260,7 +267,7 @@
 
 .actionButtonDestructive:hover {
   color: var(--sentinel-status-negative);
-  background: rgba(248, 113, 113, 0.15);
+  background: rgba(248, 113, 113, 0.1);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -284,23 +291,29 @@
 
 .expandButton:hover {
   color: var(--sentinel-accent-primary);
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow:
+    2px 2px 4px rgba(163, 177, 198, 0.25),
+    -2px -2px 4px rgba(255, 255, 255, 0.7);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   EXPANDED CELL - Glass inset
+   EXPANDED CELL - Light glass inset
    ───────────────────────────────────────────────────────────────────────────── */
 
 .expandedCell {
   padding: var(--sentinel-space-4);
-  background: var(--sentinel-glass-inset);
+  background: rgba(255, 255, 255, 0.4);
   border-left: 3px solid rgba(91, 163, 165, 0.5);
 
-  box-shadow: var(--sentinel-neu-pressed-xs);
+  /* Light neumorphic pressed effect */
+  box-shadow:
+    inset 4px 4px 8px rgba(163, 177, 198, 0.25),
+    inset -4px -4px 8px rgba(255, 255, 255, 0.7);
 }
 
 .expandedCellBorder {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(163, 177, 198, 0.15);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -308,7 +321,7 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .striped .tbody tr:nth-child(even) {
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(255, 255, 255, 0.35);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -327,7 +340,7 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   LOADING STATE - Glass overlay
+   LOADING STATE - Light glass overlay
    ───────────────────────────────────────────────────────────────────────────── */
 
 .loading {
@@ -338,7 +351,7 @@
 .loadingOverlay {
   position: absolute;
   inset: 0;
-  background: rgba(10, 11, 16, 0.7);
+  background: rgba(255, 255, 255, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;

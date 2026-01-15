@@ -42,7 +42,7 @@
   /* Neumorphic shadow + inner highlight */
   box-shadow:
     var(--sentinel-shadow-button),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
 .button:focus-visible {
@@ -50,8 +50,8 @@
   border-color: var(--sentinel-glass-border-focus);
   box-shadow:
     var(--sentinel-shadow-button),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06),
-    0 0 0 3px rgba(91, 163, 165, 0.2);
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    0 0 0 3px rgba(74, 154, 156, 0.2);
 }
 
 .button:hover:not(:disabled) {
@@ -61,7 +61,7 @@
 
   box-shadow:
     var(--sentinel-shadow-button-hover),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 .button:active:not(:disabled) {
@@ -71,7 +71,7 @@
   /* Press into surface */
   box-shadow:
     var(--sentinel-shadow-button-active),
-    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 .button:disabled {
@@ -96,44 +96,44 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .primary {
-  background: rgba(91, 163, 165, 0.25);
-  border-color: rgba(91, 163, 165, 0.4);
-  color: white;
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(74, 154, 156, 0.4);
+  color: var(--sentinel-accent-primary);
 
   box-shadow:
     var(--sentinel-neu-elevated-sm),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15),
-    0 4px 20px rgba(91, 163, 165, 0.3);
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    0 4px 20px rgba(74, 154, 156, 0.3);
 }
 
 .primary:hover:not(:disabled) {
-  background: rgba(91, 163, 165, 0.35);
-  border-color: rgba(91, 163, 165, 0.5);
-  color: white;
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(74, 154, 156, 0.5);
+  color: var(--sentinel-accent-primary);
   transform: translateY(-1px);
 
   box-shadow:
     var(--sentinel-neu-hover-sm),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2),
-    0 6px 30px rgba(91, 163, 165, 0.4);
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    0 6px 30px rgba(74, 154, 156, 0.4);
 }
 
 .primary:active:not(:disabled) {
   transform: translateY(1px);
-  background: rgba(91, 163, 165, 0.4);
+  background: rgba(255, 255, 255, 0.85);
 
   box-shadow:
     var(--sentinel-neu-active),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 2px 10px rgba(91, 163, 165, 0.2);
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    0 2px 10px rgba(74, 154, 156, 0.2);
 }
 
 .primary:focus-visible {
   box-shadow:
     var(--sentinel-neu-elevated-sm),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15),
-    0 4px 20px rgba(91, 163, 165, 0.3),
-    0 0 0 3px rgba(91, 163, 165, 0.3);
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    0 4px 20px rgba(74, 154, 156, 0.3),
+    0 0 0 3px rgba(74, 154, 156, 0.3);
 }
 
 .primary:disabled {
@@ -148,29 +148,29 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .secondary {
-  background: var(--sentinel-glass-bg);
-  border-color: var(--sentinel-glass-border);
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(163, 177, 198, 0.3);
   color: var(--sentinel-text-secondary);
 
   box-shadow:
     var(--sentinel-neu-elevated-xs),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
 .secondary:hover:not(:disabled) {
-  background: var(--sentinel-glass-bg-hover);
-  border-color: var(--sentinel-glass-border-hover);
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(163, 177, 198, 0.4);
   color: var(--sentinel-text-primary);
 
   box-shadow:
     var(--sentinel-neu-elevated-sm),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 .secondary:active:not(:disabled) {
   box-shadow:
     var(--sentinel-neu-active),
-    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 .secondary:disabled {
@@ -193,14 +193,14 @@
 }
 
 .ghost:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.5);
   border-color: transparent;
   color: var(--sentinel-text-primary);
   box-shadow: none;
 }
 
 .ghost:active:not(:disabled) {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.3);
 }
 
 .ghost:disabled {
@@ -214,23 +214,23 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .destructive {
-  background: rgba(248, 113, 113, 0.1);
-  border-color: rgba(248, 113, 113, 0.25);
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(248, 113, 113, 0.35);
   color: var(--sentinel-status-negative);
 
   box-shadow:
     var(--sentinel-neu-elevated-xs),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
 .destructive:hover:not(:disabled) {
-  background: rgba(248, 113, 113, 0.25);
+  background: rgba(255, 255, 255, 0.9);
   border-color: rgba(248, 113, 113, 0.5);
-  color: white;
+  color: var(--sentinel-status-negative);
 
   box-shadow:
     var(--sentinel-neu-elevated-sm),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
     0 4px 20px rgba(248, 113, 113, 0.3);
 }
 
@@ -238,7 +238,7 @@
   transform: translateY(1px);
   box-shadow:
     var(--sentinel-neu-active),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 .destructive:disabled {
@@ -253,23 +253,23 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .success {
-  background: rgba(74, 222, 128, 0.1);
-  border-color: rgba(74, 222, 128, 0.25);
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(74, 222, 128, 0.35);
   color: var(--sentinel-status-positive);
 
   box-shadow:
     var(--sentinel-neu-elevated-xs),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
 .success:hover:not(:disabled) {
-  background: rgba(74, 222, 128, 0.25);
+  background: rgba(255, 255, 255, 0.9);
   border-color: rgba(74, 222, 128, 0.5);
-  color: white;
+  color: var(--sentinel-status-positive);
 
   box-shadow:
     var(--sentinel-neu-elevated-sm),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
     0 4px 20px rgba(74, 222, 128, 0.3);
 }
 
@@ -277,7 +277,7 @@
   transform: translateY(1px);
   box-shadow:
     var(--sentinel-neu-active),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 .success:disabled {
@@ -292,26 +292,26 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .withIcon {
-  background: rgba(91, 163, 165, 0.25);
-  border-color: rgba(91, 163, 165, 0.4);
-  color: white;
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(74, 154, 156, 0.4);
+  color: var(--sentinel-accent-primary);
   gap: var(--sentinel-space-2);
 
   box-shadow:
     var(--sentinel-neu-elevated-sm),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15),
-    0 4px 20px rgba(91, 163, 165, 0.3);
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    0 4px 20px rgba(74, 154, 156, 0.3);
 }
 
 .withIcon:hover:not(:disabled) {
-  background: rgba(91, 163, 165, 0.35);
-  border-color: rgba(91, 163, 165, 0.5);
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(74, 154, 156, 0.5);
   transform: translateY(-1px);
 
   box-shadow:
     var(--sentinel-neu-hover-sm),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2),
-    0 6px 30px rgba(91, 163, 165, 0.4);
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    0 6px 30px rgba(74, 154, 156, 0.4);
 }
 
 .withIcon:active:not(:disabled) {
@@ -319,8 +319,8 @@
 
   box-shadow:
     var(--sentinel-neu-active),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 2px 10px rgba(91, 163, 165, 0.2);
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    0 2px 10px rgba(74, 154, 156, 0.2);
 }
 
 .withIcon:disabled {

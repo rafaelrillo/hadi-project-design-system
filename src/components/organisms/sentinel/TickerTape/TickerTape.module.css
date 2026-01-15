@@ -109,23 +109,21 @@
 /* UP state - positive change */
 .tickerItem.up .change {
   color: var(--sentinel-value-up);
-  text-shadow: var(--sentinel-glow-positive);
+  font-weight: 600;
 }
 
 .tickerItem.up .trendIcon {
   color: var(--sentinel-value-up);
-  filter: drop-shadow(0 0 4px rgba(74, 154, 124, 0.6));
 }
 
 /* DOWN state - negative change */
 .tickerItem.down .change {
   color: var(--sentinel-value-down);
-  text-shadow: var(--sentinel-glow-negative);
+  font-weight: 600;
 }
 
 .tickerItem.down .trendIcon {
   color: var(--sentinel-value-down);
-  filter: drop-shadow(0 0 4px rgba(184, 92, 92, 0.6));
 }
 
 /* NEUTRAL state - no change */

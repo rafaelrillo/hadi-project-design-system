@@ -3,8 +3,9 @@
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(4px);
+  background: rgba(45, 52, 54, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   z-index: var(--sentinel-z-modal);
   display: flex;
   align-items: flex-end;
@@ -18,7 +19,11 @@
 }
 
 .sheet {
-  background: var(--sentinel-bg-elevated);
+  background: var(--sentinel-glass-elevated);
+  backdrop-filter: blur(var(--sentinel-blur-lg));
+  -webkit-backdrop-filter: blur(var(--sentinel-blur-lg));
+  border: 1px solid var(--sentinel-glass-border);
+  border-bottom: none;
   border-top-left-radius: var(--sentinel-radius-xl);
   border-top-right-radius: var(--sentinel-radius-xl);
   width: 100%;
@@ -29,6 +34,9 @@
   flex-direction: column;
   animation: slideUp var(--sentinel-duration-normal) var(--sentinel-ease-out);
   padding-bottom: var(--sentinel-safe-area-bottom);
+  box-shadow:
+    var(--sentinel-neu-elevated-lg),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
 @keyframes slideUp {

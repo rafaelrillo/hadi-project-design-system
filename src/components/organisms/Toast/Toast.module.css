@@ -2,11 +2,11 @@
 /* ═══════════════════════════════════════════════════════════════════════════════
    SENTINEL DESIGN SYSTEM v3.2 - Toast Notification System
 
-   GLASS-NEUMORPHISM - Floating glass notifications
-   - Semi-transparent glass backgrounds
-   - Strong backdrop blur
-   - Neumorphic elevation
-   - Luminous borders
+   LIGHT NEUMORPHISM - Elevated light notifications
+   - Light frosted glass backgrounds
+   - Soft neumorphic shadows
+   - Inner light highlights
+   - Colored status borders
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -58,7 +58,7 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   TOAST ITEM - Glass-Neumorphic Elevated
+   TOAST ITEM - Light Neumorphic Elevated
    ───────────────────────────────────────────────────────────────────────────── */
 
 .toast {
@@ -66,8 +66,8 @@
   align-items: flex-start;
   gap: var(--sentinel-space-3);
   padding: var(--sentinel-space-4);
-  background: var(--sentinel-glass-elevated);
-  border: 1px solid var(--sentinel-glass-border);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.8);
   border-radius: var(--sentinel-radius-lg);
   pointer-events: auto;
   max-width: 100%;
@@ -78,14 +78,15 @@
   backdrop-filter: blur(var(--sentinel-blur-lg));
   -webkit-backdrop-filter: blur(var(--sentinel-blur-lg));
 
-  /* Neumorphic elevation + glow */
+  /* Light neumorphic elevation */
   box-shadow:
-    var(--sentinel-neu-elevated-md),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 0 30px rgba(0, 0, 0, 0.3);
+    8px 8px 16px rgba(163, 177, 198, 0.35),
+    -8px -8px 16px rgba(255, 255, 255, 0.9),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1px 0 rgba(163, 177, 198, 0.1);
 }
 
-/* Luminous top edge */
+/* Inner light highlight */
 .toast::before {
   content: '';
   position: absolute;
@@ -96,9 +97,9 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.12),
-    rgba(255, 255, 255, 0.2),
-    rgba(255, 255, 255, 0.12),
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0.9),
     transparent
   );
   border-radius: var(--sentinel-radius-lg) var(--sentinel-radius-lg) 0 0;
@@ -106,16 +107,16 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   TYPE VARIANTS - Glass tinted
+   TYPE VARIANTS - Light with colored borders
    ───────────────────────────────────────────────────────────────────────────── */
 
 .typeDefault {
-  border-left: 3px solid rgba(91, 163, 165, 0.6);
+  border-left: 3px solid rgba(74, 154, 156, 0.7);
   box-shadow:
-    var(--sentinel-neu-elevated-md),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    inset 3px 0 15px rgba(91, 163, 165, 0.05),
-    0 0 30px rgba(0, 0, 0, 0.3);
+    8px 8px 16px rgba(163, 177, 198, 0.35),
+    -8px -8px 16px rgba(255, 255, 255, 0.9),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 3px 0 15px rgba(74, 154, 156, 0.08);
 }
 
 .typeDefault .toastIcon {
@@ -123,12 +124,13 @@
 }
 
 .typeSuccess {
-  border-left: 3px solid rgba(74, 222, 128, 0.6);
+  background: rgba(255, 255, 255, 0.95);
+  border-left: 3px solid rgba(74, 222, 128, 0.7);
   box-shadow:
-    var(--sentinel-neu-elevated-md),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    inset 3px 0 15px rgba(74, 222, 128, 0.05),
-    0 0 30px rgba(0, 0, 0, 0.3);
+    8px 8px 16px rgba(163, 177, 198, 0.35),
+    -8px -8px 16px rgba(255, 255, 255, 0.9),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 3px 0 15px rgba(74, 222, 128, 0.08);
 }
 
 .typeSuccess .toastIcon {
@@ -136,12 +138,13 @@
 }
 
 .typeError {
-  border-left: 3px solid rgba(248, 113, 113, 0.6);
+  background: rgba(255, 255, 255, 0.95);
+  border-left: 3px solid rgba(248, 113, 113, 0.7);
   box-shadow:
-    var(--sentinel-neu-elevated-md),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    inset 3px 0 15px rgba(248, 113, 113, 0.05),
-    0 0 30px rgba(0, 0, 0, 0.3);
+    8px 8px 16px rgba(163, 177, 198, 0.35),
+    -8px -8px 16px rgba(255, 255, 255, 0.9),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 3px 0 15px rgba(248, 113, 113, 0.08);
 }
 
 .typeError .toastIcon {
@@ -149,12 +152,13 @@
 }
 
 .typeWarning {
-  border-left: 3px solid rgba(251, 191, 36, 0.6);
+  background: rgba(255, 255, 255, 0.95);
+  border-left: 3px solid rgba(251, 191, 36, 0.7);
   box-shadow:
-    var(--sentinel-neu-elevated-md),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    inset 3px 0 15px rgba(251, 191, 36, 0.05),
-    0 0 30px rgba(0, 0, 0, 0.3);
+    8px 8px 16px rgba(163, 177, 198, 0.35),
+    -8px -8px 16px rgba(255, 255, 255, 0.9),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 3px 0 15px rgba(251, 191, 36, 0.08);
 }
 
 .typeWarning .toastIcon {
@@ -162,12 +166,13 @@
 }
 
 .typeInfo {
-  border-left: 3px solid rgba(96, 165, 250, 0.6);
+  background: rgba(255, 255, 255, 0.95);
+  border-left: 3px solid rgba(96, 165, 250, 0.7);
   box-shadow:
-    var(--sentinel-neu-elevated-md),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    inset 3px 0 15px rgba(96, 165, 250, 0.05),
-    0 0 30px rgba(0, 0, 0, 0.3);
+    8px 8px 16px rgba(163, 177, 198, 0.35),
+    -8px -8px 16px rgba(255, 255, 255, 0.9),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 3px 0 15px rgba(96, 165, 250, 0.08);
 }
 
 .typeInfo .toastIcon {
@@ -216,15 +221,15 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   ACTION BUTTON - Glass pill
+   ACTION BUTTON - Light neumorphic pill
    ───────────────────────────────────────────────────────────────────────────── */
 
 .toastAction {
   align-self: flex-start;
   margin-top: var(--sentinel-space-2);
   padding: var(--sentinel-space-1) var(--sentinel-space-3);
-  background: rgba(91, 163, 165, 0.15);
-  border: 1px solid rgba(91, 163, 165, 0.3);
+  background: rgba(74, 154, 156, 0.1);
+  border: 1px solid rgba(74, 154, 156, 0.3);
   border-radius: var(--sentinel-radius-md);
   color: var(--sentinel-accent-primary);
   font-family: var(--sentinel-font-primary);
@@ -235,17 +240,24 @@
 
   backdrop-filter: blur(var(--sentinel-blur-xs));
   -webkit-backdrop-filter: blur(var(--sentinel-blur-xs));
+
+  box-shadow:
+    2px 2px 4px rgba(163, 177, 198, 0.2),
+    -2px -2px 4px rgba(255, 255, 255, 0.7);
 }
 
 .toastAction:hover {
-  background: rgba(91, 163, 165, 0.25);
-  border-color: rgba(91, 163, 165, 0.5);
-  box-shadow: 0 2px 10px rgba(91, 163, 165, 0.2);
+  background: rgba(74, 154, 156, 0.18);
+  border-color: rgba(74, 154, 156, 0.5);
+  box-shadow:
+    3px 3px 6px rgba(163, 177, 198, 0.25),
+    -3px -3px 6px rgba(255, 255, 255, 0.8),
+    0 2px 10px rgba(74, 154, 156, 0.15);
 }
 
 .toastAction:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px rgba(91, 163, 165, 0.3);
+  box-shadow: 0 0 0 2px rgba(74, 154, 156, 0.3);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -260,22 +272,29 @@
   width: 24px;
   height: 24px;
   padding: 0;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.7);
   border: none;
   border-radius: var(--sentinel-radius-sm);
   color: var(--sentinel-text-tertiary);
   cursor: pointer;
   transition: all 0.15s ease;
+
+  box-shadow:
+    2px 2px 4px rgba(163, 177, 198, 0.2),
+    -2px -2px 4px rgba(255, 255, 255, 0.7);
 }
 
 .toastDismiss:hover {
   color: var(--sentinel-text-primary);
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow:
+    3px 3px 6px rgba(163, 177, 198, 0.25),
+    -3px -3px 6px rgba(255, 255, 255, 0.9);
 }
 
 .toastDismiss:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px rgba(91, 163, 165, 0.3);
+  box-shadow: 0 0 0 2px rgba(74, 154, 156, 0.3);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
