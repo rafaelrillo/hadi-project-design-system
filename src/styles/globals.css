@@ -38,24 +38,6 @@ body {
   background: var(--sentinel-bg-void);
   color: var(--sentinel-text-primary);
   font-family: var(--sentinel-font-primary);
-
-  /* Glassmorphism background - visible gradient blobs for glass effect */
-  background-image:
-    /* Large teal blob top-left - main accent */
-    radial-gradient(ellipse 70% 60% at 10% 5%, rgba(74, 154, 156, 0.45), transparent 60%),
-    /* Amber/gold blob top-right */
-    radial-gradient(ellipse 55% 50% at 90% 10%, rgba(212, 175, 55, 0.35), transparent 55%),
-    /* Purple/violet accent center-right */
-    radial-gradient(ellipse 40% 45% at 85% 50%, rgba(147, 112, 219, 0.3), transparent 50%),
-    /* Teal blob bottom-left */
-    radial-gradient(ellipse 60% 55% at 5% 85%, rgba(74, 154, 156, 0.4), transparent 55%),
-    /* Warm coral blob bottom-center */
-    radial-gradient(ellipse 50% 45% at 50% 95%, rgba(255, 150, 120, 0.3), transparent 50%),
-    /* Soft blue center */
-    radial-gradient(ellipse 45% 40% at 40% 40%, rgba(100, 180, 220, 0.25), transparent 50%),
-    /* Large ambient white glow */
-    radial-gradient(ellipse 100% 80% at 50% 50%, rgba(255, 255, 255, 0.5), transparent 70%);
-  background-attachment: fixed;
 }
 
 /* Media defaults - SVG excluded to allow Nivo charts to work properly */
