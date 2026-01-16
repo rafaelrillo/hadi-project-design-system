@@ -118,7 +118,7 @@ export const sentinelEChartsTheme: Record<string, unknown> = {
   // Text style
   textStyle: {
     color: sentinelColors.textSecondary,
-    fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
+    fontFamily: "'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif",
     fontSize: 12,
   },
 
@@ -126,13 +126,13 @@ export const sentinelEChartsTheme: Record<string, unknown> = {
   title: {
     textStyle: {
       color: sentinelColors.textPrimary,
-      fontFamily: "'Space Grotesk', sans-serif",
+      fontFamily: "'Libre Baskerville', sans-serif",
       fontWeight: 500,
       fontSize: 16,
     },
     subtextStyle: {
       color: sentinelColors.textTertiary,
-      fontFamily: "'Inter', sans-serif",
+      fontFamily: "'IBM Plex Sans', sans-serif",
       fontSize: 12,
     },
     left: 0,
@@ -143,7 +143,7 @@ export const sentinelEChartsTheme: Record<string, unknown> = {
   legend: {
     textStyle: {
       color: sentinelColors.textSecondary,
-      fontFamily: "'Inter', sans-serif",
+      fontFamily: "'IBM Plex Sans', sans-serif",
       fontSize: 11,
     },
     pageTextStyle: {
@@ -162,7 +162,7 @@ export const sentinelEChartsTheme: Record<string, unknown> = {
     padding: [12, 16],
     textStyle: {
       color: sentinelColors.textPrimary,
-      fontFamily: "'Inter', sans-serif",
+      fontFamily: "'IBM Plex Sans', sans-serif",
       fontSize: 12,
     },
     extraCssText: 'box-shadow: -8px -8px 16px rgba(255, 255, 255, 0.7), 8px 8px 16px rgba(163, 177, 198, 0.4);',
@@ -184,7 +184,7 @@ export const sentinelEChartsTheme: Record<string, unknown> = {
       backgroundColor: sentinelColors.bgOverlay,
       borderColor: sentinelColors.borderDefault,
       color: sentinelColors.textPrimary,
-      fontFamily: "'Space Mono', monospace",
+      fontFamily: "'IBM Plex Mono', monospace",
       fontSize: 11,
     },
   },
@@ -202,7 +202,7 @@ export const sentinelEChartsTheme: Record<string, unknown> = {
     },
     axisLabel: {
       color: sentinelColors.textTertiary,
-      fontFamily: "'Inter', sans-serif",
+      fontFamily: "'IBM Plex Sans', sans-serif",
       fontSize: 11,
     },
     splitLine: {
@@ -223,7 +223,7 @@ export const sentinelEChartsTheme: Record<string, unknown> = {
     },
     axisLabel: {
       color: sentinelColors.textTertiary,
-      fontFamily: "'Space Mono', monospace",
+      fontFamily: "'IBM Plex Mono', monospace",
       fontSize: 11,
     },
     splitLine: {
@@ -251,7 +251,7 @@ export const sentinelEChartsTheme: Record<string, unknown> = {
     },
     axisLabel: {
       color: sentinelColors.textTertiary,
-      fontFamily: "'Space Mono', monospace",
+      fontFamily: "'IBM Plex Mono', monospace",
       fontSize: 11,
     },
     splitLine: {
@@ -316,7 +316,7 @@ export const sentinelEChartsTheme: Record<string, unknown> = {
     },
     label: {
       color: sentinelColors.textSecondary,
-      fontFamily: "'Inter', sans-serif",
+      fontFamily: "'IBM Plex Sans', sans-serif",
       fontSize: 11,
     },
     labelLine: {
@@ -351,7 +351,7 @@ export const sentinelEChartsTheme: Record<string, unknown> = {
     name: {
       textStyle: {
         color: sentinelColors.textSecondary,
-        fontFamily: "'Inter', sans-serif",
+        fontFamily: "'IBM Plex Sans', sans-serif",
         fontSize: 11,
       },
     },
@@ -402,7 +402,7 @@ export const sentinelEChartsTheme: Record<string, unknown> = {
     },
     detail: {
       color: sentinelColors.textPrimary,
-      fontFamily: "'Space Mono', monospace",
+      fontFamily: "'IBM Plex Mono', monospace",
       fontSize: 24,
       fontWeight: 600,
     },
@@ -416,12 +416,12 @@ export const sentinelEChartsTheme: Record<string, unknown> = {
     },
     label: {
       color: sentinelColors.textPrimary,
-      fontFamily: "'Inter', sans-serif",
+      fontFamily: "'IBM Plex Sans', sans-serif",
       fontSize: 11,
     },
     upperLabel: {
       color: sentinelColors.textSecondary,
-      fontFamily: "'Space Grotesk', sans-serif",
+      fontFamily: "'Libre Baskerville', sans-serif",
       fontSize: 12,
     },
     breadcrumb: {
@@ -443,7 +443,7 @@ export const sentinelEChartsTheme: Record<string, unknown> = {
     },
     label: {
       color: sentinelColors.textPrimary,
-      fontFamily: "'Space Mono', monospace",
+      fontFamily: "'IBM Plex Mono', monospace",
       fontSize: 10,
     },
   },
@@ -455,7 +455,7 @@ export const sentinelEChartsTheme: Record<string, unknown> = {
     nodeAlign: 'justify',
     label: {
       color: sentinelColors.textSecondary,
-      fontFamily: "'Inter', sans-serif",
+      fontFamily: "'IBM Plex Sans', sans-serif",
       fontSize: 11,
     },
     lineStyle: {
@@ -487,7 +487,7 @@ export const sentinelEChartsTheme: Record<string, unknown> = {
     color: chartPalette,
     label: {
       color: sentinelColors.textSecondary,
-      fontFamily: "'Inter', sans-serif",
+      fontFamily: "'IBM Plex Sans', sans-serif",
       fontSize: 11,
     },
     lineStyle: {
@@ -509,7 +509,7 @@ export const sentinelEChartsTheme: Record<string, unknown> = {
   sunburst: {
     label: {
       color: sentinelColors.textSecondary,
-      fontFamily: "'Inter', sans-serif",
+      fontFamily: "'IBM Plex Sans', sans-serif",
       fontSize: 10,
     },
     itemStyle: {
@@ -522,7 +522,7 @@ export const sentinelEChartsTheme: Record<string, unknown> = {
   funnel: {
     label: {
       color: sentinelColors.textSecondary,
-      fontFamily: "'Inter', sans-serif",
+      fontFamily: "'IBM Plex Sans', sans-serif",
       fontSize: 11,
     },
     itemStyle: {
@@ -701,7 +701,7 @@ export const tooltipFormatters = {
     const sign = change >= 0 ? '+' : '';
 
     return `
-      <div style="font-family: 'Space Mono', monospace; font-size: 11px;">
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px;">
         <div style="display: grid; grid-template-columns: 24px 1fr; gap: 8px; margin-bottom: 8px;">
           <span style="color: ${sentinelColors.textTertiary};">O</span>
           <span>${params.open.toFixed(2)}</span>

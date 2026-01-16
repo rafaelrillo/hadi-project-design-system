@@ -281,15 +281,15 @@
 
   /* ─────────────────────────────────────────────────────────────────────────────
      TIPOGRAFÍA - Fuentes
-     Inter para UI general (claridad, legibilidad)
-     Display para títulos hero (personalidad)
-     Mono para datos financieros (precisión)
+     IBM Plex Sans para UI general (claridad profesional)
+     Libre Baskerville para display/headlines (elegancia serif)
+     IBM Plex Mono para datos financieros (precisión)
      ───────────────────────────────────────────────────────────────────────────── */
 
   /* Font Families - SENTINEL Typography System */
-  --sentinel-font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --sentinel-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --sentinel-font-mono: 'Space Mono', 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  --sentinel-font-primary: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --sentinel-font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --sentinel-font-mono: 'IBM Plex Mono', 'SF Mono', 'Fira Code', 'Consolas', monospace;
 
   /* ─────────────────────────────────────────────────────────────────────────────
      TIPOGRAFÍA - Escala
@@ -850,30 +850,29 @@
 
   /* === SENTINEL TYPOGRAPHY SYSTEM ===
 
-     Space Grotesk: Títulos y headers - geométrica moderna con carácter atemporal
-     Space Mono: Tickers, símbolos y datos tabulares - monoespaciada elegante
-     DSEG7: Valores numéricos destacados - auténtico look LED de trading floor
-     Inter: UI general - máxima legibilidad
+     Libre Baskerville: Títulos y headers - elegancia serif clásica
+     IBM Plex Mono: Tickers, símbolos y datos tabulares - precisión profesional
+     IBM Plex Sans: UI general - claridad y legibilidad
   */
 
-  /* Títulos y headers */
-  --sentinel-font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  /* Títulos y headers - serif elegante */
+  --sentinel-font-display: 'Libre Baskerville', Georgia, 'Times New Roman', serif;
 
   /* Tickers y símbolos de acciones */
-  --sentinel-font-ticker: 'Space Mono', 'SF Mono', monospace;
+  --sentinel-font-ticker: 'IBM Plex Mono', 'SF Mono', monospace;
 
   /* Datos en tablas y contenido monoespaciado */
-  --sentinel-font-data: 'Space Mono', 'SF Mono', monospace;
+  --sentinel-font-data: 'IBM Plex Mono', 'SF Mono', monospace;
 
-  /* Headers LED style (compatibilidad) */
-  --sentinel-font-led: 'Space Grotesk', 'Space Mono', monospace;
+  /* Headers style (compatibilidad) */
+  --sentinel-font-led: 'IBM Plex Sans', sans-serif;
 
-  /* DotMatrix - valores numéricos estilo tablero de bolsa (self-hosted) */
-  --sentinel-font-numeric: 'DotMatrix', 'Space Mono', monospace;
-  /* DotMatrix Duo - puntos más densos, mejor legibilidad para texto */
-  --sentinel-font-dotmatrix-duo: 'DotMatrix Duo', 'DotMatrix', 'Space Mono', monospace;
-  /* DotMatrix Condensed - versión estrecha para espacios reducidos */
-  --sentinel-font-dotmatrix-condensed: 'DotMatrix Condensed', 'DotMatrix', 'Space Mono', monospace;
+  /* Numeric data - alias to data font */
+  --sentinel-font-numeric: var(--sentinel-font-data);
+  /* DotMatrix aliases - redirigen a IBM Plex Mono */
+  --sentinel-font-dotmatrix-duo: var(--sentinel-font-data);
+  /* DotMatrix Condensed alias */
+  --sentinel-font-dotmatrix-condensed: var(--sentinel-font-data);
 
   /* Escala comprimida para alta densidad */
   --sentinel-data-xs: 10px;

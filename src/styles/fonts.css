@@ -1,69 +1,8 @@
-/* DotMatrix Font Family - Self-hosted from GitHub
-   https://github.com/Gissio/font_DotMatrix
-   License: SIL Open Font License v1.1
-
-   Variantes disponibles:
-   - DotMatrix: Puntos estándar (ideal para números grandes)
-   - DotMatrix Condensed: Más estrecha (ideal para espacios reducidos)
-   - DotMatrix Duo: Puntos más densos (ideal para texto legible)
-*/
-
 /* ═══════════════════════════════════════════════════════════════════════════════
-   DOTMATRIX - Standard (puntos espaciados, estilo clásico LED)
+   SENTINEL TYPOGRAPHY - Self-hosted Fonts
+
+   DotMatrix fonts have been removed and replaced with IBM Plex Mono.
+   All fonts are now loaded via Google Fonts CDN in index.html.
+
+   This file is kept for backwards compatibility but contains no font definitions.
    ═══════════════════════════════════════════════════════════════════════════════ */
-
-@font-face {
-  font-family: 'DotMatrix';
-  src: url('/fonts/dotmatrix/DotMatrix-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'DotMatrix';
-  src: url('/fonts/dotmatrix/DotMatrix-Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* ═══════════════════════════════════════════════════════════════════════════════
-   DOTMATRIX CONDENSED - Más estrecha
-   ═══════════════════════════════════════════════════════════════════════════════ */
-
-@font-face {
-  font-family: 'DotMatrix Condensed';
-  src: url('/fonts/dotmatrix/DotMatrix-CondensedRegular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'DotMatrix Condensed';
-  src: url('/fonts/dotmatrix/DotMatrix-CondensedBold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* ═══════════════════════════════════════════════════════════════════════════════
-   DOTMATRIX DUO - Puntos más densos (mejor legibilidad)
-   ═══════════════════════════════════════════════════════════════════════════════ */
-
-@font-face {
-  font-family: 'DotMatrix Duo';
-  src: url('/fonts/dotmatrix/DotMatrixDuo-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'DotMatrix Duo';
-  src: url('/fonts/dotmatrix/DotMatrixDuo-Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}

@@ -1,11 +1,13 @@
 /* Path: src/components/organisms/Sidebar/Sidebar.module.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   SENTINEL DESIGN SYSTEM v4.0 - Sidebar Component
+   SENTINEL DESIGN SYSTEM v5.0 - Neumorphic Sidebar
 
-   NEUMORPHIC BASE + GLASSMORPHISM ITEMS
-   - Light neumorphic base container
-   - Glass effect menu items floating on surface
-   - Dynamic shadows via Light Engine
+   DISEÑO COMPLETAMENTE NEUMÓRFICO
+   - Container principal: Superficie neumórfica elevada (flota)
+   - Secciones: Áreas cavadas/hundidas (inset)
+   - Items: Efectos de cristal (glassmorphism)
+   - Integración total con Light Engine para sombras dinámicas
+
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -13,38 +15,68 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .sidebar {
+  /* Neumorphic Base */
   --neu-base: #e0e5ec;
   --neu-shadow-dark: #a3b1c6;
   --neu-shadow-light: #ffffff;
+
+  /* Glass Effects */
   --glass-bg: rgba(255, 255, 255, 0.25);
   --glass-bg-hover: rgba(255, 255, 255, 0.45);
-  --glass-bg-active: rgba(255, 255, 255, 0.55);
+  --glass-bg-active: rgba(255, 255, 255, 0.6);
   --glass-border: rgba(255, 255, 255, 0.6);
-  --glass-border-subtle: rgba(255, 255, 255, 0.3);
+  --glass-border-subtle: rgba(255, 255, 255, 0.35);
+
+  /* Text Colors */
   --text-primary: #2d3748;
   --text-secondary: #5a6578;
   --text-muted: #8896a6;
+  --text-label: #7a8a9a;
+
+  /* Accent */
   --accent-primary: #4a9a9c;
-  --accent-glow: rgba(74, 154, 156, 0.4);
-  --rail-bg: #1a1f2e;
-  --rail-text: rgba(255, 255, 255, 0.6);
+  --accent-secondary: #3d8587;
+  --accent-glow: rgba(74, 154, 156, 0.35);
+  --accent-subtle: rgba(74, 154, 156, 0.12);
+
+  /* Transitions */
   --transition-fast: 150ms ease;
   --transition-normal: 200ms ease;
+  --transition-shadow: 50ms linear;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   SIDEBAR CONTAINER - Neumorphic Base
+   SIDEBAR CONTAINER - Extruded from left edge, neumorphic right border
    ───────────────────────────────────────────────────────────────────────────── */
 
 .sidebar {
+  position: fixed;
   left: 0;
   top: 0;
+  bottom: 0;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
   z-index: var(--sentinel-z-sticky, 100);
-  font-family: var(--sentinel-font-primary, 'Inter', sans-serif);
-  position: fixed;
+  font-family: var(--sentinel-font-primary, 'IBM Plex Sans', sans-serif);
   height: 100vh;
+  width: 64px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+
+  /* Neumorphic surface - same as background */
+  background: var(--neu-base);
+
+  /* No border radius - flush against all edges */
+  border-radius: 0;
+
+  /* Subtle neumorphic shadow on right edge only */
+  box-shadow:
+    3px 0 6px rgba(163, 177, 198, 0.2),
+    inset -1px 0 0 rgba(255, 255, 255, 0.5);
+
+  transition: box-shadow var(--transition-shadow);
 }
 
 /* Position variants */
@@ -55,265 +87,204 @@
 
 .sidebarAbsolute {
   position: absolute;
-  height: 100vh;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   ICON RAIL - Dark vertical strip with icons
+   LOGO SECTION - Animated SENTINEL logo
    ───────────────────────────────────────────────────────────────────────────── */
 
-.iconRail {
-  width: 56px;
-  min-width: 56px;
-  background: var(--rail-bg);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 8px 0;
-  border-radius: 20px;
-  margin: 12px;
-  margin-right: 0;
-
-  /* Neumorphic elevated shadow */
-  box-shadow:
-    6px 6px 16px var(--neu-shadow-dark),
-    -6px -6px 16px var(--neu-shadow-light),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
-}
-
-.railTop,
-.railBottom {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-}
-
-.railLogo {
-  width: 40px;
-  height: 40px;
+.logoSection {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 12px;
-  color: #fff;
+  padding: 16px 8px;
+  position: relative;
 }
 
-.railItem {
-  width: 40px;
-  height: 40px;
+.logo {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: transparent;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  color: var(--rail-text);
-  transition: var(--transition-normal);
-  text-decoration: none;
-}
-
-.railItem:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
-}
-
-.railItemActive {
-  background: rgba(74, 154, 156, 0.2);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
   color: var(--accent-primary);
+
+  /* Neumorphic inset container for logo */
+  background: var(--neu-base);
+  box-shadow:
+    inset 3px 3px 6px rgba(163, 177, 198, 0.4),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.7);
+
+  transition: var(--transition-normal);
 }
 
-.railItemActive::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 3px;
-  height: 20px;
-  background: var(--accent-primary);
-  border-radius: 0 2px 2px 0;
+.logo svg {
+  width: 28px;
+  height: 28px;
+  filter: drop-shadow(0 0 6px rgba(74, 154, 156, 0.4));
 }
 
-.railDivider {
-  width: 24px;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.1);
-  margin: 8px 0;
+/* Scan line animation */
+.scanLine {
+  transform-origin: center;
+  animation: scan 4s linear infinite;
+}
+
+@keyframes scan {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   EXPANDED PANEL - Neumorphic surface
+   USER PROFILE - Hidden in icon mode
    ───────────────────────────────────────────────────────────────────────────── */
 
-.expandedPanel {
-  width: 260px;
-  background: var(--neu-base);
-  display: flex;
-  flex-direction: column;
-  padding: 16px;
-  margin: 12px;
-  margin-left: 12px;
-  border-radius: 20px;
+.userSection {
+  display: none;
+}
+
+.userProfile,
+.userAvatar,
+.userAvatarFallback,
+.userInfo,
+.userName,
+.userEmail,
+.userChevron {
+  display: none;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   SEARCH INPUT - Hidden in icon mode
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.searchSection {
+  display: none;
+}
+
+.searchInput,
+.searchIcon {
+  display: none;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   NAVIGATION SECTIONS - Icon-only layout
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.navSections {
+  flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
-
-  /* Neumorphic elevated shadow */
-  box-shadow:
-    8px 8px 20px var(--neu-shadow-dark),
-    -8px -8px 20px var(--neu-shadow-light);
-
-  transition: box-shadow 50ms linear;
-}
-
-/* ─────────────────────────────────────────────────────────────────────────────
-   USER PROFILE SECTION
-   ───────────────────────────────────────────────────────────────────────────── */
-
-.userProfile {
+  padding: 12px 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 12px;
-  padding: 12px;
-  margin-bottom: 20px;
-  border-radius: 15px;
+  background: transparent;
 
-  /* Glass effect */
-  background: var(--glass-bg);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid var(--glass-border);
+  /* Hide scrollbar */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
-.userAvatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  overflow: hidden;
-  flex-shrink: 0;
-
-  /* Glass border effect */
-  border: 2px solid var(--glass-border);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+.navSections::-webkit-scrollbar {
+  display: none;
 }
 
-.userAvatar img {
+.navSection {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  background: transparent;
 }
 
-.userInfo {
-  flex: 1;
-  min-width: 0;
-}
-
-.userName {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin: 0;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.userEmail {
-  font-size: 11px;
-  color: var(--text-muted);
-  margin: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* ─────────────────────────────────────────────────────────────────────────────
-   SECTION HEADERS
-   ───────────────────────────────────────────────────────────────────────────── */
-
+/* Hide section headers in icon mode */
 .sectionHeader {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding: 16px 12px 8px;
-  margin: 0;
+  display: none;
+}
+
+.sectionTitle {
+  display: none;
+}
+
+.sectionAction {
+  display: none;
+}
+
+/* Section content - No background, just layout */
+.sectionContent {
+  padding: 0;
+  background: transparent;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   MENU ITEMS - Glass effect on neumorphic surface
+   MENU ITEMS - Glassmorphism buttons
    ───────────────────────────────────────────────────────────────────────────── */
 
 .menuList {
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  margin-bottom: 8px;
+  align-items: center;
+  gap: 8px;
 }
 
 .menuItem {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 10px 12px;
-  border-radius: 12px;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border-radius: 50%;
   cursor: pointer;
-  border: none;
-  background: transparent;
   text-decoration: none;
-  transition: var(--transition-fast);
-  color: var(--text-secondary);
-  font-size: 14px;
-  font-weight: 500;
-  width: 100%;
-  text-align: left;
+  font-family: inherit;
+  position: relative;
 
-  /* Subtle glass border (invisible by default) */
-  border: 1px solid transparent;
+  /* Glassmorphism base */
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: var(--text-secondary);
+
+  /* Glass shadow */
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+
+  transition: var(--transition-fast);
 }
 
 .menuItem:hover {
-  /* Glass effect on hover */
-  background: var(--glass-bg-hover);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border-color: var(--glass-border);
+  /* Brighter glass on hover */
+  background: rgba(255, 255, 255, 0.5);
+  border-color: rgba(255, 255, 255, 0.7);
   color: var(--text-primary);
 
-  /* Subtle lift shadow */
   box-shadow:
-    0 2px 8px rgba(0, 0, 0, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    0 4px 12px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 .menuItemActive {
-  /* Strong glass effect for active state */
-  background: var(--glass-bg-active);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-color: var(--glass-border);
-  color: var(--text-primary);
-  font-weight: 600;
+  /* Active glass with accent tint */
+  background: rgba(255, 255, 255, 0.6);
+  border-color: rgba(255, 255, 255, 0.8);
+  color: var(--accent-primary);
 
-  /* Glass shadow with subtle depth */
   box-shadow:
-    0 4px 12px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.05);
+    0 4px 16px rgba(74, 154, 156, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
 }
 
 .menuItemDisabled {
   color: var(--text-muted);
   cursor: not-allowed;
-  opacity: 0.5;
+  opacity: 0.4;
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .menuItemDisabled:hover {
-  background: transparent;
-  border-color: transparent;
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
   box-shadow: none;
 }
 
@@ -321,364 +292,141 @@
   width: 20px;
   height: 20px;
   flex-shrink: 0;
-  opacity: 0.7;
+  transition: var(--transition-fast);
 }
 
 .menuItemActive .menuItemIcon {
-  opacity: 1;
-  color: var(--accent-primary);
+  filter: drop-shadow(0 0 4px rgba(74, 154, 156, 0.35));
 }
 
+/* Hide labels and badges in icon mode */
 .menuItemLabel {
-  flex: 1;
+  display: none;
 }
 
 .menuItemBadge {
-  font-size: 11px;
-  font-weight: 600;
-  padding: 2px 8px;
-  border-radius: 10px;
-  background: var(--glass-bg);
-  color: var(--text-muted);
-  border: 1px solid var(--glass-border-subtle);
-}
-
-.menuItemActive .menuItemBadge {
-  background: rgba(74, 154, 156, 0.15);
-  color: var(--accent-primary);
-  border-color: rgba(74, 154, 156, 0.3);
+  display: none;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   SEARCH INPUT - Glass effect
+   FOOTER SECTION - Icon-only bottom actions
    ───────────────────────────────────────────────────────────────────────────── */
 
-.searchContainer {
-  padding: 0 0 12px;
-}
-
-.searchInput {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 12px;
-  border-radius: 12px;
-
-  /* Glass effect */
-  background: var(--glass-bg);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid var(--glass-border);
-
-  transition: var(--transition-fast);
-}
-
-.searchInput:focus-within {
-  background: var(--glass-bg-hover);
-  border-color: var(--accent-primary);
-  box-shadow: 0 0 0 3px var(--accent-glow);
-}
-
-.searchInput input {
-  flex: 1;
-  border: none;
-  background: transparent;
-  font-size: 13px;
-  color: var(--text-primary);
-  outline: none;
-}
-
-.searchInput input::placeholder {
-  color: var(--text-muted);
-}
-
-.searchIcon {
-  color: var(--text-muted);
-  width: 16px;
-  height: 16px;
-}
-
-/* ─────────────────────────────────────────────────────────────────────────────
-   NESTED/TREE ITEMS
-   ───────────────────────────────────────────────────────────────────────────── */
-
-.treeItem {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 12px 8px 24px;
-  font-size: 13px;
-  color: var(--text-secondary);
-  cursor: pointer;
-  border-radius: 8px;
-  transition: var(--transition-fast);
-  border: 1px solid transparent;
-}
-
-.treeItem:hover {
-  background: var(--glass-bg);
-  border-color: var(--glass-border-subtle);
-}
-
-.treeItemNested {
-  padding-left: 36px;
-}
-
-.treeItemNested2 {
-  padding-left: 48px;
-}
-
-.treeLine {
-  position: absolute;
-  left: 28px;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background: var(--glass-border-subtle);
-}
-
-/* ─────────────────────────────────────────────────────────────────────────────
-   SECTION ACTION BUTTON (e.g., + button)
-   ───────────────────────────────────────────────────────────────────────────── */
-
-.sectionAction {
-  width: 24px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 6px;
-  border: none;
-  background: var(--glass-bg);
-  color: var(--text-muted);
-  cursor: pointer;
-  transition: var(--transition-fast);
-}
-
-.sectionAction:hover {
-  background: var(--glass-bg-hover);
-  color: var(--accent-primary);
-}
-
-/* ─────────────────────────────────────────────────────────────────────────────
-   VERTICAL TEXT (like "REAGLE 2025 NAV" in image)
-   ───────────────────────────────────────────────────────────────────────────── */
-
-.verticalText {
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  transform: rotate(180deg);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  padding: 12px 0;
-}
-
-/* ─────────────────────────────────────────────────────────────────────────────
-   LEGACY SUPPORT - Old structure compatibility
-   ───────────────────────────────────────────────────────────────────────────── */
-
-.section {
+.footerSection {
+  padding: 8px;
+  margin-top: auto;
+  border-top: 1px solid rgba(163, 177, 198, 0.12);
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
 }
 
-.logoContainer {
+.footerActions {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 56px;
-  height: 56px;
-  padding: var(--sentinel-space-3, 12px);
-  flex-shrink: 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.menuItemContainer {
-  position: relative;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.menuItemButton {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 56px;
-  height: 56px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  transition: var(--transition-normal);
-  outline: none;
-  color: var(--rail-text);
-  text-decoration: none;
-}
-
-.menuItemButton:hover {
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--accent-primary);
-}
-
-.menuItemButton:focus-visible {
-  outline: none;
-  box-shadow: inset 0 0 0 2px var(--accent-glow);
-}
-
-.leftBar {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  background: linear-gradient(
-    180deg,
-    transparent,
-    var(--accent-primary),
-    transparent
-  );
-  opacity: 0;
-  transition: opacity var(--transition-normal);
-  box-shadow: 0 0 12px var(--accent-glow);
-}
-
-.leftBarVisible {
-  opacity: 1;
-}
-
-.userIconContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 56px;
-  height: 56px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.actionButton {
-  width: 56px;
-  height: 56px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  color: var(--rail-text);
-  transition: var(--transition-normal);
-  padding: 0;
-}
-
-.actionButton:hover {
-  color: var(--accent-primary);
-  background: rgba(255, 255, 255, 0.08);
-}
-
-.actionButton:focus-visible {
-  outline: none;
-  box-shadow: inset 0 0 0 2px var(--accent-glow);
-}
-
-/* ─────────────────────────────────────────────────────────────────────────────
-   NEU PANEL VARIANT - Light neumorphic with glass items
-   ───────────────────────────────────────────────────────────────────────────── */
-
-.neuPanel {
-  background: var(--neu-base);
-  border-right: none;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
   flex-direction: column;
-  width: 56px;
-  padding: 12px 0;
-  margin: 12px;
-  border-radius: 20px;
-
-  /* Neumorphic shadow */
-  box-shadow:
-    8px 8px 20px var(--neu-shadow-dark),
-    -8px -8px 20px var(--neu-shadow-light);
+  align-items: center;
+  gap: 4px;
 }
 
-.neuPanel .logoContainer {
-  border-bottom-color: rgba(163, 177, 198, 0.3);
-}
-
-.neuPanel .menuItemButton {
-  color: var(--text-secondary);
-  margin: 2px 6px;
+.footerAction {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 44px;
   height: 44px;
+  padding: 0;
   border-radius: 12px;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  text-decoration: none;
+  transition: var(--transition-fast);
+  color: var(--text-muted);
+  font-family: inherit;
 }
 
-.neuPanel .menuItemButton:hover {
-  /* Glass effect on hover */
+.footerAction span {
+  display: none;
+}
+
+.footerAction:hover {
   background: var(--glass-bg-hover);
-  backdrop-filter: blur(8px);
-  color: var(--accent-primary);
-  border: 1px solid var(--glass-border);
+  color: var(--text-primary);
 }
 
-.neuPanel .menuItemActive {
-  /* Glass active state */
-  background: var(--glass-bg-active);
-  backdrop-filter: blur(12px);
-  color: var(--accent-primary);
-  border: 1px solid var(--glass-border);
+.footerAction.danger:hover {
+  background: rgba(220, 38, 38, 0.08);
+  color: #dc2626;
+}
 
+/* ─────────────────────────────────────────────────────────────────────────────
+   QUICK NAV - Compact icon bar (alternative layout)
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.quickNav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 12px 16px;
+  margin: 0 16px 12px;
+  border-radius: 14px;
+
+  /* Inset container */
+  background: var(--neu-base);
   box-shadow:
-    0 4px 12px rgba(0, 0, 0, 0.1),
+    inset 3px 3px 8px var(--neu-shadow-dark),
+    inset -3px -3px 8px var(--neu-shadow-light);
+}
+
+.quickNavItem {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.quickNavItem:hover {
+  background: var(--glass-bg-hover);
+  color: var(--text-primary);
+}
+
+.quickNavItemActive {
+  background: var(--glass-bg-active);
+  color: var(--accent-primary);
+  box-shadow:
+    0 2px 8px rgba(74, 154, 156, 0.15),
     inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
-.neuPanel .menuItemActive::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  right: -6px;
-  transform: translateY(-50%);
-  width: 3px;
-  height: 16px;
-  background: var(--accent-primary);
-  border-radius: 2px;
-  box-shadow: 0 0 8px var(--accent-glow);
+/* ─────────────────────────────────────────────────────────────────────────────
+   DIVIDERS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.divider {
+  height: 1px;
+  margin: 8px 16px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(163, 177, 198, 0.25),
+    transparent
+  );
 }
 
-.neuPanel .menuItemDisabled {
-  color: var(--text-muted);
-  opacity: 0.5;
-}
+/* ─────────────────────────────────────────────────────────────────────────────
+   COLLAPSED STATE - Same as default (already icon-only)
+   ───────────────────────────────────────────────────────────────────────────── */
 
-.neuPanel .userIconContainer {
-  border-top-color: rgba(163, 177, 198, 0.3);
-}
-
-.neuPanel .actionButton {
-  color: var(--text-secondary);
-  margin: 2px 6px;
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-}
-
-.neuPanel .actionButton:hover {
-  background: var(--glass-bg-hover);
-  backdrop-filter: blur(8px);
-  color: var(--accent-primary);
-  border: 1px solid var(--glass-border);
-}
-
-.neuPanel .leftBar {
-  display: none;
+.sidebarCollapsed {
+  /* Same width as default */
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -686,7 +434,25 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .dynamicShadows {
-  transition: box-shadow 50ms linear;
+  transition: box-shadow var(--transition-shadow);
+}
+
+.dynamicShadows .sectionContent {
+  transition: box-shadow var(--transition-shadow);
+}
+
+.dynamicShadows .searchInput {
+  transition: box-shadow var(--transition-shadow);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   RESPONSIVE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .sidebar:not(.sidebarRelative) {
+    display: none;
+  }
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -694,12 +460,12 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 @media (prefers-reduced-motion: reduce) {
-  .menuItemButton,
+  .sidebar,
   .menuItem,
-  .actionButton,
-  .leftBar,
-  .railItem,
-  .searchInput {
+  .userProfile,
+  .footerAction,
+  .searchInput,
+  .quickNavItem {
     transition: none;
   }
 }

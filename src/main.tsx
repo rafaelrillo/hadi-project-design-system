@@ -5,7 +5,7 @@ import { App } from './App';
 
 // Estilos en orden correcto
 import './styles/globals.css';               // Reset y base
-import './styles/fonts.css';                 // DotMatrix font family (self-hosted)
+// import './styles/fonts.css';              // [DEPRECATED] DotMatrix removed - fonts now via Google Fonts CDN
 import './styles/theme.css';                 // Variables del tema SENTINEL
 import './styles/light-engine.css';          // Motor de luz unificado (Josh Comeau)
 import './styles/typography/sentinel.css';   // Tipografía SENTINEL

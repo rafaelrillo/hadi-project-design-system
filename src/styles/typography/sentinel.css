@@ -3,16 +3,12 @@
    SENTINEL TYPOGRAPHY
 
    Sistema tipográfico para Sentinel
-   - Inter para UI general (claridad, legibilidad)
-   - JetBrains Mono para datos financieros (precisión)
+   - IBM Plex Sans para UI general (claridad profesional)
+   - Libre Baskerville para display/headlines (elegancia serif)
+   - IBM Plex Mono para datos financieros (precisión numérica)
 
+   NOTA: Las fuentes se cargan via Google Fonts CDN en index.html
    ═══════════════════════════════════════════════════════════════════════════════ */
-
-/* Import Inter (primary UI font) */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
-/* Import JetBrains Mono (monospace for data) */
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 /* ─────────────────────────────────────────────────────────────────────────────
    BASE BODY STYLES
@@ -33,11 +29,11 @@ body {
 
 /* ─────────────────────────────────────────────────────────────────────────────
    HEADINGS
-   Clean, professional, slightly tight letter-spacing
+   h1-h3: Libre Baskerville (serif elegante)
+   h4-h6: IBM Plex Sans (sans-serif profesional)
    ───────────────────────────────────────────────────────────────────────────── */
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--sentinel-font-display);
   font-weight: var(--sentinel-font-semibold);
   line-height: var(--sentinel-leading-tight);
   letter-spacing: var(--sentinel-tracking-tight);
@@ -45,29 +41,40 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
 
+/* Display headings - Libre Baskerville (serif) */
+h1, h2, h3 {
+  font-family: var(--sentinel-font-display);
+  font-variant-numeric: lining-nums; /* Evitar oldstyle numerals en headings */
+}
+
 h1 {
   font-size: var(--sentinel-text-3xl);
-  font-weight: var(--sentinel-font-semibold);
+  font-weight: var(--sentinel-font-bold);
 }
 
 h2 {
   font-size: var(--sentinel-text-2xl);
-  font-weight: var(--sentinel-font-semibold);
+  font-weight: var(--sentinel-font-bold);
 }
 
 h3 {
   font-size: var(--sentinel-text-xl);
-  font-weight: var(--sentinel-font-medium);
+  font-weight: var(--sentinel-font-bold);
+}
+
+/* Section headings - IBM Plex Sans (sans-serif) */
+h4, h5, h6 {
+  font-family: var(--sentinel-font-primary);
 }
 
 h4 {
   font-size: var(--sentinel-text-lg);
-  font-weight: var(--sentinel-font-medium);
+  font-weight: var(--sentinel-font-semibold);
 }
 
 h5 {
   font-size: var(--sentinel-text-base);
-  font-weight: var(--sentinel-font-medium);
+  font-weight: var(--sentinel-font-semibold);
 }
 
 h6 {
@@ -103,12 +110,13 @@ em, i {
 
 /* ─────────────────────────────────────────────────────────────────────────────
    MONOSPACE - For Data, Numbers, Code
-   Used for financial data, percentages, amounts
+   IBM Plex Mono para datos financieros con números tabulares
    ───────────────────────────────────────────────────────────────────────────── */
 
 code, pre, kbd, samp, .mono, .data {
   font-family: var(--sentinel-font-mono);
   font-feature-settings: "liga" 1, "calt" 1, "tnum" 1;
+  font-variant-numeric: tabular-nums lining-nums; /* Alineación perfecta en tablas */
 }
 
 code {
@@ -129,7 +137,7 @@ pre {
 
 /* Tabular numbers for financial data alignment */
 .tabular-nums {
-  font-variant-numeric: tabular-nums;
+  font-variant-numeric: tabular-nums lining-nums;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────

@@ -1,16 +1,30 @@
 // Path: src/components/organisms/Sidebar/Sidebar.test.tsx
 import { render, screen, fireEvent } from '@testing-library/react';
-import { Sidebar, SidebarMenuItem } from './Sidebar';
-import { Home, Settings, Users, BarChart, User } from 'lucide-react';
+import { Sidebar, SidebarMenuItem, SidebarSection } from './Sidebar';
+import { Home, Settings, Users, BarChart } from 'lucide-react';
 
 const mockMenuItems: SidebarMenuItem[] = [
-  { icon: Home, label: 'Inicio', href: '/' },
-  { icon: Users, label: 'Usuarios', href: '/users' },
-  { icon: Settings, label: 'Configuración', href: '/settings' }
+  { icon: Home, label: 'Home', href: '/' },
+  { icon: Users, label: 'Users', href: '/users' },
+  { icon: Settings, label: 'Settings', href: '/settings' }
+];
+
+const mockSections: SidebarSection[] = [
+  {
+    title: 'Navigation',
+    items: [
+      { icon: Home, label: 'Dashboard', href: '/' },
+      { icon: Users, label: 'Users', href: '/users' },
+    ],
+  },
 ];
 
 const mockLogo = <div data-testid="mock-logo">Logo</div>;
-const mockUserIcon = <User size={24} data-testid="user-icon" />;
+
+const mockUser = {
+  name: 'John Doe',
+  email: 'john@example.com',
+};
 
 describe('Sidebar Organism', () => {
   describe('Rendering', () => {
@@ -18,7 +32,7 @@ describe('Sidebar Organism', () => {
       render(<Sidebar productLogo={mockLogo} menuItems={mockMenuItems} />);
       const nav = screen.getByRole('navigation');
       expect(nav).toBeInTheDocument();
-      expect(nav).toHaveAttribute('aria-label', 'Navegación principal');
+      expect(nav).toHaveAttribute('aria-label', 'Main navigation');
     });
 
     it('should render product logo', () => {
@@ -28,41 +42,37 @@ describe('Sidebar Organism', () => {
 
     it('should render all menu items', () => {
       render(<Sidebar productLogo={mockLogo} menuItems={mockMenuItems} />);
-      expect(screen.getByLabelText('Inicio')).toBeInTheDocument();
-      expect(screen.getByLabelText('Usuarios')).toBeInTheDocument();
-      expect(screen.getByLabelText('Configuración')).toBeInTheDocument();
+      expect(screen.getByLabelText('Home')).toBeInTheDocument();
+      expect(screen.getByLabelText('Users')).toBeInTheDocument();
+      expect(screen.getByLabelText('Settings')).toBeInTheDocument();
     });
 
-    it('should render user icon when provided', () => {
+    it('should render user profile when provided', () => {
       render(
         <Sidebar
           productLogo={mockLogo}
           menuItems={mockMenuItems}
-          userIcon={mockUserIcon}
+          user={mockUser}
         />
       );
-      expect(screen.getByTestId('user-icon')).toBeInTheDocument();
+      expect(screen.getByText('John Doe')).toBeInTheDocument();
+      expect(screen.getByText('john@example.com')).toBeInTheDocument();
     });
 
-    it('should not render user icon when not provided', () => {
+    it('should not render user profile when not provided', () => {
       render(<Sidebar productLogo={mockLogo} menuItems={mockMenuItems} />);
-      expect(screen.queryByTestId('user-icon')).not.toBeInTheDocument();
+      expect(screen.queryByText('John Doe')).not.toBeInTheDocument();
     });
 
-    it('should render logs button when onLogsClick provided', () => {
+    it('should render settings button when onSettingsClick provided', () => {
       render(
         <Sidebar
           productLogo={mockLogo}
           menuItems={mockMenuItems}
-          onLogsClick={() => {}}
+          onSettingsClick={() => {}}
         />
       );
-      expect(screen.getByLabelText('Historial de logs')).toBeInTheDocument();
-    });
-
-    it('should not render logs button when onLogsClick not provided', () => {
-      render(<Sidebar productLogo={mockLogo} menuItems={mockMenuItems} />);
-      expect(screen.queryByLabelText('Historial de logs')).not.toBeInTheDocument();
+      expect(screen.getByLabelText('Settings')).toBeInTheDocument();
     });
 
     it('should render logout button when onLogoutClick provided', () => {
@@ -73,28 +83,34 @@ describe('Sidebar Organism', () => {
           onLogoutClick={() => {}}
         />
       );
-      expect(screen.getByLabelText('Cerrar sesión')).toBeInTheDocument();
+      expect(screen.getByLabelText('Logout')).toBeInTheDocument();
     });
 
-    it('should not render logout button when onLogoutClick not provided', () => {
-      render(<Sidebar productLogo={mockLogo} menuItems={mockMenuItems} />);
-      expect(screen.queryByLabelText('Cerrar sesión')).not.toBeInTheDocument();
+    it('should render sections when provided', () => {
+      render(
+        <Sidebar
+          productLogo={mockLogo}
+          sections={mockSections}
+        />
+      );
+      expect(screen.getByText('Navigation')).toBeInTheDocument();
+      expect(screen.getByLabelText('Dashboard')).toBeInTheDocument();
     });
   });
 
   describe('Menu Items as Links', () => {
     it('should render menu items with href as links', () => {
       render(<Sidebar productLogo={mockLogo} menuItems={mockMenuItems} />);
-      const homeLink = screen.getByLabelText('Inicio');
+      const homeLink = screen.getByLabelText('Home');
       expect(homeLink).toHaveAttribute('href', '/');
     });
 
     it('should render menu items without href as buttons', () => {
       const itemsWithoutHref: SidebarMenuItem[] = [
-        { icon: Home, label: 'Inicio', onClick: () => {} }
+        { icon: Home, label: 'Home', onClick: () => {} }
       ];
       render(<Sidebar productLogo={mockLogo} menuItems={itemsWithoutHref} />);
-      const homeButton = screen.getByLabelText('Inicio');
+      const homeButton = screen.getByLabelText('Home');
       expect(homeButton).toHaveAttribute('type', 'button');
     });
   });
@@ -103,11 +119,11 @@ describe('Sidebar Organism', () => {
     it('should call onClick when menu item is clicked', () => {
       const handleClick = jest.fn();
       const items: SidebarMenuItem[] = [
-        { icon: Home, label: 'Inicio', onClick: handleClick }
+        { icon: Home, label: 'Home', onClick: handleClick }
       ];
       render(<Sidebar productLogo={mockLogo} menuItems={items} />);
 
-      fireEvent.click(screen.getByLabelText('Inicio'));
+      fireEvent.click(screen.getByLabelText('Home'));
 
       expect(handleClick).toHaveBeenCalledTimes(1);
     });
@@ -115,28 +131,28 @@ describe('Sidebar Organism', () => {
     it('should not call onClick when disabled menu item is clicked', () => {
       const handleClick = jest.fn();
       const items: SidebarMenuItem[] = [
-        { icon: Home, label: 'Inicio', onClick: handleClick, disabled: true }
+        { icon: Home, label: 'Home', onClick: handleClick, disabled: true }
       ];
       render(<Sidebar productLogo={mockLogo} menuItems={items} />);
 
-      fireEvent.click(screen.getByLabelText('Inicio'));
+      fireEvent.click(screen.getByLabelText('Home'));
 
       expect(handleClick).not.toHaveBeenCalled();
     });
 
-    it('should call onLogsClick when logs button is clicked', () => {
-      const handleLogsClick = jest.fn();
+    it('should call onSettingsClick when settings button is clicked', () => {
+      const handleSettingsClick = jest.fn();
       render(
         <Sidebar
           productLogo={mockLogo}
           menuItems={mockMenuItems}
-          onLogsClick={handleLogsClick}
+          onSettingsClick={handleSettingsClick}
         />
       );
 
-      fireEvent.click(screen.getByLabelText('Historial de logs'));
+      fireEvent.click(screen.getByLabelText('Settings'));
 
-      expect(handleLogsClick).toHaveBeenCalledTimes(1);
+      expect(handleSettingsClick).toHaveBeenCalledTimes(1);
     });
 
     it('should call onLogoutClick when logout button is clicked', () => {
@@ -149,9 +165,25 @@ describe('Sidebar Organism', () => {
         />
       );
 
-      fireEvent.click(screen.getByLabelText('Cerrar sesión'));
+      fireEvent.click(screen.getByLabelText('Logout'));
 
       expect(handleLogoutClick).toHaveBeenCalledTimes(1);
+    });
+
+    it('should call onUserClick when user profile is clicked', () => {
+      const handleUserClick = jest.fn();
+      render(
+        <Sidebar
+          productLogo={mockLogo}
+          menuItems={mockMenuItems}
+          user={mockUser}
+          onUserClick={handleUserClick}
+        />
+      );
+
+      fireEvent.click(screen.getByLabelText(`User profile: ${mockUser.name}`));
+
+      expect(handleUserClick).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -159,11 +191,11 @@ describe('Sidebar Organism', () => {
     it('should call onClick when Enter is pressed on menu item', () => {
       const handleClick = jest.fn();
       const items: SidebarMenuItem[] = [
-        { icon: Home, label: 'Inicio', onClick: handleClick }
+        { icon: Home, label: 'Home', onClick: handleClick }
       ];
       render(<Sidebar productLogo={mockLogo} menuItems={items} />);
 
-      fireEvent.keyDown(screen.getByLabelText('Inicio'), { key: 'Enter' });
+      fireEvent.keyDown(screen.getByLabelText('Home'), { key: 'Enter' });
 
       expect(handleClick).toHaveBeenCalledTimes(1);
     });
@@ -171,11 +203,11 @@ describe('Sidebar Organism', () => {
     it('should call onClick when Space is pressed on menu item', () => {
       const handleClick = jest.fn();
       const items: SidebarMenuItem[] = [
-        { icon: Home, label: 'Inicio', onClick: handleClick }
+        { icon: Home, label: 'Home', onClick: handleClick }
       ];
       render(<Sidebar productLogo={mockLogo} menuItems={items} />);
 
-      fireEvent.keyDown(screen.getByLabelText('Inicio'), { key: ' ' });
+      fireEvent.keyDown(screen.getByLabelText('Home'), { key: ' ' });
 
       expect(handleClick).toHaveBeenCalledTimes(1);
     });
@@ -183,133 +215,164 @@ describe('Sidebar Organism', () => {
     it('should not call onClick on disabled menu item with keyboard', () => {
       const handleClick = jest.fn();
       const items: SidebarMenuItem[] = [
-        { icon: Home, label: 'Inicio', onClick: handleClick, disabled: true }
+        { icon: Home, label: 'Home', onClick: handleClick, disabled: true }
       ];
       render(<Sidebar productLogo={mockLogo} menuItems={items} />);
 
-      fireEvent.keyDown(screen.getByLabelText('Inicio'), { key: 'Enter' });
-      fireEvent.keyDown(screen.getByLabelText('Inicio'), { key: ' ' });
+      fireEvent.keyDown(screen.getByLabelText('Home'), { key: 'Enter' });
+      fireEvent.keyDown(screen.getByLabelText('Home'), { key: ' ' });
 
       expect(handleClick).not.toHaveBeenCalled();
     });
 
     it('should have tabIndex 0 on enabled menu items', () => {
       render(<Sidebar productLogo={mockLogo} menuItems={mockMenuItems} />);
-      expect(screen.getByLabelText('Inicio')).toHaveAttribute('tabIndex', '0');
+      expect(screen.getByLabelText('Home')).toHaveAttribute('tabIndex', '0');
     });
 
     it('should have tabIndex -1 on disabled menu items', () => {
       const items: SidebarMenuItem[] = [
-        { icon: Home, label: 'Inicio', disabled: true }
+        { icon: Home, label: 'Home', disabled: true }
       ];
       render(<Sidebar productLogo={mockLogo} menuItems={items} />);
-      expect(screen.getByLabelText('Inicio')).toHaveAttribute('tabIndex', '-1');
+      expect(screen.getByLabelText('Home')).toHaveAttribute('tabIndex', '-1');
     });
   });
 
   describe('Active State', () => {
     it('should have aria-current when menu item is active', () => {
       const items: SidebarMenuItem[] = [
-        { icon: Home, label: 'Inicio', isActive: true }
+        { icon: Home, label: 'Home', isActive: true }
       ];
       render(<Sidebar productLogo={mockLogo} menuItems={items} />);
-      expect(screen.getByLabelText('Inicio')).toHaveAttribute('aria-current', 'page');
+      expect(screen.getByLabelText('Home')).toHaveAttribute('aria-current', 'page');
     });
 
     it('should not have aria-current when menu item is not active', () => {
       render(<Sidebar productLogo={mockLogo} menuItems={mockMenuItems} />);
-      expect(screen.getByLabelText('Inicio')).not.toHaveAttribute('aria-current');
-    });
-
-    it('should render active item with aria-current', () => {
-      const items: SidebarMenuItem[] = [
-        { icon: Home, label: 'Inicio', isActive: true }
-      ];
-      render(<Sidebar productLogo={mockLogo} menuItems={items} />);
-      const item = screen.getByLabelText('Inicio');
-      expect(item).toHaveAttribute('aria-current', 'page');
-    });
-
-    it('should not have aria-current when not active', () => {
-      render(<Sidebar productLogo={mockLogo} menuItems={mockMenuItems} />);
-      const item = screen.getByLabelText('Inicio');
-      expect(item).not.toHaveAttribute('aria-current');
+      expect(screen.getByLabelText('Home')).not.toHaveAttribute('aria-current');
     });
   });
 
   describe('Disabled State', () => {
     it('should have disabled attribute when disabled', () => {
       const items: SidebarMenuItem[] = [
-        { icon: Home, label: 'Inicio', disabled: true }
+        { icon: Home, label: 'Home', disabled: true }
       ];
       render(<Sidebar productLogo={mockLogo} menuItems={items} />);
-      expect(screen.getByLabelText('Inicio')).toBeDisabled();
+      expect(screen.getByLabelText('Home')).toBeDisabled();
     });
 
     it('should have aria-disabled when disabled', () => {
       const items: SidebarMenuItem[] = [
-        { icon: Home, label: 'Inicio', disabled: true }
+        { icon: Home, label: 'Home', disabled: true }
       ];
       render(<Sidebar productLogo={mockLogo} menuItems={items} />);
-      expect(screen.getByLabelText('Inicio')).toHaveAttribute('aria-disabled', 'true');
-    });
-
-    it('should be visually indicated as disabled', () => {
-      const items: SidebarMenuItem[] = [
-        { icon: Home, label: 'Inicio', disabled: true }
-      ];
-      render(<Sidebar productLogo={mockLogo} menuItems={items} />);
-      const item = screen.getByLabelText('Inicio');
-      expect(item).toBeDisabled();
-    });
-
-    it('should not be disabled when enabled', () => {
-      render(<Sidebar productLogo={mockLogo} menuItems={mockMenuItems} />);
-      const item = screen.getByLabelText('Inicio');
-      expect(item).not.toBeDisabled();
+      expect(screen.getByLabelText('Home')).toHaveAttribute('aria-disabled', 'true');
     });
   });
 
-  describe('Styling', () => {
-    it('should render nav element for sidebar', () => {
-      render(<Sidebar productLogo={mockLogo} menuItems={mockMenuItems} />);
-      const nav = screen.getByRole('navigation');
-      expect(nav).toBeInTheDocument();
-      expect(nav.tagName).toBe('NAV');
-    });
-
-    it('should render menu items as links', () => {
-      render(<Sidebar productLogo={mockLogo} menuItems={mockMenuItems} />);
-      const item = screen.getByLabelText('Inicio');
-      expect(item).toBeInTheDocument();
-      expect(item.tagName).toBe('A');
-    });
-
-    it('should render icons with correct size', () => {
-      const { container } = render(
-        <Sidebar productLogo={mockLogo} menuItems={mockMenuItems} />
+  describe('Collapsed Mode', () => {
+    it('should hide labels in collapsed mode', () => {
+      render(
+        <Sidebar
+          productLogo={mockLogo}
+          menuItems={mockMenuItems}
+          collapsed={true}
+        />
       );
-      const icons = container.querySelectorAll('svg');
-      icons.forEach(icon => {
-        expect(icon).toHaveAttribute('width', '24');
-        expect(icon).toHaveAttribute('height', '24');
-      });
+      // Items should still be accessible via aria-label (title attribute)
+      expect(screen.getByTitle('Home')).toBeInTheDocument();
     });
 
-    it('should render logo container', () => {
-      render(<Sidebar productLogo={mockLogo} menuItems={mockMenuItems} />);
-      // Logo is rendered in a container with aria-label
-      const logoContainer = screen.getByLabelText('Logo del producto');
-      expect(logoContainer).toBeInTheDocument();
-    });
-
-    it('should render menu items', () => {
-      const { container } = render(
-        <Sidebar productLogo={mockLogo} menuItems={mockMenuItems} />
+    it('should hide user profile in collapsed mode', () => {
+      render(
+        <Sidebar
+          productLogo={mockLogo}
+          menuItems={mockMenuItems}
+          user={mockUser}
+          collapsed={true}
+        />
       );
-      // Menu items are anchor elements
-      const links = container.querySelectorAll('a');
-      expect(links.length).toBeGreaterThan(0);
+      expect(screen.queryByText('John Doe')).not.toBeInTheDocument();
+    });
+
+    it('should hide search in collapsed mode', () => {
+      render(
+        <Sidebar
+          productLogo={mockLogo}
+          menuItems={mockMenuItems}
+          onSearch={() => {}}
+          collapsed={true}
+        />
+      );
+      expect(screen.queryByLabelText('Search')).not.toBeInTheDocument();
+    });
+  });
+
+  describe('Search', () => {
+    it('should render search input when onSearch provided', () => {
+      render(
+        <Sidebar
+          productLogo={mockLogo}
+          menuItems={mockMenuItems}
+          onSearch={() => {}}
+        />
+      );
+      expect(screen.getByLabelText('Search')).toBeInTheDocument();
+    });
+
+    it('should call onSearch when input changes', () => {
+      const handleSearch = jest.fn();
+      render(
+        <Sidebar
+          productLogo={mockLogo}
+          menuItems={mockMenuItems}
+          onSearch={handleSearch}
+        />
+      );
+
+      fireEvent.change(screen.getByLabelText('Search'), { target: { value: 'test' } });
+
+      expect(handleSearch).toHaveBeenCalledWith('test');
+    });
+
+    it('should use custom placeholder', () => {
+      render(
+        <Sidebar
+          productLogo={mockLogo}
+          menuItems={mockMenuItems}
+          onSearch={() => {}}
+          searchPlaceholder="Find something..."
+        />
+      );
+      expect(screen.getByPlaceholderText('Find something...')).toBeInTheDocument();
+    });
+  });
+
+  describe('Badges', () => {
+    it('should render badge when provided', () => {
+      const items: SidebarMenuItem[] = [
+        { icon: Home, label: 'Home', badge: 5 }
+      ];
+      render(<Sidebar productLogo={mockLogo} menuItems={items} />);
+      expect(screen.getByText('5')).toBeInTheDocument();
+    });
+
+    it('should not render badge when value is 0', () => {
+      const items: SidebarMenuItem[] = [
+        { icon: Home, label: 'Home', badge: 0 }
+      ];
+      render(<Sidebar productLogo={mockLogo} menuItems={items} />);
+      expect(screen.queryByText('0')).not.toBeInTheDocument();
+    });
+
+    it('should render string badge', () => {
+      const items: SidebarMenuItem[] = [
+        { icon: Home, label: 'Home', badge: 'New' }
+      ];
+      render(<Sidebar productLogo={mockLogo} menuItems={items} />);
+      expect(screen.getByText('New')).toBeInTheDocument();
     });
   });
 
@@ -317,7 +380,7 @@ describe('Sidebar Organism', () => {
     it('should have navigation landmark', () => {
       render(<Sidebar productLogo={mockLogo} menuItems={mockMenuItems} />);
       const nav = screen.getByRole('navigation');
-      expect(nav).toHaveAttribute('aria-label', 'Navegación principal');
+      expect(nav).toHaveAttribute('aria-label', 'Main navigation');
     });
 
     it('should have accessible labels for all menu items', () => {
@@ -327,132 +390,10 @@ describe('Sidebar Organism', () => {
       });
     });
 
-    it('should have accessible label for logs button', () => {
-      render(
-        <Sidebar
-          productLogo={mockLogo}
-          menuItems={mockMenuItems}
-          onLogsClick={() => {}}
-        />
-      );
-      expect(screen.getByLabelText('Historial de logs')).toBeInTheDocument();
-    });
-
-    it('should have accessible label for logout button', () => {
-      render(
-        <Sidebar
-          productLogo={mockLogo}
-          menuItems={mockMenuItems}
-          onLogoutClick={() => {}}
-        />
-      );
-      expect(screen.getByLabelText('Cerrar sesión')).toBeInTheDocument();
-    });
-
     it('should be keyboard navigable', () => {
       render(<Sidebar productLogo={mockLogo} menuItems={mockMenuItems} />);
       mockMenuItems.forEach(item => {
         expect(screen.getByLabelText(item.label)).toHaveAttribute('tabIndex', '0');
-      });
-    });
-  });
-
-  describe('Use Cases', () => {
-    it('should work as main navigation', () => {
-      const items: SidebarMenuItem[] = [
-        { icon: Home, label: 'Dashboard', href: '/', isActive: true },
-        { icon: Users, label: 'Usuarios', href: '/users' },
-        { icon: BarChart, label: 'Analytics', href: '/analytics' },
-        { icon: Settings, label: 'Configuración', href: '/settings' }
-      ];
-
-      render(
-        <Sidebar
-          productLogo={mockLogo}
-          menuItems={items}
-          userIcon={mockUserIcon}
-          onLogsClick={() => {}}
-          onLogoutClick={() => {}}
-        />
-      );
-
-      expect(screen.getByLabelText('Dashboard')).toHaveAttribute('aria-current', 'page');
-      expect(screen.getByLabelText('Usuarios')).toBeInTheDocument();
-      expect(screen.getByLabelText('Analytics')).toBeInTheDocument();
-      expect(screen.getByLabelText('Configuración')).toBeInTheDocument();
-    });
-
-    it('should work with minimal configuration', () => {
-      const items: SidebarMenuItem[] = [
-        { icon: Home, label: 'Inicio', href: '/' }
-      ];
-
-      render(<Sidebar productLogo={mockLogo} menuItems={items} />);
-
-      expect(screen.getByLabelText('Inicio')).toBeInTheDocument();
-      expect(screen.queryByLabelText('Historial de logs')).not.toBeInTheDocument();
-      expect(screen.queryByLabelText('Cerrar sesión')).not.toBeInTheDocument();
-    });
-
-    it('should work with all features enabled', () => {
-      render(
-        <Sidebar
-          productLogo={mockLogo}
-          menuItems={mockMenuItems}
-          userIcon={mockUserIcon}
-          onLogsClick={() => {}}
-          onLogoutClick={() => {}}
-        />
-      );
-
-      expect(screen.getByTestId('mock-logo')).toBeInTheDocument();
-      expect(screen.getByLabelText('Inicio')).toBeInTheDocument();
-      expect(screen.getByTestId('user-icon')).toBeInTheDocument();
-      expect(screen.getByLabelText('Historial de logs')).toBeInTheDocument();
-      expect(screen.getByLabelText('Cerrar sesión')).toBeInTheDocument();
-    });
-  });
-
-  describe('Complex Scenarios', () => {
-    it('should handle multiple active states', () => {
-      const items: SidebarMenuItem[] = [
-        { icon: Home, label: 'Inicio', isActive: true },
-        { icon: Users, label: 'Usuarios', isActive: false },
-        { icon: Settings, label: 'Configuración', isActive: false }
-      ];
-
-      render(<Sidebar productLogo={mockLogo} menuItems={items} />);
-
-      expect(screen.getByLabelText('Inicio')).toHaveAttribute('aria-current', 'page');
-      expect(screen.getByLabelText('Usuarios')).not.toHaveAttribute('aria-current');
-      expect(screen.getByLabelText('Configuración')).not.toHaveAttribute('aria-current');
-    });
-
-    it('should handle mixed disabled states', () => {
-      const items: SidebarMenuItem[] = [
-        { icon: Home, label: 'Inicio' },
-        { icon: Users, label: 'Usuarios', disabled: true },
-        { icon: Settings, label: 'Configuración' }
-      ];
-
-      render(<Sidebar productLogo={mockLogo} menuItems={items} />);
-
-      expect(screen.getByLabelText('Inicio')).not.toBeDisabled();
-      expect(screen.getByLabelText('Usuarios')).toBeDisabled();
-      expect(screen.getByLabelText('Configuración')).not.toBeDisabled();
-    });
-
-    it('should handle many menu items', () => {
-      const manyItems: SidebarMenuItem[] = Array.from({ length: 10 }, (_, i) => ({
-        icon: Home,
-        label: `Item ${i + 1}`,
-        href: `/item-${i + 1}`
-      }));
-
-      render(<Sidebar productLogo={mockLogo} menuItems={manyItems} />);
-
-      manyItems.forEach(item => {
-        expect(screen.getByLabelText(item.label)).toBeInTheDocument();
       });
     });
   });
@@ -473,6 +414,52 @@ describe('Sidebar Organism', () => {
       );
       const nav = container.querySelector('nav');
       expect(nav).toHaveClass('custom-sidebar');
+    });
+
+    it('should work with sections and no menu items', () => {
+      render(
+        <Sidebar
+          productLogo={mockLogo}
+          sections={mockSections}
+        />
+      );
+      expect(screen.getByText('Navigation')).toBeInTheDocument();
+    });
+  });
+
+  describe('Use Cases', () => {
+    it('should work as main navigation', () => {
+      const items: SidebarMenuItem[] = [
+        { icon: Home, label: 'Dashboard', href: '/', isActive: true },
+        { icon: Users, label: 'Users', href: '/users' },
+        { icon: BarChart, label: 'Analytics', href: '/analytics' },
+        { icon: Settings, label: 'Settings', href: '/settings' }
+      ];
+
+      render(
+        <Sidebar
+          productLogo={mockLogo}
+          menuItems={items}
+          user={mockUser}
+          onSettingsClick={() => {}}
+          onLogoutClick={() => {}}
+        />
+      );
+
+      expect(screen.getByLabelText('Dashboard')).toHaveAttribute('aria-current', 'page');
+      expect(screen.getByLabelText('Users')).toBeInTheDocument();
+      expect(screen.getByLabelText('Analytics')).toBeInTheDocument();
+    });
+
+    it('should work with minimal configuration', () => {
+      const items: SidebarMenuItem[] = [
+        { icon: Home, label: 'Home', href: '/' }
+      ];
+
+      render(<Sidebar productLogo={mockLogo} menuItems={items} />);
+
+      expect(screen.getByLabelText('Home')).toBeInTheDocument();
+      expect(screen.queryByLabelText('Logout')).not.toBeInTheDocument();
     });
   });
 });

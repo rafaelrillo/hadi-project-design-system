@@ -1,5 +1,5 @@
 // Path: src/pages/organisms/SidebarShowcase.tsx
-// SENTINEL Design System - Glass-Neumorphism Sidebar
+// SENTINEL Design System v5.0 - Neumorphic Sidebar Showcase
 import { useState, useMemo } from 'react';
 import { Sidebar } from '../../components/organisms/Sidebar';
 import type { SidebarSection } from '../../components/organisms/Sidebar';
@@ -8,9 +8,7 @@ import {
   Home,
   FileText,
   Settings,
-  User,
   Bell,
-  Mail,
   LayoutDashboard,
   Library,
   Share2,
@@ -20,8 +18,9 @@ import {
   History,
   Archive,
   Star,
-  Globe,
-  Sparkles,
+  TrendingUp,
+  Briefcase,
+  Newspaper,
 } from 'lucide-react';
 import { LightEngineProvider, useLightEngine } from '@/contexts/LightEngineContext';
 
@@ -92,25 +91,38 @@ function SidebarContent() {
     </svg>
   );
 
-  // Simple menu items for rail/icon-only sidebar
-  const railMenuItems = [
-    { icon: Home, label: 'Dashboard', isActive: activePage === 'dashboard', onClick: () => setActivePage('dashboard') },
-    { icon: Globe, label: 'Global', isActive: activePage === 'global', onClick: () => setActivePage('global') },
-    { icon: Star, label: 'Favorites', isActive: activePage === 'favorites', onClick: () => setActivePage('favorites') },
-    { icon: Share2, label: 'Share', isActive: activePage === 'share', onClick: () => setActivePage('share') },
-    { icon: Library, label: 'Library', isActive: activePage === 'library', onClick: () => setActivePage('library') },
-    { icon: Sparkles, label: 'AI', isActive: activePage === 'ai', onClick: () => setActivePage('ai') },
+  // Main navigation sections (like a real app)
+  const mainSections: SidebarSection[] = [
+    {
+      title: 'Navigation',
+      items: [
+        { icon: LayoutDashboard, label: 'Dashboard', isActive: activePage === 'dashboard', onClick: () => setActivePage('dashboard') },
+        { icon: Briefcase, label: 'Portfolio', isActive: activePage === 'portfolio', onClick: () => setActivePage('portfolio') },
+        { icon: TrendingUp, label: 'Calibrate', isActive: activePage === 'calibrate', onClick: () => setActivePage('calibrate'), badge: 5 },
+        { icon: Newspaper, label: 'News', isActive: activePage === 'news', onClick: () => setActivePage('news') },
+      ],
+    },
+    {
+      title: 'Library',
+      items: [
+        { icon: Library, label: 'Watchlists', isActive: activePage === 'watchlists', onClick: () => setActivePage('watchlists') },
+        { icon: Star, label: 'Favorites', isActive: activePage === 'favorites', onClick: () => setActivePage('favorites'), badge: 12 },
+        { icon: History, label: 'History', isActive: activePage === 'history', onClick: () => setActivePage('history') },
+      ],
+      onAddClick: () => console.log('Add new watchlist'),
+    },
   ];
 
-  // Sections for expanded panel (like in the reference image)
+  // Expanded sections for detailed view
   const expandedSections: SidebarSection[] = [
     {
       title: 'Projects',
       items: [
-        { icon: LayoutDashboard, label: 'Dashboard', isActive: activePage === 'dashboard', onClick: () => setActivePage('dashboard'), badge: 0 },
+        { icon: LayoutDashboard, label: 'Dashboard', isActive: activePage === 'dashboard', onClick: () => setActivePage('dashboard') },
         { icon: Library, label: 'Library', isActive: activePage === 'library', onClick: () => setActivePage('library') },
         { icon: Share2, label: 'Shared Projects', isActive: activePage === 'shared', onClick: () => setActivePage('shared') },
       ],
+      onAddClick: () => console.log('Add project'),
     },
     {
       title: 'Status',
@@ -129,93 +141,96 @@ function SidebarContent() {
     },
   ];
 
+  // Simple menu items
+  const simpleMenuItems = [
+    { icon: Home, label: 'Home', isActive: activePage === 'home', onClick: () => setActivePage('home') },
+    { icon: FileText, label: 'Documents', isActive: activePage === 'documents', onClick: () => setActivePage('documents') },
+    { icon: Bell, label: 'Notifications', isActive: activePage === 'notifications', onClick: () => setActivePage('notifications'), badge: 8 },
+    { icon: Settings, label: 'Settings', isActive: activePage === 'settings', onClick: () => setActivePage('settings') },
+  ];
+
   // User profile
   const user = {
     name: 'John Doe',
-    email: 'john.doe@example.com',
+    email: 'john.doe@sentinel.io',
   };
-
-  // Legacy menu items
-  const legacyMenuItems = [
-    { icon: Home, label: 'Dashboard', isActive: activePage === 'home', onClick: () => setActivePage('home') },
-    { icon: FileText, label: 'Documentos', isActive: activePage === 'documents', onClick: () => setActivePage('documents') },
-    { icon: Bell, label: 'Notificaciones', isActive: activePage === 'notifications', onClick: () => setActivePage('notifications') },
-    { icon: Mail, label: 'Mensajes', isActive: activePage === 'messages', onClick: () => setActivePage('messages') },
-    { icon: Settings, label: 'Configuración', isActive: activePage === 'settings', onClick: () => setActivePage('settings') },
-  ];
 
   return (
     <div style={{ background: LIGHT.base, minHeight: '100%', padding: '24px' }}>
       <header style={pageHeaderStyles}>
         <h1 style={titleStyles}>&gt; Sidebar_</h1>
         <p style={descStyles}>
-          // Neumorphic base + Glassmorphism menu items
+          // Neumorphic sidebar with inset sections + glass items
         </p>
       </header>
 
-      {/* New Expanded Sidebar */}
+      {/* Main Demo - Full Neumorphic Sidebar */}
       <ShowcaseSection
-        title="Expanded Sidebar (Neu + Glass)"
-        description="Neumorphic base container with glassmorphism menu items - como la referencia"
+        title="Neumorphic Sidebar (Full)"
+        description="Superficie neumórfica elevada + secciones cavadas (inset) + items de cristal"
       >
         <div style={sidebarContainerStyles}>
           <div style={{ height: '700px', position: 'relative', display: 'flex' }}>
             <Sidebar
               productLogo={<SentinelLogo />}
-              menuItems={railMenuItems}
-              sections={expandedSections}
+              sections={mainSections}
               user={user}
+              onUserClick={() => console.log('User profile clicked')}
               onSettingsClick={() => console.log('Settings clicked')}
+              onLogoutClick={() => console.log('Logout clicked')}
               onSearch={(value) => console.log('Search:', value)}
-              searchPlaceholder="Search"
+              searchPlaceholder="Search..."
               position="relative"
-              sidebarStyle="expanded"
-              showIconRail={true}
-              showExpandedPanel={true}
             />
-            {/* Content area */}
+            {/* Content area preview */}
             <div style={{
               flex: 1,
               marginLeft: '24px',
-              padding: '24px',
+              padding: '32px',
               background: LIGHT.base,
-              borderRadius: '20px',
-              boxShadow: getNeuPanelShadow(6, 16),
+              borderRadius: '24px',
+              boxShadow: getNeuPanelShadow(8, 24),
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
             }}>
               <h2 style={{
-                fontSize: '24px',
-                fontWeight: 600,
+                fontSize: '28px',
+                fontWeight: 700,
+                fontFamily: 'var(--sentinel-font-display)',
                 color: '#2d3748',
-                marginBottom: '8px',
+                marginBottom: '12px',
               }}>
                 {activePage.charAt(0).toUpperCase() + activePage.slice(1)}
               </h2>
               <p style={{
                 fontSize: '14px',
                 color: '#8896a6',
+                fontFamily: 'var(--sentinel-font-mono)',
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em',
               }}>
-                All Your Workflows And Permissions
+                // Content area
               </p>
             </div>
           </div>
         </div>
       </ShowcaseSection>
 
-      {/* Only Expanded Panel (no rail) */}
+      {/* Multiple Sections Demo */}
       <ShowcaseSection
-        title="Solo Panel Expandido"
-        description="Panel neumórfico con items de cristal, sin barra de iconos"
+        title="Multiple Sections"
+        description="Múltiples grupos de navegación con secciones cavadas"
       >
         <div style={sidebarContainerStyles}>
-          <div style={{ height: '600px', position: 'relative', display: 'flex' }}>
+          <div style={{ height: '650px', position: 'relative', display: 'flex' }}>
             <Sidebar
+              productLogo={<SentinelLogo />}
               sections={expandedSections}
               user={user}
               onSearch={(value) => console.log('Search:', value)}
               position="relative"
-              sidebarStyle="expanded"
-              showIconRail={false}
-              showExpandedPanel={true}
             />
             <div style={{
               flex: 1,
@@ -226,28 +241,27 @@ function SidebarContent() {
               boxShadow: getNeuInsetShadow(5, 15),
             }}>
               <p style={{ color: '#5a6578', fontSize: '14px', fontFamily: 'var(--sentinel-font-mono)' }}>
-                // Panel expandido sin icon rail
+                // Cada sección tiene su propio contenedor inset
               </p>
             </div>
           </div>
         </div>
       </ShowcaseSection>
 
-      {/* Only Icon Rail */}
+      {/* Simple Menu Demo */}
       <ShowcaseSection
-        title="Solo Icon Rail"
-        description="Barra vertical oscura con iconos - estilo minimalista"
+        title="Simple Menu (No Sections)"
+        description="Sidebar con items directos sin agrupación"
       >
         <div style={sidebarContainerStyles}>
           <div style={{ height: '500px', position: 'relative', display: 'flex' }}>
             <Sidebar
               productLogo={<SentinelLogo />}
-              menuItems={railMenuItems}
+              menuItems={simpleMenuItems}
+              user={user}
               onSettingsClick={() => console.log('Settings')}
+              onLogoutClick={() => console.log('Logout')}
               position="relative"
-              sidebarStyle="expanded"
-              showIconRail={true}
-              showExpandedPanel={false}
             />
             <div style={{
               flex: 1,
@@ -261,57 +275,77 @@ function SidebarContent() {
               justifyContent: 'center',
             }}>
               <p style={{ color: '#8896a6', fontSize: '14px', fontFamily: 'var(--sentinel-font-mono)' }}>
-                // Solo icon rail para interfaces compactas
+                // Menú simple sin secciones
               </p>
             </div>
           </div>
         </div>
       </ShowcaseSection>
 
-      {/* Legacy Dark Style */}
+      {/* Collapsed Mode Demo */}
       <ShowcaseSection
-        title="Estilo Legacy (Dark)"
-        description="Sidebar oscuro original para compatibilidad"
+        title="Collapsed Mode"
+        description="Modo colapsado (solo iconos)"
       >
         <div style={sidebarContainerStyles}>
-          <div style={{ height: '450px', position: 'relative' }}>
+          <div style={{ height: '500px', position: 'relative', display: 'flex' }}>
             <Sidebar
               productLogo={<SentinelLogo />}
-              menuItems={legacyMenuItems}
-              userIcon={<User size={24} color="var(--sentinel-accent-primary)" />}
-              onLogsClick={() => console.log('Ver logs')}
-              onLogoutClick={() => console.log('Cerrar sesión')}
+              sections={mainSections}
               position="relative"
-              sidebarStyle="dark"
+              collapsed={true}
             />
+            <div style={{
+              flex: 1,
+              marginLeft: '24px',
+              padding: '24px',
+              background: LIGHT.base,
+              borderRadius: '20px',
+              boxShadow: getNeuPanelShadow(4, 12),
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+              <p style={{ color: '#8896a6', fontSize: '14px', fontFamily: 'var(--sentinel-font-mono)' }}>
+                // collapsed=true para modo compacto
+              </p>
+            </div>
           </div>
         </div>
       </ShowcaseSection>
 
-      {/* Legacy neuPanel Style */}
+      {/* Minimal Demo */}
       <ShowcaseSection
-        title="Estilo Legacy (neuPanel)"
-        description="Sidebar neumórfico claro original"
+        title="Minimal (No User, No Search)"
+        description="Sidebar minimalista solo con navegación"
       >
         <div style={sidebarContainerStyles}>
-          <div style={{ height: '450px', position: 'relative' }}>
+          <div style={{ height: '400px', position: 'relative', display: 'flex' }}>
             <Sidebar
               productLogo={<SentinelLogo />}
-              menuItems={legacyMenuItems}
-              userIcon={<User size={24} color="var(--sentinel-accent-primary)" />}
-              onLogsClick={() => console.log('Ver logs')}
-              onLogoutClick={() => console.log('Cerrar sesión')}
+              menuItems={simpleMenuItems.slice(0, 4)}
               position="relative"
-              sidebarStyle="neuPanel"
             />
+            <div style={{
+              flex: 1,
+              marginLeft: '24px',
+              padding: '24px',
+              background: LIGHT.base,
+              borderRadius: '20px',
+              boxShadow: getNeuInsetShadow(5, 15),
+            }}>
+              <p style={{ color: '#5a6578', fontSize: '14px', fontFamily: 'var(--sentinel-font-mono)' }}>
+                // Sin user, sin search, sin footer
+              </p>
+            </div>
           </div>
         </div>
       </ShowcaseSection>
 
-      {/* Design Comparison */}
+      {/* Design Philosophy */}
       <ShowcaseSection
-        title="Comparación de Diseños"
-        description="Neumorphism base vs Glassmorphism items"
+        title="Design Philosophy"
+        description="Neumorphism + Glassmorphism + Light Engine"
       >
         <div style={{
           ...sidebarContainerStyles,
@@ -319,7 +353,7 @@ function SidebarContent() {
         }}>
           <div style={{
             display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
+            gridTemplateColumns: 'repeat(3, 1fr)',
             gap: '24px',
             padding: '20px',
           }}>
@@ -331,7 +365,7 @@ function SidebarContent() {
                 marginBottom: '16px',
                 fontFamily: 'var(--sentinel-font-mono)',
               }}>
-                BASE NEUMÓRFICA (Container)
+                NEUMORPHIC CONTAINER
               </h4>
               <ul style={{
                 listStyle: 'none',
@@ -343,10 +377,10 @@ function SidebarContent() {
                 lineHeight: '2',
               }}>
                 <li>+ Background: #e0e5ec</li>
-                <li>+ Border-radius: 20px</li>
-                <li>+ Shadow: 8px 8px 20px #a3b1c6</li>
-                <li>+ Shadow: -8px -8px 20px #ffffff</li>
-                <li>+ Superficie "extruida" del fondo</li>
+                <li>+ Border-radius: 24px</li>
+                <li>+ Elevated shadow</li>
+                <li>+ Dynamic via Light Engine</li>
+                <li>+ "Flota" sobre la página</li>
               </ul>
             </div>
             <div>
@@ -357,7 +391,33 @@ function SidebarContent() {
                 marginBottom: '16px',
                 fontFamily: 'var(--sentinel-font-mono)',
               }}>
-                ITEMS GLASSMORPHISM
+                INSET SECTIONS (Cavados)
+              </h4>
+              <ul style={{
+                listStyle: 'none',
+                padding: 0,
+                margin: 0,
+                fontSize: '13px',
+                color: '#5a6578',
+                fontFamily: 'var(--sentinel-font-mono)',
+                lineHeight: '2',
+              }}>
+                <li>+ Inset shadow</li>
+                <li>+ Border-radius: 16px</li>
+                <li>+ "Hundido" en superficie</li>
+                <li>+ Agrupa items relacionados</li>
+                <li>+ Search input también inset</li>
+              </ul>
+            </div>
+            <div>
+              <h4 style={{
+                fontSize: '14px',
+                fontWeight: 600,
+                color: 'var(--sentinel-accent-primary)',
+                marginBottom: '16px',
+                fontFamily: 'var(--sentinel-font-mono)',
+              }}>
+                GLASS ITEMS
               </h4>
               <ul style={{
                 listStyle: 'none',
@@ -369,10 +429,10 @@ function SidebarContent() {
                 lineHeight: '2',
               }}>
                 <li>+ Background: rgba(255,255,255,0.45)</li>
-                <li>+ Backdrop-filter: blur(8px)</li>
-                <li>+ Border: 1px solid rgba(255,255,255,0.6)</li>
-                <li>+ Border-radius: 12px</li>
-                <li>+ Elementos de "cristal" flotando</li>
+                <li>+ Backdrop-filter: blur(8-12px)</li>
+                <li>+ Border: glass-border</li>
+                <li>+ Hover/Active states</li>
+                <li>+ User profile card</li>
               </ul>
             </div>
           </div>
@@ -380,7 +440,7 @@ function SidebarContent() {
       </ShowcaseSection>
 
       {/* Technical Specs */}
-      <ShowcaseSection title="Especificaciones Técnicas">
+      <ShowcaseSection title="Technical Specifications">
         <div style={{
           padding: '20px',
           borderRadius: '15px',
@@ -394,33 +454,77 @@ function SidebarContent() {
         }}>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
             <div>
-              <p style={{ fontWeight: 600, color: 'var(--sentinel-accent-primary)', marginBottom: '8px' }}>ICON RAIL</p>
-              <p>+ Ancho: 56px</p>
-              <p>+ Background: #1a1f2e</p>
-              <p>+ Border-radius: 20px</p>
-              <p>+ Margin: 12px</p>
+              <p style={{ fontWeight: 600, color: 'var(--sentinel-accent-primary)', marginBottom: '8px' }}>MAIN CONTAINER</p>
+              <p>+ Width: 280px (expanded), 80px (collapsed)</p>
+              <p>+ Border-radius: 24px</p>
+              <p>+ Shadow: 10px 10px 30px (elevated)</p>
+              <p>+ Margin: 12px (floats)</p>
             </div>
             <div>
-              <p style={{ fontWeight: 600, color: 'var(--sentinel-accent-primary)', marginBottom: '8px' }}>EXPANDED PANEL</p>
-              <p>+ Ancho: 260px</p>
-              <p>+ Background: #e0e5ec (neumorphic)</p>
-              <p>+ Border-radius: 20px</p>
-              <p>+ Padding: 16px</p>
+              <p style={{ fontWeight: 600, color: 'var(--sentinel-accent-primary)', marginBottom: '8px' }}>INSET SECTIONS</p>
+              <p>+ Shadow: inset 3px 3px 8px</p>
+              <p>+ Border-radius: 16px</p>
+              <p>+ Padding: 8px</p>
             </div>
             <div>
-              <p style={{ fontWeight: 600, color: 'var(--sentinel-accent-primary)', marginBottom: '8px' }}>MENU ITEMS (Glass)</p>
-              <p>+ Padding: 10px 12px</p>
+              <p style={{ fontWeight: 600, color: 'var(--sentinel-accent-primary)', marginBottom: '8px' }}>MENU ITEMS</p>
+              <p>+ Padding: 11px 14px</p>
               <p>+ Border-radius: 12px</p>
               <p>+ Backdrop-blur: 8px (hover), 12px (active)</p>
-              <p>+ Transition: 150ms ease</p>
+              <p>+ Glass background on hover/active</p>
             </div>
             <div>
               <p style={{ fontWeight: 600, color: 'var(--sentinel-accent-primary)', marginBottom: '8px' }}>USER PROFILE</p>
-              <p>+ Avatar: 40x40px, border-radius: 50%</p>
-              <p>+ Container: Glass effect</p>
-              <p>+ Border: 1px solid rgba(255,255,255,0.6)</p>
+              <p>+ Glass card with blur(10px)</p>
+              <p>+ Avatar: 42x42px, border-radius: 50%</p>
+              <p>+ Chevron indicator for dropdown</p>
             </div>
           </div>
+        </div>
+      </ShowcaseSection>
+
+      {/* Code Example */}
+      <ShowcaseSection title="Usage Example">
+        <div style={{
+          padding: '20px',
+          borderRadius: '15px',
+          boxShadow: getNeuInsetShadow(5, 15),
+          background: LIGHT.base,
+          fontSize: '12px',
+          fontFamily: 'var(--sentinel-font-mono)',
+          color: '#636E72',
+          lineHeight: '1.8',
+          transition: 'box-shadow 50ms linear',
+        }}>
+          <pre style={{ margin: 0, whiteSpace: 'pre-wrap' }}>{`import { Sidebar } from '@organisms/Sidebar';
+
+const sections = [
+  {
+    title: 'Navigation',
+    items: [
+      { icon: Home, label: 'Dashboard', isActive: true },
+      { icon: Briefcase, label: 'Portfolio', badge: 3 },
+    ],
+    onAddClick: () => console.log('Add'),
+  },
+];
+
+const user = {
+  name: 'John Doe',
+  email: 'john@example.com',
+};
+
+<Sidebar
+  productLogo={<Logo />}
+  sections={sections}
+  user={user}
+  onSearch={(v) => console.log(v)}
+  onSettingsClick={() => {}}
+  onLogoutClick={() => {}}
+  position="relative"    // 'fixed' | 'relative' | 'absolute'
+  collapsed={false}      // Icon-only mode
+  dynamicShadows={true}  // Light Engine integration
+/>`}</pre>
         </div>
       </ShowcaseSection>
     </div>

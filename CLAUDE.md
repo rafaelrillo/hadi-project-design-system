@@ -463,10 +463,48 @@ npm run lint          # ESLint
   - [x] Crear LightEngineContext
   - [x] Implementar nuevo Sidebar con Glass-Neumorphism
   - [x] Documentar el nuevo design system
+- [x] **Migración tipográfica completa** ✅
+  - [x] Inter → IBM Plex Sans (UI Primary)
+  - [x] Space Grotesk → Libre Baskerville (Display/Headlines)
+  - [x] Space Mono → IBM Plex Mono (Data/Numbers)
+  - [x] DotMatrix eliminado completamente
+- [x] **Rediseño completo del Sidebar v5.0** ✅
+  - [x] Container neumórfico elevado (flota sobre la página)
+  - [x] Secciones con cavados/inset shadows
+  - [x] Items con glassmorphism
+  - [x] Search input con inset
+  - [x] User profile como glass card
+  - [x] Modo colapsado (solo iconos)
+  - [x] Dynamic shadows via Light Engine
 
 ---
 
 ## DECISIONES TOMADAS
+
+**[2026-01-16] Sidebar v5.0 - Full Neumorphic Redesign**
+- **Decisión**: Rediseño completo del Sidebar siguiendo Glass-Neumorphism
+- **Arquitectura visual**:
+  - **Container**: Superficie neumórfica elevada (#e0e5ec, shadow 10px 10px 30px)
+  - **Secciones**: Áreas cavadas con inset shadows (agrupa items relacionados)
+  - **Items**: Glassmorphism (hover/active states con backdrop-blur)
+  - **Search**: Input con efecto inset (cavado en la superficie)
+  - **User profile**: Glass card flotante
+- **API simplificada**:
+  - Removido: `sidebarStyle`, `userIcon`, `showIconRail`, `showExpandedPanel`
+  - Agregado: `collapsed` (modo solo iconos), `onUserClick`
+- **Dimensiones**: 280px expanded, 80px collapsed, 24px border-radius
+
+**[2026-01-16] Typography Migration - New Font Stack**
+- **Decisión**: Migrar sistema tipográfico completo
+- **Nuevas fuentes**:
+  - **IBM Plex Sans**: UI primaria (claridad profesional)
+  - **Libre Baskerville**: Display/headlines h1-h3 (elegancia serif)
+  - **IBM Plex Mono**: Datos financieros (precisión numérica)
+- **Fuentes eliminadas**: Inter, Space Grotesk, Space Mono, DotMatrix
+- **Consideraciones técnicas**:
+  - Libre Baskerville: font-weight 700 para headings, `font-variant-numeric: lining-nums`
+  - IBM Plex Mono: `font-variant-numeric: tabular-nums lining-nums` para alineación
+  - Google Fonts CDN para todas las fuentes
 
 **[2025-01-16] Glass-Neumorphism Design System**
 - **Decisión**: Implementar design system combinando Neumorphism + Glassmorphism

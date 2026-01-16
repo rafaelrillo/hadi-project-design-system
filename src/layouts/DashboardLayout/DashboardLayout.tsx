@@ -1,15 +1,12 @@
 // Path: src/layouts/DashboardLayout/DashboardLayout.tsx
 
-import { useState, type CSSProperties } from 'react';
-import { Outlet, NavLink, useNavigate } from 'react-router-dom';
+import { useState, useMemo, type CSSProperties } from 'react';
+import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import {
   Home,
   Briefcase,
   TrendingUp,
   Newspaper,
-  Settings,
-  LogOut,
-  User,
   type LucideIcon,
 } from 'lucide-react';
 
@@ -19,6 +16,7 @@ import { useIsMobile } from '../../hooks/useBreakpoint';
 import { MobileHeader } from '../../components/organisms/MobileHeader';
 import { BottomNavigation } from '../../components/organisms/BottomNavigation';
 import { MoreMenu } from '../../components/organisms/MoreMenu';
+import { Sidebar, type SidebarMenuItem } from '@organisms/Sidebar';
 import { LightEngineProvider, useLightEngineOptional } from '@contexts/LightEngineContext';
 
 import styles from './DashboardLayout.module.css';
@@ -78,12 +76,27 @@ function DashboardLayoutInner({
   dynamicShadows = true,
 }: Omit<DashboardLayoutProps, 'animateLight' | 'initialLightAngle'>) {
   const navigate = useNavigate();
+  const location = useLocation();
   const { logout } = useAuthStore();
   const isMobile = useIsMobile();
   const [isMoreMenuOpen, setIsMoreMenuOpen] = useState(false);
 
   // Get light engine context (optional)
   const lightEngine = useLightEngineOptional();
+
+  // Build menu items for the new Sidebar component
+  const sidebarMenuItems: SidebarMenuItem[] = useMemo(() => {
+    const currentPath = location.pathname;
+    return navItems.map((item) => ({
+      icon: item.icon,
+      label: item.label,
+      href: item.path,
+      isActive: item.end
+        ? currentPath === item.path
+        : currentPath.startsWith(item.path),
+    }));
+  }, [location.pathname]);
+
 
   // Get wrapper className for neuPanel style
   const getContentWrapperClassName = (): string => {
@@ -152,6 +165,62 @@ function DashboardLayoutInner({
     );
   }
 
+  // Animated SENTINEL Logo SVG
+  const AnimatedLogo = (
+    <svg
+      viewBox="0 0 60 60"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={styles.animatedLogo}
+    >
+      {/* Outer ring */}
+      <circle
+        cx="30"
+        cy="30"
+        r="27"
+        stroke="var(--sentinel-accent-primary, #4a9a9c)"
+        strokeWidth="1"
+        strokeOpacity="0.3"
+      />
+      {/* Middle ring */}
+      <circle
+        cx="30"
+        cy="30"
+        r="20"
+        stroke="var(--sentinel-accent-primary, #4a9a9c)"
+        strokeWidth="1.5"
+        strokeOpacity="0.5"
+      />
+      {/* Inner ring */}
+      <circle
+        cx="30"
+        cy="30"
+        r="13"
+        stroke="var(--sentinel-accent-primary, #4a9a9c)"
+        strokeWidth="2"
+        strokeOpacity="0.8"
+      />
+      {/* Center dot */}
+      <circle
+        cx="30"
+        cy="30"
+        r="4"
+        fill="var(--sentinel-accent-primary, #4a9a9c)"
+      />
+      {/* Scanning line */}
+      <line
+        x1="30"
+        y1="3"
+        x2="30"
+        y2="30"
+        stroke="var(--sentinel-accent-primary, #4a9a9c)"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        className={styles.scanLine}
+      />
+    </svg>
+  );
+
   // Desktop Layout
   return (
     <>
@@ -159,61 +228,27 @@ function DashboardLayoutInner({
       <AtmosphericBackground variant="subtle" animated />
 
       <div className={styles.layout}>
-        {/* Sidebar */}
-        <aside className={styles.sidebar}>
-        <div className={styles.sidebarLogo}>
-          <img src="/sentinel-favicon.svg" alt="Sentinel" className={styles.logoImage} />
-        </div>
+        {/* Neumorphic Sidebar */}
+        <Sidebar
+          productLogo={AnimatedLogo}
+          menuItems={sidebarMenuItems}
+          onSettingsClick={() => navigate('/app/dashboard/settings')}
+          onLogoutClick={handleLogout}
+          position="fixed"
+          dynamicShadows={dynamicShadows}
+        />
 
-        <nav className={styles.sidebarNav}>
-          {navItems.map((item) => {
-            const Icon = item.icon;
-            return (
-              <NavLink
-                key={item.path}
-                to={item.path}
-                end={item.end}
-                className={({ isActive }) =>
-                  `${styles.navItem} ${isActive ? styles.active : ''}`
-                }
-                title={item.label}
-              >
-                <Icon size={20} />
-              </NavLink>
-            );
-          })}
-        </nav>
-
-        <div className={styles.sidebarFooter}>
-          <NavLink
-            to="/app/dashboard/settings"
-            className={({ isActive }) =>
-              `${styles.navItem} ${isActive ? styles.active : ''}`
-            }
-            title="Settings"
+        {/* Main Content */}
+        <main className={styles.main}>
+          {/* Page Content */}
+          <div
+            className={getContentWrapperClassName()}
+            style={getContentDynamicStyles()}
           >
-            <Settings size={20} />
-          </NavLink>
-          <button className={styles.navItem} title="Profile">
-            <User size={20} />
-          </button>
-          <button className={styles.navItem} onClick={handleLogout} title="Logout">
-            <LogOut size={20} />
-          </button>
-        </div>
-      </aside>
-
-      {/* Main Content */}
-      <main className={styles.main}>
-        {/* Page Content */}
-        <div
-          className={getContentWrapperClassName()}
-          style={getContentDynamicStyles()}
-        >
-          <Outlet />
-        </div>
-      </main>
-    </div>
+            <Outlet />
+          </div>
+        </main>
+      </div>
     </>
   );
 }

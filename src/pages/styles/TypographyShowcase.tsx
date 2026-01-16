@@ -84,7 +84,7 @@ function TypographyContent() {
 
       <ShowcaseSection
         title="Familias Tipográficas"
-        description="Space Grotesk para display, Space Mono para datos"
+        description="Libre Baskerville para display, IBM Plex Sans para UI, IBM Plex Mono para datos"
       >
         <div style={{ display: 'grid', gap: '16px', width: '100%' }}>
           <div style={{
@@ -95,16 +95,16 @@ function TypographyContent() {
             transition: 'box-shadow 50ms linear',
           }}>
             <div style={{ fontSize: '12px', color: '#9BA4B0', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>
-              DISPLAY FONT
+              DISPLAY FONT (h1-h3)
             </div>
             <div style={{
               fontSize: '24px',
-              fontWeight: 600,
+              fontWeight: 700,
               fontFamily: 'var(--sentinel-font-display)',
               color: '#2D3436',
               marginBottom: '8px'
             }}>
-              Space Grotesk - SENTINEL
+              Libre Baskerville - SENTINEL
             </div>
             <code style={{
               fontSize: '11px',
@@ -126,16 +126,48 @@ function TypographyContent() {
             transition: 'box-shadow 50ms linear',
           }}>
             <div style={{ fontSize: '12px', color: '#9BA4B0', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>
-              MONOSPACE FONT
+              UI PRIMARY FONT (h4-h6, body)
+            </div>
+            <div style={{
+              fontSize: '24px',
+              fontWeight: 500,
+              fontFamily: 'var(--sentinel-font-primary)',
+              color: '#2D3436',
+              marginBottom: '8px'
+            }}>
+              IBM Plex Sans - Interface
+            </div>
+            <code style={{
+              fontSize: '11px',
+              backgroundColor: 'rgba(74, 154, 156, 0.15)',
+              padding: '4px 8px',
+              borderRadius: '15px',
+              color: 'var(--sentinel-accent-primary)',
+              fontFamily: 'var(--sentinel-font-mono)'
+            }}>
+              var(--sentinel-font-primary)
+            </code>
+          </div>
+
+          <div style={{
+            padding: '24px',
+            background: LIGHT.base,
+            borderRadius: '15px',
+            boxShadow: getNeuInsetShadow(5, 15),
+            transition: 'box-shadow 50ms linear',
+          }}>
+            <div style={{ fontSize: '12px', color: '#9BA4B0', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>
+              MONOSPACE FONT (datos, código)
             </div>
             <div style={{
               fontSize: '24px',
               fontWeight: 400,
               fontFamily: 'var(--sentinel-font-mono)',
               color: '#2D3436',
-              marginBottom: '8px'
+              marginBottom: '8px',
+              fontVariantNumeric: 'tabular-nums lining-nums'
             }}>
-              Space Mono - 1234567890
+              IBM Plex Mono - 1234567890
             </div>
             <code style={{
               fontSize: '11px',
@@ -273,21 +305,26 @@ function TypographyContent() {
           color: '#636E72',
           transition: 'box-shadow 50ms linear',
         }}>
-          <pre style={{ margin: 0, whiteSpace: 'pre-wrap' }}>{`.page-title {
+          <pre style={{ margin: 0, whiteSpace: 'pre-wrap' }}>{`/* Libre Baskerville para títulos elegantes */
+.page-title {
   font-family: var(--sentinel-font-display);
   font-size: 30px;
-  font-weight: 300;
+  font-weight: 700;
   letter-spacing: -0.02em;
+  font-variant-numeric: lining-nums;
 }
 
+/* IBM Plex Mono para datos financieros */
 .data-value {
   font-family: var(--sentinel-font-mono);
   font-size: 20px;
   font-weight: 600;
+  font-variant-numeric: tabular-nums lining-nums;
 }
 
+/* IBM Plex Sans para UI general */
 .label {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--sentinel-font-primary);
   font-size: 12px;
   color: var(--sentinel-text-tertiary);
   letter-spacing: 0.05em;

@@ -5,6 +5,5 @@ export type {
   SidebarMenuItem,
   SidebarSection,
   UserProfile,
-  SidebarStyle,
   SidebarPosition,
 } from './Sidebar';
