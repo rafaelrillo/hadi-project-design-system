@@ -336,6 +336,48 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
+   NEU PANEL CONTENT - Neumorphic styled content container
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.neuPanelContent {
+  background: var(--neu-base);
+  margin: var(--sentinel-space-4);
+  border-radius: var(--radius-standard);
+  overflow: auto;
+
+  /* Pure neumorphic shadow */
+  box-shadow:
+    6px 6px 12px var(--neu-shadow-dark),
+    -6px -6px 12px var(--neu-shadow-light),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+/* Inner glow effect for neuPanel */
+.neuPanelContent::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  border-radius: var(--radius-standard) var(--radius-standard) 0 0;
+  pointer-events: none;
+}
+
+/* Dynamic shadows - Light Engine Integration */
+.dynamicShadows {
+  transition: var(--transition-shadow);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
    TICKER TAPE
    ───────────────────────────────────────────────────────────────────────────── */
 

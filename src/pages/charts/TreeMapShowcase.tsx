@@ -1,213 +1,142 @@
 // Path: src/pages/charts/TreeMapShowcase.tsx
-import { ShowcaseSection, ComponentPreview } from '../../components/showcase';
+// SENTINEL Design System - Glass-Neumorphism TreeMap
+import React, { useMemo } from 'react';
+import { ShowcaseSection } from '../../components/showcase';
 import { TreeMap } from '../../components/charts/echarts';
 import type { TreeMapNode } from '../../components/charts/echarts';
+import { LightEngineProvider, useLightEngine } from '@/contexts/LightEngineContext';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // SAMPLE DATA
 // ─────────────────────────────────────────────────────────────────────────────
 
 const portfolioData: TreeMapNode[] = [
-  {
-    name: 'Technology',
-    value: 35,
-    children: [
-      { name: 'AAPL', value: 12 },
-      { name: 'MSFT', value: 10 },
-      { name: 'GOOGL', value: 8 },
-      { name: 'NVDA', value: 5 },
-    ],
-  },
-  {
-    name: 'Healthcare',
-    value: 20,
-    children: [
-      { name: 'JNJ', value: 8 },
-      { name: 'UNH', value: 7 },
-      { name: 'PFE', value: 5 },
-    ],
-  },
-  {
-    name: 'Finance',
-    value: 18,
-    children: [
-      { name: 'JPM', value: 8 },
-      { name: 'BAC', value: 6 },
-      { name: 'GS', value: 4 },
-    ],
-  },
-  {
-    name: 'Consumer',
-    value: 15,
-    children: [
-      { name: 'AMZN', value: 8 },
-      { name: 'WMT', value: 4 },
-      { name: 'HD', value: 3 },
-    ],
-  },
-  {
-    name: 'Energy',
-    value: 12,
-    children: [
-      { name: 'XOM', value: 6 },
-      { name: 'CVX', value: 6 },
-    ],
-  },
+  { name: 'Technology', value: 35, children: [{ name: 'AAPL', value: 12 }, { name: 'MSFT', value: 10 }, { name: 'GOOGL', value: 8 }, { name: 'NVDA', value: 5 }] },
+  { name: 'Healthcare', value: 20, children: [{ name: 'JNJ', value: 8 }, { name: 'UNH', value: 7 }, { name: 'PFE', value: 5 }] },
+  { name: 'Finance', value: 18, children: [{ name: 'JPM', value: 8 }, { name: 'BAC', value: 6 }, { name: 'GS', value: 4 }] },
+  { name: 'Consumer', value: 15, children: [{ name: 'AMZN', value: 8 }, { name: 'WMT', value: 4 }, { name: 'HD', value: 3 }] },
+  { name: 'Energy', value: 12, children: [{ name: 'XOM', value: 6 }, { name: 'CVX', value: 6 }] },
 ];
 
 const sectorPerformance: TreeMapNode[] = [
-  { name: 'Technology', value: 32 },
-  { name: 'Healthcare', value: 18 },
-  { name: 'Finance', value: 15 },
-  { name: 'Consumer', value: 12 },
-  { name: 'Energy', value: 10 },
-  { name: 'Utilities', value: 8 },
-  { name: 'Materials', value: 5 },
+  { name: 'Technology', value: 32 }, { name: 'Healthcare', value: 18 }, { name: 'Finance', value: 15 },
+  { name: 'Consumer', value: 12 }, { name: 'Energy', value: 10 }, { name: 'Utilities', value: 8 }, { name: 'Materials', value: 5 },
 ];
 
 const flatData: TreeMapNode[] = [
-  { name: 'AAPL', value: 15 },
-  { name: 'MSFT', value: 12 },
-  { name: 'GOOGL', value: 10 },
-  { name: 'AMZN', value: 8 },
-  { name: 'NVDA', value: 7 },
-  { name: 'META', value: 6 },
-  { name: 'TSLA', value: 5 },
-  { name: 'BRK.B', value: 5 },
-  { name: 'JPM', value: 4 },
-  { name: 'JNJ', value: 4 },
+  { name: 'AAPL', value: 15 }, { name: 'MSFT', value: 12 }, { name: 'GOOGL', value: 10 }, { name: 'AMZN', value: 8 },
+  { name: 'NVDA', value: 7 }, { name: 'META', value: 6 }, { name: 'TSLA', value: 5 }, { name: 'BRK.B', value: 5 },
+  { name: 'JPM', value: 4 }, { name: 'JNJ', value: 4 },
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────
 // COMPONENT
 // ─────────────────────────────────────────────────────────────────────────────
 
-export function TreeMapShowcase() {
+function TreeMapContent() {
+  const { lightAngle } = useLightEngine();
+
+  const shadowOffsets = useMemo(() => {
+    const shadowAngle = (lightAngle + 180) * (Math.PI / 180);
+    return { x: Math.cos(shadowAngle), y: Math.sin(shadowAngle) };
+  }, [lightAngle]);
+
+  const LIGHT = {
+    base: '#e0e5ec',
+    shadowDark: 'hsl(220 15% 72%)',
+    shadowLight: 'hsl(0 0% 100%)',
+  };
+
+  const getNeuPanelShadow = (distance: number, blur: number): string => {
+    const { x, y } = shadowOffsets;
+    return `${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}`;
+  };
+
+  const getNeuInsetShadow = (distance: number, blur: number): string => {
+    const { x, y } = shadowOffsets;
+    return `inset ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}`;
+  };
+
+  const pageHeaderStyles: React.CSSProperties = {
+    marginBottom: '32px', padding: '24px', background: LIGHT.base, borderRadius: '15px',
+    boxShadow: getNeuPanelShadow(20, 60), transition: 'box-shadow 50ms linear',
+  };
+
+  const titleStyles: React.CSSProperties = {
+    fontSize: '28px', fontWeight: 700, color: 'var(--sentinel-accent-primary)', marginBottom: '8px',
+    fontFamily: 'var(--sentinel-font-display)', textTransform: 'uppercase', letterSpacing: '0.1em',
+  };
+
+  const descStyles: React.CSSProperties = {
+    fontSize: '14px', color: 'var(--sentinel-text-secondary)', fontFamily: 'var(--sentinel-font-mono)',
+    textTransform: 'uppercase', letterSpacing: '0.03em',
+  };
+
+  const chartContainerStyles: React.CSSProperties = {
+    padding: '24px', background: LIGHT.base, borderRadius: '15px',
+    boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear',
+  };
+
+  const tableContainerStyles: React.CSSProperties = {
+    padding: '20px', borderRadius: '15px', boxShadow: getNeuInsetShadow(5, 15),
+    background: LIGHT.base, overflowX: 'auto', transition: 'box-shadow 50ms linear',
+  };
+
   return (
-    <div>
-      {/* Page Header */}
-      <header style={{ marginBottom: '32px' }}>
-        <h1 style={{
-          fontSize: '28px',
-          fontWeight: 600,
-          color: 'var(--sentinel-text-primary)',
-          marginBottom: '8px',
-          fontFamily: 'var(--sentinel-font-display)',
-        }}>
-          TreeMap
-        </h1>
-        <p style={{
-          fontSize: '14px',
-          color: 'var(--sentinel-text-secondary)',
-          fontFamily: 'var(--sentinel-font-sans)',
-          maxWidth: '600px',
-        }}>
-          Hierarchical data visualization using nested rectangles. Size represents value,
-          perfect for portfolio allocation, market cap weighting, and sector breakdowns.
-        </p>
+    <div style={{ background: LIGHT.base, minHeight: '100%', padding: '24px' }}>
+      <header style={pageHeaderStyles}>
+        <h1 style={titleStyles}>&gt; TreeMap_</h1>
+        <p style={descStyles}>// Visualización jerárquica con rectángulos anidados</p>
       </header>
 
-      {/* Default */}
-      <ShowcaseSection
-        title="Default"
-        description="Basic treemap with hierarchical data"
-      >
-        <ComponentPreview>
-          <div style={{ width: '100%' }}>
-            <TreeMap data={portfolioData} title="Portfolio Allocation" height={400} />
-          </div>
-        </ComponentPreview>
+      <ShowcaseSection title="Default" description="Basic treemap with hierarchical data">
+        <div style={chartContainerStyles}>
+          <TreeMap data={portfolioData} title="Portfolio Allocation" height={400} />
+        </div>
       </ShowcaseSection>
 
-      {/* Flat Data */}
-      <ShowcaseSection
-        title="Flat Data"
-        description="Single level without hierarchy"
-      >
-        <ComponentPreview>
-          <div style={{ width: '100%' }}>
-            <TreeMap data={flatData} title="Top Holdings" height={350} />
-          </div>
-        </ComponentPreview>
+      <ShowcaseSection title="Flat Data" description="Single level without hierarchy">
+        <div style={chartContainerStyles}>
+          <TreeMap data={flatData} title="Top Holdings" height={350} />
+        </div>
       </ShowcaseSection>
 
-      {/* With Color by Value */}
-      <ShowcaseSection
-        title="Color by Performance"
-        description="Color intensity based on performance value"
-      >
-        <ComponentPreview>
-          <div style={{ width: '100%' }}>
-            <TreeMap
-              data={sectorPerformance}
-              title="Sector Performance"
-              height={350}
-            />
-          </div>
-        </ComponentPreview>
+      <ShowcaseSection title="Color by Performance" description="Color intensity based on performance value">
+        <div style={chartContainerStyles}>
+          <TreeMap data={sectorPerformance} title="Sector Performance" height={350} />
+        </div>
       </ShowcaseSection>
 
-      {/* Without Breadcrumb */}
-      <ShowcaseSection
-        title="Without Breadcrumb"
-        description="Hide navigation breadcrumb"
-      >
-        <ComponentPreview>
-          <div style={{ width: '100%' }}>
-            <TreeMap data={portfolioData} height={350} showBreadcrumb={false} />
-          </div>
-        </ComponentPreview>
+      <ShowcaseSection title="Without Breadcrumb" description="Hide navigation breadcrumb">
+        <div style={chartContainerStyles}>
+          <TreeMap data={portfolioData} height={350} showBreadcrumb={false} />
+        </div>
       </ShowcaseSection>
 
-      {/* Compact */}
-      <ShowcaseSection
-        title="Compact"
-        description="Smaller treemap for dashboard widgets"
-      >
-        <ComponentPreview>
+      <ShowcaseSection title="Compact" description="Smaller treemap for dashboard widgets">
+        <div style={chartContainerStyles}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '24px', width: '100%' }}>
-            <div>
-              <TreeMap data={flatData.slice(0, 6)} height={250} showBreadcrumb={false} />
-            </div>
-            <div>
-              <TreeMap data={sectorPerformance.slice(0, 6)} height={250} showBreadcrumb={false} />
-            </div>
+            <div><TreeMap data={flatData.slice(0, 6)} height={250} showBreadcrumb={false} /></div>
+            <div><TreeMap data={sectorPerformance.slice(0, 6)} height={250} showBreadcrumb={false} /></div>
           </div>
-        </ComponentPreview>
+        </div>
       </ShowcaseSection>
 
-      {/* Custom Value Format */}
-      <ShowcaseSection
-        title="Custom Format"
-        description="Format values as percentages or currency"
-      >
-        <ComponentPreview>
-          <div style={{ width: '100%' }}>
-            <TreeMap
-              data={portfolioData}
-              title="Allocation %"
-              height={400}
-              formatValue={(v) => `${v}%`}
-            />
-          </div>
-        </ComponentPreview>
+      <ShowcaseSection title="Custom Format" description="Format values as percentages or currency">
+        <div style={chartContainerStyles}>
+          <TreeMap data={portfolioData} title="Allocation %" height={400} formatValue={(v) => `${v}%`} />
+        </div>
       </ShowcaseSection>
 
-      {/* API Reference */}
-      <ShowcaseSection title="API Reference">
-        <div style={{ overflowX: 'auto' }}>
-          <table style={{
-            width: '100%',
-            borderCollapse: 'collapse',
-            fontSize: '13px',
-            fontFamily: 'var(--sentinel-font-mono)',
-          }}>
+      <ShowcaseSection title="Especificaciones Técnicas">
+        <div style={tableContainerStyles}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12px', fontFamily: 'var(--sentinel-font-mono)' }}>
             <thead>
-              <tr style={{ borderBottom: '1px solid var(--sentinel-border-default)' }}>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-text-secondary)' }}>Prop</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-text-secondary)' }}>Type</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-text-secondary)' }}>Default</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-text-secondary)' }}>Description</th>
+              <tr>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-accent-primary)', fontWeight: 600 }}>Prop</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-accent-primary)', fontWeight: 600 }}>Type</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-accent-primary)', fontWeight: 600 }}>Default</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-accent-primary)', fontWeight: 600 }}>Description</th>
               </tr>
             </thead>
             <tbody>
@@ -219,11 +148,11 @@ export function TreeMapShowcase() {
                 { prop: 'colors', type: 'string[]', default: 'chartPalette', desc: 'Custom color palette' },
                 { prop: 'formatValue', type: '(v: number) => string', default: '-', desc: 'Value formatter function' },
               ].map((row, i) => (
-                <tr key={i} style={{ borderBottom: '1px solid var(--sentinel-border-subtle)' }}>
-                  <td style={{ padding: '12px 16px', color: 'var(--sentinel-accent-primary)' }}>{row.prop}</td>
-                  <td style={{ padding: '12px 16px', color: 'var(--sentinel-text-tertiary)' }}>{row.type}</td>
-                  <td style={{ padding: '12px 16px', color: 'var(--sentinel-text-tertiary)' }}>{row.default}</td>
-                  <td style={{ padding: '12px 16px', color: 'var(--sentinel-text-secondary)' }}>{row.desc}</td>
+                <tr key={i}>
+                  <td style={{ padding: '12px 16px', color: '#2D3436' }}>{row.prop}</td>
+                  <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.type}</td>
+                  <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.default}</td>
+                  <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.desc}</td>
                 </tr>
               ))}
             </tbody>
@@ -231,6 +160,14 @@ export function TreeMapShowcase() {
         </div>
       </ShowcaseSection>
     </div>
+  );
+}
+
+export function TreeMapShowcase() {
+  return (
+    <LightEngineProvider initialAnimating={true} initialSpeed={0.3}>
+      <TreeMapContent />
+    </LightEngineProvider>
   );
 }
 

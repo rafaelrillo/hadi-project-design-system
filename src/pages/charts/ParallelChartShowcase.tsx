@@ -1,7 +1,10 @@
 // Path: src/pages/charts/ParallelChartShowcase.tsx
-import { ShowcaseSection, ComponentPreview } from '../../components/showcase';
+// SENTINEL Design System - Glass-Neumorphism Parallel Chart
+import React, { useMemo } from 'react';
+import { ShowcaseSection } from '../../components/showcase';
 import { ParallelChart } from '../../components/charts/echarts';
 import type { ParallelDimension, ParallelSeriesData } from '../../components/charts/echarts';
+import { LightEngineProvider, useLightEngine } from '@/contexts/LightEngineContext';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // SAMPLE DATA
@@ -44,112 +47,95 @@ const portfolioData: ParallelSeriesData[] = [
 // COMPONENT
 // ─────────────────────────────────────────────────────────────────────────────
 
-export function ParallelChartShowcase() {
+function ParallelChartContent() {
+  const { lightAngle } = useLightEngine();
+
+  const shadowOffsets = useMemo(() => {
+    const shadowAngle = (lightAngle + 180) * (Math.PI / 180);
+    return { x: Math.cos(shadowAngle), y: Math.sin(shadowAngle) };
+  }, [lightAngle]);
+
+  const LIGHT = {
+    base: '#e0e5ec',
+    shadowDark: 'hsl(220 15% 72%)',
+    shadowLight: 'hsl(0 0% 100%)',
+  };
+
+  const getNeuPanelShadow = (distance: number, blur: number): string => {
+    const { x, y } = shadowOffsets;
+    return `${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}`;
+  };
+
+  const getNeuInsetShadow = (distance: number, blur: number): string => {
+    const { x, y } = shadowOffsets;
+    return `inset ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}`;
+  };
+
+  const pageHeaderStyles: React.CSSProperties = {
+    marginBottom: '32px', padding: '24px', background: LIGHT.base, borderRadius: '15px',
+    boxShadow: getNeuPanelShadow(20, 60), transition: 'box-shadow 50ms linear',
+  };
+
+  const titleStyles: React.CSSProperties = {
+    fontSize: '28px', fontWeight: 700, color: 'var(--sentinel-accent-primary)', marginBottom: '8px',
+    fontFamily: 'var(--sentinel-font-display)', textTransform: 'uppercase', letterSpacing: '0.1em',
+  };
+
+  const descStyles: React.CSSProperties = {
+    fontSize: '14px', color: 'var(--sentinel-text-secondary)', fontFamily: 'var(--sentinel-font-mono)',
+    textTransform: 'uppercase', letterSpacing: '0.03em',
+  };
+
+  const chartContainerStyles: React.CSSProperties = {
+    padding: '24px', background: LIGHT.base, borderRadius: '15px',
+    boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear',
+  };
+
+  const tableContainerStyles: React.CSSProperties = {
+    padding: '20px', borderRadius: '15px', boxShadow: getNeuInsetShadow(5, 15),
+    background: LIGHT.base, overflowX: 'auto', transition: 'box-shadow 50ms linear',
+  };
+
   return (
-    <div>
-      {/* Page Header */}
-      <header style={{ marginBottom: '32px' }}>
-        <h1 style={{
-          fontSize: '28px',
-          fontWeight: 600,
-          color: 'var(--sentinel-text-primary)',
-          marginBottom: '8px',
-          fontFamily: 'var(--sentinel-font-display)',
-        }}>
-          Parallel Chart
-        </h1>
-        <p style={{
-          fontSize: '14px',
-          color: 'var(--sentinel-text-secondary)',
-          fontFamily: 'var(--sentinel-font-sans)',
-          maxWidth: '600px',
-        }}>
-          Multi-dimensional data visualization with parallel axes. Compare multiple metrics
-          across different entities simultaneously.
-        </p>
+    <div style={{ background: LIGHT.base, minHeight: '100%', padding: '24px' }}>
+      <header style={pageHeaderStyles}>
+        <h1 style={titleStyles}>&gt; ParallelChart_</h1>
+        <p style={descStyles}>// Visualización multi-dimensional con ejes paralelos</p>
       </header>
 
-      {/* Stock Comparison */}
-      <ShowcaseSection
-        title="Stock Metrics Comparison"
-        description="Compare fundamental metrics across stocks"
-      >
-        <ComponentPreview>
-          <div style={{ width: '100%' }}>
-            <ParallelChart
-              dimensions={stockDimensions}
-              data={stockData}
-              title="Fundamental Analysis"
-              height={450}
-            />
-          </div>
-        </ComponentPreview>
+      <ShowcaseSection title="Stock Metrics Comparison" description="Compare fundamental metrics across stocks">
+        <div style={chartContainerStyles}>
+          <ParallelChart dimensions={stockDimensions} data={stockData} title="Fundamental Analysis" height={450} />
+        </div>
       </ShowcaseSection>
 
-      {/* Portfolio Comparison */}
-      <ShowcaseSection
-        title="Portfolio Comparison"
-        description="Compare portfolio risk/return profiles"
-      >
-        <ComponentPreview>
-          <div style={{ width: '100%' }}>
-            <ParallelChart
-              dimensions={portfolioDimensions}
-              data={portfolioData}
-              title="Portfolio Profiles"
-              height={400}
-            />
-          </div>
-        </ComponentPreview>
+      <ShowcaseSection title="Portfolio Comparison" description="Compare portfolio risk/return profiles">
+        <div style={chartContainerStyles}>
+          <ParallelChart dimensions={portfolioDimensions} data={portfolioData} title="Portfolio Profiles" height={400} />
+        </div>
       </ShowcaseSection>
 
-      {/* Without Axis Name Rotation */}
-      <ShowcaseSection
-        title="Horizontal Axis Names"
-        description="Axis names without rotation"
-      >
-        <ComponentPreview>
-          <div style={{ width: '100%' }}>
-            <ParallelChart
-              dimensions={portfolioDimensions}
-              data={portfolioData}
-              height={400}
-            />
-          </div>
-        </ComponentPreview>
+      <ShowcaseSection title="Horizontal Axis Names" description="Axis names without rotation">
+        <div style={chartContainerStyles}>
+          <ParallelChart dimensions={portfolioDimensions} data={portfolioData} height={400} />
+        </div>
       </ShowcaseSection>
 
-      {/* Compact */}
-      <ShowcaseSection
-        title="Compact"
-        description="Smaller parallel chart for dashboards"
-      >
-        <ComponentPreview>
-          <div style={{ width: '100%' }}>
-            <ParallelChart
-              dimensions={portfolioDimensions}
-              data={portfolioData}
-              height={300}
-            />
-          </div>
-        </ComponentPreview>
+      <ShowcaseSection title="Compact" description="Smaller parallel chart for dashboards">
+        <div style={chartContainerStyles}>
+          <ParallelChart dimensions={portfolioDimensions} data={portfolioData} height={300} />
+        </div>
       </ShowcaseSection>
 
-      {/* API Reference */}
-      <ShowcaseSection title="API Reference">
-        <div style={{ overflowX: 'auto' }}>
-          <table style={{
-            width: '100%',
-            borderCollapse: 'collapse',
-            fontSize: '13px',
-            fontFamily: 'var(--sentinel-font-mono)',
-          }}>
+      <ShowcaseSection title="Especificaciones Técnicas">
+        <div style={tableContainerStyles}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12px', fontFamily: 'var(--sentinel-font-mono)' }}>
             <thead>
-              <tr style={{ borderBottom: '1px solid var(--sentinel-border-default)' }}>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-text-secondary)' }}>Prop</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-text-secondary)' }}>Type</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-text-secondary)' }}>Default</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-text-secondary)' }}>Description</th>
+              <tr>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-accent-primary)', fontWeight: 600 }}>Prop</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-accent-primary)', fontWeight: 600 }}>Type</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-accent-primary)', fontWeight: 600 }}>Default</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-accent-primary)', fontWeight: 600 }}>Description</th>
               </tr>
             </thead>
             <tbody>
@@ -160,11 +146,11 @@ export function ParallelChartShowcase() {
                 { prop: 'height', type: 'number', default: '400', desc: 'Chart height in pixels' },
                 { prop: 'colors', type: 'string[]', default: 'chartPalette', desc: 'Custom color palette' },
               ].map((row, i) => (
-                <tr key={i} style={{ borderBottom: '1px solid var(--sentinel-border-subtle)' }}>
-                  <td style={{ padding: '12px 16px', color: 'var(--sentinel-accent-primary)' }}>{row.prop}</td>
-                  <td style={{ padding: '12px 16px', color: 'var(--sentinel-text-tertiary)' }}>{row.type}</td>
-                  <td style={{ padding: '12px 16px', color: 'var(--sentinel-text-tertiary)' }}>{row.default}</td>
-                  <td style={{ padding: '12px 16px', color: 'var(--sentinel-text-secondary)' }}>{row.desc}</td>
+                <tr key={i}>
+                  <td style={{ padding: '12px 16px', color: '#2D3436' }}>{row.prop}</td>
+                  <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.type}</td>
+                  <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.default}</td>
+                  <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.desc}</td>
                 </tr>
               ))}
             </tbody>
@@ -172,6 +158,14 @@ export function ParallelChartShowcase() {
         </div>
       </ShowcaseSection>
     </div>
+  );
+}
+
+export function ParallelChartShowcase() {
+  return (
+    <LightEngineProvider initialAnimating={true} initialSpeed={0.3}>
+      <ParallelChartContent />
+    </LightEngineProvider>
   );
 }
 

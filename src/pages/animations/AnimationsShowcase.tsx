@@ -1,6 +1,6 @@
 // Path: src/pages/animations/AnimationsShowcase.tsx
-// Framer Motion Animations Showcase
-import React, { useState, useRef } from 'react';
+// Framer Motion Animations Showcase - Glass-Neumorphism
+import React, { useState, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MotionCard } from '../../components/animations/MotionCard';
 import { FadeIn } from '../../components/animations/FadeIn';
@@ -13,70 +13,111 @@ import {
   staggerContainer,
   staggerItem
 } from '../../components/animations/presets';
-import { ShowcaseSection, ComponentPreview } from '../../components/showcase';
+import { ShowcaseSection } from '../../components/showcase';
 import { Zap, ArrowDown, Layers, Move, Box, Grid } from 'lucide-react';
+import { LightEngineProvider, useLightEngine } from '@/contexts/LightEngineContext';
 
-export function AnimationsShowcase() {
+function AnimationsContent() {
+  const { lightAngle } = useLightEngine();
   const [isVisible, setIsVisible] = useState(true);
   const [selectedCard, setSelectedCard] = useState<number | null>(null);
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const dragConstraintsRef = useRef<HTMLDivElement>(null);
 
+  const shadowOffsets = useMemo(() => {
+    const shadowAngle = (lightAngle + 180) * (Math.PI / 180);
+    return { x: Math.cos(shadowAngle), y: Math.sin(shadowAngle) };
+  }, [lightAngle]);
+
+  const LIGHT = {
+    base: '#e0e5ec',
+    shadowDark: 'hsl(220 15% 72%)',
+    shadowLight: 'hsl(0 0% 100%)',
+  };
+
+  const getNeuPanelShadow = (distance: number, blur: number): string => {
+    const { x, y } = shadowOffsets;
+    return `${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}`;
+  };
+
+  const getNeuInsetShadow = (distance: number, blur: number): string => {
+    const { x, y } = shadowOffsets;
+    return `inset ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}`;
+  };
+
   const pageHeaderStyles: React.CSSProperties = {
-    marginBottom: '32px'
+    marginBottom: '32px',
+    padding: '24px',
+    background: LIGHT.base,
+    borderRadius: '15px',
+    boxShadow: getNeuPanelShadow(20, 60),
+    transition: 'box-shadow 50ms linear',
   };
 
   const titleStyles: React.CSSProperties = {
     fontSize: '28px',
     fontWeight: 700,
-    color: 'var(--primary)',
+    color: 'var(--sentinel-accent-primary)',
     marginBottom: '8px',
-    fontFamily: 'var(--font-mono)',
+    fontFamily: 'var(--sentinel-font-display)',
     textTransform: 'uppercase',
     letterSpacing: '0.1em',
-    textShadow: '0 0 15px var(--accent-glow)'
   };
 
   const descStyles: React.CSSProperties = {
     fontSize: '14px',
-    color: 'var(--foreground-muted)',
-    fontFamily: 'var(--font-mono)',
+    color: 'var(--sentinel-text-secondary)',
+    fontFamily: 'var(--sentinel-font-mono)',
     textTransform: 'uppercase',
-    letterSpacing: '0.03em'
+    letterSpacing: '0.03em',
   };
 
   const sectionHeaderStyles: React.CSSProperties = {
     fontSize: '16px',
     fontWeight: 600,
-    color: 'var(--primary)',
+    color: 'var(--sentinel-accent-primary)',
     marginTop: '48px',
     marginBottom: '24px',
-    fontFamily: 'var(--font-mono)',
+    padding: '16px 20px',
+    background: LIGHT.base,
+    borderRadius: '15px',
+    boxShadow: getNeuPanelShadow(6, 18),
+    fontFamily: 'var(--sentinel-font-mono)',
     textTransform: 'uppercase',
     letterSpacing: '0.05em',
-    borderBottom: '1px solid var(--border)',
-    paddingBottom: '8px'
+    transition: 'box-shadow 50ms linear',
   };
 
   const cardStyles: React.CSSProperties = {
     padding: '24px',
-    backgroundColor: 'var(--background-secondary)',
-    border: '1px solid var(--border)',
-    borderRadius: 'var(--radius-card)',
-    cursor: 'pointer'
+    background: LIGHT.base,
+    borderRadius: '15px',
+    boxShadow: getNeuPanelShadow(6, 18),
+    cursor: 'pointer',
+    transition: 'box-shadow 50ms linear',
+  };
+
+  const cardInsetStyles: React.CSSProperties = {
+    padding: '24px',
+    background: LIGHT.base,
+    borderRadius: '15px',
+    boxShadow: getNeuInsetShadow(4, 12),
+    transition: 'box-shadow 50ms linear',
   };
 
   const buttonStyles: React.CSSProperties = {
     padding: '12px 24px',
-    backgroundColor: 'var(--primary)',
-    color: 'var(--background)',
+    background: LIGHT.base,
+    color: 'var(--sentinel-accent-primary)',
     border: 'none',
-    borderRadius: 'var(--radius)',
-    fontFamily: 'var(--font-mono)',
+    borderRadius: '15px',
+    boxShadow: getNeuPanelShadow(4, 12),
+    fontFamily: 'var(--sentinel-font-mono)',
     fontWeight: 600,
     cursor: 'pointer',
     textTransform: 'uppercase',
-    letterSpacing: '0.05em'
+    letterSpacing: '0.05em',
+    transition: 'box-shadow 50ms linear',
   };
 
   const listItems = [
@@ -88,16 +129,16 @@ export function AnimationsShowcase() {
   ];
 
   const gridCards = [
-    { id: 1, title: 'API Gateway', status: 'Online', color: 'var(--success)' },
-    { id: 2, title: 'Auth Service', status: 'Online', color: 'var(--success)' },
-    { id: 3, title: 'Database', status: 'Warning', color: 'var(--warning)' },
-    { id: 4, title: 'Cache', status: 'Online', color: 'var(--success)' }
+    { id: 1, title: 'API Gateway', status: 'Online', color: 'var(--sentinel-status-positive)' },
+    { id: 2, title: 'Auth Service', status: 'Online', color: 'var(--sentinel-status-positive)' },
+    { id: 3, title: 'Database', status: 'Warning', color: 'var(--sentinel-status-warning)' },
+    { id: 4, title: 'Cache', status: 'Online', color: 'var(--sentinel-status-positive)' }
   ];
 
   return (
-    <div>
+    <div style={{ background: LIGHT.base, minHeight: '100%', padding: '24px' }}>
       {/* Scroll Progress Bar */}
-      <ScrollProgress color="#FF6600" height={3} />
+      <ScrollProgress color="var(--sentinel-accent-primary)" height={3} />
 
       {/* Page Header */}
       <header style={pageHeaderStyles}>
@@ -116,29 +157,29 @@ export function AnimationsShowcase() {
         title="MotionCard - Variantes de Hover"
         description="Cards interactivas con diferentes efectos hover"
       >
-        <ComponentPreview>
+        <div style={{ padding: '24px', background: LIGHT.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', width: '100%' }}>
             <MotionCard variant="default" style={cardStyles}>
-              <h4 style={{ color: 'var(--foreground)', marginBottom: '8px', fontFamily: 'var(--font-mono)' }}>Default</h4>
-              <p style={{ color: 'var(--foreground-muted)', fontSize: '12px' }}>Border glow on hover</p>
+              <h4 style={{ color: '#2D3436', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Default</h4>
+              <p style={{ color: '#636E72', fontSize: '12px' }}>Border glow on hover</p>
             </MotionCard>
             <MotionCard variant="scale" style={cardStyles}>
-              <h4 style={{ color: 'var(--foreground)', marginBottom: '8px', fontFamily: 'var(--font-mono)' }}>Scale</h4>
-              <p style={{ color: 'var(--foreground-muted)', fontSize: '12px' }}>Subtle scale on hover</p>
+              <h4 style={{ color: '#2D3436', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Scale</h4>
+              <p style={{ color: '#636E72', fontSize: '12px' }}>Subtle scale on hover</p>
             </MotionCard>
             <MotionCard variant="glow" style={cardStyles}>
-              <h4 style={{ color: 'var(--foreground)', marginBottom: '8px', fontFamily: 'var(--font-mono)' }}>Glow</h4>
-              <p style={{ color: 'var(--foreground-muted)', fontSize: '12px' }}>Box shadow glow</p>
+              <h4 style={{ color: '#2D3436', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Glow</h4>
+              <p style={{ color: '#636E72', fontSize: '12px' }}>Box shadow glow</p>
             </MotionCard>
           </div>
-        </ComponentPreview>
+        </div>
       </ShowcaseSection>
 
       <ShowcaseSection
         title="Spring Button"
         description="Botones con física de resorte al hacer click"
       >
-        <ComponentPreview>
+        <div style={{ padding: '24px', background: LIGHT.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
           <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
             <motion.button
               style={buttonStyles}
@@ -149,7 +190,7 @@ export function AnimationsShowcase() {
               Execute Command
             </motion.button>
             <motion.button
-              style={{ ...buttonStyles, backgroundColor: 'var(--success)' }}
+              style={{ ...buttonStyles, color: 'var(--sentinel-status-positive)' }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: 'spring', stiffness: 400, damping: 17 }}
@@ -157,7 +198,7 @@ export function AnimationsShowcase() {
               Confirm Action
             </motion.button>
             <motion.button
-              style={{ ...buttonStyles, backgroundColor: 'var(--destructive)' }}
+              style={{ ...buttonStyles, color: 'var(--sentinel-status-negative)' }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: 'spring', stiffness: 400, damping: 17 }}
@@ -165,7 +206,7 @@ export function AnimationsShowcase() {
               Terminate Process
             </motion.button>
           </div>
-        </ComponentPreview>
+        </div>
       </ShowcaseSection>
 
       {/* ============================================ */}
@@ -177,28 +218,28 @@ export function AnimationsShowcase() {
         title="FadeIn - Direcciones"
         description="Elementos que aparecen desde diferentes direcciones"
       >
-        <ComponentPreview>
+        <div style={{ padding: '24px', background: LIGHT.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', width: '100%' }}>
             <FadeIn direction="up" delay={0}>
               <div style={cardStyles}>
-                <ArrowDown style={{ color: 'var(--primary)', marginBottom: '8px', transform: 'rotate(180deg)' }} size={24} />
-                <p style={{ color: 'var(--foreground)', fontFamily: 'var(--font-mono)', fontSize: '12px' }}>Fade In Up</p>
+                <ArrowDown style={{ color: 'var(--sentinel-accent-primary)', marginBottom: '8px', transform: 'rotate(180deg)' }} size={24} />
+                <p style={{ color: '#2D3436', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>Fade In Up</p>
               </div>
             </FadeIn>
             <FadeIn direction="down" delay={0.1}>
               <div style={cardStyles}>
-                <ArrowDown style={{ color: 'var(--primary)', marginBottom: '8px' }} size={24} />
-                <p style={{ color: 'var(--foreground)', fontFamily: 'var(--font-mono)', fontSize: '12px' }}>Fade In Down</p>
+                <ArrowDown style={{ color: 'var(--sentinel-accent-primary)', marginBottom: '8px' }} size={24} />
+                <p style={{ color: '#2D3436', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>Fade In Down</p>
               </div>
             </FadeIn>
             <FadeIn direction="scale" delay={0.2}>
               <div style={cardStyles}>
-                <Layers style={{ color: 'var(--primary)', marginBottom: '8px' }} size={24} />
-                <p style={{ color: 'var(--foreground)', fontFamily: 'var(--font-mono)', fontSize: '12px' }}>Scale In</p>
+                <Layers style={{ color: 'var(--sentinel-accent-primary)', marginBottom: '8px' }} size={24} />
+                <p style={{ color: '#2D3436', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>Scale In</p>
               </div>
             </FadeIn>
           </div>
-        </ComponentPreview>
+        </div>
       </ShowcaseSection>
 
       {/* ============================================ */}
@@ -210,23 +251,24 @@ export function AnimationsShowcase() {
         title="StaggerList - Lista Animada"
         description="Items que aparecen secuencialmente con delay"
       >
-        <ComponentPreview>
+        <div style={{ padding: '24px', background: LIGHT.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px', width: '100%' }}>
             <div>
-              <h4 style={{ color: 'var(--foreground-muted)', marginBottom: '16px', fontFamily: 'var(--font-mono)', fontSize: '12px' }}>
+              <h4 style={{ color: '#636E72', marginBottom: '16px', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>
                 // Normal Speed
               </h4>
               <StaggerList speed="normal" direction="up" itemClassName="">
                 {listItems.map((item, i) => (
                   <div key={i} style={{
                     padding: '12px 16px',
-                    backgroundColor: 'var(--background-secondary)',
-                    border: '1px solid var(--border)',
-                    borderRadius: 'var(--radius)',
+                    background: LIGHT.base,
+                    borderRadius: '15px',
+                    boxShadow: getNeuInsetShadow(3, 8),
                     marginBottom: '8px',
-                    color: 'var(--success)',
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '12px'
+                    color: 'var(--sentinel-status-positive)',
+                    fontFamily: 'var(--sentinel-font-mono)',
+                    fontSize: '12px',
+                    transition: 'box-shadow 50ms linear',
                   }}>
                     &gt; {item}
                   </div>
@@ -234,20 +276,21 @@ export function AnimationsShowcase() {
               </StaggerList>
             </div>
             <div>
-              <h4 style={{ color: 'var(--foreground-muted)', marginBottom: '16px', fontFamily: 'var(--font-mono)', fontSize: '12px' }}>
+              <h4 style={{ color: '#636E72', marginBottom: '16px', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>
                 // Slow Speed (left direction)
               </h4>
               <StaggerList speed="slow" direction="left" itemClassName="">
                 {listItems.map((item, i) => (
                   <div key={i} style={{
                     padding: '12px 16px',
-                    backgroundColor: 'var(--background-secondary)',
-                    border: '1px solid var(--border)',
-                    borderRadius: 'var(--radius)',
+                    background: LIGHT.base,
+                    borderRadius: '15px',
+                    boxShadow: getNeuInsetShadow(3, 8),
                     marginBottom: '8px',
-                    color: 'var(--info)',
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '12px'
+                    color: 'var(--sentinel-status-info)',
+                    fontFamily: 'var(--sentinel-font-mono)',
+                    fontSize: '12px',
+                    transition: 'box-shadow 50ms linear',
                   }}>
                     [{i + 1}] {item}
                   </div>
@@ -255,14 +298,14 @@ export function AnimationsShowcase() {
               </StaggerList>
             </div>
           </div>
-        </ComponentPreview>
+        </div>
       </ShowcaseSection>
 
       <ShowcaseSection
         title="Stagger Grid"
         description="Grid de cards con animación escalonada usando presets"
       >
-        <ComponentPreview>
+        <div style={{ padding: '24px', background: LIGHT.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
           <motion.div
             style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px', width: '100%' }}
             variants={staggerContainer}
@@ -275,19 +318,20 @@ export function AnimationsShowcase() {
                 variants={staggerItem}
                 style={{
                   ...cardStyles,
-                  borderLeft: `3px solid ${card.color}`
+                  borderLeft: `4px solid ${card.color}`,
+                  borderRadius: '15px',
                 }}
               >
-                <h4 style={{ color: 'var(--foreground)', marginBottom: '8px', fontFamily: 'var(--font-mono)', fontSize: '14px' }}>
+                <h4 style={{ color: '#2D3436', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)', fontSize: '14px' }}>
                   {card.title}
                 </h4>
-                <p style={{ color: card.color, fontFamily: 'var(--font-mono)', fontSize: '12px' }}>
+                <p style={{ color: card.color, fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>
                   {card.status}
                 </p>
               </motion.div>
             ))}
           </motion.div>
-        </ComponentPreview>
+        </div>
       </ShowcaseSection>
 
       {/* ============================================ */}
@@ -299,7 +343,7 @@ export function AnimationsShowcase() {
         title="Toggle Visibility"
         description="Elementos que animan al entrar y salir del DOM"
       >
-        <ComponentPreview>
+        <div style={{ padding: '24px', background: LIGHT.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
           <div style={{ width: '100%' }}>
             <motion.button
               style={{ ...buttonStyles, marginBottom: '24px' }}
@@ -319,13 +363,13 @@ export function AnimationsShowcase() {
                   transition={{ duration: 0.3 }}
                   style={{
                     ...cardStyles,
-                    borderColor: 'var(--primary)'
+                    borderLeft: '4px solid var(--sentinel-accent-primary)',
                   }}
                 >
-                  <h4 style={{ color: 'var(--primary)', marginBottom: '8px', fontFamily: 'var(--font-mono)' }}>
+                  <h4 style={{ color: 'var(--sentinel-accent-primary)', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>
                     Animated Element
                   </h4>
-                  <p style={{ color: 'var(--foreground-muted)', fontFamily: 'var(--font-mono)', fontSize: '12px' }}>
+                  <p style={{ color: '#636E72', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>
                     This element animates when entering and exiting the DOM.
                     Click the button above to toggle visibility.
                   </p>
@@ -333,14 +377,14 @@ export function AnimationsShowcase() {
               )}
             </AnimatePresence>
           </div>
-        </ComponentPreview>
+        </div>
       </ShowcaseSection>
 
       <ShowcaseSection
         title="Card Selection"
         description="Selección con animación de entrada/salida"
       >
-        <ComponentPreview>
+        <div style={{ padding: '24px', background: LIGHT.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
           <div style={{ width: '100%' }}>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px', marginBottom: '24px' }}>
               {gridCards.map((card) => (
@@ -348,14 +392,14 @@ export function AnimationsShowcase() {
                   key={card.id}
                   style={{
                     ...cardStyles,
-                    borderColor: selectedCard === card.id ? 'var(--primary)' : 'var(--border)',
-                    cursor: 'pointer'
+                    boxShadow: selectedCard === card.id ? getNeuInsetShadow(4, 12) : getNeuPanelShadow(6, 18),
+                    cursor: 'pointer',
                   }}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => setSelectedCard(selectedCard === card.id ? null : card.id)}
                 >
-                  <h4 style={{ color: 'var(--foreground)', fontFamily: 'var(--font-mono)', fontSize: '14px' }}>
+                  <h4 style={{ color: '#2D3436', fontFamily: 'var(--sentinel-font-mono)', fontSize: '14px' }}>
                     {card.title}
                   </h4>
                 </motion.div>
@@ -372,14 +416,14 @@ export function AnimationsShowcase() {
                   transition={{ duration: 0.3 }}
                   style={{
                     ...cardStyles,
-                    borderColor: 'var(--primary)',
-                    overflow: 'hidden'
+                    borderLeft: '4px solid var(--sentinel-accent-primary)',
+                    overflow: 'hidden',
                   }}
                 >
-                  <h4 style={{ color: 'var(--primary)', marginBottom: '8px', fontFamily: 'var(--font-mono)' }}>
+                  <h4 style={{ color: 'var(--sentinel-accent-primary)', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>
                     {gridCards.find(c => c.id === selectedCard)?.title} Details
                   </h4>
-                  <p style={{ color: 'var(--foreground-muted)', fontFamily: 'var(--font-mono)', fontSize: '12px' }}>
+                  <p style={{ color: '#636E72', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>
                     Status: {gridCards.find(c => c.id === selectedCard)?.status}<br />
                     Selected card ID: {selectedCard}<br />
                     Click the same card again to deselect.
@@ -388,7 +432,7 @@ export function AnimationsShowcase() {
               )}
             </AnimatePresence>
           </div>
-        </ComponentPreview>
+        </div>
       </ShowcaseSection>
 
       {/* ============================================ */}
@@ -405,12 +449,12 @@ export function AnimationsShowcase() {
             <ScrollReveal key={i}>
               <div style={{
                 ...cardStyles,
-                borderLeft: '3px solid var(--primary)'
+                borderLeft: '4px solid var(--sentinel-accent-primary)',
               }}>
-                <h4 style={{ color: 'var(--foreground)', marginBottom: '8px', fontFamily: 'var(--font-mono)' }}>
+                <h4 style={{ color: '#2D3436', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>
                   Log Entry #{i}
                 </h4>
-                <p style={{ color: 'var(--foreground-muted)', fontFamily: 'var(--font-mono)', fontSize: '12px' }}>
+                <p style={{ color: '#636E72', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>
                   [2024-01-{10 + i} 14:{20 + i}:00] System process completed successfully.
                   This element reveals when you scroll it into view.
                 </p>
@@ -424,21 +468,21 @@ export function AnimationsShowcase() {
         title="ScrollProgress"
         description="Barra de progreso vinculada al scroll (visible en la parte superior)"
       >
-        <ComponentPreview>
+        <div style={{ padding: '24px', background: LIGHT.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
           <div style={{
-            ...cardStyles,
-            textAlign: 'center'
+            ...cardInsetStyles,
+            textAlign: 'center',
           }}>
-            <Zap style={{ color: 'var(--primary)', marginBottom: '16px' }} size={48} />
-            <h4 style={{ color: 'var(--foreground)', marginBottom: '8px', fontFamily: 'var(--font-mono)' }}>
+            <Zap style={{ color: 'var(--sentinel-accent-primary)', marginBottom: '16px' }} size={48} />
+            <h4 style={{ color: '#2D3436', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>
               Scroll Progress Active
             </h4>
-            <p style={{ color: 'var(--foreground-muted)', fontFamily: 'var(--font-mono)', fontSize: '12px' }}>
-              La barra naranja en la parte superior de la página muestra el progreso de scroll.
+            <p style={{ color: '#636E72', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>
+              La barra en la parte superior de la página muestra el progreso de scroll.
               Desplázate hacia arriba y abajo para ver el efecto.
             </p>
           </div>
-        </ComponentPreview>
+        </div>
       </ShowcaseSection>
 
       {/* ============================================ */}
@@ -455,12 +499,12 @@ export function AnimationsShowcase() {
             <Parallax speed={0.3}>
               <div style={{
                 ...cardStyles,
-                borderLeft: '3px solid var(--success)',
-                textAlign: 'center'
+                borderLeft: '4px solid var(--sentinel-status-positive)',
+                textAlign: 'center',
               }}>
-                <ArrowDown style={{ color: 'var(--success)', marginBottom: '8px' }} size={24} />
-                <h4 style={{ color: 'var(--foreground)', marginBottom: '8px', fontFamily: 'var(--font-mono)' }}>Slow (0.3)</h4>
-                <p style={{ color: 'var(--foreground-muted)', fontFamily: 'var(--font-mono)', fontSize: '11px' }}>
+                <ArrowDown style={{ color: 'var(--sentinel-status-positive)', marginBottom: '8px' }} size={24} />
+                <h4 style={{ color: '#2D3436', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Slow (0.3)</h4>
+                <p style={{ color: '#636E72', fontFamily: 'var(--sentinel-font-mono)', fontSize: '11px' }}>
                   Se mueve lentamente
                 </p>
               </div>
@@ -468,12 +512,12 @@ export function AnimationsShowcase() {
             <Parallax speed={0.6}>
               <div style={{
                 ...cardStyles,
-                borderLeft: '3px solid var(--warning)',
-                textAlign: 'center'
+                borderLeft: '4px solid var(--sentinel-status-warning)',
+                textAlign: 'center',
               }}>
-                <ArrowDown style={{ color: 'var(--warning)', marginBottom: '8px' }} size={24} />
-                <h4 style={{ color: 'var(--foreground)', marginBottom: '8px', fontFamily: 'var(--font-mono)' }}>Medium (0.6)</h4>
-                <p style={{ color: 'var(--foreground-muted)', fontFamily: 'var(--font-mono)', fontSize: '11px' }}>
+                <ArrowDown style={{ color: 'var(--sentinel-status-warning)', marginBottom: '8px' }} size={24} />
+                <h4 style={{ color: '#2D3436', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Medium (0.6)</h4>
+                <p style={{ color: '#636E72', fontFamily: 'var(--sentinel-font-mono)', fontSize: '11px' }}>
                   Velocidad media
                 </p>
               </div>
@@ -481,12 +525,12 @@ export function AnimationsShowcase() {
             <Parallax speed={-0.4}>
               <div style={{
                 ...cardStyles,
-                borderLeft: '3px solid var(--info)',
-                textAlign: 'center'
+                borderLeft: '4px solid var(--sentinel-status-info)',
+                textAlign: 'center',
               }}>
-                <ArrowDown style={{ color: 'var(--info)', marginBottom: '8px', transform: 'rotate(180deg)' }} size={24} />
-                <h4 style={{ color: 'var(--foreground)', marginBottom: '8px', fontFamily: 'var(--font-mono)' }}>Reverse (-0.4)</h4>
-                <p style={{ color: 'var(--foreground-muted)', fontFamily: 'var(--font-mono)', fontSize: '11px' }}>
+                <ArrowDown style={{ color: 'var(--sentinel-status-info)', marginBottom: '8px', transform: 'rotate(180deg)' }} size={24} />
+                <h4 style={{ color: '#2D3436', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Reverse (-0.4)</h4>
+                <p style={{ color: '#636E72', fontFamily: 'var(--sentinel-font-mono)', fontSize: '11px' }}>
                   Dirección opuesta
                 </p>
               </div>
@@ -504,7 +548,7 @@ export function AnimationsShowcase() {
         title="SharedElement - Transición entre estados"
         description="Elementos que animan suavemente entre diferentes posiciones y tamaños"
       >
-        <ComponentPreview>
+        <div style={{ padding: '24px', background: LIGHT.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
           <div style={{ width: '100%' }}>
             <LayoutContainer>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', marginBottom: '24px' }}>
@@ -516,15 +560,14 @@ export function AnimationsShowcase() {
                       onClick={() => setExpandedId(id)}
                       style={{
                         ...cardStyles,
-                        borderColor: 'var(--border)',
-                        cursor: 'pointer'
+                        cursor: 'pointer',
                       }}
                     >
-                      <Box style={{ color: 'var(--primary)', marginBottom: '8px' }} size={20} />
-                      <h4 style={{ color: 'var(--foreground)', fontFamily: 'var(--font-mono)', fontSize: '14px' }}>
+                      <Box style={{ color: 'var(--sentinel-accent-primary)', marginBottom: '8px' }} size={20} />
+                      <h4 style={{ color: '#2D3436', fontFamily: 'var(--sentinel-font-mono)', fontSize: '14px' }}>
                         {id.toUpperCase()}
                       </h4>
-                      <p style={{ color: 'var(--foreground-muted)', fontFamily: 'var(--font-mono)', fontSize: '11px' }}>
+                      <p style={{ color: '#636E72', fontFamily: 'var(--sentinel-font-mono)', fontSize: '11px' }}>
                         Click to expand
                       </p>
                     </SharedElement>
@@ -538,18 +581,18 @@ export function AnimationsShowcase() {
                   onClick={() => setExpandedId(null)}
                   style={{
                     ...cardStyles,
-                    borderColor: 'var(--primary)',
+                    borderLeft: '4px solid var(--sentinel-accent-primary)',
                     cursor: 'pointer',
-                    padding: '32px'
+                    padding: '32px',
                   }}
                 >
                   <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '16px' }}>
-                    <Grid style={{ color: 'var(--primary)' }} size={32} />
-                    <h4 style={{ color: 'var(--primary)', fontFamily: 'var(--font-mono)', fontSize: '18px' }}>
+                    <Grid style={{ color: 'var(--sentinel-accent-primary)' }} size={32} />
+                    <h4 style={{ color: 'var(--sentinel-accent-primary)', fontFamily: 'var(--sentinel-font-mono)', fontSize: '18px' }}>
                       {expandedId.toUpperCase()} EXPANDED
                     </h4>
                   </div>
-                  <p style={{ color: 'var(--foreground-muted)', fontFamily: 'var(--font-mono)', fontSize: '12px' }}>
+                  <p style={{ color: '#636E72', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>
                     Este elemento se expande suavemente desde su posición original.
                     La transición usa layout animations de Framer Motion para animar
                     automáticamente los cambios de tamaño y posición.
@@ -560,7 +603,7 @@ export function AnimationsShowcase() {
               )}
             </LayoutContainer>
           </div>
-        </ComponentPreview>
+        </div>
       </ShowcaseSection>
 
       {/* ============================================ */}
@@ -572,17 +615,18 @@ export function AnimationsShowcase() {
         title="DraggablePanel - Paneles arrastrables"
         description="Elementos que se pueden arrastrar con restricciones y física"
       >
-        <ComponentPreview>
+        <div style={{ padding: '24px', background: LIGHT.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
           <div
             ref={dragConstraintsRef}
             style={{
               width: '100%',
               height: '300px',
-              backgroundColor: 'var(--background-tertiary)',
-              border: '1px dashed var(--border)',
-              borderRadius: 'var(--radius)',
+              background: LIGHT.base,
+              borderRadius: '15px',
+              boxShadow: getNeuInsetShadow(5, 15),
               position: 'relative',
-              overflow: 'hidden'
+              overflow: 'hidden',
+              transition: 'box-shadow 50ms linear',
             }}
           >
             <p style={{
@@ -590,11 +634,11 @@ export function AnimationsShowcase() {
               top: '50%',
               left: '50%',
               transform: 'translate(-50%, -50%)',
-              color: 'var(--foreground-muted)',
-              fontFamily: 'var(--font-mono)',
+              color: '#636E72',
+              fontFamily: 'var(--sentinel-font-mono)',
               fontSize: '12px',
               textAlign: 'center',
-              pointerEvents: 'none'
+              pointerEvents: 'none',
             }}>
               // Área de arrastre - mueve los paneles
             </p>
@@ -610,16 +654,17 @@ export function AnimationsShowcase() {
                 left: '20px',
                 width: '160px',
                 padding: '24px 16px 16px 16px',
-                backgroundColor: 'var(--background-secondary)',
-                border: '1px solid var(--primary)',
-                borderRadius: 'var(--radius)'
+                background: LIGHT.base,
+                borderRadius: '15px',
+                boxShadow: getNeuPanelShadow(6, 18),
+                borderLeft: '4px solid var(--sentinel-accent-primary)',
               }}
             >
-              <Move style={{ color: 'var(--primary)', marginBottom: '8px' }} size={20} />
-              <h4 style={{ color: 'var(--foreground)', fontFamily: 'var(--font-mono)', fontSize: '12px' }}>
+              <Move style={{ color: 'var(--sentinel-accent-primary)', marginBottom: '8px' }} size={20} />
+              <h4 style={{ color: '#2D3436', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>
                 Panel A
               </h4>
-              <p style={{ color: 'var(--foreground-muted)', fontFamily: 'var(--font-mono)', fontSize: '10px' }}>
+              <p style={{ color: '#636E72', fontFamily: 'var(--sentinel-font-mono)', fontSize: '10px' }}>
                 Arrástralo
               </p>
             </DraggablePanel>
@@ -635,16 +680,17 @@ export function AnimationsShowcase() {
                 right: '20px',
                 width: '160px',
                 padding: '24px 16px 16px 16px',
-                backgroundColor: 'var(--background-secondary)',
-                border: '1px solid var(--success)',
-                borderRadius: 'var(--radius)'
+                background: LIGHT.base,
+                borderRadius: '15px',
+                boxShadow: getNeuPanelShadow(6, 18),
+                borderLeft: '4px solid var(--sentinel-status-positive)',
               }}
             >
-              <Move style={{ color: 'var(--success)', marginBottom: '8px' }} size={20} />
-              <h4 style={{ color: 'var(--foreground)', fontFamily: 'var(--font-mono)', fontSize: '12px' }}>
+              <Move style={{ color: 'var(--sentinel-status-positive)', marginBottom: '8px' }} size={20} />
+              <h4 style={{ color: '#2D3436', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>
                 Panel B
               </h4>
-              <p style={{ color: 'var(--foreground-muted)', fontFamily: 'var(--font-mono)', fontSize: '10px' }}>
+              <p style={{ color: '#636E72', fontFamily: 'var(--sentinel-font-mono)', fontSize: '10px' }}>
                 Con elastic
               </p>
             </DraggablePanel>
@@ -661,22 +707,23 @@ export function AnimationsShowcase() {
                 transform: 'translateX(-50%)',
                 width: '200px',
                 padding: '16px',
-                backgroundColor: 'var(--background-secondary)',
-                border: '1px solid var(--warning)',
-                borderRadius: 'var(--radius)',
+                background: LIGHT.base,
+                borderRadius: '15px',
+                boxShadow: getNeuPanelShadow(6, 18),
+                borderLeft: '4px solid var(--sentinel-status-warning)',
                 textAlign: 'center',
-                cursor: 'grab'
+                cursor: 'grab',
               }}
             >
-              <h4 style={{ color: 'var(--warning)', fontFamily: 'var(--font-mono)', fontSize: '12px' }}>
+              <h4 style={{ color: 'var(--sentinel-status-warning)', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>
                 Solo Horizontal
               </h4>
-              <p style={{ color: 'var(--foreground-muted)', fontFamily: 'var(--font-mono)', fontSize: '10px' }}>
+              <p style={{ color: '#636E72', fontFamily: 'var(--sentinel-font-mono)', fontSize: '10px' }}>
                 axis="x"
               </p>
             </DraggablePanel>
           </div>
-        </ComponentPreview>
+        </div>
       </ShowcaseSection>
 
       {/* ============================================ */}
@@ -685,30 +732,40 @@ export function AnimationsShowcase() {
       <h2 style={sectionHeaderStyles}>// Presets Reference</h2>
 
       <ShowcaseSection title="Configuraciones Disponibles">
-        <div style={{ fontSize: '12px', color: 'var(--foreground)', lineHeight: '2', fontFamily: 'var(--font-mono)' }}>
+        <div style={{
+          padding: '20px',
+          borderRadius: '15px',
+          boxShadow: getNeuInsetShadow(5, 15),
+          background: LIGHT.base,
+          fontSize: '12px',
+          fontFamily: 'var(--sentinel-font-mono)',
+          color: '#636E72',
+          lineHeight: '2',
+          transition: 'box-shadow 50ms linear',
+        }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px' }}>
             <div>
-              <p><strong style={{ color: 'var(--primary)' }}>Hover Presets:</strong></p>
+              <p><strong style={{ color: 'var(--sentinel-accent-primary)' }}>Hover Presets:</strong></p>
               <p>✓ cardHover - Border glow effect</p>
               <p>✓ scaleHover - Subtle scale transform</p>
               <p>✓ glowHover - Box shadow glow</p>
               <p>✓ springButton - Spring physics tap</p>
             </div>
             <div>
-              <p><strong style={{ color: 'var(--primary)' }}>Entry Presets:</strong></p>
+              <p><strong style={{ color: 'var(--sentinel-accent-primary)' }}>Entry Presets:</strong></p>
               <p>✓ fadeIn - Simple opacity</p>
               <p>✓ fadeInUp/Down/Left/Right - Directional</p>
               <p>✓ scaleIn - Scale + opacity</p>
             </div>
             <div>
-              <p><strong style={{ color: 'var(--primary)' }}>Stagger Presets:</strong></p>
+              <p><strong style={{ color: 'var(--sentinel-accent-primary)' }}>Stagger Presets:</strong></p>
               <p>✓ staggerContainer - Parent config</p>
               <p>✓ staggerContainerFast/Slow - Speed variants</p>
               <p>✓ staggerItem - Child animation</p>
               <p>✓ staggerItemLeft - Left direction</p>
             </div>
             <div>
-              <p><strong style={{ color: 'var(--primary)' }}>Transitions:</strong></p>
+              <p><strong style={{ color: 'var(--sentinel-accent-primary)' }}>Transitions:</strong></p>
               <p>✓ springTransition - Bouncy</p>
               <p>✓ smoothTransition - Gentle</p>
               <p>✓ snappyTransition - Quick</p>
@@ -717,7 +774,7 @@ export function AnimationsShowcase() {
           </div>
 
           <div style={{ marginTop: '24px' }}>
-            <p><strong style={{ color: 'var(--primary)' }}>Components:</strong></p>
+            <p><strong style={{ color: 'var(--sentinel-accent-primary)' }}>Components:</strong></p>
             <p>✓ MotionCard - Card with hover variants (default/scale/glow)</p>
             <p>✓ FadeIn - Wrapper with direction and delay props</p>
             <p>✓ StaggerList - Animated list with speed control</p>
@@ -731,5 +788,13 @@ export function AnimationsShowcase() {
         </div>
       </ShowcaseSection>
     </div>
+  );
+}
+
+export function AnimationsShowcase() {
+  return (
+    <LightEngineProvider initialAnimating={true} initialSpeed={0.3}>
+      <AnimationsContent />
+    </LightEngineProvider>
   );
 }

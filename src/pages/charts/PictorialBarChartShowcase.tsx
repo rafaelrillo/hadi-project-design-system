@@ -1,7 +1,10 @@
 // Path: src/pages/charts/PictorialBarChartShowcase.tsx
-import { ShowcaseSection, ComponentPreview } from '../../components/showcase';
+// SENTINEL Design System - Glass-Neumorphism PictorialBar Chart
+import React, { useMemo } from 'react';
+import { ShowcaseSection } from '../../components/showcase';
 import { PictorialBarChart, pictorialSymbols } from '../../components/charts/echarts';
 import type { PictorialBarDataPoint } from '../../components/charts/echarts';
+import { LightEngineProvider, useLightEngine } from '@/contexts/LightEngineContext';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // SAMPLE DATA
@@ -40,249 +43,149 @@ const walletData: PictorialBarDataPoint[] = [
 // COMPONENT
 // ─────────────────────────────────────────────────────────────────────────────
 
-export function PictorialBarChartShowcase() {
+function PictorialBarChartContent() {
+  const { lightAngle } = useLightEngine();
+
+  const shadowOffsets = useMemo(() => {
+    const shadowAngle = (lightAngle + 180) * (Math.PI / 180);
+    return { x: Math.cos(shadowAngle), y: Math.sin(shadowAngle) };
+  }, [lightAngle]);
+
+  const LIGHT = {
+    base: '#e0e5ec',
+    shadowDark: 'hsl(220 15% 72%)',
+    shadowLight: 'hsl(0 0% 100%)',
+  };
+
+  const getNeuPanelShadow = (distance: number, blur: number): string => {
+    const { x, y } = shadowOffsets;
+    return `${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}`;
+  };
+
+  const getNeuInsetShadow = (distance: number, blur: number): string => {
+    const { x, y } = shadowOffsets;
+    return `inset ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}`;
+  };
+
+  const pageHeaderStyles: React.CSSProperties = {
+    marginBottom: '32px', padding: '24px', background: LIGHT.base, borderRadius: '15px',
+    boxShadow: getNeuPanelShadow(20, 60), transition: 'box-shadow 50ms linear',
+  };
+
+  const titleStyles: React.CSSProperties = {
+    fontSize: '28px', fontWeight: 700, color: 'var(--sentinel-accent-primary)', marginBottom: '8px',
+    fontFamily: 'var(--sentinel-font-display)', textTransform: 'uppercase', letterSpacing: '0.1em',
+  };
+
+  const descStyles: React.CSSProperties = {
+    fontSize: '14px', color: 'var(--sentinel-text-secondary)', fontFamily: 'var(--sentinel-font-mono)',
+    textTransform: 'uppercase', letterSpacing: '0.03em',
+  };
+
+  const chartContainerStyles: React.CSSProperties = {
+    padding: '24px', background: LIGHT.base, borderRadius: '15px',
+    boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear',
+  };
+
+  const tableContainerStyles: React.CSSProperties = {
+    padding: '20px', borderRadius: '15px', boxShadow: getNeuInsetShadow(5, 15),
+    background: LIGHT.base, overflowX: 'auto', transition: 'box-shadow 50ms linear',
+  };
+
+  const symbolChipStyles: React.CSSProperties = {
+    padding: '4px 12px',
+    background: 'rgba(91, 163, 165, 0.15)',
+    borderRadius: '8px',
+    fontSize: '12px',
+    fontFamily: 'var(--sentinel-font-mono)',
+    color: '#636E72',
+  };
+
   return (
-    <div>
-      {/* Page Header */}
-      <header style={{ marginBottom: '32px' }}>
-        <h1 style={{
-          fontSize: '28px',
-          fontWeight: 600,
-          color: 'var(--sentinel-text-primary)',
-          marginBottom: '8px',
-          fontFamily: 'var(--sentinel-font-display)',
-        }}>
-          PictorialBar Chart
-        </h1>
-        <p style={{
-          fontSize: '14px',
-          color: 'var(--sentinel-text-secondary)',
-          fontFamily: 'var(--sentinel-font-sans)',
-          maxWidth: '600px',
-        }}>
-          Bar chart with custom symbols. Use built-in shapes or custom SVG paths
-          to create visually engaging data representations.
-        </p>
+    <div style={{ background: LIGHT.base, minHeight: '100%', padding: '24px' }}>
+      <header style={pageHeaderStyles}>
+        <h1 style={titleStyles}>&gt; PictorialBarChart_</h1>
+        <p style={descStyles}>// Barras con símbolos personalizados</p>
       </header>
 
-      {/* Default - Round Rect */}
-      <ShowcaseSection
-        title="Default (Round Rectangle)"
-        description="Basic pictorial bar with rounded rectangle symbols - bars fill based on value"
-      >
-        <ComponentPreview>
-          <div style={{ width: '100%' }}>
-            <PictorialBarChart
-              data={investorData}
-              title="Investor Distribution"
-              height={350}
-            />
+      <ShowcaseSection title="Default (Round Rectangle)" description="Basic pictorial bar with rounded rectangle symbols">
+        <div style={chartContainerStyles}>
+          <div style={{ width: '100%', maxWidth: '600px', margin: '0 auto' }}>
+            <PictorialBarChart data={investorData} title="Investor Distribution" height={350} />
           </div>
-        </ComponentPreview>
+        </div>
       </ShowcaseSection>
 
-      {/* Circle */}
-      <ShowcaseSection
-        title="Circle Symbol"
-        description="Circular symbols scale by value while maintaining aspect ratio"
-      >
-        <ComponentPreview>
-          <div style={{ width: '100%' }}>
-            <PictorialBarChart
-              data={growthData}
-              title="Quarterly Growth (%)"
-              height={350}
-              symbol={pictorialSymbols.circle}
-              symbolSize={50}
-              formatValue={(v) => `${v}%`}
-            />
+      <ShowcaseSection title="Circle Symbol" description="Circular symbols scale by value">
+        <div style={chartContainerStyles}>
+          <div style={{ width: '100%', maxWidth: '600px', margin: '0 auto' }}>
+            <PictorialBarChart data={growthData} title="Quarterly Growth (%)" height={350} symbol={pictorialSymbols.circle} symbolSize={50} formatValue={(v) => `${v}%`} />
           </div>
-        </ComponentPreview>
+        </div>
       </ShowcaseSection>
 
-      {/* Diamond */}
-      <ShowcaseSection
-        title="Diamond Symbol"
-        description="Diamond shapes scale proportionally to data values"
-      >
-        <ComponentPreview>
-          <div style={{ width: '100%' }}>
-            <PictorialBarChart
-              data={walletData}
-              title="Portfolio Allocation"
-              height={350}
-              symbol={pictorialSymbols.diamond}
-              symbolSize={50}
-              formatValue={(v) => `${v}%`}
-            />
+      <ShowcaseSection title="Diamond Symbol" description="Diamond shapes scale proportionally">
+        <div style={chartContainerStyles}>
+          <div style={{ width: '100%', maxWidth: '600px', margin: '0 auto' }}>
+            <PictorialBarChart data={walletData} title="Portfolio Allocation" height={350} symbol={pictorialSymbols.diamond} symbolSize={50} formatValue={(v) => `${v}%`} />
           </div>
-        </ComponentPreview>
+        </div>
       </ShowcaseSection>
 
-      {/* Horizontal */}
-      <ShowcaseSection
-        title="Horizontal"
-        description="Horizontal orientation with bar fill"
-      >
-        <ComponentPreview>
-          <div style={{ width: '100%' }}>
-            <PictorialBarChart
-              data={comparisonData}
-              title="Sector Ratings"
-              height={350}
-              horizontal
-              symbol={pictorialSymbols.roundRect}
-            />
-          </div>
-        </ComponentPreview>
+      <ShowcaseSection title="Horizontal" description="Horizontal orientation with bar fill">
+        <div style={chartContainerStyles}>
+          <PictorialBarChart data={comparisonData} title="Sector Ratings" height={350} horizontal symbol={pictorialSymbols.roundRect} />
+        </div>
       </ShowcaseSection>
 
-      {/* Symbol Repeat */}
-      <ShowcaseSection
-        title="Symbol Repeat"
-        description="Repeat symbols to show quantity (isotype visualization)"
-      >
-        <ComponentPreview>
-          <div style={{ width: '100%' }}>
-            <PictorialBarChart
-              data={[
-                { name: 'Jan', value: 5 },
-                { name: 'Feb', value: 8 },
-                { name: 'Mar', value: 6 },
-                { name: 'Apr', value: 10 },
-              ]}
-              title="Monthly Trades"
-              height={350}
-              symbol={pictorialSymbols.rect}
-              symbolRepeat
-              symbolSize={[25, 25]}
-              maxValue={12}
-            />
+      <ShowcaseSection title="Symbol Repeat" description="Repeat symbols to show quantity (isotype visualization)">
+        <div style={chartContainerStyles}>
+          <div style={{ width: '100%', maxWidth: '600px', margin: '0 auto' }}>
+            <PictorialBarChart data={[{ name: 'Jan', value: 5 }, { name: 'Feb', value: 8 }, { name: 'Mar', value: 6 }, { name: 'Apr', value: 10 }]} title="Monthly Trades" height={350} symbol={pictorialSymbols.rect} symbolRepeat symbolSize={[25, 25]} maxValue={12} />
           </div>
-        </ComponentPreview>
+        </div>
       </ShowcaseSection>
 
-      {/* Triangle */}
-      <ShowcaseSection
-        title="Triangle Symbol"
-        description="Triangle pointing up for growth metrics"
-      >
-        <ComponentPreview>
-          <div style={{ width: '100%' }}>
-            <PictorialBarChart
-              data={growthData}
-              title="Growth Indicators"
-              height={350}
-              symbol={pictorialSymbols.triangle}
-              symbolSize={45}
-              formatValue={(v) => `${v}%`}
-            />
+      <ShowcaseSection title="Triangle Symbol" description="Triangle pointing up for growth metrics">
+        <div style={chartContainerStyles}>
+          <div style={{ width: '100%', maxWidth: '600px', margin: '0 auto' }}>
+            <PictorialBarChart data={growthData} title="Growth Indicators" height={350} symbol={pictorialSymbols.triangle} symbolSize={45} formatValue={(v) => `${v}%`} />
           </div>
-        </ComponentPreview>
+        </div>
       </ShowcaseSection>
 
-      {/* Arrow */}
-      <ShowcaseSection
-        title="Arrow Symbol"
-        description="Arrow symbols for directional data"
-      >
-        <ComponentPreview>
-          <div style={{ width: '100%' }}>
-            <PictorialBarChart
-              data={investorData}
-              title="Market Direction"
-              height={350}
-              symbol={pictorialSymbols.arrow}
-              symbolSize={50}
-            />
-          </div>
-        </ComponentPreview>
-      </ShowcaseSection>
-
-      {/* Pin */}
-      <ShowcaseSection
-        title="Pin Symbol"
-        description="Pin/marker style symbols"
-      >
-        <ComponentPreview>
-          <div style={{ width: '100%' }}>
-            <PictorialBarChart
-              data={walletData}
-              title="Asset Markers"
-              height={350}
-              symbol={pictorialSymbols.pin}
-              symbolSize={55}
-              formatValue={(v) => `${v}%`}
-            />
-          </div>
-        </ComponentPreview>
-      </ShowcaseSection>
-
-      {/* All Basic Shapes Comparison */}
-      <ShowcaseSection
-        title="Shape Comparison"
-        description="All built-in geometric shapes side by side - symbols scale by value"
-      >
-        <ComponentPreview>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '24px', width: '100%' }}>
+      <ShowcaseSection title="Shape Comparison" description="All built-in geometric shapes side by side">
+        <div style={chartContainerStyles}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '24px' }}>
             <div>
-              <PictorialBarChart
-                data={walletData.slice(0, 3)}
-                height={220}
-                symbol={pictorialSymbols.circle}
-                symbolSize={40}
-                showLabels={false}
-              />
-              <p style={{ textAlign: 'center', color: 'var(--sentinel-text-tertiary)', fontSize: '12px', marginTop: '8px' }}>Circle</p>
+              <PictorialBarChart data={walletData.slice(0, 3)} height={220} symbol={pictorialSymbols.circle} symbolSize={40} showLabels={false} />
+              <p style={{ textAlign: 'center', color: '#636E72', fontSize: '12px', marginTop: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Circle</p>
             </div>
             <div>
-              <PictorialBarChart
-                data={walletData.slice(0, 3)}
-                height={220}
-                symbol={pictorialSymbols.diamond}
-                symbolSize={40}
-                showLabels={false}
-              />
-              <p style={{ textAlign: 'center', color: 'var(--sentinel-text-tertiary)', fontSize: '12px', marginTop: '8px' }}>Diamond</p>
+              <PictorialBarChart data={walletData.slice(0, 3)} height={220} symbol={pictorialSymbols.diamond} symbolSize={40} showLabels={false} />
+              <p style={{ textAlign: 'center', color: '#636E72', fontSize: '12px', marginTop: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Diamond</p>
             </div>
             <div>
-              <PictorialBarChart
-                data={walletData.slice(0, 3)}
-                height={220}
-                symbol={pictorialSymbols.roundRect}
-                showLabels={false}
-              />
-              <p style={{ textAlign: 'center', color: 'var(--sentinel-text-tertiary)', fontSize: '12px', marginTop: '8px' }}>Round Rect</p>
+              <PictorialBarChart data={walletData.slice(0, 3)} height={220} symbol={pictorialSymbols.roundRect} showLabels={false} />
+              <p style={{ textAlign: 'center', color: '#636E72', fontSize: '12px', marginTop: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Round Rect</p>
             </div>
             <div>
-              <PictorialBarChart
-                data={walletData.slice(0, 3)}
-                height={220}
-                symbol={pictorialSymbols.triangle}
-                symbolSize={40}
-                showLabels={false}
-              />
-              <p style={{ textAlign: 'center', color: 'var(--sentinel-text-tertiary)', fontSize: '12px', marginTop: '8px' }}>Triangle</p>
+              <PictorialBarChart data={walletData.slice(0, 3)} height={220} symbol={pictorialSymbols.triangle} symbolSize={40} showLabels={false} />
+              <p style={{ textAlign: 'center', color: '#636E72', fontSize: '12px', marginTop: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Triangle</p>
             </div>
           </div>
-        </ComponentPreview>
+        </div>
       </ShowcaseSection>
 
-      {/* API Reference */}
-      <ShowcaseSection title="API Reference">
-        <div style={{ overflowX: 'auto' }}>
-          <table style={{
-            width: '100%',
-            borderCollapse: 'collapse',
-            fontSize: '13px',
-            fontFamily: 'var(--sentinel-font-mono)',
-          }}>
+      <ShowcaseSection title="Especificaciones Técnicas">
+        <div style={tableContainerStyles}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12px', fontFamily: 'var(--sentinel-font-mono)' }}>
             <thead>
-              <tr style={{ borderBottom: '1px solid var(--sentinel-border-default)' }}>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-text-secondary)' }}>Prop</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-text-secondary)' }}>Type</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-text-secondary)' }}>Default</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-text-secondary)' }}>Description</th>
+              <tr>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-accent-primary)', fontWeight: 600 }}>Prop</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-accent-primary)', fontWeight: 600 }}>Type</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-accent-primary)', fontWeight: 600 }}>Default</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-accent-primary)', fontWeight: 600 }}>Description</th>
               </tr>
             </thead>
             <tbody>
@@ -298,46 +201,39 @@ export function PictorialBarChartShowcase() {
                 { prop: 'showBackground', type: 'boolean', default: 'true', desc: 'Show ghost background bar' },
                 { prop: 'maxValue', type: 'number', default: 'auto', desc: 'Maximum axis value' },
               ].map((row, i) => (
-                <tr key={i} style={{ borderBottom: '1px solid var(--sentinel-border-subtle)' }}>
-                  <td style={{ padding: '12px 16px', color: 'var(--sentinel-accent-primary)' }}>{row.prop}</td>
-                  <td style={{ padding: '12px 16px', color: 'var(--sentinel-text-tertiary)' }}>{row.type}</td>
-                  <td style={{ padding: '12px 16px', color: 'var(--sentinel-text-tertiary)' }}>{row.default}</td>
-                  <td style={{ padding: '12px 16px', color: 'var(--sentinel-text-secondary)' }}>{row.desc}</td>
+                <tr key={i}>
+                  <td style={{ padding: '12px 16px', color: '#2D3436' }}>{row.prop}</td>
+                  <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.type}</td>
+                  <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.default}</td>
+                  <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.desc}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
 
-        {/* Available Symbols */}
         <div style={{ marginTop: '24px' }}>
-          <h4 style={{ color: 'var(--sentinel-text-primary)', marginBottom: '12px', fontSize: '14px' }}>Available Symbols (pictorialSymbols)</h4>
+          <h4 style={{ color: '#2D3436', marginBottom: '12px', fontSize: '14px', fontWeight: 600 }}>Available Symbols (pictorialSymbols)</h4>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
             {Object.keys(pictorialSymbols).map((key) => (
-              <span key={key} style={{
-                padding: '4px 12px',
-                background: 'var(--sentinel-bg-subtle)',
-                borderRadius: 'var(--sentinel-radius-sm)',
-                fontSize: '12px',
-                fontFamily: 'var(--sentinel-font-mono)',
-                color: 'var(--sentinel-text-secondary)',
-              }}>
-                {key}
-              </span>
+              <span key={key} style={symbolChipStyles}>{key}</span>
             ))}
           </div>
-          <p style={{
-            marginTop: '12px',
-            fontSize: '12px',
-            color: 'var(--sentinel-text-tertiary)',
-            fontStyle: 'italic'
-          }}>
+          <p style={{ marginTop: '12px', fontSize: '12px', color: '#636E72', fontStyle: 'italic', fontFamily: 'var(--sentinel-font-mono)' }}>
             Note: Basic shapes (circle, rect, roundRect, triangle, diamond, pin, arrow) work best.
             Custom SVG path symbols (person, dollar, chart, growth, star) may require specific symbolSize tuning.
           </p>
         </div>
       </ShowcaseSection>
     </div>
+  );
+}
+
+export function PictorialBarChartShowcase() {
+  return (
+    <LightEngineProvider initialAnimating={true} initialSpeed={0.3}>
+      <PictorialBarChartContent />
+    </LightEngineProvider>
   );
 }
 

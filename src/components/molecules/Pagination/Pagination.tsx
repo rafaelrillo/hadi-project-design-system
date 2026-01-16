@@ -1,6 +1,10 @@
 // Path: src/components/molecules/Pagination/Pagination.tsx
+import { type CSSProperties } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useLightEngineOptional } from '@contexts/LightEngineContext';
 import styles from './Pagination.module.css';
+
+export type PaginationStyle = 'default' | 'neuInset';
 
 export interface PaginationProps {
   currentPage: number;
@@ -9,7 +13,17 @@ export interface PaginationProps {
   maxVisiblePages?: number;
   showFirstLast?: boolean;
   disabled?: boolean;
+  /** Visual style variant */
+  paginationStyle?: PaginationStyle;
+  /** Enable dynamic shadows from Light Engine */
+  dynamicShadows?: boolean;
 }
+
+// Glass hue for active page
+const GLASS_PAGE = {
+  hue: 175,
+  sat: 35,
+};
 
 const getClassName = (...classes: (string | undefined | false)[]): string => {
   return classes.filter(Boolean).join(' ');
@@ -21,8 +35,43 @@ export function Pagination({
   onPageChange,
   maxVisiblePages = 5,
   showFirstLast = false,
-  disabled = false
+  disabled = false,
+  paginationStyle = 'default',
+  dynamicShadows = true,
 }: PaginationProps) {
+  // Get light engine context (optional)
+  const lightEngine = useLightEngineOptional();
+
+  // Get container className
+  const getContainerClassName = (): string => {
+    const classes = [styles.container];
+    if (paginationStyle === 'neuInset') {
+      classes.push(styles.neuInset);
+      if (dynamicShadows && lightEngine) classes.push(styles.dynamicShadows);
+    }
+    return classes.join(' ');
+  };
+
+  // Get container dynamic styles
+  const getContainerDynamicStyles = (): CSSProperties | undefined => {
+    if (paginationStyle !== 'neuInset' || !dynamicShadows || !lightEngine) return undefined;
+
+    const { shadows } = lightEngine;
+    return {
+      boxShadow: shadows.getNeuInsetShadow(3, 8),
+    };
+  };
+
+  // Get active page dynamic styles
+  const getActivePageDynamicStyles = (): CSSProperties | undefined => {
+    if (paginationStyle !== 'neuInset' || !dynamicShadows || !lightEngine) return undefined;
+
+    const { shadows } = lightEngine;
+    return {
+      boxShadow: `${shadows.getNeuPanelShadow(2, 4)}, inset 0 1px 0 rgba(255, 255, 255, 0.7)`,
+      background: shadows.getGlassBackground(GLASS_PAGE.hue, GLASS_PAGE.sat),
+    };
+  };
   const getPageNumbers = (): (number | string)[] => {
     if (totalPages <= maxVisiblePages) {
       return Array.from({ length: totalPages }, (_, i) => i + 1);
@@ -89,7 +138,7 @@ export function Pagination({
   const isNextDisabled = disabled || currentPage === totalPages;
 
   return (
-    <div className={styles.container}>
+    <div className={getContainerClassName()} style={getContainerDynamicStyles()}>
       {/* First button */}
       {showFirstLast && totalPages > maxVisiblePages && (
         <button
@@ -136,6 +185,7 @@ export function Pagination({
               styles.pageNumber,
               isActive && styles.pageNumberActive
             )}
+            style={isActive ? getActivePageDynamicStyles() : undefined}
             aria-label={`Página ${pageNum}`}
             aria-current={isActive ? 'page' : undefined}
             type="button"

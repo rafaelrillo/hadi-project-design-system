@@ -1,38 +1,154 @@
 // Path: src/components/molecules/Card/Card.tsx
-import React from 'react';
+import { type ReactNode, type CSSProperties, type HTMLAttributes, forwardRef } from 'react';
+import { useLightEngineOptional } from '@contexts/LightEngineContext';
 import styles from './Card.module.css';
 
-export interface CardProps {
-  children?: React.ReactNode;
-  header?: React.ReactNode;
-  footer?: React.ReactNode;
-  variant?: 'success' | 'warning' | 'error' | 'neutral';
+export type CardStatus = 'success' | 'warning' | 'error' | 'neutral';
+export type CardStyle = 'default' | 'outlined' | 'elevated' | 'highlighted' | 'glow' | 'pressed' | 'flat' | 'neuPanel';
+export type CardSize = 'compact' | 'default' | 'spacious';
+
+export interface CardProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
+  children?: ReactNode;
+  /** Content rendered in the header section */
+  header?: ReactNode;
+  /** Content rendered in the footer section */
+  footer?: ReactNode;
+  /** Card title (alternative to header for simple cases) */
+  title?: ReactNode;
+  /** Card subtitle */
+  subtitle?: ReactNode;
+  /** Status variant with left border accent */
+  status?: CardStatus;
+  /** @deprecated Use status instead */
+  variant?: CardStatus;
+  /** Visual style variant */
+  cardStyle?: CardStyle;
+  /** Size variant affecting padding */
+  size?: CardSize;
+  /** Make the card clickable/interactive */
+  interactive?: boolean;
+  /** Show status dot indicator in corner */
+  showStatusDot?: boolean;
+  /** Enable dynamic shadows from Light Engine */
+  dynamicShadows?: boolean;
   className?: string;
 }
 
-const getClassName = (...classes: (string | undefined | false)[]): string => {
-  return classes.filter(Boolean).join(' ');
-};
+export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
+  {
+    children,
+    header,
+    footer,
+    title,
+    subtitle,
+    status,
+    variant,
+    cardStyle = 'default',
+    size = 'default',
+    interactive = false,
+    showStatusDot = false,
+    dynamicShadows = true,
+    className,
+    onClick,
+    ...rest
+  },
+  ref
+) {
+  // Get light engine context (optional)
+  const lightEngine = useLightEngineOptional();
 
-export function Card({
-  children,
-  header,
-  footer,
-  variant,
-  className
-}: CardProps) {
-  const variantClass = variant ? {
-    success: styles.variantSuccess,
-    warning: styles.variantWarning,
-    error: styles.variantError,
-    neutral: styles.variantNeutral
-  }[variant] : undefined;
+  // Handle deprecated variant prop
+  const resolvedStatus = status || variant;
+
+  // Build className
+  const getCardClassName = (): string => {
+    const classes = [styles.card];
+
+    // Add status variant
+    const statusMap: Record<CardStatus, string> = {
+      success: styles.variantSuccess,
+      warning: styles.variantWarning,
+      error: styles.variantError,
+      neutral: styles.variantNeutral,
+    };
+    if (resolvedStatus) classes.push(statusMap[resolvedStatus]);
+
+    // Add style variant
+    const styleMap: Record<CardStyle, string | undefined> = {
+      default: undefined,
+      outlined: styles.outlined,
+      elevated: styles.elevated,
+      highlighted: styles.highlighted,
+      glow: styles.glow,
+      pressed: styles.pressed,
+      flat: styles.flat,
+      neuPanel: styles.neuPanel,
+    };
+    if (styleMap[cardStyle]) classes.push(styleMap[cardStyle]!);
+
+    // Add size variant
+    if (size === 'compact') classes.push(styles.compact);
+    if (size === 'spacious') classes.push(styles.spacious);
+
+    // Add modifiers
+    if (interactive || onClick) classes.push(styles.interactive);
+    if (showStatusDot) {
+      classes.push(styles.status);
+      if (resolvedStatus === 'warning') classes.push(styles.statusWarning);
+      if (resolvedStatus === 'error') classes.push(styles.statusError);
+    }
+
+    // Add dynamic shadows class
+    if (dynamicShadows && lightEngine && cardStyle === 'neuPanel') {
+      classes.push(styles.dynamicShadows);
+    }
+
+    if (className) classes.push(className);
+
+    return classes.join(' ');
+  };
+
+  // Get dynamic panel shadow styles
+  const getDynamicStyles = (): CSSProperties | undefined => {
+    if (!dynamicShadows || !lightEngine || cardStyle !== 'neuPanel') return undefined;
+
+    const { shadows } = lightEngine;
+    return {
+      boxShadow: `${shadows.getNeuPanelShadow(20, 60)}, inset 0 1px 0 rgba(255, 255, 255, 0.7)`,
+    };
+  };
+
+  // Render header content
+  const renderHeader = () => {
+    if (header) {
+      return <div className={styles.header}>{header}</div>;
+    }
+    if (title || subtitle) {
+      return (
+        <div className={styles.header}>
+          {title && <h3 className={styles.title}>{title}</h3>}
+          {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
+        </div>
+      );
+    }
+    return null;
+  };
 
   return (
-    <div className={getClassName(styles.card, variantClass, className)}>
-      {header && <div className={styles.header}>{header}</div>}
+    <div
+      ref={ref}
+      className={getCardClassName()}
+      style={getDynamicStyles()}
+      onClick={onClick}
+      role={interactive || onClick ? 'button' : undefined}
+      tabIndex={interactive || onClick ? 0 : undefined}
+      {...rest}
+    >
+      {renderHeader()}
       {children && <div className={styles.body}>{children}</div>}
       {footer && <div className={styles.footer}>{footer}</div>}
     </div>
   );
-}
+});
+
+export { Card as default };

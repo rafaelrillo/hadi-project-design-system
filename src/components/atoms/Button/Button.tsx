@@ -1,14 +1,22 @@
 // Path: src/components/atoms/Button/Button.tsx
-import React from 'react';
+import { type ReactNode, type CSSProperties } from 'react';
+import { useLightEngineOptional } from '@contexts/LightEngineContext';
 import styles from './Button.module.css';
 
+export type ButtonVariant = 'primary' | 'secondary' | 'destructive' | 'success' | 'ghost' | 'glass' | 'with-icon';
+export type ButtonSize = 'sm' | 'md' | 'lg';
+
 export interface ButtonProps {
-  children: React.ReactNode;
-  variant?: 'primary' | 'secondary' | 'destructive' | 'with-icon';
+  children: ReactNode;
+  variant?: ButtonVariant;
+  size?: ButtonSize;
   onClick?: () => void;
   disabled?: boolean;
   type?: 'button' | 'submit' | 'reset';
-  icon?: React.ReactNode;
+  icon?: ReactNode;
+  iconOnly?: boolean;
+  loading?: boolean;
+  fullWidth?: boolean;
   ariaLabel?: string;
   className?: string;
 }
@@ -16,51 +24,78 @@ export interface ButtonProps {
 export function Button({
   children,
   variant = 'primary',
+  size = 'md',
   onClick,
   disabled = false,
   type = 'button',
   icon,
+  iconOnly = false,
+  loading = false,
+  fullWidth = false,
   ariaLabel,
-  className
+  className,
 }: ButtonProps) {
-  // Build className based on variant and icon presence
+  // Get light engine context (optional - works without provider)
+  const lightEngine = useLightEngineOptional();
+
+  // Build className based on props
   const getClassName = (): string => {
     const classes = [styles.button];
 
     // Add variant class
-    if (variant === 'primary') {
-      classes.push(styles.primary);
-    } else if (variant === 'secondary') {
-      classes.push(styles.secondary);
-    } else if (variant === 'destructive') {
-      classes.push(styles.destructive);
-    } else if (variant === 'with-icon') {
-      classes.push(styles.withIcon);
-    }
+    const variantMap: Record<ButtonVariant, string> = {
+      primary: styles.primary,
+      secondary: styles.secondary,
+      destructive: styles.destructive,
+      success: styles.success,
+      ghost: styles.ghost,
+      glass: styles.glass,
+      'with-icon': styles.withIcon,
+    };
+    classes.push(variantMap[variant]);
 
-    // Add icon class if icon is present
-    if (icon) {
-      classes.push(styles.buttonWithIcon);
-    }
+    // Add size class
+    const sizeMap: Record<ButtonSize, string> = {
+      sm: styles.sm,
+      md: styles.md,
+      lg: styles.lg,
+    };
+    classes.push(sizeMap[size]);
 
-    // Add custom className if provided
-    if (className) {
-      classes.push(className);
-    }
+    // Add modifier classes
+    if (icon || iconOnly) classes.push(styles.buttonWithIcon);
+    if (iconOnly) classes.push(styles.iconOnly);
+    if (loading) classes.push(styles.loading);
+    if (fullWidth) classes.push(styles.fullWidth);
+    if (className) classes.push(className);
 
     return classes.join(' ');
+  };
+
+  // Dynamic styles for glass variant with Light Engine
+  const getDynamicStyles = (): CSSProperties | undefined => {
+    if (variant !== 'glass' || !lightEngine) return undefined;
+
+    const { shadows } = lightEngine;
+    return {
+      boxShadow: `${shadows.getLayeredShadow(175, 35)}, ${shadows.getGlassReflection()}`,
+      background: shadows.getGlassBackground(175, 35),
+      borderColor: shadows.getGlassBorder(175, 35),
+    };
   };
 
   return (
     <button
       type={type}
       onClick={onClick}
-      disabled={disabled}
+      disabled={disabled || loading}
       className={getClassName()}
+      style={getDynamicStyles()}
       aria-label={ariaLabel}
+      aria-busy={loading}
     >
-      {icon && icon}
-      {children}
+      {icon && <span className={styles.icon}>{icon}</span>}
+      {!iconOnly && <span className={styles.label}>{children}</span>}
     </button>
   );
 }

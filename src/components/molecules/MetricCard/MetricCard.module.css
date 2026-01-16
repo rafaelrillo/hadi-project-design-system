@@ -89,6 +89,40 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
+/* Glass variant - Dynamic Light Engine card with semantic colors */
+.variantGlass {
+  /* Base glass styles - can be overridden by inline styles */
+  background: linear-gradient(
+    180deg,
+    hsla(var(--glass-hue-primary), calc(var(--glass-sat-primary) * 1%), 65%, 0.28) 0%,
+    hsla(var(--glass-hue-primary), calc(var(--glass-sat-primary) * 1%), 60%, 0.12) 50%,
+    hsla(var(--glass-hue-primary), calc(var(--glass-sat-primary) * 1%), 65%, 0.22) 100%
+  );
+  border: 1px solid hsla(var(--glass-hue-primary), calc(var(--glass-sat-primary) * 1%), 80%, 0.35);
+  border-radius: var(--radius-standard);
+  backdrop-filter: blur(8px) saturate(120%);
+  -webkit-backdrop-filter: blur(8px) saturate(120%);
+
+  /* Fast transition for light engine */
+  transition: var(--transition-shadow), var(--transition-transform);
+}
+
+.variantGlass::before {
+  display: none; /* No luminous edge for glass */
+}
+
+.variantGlass:hover {
+  transform: translateY(-1px);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   DYNAMIC SHADOWS - Light Engine Integration
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.dynamicShadows {
+  transition: var(--transition-shadow);
+}
+
 /* ─────────────────────────────────────────────────────────────────────────────
    SIZES
    ───────────────────────────────────────────────────────────────────────────── */

@@ -1,12 +1,12 @@
 // Path: src/pages/organisms/DataGridShowcase.tsx
-// SENTINEL Design System
-import { useState } from 'react';
+// SENTINEL Design System - Glass-Neumorphism DataGrid
+import React, { useState, useMemo } from 'react';
 import { DataGrid, sum, avg } from '../../components/organisms/DataGrid';
 import type { DataGridColumn } from '../../components/organisms/DataGrid';
-import { ShowcaseSection, ComponentPreview } from '../../components/showcase';
+import { ShowcaseSection } from '../../components/showcase';
 import { Badge } from '../../components/atoms/Badge';
+import { LightEngineProvider, useLightEngine } from '@/contexts/LightEngineContext';
 
-// Sample data types
 interface StockData {
   id: string;
   symbol: string;
@@ -27,7 +27,6 @@ interface UserData {
   joinDate: string;
 }
 
-// Sample stock data
 const stockData: StockData[] = [
   { id: '1', symbol: 'AAPL', name: 'Apple Inc.', price: 178.52, change: 2.34, volume: 52340000, marketCap: 2800000000000, sector: 'Technology' },
   { id: '2', symbol: 'MSFT', name: 'Microsoft Corp.', price: 378.91, change: -1.23, volume: 23450000, marketCap: 2700000000000, sector: 'Technology' },
@@ -41,7 +40,6 @@ const stockData: StockData[] = [
   { id: '10', symbol: 'JNJ', name: 'Johnson & Johnson', price: 156.25, change: -0.45, volume: 5430000, marketCap: 380000000000, sector: 'Healthcare' },
 ];
 
-// Sample user data
 const userData: UserData[] = [
   { id: '1', name: 'John Doe', email: 'john@example.com', role: 'Admin', status: 'active', joinDate: '2023-01-15' },
   { id: '2', name: 'Jane Smith', email: 'jane@example.com', role: 'Editor', status: 'active', joinDate: '2023-03-22' },
@@ -50,33 +48,66 @@ const userData: UserData[] = [
   { id: '5', name: 'Charlie Wilson', email: 'charlie@example.com', role: 'Admin', status: 'active', joinDate: '2022-11-30' },
 ];
 
-export function DataGridShowcase() {
+function DataGridContent() {
+  const { lightAngle } = useLightEngine();
   const [selectedRows, setSelectedRows] = useState<string[]>([]);
 
+  const shadowOffsets = useMemo(() => {
+    const shadowAngle = (lightAngle + 180) * (Math.PI / 180);
+    return { x: Math.cos(shadowAngle), y: Math.sin(shadowAngle) };
+  }, [lightAngle]);
+
+  const LIGHT = {
+    base: '#e0e5ec',
+    shadowDark: 'hsl(220 15% 72%)',
+    shadowLight: 'hsl(0 0% 100%)',
+  };
+
+  const getNeuPanelShadow = (distance: number, blur: number): string => {
+    const { x, y } = shadowOffsets;
+    return `${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}`;
+  };
+
+  const getNeuInsetShadow = (distance: number, blur: number): string => {
+    const { x, y } = shadowOffsets;
+    return `inset ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}`;
+  };
+
   const pageHeaderStyles: React.CSSProperties = {
-    marginBottom: '32px'
+    marginBottom: '32px',
+    padding: '24px',
+    background: LIGHT.base,
+    borderRadius: '15px',
+    boxShadow: getNeuPanelShadow(20, 60),
+    transition: 'box-shadow 50ms linear',
   };
 
   const titleStyles: React.CSSProperties = {
     fontSize: '28px',
     fontWeight: 700,
-    color: 'var(--primary)',
+    color: 'var(--sentinel-accent-primary)',
     marginBottom: '8px',
-    fontFamily: 'var(--font-mono)',
+    fontFamily: 'var(--sentinel-font-display)',
     textTransform: 'uppercase',
     letterSpacing: '0.1em',
-    textShadow: '0 0 15px var(--accent-glow)'
   };
 
   const descStyles: React.CSSProperties = {
     fontSize: '14px',
-    color: 'var(--foreground-muted)',
-    fontFamily: 'var(--font-mono)',
+    color: 'var(--sentinel-text-secondary)',
+    fontFamily: 'var(--sentinel-font-mono)',
     textTransform: 'uppercase',
-    letterSpacing: '0.03em'
+    letterSpacing: '0.03em',
   };
 
-  // Stock columns
+  const gridContainerStyles: React.CSSProperties = {
+    padding: '20px',
+    background: LIGHT.base,
+    borderRadius: '15px',
+    boxShadow: getNeuPanelShadow(8, 24),
+    transition: 'box-shadow 50ms linear',
+  };
+
   const stockColumns: DataGridColumn<StockData>[] = [
     { id: 'symbol', header: 'Symbol', accessor: 'symbol', sortable: true, width: 100 },
     { id: 'name', header: 'Company', accessor: 'name', sortable: true, width: 180 },
@@ -131,7 +162,6 @@ export function DataGridShowcase() {
     },
   ];
 
-  // User columns
   const userColumns: DataGridColumn<UserData>[] = [
     { id: 'name', header: 'Name', accessor: 'name', sortable: true },
     { id: 'email', header: 'Email', accessor: 'email', sortable: true, ellipsis: true },
@@ -151,7 +181,6 @@ export function DataGridShowcase() {
     { id: 'joinDate', header: 'Join Date', accessor: 'joinDate', sortable: true },
   ];
 
-  // Columns with footer
   const stockColumnsWithFooter: DataGridColumn<StockData>[] = [
     ...stockColumns.slice(0, 4),
     {
@@ -177,8 +206,7 @@ export function DataGridShowcase() {
   ];
 
   return (
-    <div>
-      {/* Page Header */}
+    <div style={{ background: LIGHT.base, minHeight: '100%', padding: '24px' }}>
       <header style={pageHeaderStyles}>
         <h1 style={titleStyles}>&gt; DataGrid_</h1>
         <p style={descStyles}>
@@ -186,48 +214,48 @@ export function DataGridShowcase() {
         </p>
       </header>
 
-      {/* Basic DataGrid */}
       <ShowcaseSection
         title="DataGrid Básico"
         description="Tabla simple con sorting"
       >
-        <ComponentPreview>
+        <div style={gridContainerStyles}>
           <DataGrid
             data={stockData.slice(0, 5)}
             columns={stockColumns}
             sortable
           />
-        </ComponentPreview>
+        </div>
       </ShowcaseSection>
 
-      {/* With Selection */}
       <ShowcaseSection
         title="Con Selección"
         description="Selección múltiple con checkboxes"
       >
-        <ComponentPreview>
-          <div>
-            <p style={{ marginBottom: '12px', fontSize: '12px', color: 'var(--foreground-muted)', fontFamily: 'var(--font-mono)' }}>
-              Selected: {selectedRows.length > 0 ? selectedRows.join(', ') : 'None'}
-            </p>
-            <DataGrid
-              data={userData}
-              columns={userColumns}
-              selectable
-              selectedRows={selectedRows}
-              onSelectionChange={setSelectedRows}
-              sortable
-            />
-          </div>
-        </ComponentPreview>
+        <div style={gridContainerStyles}>
+          <p style={{
+            marginBottom: '12px',
+            fontSize: '12px',
+            color: '#636E72',
+            fontFamily: 'var(--sentinel-font-mono)',
+          }}>
+            Selected: {selectedRows.length > 0 ? selectedRows.join(', ') : 'None'}
+          </p>
+          <DataGrid
+            data={userData}
+            columns={userColumns}
+            selectable
+            selectedRows={selectedRows}
+            onSelectionChange={setSelectedRows}
+            sortable
+          />
+        </div>
       </ShowcaseSection>
 
-      {/* With Pagination */}
       <ShowcaseSection
         title="Con Paginación"
         description="Paginación del lado del cliente"
       >
-        <ComponentPreview>
+        <div style={gridContainerStyles}>
           <DataGrid
             data={stockData}
             columns={stockColumns}
@@ -236,65 +264,69 @@ export function DataGridShowcase() {
             pageSize={5}
             pageSizeOptions={[5, 10, 25]}
           />
-        </ComponentPreview>
+        </div>
       </ShowcaseSection>
 
-      {/* With Filters */}
       <ShowcaseSection
         title="Con Filtros"
         description="Filtros por columna"
       >
-        <ComponentPreview>
+        <div style={gridContainerStyles}>
           <DataGrid
             data={stockData}
             columns={stockColumns}
             sortable
             filterable
           />
-        </ComponentPreview>
+        </div>
       </ShowcaseSection>
 
-      {/* With Footer */}
       <ShowcaseSection
         title="Con Footer de Agregaciones"
         description="Footer con sum, avg, count"
       >
-        <ComponentPreview>
+        <div style={gridContainerStyles}>
           <DataGrid
             data={stockData}
             columns={stockColumnsWithFooter}
             sortable
             showFooter
           />
-        </ComponentPreview>
+        </div>
       </ShowcaseSection>
 
-      {/* Expandable Rows */}
       <ShowcaseSection
         title="Filas Expandibles"
         description="Contenido adicional en filas expandidas"
       >
-        <ComponentPreview>
+        <div style={gridContainerStyles}>
           <DataGrid
             data={stockData.slice(0, 5)}
             columns={stockColumns.slice(0, 4)}
             expandable
             renderExpandedRow={(row) => (
-              <div style={{ padding: '16px', fontFamily: 'var(--font-mono)', fontSize: '13px' }}>
-                <h4 style={{ margin: '0 0 12px 0', color: 'var(--primary)' }}>{row.name} Details</h4>
+              <div style={{
+                padding: '16px',
+                fontFamily: 'var(--sentinel-font-mono)',
+                fontSize: '13px',
+                background: LIGHT.base,
+                borderRadius: '12px',
+                boxShadow: getNeuInsetShadow(3, 8),
+              }}>
+                <h4 style={{ margin: '0 0 12px 0', color: 'var(--sentinel-accent-primary)' }}>{row.name} Details</h4>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
                   <div>
-                    <span style={{ color: 'var(--foreground-muted)' }}>Market Cap:</span>
+                    <span style={{ color: '#636E72' }}>Market Cap:</span>
                     <br />
                     <strong>${(row.marketCap / 1e9).toFixed(0)}B</strong>
                   </div>
                   <div>
-                    <span style={{ color: 'var(--foreground-muted)' }}>Volume:</span>
+                    <span style={{ color: '#636E72' }}>Volume:</span>
                     <br />
                     <strong>{row.volume.toLocaleString()}</strong>
                   </div>
                   <div>
-                    <span style={{ color: 'var(--foreground-muted)' }}>Sector:</span>
+                    <span style={{ color: '#636E72' }}>Sector:</span>
                     <br />
                     <strong>{row.sector}</strong>
                   </div>
@@ -302,15 +334,14 @@ export function DataGridShowcase() {
               </div>
             )}
           />
-        </ComponentPreview>
+        </div>
       </ShowcaseSection>
 
-      {/* With Export */}
       <ShowcaseSection
         title="Con Exportación"
         description="Exportar datos a CSV"
       >
-        <ComponentPreview>
+        <div style={gridContainerStyles}>
           <DataGrid
             data={stockData}
             columns={stockColumns}
@@ -318,69 +349,77 @@ export function DataGridShowcase() {
             exportable
             exportFilename="stock-data"
           />
-        </ComponentPreview>
+        </div>
       </ShowcaseSection>
 
-      {/* Striped and Compact */}
       <ShowcaseSection
         title="Estilos: Striped y Compact"
         description="Variaciones visuales"
       >
-        <ComponentPreview>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-            <div>
-              <p style={{ marginBottom: '8px', fontSize: '12px', color: 'var(--foreground-muted)', fontFamily: 'var(--font-mono)' }}>Striped:</p>
-              <DataGrid
-                data={stockData.slice(0, 4)}
-                columns={stockColumns.slice(0, 4)}
-                striped
-              />
-            </div>
-            <div>
-              <p style={{ marginBottom: '8px', fontSize: '12px', color: 'var(--foreground-muted)', fontFamily: 'var(--font-mono)' }}>Compact:</p>
-              <DataGrid
-                data={stockData.slice(0, 4)}
-                columns={stockColumns.slice(0, 4)}
-                compact
-              />
-            </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+          <div style={gridContainerStyles}>
+            <p style={{
+              marginBottom: '8px',
+              fontSize: '12px',
+              color: '#636E72',
+              fontFamily: 'var(--sentinel-font-mono)',
+            }}>
+              Striped:
+            </p>
+            <DataGrid
+              data={stockData.slice(0, 4)}
+              columns={stockColumns.slice(0, 4)}
+              striped
+            />
           </div>
-        </ComponentPreview>
+          <div style={gridContainerStyles}>
+            <p style={{
+              marginBottom: '8px',
+              fontSize: '12px',
+              color: '#636E72',
+              fontFamily: 'var(--sentinel-font-mono)',
+            }}>
+              Compact:
+            </p>
+            <DataGrid
+              data={stockData.slice(0, 4)}
+              columns={stockColumns.slice(0, 4)}
+              compact
+            />
+          </div>
+        </div>
       </ShowcaseSection>
 
-      {/* Loading State */}
       <ShowcaseSection
         title="Estado de Carga"
         description="Skeleton loading"
       >
-        <ComponentPreview>
+        <div style={gridContainerStyles}>
           <DataGrid
             data={[]}
             columns={stockColumns.slice(0, 4)}
             loading
           />
-        </ComponentPreview>
+        </div>
       </ShowcaseSection>
 
-      {/* Empty State */}
       <ShowcaseSection
         title="Estado Vacío"
         description="Sin datos para mostrar"
       >
-        <ComponentPreview>
+        <div style={gridContainerStyles}>
           <DataGrid
             data={[]}
             columns={stockColumns.slice(0, 4)}
           />
-        </ComponentPreview>
+        </div>
       </ShowcaseSection>
 
-      {/* Full Featured */}
       <ShowcaseSection
         title="Completo"
         description="Todas las features combinadas"
       >
-        <ComponentPreview>
+        <div style={gridContainerStyles}>
           <DataGrid
             data={stockData}
             columns={stockColumnsWithFooter}
@@ -391,7 +430,12 @@ export function DataGridShowcase() {
             pageSize={5}
             expandable
             renderExpandedRow={(row) => (
-              <div style={{ padding: '12px', fontFamily: 'var(--font-mono)', fontSize: '12px', color: 'var(--foreground-muted)' }}>
+              <div style={{
+                padding: '12px',
+                fontFamily: 'var(--sentinel-font-mono)',
+                fontSize: '12px',
+                color: '#636E72',
+              }}>
                 Additional details for {row.name}
               </div>
             )}
@@ -400,25 +444,42 @@ export function DataGridShowcase() {
             striped
             onRowClick={(row) => console.log('Row clicked:', row)}
           />
-        </ComponentPreview>
+        </div>
       </ShowcaseSection>
 
-      {/* Technical Specifications */}
       <ShowcaseSection title="Especificaciones Técnicas">
-        <div style={{ fontSize: '12px', color: 'var(--foreground)', lineHeight: '1.8', fontFamily: 'var(--font-mono)' }}>
-          <p>✓ <strong style={{ color: 'var(--primary)' }}>Sorting:</strong> Click en header, asc → desc → none</p>
-          <p>✓ <strong style={{ color: 'var(--primary)' }}>Filtering:</strong> Text, select, number range, date range, boolean</p>
-          <p>✓ <strong style={{ color: 'var(--primary)' }}>Selection:</strong> Single o multiple con checkbox</p>
-          <p>✓ <strong style={{ color: 'var(--primary)' }}>Pagination:</strong> Client-side con page size configurable</p>
-          <p>✓ <strong style={{ color: 'var(--primary)' }}>Expansion:</strong> Filas expandibles con contenido custom</p>
-          <p>✓ <strong style={{ color: 'var(--primary)' }}>Footer:</strong> Agregaciones sum, avg, min, max, count</p>
-          <p>✓ <strong style={{ color: 'var(--primary)' }}>Export:</strong> CSV con nombre configurable</p>
-          <p>✓ <strong style={{ color: 'var(--primary)' }}>Virtualization:</strong> Para +1000 filas</p>
-          <p>✓ <strong style={{ color: 'var(--primary)' }}>Column Resize:</strong> Drag para redimensionar</p>
-          <p>✓ <strong style={{ color: 'var(--primary)' }}>Keyboard Nav:</strong> Arrow keys, Home, End</p>
-          <p>✓ <strong style={{ color: 'var(--primary)' }}>Sticky Header:</strong> Header fijo al hacer scroll</p>
+        <div style={{
+          padding: '20px',
+          borderRadius: '15px',
+          boxShadow: getNeuInsetShadow(5, 15),
+          background: LIGHT.base,
+          fontSize: '12px',
+          fontFamily: 'var(--sentinel-font-mono)',
+          color: '#636E72',
+          lineHeight: '1.8',
+          transition: 'box-shadow 50ms linear',
+        }}>
+          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Sorting:</strong> Click en header, asc → desc → none</p>
+          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Filtering:</strong> Text, select, number range, date range, boolean</p>
+          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Selection:</strong> Single o multiple con checkbox</p>
+          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Pagination:</strong> Client-side con page size configurable</p>
+          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Expansion:</strong> Filas expandibles con contenido custom</p>
+          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Footer:</strong> Agregaciones sum, avg, min, max, count</p>
+          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Export:</strong> CSV con nombre configurable</p>
+          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Virtualization:</strong> Para +1000 filas</p>
+          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Column Resize:</strong> Drag para redimensionar</p>
+          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Keyboard Nav:</strong> Arrow keys, Home, End</p>
+          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Sticky Header:</strong> Header fijo al hacer scroll</p>
         </div>
       </ShowcaseSection>
     </div>
+  );
+}
+
+export function DataGridShowcase() {
+  return (
+    <LightEngineProvider initialAnimating={true} initialSpeed={0.3}>
+      <DataGridContent />
+    </LightEngineProvider>
   );
 }

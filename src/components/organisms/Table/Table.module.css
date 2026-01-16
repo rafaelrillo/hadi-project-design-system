@@ -393,6 +393,49 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
+   NEU PANEL STYLE - Pure neumorphic table container
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.neuPanel {
+  background: var(--neu-base);
+  border: none;
+  border-radius: var(--radius-standard);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+
+  /* Pure neumorphic shadow */
+  box-shadow:
+    8px 8px 16px var(--neu-shadow-dark),
+    -8px -8px 16px var(--neu-shadow-light),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.neuPanel::before {
+  display: none;
+}
+
+.neuPanel .th {
+  background: transparent;
+  border-bottom-color: rgba(163, 177, 198, 0.2);
+}
+
+.neuPanel .tr:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.neuPanel .trSelected {
+  background: rgba(91, 163, 165, 0.1);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   DYNAMIC SHADOWS - Light Engine Integration
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.dynamicShadows {
+  transition: var(--transition-shadow);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
    REDUCED MOTION
    ───────────────────────────────────────────────────────────────────────────── */
 

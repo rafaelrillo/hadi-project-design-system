@@ -24,7 +24,9 @@ export function ShowcaseSection({
         {title}
       </h2>
       {description && <p className={styles.description}>{description}</p>}
-      {children}
+      <div className={styles.content}>
+        {children}
+      </div>
     </section>
   );
 }

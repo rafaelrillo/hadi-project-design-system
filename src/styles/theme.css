@@ -15,6 +15,60 @@
 
 :root {
   /* ─────────────────────────────────────────────────────────────────────────────
+     DYNAMIC LIGHT ENGINE - Core Variables
+     Sistema de iluminación dinámica con ángulo controlable
+     ───────────────────────────────────────────────────────────────────────────── */
+
+  /* Neumorphic base colors - used by Dynamic Light Engine */
+  --neu-base: #e0e5ec;
+  --neu-shadow-dark: hsl(220, 15%, 72%);
+  --neu-shadow-light: hsl(0, 0%, 100%);
+
+  /* Light angle (controlled by LightEngineContext) - default 135° */
+  --light-angle: 135;
+
+  /* Global constants */
+  --radius-standard: 15px;
+  --transition-shadow: box-shadow 50ms linear;
+  --transition-transform: transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-background: background 100ms linear;
+
+  /* Padding standards */
+  --panel-padding: 32px;
+  --inset-padding: 20px;
+  --badge-padding: 6px 12px;
+  --button-padding: 14px 28px;
+
+  /* ═══ GLASS HUE PALETTE - For dynamic glass colors ═══ */
+  /* Primary/Teal */
+  --glass-hue-primary: 175;
+  --glass-sat-primary: 35;
+
+  /* Info/Data */
+  --glass-hue-info: 215;
+  --glass-sat-info: 50;
+
+  /* Premium */
+  --glass-hue-premium: 280;
+  --glass-sat-premium: 40;
+
+  /* Alert/Error */
+  --glass-hue-error: 355;
+  --glass-sat-error: 35;
+
+  /* Success */
+  --glass-hue-success: 145;
+  --glass-sat-success: 45;
+
+  /* Warning */
+  --glass-hue-warning: 35;
+  --glass-sat-warning: 55;
+
+  /* Stats/Time */
+  --glass-hue-stats: 190;
+  --glass-sat-stats: 50;
+
+  /* ─────────────────────────────────────────────────────────────────────────────
      SUPERFICIES Y FONDOS - Sistema Light Neumorphic
      Fondos claros con sombras suaves para profundidad
      ───────────────────────────────────────────────────────────────────────────── */

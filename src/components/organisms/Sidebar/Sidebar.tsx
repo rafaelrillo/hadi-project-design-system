@@ -1,6 +1,7 @@
 // Path: src/components/organisms/Sidebar/Sidebar.tsx
-import React, { useState } from 'react';
+import { useState, type ReactNode, type MouseEvent, type KeyboardEvent, type CSSProperties } from 'react';
 import { LucideIcon, LogOut, ScrollText } from 'lucide-react';
+import { useLightEngineOptional } from '@contexts/LightEngineContext';
 import styles from './Sidebar.module.css';
 
 export interface SidebarMenuItem {
@@ -12,18 +13,22 @@ export interface SidebarMenuItem {
   disabled?: boolean;
 }
 
+export type SidebarStyle = 'dark' | 'neuPanel';
+export type SidebarPosition = 'fixed' | 'relative' | 'absolute';
+
 export interface SidebarProps {
-  productLogo?: React.ReactNode;
+  productLogo?: ReactNode;
   menuItems: SidebarMenuItem[];
-  userIcon?: React.ReactNode;
+  userIcon?: ReactNode;
   onLogsClick?: () => void;
   onLogoutClick?: () => void;
   className?: string;
-  position?: 'fixed' | 'relative' | 'absolute';
+  position?: SidebarPosition;
+  /** Visual style - 'dark' (default) or 'neuPanel' (light neumorphic) */
+  sidebarStyle?: SidebarStyle;
+  /** Enable dynamic shadows from Light Engine */
+  dynamicShadows?: boolean;
 }
-
-const getClassName = (...classes: (string | undefined | false)[]) =>
-  classes.filter(Boolean).join(' ');
 
 export function Sidebar({
   productLogo,
@@ -32,15 +37,42 @@ export function Sidebar({
   onLogsClick,
   onLogoutClick,
   className,
-  position = 'fixed'
+  position = 'fixed',
+  sidebarStyle = 'dark',
+  dynamicShadows = true,
 }: SidebarProps) {
+  // Get light engine context (optional)
+  const lightEngine = useLightEngineOptional();
+  // Build sidebar className
+  const getSidebarClassName = (): string => {
+    const classes = [styles.sidebar];
+    if (position === 'relative') classes.push(styles.sidebarRelative);
+    if (position === 'absolute') classes.push(styles.sidebarAbsolute);
+    if (sidebarStyle === 'neuPanel') classes.push(styles.neuPanel);
+    if (dynamicShadows && lightEngine && sidebarStyle === 'neuPanel') {
+      classes.push(styles.dynamicShadows);
+    }
+    if (className) classes.push(className);
+    return classes.join(' ');
+  };
+
+  // Get dynamic styles for neuPanel
+  const getDynamicStyles = (): CSSProperties | undefined => {
+    if (sidebarStyle !== 'neuPanel' || !dynamicShadows || !lightEngine) return undefined;
+
+    const { shadows } = lightEngine;
+    return {
+      boxShadow: `${shadows.getNeuPanelShadow(8, 20)}, inset -1px 0 0 rgba(255, 255, 255, 0.7)`,
+    };
+  };
+
   const MenuItem = ({ item }: { item: SidebarMenuItem }) => {
     const [isHovered, setIsHovered] = useState(false);
     const Icon = item.icon;
     const isActive = item.isActive || false;
     const isDisabled = item.disabled || false;
 
-    const handleClick = (e: React.MouseEvent) => {
+    const handleClick = (e: MouseEvent) => {
       if (isDisabled) {
         e.preventDefault();
         return;
@@ -51,7 +83,7 @@ export function Sidebar({
       }
     };
 
-    const handleKeyDown = (e: React.KeyboardEvent) => {
+    const handleKeyDown = (e: KeyboardEvent) => {
       if (isDisabled) return;
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
@@ -60,6 +92,13 @@ export function Sidebar({
     };
 
     const Component = item.href ? 'a' : 'button';
+
+    const menuItemClasses = [styles.menuItemButton];
+    if (isActive) menuItemClasses.push(styles.menuItemActive);
+    if (isDisabled) menuItemClasses.push(styles.menuItemDisabled);
+
+    const leftBarClasses = [styles.leftBar];
+    if (isActive || (isHovered && !isDisabled)) leftBarClasses.push(styles.leftBarVisible);
 
     return (
       <div className={styles.menuItemContainer}>
@@ -72,20 +111,13 @@ export function Sidebar({
           onFocus={() => !isDisabled && setIsHovered(true)}
           onBlur={() => setIsHovered(false)}
           disabled={isDisabled}
-          className={getClassName(
-            styles.menuItemButton,
-            isActive && styles.menuItemActive,
-            isDisabled && styles.menuItemDisabled
-          )}
+          className={menuItemClasses.join(' ')}
           aria-label={item.label}
           aria-current={isActive ? 'page' : undefined}
           aria-disabled={isDisabled}
           tabIndex={isDisabled ? -1 : 0}
         >
-          <div className={getClassName(
-            styles.leftBar,
-            (isActive || (isHovered && !isDisabled)) && styles.leftBarVisible
-          )} />
+          <div className={leftBarClasses.join(' ')} />
           <Icon size={24} />
         </Component>
       </div>
@@ -94,13 +126,9 @@ export function Sidebar({
 
   return (
     <nav
-      className={getClassName(
-        styles.sidebar,
-        position === 'relative' && styles.sidebarRelative,
-        position === 'absolute' && styles.sidebarAbsolute,
-        className
-      )}
-      aria-label="Navegación principal"
+      className={getSidebarClassName()}
+      style={getDynamicStyles()}
+      aria-label="Main navigation"
     >
       {/* Top Section: Logo + Menu Items */}
       <div className={styles.section}>

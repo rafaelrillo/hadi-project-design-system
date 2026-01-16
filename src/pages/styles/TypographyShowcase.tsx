@@ -1,394 +1,308 @@
 // Path: src/pages/styles/TypographyShowcase.tsx
-// SENTINEL Design System - Typography
-import React from 'react';
-import { ShowcaseSection, ComponentPreview } from '../../components/showcase';
+// SENTINEL Design System - Glass-Neumorphism Typography
+import React, { useMemo } from 'react';
+import { ShowcaseSection } from '../../components/showcase';
+import { LightEngineProvider, useLightEngine } from '@/contexts/LightEngineContext';
 
-export function TypographyShowcase() {
+function TypographyContent() {
+  const { lightAngle } = useLightEngine();
+
+  const shadowOffsets = useMemo(() => {
+    const shadowAngle = (lightAngle + 180) * (Math.PI / 180);
+    return { x: Math.cos(shadowAngle), y: Math.sin(shadowAngle) };
+  }, [lightAngle]);
+
+  const LIGHT = {
+    base: '#e0e5ec',
+    shadowDark: 'hsl(220 15% 72%)',
+    shadowLight: 'hsl(0 0% 100%)',
+  };
+
+  const getNeuPanelShadow = (distance: number, blur: number): string => {
+    const { x, y } = shadowOffsets;
+    return `${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}`;
+  };
+
+  const getNeuInsetShadow = (distance: number, blur: number): string => {
+    const { x, y } = shadowOffsets;
+    return `inset ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}`;
+  };
+
   const pageHeaderStyles: React.CSSProperties = {
-    marginBottom: '48px'
+    marginBottom: '32px',
+    padding: '24px',
+    background: LIGHT.base,
+    borderRadius: '15px',
+    boxShadow: getNeuPanelShadow(20, 60),
+    transition: 'box-shadow 50ms linear',
   };
 
   const titleStyles: React.CSSProperties = {
-    fontSize: '32px',
-    fontWeight: 300,
-    color: 'var(--sentinel-text-primary)',
-    marginBottom: '12px',
-    fontFamily: 'var(--sentinel-font-primary)',
-    letterSpacing: '-0.02em'
+    fontSize: '28px',
+    fontWeight: 700,
+    color: 'var(--sentinel-accent-primary)',
+    marginBottom: '8px',
+    fontFamily: 'var(--sentinel-font-display)',
+    textTransform: 'uppercase',
+    letterSpacing: '0.1em',
   };
 
   const descStyles: React.CSSProperties = {
     fontSize: '14px',
     color: 'var(--sentinel-text-secondary)',
-    fontFamily: 'var(--sentinel-font-primary)',
-    lineHeight: 1.6,
-    maxWidth: '600px'
+    fontFamily: 'var(--sentinel-font-mono)',
+    textTransform: 'uppercase',
+    letterSpacing: '0.03em',
   };
 
-  interface TypographyToken {
-    name: string;
-    variable: string;
-    size: string;
-    weight: string;
-    usage: string;
-  }
-
-  const TypeSample = ({ token, exampleText, fontFamily = 'primary' }: {
-    token: TypographyToken;
-    exampleText: string;
-    fontFamily?: 'primary' | 'mono';
-  }) => {
-    const sizeMap: { [key: string]: string } = {
-      '--sentinel-text-xs': '12px',
-      '--sentinel-text-sm': '14px',
-      '--sentinel-text-base': '16px',
-      '--sentinel-text-lg': '18px',
-      '--sentinel-text-xl': '20px',
-      '--sentinel-text-2xl': '24px',
-      '--sentinel-text-3xl': '30px',
-      '--sentinel-text-4xl': '36px',
-    };
-
-    const weightMap: { [key: string]: number } = {
-      '300': 300,
-      '400': 400,
-      '500': 500,
-      '600': 600,
-      '700': 700,
-    };
-
-    return (
-      <div style={{
-        padding: '20px',
-        backgroundColor: 'var(--sentinel-bg-elevated)',
-        borderRadius: 'var(--sentinel-radius-md)',
-        border: '1px solid var(--sentinel-border-subtle)',
-        marginBottom: '12px'
-      }}>
-        <div style={{
-          display: 'flex',
-          gap: '16px',
-          marginBottom: '12px',
-          fontSize: '12px',
-          color: 'var(--sentinel-text-secondary)',
-          flexWrap: 'wrap',
-          fontFamily: 'var(--sentinel-font-primary)'
-        }}>
-          <div>
-            <strong style={{ color: 'var(--sentinel-text-primary)' }}>{token.name}</strong>
-          </div>
-          <code style={{
-            backgroundColor: 'var(--sentinel-bg-subtle)',
-            padding: '2px 8px',
-            borderRadius: 'var(--sentinel-radius-sm)',
-            color: 'var(--sentinel-accent-primary)',
-            fontFamily: 'var(--sentinel-font-mono)'
-          }}>
-            var({token.variable})
-          </code>
-          <span>{token.size}</span>
-          <span>Weight: {token.weight}</span>
-        </div>
-
-        <div style={{
-          fontSize: '11px',
-          color: 'var(--sentinel-text-tertiary)',
-          marginBottom: '12px',
-          fontFamily: 'var(--sentinel-font-primary)'
-        }}>
-          {token.usage}
-        </div>
-
-        <div style={{
-          fontSize: sizeMap[token.variable],
-          fontWeight: weightMap[token.weight],
-          lineHeight: 1.4,
-          fontFamily: fontFamily === 'mono' ? 'var(--sentinel-font-mono)' : 'var(--sentinel-font-primary)',
-          color: 'var(--sentinel-text-primary)',
-          margin: 0
-        }}>
-          {exampleText}
-        </div>
-      </div>
-    );
+  const sizeMap: { [key: string]: string } = {
+    '4xl': '36px', '3xl': '30px', '2xl': '24px', 'xl': '20px',
+    'lg': '18px', 'base': '16px', 'sm': '14px', 'xs': '12px',
   };
 
-  const typographySizes: TypographyToken[] = [
-    { name: '4XL', variable: '--sentinel-text-4xl', size: '36px', weight: '300', usage: 'Hero headlines, major page titles' },
-    { name: '3XL', variable: '--sentinel-text-3xl', size: '30px', weight: '300', usage: 'Page titles, section headers' },
-    { name: '2XL', variable: '--sentinel-text-2xl', size: '24px', weight: '400', usage: 'Section titles, card headers' },
-    { name: 'XL', variable: '--sentinel-text-xl', size: '20px', weight: '400', usage: 'Subsection titles' },
-    { name: 'LG', variable: '--sentinel-text-lg', size: '18px', weight: '500', usage: 'Large body text, emphasis' },
-    { name: 'Base', variable: '--sentinel-text-base', size: '16px', weight: '400', usage: 'Default body text' },
-    { name: 'SM', variable: '--sentinel-text-sm', size: '14px', weight: '400', usage: 'Secondary text, descriptions' },
-    { name: 'XS', variable: '--sentinel-text-xs', size: '12px', weight: '400', usage: 'Labels, captions, metadata' },
+  const weightMap: { [key: string]: number } = {
+    'light': 300, 'regular': 400, 'medium': 500, 'semibold': 600, 'bold': 700,
+  };
+
+  const typographySizes = [
+    { name: '4XL', size: '4xl', weight: 'light', usage: 'Hero headlines' },
+    { name: '3XL', size: '3xl', weight: 'light', usage: 'Page titles' },
+    { name: '2XL', size: '2xl', weight: 'regular', usage: 'Section titles' },
+    { name: 'XL', size: 'xl', weight: 'regular', usage: 'Subsection titles' },
+    { name: 'LG', size: 'lg', weight: 'medium', usage: 'Large body text' },
+    { name: 'Base', size: 'base', weight: 'regular', usage: 'Default body text' },
+    { name: 'SM', size: 'sm', weight: 'regular', usage: 'Secondary text' },
+    { name: 'XS', size: 'xs', weight: 'regular', usage: 'Labels, captions' },
   ];
 
   return (
-    <div>
+    <div style={{ background: LIGHT.base, minHeight: '100%', padding: '24px' }}>
       <header style={pageHeaderStyles}>
-        <h1 style={titleStyles}>Typography</h1>
-        <p style={descStyles}>
-          SENTINEL uses Inter for primary text and JetBrains Mono for data and code.
-          The type scale is designed for clarity and hierarchy in data-dense interfaces.
-        </p>
+        <h1 style={titleStyles}>&gt; Typography_</h1>
+        <p style={descStyles}>// Sistema tipográfico para Glass-Neumorphism</p>
       </header>
 
       <ShowcaseSection
-        title="Font Families"
-        description="Two font families serve distinct purposes"
+        title="Familias Tipográficas"
+        description="Space Grotesk para display, Space Mono para datos"
       >
-        <ComponentPreview>
-          <div style={{ display: 'grid', gap: '16px', width: '100%' }}>
-            <div style={{
-              padding: '24px',
-              backgroundColor: 'var(--sentinel-bg-elevated)',
-              borderRadius: 'var(--sentinel-radius-md)',
-              border: '1px solid var(--sentinel-border-subtle)'
-            }}>
-              <div style={{
-                fontSize: '12px',
-                color: 'var(--sentinel-text-tertiary)',
-                marginBottom: '8px',
-                fontFamily: 'var(--sentinel-font-mono)'
-              }}>
-                PRIMARY FONT
-              </div>
-              <div style={{
-                fontSize: '24px',
-                fontWeight: 400,
-                fontFamily: 'var(--sentinel-font-primary)',
-                color: 'var(--sentinel-text-primary)',
-                marginBottom: '8px'
-              }}>
-                Inter - The quick brown fox
-              </div>
-              <code style={{
-                fontSize: '12px',
-                backgroundColor: 'var(--sentinel-bg-subtle)',
-                padding: '4px 8px',
-                borderRadius: 'var(--sentinel-radius-sm)',
-                color: 'var(--sentinel-accent-primary)',
-                fontFamily: 'var(--sentinel-font-mono)'
-              }}>
-                var(--sentinel-font-primary)
-              </code>
-              <div style={{
-                fontSize: '13px',
-                color: 'var(--sentinel-text-secondary)',
-                marginTop: '12px',
-                fontFamily: 'var(--sentinel-font-primary)'
-              }}>
-                Used for headings, body text, and UI labels. Optimized for readability.
-              </div>
+        <div style={{ display: 'grid', gap: '16px', width: '100%' }}>
+          <div style={{
+            padding: '24px',
+            background: LIGHT.base,
+            borderRadius: '15px',
+            boxShadow: getNeuInsetShadow(5, 15),
+            transition: 'box-shadow 50ms linear',
+          }}>
+            <div style={{ fontSize: '12px', color: '#9BA4B0', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>
+              DISPLAY FONT
             </div>
-
             <div style={{
-              padding: '24px',
-              backgroundColor: 'var(--sentinel-bg-elevated)',
-              borderRadius: 'var(--sentinel-radius-md)',
-              border: '1px solid var(--sentinel-border-subtle)'
+              fontSize: '24px',
+              fontWeight: 600,
+              fontFamily: 'var(--sentinel-font-display)',
+              color: '#2D3436',
+              marginBottom: '8px'
             }}>
-              <div style={{
-                fontSize: '12px',
-                color: 'var(--sentinel-text-tertiary)',
-                marginBottom: '8px',
-                fontFamily: 'var(--sentinel-font-mono)'
-              }}>
-                MONOSPACE FONT
-              </div>
-              <div style={{
-                fontSize: '24px',
-                fontWeight: 400,
-                fontFamily: 'var(--sentinel-font-mono)',
-                color: 'var(--sentinel-text-primary)',
-                marginBottom: '8px'
-              }}>
-                JetBrains Mono - 1234567890
-              </div>
-              <code style={{
-                fontSize: '12px',
-                backgroundColor: 'var(--sentinel-bg-subtle)',
-                padding: '4px 8px',
-                borderRadius: 'var(--sentinel-radius-sm)',
-                color: 'var(--sentinel-accent-primary)',
-                fontFamily: 'var(--sentinel-font-mono)'
-              }}>
-                var(--sentinel-font-mono)
-              </code>
-              <div style={{
-                fontSize: '13px',
-                color: 'var(--sentinel-text-secondary)',
-                marginTop: '12px',
-                fontFamily: 'var(--sentinel-font-primary)'
-              }}>
-                Used for numbers, data values, code, and technical content.
-              </div>
+              Space Grotesk - SENTINEL
             </div>
+            <code style={{
+              fontSize: '11px',
+              backgroundColor: 'rgba(74, 154, 156, 0.15)',
+              padding: '4px 8px',
+              borderRadius: '15px',
+              color: 'var(--sentinel-accent-primary)',
+              fontFamily: 'var(--sentinel-font-mono)'
+            }}>
+              var(--sentinel-font-display)
+            </code>
           </div>
-        </ComponentPreview>
+
+          <div style={{
+            padding: '24px',
+            background: LIGHT.base,
+            borderRadius: '15px',
+            boxShadow: getNeuInsetShadow(5, 15),
+            transition: 'box-shadow 50ms linear',
+          }}>
+            <div style={{ fontSize: '12px', color: '#9BA4B0', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>
+              MONOSPACE FONT
+            </div>
+            <div style={{
+              fontSize: '24px',
+              fontWeight: 400,
+              fontFamily: 'var(--sentinel-font-mono)',
+              color: '#2D3436',
+              marginBottom: '8px'
+            }}>
+              Space Mono - 1234567890
+            </div>
+            <code style={{
+              fontSize: '11px',
+              backgroundColor: 'rgba(74, 154, 156, 0.15)',
+              padding: '4px 8px',
+              borderRadius: '15px',
+              color: 'var(--sentinel-accent-primary)',
+              fontFamily: 'var(--sentinel-font-mono)'
+            }}>
+              var(--sentinel-font-mono)
+            </code>
+          </div>
+        </div>
       </ShowcaseSection>
 
       <ShowcaseSection
-        title="Type Scale"
-        description="Consistent sizing for clear hierarchy"
+        title="Escala Tipográfica"
+        description="Jerarquía de tamaños desde 12px hasta 36px"
       >
-        <ComponentPreview>
-          <div style={{ width: '100%' }}>
-            {typographySizes.map((token) => (
-              <TypeSample
-                key={token.variable}
-                token={token}
-                exampleText="Investment Observatory Design System"
-              />
-            ))}
-          </div>
-        </ComponentPreview>
-      </ShowcaseSection>
-
-      <ShowcaseSection
-        title="Font Weights"
-        description="SENTINEL uses weights from Light (300) to Bold (700)"
-      >
-        <ComponentPreview>
-          <div style={{ display: 'grid', gap: '12px', width: '100%' }}>
-            {[
-              { weight: 300, name: 'Light', usage: 'Large headlines, elegant titles' },
-              { weight: 400, name: 'Regular', usage: 'Body text, default weight' },
-              { weight: 500, name: 'Medium', usage: 'Emphasis, section titles' },
-              { weight: 600, name: 'Semibold', usage: 'Strong emphasis, buttons' },
-              { weight: 700, name: 'Bold', usage: 'Maximum emphasis, alerts' },
-            ].map((item) => (
-              <div key={item.weight} style={{
-                padding: '16px 20px',
-                backgroundColor: 'var(--sentinel-bg-elevated)',
-                borderRadius: 'var(--sentinel-radius-md)',
-                border: '1px solid var(--sentinel-border-subtle)',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '24px'
-              }}>
-                <div style={{
-                  fontSize: '18px',
-                  fontWeight: item.weight,
-                  fontFamily: 'var(--sentinel-font-primary)',
-                  color: 'var(--sentinel-text-primary)',
-                  minWidth: '200px'
-                }}>
-                  {item.name} ({item.weight})
-                </div>
+        <div style={{ width: '100%' }}>
+          {typographySizes.map((item) => (
+            <div key={item.name} style={{
+              padding: '16px 20px',
+              background: LIGHT.base,
+              borderRadius: '15px',
+              boxShadow: getNeuInsetShadow(3, 8),
+              marginBottom: '12px',
+              transition: 'box-shadow 50ms linear',
+            }}>
+              <div style={{ display: 'flex', gap: '16px', marginBottom: '8px', fontSize: '11px', color: '#9BA4B0', flexWrap: 'wrap' }}>
+                <strong style={{ color: '#2D3436' }}>{item.name}</strong>
                 <code style={{
-                  fontSize: '12px',
-                  backgroundColor: 'var(--sentinel-bg-subtle)',
-                  padding: '4px 8px',
-                  borderRadius: 'var(--sentinel-radius-sm)',
+                  backgroundColor: 'rgba(74, 154, 156, 0.15)',
+                  padding: '2px 8px',
+                  borderRadius: '15px',
                   color: 'var(--sentinel-accent-primary)',
                   fontFamily: 'var(--sentinel-font-mono)'
                 }}>
-                  --sentinel-font-{item.name.toLowerCase()}
+                  {sizeMap[item.size]}
                 </code>
-                <div style={{
-                  fontSize: '13px',
-                  color: 'var(--sentinel-text-secondary)',
-                  fontFamily: 'var(--sentinel-font-primary)'
-                }}>
-                  {item.usage}
+                <span>{item.usage}</span>
+              </div>
+              <div style={{
+                fontSize: sizeMap[item.size],
+                fontWeight: weightMap[item.weight],
+                fontFamily: 'var(--sentinel-font-display)',
+                color: '#2D3436',
+              }}>
+                SENTINEL Design System
+              </div>
+            </div>
+          ))}
+        </div>
+      </ShowcaseSection>
+
+      <ShowcaseSection
+        title="Pesos Tipográficos"
+        description="Light (300) a Bold (700)"
+      >
+        <div style={{ display: 'grid', gap: '12px', width: '100%' }}>
+          {[
+            { weight: 300, name: 'Light', usage: 'Headlines elegantes' },
+            { weight: 400, name: 'Regular', usage: 'Texto por defecto' },
+            { weight: 500, name: 'Medium', usage: 'Énfasis' },
+            { weight: 600, name: 'Semibold', usage: 'Botones, títulos' },
+            { weight: 700, name: 'Bold', usage: 'Máximo énfasis' },
+          ].map((item) => (
+            <div key={item.weight} style={{
+              padding: '16px 20px',
+              background: LIGHT.base,
+              borderRadius: '15px',
+              boxShadow: getNeuInsetShadow(3, 8),
+              display: 'flex',
+              alignItems: 'center',
+              gap: '24px',
+              transition: 'box-shadow 50ms linear',
+            }}>
+              <div style={{
+                fontSize: '18px',
+                fontWeight: item.weight,
+                fontFamily: 'var(--sentinel-font-display)',
+                color: '#2D3436',
+                minWidth: '180px'
+              }}>
+                {item.name} ({item.weight})
+              </div>
+              <div style={{ fontSize: '12px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)' }}>
+                {item.usage}
+              </div>
+            </div>
+          ))}
+        </div>
+      </ShowcaseSection>
+
+      <ShowcaseSection title="Datos Financieros">
+        <div style={{
+          padding: '24px',
+          background: LIGHT.base,
+          borderRadius: '15px',
+          boxShadow: getNeuInsetShadow(5, 15),
+          width: '100%',
+          transition: 'box-shadow 50ms linear',
+        }}>
+          <div style={{ fontSize: '12px', color: '#9BA4B0', marginBottom: '16px', fontFamily: 'var(--sentinel-font-mono)', letterSpacing: '0.05em' }}>
+            FINANCIAL DATA DISPLAY
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '24px' }}>
+            {[
+              { label: 'Portfolio Value', value: '$1,234,567', color: '#2D3436' },
+              { label: 'Change', value: '+2.45%', color: 'var(--sentinel-status-positive)' },
+              { label: 'Risk Score', value: '42/100', color: 'var(--sentinel-accent-primary)' },
+              { label: 'Confidence', value: '87%', color: '#2D3436' },
+            ].map((item) => (
+              <div key={item.label}>
+                <div style={{ fontSize: '11px', color: '#9BA4B0', marginBottom: '4px', fontFamily: 'var(--sentinel-font-mono)' }}>
+                  {item.label}
+                </div>
+                <div style={{ fontSize: '24px', fontWeight: 600, color: item.color, fontFamily: 'var(--sentinel-font-mono)' }}>
+                  {item.value}
                 </div>
               </div>
             ))}
           </div>
-        </ComponentPreview>
+        </div>
       </ShowcaseSection>
 
-      <ShowcaseSection title="Monospace Numbers">
-        <ComponentPreview>
-          <div style={{
-            padding: '24px',
-            backgroundColor: 'var(--sentinel-bg-elevated)',
-            borderRadius: 'var(--sentinel-radius-md)',
-            border: '1px solid var(--sentinel-border-subtle)',
-            width: '100%'
-          }}>
-            <div style={{
-              fontSize: '12px',
-              color: 'var(--sentinel-text-tertiary)',
-              marginBottom: '16px',
-              fontFamily: 'var(--sentinel-font-mono)',
-              letterSpacing: '0.05em'
-            }}>
-              FINANCIAL DATA DISPLAY
-            </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '24px' }}>
-              <div>
-                <div style={{ fontSize: '11px', color: 'var(--sentinel-text-tertiary)', marginBottom: '4px', fontFamily: 'var(--sentinel-font-primary)' }}>
-                  Portfolio Value
-                </div>
-                <div style={{ fontSize: '24px', fontWeight: 600, color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)' }}>
-                  $1,234,567
-                </div>
-              </div>
-              <div>
-                <div style={{ fontSize: '11px', color: 'var(--sentinel-text-tertiary)', marginBottom: '4px', fontFamily: 'var(--sentinel-font-primary)' }}>
-                  Change
-                </div>
-                <div style={{ fontSize: '24px', fontWeight: 600, color: 'var(--sentinel-status-positive-text)', fontFamily: 'var(--sentinel-font-mono)' }}>
-                  +2.45%
-                </div>
-              </div>
-              <div>
-                <div style={{ fontSize: '11px', color: 'var(--sentinel-text-tertiary)', marginBottom: '4px', fontFamily: 'var(--sentinel-font-primary)' }}>
-                  Risk Score
-                </div>
-                <div style={{ fontSize: '24px', fontWeight: 600, color: 'var(--sentinel-accent-primary)', fontFamily: 'var(--sentinel-font-mono)' }}>
-                  42/100
-                </div>
-              </div>
-              <div>
-                <div style={{ fontSize: '11px', color: 'var(--sentinel-text-tertiary)', marginBottom: '4px', fontFamily: 'var(--sentinel-font-primary)' }}>
-                  Confidence
-                </div>
-                <div style={{ fontSize: '24px', fontWeight: 600, color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)' }}>
-                  87%
-                </div>
-              </div>
-            </div>
-          </div>
-        </ComponentPreview>
-      </ShowcaseSection>
-
-      <ShowcaseSection title="Usage Example">
+      <ShowcaseSection title="Código de Ejemplo">
         <div style={{
-          padding: '24px',
-          backgroundColor: 'var(--sentinel-bg-elevated)',
-          borderRadius: 'var(--sentinel-radius-lg)',
-          border: '1px solid var(--sentinel-border-subtle)',
-          fontSize: '13px',
-          lineHeight: '1.8',
-          fontFamily: 'var(--sentinel-font-mono)'
+          padding: '20px',
+          borderRadius: '15px',
+          boxShadow: getNeuInsetShadow(5, 15),
+          background: LIGHT.base,
+          fontSize: '12px',
+          fontFamily: 'var(--sentinel-font-mono)',
+          color: '#636E72',
+          transition: 'box-shadow 50ms linear',
         }}>
-          <pre style={{ margin: 0, color: 'var(--sentinel-text-secondary)' }}>
-{`.page-title {
-  font-family: var(--sentinel-font-primary);
-  font-size: var(--sentinel-text-3xl);
-  font-weight: var(--sentinel-font-light);
+          <pre style={{ margin: 0, whiteSpace: 'pre-wrap' }}>{`.page-title {
+  font-family: var(--sentinel-font-display);
+  font-size: 30px;
+  font-weight: 300;
   letter-spacing: -0.02em;
 }
 
 .data-value {
   font-family: var(--sentinel-font-mono);
-  font-size: var(--sentinel-text-xl);
-  font-weight: var(--sentinel-font-semibold);
+  font-size: 20px;
+  font-weight: 600;
 }
 
 .label {
-  font-family: var(--sentinel-font-primary);
-  font-size: var(--sentinel-text-xs);
+  font-family: var(--sentinel-font-mono);
+  font-size: 12px;
   color: var(--sentinel-text-tertiary);
   letter-spacing: 0.05em;
-}`}
-          </pre>
+  text-transform: uppercase;
+}`}</pre>
         </div>
       </ShowcaseSection>
     </div>
+  );
+}
+
+export function TypographyShowcase() {
+  return (
+    <LightEngineProvider initialAnimating={true} initialSpeed={0.3}>
+      <TypographyContent />
+    </LightEngineProvider>
   );
 }

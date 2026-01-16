@@ -1,7 +1,10 @@
 // Path: src/pages/charts/ScatterChartShowcase.tsx
-import { ShowcaseSection, ComponentPreview } from '../../components/showcase';
+// SENTINEL Design System - Glass-Neumorphism Scatter Chart
+import React, { useMemo } from 'react';
+import { ShowcaseSection } from '../../components/showcase';
 import { ScatterChart } from '../../components/charts/echarts';
 import type { ScatterDataPoint, ScatterSeriesData } from '../../components/charts/echarts';
+import { LightEngineProvider, useLightEngine } from '@/contexts/LightEngineContext';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // SAMPLE DATA
@@ -65,148 +68,136 @@ for (let i = 0; i < 50; i++) {
 // COMPONENT
 // ─────────────────────────────────────────────────────────────────────────────
 
-export function ScatterChartShowcase() {
+function ScatterChartContent() {
+  const { lightAngle } = useLightEngine();
+
+  const shadowOffsets = useMemo(() => {
+    const shadowAngle = (lightAngle + 180) * (Math.PI / 180);
+    return { x: Math.cos(shadowAngle), y: Math.sin(shadowAngle) };
+  }, [lightAngle]);
+
+  const LIGHT = {
+    base: '#e0e5ec',
+    shadowDark: 'hsl(220 15% 72%)',
+    shadowLight: 'hsl(0 0% 100%)',
+  };
+
+  const getNeuPanelShadow = (distance: number, blur: number): string => {
+    const { x, y } = shadowOffsets;
+    return `${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}`;
+  };
+
+  const getNeuInsetShadow = (distance: number, blur: number): string => {
+    const { x, y } = shadowOffsets;
+    return `inset ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}`;
+  };
+
+  const pageHeaderStyles: React.CSSProperties = {
+    marginBottom: '32px',
+    padding: '24px',
+    background: LIGHT.base,
+    borderRadius: '15px',
+    boxShadow: getNeuPanelShadow(20, 60),
+    transition: 'box-shadow 50ms linear',
+  };
+
+  const titleStyles: React.CSSProperties = {
+    fontSize: '28px',
+    fontWeight: 700,
+    color: 'var(--sentinel-accent-primary)',
+    marginBottom: '8px',
+    fontFamily: 'var(--sentinel-font-display)',
+    textTransform: 'uppercase',
+    letterSpacing: '0.1em',
+  };
+
+  const descStyles: React.CSSProperties = {
+    fontSize: '14px',
+    color: 'var(--sentinel-text-secondary)',
+    fontFamily: 'var(--sentinel-font-mono)',
+    textTransform: 'uppercase',
+    letterSpacing: '0.03em',
+  };
+
+  const chartContainerStyles: React.CSSProperties = {
+    padding: '24px',
+    background: LIGHT.base,
+    borderRadius: '15px',
+    boxShadow: getNeuPanelShadow(8, 24),
+    transition: 'box-shadow 50ms linear',
+  };
+
+  const tableContainerStyles: React.CSSProperties = {
+    padding: '20px',
+    borderRadius: '15px',
+    boxShadow: getNeuInsetShadow(5, 15),
+    background: LIGHT.base,
+    overflowX: 'auto',
+    transition: 'box-shadow 50ms linear',
+  };
+
   return (
-    <div>
-      {/* Page Header */}
-      <header style={{ marginBottom: '32px' }}>
-        <h1 style={{
-          fontSize: '28px',
-          fontWeight: 600,
-          color: 'var(--sentinel-text-primary)',
-          marginBottom: '8px',
-          fontFamily: 'var(--sentinel-font-display)',
-        }}>
-          Scatter Chart
-        </h1>
-        <p style={{
-          fontSize: '14px',
-          color: 'var(--sentinel-text-secondary)',
-          fontFamily: 'var(--sentinel-font-sans)',
-          maxWidth: '600px',
-        }}>
-          XY scatter plot for correlation analysis and data distribution. Supports bubble
-          sizing by value, multiple series, and customizable axis labels.
-        </p>
+    <div style={{ background: LIGHT.base, minHeight: '100%', padding: '24px' }}>
+      <header style={pageHeaderStyles}>
+        <h1 style={titleStyles}>&gt; ScatterChart_</h1>
+        <p style={descStyles}>// Dispersión XY para análisis de correlación</p>
       </header>
 
-      {/* Risk vs Return */}
-      <ShowcaseSection
-        title="Risk vs Return"
-        description="Bubble size represents market cap"
-      >
-        <ComponentPreview>
-          <div style={{ width: '100%' }}>
-            <ScatterChart
-              data={riskReturnData}
-              title="Risk-Return Analysis"
-              xAxisLabel="Volatility (%)"
-              yAxisLabel="Return (%)"
-              height={400}
-            />
-          </div>
-        </ComponentPreview>
+      <ShowcaseSection title="Risk vs Return" description="Bubble size represents market cap">
+        <div style={chartContainerStyles}>
+          <ScatterChart data={riskReturnData} title="Risk-Return Analysis" xAxisLabel="Volatility (%)" yAxisLabel="Return (%)" height={400} />
+        </div>
       </ShowcaseSection>
 
-      {/* Multi-Series */}
-      <ShowcaseSection
-        title="Multi-Series"
-        description="Compare multiple categories"
-      >
-        <ComponentPreview>
-          <div style={{ width: '100%' }}>
-            <ScatterChart
-              data={multiSeriesData}
-              title="Sector Comparison"
-              xAxisLabel="Risk"
-              yAxisLabel="Return"
-              height={400}
-            />
-          </div>
-        </ComponentPreview>
+      <ShowcaseSection title="Multi-Series" description="Compare multiple categories">
+        <div style={chartContainerStyles}>
+          <ScatterChart data={multiSeriesData} title="Sector Comparison" xAxisLabel="Risk" yAxisLabel="Return" height={400} />
+        </div>
       </ShowcaseSection>
 
-      {/* Correlation */}
-      <ShowcaseSection
-        title="Correlation Plot"
-        description="Data points showing linear correlation"
-      >
-        <ComponentPreview>
-          <div style={{ width: '100%' }}>
-            <ScatterChart
-              data={correlationData}
-              title="Price Correlation"
-              xAxisLabel="Asset A"
-              yAxisLabel="Asset B"
-              height={400}
-              symbolSize={8}
-            />
-          </div>
-        </ComponentPreview>
+      <ShowcaseSection title="Correlation Plot" description="Data points showing linear correlation">
+        <div style={chartContainerStyles}>
+          <ScatterChart data={correlationData} title="Price Correlation" xAxisLabel="Asset A" yAxisLabel="Asset B" height={400} symbolSize={8} />
+        </div>
       </ShowcaseSection>
 
-      {/* Custom Symbol Size */}
-      <ShowcaseSection
-        title="Custom Symbol Size"
-        description="Adjust point size for different visualizations"
-      >
-        <ComponentPreview>
+      <ShowcaseSection title="Custom Symbol Size" description="Adjust point size for different visualizations">
+        <div style={chartContainerStyles}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '24px', width: '100%' }}>
             <div>
-              <ScatterChart
-                data={riskReturnData}
-                xAxisLabel="Risk"
-                yAxisLabel="Return"
-                height={300}
-                symbolSize={10}
-              />
-              <p style={{ textAlign: 'center', color: 'var(--sentinel-text-tertiary)', fontSize: '12px', marginTop: '8px' }}>Fixed Size: 10</p>
+              <ScatterChart data={riskReturnData} xAxisLabel="Risk" yAxisLabel="Return" height={300} symbolSize={10} />
+              <p style={{ textAlign: 'center', color: '#636E72', fontSize: '12px', marginTop: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Fixed Size: 10</p>
             </div>
             <div>
-              <ScatterChart
-                data={riskReturnData}
-                xAxisLabel="Risk"
-                yAxisLabel="Return"
-                height={300}
-                symbolSize={20}
-              />
-              <p style={{ textAlign: 'center', color: 'var(--sentinel-text-tertiary)', fontSize: '12px', marginTop: '8px' }}>Fixed Size: 20</p>
+              <ScatterChart data={riskReturnData} xAxisLabel="Risk" yAxisLabel="Return" height={300} symbolSize={20} />
+              <p style={{ textAlign: 'center', color: '#636E72', fontSize: '12px', marginTop: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Fixed Size: 20</p>
             </div>
           </div>
-        </ComponentPreview>
+        </div>
       </ShowcaseSection>
 
-      {/* Compact */}
-      <ShowcaseSection
-        title="Compact"
-        description="Smaller scatter for dashboards"
-      >
-        <ComponentPreview>
+      <ShowcaseSection title="Compact" description="Smaller scatter for dashboards">
+        <div style={chartContainerStyles}>
           <div style={{ width: '100%', maxWidth: '400px', margin: '0 auto' }}>
-            <ScatterChart
-              data={correlationData.slice(0, 30)}
-              height={250}
-              symbolSize={6}
-            />
+            <ScatterChart data={correlationData.slice(0, 30)} height={250} symbolSize={6} />
           </div>
-        </ComponentPreview>
+        </div>
       </ShowcaseSection>
 
-      {/* API Reference */}
-      <ShowcaseSection title="API Reference">
-        <div style={{ overflowX: 'auto' }}>
+      <ShowcaseSection title="Especificaciones Técnicas">
+        <div style={tableContainerStyles}>
           <table style={{
             width: '100%',
             borderCollapse: 'collapse',
-            fontSize: '13px',
+            fontSize: '12px',
             fontFamily: 'var(--sentinel-font-mono)',
           }}>
             <thead>
-              <tr style={{ borderBottom: '1px solid var(--sentinel-border-default)' }}>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-text-secondary)' }}>Prop</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-text-secondary)' }}>Type</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-text-secondary)' }}>Default</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-text-secondary)' }}>Description</th>
+              <tr>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-accent-primary)', fontWeight: 600 }}>Prop</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-accent-primary)', fontWeight: 600 }}>Type</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-accent-primary)', fontWeight: 600 }}>Default</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-accent-primary)', fontWeight: 600 }}>Description</th>
               </tr>
             </thead>
             <tbody>
@@ -219,11 +210,11 @@ export function ScatterChartShowcase() {
                 { prop: 'symbolSize', type: 'number | function', default: '15', desc: 'Point size or sizing function' },
                 { prop: 'colors', type: 'string[]', default: 'chartPalette', desc: 'Custom color palette' },
               ].map((row, i) => (
-                <tr key={i} style={{ borderBottom: '1px solid var(--sentinel-border-subtle)' }}>
-                  <td style={{ padding: '12px 16px', color: 'var(--sentinel-accent-primary)' }}>{row.prop}</td>
-                  <td style={{ padding: '12px 16px', color: 'var(--sentinel-text-tertiary)' }}>{row.type}</td>
-                  <td style={{ padding: '12px 16px', color: 'var(--sentinel-text-tertiary)' }}>{row.default}</td>
-                  <td style={{ padding: '12px 16px', color: 'var(--sentinel-text-secondary)' }}>{row.desc}</td>
+                <tr key={i}>
+                  <td style={{ padding: '12px 16px', color: '#2D3436' }}>{row.prop}</td>
+                  <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.type}</td>
+                  <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.default}</td>
+                  <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.desc}</td>
                 </tr>
               ))}
             </tbody>
@@ -231,6 +222,14 @@ export function ScatterChartShowcase() {
         </div>
       </ShowcaseSection>
     </div>
+  );
+}
+
+export function ScatterChartShowcase() {
+  return (
+    <LightEngineProvider initialAnimating={true} initialSpeed={0.3}>
+      <ScatterChartContent />
+    </LightEngineProvider>
   );
 }
 

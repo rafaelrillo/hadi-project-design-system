@@ -1,7 +1,8 @@
 // Path: src/components/organisms/Table/Table.tsx
-import React, { useState, Fragment } from 'react';
+import { useState, Fragment, type ReactNode, type CSSProperties } from 'react';
 import { LucideIcon, ChevronDown, ChevronUp } from 'lucide-react';
 import { Checkbox } from '../../atoms/Checkbox';
+import { useLightEngineOptional } from '@contexts/LightEngineContext';
 import styles from './Table.module.css';
 
 export interface TableColumn {
@@ -9,14 +10,16 @@ export interface TableColumn {
   header: string;
   width?: string;
   align?: 'left' | 'center' | 'right';
-  render?: (value: any, row: TableRow) => React.ReactNode;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  render?: (value: any, row: TableRow) => ReactNode;
 }
 
 export interface TableRow {
   id: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any;
   actions?: TableAction[];
-  expandedContent?: React.ReactNode;
+  expandedContent?: ReactNode;
 }
 
 export interface TableAction {
@@ -25,6 +28,8 @@ export interface TableAction {
   onClick: (row: TableRow) => void;
   variant?: 'default' | 'destructive';
 }
+
+export type TableStyle = 'default' | 'neuPanel';
 
 export interface TableProps {
   columns: TableColumn[];
@@ -35,6 +40,10 @@ export interface TableProps {
   onRowSelect?: (rowIds: string[]) => void;
   expandable?: boolean;
   onRowClick?: (row: TableRow) => void;
+  /** Visual style for table container */
+  tableStyle?: TableStyle;
+  /** Enable dynamic shadows from Light Engine */
+  dynamicShadows?: boolean;
   className?: string;
 }
 
@@ -50,11 +59,16 @@ export function Table({
   onRowSelect,
   expandable = false,
   onRowClick,
-  className
+  tableStyle = 'default',
+  dynamicShadows = true,
+  className,
 }: TableProps) {
   const [expandedRows, setExpandedRows] = useState<string[]>([]);
   const [hoveredRow, setHoveredRow] = useState<string | null>(null);
   const [focusedRow, setFocusedRow] = useState<string | null>(null);
+
+  // Get light engine context (optional)
+  const lightEngine = useLightEngineOptional();
 
   const columnCount = columns.length + (selectable ? 1 : 0) + (expandable ? 1 : 0);
 
@@ -151,7 +165,27 @@ export function Table({
     );
   };
 
-  return (
+  // Get wrapper className for neuPanel style
+  const getWrapperClassName = (): string => {
+    const classes = [styles.tableWrapper];
+    if (tableStyle === 'neuPanel') classes.push(styles.neuPanel);
+    if (dynamicShadows && lightEngine && tableStyle === 'neuPanel') {
+      classes.push(styles.dynamicShadows);
+    }
+    return classes.join(' ');
+  };
+
+  // Get dynamic styles for neuPanel
+  const getDynamicStyles = (): CSSProperties | undefined => {
+    if (tableStyle !== 'neuPanel' || !dynamicShadows || !lightEngine) return undefined;
+
+    const { shadows } = lightEngine;
+    return {
+      boxShadow: `${shadows.getNeuPanelShadow(8, 16)}, inset 0 1px 0 rgba(255, 255, 255, 0.7)`,
+    };
+  };
+
+  const tableElement = (
     <table className={getTableClassName()}>
       <thead>
         <tr>
@@ -279,4 +313,15 @@ export function Table({
       </tbody>
     </table>
   );
+
+  // Wrap in container for neuPanel style
+  if (tableStyle === 'neuPanel') {
+    return (
+      <div className={getWrapperClassName()} style={getDynamicStyles()}>
+        {tableElement}
+      </div>
+    );
+  }
+
+  return tableElement;
 }

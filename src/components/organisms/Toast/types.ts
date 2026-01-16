@@ -9,6 +9,8 @@ import React from 'react';
 
 export type ToastType = 'default' | 'success' | 'error' | 'warning' | 'info';
 
+export type ToastStyle = 'default' | 'glass';
+
 export type ToastPosition =
   | 'top-left'
   | 'top-center'
@@ -67,10 +69,18 @@ export interface ToastProviderProps {
   defaultDuration?: number;
   /** Gap between toasts */
   gap?: number;
+  /** Visual style variant */
+  toastStyle?: ToastStyle;
+  /** Enable dynamic shadows from Light Engine (glass style only) */
+  dynamicShadows?: boolean;
 }
 
 export interface ToastItemProps {
   toast: Toast;
   onDismiss: (id: string) => void;
   position: ToastPosition;
+  /** Visual style variant */
+  toastStyle?: ToastStyle;
+  /** Enable dynamic shadows from Light Engine */
+  dynamicShadows?: boolean;
 }

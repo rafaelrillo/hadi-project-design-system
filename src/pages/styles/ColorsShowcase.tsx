@@ -1,28 +1,58 @@
 // Path: src/pages/styles/ColorsShowcase.tsx
-// SENTINEL Design System - Color Palette
-import React from 'react';
-import { ShowcaseSection, ComponentPreview } from '../../components/showcase';
+// SENTINEL Design System - Glass-Neumorphism Color Palette
+import React, { useMemo } from 'react';
+import { ShowcaseSection } from '../../components/showcase';
+import { LightEngineProvider, useLightEngine } from '@/contexts/LightEngineContext';
 
-export function ColorsShowcase() {
+function ColorsContent() {
+  const { lightAngle } = useLightEngine();
+
+  const shadowOffsets = useMemo(() => {
+    const shadowAngle = (lightAngle + 180) * (Math.PI / 180);
+    return { x: Math.cos(shadowAngle), y: Math.sin(shadowAngle) };
+  }, [lightAngle]);
+
+  const LIGHT = {
+    base: '#e0e5ec',
+    shadowDark: 'hsl(220 15% 72%)',
+    shadowLight: 'hsl(0 0% 100%)',
+  };
+
+  const getNeuPanelShadow = (distance: number, blur: number): string => {
+    const { x, y } = shadowOffsets;
+    return `${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}`;
+  };
+
+  const getNeuInsetShadow = (distance: number, blur: number): string => {
+    const { x, y } = shadowOffsets;
+    return `inset ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}`;
+  };
+
   const pageHeaderStyles: React.CSSProperties = {
-    marginBottom: '48px'
+    marginBottom: '32px',
+    padding: '24px',
+    background: LIGHT.base,
+    borderRadius: '15px',
+    boxShadow: getNeuPanelShadow(20, 60),
+    transition: 'box-shadow 50ms linear',
   };
 
   const titleStyles: React.CSSProperties = {
-    fontSize: '32px',
-    fontWeight: 300,
-    color: 'var(--sentinel-text-primary)',
-    marginBottom: '12px',
-    fontFamily: 'var(--sentinel-font-primary)',
-    letterSpacing: '-0.02em'
+    fontSize: '28px',
+    fontWeight: 700,
+    color: 'var(--sentinel-accent-primary)',
+    marginBottom: '8px',
+    fontFamily: 'var(--sentinel-font-display)',
+    textTransform: 'uppercase',
+    letterSpacing: '0.1em',
   };
 
   const descStyles: React.CSSProperties = {
     fontSize: '14px',
     color: 'var(--sentinel-text-secondary)',
-    fontFamily: 'var(--sentinel-font-primary)',
-    lineHeight: 1.6,
-    maxWidth: '600px'
+    fontFamily: 'var(--sentinel-font-mono)',
+    textTransform: 'uppercase',
+    letterSpacing: '0.03em',
   };
 
   interface ColorToken {
@@ -32,257 +62,206 @@ export function ColorsShowcase() {
     description?: string;
   }
 
-  const ColorSwatch = ({ color }: { color: ColorToken }) => {
-    return (
+  const ColorSwatch = ({ color }: { color: ColorToken }) => (
+    <div style={{
+      display: 'flex',
+      alignItems: 'center',
+      gap: '16px',
+      padding: '16px',
+      background: LIGHT.base,
+      borderRadius: '15px',
+      boxShadow: getNeuInsetShadow(3, 8),
+      marginBottom: '8px',
+      transition: 'box-shadow 50ms linear',
+    }}>
       <div style={{
-        display: 'flex',
-        alignItems: 'center',
-        gap: '16px',
-        padding: '16px',
-        backgroundColor: 'var(--sentinel-bg-elevated)',
-        borderRadius: 'var(--sentinel-radius-md)',
-        border: '1px solid var(--sentinel-border-subtle)',
-        marginBottom: '8px'
-      }}>
+        width: '56px',
+        height: '56px',
+        borderRadius: '15px',
+        backgroundColor: `var(${color.variable})`,
+        boxShadow: getNeuPanelShadow(6, 18),
+        flexShrink: 0,
+        transition: 'box-shadow 50ms linear',
+      }} />
+      <div style={{ flex: 1 }}>
         <div style={{
-          width: '56px',
-          height: '56px',
-          borderRadius: 'var(--sentinel-radius-md)',
-          backgroundColor: `var(${color.variable})`,
-          border: '1px solid var(--sentinel-border-subtle)',
-          flexShrink: 0
-        }} />
-        <div style={{ flex: 1 }}>
+          fontSize: '14px',
+          fontWeight: 600,
+          color: '#2D3436',
+          marginBottom: '4px',
+          fontFamily: 'var(--sentinel-font-display)'
+        }}>
+          {color.name}
+        </div>
+        <code style={{
+          display: 'inline-block',
+          fontSize: '11px',
+          backgroundColor: 'rgba(74, 154, 156, 0.15)',
+          padding: '2px 8px',
+          borderRadius: '15px',
+          color: 'var(--sentinel-accent-primary)',
+          fontFamily: 'var(--sentinel-font-mono)',
+          marginBottom: '4px'
+        }}>
+          var({color.variable})
+        </code>
+        <div style={{
+          fontSize: '11px',
+          color: '#636E72',
+          fontFamily: 'var(--sentinel-font-mono)'
+        }}>
+          {color.value}
+        </div>
+        {color.description && (
           <div style={{
-            fontSize: '14px',
-            fontWeight: 500,
-            color: 'var(--sentinel-text-primary)',
-            marginBottom: '4px',
-            fontFamily: 'var(--sentinel-font-primary)'
-          }}>
-            {color.name}
-          </div>
-          <code style={{
-            display: 'inline-block',
-            fontSize: '12px',
-            backgroundColor: 'var(--sentinel-bg-subtle)',
-            padding: '2px 8px',
-            borderRadius: 'var(--sentinel-radius-sm)',
-            color: 'var(--sentinel-accent-primary)',
-            fontFamily: 'var(--sentinel-font-mono)',
-            marginBottom: '4px'
-          }}>
-            var({color.variable})
-          </code>
-          <div style={{
-            fontSize: '12px',
-            color: 'var(--sentinel-text-tertiary)',
+            fontSize: '11px',
+            color: '#9BA4B0',
+            marginTop: '4px',
             fontFamily: 'var(--sentinel-font-mono)'
           }}>
-            {color.value}
+            {color.description}
           </div>
-          {color.description && (
-            <div style={{
-              fontSize: '12px',
-              color: 'var(--sentinel-text-secondary)',
-              marginTop: '4px',
-              fontFamily: 'var(--sentinel-font-primary)'
-            }}>
-              {color.description}
-            </div>
-          )}
-        </div>
+        )}
       </div>
-    );
-  };
+    </div>
+  );
 
   const backgroundColors: ColorToken[] = [
-    { name: 'Void', variable: '--sentinel-bg-void', value: '#05060a', description: 'Deepest background' },
-    { name: 'Base', variable: '--sentinel-bg-base', value: '#0a0b10', description: 'Main background' },
-    { name: 'Elevated', variable: '--sentinel-bg-elevated', value: '#10121a', description: 'Cards and panels' },
-    { name: 'Overlay', variable: '--sentinel-bg-overlay', value: '#161822', description: 'Modals and overlays' },
-    { name: 'Subtle', variable: '--sentinel-bg-subtle', value: '#1c1e2a', description: 'Subtle backgrounds' },
-    { name: 'Interactive', variable: '--sentinel-bg-interactive', value: '#22253a', description: 'Interactive elements' },
-  ];
-
-  const textColors: ColorToken[] = [
-    { name: 'Primary', variable: '--sentinel-text-primary', value: '#e8eaed', description: 'Main text' },
-    { name: 'Secondary', variable: '--sentinel-text-secondary', value: '#9aa0a6', description: 'Secondary text' },
-    { name: 'Tertiary', variable: '--sentinel-text-tertiary', value: '#5f6368', description: 'Tertiary/muted text' },
-    { name: 'Disabled', variable: '--sentinel-text-disabled', value: '#3c4043', description: 'Disabled text' },
+    { name: 'Neumorphic Base', variable: '--neu-base', value: '#e0e5ec', description: 'Base for neumorphic elements' },
+    { name: 'Shadow Light', variable: '--neu-shadow-light', value: '#ffffff', description: 'Light highlight' },
+    { name: 'Shadow Dark', variable: '--neu-shadow-dark', value: 'hsl(220, 15%, 72%)', description: 'Dark shadow' },
   ];
 
   const accentColors: ColorToken[] = [
-    { name: 'Accent Primary', variable: '--sentinel-accent-primary', value: '#5ba3a5', description: 'Primary accent (teal)' },
+    { name: 'Accent Primary', variable: '--sentinel-accent-primary', value: '#5ba3a5', description: 'Primary teal accent' },
     { name: 'Accent Secondary', variable: '--sentinel-accent-secondary', value: '#4a8a8c', description: 'Secondary accent' },
-    { name: 'Accent Subtle', variable: '--sentinel-accent-subtle', value: 'rgba(91, 163, 165, 0.15)', description: 'Subtle accent bg' },
+  ];
+
+  const glassColors: ColorToken[] = [
+    { name: 'Glass Teal', variable: '--glass-teal', value: 'hsla(175, 35%, 60%, 0.28)', description: 'Primary glass' },
+    { name: 'Glass Blue', variable: '--glass-blue', value: 'hsla(215, 50%, 65%, 0.28)', description: 'Info glass' },
+    { name: 'Glass Green', variable: '--glass-green', value: 'hsla(145, 45%, 60%, 0.28)', description: 'Success glass' },
+    { name: 'Glass Red', variable: '--glass-red', value: 'hsla(355, 35%, 60%, 0.28)', description: 'Error glass' },
+    { name: 'Glass Amber', variable: '--glass-amber', value: 'hsla(35, 55%, 60%, 0.28)', description: 'Warning glass' },
+    { name: 'Glass Purple', variable: '--glass-purple', value: 'hsla(280, 40%, 65%, 0.28)', description: 'Premium glass' },
   ];
 
   const statusColors: ColorToken[] = [
     { name: 'Positive', variable: '--sentinel-status-positive', value: '#4a9a7c', description: 'Success states' },
-    { name: 'Positive Text', variable: '--sentinel-status-positive-text', value: '#6bb89a', description: 'Positive text' },
     { name: 'Negative', variable: '--sentinel-status-negative', value: '#b85c5c', description: 'Error states' },
-    { name: 'Negative Text', variable: '--sentinel-status-negative-text', value: '#d17878', description: 'Negative text' },
     { name: 'Warning', variable: '--sentinel-status-warning', value: '#c4a35a', description: 'Warning states' },
-    { name: 'Warning Text', variable: '--sentinel-status-warning-text', value: '#d9bc78', description: 'Warning text' },
     { name: 'Info', variable: '--sentinel-status-info', value: '#5a8fb8', description: 'Info states' },
-    { name: 'Info Text', variable: '--sentinel-status-info-text', value: '#78a8cc', description: 'Info text' },
   ];
 
-  const marketColors: ColorToken[] = [
-    { name: 'Bull', variable: '--sentinel-market-bull', value: '#4a9a7c', description: 'Bullish market state' },
-    { name: 'Bear', variable: '--sentinel-market-bear', value: '#b85c5c', description: 'Bearish market state' },
-    { name: 'Neutral', variable: '--sentinel-market-neutral', value: '#5ba3a5', description: 'Neutral market state' },
-    { name: 'Uncertain', variable: '--sentinel-market-uncertain', value: '#6b7280', description: 'Uncertain market state' },
-  ];
-
-  const riskColors: ColorToken[] = [
-    { name: 'Risk Low', variable: '--sentinel-risk-low', value: '#4a9a7c', description: 'Low risk level' },
-    { name: 'Risk Moderate', variable: '--sentinel-risk-moderate', value: '#5ba3a5', description: 'Moderate risk level' },
-    { name: 'Risk Elevated', variable: '--sentinel-risk-elevated', value: '#c4a35a', description: 'Elevated risk level' },
-    { name: 'Risk High', variable: '--sentinel-risk-high', value: '#c47a5a', description: 'High risk level' },
-    { name: 'Risk Severe', variable: '--sentinel-risk-severe', value: '#b85c5c', description: 'Severe risk level' },
-  ];
-
-  const borderColors: ColorToken[] = [
-    { name: 'Border Subtle', variable: '--sentinel-border-subtle', value: 'rgba(255, 255, 255, 0.06)', description: 'Subtle borders' },
-    { name: 'Border Default', variable: '--sentinel-border-default', value: 'rgba(255, 255, 255, 0.1)', description: 'Default borders' },
-    { name: 'Border Strong', variable: '--sentinel-border-strong', value: 'rgba(255, 255, 255, 0.16)', description: 'Strong borders' },
+  const textColors: ColorToken[] = [
+    { name: 'Text Primary', variable: '--sentinel-text-primary', value: '#2D3436', description: 'Main text on light' },
+    { name: 'Text Secondary', variable: '--sentinel-text-secondary', value: '#636E72', description: 'Secondary text' },
+    { name: 'Text Tertiary', variable: '--sentinel-text-tertiary', value: '#9BA4B0', description: 'Muted text' },
   ];
 
   return (
-    <div>
+    <div style={{ background: LIGHT.base, minHeight: '100%', padding: '24px' }}>
       <header style={pageHeaderStyles}>
-        <h1 style={titleStyles}>Color Palette</h1>
-        <p style={descStyles}>
-          SENTINEL uses a desaturated, professional color palette designed for financial interfaces.
-          Colors are calm and confident, avoiding alarming or distracting hues.
-        </p>
+        <h1 style={titleStyles}>&gt; Colors_</h1>
+        <p style={descStyles}>// Paleta de colores para Glass-Neumorphism</p>
       </header>
 
       <ShowcaseSection
-        title="Background Colors"
-        description="Layered backgrounds create depth and hierarchy"
+        title="Colores Neumórficos"
+        description="Base y sombras para el sistema neumórfico"
       >
-        <ComponentPreview>
-          <div style={{ width: '100%' }}>
-            {backgroundColors.map((color) => (
-              <ColorSwatch key={color.variable} color={color} />
-            ))}
-          </div>
-        </ComponentPreview>
+        <div style={{ width: '100%' }}>
+          {backgroundColors.map((color) => (
+            <ColorSwatch key={color.variable} color={color} />
+          ))}
+        </div>
       </ShowcaseSection>
 
       <ShowcaseSection
-        title="Text Colors"
-        description="Typography hierarchy from primary to disabled"
+        title="Colores de Acento"
+        description="Acentos teal institucionales"
       >
-        <ComponentPreview>
-          <div style={{ width: '100%' }}>
-            {textColors.map((color) => (
-              <ColorSwatch key={color.variable} color={color} />
-            ))}
-          </div>
-        </ComponentPreview>
+        <div style={{ width: '100%' }}>
+          {accentColors.map((color) => (
+            <ColorSwatch key={color.variable} color={color} />
+          ))}
+        </div>
       </ShowcaseSection>
 
       <ShowcaseSection
-        title="Accent Colors"
-        description="Teal accent for interactive elements and focus states"
+        title="Colores Glass"
+        description="Colores semitransparentes para elementos glassmorphism"
       >
-        <ComponentPreview>
-          <div style={{ width: '100%' }}>
-            {accentColors.map((color) => (
-              <ColorSwatch key={color.variable} color={color} />
-            ))}
-          </div>
-        </ComponentPreview>
+        <div style={{ width: '100%' }}>
+          {glassColors.map((color) => (
+            <ColorSwatch key={color.variable} color={color} />
+          ))}
+        </div>
       </ShowcaseSection>
 
       <ShowcaseSection
-        title="Status Colors"
-        description="Semantic colors for system feedback"
+        title="Colores de Estado"
+        description="Colores semánticos para feedback"
       >
-        <ComponentPreview>
-          <div style={{ width: '100%' }}>
-            {statusColors.map((color) => (
-              <ColorSwatch key={color.variable} color={color} />
-            ))}
-          </div>
-        </ComponentPreview>
+        <div style={{ width: '100%' }}>
+          {statusColors.map((color) => (
+            <ColorSwatch key={color.variable} color={color} />
+          ))}
+        </div>
       </ShowcaseSection>
 
       <ShowcaseSection
-        title="Market State Colors"
-        description="Visual indicators for market conditions"
+        title="Colores de Texto"
+        description="Jerarquía tipográfica"
       >
-        <ComponentPreview>
-          <div style={{ width: '100%' }}>
-            {marketColors.map((color) => (
-              <ColorSwatch key={color.variable} color={color} />
-            ))}
-          </div>
-        </ComponentPreview>
+        <div style={{ width: '100%' }}>
+          {textColors.map((color) => (
+            <ColorSwatch key={color.variable} color={color} />
+          ))}
+        </div>
       </ShowcaseSection>
 
-      <ShowcaseSection
-        title="Risk Level Colors"
-        description="Graduated scale for risk visualization"
-      >
-        <ComponentPreview>
-          <div style={{ width: '100%' }}>
-            {riskColors.map((color) => (
-              <ColorSwatch key={color.variable} color={color} />
-            ))}
-          </div>
-        </ComponentPreview>
-      </ShowcaseSection>
-
-      <ShowcaseSection
-        title="Border Colors"
-        description="Subtle borders for separation without distraction"
-      >
-        <ComponentPreview>
-          <div style={{ width: '100%' }}>
-            {borderColors.map((color) => (
-              <ColorSwatch key={color.variable} color={color} />
-            ))}
-          </div>
-        </ComponentPreview>
-      </ShowcaseSection>
-
-      <ShowcaseSection title="Usage Example">
+      <ShowcaseSection title="Código de Ejemplo">
         <div style={{
-          padding: '24px',
-          backgroundColor: 'var(--sentinel-bg-elevated)',
-          borderRadius: 'var(--sentinel-radius-lg)',
-          border: '1px solid var(--sentinel-border-subtle)',
-          fontSize: '13px',
-          lineHeight: '1.8',
-          fontFamily: 'var(--sentinel-font-mono)'
+          padding: '20px',
+          borderRadius: '15px',
+          boxShadow: getNeuInsetShadow(5, 15),
+          background: LIGHT.base,
+          fontSize: '12px',
+          fontFamily: 'var(--sentinel-font-mono)',
+          color: '#636E72',
+          transition: 'box-shadow 50ms linear',
         }}>
-          <pre style={{ margin: 0, color: 'var(--sentinel-text-secondary)' }}>
-{`.sentinel-card {
-  background-color: var(--sentinel-bg-elevated);
-  border: 1px solid var(--sentinel-border-subtle);
-  color: var(--sentinel-text-primary);
-}
+          <pre style={{ margin: 0, whiteSpace: 'pre-wrap' }}>{`:root {
+  /* Neumorphic Base */
+  --neu-base: #e0e5ec;
+  --neu-shadow-light: #ffffff;
+  --neu-shadow-dark: hsl(220, 15%, 72%);
 
-.sentinel-button-primary {
-  background-color: var(--sentinel-accent-primary);
-  color: var(--sentinel-bg-base);
-}
+  /* Glass Colors (HSLA) */
+  --glass-teal: hsla(175, 35%, 60%, 0.28);
+  --glass-blue: hsla(215, 50%, 65%, 0.28);
+  --glass-green: hsla(145, 45%, 60%, 0.28);
+  --glass-red: hsla(355, 35%, 60%, 0.28);
 
-.market-indicator.bullish {
-  color: var(--sentinel-market-bull);
-}
-
-.risk-badge.high {
-  background-color: var(--sentinel-risk-high);
-}`}
-          </pre>
+  /* Usage */
+  .neu-panel {
+    background: var(--neu-base);
+    box-shadow:
+      -20px -20px 60px var(--neu-shadow-light),
+      20px 20px 60px var(--neu-shadow-dark);
+  }
+}`}</pre>
         </div>
       </ShowcaseSection>
     </div>
+  );
+}
+
+export function ColorsShowcase() {
+  return (
+    <LightEngineProvider initialAnimating={true} initialSpeed={0.3}>
+      <ColorsContent />
+    </LightEngineProvider>
   );
 }

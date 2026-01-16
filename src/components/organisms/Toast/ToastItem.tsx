@@ -1,5 +1,5 @@
 // Path: src/components/organisms/Toast/ToastItem.tsx
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, type ReactNode, type CSSProperties } from 'react';
 import {
   X,
   CheckCircle,
@@ -7,8 +7,18 @@ import {
   AlertTriangle,
   Info,
 } from 'lucide-react';
+import { useLightEngineOptional } from '@contexts/LightEngineContext';
 import type { ToastItemProps, ToastType } from './types';
 import styles from './Toast.module.css';
+
+// Glass hue presets for semantic toast types
+const GLASS_TYPE_HUES: Record<ToastType | 'default', { hue: number; sat: number }> = {
+  default: { hue: 175, sat: 35 },  // Primary teal
+  success: { hue: 145, sat: 45 },  // Green
+  error: { hue: 355, sat: 35 },    // Red
+  warning: { hue: 35, sat: 55 },   // Orange/amber
+  info: { hue: 215, sat: 50 },     // Blue
+};
 
 /* ═══════════════════════════════════════════════════════════════════════════════
    TOAST ITEM
@@ -16,7 +26,7 @@ import styles from './Toast.module.css';
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 // Get icon based on toast type
-function getTypeIcon(type: ToastType): React.ReactNode {
+function getTypeIcon(type: ToastType): ReactNode {
   switch (type) {
     case 'success':
       return <CheckCircle size={20} />;
@@ -31,9 +41,33 @@ function getTypeIcon(type: ToastType): React.ReactNode {
   }
 }
 
-export function ToastItem({ toast, onDismiss, position }: ToastItemProps) {
+export function ToastItem({
+  toast,
+  onDismiss,
+  position,
+  toastStyle = 'default',
+  dynamicShadows = true,
+}: ToastItemProps) {
   const [isExiting, setIsExiting] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+
+  // Get light engine context (optional)
+  const lightEngine = useLightEngineOptional();
+
+  // Get glass hue and saturation based on toast type
+  const glassHue = GLASS_TYPE_HUES[toast.type ?? 'default'];
+
+  // Get dynamic styles for glass variant
+  const getGlassDynamicStyles = (): CSSProperties | undefined => {
+    if (toastStyle !== 'glass' || !dynamicShadows || !lightEngine) return undefined;
+
+    const { shadows } = lightEngine;
+    return {
+      boxShadow: shadows.getLayeredShadow(glassHue.hue, glassHue.sat),
+      background: shadows.getGlassBackground(glassHue.hue, glassHue.sat),
+      borderColor: shadows.getGlassBorder(glassHue.hue, glassHue.sat),
+    };
+  };
 
   // Animation on mount
   useEffect(() => {
@@ -57,18 +91,54 @@ export function ToastItem({ toast, onDismiss, position }: ToastItemProps) {
 
   // Get type classes
   const getTypeClass = (): string => {
-    switch (toast.type) {
-      case 'success':
-        return styles.typeSuccess;
-      case 'error':
-        return styles.typeError;
-      case 'warning':
-        return styles.typeWarning;
-      case 'info':
-        return styles.typeInfo;
-      default:
-        return styles.typeDefault;
+    const classes: string[] = [];
+
+    // Add style variant
+    if (toastStyle === 'glass') {
+      classes.push(styles.styleGlass);
+      if (dynamicShadows && lightEngine) classes.push(styles.dynamicShadows);
     }
+
+    // Add type-specific class
+    if (toastStyle === 'glass') {
+      // Glass type classes
+      switch (toast.type) {
+        case 'success':
+          classes.push(styles.glassSuccess);
+          break;
+        case 'error':
+          classes.push(styles.glassError);
+          break;
+        case 'warning':
+          classes.push(styles.glassWarning);
+          break;
+        case 'info':
+          classes.push(styles.glassInfo);
+          break;
+        default:
+          classes.push(styles.glassDefault);
+      }
+    } else {
+      // Default neumorphic type classes
+      switch (toast.type) {
+        case 'success':
+          classes.push(styles.typeSuccess);
+          break;
+        case 'error':
+          classes.push(styles.typeError);
+          break;
+        case 'warning':
+          classes.push(styles.typeWarning);
+          break;
+        case 'info':
+          classes.push(styles.typeInfo);
+          break;
+        default:
+          classes.push(styles.typeDefault);
+      }
+    }
+
+    return classes.join(' ');
   };
 
   // Get animation classes based on position
@@ -92,6 +162,7 @@ export function ToastItem({ toast, onDismiss, position }: ToastItemProps) {
   return (
     <div
       className={`${styles.toast} ${getTypeClass()} ${getAnimationClass()}`}
+      style={getGlassDynamicStyles()}
       role="alert"
       aria-live={toast.type === 'error' ? 'assertive' : 'polite'}
     >

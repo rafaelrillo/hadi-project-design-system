@@ -1,7 +1,8 @@
 // Path: src/pages/Landing/Landing.tsx
 import { useEffect } from 'react';
-import { AtmosphericBackground } from '@/components/atoms/sentinel';
 import { ScrollProgress } from '@/components/atoms/ScrollProgress';
+import { AtmosphericBackground } from '@/components/atoms/sentinel/AtmosphericBackground';
+import { LightEngineProvider } from '@/contexts/LightEngineContext';
 import { useMarketStore } from '@/store';
 import {
   LandingNav,
@@ -25,41 +26,43 @@ export function Landing() {
   }, [fetchStocks]);
 
   return (
-    <div className={styles.container}>
-      {/* Background Effects - TEMPORARILY DISABLED */}
-      {/* <AtmosphericBackground variant="subtle" /> */}
-      <ScrollProgress />
+    <LightEngineProvider initialAnimating={true} initialSpeed={0.3}>
+      <div className={styles.container}>
+        {/* Background Effects - Re-enabled with Light Engine */}
+        <AtmosphericBackground variant="subtle" />
+        <ScrollProgress />
 
-      {/* Navigation */}
-      <LandingNav />
+        {/* Navigation */}
+        <LandingNav />
 
-      {/* Main Content */}
-      <main className={styles.main}>
-        {/* Hero Section */}
-        <LandingHero />
+        {/* Main Content */}
+        <main className={styles.main}>
+          {/* Hero Section */}
+          <LandingHero />
 
-        {/* Noise to Signal Transformation */}
-        <NoiseToSignal />
+          {/* Noise to Signal Transformation */}
+          <NoiseToSignal />
 
-        {/* Historical Timeline */}
-        <HistoricalTimeline />
+          {/* Historical Timeline */}
+          <HistoricalTimeline />
 
-        {/* Feature Showcase */}
-        <FeatureShowcase />
+          {/* Feature Showcase */}
+          <FeatureShowcase />
 
-        {/* Live Demo Widget */}
-        <LiveDemoWidget />
+          {/* Live Demo Widget */}
+          <LiveDemoWidget />
 
-        {/* Trust Section */}
-        <TrustSection />
+          {/* Trust Section */}
+          <TrustSection />
 
-        {/* Call to Action */}
-        <CTASection />
-      </main>
+          {/* Call to Action */}
+          <CTASection />
+        </main>
 
-      {/* Footer */}
-      <LandingFooter />
-    </div>
+        {/* Footer */}
+        <LandingFooter />
+      </div>
+    </LightEngineProvider>
   );
 }
 

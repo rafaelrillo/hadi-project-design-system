@@ -180,6 +180,146 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
+   STYLE: GLASS - Light glass toasts with semantic colors
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.styleGlass {
+  background: linear-gradient(
+    180deg,
+    hsla(175, 35%, 70%, 0.28) 0%,
+    hsla(175, 35%, 65%, 0.12) 50%,
+    hsla(175, 35%, 60%, 0.20) 100%
+  );
+  border: 1px solid hsla(175, 35%, 80%, 0.35);
+
+  /* Glass blur */
+  backdrop-filter: blur(8px) saturate(140%);
+  -webkit-backdrop-filter: blur(8px) saturate(140%);
+
+  /* Layered shadow */
+  box-shadow:
+    0 1px 2px hsla(175, 21%, 35%, 0.12),
+    0 2px 4px hsla(175, 21%, 35%, 0.10),
+    0 4px 8px hsla(175, 21%, 35%, 0.08),
+    0 8px 16px hsla(175, 21%, 35%, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* Glass luminous top edge */
+.styleGlass::before {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+}
+
+/* Glass Default (teal) */
+.glassDefault {
+  border-left: 3px solid hsla(175, 35%, 50%, 0.7);
+}
+
+.glassDefault .toastIcon {
+  color: var(--sentinel-accent-primary);
+}
+
+/* Glass Success (green) */
+.glassSuccess {
+  background: linear-gradient(
+    180deg,
+    hsla(145, 45%, 70%, 0.28) 0%,
+    hsla(145, 45%, 65%, 0.12) 50%,
+    hsla(145, 45%, 60%, 0.20) 100%
+  );
+  border: 1px solid hsla(145, 45%, 80%, 0.35);
+  border-left: 3px solid hsla(145, 45%, 50%, 0.7);
+  box-shadow:
+    0 1px 2px hsla(145, 27%, 35%, 0.12),
+    0 2px 4px hsla(145, 27%, 35%, 0.10),
+    0 4px 8px hsla(145, 27%, 35%, 0.08),
+    0 8px 16px hsla(145, 27%, 35%, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.glassSuccess .toastIcon {
+  color: var(--sentinel-status-positive);
+}
+
+/* Glass Error (red) */
+.glassError {
+  background: linear-gradient(
+    180deg,
+    hsla(355, 35%, 70%, 0.28) 0%,
+    hsla(355, 35%, 65%, 0.12) 50%,
+    hsla(355, 35%, 60%, 0.20) 100%
+  );
+  border: 1px solid hsla(355, 35%, 80%, 0.35);
+  border-left: 3px solid hsla(355, 35%, 50%, 0.7);
+  box-shadow:
+    0 1px 2px hsla(355, 21%, 35%, 0.12),
+    0 2px 4px hsla(355, 21%, 35%, 0.10),
+    0 4px 8px hsla(355, 21%, 35%, 0.08),
+    0 8px 16px hsla(355, 21%, 35%, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.glassError .toastIcon {
+  color: var(--sentinel-status-negative);
+}
+
+/* Glass Warning (orange/amber) */
+.glassWarning {
+  background: linear-gradient(
+    180deg,
+    hsla(35, 55%, 70%, 0.28) 0%,
+    hsla(35, 55%, 65%, 0.12) 50%,
+    hsla(35, 55%, 60%, 0.20) 100%
+  );
+  border: 1px solid hsla(35, 55%, 80%, 0.35);
+  border-left: 3px solid hsla(35, 55%, 50%, 0.7);
+  box-shadow:
+    0 1px 2px hsla(35, 33%, 35%, 0.12),
+    0 2px 4px hsla(35, 33%, 35%, 0.10),
+    0 4px 8px hsla(35, 33%, 35%, 0.08),
+    0 8px 16px hsla(35, 33%, 35%, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.glassWarning .toastIcon {
+  color: var(--sentinel-status-warning);
+}
+
+/* Glass Info (blue) */
+.glassInfo {
+  background: linear-gradient(
+    180deg,
+    hsla(215, 50%, 70%, 0.28) 0%,
+    hsla(215, 50%, 65%, 0.12) 50%,
+    hsla(215, 50%, 60%, 0.20) 100%
+  );
+  border: 1px solid hsla(215, 50%, 80%, 0.35);
+  border-left: 3px solid hsla(215, 50%, 50%, 0.7);
+  box-shadow:
+    0 1px 2px hsla(215, 30%, 35%, 0.12),
+    0 2px 4px hsla(215, 30%, 35%, 0.10),
+    0 4px 8px hsla(215, 30%, 35%, 0.08),
+    0 8px 16px hsla(215, 30%, 35%, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.glassInfo .toastIcon {
+  color: var(--sentinel-status-info);
+}
+
+/* Dynamic shadows - Light Engine Integration */
+.dynamicShadows {
+  transition: var(--transition-shadow);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
    ICON
    ───────────────────────────────────────────────────────────────────────────── */
 

@@ -5,6 +5,7 @@ export { ToastItem } from './ToastItem';
 export type {
   Toast,
   ToastType,
+  ToastStyle,
   ToastPosition,
   ToastAction,
   ToastInput,

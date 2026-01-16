@@ -7,6 +7,7 @@ export * from './BottomNavigation';
 export * from './MoreMenu';
 
 // Existing organisms
+export * from './Header';
 export * from './Searchbar';
 export * from './Sidebar';
 export * from './Modal';

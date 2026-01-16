@@ -70,3 +70,28 @@
   flex-shrink: 0;
   border-radius: var(--radius);
 }
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   NEU INSET STYLE - Neumorphic container
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.neuInset {
+  background: var(--neu-base);
+  padding: var(--sentinel-space-3) var(--sentinel-space-4);
+  border-radius: var(--radius-standard);
+  height: auto;
+
+  /* Neumorphic inset shadow */
+  box-shadow:
+    inset 4px 4px 10px var(--neu-shadow-dark),
+    inset -4px -4px 10px var(--neu-shadow-light);
+}
+
+.neuInset .productName {
+  text-shadow: none;
+}
+
+/* Dynamic shadows - Light Engine Integration */
+.dynamicShadows {
+  transition: var(--transition-shadow);
+}

@@ -1,7 +1,10 @@
 // Path: src/pages/charts/BoxplotChartShowcase.tsx
-import { ShowcaseSection, ComponentPreview } from '../../components/showcase';
+// SENTINEL Design System - Glass-Neumorphism Boxplot Chart
+import React, { useMemo } from 'react';
+import { ShowcaseSection } from '../../components/showcase';
 import { BoxplotChart } from '../../components/charts/echarts';
 import type { BoxplotData } from '../../components/charts/echarts';
+import { LightEngineProvider, useLightEngine } from '@/contexts/LightEngineContext';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // SAMPLE DATA
@@ -36,129 +39,104 @@ const monthlyVolatility: BoxplotData[] = [
 // COMPONENT
 // ─────────────────────────────────────────────────────────────────────────────
 
-export function BoxplotChartShowcase() {
+function BoxplotChartContent() {
+  const { lightAngle } = useLightEngine();
+
+  const shadowOffsets = useMemo(() => {
+    const shadowAngle = (lightAngle + 180) * (Math.PI / 180);
+    return { x: Math.cos(shadowAngle), y: Math.sin(shadowAngle) };
+  }, [lightAngle]);
+
+  const LIGHT = {
+    base: '#e0e5ec',
+    shadowDark: 'hsl(220 15% 72%)',
+    shadowLight: 'hsl(0 0% 100%)',
+  };
+
+  const getNeuPanelShadow = (distance: number, blur: number): string => {
+    const { x, y } = shadowOffsets;
+    return `${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}`;
+  };
+
+  const getNeuInsetShadow = (distance: number, blur: number): string => {
+    const { x, y } = shadowOffsets;
+    return `inset ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}`;
+  };
+
+  const pageHeaderStyles: React.CSSProperties = {
+    marginBottom: '32px', padding: '24px', background: LIGHT.base, borderRadius: '15px',
+    boxShadow: getNeuPanelShadow(20, 60), transition: 'box-shadow 50ms linear',
+  };
+
+  const titleStyles: React.CSSProperties = {
+    fontSize: '28px', fontWeight: 700, color: 'var(--sentinel-accent-primary)', marginBottom: '8px',
+    fontFamily: 'var(--sentinel-font-display)', textTransform: 'uppercase', letterSpacing: '0.1em',
+  };
+
+  const descStyles: React.CSSProperties = {
+    fontSize: '14px', color: 'var(--sentinel-text-secondary)', fontFamily: 'var(--sentinel-font-mono)',
+    textTransform: 'uppercase', letterSpacing: '0.03em',
+  };
+
+  const chartContainerStyles: React.CSSProperties = {
+    padding: '24px', background: LIGHT.base, borderRadius: '15px',
+    boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear',
+  };
+
+  const tableContainerStyles: React.CSSProperties = {
+    padding: '20px', borderRadius: '15px', boxShadow: getNeuInsetShadow(5, 15),
+    background: LIGHT.base, overflowX: 'auto', transition: 'box-shadow 50ms linear',
+  };
+
   return (
-    <div>
-      {/* Page Header */}
-      <header style={{ marginBottom: '32px' }}>
-        <h1 style={{
-          fontSize: '28px',
-          fontWeight: 600,
-          color: 'var(--sentinel-text-primary)',
-          marginBottom: '8px',
-          fontFamily: 'var(--sentinel-font-display)',
-        }}>
-          Boxplot Chart
-        </h1>
-        <p style={{
-          fontSize: '14px',
-          color: 'var(--sentinel-text-secondary)',
-          fontFamily: 'var(--sentinel-font-sans)',
-          maxWidth: '600px',
-        }}>
-          Statistical distribution visualization showing median, quartiles, and outliers.
-          Ideal for comparing return distributions, volatility ranges, and risk analysis.
-        </p>
+    <div style={{ background: LIGHT.base, minHeight: '100%', padding: '24px' }}>
+      <header style={pageHeaderStyles}>
+        <h1 style={titleStyles}>&gt; BoxplotChart_</h1>
+        <p style={descStyles}>// Distribución estadística con mediana, cuartiles y outliers</p>
       </header>
 
-      {/* Return Distribution */}
-      <ShowcaseSection
-        title="Return Distribution"
-        description="Stock return distributions with outliers"
-      >
-        <ComponentPreview>
-          <div style={{ width: '100%' }}>
-            <BoxplotChart
-              data={returnDistribution}
-              title="Annual Return Distribution (%)"
-              height={400}
-              formatValue={(v) => `${v}%`}
-            />
-          </div>
-        </ComponentPreview>
+      <ShowcaseSection title="Return Distribution" description="Stock return distributions with outliers">
+        <div style={chartContainerStyles}>
+          <BoxplotChart data={returnDistribution} title="Annual Return Distribution (%)" height={400} formatValue={(v) => `${v}%`} />
+        </div>
       </ShowcaseSection>
 
-      {/* Sector Comparison */}
-      <ShowcaseSection
-        title="Sector Comparison"
-        description="Compare distributions across sectors"
-      >
-        <ComponentPreview>
-          <div style={{ width: '100%' }}>
-            <BoxplotChart
-              data={sectorComparison}
-              title="Sector Performance Spread"
-              height={400}
-            />
-          </div>
-        </ComponentPreview>
+      <ShowcaseSection title="Sector Comparison" description="Compare distributions across sectors">
+        <div style={chartContainerStyles}>
+          <BoxplotChart data={sectorComparison} title="Sector Performance Spread" height={400} />
+        </div>
       </ShowcaseSection>
 
-      {/* Horizontal */}
-      <ShowcaseSection
-        title="Horizontal"
-        description="Horizontal orientation for long labels"
-      >
-        <ComponentPreview>
-          <div style={{ width: '100%' }}>
-            <BoxplotChart
-              data={returnDistribution}
-              title="Return Distribution"
-              height={400}
-              horizontal
-            />
-          </div>
-        </ComponentPreview>
+      <ShowcaseSection title="Horizontal" description="Horizontal orientation for long labels">
+        <div style={chartContainerStyles}>
+          <BoxplotChart data={returnDistribution} title="Return Distribution" height={400} horizontal />
+        </div>
       </ShowcaseSection>
 
-      {/* Monthly Volatility */}
-      <ShowcaseSection
-        title="Time Series"
-        description="Monthly volatility distribution"
-      >
-        <ComponentPreview>
-          <div style={{ width: '100%' }}>
-            <BoxplotChart
-              data={monthlyVolatility}
-              title="Monthly Volatility (VIX)"
-              height={350}
-            />
-          </div>
-        </ComponentPreview>
+      <ShowcaseSection title="Time Series" description="Monthly volatility distribution">
+        <div style={chartContainerStyles}>
+          <BoxplotChart data={monthlyVolatility} title="Monthly Volatility (VIX)" height={350} />
+        </div>
       </ShowcaseSection>
 
-      {/* Compact */}
-      <ShowcaseSection
-        title="Compact"
-        description="Smaller boxplot for dashboard widgets"
-      >
-        <ComponentPreview>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '24px', width: '100%' }}>
-            <div>
-              <BoxplotChart data={sectorComparison.slice(0, 4)} height={250} />
-            </div>
-            <div>
-              <BoxplotChart data={monthlyVolatility.slice(0, 4)} height={250} />
-            </div>
+      <ShowcaseSection title="Compact" description="Smaller boxplot for dashboard widgets">
+        <div style={chartContainerStyles}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '24px' }}>
+            <BoxplotChart data={sectorComparison.slice(0, 4)} height={250} />
+            <BoxplotChart data={monthlyVolatility.slice(0, 4)} height={250} />
           </div>
-        </ComponentPreview>
+        </div>
       </ShowcaseSection>
 
-      {/* API Reference */}
-      <ShowcaseSection title="API Reference">
-        <div style={{ overflowX: 'auto' }}>
-          <table style={{
-            width: '100%',
-            borderCollapse: 'collapse',
-            fontSize: '13px',
-            fontFamily: 'var(--sentinel-font-mono)',
-          }}>
+      <ShowcaseSection title="Especificaciones Técnicas">
+        <div style={tableContainerStyles}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12px', fontFamily: 'var(--sentinel-font-mono)' }}>
             <thead>
-              <tr style={{ borderBottom: '1px solid var(--sentinel-border-default)' }}>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-text-secondary)' }}>Prop</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-text-secondary)' }}>Type</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-text-secondary)' }}>Default</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-text-secondary)' }}>Description</th>
+              <tr>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-accent-primary)', fontWeight: 600 }}>Prop</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-accent-primary)', fontWeight: 600 }}>Type</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-accent-primary)', fontWeight: 600 }}>Default</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-accent-primary)', fontWeight: 600 }}>Description</th>
               </tr>
             </thead>
             <tbody>
@@ -170,11 +148,11 @@ export function BoxplotChartShowcase() {
                 { prop: 'colors', type: 'string[]', default: 'chartPalette', desc: 'Custom color palette' },
                 { prop: 'formatValue', type: '(v: number) => string', default: '-', desc: 'Value formatter' },
               ].map((row, i) => (
-                <tr key={i} style={{ borderBottom: '1px solid var(--sentinel-border-subtle)' }}>
-                  <td style={{ padding: '12px 16px', color: 'var(--sentinel-accent-primary)' }}>{row.prop}</td>
-                  <td style={{ padding: '12px 16px', color: 'var(--sentinel-text-tertiary)' }}>{row.type}</td>
-                  <td style={{ padding: '12px 16px', color: 'var(--sentinel-text-tertiary)' }}>{row.default}</td>
-                  <td style={{ padding: '12px 16px', color: 'var(--sentinel-text-secondary)' }}>{row.desc}</td>
+                <tr key={i}>
+                  <td style={{ padding: '12px 16px', color: '#2D3436' }}>{row.prop}</td>
+                  <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.type}</td>
+                  <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.default}</td>
+                  <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.desc}</td>
                 </tr>
               ))}
             </tbody>
@@ -182,6 +160,14 @@ export function BoxplotChartShowcase() {
         </div>
       </ShowcaseSection>
     </div>
+  );
+}
+
+export function BoxplotChartShowcase() {
+  return (
+    <LightEngineProvider initialAnimating={true} initialSpeed={0.3}>
+      <BoxplotChartContent />
+    </LightEngineProvider>
   );
 }
 

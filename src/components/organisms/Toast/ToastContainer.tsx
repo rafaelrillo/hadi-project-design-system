@@ -1,6 +1,6 @@
 // Path: src/components/organisms/Toast/ToastContainer.tsx
 import { createPortal } from 'react-dom';
-import type { Toast, ToastPosition } from './types';
+import type { Toast, ToastPosition, ToastStyle } from './types';
 import { ToastItem } from './ToastItem';
 import styles from './Toast.module.css';
 
@@ -14,6 +14,10 @@ interface ToastContainerProps {
   onDismiss: (id: string) => void;
   position: ToastPosition;
   gap: number;
+  /** Visual style variant */
+  toastStyle?: ToastStyle;
+  /** Enable dynamic shadows from Light Engine */
+  dynamicShadows?: boolean;
 }
 
 export function ToastContainer({
@@ -21,6 +25,8 @@ export function ToastContainer({
   onDismiss,
   position,
   gap,
+  toastStyle = 'default',
+  dynamicShadows = true,
 }: ToastContainerProps) {
   // Don't render if no toasts
   if (toasts.length === 0) return null;
@@ -76,6 +82,8 @@ export function ToastContainer({
           toast={toast}
           onDismiss={onDismiss}
           position={position}
+          toastStyle={toastStyle}
+          dynamicShadows={dynamicShadows}
         />
       ))}
     </div>

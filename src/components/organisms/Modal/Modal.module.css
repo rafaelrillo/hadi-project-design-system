@@ -239,6 +239,59 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
+   NEU PANEL STYLE - Pure neumorphic modal
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.neuPanel {
+  background: var(--neu-base);
+  border: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+
+  /* Pure neumorphic shadow */
+  box-shadow:
+    12px 12px 24px var(--neu-shadow-dark),
+    -12px -12px 24px var(--neu-shadow-light),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 0 60px rgba(163, 177, 198, 0.2);
+}
+
+.neuPanel::before {
+  display: none;
+}
+
+.neuPanel .header {
+  background: transparent;
+  border-bottom-color: rgba(163, 177, 198, 0.2);
+}
+
+.neuPanel .footer {
+  background: transparent;
+  border-top-color: rgba(163, 177, 198, 0.2);
+}
+
+.neuPanel .closeButton {
+  background: var(--neu-base);
+  box-shadow:
+    3px 3px 6px var(--neu-shadow-dark),
+    -3px -3px 6px var(--neu-shadow-light);
+}
+
+.neuPanel .closeButton:hover {
+  box-shadow:
+    4px 4px 8px var(--neu-shadow-dark),
+    -4px -4px 8px var(--neu-shadow-light);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   DYNAMIC SHADOWS - Light Engine Integration
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.dynamicShadows {
+  transition: var(--transition-shadow);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
    REDUCED MOTION
    ───────────────────────────────────────────────────────────────────────────── */
 

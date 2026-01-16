@@ -1,4 +1,6 @@
 // Path: src/pages/charts/ChartsShowcase.tsx
+// SENTINEL Design System - Glass-Neumorphism Charts Hub
+import { useMemo } from 'react';
 import { ShowcaseSection } from '../../components/showcase';
 import {
   CandlestickChart,
@@ -54,6 +56,7 @@ import {
   ImageIcon,
 } from 'lucide-react';
 import type { CSSProperties } from 'react';
+import { LightEngineProvider, useLightEngine } from '@/contexts/LightEngineContext';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // SAMPLE DATA - FINANCIAL
@@ -165,11 +168,6 @@ const barData = [
   { category: 'Energy', value: 18000 },
   { category: 'Consumer', value: 42000 },
   { category: 'Industrial', value: 22000 },
-];
-
-const barMultiSeries = [
-  { name: '2023', data: [35000, 22000, 28000, 15000, 32000, 18000] },
-  { name: '2024', data: [45000, 28000, 35000, 18000, 42000, 22000] },
 ];
 
 const monthlyReturns = [
@@ -387,7 +385,6 @@ const generateCalendarData = () => {
     const date = new Date(startDate);
     date.setDate(startDate.getDate() + i);
     const dateStr = date.toISOString().split('T')[0];
-    // Simulate trading activity (higher on weekdays)
     const dayOfWeek = date.getDay();
     const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
     const value = isWeekend ? Math.random() * 20 : Math.random() * 80 + 20;
@@ -402,7 +399,6 @@ const calendarData = generateCalendarData();
 // SAMPLE DATA - BOXPLOT
 // ─────────────────────────────────────────────────────────────────────────────
 
-// BoxplotData.value is [min, Q1, median, Q3, max]
 const boxplotData = [
   { name: 'AAPL', value: [145, 165, 178, 192, 210] as [number, number, number, number, number] },
   { name: 'MSFT', value: [280, 320, 358, 390, 420] as [number, number, number, number, number] },
@@ -547,78 +543,100 @@ const pictorialData = [
   { name: 'Q4', value: 89000, symbol: pictorialSymbols.chart },
 ];
 
-const pictorialKPIData = [
-  { name: 'Revenue', value: 85 },
-  { name: 'Profit', value: 72 },
-  { name: 'Growth', value: 93 },
-  { name: 'Retention', value: 78 },
-];
-
 // ─────────────────────────────────────────────────────────────────────────────
-// STYLES
+// CHARTS CONTENT COMPONENT
 // ─────────────────────────────────────────────────────────────────────────────
 
-const pageHeaderStyles: CSSProperties = {
-  marginBottom: '48px',
-};
+function ChartsContent() {
+  const { lightAngle } = useLightEngine();
 
-const titleStyles: CSSProperties = {
-  fontSize: '32px',
-  fontWeight: 300,
-  color: 'var(--sentinel-text-primary)',
-  marginBottom: '12px',
-  fontFamily: 'var(--sentinel-font-primary)',
-  letterSpacing: '-0.02em',
-};
+  const shadowOffsets = useMemo(() => {
+    const shadowAngle = (lightAngle + 180) * (Math.PI / 180);
+    return { x: Math.cos(shadowAngle), y: Math.sin(shadowAngle) };
+  }, [lightAngle]);
 
-const descStyles: CSSProperties = {
-  fontSize: '14px',
-  color: 'var(--sentinel-text-secondary)',
-  fontFamily: 'var(--sentinel-font-primary)',
-  fontWeight: 400,
-  maxWidth: '700px',
-  lineHeight: 1.6,
-};
+  const LIGHT = {
+    base: '#e0e5ec',
+    shadowDark: 'hsl(220 15% 72%)',
+    shadowLight: 'hsl(0 0% 100%)',
+  };
 
-const sectionTitleStyles: CSSProperties = {
-  fontSize: '14px',
-  fontWeight: 600,
-  color: 'var(--sentinel-accent-primary)',
-  textTransform: 'uppercase',
-  letterSpacing: '0.1em',
-  marginBottom: '24px',
-  marginTop: '56px',
-  display: 'flex',
-  alignItems: 'center',
-  gap: '12px',
-  borderBottom: '1px solid var(--sentinel-border-subtle)',
-  paddingBottom: '12px',
-};
+  const getNeuPanelShadow = (distance: number, blur: number): string => {
+    const { x, y } = shadowOffsets;
+    return `${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}`;
+  };
 
-const gridStyles: CSSProperties = {
-  display: 'grid',
-  gridTemplateColumns: 'repeat(4, 1fr)',
-  gap: '16px',
-  marginBottom: '32px',
-};
+  const getNeuInsetShadow = (distance: number, blur: number): string => {
+    const { x, y } = shadowOffsets;
+    return `inset ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}`;
+  };
 
-const chartContainerStyles: CSSProperties = {
-  background: 'var(--sentinel-bg-elevated)',
-  border: '1px solid var(--sentinel-border-subtle)',
-  borderRadius: 'var(--sentinel-radius-lg)',
-  padding: '20px',
-};
+  const pageHeaderStyles: CSSProperties = {
+    marginBottom: '48px',
+    padding: '24px',
+    background: LIGHT.base,
+    borderRadius: '15px',
+    boxShadow: getNeuPanelShadow(20, 60),
+    transition: 'box-shadow 50ms linear',
+  };
 
-// ─────────────────────────────────────────────────────────────────────────────
-// COMPONENT
-// ─────────────────────────────────────────────────────────────────────────────
+  const titleStyles: CSSProperties = {
+    fontSize: '32px',
+    fontWeight: 700,
+    color: 'var(--sentinel-accent-primary)',
+    marginBottom: '12px',
+    fontFamily: 'var(--sentinel-font-display)',
+    textTransform: 'uppercase',
+    letterSpacing: '0.1em',
+  };
 
-export function ChartsShowcase() {
+  const descStyles: CSSProperties = {
+    fontSize: '14px',
+    color: '#636E72',
+    fontFamily: 'var(--sentinel-font-mono)',
+    fontWeight: 400,
+    maxWidth: '700px',
+    lineHeight: 1.6,
+  };
+
+  const sectionTitleStyles: CSSProperties = {
+    fontSize: '14px',
+    fontWeight: 600,
+    color: 'var(--sentinel-accent-primary)',
+    textTransform: 'uppercase',
+    letterSpacing: '0.1em',
+    marginBottom: '24px',
+    marginTop: '56px',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '12px',
+    padding: '16px 20px',
+    background: LIGHT.base,
+    borderRadius: '15px',
+    boxShadow: getNeuPanelShadow(6, 18),
+    transition: 'box-shadow 50ms linear',
+  };
+
+  const gridStyles: CSSProperties = {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(4, 1fr)',
+    gap: '16px',
+    marginBottom: '32px',
+  };
+
+  const chartContainerStyles: CSSProperties = {
+    background: LIGHT.base,
+    borderRadius: '15px',
+    padding: '20px',
+    boxShadow: getNeuPanelShadow(6, 18),
+    transition: 'box-shadow 50ms linear',
+  };
+
   return (
-    <div style={{ padding: '32px' }}>
+    <div style={{ background: LIGHT.base, minHeight: '100%', padding: '32px' }}>
       {/* Page Header */}
       <header style={pageHeaderStyles}>
-        <h1 style={titleStyles}>Charts</h1>
+        <h1 style={titleStyles}>&gt; Charts_</h1>
         <p style={descStyles}>
           Comprehensive chart library powered by ECharts with full SENTINEL theme integration.
           High-performance, interactive visualizations for financial data, comparisons, flows, and more.
@@ -712,20 +730,6 @@ export function ChartsShowcase() {
         </div>
       </ShowcaseSection>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
-        <ShowcaseSection title="Smooth Curves" description="Smooth interpolation.">
-          <div style={chartContainerStyles}>
-            <LineChart data={lineChartData} height={220} smooth formatValue={(v) => `$${(v / 1000).toFixed(0)}K`} />
-          </div>
-        </ShowcaseSection>
-
-        <ShowcaseSection title="Sparkline Mode" description="Minimal view without axes.">
-          <div style={chartContainerStyles}>
-            <LineChart data={lineChartData} height={100} minimal enableArea />
-          </div>
-        </ShowcaseSection>
-      </div>
-
       {/* BAR CHARTS */}
       <h2 style={sectionTitleStyles}>
         <BarChart3 size={18} />
@@ -742,32 +746,6 @@ export function ChartsShowcase() {
           />
         </div>
       </ShowcaseSection>
-
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
-        <ShowcaseSection title="Horizontal Bars" description="Better for long category names.">
-          <div style={chartContainerStyles}>
-            <BarChart
-              categories={barCategories}
-              data={barData}
-              height={280}
-              horizontal
-              formatValue={(v) => `$${(v / 1000).toFixed(0)}K`}
-            />
-          </div>
-        </ShowcaseSection>
-
-        <ShowcaseSection title="Stacked Multi-Series" description="Year over year comparison.">
-          <div style={chartContainerStyles}>
-            <BarChart
-              categories={barCategories}
-              data={barMultiSeries}
-              height={280}
-              stacked
-              formatValue={(v) => `$${(v / 1000).toFixed(0)}K`}
-            />
-          </div>
-        </ShowcaseSection>
-      </div>
 
       <ShowcaseSection title="Positive/Negative Coloring" description="Monthly returns with automatic coloring.">
         <div style={chartContainerStyles}>
@@ -827,20 +805,6 @@ export function ChartsShowcase() {
           <RadarChart indicators={radarIndicators} data={radarData} height={350} shape="polygon" />
         </div>
       </ShowcaseSection>
-
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
-        <ShowcaseSection title="Circle Shape" description="Smooth circular grid.">
-          <div style={chartContainerStyles}>
-            <RadarChart indicators={radarIndicators} data={[radarData[0]]} height={280} shape="circle" />
-          </div>
-        </ShowcaseSection>
-
-        <ShowcaseSection title="Polygon Shape" description="Angular grid lines.">
-          <div style={chartContainerStyles}>
-            <RadarChart indicators={radarIndicators} data={[radarData[1]]} height={280} shape="polygon" />
-          </div>
-        </ShowcaseSection>
-      </div>
 
       {/* GAUGE CHART */}
       <h2 style={sectionTitleStyles}>
@@ -921,34 +885,6 @@ export function ChartsShowcase() {
         </div>
       </ShowcaseSection>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
-        <ShowcaseSection title="Diverging Colors" description="For positive/negative values.">
-          <div style={chartContainerStyles}>
-            <HeatMap
-              data={heatMapData.map((d) => ({ ...d, value: d.value * 2 - 1 }))}
-              xCategories={heatMapXCategories}
-              yCategories={heatMapYCategories}
-              height={280}
-              colorScheme="diverging"
-              minValue={-1}
-              maxValue={1}
-            />
-          </div>
-        </ShowcaseSection>
-
-        <ShowcaseSection title="Without Values" description="Cleaner for large matrices.">
-          <div style={chartContainerStyles}>
-            <HeatMap
-              data={heatMapData}
-              xCategories={heatMapXCategories}
-              yCategories={heatMapYCategories}
-              height={280}
-              showValues={false}
-            />
-          </div>
-        </ShowcaseSection>
-      </div>
-
       {/* SCATTER CHART */}
       <h2 style={sectionTitleStyles}>
         <Zap size={18} />
@@ -1005,20 +941,6 @@ export function ChartsShowcase() {
         </div>
       </ShowcaseSection>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
-        <ShowcaseSection title="Circular Layout" description="Organized circular arrangement.">
-          <div style={chartContainerStyles}>
-            <GraphChart data={graphData} height={350} layout="circular" />
-          </div>
-        </ShowcaseSection>
-
-        <ShowcaseSection title="Force Layout" description="Physics-based positioning.">
-          <div style={chartContainerStyles}>
-            <GraphChart data={graphData} height={350} layout="force" repulsion={300} />
-          </div>
-        </ShowcaseSection>
-      </div>
-
       {/* ═══════════════════════════════════════════════════════════════════════ */}
       {/* TIME-BASED CHARTS */}
       {/* ═══════════════════════════════════════════════════════════════════════ */}
@@ -1046,20 +968,6 @@ export function ChartsShowcase() {
           <BoxplotChart data={boxplotData} height={350} formatValue={(v) => `$${v.toFixed(0)}`} />
         </div>
       </ShowcaseSection>
-
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
-        <ShowcaseSection title="Horizontal Boxplot" description="Horizontal orientation for long names.">
-          <div style={chartContainerStyles}>
-            <BoxplotChart data={boxplotData} height={300} horizontal formatValue={(v) => `$${v.toFixed(0)}`} />
-          </div>
-        </ShowcaseSection>
-
-        <ShowcaseSection title="Vertical Boxplot" description="Standard vertical orientation.">
-          <div style={chartContainerStyles}>
-            <BoxplotChart data={boxplotData.slice(0, 3)} height={300} formatValue={(v) => `$${v.toFixed(0)}`} />
-          </div>
-        </ShowcaseSection>
-      </div>
 
       {/* ═══════════════════════════════════════════════════════════════════════ */}
       {/* STREAM / RIVER CHARTS */}
@@ -1103,20 +1011,6 @@ export function ChartsShowcase() {
         </div>
       </ShowcaseSection>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
-        <ShowcaseSection title="Top to Bottom" description="Vertical tree layout.">
-          <div style={chartContainerStyles}>
-            <TreeChart data={treeData} height={400} layout="orthogonal" orient="TB" initialExpandLevel={2} symbolSize={8} />
-          </div>
-        </ShowcaseSection>
-
-        <ShowcaseSection title="Radial Layout" description="Circular tree arrangement.">
-          <div style={chartContainerStyles}>
-            <TreeChart data={treeData} height={400} layout="radial" initialExpandLevel={3} symbolSize={8} />
-          </div>
-        </ShowcaseSection>
-      </div>
-
       {/* ═══════════════════════════════════════════════════════════════════════ */}
       {/* EFFECT SCATTER CHARTS */}
       {/* ═══════════════════════════════════════════════════════════════════════ */}
@@ -1157,237 +1051,44 @@ export function ChartsShowcase() {
         </div>
       </ShowcaseSection>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
-        <ShowcaseSection title="KPI Progress" description="Progress indicators with percentage fill.">
-          <div style={chartContainerStyles}>
-            <PictorialBarChart
-              data={pictorialKPIData}
-              height={280}
-              horizontal
-              maxValue={100}
-              formatValue={(v) => `${v}%`}
-            />
-          </div>
-        </ShowcaseSection>
-
-        <ShowcaseSection title="With Different Symbols" description="Custom SVG paths for each item.">
-          <div style={chartContainerStyles}>
-            <PictorialBarChart
-              data={[
-                { name: 'Users', value: 1250 },
-                { name: 'Revenue', value: 890 },
-                { name: 'Growth', value: 2100 },
-                { name: 'Savings', value: 1600 },
-              ]}
-              height={280}
-              symbol={pictorialSymbols.roundRect}
-              symbolSize={35}
-            />
-          </div>
-        </ShowcaseSection>
-      </div>
-
       {/* ═══════════════════════════════════════════════════════════════════════ */}
       {/* API REFERENCE */}
       {/* ═══════════════════════════════════════════════════════════════════════ */}
       <h2 style={sectionTitleStyles}>API Reference</h2>
 
       <ShowcaseSection title="ECharts Components Overview">
-        <div
-          style={{
-            ...chartContainerStyles,
-            fontSize: '13px',
-            color: 'var(--sentinel-text-secondary)',
-            lineHeight: 1.8,
-          }}
-        >
-          <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-            <thead>
-              <tr style={{ borderBottom: '1px solid var(--sentinel-border-subtle)' }}>
-                <th
-                  style={{
-                    textAlign: 'left',
-                    padding: '12px 16px',
-                    color: 'var(--sentinel-accent-primary)',
-                    fontSize: '12px',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.05em',
-                  }}
-                >
-                  Component
-                </th>
-                <th
-                  style={{
-                    textAlign: 'left',
-                    padding: '12px 16px',
-                    color: 'var(--sentinel-accent-primary)',
-                    fontSize: '12px',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.05em',
-                  }}
-                >
-                  Category
-                </th>
-                <th
-                  style={{
-                    textAlign: 'left',
-                    padding: '12px 16px',
-                    color: 'var(--sentinel-accent-primary)',
-                    fontSize: '12px',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.05em',
-                  }}
-                >
-                  Use Case
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr style={{ borderBottom: '1px solid var(--sentinel-border-subtle)' }}>
-                <td style={{ padding: '12px 16px', fontWeight: 500, color: 'var(--sentinel-text-primary)' }}>
-                  CandlestickChart
-                </td>
-                <td style={{ padding: '12px 16px' }}>Financial</td>
-                <td style={{ padding: '12px 16px' }}>OHLC price data, trading analysis</td>
-              </tr>
-              <tr style={{ borderBottom: '1px solid var(--sentinel-border-subtle)' }}>
-                <td style={{ padding: '12px 16px', fontWeight: 500, color: 'var(--sentinel-text-primary)' }}>
-                  LineChart
-                </td>
-                <td style={{ padding: '12px 16px' }}>Financial</td>
-                <td style={{ padding: '12px 16px' }}>Time series, trends, portfolio performance</td>
-              </tr>
-              <tr style={{ borderBottom: '1px solid var(--sentinel-border-subtle)' }}>
-                <td style={{ padding: '12px 16px', fontWeight: 500, color: 'var(--sentinel-text-primary)' }}>
-                  BarChart
-                </td>
-                <td style={{ padding: '12px 16px' }}>Financial</td>
-                <td style={{ padding: '12px 16px' }}>Category comparison, distributions</td>
-              </tr>
-              <tr style={{ borderBottom: '1px solid var(--sentinel-border-subtle)' }}>
-                <td style={{ padding: '12px 16px', fontWeight: 500, color: 'var(--sentinel-text-primary)' }}>
-                  PieChart
-                </td>
-                <td style={{ padding: '12px 16px' }}>Circular</td>
-                <td style={{ padding: '12px 16px' }}>Allocation, composition breakdown</td>
-              </tr>
-              <tr style={{ borderBottom: '1px solid var(--sentinel-border-subtle)' }}>
-                <td style={{ padding: '12px 16px', fontWeight: 500, color: 'var(--sentinel-text-primary)' }}>
-                  RadarChart
-                </td>
-                <td style={{ padding: '12px 16px' }}>Circular</td>
-                <td style={{ padding: '12px 16px' }}>Multi-dimensional comparison</td>
-              </tr>
-              <tr style={{ borderBottom: '1px solid var(--sentinel-border-subtle)' }}>
-                <td style={{ padding: '12px 16px', fontWeight: 500, color: 'var(--sentinel-text-primary)' }}>
-                  GaugeChart
-                </td>
-                <td style={{ padding: '12px 16px' }}>Circular</td>
-                <td style={{ padding: '12px 16px' }}>Risk levels, progress, scores</td>
-              </tr>
-              <tr style={{ borderBottom: '1px solid var(--sentinel-border-subtle)' }}>
-                <td style={{ padding: '12px 16px', fontWeight: 500, color: 'var(--sentinel-text-primary)' }}>
-                  SunburstChart
-                </td>
-                <td style={{ padding: '12px 16px' }}>Circular</td>
-                <td style={{ padding: '12px 16px' }}>Hierarchical data drill-down</td>
-              </tr>
-              <tr style={{ borderBottom: '1px solid var(--sentinel-border-subtle)' }}>
-                <td style={{ padding: '12px 16px', fontWeight: 500, color: 'var(--sentinel-text-primary)' }}>
-                  TreeMap
-                </td>
-                <td style={{ padding: '12px 16px' }}>Comparison</td>
-                <td style={{ padding: '12px 16px' }}>Portfolio allocation by size</td>
-              </tr>
-              <tr style={{ borderBottom: '1px solid var(--sentinel-border-subtle)' }}>
-                <td style={{ padding: '12px 16px', fontWeight: 500, color: 'var(--sentinel-text-primary)' }}>
-                  HeatMap
-                </td>
-                <td style={{ padding: '12px 16px' }}>Comparison</td>
-                <td style={{ padding: '12px 16px' }}>Correlation matrices, intensity data</td>
-              </tr>
-              <tr style={{ borderBottom: '1px solid var(--sentinel-border-subtle)' }}>
-                <td style={{ padding: '12px 16px', fontWeight: 500, color: 'var(--sentinel-text-primary)' }}>
-                  ScatterChart
-                </td>
-                <td style={{ padding: '12px 16px' }}>Comparison</td>
-                <td style={{ padding: '12px 16px' }}>Risk/return analysis, correlations</td>
-              </tr>
-              <tr style={{ borderBottom: '1px solid var(--sentinel-border-subtle)' }}>
-                <td style={{ padding: '12px 16px', fontWeight: 500, color: 'var(--sentinel-text-primary)' }}>
-                  SankeyChart
-                </td>
-                <td style={{ padding: '12px 16px' }}>Flow</td>
-                <td style={{ padding: '12px 16px' }}>Capital flows, money movement</td>
-              </tr>
-              <tr style={{ borderBottom: '1px solid var(--sentinel-border-subtle)' }}>
-                <td style={{ padding: '12px 16px', fontWeight: 500, color: 'var(--sentinel-text-primary)' }}>
-                  FunnelChart
-                </td>
-                <td style={{ padding: '12px 16px' }}>Flow</td>
-                <td style={{ padding: '12px 16px' }}>Conversion pipelines, processes</td>
-              </tr>
-              <tr style={{ borderBottom: '1px solid var(--sentinel-border-subtle)' }}>
-                <td style={{ padding: '12px 16px', fontWeight: 500, color: 'var(--sentinel-text-primary)' }}>
-                  GraphChart
-                </td>
-                <td style={{ padding: '12px 16px' }}>Flow</td>
-                <td style={{ padding: '12px 16px' }}>Network relationships, correlations</td>
-              </tr>
-              <tr style={{ borderBottom: '1px solid var(--sentinel-border-subtle)' }}>
-                <td style={{ padding: '12px 16px', fontWeight: 500, color: 'var(--sentinel-text-primary)' }}>
-                  CalendarChart
-                </td>
-                <td style={{ padding: '12px 16px' }}>Time-based</td>
-                <td style={{ padding: '12px 16px' }}>Activity heatmaps by date</td>
-              </tr>
-              <tr style={{ borderBottom: '1px solid var(--sentinel-border-subtle)' }}>
-                <td style={{ padding: '12px 16px', fontWeight: 500, color: 'var(--sentinel-text-primary)' }}>
-                  BoxplotChart
-                </td>
-                <td style={{ padding: '12px 16px' }}>Statistical</td>
-                <td style={{ padding: '12px 16px' }}>Distribution analysis, quartiles</td>
-              </tr>
-              <tr style={{ borderBottom: '1px solid var(--sentinel-border-subtle)' }}>
-                <td style={{ padding: '12px 16px', fontWeight: 500, color: 'var(--sentinel-text-primary)' }}>
-                  ThemeRiverChart
-                </td>
-                <td style={{ padding: '12px 16px' }}>Stream</td>
-                <td style={{ padding: '12px 16px' }}>Proportions over time, trends</td>
-              </tr>
-              <tr style={{ borderBottom: '1px solid var(--sentinel-border-subtle)' }}>
-                <td style={{ padding: '12px 16px', fontWeight: 500, color: 'var(--sentinel-text-primary)' }}>
-                  ParallelChart
-                </td>
-                <td style={{ padding: '12px 16px' }}>Multi-dimensional</td>
-                <td style={{ padding: '12px 16px' }}>Multi-metric comparison</td>
-              </tr>
-              <tr style={{ borderBottom: '1px solid var(--sentinel-border-subtle)' }}>
-                <td style={{ padding: '12px 16px', fontWeight: 500, color: 'var(--sentinel-text-primary)' }}>
-                  TreeChart
-                </td>
-                <td style={{ padding: '12px 16px' }}>Hierarchical</td>
-                <td style={{ padding: '12px 16px' }}>Org charts, decision trees</td>
-              </tr>
-              <tr style={{ borderBottom: '1px solid var(--sentinel-border-subtle)' }}>
-                <td style={{ padding: '12px 16px', fontWeight: 500, color: 'var(--sentinel-text-primary)' }}>
-                  EffectScatterChart
-                </td>
-                <td style={{ padding: '12px 16px' }}>Effect</td>
-                <td style={{ padding: '12px 16px' }}>Highlight points with animations</td>
-              </tr>
-              <tr>
-                <td style={{ padding: '12px 16px', fontWeight: 500, color: 'var(--sentinel-text-primary)' }}>
-                  PictorialBarChart
-                </td>
-                <td style={{ padding: '12px 16px' }}>Pictorial</td>
-                <td style={{ padding: '12px 16px' }}>Visual KPIs with custom symbols</td>
-              </tr>
-            </tbody>
-          </table>
+        <div style={{
+          ...chartContainerStyles,
+          boxShadow: getNeuInsetShadow(5, 15),
+          fontSize: '12px',
+          fontFamily: 'var(--sentinel-font-mono)',
+          color: '#636E72',
+          lineHeight: '1.8',
+        }}>
+          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Financial:</strong> CandlestickChart, LineChart, BarChart</p>
+          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Circular:</strong> PieChart, RadarChart, GaugeChart, SunburstChart</p>
+          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Comparison:</strong> TreeMap, HeatMap, ScatterChart, BoxplotChart</p>
+          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Flow:</strong> SankeyChart, FunnelChart, GraphChart</p>
+          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Time-based:</strong> CalendarChart, ThemeRiverChart</p>
+          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Multi-dimensional:</strong> ParallelChart</p>
+          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Hierarchical:</strong> TreeChart</p>
+          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Effect:</strong> EffectScatterChart</p>
+          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Pictorial:</strong> PictorialBarChart</p>
         </div>
       </ShowcaseSection>
     </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// COMPONENT EXPORT
+// ─────────────────────────────────────────────────────────────────────────────
+
+export function ChartsShowcase() {
+  return (
+    <LightEngineProvider initialAnimating={true} initialSpeed={0.3}>
+      <ChartsContent />
+    </LightEngineProvider>
   );
 }
 

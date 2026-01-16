@@ -129,6 +129,49 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
+   VARIANT: PREMIUM - Purple glass for special features
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.premium {
+  background: linear-gradient(
+    180deg,
+    hsla(280, 40%, 65%, 0.25) 0%,
+    hsla(280, 40%, 60%, 0.12) 50%,
+    hsla(280, 40%, 65%, 0.20) 100%
+  );
+  border-color: hsla(280, 40%, 75%, 0.25);
+  color: hsl(280, 32%, 30%);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+
+  box-shadow:
+    var(--sentinel-neu-elevated-xs),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   VARIANT: GLASS - Dynamic Light Engine glass badge
+   Base styles - can be overridden by inline styles for custom hue/sat
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.glass {
+  background: linear-gradient(
+    180deg,
+    hsla(var(--glass-hue-primary), calc(var(--glass-sat-primary) * 1%), 65%, 0.25) 0%,
+    hsla(var(--glass-hue-primary), calc(var(--glass-sat-primary) * 1%), 60%, 0.12) 50%,
+    hsla(var(--glass-hue-primary), calc(var(--glass-sat-primary) * 1%), 65%, 0.20) 100%
+  );
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid hsla(var(--glass-hue-primary), calc(var(--glass-sat-primary) * 1%), 75%, 0.25);
+  border-radius: var(--radius-standard);
+  font-weight: var(--sentinel-font-semibold);
+
+  /* Fast transition for light engine responsiveness */
+  transition: var(--transition-shadow);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
    MODIFIER: OUTLINED - No glass fill
    ───────────────────────────────────────────────────────────────────────────── */
 

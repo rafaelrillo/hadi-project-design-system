@@ -1,335 +1,393 @@
 // Path: src/pages/styles/ShadowsShowcase.tsx
-// SENTINEL Design System - Shadows
-import React from 'react';
-import { ShowcaseSection, ComponentPreview } from '../../components/showcase';
+// SENTINEL Design System - Glass-Neumorphism Shadows
+import React, { useMemo } from 'react';
+import { ShowcaseSection } from '../../components/showcase';
+import { LightEngineProvider, useLightEngine } from '@/contexts/LightEngineContext';
+import { Sun } from 'lucide-react';
 
-export function ShadowsShowcase() {
+// Inner component that uses the light engine context
+function ShadowsContent() {
+  const { lightAngle } = useLightEngine();
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // SHADOW CALCULATIONS (from Home.tsx)
+  // ═══════════════════════════════════════════════════════════════════════════
+  const shadowOffsets = useMemo(() => {
+    const shadowAngle = (lightAngle + 180) * (Math.PI / 180);
+    const x = Math.cos(shadowAngle);
+    const y = Math.sin(shadowAngle);
+    return { x, y };
+  }, [lightAngle]);
+
+  const LIGHT = {
+    base: '#e0e5ec',
+    shadowDark: 'hsl(220 15% 72%)',
+    shadowLight: 'hsl(0 0% 100%)',
+  };
+
+  // Neumorphic elevated shadow
+  const getNeuPanelShadow = (distance: number, blur: number): string => {
+    const { x, y } = shadowOffsets;
+    const hlX = -x * distance;
+    const hlY = -y * distance;
+    const shX = x * distance;
+    const shY = y * distance;
+    return `${hlX}px ${hlY}px ${blur}px ${LIGHT.shadowLight}, ${shX}px ${shY}px ${blur}px ${LIGHT.shadowDark}`;
+  };
+
+  // Neumorphic inset shadow
+  const getNeuInsetShadow = (distance: number, blur: number): string => {
+    const { x, y } = shadowOffsets;
+    const shX = x * distance;
+    const shY = y * distance;
+    return `inset ${shX}px ${shY}px ${blur}px ${LIGHT.shadowDark}, inset ${-shX}px ${-shY}px ${blur}px ${LIGHT.shadowLight}`;
+  };
+
+  // Layered shadow for glass elements
+  const getLayeredShadow = (hue: number, sat: number): string => {
+    const { x, y } = shadowOffsets;
+    const layers = [
+      { dist: 0.5, blur: 1, opacity: 0.12 },
+      { dist: 1, blur: 2, opacity: 0.10 },
+      { dist: 2, blur: 4, opacity: 0.08 },
+      { dist: 4, blur: 8, opacity: 0.06 },
+    ];
+    return layers.map(layer =>
+      `${x * layer.dist}px ${y * layer.dist * 1.5}px ${layer.blur}px hsla(${hue}, ${sat * 0.6}%, 35%, ${layer.opacity})`
+    ).join(', ');
+  };
+
+  // Glass reflection
+  const getGlassReflection = (): string => {
+    const { x, y } = shadowOffsets;
+    const hlX = -x;
+    const hlY = -y;
+    const topHighlight = hlY < 0 ? 0.6 : 0.2;
+    const leftHighlight = hlX < 0 ? 0.4 : 0.15;
+    return `inset 0 ${hlY < 0 ? '-1px' : '1px'} 0 hsla(0, 0%, 100%, ${topHighlight}), inset ${hlX < 0 ? '-1px' : '1px'} 0 0 hsla(0, 0%, 100%, ${leftHighlight})`;
+  };
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // STYLES
+  // ═══════════════════════════════════════════════════════════════════════════
   const pageHeaderStyles: React.CSSProperties = {
-    marginBottom: '48px'
+    marginBottom: '32px',
+    padding: '24px',
+    background: LIGHT.base,
+    borderRadius: '15px',
+    boxShadow: getNeuPanelShadow(20, 60),
+    transition: 'box-shadow 50ms linear',
   };
 
   const titleStyles: React.CSSProperties = {
-    fontSize: '32px',
-    fontWeight: 300,
-    color: 'var(--sentinel-text-primary)',
-    marginBottom: '12px',
-    fontFamily: 'var(--sentinel-font-primary)',
-    letterSpacing: '-0.02em'
+    fontSize: '28px',
+    fontWeight: 700,
+    color: 'var(--sentinel-accent-primary)',
+    marginBottom: '8px',
+    fontFamily: 'var(--sentinel-font-display)',
+    textTransform: 'uppercase',
+    letterSpacing: '0.1em',
   };
 
   const descStyles: React.CSSProperties = {
     fontSize: '14px',
     color: 'var(--sentinel-text-secondary)',
-    fontFamily: 'var(--sentinel-font-primary)',
-    lineHeight: 1.6,
-    maxWidth: '600px'
+    fontFamily: 'var(--sentinel-font-mono)',
+    textTransform: 'uppercase',
+    letterSpacing: '0.03em',
   };
 
-  interface ShadowToken {
-    name: string;
-    variable: string;
-    value: string;
-    usage: string;
-  }
-
-  const ShadowSample = ({ token }: { token: ShadowToken }) => {
-    return (
-      <div style={{
-        marginBottom: '24px'
-      }}>
-        <div style={{
-          padding: '32px',
-          backgroundColor: 'var(--sentinel-bg-elevated)',
-          borderRadius: 'var(--sentinel-radius-md)',
-          border: '1px solid var(--sentinel-border-subtle)',
-          boxShadow: token.value,
-          textAlign: 'center'
-        }}>
-          <div style={{
-            fontSize: '16px',
-            fontWeight: 500,
-            color: 'var(--sentinel-text-primary)',
-            marginBottom: '8px',
-            fontFamily: 'var(--sentinel-font-primary)'
-          }}>
-            {token.name}
-          </div>
-          <div style={{ fontSize: '12px', color: 'var(--sentinel-text-secondary)', marginBottom: '4px', fontFamily: 'var(--sentinel-font-primary)' }}>
-            <code style={{
-              backgroundColor: 'var(--sentinel-bg-subtle)',
-              padding: '2px 6px',
-              borderRadius: 'var(--sentinel-radius-sm)',
-              color: 'var(--sentinel-accent-primary)',
-              fontFamily: 'var(--sentinel-font-mono)'
-            }}>
-              var({token.variable})
-            </code>
-          </div>
-          <div style={{ fontSize: '11px', color: 'var(--sentinel-text-tertiary)', fontStyle: 'italic', fontFamily: 'var(--sentinel-font-primary)' }}>
-            {token.usage}
-          </div>
-        </div>
-        <div style={{
-          marginTop: '8px',
-          fontSize: '11px',
-          color: 'var(--sentinel-text-secondary)',
-          fontFamily: 'var(--sentinel-font-mono)',
-          backgroundColor: 'var(--sentinel-bg-subtle)',
-          padding: '8px',
-          borderRadius: 'var(--sentinel-radius-sm)',
-          border: '1px solid var(--sentinel-border-subtle)'
-        }}>
-          {token.value}
-        </div>
-      </div>
-    );
+  const specTextStyles: React.CSSProperties = {
+    fontSize: '12px',
+    color: 'var(--sentinel-text-secondary)',
+    lineHeight: '1.8',
+    fontFamily: 'var(--sentinel-font-mono)',
   };
 
-  const shadows: ShadowToken[] = [
-    {
-      name: 'Shadow Small',
-      variable: '--sentinel-shadow-sm',
-      value: '0 1px 2px rgba(0, 0, 0, 0.4)',
-      usage: 'Subtle elevation for small elements'
-    },
-    {
-      name: 'Shadow Medium',
-      variable: '--sentinel-shadow-md',
-      value: '0 4px 8px rgba(0, 0, 0, 0.4)',
-      usage: 'Standard elevation for cards and containers'
-    },
-    {
-      name: 'Shadow Large',
-      variable: '--sentinel-shadow-lg',
-      value: '0 8px 24px rgba(0, 0, 0, 0.5)',
-      usage: 'Higher elevation for modals and overlays'
-    },
-    {
-      name: 'Shadow XL',
-      variable: '--sentinel-shadow-xl',
-      value: '0 16px 48px rgba(0, 0, 0, 0.6)',
-      usage: 'Maximum elevation for prominent elements'
-    }
-  ];
+  // Shadow demo boxes
+  const neuElevatedBox = (level: number): React.CSSProperties => ({
+    width: '120px',
+    height: '120px',
+    background: LIGHT.base,
+    borderRadius: '15px',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '8px',
+    boxShadow: getNeuPanelShadow(level * 4, level * 12),
+    transition: 'box-shadow 50ms linear',
+  });
+
+  const neuInsetBox: React.CSSProperties = {
+    width: '120px',
+    height: '120px',
+    background: LIGHT.base,
+    borderRadius: '15px',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '8px',
+    boxShadow: getNeuInsetShadow(5, 15),
+    transition: 'box-shadow 50ms linear',
+  };
+
+  const glassBox = (hue: number, sat: number): React.CSSProperties => ({
+    width: '120px',
+    height: '120px',
+    background: `linear-gradient(${lightAngle + 45}deg, hsla(${hue}, ${sat}%, 70%, 0.28) 0%, hsla(${hue}, ${sat}%, 65%, 0.12) 50%, hsla(${hue}, ${sat}%, 60%, 0.20) 100%)`,
+    backdropFilter: 'blur(8px) saturate(140%)',
+    WebkitBackdropFilter: 'blur(8px) saturate(140%)',
+    borderRadius: '15px',
+    border: `1px solid hsla(${hue}, ${sat}%, 80%, 0.35)`,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '8px',
+    boxShadow: `${getGlassReflection()}, ${getLayeredShadow(hue, sat)}`,
+    transition: 'box-shadow 50ms linear, background 100ms linear',
+  });
 
   return (
-    <div>
+    <div style={{ background: LIGHT.base, minHeight: '100%', padding: '24px' }}>
+      {/* Page Header */}
       <header style={pageHeaderStyles}>
-        <h1 style={titleStyles}>Shadows</h1>
+        <h1 style={titleStyles}>&gt; Shadows_</h1>
         <p style={descStyles}>
-          Shadow tokens for creating depth and elevation hierarchy in the SENTINEL interface.
+          // Sistema de sombras dinámicas con Light Engine
         </p>
       </header>
 
+      {/* Neumorphic Elevated Shadows */}
       <ShowcaseSection
-        title="Shadow Scale"
-        description="Progressive shadow depths for different elevation levels"
+        title="Neumorphic Elevated (neuPanel)"
+        description="Sombras que crean elevación - el elemento 'flota' sobre la superficie"
       >
-        <ComponentPreview>
-          <div style={{
-            backgroundColor: 'var(--sentinel-bg-subtle)',
-            padding: '20px',
-            borderRadius: 'var(--sentinel-radius-lg)',
-            border: '1px solid var(--sentinel-border-subtle)'
-          }}>
-            {shadows.map((shadow) => (
-              <ShadowSample key={shadow.variable} token={shadow} />
-            ))}
-          </div>
-        </ComponentPreview>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '24px', justifyContent: 'center' }}>
+          {[1, 2, 3, 4, 5].map((level) => (
+            <div key={level} style={{ textAlign: 'center' }}>
+              <div style={neuElevatedBox(level)}>
+                <div style={{ fontSize: '24px', fontWeight: 700, color: '#2D3436', fontFamily: 'var(--sentinel-font-mono)' }}>
+                  {level}
+                </div>
+                <div style={{ fontSize: '10px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)' }}>
+                  Level
+                </div>
+              </div>
+              <div style={{ marginTop: '12px', fontSize: '11px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)' }}>
+                {level * 4}px / {level * 12}px blur
+              </div>
+            </div>
+          ))}
+        </div>
       </ShowcaseSection>
 
+      {/* Neumorphic Inset Shadows */}
       <ShowcaseSection
-        title="Elevation Comparison"
-        description="Side-by-side view of different shadow levels"
+        title="Neumorphic Inset (neuInset)"
+        description="Sombras internas que crean profundidad - el elemento está 'hundido' en la superficie"
       >
-        <ComponentPreview>
-          <div style={{
-            backgroundColor: 'var(--sentinel-bg-subtle)',
-            padding: '40px',
-            borderRadius: 'var(--sentinel-radius-lg)',
-            border: '1px solid var(--sentinel-border-subtle)',
-            display: 'flex',
-            gap: '24px',
-            justifyContent: 'center',
-            flexWrap: 'wrap'
-          }}>
-            <div style={{
-              width: '140px',
-              height: '140px',
-              backgroundColor: 'var(--sentinel-bg-elevated)',
-              borderRadius: 'var(--sentinel-radius-md)',
-              border: '1px solid var(--sentinel-border-subtle)',
-              boxShadow: '0 1px 2px rgba(0, 0, 0, 0.4)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              flexDirection: 'column',
-              gap: '8px'
-            }}>
-              <div style={{ fontSize: '14px', fontWeight: 500, color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-primary)' }}>SM</div>
-              <div style={{ fontSize: '11px', color: 'var(--sentinel-text-tertiary)', fontFamily: 'var(--sentinel-font-mono)' }}>1-2px</div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '24px', justifyContent: 'center' }}>
+          {[
+            { label: 'Small', dist: 3, blur: 8 },
+            { label: 'Medium', dist: 5, blur: 15 },
+            { label: 'Large', dist: 8, blur: 20 },
+          ].map((config) => (
+            <div key={config.label} style={{ textAlign: 'center' }}>
+              <div style={{
+                ...neuInsetBox,
+                boxShadow: getNeuInsetShadow(config.dist, config.blur),
+              }}>
+                <div style={{ fontSize: '14px', fontWeight: 600, color: '#2D3436', fontFamily: 'var(--sentinel-font-mono)' }}>
+                  {config.label}
+                </div>
+                <div style={{ fontSize: '10px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)' }}>
+                  Inset
+                </div>
+              </div>
+              <div style={{ marginTop: '12px', fontSize: '11px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)' }}>
+                {config.dist}px / {config.blur}px blur
+              </div>
             </div>
-
-            <div style={{
-              width: '140px',
-              height: '140px',
-              backgroundColor: 'var(--sentinel-bg-elevated)',
-              borderRadius: 'var(--sentinel-radius-md)',
-              border: '1px solid var(--sentinel-border-subtle)',
-              boxShadow: '0 4px 8px rgba(0, 0, 0, 0.4)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              flexDirection: 'column',
-              gap: '8px'
-            }}>
-              <div style={{ fontSize: '14px', fontWeight: 500, color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-primary)' }}>MD</div>
-              <div style={{ fontSize: '11px', color: 'var(--sentinel-text-tertiary)', fontFamily: 'var(--sentinel-font-mono)' }}>4-8px</div>
-            </div>
-
-            <div style={{
-              width: '140px',
-              height: '140px',
-              backgroundColor: 'var(--sentinel-bg-elevated)',
-              borderRadius: 'var(--sentinel-radius-md)',
-              border: '1px solid var(--sentinel-border-subtle)',
-              boxShadow: '0 8px 24px rgba(0, 0, 0, 0.5)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              flexDirection: 'column',
-              gap: '8px'
-            }}>
-              <div style={{ fontSize: '14px', fontWeight: 500, color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-primary)' }}>LG</div>
-              <div style={{ fontSize: '11px', color: 'var(--sentinel-text-tertiary)', fontFamily: 'var(--sentinel-font-mono)' }}>8-24px</div>
-            </div>
-
-            <div style={{
-              width: '140px',
-              height: '140px',
-              backgroundColor: 'var(--sentinel-bg-elevated)',
-              borderRadius: 'var(--sentinel-radius-md)',
-              border: '1px solid var(--sentinel-border-subtle)',
-              boxShadow: '0 16px 48px rgba(0, 0, 0, 0.6)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              flexDirection: 'column',
-              gap: '8px'
-            }}>
-              <div style={{ fontSize: '14px', fontWeight: 500, color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-primary)' }}>XL</div>
-              <div style={{ fontSize: '11px', color: 'var(--sentinel-text-tertiary)', fontFamily: 'var(--sentinel-font-mono)' }}>16-48px</div>
-            </div>
-          </div>
-        </ComponentPreview>
+          ))}
+        </div>
       </ShowcaseSection>
 
+      {/* Glass Shadows - Color Matched */}
       <ShowcaseSection
-        title="Status Indicators"
-        description="Subtle color accents for different system states"
+        title="Glass Shadows (Color-Matched)"
+        description="Sombras multicapa con color que coincide con el elemento glass"
       >
-        <ComponentPreview>
-          <div style={{
-            backgroundColor: 'var(--sentinel-bg-subtle)',
-            padding: '40px',
-            borderRadius: 'var(--sentinel-radius-lg)',
-            border: '1px solid var(--sentinel-border-subtle)',
-            display: 'flex',
-            gap: '24px',
-            justifyContent: 'center',
-            flexWrap: 'wrap'
-          }}>
-            <div style={{
-              width: '120px',
-              height: '120px',
-              backgroundColor: 'var(--sentinel-bg-elevated)',
-              borderRadius: 'var(--sentinel-radius-md)',
-              border: '1px solid var(--sentinel-status-positive)',
-              boxShadow: '0 4px 12px rgba(16, 185, 129, 0.2)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              flexDirection: 'column',
-              gap: '4px'
-            }}>
-              <div style={{ fontSize: '14px', fontWeight: 500, color: 'var(--sentinel-status-positive-text)', fontFamily: 'var(--sentinel-font-primary)' }}>POSITIVE</div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '24px', justifyContent: 'center' }}>
+          {[
+            { label: 'Teal', hue: 175, sat: 35 },
+            { label: 'Blue', hue: 215, sat: 50 },
+            { label: 'Green', hue: 145, sat: 45 },
+            { label: 'Red', hue: 355, sat: 35 },
+            { label: 'Amber', hue: 35, sat: 55 },
+            { label: 'Purple', hue: 280, sat: 40 },
+          ].map((config) => (
+            <div key={config.label} style={{ textAlign: 'center' }}>
+              <div style={glassBox(config.hue, config.sat)}>
+                <div style={{ fontSize: '14px', fontWeight: 600, color: `hsl(${config.hue}, ${config.sat * 0.8}%, 25%)`, fontFamily: 'var(--sentinel-font-mono)' }}>
+                  {config.label}
+                </div>
+                <div style={{ fontSize: '10px', color: `hsl(${config.hue}, ${config.sat * 0.6}%, 35%)`, fontFamily: 'var(--sentinel-font-mono)' }}>
+                  Glass
+                </div>
+              </div>
+              <div style={{ marginTop: '12px', fontSize: '11px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)' }}>
+                hue: {config.hue}°
+              </div>
             </div>
-
-            <div style={{
-              width: '120px',
-              height: '120px',
-              backgroundColor: 'var(--sentinel-bg-elevated)',
-              borderRadius: 'var(--sentinel-radius-md)',
-              border: '1px solid var(--sentinel-status-negative)',
-              boxShadow: '0 4px 12px rgba(239, 68, 68, 0.2)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              flexDirection: 'column',
-              gap: '4px'
-            }}>
-              <div style={{ fontSize: '14px', fontWeight: 500, color: 'var(--sentinel-status-negative-text)', fontFamily: 'var(--sentinel-font-primary)' }}>NEGATIVE</div>
-            </div>
-
-            <div style={{
-              width: '120px',
-              height: '120px',
-              backgroundColor: 'var(--sentinel-bg-elevated)',
-              borderRadius: 'var(--sentinel-radius-md)',
-              border: '1px solid var(--sentinel-status-warning)',
-              boxShadow: '0 4px 12px rgba(245, 158, 11, 0.2)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              flexDirection: 'column',
-              gap: '4px'
-            }}>
-              <div style={{ fontSize: '14px', fontWeight: 500, color: 'var(--sentinel-status-warning-text)', fontFamily: 'var(--sentinel-font-primary)' }}>WARNING</div>
-            </div>
-          </div>
-        </ComponentPreview>
+          ))}
+        </div>
       </ShowcaseSection>
 
-      <ShowcaseSection title="Usage Example">
+      {/* Combined Example */}
+      <ShowcaseSection
+        title="Composición de Sombras"
+        description="Combinación de elevated panel con elementos inset internos"
+      >
         <div style={{
+          background: LIGHT.base,
+          borderRadius: '15px',
           padding: '24px',
-          backgroundColor: 'var(--sentinel-bg-elevated)',
-          borderRadius: 'var(--sentinel-radius-lg)',
-          border: '1px solid var(--sentinel-border-subtle)',
-          fontSize: '13px',
-          lineHeight: '1.8',
-          fontFamily: 'var(--sentinel-font-mono)'
+          boxShadow: getNeuPanelShadow(20, 60),
+          transition: 'box-shadow 50ms linear',
         }}>
-          <div style={{
-            marginBottom: '12px',
-            fontSize: '12px',
-            fontWeight: 500,
-            fontFamily: 'var(--sentinel-font-primary)',
-            color: 'var(--sentinel-text-tertiary)',
-            letterSpacing: '0.05em'
-          }}>
-            EXAMPLE USAGE
+          <div style={{ display: 'flex', gap: '16px', marginBottom: '16px' }}>
+            <div style={{
+              flex: 1,
+              padding: '20px',
+              borderRadius: '15px',
+              boxShadow: getNeuInsetShadow(5, 15),
+              background: LIGHT.base,
+              transition: 'box-shadow 50ms linear',
+            }}>
+              <div style={{ fontSize: '13px', fontWeight: 600, color: '#2D3436', marginBottom: '4px' }}>Inset Content</div>
+              <div style={{ fontSize: '11px', color: '#636E72' }}>Area hundida dentro del panel</div>
+            </div>
+            <div style={{
+              flex: 1,
+              padding: '20px',
+              borderRadius: '15px',
+              boxShadow: getNeuInsetShadow(5, 15),
+              background: LIGHT.base,
+              transition: 'box-shadow 50ms linear',
+            }}>
+              <div style={{ fontSize: '13px', fontWeight: 600, color: '#2D3436', marginBottom: '4px' }}>Inset Content</div>
+              <div style={{ fontSize: '11px', color: '#636E72' }}>Area hundida dentro del panel</div>
+            </div>
           </div>
-          <pre style={{ margin: 0, color: 'var(--sentinel-text-secondary)' }}>
-{`.card {
-  box-shadow: var(--sentinel-shadow-md);
-}
+          <div style={{
+            padding: '16px',
+            borderRadius: '15px',
+            boxShadow: getNeuInsetShadow(3, 10),
+            background: LIGHT.base,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '8px',
+            transition: 'box-shadow 50ms linear',
+          }}>
+            <Sun size={16} style={{ color: '#F59E0B' }} />
+            <span style={{ fontSize: '12px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)' }}>
+              Light Angle: {Math.round(lightAngle)}°
+            </span>
+          </div>
+        </div>
+      </ShowcaseSection>
 
-.button:hover {
-  box-shadow: var(--sentinel-shadow-sm);
-}
+      {/* Dynamic Shadow Formula */}
+      <ShowcaseSection
+        title="Fórmulas de Cálculo"
+        description="Las sombras se calculan en tiempo real basadas en el ángulo de luz"
+      >
+        <div style={{
+          padding: '20px',
+          borderRadius: '15px',
+          boxShadow: getNeuInsetShadow(5, 15),
+          background: LIGHT.base,
+          transition: 'box-shadow 50ms linear',
+        }}>
+          <div style={specTextStyles}>
+            <p><strong style={{ color: 'var(--sentinel-accent-primary)' }}>Neumorphic Elevated (neuPanel):</strong></p>
+            <p>✓ Highlight: X = -cos(angle) × distance, Y = -sin(angle) × distance</p>
+            <p>✓ Shadow: X = cos(angle) × distance, Y = sin(angle) × distance</p>
+            <p>✓ Color: Light side = #ffffff, Dark side = hsl(220, 15%, 72%)</p>
 
-.dropdown {
-  box-shadow: var(--sentinel-shadow-lg);
-}
+            <p style={{ marginTop: '16px' }}><strong style={{ color: 'var(--sentinel-accent-primary)' }}>Neumorphic Inset (neuInset):</strong></p>
+            <p>✓ Inner Shadow: inset X Y blur darkColor</p>
+            <p>✓ Inner Highlight: inset -X -Y blur lightColor</p>
 
-.modal {
-  box-shadow: var(--sentinel-shadow-xl);
-}`}
-          </pre>
+            <p style={{ marginTop: '16px' }}><strong style={{ color: 'var(--sentinel-accent-primary)' }}>Glass Layered:</strong></p>
+            <p>✓ 4 capas con opacidad decreciente (0.12, 0.10, 0.08, 0.06)</p>
+            <p>✓ Distancia multiplicada por layer index</p>
+            <p>✓ Color: hsla(hue, sat%, 35%, opacity)</p>
+            <p>✓ Y offset = X offset × 1.5 (luz desde arriba)</p>
+
+            <p style={{ marginTop: '16px' }}><strong style={{ color: 'var(--sentinel-accent-primary)' }}>Glass Reflection:</strong></p>
+            <p>✓ Top highlight: más brillante cuando luz viene de arriba</p>
+            <p>✓ Side highlight: más brillante cuando luz viene del lado</p>
+          </div>
+        </div>
+      </ShowcaseSection>
+
+      {/* Usage Example */}
+      <ShowcaseSection title="Código de Ejemplo">
+        <div style={{
+          padding: '20px',
+          borderRadius: '15px',
+          boxShadow: getNeuInsetShadow(5, 15),
+          background: LIGHT.base,
+          fontSize: '12px',
+          fontFamily: 'var(--sentinel-font-mono)',
+          color: 'var(--sentinel-text-secondary)',
+          transition: 'box-shadow 50ms linear',
+        }}>
+          <pre style={{ margin: 0, whiteSpace: 'pre-wrap' }}>{`// Neumorphic Panel (elevated)
+const neuPanel = {
+  background: '#e0e5ec',
+  borderRadius: '15px',
+  boxShadow: \`
+    \${-x * 20}px \${-y * 20}px 60px #ffffff,
+    \${x * 20}px \${y * 20}px 60px hsl(220, 15%, 72%)
+  \`,
+};
+
+// Neumorphic Inset (carved)
+const neuInset = {
+  background: '#e0e5ec',
+  borderRadius: '15px',
+  boxShadow: \`
+    inset \${x * 5}px \${y * 5}px 15px hsl(220, 15%, 72%),
+    inset \${-x * 5}px \${-y * 5}px 15px #ffffff
+  \`,
+};
+
+// Glass with color-matched shadow
+const glassCard = {
+  background: 'linear-gradient(...)',
+  backdropFilter: 'blur(8px)',
+  boxShadow: \`
+    \${glassReflection},
+    \${layeredShadow}
+  \`,
+};`}</pre>
         </div>
       </ShowcaseSection>
     </div>
+  );
+}
+
+// Main component with provider
+export function ShadowsShowcase() {
+  return (
+    <LightEngineProvider initialAnimating={true} initialSpeed={0.3}>
+      <ShadowsContent />
+    </LightEngineProvider>
   );
 }

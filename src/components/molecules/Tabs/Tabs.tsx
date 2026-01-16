@@ -1,7 +1,10 @@
 // Path: src/components/molecules/Tabs/Tabs.tsx
-import React from "react";
+import { type KeyboardEvent, type CSSProperties } from "react";
 import type { LucideIcon } from "lucide-react";
+import { useLightEngineOptional } from "@contexts/LightEngineContext";
 import styles from "./Tabs.module.css";
+
+export type TabsVariant = "default" | "pills" | "neuInset";
 
 export interface TabItem {
   id: string;
@@ -14,9 +17,17 @@ export interface TabsProps {
   tabs: TabItem[];
   activeTab: string;
   onChange: (id: string) => void;
-  variant?: "default" | "pills";
+  variant?: TabsVariant;
   size?: "sm" | "md" | "lg";
+  /** Enable dynamic shadows from Light Engine */
+  dynamicShadows?: boolean;
 }
+
+// Glass hue for active tab
+const GLASS_TAB = {
+  hue: 175,
+  sat: 35,
+};
 
 export function Tabs({
   tabs,
@@ -24,9 +35,43 @@ export function Tabs({
   onChange,
   variant = "default",
   size = "md",
+  dynamicShadows = true,
 }: TabsProps) {
+  // Get light engine context (optional)
+  const lightEngine = useLightEngineOptional();
+
+  // Get dynamic styles for container (neuInset variant)
+  const getContainerDynamicStyles = (): CSSProperties | undefined => {
+    if (variant !== "neuInset" || !dynamicShadows || !lightEngine) return undefined;
+
+    const { shadows } = lightEngine;
+    return {
+      boxShadow: shadows.getNeuInsetShadow(4, 10),
+    };
+  };
+
+  // Get dynamic styles for active tab (glass)
+  const getActiveTabDynamicStyles = (): CSSProperties | undefined => {
+    if (variant !== "neuInset" || !dynamicShadows || !lightEngine) return undefined;
+
+    const { shadows } = lightEngine;
+    return {
+      boxShadow: `${shadows.getNeuPanelShadow(3, 6)}, inset 0 1px 0 rgba(255, 255, 255, 0.7)`,
+      background: shadows.getGlassBackground(GLASS_TAB.hue, GLASS_TAB.sat),
+    };
+  };
+
+  // Get container className
+  const getContainerClassName = (): string => {
+    const classes = [styles.tabs, styles[variant], styles[size]];
+    if (variant === "neuInset" && dynamicShadows && lightEngine) {
+      classes.push(styles.dynamicShadows);
+    }
+    return classes.join(" ");
+  };
+
   const handleKeyDown = (
-    e: React.KeyboardEvent<HTMLButtonElement>
+    e: KeyboardEvent<HTMLButtonElement>
   ) => {
     const enabledTabs = tabs.filter((t) => !t.disabled);
     const currentIndex = enabledTabs.findIndex((t) => t.id === activeTab);
@@ -42,7 +87,8 @@ export function Tabs({
 
   return (
     <div
-      className={`${styles.tabs} ${styles[variant]} ${styles[size]}`}
+      className={getContainerClassName()}
+      style={getContainerDynamicStyles()}
       role="tablist"
       aria-orientation="horizontal"
     >
@@ -61,6 +107,7 @@ export function Tabs({
             className={`${styles.tab} ${isActive ? styles.active : ""} ${
               tab.disabled ? styles.disabled : ""
             }`}
+            style={isActive ? getActiveTabDynamicStyles() : undefined}
             onClick={() => !tab.disabled && onChange(tab.id)}
             onKeyDown={handleKeyDown}
           >

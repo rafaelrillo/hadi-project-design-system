@@ -32,6 +32,8 @@ export function ToastProvider({
   maxVisible = DEFAULT_MAX_VISIBLE,
   defaultDuration = DEFAULT_DURATION,
   gap = 12,
+  toastStyle = 'default',
+  dynamicShadows = true,
 }: ToastProviderProps) {
   const [toasts, setToasts] = useState<Toast[]>([]);
   const timersRef = useRef<Map<string, NodeJS.Timeout>>(new Map());
@@ -193,6 +195,8 @@ export function ToastProvider({
         onDismiss={dismiss}
         position={position}
         gap={gap}
+        toastStyle={toastStyle}
+        dynamicShadows={dynamicShadows}
       />
     </ToastContext.Provider>
   );

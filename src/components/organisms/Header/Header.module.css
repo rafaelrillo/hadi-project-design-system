@@ -1,0 +1,163 @@
+/* Path: src/components/organisms/Header/Header.module.css */
+/* ═══════════════════════════════════════════════════════════════════════════════
+   SENTINEL DESIGN SYSTEM v4.0 - Header Component
+
+   LIGHT NEUMORPHISM + GLASSMORPHISM - Flexible header styles
+   - Default: Minimal transparent header
+   - Glass: Semi-transparent with blur and layered shadows
+   - NeuPanel: Pure neumorphic with soft shadows
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   BASE HEADER
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 56px;
+  padding: var(--sentinel-space-3) var(--sentinel-space-6);
+  position: relative;
+  flex-shrink: 0;
+  gap: var(--sentinel-space-4);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   GLASS STYLE - Semi-transparent with blur
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.glass {
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: var(--radius-standard);
+
+  /* Glass blur */
+  backdrop-filter: blur(var(--sentinel-blur-lg));
+  -webkit-backdrop-filter: blur(var(--sentinel-blur-lg));
+
+  /* Layered shadow */
+  box-shadow:
+    0 1px 2px rgba(163, 177, 198, 0.1),
+    0 2px 4px rgba(163, 177, 198, 0.1),
+    0 4px 8px rgba(163, 177, 198, 0.1),
+    0 8px 16px rgba(163, 177, 198, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+/* Luminous top edge for glass */
+.glass::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 0.7),
+    transparent
+  );
+  border-radius: var(--radius-standard) var(--radius-standard) 0 0;
+  pointer-events: none;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   NEU PANEL STYLE - Pure neumorphic
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.neuPanel {
+  background: var(--neu-base);
+  border: none;
+  border-radius: var(--radius-standard);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+
+  /* Pure neumorphic shadow */
+  box-shadow:
+    4px 4px 8px var(--neu-shadow-dark),
+    -4px -4px 8px var(--neu-shadow-light),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.neuPanel::before {
+  display: none;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   LAYOUT SECTIONS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: var(--sentinel-space-3);
+  flex: 1;
+  min-width: 0;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: var(--sentinel-space-3);
+  flex-shrink: 0;
+}
+
+.extra {
+  width: 100%;
+  margin-top: var(--sentinel-space-3);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   TITLE GROUP
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.titleGroup {
+  display: flex;
+  align-items: center;
+  gap: var(--sentinel-space-2);
+  min-width: 0;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--sentinel-accent-primary);
+  flex-shrink: 0;
+}
+
+.title {
+  font-family: var(--sentinel-font-numeric);
+  font-size: var(--sentinel-text-lg);
+  font-weight: 700;
+  color: var(--sentinel-text-primary);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   DYNAMIC SHADOWS - Light Engine Integration
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.dynamicShadows {
+  transition: var(--transition-shadow);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   REDUCED MOTION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .header,
+  .dynamicShadows {
+    transition: none;
+  }
+}

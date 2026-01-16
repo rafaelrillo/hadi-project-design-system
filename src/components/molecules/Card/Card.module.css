@@ -380,6 +380,56 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
+   NEU PANEL VARIANT - Dynamic Light Engine Panel
+   Uses inline styles from useDynamicShadows for light-responsive shadows
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.neuPanel {
+  background: var(--neu-base);
+  border-radius: var(--radius-standard);
+  padding: var(--panel-padding);
+  border: none;
+
+  /* Base neumorphic shadow - overridden by inline styles when Light Engine active */
+  box-shadow:
+    20px 20px 60px var(--neu-shadow-dark),
+    -20px -20px 60px var(--neu-shadow-light);
+
+  /* Fast shadow transition for light engine responsiveness */
+  transition: var(--transition-shadow);
+}
+
+.neuPanel::before {
+  display: none; /* No luminous edge for pure neumorphism */
+}
+
+.neuPanel:hover {
+  transform: none; /* No lift on hover for neumorphic consistency */
+  box-shadow:
+    22px 22px 65px var(--neu-shadow-dark),
+    -22px -22px 65px var(--neu-shadow-light);
+}
+
+.neuPanel .header {
+  background: transparent;
+  border-bottom-color: rgba(163, 177, 198, 0.2);
+}
+
+.neuPanel .footer {
+  background: transparent;
+  border-top-color: rgba(163, 177, 198, 0.2);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   DYNAMIC SHADOWS - Light Engine Integration
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.dynamicShadows {
+  /* Fast transition for light engine responsiveness */
+  transition: var(--transition-shadow);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
    REDUCED MOTION
    ───────────────────────────────────────────────────────────────────────────── */
 

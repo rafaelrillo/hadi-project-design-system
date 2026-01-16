@@ -1,24 +1,61 @@
 // Path: src/components/atoms/Tooltip/Tooltip.tsx
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, type ReactNode, type CSSProperties } from 'react';
+import { useLightEngineOptional } from '@contexts/LightEngineContext';
 import styles from './Tooltip.module.css';
 
+export type TooltipVariant = 'dark' | 'light' | 'glass';
+
 export interface TooltipProps {
-  children: React.ReactNode;
+  children: ReactNode;
   content: string;
-  variant?: 'dark' | 'light';
+  variant?: TooltipVariant;
   position?: 'top' | 'right' | 'bottom' | 'left';
+  /** Enable dynamic shadows from Light Engine (glass variant only) */
+  dynamicShadows?: boolean;
+  /** Custom hue for glass variant (0-360) */
+  glassHue?: number;
+  /** Custom saturation for glass variant (0-100) */
+  glassSat?: number;
 }
+
+// Glass hue preset for tooltips
+const GLASS_TOOLTIP = {
+  hue: 215,
+  sat: 30,
+};
 
 export function Tooltip({
   children,
   content,
   variant = 'dark',
-  position = 'top'
+  position = 'top',
+  dynamicShadows = true,
+  glassHue,
+  glassSat,
 }: TooltipProps) {
   const [isVisible, setIsVisible] = useState(false);
   const [shouldShow, setShouldShow] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  // Get light engine context (optional)
+  const lightEngine = useLightEngineOptional();
+
+  // Resolve glass hue and saturation
+  const hue = glassHue ?? GLASS_TOOLTIP.hue;
+  const sat = glassSat ?? GLASS_TOOLTIP.sat;
+
+  // Get dynamic styles for glass variant
+  const getGlassDynamicStyles = (): CSSProperties | undefined => {
+    if (variant !== 'glass' || !dynamicShadows || !lightEngine) return undefined;
+
+    const { shadows } = lightEngine;
+    return {
+      boxShadow: shadows.getLayeredShadow(hue, sat),
+      background: shadows.getGlassBackground(hue, sat),
+      borderColor: shadows.getGlassBorder(hue, sat),
+    };
+  };
 
   // Handle show with delay
   const handleMouseEnter = () => {
@@ -72,7 +109,11 @@ export function Tooltip({
 
     // Variant
     if (variant === 'dark') classes.push(styles.variantDark);
-    else classes.push(styles.variantLight);
+    else if (variant === 'light') classes.push(styles.variantLight);
+    else if (variant === 'glass') {
+      classes.push(styles.variantGlass);
+      if (dynamicShadows && lightEngine) classes.push(styles.dynamicShadows);
+    }
 
     // Visibility
     if (isVisible) classes.push(styles.tooltipVisible);
@@ -87,7 +128,8 @@ export function Tooltip({
 
     // Variant
     if (variant === 'dark') classes.push(styles.arrowDark);
-    else classes.push(styles.arrowLight);
+    else if (variant === 'light') classes.push(styles.arrowLight);
+    else if (variant === 'glass') classes.push(styles.arrowGlass);
 
     // Position
     if (position === 'top') classes.push(styles.arrowTop);
@@ -113,6 +155,7 @@ export function Tooltip({
           role="tooltip"
           aria-hidden={!isVisible}
           className={getTooltipClasses()}
+          style={getGlassDynamicStyles()}
         >
           {content}
           <div className={getArrowClasses()} />

@@ -1,6 +1,6 @@
 // Path: src/layouts/DashboardLayout/DashboardLayout.tsx
 
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, type CSSProperties } from 'react';
 import { Outlet, NavLink, useNavigate } from 'react-router-dom';
 import {
   Home,
@@ -20,6 +20,7 @@ import { useIsMobile } from '../../hooks/useBreakpoint';
 import { MobileHeader } from '../../components/organisms/MobileHeader';
 import { BottomNavigation } from '../../components/organisms/BottomNavigation';
 import { MoreMenu } from '../../components/organisms/MoreMenu';
+import { LightEngineProvider, useLightEngineOptional } from '@contexts/LightEngineContext';
 
 import styles from './DashboardLayout.module.css';
 
@@ -44,6 +45,23 @@ const navItems: NavItem[] = [
 // const settingsItem: NavItem = { path: '/app/dashboard/settings', icon: Settings, label: 'Settings' };
 
 // ─────────────────────────────────────────────────────────────────────────────
+// LAYOUT STYLE TYPES
+// ─────────────────────────────────────────────────────────────────────────────
+
+export type LayoutStyle = 'default' | 'neuPanel';
+
+export interface DashboardLayoutProps {
+  /** Visual style for the main content container */
+  layoutStyle?: LayoutStyle;
+  /** Enable dynamic shadows from Light Engine */
+  dynamicShadows?: boolean;
+  /** Enable light animation on mount */
+  animateLight?: boolean;
+  /** Initial light angle (0-360) */
+  initialLightAngle?: number;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 // COMPONENT
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -55,12 +73,39 @@ const mobileNavItems = [
   { id: 'news', label: 'News', icon: <Newspaper size={22} />, path: '/app/dashboard/news' },
 ];
 
-export function DashboardLayout() {
+// Inner component that uses the Light Engine context
+function DashboardLayoutInner({
+  layoutStyle = 'default',
+  dynamicShadows = true,
+}: Omit<DashboardLayoutProps, 'animateLight' | 'initialLightAngle'>) {
   const navigate = useNavigate();
   const { logout } = useAuthStore();
   const { holdings, fetchPortfolio } = usePortfolioStore();
   const isMobile = useIsMobile();
   const [isMoreMenuOpen, setIsMoreMenuOpen] = useState(false);
+
+  // Get light engine context (optional)
+  const lightEngine = useLightEngineOptional();
+
+  // Get wrapper className for neuPanel style
+  const getContentWrapperClassName = (): string => {
+    const classes = [styles.content];
+    if (layoutStyle === 'neuPanel') classes.push(styles.neuPanelContent);
+    if (dynamicShadows && lightEngine && layoutStyle === 'neuPanel') {
+      classes.push(styles.dynamicShadows);
+    }
+    return classes.join(' ');
+  };
+
+  // Get dynamic styles for neuPanel
+  const getContentDynamicStyles = (): CSSProperties | undefined => {
+    if (layoutStyle !== 'neuPanel' || !dynamicShadows || !lightEngine) return undefined;
+
+    const { shadows } = lightEngine;
+    return {
+      boxShadow: shadows.getNeuPanelShadow(6, 12),
+    };
+  };
 
   // Fetch portfolio on mount
   useEffect(() => {
@@ -202,11 +247,38 @@ export function DashboardLayout() {
       {/* Main Content */}
       <main className={styles.main}>
         {/* Page Content */}
-        <div className={styles.content}>
+        <div
+          className={getContentWrapperClassName()}
+          style={getContentDynamicStyles()}
+        >
           <Outlet />
         </div>
       </main>
     </div>
     </>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// EXPORTED COMPONENT - Wrapped with LightEngineProvider
+// ─────────────────────────────────────────────────────────────────────────────
+
+export function DashboardLayout({
+  layoutStyle = 'default',
+  dynamicShadows = true,
+  animateLight = false,
+  initialLightAngle = 135,
+}: DashboardLayoutProps = {}) {
+  return (
+    <LightEngineProvider
+      initialAngle={initialLightAngle}
+      initialAnimating={animateLight}
+      initialSpeed={0.5}
+    >
+      <DashboardLayoutInner
+        layoutStyle={layoutStyle}
+        dynamicShadows={dynamicShadows}
+      />
+    </LightEngineProvider>
   );
 }

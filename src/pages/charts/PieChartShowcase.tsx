@@ -1,7 +1,10 @@
 // Path: src/pages/charts/PieChartShowcase.tsx
-import { ShowcaseSection, ComponentPreview } from '../../components/showcase';
+// SENTINEL Design System - Glass-Neumorphism Pie Chart
+import React, { useMemo } from 'react';
+import { ShowcaseSection } from '../../components/showcase';
 import { PieChart } from '../../components/charts/echarts';
 import type { PieDataPoint } from '../../components/charts/echarts';
+import { LightEngineProvider, useLightEngine } from '@/contexts/LightEngineContext';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // SAMPLE DATA
@@ -35,73 +38,107 @@ const simpleData: PieDataPoint[] = [
 // COMPONENT
 // ─────────────────────────────────────────────────────────────────────────────
 
-export function PieChartShowcase() {
+function PieChartContent() {
+  const { lightAngle } = useLightEngine();
+
+  const shadowOffsets = useMemo(() => {
+    const shadowAngle = (lightAngle + 180) * (Math.PI / 180);
+    return { x: Math.cos(shadowAngle), y: Math.sin(shadowAngle) };
+  }, [lightAngle]);
+
+  const LIGHT = {
+    base: '#e0e5ec',
+    shadowDark: 'hsl(220 15% 72%)',
+    shadowLight: 'hsl(0 0% 100%)',
+  };
+
+  const getNeuPanelShadow = (distance: number, blur: number): string => {
+    const { x, y } = shadowOffsets;
+    return `${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}`;
+  };
+
+  const getNeuInsetShadow = (distance: number, blur: number): string => {
+    const { x, y } = shadowOffsets;
+    return `inset ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}`;
+  };
+
+  const pageHeaderStyles: React.CSSProperties = {
+    marginBottom: '32px',
+    padding: '24px',
+    background: LIGHT.base,
+    borderRadius: '15px',
+    boxShadow: getNeuPanelShadow(20, 60),
+    transition: 'box-shadow 50ms linear',
+  };
+
+  const titleStyles: React.CSSProperties = {
+    fontSize: '28px',
+    fontWeight: 700,
+    color: 'var(--sentinel-accent-primary)',
+    marginBottom: '8px',
+    fontFamily: 'var(--sentinel-font-display)',
+    textTransform: 'uppercase',
+    letterSpacing: '0.1em',
+  };
+
+  const descStyles: React.CSSProperties = {
+    fontSize: '14px',
+    color: 'var(--sentinel-text-secondary)',
+    fontFamily: 'var(--sentinel-font-mono)',
+    textTransform: 'uppercase',
+    letterSpacing: '0.03em',
+  };
+
+  const chartContainerStyles: React.CSSProperties = {
+    padding: '24px',
+    background: LIGHT.base,
+    borderRadius: '15px',
+    boxShadow: getNeuPanelShadow(8, 24),
+    transition: 'box-shadow 50ms linear',
+  };
+
+  const tableContainerStyles: React.CSSProperties = {
+    padding: '20px',
+    borderRadius: '15px',
+    boxShadow: getNeuInsetShadow(5, 15),
+    background: LIGHT.base,
+    overflowX: 'auto',
+    transition: 'box-shadow 50ms linear',
+  };
+
   return (
-    <div>
-      {/* Page Header */}
-      <header style={{ marginBottom: '32px' }}>
-        <h1 style={{
-          fontSize: '28px',
-          fontWeight: 600,
-          color: 'var(--sentinel-text-primary)',
-          marginBottom: '8px',
-          fontFamily: 'var(--sentinel-font-display)',
-        }}>
-          Pie Chart
-        </h1>
-        <p style={{
-          fontSize: '14px',
-          color: 'var(--sentinel-text-secondary)',
-          fontFamily: 'var(--sentinel-font-sans)',
-          maxWidth: '600px',
-        }}>
-          Circular charts for displaying proportions. Supports pie, donut, and rose variants
-          with customizable labels and legends.
-        </p>
+    <div style={{ background: LIGHT.base, minHeight: '100%', padding: '24px' }}>
+      <header style={pageHeaderStyles}>
+        <h1 style={titleStyles}>&gt; PieChart_</h1>
+        <p style={descStyles}>// Gráficos circulares para proporciones y distribuciones</p>
       </header>
 
-      {/* Default Pie */}
-      <ShowcaseSection
-        title="Default Pie"
-        description="Basic pie chart"
-      >
-        <ComponentPreview>
+      <ShowcaseSection title="Default Pie" description="Basic pie chart">
+        <div style={chartContainerStyles}>
           <div style={{ width: '100%', maxWidth: '500px', margin: '0 auto' }}>
             <PieChart data={allocationData} title="Portfolio Allocation" height={400} />
           </div>
-        </ComponentPreview>
+        </div>
       </ShowcaseSection>
 
-      {/* Donut */}
-      <ShowcaseSection
-        title="Donut"
-        description="Pie with inner radius for center content"
-      >
-        <ComponentPreview>
+      <ShowcaseSection title="Donut" description="Pie with inner radius for center content">
+        <div style={chartContainerStyles}>
           <div style={{ width: '100%', maxWidth: '500px', margin: '0 auto' }}>
             <PieChart data={allocationData} title="Asset Allocation" height={400} variant="donut" />
           </div>
-        </ComponentPreview>
+        </div>
       </ShowcaseSection>
 
-      {/* Rose */}
-      <ShowcaseSection
-        title="Rose (Nightingale)"
-        description="Radius varies by value for emphasis"
-      >
-        <ComponentPreview>
+      <ShowcaseSection title="Rose (Nightingale)" description="Radius varies by value for emphasis">
+        <div style={chartContainerStyles}>
           <div style={{ width: '100%', maxWidth: '500px', margin: '0 auto' }}>
             <PieChart data={sectorData} title="Sector Distribution" height={400} variant="rose" />
           </div>
-        </ComponentPreview>
+        </div>
       </ShowcaseSection>
 
-      {/* With Inner Label */}
-      <ShowcaseSection
-        title="Donut with Center Label"
-        description="Display aggregate value in center"
-      >
-        <ComponentPreview>
+      <ShowcaseSection title="Donut with Center Label" description="Display aggregate value in center">
+        <div style={chartContainerStyles}>
           <div style={{ width: '100%', maxWidth: '500px', margin: '0 auto' }}>
             <PieChart
               data={simpleData}
@@ -112,39 +149,27 @@ export function PieChartShowcase() {
               centerValue="$125,000"
             />
           </div>
-        </ComponentPreview>
+        </div>
       </ShowcaseSection>
 
-      {/* Custom Colors */}
-      <ShowcaseSection
-        title="Custom Colors"
-        description="Per-segment custom coloring"
-      >
-        <ComponentPreview>
+      <ShowcaseSection title="Custom Colors" description="Per-segment custom coloring">
+        <div style={chartContainerStyles}>
           <div style={{ width: '100%', maxWidth: '500px', margin: '0 auto' }}>
             <PieChart data={sectorData} title="Sector Breakdown" height={400} />
           </div>
-        </ComponentPreview>
+        </div>
       </ShowcaseSection>
 
-      {/* No Labels */}
-      <ShowcaseSection
-        title="Without Labels"
-        description="Clean look without slice labels"
-      >
-        <ComponentPreview>
+      <ShowcaseSection title="Without Labels" description="Clean look without slice labels">
+        <div style={chartContainerStyles}>
           <div style={{ width: '100%', maxWidth: '500px', margin: '0 auto' }}>
             <PieChart data={allocationData} height={350} showLabels={false} />
           </div>
-        </ComponentPreview>
+        </div>
       </ShowcaseSection>
 
-      {/* Compact */}
-      <ShowcaseSection
-        title="Compact Size"
-        description="Smaller charts for dashboards"
-      >
-        <ComponentPreview>
+      <ShowcaseSection title="Compact Size" description="Smaller charts for dashboards">
+        <div style={chartContainerStyles}>
           <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap', justifyContent: 'center' }}>
             <div style={{ width: '200px' }}>
               <PieChart data={simpleData} height={200} showLabels={false} />
@@ -156,15 +181,11 @@ export function PieChartShowcase() {
               <PieChart data={simpleData} height={200} variant="rose" showLabels={false} />
             </div>
           </div>
-        </ComponentPreview>
+        </div>
       </ShowcaseSection>
 
-      {/* Side by Side Comparison */}
-      <ShowcaseSection
-        title="Variants Comparison"
-        description="All three variants side by side"
-      >
-        <ComponentPreview>
+      <ShowcaseSection title="Variants Comparison" description="All three variants side by side">
+        <div style={chartContainerStyles}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px', width: '100%' }}>
             <div>
               <PieChart data={allocationData} title="Pie" height={300} variant="pie" />
@@ -176,24 +197,23 @@ export function PieChartShowcase() {
               <PieChart data={allocationData} title="Rose" height={300} variant="rose" />
             </div>
           </div>
-        </ComponentPreview>
+        </div>
       </ShowcaseSection>
 
-      {/* API Reference */}
-      <ShowcaseSection title="API Reference">
-        <div style={{ overflowX: 'auto' }}>
+      <ShowcaseSection title="Especificaciones Técnicas">
+        <div style={tableContainerStyles}>
           <table style={{
             width: '100%',
             borderCollapse: 'collapse',
-            fontSize: '13px',
+            fontSize: '12px',
             fontFamily: 'var(--sentinel-font-mono)',
           }}>
             <thead>
-              <tr style={{ borderBottom: '1px solid var(--sentinel-border-default)' }}>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-text-secondary)' }}>Prop</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-text-secondary)' }}>Type</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-text-secondary)' }}>Default</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-text-secondary)' }}>Description</th>
+              <tr>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-accent-primary)', fontWeight: 600 }}>Prop</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-accent-primary)', fontWeight: 600 }}>Type</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-accent-primary)', fontWeight: 600 }}>Default</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-accent-primary)', fontWeight: 600 }}>Description</th>
               </tr>
             </thead>
             <tbody>
@@ -207,11 +227,11 @@ export function PieChartShowcase() {
                 { prop: 'centerValue', type: 'string', default: '-', desc: 'Center value (donut only)' },
                 { prop: 'colors', type: 'string[]', default: 'chartPalette', desc: 'Custom color palette' },
               ].map((row, i) => (
-                <tr key={i} style={{ borderBottom: '1px solid var(--sentinel-border-subtle)' }}>
-                  <td style={{ padding: '12px 16px', color: 'var(--sentinel-accent-primary)' }}>{row.prop}</td>
-                  <td style={{ padding: '12px 16px', color: 'var(--sentinel-text-tertiary)' }}>{row.type}</td>
-                  <td style={{ padding: '12px 16px', color: 'var(--sentinel-text-tertiary)' }}>{row.default}</td>
-                  <td style={{ padding: '12px 16px', color: 'var(--sentinel-text-secondary)' }}>{row.desc}</td>
+                <tr key={i}>
+                  <td style={{ padding: '12px 16px', color: '#2D3436' }}>{row.prop}</td>
+                  <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.type}</td>
+                  <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.default}</td>
+                  <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.desc}</td>
                 </tr>
               ))}
             </tbody>
@@ -219,6 +239,14 @@ export function PieChartShowcase() {
         </div>
       </ShowcaseSection>
     </div>
+  );
+}
+
+export function PieChartShowcase() {
+  return (
+    <LightEngineProvider initialAnimating={true} initialSpeed={0.3}>
+      <PieChartContent />
+    </LightEngineProvider>
   );
 }
 

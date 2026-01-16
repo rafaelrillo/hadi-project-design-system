@@ -162,3 +162,68 @@
   font-family: var(--sentinel-font-led);
   letter-spacing: var(--sentinel-tracking-led);
 }
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   NEU INSET STYLE - Neumorphic inset container with glass active
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.neuInset {
+  background: var(--neu-base);
+  padding: var(--sentinel-space-1);
+  border-radius: var(--radius-standard);
+
+  /* Neumorphic inset shadow */
+  box-shadow:
+    inset 3px 3px 8px var(--neu-shadow-dark),
+    inset -3px -3px 8px var(--neu-shadow-light);
+}
+
+.neuInset .button,
+.neuInset .arrowButton {
+  background: transparent;
+  border: none;
+  color: var(--sentinel-text-secondary);
+}
+
+.neuInset .button:hover:not(:disabled),
+.neuInset .arrowButton:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.4);
+  color: var(--sentinel-text-primary);
+}
+
+.neuInset .pageNumber {
+  background: transparent;
+  border: none;
+  color: var(--sentinel-text-secondary);
+}
+
+.neuInset .pageNumber:hover:not(:disabled):not(.pageNumberActive) {
+  background: rgba(255, 255, 255, 0.4);
+  color: var(--sentinel-text-primary);
+}
+
+.neuInset .pageNumberActive {
+  background: linear-gradient(
+    180deg,
+    hsla(175, 35%, 70%, 0.28) 0%,
+    hsla(175, 35%, 65%, 0.12) 50%,
+    hsla(175, 35%, 60%, 0.20) 100%
+  );
+  border: none;
+  color: var(--sentinel-accent-primary);
+
+  /* Elevated neumorphic shadow */
+  box-shadow:
+    2px 2px 4px var(--neu-shadow-dark),
+    -2px -2px 4px var(--neu-shadow-light),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+/* Dynamic shadows - Light Engine Integration */
+.dynamicShadows {
+  transition: var(--transition-shadow);
+}
+
+.dynamicShadows .pageNumberActive {
+  transition: var(--transition-shadow);
+}

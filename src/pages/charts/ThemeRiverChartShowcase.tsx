@@ -1,7 +1,10 @@
 // Path: src/pages/charts/ThemeRiverChartShowcase.tsx
-import { ShowcaseSection, ComponentPreview } from '../../components/showcase';
+// SENTINEL Design System - Glass-Neumorphism ThemeRiver Chart
+import React, { useMemo } from 'react';
+import { ShowcaseSection } from '../../components/showcase';
 import { ThemeRiverChart } from '../../components/charts/echarts';
 import type { ThemeRiverDataPoint } from '../../components/charts/echarts';
+import { LightEngineProvider, useLightEngine } from '@/contexts/LightEngineContext';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // SAMPLE DATA
@@ -18,16 +21,10 @@ function generateRiverData(): ThemeRiverDataPoint[] {
     const dateStr = date.toISOString().split('T')[0];
 
     categories.forEach((cat, idx) => {
-      // Create flowing wave patterns
       const base = 20 + idx * 10;
       const wave = Math.sin((i + idx * 2) * 0.3) * 10;
       const value = Math.max(5, base + wave + Math.random() * 5);
-
-      data.push({
-        date: dateStr,
-        value: Number(value.toFixed(1)),
-        name: cat,
-      });
+      data.push({ date: dateStr, value: Number(value.toFixed(1)), name: cat });
     });
   }
 
@@ -43,7 +40,6 @@ function generateMarketData(): ThemeRiverDataPoint[] {
     date.setDate(date.getDate() - i);
     const dateStr = date.toISOString().split('T')[0];
 
-    // Simulate shifting market sentiment
     const phase = i / 20;
     const bullish = 40 + Math.sin(phase) * 20 + Math.random() * 10;
     const bearish = 30 - Math.sin(phase) * 15 + Math.random() * 10;
@@ -64,104 +60,95 @@ const sentimentData = generateMarketData();
 // COMPONENT
 // ─────────────────────────────────────────────────────────────────────────────
 
-export function ThemeRiverChartShowcase() {
+function ThemeRiverChartContent() {
+  const { lightAngle } = useLightEngine();
+
+  const shadowOffsets = useMemo(() => {
+    const shadowAngle = (lightAngle + 180) * (Math.PI / 180);
+    return { x: Math.cos(shadowAngle), y: Math.sin(shadowAngle) };
+  }, [lightAngle]);
+
+  const LIGHT = {
+    base: '#e0e5ec',
+    shadowDark: 'hsl(220 15% 72%)',
+    shadowLight: 'hsl(0 0% 100%)',
+  };
+
+  const getNeuPanelShadow = (distance: number, blur: number): string => {
+    const { x, y } = shadowOffsets;
+    return `${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}`;
+  };
+
+  const getNeuInsetShadow = (distance: number, blur: number): string => {
+    const { x, y } = shadowOffsets;
+    return `inset ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}`;
+  };
+
+  const pageHeaderStyles: React.CSSProperties = {
+    marginBottom: '32px', padding: '24px', background: LIGHT.base, borderRadius: '15px',
+    boxShadow: getNeuPanelShadow(20, 60), transition: 'box-shadow 50ms linear',
+  };
+
+  const titleStyles: React.CSSProperties = {
+    fontSize: '28px', fontWeight: 700, color: 'var(--sentinel-accent-primary)', marginBottom: '8px',
+    fontFamily: 'var(--sentinel-font-display)', textTransform: 'uppercase', letterSpacing: '0.1em',
+  };
+
+  const descStyles: React.CSSProperties = {
+    fontSize: '14px', color: 'var(--sentinel-text-secondary)', fontFamily: 'var(--sentinel-font-mono)',
+    textTransform: 'uppercase', letterSpacing: '0.03em',
+  };
+
+  const chartContainerStyles: React.CSSProperties = {
+    padding: '24px', background: LIGHT.base, borderRadius: '15px',
+    boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear',
+  };
+
+  const tableContainerStyles: React.CSSProperties = {
+    padding: '20px', borderRadius: '15px', boxShadow: getNeuInsetShadow(5, 15),
+    background: LIGHT.base, overflowX: 'auto', transition: 'box-shadow 50ms linear',
+  };
+
   return (
-    <div>
-      {/* Page Header */}
-      <header style={{ marginBottom: '32px' }}>
-        <h1 style={{
-          fontSize: '28px',
-          fontWeight: 600,
-          color: 'var(--sentinel-text-primary)',
-          marginBottom: '8px',
-          fontFamily: 'var(--sentinel-font-display)',
-        }}>
-          ThemeRiver Chart
-        </h1>
-        <p style={{
-          fontSize: '14px',
-          color: 'var(--sentinel-text-secondary)',
-          fontFamily: 'var(--sentinel-font-sans)',
-          maxWidth: '600px',
-        }}>
-          Stream graph showing proportions over time. Categories flow and expand/contract
-          based on their relative values, creating a visual river effect.
-        </p>
+    <div style={{ background: LIGHT.base, minHeight: '100%', padding: '24px' }}>
+      <header style={pageHeaderStyles}>
+        <h1 style={titleStyles}>&gt; ThemeRiverChart_</h1>
+        <p style={descStyles}>// Stream graph mostrando proporciones en el tiempo</p>
       </header>
 
-      {/* Sector Flow */}
-      <ShowcaseSection
-        title="Sector Flow"
-        description="Sector allocation changes over time"
-      >
-        <ComponentPreview>
-          <div style={{ width: '100%' }}>
-            <ThemeRiverChart data={sectorFlowData} title="Sector Allocation Flow" height={400} />
-          </div>
-        </ComponentPreview>
+      <ShowcaseSection title="Sector Flow" description="Sector allocation changes over time">
+        <div style={chartContainerStyles}>
+          <ThemeRiverChart data={sectorFlowData} title="Sector Allocation Flow" height={400} />
+        </div>
       </ShowcaseSection>
 
-      {/* Market Sentiment */}
-      <ShowcaseSection
-        title="Market Sentiment"
-        description="Shifting sentiment proportions"
-      >
-        <ComponentPreview>
-          <div style={{ width: '100%' }}>
-            <ThemeRiverChart
-              data={sentimentData}
-              title="Market Sentiment Flow"
-              height={350}
-              colors={['#4a9a7c', '#5a8fb8', '#b85c5c']}
-            />
-          </div>
-        </ComponentPreview>
+      <ShowcaseSection title="Market Sentiment" description="Shifting sentiment proportions">
+        <div style={chartContainerStyles}>
+          <ThemeRiverChart data={sentimentData} title="Market Sentiment Flow" height={350} colors={['#4a9a7c', '#5a8fb8', '#b85c5c']} />
+        </div>
       </ShowcaseSection>
 
-      {/* Custom Colors */}
-      <ShowcaseSection
-        title="Custom Colors"
-        description="Theme-matched color palette"
-      >
-        <ComponentPreview>
-          <div style={{ width: '100%' }}>
-            <ThemeRiverChart
-              data={sectorFlowData}
-              title="Portfolio Distribution"
-              height={350}
-              colors={['#5ba3a5', '#7ecbcc', '#4a9a7c', '#c4a35a', '#8b7ec7']}
-            />
-          </div>
-        </ComponentPreview>
+      <ShowcaseSection title="Custom Colors" description="Theme-matched color palette">
+        <div style={chartContainerStyles}>
+          <ThemeRiverChart data={sectorFlowData} title="Portfolio Distribution" height={350} colors={['#5ba3a5', '#7ecbcc', '#4a9a7c', '#c4a35a', '#8b7ec7']} />
+        </div>
       </ShowcaseSection>
 
-      {/* Compact */}
-      <ShowcaseSection
-        title="Compact"
-        description="Smaller river chart for dashboards"
-      >
-        <ComponentPreview>
-          <div style={{ width: '100%' }}>
-            <ThemeRiverChart data={sentimentData} height={250} />
-          </div>
-        </ComponentPreview>
+      <ShowcaseSection title="Compact" description="Smaller river chart for dashboards">
+        <div style={chartContainerStyles}>
+          <ThemeRiverChart data={sentimentData} height={250} />
+        </div>
       </ShowcaseSection>
 
-      {/* API Reference */}
-      <ShowcaseSection title="API Reference">
-        <div style={{ overflowX: 'auto' }}>
-          <table style={{
-            width: '100%',
-            borderCollapse: 'collapse',
-            fontSize: '13px',
-            fontFamily: 'var(--sentinel-font-mono)',
-          }}>
+      <ShowcaseSection title="Especificaciones Técnicas">
+        <div style={tableContainerStyles}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12px', fontFamily: 'var(--sentinel-font-mono)' }}>
             <thead>
-              <tr style={{ borderBottom: '1px solid var(--sentinel-border-default)' }}>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-text-secondary)' }}>Prop</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-text-secondary)' }}>Type</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-text-secondary)' }}>Default</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-text-secondary)' }}>Description</th>
+              <tr>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-accent-primary)', fontWeight: 600 }}>Prop</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-accent-primary)', fontWeight: 600 }}>Type</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-accent-primary)', fontWeight: 600 }}>Default</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-accent-primary)', fontWeight: 600 }}>Description</th>
               </tr>
             </thead>
             <tbody>
@@ -172,11 +159,11 @@ export function ThemeRiverChartShowcase() {
                 { prop: 'colors', type: 'string[]', default: 'chartPalette', desc: 'Custom color palette' },
                 { prop: 'formatValue', type: '(v: number) => string', default: '-', desc: 'Value formatter' },
               ].map((row, i) => (
-                <tr key={i} style={{ borderBottom: '1px solid var(--sentinel-border-subtle)' }}>
-                  <td style={{ padding: '12px 16px', color: 'var(--sentinel-accent-primary)' }}>{row.prop}</td>
-                  <td style={{ padding: '12px 16px', color: 'var(--sentinel-text-tertiary)' }}>{row.type}</td>
-                  <td style={{ padding: '12px 16px', color: 'var(--sentinel-text-tertiary)' }}>{row.default}</td>
-                  <td style={{ padding: '12px 16px', color: 'var(--sentinel-text-secondary)' }}>{row.desc}</td>
+                <tr key={i}>
+                  <td style={{ padding: '12px 16px', color: '#2D3436' }}>{row.prop}</td>
+                  <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.type}</td>
+                  <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.default}</td>
+                  <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.desc}</td>
                 </tr>
               ))}
             </tbody>
@@ -184,6 +171,14 @@ export function ThemeRiverChartShowcase() {
         </div>
       </ShowcaseSection>
     </div>
+  );
+}
+
+export function ThemeRiverChartShowcase() {
+  return (
+    <LightEngineProvider initialAnimating={true} initialSpeed={0.3}>
+      <ThemeRiverChartContent />
+    </LightEngineProvider>
   );
 }
 

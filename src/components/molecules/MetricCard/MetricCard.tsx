@@ -1,5 +1,5 @@
 // Path: src/components/molecules/MetricCard/MetricCard.tsx
-import React, { useMemo } from 'react';
+import { useMemo, type ReactNode, type CSSProperties } from 'react';
 import {
   TrendingUp,
   TrendingDown,
@@ -8,7 +8,22 @@ import {
   AlertCircle,
   Loader2,
 } from 'lucide-react';
+import { useLightEngineOptional } from '@contexts/LightEngineContext';
 import styles from './MetricCard.module.css';
+
+// Glass hue presets for semantic coloring
+const GLASS_HUE_PRESETS = {
+  primary: { hue: 175, sat: 35 },
+  info: { hue: 215, sat: 50 },
+  premium: { hue: 280, sat: 40 },
+  error: { hue: 355, sat: 35 },
+  success: { hue: 145, sat: 45 },
+  warning: { hue: 35, sat: 55 },
+  stats: { hue: 190, sat: 50 },
+  neutral: { hue: 220, sat: 15 },
+} as const;
+
+export type GlassPreset = keyof typeof GLASS_HUE_PRESETS;
 
 /* ═══════════════════════════════════════════════════════════════════════════════
    METRICCARD COMPONENT
@@ -112,13 +127,23 @@ export interface MetricCardProps {
   /** Card size */
   size?: 'sm' | 'md' | 'lg';
   /** Card variant */
-  variant?: 'default' | 'outlined' | 'filled';
+  variant?: 'default' | 'outlined' | 'filled' | 'glass';
   /** Status color */
   status?: 'default' | 'success' | 'warning' | 'error' | 'info';
   /** Icon to display */
-  icon?: React.ReactNode;
+  icon?: ReactNode;
   /** Additional CSS class */
   className?: string;
+
+  // ─── Glass Variant Options ───
+  /** Glass color preset (only for glass variant) */
+  glassPreset?: GlassPreset;
+  /** Custom glass hue (0-360, overrides glassPreset) */
+  glassHue?: number;
+  /** Custom glass saturation (0-100, overrides glassPreset) */
+  glassSat?: number;
+  /** Enable dynamic shadows from Light Engine */
+  dynamicShadows?: boolean;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -352,7 +377,14 @@ export function MetricCard({
   status = 'default',
   icon,
   className,
+  glassPreset = 'primary',
+  glassHue,
+  glassSat,
+  dynamicShadows = true,
 }: MetricCardProps) {
+  // Get light engine context (optional)
+  const lightEngine = useLightEngineOptional();
+
   // Format the value
   const formattedValue = useMemo(() => {
     return formatValue(value, format, { currency, decimals, prefix, suffix });
@@ -374,6 +406,10 @@ export function MetricCard({
     }
   }, [trend]);
 
+  // Resolve glass hue/sat
+  const resolvedHue = glassHue ?? GLASS_HUE_PRESETS[glassPreset].hue;
+  const resolvedSat = glassSat ?? GLASS_HUE_PRESETS[glassPreset].sat;
+
   // Build class names
   const cardClasses = [
     styles.metricCard,
@@ -383,16 +419,38 @@ export function MetricCard({
     (onClick || href) && styles.interactive,
     loading && styles.loading,
     error && styles.hasError,
+    variant === 'glass' && dynamicShadows && lightEngine && styles.dynamicShadows,
     className,
   ]
     .filter(Boolean)
     .join(' ');
 
+  // Get dynamic styles for glass variant
+  const getDynamicStyles = (): CSSProperties | undefined => {
+    if (variant !== 'glass') return undefined;
+
+    const baseStyles: CSSProperties = {
+      background: `linear-gradient(180deg, hsla(${resolvedHue}, ${resolvedSat}%, 65%, 0.28) 0%, hsla(${resolvedHue}, ${resolvedSat}%, 60%, 0.12) 50%, hsla(${resolvedHue}, ${resolvedSat}%, 65%, 0.22) 100%)`,
+      borderColor: `hsla(${resolvedHue}, ${resolvedSat}%, 80%, 0.35)`,
+    };
+
+    if (dynamicShadows && lightEngine) {
+      const { shadows } = lightEngine;
+      return {
+        ...baseStyles,
+        boxShadow: `${shadows.getLayeredShadow(resolvedHue, resolvedSat)}, ${shadows.getGlassReflection()}`,
+      };
+    }
+
+    return baseStyles;
+  };
+
   // Wrapper element (link or div)
   const Wrapper = href ? 'a' : 'div';
+  const dynamicStyles = getDynamicStyles();
   const wrapperProps = href
-    ? { href, className: cardClasses }
-    : { className: cardClasses, onClick, role: onClick ? 'button' : undefined, tabIndex: onClick ? 0 : undefined };
+    ? { href, className: cardClasses, style: dynamicStyles }
+    : { className: cardClasses, style: dynamicStyles, onClick, role: onClick ? 'button' : undefined, tabIndex: onClick ? 0 : undefined };
 
   // Loading state
   if (loading) {

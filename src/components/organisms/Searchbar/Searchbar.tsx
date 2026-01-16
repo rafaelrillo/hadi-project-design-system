@@ -1,9 +1,13 @@
 // Path: src/components/organisms/Searchbar/Searchbar.tsx
+import { type FormEvent, type CSSProperties } from 'react';
 import { Search } from 'lucide-react';
 import { InputDropdown, DropdownOption } from '../../atoms/Input/InputDropdown';
 import { InputText } from '../../atoms/Input/InputText';
 import { Button } from '../../atoms/Button';
+import { useLightEngineOptional } from '@contexts/LightEngineContext';
 import styles from './Searchbar.module.css';
+
+export type SearchbarStyle = 'default' | 'neuInset';
 
 export interface SearchbarFilter {
   type: 'dropdown' | 'text';
@@ -21,6 +25,10 @@ export interface SearchbarProps {
   onSearch: () => void;
   searchButtonText?: string;
   disabled?: boolean;
+  /** Visual style variant */
+  searchbarStyle?: SearchbarStyle;
+  /** Enable dynamic shadows from Light Engine */
+  dynamicShadows?: boolean;
 }
 
 export function Searchbar({
@@ -29,9 +37,34 @@ export function Searchbar({
   filters = [],
   onSearch,
   searchButtonText = 'Buscar',
-  disabled = false
+  disabled = false,
+  searchbarStyle = 'default',
+  dynamicShadows = true,
 }: SearchbarProps) {
-  const handleSearch = (e: React.FormEvent) => {
+  // Get light engine context (optional)
+  const lightEngine = useLightEngineOptional();
+
+  // Get container className
+  const getContainerClassName = (): string => {
+    const classes = [styles.container];
+    if (searchbarStyle === 'neuInset') {
+      classes.push(styles.neuInset);
+      if (dynamicShadows && lightEngine) classes.push(styles.dynamicShadows);
+    }
+    return classes.join(' ');
+  };
+
+  // Get container dynamic styles
+  const getContainerDynamicStyles = (): CSSProperties | undefined => {
+    if (searchbarStyle !== 'neuInset' || !dynamicShadows || !lightEngine) return undefined;
+
+    const { shadows } = lightEngine;
+    return {
+      boxShadow: shadows.getNeuInsetShadow(4, 10),
+    };
+  };
+
+  const handleSearch = (e: FormEvent) => {
     e.preventDefault();
     if (!disabled) {
       onSearch();
@@ -39,7 +72,11 @@ export function Searchbar({
   };
 
   return (
-    <form onSubmit={handleSearch} className={styles.container}>
+    <form
+      onSubmit={handleSearch}
+      className={getContainerClassName()}
+      style={getContainerDynamicStyles()}
+    >
       {/* Product Key */}
       <div className={styles.productKeyContainer}>
         <div className={styles.productName}>{productName}</div>

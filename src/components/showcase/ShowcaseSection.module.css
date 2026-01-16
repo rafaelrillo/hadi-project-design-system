@@ -1,37 +1,94 @@
 /* Path: src/components/showcase/ShowcaseSection.module.css */
-/* SENTINEL Design System Version */
+/* ═══════════════════════════════════════════════════════════════════════════════
+   SHOWCASE SECTION - Glass-Neumorphism Design System
+
+   Basado en el Light Engine de Home.tsx:
+   - neuPanel: Contenedor exterior elevado
+   - neuInset: Secciones internas "hundidas/cavadas"
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   SECTION - Elevated Neumorphic Panel
+   ───────────────────────────────────────────────────────────────────────────── */
 
 .section {
-  background: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  padding: var(--sentinel-space-6);
-  border-radius: var(--sentinel-radius-lg);
-  margin-bottom: var(--sentinel-space-6);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: var(--neu-base, #e0e5ec);
+  padding: 32px;
+  border-radius: 15px;
+  margin-bottom: 32px;
+  position: relative;
+
+  /* Neumorphic elevated shadow - same as Home.tsx neuPanel */
   box-shadow:
-    8px 8px 20px rgba(163, 177, 198, 0.35),
-    -8px -8px 20px rgba(255, 255, 255, 0.9),
-    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    -20px -20px 60px var(--neu-shadow-light, #ffffff),
+    20px 20px 60px var(--neu-shadow-dark, hsl(220, 15%, 72%));
+
+  /* Smooth transition for dynamic shadows */
+  transition: box-shadow 50ms linear;
 }
 
+/* ─────────────────────────────────────────────────────────────────────────────
+   TITLE
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .title {
-  font-size: var(--sentinel-text-lg);
-  font-weight: var(--sentinel-font-semibold);
-  color: var(--sentinel-text-primary);
-  margin-bottom: var(--sentinel-space-4);
-  font-family: var(--sentinel-font-primary);
+  font-size: 18px;
+  font-weight: 600;
+  color: #2D3436;
+  margin-bottom: 20px;
+  font-family: var(--sentinel-font-display, 'Space Grotesk', sans-serif);
   letter-spacing: -0.01em;
 }
 
 .titleWithDescription {
-  margin-bottom: var(--sentinel-space-2);
+  margin-bottom: 8px;
 }
 
+/* ─────────────────────────────────────────────────────────────────────────────
+   DESCRIPTION
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .description {
-  font-size: var(--sentinel-text-sm);
-  color: var(--sentinel-text-secondary);
-  margin-bottom: var(--sentinel-space-4);
-  font-family: var(--sentinel-font-primary);
+  font-size: 13px;
+  color: #636E72;
+  margin-bottom: 20px;
+  font-family: var(--sentinel-font-mono, 'Space Mono', monospace);
   line-height: 1.5;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   CONTENT AREA - Inset Neumorphic (carved/sunken)
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.content {
+  background: var(--neu-base, #e0e5ec);
+  border-radius: 15px;
+  padding: 24px;
+
+  /* Neumorphic inset shadow - same as Home.tsx neuInset */
+  box-shadow:
+    inset 5px 5px 15px var(--neu-shadow-dark, hsl(220, 15%, 72%)),
+    inset -5px -5px 15px var(--neu-shadow-light, #ffffff);
+
+  /* Smooth transition for dynamic shadows */
+  transition: box-shadow 50ms linear;
+}
+
+/* Inner content area for flex layout */
+.content > * {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   REDUCED MOTION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .section,
+  .content {
+    transition: none;
+  }
 }

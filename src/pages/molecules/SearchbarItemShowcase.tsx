@@ -1,10 +1,12 @@
 // Path: src/pages/molecules/SearchbarItemShowcase.tsx
-// SENTINEL Design System
-import React, { useState } from 'react';
+// SENTINEL Design System - Glass-Neumorphism Searchbar Item
+import React, { useState, useMemo } from 'react';
 import { SearchbarItem } from '../../components/molecules/SearchbarItem';
-import { ShowcaseSection, ComponentPreview } from '../../components/showcase';
+import { ShowcaseSection } from '../../components/showcase';
+import { LightEngineProvider, useLightEngine } from '@/contexts/LightEngineContext';
 
-export function SearchbarItemShowcase() {
+function SearchbarItemContent() {
+  const { lightAngle } = useLightEngine();
   const [search1, setSearch1] = useState('');
   const [search2, setSearch2] = useState('');
   const [searchResults, setSearchResults] = useState<string[]>([]);
@@ -21,137 +23,193 @@ export function SearchbarItemShowcase() {
     }
   };
 
+  const shadowOffsets = useMemo(() => {
+    const shadowAngle = (lightAngle + 180) * (Math.PI / 180);
+    return { x: Math.cos(shadowAngle), y: Math.sin(shadowAngle) };
+  }, [lightAngle]);
+
+  const LIGHT = {
+    base: '#e0e5ec',
+    shadowDark: 'hsl(220 15% 72%)',
+    shadowLight: 'hsl(0 0% 100%)',
+  };
+
+  const getNeuPanelShadow = (distance: number, blur: number): string => {
+    const { x, y } = shadowOffsets;
+    return `${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}`;
+  };
+
+  const getNeuInsetShadow = (distance: number, blur: number): string => {
+    const { x, y } = shadowOffsets;
+    return `inset ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}`;
+  };
+
   const pageHeaderStyles: React.CSSProperties = {
-    marginBottom: '32px'
+    marginBottom: '32px',
+    padding: '24px',
+    background: LIGHT.base,
+    borderRadius: '15px',
+    boxShadow: getNeuPanelShadow(20, 60),
+    transition: 'box-shadow 50ms linear',
   };
 
   const titleStyles: React.CSSProperties = {
     fontSize: '28px',
     fontWeight: 700,
-    color: 'var(--primary)',
+    color: 'var(--sentinel-accent-primary)',
     marginBottom: '8px',
-    fontFamily: 'var(--font-mono)',
+    fontFamily: 'var(--sentinel-font-display)',
     textTransform: 'uppercase',
     letterSpacing: '0.1em',
-    textShadow: '0 0 15px var(--accent-glow)'
   };
 
   const descStyles: React.CSSProperties = {
     fontSize: '14px',
-    color: 'var(--foreground-muted)',
-    fontFamily: 'var(--font-mono)',
+    color: 'var(--sentinel-text-secondary)',
+    fontFamily: 'var(--sentinel-font-mono)',
     textTransform: 'uppercase',
-    letterSpacing: '0.03em'
+    letterSpacing: '0.03em',
+  };
+
+  const searchContainerStyles: React.CSSProperties = {
+    maxWidth: '400px',
+    width: '100%',
+    padding: '24px',
+    background: LIGHT.base,
+    borderRadius: '15px',
+    boxShadow: getNeuPanelShadow(8, 24),
+    transition: 'box-shadow 50ms linear',
   };
 
   return (
-    <div>
+    <div style={{ background: LIGHT.base, minHeight: '100%', padding: '24px' }}>
       <header style={pageHeaderStyles}>
         <h1 style={titleStyles}>&gt; SearchbarItem_</h1>
-        <p style={descStyles}>
-          // Búsqueda integrada con ícono clickeable, botón clear y border-radius
-        </p>
+        <p style={descStyles}>// Búsqueda integrada con ícono clickeable y clear</p>
       </header>
 
       <ShowcaseSection
         title="SearchbarItem Básico"
         description="Barra de búsqueda con ícono clickeable para buscar"
       >
-        <ComponentPreview>
-          <div style={{ maxWidth: '400px', width: '100%' }}>
-            <SearchbarItem
-              value={search1}
-              onChange={setSearch1}
-              placeholder="Buscar..."
-              onSearch={(value) => console.log('Búsqueda:', value)}
-            />
-          </div>
-        </ComponentPreview>
+        <div style={searchContainerStyles}>
+          <SearchbarItem
+            value={search1}
+            onChange={setSearch1}
+            placeholder="Buscar..."
+            onSearch={(value) => console.log('Búsqueda:', value)}
+          />
+        </div>
       </ShowcaseSection>
 
       <ShowcaseSection
         title="Con Búsqueda Interactiva"
-        description="Click en el ícono Search o presiona Enter para buscar"
+        description="Click en el ícono Search o presiona Enter"
       >
-        <ComponentPreview>
-          <div style={{ maxWidth: '400px', width: '100%' }}>
-            <SearchbarItem
-              value={search2}
-              onChange={setSearch2}
-              placeholder="Buscar productos..."
-              onSearch={handleSearch}
-            />
-            {searchResults.length > 0 && (
-              <div style={{ marginTop: '12px', padding: '12px', backgroundColor: 'var(--background-tertiary)', borderRadius: 'var(--radius)' }}>
-                <div style={{ fontSize: '12px', fontWeight: 600, marginBottom: '8px', color: 'var(--foreground-muted)', fontFamily: 'var(--font-mono)', textTransform: 'uppercase' }}>
-                  Resultados:
-                </div>
-                {searchResults.map((result, index) => (
-                  <div key={index} style={{ fontSize: '14px', padding: '4px 0', color: 'var(--foreground)', fontFamily: 'var(--font-mono)' }}>
-                    • {result}
-                  </div>
-                ))}
+        <div style={searchContainerStyles}>
+          <SearchbarItem
+            value={search2}
+            onChange={setSearch2}
+            placeholder="Buscar productos..."
+            onSearch={handleSearch}
+          />
+          {searchResults.length > 0 && (
+            <div style={{
+              marginTop: '16px',
+              padding: '16px',
+              background: LIGHT.base,
+              borderRadius: '15px',
+              boxShadow: getNeuInsetShadow(3, 8),
+            }}>
+              <div style={{
+                fontSize: '12px',
+                fontWeight: 600,
+                marginBottom: '12px',
+                color: '#636E72',
+                fontFamily: 'var(--sentinel-font-mono)',
+                textTransform: 'uppercase',
+              }}>
+                Resultados:
               </div>
-            )}
-          </div>
-        </ComponentPreview>
+              {searchResults.map((result, index) => (
+                <div key={index} style={{
+                  fontSize: '14px',
+                  padding: '8px 0',
+                  color: '#2D3436',
+                  fontFamily: 'var(--sentinel-font-mono)',
+                }}>
+                  • {result}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
       </ShowcaseSection>
 
       <ShowcaseSection
         title="Estado Focus"
-        description="Border cambia a #006081 al hacer focus"
+        description="Border destaca al hacer focus"
       >
-        <ComponentPreview>
-          <div style={{ maxWidth: '400px', width: '100%', display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            <div>
-              <div style={{ fontSize: '12px', marginBottom: '4px', color: 'var(--foreground-muted)', fontFamily: 'var(--font-mono)' }}>Click en el input para ver el focus:</div>
-              <SearchbarItem placeholder="Click aquí..." />
-            </div>
+        <div style={searchContainerStyles}>
+          <div style={{ fontSize: '12px', marginBottom: '12px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)' }}>
+            Click en el input para ver el focus:
           </div>
-        </ComponentPreview>
+          <SearchbarItem placeholder="Click aquí..." />
+        </div>
       </ShowcaseSection>
 
       <ShowcaseSection
         title="Sin Botón Clear"
-        description="SearchbarItem sin botón de limpiar (showClearButton={false})"
+        description="SearchbarItem sin botón de limpiar"
       >
-        <ComponentPreview>
-          <div style={{ maxWidth: '400px', width: '100%' }}>
-            <SearchbarItem
-              placeholder="Sin botón limpiar..."
-              showClearButton={false}
-            />
-          </div>
-        </ComponentPreview>
+        <div style={searchContainerStyles}>
+          <SearchbarItem
+            placeholder="Sin botón limpiar..."
+            showClearButton={false}
+          />
+        </div>
       </ShowcaseSection>
 
       <ShowcaseSection
         title="Estado Disabled"
-        description="SearchbarItem deshabilitado con background #F5F5F5"
+        description="SearchbarItem deshabilitado"
       >
-        <ComponentPreview>
-          <div style={{ maxWidth: '400px', width: '100%' }}>
-            <SearchbarItem
-              placeholder="Búsqueda deshabilitada..."
-              disabled={true}
-            />
-          </div>
-        </ComponentPreview>
+        <div style={searchContainerStyles}>
+          <SearchbarItem
+            placeholder="Búsqueda deshabilitada..."
+            disabled={true}
+          />
+        </div>
       </ShowcaseSection>
 
       <ShowcaseSection title="Especificaciones Técnicas">
-        <div style={{ fontSize: '12px', color: 'var(--foreground)', lineHeight: '1.8', fontFamily: 'var(--font-mono)' }}>
-          <p>✓ <strong style={{ color: 'var(--primary)' }}>Altura:</strong> 40px</p>
-          <p>✓ <strong style={{ color: 'var(--primary)' }}>Border:</strong> 1px solid var(--border) | var(--primary) (focus)</p>
-          <p>✓ <strong style={{ color: 'var(--primary)' }}>Border-radius:</strong> var(--radius)</p>
-          <p>✓ <strong style={{ color: 'var(--primary)' }}>Background:</strong> var(--background-secondary) | var(--background-tertiary) (disabled)</p>
-          <p>✓ <strong style={{ color: 'var(--primary)' }}>Search icon button:</strong> 40x40px, clickeable, hover color var(--primary)</p>
-          <p>✓ <strong style={{ color: 'var(--primary)' }}>Input:</strong> flex 1, padding 0 8px, sin border ni outline</p>
-          <p>✓ <strong style={{ color: 'var(--primary)' }}>Clear button:</strong> 32x32px, X icon 16px</p>
-          <p>✓ <strong style={{ color: 'var(--primary)' }}>Disabled:</strong> background var(--background-tertiary)</p>
-          <p>✓ <strong style={{ color: 'var(--primary)' }}>Diferencia con SearchBar:</strong> Border-radius var(--radius), layout integrado</p>
+        <div style={{
+          padding: '20px',
+          borderRadius: '15px',
+          boxShadow: getNeuInsetShadow(5, 15),
+          background: LIGHT.base,
+          fontSize: '12px',
+          fontFamily: 'var(--sentinel-font-mono)',
+          color: '#636E72',
+          lineHeight: '1.8',
+          transition: 'box-shadow 50ms linear',
+        }}>
+          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Altura:</strong> 40px</p>
+          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Border radius:</strong> 15px</p>
+          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Search icon button:</strong> 40x40px, clickeable</p>
+          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Input:</strong> flex 1, padding 0 8px</p>
+          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Clear button:</strong> 32x32px, X icon 16px</p>
+          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Diferencia con SearchBar:</strong> Layout integrado con ícono clickeable</p>
         </div>
       </ShowcaseSection>
     </div>
+  );
+}
+
+export function SearchbarItemShowcase() {
+  return (
+    <LightEngineProvider initialAnimating={true} initialSpeed={0.3}>
+      <SearchbarItemContent />
+    </LightEngineProvider>
   );
 }
