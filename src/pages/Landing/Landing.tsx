@@ -26,8 +26,8 @@ export function Landing() {
 
   return (
     <div className={styles.container}>
-      {/* Background Effects */}
-      <AtmosphericBackground variant="subtle" />
+      {/* Background Effects - TEMPORARILY DISABLED */}
+      {/* <AtmosphericBackground variant="subtle" /> */}
       <ScrollProgress />
 
       {/* Navigation */}

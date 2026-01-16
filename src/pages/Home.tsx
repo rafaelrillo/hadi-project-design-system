@@ -7,6 +7,7 @@ import {
   Bell, Settings, ChevronRight, Zap, Star, ArrowUpRight,
   Sun, Pause, Play
 } from 'lucide-react';
+import { LineChart } from '@/components/charts/echarts';
 
 // ═══════════════════════════════════════════════════════════════════════════
 // DYNAMIC LIGHT ENGINE SYSTEM
@@ -512,12 +513,44 @@ export function Home() {
           <div style={{ textAlign: 'center', marginTop: '8px', fontSize: '10px', color: '#9BA4B0', fontFamily: 'var(--sentinel-font-mono)' }}>
             Dynamic Elevation 1-5
           </div>
+
+          {/* Glass element - Blue/Info */}
+          <div style={{
+            ...glassCard(215, 50),
+            position: 'absolute' as const,
+            top: '-14px',
+            left: '24px',
+            padding: '8px 14px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '6px',
+            zIndex: 10,
+          }}>
+            <Activity size={14} color="#2d4a6b" />
+            <span style={{ fontSize: '11px', fontWeight: 600, color: '#1e3550' }}>Live Data</span>
+          </div>
+
+          {/* Glass element - Purple/Premium */}
+          <div style={{
+            ...glassCard(280, 40),
+            position: 'absolute' as const,
+            bottom: '-12px',
+            right: '20px',
+            padding: '8px 12px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '5px',
+            zIndex: 10,
+          }}>
+            <Star size={12} color="#5a3d7a" />
+            <span style={{ fontSize: '11px', fontWeight: 600, color: '#4a2d6a' }}>Pro</span>
+          </div>
         </div>
 
         {/* ──────────────────────────────────────────────────────────────────
-            CARD 2: Glass with dynamic light reflection
+            CARD 2: Performance Chart - Spans 2 columns
             ────────────────────────────────────────────────────────────────── */}
-        <div style={{ ...neuPanel, overflow: 'visible' }}>
+        <div style={{ ...neuPanel, overflow: 'visible', gridColumn: 'span 2' }}>
           <h3 style={sectionTitle}>
             <span style={{
               width: '8px',
@@ -532,14 +565,49 @@ export function Home() {
 
           <div style={{
             ...neuInset,
-            height: '140px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            color: '#4A9A9C',
+            padding: '8px',
             marginBottom: '16px',
           }}>
-            <BarChart2 size={48} strokeWidth={1.5} />
+            <LineChart
+              data={[
+                {
+                  id: 'portfolio',
+                  name: 'Portfolio',
+                  color: '#4A9A9C',
+                  data: [
+                    { x: 'Jan', y: 0 }, { x: 'Feb', y: 12 }, { x: 'Mar', y: 8 },
+                    { x: 'Apr', y: 22 }, { x: 'May', y: 28 }, { x: 'Jun', y: 35 },
+                    { x: 'Jul', y: 42 }, { x: 'Aug', y: 38 }, { x: 'Sep', y: 48 },
+                    { x: 'Oct', y: 52 }, { x: 'Nov', y: 58 }, { x: 'Dec', y: 55 },
+                  ],
+                },
+                {
+                  id: 'nasdaq',
+                  name: 'NASDAQ',
+                  color: '#8B5CF6',
+                  data: [
+                    { x: 'Jan', y: 0 }, { x: 'Feb', y: 8 }, { x: 'Mar', y: 12 },
+                    { x: 'Apr', y: 18 }, { x: 'May', y: 22 }, { x: 'Jun', y: 28 },
+                    { x: 'Jul', y: 32 }, { x: 'Aug', y: 28 }, { x: 'Sep', y: 35 },
+                    { x: 'Oct', y: 38 }, { x: 'Nov', y: 42 }, { x: 'Dec', y: 40 },
+                  ],
+                },
+                {
+                  id: 'sp500',
+                  name: 'S&P 500',
+                  color: '#F59E0B',
+                  data: [
+                    { x: 'Jan', y: 0 }, { x: 'Feb', y: 5 }, { x: 'Mar', y: 8 },
+                    { x: 'Apr', y: 12 }, { x: 'May', y: 15 }, { x: 'Jun', y: 20 },
+                    { x: 'Jul', y: 24 }, { x: 'Aug', y: 22 }, { x: 'Sep', y: 28 },
+                    { x: 'Oct', y: 30 }, { x: 'Nov', y: 32 }, { x: 'Dec', y: 30 },
+                  ],
+                },
+              ]}
+              smooth
+              height={220}
+              formatValue={(v) => `${v > 0 ? '+' : ''}${v}%`}
+            />
           </div>
 
           <div style={{
@@ -549,14 +617,14 @@ export function Home() {
             justifyContent: 'space-around',
           }}>
             {[
-              { label: 'S&P 500', value: '+8.2%' },
-              { label: 'NASDAQ', value: '+11.4%' },
-              { label: 'Portfolio', value: '+12.5%' },
+              { label: 'S&P 500', value: '+30%', color: '#F59E0B' },
+              { label: 'NASDAQ', value: '+40%', color: '#8B5CF6' },
+              { label: 'Portfolio', value: '+55%', color: '#4A9A9C' },
             ].map((item, i, arr) => (
               <div key={item.label} style={{ display: 'flex', alignItems: 'center', gap: i < arr.length - 1 ? '20px' : 0 }}>
                 <div style={{ textAlign: 'center' }}>
                   <div style={{ fontSize: '13px', fontWeight: 600, color: '#2D3436' }}>{item.label}</div>
-                  <div style={{ fontSize: '14px', color: '#22C55E', fontWeight: 700 }}>{item.value}</div>
+                  <div style={{ fontSize: '16px', color: item.color, fontWeight: 700 }}>{item.value}</div>
                 </div>
                 {i < arr.length - 1 && (
                   <div style={{ width: '1px', height: '30px', background: 'rgba(163, 177, 198, 0.3)' }} />
@@ -586,6 +654,22 @@ export function Home() {
               background: '#EF4444',
               boxShadow: '0 0 8px rgba(239, 68, 68, 0.5)',
             }} />
+          </div>
+
+          {/* Glass element - Green/Success */}
+          <div style={{
+            ...glassCard(145, 45),
+            position: 'absolute' as const,
+            bottom: '-16px',
+            left: '-12px',
+            padding: '10px 14px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '6px',
+            zIndex: 10,
+          }}>
+            <TrendingUp size={14} color="#2d6b4a" />
+            <span style={{ fontSize: '12px', fontWeight: 600, color: '#1e4d35' }}>+18.2%</span>
           </div>
         </div>
 
@@ -660,6 +744,39 @@ export function Home() {
             <Settings size={14} color="#3d7a7c" style={{ animation: 'spin 4s linear infinite' }} />
             <span style={{ fontSize: '12px', color: '#2d5a5c', fontWeight: 500 }}>Auto-rebalancing enabled</span>
             <ChevronRight size={14} color="#4A9A9C" />
+          </div>
+
+          {/* Glass element - Amber/Warning */}
+          <div style={{
+            ...glassCard(35, 55),
+            position: 'absolute' as const,
+            top: '-10px',
+            left: '30%',
+            padding: '8px 14px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '6px',
+            zIndex: 10,
+          }}>
+            <Zap size={13} color="#8a6520" />
+            <span style={{ fontSize: '11px', fontWeight: 600, color: '#6b4f18' }}>High Priority</span>
+          </div>
+
+          {/* Glass element - Cyan */}
+          <div style={{
+            ...glassCard(190, 50),
+            position: 'absolute' as const,
+            top: '40%',
+            right: '-18px',
+            padding: '10px 12px',
+            display: 'flex',
+            flexDirection: 'column' as const,
+            alignItems: 'center',
+            gap: '4px',
+            zIndex: 10,
+          }}>
+            <BarChart2 size={16} color="#1e5a6b" />
+            <span style={{ fontSize: '10px', fontWeight: 700, color: '#154550', fontFamily: 'var(--sentinel-font-mono)' }}>24h</span>
           </div>
         </div>
       </div>
