@@ -1,27 +1,62 @@
 /* Path: src/components/molecules/sentinel/NewsCard/NewsCard.module.css */
 
+/* ═══════════════════════════════════════════════════════════════════════════
+   NEWS CARD - Teal Brand Glass
+   ═══════════════════════════════════════════════════════════════════════════ */
 .container {
   display: flex;
   flex-direction: column;
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  border-radius: var(--sentinel-radius-lg);
+  position: relative;
   overflow: hidden;
   cursor: pointer;
+
+  /* Teal brand glass */
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.25) 0%,
+    rgba(74, 154, 156, 0.12) 100%
+  );
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(74, 154, 156, 0.25);
+  border-radius: var(--sentinel-radius-lg);
+
+  /* Realistic soft shadow */
   box-shadow:
-    6px 6px 12px rgba(163, 177, 198, 0.35),
-    -6px -6px 12px rgba(255, 255, 255, 0.9),
-    inset 1px 1px 2px rgba(255, 255, 255, 0.7);
+    3px 3px 8px rgba(74, 154, 156, 0.1),
+    -2px -2px 6px rgba(255, 255, 255, 0.35),
+    inset 0 1px 1px rgba(255, 255, 255, 0.3);
+
   transition: all var(--sentinel-duration-fast) var(--sentinel-ease-default);
 }
 
+/* Subtle top edge glow */
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 20%;
+  right: 20%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(74, 154, 156, 0.3), rgba(74, 154, 156, 0.4), rgba(74, 154, 156, 0.3), transparent);
+  border-radius: var(--sentinel-radius-lg) var(--sentinel-radius-lg) 0 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
 .container:hover {
-  border-color: rgba(255, 255, 255, 0.9);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(74, 154, 156, 0.18) 100%
+  );
+  border-color: rgba(74, 154, 156, 0.4);
   transform: translateY(-2px);
   box-shadow:
-    8px 8px 20px rgba(163, 177, 198, 0.4),
-    -8px -8px 20px rgba(255, 255, 255, 0.95),
-    inset 1px 1px 2px rgba(255, 255, 255, 0.7);
+    4px 4px 12px rgba(74, 154, 156, 0.15),
+    -3px -3px 8px rgba(255, 255, 255, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.4);
 }
 
 .container:focus-visible {

@@ -289,7 +289,7 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
-/* Recommendation List */
+/* Recommendation List - Inset container */
 .recList {
   display: flex;
   flex-direction: column;
@@ -297,6 +297,12 @@
   flex: 1;
   min-height: 0;
   overflow-y: auto;
+  padding: 12px;
+  background: rgba(220, 225, 232, 0.5);
+  border-radius: var(--sentinel-radius-md);
+  box-shadow:
+    inset 4px 4px 8px rgba(163, 177, 198, 0.4),
+    inset -4px -4px 8px rgba(255, 255, 255, 0.7);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -304,42 +310,51 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .recCard {
-  background: var(--sentinel-glass-bg);
-  border: 1px solid var(--sentinel-glass-border);
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.8);
   border-radius: var(--sentinel-radius-lg);
   overflow: hidden;
-  transition: all var(--sentinel-duration-fast) var(--sentinel-ease-default);
+  transition: all 0.15s ease;
   position: relative;
 
-  backdrop-filter: blur(var(--sentinel-blur-md));
-  -webkit-backdrop-filter: blur(var(--sentinel-blur-md));
+  /* Glass blur effect */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 
+  /* Floating glass shadow */
   box-shadow:
-    var(--sentinel-shadow-card),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    4px 4px 8px rgba(163, 177, 198, 0.3),
+    -4px -4px 8px rgba(255, 255, 255, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 .recCard:hover {
-  border-color: var(--sentinel-glass-border-hover);
+  background: rgba(255, 255, 255, 0.75);
+  border-color: rgba(74, 154, 156, 0.2);
+  transform: translateY(-2px);
   box-shadow:
-    var(--sentinel-shadow-card-hover),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    6px 6px 16px rgba(163, 177, 198, 0.35),
+    -6px -6px 16px rgba(255, 255, 255, 0.9),
+    inset 0 1px 0 rgba(255, 255, 255, 1),
+    0 0 0 1px rgba(74, 154, 156, 0.1);
 }
 
 .buyCard {
-  border-left: 3px solid rgba(74, 222, 128, 0.6);
+  border-left: 3px solid rgba(74, 154, 124, 0.6);
   box-shadow:
-    var(--sentinel-shadow-card),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05),
-    inset 3px 0 15px rgba(74, 222, 128, 0.05);
+    4px 4px 8px rgba(163, 177, 198, 0.3),
+    -4px -4px 8px rgba(255, 255, 255, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 3px 0 15px rgba(74, 154, 124, 0.08);
 }
 
 .sellCard {
-  border-left: 3px solid rgba(248, 113, 113, 0.6);
+  border-left: 3px solid rgba(184, 92, 92, 0.6);
   box-shadow:
-    var(--sentinel-shadow-card),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05),
-    inset 3px 0 15px rgba(248, 113, 113, 0.05);
+    4px 4px 8px rgba(163, 177, 198, 0.3),
+    -4px -4px 8px rgba(255, 255, 255, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 3px 0 15px rgba(184, 92, 92, 0.08);
 }
 
 .cardHeader {
@@ -696,6 +711,12 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  padding: 12px;
+  background: rgba(220, 225, 232, 0.4);
+  border-radius: var(--sentinel-radius-md);
+  box-shadow:
+    inset 3px 3px 6px rgba(163, 177, 198, 0.35),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.6);
 }
 
 .noNews {
@@ -776,52 +797,68 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
-/* Mobile Recommendation List */
+/* Mobile Recommendation List - Inset container */
 .mobileRecList {
   display: flex;
   flex-direction: column;
   gap: 6px;
   flex: 1;
   min-height: 0;
+  overflow-y: auto;
+  padding: 10px;
+  background: rgba(220, 225, 232, 0.5);
+  border-radius: var(--sentinel-radius-md);
+  box-shadow:
+    inset 3px 3px 6px rgba(163, 177, 198, 0.4),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.7);
 }
 
 /* Mobile Recommendation Card - Glass */
 .mobileRecCard {
-  background: var(--sentinel-glass-bg);
-  border: 1px solid var(--sentinel-glass-border);
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.8);
   border-radius: var(--sentinel-radius-md);
   cursor: pointer;
-  transition: all var(--sentinel-duration-fast) var(--sentinel-ease-default);
+  transition: all 0.15s ease;
   -webkit-tap-highlight-color: transparent;
   flex-shrink: 0;
 
-  backdrop-filter: blur(var(--sentinel-blur-md));
-  -webkit-backdrop-filter: blur(var(--sentinel-blur-md));
+  /* Glass blur effect */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 
+  /* Floating glass shadow */
   box-shadow:
-    var(--sentinel-shadow-card),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    4px 4px 8px rgba(163, 177, 198, 0.3),
+    -4px -4px 8px rgba(255, 255, 255, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 .mobileRecCard:active {
-  transform: scale(0.99);
-  background: rgba(255, 255, 255, 0.03);
+  transform: scale(0.98);
+  background: rgba(255, 255, 255, 0.75);
+  box-shadow:
+    2px 2px 4px rgba(163, 177, 198, 0.25),
+    -2px -2px 4px rgba(255, 255, 255, 0.7),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
 }
 
 .mobileRecCardBuy {
-  border-left: 3px solid rgba(74, 222, 128, 0.6);
+  border-left: 3px solid rgba(74, 154, 124, 0.6);
   box-shadow:
-    var(--sentinel-shadow-card),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05),
-    inset 3px 0 10px rgba(74, 222, 128, 0.05);
+    4px 4px 8px rgba(163, 177, 198, 0.3),
+    -4px -4px 8px rgba(255, 255, 255, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 3px 0 10px rgba(74, 154, 124, 0.08);
 }
 
 .mobileRecCardSell {
-  border-left: 3px solid rgba(248, 113, 113, 0.6);
+  border-left: 3px solid rgba(184, 92, 92, 0.6);
   box-shadow:
-    var(--sentinel-shadow-card),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05),
-    inset 3px 0 10px rgba(248, 113, 113, 0.05);
+    4px 4px 8px rgba(163, 177, 198, 0.3),
+    -4px -4px 8px rgba(255, 255, 255, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 3px 0 10px rgba(184, 92, 92, 0.08);
 }
 
 .mobileRecRow {

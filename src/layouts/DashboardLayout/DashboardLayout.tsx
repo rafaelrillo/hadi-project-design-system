@@ -1,6 +1,6 @@
 // Path: src/layouts/DashboardLayout/DashboardLayout.tsx
 
-import { useState, useMemo, useEffect, type CSSProperties } from 'react';
+import { useState, type CSSProperties } from 'react';
 import { Outlet, NavLink, useNavigate } from 'react-router-dom';
 import {
   Home,
@@ -13,9 +13,8 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 
-import { useAuthStore, usePortfolioStore } from '../../store';
+import { useAuthStore } from '../../store';
 import { AtmosphericBackground } from '../../components/atoms/sentinel';
-import { TickerTape, type TickerItem } from '../../components/organisms/sentinel';
 import { useIsMobile } from '../../hooks/useBreakpoint';
 import { MobileHeader } from '../../components/organisms/MobileHeader';
 import { BottomNavigation } from '../../components/organisms/BottomNavigation';
@@ -80,7 +79,6 @@ function DashboardLayoutInner({
 }: Omit<DashboardLayoutProps, 'animateLight' | 'initialLightAngle'>) {
   const navigate = useNavigate();
   const { logout } = useAuthStore();
-  const { holdings, fetchPortfolio } = usePortfolioStore();
   const isMobile = useIsMobile();
   const [isMoreMenuOpen, setIsMoreMenuOpen] = useState(false);
 
@@ -106,23 +104,6 @@ function DashboardLayoutInner({
       boxShadow: shadows.getNeuPanelShadow(6, 12),
     };
   };
-
-  // Fetch portfolio on mount
-  useEffect(() => {
-    if (holdings.length === 0) {
-      fetchPortfolio();
-    }
-  }, [holdings.length, fetchPortfolio]);
-
-  // Transform portfolio holdings to ticker items
-  const tickerItems: TickerItem[] = useMemo(() => {
-    return holdings.map((holding) => ({
-      symbol: holding.symbol,
-      price: holding.currentPrice,
-      change: holding.dayChange,
-      changePercent: holding.dayChangePercent,
-    }));
-  }, [holdings]);
 
   // Get current section based on path (can be used for breadcrumbs or page titles)
   // const getCurrentSection = (): NavItem => {
@@ -153,17 +134,6 @@ function DashboardLayoutInner({
             onMenuClick={() => setIsMoreMenuOpen(true)}
           />
 
-          {/* Ticker Tape - Scrolling stock prices */}
-          {tickerItems.length > 0 && (
-            <TickerTape
-              items={tickerItems}
-              speed="normal"
-              variant="minimal"
-              pauseOnHover
-              className={styles.mobileTickerTape}
-            />
-          )}
-
           <main className={styles.mobileContent}>
             <Outlet />
           </main>
@@ -187,17 +157,6 @@ function DashboardLayoutInner({
     <>
       {/* Atmospheric Background - Creates depth and "breathing" effect */}
       <AtmosphericBackground variant="subtle" animated />
-
-      {/* Ticker Tape - Full width scrolling stock prices */}
-      {tickerItems.length > 0 && (
-        <TickerTape
-          items={tickerItems}
-          speed="normal"
-          variant="detailed"
-          pauseOnHover
-          className={styles.tickerTape}
-        />
-      )}
 
       <div className={styles.layout}>
         {/* Sidebar */}

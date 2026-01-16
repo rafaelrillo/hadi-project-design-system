@@ -15,7 +15,7 @@ import { usePortfolioStore } from '../../../store';
 // Components
 import { Button } from '../../../components/atoms/Button';
 import { NewsCard } from '../../../components/molecules/sentinel/NewsCard';
-import { FinancialLineChart } from '../../../components/charts';
+import { LineChart } from '../../../components/charts/echarts';
 
 import styles from './DashboardPage.module.css';
 
@@ -119,11 +119,11 @@ export function DashboardPage() {
     }
 
     return [
-      { id: 'SENTINEL', data: sentinelData },
-      { id: 'NASDAQ', data: nasdaqData },
-      { id: 'S&P 500', data: sp500Data },
-      { id: 'Gold', data: goldData },
-      { id: 'Bonds', data: bondsData },
+      { id: 'SENTINEL', name: 'SENTINEL', data: sentinelData, color: '#5BA3A5' },
+      { id: 'NASDAQ', name: 'NASDAQ', data: nasdaqData, color: '#9b8ab8' },
+      { id: 'S&P 500', name: 'S&P 500', data: sp500Data, color: '#7a99b8' },
+      { id: 'Gold', name: 'Gold', data: goldData, color: '#b8a07a' },
+      { id: 'Bonds', name: 'Bonds', data: bondsData, color: '#a89878' },
     ];
   }, []);
 
@@ -154,13 +154,13 @@ export function DashboardPage() {
         {/* Chart Card */}
         <div className={styles.mobileChartCard}>
           <div className={styles.mobileChartWrapper}>
-            <FinancialLineChart
+            <LineChart
               data={performanceComparisonData}
               height={160}
               enableArea={true}
-              areaSeriesIndex={0}
+              areaOpacity={0.25}
+              smooth={true}
               formatValue={(value) => `$${value.toLocaleString()}`}
-              colors={['#5BA3A5', '#9b8ab8', '#7a99b8', '#b8a07a', '#a89878']}
               minimal={true}
             />
           </div>
@@ -198,7 +198,7 @@ export function DashboardPage() {
             </div>
             <div className={styles.mobilePicksList}>
               {mobileTopBuys.map((rec, index) => (
-                <div key={rec.ticker} className={styles.mobilePickItem}>
+                <div key={rec.ticker} className={styles.mobilePickItemBuy}>
                   <span className={styles.mobilePickRank}>#{index + 1}</span>
                   <span className={styles.mobilePickTicker}>{rec.ticker}</span>
                   <span className={styles.mobilePickPrice}>${rec.price.toFixed(0)}</span>
@@ -221,7 +221,7 @@ export function DashboardPage() {
             </div>
             <div className={styles.mobilePicksList}>
               {mobileTopSells.map((rec, index) => (
-                <div key={rec.ticker} className={styles.mobilePickItem}>
+                <div key={rec.ticker} className={styles.mobilePickItemSell}>
                   <span className={styles.mobilePickRank}>#{index + 1}</span>
                   <span className={styles.mobilePickTicker}>{rec.ticker}</span>
                   <span className={styles.mobilePickPrice}>${rec.price.toFixed(0)}</span>
@@ -302,15 +302,17 @@ export function DashboardPage() {
           </div>
         </div>
         <div className={styles.chartWrapper}>
-          <FinancialLineChart
-            data={performanceComparisonData}
-            height={240}
-            enableArea={true}
-            areaSeriesIndex={0}
-            formatValue={(value) => `$${value.toLocaleString()}`}
-            colors={['#5BA3A5', '#9b8ab8', '#7a99b8', '#b8a07a', '#a89878']}
-            minimal={true}
-          />
+          <div className={styles.chartElevated}>
+            <LineChart
+              data={performanceComparisonData}
+              height={220}
+              enableArea={true}
+              areaOpacity={0.25}
+              smooth={true}
+              formatValue={(value) => `$${value.toLocaleString()}`}
+              showLegend={false}
+            />
+          </div>
         </div>
       </div>
 
@@ -333,7 +335,7 @@ export function DashboardPage() {
           </div>
           <div className={styles.recommendationsList}>
             {TOP_BUYS.map((rec, index) => (
-              <div key={rec.ticker} className={styles.recommendationItem}>
+              <div key={rec.ticker} className={styles.recommendationItemBuy}>
                 <span className={styles.recRank}>#{index + 1}</span>
                 <div className={styles.recInfo}>
                   <span className={styles.recTicker}>{rec.ticker}</span>
@@ -367,7 +369,7 @@ export function DashboardPage() {
           </div>
           <div className={styles.recommendationsList}>
             {topSells.map((rec, index) => (
-              <div key={rec.ticker} className={styles.recommendationItem}>
+              <div key={rec.ticker} className={styles.recommendationItemSell}>
                 <span className={styles.recRankSell}>#{index + 1}</span>
                 <div className={styles.recInfo}>
                   <span className={styles.recTicker}>{rec.ticker}</span>

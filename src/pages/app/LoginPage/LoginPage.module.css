@@ -1,4 +1,13 @@
 /* Path: src/pages/app/LoginPage/LoginPage.module.css */
+/* ═══════════════════════════════════════════════════════════════════════════════
+   SENTINEL DESIGN SYSTEM v3.3 - Login Page
+
+   LIGHT GLASS-NEUMORPHISM - Frosted glass login on light theme
+   - Light glass backgrounds with rgba(255,255,255,0.5-0.7)
+   - Soft neumorphic shadows using rgba(163,177,198,...)
+   - Inner highlights with rgba(255,255,255,0.7)
+   - Teal accent glows with rgba(74,154,156,...)
+   ═══════════════════════════════════════════════════════════════════════════════ */
 
 .container {
   min-height: 100vh;
@@ -7,6 +16,7 @@
   justify-content: center;
   position: relative;
   overflow: hidden;
+  background: var(--neu-base, #e0e5ec);
 }
 
 .content {
@@ -21,14 +31,30 @@
   width: 100%;
 }
 
+/* ─────────────────────────────────────────────────────────────────────────────
+   LOGO - Neumorphic inset container
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .logoContainer {
   margin-bottom: var(--sentinel-space-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+  background: var(--neu-base, #e0e5ec);
+  border-radius: 50%;
+
+  /* Neumorphic inset shadow */
+  box-shadow:
+    inset 6px 6px 12px rgba(163, 177, 198, 0.5),
+    inset -6px -6px 12px rgba(255, 255, 255, 0.8);
 }
 
 .logo {
-  width: 120px;
-  height: 120px;
-  filter: drop-shadow(0 0 20px var(--sentinel-accent-glow));
+  width: 80px;
+  height: 80px;
+  filter: drop-shadow(0 0 12px rgba(74, 154, 156, 0.5));
 }
 
 .scanLine {
@@ -45,25 +71,33 @@
   }
 }
 
+/* ─────────────────────────────────────────────────────────────────────────────
+   TITLE
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .title {
   font-family: var(--sentinel-font-numeric);
   font-size: var(--sentinel-text-4xl);
   font-weight: var(--sentinel-font-semibold);
-  color: var(--sentinel-text-primary);
+  color: var(--sentinel-text-primary, #2d3748);
   letter-spacing: 0.2em;
   text-align: center;
-  text-shadow: var(--sentinel-glow-accent);
+  text-shadow: 0 0 20px rgba(74, 154, 156, 0.3);
   margin: 0;
 }
 
 .subtitle {
   font-family: var(--sentinel-font-numeric);
   font-size: var(--sentinel-text-xs);
-  color: var(--sentinel-text-tertiary);
+  color: var(--sentinel-text-secondary, #5a6578);
   letter-spacing: var(--sentinel-tracking-led);
   text-align: center;
   margin-top: var(--sentinel-space-2);
 }
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   FORM - Layout only (DepthLayer provides the glass panel)
+   ───────────────────────────────────────────────────────────────────────────── */
 
 .form {
   width: 100%;
@@ -71,10 +105,11 @@
   flex-direction: column;
   gap: var(--sentinel-space-5);
   padding: var(--sentinel-space-6);
-  background: var(--sentinel-bg-elevated);
-  border: 1px solid var(--sentinel-border-subtle);
-  border-radius: var(--sentinel-radius-xl);
 }
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   INPUT GROUP
+   ───────────────────────────────────────────────────────────────────────────── */
 
 .inputGroup {
   display: flex;
@@ -86,15 +121,29 @@
   font-family: var(--sentinel-font-primary);
   font-size: var(--sentinel-text-sm);
   font-weight: var(--sentinel-font-medium);
-  color: var(--sentinel-text-secondary);
+  color: var(--sentinel-text-secondary, #5a6578);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   ERROR MESSAGE
+   ───────────────────────────────────────────────────────────────────────────── */
 
 .error {
   font-size: var(--sentinel-text-sm);
-  color: var(--sentinel-status-negative);
+  color: var(--sentinel-status-negative, #b85c5c);
   text-align: center;
   margin: 0;
+  padding: 8px 12px;
+  background: rgba(184, 92, 92, 0.1);
+  border: 1px solid rgba(184, 92, 92, 0.2);
+  border-radius: var(--sentinel-radius-sm);
 }
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   SUBMIT BUTTON
+   ───────────────────────────────────────────────────────────────────────────── */
 
 .submitButton {
   width: 100%;
@@ -118,11 +167,29 @@
   }
 }
 
+/* ─────────────────────────────────────────────────────────────────────────────
+   HINT
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .hint {
   font-family: var(--sentinel-font-numeric);
   font-size: var(--sentinel-text-xs);
-  color: var(--sentinel-text-tertiary);
+  color: var(--sentinel-text-tertiary, #8896a6);
   letter-spacing: var(--sentinel-tracking-led);
   text-align: center;
   margin: 0;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   REDUCED MOTION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .scanLine {
+    animation: none;
+  }
+
+  .spinner {
+    animation: none;
+  }
 }

@@ -21,6 +21,7 @@ export interface LineChartProps extends BaseChartProps {
   minimal?: boolean; // Hide axes and grid for sparklines
   showDataZoom?: boolean;
   stacked?: boolean;
+  showLegend?: boolean; // Show/hide legend (defaults to true for multi-series when not minimal)
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -48,10 +49,15 @@ export function LineChart({
   minimal = false,
   showDataZoom = false,
   stacked = false,
+  showLegend,
   className,
   animate = true,
   loading = false,
 }: LineChartProps) {
+  // Determine if legend should be shown
+  const shouldShowLegend = showLegend !== undefined
+    ? showLegend
+    : (!minimal && isSeriesData(data) && data.length > 1);
   const option = useMemo<EChartsOption>(() => {
     if (!data.length) return {};
 
@@ -94,6 +100,7 @@ export function LineChart({
         yAxis: {
           type: 'value',
           show: !minimal,
+          scale: true, // Auto-scale based on data range, don't force 0
           axisLine: { show: false },
           axisTick: { show: false },
           axisLabel: {
@@ -104,6 +111,7 @@ export function LineChart({
           },
           splitLine: {
             lineStyle: { color: sentinelColors.borderSubtle },
+            show: !minimal,
           },
         },
         dataZoom: showDataZoom
@@ -185,7 +193,7 @@ export function LineChart({
             },
           },
       legend: {
-        show: !minimal && data.length > 1,
+        show: shouldShowLegend,
         data: data.map((s) => s.name),
         top: title ? 30 : 0,
         right: 0,
@@ -199,7 +207,7 @@ export function LineChart({
         : {
             left: 60,
             right: 20,
-            top: title ? (data.length > 1 ? 70 : 50) : data.length > 1 ? 40 : 20,
+            top: title ? (shouldShowLegend ? 70 : 50) : shouldShowLegend ? 40 : 20,
             bottom: showDataZoom ? 60 : 30,
           },
       xAxis: {
@@ -216,6 +224,7 @@ export function LineChart({
       yAxis: {
         type: 'value',
         show: !minimal,
+        scale: true, // Auto-scale based on data range, don't force 0
         axisLine: { show: false },
         axisTick: { show: false },
         axisLabel: {
@@ -226,6 +235,7 @@ export function LineChart({
         },
         splitLine: {
           lineStyle: { color: sentinelColors.borderSubtle },
+          show: !minimal,
         },
       },
       dataZoom: showDataZoom
@@ -258,7 +268,7 @@ export function LineChart({
             color,
           },
           areaStyle:
-            enableArea && index === 0
+            enableArea
               ? {
                   color: {
                     type: 'linear',
@@ -280,7 +290,7 @@ export function LineChart({
         };
       }),
     };
-  }, [data, enableArea, areaOpacity, smooth, showSymbol, title, colors, formatValue, minimal, showDataZoom, stacked]);
+  }, [data, enableArea, areaOpacity, smooth, showSymbol, title, colors, formatValue, minimal, showDataZoom, stacked, shouldShowLegend]);
 
   const isEmpty = !data.length || (isSeriesData(data) && data.every((s) => !s.data.length));
 

@@ -1,17 +1,17 @@
 /* Path: src/components/atoms/sentinel/DepthLayer/DepthLayer.module.css */
 
 /* ═══════════════════════════════════════════════════════════════════════════════
-   DEPTH LAYER
-   Creates Z-axis depth through background and border variations
+   DEPTH LAYER - Glass-Neumorphism Style
+   Creates Z-axis depth through glass backgrounds and neumorphic shadows
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 .container {
   position: relative;
   border-radius: var(--sentinel-radius-md);
   transition:
-    background-color var(--sentinel-transition-normal),
-    box-shadow var(--sentinel-transition-normal),
-    transform var(--sentinel-transition-normal);
+    background-color 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.15s ease;
 }
 
 .content {
@@ -21,7 +21,7 @@
 
 /* ─────────────────────────────────────────────────────────────────────────────
    BORDER GLOW
-   Subtle gradient border effect
+   Subtle gradient border effect for hover
    ───────────────────────────────────────────────────────────────────────────── */
 
 .borderGlow {
@@ -30,7 +30,7 @@
   border-radius: inherit;
   pointer-events: none;
   opacity: 0;
-  transition: opacity var(--sentinel-transition-normal);
+  transition: opacity 0.15s ease;
 }
 
 .container:hover .borderGlow {
@@ -38,134 +38,156 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════════
-   DEPTH LEVELS
-   Each level represents a different elevation in the Z-axis
+   DEPTH LEVELS - Glass-Neumorphism
+   Each level represents a different elevation with glass and neumorphic shadows
    ═══════════════════════════════════════════════════════════════════════════════ */
 
-/* DEPTH 1 - Closest to background (deepest) */
+/* DEPTH 1 - Subtle glass, minimal elevation */
 .depth1 {
-  background-color: hsla(230, 20%, 8%, 0.4);
-  border: 1px solid var(--sentinel-border-subtle);
+  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow:
+    2px 2px 4px rgba(163, 177, 198, 0.2),
+    -2px -2px 4px rgba(255, 255, 255, 0.7);
 }
 
 .depth1 .borderGlow {
   background: linear-gradient(
     135deg,
-    hsla(var(--sentinel-accent-teal-h), var(--sentinel-accent-teal-s), var(--sentinel-accent-teal-l), 0.05) 0%,
+    rgba(74, 154, 156, 0.08) 0%,
     transparent 50%
   );
 }
 
 .depth1:hover {
-  background-color: hsla(230, 20%, 9%, 0.5);
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow:
+    3px 3px 6px rgba(163, 177, 198, 0.25),
+    -3px -3px 6px rgba(255, 255, 255, 0.75);
 }
 
-/* DEPTH 2 */
+/* DEPTH 2 - Standard glass panel */
 .depth2 {
-  background-color: var(--sentinel-bg-elevated);
-  border: 1px solid var(--sentinel-border-subtle);
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   box-shadow:
-    0 2px 8px hsla(230, 30%, 5%, 0.2),
-    0 1px 2px hsla(230, 30%, 5%, 0.1);
+    4px 4px 8px rgba(163, 177, 198, 0.25),
+    -4px -4px 8px rgba(255, 255, 255, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
 .depth2 .borderGlow {
   background: linear-gradient(
     135deg,
-    hsla(var(--sentinel-accent-teal-h), var(--sentinel-accent-teal-s), var(--sentinel-accent-teal-l), 0.08) 0%,
+    rgba(74, 154, 156, 0.1) 0%,
     transparent 40%
   );
 }
 
 .depth2:hover {
-  background-color: hsla(230, 18%, 14%, 1);
+  background: rgba(255, 255, 255, 0.6);
+  border-color: rgba(255, 255, 255, 0.8);
   box-shadow:
-    0 4px 12px hsla(230, 30%, 5%, 0.25),
-    0 2px 4px hsla(230, 30%, 5%, 0.15);
+    6px 6px 12px rgba(163, 177, 198, 0.3),
+    -6px -6px 12px rgba(255, 255, 255, 0.85),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
-/* DEPTH 3 - Middle ground */
+/* DEPTH 3 - Prominent glass panel */
 .depth3 {
-  background-color: var(--sentinel-bg-surface);
-  border: 1px solid var(--sentinel-border-default);
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   box-shadow:
-    0 4px 16px hsla(230, 30%, 5%, 0.25),
-    0 2px 4px hsla(230, 30%, 5%, 0.15),
-    inset 0 1px 0 hsla(0, 0%, 100%, 0.02);
+    6px 6px 12px rgba(163, 177, 198, 0.3),
+    -6px -6px 12px rgba(255, 255, 255, 0.85),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
 .depth3 .borderGlow {
   background: linear-gradient(
     135deg,
-    hsla(var(--sentinel-accent-teal-h), var(--sentinel-accent-teal-s), var(--sentinel-accent-teal-l), 0.1) 0%,
+    rgba(74, 154, 156, 0.12) 0%,
     transparent 35%
   );
 }
 
 .depth3:hover {
-  background-color: hsla(230, 15%, 16%, 1);
-  border-color: var(--sentinel-border-accent);
+  background: rgba(255, 255, 255, 0.65);
+  border-color: rgba(74, 154, 156, 0.2);
   box-shadow:
-    0 6px 20px hsla(230, 30%, 5%, 0.3),
-    0 3px 6px hsla(230, 30%, 5%, 0.2),
-    inset 0 1px 0 hsla(0, 0%, 100%, 0.03);
+    8px 8px 16px rgba(163, 177, 198, 0.35),
+    -8px -8px 16px rgba(255, 255, 255, 0.9),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85),
+    0 0 0 1px rgba(74, 154, 156, 0.1);
 }
 
-/* DEPTH 4 */
+/* DEPTH 4 - Elevated glass panel */
 .depth4 {
-  background-color: hsla(230, 15%, 17%, 1);
-  border: 1px solid var(--sentinel-border-default);
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   box-shadow:
-    0 8px 24px hsla(230, 30%, 5%, 0.3),
-    0 4px 8px hsla(230, 30%, 5%, 0.2),
-    inset 0 1px 0 hsla(0, 0%, 100%, 0.03);
+    8px 8px 16px rgba(163, 177, 198, 0.35),
+    -8px -8px 16px rgba(255, 255, 255, 0.9),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 .depth4 .borderGlow {
   background: linear-gradient(
     135deg,
-    hsla(var(--sentinel-accent-teal-h), var(--sentinel-accent-teal-s), var(--sentinel-accent-teal-l), 0.12) 0%,
+    rgba(74, 154, 156, 0.15) 0%,
     transparent 30%
   );
 }
 
 .depth4:hover {
-  background-color: hsla(230, 15%, 19%, 1);
-  border-color: var(--sentinel-border-accent);
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(74, 154, 156, 0.25);
   box-shadow:
-    0 12px 32px hsla(230, 30%, 5%, 0.35),
-    0 6px 12px hsla(230, 30%, 5%, 0.25),
-    inset 0 1px 0 hsla(0, 0%, 100%, 0.04);
+    10px 10px 20px rgba(163, 177, 198, 0.4),
+    -10px -10px 20px rgba(255, 255, 255, 0.95),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 0 0 1px rgba(74, 154, 156, 0.12);
 }
 
-/* DEPTH 5 - Closest to viewer (highest elevation) */
+/* DEPTH 5 - Maximum elevation glass panel */
 .depth5 {
-  background-color: hsla(230, 15%, 20%, 1);
-  border: 1px solid var(--sentinel-border-accent);
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   box-shadow:
-    0 12px 40px hsla(230, 30%, 5%, 0.4),
-    0 6px 12px hsla(230, 30%, 5%, 0.25),
-    0 0 0 1px hsla(var(--sentinel-accent-teal-h), var(--sentinel-accent-teal-s), var(--sentinel-accent-teal-l), 0.1),
-    inset 0 1px 0 hsla(0, 0%, 100%, 0.04);
+    10px 10px 24px rgba(163, 177, 198, 0.4),
+    -10px -10px 24px rgba(255, 255, 255, 0.95),
+    0 0 0 1px rgba(74, 154, 156, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 .depth5 .borderGlow {
   background: linear-gradient(
     135deg,
-    hsla(var(--sentinel-accent-teal-h), var(--sentinel-accent-teal-s), var(--sentinel-accent-teal-l), 0.15) 0%,
+    rgba(74, 154, 156, 0.18) 0%,
     transparent 25%
   );
   opacity: 0.5;
 }
 
 .depth5:hover {
-  background-color: hsla(230, 15%, 22%, 1);
+  background: rgba(255, 255, 255, 0.75);
   transform: translateY(-1px);
+  border-color: rgba(74, 154, 156, 0.3);
   box-shadow:
-    0 16px 48px hsla(230, 30%, 5%, 0.45),
-    0 8px 16px hsla(230, 30%, 5%, 0.3),
-    0 0 0 1px hsla(var(--sentinel-accent-teal-h), var(--sentinel-accent-teal-s), var(--sentinel-accent-teal-l), 0.15),
-    inset 0 1px 0 hsla(0, 0%, 100%, 0.05);
+    12px 12px 32px rgba(163, 177, 198, 0.45),
+    -12px -12px 32px rgba(255, 255, 255, 1),
+    0 0 0 1px rgba(74, 154, 156, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════════
