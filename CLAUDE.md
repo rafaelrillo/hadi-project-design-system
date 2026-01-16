@@ -2,7 +2,7 @@
 
 ## Descripcion del Proyecto
 
-**SENTINEL** es una plataforma de analisis de inversiones y recomendaciones del mercado de valores. Diseñada con una estetica oscura, futurista y data-driven inspirada en un "observatorio nocturno" - profesional, calma y sin colores estridentes.
+**SENTINEL** es una plataforma de analisis de inversiones y recomendaciones del mercado de valores. El design system utiliza **Glass-Neumorphism**: una combinacion de superficies neumorficas claras con elementos de cristal (glassmorphism) flotando sobre ellas.
 
 **Branch actual**: `redesign/stock-market-ui`
 
@@ -26,17 +26,290 @@
 | Build | Vite | | Path aliases configurados |
 | State | Zustand | | 6 stores: auth, market, portfolio, wallet, news, recommendations |
 | Charts | **ECharts** | 5.6.0 | 24 tipos de gráficos + tema SENTINEL |
-| Animaciones | Framer Motion | | Transiciones suaves, no glowing |
+| Animaciones | Framer Motion | | Transiciones suaves |
 | Iconos | Lucide React | | |
 | Routing | React Router DOM | v6 | Lazy loading por ruta |
 | Testing | Jest + Cypress | | Unit + E2E |
 | Estilos | CSS Modules | | Variables en theme.css |
 
-### Dependencias de Charts (ECharts)
+---
+
+## Sistema de Diseño - Glass-Neumorphism
+
+### Filosofia de Diseño
+
+El design system combina dos estilos visuales complementarios:
+
+1. **Neumorphism (Base/Container)**: Superficies que parecen "extruidas" del fondo con sombras suaves
+2. **Glassmorphism (Items/Elements)**: Elementos de cristal semitransparente flotando sobre la superficie
+
+### Paleta de Colores - Light Neumorphism
+
+```css
+/* ═══════════════════════════════════════════════════════════════════════════
+   NEUMORPHISM BASE - Superficie clara extruida
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+--neu-base: #e0e5ec;              /* Fondo principal neumórfico */
+--neu-shadow-dark: #a3b1c6;       /* Sombra oscura (abajo-derecha) */
+--neu-shadow-light: #ffffff;      /* Sombra clara (arriba-izquierda) */
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   GLASSMORPHISM - Elementos de cristal
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+--glass-bg: rgba(255, 255, 255, 0.25);           /* Fondo cristal base */
+--glass-bg-hover: rgba(255, 255, 255, 0.45);     /* Fondo cristal hover */
+--glass-bg-active: rgba(255, 255, 255, 0.55);    /* Fondo cristal activo */
+--glass-border: rgba(255, 255, 255, 0.6);        /* Borde cristal principal */
+--glass-border-subtle: rgba(255, 255, 255, 0.3); /* Borde cristal sutil */
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   TEXT COLORS - Sobre fondo claro
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+--text-primary: #2d3748;      /* Texto principal oscuro */
+--text-secondary: #5a6578;    /* Texto secundario */
+--text-muted: #8896a6;        /* Texto deshabilitado/hints */
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ACCENT COLORS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+--sentinel-accent-primary: #4a9a9c;              /* Teal institucional */
+--sentinel-accent-secondary: #5ba3a5;
+--accent-glow: rgba(74, 154, 156, 0.4);          /* Glow para focus states */
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   STATUS COLORS (Conservadores)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+--sentinel-status-positive: #4a9a7c;   /* Verde desaturado */
+--sentinel-status-negative: #b85c5c;   /* Rojo tenue */
+--sentinel-status-warning: #c4a35a;    /* Ambar suave */
+--sentinel-status-info: #5a8fb8;       /* Azul neutral */
 ```
-echarts, echarts-for-react
+
+### Sombras Neumórficas
+
+```css
+/* Sombra elevada (elemento "flotando" sobre superficie) */
+.neu-panel {
+  box-shadow:
+    8px 8px 20px var(--neu-shadow-dark),
+    -8px -8px 20px var(--neu-shadow-light);
+}
+
+/* Sombra inset (elemento "hundido" en superficie) */
+.neu-inset {
+  box-shadow:
+    inset 5px 5px 15px var(--neu-shadow-dark),
+    inset -5px -5px 15px var(--neu-shadow-light);
+}
 ```
-*Nota: Nivo fue removido completamente en la migración a ECharts (Enero 2025)*
+
+### Estilos Glassmorphism
+
+```css
+/* Item de cristal básico */
+.glass-item {
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+}
+
+/* Item de cristal hover */
+.glass-item:hover {
+  background: var(--glass-bg-hover);
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+/* Item de cristal activo */
+.glass-item-active {
+  background: var(--glass-bg-active);
+  backdrop-filter: blur(12px);
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+```
+
+### Border Radius Estandar
+
+```css
+--border-radius-sm: 8px;      /* Elementos pequeños */
+--border-radius-md: 12px;     /* Items, inputs */
+--border-radius-lg: 15px;     /* Cards, sections */
+--border-radius-xl: 20px;     /* Containers, panels */
+```
+
+### Transiciones
+
+```css
+--transition-fast: 150ms ease;
+--transition-normal: 200ms ease;
+--transition-shadow: 50ms linear;  /* Para sombras dinámicas */
+```
+
+---
+
+## Light Engine - Sombras Dinámicas
+
+### LightEngineContext
+
+Sistema de iluminación dinámica que calcula sombras basadas en un ángulo de luz global.
+
+```tsx
+// Importar el contexto
+import { LightEngineProvider, useLightEngine } from '@/contexts/LightEngineContext';
+
+// Envolver la app o sección
+<LightEngineProvider initialAnimating={true} initialSpeed={0.3}>
+  <MyComponent />
+</LightEngineProvider>
+
+// Usar en componente
+function MyComponent() {
+  const { lightAngle, shadows } = useLightEngine();
+
+  // shadows.getNeuPanelShadow(distance, blur) - Sombra elevada
+  // shadows.getNeuInsetShadow(distance, blur) - Sombra hundida
+
+  return (
+    <div style={{ boxShadow: shadows.getNeuPanelShadow(8, 20) }}>
+      Content
+    </div>
+  );
+}
+```
+
+### Cálculo de Sombras
+
+```tsx
+// Fórmula para calcular offsets basados en ángulo de luz
+const shadowOffsets = useMemo(() => {
+  const shadowAngle = (lightAngle + 180) * (Math.PI / 180);
+  return {
+    x: Math.cos(shadowAngle),
+    y: Math.sin(shadowAngle)
+  };
+}, [lightAngle]);
+
+// Función para generar sombra neumórfica elevada
+const getNeuPanelShadow = (distance: number, blur: number): string => {
+  const { x, y } = shadowOffsets;
+  return `${-x * distance}px ${-y * distance}px ${blur}px #ffffff, ${x * distance}px ${y * distance}px ${blur}px #a3b1c6`;
+};
+
+// Función para generar sombra neumórfica hundida
+const getNeuInsetShadow = (distance: number, blur: number): string => {
+  const { x, y } = shadowOffsets;
+  return `inset ${x * distance}px ${y * distance}px ${blur}px #a3b1c6, inset ${-x * distance}px ${-y * distance}px ${blur}px #ffffff`;
+};
+```
+
+### Patrón de Uso en Showcases
+
+```tsx
+function MyShowcaseContent() {
+  const { lightAngle } = useLightEngine();
+
+  const shadowOffsets = useMemo(() => {
+    const shadowAngle = (lightAngle + 180) * (Math.PI / 180);
+    return { x: Math.cos(shadowAngle), y: Math.sin(shadowAngle) };
+  }, [lightAngle]);
+
+  const LIGHT = {
+    base: '#e0e5ec',
+    shadowDark: 'hsl(220 15% 72%)',
+    shadowLight: 'hsl(0 0% 100%)',
+  };
+
+  const getNeuPanelShadow = (distance: number, blur: number): string => {
+    const { x, y } = shadowOffsets;
+    return `${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}`;
+  };
+
+  // Estilos con sombras dinámicas
+  const panelStyles: React.CSSProperties = {
+    background: LIGHT.base,
+    borderRadius: '15px',
+    boxShadow: getNeuPanelShadow(8, 24),
+    transition: 'box-shadow 50ms linear',
+  };
+
+  return <div style={panelStyles}>Content</div>;
+}
+
+export function MyShowcase() {
+  return (
+    <LightEngineProvider initialAnimating={true} initialSpeed={0.3}>
+      <MyShowcaseContent />
+    </LightEngineProvider>
+  );
+}
+```
+
+---
+
+## Componentes Principales
+
+### Sidebar (Expanded Style)
+
+Combina icon rail oscuro + panel neumórfico con items de cristal.
+
+```tsx
+import { Sidebar } from '@organisms/Sidebar';
+import type { SidebarSection } from '@organisms/Sidebar';
+
+// Secciones con items agrupados
+const sections: SidebarSection[] = [
+  {
+    title: 'Projects',
+    items: [
+      { icon: LayoutDashboard, label: 'Dashboard', isActive: true, badge: 3 },
+      { icon: Library, label: 'Library' },
+    ],
+  },
+  {
+    title: 'Status',
+    items: [
+      { icon: CircleDot, label: 'New', badge: 5 },
+    ],
+  },
+];
+
+// Usuario
+const user = {
+  name: 'John Doe',
+  email: 'john@example.com',
+  avatarUrl: '/avatar.jpg',
+};
+
+<Sidebar
+  productLogo={<Logo />}
+  menuItems={railItems}          // Items para icon rail
+  sections={sections}            // Grupos para panel expandido
+  user={user}                    // Perfil de usuario
+  sidebarStyle="expanded"        // Nuevo estilo Glass-Neu
+  showIconRail={true}            // Mostrar barra de iconos
+  showExpandedPanel={true}       // Mostrar panel expandido
+  onSearch={(v) => console.log(v)}
+  position="relative"
+/>
+```
+
+### Estilos de Sidebar
+
+| Style | Descripción |
+|-------|-------------|
+| `expanded` | **Nuevo**: Icon rail + panel neumórfico con items glass |
+| `dark` | Legacy: Sidebar oscuro |
+| `neuPanel` | Legacy: Sidebar neumórfico claro |
 
 ---
 
@@ -44,170 +317,54 @@ echarts, echarts-for-react
 
 ```
 src/
-├── assets/                  # Fonts (DotMatrix), iconos, imagenes
-├── components/
-│   ├── atoms/              # 22 componentes base (Button, Input, Badge, etc.)
-│   │   └── sentinel/       # 5 atomos especificos (DataMatrixBackground, Sparkline)
-│   ├── molecules/          # 12 compuestos (Card, MetricCard, Tabs, Pagination)
-│   │   └── sentinel/       # 17 moleculas de mercado (TrendIndicator, NewsCard, etc.)
-│   ├── organisms/          # 14 secciones (Sidebar, Table, Modal, DataGrid, Toast)
-│   │   └── sentinel/       # 13 organismos (Watchlist, TickerTape, RiskGauge, etc.)
-│   ├── charts/             # 24+ componentes ECharts + tema SENTINEL
-│   ├── animations/         # 7 componentes (FadeIn, ScrollReveal, StaggerList, etc.)
-│   └── showcase/           # Componentes de documentacion
-├── config/
-│   └── env.ts              # Config multi-proveedor (Finnhub, Tiingo, Mock)
+├── contexts/
+│   └── LightEngineContext.tsx   # Sistema de iluminación dinámica
 ├── hooks/
-│   ├── useSimulatedMarket.ts   # Bridge entre marketStore y portfolioStore
-│   ├── useKeyboardShortcuts.ts
-│   ├── useApi.ts
-│   ├── useNews.ts
-│   └── useBreakpoint.ts
-├── layouts/
-│   ├── DashboardLayout/    # Layout principal con sidebar
-│   ├── MobileLayout/       # Layout responsivo mobile
-│   └── ShowcaseLayout.tsx  # Layout del showcase
+│   └── useDynamicShadows.ts     # Hook para sombras dinámicas
+├── components/
+│   ├── atoms/              # Componentes base
+│   ├── molecules/          # Componentes compuestos
+│   ├── organisms/          # Secciones completas
+│   │   └── Sidebar/        # Sidebar con Glass-Neumorphism
+│   ├── charts/             # 24+ componentes ECharts
+│   └── animations/         # Componentes de animación
 ├── pages/
-│   ├── app/                # Paginas principales (12)
-│   │   ├── DashboardPage/
-│   │   ├── PortfolioView/
-│   │   ├── PortfolioSimulator/
-│   │   ├── RecommendationsView/
-│   │   ├── NewsView/
-│   │   └── LoginPage/
-│   ├── Landing/            # Landing page publica
-│   └── [showcase pages]    # 47 paginas de showcase por categoria
-├── routes/
-│   └── dashboardRoutes.tsx # Configuracion de rutas
-├── services/
-│   ├── adapters/           # Patrón adapter (Mock, Finnhub, Tiingo)
-│   ├── api/                # Cliente HTTP
-│   ├── auth/
-│   ├── market/
-│   ├── portfolio/
-│   ├── recommendations/
-│   ├── paperTrading/
-│   ├── tiingo/             # Integracion Tiingo API
-│   └── mockData/           # Datos mock (stocks, portfolio, recommendations)
-├── store/                  # 6 Zustand stores
-│   ├── authStore.ts        # Autenticacion (persistido)
-│   ├── marketStore.ts      # Datos de mercado + live updates
-│   ├── portfolioStore.ts   # Holdings y trades
-│   ├── walletStore.ts      # Wallet avanzado (persistido)
-│   ├── newsStore.ts        # Noticias con filtros
-│   └── recommendationsStore.ts  # Señales de trading
-├── styles/
-│   ├── theme.css           # 670+ lineas de design tokens
-│   ├── globals.css         # Reset + utilidades
-│   ├── fonts.css           # DotMatrix fonts
-│   ├── responsive.css      # Utilidades responsive
-│   └── typography/
-│       └── sentinel.css    # Sistema tipografico
-├── types/
-│   └── css-modules.d.ts
-└── utils/                  # (vacio, usar para helpers)
+│   └── [showcases]         # Documentación viva del design system
+└── styles/
+    └── theme.css           # Variables CSS globales
 ```
 
 ---
 
-## Sistema de Diseño Actual
+## Patrones de Arquitectura
 
-### Paleta de Colores - "Observatorio Nocturno"
-
-**Filosofia**: Colores desaturados, profesionales, sin alarmas visuales. El mercado de valores no necesita colores brillantes.
-
-```css
-/* Backgrounds (Dark Theme) */
---sentinel-bg-void: #05060a       /* Negro profundo */
---sentinel-bg-base: #0a0b10       /* Fondo principal */
---sentinel-bg-elevated: #10121a   /* Cards, paneles */
---sentinel-bg-overlay: #161822    /* Modales */
---sentinel-bg-subtle: #1c1e2a     /* Hover states */
-
-/* Accent - Teal Institucional */
---sentinel-accent-primary: #5ba3a5
---sentinel-accent-secondary: #4a8a8c
---sentinel-accent-subtle: rgba(91, 163, 165, 0.15)
-
-/* Status (Conservadores, no alarma) */
---sentinel-status-positive: #4a9a7c   /* Verde desaturado */
---sentinel-status-negative: #b85c5c   /* Rojo tenue */
---sentinel-status-warning: #c4a35a    /* Ambar suave */
---sentinel-status-info: #5a8fb8       /* Azul neutral */
-
-/* Text */
---sentinel-text-primary: #e8eaed
---sentinel-text-secondary: #9aa0a6
---sentinel-text-tertiary: #5f6368
+### Atomic Design
+```
+Atoms → Molecules → Organisms → Layouts → Pages
 ```
 
-### Tipografia
-
-- **UI General**: Inter (300-700)
-- **Display/Titulos**: Space Grotesk
-- **Monospace/Datos**: Space Mono, JetBrains Mono
-- **Numeros LED**: DotMatrix (self-hosted en `/public/fonts/`)
-
-### Animaciones
-
-**Filosofia**: Transiciones lentas (400-2000ms) que crean calma. NO glowing effects.
-
-```css
---sentinel-transition-fast: 200ms
---sentinel-transition-normal: 400ms
---sentinel-transition-slow: 700ms
---sentinel-transition-atmosphere: 2000ms
+### Convencion de Archivo
+```tsx
+// Path: src/components/atoms/Button/Button.tsx
 ```
 
-### Espaciado
+### CSS Modules + Variables Dinámicas
+```tsx
+import styles from './Component.module.css';
 
-Base de 4px: `4, 8, 12, 16, 20, 24, 32, 48, 64px`
+// CSS estático en .module.css
+// Valores dinámicos (sombras) en style prop
+<div
+  className={styles.container}
+  style={{ boxShadow: getNeuPanelShadow(8, 20) }}
+>
+```
 
 ---
 
 ## Gráficos (ECharts)
 
-### Estructura de Charts
-
-```
-src/components/charts/
-├── echarts/                    # Componentes ECharts
-│   ├── EChart.tsx              # Wrapper base con tema
-│   ├── sentinelTheme.ts        # Tema SENTINEL completo
-│   ├── types.ts                # TypeScript interfaces
-│   ├── index.ts                # Exports
-│   ├── BarChart.tsx
-│   ├── BoxplotChart.tsx
-│   ├── CalendarChart.tsx
-│   ├── CandlestickChart.tsx
-│   ├── EffectScatterChart.tsx
-│   ├── FunnelChart.tsx
-│   ├── GaugeChart.tsx
-│   ├── GraphChart.tsx
-│   ├── HeatMap.tsx
-│   ├── LineChart.tsx
-│   ├── ParallelChart.tsx
-│   ├── PictorialBarChart.tsx
-│   ├── PieChart.tsx
-│   ├── RadarChart.tsx
-│   ├── SankeyChart.tsx
-│   ├── ScatterChart.tsx
-│   ├── SunburstChart.tsx
-│   ├── ThemeRiverChart.tsx
-│   ├── TreeChart.tsx
-│   └── TreeMap.tsx
-├── LightweightChart/           # TradingView (candlestick especializado)
-├── CandlestickChart/           # Wrapper simplificado
-├── BarChart/                   # Wrapper para OHLC bars
-├── BaselineChart/              # Chart con línea base
-├── HistogramChart/             # Histogram de volumen
-├── FinancialLineChart/         # Performance financiero
-├── StatCard/                   # Tarjeta de estadísticas
-├── index.ts                    # Re-exports
-└── theme.ts                    # Paleta de colores
-```
-
-### Componentes ECharts (24)
+### 24 Tipos de Gráficos
 
 | Categoría | Gráficos |
 |-----------|----------|
@@ -220,68 +377,12 @@ src/components/charts/
 | **Jerarquía** | TreeChart, TreeMap, SunburstChart |
 | **Especiales** | PictorialBarChart |
 
-### Theme SENTINEL para ECharts
+### Tema SENTINEL
 
 Definido en `src/components/charts/echarts/sentinelTheme.ts`:
-- Paleta de 8 colores para series (`chartPalette`)
-- Colores secuenciales (gradient teal)
-- Colores divergentes (negativo → positivo)
-- Colores de riesgo (5 niveles)
-- Tooltip oscuro con bordes sutiles
-- Ejes y grids minimalistas
-- Tipografías: Inter, Space Grotesk, Space Mono
+- Paleta de 8 colores para series
+- Tooltip con estilo Glass-Neumorphism
 - Animaciones suaves (700ms, cubicOut)
-
----
-
-## Patrones de Arquitectura
-
-### Atomic Design
-```
-Atoms → Molecules → Organisms → Layouts → Pages
-```
-
-Cada componente en su carpeta:
-```
-src/components/atoms/Button/
-├── Button.tsx
-├── Button.module.css
-└── index.ts
-```
-
-### Convencion de Archivo
-Primera linea de cada componente:
-```tsx
-// Path: src/components/atoms/Button/Button.tsx
-```
-
-### CSS Modules
-```tsx
-import styles from './Button.module.css';
-
-<button className={`${styles.button} ${styles.primary}`}>
-```
-
-### State Management (Zustand)
-```tsx
-// Patron estandar
-const useStore = create<State & Actions>((set, get) => ({
-  // state
-  items: [],
-  isLoading: false,
-
-  // actions
-  fetchItems: async () => {
-    set({ isLoading: true });
-    const data = await api.getItems();
-    set({ items: data, isLoading: false });
-  }
-}));
-```
-
-### Stores con Persistencia
-- `authStore`: `localStorage` key `sentinel-auth`
-- `walletStore`: `localStorage` key `sentinel-wallet`
 
 ---
 
@@ -291,48 +392,44 @@ const useStore = create<State & Actions>((set, get) => ({
 npm run dev           # Desarrollo (puerto 5173)
 npm run build         # Build produccion
 npm run test          # Jest tests
-npm run test:watch    # Tests en modo watch
-npm run test:coverage # Coverage report
-npm run test:e2e      # Cypress
 npm run lint          # ESLint
 ```
 
 ---
 
-## Path Aliases (Vite + TS)
+## Path Aliases
 
 ```tsx
-import { Button } from '@atoms/Button';
-import { usePortfolioStore } from '@store/portfolioStore';
-
-// Configurados en vite.config.ts y tsconfig.json
 @/           → src/
 @components/ → src/components/
 @atoms/      → src/components/atoms/
 @molecules/  → src/components/molecules/
 @organisms/  → src/components/organisms/
+@contexts/   → src/contexts/
 @hooks/      → src/hooks/
 @layouts/    → src/layouts/
 @pages/      → src/pages/
 @services/   → src/services/
 @store/      → src/store/
 @styles/     → src/styles/
-@assets/     → src/assets/
 ```
 
 ---
 
-## Rutas de la App
+## Rutas del Showcase
 
 ```
-/                           → Landing page (publica)
-/app/login                  → Login (demo: cualquier credencial)
-/app/dashboard              → Dashboard principal
-/app/dashboard/portfolio    → Vista de portfolio
-/app/dashboard/portfolio/simulator → Simulador what-if
-/app/dashboard/recommendations → Señales de compra/venta
-/app/dashboard/news         → Feed de noticias
-/showcase/*                 → Design system docs
+/showcase/styles/colors         → Paleta de colores
+/showcase/styles/typography     → Sistema tipográfico
+/showcase/styles/spacing        → Espaciado
+/showcase/styles/shadows        → Sombras y elevaciones
+/showcase/styles/icons          → Iconografía
+/showcase/atoms/*               → Componentes atómicos
+/showcase/molecules/*           → Componentes moleculares
+/showcase/organisms/*           → Organismos (Sidebar, Modal, etc.)
+/showcase/charts/*              → Gráficos ECharts
+/showcase/animations/*          → Animaciones
+/showcase/sentinel/*            → Componentes SENTINEL
 ```
 
 ---
@@ -341,88 +438,62 @@ import { usePortfolioStore } from '@store/portfolioStore';
 
 ### DO (Hacer)
 
-1. **Seguir Atomic Design**: Crear componentes en la categoria correcta
-2. **Usar CSS Modules**: No inline styles excepto valores dinamicos
-3. **Usar variables de theme.css**: `var(--sentinel-bg-base)`, no colores hardcoded
-4. **Usar TypeScript estricto**: Interfaces para todos los props
-5. **Componentes en carpetas**: `ComponentName/ComponentName.tsx`
-6. **Agregar comentario de path**: `// Path: src/...` en primera linea
-7. **Respetar la paleta desaturada**: Colores calmos, profesionales
+1. **Usar Glass-Neumorphism**: Contenedores neumórficos + items de cristal
+2. **Usar LightEngineContext**: Para sombras dinámicas
+3. **Seguir el patrón de showcases**: Con `LightEngineProvider` wrapper
+4. **Usar las variables CSS**: `--neu-base`, `--glass-bg`, etc.
+5. **Border radius**: 15px para containers, 12px para items
+6. **Transiciones suaves**: `50ms linear` para sombras
 
 ### DON'T (No hacer)
 
-1. **No crear archivos en rutas planas**: `src/components/Button.tsx` ❌
-2. **No usar colores brillantes/saturados**: Mantener el tono "observatorio"
-3. **No agregar glowing effects**: Transiciones suaves, no neon
-4. **No animaciones rapidas**: Minimo 400ms para transiciones
-5. **No ignorar estados de loading/error**: Siempre manejarlos
-6. **No hardcodear colores**: Usar variables CSS
-7. **No crear archivos .md sin pedirlo**: Solo si el usuario lo solicita
+1. **No usar colores oscuros para fondos**: El tema es claro (#e0e5ec)
+2. **No hardcodear sombras**: Usar funciones dinámicas
+3. **No olvidar backdrop-filter**: Es clave para el efecto glass
+4. **No usar border-radius inconsistentes**: Seguir el sistema
 
 ---
 
-## TAREAS PENDIENTES
+## TAREAS COMPLETADAS
 
-### En Progreso
-<!-- Tareas actuales -->
-
-### Proximas
-- [ ] Rediseñar design system completo
-- [ ] Nuevo theme y paleta de colores
-- [ ] Actualizar todos los estilos
-
-### Completadas
-- [x] Cambiar libreria de charts (de Nivo a ECharts) ✅
-- [x] Implementar Light Engine con sombras dinamicas ✅
-
-### Backlog
-<!-- Ideas futuras -->
+- [x] Migración de Nivo a ECharts ✅
+- [x] Implementar Light Engine con sombras dinámicas ✅
+- [x] **Rediseño Glass-Neumorphism completo** ✅
+  - [x] Actualizar todos los showcases (Styles, Atoms, Molecules, Organisms, Animations, Charts, Sentinel)
+  - [x] Crear LightEngineContext
+  - [x] Implementar nuevo Sidebar con Glass-Neumorphism
+  - [x] Documentar el nuevo design system
 
 ---
 
 ## DECISIONES TOMADAS
 
-**[2025-01-15] Light Engine - Sistema de Iluminación Dinámica**
-- **Decisión**: Implementar un motor de iluminación unificado basado en los principios de Josh W. Comeau
-- **Inspiración**: https://www.joshwcomeau.com/css/designing-shadows/
+**[2025-01-16] Glass-Neumorphism Design System**
+- **Decisión**: Implementar design system combinando Neumorphism + Glassmorphism
 - **Filosofía**:
-  - UNA sola fuente de luz global para todos los elementos
-  - Ratio consistente: offset-y = 2x offset-x
-  - Sombras en capas (layered) para profundidad realista
-  - Color-matched shadows (nunca negro puro)
-- **Archivos creados**:
-  - `src/styles/light-engine.css` - Sistema CSS con variables y utility classes
-  - `src/pages/styles/LightEngineShowcase.tsx` - Documentación interactiva
+  - Fondos claros neumórficos (#e0e5ec) como "superficie"
+  - Elementos de cristal (glass) flotando sobre la superficie
+  - Sombras dinámicas basadas en ángulo de luz global
+- **Componentes actualizados**: 110+ archivos
+- **Patrón clave**:
+  ```
+  Container: Neumorphism (elevado o hundido)
+  Items: Glassmorphism (transparente con blur)
+  ```
+- **Sidebar nuevo**:
+  - Icon Rail: Barra oscura vertical con iconos
+  - Expanded Panel: Panel neumórfico con items de cristal
+  - User Profile: Sección con efecto glass
+  - Search: Input con efecto glass
+
+**[2025-01-15] Light Engine - Sistema de Iluminación Dinámica**
+- **Decisión**: Implementar motor de iluminación basado en Josh W. Comeau
+- **Archivos**: `src/contexts/LightEngineContext.tsx`
 - **Características**:
-  - 5 niveles de elevación layered (`--elevation-1` a `--elevation-5`)
-  - 5 niveles neumórficos (`--neu-elevation-1` a `--neu-elevation-5`)
-  - 4 niveles glass (`--glass-elevation-1` a `--glass-elevation-4`)
-  - Sombras color-matched por contexto (positive, negative, warning, accent, info)
-  - Clases interactivas (`.elevation-interactive`, `.neu-interactive`, `.glass-interactive`)
-- **Demo dinámica** en Home.tsx:
-  - Luz animada orbitando la página
-  - Controles de velocidad y ángulo manual
-  - Todas las sombras responden en tiempo real usando trigonometría
-  - Fórmulas: `shadowX = cos(angle) × distance`, `shadowY = sin(angle) × distance`
-- **Border radius unificado**: 15px en todos los contenedores
+  - Una sola fuente de luz global
+  - Sombras calculadas con trigonometría
+  - Transiciones suaves (50ms)
 
 **[2025-01-14] Migración de Nivo a ECharts**
-- **Decisión**: Reemplazar completamente Nivo por ECharts como librería de gráficos
-- **Razón**:
-  - ECharts ofrece mejor rendimiento con grandes datasets
-  - Más tipos de gráficos disponibles (24 vs 15)
-  - Mejor control sobre el tema y estilos
-  - Soporte nativo para gráficos financieros
-  - Menor bundle size al usar una sola librería
-- **Cambios realizados**:
-  - Eliminados 14 componentes Nivo (BulletChart, BumpChart, CalendarHeatmap, etc.)
-  - Creados 24 componentes ECharts con tema SENTINEL
-  - Creadas 20 páginas showcase individuales por tipo de gráfico
-  - Actualizado ChartsShowcase.tsx como hub central
-  - Removidas todas las dependencias @nivo/*
-
----
-
-## NOTAS DE SESION
-
-<!-- Notas temporales - limpiar periodicamente -->
+- **Decisión**: Reemplazar Nivo por ECharts
+- **Razón**: Mejor rendimiento, más tipos de gráficos, mejor control de tema
