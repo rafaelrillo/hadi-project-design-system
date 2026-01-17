@@ -109,10 +109,11 @@ export function Home() {
   // Estas funciones generan sombras basadas en la posicion actual de la luz
   // ═══════════════════════════════════════════════════════════════════════════
 
+  // Stone Marble palette
   const LIGHT = {
-    base: '#e0e5ec',
-    shadowDark: 'hsl(220 15% 72%)',
-    shadowLight: 'hsl(0 0% 100%)',
+    base: '#d5d8dc',           // --marble-base
+    shadowDark: 'rgba(147, 157, 170, 0.55)',  // --shadow-dark
+    shadowLight: 'rgba(255, 255, 255, 0.95)', // --shadow-light
   };
 
   // Generar sombra neumorphica elevada

@@ -77,13 +77,13 @@
   /* Subtle bottom border */
   border-bottom: 1px solid var(--sentinel-border-subtle);
 
-  /* Light neumorphic shadow */
+  /* Stone Marble - Light header shadow */
   box-shadow:
-    0 4px 12px rgba(163, 177, 198, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    0 4px 12px var(--shadow-dark),
+    inset 0 1px 0 var(--shadow-light);
 }
 
-/* Header top edge highlight */
+/* SUBTLE neumorphic - Header luminous top edge */
 .header::before {
   content: '';
   position: absolute;
@@ -94,9 +94,9 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.7),
-    rgba(255, 255, 255, 0.9),
-    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.35),
+    rgba(255, 255, 255, 0.45),
+    rgba(255, 255, 255, 0.35),
     transparent
   );
 }
@@ -221,19 +221,16 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .neuPanelContent {
-  background: var(--neu-base);
+  background: var(--marble-base);
   margin: var(--sentinel-space-4);
   border-radius: var(--radius-standard);
   overflow: auto;
 
-  /* Pure neumorphic shadow */
-  box-shadow:
-    6px 6px 12px var(--neu-shadow-dark),
-    -6px -6px 12px var(--neu-shadow-light),
-    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  /* Stone Marble - RAISED Level 4 panel */
+  box-shadow: var(--raised-4);
 }
 
-/* Inner glow effect for neuPanel */
+/* SUBTLE neumorphic - Luminous top edge for neuPanel */
 .neuPanelContent::before {
   content: '';
   position: absolute;
@@ -244,9 +241,9 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.6),
-    rgba(255, 255, 255, 0.8),
-    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 0.35),
+    rgba(255, 255, 255, 0.45),
+    rgba(255, 255, 255, 0.35),
     transparent
   );
   border-radius: var(--radius-standard) var(--radius-standard) 0 0;

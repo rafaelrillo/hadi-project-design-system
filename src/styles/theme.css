@@ -14,15 +14,61 @@
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 :root {
+  /* ═══════════════════════════════════════════════════════════════════════════
+     SENTINEL STONE MARBLE - CORE SYSTEM
+     Premium neumorphism palette with enhanced depth
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     MARBLE BASE COLORS
+     ───────────────────────────────────────────────────────────────────────── */
+  --marble-base: #d5d8dc;
+  --marble-light: #e2e5e9;
+  --marble-dark: #c8ccd1;
+  --marble-deeper: #b8bcc2;
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     MARBLE SHADOW COLORS
+     ───────────────────────────────────────────────────────────────────────── */
+  --shadow-light: rgba(255, 255, 255, 0.95);
+  --shadow-dark: rgba(147, 157, 170, 0.55);
+  --shadow-darker: rgba(130, 140, 155, 0.65);
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     MARBLE RAISED SHADOWS (elevación)
+     ───────────────────────────────────────────────────────────────────────── */
+  --raised-1: 2px 2px 4px var(--shadow-dark), -2px -2px 4px var(--shadow-light);
+  --raised-2: 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
+  --raised-3: 6px 6px 12px var(--shadow-dark), -6px -6px 12px var(--shadow-light);
+  --raised-4: 8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light);
+  --raised-5: 12px 12px 24px var(--shadow-dark), -12px -12px 24px var(--shadow-light);
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     MARBLE INSET SHADOWS (profundidad)
+     ───────────────────────────────────────────────────────────────────────── */
+  --inset-1: inset 2px 2px 4px var(--shadow-dark), inset -2px -2px 4px var(--shadow-light);
+  --inset-2: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
+  --inset-3: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light);
+  --inset-4: inset 6px 6px 12px var(--shadow-dark), inset -6px -6px 12px var(--shadow-light);
+  --inset-5: inset 8px 8px 16px var(--shadow-darker), inset -8px -8px 16px var(--shadow-light);
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     MARBLE GLASS
+     ───────────────────────────────────────────────────────────────────────── */
+  --glass-bg: rgba(255, 255, 255, 0.25);
+  --glass-border: rgba(255, 255, 255, 0.35);
+  --glass-bg-strong: rgba(255, 255, 255, 0.40);
+  --glass-border-strong: rgba(255, 255, 255, 0.50);
+
   /* ─────────────────────────────────────────────────────────────────────────────
      DYNAMIC LIGHT ENGINE - Core Variables
      Sistema de iluminación dinámica con ángulo controlable
      ───────────────────────────────────────────────────────────────────────────── */
 
-  /* Neumorphic base colors - used by Dynamic Light Engine */
-  --neu-base: #e0e5ec;
-  --neu-shadow-dark: hsl(220, 15%, 72%);
-  --neu-shadow-light: hsl(0, 0%, 100%);
+  /* Neumorphic base colors - using Stone Marble palette */
+  --neu-base: var(--marble-base);
+  --neu-shadow-dark: var(--shadow-dark);
+  --neu-shadow-light: var(--shadow-light);
 
   /* Light angle (controlled by LightEngineContext) - default 135° */
   --light-angle: 135;
@@ -73,36 +119,99 @@
      Fondos claros con sombras suaves para profundidad
      ───────────────────────────────────────────────────────────────────────────── */
 
-  /* Base del sistema - Fondo gris cálido (no blanco puro) */
-  --sentinel-bg-void: #E5E5E5;
-  --sentinel-bg-base: #E0E5EC;           /* Base principal - gris neumórfico clásico */
-  --sentinel-bg-surface: #E8ECEF;        /* Superficie base para elementos */
-  --sentinel-bg-raised: #F0F4F8;         /* Elementos ligeramente elevados */
+  /* Base del sistema - Stone Marble palette */
+  --sentinel-bg-void: var(--marble-deeper);
+  --sentinel-bg-base: var(--marble-base);           /* Base principal - stone marble */
+  --sentinel-bg-surface: var(--marble-light);       /* Superficie base para elementos */
+  --sentinel-bg-raised: var(--marble-light);        /* Elementos ligeramente elevados */
 
   /* ═══ GLASS BACKGROUNDS - Muy transparentes para efecto frosted ═══ */
 
   /* Glass primario - para cards y contenedores */
-  --sentinel-glass-bg: rgba(255, 255, 255, 0.35);
-  --sentinel-glass-bg-hover: rgba(255, 255, 255, 0.5);
-  --sentinel-glass-bg-active: rgba(255, 255, 255, 0.6);
+  --sentinel-glass-bg: var(--glass-bg);
+  --sentinel-glass-bg-hover: var(--glass-bg-strong);
+  --sentinel-glass-bg-active: rgba(255, 255, 255, 0.55);
 
   /* Glass elevado - para elementos flotantes */
-  --sentinel-glass-elevated: rgba(255, 255, 255, 0.45);
-  --sentinel-glass-elevated-hover: rgba(255, 255, 255, 0.6);
+  --sentinel-glass-elevated: var(--glass-bg-strong);
+  --sentinel-glass-elevated-hover: rgba(255, 255, 255, 0.55);
 
   /* Glass hundido - para inputs y áreas recesadas */
-  --sentinel-glass-inset: rgba(210, 218, 225, 0.5);
-  --sentinel-glass-inset-focus: rgba(220, 228, 235, 0.6);
+  --sentinel-glass-inset: var(--marble-dark);
+  --sentinel-glass-inset-focus: var(--marble-base);
 
   /* Glass con tinte de acento */
   --sentinel-glass-accent: rgba(74, 154, 156, 0.08);
   --sentinel-glass-accent-strong: rgba(74, 154, 156, 0.15);
 
-  /* ═══ COLORES PARA SOMBRAS NEUMÓRFICAS (LIGHT THEME) ═══ */
-  --sentinel-neu-light: rgba(255, 255, 255, 0.7);
-  --sentinel-neu-dark: rgba(163, 177, 198, 0.6);
-  --sentinel-neu-light-strong: rgba(255, 255, 255, 0.9);
-  --sentinel-neu-dark-strong: rgba(163, 177, 198, 0.8);
+  /* ═══ COLORES PARA SOMBRAS NEUMÓRFICAS (STONE MARBLE) ═══ */
+  --sentinel-neu-light: var(--shadow-light);
+  --sentinel-neu-dark: var(--shadow-dark);
+  --sentinel-neu-light-strong: rgba(255, 255, 255, 1);
+  --sentinel-neu-dark-strong: var(--shadow-darker);
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     NEUMORPHIC 3-LEVEL HIERARCHY SYSTEM - SUBTLE VALUES
+     RAISED → INSET → GLASS (never skip levels)
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  /* Shadow Colors - SUBTLE opacities */
+  --sentinel-neu-dark-subtle: rgba(163, 177, 198, 0.08);
+  --sentinel-neu-dark-light: rgba(163, 177, 198, 0.10);
+  --sentinel-neu-dark-medium: rgba(163, 177, 198, 0.12);
+  --sentinel-neu-dark-strong-subtle: rgba(163, 177, 198, 0.14);
+
+  --sentinel-neu-light-subtle: rgba(255, 255, 255, 0.25);
+  --sentinel-neu-light-light: rgba(255, 255, 255, 0.30);
+  --sentinel-neu-light-medium: rgba(255, 255, 255, 0.35);
+  --sentinel-neu-light-strong-subtle: rgba(255, 255, 255, 0.40);
+
+  /* ─────────────────────────────────────────────────────────────────────────────
+     LEVEL 1: RAISED (Elevated containers - floats above surface)
+     ───────────────────────────────────────────────────────────────────────────── */
+
+  --sentinel-raised-1-bg: var(--glass-bg);
+  --sentinel-raised-1-border: var(--glass-border);
+  --sentinel-raised-1-shadow: var(--raised-1);
+
+  --sentinel-raised-2-bg: var(--glass-bg);
+  --sentinel-raised-2-border: var(--glass-border);
+  --sentinel-raised-2-shadow: var(--raised-2);
+
+  --sentinel-raised-3-bg: var(--glass-bg-strong);
+  --sentinel-raised-3-border: var(--glass-border-strong);
+  --sentinel-raised-3-shadow: var(--raised-3);
+
+  --sentinel-raised-4-bg: var(--glass-bg-strong);
+  --sentinel-raised-4-border: var(--glass-border-strong);
+  --sentinel-raised-4-shadow: var(--raised-4);
+
+  --sentinel-raised-5-bg: var(--glass-bg-strong);
+  --sentinel-raised-5-border: var(--glass-border-strong);
+  --sentinel-raised-5-shadow: var(--raised-5);
+
+  /* ─────────────────────────────────────────────────────────────────────────────
+     LEVEL 2: INSET (Carved/Sunken areas - sinks into surface)
+     ───────────────────────────────────────────────────────────────────────────── */
+
+  --sentinel-inset-bg: var(--marble-dark);
+
+  --sentinel-inset-1-shadow: var(--inset-1);
+  --sentinel-inset-2-shadow: var(--inset-2);
+  --sentinel-inset-3-shadow: var(--inset-3);
+  --sentinel-inset-4-shadow: var(--inset-4);
+  --sentinel-inset-5-shadow: var(--inset-5);
+
+  /* ─────────────────────────────────────────────────────────────────────────────
+     LEVEL 3: GLASS (Floating items - NO neumorphic shadows, just transparency)
+     ───────────────────────────────────────────────────────────────────────────── */
+
+  --sentinel-glass-item-bg: rgba(255, 255, 255, 0.35);
+  --sentinel-glass-item-bg-hover: rgba(255, 255, 255, 0.45);
+  --sentinel-glass-item-bg-active: rgba(255, 255, 255, 0.50);
+  --sentinel-glass-item-border: rgba(255, 255, 255, 0.40);
+  --sentinel-glass-item-border-hover: rgba(255, 255, 255, 0.50);
+  --sentinel-glass-item-border-active: rgba(255, 255, 255, 0.55);
 
   /* ═══ BORDES GLASS - Sutiles en light theme ═══ */
   --sentinel-glass-border: rgba(255, 255, 255, 0.8);
@@ -588,8 +697,10 @@
   --sentinel-border-gradient-subtle: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(74, 154, 156, 0.1) 100%);
 
   /* Highlights internos (efecto de luz superior) */
-  --sentinel-inner-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.7);
-  --sentinel-inner-highlight-strong: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  --sentinel-inner-highlight-subtle: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  --sentinel-inner-highlight-medium: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  --sentinel-inner-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  --sentinel-inner-highlight-strong: inset 0 1px 0 rgba(255, 255, 255, 0.55);
 
   /* Sombras con glow de acento */
   --sentinel-shadow-glow-accent: 0 4px 20px rgba(163, 177, 198, 0.3), 0 0 30px rgba(74, 154, 156, 0.1);

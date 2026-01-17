@@ -368,8 +368,111 @@ p {
 .z-tooltip { z-index: var(--sentinel-z-tooltip); }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   GLASS-NEUMORPHISM UTILITIES
+   3-LEVEL NEUMORPHIC SYSTEM UTILITIES
+   RAISED → INSET → GLASS (never skip levels)
    ───────────────────────────────────────────────────────────────────────────── */
+
+/* ═══ LEVEL 1: RAISED - Elevated containers that float above surface ═══ */
+
+.raised-1 {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--sentinel-radius-lg, 16px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: var(--raised-1);
+}
+
+.raised-2 {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--sentinel-radius-lg, 16px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: var(--raised-2);
+}
+
+.raised-3 {
+  background: var(--glass-bg-strong);
+  border: 1px solid var(--glass-border-strong);
+  border-radius: var(--sentinel-radius-lg, 16px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--raised-3);
+}
+
+.raised-4 {
+  background: var(--glass-bg-strong);
+  border: 1px solid var(--glass-border-strong);
+  border-radius: var(--sentinel-radius-lg, 16px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--raised-4);
+}
+
+.raised-5 {
+  background: var(--glass-bg-strong);
+  border: 1px solid var(--glass-border-strong);
+  border-radius: var(--sentinel-radius-xl, 20px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: var(--raised-5);
+}
+
+/* ═══ LEVEL 2: INSET - Carved/sunken areas inside RAISED containers ═══ */
+
+.inset-1 {
+  background: var(--marble-dark);
+  border-radius: var(--sentinel-radius-md, 12px);
+  box-shadow: var(--inset-1);
+}
+
+.inset-2 {
+  background: var(--marble-dark);
+  border-radius: var(--sentinel-radius-md, 14px);
+  box-shadow: var(--inset-2);
+}
+
+.inset-3 {
+  background: var(--marble-dark);
+  border-radius: var(--sentinel-radius-lg, 16px);
+  box-shadow: var(--inset-3);
+}
+
+.inset-4 {
+  background: var(--marble-dark);
+  border-radius: var(--sentinel-radius-lg, 16px);
+  box-shadow: var(--inset-4);
+}
+
+.inset-5 {
+  background: var(--marble-deeper);
+  border-radius: var(--sentinel-radius-xl, 20px);
+  box-shadow: var(--inset-5);
+}
+
+/* ═══ LEVEL 3: GLASS - Floating items inside INSET (NO neumorphic shadows) ═══ */
+
+.glass-item {
+  background: var(--sentinel-glass-item-bg, rgba(255, 255, 255, 0.35));
+  border: 1px solid var(--sentinel-glass-item-border, rgba(255, 255, 255, 0.40));
+  border-radius: var(--sentinel-radius-md, 12px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.15s ease;
+}
+
+.glass-item:hover {
+  background: var(--sentinel-glass-item-bg-hover, rgba(255, 255, 255, 0.45));
+  border-color: var(--sentinel-glass-item-border-hover, rgba(255, 255, 255, 0.50));
+}
+
+.glass-item-active {
+  background: var(--sentinel-glass-item-bg-active, rgba(255, 255, 255, 0.50));
+  border-color: var(--sentinel-glass-item-border-active, rgba(255, 255, 255, 0.55));
+}
+
+/* ═══ LEGACY UTILITIES (kept for backwards compatibility) ═══ */
 
 /* Glass backgrounds */
 .glass {
@@ -380,32 +483,26 @@ p {
 }
 
 .glass-elevated {
-  background: var(--sentinel-glass-elevated);
+  background: var(--glass-bg-strong);
+  border: 1px solid var(--glass-border-strong);
   backdrop-filter: blur(var(--sentinel-blur-lg));
   -webkit-backdrop-filter: blur(var(--sentinel-blur-lg));
-  border: 1px solid var(--sentinel-glass-border);
-  box-shadow:
-    var(--sentinel-neu-elevated-md),
-    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  box-shadow: var(--raised-4);
 }
 
 .glass-inset {
-  background: var(--sentinel-glass-inset);
-  backdrop-filter: blur(var(--sentinel-blur-sm));
-  -webkit-backdrop-filter: blur(var(--sentinel-blur-sm));
-  box-shadow: var(--sentinel-neu-pressed-sm);
+  background: var(--marble-dark);
+  box-shadow: var(--inset-2);
 }
 
 /* Glass panel - for main content areas */
 .glass-panel {
-  background: var(--sentinel-glass-bg);
+  background: var(--glass-bg-strong);
+  border: 1px solid var(--glass-border-strong);
   backdrop-filter: blur(var(--sentinel-blur-md));
   -webkit-backdrop-filter: blur(var(--sentinel-blur-md));
-  border: 1px solid var(--sentinel-glass-border);
   border-radius: var(--sentinel-radius-lg);
-  box-shadow:
-    var(--sentinel-shadow-card),
-    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  box-shadow: var(--raised-3);
   position: relative;
 }
 
@@ -420,22 +517,22 @@ p {
   background: linear-gradient(
     90deg,
     transparent,
+    rgba(255, 255, 255, 0.4),
     rgba(255, 255, 255, 0.6),
-    rgba(255, 255, 255, 0.9),
-    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 0.4),
     transparent
   );
   border-radius: var(--sentinel-radius-lg) var(--sentinel-radius-lg) 0 0;
   pointer-events: none;
 }
 
-/* Neumorphic utilities */
+/* Neumorphic utilities - Stone Marble system */
 .neu-elevated {
-  box-shadow: var(--sentinel-neu-elevated-md);
+  box-shadow: var(--raised-3);
 }
 
 .neu-pressed {
-  box-shadow: var(--sentinel-neu-pressed-md);
+  box-shadow: var(--inset-2);
 }
 
 /* Blur utilities */

@@ -24,23 +24,16 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .mainChart {
-  background: rgba(255, 255, 255, 0.55);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: var(--marble-base);
+  border: none;
   border-radius: var(--sentinel-radius-lg);
   padding: 24px;
   flex-shrink: 0;
   position: relative;
   overflow: hidden;
 
-  /* Glass blur effect */
-  backdrop-filter: blur(var(--sentinel-blur-md));
-  -webkit-backdrop-filter: blur(var(--sentinel-blur-md));
-
-  /* SUBTLE neumorphic - RAISED Level 3 */
-  box-shadow: var(--sentinel-raised-3-shadow,
-    4px 4px 8px rgba(163, 177, 198, 0.12),
-    -4px -4px 8px rgba(255, 255, 255, 0.35)
-  );
+  /* Stone Marble - RAISED Level 3 */
+  box-shadow: var(--raised-3);
 }
 
 /* Subtle luminous top edge */
@@ -241,34 +234,28 @@
 /* Chart inset container */
 .chartInset {
   flex: 1;
-  background: rgba(220, 225, 232, 0.5);
+  background: var(--marble-dark);
   border: none;
   border-radius: var(--sentinel-radius-md);
   padding: 16px 12px 12px 12px;
   position: relative;
   overflow: hidden;
 
-  /* SUBTLE neumorphic - INSET Level 2 (sunken effect) */
-  box-shadow: var(--sentinel-inset-2-shadow,
-    inset 3px 3px 8px rgba(163, 177, 198, 0.35),
-    inset -3px -3px 8px rgba(255, 255, 255, 0.70)
-  );
+  /* Stone Marble INSET Level 2 */
+  box-shadow: var(--inset-2);
 }
 
 /* Legend inset container */
 .legendInset {
   width: 140px;
   flex-shrink: 0;
-  background: rgba(220, 225, 232, 0.5);
+  background: var(--marble-dark);
   border: none;
   border-radius: var(--sentinel-radius-md);
   padding: 8px;
 
-  /* SUBTLE neumorphic - INSET Level 2 (sunken effect) */
-  box-shadow: var(--sentinel-inset-2-shadow,
-    inset 3px 3px 8px rgba(163, 177, 198, 0.35),
-    inset -3px -3px 8px rgba(255, 255, 255, 0.70)
-  );
+  /* Stone Marble INSET Level 2 */
+  box-shadow: var(--inset-2);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -300,8 +287,8 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .card {
-  background: rgba(255, 255, 255, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.55);
+  background: var(--marble-base);
+  border: none;
   border-radius: var(--sentinel-radius-lg);
   padding: 16px;
   display: flex;
@@ -310,15 +297,8 @@
   overflow: hidden;
   position: relative;
 
-  /* Glass blur effect */
-  backdrop-filter: blur(var(--sentinel-blur-md));
-  -webkit-backdrop-filter: blur(var(--sentinel-blur-md));
-
-  /* SUBTLE neumorphic - RAISED Level 2 */
-  box-shadow: var(--sentinel-raised-2-shadow,
-    3px 3px 6px rgba(163, 177, 198, 0.10),
-    -3px -3px 6px rgba(255, 255, 255, 0.30)
-  );
+  /* Stone Marble - RAISED Level 2 */
+  box-shadow: var(--raised-2);
 }
 
 /* Subtle luminous top edge */
@@ -399,18 +379,15 @@
   overflow: hidden;
   padding: 12px;
   margin: 0 -4px;
-  background: rgba(220, 225, 232, 0.3);
+  background: var(--marble-dark);
   border-radius: var(--sentinel-radius-md);
 
-  /* SUBTLE neumorphic - INSET Level 1 */
-  box-shadow: var(--sentinel-inset-1-shadow,
-    inset 2px 2px 5px rgba(163, 177, 198, 0.25),
-    inset -2px -2px 5px rgba(255, 255, 255, 0.60)
-  );
+  /* Stone Marble - INSET Level 1 */
+  box-shadow: var(--inset-1);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   TOP BUYS - Teal Brand Glass (same as Latest News)
+   TOP BUYS - Stone Marble Glass Item
    ═══════════════════════════════════════════════════════════════════════════ */
 .recommendationItemBuy {
   display: grid;
@@ -420,64 +397,23 @@
   padding: 14px 18px;
   position: relative;
 
-  /* Teal brand glass */
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.25) 0%,
-    rgba(74, 154, 156, 0.12) 100%
-  );
-  backdrop-filter: blur(12px) saturate(180%);
-  -webkit-backdrop-filter: blur(12px) saturate(180%);
-
-  /* Teal border */
-  border: 1px solid rgba(74, 154, 156, 0.25);
-  border-radius: 14px;
-  transition: all 0.2s ease;
+  /* Stone Marble Glass */
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.15s ease;
   flex-shrink: 0;
-
-  /* SUBTLE - Teal glass shadow */
-  box-shadow:
-    0 4px 16px rgba(74, 154, 156, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
-}
-
-/* Subtle top edge glow */
-.recommendationItemBuy::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 25%;
-  right: 25%;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(74, 154, 156, 0.3),
-    rgba(74, 154, 156, 0.4),
-    rgba(74, 154, 156, 0.3),
-    transparent
-  );
-  border-radius: 14px 14px 0 0;
-  pointer-events: none;
 }
 
 .recommendationItemBuy:hover {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.35) 0%,
-    rgba(74, 154, 156, 0.15) 100%
-  );
-  border-color: rgba(74, 154, 156, 0.30);
-  transform: translateY(-1px);
-  /* SUBTLE hover */
-  box-shadow:
-    0 8px 24px rgba(74, 154, 156, 0.10),
-    0 0 20px rgba(74, 154, 156, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.20);
+  background: var(--glass-bg-strong);
+  border-color: var(--glass-border-strong);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   TOP SELLS - Teal Brand Glass (same as Latest News)
+   TOP SELLS - Stone Marble Glass Item
    ═══════════════════════════════════════════════════════════════════════════ */
 .recommendationItemSell {
   display: grid;
@@ -487,60 +423,19 @@
   padding: 14px 18px;
   position: relative;
 
-  /* Teal brand glass */
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.25) 0%,
-    rgba(74, 154, 156, 0.12) 100%
-  );
-  backdrop-filter: blur(12px) saturate(180%);
-  -webkit-backdrop-filter: blur(12px) saturate(180%);
-
-  /* Teal border */
-  border: 1px solid rgba(74, 154, 156, 0.25);
-  border-radius: 14px;
-  transition: all 0.2s ease;
+  /* Stone Marble Glass */
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.15s ease;
   flex-shrink: 0;
-
-  /* SUBTLE - Teal glass shadow */
-  box-shadow:
-    0 4px 16px rgba(74, 154, 156, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
-}
-
-/* Subtle top edge glow */
-.recommendationItemSell::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 25%;
-  right: 25%;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(74, 154, 156, 0.3),
-    rgba(74, 154, 156, 0.4),
-    rgba(74, 154, 156, 0.3),
-    transparent
-  );
-  border-radius: 14px 14px 0 0;
-  pointer-events: none;
 }
 
 .recommendationItemSell:hover {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.35) 0%,
-    rgba(74, 154, 156, 0.15) 100%
-  );
-  border-color: rgba(74, 154, 156, 0.30);
-  transform: translateY(-1px);
-  /* SUBTLE hover */
-  box-shadow:
-    0 8px 24px rgba(74, 154, 156, 0.10),
-    0 0 20px rgba(74, 154, 156, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.20);
+  background: var(--glass-bg-strong);
+  border-color: var(--glass-border-strong);
 }
 
 .recRank {
@@ -622,18 +517,13 @@
   flex-direction: column;
   align-items: center;
   padding: 6px 10px;
-  background: rgba(74, 154, 156, 0.12);
-  border: 1px solid rgba(74, 154, 156, 0.25);
+  background: var(--marble-base);
+  border: none;
   border-radius: var(--sentinel-radius-sm);
   min-width: 44px;
 
-  backdrop-filter: blur(var(--sentinel-blur-xs));
-  -webkit-backdrop-filter: blur(var(--sentinel-blur-xs));
-
-  /* SUBTLE - GLASS Level */
-  box-shadow:
-    2px 2px 4px rgba(163, 177, 198, 0.08),
-    -2px -2px 4px rgba(255, 255, 255, 0.25);
+  /* Stone Marble - RAISED Level 1 */
+  box-shadow: var(--raised-1);
 }
 
 .scoreValue {
@@ -667,14 +557,11 @@
   overflow: hidden;
   padding: 12px;
   margin: 0 -4px;
-  background: rgba(220, 225, 232, 0.3);
+  background: var(--marble-dark);
   border-radius: var(--sentinel-radius-md);
 
-  /* SUBTLE neumorphic - INSET Level 1 */
-  box-shadow: var(--sentinel-inset-1-shadow,
-    inset 2px 2px 5px rgba(163, 177, 198, 0.25),
-    inset -2px -2px 5px rgba(255, 255, 255, 0.60)
-  );
+  /* Stone Marble - INSET Level 1 */
+  box-shadow: var(--inset-1);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -690,10 +577,10 @@
   overflow: hidden;
 }
 
-/* Portfolio Value Card - Light Glass elevated */
+/* Portfolio Value Card - Stone Marble elevated */
 .mobileValueCard {
-  background: rgba(255, 255, 255, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  background: var(--marble-base);
+  border: none;
   border-radius: var(--sentinel-radius-lg);
   padding: 18px 16px;
   display: flex;
@@ -703,14 +590,8 @@
   position: relative;
   overflow: hidden;
 
-  backdrop-filter: blur(var(--sentinel-blur-md));
-  -webkit-backdrop-filter: blur(var(--sentinel-blur-md));
-
-  /* SUBTLE neumorphic - RAISED Level 4 */
-  box-shadow: var(--sentinel-raised-4-shadow,
-    5px 5px 10px rgba(163, 177, 198, 0.14),
-    -5px -5px 10px rgba(255, 255, 255, 0.40)
-  );
+  /* Stone Marble - RAISED Level 4 */
+  box-shadow: var(--raised-4);
 }
 
 .mobileValueCard::before {
@@ -788,10 +669,10 @@
     0 0 20px rgba(248, 113, 113, 0.3);
 }
 
-/* Chart Card - Light Glass */
+/* Chart Card - Stone Marble */
 .mobileChartCard {
-  background: rgba(255, 255, 255, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.7);
+  background: var(--marble-base);
+  border: none;
   border-radius: var(--sentinel-radius-lg);
   padding: 10px 12px;
   display: flex;
@@ -800,14 +681,8 @@
   flex-shrink: 0;
   position: relative;
 
-  backdrop-filter: blur(var(--sentinel-blur-md));
-  -webkit-backdrop-filter: blur(var(--sentinel-blur-md));
-
-  /* SUBTLE neumorphic - RAISED Level 3 */
-  box-shadow: var(--sentinel-raised-3-shadow,
-    4px 4px 8px rgba(163, 177, 198, 0.12),
-    -4px -4px 8px rgba(255, 255, 255, 0.35)
-  );
+  /* Stone Marble - RAISED Level 3 */
+  box-shadow: var(--raised-3);
 }
 
 .mobileChartWrapper {
@@ -845,10 +720,10 @@
   flex-shrink: 0;
 }
 
-/* Top Picks Card - Light Glass */
+/* Top Picks Card - Stone Marble */
 .mobilePicksCard {
-  background: rgba(255, 255, 255, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.7);
+  background: var(--marble-base);
+  border: none;
   border-radius: var(--sentinel-radius-lg);
   padding: 10px 12px;
   display: flex;
@@ -857,14 +732,8 @@
   flex-shrink: 0;
   position: relative;
 
-  backdrop-filter: blur(var(--sentinel-blur-md));
-  -webkit-backdrop-filter: blur(var(--sentinel-blur-md));
-
-  /* SUBTLE neumorphic - RAISED Level 3 */
-  box-shadow: var(--sentinel-raised-3-shadow,
-    4px 4px 8px rgba(163, 177, 198, 0.12),
-    -4px -4px 8px rgba(255, 255, 255, 0.35)
-  );
+  /* Stone Marble - RAISED Level 3 */
+  box-shadow: var(--raised-3);
 }
 
 .mobilePicksHeader {

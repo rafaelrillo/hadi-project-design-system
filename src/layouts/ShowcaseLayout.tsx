@@ -37,7 +37,8 @@ import {
   LayoutGrid,
   Gauge,
   LayoutDashboard,
-  MessageSquare
+  MessageSquare,
+  Sun
 } from 'lucide-react';
 
 export function ShowcaseLayout() {
@@ -87,7 +88,7 @@ export function ShowcaseLayout() {
     height: '100vh',
     overflowY: 'auto',
     zIndex: 100,
-    boxShadow: '4px 0 24px rgba(163, 177, 198, 0.15)'
+    boxShadow: '4px 0 24px var(--shadow-dark)'
   };
 
   const logoContainerStyles: React.CSSProperties = {
@@ -275,6 +276,25 @@ export function ShowcaseLayout() {
           >
             <Home size={18} />
             <span>Home</span>
+          </Link>
+
+          {/* Light Engine Demo */}
+          <Link
+            to="/showcase"
+            style={homeItemStyles}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = 'var(--sentinel-bg-subtle)';
+              e.currentTarget.style.borderLeftColor = 'var(--sentinel-accent-primary)';
+              e.currentTarget.style.color = 'var(--sentinel-accent-primary)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = 'transparent';
+              e.currentTarget.style.borderLeftColor = 'transparent';
+              e.currentTarget.style.color = 'var(--sentinel-text-primary)';
+            }}
+          >
+            <Sun size={18} />
+            <span>Light Engine</span>
           </Link>
 
           {/* SENTINEL Components Link */}
