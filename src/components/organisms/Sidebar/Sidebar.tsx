@@ -3,6 +3,7 @@
 import { useState, useMemo, type ReactNode, type MouseEvent, type KeyboardEvent, type CSSProperties } from 'react';
 import { LucideIcon, LogOut, ScrollText, Search, ChevronDown, Settings, Plus } from 'lucide-react';
 import { useLightEngine } from '@contexts/LightEngineContext';
+import { TabGroup, type TabItem } from '@atoms/Button';
 import styles from './Sidebar.module.css';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -40,6 +41,12 @@ export interface SidebarProps {
   menuItems?: SidebarMenuItem[];
   /** Grouped menu sections */
   sections?: SidebarSection[];
+  /** Main navigation tabs (replaces menuItems with TabGroup) */
+  mainTabs?: TabItem[];
+  /** Currently active tab index (when using mainTabs) */
+  activeTab?: number;
+  /** Callback when tab changes (when using mainTabs) */
+  onTabChange?: (index: number) => void;
   /** User profile */
   user?: UserProfile;
   /** Callback for user profile click */
@@ -133,6 +140,9 @@ export function Sidebar({
   productLogo,
   menuItems = [],
   sections = [],
+  mainTabs,
+  activeTab = 0,
+  onTabChange,
   user,
   onUserClick,
   onLogsClick,
@@ -271,6 +281,20 @@ export function Sidebar({
         </div>
       )}
 
+      {/* Main Navigation TabGroup - Icon Only */}
+      {mainTabs && mainTabs.length > 0 && onTabChange && (
+        <div className={styles.mainNavSection}>
+          <TabGroup
+            tabs={mainTabs}
+            activeTab={activeTab}
+            onChange={onTabChange}
+            size="md"
+            iconOnly
+            className={styles.mainNavTabs}
+          />
+        </div>
+      )}
+
       {/* Navigation Sections */}
       <div className={styles.navSections}>
         {/* Sections with grouped items */}
@@ -303,8 +327,8 @@ export function Sidebar({
           </div>
         ))}
 
-        {/* Simple menu items (if no sections provided) */}
-        {sections.length === 0 && menuItems.length > 0 && (
+        {/* Simple menu items (if no sections AND no mainTabs provided) */}
+        {sections.length === 0 && menuItems.length > 0 && !mainTabs && (
           <div className={styles.menuList}>
             {menuItems.map((item, index) => (
               <MenuItemComponent

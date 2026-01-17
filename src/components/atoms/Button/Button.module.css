@@ -1,92 +1,54 @@
 /* Path: src/components/atoms/Button/Button.module.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   SENTINEL DESIGN SYSTEM v3.2 - Button Component
+   SENTINEL DESIGN SYSTEM v4.0 - Button System
 
-   GLASS-NEUMORPHISM - Tactile glass buttons with depth
-   - Semi-transparent backgrounds with blur
-   - Luminous borders and inner highlights
-   - Neumorphic shadows for floating effect
-   - Press state transitions to inset
+   Complete button system with:
+   - 15 Neumorphic variants
+   - 8 Glass translucent variants
+   - 8 Glass-Neu hybrid variants
+   - Special components (IconButton, Toggle, Group, Tabs, Stepper)
    ═══════════════════════════════════════════════════════════════════════════════ */
 
-/* ─────────────────────────────────────────────────────────────────────────────
-   BASE BUTTON - Glass-Neumorphic
-   ───────────────────────────────────────────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════════════════════════
+   BASE BUTTON STYLES
+   ═══════════════════════════════════════════════════════════════════════════════ */
 
 .button {
   font-family: var(--sentinel-font-primary);
-  font-size: var(--sentinel-text-sm);
-  font-weight: var(--sentinel-font-medium);
+  font-weight: 500;
   line-height: 1;
   letter-spacing: 0.01em;
-  padding: 12px 24px;
-  border: 1px solid var(--sentinel-glass-border);
-  border-radius: var(--sentinel-radius-button);
-  background: var(--sentinel-glass-bg);
-  color: var(--sentinel-text-secondary);
+  border: none;
+  outline: none;
   cursor: pointer;
-  transition: all 0.2s ease;
-  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0;
-  height: 44px;
-  white-space: nowrap;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
   user-select: none;
-
-  /* Glass effect */
-  backdrop-filter: blur(var(--sentinel-blur-sm));
-  -webkit-backdrop-filter: blur(var(--sentinel-blur-sm));
-
-  /* Neumorphic shadow + inner highlight */
-  box-shadow:
-    var(--sentinel-shadow-button),
-    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  white-space: nowrap;
+  transition: var(--sentinel-btn-transition);
+  border-radius: var(--sentinel-btn-radius);
+  background: var(--sentinel-bg-elevated);
+  color: var(--sentinel-text-secondary);
 }
 
 .button:focus-visible {
-  outline: none;
-  border-color: var(--sentinel-glass-border-focus);
-  box-shadow:
-    var(--sentinel-shadow-button),
-    inset 0 1px 0 rgba(255, 255, 255, 0.7),
-    0 0 0 3px rgba(74, 154, 156, 0.2);
+  outline: 2px solid var(--sentinel-accent-primary);
+  outline-offset: 3px;
 }
 
-.button:hover:not(:disabled) {
-  background: var(--sentinel-glass-bg-hover);
-  border-color: var(--sentinel-glass-border-hover);
-  color: var(--sentinel-text-primary);
-
-  box-shadow:
-    var(--sentinel-shadow-button-hover),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
-}
-
-.button:active:not(:disabled) {
-  transform: translateY(1px);
-  background: var(--sentinel-glass-bg-active);
-
-  /* Press into surface */
-  box-shadow:
-    var(--sentinel-shadow-button-active),
-    inset 0 1px 0 rgba(255, 255, 255, 0.5);
-}
-
-.button:disabled {
-  background: rgba(255, 255, 255, 0.02);
-  border-color: var(--sentinel-border-subtle);
-  color: var(--sentinel-text-disabled);
+.button:disabled,
+.button.disabled {
+  opacity: 0.35;
   cursor: not-allowed;
-  backdrop-filter: none;
-  box-shadow: none;
+  pointer-events: none;
 }
 
-/* ─────────────────────────────────────────────────────────────────────────────
-   ICON & LABEL SUPPORT
-   ───────────────────────────────────────────────────────────────────────────── */
-
+/* Icon wrapper */
 .icon {
   display: inline-flex;
   align-items: center;
@@ -94,489 +56,1456 @@
   flex-shrink: 0;
 }
 
+/* Label wrapper */
 .label {
   display: inline-flex;
   align-items: center;
 }
 
-.buttonWithIcon {
-  gap: var(--sentinel-space-2);
-}
-
-/* ─────────────────────────────────────────────────────────────────────────────
-   VARIANT: PRIMARY - Teal colored glass (hue: 175)
-   ───────────────────────────────────────────────────────────────────────────── */
-
-.primary {
-  background: linear-gradient(
-    180deg,
-    hsla(175, 45%, 55%, 0.65) 0%,
-    hsla(175, 45%, 50%, 0.45) 50%,
-    hsla(175, 45%, 55%, 0.55) 100%
-  );
-  border: 1px solid hsla(175, 45%, 70%, 0.5);
-  color: hsl(175, 50%, 15%);
-
-  box-shadow:
-    6px 6px 16px rgba(163, 177, 198, 0.5),
-    -6px -6px 16px rgba(255, 255, 255, 0.8),
-    inset 0 1px 0 hsla(175, 50%, 80%, 0.5),
-    0 4px 20px hsla(175, 45%, 45%, 0.35);
-}
-
-.primary:hover:not(:disabled) {
-  background: linear-gradient(
-    180deg,
-    hsla(175, 50%, 58%, 0.75) 0%,
-    hsla(175, 50%, 53%, 0.55) 50%,
-    hsla(175, 50%, 58%, 0.65) 100%
-  );
-  border-color: hsla(175, 50%, 75%, 0.6);
-  transform: translateY(-1px);
-
-  box-shadow:
-    8px 8px 20px rgba(163, 177, 198, 0.55),
-    -8px -8px 20px rgba(255, 255, 255, 0.85),
-    inset 0 1px 0 hsla(175, 50%, 85%, 0.6),
-    0 6px 30px hsla(175, 50%, 45%, 0.45);
-}
-
-.primary:active:not(:disabled) {
-  transform: translateY(1px);
-  background: linear-gradient(
-    180deg,
-    hsla(175, 40%, 50%, 0.55) 0%,
-    hsla(175, 40%, 45%, 0.35) 50%,
-    hsla(175, 40%, 50%, 0.45) 100%
-  );
-
-  box-shadow:
-    inset 2px 2px 6px rgba(163, 177, 198, 0.4),
-    inset -2px -2px 6px rgba(255, 255, 255, 0.5),
-    0 2px 10px hsla(175, 45%, 45%, 0.25);
-}
-
-.primary:focus-visible {
-  box-shadow:
-    6px 6px 16px rgba(163, 177, 198, 0.5),
-    -6px -6px 16px rgba(255, 255, 255, 0.8),
-    inset 0 1px 0 hsla(175, 50%, 80%, 0.5),
-    0 4px 20px hsla(175, 45%, 45%, 0.35),
-    0 0 0 3px hsla(175, 50%, 50%, 0.3);
-}
-
-.primary:disabled {
-  background: hsla(175, 15%, 60%, 0.2);
-  border-color: hsla(175, 10%, 70%, 0.2);
-  color: var(--sentinel-text-disabled);
-  box-shadow: none;
-}
-
-/* ─────────────────────────────────────────────────────────────────────────────
-   VARIANT: SECONDARY - Neutral gray glass (hue: 220)
-   ───────────────────────────────────────────────────────────────────────────── */
-
-.secondary {
-  background: linear-gradient(
-    180deg,
-    hsla(220, 15%, 65%, 0.45) 0%,
-    hsla(220, 15%, 60%, 0.25) 50%,
-    hsla(220, 15%, 65%, 0.35) 100%
-  );
-  border: 1px solid hsla(220, 15%, 75%, 0.4);
-  color: hsl(220, 20%, 25%);
-
-  box-shadow:
-    4px 4px 12px rgba(163, 177, 198, 0.4),
-    -4px -4px 12px rgba(255, 255, 255, 0.7),
-    inset 0 1px 0 hsla(220, 15%, 85%, 0.4);
-}
-
-.secondary:hover:not(:disabled) {
-  background: linear-gradient(
-    180deg,
-    hsla(220, 18%, 68%, 0.55) 0%,
-    hsla(220, 18%, 63%, 0.35) 50%,
-    hsla(220, 18%, 68%, 0.45) 100%
-  );
-  border-color: hsla(220, 18%, 78%, 0.5);
-  color: hsl(220, 25%, 20%);
-
-  box-shadow:
-    6px 6px 16px rgba(163, 177, 198, 0.45),
-    -6px -6px 16px rgba(255, 255, 255, 0.75),
-    inset 0 1px 0 hsla(220, 18%, 88%, 0.5);
-}
-
-.secondary:active:not(:disabled) {
-  transform: translateY(1px);
-  background: linear-gradient(
-    180deg,
-    hsla(220, 12%, 60%, 0.35) 0%,
-    hsla(220, 12%, 55%, 0.18) 50%,
-    hsla(220, 12%, 60%, 0.28) 100%
-  );
-
-  box-shadow:
-    inset 2px 2px 5px rgba(163, 177, 198, 0.35),
-    inset -2px -2px 5px rgba(255, 255, 255, 0.4);
-}
-
-.secondary:disabled {
-  background: hsla(220, 10%, 65%, 0.15);
-  border-color: hsla(220, 10%, 70%, 0.15);
-  color: var(--sentinel-text-disabled);
-  box-shadow: none;
-}
-
-/* ─────────────────────────────────────────────────────────────────────────────
-   VARIANT: GHOST - No glass, minimal
-   ───────────────────────────────────────────────────────────────────────────── */
-
-.ghost {
-  border-color: transparent;
-  background: transparent;
-  color: var(--sentinel-text-secondary);
-  backdrop-filter: none;
-  box-shadow: none;
-}
-
-.ghost:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.5);
-  border-color: transparent;
-  color: var(--sentinel-text-primary);
-  box-shadow: none;
-}
-
-.ghost:active:not(:disabled) {
-  background: rgba(255, 255, 255, 0.3);
-}
-
-.ghost:disabled {
-  background: transparent;
-  border-color: transparent;
-  color: var(--sentinel-text-disabled);
-}
-
-/* ─────────────────────────────────────────────────────────────────────────────
-   VARIANT: DESTRUCTIVE - Red colored glass (hue: 355)
-   ───────────────────────────────────────────────────────────────────────────── */
-
-.destructive {
-  background: linear-gradient(
-    180deg,
-    hsla(355, 55%, 60%, 0.55) 0%,
-    hsla(355, 55%, 55%, 0.35) 50%,
-    hsla(355, 55%, 60%, 0.45) 100%
-  );
-  border: 1px solid hsla(355, 55%, 72%, 0.45);
-  color: hsl(355, 60%, 18%);
-
-  box-shadow:
-    5px 5px 14px rgba(163, 177, 198, 0.45),
-    -5px -5px 14px rgba(255, 255, 255, 0.75),
-    inset 0 1px 0 hsla(355, 55%, 82%, 0.45),
-    0 3px 15px hsla(355, 55%, 50%, 0.25);
-}
-
-.destructive:hover:not(:disabled) {
-  background: linear-gradient(
-    180deg,
-    hsla(355, 60%, 63%, 0.65) 0%,
-    hsla(355, 60%, 58%, 0.45) 50%,
-    hsla(355, 60%, 63%, 0.55) 100%
-  );
-  border-color: hsla(355, 60%, 75%, 0.55);
-  transform: translateY(-1px);
-
-  box-shadow:
-    7px 7px 18px rgba(163, 177, 198, 0.5),
-    -7px -7px 18px rgba(255, 255, 255, 0.8),
-    inset 0 1px 0 hsla(355, 60%, 85%, 0.55),
-    0 5px 25px hsla(355, 60%, 50%, 0.35);
-}
-
-.destructive:active:not(:disabled) {
-  transform: translateY(1px);
-  background: linear-gradient(
-    180deg,
-    hsla(355, 50%, 55%, 0.45) 0%,
-    hsla(355, 50%, 50%, 0.28) 50%,
-    hsla(355, 50%, 55%, 0.38) 100%
-  );
-
-  box-shadow:
-    inset 2px 2px 5px rgba(163, 177, 198, 0.35),
-    inset -2px -2px 5px rgba(255, 255, 255, 0.45),
-    0 2px 8px hsla(355, 55%, 50%, 0.18);
-}
-
-.destructive:disabled {
-  background: hsla(355, 15%, 60%, 0.15);
-  border-color: hsla(355, 10%, 70%, 0.15);
-  color: var(--sentinel-text-disabled);
-  box-shadow: none;
-}
-
-/* ─────────────────────────────────────────────────────────────────────────────
-   VARIANT: SUCCESS - Green colored glass (hue: 145)
-   ───────────────────────────────────────────────────────────────────────────── */
-
-.success {
-  background: linear-gradient(
-    180deg,
-    hsla(145, 50%, 55%, 0.55) 0%,
-    hsla(145, 50%, 50%, 0.35) 50%,
-    hsla(145, 50%, 55%, 0.45) 100%
-  );
-  border: 1px solid hsla(145, 50%, 68%, 0.45);
-  color: hsl(145, 55%, 15%);
-
-  box-shadow:
-    5px 5px 14px rgba(163, 177, 198, 0.45),
-    -5px -5px 14px rgba(255, 255, 255, 0.75),
-    inset 0 1px 0 hsla(145, 50%, 78%, 0.45),
-    0 3px 15px hsla(145, 50%, 45%, 0.25);
-}
-
-.success:hover:not(:disabled) {
-  background: linear-gradient(
-    180deg,
-    hsla(145, 55%, 58%, 0.65) 0%,
-    hsla(145, 55%, 53%, 0.45) 50%,
-    hsla(145, 55%, 58%, 0.55) 100%
-  );
-  border-color: hsla(145, 55%, 72%, 0.55);
-  transform: translateY(-1px);
-
-  box-shadow:
-    7px 7px 18px rgba(163, 177, 198, 0.5),
-    -7px -7px 18px rgba(255, 255, 255, 0.8),
-    inset 0 1px 0 hsla(145, 55%, 82%, 0.55),
-    0 5px 25px hsla(145, 55%, 45%, 0.35);
-}
-
-.success:active:not(:disabled) {
-  transform: translateY(1px);
-  background: linear-gradient(
-    180deg,
-    hsla(145, 45%, 50%, 0.45) 0%,
-    hsla(145, 45%, 45%, 0.28) 50%,
-    hsla(145, 45%, 50%, 0.38) 100%
-  );
-
-  box-shadow:
-    inset 2px 2px 5px rgba(163, 177, 198, 0.35),
-    inset -2px -2px 5px rgba(255, 255, 255, 0.45),
-    0 2px 8px hsla(145, 50%, 45%, 0.18);
-}
-
-.success:disabled {
-  background: hsla(145, 15%, 60%, 0.15);
-  border-color: hsla(145, 10%, 70%, 0.15);
-  color: var(--sentinel-text-disabled);
-  box-shadow: none;
-}
-
-/* ─────────────────────────────────────────────────────────────────────────────
-   VARIANT: GLASS - Dynamic Light Engine glass button
-   Uses inline styles from useDynamicShadows for light-responsive effects
-   ───────────────────────────────────────────────────────────────────────────── */
-
-.glass {
-  /* Base glass appearance - overridden by inline styles when Light Engine active */
-  background: linear-gradient(
-    180deg,
-    hsla(175, 35%, 60%, 0.28) 0%,
-    hsla(175, 35%, 55%, 0.12) 50%,
-    hsla(175, 35%, 60%, 0.22) 100%
-  );
-  backdrop-filter: blur(8px) saturate(120%);
-  -webkit-backdrop-filter: blur(8px) saturate(120%);
-  border: 1px solid hsla(175, 35%, 75%, 0.30);
-  border-radius: var(--radius-standard);
-  color: var(--sentinel-text-primary);
-  font-family: var(--sentinel-font-mono);
-  font-weight: var(--sentinel-font-semibold);
-
-  /* Fast shadow transition for light engine responsiveness */
-  transition: var(--transition-shadow), var(--transition-transform);
-}
-
-.glass:hover:not(:disabled) {
-  background: linear-gradient(
-    180deg,
-    hsla(175, 35%, 65%, 0.35) 0%,
-    hsla(175, 35%, 60%, 0.18) 50%,
-    hsla(175, 35%, 65%, 0.28) 100%
-  );
-  border-color: hsla(175, 35%, 80%, 0.45);
-  transform: translateY(-1px);
-}
-
-.glass:active:not(:disabled) {
-  transform: translateY(1px);
-  background: linear-gradient(
-    180deg,
-    hsla(175, 35%, 55%, 0.22) 0%,
-    hsla(175, 35%, 50%, 0.10) 50%,
-    hsla(175, 35%, 55%, 0.18) 100%
-  );
-}
-
-.glass:focus-visible {
-  outline: none;
-  box-shadow:
-    0 0 0 3px hsla(175, 35%, 50%, 0.25);
-}
-
-.glass:disabled {
-  background: hsla(175, 10%, 60%, 0.1);
-  border-color: hsla(175, 10%, 70%, 0.15);
-  color: var(--sentinel-text-disabled);
-  backdrop-filter: none;
-}
-
-/* ─────────────────────────────────────────────────────────────────────────────
-   VARIANT: WITH-ICON - Teal glass with icon (same as primary)
-   ───────────────────────────────────────────────────────────────────────────── */
-
-.withIcon {
-  background: linear-gradient(
-    180deg,
-    hsla(175, 45%, 55%, 0.65) 0%,
-    hsla(175, 45%, 50%, 0.45) 50%,
-    hsla(175, 45%, 55%, 0.55) 100%
-  );
-  border: 1px solid hsla(175, 45%, 70%, 0.5);
-  color: hsl(175, 50%, 15%);
-  gap: var(--sentinel-space-2);
-
-  box-shadow:
-    6px 6px 16px rgba(163, 177, 198, 0.5),
-    -6px -6px 16px rgba(255, 255, 255, 0.8),
-    inset 0 1px 0 hsla(175, 50%, 80%, 0.5),
-    0 4px 20px hsla(175, 45%, 45%, 0.35);
-}
-
-.withIcon:hover:not(:disabled) {
-  background: linear-gradient(
-    180deg,
-    hsla(175, 50%, 58%, 0.75) 0%,
-    hsla(175, 50%, 53%, 0.55) 50%,
-    hsla(175, 50%, 58%, 0.65) 100%
-  );
-  border-color: hsla(175, 50%, 75%, 0.6);
-  transform: translateY(-1px);
-
-  box-shadow:
-    8px 8px 20px rgba(163, 177, 198, 0.55),
-    -8px -8px 20px rgba(255, 255, 255, 0.85),
-    inset 0 1px 0 hsla(175, 50%, 85%, 0.6),
-    0 6px 30px hsla(175, 50%, 45%, 0.45);
-}
-
-.withIcon:active:not(:disabled) {
-  transform: translateY(1px);
-  background: linear-gradient(
-    180deg,
-    hsla(175, 40%, 50%, 0.55) 0%,
-    hsla(175, 40%, 45%, 0.35) 50%,
-    hsla(175, 40%, 50%, 0.45) 100%
-  );
-
-  box-shadow:
-    inset 2px 2px 6px rgba(163, 177, 198, 0.4),
-    inset -2px -2px 6px rgba(255, 255, 255, 0.5),
-    0 2px 10px hsla(175, 45%, 45%, 0.25);
-}
-
-.withIcon:disabled {
-  background: hsla(175, 15%, 60%, 0.2);
-  border-color: hsla(175, 10%, 70%, 0.2);
-  color: var(--sentinel-text-disabled);
-  box-shadow: none;
-}
-
-/* ─────────────────────────────────────────────────────────────────────────────
+/* ═══════════════════════════════════════════════════════════════════════════════
    SIZES
-   ───────────────────────────────────────────────────────────────────────────── */
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.xs {
+  height: var(--sentinel-btn-height-xs);
+  padding: var(--sentinel-btn-padding-xs);
+  font-size: var(--sentinel-btn-font-xs);
+  border-radius: var(--sentinel-btn-radius-sm);
+  gap: 6px;
+}
 
 .sm {
-  font-size: var(--sentinel-text-xs);
-  padding: 8px 16px;
-  height: 36px;
-  border-radius: var(--sentinel-radius-sm);
+  height: var(--sentinel-btn-height-sm);
+  padding: var(--sentinel-btn-padding-sm);
+  font-size: var(--sentinel-btn-font-sm);
+  border-radius: var(--sentinel-btn-radius-sm);
+  gap: 6px;
 }
 
 .md {
-  font-size: var(--sentinel-text-sm);
-  padding: 12px 24px;
-  height: 44px;
-  border-radius: var(--sentinel-radius-md);
+  height: var(--sentinel-btn-height-md);
+  padding: var(--sentinel-btn-padding-md);
+  font-size: var(--sentinel-btn-font-md);
+  border-radius: var(--sentinel-btn-radius);
+  gap: 8px;
 }
 
 .lg {
-  font-size: var(--sentinel-text-base);
-  padding: 14px 28px;
-  height: 52px;
-  border-radius: var(--sentinel-radius-md);
+  height: var(--sentinel-btn-height-lg);
+  padding: var(--sentinel-btn-padding-lg);
+  font-size: var(--sentinel-btn-font-lg);
+  border-radius: var(--sentinel-btn-radius);
+  gap: 10px;
 }
 
-/* ─────────────────────────────────────────────────────────────────────────────
-   MODIFIERS
-   ───────────────────────────────────────────────────────────────────────────── */
+.xl {
+  height: var(--sentinel-btn-height-xl);
+  padding: var(--sentinel-btn-padding-xl);
+  font-size: var(--sentinel-btn-font-xl);
+  border-radius: var(--sentinel-btn-radius);
+  gap: 12px;
+}
 
-/* Full width */
+/* ═══════════════════════════════════════════════════════════════════════════════
+   MODIFIERS
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.pill {
+  border-radius: var(--sentinel-btn-radius-pill);
+}
+
 .fullWidth {
   width: 100%;
 }
 
-/* Icon only - circular glass button */
-.iconOnly {
-  padding: 12px;
-  aspect-ratio: 1;
-  border-radius: var(--sentinel-radius-full);
-}
+/* ═══════════════════════════════════════════════════════════════════════════════
+   LOADING STATE
+   ═══════════════════════════════════════════════════════════════════════════════ */
 
-.iconOnly.sm {
-  padding: 8px;
-}
-
-.iconOnly.lg {
-  padding: 14px;
-}
-
-/* Loading state */
 .loading {
   pointer-events: none;
   position: relative;
-  color: transparent;
 }
 
-.loading::after {
-  content: '';
+.loading .label,
+.loading .icon {
+  visibility: hidden;
+}
+
+.spinner {
   position: absolute;
-  width: 16px;
-  height: 16px;
-  border: 2px solid currentColor;
-  border-right-color: transparent;
+  width: 18px;
+  height: 18px;
+  border: 2px solid transparent;
+  border-top-color: currentColor;
   border-radius: 50%;
-  animation: sentinel-rotate 800ms linear infinite;
+  animation: spin 0.7s linear infinite;
 }
 
-@keyframes sentinel-rotate {
+@keyframes spin {
   to {
     transform: rotate(360deg);
   }
 }
 
+/* ═══════════════════════════════════════════════════════════════════════════════
+   NEUMORPHISM VARIANTS (15)
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
 /* ─────────────────────────────────────────────────────────────────────────────
-   REDUCED MOTION
+   NEU-SOFT - Classic elevated, general actions
    ───────────────────────────────────────────────────────────────────────────── */
 
+.neuSoft {
+  background: var(--sentinel-bg-elevated);
+  color: var(--sentinel-text-secondary);
+  box-shadow:
+    -5px -5px 10px var(--sentinel-btn-neu-light),
+    5px 5px 10px var(--sentinel-btn-neu-dark);
+}
+
+.neuSoft:hover:not(:disabled) {
+  color: var(--sentinel-text-primary);
+  transform: translateY(-2px);
+  box-shadow:
+    -7px -7px 14px var(--sentinel-btn-neu-light),
+    7px 7px 14px var(--sentinel-btn-neu-dark);
+}
+
+.neuSoft:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow:
+    inset 4px 4px 8px var(--sentinel-btn-neu-dark),
+    inset -4px -4px 8px var(--sentinel-btn-neu-light);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   NEU-FLAT - Subtle elevation, secondary/toolbars
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.neuFlat {
+  background: var(--sentinel-bg-elevated);
+  color: var(--sentinel-text-secondary);
+  box-shadow:
+    -3px -3px 6px var(--sentinel-btn-neu-light-soft),
+    3px 3px 6px var(--sentinel-btn-neu-dark-soft);
+}
+
+.neuFlat:hover:not(:disabled) {
+  color: var(--sentinel-text-primary);
+  transform: translateY(-1px);
+  box-shadow:
+    -5px -5px 10px var(--sentinel-btn-neu-light),
+    5px 5px 10px var(--sentinel-btn-neu-dark);
+}
+
+.neuFlat:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow:
+    inset 3px 3px 6px var(--sentinel-btn-neu-dark-soft),
+    inset -3px -3px 6px var(--sentinel-btn-neu-light-soft);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   NEU-MINIMAL - Almost flat, tertiary/lists
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.neuMinimal {
+  background: var(--sentinel-bg-elevated);
+  color: var(--sentinel-text-tertiary);
+  box-shadow:
+    -2px -2px 4px var(--sentinel-btn-neu-light-soft),
+    2px 2px 4px var(--sentinel-btn-neu-dark-soft);
+}
+
+.neuMinimal:hover:not(:disabled) {
+  color: var(--sentinel-text-secondary);
+  box-shadow:
+    -4px -4px 8px var(--sentinel-btn-neu-light),
+    4px 4px 8px var(--sentinel-btn-neu-dark);
+}
+
+.neuMinimal:active:not(:disabled) {
+  box-shadow:
+    inset 2px 2px 4px var(--sentinel-btn-neu-dark-soft),
+    inset -2px -2px 4px var(--sentinel-btn-neu-light-soft);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   NEU-DEEP - Strong shadows, important CTAs
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.neuDeep {
+  background: var(--sentinel-bg-elevated);
+  color: var(--sentinel-text-primary);
+  box-shadow:
+    -8px -8px 16px var(--sentinel-btn-neu-light),
+    8px 8px 16px var(--sentinel-btn-neu-dark);
+}
+
+.neuDeep:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow:
+    -10px -10px 20px var(--sentinel-btn-neu-light),
+    10px 10px 20px var(--sentinel-btn-neu-dark);
+}
+
+.neuDeep:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow:
+    inset 6px 6px 12px var(--sentinel-btn-neu-dark),
+    inset -6px -6px 12px var(--sentinel-btn-neu-light);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   NEU-PILLOW - Soft gradient, premium/highlights
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.neuPillow {
+  background: linear-gradient(145deg, #f0f4f8, #d8dce2);
+  color: var(--sentinel-text-secondary);
+  box-shadow:
+    -5px -5px 10px var(--sentinel-btn-neu-light),
+    5px 5px 10px var(--sentinel-btn-neu-dark);
+}
+
+.neuPillow:hover:not(:disabled) {
+  color: var(--sentinel-text-primary);
+  background: linear-gradient(145deg, #f5f9fd, #e0e4ea);
+  transform: translateY(-2px);
+  box-shadow:
+    -7px -7px 14px var(--sentinel-btn-neu-light),
+    7px 7px 14px var(--sentinel-btn-neu-dark);
+}
+
+.neuPillow:active:not(:disabled) {
+  transform: translateY(0);
+  background: linear-gradient(145deg, #d8dce2, #f0f4f8);
+  box-shadow:
+    inset 4px 4px 8px var(--sentinel-btn-neu-dark),
+    inset -4px -4px 8px var(--sentinel-btn-neu-light);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   NEU-RIDGE - Internal bevel, media controls
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.neuRidge {
+  background: var(--sentinel-bg-elevated);
+  color: var(--sentinel-text-secondary);
+  box-shadow:
+    -4px -4px 8px var(--sentinel-btn-neu-light),
+    4px 4px 8px var(--sentinel-btn-neu-dark),
+    inset 2px 2px 4px var(--sentinel-btn-neu-light-soft),
+    inset -2px -2px 4px var(--sentinel-btn-neu-dark-soft);
+}
+
+.neuRidge:hover:not(:disabled) {
+  color: var(--sentinel-text-primary);
+  transform: translateY(-1px);
+  box-shadow:
+    -6px -6px 12px var(--sentinel-btn-neu-light),
+    6px 6px 12px var(--sentinel-btn-neu-dark),
+    inset 2px 2px 4px var(--sentinel-btn-neu-light-soft),
+    inset -2px -2px 4px var(--sentinel-btn-neu-dark-soft);
+}
+
+.neuRidge:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow:
+    inset 4px 4px 8px var(--sentinel-btn-neu-dark),
+    inset -4px -4px 8px var(--sentinel-btn-neu-light);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   NEU-SHARP - Hard shadow, retro/games
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.neuSharp {
+  background: var(--sentinel-bg-elevated);
+  color: var(--sentinel-text-secondary);
+  box-shadow:
+    -4px -4px 0 var(--sentinel-btn-neu-light),
+    4px 4px 0 var(--sentinel-btn-neu-dark);
+}
+
+.neuSharp:hover:not(:disabled) {
+  color: var(--sentinel-text-primary);
+  transform: translate(-2px, -2px);
+  box-shadow:
+    -4px -4px 0 var(--sentinel-btn-neu-light),
+    6px 6px 0 var(--sentinel-btn-neu-dark);
+}
+
+.neuSharp:active:not(:disabled) {
+  transform: translate(2px, 2px);
+  box-shadow:
+    -2px -2px 0 var(--sentinel-btn-neu-light),
+    2px 2px 0 var(--sentinel-btn-neu-dark);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   NEU-FLOAT - Bottom shadow, cards/floating
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.neuFloat {
+  background: var(--sentinel-bg-elevated);
+  color: var(--sentinel-text-secondary);
+  box-shadow:
+    0 4px 12px var(--sentinel-btn-neu-dark),
+    0 -1px 2px var(--sentinel-btn-neu-light-soft);
+}
+
+.neuFloat:hover:not(:disabled) {
+  color: var(--sentinel-text-primary);
+  transform: translateY(-3px);
+  box-shadow:
+    0 8px 20px var(--sentinel-btn-neu-dark),
+    0 -1px 2px var(--sentinel-btn-neu-light-soft);
+}
+
+.neuFloat:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow:
+    0 2px 6px var(--sentinel-btn-neu-dark),
+    0 -1px 2px var(--sentinel-btn-neu-light-soft);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   NEU-LAYERED - Multi-layer, 3D effect
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.neuLayered {
+  background: var(--sentinel-bg-elevated);
+  color: var(--sentinel-text-secondary);
+  box-shadow:
+    -2px -2px 4px var(--sentinel-btn-neu-light),
+    2px 2px 4px var(--sentinel-btn-neu-dark),
+    -5px -5px 10px var(--sentinel-btn-neu-light-soft),
+    5px 5px 10px var(--sentinel-btn-neu-dark-soft);
+}
+
+.neuLayered:hover:not(:disabled) {
+  color: var(--sentinel-text-primary);
+  transform: translateY(-2px);
+  box-shadow:
+    -3px -3px 6px var(--sentinel-btn-neu-light),
+    3px 3px 6px var(--sentinel-btn-neu-dark),
+    -7px -7px 14px var(--sentinel-btn-neu-light-soft),
+    7px 7px 14px var(--sentinel-btn-neu-dark-soft);
+}
+
+.neuLayered:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow:
+    inset 3px 3px 6px var(--sentinel-btn-neu-dark),
+    inset -3px -3px 6px var(--sentinel-btn-neu-light);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   NEU-OUTLINE - Double border, alternative
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.neuOutline {
+  background: transparent;
+  color: var(--sentinel-text-secondary);
+  border: 2px solid var(--sentinel-border-default);
+  box-shadow:
+    -3px -3px 6px var(--sentinel-btn-neu-light-soft),
+    3px 3px 6px var(--sentinel-btn-neu-dark-soft);
+}
+
+.neuOutline:hover:not(:disabled) {
+  color: var(--sentinel-text-primary);
+  background: var(--sentinel-bg-elevated);
+  border-color: var(--sentinel-border-strong);
+  box-shadow:
+    -5px -5px 10px var(--sentinel-btn-neu-light),
+    5px 5px 10px var(--sentinel-btn-neu-dark);
+}
+
+.neuOutline:active:not(:disabled) {
+  background: var(--sentinel-bg-elevated);
+  box-shadow:
+    inset 3px 3px 6px var(--sentinel-btn-neu-dark-soft),
+    inset -3px -3px 6px var(--sentinel-btn-neu-light-soft);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   NEU-EMBOSS - Embossed text, headers
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.neuEmboss {
+  background: var(--sentinel-bg-elevated);
+  color: var(--sentinel-text-secondary);
+  text-shadow:
+    1px 1px 1px var(--sentinel-btn-neu-light),
+    -1px -1px 1px var(--sentinel-btn-neu-dark-soft);
+  box-shadow:
+    -4px -4px 8px var(--sentinel-btn-neu-light),
+    4px 4px 8px var(--sentinel-btn-neu-dark);
+}
+
+.neuEmboss:hover:not(:disabled) {
+  color: var(--sentinel-text-primary);
+  transform: translateY(-1px);
+  box-shadow:
+    -6px -6px 12px var(--sentinel-btn-neu-light),
+    6px 6px 12px var(--sentinel-btn-neu-dark);
+}
+
+.neuEmboss:active:not(:disabled) {
+  transform: translateY(0);
+  text-shadow:
+    -1px -1px 1px var(--sentinel-btn-neu-light),
+    1px 1px 1px var(--sentinel-btn-neu-dark-soft);
+  box-shadow:
+    inset 4px 4px 8px var(--sentinel-btn-neu-dark),
+    inset -4px -4px 8px var(--sentinel-btn-neu-light);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   NEU-PRESSED - Always inset, active toggle
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.neuPressed {
+  background: var(--sentinel-bg-elevated);
+  color: var(--sentinel-text-secondary);
+  box-shadow:
+    inset 4px 4px 8px var(--sentinel-btn-neu-dark),
+    inset -4px -4px 8px var(--sentinel-btn-neu-light);
+}
+
+.neuPressed:hover:not(:disabled) {
+  color: var(--sentinel-text-primary);
+  box-shadow:
+    inset 5px 5px 10px var(--sentinel-btn-neu-dark),
+    inset -5px -5px 10px var(--sentinel-btn-neu-light);
+}
+
+.neuPressed:active:not(:disabled) {
+  box-shadow:
+    inset 6px 6px 12px var(--sentinel-btn-neu-dark),
+    inset -6px -6px 12px var(--sentinel-btn-neu-light);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   NEU-CONCAVE - Bowl shape, inputs/wells
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.neuConcave {
+  background: linear-gradient(145deg, #d8dce2, #f0f4f8);
+  color: var(--sentinel-text-secondary);
+  box-shadow:
+    inset 3px 3px 6px var(--sentinel-btn-neu-dark-soft),
+    inset -3px -3px 6px var(--sentinel-btn-neu-light);
+}
+
+.neuConcave:hover:not(:disabled) {
+  color: var(--sentinel-text-primary);
+  background: linear-gradient(145deg, #dce0e6, #f4f8fc);
+  box-shadow:
+    inset 4px 4px 8px var(--sentinel-btn-neu-dark-soft),
+    inset -4px -4px 8px var(--sentinel-btn-neu-light);
+}
+
+.neuConcave:active:not(:disabled) {
+  box-shadow:
+    inset 5px 5px 10px var(--sentinel-btn-neu-dark),
+    inset -5px -5px 10px var(--sentinel-btn-neu-light);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   NEU-ACCENT - Colored + glow, primary action
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.neuAccent {
+  background: linear-gradient(145deg, #5ba8aa, #4a9294);
+  color: #ffffff;
+  box-shadow:
+    -5px -5px 10px var(--sentinel-btn-neu-light),
+    5px 5px 10px var(--sentinel-btn-neu-dark),
+    0 0 0 rgba(74, 154, 156, 0);
+}
+
+.neuAccent:hover:not(:disabled) {
+  transform: translateY(-2px);
+  background: linear-gradient(145deg, #65b2b4, #54a0a2);
+  box-shadow:
+    -7px -7px 14px var(--sentinel-btn-neu-light),
+    7px 7px 14px var(--sentinel-btn-neu-dark),
+    0 0 20px var(--sentinel-accent-glow);
+}
+
+.neuAccent:active:not(:disabled) {
+  transform: translateY(0);
+  background: linear-gradient(145deg, #4a9294, #5ba8aa);
+  box-shadow:
+    inset 4px 4px 8px rgba(0, 0, 0, 0.15),
+    inset -4px -4px 8px rgba(255, 255, 255, 0.1);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   NEU-GLOW - Hover with glow, highlight
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.neuGlow {
+  background: var(--sentinel-bg-elevated);
+  color: var(--sentinel-text-secondary);
+  box-shadow:
+    -5px -5px 10px var(--sentinel-btn-neu-light),
+    5px 5px 10px var(--sentinel-btn-neu-dark);
+}
+
+.neuGlow:hover:not(:disabled) {
+  color: var(--sentinel-accent-primary);
+  transform: translateY(-2px);
+  box-shadow:
+    -7px -7px 14px var(--sentinel-btn-neu-light),
+    7px 7px 14px var(--sentinel-btn-neu-dark),
+    0 0 25px var(--sentinel-accent-glow);
+}
+
+.neuGlow:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow:
+    inset 4px 4px 8px var(--sentinel-btn-neu-dark),
+    inset -4px -4px 8px var(--sentinel-btn-neu-light),
+    0 0 10px var(--sentinel-accent-glow);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   GLASS VARIANTS (8)
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   GLASS-TEAL - Primary, accent
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.glassTeal {
+  background: var(--sentinel-glass-teal-bg);
+  backdrop-filter: blur(var(--sentinel-btn-glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--sentinel-btn-glass-blur)) saturate(180%);
+  border: 1px solid var(--sentinel-glass-teal-border);
+  color: var(--sentinel-glass-teal-text);
+  box-shadow:
+    0 4px 16px var(--sentinel-btn-glass-shadow),
+    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+}
+
+.glassTeal:hover:not(:disabled) {
+  background: var(--sentinel-glass-teal-bg-hover);
+  transform: translateY(-2px);
+  box-shadow:
+    0 8px 24px var(--sentinel-btn-glass-shadow),
+    0 0 20px var(--sentinel-glass-teal-glow),
+    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+}
+
+.glassTeal:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow:
+    0 2px 8px var(--sentinel-btn-glass-shadow),
+    inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   GLASS-AMBER - Warning, gold
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.glassAmber {
+  background: var(--sentinel-glass-amber-bg);
+  backdrop-filter: blur(var(--sentinel-btn-glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--sentinel-btn-glass-blur)) saturate(180%);
+  border: 1px solid var(--sentinel-glass-amber-border);
+  color: var(--sentinel-glass-amber-text);
+  box-shadow:
+    0 4px 16px var(--sentinel-btn-glass-shadow),
+    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+}
+
+.glassAmber:hover:not(:disabled) {
+  background: var(--sentinel-glass-amber-bg-hover);
+  transform: translateY(-2px);
+  box-shadow:
+    0 8px 24px var(--sentinel-btn-glass-shadow),
+    0 0 20px var(--sentinel-glass-amber-glow),
+    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+}
+
+.glassAmber:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow:
+    0 2px 8px var(--sentinel-btn-glass-shadow),
+    inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   GLASS-ROSE - Favorites, likes
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.glassRose {
+  background: var(--sentinel-glass-rose-bg);
+  backdrop-filter: blur(var(--sentinel-btn-glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--sentinel-btn-glass-blur)) saturate(180%);
+  border: 1px solid var(--sentinel-glass-rose-border);
+  color: var(--sentinel-glass-rose-text);
+  box-shadow:
+    0 4px 16px var(--sentinel-btn-glass-shadow),
+    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+}
+
+.glassRose:hover:not(:disabled) {
+  background: var(--sentinel-glass-rose-bg-hover);
+  transform: translateY(-2px);
+  box-shadow:
+    0 8px 24px var(--sentinel-btn-glass-shadow),
+    0 0 20px var(--sentinel-glass-rose-glow),
+    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+}
+
+.glassRose:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow:
+    0 2px 8px var(--sentinel-btn-glass-shadow),
+    inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   GLASS-VIOLET - Premium, special
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.glassViolet {
+  background: var(--sentinel-glass-violet-bg);
+  backdrop-filter: blur(var(--sentinel-btn-glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--sentinel-btn-glass-blur)) saturate(180%);
+  border: 1px solid var(--sentinel-glass-violet-border);
+  color: var(--sentinel-glass-violet-text);
+  box-shadow:
+    0 4px 16px var(--sentinel-btn-glass-shadow),
+    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+}
+
+.glassViolet:hover:not(:disabled) {
+  background: var(--sentinel-glass-violet-bg-hover);
+  transform: translateY(-2px);
+  box-shadow:
+    0 8px 24px var(--sentinel-btn-glass-shadow),
+    0 0 20px var(--sentinel-glass-violet-glow),
+    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+}
+
+.glassViolet:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow:
+    0 2px 8px var(--sentinel-btn-glass-shadow),
+    inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   GLASS-EMERALD - Success, confirm
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.glassEmerald {
+  background: var(--sentinel-glass-emerald-bg);
+  backdrop-filter: blur(var(--sentinel-btn-glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--sentinel-btn-glass-blur)) saturate(180%);
+  border: 1px solid var(--sentinel-glass-emerald-border);
+  color: var(--sentinel-glass-emerald-text);
+  box-shadow:
+    0 4px 16px var(--sentinel-btn-glass-shadow),
+    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+}
+
+.glassEmerald:hover:not(:disabled) {
+  background: var(--sentinel-glass-emerald-bg-hover);
+  transform: translateY(-2px);
+  box-shadow:
+    0 8px 24px var(--sentinel-btn-glass-shadow),
+    0 0 20px var(--sentinel-glass-emerald-glow),
+    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+}
+
+.glassEmerald:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow:
+    0 2px 8px var(--sentinel-btn-glass-shadow),
+    inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   GLASS-SKY - Info, links
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.glassSky {
+  background: var(--sentinel-glass-sky-bg);
+  backdrop-filter: blur(var(--sentinel-btn-glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--sentinel-btn-glass-blur)) saturate(180%);
+  border: 1px solid var(--sentinel-glass-sky-border);
+  color: var(--sentinel-glass-sky-text);
+  box-shadow:
+    0 4px 16px var(--sentinel-btn-glass-shadow),
+    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+}
+
+.glassSky:hover:not(:disabled) {
+  background: var(--sentinel-glass-sky-bg-hover);
+  transform: translateY(-2px);
+  box-shadow:
+    0 8px 24px var(--sentinel-btn-glass-shadow),
+    0 0 20px var(--sentinel-glass-sky-glow),
+    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+}
+
+.glassSky:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow:
+    0 2px 8px var(--sentinel-btn-glass-shadow),
+    inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   GLASS-SMOKE - Secondary, neutral
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.glassSmoke {
+  background: var(--sentinel-glass-smoke-bg);
+  backdrop-filter: blur(var(--sentinel-btn-glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--sentinel-btn-glass-blur)) saturate(180%);
+  border: 1px solid var(--sentinel-glass-smoke-border);
+  color: var(--sentinel-glass-smoke-text);
+  box-shadow:
+    0 4px 16px var(--sentinel-btn-glass-shadow),
+    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+}
+
+.glassSmoke:hover:not(:disabled) {
+  background: var(--sentinel-glass-smoke-bg-hover);
+  transform: translateY(-2px);
+  box-shadow:
+    0 8px 24px var(--sentinel-btn-glass-shadow),
+    0 0 20px var(--sentinel-glass-smoke-glow),
+    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+}
+
+.glassSmoke:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow:
+    0 2px 8px var(--sentinel-btn-glass-shadow),
+    inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   GLASS-FROST - Ice, cold
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.glassFrost {
+  background: var(--sentinel-glass-frost-bg);
+  backdrop-filter: blur(var(--sentinel-btn-glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--sentinel-btn-glass-blur)) saturate(180%);
+  border: 1px solid var(--sentinel-glass-frost-border);
+  color: var(--sentinel-glass-frost-text);
+  box-shadow:
+    0 4px 16px var(--sentinel-btn-glass-shadow),
+    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+}
+
+.glassFrost:hover:not(:disabled) {
+  background: var(--sentinel-glass-frost-bg-hover);
+  transform: translateY(-2px);
+  box-shadow:
+    0 8px 24px var(--sentinel-btn-glass-shadow),
+    0 0 20px var(--sentinel-glass-frost-glow),
+    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+}
+
+.glassFrost:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow:
+    0 2px 8px var(--sentinel-btn-glass-shadow),
+    inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   GLASS-NEU HYBRID VARIANTS (8)
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   GLASS-NEU-TEAL
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.glassNeuTeal {
+  background: var(--sentinel-glass-teal-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--sentinel-glass-teal-border);
+  color: var(--sentinel-glass-teal-text);
+  box-shadow:
+    -4px -4px 8px var(--sentinel-btn-neu-light),
+    4px 4px 8px var(--sentinel-btn-neu-dark),
+    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+}
+
+.glassNeuTeal:hover:not(:disabled) {
+  background: var(--sentinel-glass-teal-bg-hover);
+  transform: translateY(-2px);
+  box-shadow:
+    -6px -6px 12px var(--sentinel-btn-neu-light),
+    6px 6px 12px var(--sentinel-btn-neu-dark),
+    0 0 16px var(--sentinel-glass-teal-glow),
+    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+}
+
+.glassNeuTeal:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow:
+    inset 3px 3px 6px var(--sentinel-btn-neu-dark),
+    inset -3px -3px 6px var(--sentinel-btn-neu-light);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   GLASS-NEU-AMBER
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.glassNeuAmber {
+  background: var(--sentinel-glass-amber-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--sentinel-glass-amber-border);
+  color: var(--sentinel-glass-amber-text);
+  box-shadow:
+    -4px -4px 8px var(--sentinel-btn-neu-light),
+    4px 4px 8px var(--sentinel-btn-neu-dark),
+    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+}
+
+.glassNeuAmber:hover:not(:disabled) {
+  background: var(--sentinel-glass-amber-bg-hover);
+  transform: translateY(-2px);
+  box-shadow:
+    -6px -6px 12px var(--sentinel-btn-neu-light),
+    6px 6px 12px var(--sentinel-btn-neu-dark),
+    0 0 16px var(--sentinel-glass-amber-glow),
+    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+}
+
+.glassNeuAmber:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow:
+    inset 3px 3px 6px var(--sentinel-btn-neu-dark),
+    inset -3px -3px 6px var(--sentinel-btn-neu-light);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   GLASS-NEU-ROSE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.glassNeuRose {
+  background: var(--sentinel-glass-rose-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--sentinel-glass-rose-border);
+  color: var(--sentinel-glass-rose-text);
+  box-shadow:
+    -4px -4px 8px var(--sentinel-btn-neu-light),
+    4px 4px 8px var(--sentinel-btn-neu-dark),
+    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+}
+
+.glassNeuRose:hover:not(:disabled) {
+  background: var(--sentinel-glass-rose-bg-hover);
+  transform: translateY(-2px);
+  box-shadow:
+    -6px -6px 12px var(--sentinel-btn-neu-light),
+    6px 6px 12px var(--sentinel-btn-neu-dark),
+    0 0 16px var(--sentinel-glass-rose-glow),
+    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+}
+
+.glassNeuRose:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow:
+    inset 3px 3px 6px var(--sentinel-btn-neu-dark),
+    inset -3px -3px 6px var(--sentinel-btn-neu-light);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   GLASS-NEU-VIOLET
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.glassNeuViolet {
+  background: var(--sentinel-glass-violet-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--sentinel-glass-violet-border);
+  color: var(--sentinel-glass-violet-text);
+  box-shadow:
+    -4px -4px 8px var(--sentinel-btn-neu-light),
+    4px 4px 8px var(--sentinel-btn-neu-dark),
+    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+}
+
+.glassNeuViolet:hover:not(:disabled) {
+  background: var(--sentinel-glass-violet-bg-hover);
+  transform: translateY(-2px);
+  box-shadow:
+    -6px -6px 12px var(--sentinel-btn-neu-light),
+    6px 6px 12px var(--sentinel-btn-neu-dark),
+    0 0 16px var(--sentinel-glass-violet-glow),
+    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+}
+
+.glassNeuViolet:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow:
+    inset 3px 3px 6px var(--sentinel-btn-neu-dark),
+    inset -3px -3px 6px var(--sentinel-btn-neu-light);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   GLASS-NEU-EMERALD
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.glassNeuEmerald {
+  background: var(--sentinel-glass-emerald-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--sentinel-glass-emerald-border);
+  color: var(--sentinel-glass-emerald-text);
+  box-shadow:
+    -4px -4px 8px var(--sentinel-btn-neu-light),
+    4px 4px 8px var(--sentinel-btn-neu-dark),
+    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+}
+
+.glassNeuEmerald:hover:not(:disabled) {
+  background: var(--sentinel-glass-emerald-bg-hover);
+  transform: translateY(-2px);
+  box-shadow:
+    -6px -6px 12px var(--sentinel-btn-neu-light),
+    6px 6px 12px var(--sentinel-btn-neu-dark),
+    0 0 16px var(--sentinel-glass-emerald-glow),
+    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+}
+
+.glassNeuEmerald:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow:
+    inset 3px 3px 6px var(--sentinel-btn-neu-dark),
+    inset -3px -3px 6px var(--sentinel-btn-neu-light);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   GLASS-NEU-SKY
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.glassNeuSky {
+  background: var(--sentinel-glass-sky-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--sentinel-glass-sky-border);
+  color: var(--sentinel-glass-sky-text);
+  box-shadow:
+    -4px -4px 8px var(--sentinel-btn-neu-light),
+    4px 4px 8px var(--sentinel-btn-neu-dark),
+    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+}
+
+.glassNeuSky:hover:not(:disabled) {
+  background: var(--sentinel-glass-sky-bg-hover);
+  transform: translateY(-2px);
+  box-shadow:
+    -6px -6px 12px var(--sentinel-btn-neu-light),
+    6px 6px 12px var(--sentinel-btn-neu-dark),
+    0 0 16px var(--sentinel-glass-sky-glow),
+    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+}
+
+.glassNeuSky:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow:
+    inset 3px 3px 6px var(--sentinel-btn-neu-dark),
+    inset -3px -3px 6px var(--sentinel-btn-neu-light);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   GLASS-NEU-SMOKE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.glassNeuSmoke {
+  background: var(--sentinel-glass-smoke-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--sentinel-glass-smoke-border);
+  color: var(--sentinel-glass-smoke-text);
+  box-shadow:
+    -4px -4px 8px var(--sentinel-btn-neu-light),
+    4px 4px 8px var(--sentinel-btn-neu-dark),
+    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+}
+
+.glassNeuSmoke:hover:not(:disabled) {
+  background: var(--sentinel-glass-smoke-bg-hover);
+  transform: translateY(-2px);
+  box-shadow:
+    -6px -6px 12px var(--sentinel-btn-neu-light),
+    6px 6px 12px var(--sentinel-btn-neu-dark),
+    0 0 16px var(--sentinel-glass-smoke-glow),
+    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+}
+
+.glassNeuSmoke:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow:
+    inset 3px 3px 6px var(--sentinel-btn-neu-dark),
+    inset -3px -3px 6px var(--sentinel-btn-neu-light);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   GLASS-NEU-FROST
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.glassNeuFrost {
+  background: var(--sentinel-glass-frost-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--sentinel-glass-frost-border);
+  color: var(--sentinel-glass-frost-text);
+  box-shadow:
+    -4px -4px 8px var(--sentinel-btn-neu-light),
+    4px 4px 8px var(--sentinel-btn-neu-dark),
+    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+}
+
+.glassNeuFrost:hover:not(:disabled) {
+  background: var(--sentinel-glass-frost-bg-hover);
+  transform: translateY(-2px);
+  box-shadow:
+    -6px -6px 12px var(--sentinel-btn-neu-light),
+    6px 6px 12px var(--sentinel-btn-neu-dark),
+    0 0 16px var(--sentinel-glass-frost-glow),
+    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+}
+
+.glassNeuFrost:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow:
+    inset 3px 3px 6px var(--sentinel-btn-neu-dark),
+    inset -3px -3px 6px var(--sentinel-btn-neu-light);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   ICON BUTTON
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.iconButton {
+  padding: 0;
+  border-radius: 50%;
+  aspect-ratio: 1;
+}
+
+.iconButton.xs {
+  width: 30px;
+  height: 30px;
+}
+
+.iconButton.sm {
+  width: 36px;
+  height: 36px;
+}
+
+.iconButton.md {
+  width: 44px;
+  height: 44px;
+}
+
+.iconButton.lg {
+  width: 52px;
+  height: 52px;
+}
+
+.iconButton.xl {
+  width: 60px;
+  height: 60px;
+}
+
+/* Badge */
+.badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 10px;
+  background: var(--sentinel-status-negative);
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Tooltip */
+.tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 10px;
+  background: var(--sentinel-bg-elevated);
+  color: var(--sentinel-text-primary);
+  font-size: 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s;
+  box-shadow:
+    -3px -3px 6px var(--sentinel-btn-neu-light),
+    3px 3px 6px var(--sentinel-btn-neu-dark);
+  z-index: 100;
+}
+
+.iconButton:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   TOGGLE BUTTON
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.toggleTrack {
+  position: relative;
+  background: var(--sentinel-bg-elevated);
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  padding: 3px;
+  box-shadow:
+    inset 3px 3px 6px var(--sentinel-btn-neu-dark),
+    inset -3px -3px 6px var(--sentinel-btn-neu-light);
+  transition: var(--sentinel-btn-transition);
+}
+
+.toggleTrack:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.toggleTrack.sm {
+  width: 40px;
+  height: 22px;
+}
+
+.toggleTrack.md {
+  width: 52px;
+  height: 28px;
+}
+
+.toggleTrack.lg {
+  width: 64px;
+  height: 34px;
+}
+
+.toggleKnob {
+  position: absolute;
+  top: 3px;
+  background: var(--sentinel-bg-elevated);
+  border-radius: 50%;
+  box-shadow:
+    2px 2px 4px var(--sentinel-btn-neu-dark),
+    -2px -2px 4px var(--sentinel-btn-neu-light);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.toggleTrack.sm .toggleKnob {
+  width: 16px;
+  height: 16px;
+  left: 3px;
+}
+
+.toggleTrack.md .toggleKnob {
+  width: 22px;
+  height: 22px;
+  left: 3px;
+}
+
+.toggleTrack.lg .toggleKnob {
+  width: 28px;
+  height: 28px;
+  left: 3px;
+}
+
+.toggleTrack.on .toggleKnob {
+  background: var(--sentinel-accent-primary);
+  box-shadow:
+    2px 2px 4px var(--sentinel-btn-neu-dark),
+    -2px -2px 4px var(--sentinel-btn-neu-light),
+    0 0 12px var(--sentinel-accent-glow);
+}
+
+.toggleTrack.sm.on .toggleKnob {
+  left: calc(100% - 19px);
+}
+
+.toggleTrack.md.on .toggleKnob {
+  left: calc(100% - 25px);
+}
+
+.toggleTrack.lg.on .toggleKnob {
+  left: calc(100% - 31px);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   BUTTON GROUP
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.buttonGroup {
+  display: inline-flex;
+  border-radius: 14px;
+  padding: 6px;
+}
+
+.buttonGroupHorizontal {
+  flex-direction: row;
+}
+
+.buttonGroupVertical {
+  flex-direction: column;
+}
+
+.buttonGroupNeu {
+  background: var(--sentinel-bg-elevated);
+  box-shadow:
+    -6px -6px 12px var(--sentinel-btn-neu-light),
+    6px 6px 12px var(--sentinel-btn-neu-dark);
+}
+
+.buttonGroupGlass {
+  background: var(--sentinel-glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--sentinel-glass-border);
+  box-shadow: 0 4px 16px var(--sentinel-btn-glass-shadow);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   TAB GROUP
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.tabGroup {
+  display: inline-flex;
+  background: var(--sentinel-bg-elevated);
+  border-radius: 14px;
+  padding: 6px;
+  gap: 4px;
+  box-shadow:
+    -6px -6px 12px var(--sentinel-btn-neu-light),
+    6px 6px 12px var(--sentinel-btn-neu-dark);
+}
+
+.tabButton {
+  background: transparent;
+  color: var(--sentinel-text-secondary);
+  border: none;
+  border-radius: 10px;
+  font-family: var(--sentinel-font-primary);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tabButton.sm {
+  padding: 0 14px;
+  height: 32px;
+  font-size: 12px;
+}
+
+.tabButton.md {
+  padding: 0 18px;
+  height: 38px;
+  font-size: 13px;
+}
+
+.tabButton.lg {
+  padding: 0 22px;
+  height: 44px;
+  font-size: 14px;
+}
+
+.tabButton:hover:not(.tabButtonActive) {
+  color: var(--sentinel-text-primary);
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.tabButtonActive {
+  background: var(--sentinel-bg-elevated);
+  color: var(--sentinel-accent-primary);
+  /* Raised/elevated shadow instead of inset */
+  box-shadow:
+    -3px -3px 6px var(--sentinel-btn-neu-light),
+    3px 3px 6px var(--sentinel-btn-neu-dark);
+}
+
+/* Tab with icon - flex layout for icon + label */
+.tabButtonWithIcon {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tabButtonIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.tabButtonLabel {
+  white-space: nowrap;
+}
+
+/* Icon-only variant */
+.tabGroupIconOnly {
+  gap: 2px;
+}
+
+.tabButtonIconOnly {
+  padding: 0 !important;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tabButtonIconOnly.sm {
+  width: 32px;
+  height: 32px;
+}
+
+.tabButtonIconOnly.md {
+  width: 38px;
+  height: 38px;
+}
+
+.tabButtonIconOnly.lg {
+  width: 44px;
+  height: 44px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   STEPPER
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.stepper {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.stepperNeu {
+  background: var(--sentinel-bg-elevated);
+  box-shadow:
+    -5px -5px 10px var(--sentinel-btn-neu-light),
+    5px 5px 10px var(--sentinel-btn-neu-dark);
+}
+
+.stepperGlass {
+  background: var(--sentinel-glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--sentinel-glass-border);
+}
+
+.stepperButton {
+  background: transparent;
+  border: none;
+  color: var(--sentinel-text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.stepperButton:hover:not(:disabled) {
+  color: var(--sentinel-text-primary);
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.stepperButton:active:not(:disabled) {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.stepperButton:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.stepperValue {
+  font-family: var(--sentinel-font-mono);
+  font-weight: 600;
+  color: var(--sentinel-text-primary);
+  text-align: center;
+  background: transparent;
+  border: none;
+  -moz-appearance: textfield;
+}
+
+.stepperValue::-webkit-outer-spin-button,
+.stepperValue::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.stepper.sm .stepperButton {
+  width: 32px;
+  height: 32px;
+}
+
+.stepper.sm .stepperValue {
+  width: 48px;
+  height: 32px;
+  font-size: 13px;
+}
+
+.stepper.md .stepperButton {
+  width: 40px;
+  height: 40px;
+}
+
+.stepper.md .stepperValue {
+  width: 56px;
+  height: 40px;
+  font-size: 14px;
+}
+
+.stepper.lg .stepperButton {
+  width: 48px;
+  height: 48px;
+}
+
+.stepper.lg .stepperValue {
+  width: 64px;
+  height: 48px;
+  font-size: 15px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   REDUCED MOTION
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
 @media (prefers-reduced-motion: reduce) {
-  .button {
+  .button,
+  .toggleTrack,
+  .toggleKnob,
+  .tabButton,
+  .stepperButton {
     transition: none;
   }
 
@@ -585,7 +1514,7 @@
     transform: none;
   }
 
-  .loading::after {
+  .spinner {
     animation: none;
   }
 }

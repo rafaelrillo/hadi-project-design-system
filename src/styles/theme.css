@@ -903,6 +903,129 @@
   --sentinel-sidebar-text-muted: rgba(255, 255, 255, 0.6);
   --sentinel-sidebar-border: rgba(255, 255, 255, 0.08);
   --sentinel-sidebar-active-bg: rgba(74, 154, 156, 0.2);
+
+  /* ═══════════════════════════════════════════════════════════════════════════════
+     SENTINEL BUTTON SYSTEM TOKENS
+     Sistema completo de botones: Neumorphism + Glass + Híbridos
+     ═══════════════════════════════════════════════════════════════════════════════ */
+
+  /* ─────────────────────────────────────────────
+     Button Neumorphism Shadows (Light Theme)
+     ───────────────────────────────────────────── */
+  --sentinel-btn-neu-light: rgba(255, 255, 255, 0.7);
+  --sentinel-btn-neu-dark: rgba(163, 177, 198, 0.6);
+  --sentinel-btn-neu-light-soft: rgba(255, 255, 255, 0.5);
+  --sentinel-btn-neu-dark-soft: rgba(163, 177, 198, 0.4);
+
+  /* ─────────────────────────────────────────────
+     Button Glass Base
+     ───────────────────────────────────────────── */
+  --sentinel-btn-glass-blur: 16px;
+  --sentinel-btn-glass-shine: rgba(255, 255, 255, 0.5);
+  --sentinel-btn-glass-shadow: rgba(163, 177, 198, 0.4);
+
+  /* ─────────────────────────────────────────────
+     Glass Colors - Teal (Accent)
+     ───────────────────────────────────────────── */
+  --sentinel-glass-teal-bg: rgba(74, 154, 156, 0.15);
+  --sentinel-glass-teal-bg-hover: rgba(74, 154, 156, 0.25);
+  --sentinel-glass-teal-border: rgba(74, 154, 156, 0.35);
+  --sentinel-glass-teal-glow: rgba(74, 154, 156, 0.4);
+  --sentinel-glass-teal-text: #3D8587;
+
+  /* ─────────────────────────────────────────────
+     Glass Colors - Amber
+     ───────────────────────────────────────────── */
+  --sentinel-glass-amber-bg: rgba(196, 163, 90, 0.15);
+  --sentinel-glass-amber-bg-hover: rgba(196, 163, 90, 0.25);
+  --sentinel-glass-amber-border: rgba(196, 163, 90, 0.35);
+  --sentinel-glass-amber-glow: rgba(196, 163, 90, 0.4);
+  --sentinel-glass-amber-text: #9A7B2D;
+
+  /* ─────────────────────────────────────────────
+     Glass Colors - Rose
+     ───────────────────────────────────────────── */
+  --sentinel-glass-rose-bg: rgba(184, 92, 112, 0.15);
+  --sentinel-glass-rose-bg-hover: rgba(184, 92, 112, 0.25);
+  --sentinel-glass-rose-border: rgba(184, 92, 112, 0.35);
+  --sentinel-glass-rose-glow: rgba(184, 92, 112, 0.4);
+  --sentinel-glass-rose-text: #9A4A5C;
+
+  /* ─────────────────────────────────────────────
+     Glass Colors - Violet
+     ───────────────────────────────────────────── */
+  --sentinel-glass-violet-bg: rgba(138, 110, 180, 0.15);
+  --sentinel-glass-violet-bg-hover: rgba(138, 110, 180, 0.25);
+  --sentinel-glass-violet-border: rgba(138, 110, 180, 0.35);
+  --sentinel-glass-violet-glow: rgba(138, 110, 180, 0.4);
+  --sentinel-glass-violet-text: #6B4E99;
+
+  /* ─────────────────────────────────────────────
+     Glass Colors - Emerald
+     ───────────────────────────────────────────── */
+  --sentinel-glass-emerald-bg: rgba(74, 154, 124, 0.15);
+  --sentinel-glass-emerald-bg-hover: rgba(74, 154, 124, 0.25);
+  --sentinel-glass-emerald-border: rgba(74, 154, 124, 0.35);
+  --sentinel-glass-emerald-glow: rgba(74, 154, 124, 0.4);
+  --sentinel-glass-emerald-text: #2D7A5C;
+
+  /* ─────────────────────────────────────────────
+     Glass Colors - Sky
+     ───────────────────────────────────────────── */
+  --sentinel-glass-sky-bg: rgba(90, 140, 200, 0.15);
+  --sentinel-glass-sky-bg-hover: rgba(90, 140, 200, 0.25);
+  --sentinel-glass-sky-border: rgba(90, 140, 200, 0.35);
+  --sentinel-glass-sky-glow: rgba(90, 140, 200, 0.4);
+  --sentinel-glass-sky-text: #3A6A99;
+
+  /* ─────────────────────────────────────────────
+     Glass Colors - Smoke (Neutral)
+     ───────────────────────────────────────────── */
+  --sentinel-glass-smoke-bg: rgba(107, 114, 128, 0.1);
+  --sentinel-glass-smoke-bg-hover: rgba(107, 114, 128, 0.18);
+  --sentinel-glass-smoke-border: rgba(107, 114, 128, 0.25);
+  --sentinel-glass-smoke-glow: rgba(107, 114, 128, 0.3);
+  --sentinel-glass-smoke-text: #4B5563;
+
+  /* ─────────────────────────────────────────────
+     Glass Colors - Frost
+     ───────────────────────────────────────────── */
+  --sentinel-glass-frost-bg: rgba(200, 220, 255, 0.12);
+  --sentinel-glass-frost-bg-hover: rgba(200, 220, 255, 0.2);
+  --sentinel-glass-frost-border: rgba(200, 220, 255, 0.25);
+  --sentinel-glass-frost-glow: rgba(200, 220, 255, 0.35);
+  --sentinel-glass-frost-text: #4A6A99;
+
+  /* ─────────────────────────────────────────────
+     Button Sizes
+     ───────────────────────────────────────────── */
+  --sentinel-btn-height-xs: 30px;
+  --sentinel-btn-height-sm: 36px;
+  --sentinel-btn-height-md: 44px;
+  --sentinel-btn-height-lg: 52px;
+  --sentinel-btn-height-xl: 60px;
+
+  --sentinel-btn-padding-xs: 0 12px;
+  --sentinel-btn-padding-sm: 0 14px;
+  --sentinel-btn-padding-md: 0 20px;
+  --sentinel-btn-padding-lg: 0 26px;
+  --sentinel-btn-padding-xl: 0 32px;
+
+  --sentinel-btn-font-xs: 11px;
+  --sentinel-btn-font-sm: 12px;
+  --sentinel-btn-font-md: 13px;
+  --sentinel-btn-font-lg: 14px;
+  --sentinel-btn-font-xl: 15px;
+
+  --sentinel-btn-radius: 12px;
+  --sentinel-btn-radius-sm: 10px;
+  --sentinel-btn-radius-pill: 9999px;
+
+  /* ─────────────────────────────────────────────
+     Button Transitions
+     ───────────────────────────────────────────── */
+  --sentinel-btn-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --sentinel-btn-transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════════

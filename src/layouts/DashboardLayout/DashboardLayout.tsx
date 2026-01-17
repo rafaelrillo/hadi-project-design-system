@@ -16,7 +16,8 @@ import { useIsMobile } from '../../hooks/useBreakpoint';
 import { MobileHeader } from '../../components/organisms/MobileHeader';
 import { BottomNavigation } from '../../components/organisms/BottomNavigation';
 import { MoreMenu } from '../../components/organisms/MoreMenu';
-import { Sidebar, type SidebarMenuItem } from '@organisms/Sidebar';
+import { Sidebar } from '@organisms/Sidebar';
+import type { TabItem } from '@atoms/Button';
 import { LightEngineProvider, useLightEngineOptional } from '@contexts/LightEngineContext';
 
 import styles from './DashboardLayout.module.css';
@@ -84,18 +85,30 @@ function DashboardLayoutInner({
   // Get light engine context (optional)
   const lightEngine = useLightEngineOptional();
 
-  // Build menu items for the new Sidebar component
-  const sidebarMenuItems: SidebarMenuItem[] = useMemo(() => {
-    const currentPath = location.pathname;
+  // Build main tabs for the TabGroup navigation
+  const mainTabs: TabItem[] = useMemo(() => {
     return navItems.map((item) => ({
-      icon: item.icon,
       label: item.label,
-      href: item.path,
-      isActive: item.end
-        ? currentPath === item.path
-        : currentPath.startsWith(item.path),
+      icon: <item.icon size={20} />,
     }));
+  }, []);
+
+  // Calculate active tab index based on current route
+  const activeTabIndex = useMemo(() => {
+    const currentPath = location.pathname;
+    const index = navItems.findIndex((item) =>
+      item.end ? currentPath === item.path : currentPath.startsWith(item.path)
+    );
+    return index >= 0 ? index : 0;
   }, [location.pathname]);
+
+  // Handle tab change - navigate to the corresponding route
+  const handleTabChange = (index: number) => {
+    const navItem = navItems[index];
+    if (navItem) {
+      navigate(navItem.path);
+    }
+  };
 
 
   // Get wrapper className for neuPanel style
@@ -228,10 +241,12 @@ function DashboardLayoutInner({
       <AtmosphericBackground variant="subtle" animated />
 
       <div className={styles.layout}>
-        {/* Neumorphic Sidebar */}
+        {/* Neumorphic Sidebar with TabGroup Navigation */}
         <Sidebar
           productLogo={AnimatedLogo}
-          menuItems={sidebarMenuItems}
+          mainTabs={mainTabs}
+          activeTab={activeTabIndex}
+          onTabChange={handleTabChange}
           onSettingsClick={() => navigate('/app/dashboard/settings')}
           onLogoutClick={handleLogout}
           position="fixed"

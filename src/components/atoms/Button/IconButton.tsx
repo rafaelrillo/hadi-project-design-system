@@ -1,6 +1,6 @@
-// Path: src/components/atoms/Button/Button.tsx
+// Path: src/components/atoms/Button/IconButton.tsx
 
-import type { ButtonProps, ButtonVariant, ButtonSize } from './Button.types';
+import type { IconButtonProps, ButtonVariant, ButtonSize } from './Button.types';
 import styles from './Button.module.css';
 
 /**
@@ -63,57 +63,45 @@ const sizeClasses: Record<ButtonSize, string> = {
 };
 
 /**
- * Button component with 31 variants across Neumorphism, Glass, and Glass-Neu styles.
+ * Circular icon button component with optional badge and tooltip.
  *
  * @example
- * // Primary action with teal glass
- * <Button variant="glass-teal" size="md" leftIcon={<Save size={18} />}>
- *   Save Changes
- * </Button>
+ * // Basic icon button
+ * <IconButton
+ *   icon={<Settings size={20} />}
+ *   variant="neu-soft"
+ *   aria-label="Open settings"
+ *   onClick={openSettings}
+ * />
  *
  * @example
- * // Secondary action with neumorphism
- * <Button variant="neu-soft" size="sm">
- *   Cancel
- * </Button>
- *
- * @example
- * // Loading state
- * <Button variant="neu-accent" loading>
- *   Processing...
- * </Button>
+ * // With notification badge
+ * <IconButton
+ *   icon={<Bell size={20} />}
+ *   variant="glass-teal"
+ *   badge={5}
+ *   tooltip="Notifications"
+ *   aria-label="5 notifications"
+ * />
  */
-export function Button({
-  children,
+export function IconButton({
+  icon,
   variant = 'neu-soft',
   size = 'md',
-  leftIcon,
-  rightIcon,
-  loading = false,
+  badge,
+  tooltip,
+  pressed = false,
   disabled = false,
-  fullWidth = false,
-  pill = false,
-  type = 'button',
+  'aria-label': ariaLabel,
   onClick,
   className,
-  'aria-label': ariaLabelProp,
-  // Legacy props
-  icon,
-  ariaLabel: legacyAriaLabel,
-  iconOnly = false,
-  ...props
-}: ButtonProps) {
-  // Handle legacy props
-  const effectiveLeftIcon = leftIcon || icon;
-  const effectiveAriaLabel = ariaLabelProp || legacyAriaLabel;
-
+}: IconButtonProps) {
   const classNames = [
     styles.button,
+    styles.iconButton,
     variantClasses[variant],
     sizeClasses[size],
-    fullWidth && styles.fullWidth,
-    pill && styles.pill,
-    loading && styles.loading,
+    pressed && styles.neuPressed,
     disabled && styles.disabled,
     className,
   ]
@@ -122,20 +110,20 @@ export function Button({
 
   return (
     <button
-      type={type}
+      type="button"
       className={classNames}
-      disabled={disabled || loading}
+      disabled={disabled}
       onClick={onClick}
-      aria-label={effectiveAriaLabel}
-      aria-busy={loading}
-      {...props}
+      aria-label={ariaLabel}
+      aria-pressed={pressed}
     >
-      {loading && <span className={styles.spinner} />}
-      {effectiveLeftIcon && <span className={styles.icon}>{effectiveLeftIcon}</span>}
-      {!iconOnly && <span className={styles.label}>{children}</span>}
-      {rightIcon && <span className={styles.icon}>{rightIcon}</span>}
+      {icon}
+      {badge !== undefined && badge > 0 && (
+        <span className={styles.badge}>{badge > 99 ? '99+' : badge}</span>
+      )}
+      {tooltip && <span className={styles.tooltip}>{tooltip}</span>}
     </button>
   );
 }
 
-export default Button;
+export default IconButton;

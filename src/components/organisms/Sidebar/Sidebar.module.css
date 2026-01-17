@@ -65,16 +65,16 @@
   padding: 0;
   overflow: hidden;
 
-  /* Neumorphic surface - same as background */
+  /* Polished marble surface */
   background: var(--neu-base);
 
   /* No border radius - flush against all edges */
   border-radius: 0;
 
-  /* Subtle neumorphic shadow on right edge only */
+  /* Almost invisible edge - seamless transition */
   box-shadow:
-    3px 0 6px rgba(163, 177, 198, 0.2),
-    inset -1px 0 0 rgba(255, 255, 255, 0.5);
+    1px 0 4px rgba(163, 177, 198, 0.08),
+    inset -1px 0 0 rgba(255, 255, 255, 0.25);
 
   transition: box-shadow var(--transition-shadow);
 }
@@ -313,9 +313,9 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .footerSection {
-  padding: 8px;
+  padding: 12px 8px;
   margin-top: auto;
-  border-top: 1px solid rgba(163, 177, 198, 0.12);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -325,22 +325,22 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
 }
 
 .footerAction {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+  width: 38px;
+  height: 38px;
   padding: 0;
-  border-radius: 12px;
+  border-radius: 10px;
   cursor: pointer;
   border: none;
   background: transparent;
   text-decoration: none;
-  transition: var(--transition-fast);
+  transition: all 0.2s ease;
   color: var(--text-muted);
   font-family: inherit;
 }
@@ -350,13 +350,20 @@
 }
 
 .footerAction:hover {
-  background: var(--glass-bg-hover);
   color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.25);
+  /* Subtle polished marble raised effect */
+  box-shadow:
+    -2px -2px 4px rgba(255, 255, 255, 0.5),
+    2px 2px 4px rgba(163, 177, 198, 0.25);
 }
 
 .footerAction.danger:hover {
-  background: rgba(220, 38, 38, 0.08);
+  background: rgba(220, 38, 38, 0.06);
   color: #dc2626;
+  box-shadow:
+    -2px -2px 4px rgba(255, 255, 255, 0.5),
+    2px 2px 4px rgba(220, 38, 38, 0.15);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -419,6 +426,66 @@
     rgba(163, 177, 198, 0.25),
     transparent
   );
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   MAIN NAV SECTION - TabGroup for primary navigation (Icon Only)
+   Polished marble neumorphism - matching logo aesthetic
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.mainNavSection {
+  width: 100%;
+  padding: 12px 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.mainNavTabs {
+  /* Vertical layout for icon-only tabs */
+  flex-direction: column;
+  width: auto;
+  padding: 5px;
+  gap: 3px;
+  border-radius: 16px;
+  background: var(--neu-base);
+
+  /* Polished marble inset - subtle like the logo */
+  box-shadow:
+    inset 2px 2px 5px rgba(163, 177, 198, 0.35),
+    inset -2px -2px 5px rgba(255, 255, 255, 0.65);
+}
+
+/* Override tab button styles for sidebar - refined icon buttons */
+.mainNavTabs button {
+  width: 38px !important;
+  height: 38px !important;
+  min-width: 38px;
+  border-radius: 12px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: var(--text-secondary);
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.mainNavTabs button:hover:not([aria-selected="true"]) {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Active tab - elevated with polished marble effect */
+.mainNavTabs button[aria-selected="true"] {
+  background: var(--neu-base);
+  color: var(--accent-primary);
+
+  /* Soft raised shadow - polished marble */
+  box-shadow:
+    -2px -2px 5px rgba(255, 255, 255, 0.7),
+    2px 2px 5px rgba(163, 177, 198, 0.4),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.15);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
