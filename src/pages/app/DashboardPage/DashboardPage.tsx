@@ -277,32 +277,10 @@ export function DashboardPage() {
               </span>
             </div>
           </div>
-          {/* Legend - Top Right */}
-          <div className={styles.chartLegend}>
-            <div className={styles.chartLegendItem}>
-              <img src="/sentinel-favicon.svg" alt="" className={styles.chartLegendLogo} />
-              <span>SENTINEL</span>
-            </div>
-            <div className={styles.chartLegendItem}>
-              <span className={styles.chartLegendDot} style={{ background: '#9b8ab8' }} />
-              <span>NASDAQ</span>
-            </div>
-            <div className={styles.chartLegendItem}>
-              <span className={styles.chartLegendDot} style={{ background: '#7a99b8' }} />
-              <span>S&P 500</span>
-            </div>
-            <div className={styles.chartLegendItem}>
-              <span className={styles.chartLegendDot} style={{ background: '#b8a07a' }} />
-              <span>Gold</span>
-            </div>
-            <div className={styles.chartLegendItem}>
-              <span className={styles.chartLegendDot} style={{ background: '#a89878' }} />
-              <span>Bonds</span>
-            </div>
-          </div>
         </div>
-        <div className={styles.chartWrapper}>
-          <div className={styles.chartElevated}>
+        <div className={styles.chartArea}>
+          {/* Chart Inset Container */}
+          <div className={styles.chartInset}>
             <LineChart
               data={performanceComparisonData}
               height={220}
@@ -312,6 +290,32 @@ export function DashboardPage() {
               formatValue={(value) => `$${value.toLocaleString()}`}
               showLegend={false}
             />
+          </div>
+
+          {/* Legend Inset Container */}
+          <div className={styles.legendInset}>
+            <div className={styles.floatingLegend}>
+              <div className={styles.floatingLegendItem}>
+                <img src="/sentinel-favicon.svg" alt="" className={styles.floatingLegendLogo} />
+                <span>SENTINEL</span>
+              </div>
+              <div className={styles.floatingLegendItem}>
+                <span className={styles.floatingLegendDot} style={{ background: '#9b8ab8' }} />
+                <span>NASDAQ</span>
+              </div>
+              <div className={styles.floatingLegendItem}>
+                <span className={styles.floatingLegendDot} style={{ background: '#7a99b8' }} />
+                <span>S&P 500</span>
+              </div>
+              <div className={styles.floatingLegendItem}>
+                <span className={styles.floatingLegendDot} style={{ background: '#b8a07a' }} />
+                <span>Gold</span>
+              </div>
+              <div className={styles.floatingLegendItem}>
+                <span className={styles.floatingLegendDot} style={{ background: '#a89878' }} />
+                <span>Bonds</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -326,9 +330,10 @@ export function DashboardPage() {
               Top Buys
             </h3>
             <Button
-              variant="secondary"
+              variant="glass-teal"
+              size="sm"
               onClick={() => navigate('/app/dashboard/recommendations')}
-              icon={<ArrowRight size={14} />}
+              rightIcon={<ArrowRight size={14} />}
             >
               View All
             </Button>
@@ -360,9 +365,10 @@ export function DashboardPage() {
               Top Sells
             </h3>
             <Button
-              variant="secondary"
+              variant="glass-teal"
+              size="sm"
               onClick={() => navigate('/app/dashboard/portfolio')}
-              icon={<ArrowRight size={14} />}
+              rightIcon={<ArrowRight size={14} />}
             >
               View Portfolio
             </Button>
@@ -394,9 +400,10 @@ export function DashboardPage() {
               Latest News
             </h3>
             <Button
-              variant="secondary"
+              variant="glass-teal"
+              size="sm"
               onClick={() => navigate('/app/dashboard/news')}
-              icon={<ArrowRight size={14} />}
+              rightIcon={<ArrowRight size={14} />}
             >
               View All
             </Button>

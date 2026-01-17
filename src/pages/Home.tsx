@@ -1,6 +1,6 @@
 // Path: src/pages/Home.tsx
 // SENTINEL Design System Home - Powered by Dynamic Light Engine
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import {
   LogIn, TrendingUp, DollarSign, BarChart2, Activity,
@@ -10,32 +10,76 @@ import {
 import { LineChart } from '@/components/charts/echarts';
 
 // ═══════════════════════════════════════════════════════════════════════════
-// DYNAMIC LIGHT ENGINE SYSTEM
+// DYNAMIC LIGHT ENGINE SYSTEM - OPTIMIZED
 //
-// La luz se mueve alrededor del viewport, y todas las sombras responden
-// dinamicamente a su posicion. Formulas basadas en trigonometria real.
+// La luz se mueve usando CSS animations (GPU-accelerated).
+// Las sombras se actualizan con throttle para evitar re-renders excesivos.
 // ═══════════════════════════════════════════════════════════════════════════
+
+// Throttle interval for shadow updates (ms)
+const SHADOW_UPDATE_INTERVAL = 100;
 
 export function Home() {
   // ═══════════════════════════════════════════════════════════════════════════
-  // DYNAMIC LIGHT STATE
-  // El angulo de la luz (0-360 grados) determina la direccion de las sombras
+  // OPTIMIZED LIGHT STATE
+  // - shadowAngle: State for shadow calculations (throttled updates)
+  // - visualAngle: Ref for smooth visual animation (no re-renders)
   // ═══════════════════════════════════════════════════════════════════════════
-  const [lightAngle, setLightAngle] = useState(135); // Empieza arriba-izquierda
+  const [shadowAngle, setShadowAngle] = useState(135);
   const [isAnimating, setIsAnimating] = useState(true);
-  const [animationSpeed, setAnimationSpeed] = useState(0.3); // grados por frame
+  const [animationSpeed, setAnimationSpeed] = useState(0.3);
 
-  // Animar la luz orbitando
+  // Refs for animation (no re-renders)
+  const visualAngleRef = useRef(135);
+  const animationFrameRef = useRef<number | null>(null);
+  const lastShadowUpdateRef = useRef(0);
+
+  // Update shadow angle with throttle
+  const updateShadowAngle = useCallback((angle: number) => {
+    const now = performance.now();
+    if (now - lastShadowUpdateRef.current >= SHADOW_UPDATE_INTERVAL) {
+      setShadowAngle(angle);
+      lastShadowUpdateRef.current = now;
+    }
+  }, []);
+
+  // Optimized animation loop using requestAnimationFrame
   useEffect(() => {
-    if (!isAnimating) return;
+    if (!isAnimating) {
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+        animationFrameRef.current = null;
+      }
+      return;
+    }
 
-    const animate = () => {
-      setLightAngle((prev) => (prev + animationSpeed) % 360);
+    let lastTime = performance.now();
+
+    const animate = (currentTime: number) => {
+      const deltaTime = currentTime - lastTime;
+      lastTime = currentTime;
+
+      // Update visual angle (in ref, no re-render)
+      const increment = (animationSpeed * deltaTime) / 16.67; // Normalize to 60fps
+      visualAngleRef.current = (visualAngleRef.current + increment) % 360;
+
+      // Throttled shadow update (only triggers re-render every SHADOW_UPDATE_INTERVAL ms)
+      updateShadowAngle(visualAngleRef.current);
+
+      animationFrameRef.current = requestAnimationFrame(animate);
     };
 
-    const intervalId = setInterval(animate, 16); // ~60fps
-    return () => clearInterval(intervalId);
-  }, [isAnimating, animationSpeed]);
+    animationFrameRef.current = requestAnimationFrame(animate);
+
+    return () => {
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+    };
+  }, [isAnimating, animationSpeed, updateShadowAngle]);
+
+  // Use shadowAngle for calculations (throttled state)
+  const lightAngle = shadowAngle;
 
   // ═══════════════════════════════════════════════════════════════════════════
   // SHADOW CALCULATIONS
@@ -53,14 +97,12 @@ export function Home() {
     return { x, y, angle: lightAngle };
   }, [lightAngle]);
 
-  // Posicion visual de la luz (para el indicador)
-  const lightPosition = useMemo(() => {
-    const rad = lightAngle * (Math.PI / 180);
-    // Posicion en un circulo alrededor del viewport
-    const x = 50 + Math.cos(rad) * 45; // 50% +/- 45%
-    const y = 50 + Math.sin(rad) * 45;
-    return { x, y };
-  }, [lightAngle]);
+  // Handle manual angle change from slider
+  const handleManualAngleChange = useCallback((newAngle: number) => {
+    setIsAnimating(false);
+    visualAngleRef.current = newAngle;
+    setShadowAngle(newAngle);
+  }, []);
 
   // ═══════════════════════════════════════════════════════════════════════════
   // DYNAMIC SHADOW GENERATORS
@@ -296,43 +338,62 @@ export function Home() {
   return (
     <div style={pageBackground}>
       {/* ════════════════════════════════════════════════════════════════════
-          DYNAMIC LIGHT INDICATOR - Orbiting sun
+          DYNAMIC LIGHT INDICATOR - CSS-animated orbiting sun
+          Uses CSS animation for smooth GPU-accelerated movement
           ════════════════════════════════════════════════════════════════════ */}
       <div
+        className="light-orbit-container"
         style={{
           position: 'absolute',
-          left: `${lightPosition.x}%`,
-          top: `${lightPosition.y}%`,
+          left: '50%',
+          top: '50%',
+          width: '90vmin',
+          height: '90vmin',
           transform: 'translate(-50%, -50%)',
-          width: '60px',
-          height: '60px',
-          borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(251,191,36,0.9) 0%, rgba(251,191,36,0.4) 40%, transparent 70%)',
-          boxShadow: '0 0 60px rgba(251,191,36,0.6), 0 0 120px rgba(251,191,36,0.3)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          zIndex: 100,
           pointerEvents: 'none',
-          transition: 'left 16ms linear, top 16ms linear',
+          zIndex: 100,
+          animation: isAnimating
+            ? `sunOrbit ${360 / (animationSpeed * 60)}s linear infinite`
+            : 'none',
+          // When not animating, use the current angle
+          ...(isAnimating ? {} : { transform: `translate(-50%, -50%) rotate(${lightAngle}deg)` }),
         }}
       >
-        <Sun size={28} style={{ color: '#FCD34D' }} />
+        {/* Sun positioned at the edge of the orbit */}
+        <div
+          style={{
+            position: 'absolute',
+            left: '50%',
+            top: '0',
+            transform: 'translate(-50%, -50%)',
+            width: '60px',
+            height: '60px',
+            borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(251,191,36,0.9) 0%, rgba(251,191,36,0.4) 40%, transparent 70%)',
+            boxShadow: '0 0 60px rgba(251,191,36,0.6), 0 0 120px rgba(251,191,36,0.3)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <Sun size={28} style={{ color: '#FCD34D' }} />
+        </div>
       </div>
 
-      {/* Light rays emanating from source */}
+      {/* Light rays - uses CSS transform for smooth rotation */}
       <div
         style={{
           position: 'absolute',
-          left: `${lightPosition.x}%`,
-          top: `${lightPosition.y}%`,
-          transform: 'translate(-50%, -50%)',
+          left: '50%',
+          top: '50%',
+          transform: `translate(-50%, -50%) rotate(${lightAngle}deg)`,
           width: '400px',
           height: '400px',
-          background: `conic-gradient(from ${lightAngle}deg, transparent 0deg, rgba(251,191,36,0.08) 20deg, transparent 40deg, transparent 360deg)`,
+          background: 'conic-gradient(from 0deg, transparent 0deg, rgba(251,191,36,0.08) 20deg, transparent 40deg, transparent 360deg)',
           borderRadius: '50%',
           pointerEvents: 'none',
           zIndex: 1,
+          transition: 'transform 100ms linear',
         }}
       />
 
@@ -396,10 +457,7 @@ export function Home() {
             min="0"
             max="360"
             value={lightAngle}
-            onChange={(e) => {
-              setIsAnimating(false);
-              setLightAngle(parseFloat(e.target.value));
-            }}
+            onChange={(e) => handleManualAngleChange(parseFloat(e.target.value))}
             style={{ width: '100px', cursor: 'pointer' }}
           />
           <span style={{ color: '#2D3436', fontWeight: 600, minWidth: '36px' }}>
@@ -548,9 +606,9 @@ export function Home() {
         </div>
 
         {/* ──────────────────────────────────────────────────────────────────
-            CARD 2: Performance Chart - Spans 2 columns
+            CARD 2: Performance Chart - Spans 2 columns (INSET style test)
             ────────────────────────────────────────────────────────────────── */}
-        <div style={{ ...neuPanel, overflow: 'visible', gridColumn: 'span 2' }}>
+        <div style={{ ...neuInset, padding: '32px', overflow: 'visible', gridColumn: 'span 2' }}>
           <h3 style={sectionTitle}>
             <span style={{
               width: '8px',
@@ -845,6 +903,15 @@ export function Home() {
         @keyframes spin {
           from { transform: rotate(0deg); }
           to { transform: rotate(360deg); }
+        }
+
+        @keyframes sunOrbit {
+          from { transform: translate(-50%, -50%) rotate(0deg); }
+          to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .light-orbit-container {
+          will-change: transform;
         }
       `}</style>
     </div>
