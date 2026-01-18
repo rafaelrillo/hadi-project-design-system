@@ -1,0 +1,294 @@
+/* Path: src/components/atoms/FingEmblem/FingEmblem.module.css */
+/* FING Emblem - Stone Marble Neumorphic Styles */
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   CONTAINER STYLES
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.emblemContainer {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.emblemContainer.wordmarkRight {
+  flex-direction: row;
+}
+
+.emblemContainer.wordmarkBottom {
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   SIMPLE VARIANT - Single inset container
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.emblemInset {
+  background: var(--fing-marble-base, #d5d8dc);
+  border-radius: 50%;
+  box-shadow:
+    inset 4px 4px 10px var(--fing-shadow-dark, rgba(147, 157, 170, 0.55)),
+    inset -4px -4px 10px var(--fing-shadow-light, rgba(255, 255, 255, 0.95));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow 0.3s ease;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   FRAMED VARIANT - Outer raised ring + Inner inset ring
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.emblemOuter {
+  background: var(--fing-marble-base, #d5d8dc);
+  border-radius: 50%;
+  box-shadow:
+    8px 8px 16px var(--fing-shadow-dark, rgba(147, 157, 170, 0.55)),
+    -8px -8px 16px var(--fing-shadow-light, rgba(255, 255, 255, 0.95)),
+    inset 0 0 20px rgba(147, 157, 170, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow 0.3s ease;
+}
+
+.emblemInner {
+  background: var(--fing-marble-base, #d5d8dc);
+  border-radius: 50%;
+  box-shadow:
+    inset 3px 3px 6px var(--fing-shadow-dark, rgba(147, 157, 170, 0.55)),
+    inset -3px -3px 6px var(--fing-shadow-light, rgba(255, 255, 255, 0.95));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   RADAR SYMBOL SVG
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.radarSvg {
+  display: block;
+}
+
+.centerDot {
+  transform-origin: 50px 50px;
+}
+
+.ring {
+  transform-origin: 50px 50px;
+}
+
+.ring1 {}
+.ring2 {}
+.ring3 {}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   WORDMARK
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.wordmark {
+  font-family: var(--sentinel-font-primary, 'DM Sans', sans-serif);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--fing-marble-base, #d5d8dc);
+  text-shadow:
+    1.5px 1.5px 1px var(--fing-shadow-light, rgba(255, 255, 255, 0.95)),
+    -1.5px -1.5px 1px var(--fing-shadow-dark, rgba(147, 157, 170, 0.55));
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   ANIMATION: BREATHE
+   Gentle expansion/contraction of the entire SVG
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.animBreathe {
+  animation: breathe 5s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   ANIMATION: PULSE
+   Cascading opacity pulse on rings
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+@keyframes pulseFade {
+  0%, 100% {
+    opacity: 1;
+    stroke-width: 2;
+  }
+  50% {
+    opacity: 0.3;
+    stroke-width: 1.5;
+  }
+}
+
+.animPulse .ring1 {
+  animation: pulseFade 2.5s ease-in-out infinite;
+}
+
+.animPulse .ring2 {
+  animation: pulseFade 2.5s ease-in-out infinite 0.35s;
+}
+
+.animPulse .ring3 {
+  animation: pulseFade 2.5s ease-in-out infinite 0.7s;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   ANIMATION: GLOW
+   Teal glow that pulses on the inset container
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+@keyframes glowShadow {
+  0%, 100% {
+    box-shadow:
+      inset 4px 4px 10px var(--fing-shadow-dark, rgba(147, 157, 170, 0.55)),
+      inset -4px -4px 10px var(--fing-shadow-light, rgba(255, 255, 255, 0.95));
+  }
+  50% {
+    box-shadow:
+      inset 4px 4px 10px var(--fing-shadow-dark, rgba(147, 157, 170, 0.55)),
+      inset -4px -4px 10px var(--fing-shadow-light, rgba(255, 255, 255, 0.95)),
+      0 0 25px var(--fing-teal-glow, rgba(74, 154, 156, 0.5));
+  }
+}
+
+.glowAnimation {
+  animation: glowShadow 3s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   ANIMATION: ROTATE
+   Very slow continuous rotation (30s per revolution)
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+@keyframes slowRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animRotate {
+  animation: slowRotate 30s linear infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   ANIMATION: RIPPLE
+   Waves emanating from center outward in cascade
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+@keyframes rippleFade {
+  0%, 10% {
+    opacity: 0;
+  }
+  30%, 70% {
+    opacity: 1;
+  }
+  90%, 100% {
+    opacity: 0;
+  }
+}
+
+.animRipple .centerDot {
+  animation: rippleFade 3s ease-in-out infinite;
+}
+
+.animRipple .ring1 {
+  animation: rippleFade 3s ease-in-out infinite 0.4s;
+}
+
+.animRipple .ring2 {
+  animation: rippleFade 3s ease-in-out infinite 0.8s;
+}
+
+.animRipple .ring3 {
+  animation: rippleFade 3s ease-in-out infinite 1.2s;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   ANIMATION: RIPPLE SLOW
+   Much slower version of ripple (8s cycle) for ambient/background use
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+@keyframes rippleFadeSlow {
+  0%, 5% {
+    opacity: 0.3;
+  }
+  25%, 75% {
+    opacity: 1;
+  }
+  95%, 100% {
+    opacity: 0.3;
+  }
+}
+
+.animRippleSlow .centerDot {
+  animation: rippleFadeSlow 8s ease-in-out infinite;
+}
+
+.animRippleSlow .ring1 {
+  animation: rippleFadeSlow 8s ease-in-out infinite 1s;
+}
+
+.animRippleSlow .ring2 {
+  animation: rippleFadeSlow 8s ease-in-out infinite 2s;
+}
+
+.animRippleSlow .ring3 {
+  animation: rippleFadeSlow 8s ease-in-out infinite 3s;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   ANIMATION: HEARTBEAT
+   Fast cascading opacity pulse (for alerts)
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+@keyframes heartbeatFade {
+  0%, 15% {
+    opacity: 1;
+  }
+  30%, 45% {
+    opacity: 0.4;
+  }
+  60%, 100% {
+    opacity: 1;
+  }
+}
+
+.animHeartbeat .centerDot {
+  animation: heartbeatFade 1.5s ease-in-out infinite;
+}
+
+.animHeartbeat .ring1 {
+  animation: heartbeatFade 1.5s ease-in-out infinite 0.1s;
+}
+
+.animHeartbeat .ring2 {
+  animation: heartbeatFade 1.5s ease-in-out infinite 0.2s;
+}
+
+.animHeartbeat .ring3 {
+  animation: heartbeatFade 1.5s ease-in-out infinite 0.3s;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   ANIMATION: NONE
+   Explicit static state
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.animNone {
+  animation: none;
+}

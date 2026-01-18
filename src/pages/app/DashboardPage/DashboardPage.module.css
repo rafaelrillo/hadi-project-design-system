@@ -1284,6 +1284,250 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
+   STONE MARBLE BUTTONS - Two variants:
+   1. RAISED only (standalone button)
+   2. PILL FRAME (INSET wrapper → RAISED button)
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   VARIANT 1: RAISED BUTTON (standalone, no wrapper)
+   Use for: buttons that sit directly on RAISED containers
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.raisedButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: var(--marble-base);
+  border-radius: 24px;
+  border: none;
+  cursor: pointer;
+  font-family: var(--sentinel-font-primary);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+
+  /* RAISED shadow */
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.8),
+    inset 0 0 0 2px rgba(168, 172, 179, 0.3),
+    4px 4px 8px rgba(147, 157, 170, 0.55),
+    -4px -4px 8px rgba(255, 255, 255, 0.95);
+
+  /* Stone Marble INSET typography */
+  color: var(--sentinel-accent-primary);
+  text-shadow:
+    1px 1px 0px rgba(255, 255, 255, 0.85),
+    -1px -1px 0px rgba(74, 154, 156, 0.3);
+
+  transition: all 150ms ease;
+}
+
+.raisedButton:hover {
+  background: linear-gradient(135deg, rgba(74, 154, 156, 0.08) 0%, rgba(74, 154, 156, 0.04) 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.9),
+    inset 0 0 0 2px rgba(74, 154, 156, 0.25),
+    6px 6px 12px rgba(147, 157, 170, 0.6),
+    -6px -6px 12px rgba(255, 255, 255, 0.95),
+    0 0 16px rgba(74, 154, 156, 0.15);
+}
+
+.raisedButton:active {
+  box-shadow:
+    inset 2px 2px 4px rgba(147, 157, 170, 0.5),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.9);
+}
+
+/* Icon hover effect for raised button */
+.raisedButton:hover .buttonIconCircle {
+  background: linear-gradient(135deg, rgba(74, 154, 156, 0.15) 0%, rgba(74, 154, 156, 0.08) 100%);
+}
+
+.raisedButton:hover .buttonIcon {
+  color: var(--sentinel-accent-secondary, #6fb3b5);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   VARIANT 2: PILL FRAME (INSET wrapper → RAISED button)
+   Use for: buttons inside cards, forms, etc.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Large wrapper */
+.pillFrameWrapper {
+  padding: 4px;
+  border-radius: 28px;
+  background: var(--marble-base);
+  box-shadow: var(--inset-1);
+}
+
+/* Large Pill Frame button */
+.pillFrameButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 24px;
+  background: var(--marble-base);
+  border-radius: 24px;
+  border: none;
+  cursor: pointer;
+  font-family: var(--sentinel-font-primary);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+
+  /* RAISED button inside INSET wrapper */
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.8),
+    inset 0 0 0 2px rgba(168, 172, 179, 0.25),
+    2px 2px 4px rgba(147, 157, 170, 0.55),
+    -2px -2px 4px rgba(255, 255, 255, 0.95);
+
+  /* Stone Marble INSET typography */
+  color: var(--sentinel-accent-primary);
+  text-shadow:
+    1px 1px 0px rgba(255, 255, 255, 0.85),
+    -1px -1px 0px rgba(74, 154, 156, 0.3);
+
+  transition: all 200ms ease;
+}
+
+.pillFrameButton:hover {
+  background: linear-gradient(135deg, rgba(74, 154, 156, 0.08) 0%, rgba(74, 154, 156, 0.04) 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.9),
+    inset 0 0 0 2px rgba(74, 154, 156, 0.25),
+    3px 3px 6px rgba(147, 157, 170, 0.6),
+    -3px -3px 6px rgba(255, 255, 255, 0.95),
+    0 0 12px rgba(74, 154, 156, 0.15);
+}
+
+.pillFrameButton:active {
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.7),
+    inset 0 0 0 2px rgba(168, 172, 179, 0.3),
+    1px 1px 2px rgba(147, 157, 170, 0.5),
+    -1px -1px 2px rgba(255, 255, 255, 0.9);
+}
+
+/* Icon hover effect for pill frame button */
+.pillFrameButton:hover .buttonIconCircle {
+  background: linear-gradient(135deg, rgba(74, 154, 156, 0.15) 0%, rgba(74, 154, 156, 0.08) 100%);
+}
+
+.pillFrameButton:hover .buttonIcon {
+  color: var(--sentinel-accent-secondary, #6fb3b5);
+}
+
+/* Small button wrapper (card headers) */
+.pillFrameWrapperSm {
+  padding: 3px;
+  border-radius: 24px;
+  background: var(--marble-base);
+  box-shadow: var(--inset-1);
+}
+
+/* Small Pill Frame button */
+.pillFrameButtonSm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--marble-base);
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  font-family: var(--sentinel-font-primary);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+
+  /* RAISED button */
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.8),
+    inset 0 0 0 2px rgba(168, 172, 179, 0.25),
+    1px 1px 2px rgba(147, 157, 170, 0.55),
+    -1px -1px 2px rgba(255, 255, 255, 0.95);
+
+  /* Stone Marble INSET typography */
+  color: var(--sentinel-accent-primary);
+  text-shadow:
+    0.75px 0.75px 0px rgba(255, 255, 255, 0.85),
+    -0.75px -0.75px 0px rgba(74, 154, 156, 0.25);
+
+  transition: all 200ms ease;
+}
+
+.pillFrameButtonSm:hover {
+  background: linear-gradient(135deg, rgba(74, 154, 156, 0.08) 0%, rgba(74, 154, 156, 0.04) 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.9),
+    inset 0 0 0 2px rgba(74, 154, 156, 0.25),
+    2px 2px 4px rgba(147, 157, 170, 0.6),
+    -2px -2px 4px rgba(255, 255, 255, 0.95),
+    0 0 10px rgba(74, 154, 156, 0.12);
+}
+
+.pillFrameButtonSm:active {
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.7),
+    inset 0 0 0 2px rgba(168, 172, 179, 0.3),
+    inset 1px 1px 2px rgba(147, 157, 170, 0.4),
+    inset -1px -1px 2px rgba(255, 255, 255, 0.8);
+}
+
+/* Icon hover effect for small pill frame button */
+.pillFrameButtonSm:hover .buttonIconCircleSm {
+  background: linear-gradient(135deg, rgba(74, 154, 156, 0.15) 0%, rgba(74, 154, 156, 0.08) 100%);
+}
+
+.pillFrameButtonSm:hover .buttonIcon {
+  color: var(--sentinel-accent-secondary, #6fb3b5);
+}
+
+/* Icon circle - INSET */
+.buttonIconCircle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--marble-base);
+  box-shadow:
+    inset 1px 1px 2px rgba(147, 157, 170, 0.55),
+    inset -1px -1px 2px rgba(255, 255, 255, 0.95);
+  transition: background 150ms ease;
+}
+
+.buttonIconCircleSm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--marble-base);
+  box-shadow:
+    inset 1px 1px 2px rgba(147, 157, 170, 0.55),
+    inset -1px -1px 2px rgba(255, 255, 255, 0.95);
+  transition: background 150ms ease;
+}
+
+/* Icon - RAISED effect via filter */
+.buttonIcon {
+  color: var(--sentinel-accent-primary);
+  filter:
+    drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9))
+    drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4));
+  transition: color 150ms ease;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
    REDUCED MOTION
    ───────────────────────────────────────────────────────────────────────────── */
 

@@ -33,6 +33,8 @@ import {
   Italic,
   Underline,
   AlignLeft,
+  ArrowRight,
+  Briefcase,
 } from 'lucide-react';
 import { LightEngineProvider } from '@/contexts/LightEngineContext';
 
@@ -48,10 +50,9 @@ export function ButtonShowcase() {
   const pageHeaderStyles: React.CSSProperties = {
     marginBottom: '32px',
     padding: '24px',
-    background: 'var(--neu-base)',
+    background: 'var(--marble-base)',
     borderRadius: '15px',
-    boxShadow:
-      '-20px -20px 60px var(--neu-shadow-light), 20px 20px 60px var(--neu-shadow-dark)',
+    boxShadow: 'var(--raised-3)',
   };
 
   const titleStyles: React.CSSProperties = {
@@ -113,125 +114,153 @@ export function ButtonShowcase() {
   return (
     <LightEngineProvider initialAnimating={true} initialSpeed={0.3}>
       <div
-        style={{ background: 'var(--neu-base)', minHeight: '100%', padding: '24px' }}
+        style={{ background: 'var(--marble-base)', minHeight: '100%', padding: '24px' }}
       >
         {/* Page Header */}
         <header style={pageHeaderStyles}>
           <h1 style={titleStyles}>&gt; Button System_</h1>
           <p style={descStyles}>
-            // 31 variantes: 15 Neumorphic + 8 Glass + 8 Glass-Neu Hybrid
+            // 36 variantes: 20 Stone Marble + 8 Glass + 8 Glass-Neu Hybrid
           </p>
         </header>
 
         {/* ═══════════════════════════════════════════════════════════════════════
-            NEUMORPHIC VARIANTS (15)
+            STONE MARBLE VARIANTS (20)
             ═══════════════════════════════════════════════════════════════════════ */}
-        <h2 style={categoryTitleStyles}>Neumorphic Variants (15)</h2>
+        <h2 style={categoryTitleStyles}>Stone Marble Variants (20)</h2>
 
         <ShowcaseSection
-          title="Neu-Soft & Neu-Flat"
-          description="Clásicos elevados - Uso general y toolbars"
+          title="Marble-Raised & Marble-Soft"
+          description="Clásicos elevados - Uso general y secundario"
         >
           <div style={gridStyles}>
             <div style={variantCardStyles}>
-              <Button variant="neu-soft">Neu Soft</Button>
-              <span style={variantLabelStyles}>neu-soft</span>
+              <Button variant="marble-raised">Raised</Button>
+              <span style={variantLabelStyles}>marble-raised</span>
             </div>
             <div style={variantCardStyles}>
-              <Button variant="neu-flat">Neu Flat</Button>
-              <span style={variantLabelStyles}>neu-flat</span>
+              <Button variant="marble-soft">Soft</Button>
+              <span style={variantLabelStyles}>marble-soft</span>
             </div>
             <div style={variantCardStyles}>
-              <Button variant="neu-minimal">Neu Minimal</Button>
-              <span style={variantLabelStyles}>neu-minimal</span>
+              <Button variant="marble-outline">Outline</Button>
+              <span style={variantLabelStyles}>marble-outline</span>
             </div>
           </div>
         </ShowcaseSection>
 
         <ShowcaseSection
-          title="Neu-Deep & Neu-Pillow"
+          title="Marble-Deep & Marble-Pillow"
           description="Sombras fuertes - CTAs importantes y premium"
         >
           <div style={gridStyles}>
             <div style={variantCardStyles}>
-              <Button variant="neu-deep">Neu Deep</Button>
-              <span style={variantLabelStyles}>neu-deep</span>
+              <Button variant="marble-deep">Deep</Button>
+              <span style={variantLabelStyles}>marble-deep</span>
             </div>
             <div style={variantCardStyles}>
-              <Button variant="neu-pillow">Neu Pillow</Button>
-              <span style={variantLabelStyles}>neu-pillow</span>
+              <Button variant="marble-pillow">Pillow</Button>
+              <span style={variantLabelStyles}>marble-pillow</span>
             </div>
             <div style={variantCardStyles}>
-              <Button variant="neu-layered">Neu Layered</Button>
-              <span style={variantLabelStyles}>neu-layered</span>
+              <Button variant="marble-layered">Layered</Button>
+              <span style={variantLabelStyles}>marble-layered</span>
             </div>
           </div>
         </ShowcaseSection>
 
         <ShowcaseSection
-          title="Neu-Ridge & Neu-Sharp"
+          title="Marble-Ridge & Marble-Sharp"
           description="Efectos especiales - Media controls y retro"
         >
           <div style={gridStyles}>
             <div style={variantCardStyles}>
-              <Button variant="neu-ridge">Neu Ridge</Button>
-              <span style={variantLabelStyles}>neu-ridge</span>
+              <Button variant="marble-ridge">Ridge</Button>
+              <span style={variantLabelStyles}>marble-ridge</span>
             </div>
             <div style={variantCardStyles}>
-              <Button variant="neu-sharp">Neu Sharp</Button>
-              <span style={variantLabelStyles}>neu-sharp</span>
+              <Button variant="marble-sharp">Sharp</Button>
+              <span style={variantLabelStyles}>marble-sharp</span>
             </div>
             <div style={variantCardStyles}>
-              <Button variant="neu-float">Neu Float</Button>
-              <span style={variantLabelStyles}>neu-float</span>
+              <Button variant="marble-float">Float</Button>
+              <span style={variantLabelStyles}>marble-float</span>
             </div>
           </div>
         </ShowcaseSection>
 
         <ShowcaseSection
-          title="Neu-Outline & Neu-Emboss"
-          description="Estilos alternativos - Bordes y texto en relieve"
+          title="Marble-Carved & Marble-Embossed"
+          description="Texto con relieve - Elegante y premium"
         >
           <div style={gridStyles}>
             <div style={variantCardStyles}>
-              <Button variant="neu-outline">Neu Outline</Button>
-              <span style={variantLabelStyles}>neu-outline</span>
+              <Button variant="marble-carved">Carved</Button>
+              <span style={variantLabelStyles}>marble-carved</span>
             </div>
             <div style={variantCardStyles}>
-              <Button variant="neu-emboss">Neu Emboss</Button>
-              <span style={variantLabelStyles}>neu-emboss</span>
+              <Button variant="marble-embossed">Embossed</Button>
+              <span style={variantLabelStyles}>marble-embossed</span>
             </div>
           </div>
         </ShowcaseSection>
 
         <ShowcaseSection
-          title="Neu-Pressed & Neu-Concave"
+          title="Marble-Inset"
           description="Estados hundidos - Toggles activos e inputs"
         >
           <div style={gridStyles}>
             <div style={variantCardStyles}>
-              <Button variant="neu-pressed">Neu Pressed</Button>
-              <span style={variantLabelStyles}>neu-pressed</span>
-            </div>
-            <div style={variantCardStyles}>
-              <Button variant="neu-concave">Neu Concave</Button>
-              <span style={variantLabelStyles}>neu-concave</span>
+              <Button variant="marble-inset">Inset</Button>
+              <span style={variantLabelStyles}>marble-inset</span>
             </div>
           </div>
         </ShowcaseSection>
 
         <ShowcaseSection
-          title="Neu-Accent & Neu-Glow"
+          title="Marble-Accent & Marble-Glow"
           description="Con color - Primary action y highlights"
         >
           <div style={gridStyles}>
             <div style={variantCardStyles}>
-              <Button variant="neu-accent">Neu Accent</Button>
-              <span style={variantLabelStyles}>neu-accent</span>
+              <Button variant="marble-accent">Accent</Button>
+              <span style={variantLabelStyles}>marble-accent</span>
             </div>
             <div style={variantCardStyles}>
-              <Button variant="neu-glow">Neu Glow</Button>
-              <span style={variantLabelStyles}>neu-glow</span>
+              <Button variant="marble-accent-inset">Accent Inset</Button>
+              <span style={variantLabelStyles}>marble-accent-inset</span>
+            </div>
+            <div style={variantCardStyles}>
+              <Button variant="marble-glow">Glow</Button>
+              <span style={variantLabelStyles}>marble-glow</span>
+            </div>
+          </div>
+        </ShowcaseSection>
+
+        <ShowcaseSection
+          title="Decorative Variants"
+          description="Formas y efectos especiales"
+        >
+          <div style={gridStyles}>
+            <div style={variantCardStyles}>
+              <Button variant="marble-diamond">Diamond</Button>
+              <span style={variantLabelStyles}>marble-diamond</span>
+            </div>
+            <div style={variantCardStyles}>
+              <Button variant="marble-frame">Frame</Button>
+              <span style={variantLabelStyles}>marble-frame</span>
+            </div>
+            <div style={variantCardStyles}>
+              <Button variant="marble-seal">Seal</Button>
+              <span style={variantLabelStyles}>marble-seal</span>
+            </div>
+            <div style={variantCardStyles}>
+              <Button variant="marble-pill">Pill</Button>
+              <span style={variantLabelStyles}>marble-pill</span>
+            </div>
+            <div style={variantCardStyles}>
+              <Button variant="marble-stadium">Stadium</Button>
+              <span style={variantLabelStyles}>marble-stadium</span>
             </div>
           </div>
         </ShowcaseSection>
@@ -339,23 +368,23 @@ export function ButtonShowcase() {
             style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', alignItems: 'center' }}
           >
             <div style={variantCardStyles}>
-              <Button variant="neu-accent" size="xs">XS</Button>
+              <Button variant="marble-accent" size="xs">XS</Button>
               <span style={variantLabelStyles}>xs - 30px</span>
             </div>
             <div style={variantCardStyles}>
-              <Button variant="neu-accent" size="sm">Small</Button>
+              <Button variant="marble-accent" size="sm">Small</Button>
               <span style={variantLabelStyles}>sm - 36px</span>
             </div>
             <div style={variantCardStyles}>
-              <Button variant="neu-accent" size="md">Medium</Button>
+              <Button variant="marble-accent" size="md">Medium</Button>
               <span style={variantLabelStyles}>md - 44px</span>
             </div>
             <div style={variantCardStyles}>
-              <Button variant="neu-accent" size="lg">Large</Button>
+              <Button variant="marble-accent" size="lg">Large</Button>
               <span style={variantLabelStyles}>lg - 52px</span>
             </div>
             <div style={variantCardStyles}>
-              <Button variant="neu-accent" size="xl">Extra Large</Button>
+              <Button variant="marble-accent" size="xl">Extra Large</Button>
               <span style={variantLabelStyles}>xl - 60px</span>
             </div>
           </div>
@@ -386,9 +415,9 @@ export function ButtonShowcase() {
           description="Border radius completo (9999px)"
         >
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
-            <Button variant="neu-soft" pill>Neu Pill</Button>
+            <Button variant="marble-soft" pill>Marble Pill</Button>
             <Button variant="glass-teal" pill>Glass Pill</Button>
-            <Button variant="neu-accent" pill>Accent Pill</Button>
+            <Button variant="marble-accent" pill>Accent Pill</Button>
             <Button variant="glass-violet" pill>Violet Pill</Button>
           </div>
         </ShowcaseSection>
@@ -398,9 +427,9 @@ export function ButtonShowcase() {
           description="Botón que ocupa el 100% del contenedor"
         >
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', maxWidth: '400px' }}>
-            <Button variant="neu-accent" fullWidth>Full Width Accent</Button>
+            <Button variant="marble-accent" fullWidth>Full Width Accent</Button>
             <Button variant="glass-teal" fullWidth>Full Width Glass</Button>
-            <Button variant="neu-flat" fullWidth>Full Width Flat</Button>
+            <Button variant="marble-raised" fullWidth>Full Width Raised</Button>
           </div>
         </ShowcaseSection>
 
@@ -412,8 +441,8 @@ export function ButtonShowcase() {
             <Button variant="glass-teal" leftIcon={<Save size={18} />}>Guardar</Button>
             <Button variant="glass-emerald" leftIcon={<Check size={18} />}>Confirmar</Button>
             <Button variant="glass-rose" leftIcon={<Trash2 size={18} />}>Eliminar</Button>
-            <Button variant="neu-soft" leftIcon={<Download size={18} />}>Exportar</Button>
-            <Button variant="neu-accent" rightIcon={<ChevronRight size={18} />}>Siguiente</Button>
+            <Button variant="marble-soft" leftIcon={<Download size={18} />}>Exportar</Button>
+            <Button variant="marble-accent" rightIcon={<ChevronRight size={18} />}>Siguiente</Button>
             <Button variant="glass-sky" leftIcon={<Send size={18} />}>Enviar</Button>
           </div>
         </ShowcaseSection>
@@ -423,9 +452,9 @@ export function ButtonShowcase() {
           description="Estado de carga con spinner"
         >
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
-            <Button variant="neu-accent" loading>Cargando...</Button>
+            <Button variant="marble-accent" loading>Cargando...</Button>
             <Button variant="glass-teal" loading>Procesando</Button>
-            <Button variant="neu-soft" loading>Guardando</Button>
+            <Button variant="marble-soft" loading>Guardando</Button>
           </div>
         </ShowcaseSection>
 
@@ -434,9 +463,9 @@ export function ButtonShowcase() {
           description="Estado deshabilitado (opacity 0.35)"
         >
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
-            <Button variant="neu-accent" disabled>Disabled Accent</Button>
+            <Button variant="marble-accent" disabled>Disabled Accent</Button>
             <Button variant="glass-teal" disabled>Disabled Glass</Button>
-            <Button variant="neu-soft" disabled>Disabled Soft</Button>
+            <Button variant="marble-soft" disabled>Disabled Soft</Button>
             <Button variant="glass-rose" disabled>Disabled Rose</Button>
           </div>
         </ShowcaseSection>
@@ -454,11 +483,11 @@ export function ButtonShowcase() {
             <div style={variantCardStyles}>
               <IconButton
                 icon={<Settings size={20} />}
-                variant="neu-soft"
+                variant="marble-raised"
                 aria-label="Settings"
                 tooltip="Configuración"
               />
-              <span style={variantLabelStyles}>neu-soft</span>
+              <span style={variantLabelStyles}>marble-raised</span>
             </div>
             <div style={variantCardStyles}>
               <IconButton
@@ -497,10 +526,10 @@ export function ButtonShowcase() {
             <div style={variantCardStyles}>
               <IconButton
                 icon={<Copy size={20} />}
-                variant="neu-flat"
+                variant="marble-soft"
                 aria-label="Copy"
               />
-              <span style={variantLabelStyles}>neu-flat</span>
+              <span style={variantLabelStyles}>marble-soft</span>
             </div>
           </div>
         </ShowcaseSection>
@@ -510,11 +539,11 @@ export function ButtonShowcase() {
           description="Tamaños de IconButton: xs, sm, md, lg, xl"
         >
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', alignItems: 'center' }}>
-            <IconButton icon={<Plus size={14} />} variant="neu-accent" size="xs" aria-label="Add" />
-            <IconButton icon={<Plus size={16} />} variant="neu-accent" size="sm" aria-label="Add" />
-            <IconButton icon={<Plus size={20} />} variant="neu-accent" size="md" aria-label="Add" />
-            <IconButton icon={<Plus size={24} />} variant="neu-accent" size="lg" aria-label="Add" />
-            <IconButton icon={<Plus size={28} />} variant="neu-accent" size="xl" aria-label="Add" />
+            <IconButton icon={<Plus size={14} />} variant="marble-accent" size="xs" aria-label="Add" />
+            <IconButton icon={<Plus size={16} />} variant="marble-accent" size="sm" aria-label="Add" />
+            <IconButton icon={<Plus size={20} />} variant="marble-accent" size="md" aria-label="Add" />
+            <IconButton icon={<Plus size={24} />} variant="marble-accent" size="lg" aria-label="Add" />
+            <IconButton icon={<Plus size={28} />} variant="marble-accent" size="xl" aria-label="Add" />
           </div>
         </ShowcaseSection>
 
@@ -573,8 +602,8 @@ export function ButtonShowcase() {
                 Variant: neu
               </p>
               <ButtonGroup variant="neu" gap={4}>
-                <Button variant="neu-flat" size="sm">Cancelar</Button>
-                <Button variant="neu-accent" size="sm">Guardar</Button>
+                <Button variant="marble-raised" size="sm">Cancelar</Button>
+                <Button variant="marble-accent" size="sm">Guardar</Button>
               </ButtonGroup>
             </div>
             <div>
@@ -591,10 +620,10 @@ export function ButtonShowcase() {
                 Toolbar con IconButtons
               </p>
               <ButtonGroup variant="neu" gap={2}>
-                <IconButton icon={<Bold size={16} />} variant="neu-flat" size="sm" aria-label="Bold" />
-                <IconButton icon={<Italic size={16} />} variant="neu-flat" size="sm" aria-label="Italic" />
-                <IconButton icon={<Underline size={16} />} variant="neu-flat" size="sm" aria-label="Underline" />
-                <IconButton icon={<AlignLeft size={16} />} variant="neu-flat" size="sm" aria-label="Align" />
+                <IconButton icon={<Bold size={16} />} variant="marble-raised" size="sm" aria-label="Bold" />
+                <IconButton icon={<Italic size={16} />} variant="marble-raised" size="sm" aria-label="Italic" />
+                <IconButton icon={<Underline size={16} />} variant="marble-raised" size="sm" aria-label="Underline" />
+                <IconButton icon={<AlignLeft size={16} />} variant="marble-raised" size="sm" aria-label="Align" />
               </ButtonGroup>
             </div>
           </div>
@@ -700,8 +729,8 @@ export function ButtonShowcase() {
         >
           <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
             <div style={{ display: 'flex', gap: '16px' }}>
-              <Button variant="neu-flat">Cancelar</Button>
-              <Button variant="neu-accent">Guardar cambios</Button>
+              <Button variant="marble-raised">Cancelar</Button>
+              <Button variant="marble-accent">Guardar cambios</Button>
             </div>
             <div style={{ display: 'flex', gap: '16px' }}>
               <Button variant="glass-smoke">Cancelar</Button>
@@ -715,7 +744,7 @@ export function ButtonShowcase() {
           description="Confirmaciones de eliminación"
         >
           <div style={{ display: 'flex', gap: '16px' }}>
-            <Button variant="neu-flat">No, volver</Button>
+            <Button variant="marble-raised">No, volver</Button>
             <Button variant="glass-rose" leftIcon={<Trash2 size={18} />}>
               Sí, eliminar
             </Button>
@@ -727,10 +756,10 @@ export function ButtonShowcase() {
           description="Controles de reproducción"
         >
           <ButtonGroup variant="neu" gap={4}>
-            <IconButton icon={<SkipForward size={18} style={{ transform: 'rotate(180deg)' }} />} variant="neu-ridge" aria-label="Previous" />
-            <IconButton icon={<Play size={20} />} variant="neu-accent" size="lg" aria-label="Play" />
-            <IconButton icon={<SkipForward size={18} />} variant="neu-ridge" aria-label="Next" />
-            <IconButton icon={<Volume2 size={18} />} variant="neu-flat" aria-label="Volume" />
+            <IconButton icon={<SkipForward size={18} style={{ transform: 'rotate(180deg)' }} />} variant="marble-ridge" aria-label="Previous" />
+            <IconButton icon={<Play size={20} />} variant="marble-accent" size="lg" aria-label="Play" />
+            <IconButton icon={<SkipForward size={18} />} variant="marble-ridge" aria-label="Next" />
+            <IconButton icon={<Volume2 size={18} />} variant="marble-raised" aria-label="Volume" />
           </ButtonGroup>
         </ShowcaseSection>
 
@@ -742,15 +771,275 @@ export function ButtonShowcase() {
             <Button variant="glass-teal" leftIcon={<Plus size={18} />}>
               Nuevo
             </Button>
-            <Button variant="neu-flat" leftIcon={<Filter size={18} />}>
+            <Button variant="marble-raised" leftIcon={<Filter size={18} />}>
               Filtros
             </Button>
-            <Button variant="neu-flat" leftIcon={<Download size={18} />}>
+            <Button variant="marble-raised" leftIcon={<Download size={18} />}>
               Exportar
             </Button>
-            <Button variant="neu-flat" leftIcon={<RefreshCw size={18} />}>
+            <Button variant="marble-raised" leftIcon={<RefreshCw size={18} />}>
               Actualizar
             </Button>
+          </div>
+        </ShowcaseSection>
+
+        {/* ═══════════════════════════════════════════════════════════════════════
+            PILL FRAME BUTTONS (CSS Pattern)
+            ═══════════════════════════════════════════════════════════════════════ */}
+        <h2 style={categoryTitleStyles}>Pill Frame Buttons (CSS Pattern)</h2>
+
+        <ShowcaseSection
+          title="Jerarquía de Botones Stone Marble"
+          description="Dos variantes según el contexto: RAISED standalone o Pill Frame (INSET → RAISED)"
+        >
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
+            {/* Variant 1: RAISED Standalone */}
+            <div>
+              <p style={{ ...variantLabelStyles, marginBottom: '16px', textAlign: 'left', fontSize: '12px' }}>
+                VARIANTE 1: RAISED Button (standalone) - Para botones sobre contenedores RAISED
+              </p>
+              <button
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '8px',
+                  padding: '12px 24px',
+                  background: 'var(--marble-base)',
+                  borderRadius: '24px',
+                  border: 'none',
+                  cursor: 'pointer',
+                  fontFamily: 'var(--sentinel-font-primary)',
+                  fontSize: '13px',
+                  fontWeight: 600,
+                  letterSpacing: '0.05em',
+                  boxShadow: `
+                    inset 0 0 0 1px rgba(255, 255, 255, 0.8),
+                    inset 0 0 0 2px rgba(168, 172, 179, 0.3),
+                    4px 4px 8px rgba(147, 157, 170, 0.55),
+                    -4px -4px 8px rgba(255, 255, 255, 0.95)
+                  `,
+                  color: 'var(--sentinel-accent-primary)',
+                  textShadow: '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(74, 154, 156, 0.3)',
+                  transition: 'all 150ms ease',
+                }}
+              >
+                Portfolio
+                <span
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: '22px',
+                    height: '22px',
+                    borderRadius: '50%',
+                    background: 'var(--marble-base)',
+                    boxShadow: 'inset 1px 1px 2px rgba(147, 157, 170, 0.55), inset -1px -1px 2px rgba(255, 255, 255, 0.95)',
+                  }}
+                >
+                  <Briefcase
+                    size={12}
+                    style={{
+                      color: 'var(--sentinel-accent-primary)',
+                      filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))',
+                    }}
+                  />
+                </span>
+              </button>
+            </div>
+
+            {/* Variant 2: Pill Frame */}
+            <div>
+              <p style={{ ...variantLabelStyles, marginBottom: '16px', textAlign: 'left', fontSize: '12px' }}>
+                VARIANTE 2: Pill Frame (INSET → RAISED) - Para botones en cards, forms, headers
+              </p>
+              <div
+                style={{
+                  display: 'inline-block',
+                  padding: '4px',
+                  borderRadius: '28px',
+                  background: 'var(--marble-base)',
+                  boxShadow: 'var(--inset-1)',
+                }}
+              >
+                <button
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '10px',
+                    padding: '12px 24px',
+                    background: 'var(--marble-base)',
+                    borderRadius: '24px',
+                    border: 'none',
+                    cursor: 'pointer',
+                    fontFamily: 'var(--sentinel-font-primary)',
+                    fontSize: '13px',
+                    fontWeight: 600,
+                    letterSpacing: '0.05em',
+                    boxShadow: `
+                      inset 0 0 0 1px rgba(255, 255, 255, 0.8),
+                      inset 0 0 0 2px rgba(168, 172, 179, 0.25),
+                      2px 2px 4px rgba(147, 157, 170, 0.55),
+                      -2px -2px 4px rgba(255, 255, 255, 0.95)
+                    `,
+                    color: 'var(--sentinel-accent-primary)',
+                    textShadow: '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(74, 154, 156, 0.3)',
+                    transition: 'all 200ms ease',
+                  }}
+                >
+                  Access System
+                  <span
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      width: '22px',
+                      height: '22px',
+                      borderRadius: '50%',
+                      background: 'var(--marble-base)',
+                      boxShadow: 'inset 1px 1px 2px rgba(147, 157, 170, 0.55), inset -1px -1px 2px rgba(255, 255, 255, 0.95)',
+                    }}
+                  >
+                    <ChevronRight
+                      size={14}
+                      style={{
+                        color: 'var(--sentinel-accent-primary)',
+                        filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))',
+                      }}
+                    />
+                  </span>
+                </button>
+              </div>
+            </div>
+
+            {/* Small Pill Frame */}
+            <div>
+              <p style={{ ...variantLabelStyles, marginBottom: '16px', textAlign: 'left', fontSize: '12px' }}>
+                VARIANTE 2 (Small): Pill Frame pequeño - Para card headers
+              </p>
+              <div
+                style={{
+                  display: 'inline-block',
+                  padding: '3px',
+                  borderRadius: '24px',
+                  background: 'var(--marble-base)',
+                  boxShadow: 'var(--inset-1)',
+                }}
+              >
+                <button
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '8px',
+                    padding: '8px 16px',
+                    background: 'var(--marble-base)',
+                    borderRadius: '20px',
+                    border: 'none',
+                    cursor: 'pointer',
+                    fontFamily: 'var(--sentinel-font-primary)',
+                    fontSize: '12px',
+                    fontWeight: 600,
+                    letterSpacing: '0.05em',
+                    boxShadow: `
+                      inset 0 0 0 1px rgba(255, 255, 255, 0.8),
+                      inset 0 0 0 2px rgba(168, 172, 179, 0.25),
+                      1px 1px 2px rgba(147, 157, 170, 0.55),
+                      -1px -1px 2px rgba(255, 255, 255, 0.95)
+                    `,
+                    color: 'var(--sentinel-accent-primary)',
+                    textShadow: '0.75px 0.75px 0px rgba(255, 255, 255, 0.85), -0.75px -0.75px 0px rgba(74, 154, 156, 0.25)',
+                    transition: 'all 200ms ease',
+                  }}
+                >
+                  View All
+                  <span
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      width: '20px',
+                      height: '20px',
+                      borderRadius: '50%',
+                      background: 'var(--marble-base)',
+                      boxShadow: 'inset 1px 1px 2px rgba(147, 157, 170, 0.55), inset -1px -1px 2px rgba(255, 255, 255, 0.95)',
+                    }}
+                  >
+                    <ArrowRight
+                      size={11}
+                      style={{
+                        color: 'var(--sentinel-accent-primary)',
+                        filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))',
+                      }}
+                    />
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </ShowcaseSection>
+
+        <ShowcaseSection
+          title="Anatomía del Pill Frame Button"
+          description="Estructura y propiedades de cada elemento"
+        >
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+              gap: '16px',
+              fontSize: '13px',
+              fontFamily: 'var(--sentinel-font-mono)',
+            }}
+          >
+            <div style={{ padding: '16px', background: 'rgba(255,255,255,0.3)', borderRadius: '12px' }}>
+              <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Wrapper INSET:</strong>
+              <p style={{ margin: '8px 0 0', color: 'var(--sentinel-text-secondary)', fontSize: '11px' }}>
+                padding: 4px (lg) / 3px (sm)<br />
+                border-radius: 28px / 24px<br />
+                box-shadow: var(--inset-1)
+              </p>
+            </div>
+            <div style={{ padding: '16px', background: 'rgba(255,255,255,0.3)', borderRadius: '12px' }}>
+              <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Button RAISED:</strong>
+              <p style={{ margin: '8px 0 0', color: 'var(--sentinel-text-secondary)', fontSize: '11px' }}>
+                border-radius: 24px / 20px<br />
+                shadow: inner borders + outer raised<br />
+                color: --sentinel-accent-primary
+              </p>
+            </div>
+            <div style={{ padding: '16px', background: 'rgba(255,255,255,0.3)', borderRadius: '12px' }}>
+              <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Icon Circle INSET:</strong>
+              <p style={{ margin: '8px 0 0', color: 'var(--sentinel-text-secondary)', fontSize: '11px' }}>
+                width/height: 22px / 20px<br />
+                border-radius: 50%<br />
+                box-shadow: inset shadows
+              </p>
+            </div>
+            <div style={{ padding: '16px', background: 'rgba(255,255,255,0.3)', borderRadius: '12px' }}>
+              <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Icon RAISED:</strong>
+              <p style={{ margin: '8px 0 0', color: 'var(--sentinel-text-secondary)', fontSize: '11px' }}>
+                color: --sentinel-accent-primary<br />
+                filter: drop-shadow (carved effect)<br />
+                hover: --sentinel-accent-secondary
+              </p>
+            </div>
+            <div style={{ padding: '16px', background: 'rgba(255,255,255,0.3)', borderRadius: '12px' }}>
+              <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Hover States:</strong>
+              <p style={{ margin: '8px 0 0', color: 'var(--sentinel-text-secondary)', fontSize: '11px' }}>
+                Button: teal gradient bg + glow<br />
+                Icon circle: teal gradient fill<br />
+                Icon: lighter teal color
+              </p>
+            </div>
+            <div style={{ padding: '16px', background: 'rgba(255,255,255,0.3)', borderRadius: '12px' }}>
+              <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Active State:</strong>
+              <p style={{ margin: '8px 0 0', color: 'var(--sentinel-text-secondary)', fontSize: '11px' }}>
+                Button shadow: fully inset<br />
+                Creates "pressed" appearance
+              </p>
+            </div>
           </div>
         </ShowcaseSection>
 
@@ -775,13 +1064,13 @@ export function ButtonShowcase() {
             <div style={{ padding: '16px', background: 'rgba(255,255,255,0.3)', borderRadius: '12px' }}>
               <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Primary Actions:</strong>
               <p style={{ margin: '8px 0 0', color: 'var(--sentinel-text-secondary)' }}>
-                glass-teal, neu-accent, glass-neu-teal
+                glass-teal, marble-accent, glass-neu-teal
               </p>
             </div>
             <div style={{ padding: '16px', background: 'rgba(255,255,255,0.3)', borderRadius: '12px' }}>
               <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Secondary Actions:</strong>
               <p style={{ margin: '8px 0 0', color: 'var(--sentinel-text-secondary)' }}>
-                neu-soft, neu-flat, glass-smoke
+                marble-soft, marble-raised, glass-smoke
               </p>
             </div>
             <div style={{ padding: '16px', background: 'rgba(255,255,255,0.3)', borderRadius: '12px' }}>
@@ -811,19 +1100,19 @@ export function ButtonShowcase() {
             <div style={{ padding: '16px', background: 'rgba(255,255,255,0.3)', borderRadius: '12px' }}>
               <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Premium/Special:</strong>
               <p style={{ margin: '8px 0 0', color: 'var(--sentinel-text-secondary)' }}>
-                glass-violet, glass-neu-violet, neu-pillow
+                glass-violet, glass-neu-violet, marble-pillow
               </p>
             </div>
             <div style={{ padding: '16px', background: 'rgba(255,255,255,0.3)', borderRadius: '12px' }}>
               <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Toolbars:</strong>
               <p style={{ margin: '8px 0 0', color: 'var(--sentinel-text-secondary)' }}>
-                neu-flat, neu-minimal, neu-ridge
+                marble-raised, marble-outline, marble-ridge
               </p>
             </div>
             <div style={{ padding: '16px', background: 'rgba(255,255,255,0.3)', borderRadius: '12px' }}>
               <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Toggle Active:</strong>
               <p style={{ margin: '8px 0 0', color: 'var(--sentinel-text-secondary)' }}>
-                neu-pressed, neu-concave
+                marble-inset, marble-embossed
               </p>
             </div>
           </div>

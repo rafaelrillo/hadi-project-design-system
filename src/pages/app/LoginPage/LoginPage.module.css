@@ -1,12 +1,11 @@
 /* Path: src/pages/app/LoginPage/LoginPage.module.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   SENTINEL DESIGN SYSTEM v3.3 - Login Page
+   FING LOGIN PAGE - Stone Marble Design System
 
-   LIGHT GLASS-NEUMORPHISM - Frosted glass login on light theme
-   - Light glass backgrounds with rgba(255,255,255,0.5-0.7)
-   - Soft neumorphic shadows using rgba(163,177,198,...)
-   - Inner highlights with rgba(255,255,255,0.7)
-   - Teal accent glows with rgba(74,154,156,...)
+   STONE MARBLE NEUMORPHISM
+   - Marble base background (#d5d8dc)
+   - Neumorphic INSET typography (text carved into surface)
+   - FING brand identity with teal accents
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 .container {
@@ -16,7 +15,7 @@
   justify-content: center;
   position: relative;
   overflow: hidden;
-  background: var(--neu-base, #e0e5ec);
+  background: var(--marble-base, #d5d8dc);
 }
 
 .content {
@@ -32,71 +31,75 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   LOGO - Neumorphic inset container
+   BRAND LOCKUP - Horizontal layout: Emblem + Text
    ───────────────────────────────────────────────────────────────────────────── */
 
-.logoContainer {
-  margin-bottom: var(--sentinel-space-4);
+.brandLockup {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 120px;
-  height: 120px;
-  background: var(--neu-base, #e0e5ec);
-  border-radius: 50%;
-
-  /* Neumorphic inset shadow */
-  box-shadow:
-    inset 6px 6px 12px rgba(163, 177, 198, 0.5),
-    inset -6px -6px 12px rgba(255, 255, 255, 0.8);
+  gap: 24px;
+  margin-bottom: var(--sentinel-space-6);
 }
 
-.logo {
-  width: 80px;
-  height: 80px;
-  filter: drop-shadow(0 0 12px rgba(74, 154, 156, 0.5));
-}
-
-.scanLine {
-  transform-origin: 60px 60px;
-  animation: scan 4s linear infinite;
-}
-
-@keyframes scan {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.brandText {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   TITLE
+   TITLE - Stone Marble Neumorphic Typography (INSET/Carved)
    ───────────────────────────────────────────────────────────────────────────── */
 
 .title {
-  font-family: var(--sentinel-font-numeric);
-  font-size: var(--sentinel-text-4xl);
-  font-weight: var(--sentinel-font-semibold);
-  color: var(--sentinel-text-primary, #2d3748);
-  letter-spacing: 0.2em;
-  text-align: center;
-  text-shadow: 0 0 20px rgba(74, 154, 156, 0.3);
+  font-family: var(--sentinel-font-primary, 'DM Sans', sans-serif);
+  font-size: 72px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-align: left;
   margin: 0;
+  line-height: 1;
+
+  /* Stone Marble INSET typography - carved into surface */
+  color: var(--marble-base, #d5d8dc);
+  text-shadow:
+    2px 2px 1px rgba(255, 255, 255, 0.95),
+    -2px -2px 1px rgba(147, 157, 170, 0.6);
 }
 
 .subtitle {
-  font-family: var(--sentinel-font-numeric);
-  font-size: var(--sentinel-text-xs);
-  color: var(--sentinel-text-secondary, #5a6578);
-  letter-spacing: var(--sentinel-tracking-led);
-  text-align: center;
-  margin-top: var(--sentinel-space-2);
+  font-family: var(--sentinel-font-primary, 'DM Sans', sans-serif);
+  font-size: 14px;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0.04em;
+  text-align: left;
+  margin: 0;
+  padding-left: 4px;
+
+  /* Subtle INSET typography */
+  color: var(--marble-dark, #c8ccd1);
+  text-shadow:
+    0.75px 0.75px 0px rgba(255, 255, 255, 0.7),
+    -0.75px -0.75px 0px rgba(130, 140, 155, 0.4);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   FORM - Layout only (DepthLayer provides the glass panel)
+   FORM CONTAINER - Stone Marble RAISED panel
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.formContainer {
+  background: var(--marble-base, #d5d8dc);
+  border-radius: 24px;
+  box-shadow:
+    6px 6px 12px rgba(147, 157, 170, 0.55),
+    -6px -6px 12px rgba(255, 255, 255, 0.95),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+  width: 100%;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   FORM - Layout inside RAISED container
    ───────────────────────────────────────────────────────────────────────────── */
 
 .form {
@@ -108,7 +111,7 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   INPUT GROUP
+   INPUT GROUP - Stone Marble INSET wrapper for inputs
    ───────────────────────────────────────────────────────────────────────────── */
 
 .inputGroup {
@@ -117,13 +120,56 @@
   gap: var(--sentinel-space-2);
 }
 
+/* Wrapper adds INSET effect around input for better depth perception */
+.inputGroup :global(.input) {
+  background: var(--marble-dark, #c8ccd1);
+  border: none;
+  border-radius: 14px;
+  box-shadow:
+    inset 3px 3px 6px rgba(147, 157, 170, 0.55),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.95),
+    inset 0 0 0 1px rgba(147, 157, 170, 0.15);
+}
+
+.inputGroup :global(.input):focus {
+  background: var(--marble-base, #d5d8dc);
+  box-shadow:
+    inset 3px 3px 6px rgba(147, 157, 170, 0.55),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.95),
+    0 0 0 2px rgba(74, 154, 156, 0.3),
+    0 0 12px rgba(74, 154, 156, 0.15);
+}
+
+.inputGroup :global(.input)::placeholder {
+  color: var(--sentinel-text-muted, #8896a6);
+}
+
+/* Icon styling within stone marble inputs */
+.inputGroup :global(.icon) {
+  color: var(--marble-deeper, #bbbec3);
+  filter:
+    drop-shadow(0.5px 0.5px 0px rgba(255, 255, 255, 0.8))
+    drop-shadow(-0.5px -0.5px 0px rgba(130, 140, 155, 0.4));
+}
+
+.inputGroup:focus-within :global(.icon) {
+  color: var(--sentinel-accent-primary, #4a9a9c);
+  filter: none;
+}
+
 .label {
-  font-family: var(--sentinel-font-primary);
-  font-size: var(--sentinel-text-sm);
-  font-weight: var(--sentinel-font-medium);
-  color: var(--sentinel-text-secondary, #5a6578);
+  font-family: var(--sentinel-font-primary, 'DM Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
+  padding-left: 4px;
+
+  /* Stone Marble INSET typography - carved into RAISED surface */
+  color: var(--marble-dark, #c8ccd1);
+  text-shadow:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.7),
+    -0.5px -0.5px 0px rgba(130, 140, 155, 0.4);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -142,16 +188,103 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   SUBMIT BUTTON
+   PILL FRAME BUTTON - INSET wrapper → RAISED button
    ───────────────────────────────────────────────────────────────────────────── */
 
-.submitButton {
+.buttonWrapper {
+  padding: 4px;
+  border-radius: 28px;
+  background: var(--marble-base, #d5d8dc);
+  box-shadow: var(--inset-1, inset 2px 2px 4px rgba(147, 157, 170, 0.55), inset -2px -2px 4px rgba(255, 255, 255, 0.95));
+  margin-top: var(--sentinel-space-2);
+}
+
+.pillFrameButton {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--sentinel-space-2);
-  margin-top: var(--sentinel-space-2);
+  gap: 10px;
+  padding: 14px 24px;
+  background: var(--marble-base, #d5d8dc);
+  border-radius: 24px;
+  border: none;
+  cursor: pointer;
+  font-family: var(--sentinel-font-primary, 'DM Sans', sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+
+  /* RAISED button inside INSET wrapper */
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.8),
+    inset 0 0 0 2px rgba(168, 172, 179, 0.25),
+    2px 2px 4px rgba(147, 157, 170, 0.55),
+    -2px -2px 4px rgba(255, 255, 255, 0.95);
+
+  /* Stone Marble INSET typography - disabled state */
+  color: var(--marble-dark, #c8ccd1);
+  text-shadow:
+    1px 1px 0px rgba(255, 255, 255, 0.85),
+    -1px -1px 0px rgba(130, 140, 155, 0.65);
+
+  transition: all 200ms ease;
+}
+
+/* ENABLED state - subtle teal to indicate clickable */
+.pillFrameButton:not(:disabled) {
+  color: var(--sentinel-accent-primary, #4a9a9c);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.85),
+    inset 0 0 0 2px rgba(74, 154, 156, 0.15),
+    2px 2px 4px rgba(147, 157, 170, 0.55),
+    -2px -2px 4px rgba(255, 255, 255, 0.95);
+}
+
+/* HOVER state - teal background glow */
+.pillFrameButton:hover:not(:disabled) {
+  background: linear-gradient(135deg, rgba(74, 154, 156, 0.08) 0%, rgba(74, 154, 156, 0.04) 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.9),
+    inset 0 0 0 2px rgba(74, 154, 156, 0.25),
+    3px 3px 6px rgba(147, 157, 170, 0.6),
+    -3px -3px 6px rgba(255, 255, 255, 0.95),
+    0 0 12px rgba(74, 154, 156, 0.15);
+}
+
+.pillFrameButton:active:not(:disabled) {
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.7),
+    inset 0 0 0 2px rgba(168, 172, 179, 0.3),
+    1px 1px 2px rgba(147, 157, 170, 0.5),
+    -1px -1px 2px rgba(255, 255, 255, 0.9);
+}
+
+.pillFrameButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Icon circle - INSET */
+.buttonIconCircle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--marble-base, #d5d8dc);
+  box-shadow:
+    inset 1px 1px 3px rgba(147, 157, 170, 0.55),
+    inset -1px -1px 3px rgba(255, 255, 255, 0.95);
+}
+
+/* Icon - RAISED effect via filter */
+.buttonIcon {
+  color: inherit;
+  filter:
+    drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9))
+    drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4));
 }
 
 .spinner {
@@ -172,12 +305,17 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .hint {
-  font-family: var(--sentinel-font-numeric);
-  font-size: var(--sentinel-text-xs);
-  color: var(--sentinel-text-tertiary, #8896a6);
-  letter-spacing: var(--sentinel-tracking-led);
+  font-family: var(--sentinel-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 11px;
   text-align: center;
   margin: 0;
+  letter-spacing: 0.02em;
+
+  /* Stone Marble INSET typography - very subtle */
+  color: var(--marble-dark, #c8ccd1);
+  text-shadow:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.6),
+    -0.5px -0.5px 0px rgba(130, 140, 155, 0.35);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────

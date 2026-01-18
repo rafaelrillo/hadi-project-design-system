@@ -359,76 +359,14 @@ export function DashboardPage() {
           </div>
         </div>
 
-        {/* Pill Frame RAISED Button */}
+        {/* RAISED Button (standalone) */}
         <button
           onClick={() => navigate('/app/dashboard/portfolio')}
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '8px',
-            padding: '12px 24px',
-            background: 'var(--marble-base)',
-            borderRadius: '24px',
-            border: 'none',
-            boxShadow: `
-              inset 0 0 0 1px var(--shadow-light),
-              inset 0 0 0 2px rgba(168, 172, 179, 0.3),
-              4px 4px 8px var(--shadow-dark),
-              -4px -4px 8px var(--shadow-light)
-            `,
-            cursor: 'pointer',
-            fontFamily: 'var(--sentinel-font-primary)',
-            fontSize: '13px',
-            fontWeight: 600,
-            letterSpacing: '0.05em',
-            color: 'var(--marble-dark)',
-            textShadow: '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(130, 140, 155, 0.65)',
-            transition: 'all 150ms ease',
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.boxShadow = 'inset 0 0 0 1px var(--shadow-light), inset 0 0 0 2px rgba(168, 172, 179, 0.3), 6px 6px 12px var(--shadow-dark), -6px -6px 12px var(--shadow-light)';
-            e.currentTarget.style.color = 'var(--sentinel-accent-primary)';
-            const icon = e.currentTarget.querySelector('svg');
-            if (icon) icon.style.color = 'var(--sentinel-accent-primary)';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.boxShadow = 'inset 0 0 0 1px var(--shadow-light), inset 0 0 0 2px rgba(168, 172, 179, 0.3), 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light)';
-            e.currentTarget.style.textShadow = '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(130, 140, 155, 0.65)';
-            e.currentTarget.style.color = 'var(--marble-dark)';
-            const icon = e.currentTarget.querySelector('svg');
-            if (icon) icon.style.color = 'var(--marble-dark)';
-          }}
-          onMouseDown={(e) => {
-            e.currentTarget.style.boxShadow = 'inset 2px 2px 4px var(--shadow-dark), inset -2px -2px 4px var(--shadow-light)';
-            e.currentTarget.style.textShadow = '-1px -1px 0px rgba(255, 255, 255, 0.95), 1px 1px 0px rgba(147, 157, 170, 0.55)';
-          }}
-          onMouseUp={(e) => {
-            e.currentTarget.style.boxShadow = 'inset 0 0 0 1px var(--shadow-light), inset 0 0 0 2px rgba(168, 172, 179, 0.3), 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light)';
-            e.currentTarget.style.textShadow = '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(130, 140, 155, 0.65)';
-          }}
+          className={styles.raisedButton}
         >
           Portfolio
-          <span
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              width: '22px',
-              height: '22px',
-              borderRadius: '50%',
-              background: 'var(--marble-base)',
-              boxShadow: 'inset 1px 1px 2px var(--shadow-dark), inset -1px -1px 2px var(--shadow-light)',
-            }}
-          >
-            <Briefcase
-              size={12}
-              style={{
-                color: 'inherit',
-                filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))',
-                transition: 'color 150ms ease',
-              }}
-            />
+          <span className={styles.buttonIconCircle}>
+            <Briefcase size={12} className={styles.buttonIcon} />
           </span>
         </button>
       </div>
@@ -461,85 +399,15 @@ export function DashboardPage() {
               </span>
               Recommendations
             </h3>
-            {/* Contenedor INSET (jerarquía: Card RAISED → Botón INSET) */}
-            <div
-              style={{
-                padding: '4px',
-                borderRadius: '24px',
-                background: 'var(--marble-base)',
-                boxShadow: 'var(--inset-1)',
-              }}
-            >
-              {/* Pill Frame RAISED interior */}
+            {/* Pill Frame INSET → RAISED Button */}
+            <div className={styles.pillFrameWrapperSm}>
               <button
                 onClick={() => navigate('/app/dashboard/recommendations')}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '8px',
-                  padding: '8px 16px',
-                  background: 'var(--marble-base)',
-                  borderRadius: '20px',
-                  border: 'none',
-                  boxShadow: `
-                    inset 0 0 0 1px var(--shadow-light),
-                    inset 0 0 0 2px rgba(168, 172, 179, 0.3),
-                    1px 1px 2px var(--shadow-dark),
-                    -1px -1px 2px var(--shadow-light)
-                  `,
-                  cursor: 'pointer',
-                  fontFamily: 'var(--sentinel-font-primary)',
-                  fontSize: '12px',
-                  fontWeight: 600,
-                  letterSpacing: '0.05em',
-                  color: 'var(--marble-dark)',
-                  textShadow: '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(130, 140, 155, 0.65)',
-                  transition: 'all 150ms ease',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.boxShadow = 'inset 0 0 0 1px var(--shadow-light), inset 0 0 0 2px rgba(168, 172, 179, 0.3), 2px 2px 4px var(--shadow-dark), -2px -2px 4px var(--shadow-light)';
-                  e.currentTarget.style.color = 'var(--sentinel-accent-primary)';
-                  const icon = e.currentTarget.querySelector('svg');
-                  if (icon) icon.style.color = 'var(--sentinel-accent-primary)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.boxShadow = 'inset 0 0 0 1px var(--shadow-light), inset 0 0 0 2px rgba(168, 172, 179, 0.3), 1px 1px 2px var(--shadow-dark), -1px -1px 2px var(--shadow-light)';
-                  e.currentTarget.style.textShadow = '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(130, 140, 155, 0.65)';
-                  e.currentTarget.style.color = 'var(--marble-dark)';
-                  const icon = e.currentTarget.querySelector('svg');
-                  if (icon) icon.style.color = 'var(--marble-dark)';
-                }}
-                onMouseDown={(e) => {
-                  e.currentTarget.style.boxShadow = 'inset 2px 2px 4px var(--shadow-dark), inset -2px -2px 4px var(--shadow-light)';
-                  e.currentTarget.style.textShadow = '-1px -1px 0px rgba(255, 255, 255, 0.95), 1px 1px 0px rgba(147, 157, 170, 0.55)';
-                }}
-                onMouseUp={(e) => {
-                  e.currentTarget.style.boxShadow = 'inset 0 0 0 1px var(--shadow-light), inset 0 0 0 2px rgba(168, 172, 179, 0.3), 1px 1px 2px var(--shadow-dark), -1px -1px 2px var(--shadow-light)';
-                  e.currentTarget.style.textShadow = '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(130, 140, 155, 0.65)';
-                }}
+                className={styles.pillFrameButtonSm}
               >
                 View All
-                <span
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    width: '20px',
-                    height: '20px',
-                    borderRadius: '50%',
-                    background: 'var(--marble-base)',
-                    boxShadow: 'inset 1px 1px 2px var(--shadow-dark), inset -1px -1px 2px var(--shadow-light)',
-                  }}
-                >
-                  <ArrowRight
-                    size={11}
-                    style={{
-                      color: 'inherit',
-                      filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))',
-                      transition: 'color 150ms ease',
-                    }}
-                  />
+                <span className={styles.buttonIconCircleSm}>
+                  <ArrowRight size={11} className={styles.buttonIcon} />
                 </span>
               </button>
             </div>
@@ -620,85 +488,15 @@ export function DashboardPage() {
               </span>
               Latest News
             </h3>
-            {/* Contenedor INSET (jerarquía: Card RAISED → Botón INSET) */}
-            <div
-              style={{
-                padding: '4px',
-                borderRadius: '24px',
-                background: 'var(--marble-base)',
-                boxShadow: 'var(--inset-1)',
-              }}
-            >
-              {/* Pill Frame RAISED interior */}
+            {/* Pill Frame INSET → RAISED Button */}
+            <div className={styles.pillFrameWrapperSm}>
               <button
                 onClick={() => navigate('/app/dashboard/news')}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '8px',
-                  padding: '8px 16px',
-                  background: 'var(--marble-base)',
-                  borderRadius: '20px',
-                  border: 'none',
-                  boxShadow: `
-                    inset 0 0 0 1px var(--shadow-light),
-                    inset 0 0 0 2px rgba(168, 172, 179, 0.3),
-                    1px 1px 2px var(--shadow-dark),
-                    -1px -1px 2px var(--shadow-light)
-                  `,
-                  cursor: 'pointer',
-                  fontFamily: 'var(--sentinel-font-primary)',
-                  fontSize: '12px',
-                  fontWeight: 600,
-                  letterSpacing: '0.05em',
-                  color: 'var(--marble-dark)',
-                  textShadow: '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(130, 140, 155, 0.65)',
-                  transition: 'all 150ms ease',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.boxShadow = 'inset 0 0 0 1px var(--shadow-light), inset 0 0 0 2px rgba(168, 172, 179, 0.3), 2px 2px 4px var(--shadow-dark), -2px -2px 4px var(--shadow-light)';
-                  e.currentTarget.style.color = 'var(--sentinel-accent-primary)';
-                  const icon = e.currentTarget.querySelector('svg');
-                  if (icon) icon.style.color = 'var(--sentinel-accent-primary)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.boxShadow = 'inset 0 0 0 1px var(--shadow-light), inset 0 0 0 2px rgba(168, 172, 179, 0.3), 1px 1px 2px var(--shadow-dark), -1px -1px 2px var(--shadow-light)';
-                  e.currentTarget.style.textShadow = '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(130, 140, 155, 0.65)';
-                  e.currentTarget.style.color = 'var(--marble-dark)';
-                  const icon = e.currentTarget.querySelector('svg');
-                  if (icon) icon.style.color = 'var(--marble-dark)';
-                }}
-                onMouseDown={(e) => {
-                  e.currentTarget.style.boxShadow = 'inset 2px 2px 4px var(--shadow-dark), inset -2px -2px 4px var(--shadow-light)';
-                  e.currentTarget.style.textShadow = '-1px -1px 0px rgba(255, 255, 255, 0.95), 1px 1px 0px rgba(147, 157, 170, 0.55)';
-                }}
-                onMouseUp={(e) => {
-                  e.currentTarget.style.boxShadow = 'inset 0 0 0 1px var(--shadow-light), inset 0 0 0 2px rgba(168, 172, 179, 0.3), 1px 1px 2px var(--shadow-dark), -1px -1px 2px var(--shadow-light)';
-                  e.currentTarget.style.textShadow = '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(130, 140, 155, 0.65)';
-                }}
+                className={styles.pillFrameButtonSm}
               >
                 View All
-                <span
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    width: '20px',
-                    height: '20px',
-                    borderRadius: '50%',
-                    background: 'var(--marble-base)',
-                    boxShadow: 'inset 1px 1px 2px var(--shadow-dark), inset -1px -1px 2px var(--shadow-light)',
-                  }}
-                >
-                  <ArrowRight
-                    size={11}
-                    style={{
-                      color: 'inherit',
-                      filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))',
-                      transition: 'color 150ms ease',
-                    }}
-                  />
+                <span className={styles.buttonIconCircleSm}>
+                  <ArrowRight size={11} className={styles.buttonIcon} />
                 </span>
               </button>
             </div>

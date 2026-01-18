@@ -1,12 +1,11 @@
 /* Path: src/components/atoms/Input/InputText.module.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   SENTINEL DESIGN SYSTEM v3.2 - InputText Component
+   SENTINEL DESIGN SYSTEM v3.3 - InputText Component
 
-   LIGHT NEUMORPHISM - Soft sculpted inputs on light surface
-   - Light inset backgrounds for pressed/sunken effect
-   - Dual-tone shadows (light highlight + dark shadow)
-   - Subtle accent glows on focus
-   - Clean, readable dark text on light backgrounds
+   STONE MARBLE NEUMORPHISM - INSET (Level 2)
+   - Uses --marble-dark background for sunken appearance
+   - Uses --inset-* shadow variables for consistent depth
+   - Follows hierarchy: RAISED → INSET → GLASS
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -35,7 +34,7 @@
   font-size: 14px;
   letter-spacing: 0;
   padding: 14px 16px;
-  background: rgba(220, 225, 230, 0.7);
+  background: var(--marble-dark);
   border: 1px solid rgba(163, 177, 198, 0.3);
   border-radius: var(--sentinel-radius-input);
   color: var(--sentinel-text-primary);
@@ -43,10 +42,8 @@
   box-sizing: border-box;
   outline: none;
 
-  /* Light neumorphic inset shadow - pressed into surface */
-  box-shadow:
-    inset 3px 3px 6px rgba(163, 177, 198, 0.5),
-    inset -3px -3px 6px rgba(255, 255, 255, 0.8);
+  /* Stone Marble INSET shadow - sunken into surface */
+  box-shadow: var(--inset-2);
 }
 
 .input::placeholder {
@@ -55,29 +52,26 @@
 
 .input:hover:not(:disabled):not(:focus) {
   border-color: rgba(163, 177, 198, 0.5);
-  background: rgba(215, 220, 225, 0.75);
+  background: var(--marble-dark);
 }
 
 .input:focus {
   border-color: rgba(74, 154, 156, 0.6);
-  background: rgba(220, 225, 230, 0.8);
+  background: var(--marble-base);
 
-  /* Pressed shadow + accent focus glow */
+  /* INSET shadow + accent focus glow */
   box-shadow:
-    inset 3px 3px 6px rgba(163, 177, 198, 0.5),
-    inset -3px -3px 6px rgba(255, 255, 255, 0.8),
+    var(--inset-3),
     0 0 0 3px rgba(74, 154, 156, 0.15),
     0 0 12px rgba(74, 154, 156, 0.1);
 }
 
 .input:disabled {
-  background: rgba(220, 225, 230, 0.4);
+  background: var(--marble-deeper);
   border-color: rgba(163, 177, 198, 0.2);
   color: var(--sentinel-text-disabled);
   cursor: not-allowed;
-  box-shadow:
-    inset 2px 2px 4px rgba(163, 177, 198, 0.3),
-    inset -2px -2px 4px rgba(255, 255, 255, 0.5);
+  box-shadow: var(--inset-1);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -87,8 +81,7 @@
 .inputError {
   border-color: rgba(184, 92, 92, 0.5);
   box-shadow:
-    inset 3px 3px 6px rgba(163, 177, 198, 0.5),
-    inset -3px -3px 6px rgba(255, 255, 255, 0.8),
+    var(--inset-2),
     inset 0 0 8px rgba(184, 92, 92, 0.08);
 }
 
@@ -99,8 +92,7 @@
 .inputError:focus {
   border-color: var(--sentinel-status-negative);
   box-shadow:
-    inset 3px 3px 6px rgba(163, 177, 198, 0.5),
-    inset -3px -3px 6px rgba(255, 255, 255, 0.8),
+    var(--inset-3),
     0 0 0 3px rgba(184, 92, 92, 0.15),
     0 0 12px rgba(184, 92, 92, 0.1);
 }
@@ -112,8 +104,7 @@
 .inputSuccess {
   border-color: rgba(74, 154, 124, 0.5);
   box-shadow:
-    inset 3px 3px 6px rgba(163, 177, 198, 0.5),
-    inset -3px -3px 6px rgba(255, 255, 255, 0.8),
+    var(--inset-2),
     inset 0 0 8px rgba(74, 154, 124, 0.08);
 }
 
@@ -124,8 +115,7 @@
 .inputSuccess:focus {
   border-color: var(--sentinel-status-positive);
   box-shadow:
-    inset 3px 3px 6px rgba(163, 177, 198, 0.5),
-    inset -3px -3px 6px rgba(255, 255, 255, 0.8),
+    var(--inset-3),
     0 0 0 3px rgba(74, 154, 124, 0.15),
     0 0 12px rgba(74, 154, 124, 0.1);
 }
@@ -143,6 +133,10 @@
   left: 14px;
   top: 50%;
   transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
   color: var(--sentinel-text-muted);
   pointer-events: none;
   transition: color 0.2s ease;
@@ -179,9 +173,7 @@
   font-size: 13px;
   padding: 10px 14px;
   border-radius: var(--sentinel-radius-sm);
-  box-shadow:
-    inset 2px 2px 4px rgba(163, 177, 198, 0.5),
-    inset -2px -2px 4px rgba(255, 255, 255, 0.8);
+  box-shadow: var(--inset-1);
 }
 
 .inputSm.inputWithIcon {
@@ -193,9 +185,7 @@
   font-size: 15px;
   padding: 16px 18px;
   border-radius: var(--sentinel-radius-md);
-  box-shadow:
-    inset 4px 4px 8px rgba(163, 177, 198, 0.5),
-    inset -4px -4px 8px rgba(255, 255, 255, 0.8);
+  box-shadow: var(--inset-3);
 }
 
 .inputLg.inputWithIcon {

@@ -1,13 +1,12 @@
 // Path: src/pages/app/LoginPage/LoginPage.tsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Loader2 } from "lucide-react";
+import { Loader2, ChevronRight, Mail, Lock } from "lucide-react";
 import { useAuthStore } from "../../../store/authStore";
 import { AtmosphericBackground } from "../../../components/atoms/sentinel/AtmosphericBackground";
-import { DepthLayer } from "../../../components/atoms/sentinel/DepthLayer";
 import { DataReveal } from "../../../components/atoms/sentinel/DataReveal";
 import { InputText } from "../../../components/atoms/Input";
-import { Button } from "../../../components/atoms/Button";
+import { FingEmblem } from "../../../components/atoms/FingEmblem";
 import styles from "./LoginPage.module.css";
 
 export function LoginPage() {
@@ -34,70 +33,18 @@ export function LoginPage() {
 
       <div className={styles.content}>
         <DataReveal delay={0} direction="up">
-          <div className={styles.logoContainer}>
-            {/* Animated SENTINEL Logo */}
-            <svg
-              className={styles.logo}
-              viewBox="0 0 120 120"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              {/* Outer ring */}
-              <circle
-                cx="60"
-                cy="60"
-                r="55"
-                stroke="var(--sentinel-accent-primary)"
-                strokeWidth="1"
-                strokeOpacity="0.3"
-              />
-              {/* Middle ring */}
-              <circle
-                cx="60"
-                cy="60"
-                r="42"
-                stroke="var(--sentinel-accent-primary)"
-                strokeWidth="1.5"
-                strokeOpacity="0.5"
-              />
-              {/* Inner ring */}
-              <circle
-                cx="60"
-                cy="60"
-                r="28"
-                stroke="var(--sentinel-accent-primary)"
-                strokeWidth="2"
-                strokeOpacity="0.8"
-              />
-              {/* Center dot */}
-              <circle
-                cx="60"
-                cy="60"
-                r="8"
-                fill="var(--sentinel-accent-primary)"
-              />
-              {/* Scanning line */}
-              <line
-                x1="60"
-                y1="5"
-                x2="60"
-                y2="60"
-                stroke="var(--sentinel-accent-primary)"
-                strokeWidth="2"
-                strokeLinecap="round"
-                className={styles.scanLine}
-              />
-            </svg>
+          <div className={styles.brandLockup}>
+            {/* FING Emblem with framed variant (outer raised + inner inset) */}
+            <FingEmblem size={140} animation="rippleSlow" variant="framed" />
+            <div className={styles.brandText}>
+              <h1 className={styles.title}>fing</h1>
+              <p className={styles.subtitle}>Quiet intelligence</p>
+            </div>
           </div>
         </DataReveal>
 
-        <DataReveal delay={200} direction="up">
-          <h1 className={styles.title}>SENTINEL</h1>
-          <p className={styles.subtitle}>INVESTMENT ANALYSIS SYSTEM</p>
-        </DataReveal>
-
         <DataReveal delay={400} direction="up">
-          <DepthLayer depth={2}>
+          <div className={styles.formContainer}>
             <form className={styles.form} onSubmit={handleSubmit}>
               <div className={styles.inputGroup}>
                 <label className={styles.label} htmlFor="email">
@@ -105,10 +52,11 @@ export function LoginPage() {
                 </label>
                 <InputText
                   type="email"
-                  placeholder="analyst@sentinel.io"
+                  placeholder="analyst@fing.io"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   disabled={isLoading}
+                  icon={<Mail size={18} />}
                   ariaLabel="Email address"
                 />
               </div>
@@ -123,29 +71,37 @@ export function LoginPage() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   disabled={isLoading}
+                  icon={<Lock size={18} />}
                   ariaLabel="Password"
                 />
               </div>
 
               {error && <p className={styles.error}>{error}</p>}
 
-              <Button
-                type="submit"
-                variant="primary"
-                disabled={isLoading || !email || !password}
-                className={styles.submitButton}
-              >
-                {isLoading ? (
-                  <>
-                    <Loader2 className={styles.spinner} size={18} />
-                    Accessing...
-                  </>
-                ) : (
-                  "Access System"
-                )}
-              </Button>
+              {/* Pill Frame INSET → RAISED button */}
+              <div className={styles.buttonWrapper}>
+                <button
+                  type="submit"
+                  disabled={isLoading || !email || !password}
+                  className={styles.pillFrameButton}
+                >
+                  {isLoading ? (
+                    <>
+                      <Loader2 className={styles.spinner} size={16} />
+                      <span>Accessing...</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>Access System</span>
+                      <span className={styles.buttonIconCircle}>
+                        <ChevronRight size={14} className={styles.buttonIcon} />
+                      </span>
+                    </>
+                  )}
+                </button>
+              </div>
             </form>
-          </DepthLayer>
+          </div>
         </DataReveal>
 
         <DataReveal delay={600} direction="up">
