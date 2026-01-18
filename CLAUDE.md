@@ -2,7 +2,7 @@
 
 ## Descripcion del Proyecto
 
-**SENTINEL** es una plataforma de analisis de inversiones y recomendaciones del mercado de valores. El design system utiliza **Glass-Neumorphism**: una combinacion de superficies neumorficas claras con elementos de cristal (glassmorphism) flotando sobre ellas.
+**SENTINEL** es una plataforma de analisis de inversiones y recomendaciones del mercado de valores. El design system utiliza **Stone Marble Neumorphism**: superficies con aspecto de marmol pulido, usando una jerarquia estricta de elevaciones e insets.
 
 **Branch actual**: `redesign/stock-market-ui`
 
@@ -25,7 +25,7 @@
 | Lenguaje | TypeScript | Strict mode | |
 | Build | Vite | | Path aliases configurados |
 | State | Zustand | | 6 stores: auth, market, portfolio, wallet, news, recommendations |
-| Charts | **ECharts** | 5.6.0 | 24 tipos de gráficos + tema SENTINEL |
+| Charts | **ECharts** | 5.6.0 | 24 tipos de graficos + tema SENTINEL |
 | Animaciones | Framer Motion | | Transiciones suaves |
 | Iconos | Lucide React | | |
 | Routing | React Router DOM | v6 | Lazy loading por ruta |
@@ -34,51 +34,116 @@
 
 ---
 
-## Sistema de Diseño - Glass-Neumorphism
+## Sistema de Diseno - Stone Marble Neumorphism
 
-### Filosofia de Diseño
+### Filosofia de Diseno
 
-El design system combina dos estilos visuales complementarios:
+El design system se basa en una estetica de **marmol pulido** con una jerarquia visual estricta:
 
-1. **Neumorphism (Base/Container)**: Superficies que parecen "extruidas" del fondo con sombras suaves
-2. **Glassmorphism (Items/Elements)**: Elementos de cristal semitransparente flotando sobre la superficie
+1. **Fondo Base**: Superficie de marmol fria (#d5d8dc)
+2. **Raised (Elevado)**: Elementos que "flotan" sobre la superficie con sombras externas
+3. **Inset (Hundido)**: Cavidades talladas en la superficie con sombras internas
+4. **Glass**: Elementos semitransparentes flotando sobre insets
 
-### Paleta de Colores - Light Neumorphism
+### Jerarquia Stone Marble (REGLA CRITICA)
+
+```
+FONDO (#d5d8dc) → RAISED → INSET → GLASS
+```
+
+**Reglas de Anidamiento:**
+- NUNCA anidar mismo nivel (RAISED dentro de RAISED)
+- NUNCA saltar niveles (FONDO directo a GLASS)
+- SIEMPRE alternar: RAISED contiene INSET, INSET contiene GLASS
+- Los containers principales son RAISED
+- Las secciones internas son INSET
+- Los items interactivos son GLASS
+
+**Regla de Tipografia Neumórfica (CRITICA):**
+- Contenedor **RAISED** → Tipografía **INSET** (cavada/debossed/engraved)
+- Contenedor **INSET** → Tipografía **RAISED** (elevada/embossed)
+
+```css
+/* Tipografia en contenedor RAISED - usar efecto INSET */
+.titleInRaisedContainer {
+  color: var(--marble-dark);
+  text-shadow:
+    0.75px 0.75px 0px rgba(255, 255, 255, 0.7),
+    -0.75px -0.75px 0px rgba(130, 140, 155, 0.5);
+}
+
+/* Tipografia en contenedor INSET - usar efecto RAISED */
+.titleInInsetContainer {
+  color: var(--marble-base);
+  text-shadow:
+    -1.5px -1.5px 0px rgba(255, 255, 255, 0.95),
+    1.5px 1.5px 0px rgba(147, 157, 170, 0.55);
+}
+```
+
+### Paleta de Colores - Stone Marble
 
 ```css
 /* ═══════════════════════════════════════════════════════════════════════════
-   NEUMORPHISM BASE - Superficie clara extruida
+   MARBLE BASE - Superficie de marmol frio
    ═══════════════════════════════════════════════════════════════════════════ */
 
---neu-base: #e0e5ec;              /* Fondo principal neumórfico */
---neu-shadow-dark: #a3b1c6;       /* Sombra oscura (abajo-derecha) */
---neu-shadow-light: #ffffff;      /* Sombra clara (arriba-izquierda) */
+--marble-base: #d5d8dc;           /* Fondo principal - marmol pulido */
+--marble-light: #dfe2e6;          /* Variante clara (+5% luminosidad) */
+--marble-dark: #c8cbd0;           /* Variante oscura (-5% luminosidad) */
+--marble-deeper: #bbbec3;         /* Para profundidad extra */
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   GLASSMORPHISM - Elementos de cristal
+   SHADOW COLORS - Sombras del marmol
    ═══════════════════════════════════════════════════════════════════════════ */
 
---glass-bg: rgba(255, 255, 255, 0.25);           /* Fondo cristal base */
---glass-bg-hover: rgba(255, 255, 255, 0.45);     /* Fondo cristal hover */
---glass-bg-active: rgba(255, 255, 255, 0.55);    /* Fondo cristal activo */
---glass-border: rgba(255, 255, 255, 0.6);        /* Borde cristal principal */
---glass-border-subtle: rgba(255, 255, 255, 0.3); /* Borde cristal sutil */
+--shadow-light: #ffffff;          /* Highlight (borde superior-izquierdo) */
+--shadow-dark: #a8acb3;           /* Sombra (borde inferior-derecho) */
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   TEXT COLORS - Sobre fondo claro
+   RAISED PRESETS - Elementos elevados (5 niveles)
    ═══════════════════════════════════════════════════════════════════════════ */
 
---text-primary: #2d3748;      /* Texto principal oscuro */
---text-secondary: #5a6578;    /* Texto secundario */
---text-muted: #8896a6;        /* Texto deshabilitado/hints */
+--raised-1: 2px 2px 4px var(--shadow-dark), -2px -2px 4px var(--shadow-light);
+--raised-2: 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
+--raised-3: 6px 6px 12px var(--shadow-dark), -6px -6px 12px var(--shadow-light);
+--raised-4: 8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light);
+--raised-5: 10px 10px 20px var(--shadow-dark), -10px -10px 20px var(--shadow-light);
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   INSET PRESETS - Elementos hundidos (5 niveles)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+--inset-1: inset 2px 2px 4px var(--shadow-dark), inset -2px -2px 4px var(--shadow-light);
+--inset-2: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
+--inset-3: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light);
+--inset-4: inset 5px 5px 10px var(--shadow-dark), inset -5px -5px 10px var(--shadow-light);
+--inset-5: inset 6px 6px 12px var(--shadow-dark), inset -6px -6px 12px var(--shadow-light);
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   GLASS - Elementos semitransparentes (para items dentro de insets)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+--glass-bg: rgba(255, 255, 255, 0.25);
+--glass-bg-hover: rgba(255, 255, 255, 0.4);
+--glass-bg-active: rgba(255, 255, 255, 0.55);
+--glass-border: rgba(255, 255, 255, 0.5);
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   TEXT COLORS - Sobre fondo marmol
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+--text-primary: #2d3748;          /* Texto principal oscuro */
+--text-secondary: #5a6578;        /* Texto secundario */
+--text-muted: #8896a6;            /* Texto deshabilitado/hints */
 
 /* ═══════════════════════════════════════════════════════════════════════════
    ACCENT COLORS
    ═══════════════════════════════════════════════════════════════════════════ */
 
---sentinel-accent-primary: #4a9a9c;              /* Teal institucional */
+--sentinel-accent-primary: #4a9a9c;   /* Teal institucional */
 --sentinel-accent-secondary: #5ba3a5;
---accent-glow: rgba(74, 154, 156, 0.4);          /* Glow para focus states */
+--accent-glow: rgba(74, 154, 156, 0.4);
 
 /* ═══════════════════════════════════════════════════════════════════════════
    STATUS COLORS (Conservadores)
@@ -90,58 +155,40 @@ El design system combina dos estilos visuales complementarios:
 --sentinel-status-info: #5a8fb8;       /* Azul neutral */
 ```
 
-### Sombras Neumórficas
+### Uso de Sombras
 
 ```css
-/* Sombra elevada (elemento "flotando" sobre superficie) */
-.neu-panel {
-  box-shadow:
-    8px 8px 20px var(--neu-shadow-dark),
-    -8px -8px 20px var(--neu-shadow-light);
+/* Container principal (RAISED) */
+.panel {
+  background: var(--marble-base);
+  box-shadow: var(--raised-3);
+  border-radius: 20px;
 }
 
-/* Sombra inset (elemento "hundido" en superficie) */
-.neu-inset {
-  box-shadow:
-    inset 5px 5px 15px var(--neu-shadow-dark),
-    inset -5px -5px 15px var(--neu-shadow-light);
+/* Seccion interna (INSET dentro de RAISED) */
+.section {
+  background: var(--marble-base);
+  box-shadow: var(--inset-2);
+  border-radius: 15px;
 }
-```
 
-### Estilos Glassmorphism
-
-```css
-/* Item de cristal básico */
-.glass-item {
+/* Item interactivo (GLASS dentro de INSET) */
+.item {
   background: var(--glass-bg);
   backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
   border: 1px solid var(--glass-border);
   border-radius: 12px;
 }
 
-/* Item de cristal hover */
-.glass-item:hover {
+.item:hover {
   background: var(--glass-bg-hover);
-  box-shadow:
-    0 2px 8px rgba(0, 0, 0, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
-}
-
-/* Item de cristal activo */
-.glass-item-active {
-  background: var(--glass-bg-active);
-  backdrop-filter: blur(12px);
-  box-shadow:
-    0 4px 12px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 ```
 
 ### Border Radius Estandar
 
 ```css
---border-radius-sm: 8px;      /* Elementos pequeños */
+--border-radius-sm: 8px;      /* Elementos pequenos */
 --border-radius-md: 12px;     /* Items, inputs */
 --border-radius-lg: 15px;     /* Cards, sections */
 --border-radius-xl: 20px;     /* Containers, panels */
@@ -152,22 +199,21 @@ El design system combina dos estilos visuales complementarios:
 ```css
 --transition-fast: 150ms ease;
 --transition-normal: 200ms ease;
---transition-shadow: 50ms linear;  /* Para sombras dinámicas */
+--transition-shadow: 50ms linear;  /* Para sombras dinamicas */
 ```
 
 ---
 
-## Light Engine - Sombras Dinámicas
+## Light Engine - Sombras Dinamicas
 
 ### LightEngineContext
 
-Sistema de iluminación dinámica que calcula sombras basadas en un ángulo de luz global.
+Sistema de iluminacion dinamica que calcula sombras basadas en un angulo de luz global.
 
 ```tsx
-// Importar el contexto
 import { LightEngineProvider, useLightEngine } from '@/contexts/LightEngineContext';
 
-// Envolver la app o sección
+// Envolver la app o seccion
 <LightEngineProvider initialAnimating={true} initialSpeed={0.3}>
   <MyComponent />
 </LightEngineProvider>
@@ -187,32 +233,7 @@ function MyComponent() {
 }
 ```
 
-### Cálculo de Sombras
-
-```tsx
-// Fórmula para calcular offsets basados en ángulo de luz
-const shadowOffsets = useMemo(() => {
-  const shadowAngle = (lightAngle + 180) * (Math.PI / 180);
-  return {
-    x: Math.cos(shadowAngle),
-    y: Math.sin(shadowAngle)
-  };
-}, [lightAngle]);
-
-// Función para generar sombra neumórfica elevada
-const getNeuPanelShadow = (distance: number, blur: number): string => {
-  const { x, y } = shadowOffsets;
-  return `${-x * distance}px ${-y * distance}px ${blur}px #ffffff, ${x * distance}px ${y * distance}px ${blur}px #a3b1c6`;
-};
-
-// Función para generar sombra neumórfica hundida
-const getNeuInsetShadow = (distance: number, blur: number): string => {
-  const { x, y } = shadowOffsets;
-  return `inset ${x * distance}px ${y * distance}px ${blur}px #a3b1c6, inset ${-x * distance}px ${-y * distance}px ${blur}px #ffffff`;
-};
-```
-
-### Patrón de Uso en Showcases
+### Patron de Uso en Showcases
 
 ```tsx
 function MyShowcaseContent() {
@@ -223,26 +244,27 @@ function MyShowcaseContent() {
     return { x: Math.cos(shadowAngle), y: Math.sin(shadowAngle) };
   }, [lightAngle]);
 
-  const LIGHT = {
-    base: '#e0e5ec',
-    shadowDark: 'hsl(220 15% 72%)',
-    shadowLight: 'hsl(0 0% 100%)',
+  const MARBLE = {
+    base: '#d5d8dc',
+    shadowDark: '#a8acb3',
+    shadowLight: '#ffffff',
   };
 
-  const getNeuPanelShadow = (distance: number, blur: number): string => {
+  const getRaisedShadow = (distance: number, blur: number): string => {
     const { x, y } = shadowOffsets;
-    return `${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}`;
+    return `${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}, ${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}`;
   };
 
-  // Estilos con sombras dinámicas
-  const panelStyles: React.CSSProperties = {
-    background: LIGHT.base,
-    borderRadius: '15px',
-    boxShadow: getNeuPanelShadow(8, 24),
-    transition: 'box-shadow 50ms linear',
+  const getInsetShadow = (distance: number, blur: number): string => {
+    const { x, y } = shadowOffsets;
+    return `inset ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}`;
   };
 
-  return <div style={panelStyles}>Content</div>;
+  return (
+    <div style={{ background: MARBLE.base, boxShadow: getRaisedShadow(8, 16) }}>
+      Content
+    </div>
+  );
 }
 
 export function MyShowcase() {
@@ -258,15 +280,14 @@ export function MyShowcase() {
 
 ## Componentes Principales
 
-### Sidebar (Expanded Style)
+### Sidebar
 
-Combina icon rail oscuro + panel neumórfico con items de cristal.
+Container neumorfilo elevado con secciones inset y items glass.
 
 ```tsx
 import { Sidebar } from '@organisms/Sidebar';
 import type { SidebarSection } from '@organisms/Sidebar';
 
-// Secciones con items agrupados
 const sections: SidebarSection[] = [
   {
     title: 'Projects',
@@ -275,15 +296,8 @@ const sections: SidebarSection[] = [
       { icon: Library, label: 'Library' },
     ],
   },
-  {
-    title: 'Status',
-    items: [
-      { icon: CircleDot, label: 'New', badge: 5 },
-    ],
-  },
 ];
 
-// Usuario
 const user = {
   name: 'John Doe',
   email: 'john@example.com',
@@ -292,24 +306,22 @@ const user = {
 
 <Sidebar
   productLogo={<Logo />}
-  menuItems={railItems}          // Items para icon rail
-  sections={sections}            // Grupos para panel expandido
-  user={user}                    // Perfil de usuario
-  sidebarStyle="expanded"        // Nuevo estilo Glass-Neu
-  showIconRail={true}            // Mostrar barra de iconos
-  showExpandedPanel={true}       // Mostrar panel expandido
+  sections={sections}
+  user={user}
+  collapsed={false}           // true = modo iconos solamente
   onSearch={(v) => console.log(v)}
-  position="relative"
+  onUserClick={() => console.log('user clicked')}
 />
 ```
 
-### Estilos de Sidebar
+**Props:**
+- `collapsed`: boolean - Modo colapsado (solo iconos, 80px ancho)
+- `onUserClick`: callback cuando se hace click en el perfil de usuario
 
-| Style | Descripción |
-|-------|-------------|
-| `expanded` | **Nuevo**: Icon rail + panel neumórfico con items glass |
-| `dark` | Legacy: Sidebar oscuro |
-| `neuPanel` | Legacy: Sidebar neumórfico claro |
+**Dimensiones:**
+- Expanded: 280px
+- Collapsed: 80px
+- Border radius: 24px
 
 ---
 
@@ -318,18 +330,21 @@ const user = {
 ```
 src/
 ├── contexts/
-│   └── LightEngineContext.tsx   # Sistema de iluminación dinámica
+│   └── LightEngineContext.tsx   # Sistema de iluminacion dinamica
 ├── hooks/
-│   └── useDynamicShadows.ts     # Hook para sombras dinámicas
+│   └── useDynamicShadows.ts     # Hook para sombras dinamicas
 ├── components/
 │   ├── atoms/              # Componentes base
+│   │   └── sentinel/       # Componentes Stone Marble (InsetContainer, etc.)
 │   ├── molecules/          # Componentes compuestos
 │   ├── organisms/          # Secciones completas
-│   │   └── Sidebar/        # Sidebar con Glass-Neumorphism
-│   ├── charts/             # 24+ componentes ECharts
-│   └── animations/         # Componentes de animación
+│   │   └── Sidebar/        # Sidebar con Stone Marble
+│   ├── charts/             # ECharts components
+│   │   └── echarts/        # 24 tipos de graficos
+│   └── animations/         # Componentes de animacion
 ├── pages/
-│   └── [showcases]         # Documentación viva del design system
+│   └── styles/             # Showcases del design system
+│       └── StoneMarbleShowcase.tsx
 └── styles/
     └── theme.css           # Variables CSS globales
 ```
@@ -348,40 +363,40 @@ Atoms → Molecules → Organisms → Layouts → Pages
 // Path: src/components/atoms/Button/Button.tsx
 ```
 
-### CSS Modules + Variables Dinámicas
+### CSS Modules + Variables Dinamicas
 ```tsx
 import styles from './Component.module.css';
 
-// CSS estático en .module.css
-// Valores dinámicos (sombras) en style prop
+// CSS estatico en .module.css
+// Valores dinamicos (sombras) en style prop
 <div
   className={styles.container}
-  style={{ boxShadow: getNeuPanelShadow(8, 20) }}
+  style={{ boxShadow: getRaisedShadow(8, 16) }}
 >
 ```
 
 ---
 
-## Gráficos (ECharts)
+## Graficos (ECharts)
 
-### 24 Tipos de Gráficos
+### 24 Tipos de Graficos
 
-| Categoría | Gráficos |
+| Categoria | Graficos |
 |-----------|----------|
 | **Financieros** | CandlestickChart, LineChart, BarChart |
 | **Circulares** | PieChart, GaugeChart, SunburstChart |
-| **Comparación** | RadarChart, ParallelChart, BoxplotChart |
-| **Distribución** | TreeMap, HeatMap, CalendarChart |
+| **Comparacion** | RadarChart, ParallelChart, BoxplotChart |
+| **Distribucion** | TreeMap, HeatMap, CalendarChart |
 | **Flujo** | SankeyChart, FunnelChart, ThemeRiverChart |
 | **Relaciones** | GraphChart, ScatterChart, EffectScatterChart |
-| **Jerarquía** | TreeChart, TreeMap, SunburstChart |
+| **Jerarquia** | TreeChart, TreeMap, SunburstChart |
 | **Especiales** | PictorialBarChart |
 
 ### Tema SENTINEL
 
 Definido en `src/components/charts/echarts/sentinelTheme.ts`:
 - Paleta de 8 colores para series
-- Tooltip con estilo Glass-Neumorphism
+- Tooltip con estilo Stone Marble
 - Animaciones suaves (700ms, cubicOut)
 
 ---
@@ -420,14 +435,15 @@ npm run lint          # ESLint
 
 ```
 /showcase/styles/colors         → Paleta de colores
-/showcase/styles/typography     → Sistema tipográfico
+/showcase/styles/typography     → Sistema tipografico
 /showcase/styles/spacing        → Espaciado
 /showcase/styles/shadows        → Sombras y elevaciones
-/showcase/styles/icons          → Iconografía
-/showcase/atoms/*               → Componentes atómicos
+/showcase/styles/stone-marble   → Showcase Stone Marble
+/showcase/styles/icons          → Iconografia
+/showcase/atoms/*               → Componentes atomicos
 /showcase/molecules/*           → Componentes moleculares
 /showcase/organisms/*           → Organismos (Sidebar, Modal, etc.)
-/showcase/charts/*              → Gráficos ECharts
+/showcase/charts/*              → Graficos ECharts
 /showcase/animations/*          → Animaciones
 /showcase/sentinel/*            → Componentes SENTINEL
 ```
@@ -438,100 +454,74 @@ npm run lint          # ESLint
 
 ### DO (Hacer)
 
-1. **Usar Glass-Neumorphism**: Contenedores neumórficos + items de cristal
-2. **Usar LightEngineContext**: Para sombras dinámicas
-3. **Seguir el patrón de showcases**: Con `LightEngineProvider` wrapper
-4. **Usar las variables CSS**: `--neu-base`, `--glass-bg`, etc.
-5. **Border radius**: 15px para containers, 12px para items
+1. **Usar Stone Marble Hierarchy**: RAISED → INSET → GLASS
+2. **Usar LightEngineContext**: Para sombras dinamicas
+3. **Seguir el patron de showcases**: Con `LightEngineProvider` wrapper
+4. **Usar variables CSS**: `--marble-base`, `--raised-*`, `--inset-*`, `--glass-*`
+5. **Border radius**: 20px containers, 15px sections, 12px items
 6. **Transiciones suaves**: `50ms linear` para sombras
 
 ### DON'T (No hacer)
 
-1. **No usar colores oscuros para fondos**: El tema es claro (#e0e5ec)
-2. **No hardcodear sombras**: Usar funciones dinámicas
-3. **No olvidar backdrop-filter**: Es clave para el efecto glass
-4. **No usar border-radius inconsistentes**: Seguir el sistema
+1. **No anidar mismo nivel**: RAISED dentro de RAISED esta PROHIBIDO
+2. **No saltar niveles**: FONDO directo a GLASS esta PROHIBIDO
+3. **No usar #e0e5ec**: Usar #d5d8dc (marble-base) en su lugar
+4. **No hardcodear sombras**: Usar funciones dinamicas o variables
+5. **No olvidar backdrop-filter**: Es clave para el efecto glass
 
 ---
 
 ## TAREAS COMPLETADAS
 
-- [x] Migración de Nivo a ECharts ✅
-- [x] Implementar Light Engine con sombras dinámicas ✅
-- [x] **Rediseño Glass-Neumorphism completo** ✅
-  - [x] Actualizar todos los showcases (Styles, Atoms, Molecules, Organisms, Animations, Charts, Sentinel)
-  - [x] Crear LightEngineContext
-  - [x] Implementar nuevo Sidebar con Glass-Neumorphism
-  - [x] Documentar el nuevo design system
-- [x] **Migración tipográfica completa** ✅
-  - [x] Inter → IBM Plex Sans (UI Primary)
-  - [x] Space Grotesk → Libre Baskerville (Display/Headlines)
-  - [x] Space Mono → IBM Plex Mono (Data/Numbers)
-  - [x] DotMatrix eliminado completamente
-- [x] **Rediseño completo del Sidebar v5.0** ✅
-  - [x] Container neumórfico elevado (flota sobre la página)
-  - [x] Secciones con cavados/inset shadows
-  - [x] Items con glassmorphism
-  - [x] Search input con inset
-  - [x] User profile como glass card
-  - [x] Modo colapsado (solo iconos)
-  - [x] Dynamic shadows via Light Engine
+- [x] Migracion de Nivo a ECharts
+- [x] Implementar Light Engine con sombras dinamicas
+- [x] Rediseno Glass-Neumorphism completo
+- [x] Migracion tipografica completa (IBM Plex Sans, Libre Baskerville, IBM Plex Mono)
+- [x] Rediseno completo del Sidebar v5.0
+- [x] **Stone Marble Design System** (2026-01-17)
+  - [x] Nueva paleta de colores (#d5d8dc base)
+  - [x] Sistema de jerarquia RAISED → INSET → GLASS
+  - [x] Variables CSS para 5 niveles de sombras
+  - [x] InsetContainer component
+  - [x] StoneMarbleShowcase
 
 ---
 
 ## DECISIONES TOMADAS
 
+**[2026-01-17] Stone Marble Design System**
+- **Decision**: Evolucion del Glass-Neumorphism a Stone Marble
+- **Cambios principales**:
+  - Base color: #e0e5ec → #d5d8dc (mas frio, aspecto marmol)
+  - Jerarquia estricta: RAISED → INSET → GLASS
+  - Variables predefinidas: --raised-1 a --raised-5, --inset-1 a --inset-5
+  - Regla critica: NUNCA anidar mismo nivel
+- **Archivos clave**:
+  - `/src/pages/styles/StoneMarbleShowcase.tsx`
+  - `/src/components/atoms/sentinel/InsetContainer/`
+
 **[2026-01-16] Sidebar v5.0 - Full Neumorphic Redesign**
-- **Decisión**: Rediseño completo del Sidebar siguiendo Glass-Neumorphism
+- **Decision**: Rediseno completo del Sidebar
 - **Arquitectura visual**:
-  - **Container**: Superficie neumórfica elevada (#e0e5ec, shadow 10px 10px 30px)
-  - **Secciones**: Áreas cavadas con inset shadows (agrupa items relacionados)
-  - **Items**: Glassmorphism (hover/active states con backdrop-blur)
-  - **Search**: Input con efecto inset (cavado en la superficie)
-  - **User profile**: Glass card flotante
+  - Container: Superficie elevada (RAISED)
+  - Secciones: Areas cavadas (INSET)
+  - Items: Glassmorphism (GLASS)
 - **API simplificada**:
   - Removido: `sidebarStyle`, `userIcon`, `showIconRail`, `showExpandedPanel`
-  - Agregado: `collapsed` (modo solo iconos), `onUserClick`
-- **Dimensiones**: 280px expanded, 80px collapsed, 24px border-radius
+  - Agregado: `collapsed`, `onUserClick`
+- **Dimensiones**: 280px expanded, 80px collapsed
 
 **[2026-01-16] Typography Migration - New Font Stack**
-- **Decisión**: Migrar sistema tipográfico completo
+- **Decision**: Migrar sistema tipografico completo
 - **Nuevas fuentes**:
-  - **IBM Plex Sans**: UI primaria (claridad profesional)
-  - **Libre Baskerville**: Display/headlines h1-h3 (elegancia serif)
-  - **IBM Plex Mono**: Datos financieros (precisión numérica)
-- **Fuentes eliminadas**: Inter, Space Grotesk, Space Mono, DotMatrix
-- **Consideraciones técnicas**:
-  - Libre Baskerville: font-weight 700 para headings, `font-variant-numeric: lining-nums`
-  - IBM Plex Mono: `font-variant-numeric: tabular-nums lining-nums` para alineación
-  - Google Fonts CDN para todas las fuentes
+  - IBM Plex Sans: UI primaria
+  - Libre Baskerville: Display/headlines
+  - IBM Plex Mono: Datos financieros
 
-**[2025-01-16] Glass-Neumorphism Design System**
-- **Decisión**: Implementar design system combinando Neumorphism + Glassmorphism
-- **Filosofía**:
-  - Fondos claros neumórficos (#e0e5ec) como "superficie"
-  - Elementos de cristal (glass) flotando sobre la superficie
-  - Sombras dinámicas basadas en ángulo de luz global
-- **Componentes actualizados**: 110+ archivos
-- **Patrón clave**:
-  ```
-  Container: Neumorphism (elevado o hundido)
-  Items: Glassmorphism (transparente con blur)
-  ```
-- **Sidebar nuevo**:
-  - Icon Rail: Barra oscura vertical con iconos
-  - Expanded Panel: Panel neumórfico con items de cristal
-  - User Profile: Sección con efecto glass
-  - Search: Input con efecto glass
-
-**[2025-01-15] Light Engine - Sistema de Iluminación Dinámica**
-- **Decisión**: Implementar motor de iluminación basado en Josh W. Comeau
+**[2025-01-15] Light Engine - Sistema de Iluminacion Dinamica**
+- **Decision**: Motor de iluminacion basado en Josh W. Comeau
 - **Archivos**: `src/contexts/LightEngineContext.tsx`
-- **Características**:
-  - Una sola fuente de luz global
-  - Sombras calculadas con trigonometría
-  - Transiciones suaves (50ms)
 
-**[2025-01-14] Migración de Nivo a ECharts**
-- **Decisión**: Reemplazar Nivo por ECharts
-- **Razón**: Mejor rendimiento, más tipos de gráficos, mejor control de tema
+**[2025-01-14] Migracion de Nivo a ECharts**
+- **Decision**: Reemplazar Nivo por ECharts
+- **Razon**: Mejor rendimiento, mas tipos de graficos
