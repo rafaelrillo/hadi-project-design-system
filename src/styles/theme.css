@@ -19,6 +19,50 @@
      Premium neumorphism palette with enhanced depth
      ═══════════════════════════════════════════════════════════════════════════ */
 
+  /* ═══════════════════════════════════════════════════════════════════════════
+     FING BRAND COLORS
+     Logo, identity, and brand-specific tokens
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     LOGO COLORS - Dark Variant (on dark backgrounds)
+     ───────────────────────────────────────────────────────────────────────── */
+  --fing-logo-slate-1: #3a3a42;
+  --fing-logo-slate-2: #44444c;
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     LOGO COLORS - Stone Variant (on stone/marble backgrounds)
+     ───────────────────────────────────────────────────────────────────────── */
+  --fing-logo-marble-1: #eceef2;
+  --fing-logo-marble-2: #f0f2f5;
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     LOGO COLORS - Light Variant (on white backgrounds)
+     ───────────────────────────────────────────────────────────────────────── */
+  --fing-logo-light-1: #e8e8ec;
+  --fing-logo-light-2: #ededf0;
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     BRAND ACCENT - Teal (shared with SENTINEL accent)
+     ───────────────────────────────────────────────────────────────────────── */
+  --fing-teal: #4A9A9C;
+  --fing-teal-light: #6fb3b5;
+  --fing-teal-dark: #3a7a7c;
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     BRAND SEMANTIC - Conservative tones for "Senior Analyst" voice
+     ───────────────────────────────────────────────────────────────────────── */
+  --fing-positive: #4a9a7c;
+  --fing-negative: #c98a8a;
+  --fing-warning: #c9a87a;
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     BRAND TEXT
+     ───────────────────────────────────────────────────────────────────────── */
+  --fing-text-light: #f0f0f2;
+  --fing-text-muted: #8a8f96;
+  --fing-text-dark: #1a1a1e;
+
   /* ─────────────────────────────────────────────────────────────────────────
      MARBLE BASE COLORS
      ───────────────────────────────────────────────────────────────────────── */
@@ -298,26 +342,26 @@
      Colores más saturados para contraste en fondo claro
      ───────────────────────────────────────────────────────────────────────────── */
 
-  /* Positivo/Ganancia - Verde vibrante */
-  --sentinel-status-positive: #22C55E;
-  --sentinel-status-positive-subtle: rgba(34, 197, 94, 0.15);
-  --sentinel-status-positive-muted: rgba(34, 197, 94, 0.1);
-  --sentinel-status-positive-text: #16A34A;
-  --sentinel-status-positive-border: rgba(34, 197, 94, 0.3);
+  /* Positivo/Ganancia - Verde conservador (Fing Brand) */
+  --sentinel-status-positive: var(--fing-positive);
+  --sentinel-status-positive-subtle: rgba(74, 154, 124, 0.15);
+  --sentinel-status-positive-muted: rgba(74, 154, 124, 0.1);
+  --sentinel-status-positive-text: #3d7a62;
+  --sentinel-status-positive-border: rgba(74, 154, 124, 0.3);
 
-  /* Negativo/Pérdida - Rojo vibrante */
-  --sentinel-status-negative: #EF4444;
-  --sentinel-status-negative-subtle: rgba(239, 68, 68, 0.15);
-  --sentinel-status-negative-muted: rgba(239, 68, 68, 0.1);
-  --sentinel-status-negative-text: #DC2626;
-  --sentinel-status-negative-border: rgba(239, 68, 68, 0.3);
+  /* Negativo/Pérdida - Coral conservador (Fing Brand) */
+  --sentinel-status-negative: var(--fing-negative);
+  --sentinel-status-negative-subtle: rgba(201, 138, 138, 0.15);
+  --sentinel-status-negative-muted: rgba(201, 138, 138, 0.1);
+  --sentinel-status-negative-text: #a06a6a;
+  --sentinel-status-negative-border: rgba(201, 138, 138, 0.3);
 
-  /* Advertencia - Ámbar vibrante */
-  --sentinel-status-warning: #F59E0B;
-  --sentinel-status-warning-subtle: rgba(245, 158, 11, 0.15);
-  --sentinel-status-warning-muted: rgba(245, 158, 11, 0.1);
-  --sentinel-status-warning-text: #D97706;
-  --sentinel-status-warning-border: rgba(245, 158, 11, 0.3);
+  /* Advertencia - Ámbar conservador (Fing Brand) */
+  --sentinel-status-warning: var(--fing-warning);
+  --sentinel-status-warning-subtle: rgba(201, 168, 122, 0.15);
+  --sentinel-status-warning-muted: rgba(201, 168, 122, 0.1);
+  --sentinel-status-warning-text: #9a7a4a;
+  --sentinel-status-warning-border: rgba(201, 168, 122, 0.3);
 
   /* Informativo - Azul vibrante */
   --sentinel-status-info: #3B82F6;
@@ -390,14 +434,14 @@
 
   /* ─────────────────────────────────────────────────────────────────────────────
      TIPOGRAFÍA - Fuentes
-     IBM Plex Sans para UI general (claridad profesional)
+     DM Sans para UI general (geométrica, amigable - Fing Brand)
      Libre Baskerville para display/headlines (elegancia serif)
      IBM Plex Mono para datos financieros (precisión)
      ───────────────────────────────────────────────────────────────────────────── */
 
-  /* Font Families - SENTINEL Typography System */
-  --sentinel-font-primary: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --sentinel-font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  /* Font Families - FING/SENTINEL Typography System */
+  --sentinel-font-primary: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --sentinel-font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --sentinel-font-mono: 'IBM Plex Mono', 'SF Mono', 'Fira Code', 'Consolas', monospace;
 
   /* ─────────────────────────────────────────────────────────────────────────────

@@ -17,6 +17,104 @@
 
 ---
 
+## FING Brand Identity
+
+### Origen del Nombre
+
+**FING** = **FIN** (fīnis) + **ING** (ingenium)
+
+- **FINIS → FINANCE**: Del latin "fīnis" — resolver, concluir. El significado original no era sobre dinero, sino sobre **completar lo pendiente**: saldar deudas, cumplir compromisos, alcanzar objetivos.
+- **INGENIUM → ENGINE**: Del latin "ingenium" — "lo que nace dentro". Antes de significar "maquina", engine significaba **ingenio**: la capacidad humana de crear dispositivos que resuelven problemas.
+
+**Sintesis**: El motor de conclusiones. Inteligencia que no especula — resuelve.
+
+### Personalidad de Marca
+
+FING encarna el arquetipo del **Senior Analyst** — alguien que ha visto ciclos completos, que no se impresiona por el ruido diario, que solo habla cuando hay algo que valga la pena decir.
+
+| Trait | Descripcion |
+|-------|-------------|
+| **Silent** | Habla poco, pero con peso |
+| **Patient** | Observa el largo plazo |
+| **Precise** | Cada palabra cuenta |
+| **Institutional** | Serio, profesional |
+| **Intelligent** | Sofisticado, no pretencioso |
+
+### Taglines Oficiales
+
+- **"Quiet intelligence"** — La personalidad
+- **"Resolve"** — La accion
+- **"The long view"** — La paciencia
+
+### Voz de Marca
+
+**Decimos:**
+- "The market shows signs of consolidation"
+- "We observe a moderate risk level"
+- "Analysis suggests a neutral position"
+
+**NO decimos:**
+- "BUY NOW! Don't miss this opportunity!"
+- "We guarantee 20% returns"
+- "ALERT: Market crash imminent!"
+
+### Logo y Simbolo
+
+El logo consiste en dos formas organicas que representan **dualidad** (riesgo/retorno), **balance** y **dialogo**. Se superponen creando profundidad.
+
+**4 Variantes:**
+1. **Dark** (fondos oscuros): `--fing-logo-slate-1`, `--fing-logo-slate-2`
+2. **Stone** (fondos marble): `--fing-logo-marble-1`, `--fing-logo-marble-2`
+3. **White** (fondos de acento teal)
+4. **Light** (fondos blancos): `--fing-logo-light-1`, `--fing-logo-light-2`
+
+### Colores de Marca
+
+```css
+/* Logo Colors - Dark Variant */
+--fing-logo-slate-1: #3a3a42;
+--fing-logo-slate-2: #44444c;
+
+/* Logo Colors - Stone Variant */
+--fing-logo-marble-1: #eceef2;
+--fing-logo-marble-2: #f0f2f5;
+
+/* Logo Colors - Light Variant */
+--fing-logo-light-1: #e8e8ec;
+--fing-logo-light-2: #ededf0;
+
+/* Brand Accent */
+--fing-teal: #4A9A9C;
+--fing-teal-light: #6fb3b5;
+--fing-teal-dark: #3a7a7c;
+
+/* Semantic Colors (Conservadores - voz "Senior Analyst") */
+--fing-positive: #4a9a7c;    /* Verde desaturado */
+--fing-negative: #c98a8a;    /* Coral suave */
+--fing-warning: #c9a87a;     /* Ambar conservador */
+
+/* Text Colors */
+--fing-text-light: #f0f0f2;
+--fing-text-muted: #8a8f96;
+--fing-text-dark: #1a1a1e;
+```
+
+### Tipografia de Marca
+
+| Fuente | Uso | Variable |
+|--------|-----|----------|
+| **DM Sans** | UI general, titulos, cuerpo | `--sentinel-font-primary` |
+| **IBM Plex Mono** | Datos financieros, tickers | `--sentinel-font-mono` |
+| **Libre Baskerville** | Display, headlines elegantes | `--sentinel-font-display` |
+
+### Brand Showcase
+
+Ruta: `/showcase/styles/brand`
+
+Archivo: `src/pages/styles/BrandShowcase.tsx`
+
+---
+
 ## Stack Tecnologico
 
 | Categoria | Tecnologia | Version | Notas |
@@ -434,6 +532,7 @@ npm run lint          # ESLint
 ## Rutas del Showcase
 
 ```
+/showcase/styles/brand          → FING Brand Guidelines
 /showcase/styles/colors         → Paleta de colores
 /showcase/styles/typography     → Sistema tipografico
 /showcase/styles/spacing        → Espaciado
@@ -484,10 +583,28 @@ npm run lint          # ESLint
   - [x] Variables CSS para 5 niveles de sombras
   - [x] InsetContainer component
   - [x] StoneMarbleShowcase
+- [x] **FING Brand Integration** (2026-01-18)
+  - [x] Variables CSS para colores de logo (slate, marble, light)
+  - [x] Colores semanticos conservadores (--fing-positive, --fing-negative, --fing-warning)
+  - [x] Migracion tipografica a DM Sans
+  - [x] BrandShowcase.tsx con guidelines completas
+  - [x] Documentacion en CLAUDE.md
 
 ---
 
 ## DECISIONES TOMADAS
+
+**[2026-01-18] FING Brand Integration**
+- **Decision**: Integrar el branding de FING al design system SENTINEL
+- **Cambios principales**:
+  - Tipografia primaria: IBM Plex Sans → DM Sans
+  - Colores semanticos conservadores alineados con voz "Senior Analyst"
+  - Variables CSS para colores del logo (4 variantes)
+  - BrandShowcase con guidelines completas
+- **Archivos clave**:
+  - `/src/styles/theme.css` (nuevas variables --fing-*)
+  - `/src/pages/styles/BrandShowcase.tsx`
+  - `/index.html` (import DM Sans)
 
 **[2026-01-17] Stone Marble Design System**
 - **Decision**: Evolucion del Glass-Neumorphism a Stone Marble

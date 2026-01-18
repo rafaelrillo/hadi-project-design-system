@@ -28,6 +28,7 @@ const SentinelShowcase = lazy(() => import('./pages/sentinel/SentinelShowcase').
 const Level4Showcase = lazy(() => import('./pages/sentinel/Level4Showcase').then(m => ({ default: m.Level4Showcase })));
 
 // Styles (can be lazy loaded)
+const BrandShowcase = lazy(() => import('./pages/styles').then(m => ({ default: m.BrandShowcase })));
 const ColorsShowcase = lazy(() => import('./pages/styles').then(m => ({ default: m.ColorsShowcase })));
 const TypographyStylesShowcase = lazy(() => import('./pages/styles').then(m => ({ default: m.TypographyShowcase })));
 const SpacingShowcase = lazy(() => import('./pages/styles').then(m => ({ default: m.SpacingShowcase })));
@@ -35,6 +36,7 @@ const ShadowsShowcase = lazy(() => import('./pages/styles').then(m => ({ default
 const BorderRadiusShowcase = lazy(() => import('./pages/styles').then(m => ({ default: m.BorderRadiusShowcase })));
 const IconsShowcase = lazy(() => import('./pages/styles').then(m => ({ default: m.IconsShowcase })));
 const LightEngineShowcase = lazy(() => import('./pages/styles').then(m => ({ default: m.LightEngineShowcase })));
+const StoneMarbleShowcase = lazy(() => import('./pages/styles').then(m => ({ default: m.StoneMarbleShowcase })));
 
 // Atoms
 const ButtonShowcase = lazy(() => import('./pages/atoms/ButtonShowcase').then(m => ({ default: m.ButtonShowcase })));
@@ -212,6 +214,7 @@ function AppRoutes() {
         <Route index element={<Home />} />
 
         {/* Styles */}
+        <Route path="styles/brand" element={<Suspense fallback={<ShowcaseLoader />}><BrandShowcase /></Suspense>} />
         <Route path="styles/colors" element={<Suspense fallback={<ShowcaseLoader />}><ColorsShowcase /></Suspense>} />
         <Route path="styles/typography" element={<Suspense fallback={<ShowcaseLoader />}><TypographyStylesShowcase /></Suspense>} />
         <Route path="styles/spacing" element={<Suspense fallback={<ShowcaseLoader />}><SpacingShowcase /></Suspense>} />
@@ -219,6 +222,7 @@ function AppRoutes() {
         <Route path="styles/border-radius" element={<Suspense fallback={<ShowcaseLoader />}><BorderRadiusShowcase /></Suspense>} />
         <Route path="styles/icons" element={<Suspense fallback={<ShowcaseLoader />}><IconsShowcase /></Suspense>} />
         <Route path="styles/light-engine" element={<Suspense fallback={<ShowcaseLoader />}><LightEngineShowcase /></Suspense>} />
+        <Route path="styles/stone-marble" element={<Suspense fallback={<ShowcaseLoader />}><StoneMarbleShowcase /></Suspense>} />
 
         {/* Atoms */}
         <Route path="atoms/button" element={<Suspense fallback={<ShowcaseLoader />}><ButtonShowcase /></Suspense>} />
