@@ -13,7 +13,6 @@ import { useIsMobile } from '../../../hooks/useBreakpoint';
 import { usePortfolioStore } from '../../../store';
 
 // Components
-import { Button } from '../../../components/atoms/Button';
 import { NewsCard } from '../../../components/molecules/sentinel/NewsCard';
 import { LineChart } from '../../../components/charts/echarts';
 
@@ -261,7 +260,26 @@ export function DashboardPage() {
         <div className={styles.chartHeader}>
           <div className={styles.chartHeaderLeft}>
             <h2 className={styles.chartTitle}>
-              <Briefcase size={14} />
+              <span
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: '24px',
+                  height: '24px',
+                  borderRadius: '50%',
+                  background: 'var(--marble-base)',
+                  boxShadow: 'inset 1.5px 1.5px 3px var(--shadow-dark), inset -1.5px -1.5px 3px var(--shadow-light)',
+                }}
+              >
+                <Briefcase
+                  size={13}
+                  style={{
+                    color: 'var(--sentinel-accent-primary)',
+                    filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))',
+                  }}
+                />
+              </span>
               My Portfolio
             </h2>
             <div className={styles.chartMetrics}>
@@ -320,75 +338,259 @@ export function DashboardPage() {
         </div>
       </div>
 
-      {/* Bottom Grid - Three Cards */}
-      <div className={styles.bottomGrid}>
-        {/* Top Buys */}
-        <div className={styles.card}>
-          <div className={styles.cardHeader}>
-            <h3 className={styles.cardTitle}>
-              <TrendingUp size={18} />
-              Top Buys
-            </h3>
-            <Button
-              variant="glass-teal"
-              size="sm"
-              onClick={() => navigate('/app/dashboard/recommendations')}
-              rightIcon={<ArrowRight size={14} />}
-            >
-              View All
-            </Button>
+      {/* KPI Indicators Row */}
+      <div className={styles.kpiRow}>
+        <div className={styles.kpiMeter}>
+          <div className={styles.kpiMeterInner}>
+            <span className={styles.kpiValue}>87</span>
+            <span className={styles.kpiLabel}>SCORE</span>
           </div>
-          <div className={styles.recommendationsList}>
-            {TOP_BUYS.map((rec, index) => (
-              <div key={rec.ticker} className={styles.recommendationItemBuy}>
-                <span className={styles.recRank}>#{index + 1}</span>
-                <div className={styles.recInfo}>
-                  <span className={styles.recTicker}>{rec.ticker}</span>
-                </div>
-                <span className={styles.recPriceValue}>${rec.price.toFixed(0)}</span>
-                <span
-                  className={styles.recChange}
-                  data-positive={rec.change >= 0}
-                >
-                  {rec.change >= 0 ? '+' : ''}{rec.change.toFixed(2)}%
-                </span>
-              </div>
-            ))}
+        </div>
+        <div className={styles.kpiMeter}>
+          <div className={styles.kpiMeterInner}>
+            <span className={styles.kpiValueWarning}>42</span>
+            <span className={styles.kpiLabel}>RISK</span>
+          </div>
+        </div>
+        <div className={styles.kpiMeter}>
+          <div className={styles.kpiMeterInner}>
+            <span className={styles.kpiValuePositive}>+16%</span>
+            <span className={styles.kpiLabel}>YTD</span>
           </div>
         </div>
 
-        {/* Top Sells - From actual portfolio */}
+        {/* Pill Frame RAISED Button */}
+        <button
+          onClick={() => navigate('/app/dashboard/portfolio')}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '8px',
+            padding: '12px 24px',
+            background: 'var(--marble-base)',
+            borderRadius: '24px',
+            border: 'none',
+            boxShadow: `
+              inset 0 0 0 1px var(--shadow-light),
+              inset 0 0 0 2px rgba(168, 172, 179, 0.3),
+              4px 4px 8px var(--shadow-dark),
+              -4px -4px 8px var(--shadow-light)
+            `,
+            cursor: 'pointer',
+            fontFamily: 'var(--sentinel-font-primary)',
+            fontSize: '13px',
+            fontWeight: 600,
+            letterSpacing: '0.05em',
+            color: 'var(--marble-dark)',
+            textShadow: '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(130, 140, 155, 0.65)',
+            transition: 'all 150ms ease',
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.boxShadow = 'inset 0 0 0 1px var(--shadow-light), inset 0 0 0 2px rgba(168, 172, 179, 0.3), 6px 6px 12px var(--shadow-dark), -6px -6px 12px var(--shadow-light)';
+            e.currentTarget.style.color = 'var(--sentinel-accent-primary)';
+            const icon = e.currentTarget.querySelector('svg');
+            if (icon) icon.style.color = 'var(--sentinel-accent-primary)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.boxShadow = 'inset 0 0 0 1px var(--shadow-light), inset 0 0 0 2px rgba(168, 172, 179, 0.3), 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light)';
+            e.currentTarget.style.textShadow = '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(130, 140, 155, 0.65)';
+            e.currentTarget.style.color = 'var(--marble-dark)';
+            const icon = e.currentTarget.querySelector('svg');
+            if (icon) icon.style.color = 'var(--marble-dark)';
+          }}
+          onMouseDown={(e) => {
+            e.currentTarget.style.boxShadow = 'inset 2px 2px 4px var(--shadow-dark), inset -2px -2px 4px var(--shadow-light)';
+            e.currentTarget.style.textShadow = '-1px -1px 0px rgba(255, 255, 255, 0.95), 1px 1px 0px rgba(147, 157, 170, 0.55)';
+          }}
+          onMouseUp={(e) => {
+            e.currentTarget.style.boxShadow = 'inset 0 0 0 1px var(--shadow-light), inset 0 0 0 2px rgba(168, 172, 179, 0.3), 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light)';
+            e.currentTarget.style.textShadow = '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(130, 140, 155, 0.65)';
+          }}
+        >
+          Portfolio
+          <span
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '22px',
+              height: '22px',
+              borderRadius: '50%',
+              background: 'var(--marble-base)',
+              boxShadow: 'inset 1px 1px 2px var(--shadow-dark), inset -1px -1px 2px var(--shadow-light)',
+            }}
+          >
+            <Briefcase
+              size={12}
+              style={{
+                color: 'inherit',
+                filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))',
+                transition: 'color 150ms ease',
+              }}
+            />
+          </span>
+        </button>
+      </div>
+
+      {/* Bottom Grid - Two Cards */}
+      <div className={styles.bottomGrid}>
+        {/* Unified Recommendations Card */}
         <div className={styles.card}>
           <div className={styles.cardHeader}>
-            <h3 className={styles.cardTitleSell}>
-              <TrendingDown size={18} />
-              Top Sells
+            <h3 className={styles.cardTitle}>
+              <span
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: '28px',
+                  height: '28px',
+                  borderRadius: '50%',
+                  background: 'var(--marble-base)',
+                  boxShadow: 'inset 1.5px 1.5px 3px var(--shadow-dark), inset -1.5px -1.5px 3px var(--shadow-light)',
+                }}
+              >
+                <TrendingUp
+                  size={15}
+                  style={{
+                    color: 'var(--sentinel-accent-primary)',
+                    filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))',
+                  }}
+                />
+              </span>
+              Recommendations
             </h3>
-            <Button
-              variant="glass-teal"
-              size="sm"
-              onClick={() => navigate('/app/dashboard/portfolio')}
-              rightIcon={<ArrowRight size={14} />}
+            {/* Contenedor INSET (jerarquía: Card RAISED → Botón INSET) */}
+            <div
+              style={{
+                padding: '4px',
+                borderRadius: '24px',
+                background: 'var(--marble-base)',
+                boxShadow: 'var(--inset-1)',
+              }}
             >
-              View Portfolio
-            </Button>
-          </div>
-          <div className={styles.recommendationsList}>
-            {topSells.map((rec, index) => (
-              <div key={rec.ticker} className={styles.recommendationItemSell}>
-                <span className={styles.recRankSell}>#{index + 1}</span>
-                <div className={styles.recInfo}>
-                  <span className={styles.recTicker}>{rec.ticker}</span>
-                </div>
-                <span className={styles.recPriceValue}>${rec.price.toFixed(0)}</span>
+              {/* Pill Frame RAISED interior */}
+              <button
+                onClick={() => navigate('/app/dashboard/recommendations')}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '8px',
+                  padding: '8px 16px',
+                  background: 'var(--marble-base)',
+                  borderRadius: '20px',
+                  border: 'none',
+                  boxShadow: `
+                    inset 0 0 0 1px var(--shadow-light),
+                    inset 0 0 0 2px rgba(168, 172, 179, 0.3),
+                    1px 1px 2px var(--shadow-dark),
+                    -1px -1px 2px var(--shadow-light)
+                  `,
+                  cursor: 'pointer',
+                  fontFamily: 'var(--sentinel-font-primary)',
+                  fontSize: '12px',
+                  fontWeight: 600,
+                  letterSpacing: '0.05em',
+                  color: 'var(--marble-dark)',
+                  textShadow: '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(130, 140, 155, 0.65)',
+                  transition: 'all 150ms ease',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.boxShadow = 'inset 0 0 0 1px var(--shadow-light), inset 0 0 0 2px rgba(168, 172, 179, 0.3), 2px 2px 4px var(--shadow-dark), -2px -2px 4px var(--shadow-light)';
+                  e.currentTarget.style.color = 'var(--sentinel-accent-primary)';
+                  const icon = e.currentTarget.querySelector('svg');
+                  if (icon) icon.style.color = 'var(--sentinel-accent-primary)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.boxShadow = 'inset 0 0 0 1px var(--shadow-light), inset 0 0 0 2px rgba(168, 172, 179, 0.3), 1px 1px 2px var(--shadow-dark), -1px -1px 2px var(--shadow-light)';
+                  e.currentTarget.style.textShadow = '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(130, 140, 155, 0.65)';
+                  e.currentTarget.style.color = 'var(--marble-dark)';
+                  const icon = e.currentTarget.querySelector('svg');
+                  if (icon) icon.style.color = 'var(--marble-dark)';
+                }}
+                onMouseDown={(e) => {
+                  e.currentTarget.style.boxShadow = 'inset 2px 2px 4px var(--shadow-dark), inset -2px -2px 4px var(--shadow-light)';
+                  e.currentTarget.style.textShadow = '-1px -1px 0px rgba(255, 255, 255, 0.95), 1px 1px 0px rgba(147, 157, 170, 0.55)';
+                }}
+                onMouseUp={(e) => {
+                  e.currentTarget.style.boxShadow = 'inset 0 0 0 1px var(--shadow-light), inset 0 0 0 2px rgba(168, 172, 179, 0.3), 1px 1px 2px var(--shadow-dark), -1px -1px 2px var(--shadow-light)';
+                  e.currentTarget.style.textShadow = '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(130, 140, 155, 0.65)';
+                }}
+              >
+                View All
                 <span
-                  className={styles.recChange}
-                  data-positive={rec.change >= 0}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: '20px',
+                    height: '20px',
+                    borderRadius: '50%',
+                    background: 'var(--marble-base)',
+                    boxShadow: 'inset 1px 1px 2px var(--shadow-dark), inset -1px -1px 2px var(--shadow-light)',
+                  }}
                 >
-                  {rec.change >= 0 ? '+' : ''}{rec.change.toFixed(2)}%
+                  <ArrowRight
+                    size={11}
+                    style={{
+                      color: 'inherit',
+                      filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))',
+                      transition: 'color 150ms ease',
+                    }}
+                  />
                 </span>
+              </button>
+            </div>
+          </div>
+          <div className={styles.recommendationsGrid}>
+            {/* Top Buys Column */}
+            <div className={styles.recommendationsColumn}>
+              <div className={styles.columnHeader}>
+                <TrendingUp size={14} />
+                <span>Top Buys</span>
               </div>
-            ))}
+              <div className={styles.recommendationsList}>
+                {TOP_BUYS.slice(0, 3).map((rec, index) => (
+                  <div key={rec.ticker} className={styles.recommendationItemBuy}>
+                    <span className={styles.recRank}>#{index + 1}</span>
+                    <div className={styles.recInfo}>
+                      <span className={styles.recTicker}>{rec.ticker}</span>
+                    </div>
+                    <span
+                      className={styles.recChange}
+                      data-positive={rec.change >= 0}
+                    >
+                      {rec.change >= 0 ? '+' : ''}{rec.change.toFixed(2)}%
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            {/* Top Sells Column */}
+            <div className={styles.recommendationsColumn}>
+              <div className={styles.columnHeaderSell}>
+                <TrendingDown size={14} />
+                <span>Top Sells</span>
+              </div>
+              <div className={styles.recommendationsList}>
+                {topSells.slice(0, 3).map((rec, index) => (
+                  <div key={rec.ticker} className={styles.recommendationItemSell}>
+                    <span className={styles.recRankSell}>#{index + 1}</span>
+                    <div className={styles.recInfo}>
+                      <span className={styles.recTicker}>{rec.ticker}</span>
+                    </div>
+                    <span
+                      className={styles.recChange}
+                      data-positive={rec.change >= 0}
+                    >
+                      {rec.change >= 0 ? '+' : ''}{rec.change.toFixed(2)}%
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
@@ -396,17 +598,110 @@ export function DashboardPage() {
         <div className={styles.card}>
           <div className={styles.cardHeader}>
             <h3 className={styles.cardTitle}>
-              <Newspaper size={18} />
+              <span
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: '28px',
+                  height: '28px',
+                  borderRadius: '50%',
+                  background: 'var(--marble-base)',
+                  boxShadow: 'inset 1.5px 1.5px 3px var(--shadow-dark), inset -1.5px -1.5px 3px var(--shadow-light)',
+                }}
+              >
+                <Newspaper
+                  size={15}
+                  style={{
+                    color: 'var(--sentinel-accent-primary)',
+                    filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))',
+                  }}
+                />
+              </span>
               Latest News
             </h3>
-            <Button
-              variant="glass-teal"
-              size="sm"
-              onClick={() => navigate('/app/dashboard/news')}
-              rightIcon={<ArrowRight size={14} />}
+            {/* Contenedor INSET (jerarquía: Card RAISED → Botón INSET) */}
+            <div
+              style={{
+                padding: '4px',
+                borderRadius: '24px',
+                background: 'var(--marble-base)',
+                boxShadow: 'var(--inset-1)',
+              }}
             >
-              View All
-            </Button>
+              {/* Pill Frame RAISED interior */}
+              <button
+                onClick={() => navigate('/app/dashboard/news')}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '8px',
+                  padding: '8px 16px',
+                  background: 'var(--marble-base)',
+                  borderRadius: '20px',
+                  border: 'none',
+                  boxShadow: `
+                    inset 0 0 0 1px var(--shadow-light),
+                    inset 0 0 0 2px rgba(168, 172, 179, 0.3),
+                    1px 1px 2px var(--shadow-dark),
+                    -1px -1px 2px var(--shadow-light)
+                  `,
+                  cursor: 'pointer',
+                  fontFamily: 'var(--sentinel-font-primary)',
+                  fontSize: '12px',
+                  fontWeight: 600,
+                  letterSpacing: '0.05em',
+                  color: 'var(--marble-dark)',
+                  textShadow: '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(130, 140, 155, 0.65)',
+                  transition: 'all 150ms ease',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.boxShadow = 'inset 0 0 0 1px var(--shadow-light), inset 0 0 0 2px rgba(168, 172, 179, 0.3), 2px 2px 4px var(--shadow-dark), -2px -2px 4px var(--shadow-light)';
+                  e.currentTarget.style.color = 'var(--sentinel-accent-primary)';
+                  const icon = e.currentTarget.querySelector('svg');
+                  if (icon) icon.style.color = 'var(--sentinel-accent-primary)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.boxShadow = 'inset 0 0 0 1px var(--shadow-light), inset 0 0 0 2px rgba(168, 172, 179, 0.3), 1px 1px 2px var(--shadow-dark), -1px -1px 2px var(--shadow-light)';
+                  e.currentTarget.style.textShadow = '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(130, 140, 155, 0.65)';
+                  e.currentTarget.style.color = 'var(--marble-dark)';
+                  const icon = e.currentTarget.querySelector('svg');
+                  if (icon) icon.style.color = 'var(--marble-dark)';
+                }}
+                onMouseDown={(e) => {
+                  e.currentTarget.style.boxShadow = 'inset 2px 2px 4px var(--shadow-dark), inset -2px -2px 4px var(--shadow-light)';
+                  e.currentTarget.style.textShadow = '-1px -1px 0px rgba(255, 255, 255, 0.95), 1px 1px 0px rgba(147, 157, 170, 0.55)';
+                }}
+                onMouseUp={(e) => {
+                  e.currentTarget.style.boxShadow = 'inset 0 0 0 1px var(--shadow-light), inset 0 0 0 2px rgba(168, 172, 179, 0.3), 1px 1px 2px var(--shadow-dark), -1px -1px 2px var(--shadow-light)';
+                  e.currentTarget.style.textShadow = '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(130, 140, 155, 0.65)';
+                }}
+              >
+                View All
+                <span
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: '20px',
+                    height: '20px',
+                    borderRadius: '50%',
+                    background: 'var(--marble-base)',
+                    boxShadow: 'inset 1px 1px 2px var(--shadow-dark), inset -1px -1px 2px var(--shadow-light)',
+                  }}
+                >
+                  <ArrowRight
+                    size={11}
+                    style={{
+                      color: 'inherit',
+                      filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))',
+                      transition: 'color 150ms ease',
+                    }}
+                  />
+                </span>
+              </button>
+            </div>
           </div>
           <div className={styles.newsList}>
             {news.slice(0, 3).map((item) => (
