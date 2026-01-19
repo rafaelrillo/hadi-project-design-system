@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { Loader2, ChevronRight, Mail, Lock } from "lucide-react";
 import { useAuthStore } from "../../../store/authStore";
 import { AtmosphericBackground } from "../../../components/atoms/sentinel/AtmosphericBackground";
-import { DataReveal } from "../../../components/atoms/sentinel/DataReveal";
 import { InputText } from "../../../components/atoms/Input";
 import { FingEmblem } from "../../../components/atoms/FingEmblem";
 import styles from "./LoginPage.module.css";
@@ -32,83 +31,78 @@ export function LoginPage() {
       <AtmosphericBackground variant="default" animated />
 
       <div className={styles.content}>
-        <DataReveal delay={0} direction="up">
-          <div className={styles.brandLockup}>
-            {/* FING Emblem with framed variant (outer raised + inner inset) */}
-            <FingEmblem size={140} animation="rippleSlow" variant="framed" />
-            <div className={styles.brandText}>
-              <h1 className={styles.title}>fing</h1>
-              <p className={styles.subtitle}>Quiet intelligence</p>
+        {/* All elements emerge together from the marble surface */}
+        <div className={styles.brandLockup}>
+          {/* FING Emblem with framed variant (outer raised + inner inset) */}
+          <FingEmblem size={140} animation="rippleSlow" variant="framed" />
+          <div className={styles.brandText}>
+            <h1 className={styles.title}>fing</h1>
+            <p className={styles.subtitle}>Quiet intelligence</p>
+          </div>
+        </div>
+
+        <div className={styles.formContainer}>
+          <form className={styles.form} onSubmit={handleSubmit}>
+            <div className={styles.inputGroup}>
+              <label className={styles.label} htmlFor="email">
+                Email
+              </label>
+              <InputText
+                type="email"
+                placeholder="analyst@fing.io"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                disabled={isLoading}
+                icon={<Mail size={18} />}
+                ariaLabel="Email address"
+              />
             </div>
-          </div>
-        </DataReveal>
 
-        <DataReveal delay={400} direction="up">
-          <div className={styles.formContainer}>
-            <form className={styles.form} onSubmit={handleSubmit}>
-              <div className={styles.inputGroup}>
-                <label className={styles.label} htmlFor="email">
-                  Email
-                </label>
-                <InputText
-                  type="email"
-                  placeholder="analyst@fing.io"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  disabled={isLoading}
-                  icon={<Mail size={18} />}
-                  ariaLabel="Email address"
-                />
-              </div>
+            <div className={styles.inputGroup}>
+              <label className={styles.label} htmlFor="password">
+                Password
+              </label>
+              <InputText
+                type="password"
+                placeholder="Enter password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                disabled={isLoading}
+                icon={<Lock size={18} />}
+                ariaLabel="Password"
+              />
+            </div>
 
-              <div className={styles.inputGroup}>
-                <label className={styles.label} htmlFor="password">
-                  Password
-                </label>
-                <InputText
-                  type="password"
-                  placeholder="Enter password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  disabled={isLoading}
-                  icon={<Lock size={18} />}
-                  ariaLabel="Password"
-                />
-              </div>
+            {error && <p className={styles.error}>{error}</p>}
 
-              {error && <p className={styles.error}>{error}</p>}
+            {/* Pill Frame INSET → RAISED button */}
+            <div className={styles.buttonWrapper}>
+              <button
+                type="submit"
+                disabled={isLoading || !email || !password}
+                className={styles.pillFrameButton}
+              >
+                {isLoading ? (
+                  <>
+                    <Loader2 className={styles.spinner} size={16} />
+                    <span>Accessing...</span>
+                  </>
+                ) : (
+                  <>
+                    <span>Access System</span>
+                    <span className={styles.buttonIconCircle}>
+                      <ChevronRight size={14} className={styles.buttonIcon} />
+                    </span>
+                  </>
+                )}
+              </button>
+            </div>
+          </form>
+        </div>
 
-              {/* Pill Frame INSET → RAISED button */}
-              <div className={styles.buttonWrapper}>
-                <button
-                  type="submit"
-                  disabled={isLoading || !email || !password}
-                  className={styles.pillFrameButton}
-                >
-                  {isLoading ? (
-                    <>
-                      <Loader2 className={styles.spinner} size={16} />
-                      <span>Accessing...</span>
-                    </>
-                  ) : (
-                    <>
-                      <span>Access System</span>
-                      <span className={styles.buttonIconCircle}>
-                        <ChevronRight size={14} className={styles.buttonIcon} />
-                      </span>
-                    </>
-                  )}
-                </button>
-              </div>
-            </form>
-          </div>
-        </DataReveal>
-
-        <DataReveal delay={600} direction="up">
-          <p className={styles.hint}>
-            Demo credentials: any email/password
-          </p>
-        </DataReveal>
+        <p className={styles.hint}>
+          Demo credentials: any email/password
+        </p>
       </div>
     </div>
   );

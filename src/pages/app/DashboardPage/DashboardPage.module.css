@@ -30,6 +30,149 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
+   HEADER ROW - Home greeting (separate elements)
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.headerRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Avatar - RAISED circular with initials */
+.headerAvatar {
+  width: 56px;
+  height: 56px;
+  background: var(--marble-base);
+  border-radius: 50%;
+  box-shadow: var(--raised-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.headerAvatarInitials {
+  font-family: var(--sentinel-font-primary);
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+
+  /* Letterpress teal - brand color */
+  color: var(--sentinel-accent-primary);
+  text-shadow:
+    1px 1px 1px var(--shadow-light),
+    -1px -1px 1px rgba(74, 154, 156, 0.4);
+}
+
+/* Title - Pillow effect (soft 3D for hero sections) */
+.headerTitle {
+  font-family: 'IBM Plex Sans', var(--sentinel-font-primary);
+  font-size: 42px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  margin: 0;
+
+  /* Efecto almohada — soft 3D (marble-dark base) */
+  color: var(--marble-dark);
+  text-shadow:
+    -1px -1px 1px rgba(255, 255, 255, 0.7),
+    1px 1px 1px rgba(140, 150, 165, 0.5),
+    -2px -2px 3px rgba(255, 255, 255, 0.35),
+    2px 2px 3px rgba(140, 150, 165, 0.25);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   BALANCE ROW - Pill + KPIs
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.balanceRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-shrink: 0;
+}
+
+.balancePill {
+  background: var(--marble-base);
+  border-radius: 40px;
+  padding: 12px 24px 12px 12px;
+  box-shadow: var(--raised-3);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.balanceKpis {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.balancePillIcon {
+  width: 56px;
+  height: 56px;
+  background: var(--marble-base);
+  border-radius: 50%;
+  box-shadow: var(--inset-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.balancePillBriefcase {
+  color: var(--sentinel-accent-primary);
+  filter:
+    drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9))
+    drop-shadow(0.5px 0.5px 0px rgba(74, 154, 156, 0.4));
+}
+
+.balancePillContent {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.balancePillValue {
+  font-family: var(--sentinel-font-mono);
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+
+  /* Debossed - same as chartMetricValue */
+  color: var(--text-primary);
+  text-shadow:
+    1px 1px 0px rgba(255, 255, 255, 0.8),
+    -1px -1px 0px rgba(130, 140, 155, 0.4);
+}
+
+.balancePillLabel {
+  font-family: var(--sentinel-font-primary);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+
+  /* Whisper letterpress */
+  color: var(--marble-base);
+  text-shadow:
+    0.5px 0.5px 0px var(--shadow-light),
+    -0.5px -0.5px 0px var(--shadow-dark);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
    MAIN CHART - Light Glass-Neumorphic Panel
    ───────────────────────────────────────────────────────────────────────────── */
 
@@ -68,22 +211,10 @@
 }
 
 .chartHeader {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  margin-bottom: 24px;
-}
-
-.chartHeaderLeft {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  margin-bottom: 16px;
 }
 
 .chartTitle {
-  display: flex;
-  align-items: center;
-  gap: 8px;
   font-family: var(--sentinel-font-led);
   font-size: 14px;
   font-weight: 600;
@@ -91,63 +222,11 @@
   text-transform: uppercase;
   margin: 0;
 
-  /* Engraved - Grabado Fino (visible intensity) */
+  /* Engraved - Grabado Fino */
   color: var(--marble-dark);
   text-shadow:
     0.75px 0.75px 0px rgba(255, 255, 255, 0.7),
     -0.75px -0.75px 0px rgba(130, 140, 155, 0.5);
-}
-
-.chartTitle svg {
-  color: var(--sentinel-accent-primary);
-  flex-shrink: 0;
-  width: 14px;
-  height: 14px;
-  filter: drop-shadow(0 0 4px rgba(74, 154, 156, 0.5));
-}
-
-.chartMetrics {
-  display: flex;
-  align-items: baseline;
-  gap: 16px;
-}
-
-.chartMetricValue {
-  font-family: var(--sentinel-font-mono);
-  font-size: 48px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1;
-
-  /* Contenedor RAISED → Tipografia INSET (debossed profundo) */
-  color: var(--text-primary);
-  text-shadow:
-    1px 1px 0px rgba(255, 255, 255, 0.8),
-    -1px -1px 0px rgba(130, 140, 155, 0.4);
-}
-
-.chartMetricChange {
-  font-family: var(--sentinel-font-numeric);
-  font-size: 18px;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  padding-bottom: 2px;
-}
-
-.chartMetricChange[data-positive="true"] {
-  /* Contenedor RAISED → Tipografia INSET (engraved colored) */
-  color: var(--sentinel-status-positive);
-  text-shadow:
-    0.75px 0.75px 0px rgba(255, 255, 255, 0.7),
-    -0.75px -0.75px 0px rgba(74, 154, 124, 0.35);
-}
-
-.chartMetricChange[data-positive="false"] {
-  /* Contenedor RAISED → Tipografia INSET (engraved colored) */
-  color: var(--sentinel-status-negative);
-  text-shadow:
-    0.75px 0.75px 0px rgba(255, 255, 255, 0.7),
-    -0.75px -0.75px 0px rgba(184, 92, 92, 0.35);
 }
 
 /* Chart Legend - Glass pills */
@@ -271,16 +350,8 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   KPI INDICATORS ROW - Stone Marble Meters
+   KPI INDICATORS - Stone Marble Meters
    ───────────────────────────────────────────────────────────────────────────── */
-
-.kpiRow {
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-  margin-bottom: 16px;
-  flex-shrink: 0;
-}
 
 .kpiMeter {
   width: 100px;
@@ -372,8 +443,12 @@
     grid-template-columns: 1fr;
   }
 
-  .kpiRow {
-    gap: 16px;
+  .balanceRow {
+    flex-wrap: wrap;
+  }
+
+  .balanceKpis {
+    gap: 10px;
   }
 
   .kpiMeter {

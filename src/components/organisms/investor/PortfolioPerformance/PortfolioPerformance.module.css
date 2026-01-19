@@ -1,0 +1,315 @@
+/* Path: src/components/organisms/investor/PortfolioPerformance/PortfolioPerformance.module.css */
+/* ═══════════════════════════════════════════════════════════════════════════════
+   PORTFOLIO PERFORMANCE - Stone Marble Design System
+
+   Hierarchy: RAISED card → INSET containers → GLASS active states
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   CARD - RAISED Container
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.performanceCard {
+  background: var(--marble-base);
+  border-radius: var(--sentinel-radius-xl);
+  padding: 20px;
+  box-shadow: var(--raised-3);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   HEADER - Title + Tabs
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.title {
+  font-family: var(--sentinel-font-led);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 0;
+
+  /* Engraved - Grabado Fino (RAISED container → INSET text) */
+  color: var(--marble-dark);
+  text-shadow:
+    0.75px 0.75px 0px rgba(255, 255, 255, 0.7),
+    -0.75px -0.75px 0px rgba(130, 140, 155, 0.5);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   TAB GROUP - INSET Container
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.tabGroup {
+  display: flex;
+  gap: 2px;
+  padding: 4px;
+  background: var(--marble-base);
+  border-radius: 10px;
+  box-shadow: var(--inset-1);
+}
+
+/* Tab Individual - GLASS cuando activo */
+.tab {
+  padding: 6px 12px;
+  font-family: var(--sentinel-font-primary);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  background: transparent;
+  transition: all 150ms ease;
+
+  /* Inset typography - letterpress in INSET container */
+  color: var(--marble-base);
+  text-shadow:
+    0.5px 0.5px 0px var(--shadow-light),
+    -0.5px -0.5px 0px var(--shadow-dark);
+}
+
+.tab:hover {
+  /* Teal gradient background like buttons */
+  background: linear-gradient(135deg, rgba(74, 154, 156, 0.12) 0%, rgba(74, 154, 156, 0.06) 100%);
+
+  /* Teal accent with letterpress */
+  color: var(--sentinel-accent-primary);
+  text-shadow:
+    0.5px 0.5px 0px var(--shadow-light),
+    -0.5px -0.5px 0px rgba(74, 154, 156, 0.4);
+
+  /* Subtle glow */
+  box-shadow:
+    1px 1px 2px rgba(163, 177, 198, 0.2),
+    -1px -1px 2px rgba(255, 255, 255, 0.7),
+    0 0 8px rgba(74, 154, 156, 0.1);
+}
+
+.tabActive {
+  /* GLASS effect */
+  background: var(--glass-bg-hover);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--glass-border);
+
+  /* Teal accent with inset letterpress */
+  color: var(--sentinel-accent-primary);
+  text-shadow:
+    0.5px 0.5px 0px var(--shadow-light),
+    -0.5px -0.5px 0px rgba(74, 154, 156, 0.4);
+
+  /* Subtle raised effect within inset */
+  box-shadow:
+    1px 1px 2px rgba(163, 177, 198, 0.25),
+    -1px -1px 2px rgba(255, 255, 255, 0.8);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   CHART CONTAINER - INSET
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.chartContainer {
+  background: var(--marble-base);
+  border-radius: 15px;
+  padding: 12px 8px 8px;
+  box-shadow: var(--inset-2);
+  overflow: hidden;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   COMPARE ROW
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.compareRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.compareLabel {
+  font-family: var(--sentinel-font-primary);
+  font-size: 12px;
+  font-weight: 500;
+
+  /* Muted letterpress */
+  color: var(--marble-base);
+  text-shadow:
+    0.5px 0.5px 0px var(--shadow-light),
+    -0.5px -0.5px 0px var(--shadow-dark);
+}
+
+/* Select - INSET */
+.compareSelect {
+  padding: 8px 28px 8px 12px;
+  background: var(--marble-base);
+  border: none;
+  border-radius: 8px;
+  font-family: var(--sentinel-font-primary);
+  font-size: 12px;
+  font-weight: 500;
+  box-shadow: var(--inset-1);
+  cursor: pointer;
+  appearance: none;
+  transition: box-shadow 150ms ease;
+
+  /* Text color */
+  color: var(--text-primary);
+
+  /* Dropdown arrow */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%235a6578' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+
+.compareSelect:hover {
+  box-shadow: var(--inset-2);
+}
+
+.compareSelect:focus {
+  outline: none;
+  box-shadow: var(--inset-2);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   LEGEND WRAPPER
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.legendWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 14px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   SENTINEL METER - RAISED → INSET
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.sentinelMeter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 14px 6px 6px;
+  background: var(--marble-base);
+  border-radius: 50px;
+  box-shadow: var(--raised-2);
+}
+
+.sentinelMeterInner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--marble-base);
+  box-shadow: var(--inset-2);
+}
+
+.radarSymbol {
+  flex-shrink: 0;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   LEGEND ROW - Other Indicators
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.legendRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+  padding: 10px 12px;
+  background: var(--marble-base);
+  border-radius: 10px;
+  box-shadow: var(--inset-1);
+  width: fit-content;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--sentinel-font-primary);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.legendDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* SENTINEL text - INSET/engraved (inside RAISED container) */
+.legendTextSentinel {
+  font-family: var(--sentinel-font-led);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--sentinel-accent-primary);
+  text-shadow:
+    0.75px 0.75px 0px rgba(255, 255, 255, 0.7),
+    -0.75px -0.75px 0px rgba(74, 154, 156, 0.5);
+}
+
+.legendTextNasdaq {
+  color: #9b8ab8;
+  text-shadow:
+    0.5px 0.5px 0px var(--shadow-light),
+    -0.5px -0.5px 0px rgba(155, 138, 184, 0.4);
+}
+
+.legendTextSp500 {
+  color: #7a99b8;
+  text-shadow:
+    0.5px 0.5px 0px var(--shadow-light),
+    -0.5px -0.5px 0px rgba(122, 153, 184, 0.4);
+}
+
+.legendTextGold {
+  color: #b8a07a;
+  text-shadow:
+    0.5px 0.5px 0px var(--shadow-light),
+    -0.5px -0.5px 0px rgba(184, 160, 122, 0.4);
+}
+
+.legendTextBonds {
+  color: #a89878;
+  text-shadow:
+    0.5px 0.5px 0px var(--shadow-light),
+    -0.5px -0.5px 0px rgba(168, 152, 120, 0.4);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   RESPONSIVE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+  .cardHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .tabGroup {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .tab {
+    flex: 1;
+    text-align: center;
+  }
+}

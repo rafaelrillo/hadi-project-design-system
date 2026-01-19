@@ -11,39 +11,9 @@
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   CSS VARIABLES - Design Tokens
+   CSS VARIABLES - Using Global Stone Marble Theme
+   All variables now reference theme.css for consistency
    ───────────────────────────────────────────────────────────────────────────── */
-
-.sidebar {
-  /* Neumorphic Base */
-  --neu-base: #e0e5ec;
-  --neu-shadow-dark: #a3b1c6;
-  --neu-shadow-light: #ffffff;
-
-  /* Glass Effects */
-  --glass-bg: rgba(255, 255, 255, 0.25);
-  --glass-bg-hover: rgba(255, 255, 255, 0.45);
-  --glass-bg-active: rgba(255, 255, 255, 0.6);
-  --glass-border: rgba(255, 255, 255, 0.6);
-  --glass-border-subtle: rgba(255, 255, 255, 0.35);
-
-  /* Text Colors */
-  --text-primary: #2d3748;
-  --text-secondary: #5a6578;
-  --text-muted: #8896a6;
-  --text-label: #7a8a9a;
-
-  /* Accent */
-  --accent-primary: #4a9a9c;
-  --accent-secondary: #3d8587;
-  --accent-glow: rgba(74, 154, 156, 0.35);
-  --accent-subtle: rgba(74, 154, 156, 0.12);
-
-  /* Transitions */
-  --transition-fast: 150ms ease;
-  --transition-normal: 200ms ease;
-  --transition-shadow: 50ms linear;
-}
 
 /* ─────────────────────────────────────────────────────────────────────────────
    SIDEBAR CONTAINER - Extruded from left edge, neumorphic right border
@@ -65,18 +35,18 @@
   padding: 0;
   overflow: hidden;
 
-  /* Polished marble surface */
-  background: var(--neu-base);
+  /* Stone Marble surface */
+  background: var(--marble-base);
 
   /* No border radius - flush against all edges */
   border-radius: 0;
 
   /* Almost invisible edge - seamless transition */
   box-shadow:
-    1px 0 4px rgba(163, 177, 198, 0.08),
-    inset -1px 0 0 rgba(255, 255, 255, 0.25);
+    1px 0 4px var(--shadow-dark),
+    inset -1px 0 0 var(--shadow-light);
 
-  transition: box-shadow var(--transition-shadow);
+  transition: box-shadow 50ms linear;
 }
 
 /* Position variants */
@@ -97,7 +67,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 16px 8px;
+  padding: 12px 8px;
   position: relative;
 }
 
@@ -105,24 +75,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  color: var(--accent-primary);
+  color: var(--sentinel-accent-primary);
+  transition: 200ms ease;
 
-  /* Neumorphic inset container for logo */
-  background: var(--neu-base);
-  box-shadow:
-    inset 3px 3px 6px rgba(163, 177, 198, 0.4),
-    inset -3px -3px 6px rgba(255, 255, 255, 0.7);
-
-  transition: var(--transition-normal);
-}
-
-.logo svg {
-  width: 28px;
-  height: 28px;
-  filter: drop-shadow(0 0 6px rgba(74, 154, 156, 0.4));
+  /* Apply brand teal color to FingEmblem */
+  --fing-symbol-fill: var(--sentinel-accent-primary);
+  --fing-symbol-stroke: var(--sentinel-accent-primary);
 }
 
 /* Scan line animation */
@@ -238,45 +196,45 @@
   font-family: inherit;
   position: relative;
 
-  /* Glassmorphism base */
-  background: rgba(255, 255, 255, 0.35);
+  /* Stone Marble GLASS styling */
+  background: var(--glass-bg);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  color: var(--text-secondary);
+  border: 1px solid var(--glass-border);
+  color: var(--sentinel-text-secondary);
 
   /* Glass shadow */
   box-shadow:
     0 2px 8px rgba(0, 0, 0, 0.04),
-    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    inset 0 1px 0 var(--shadow-light);
 
-  transition: var(--transition-fast);
+  transition: 150ms ease;
 }
 
 .menuItem:hover {
   /* Brighter glass on hover */
-  background: rgba(255, 255, 255, 0.5);
-  border-color: rgba(255, 255, 255, 0.7);
-  color: var(--text-primary);
+  background: var(--glass-bg-strong);
+  border-color: var(--glass-border-strong);
+  color: var(--sentinel-text-primary);
 
   box-shadow:
     0 4px 12px rgba(0, 0, 0, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    inset 0 1px 0 var(--shadow-light);
 }
 
 .menuItemActive {
   /* Active glass with accent tint */
   background: rgba(255, 255, 255, 0.6);
   border-color: rgba(255, 255, 255, 0.8);
-  color: var(--accent-primary);
+  color: var(--sentinel-accent-primary);
 
   box-shadow:
     0 4px 16px rgba(74, 154, 156, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+    inset 0 1px 0 var(--shadow-light);
 }
 
 .menuItemDisabled {
-  color: var(--text-muted);
+  color: var(--sentinel-text-muted);
   cursor: not-allowed;
   opacity: 0.4;
   background: rgba(255, 255, 255, 0.2);
@@ -332,17 +290,27 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
   padding: 0;
-  border-radius: 10px;
+  border-radius: 50%;
   cursor: pointer;
   border: none;
-  background: transparent;
   text-decoration: none;
   transition: all 0.2s ease;
-  color: var(--text-muted);
   font-family: inherit;
+
+  /* Circular INSET container */
+  background: var(--marble-base);
+  box-shadow: var(--inset-2);
+  color: var(--sentinel-text-secondary);
+}
+
+.footerAction svg {
+  /* Carved icon effect */
+  filter:
+    drop-shadow(0.5px 0.5px 0px rgba(255, 255, 255, 0.8))
+    drop-shadow(-0.5px -0.5px 0px rgba(130, 140, 155, 0.5));
 }
 
 .footerAction span {
@@ -350,20 +318,23 @@
 }
 
 .footerAction:hover {
-  color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.25);
-  /* Subtle polished marble raised effect */
-  box-shadow:
-    -2px -2px 4px rgba(255, 255, 255, 0.5),
-    2px 2px 4px rgba(163, 177, 198, 0.25);
+  color: var(--sentinel-accent-primary);
+}
+
+.footerAction:hover svg {
+  filter:
+    drop-shadow(0.5px 0.5px 0px rgba(255, 255, 255, 0.8))
+    drop-shadow(-0.5px -0.5px 0px rgba(74, 154, 156, 0.5));
 }
 
 .footerAction.danger:hover {
-  background: rgba(220, 38, 38, 0.06);
-  color: #dc2626;
-  box-shadow:
-    -2px -2px 4px rgba(255, 255, 255, 0.5),
-    2px 2px 4px rgba(220, 38, 38, 0.15);
+  color: var(--sentinel-status-negative);
+}
+
+.footerAction.danger:hover svg {
+  filter:
+    drop-shadow(0.5px 0.5px 0px rgba(255, 255, 255, 0.8))
+    drop-shadow(-0.5px -0.5px 0px rgba(184, 92, 92, 0.5));
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -379,11 +350,9 @@
   margin: 0 16px 12px;
   border-radius: 14px;
 
-  /* Inset container */
-  background: var(--neu-base);
-  box-shadow:
-    inset 3px 3px 8px var(--neu-shadow-dark),
-    inset -3px -3px 8px var(--neu-shadow-light);
+  /* Stone Marble INSET container */
+  background: var(--marble-base);
+  box-shadow: var(--inset-2);
 }
 
 .quickNavItem {
@@ -395,22 +364,22 @@
   border-radius: 10px;
   border: none;
   background: transparent;
-  color: var(--text-muted);
+  color: var(--sentinel-text-muted);
   cursor: pointer;
-  transition: var(--transition-fast);
+  transition: 150ms ease;
 }
 
 .quickNavItem:hover {
-  background: var(--glass-bg-hover);
-  color: var(--text-primary);
+  background: var(--glass-bg-strong);
+  color: var(--sentinel-text-primary);
 }
 
 .quickNavItemActive {
-  background: var(--glass-bg-active);
-  color: var(--accent-primary);
+  background: rgba(255, 255, 255, 0.6);
+  color: var(--sentinel-accent-primary);
   box-shadow:
     0 2px 8px rgba(74, 154, 156, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    inset 0 1px 0 var(--shadow-light);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -447,12 +416,10 @@
   padding: 5px;
   gap: 3px;
   border-radius: 16px;
-  background: var(--neu-base);
+  background: var(--marble-base);
 
-  /* Polished marble inset - subtle like the logo */
-  box-shadow:
-    inset 2px 2px 5px rgba(163, 177, 198, 0.35),
-    inset -2px -2px 5px rgba(255, 255, 255, 0.65);
+  /* Stone Marble INSET */
+  box-shadow: var(--inset-2);
 }
 
 /* Override tab button styles for sidebar - refined icon buttons */
@@ -466,26 +433,37 @@
   align-items: center;
   justify-content: center;
   background: transparent;
-  color: var(--text-secondary);
+  color: var(--sentinel-text-secondary);
   border: none;
   transition: all 0.2s ease;
 }
 
-.mainNavTabs button:hover:not([aria-selected="true"]) {
-  color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.25);
+/* Non-selected icons: RAISED effect (embossed) */
+.mainNavTabs button svg {
+  filter:
+    drop-shadow(-1px -1px 0px rgba(255, 255, 255, 0.9))
+    drop-shadow(1px 1px 0px rgba(147, 157, 170, 0.5));
+  transition: filter 0.2s ease;
 }
 
-/* Active tab - elevated with polished marble effect */
-.mainNavTabs button[aria-selected="true"] {
-  background: var(--neu-base);
-  color: var(--accent-primary);
+.mainNavTabs button:hover:not([aria-selected="true"]) {
+  color: var(--sentinel-text-primary);
+}
 
-  /* Soft raised shadow - polished marble */
-  box-shadow:
-    -2px -2px 5px rgba(255, 255, 255, 0.7),
-    2px 2px 5px rgba(163, 177, 198, 0.4),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+/* Active tab - Stone Marble RAISED inside INSET */
+.mainNavTabs button[aria-selected="true"] {
+  background: var(--marble-base);
+  color: var(--sentinel-accent-primary);
+
+  /* Stone Marble RAISED-2 */
+  box-shadow: var(--raised-2);
+}
+
+/* Selected icon: INSET effect (engraved/carved) */
+.mainNavTabs button[aria-selected="true"] svg {
+  filter:
+    drop-shadow(1px 1px 0px rgba(255, 255, 255, 0.9))
+    drop-shadow(-1px -1px 0px rgba(74, 154, 156, 0.5));
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────

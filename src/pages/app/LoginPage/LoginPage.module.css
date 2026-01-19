@@ -318,6 +318,251 @@
     -0.5px -0.5px 0px rgba(130, 140, 155, 0.35);
 }
 
+/* ═══════════════════════════════════════════════════════════════════════════════
+   NEUMORPHIC SCULPTING - Continuous fluid emergence from stone
+   Smooth transitions without steps - pure interpolation
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   RAISED SCULPTING - Surface rises smoothly from flat
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@keyframes sculptRaised {
+  0% {
+    opacity: 0;
+    box-shadow:
+      0 0 0 rgba(147, 157, 170, 0),
+      0 0 0 rgba(255, 255, 255, 0),
+      inset 0 0 0 1px rgba(255, 255, 255, 0);
+  }
+  100% {
+    opacity: 1;
+    box-shadow:
+      6px 6px 12px rgba(147, 157, 170, 0.55),
+      -6px -6px 12px rgba(255, 255, 255, 0.95),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   INSET SCULPTING - Surface carves inward smoothly
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@keyframes sculptInset {
+  0% {
+    opacity: 0;
+    box-shadow:
+      inset 0 0 0 rgba(147, 157, 170, 0),
+      inset 0 0 0 rgba(255, 255, 255, 0),
+      inset 0 0 0 1px rgba(147, 157, 170, 0);
+  }
+  100% {
+    opacity: 1;
+    box-shadow:
+      inset 3px 3px 6px rgba(147, 157, 170, 0.55),
+      inset -3px -3px 6px rgba(255, 255, 255, 0.95),
+      inset 0 0 0 1px rgba(147, 157, 170, 0.15);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   PILL WRAPPER SCULPTING
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@keyframes sculptPillWrapper {
+  0% {
+    opacity: 0;
+    box-shadow:
+      inset 0 0 0 rgba(147, 157, 170, 0),
+      inset 0 0 0 rgba(255, 255, 255, 0);
+  }
+  100% {
+    opacity: 1;
+    box-shadow:
+      inset 2px 2px 4px rgba(147, 157, 170, 0.55),
+      inset -2px -2px 4px rgba(255, 255, 255, 0.95);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   PILL BUTTON SCULPTING
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@keyframes sculptPillButton {
+  0% {
+    opacity: 0;
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0),
+      inset 0 0 0 2px rgba(74, 154, 156, 0),
+      0 0 0 rgba(147, 157, 170, 0),
+      0 0 0 rgba(255, 255, 255, 0);
+  }
+  100% {
+    opacity: 1;
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.85),
+      inset 0 0 0 2px rgba(74, 154, 156, 0.15),
+      2px 2px 4px rgba(147, 157, 170, 0.55),
+      -2px -2px 4px rgba(255, 255, 255, 0.95);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   TEXT SCULPTING
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@keyframes sculptTextLarge {
+  0% {
+    opacity: 0;
+    text-shadow:
+      0 0 0 rgba(255, 255, 255, 0),
+      0 0 0 rgba(147, 157, 170, 0);
+  }
+  100% {
+    opacity: 1;
+    text-shadow:
+      2px 2px 1px rgba(255, 255, 255, 0.95),
+      -2px -2px 1px rgba(147, 157, 170, 0.6);
+  }
+}
+
+@keyframes sculptTextSubtle {
+  0% {
+    opacity: 0;
+    text-shadow:
+      0 0 0 rgba(255, 255, 255, 0),
+      0 0 0 rgba(130, 140, 155, 0);
+  }
+  100% {
+    opacity: 1;
+    text-shadow:
+      0.75px 0.75px 0px rgba(255, 255, 255, 0.7),
+      -0.75px -0.75px 0px rgba(130, 140, 155, 0.4);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   ICON CIRCLE SCULPTING
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@keyframes sculptIconCircle {
+  0% {
+    opacity: 0;
+    box-shadow:
+      inset 0 0 0 rgba(147, 157, 170, 0),
+      inset 0 0 0 rgba(255, 255, 255, 0);
+  }
+  100% {
+    opacity: 1;
+    box-shadow:
+      inset 1px 1px 3px rgba(147, 157, 170, 0.55),
+      inset -1px -1px 3px rgba(255, 255, 255, 0.95);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   APPLY ANIMATIONS - Fluid wave, all elements share same timing
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Shared timing for fluid wave effect */
+.formContainer,
+.inputGroup :global(.input),
+.label,
+.buttonWrapper,
+.pillFrameButton:not(:disabled),
+.buttonIconCircle,
+.title,
+.subtitle,
+.hint {
+  animation-duration: 2.5s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+/* Title */
+.title {
+  animation-name: sculptTextLarge;
+  animation-delay: 100ms;
+}
+
+/* Subtitle */
+.subtitle {
+  animation-name: sculptTextSubtle;
+  animation-delay: 200ms;
+}
+
+/* Form container */
+.formContainer {
+  animation-name: sculptRaised;
+  animation-delay: 300ms;
+  box-shadow:
+    0 0 0 rgba(147, 157, 170, 0),
+    0 0 0 rgba(255, 255, 255, 0),
+    inset 0 0 0 1px rgba(255, 255, 255, 0);
+}
+
+/* First label */
+.label {
+  animation-name: sculptTextSubtle;
+  animation-delay: 450ms;
+}
+
+/* First input */
+.inputGroup :global(.input) {
+  animation-name: sculptInset;
+  animation-delay: 500ms;
+  box-shadow:
+    inset 0 0 0 rgba(147, 157, 170, 0),
+    inset 0 0 0 rgba(255, 255, 255, 0),
+    inset 0 0 0 1px rgba(147, 157, 170, 0);
+}
+
+/* Second label */
+.inputGroup:nth-child(2) .label {
+  animation-delay: 600ms;
+}
+
+/* Second input */
+.inputGroup:nth-child(2) :global(.input) {
+  animation-delay: 650ms;
+}
+
+/* Button wrapper */
+.buttonWrapper {
+  animation-name: sculptPillWrapper;
+  animation-delay: 750ms;
+  box-shadow:
+    inset 0 0 0 rgba(147, 157, 170, 0),
+    inset 0 0 0 rgba(255, 255, 255, 0);
+}
+
+/* Button */
+.pillFrameButton:not(:disabled) {
+  animation-name: sculptPillButton;
+  animation-delay: 800ms;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0),
+    inset 0 0 0 2px rgba(74, 154, 156, 0),
+    0 0 0 rgba(147, 157, 170, 0),
+    0 0 0 rgba(255, 255, 255, 0);
+}
+
+/* Icon circle */
+.buttonIconCircle {
+  animation-name: sculptIconCircle;
+  animation-delay: 850ms;
+  box-shadow:
+    inset 0 0 0 rgba(147, 157, 170, 0),
+    inset 0 0 0 rgba(255, 255, 255, 0);
+}
+
+/* Hint */
+.hint {
+  animation-name: sculptTextSubtle;
+  animation-delay: 950ms;
+}
+
 /* ─────────────────────────────────────────────────────────────────────────────
    REDUCED MOTION
    ───────────────────────────────────────────────────────────────────────────── */
@@ -329,5 +574,69 @@
 
   .spinner {
     animation: none;
+  }
+
+  /* Disable sculpting animations */
+  .formContainer,
+  .inputGroup :global(.input),
+  .label,
+  .buttonWrapper,
+  .pillFrameButton:not(:disabled),
+  .buttonIconCircle,
+  .title,
+  .subtitle,
+  .hint {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Apply final states immediately */
+  .formContainer {
+    box-shadow:
+      6px 6px 12px rgba(147, 157, 170, 0.55),
+      -6px -6px 12px rgba(255, 255, 255, 0.95),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+  }
+
+  .inputGroup :global(.input) {
+    box-shadow:
+      inset 3px 3px 6px rgba(147, 157, 170, 0.55),
+      inset -3px -3px 6px rgba(255, 255, 255, 0.95),
+      inset 0 0 0 1px rgba(147, 157, 170, 0.15);
+  }
+
+  .buttonWrapper {
+    box-shadow:
+      inset 2px 2px 4px rgba(147, 157, 170, 0.55),
+      inset -2px -2px 4px rgba(255, 255, 255, 0.95);
+  }
+
+  .pillFrameButton:not(:disabled) {
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.85),
+      inset 0 0 0 2px rgba(74, 154, 156, 0.15),
+      2px 2px 4px rgba(147, 157, 170, 0.55),
+      -2px -2px 4px rgba(255, 255, 255, 0.95);
+  }
+
+  .buttonIconCircle {
+    box-shadow:
+      inset 1px 1px 3px rgba(147, 157, 170, 0.55),
+      inset -1px -1px 3px rgba(255, 255, 255, 0.95);
+  }
+
+  .title {
+    text-shadow:
+      2px 2px 1px rgba(255, 255, 255, 0.95),
+      -2px -2px 1px rgba(147, 157, 170, 0.6);
+  }
+
+  .subtitle,
+  .label,
+  .hint {
+    text-shadow:
+      0.75px 0.75px 0px rgba(255, 255, 255, 0.7),
+      -0.75px -0.75px 0px rgba(130, 140, 155, 0.4);
   }
 }
