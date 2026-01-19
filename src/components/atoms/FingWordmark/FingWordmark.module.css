@@ -14,14 +14,16 @@
    VARIANT-SPECIFIC CLASSES (optional utility classes)
    ═══════════════════════════════════════════════════════════════════════════════ */
 
-/* Whisper */
+/* Whisper - Petrol brand color (subtle) */
 .insetWhisper {
   box-shadow: var(--fing-wm-inset-whisper);
 }
 
 .textWhisper {
-  text-shadow: var(--fing-wm-text-whisper);
-  color: #d5d8dc;
+  text-shadow:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.8),
+    -0.5px -0.5px 0px rgba(58, 106, 114, 0.35);
+  color: var(--fing-accent);
 }
 
 /* Soft */

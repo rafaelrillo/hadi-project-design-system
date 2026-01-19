@@ -110,11 +110,11 @@
   letter-spacing: 0.12em;
   margin-bottom: 12px;
 
-  /* Carved letterpress - Petrol brand color */
+  /* Whisper letterpress - Petrol brand color (subtle) */
   color: var(--fing-accent);
   text-shadow:
-    1.5px 1.5px 0px rgba(255, 255, 255, 0.85),
-    -1.5px -1.5px 1px rgba(58, 106, 114, 0.4);
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.8),
+    -0.5px -0.5px 0px rgba(58, 106, 114, 0.35);
 }
 
 .heroDescriptor {
@@ -278,11 +278,11 @@
   font-style: italic;
   margin-bottom: 6px;
 
-  /* Carved letterpress - Petrol brand color */
+  /* Whisper letterpress - Petrol brand color (subtle) */
   color: var(--fing-accent);
   text-shadow:
-    1.5px 1.5px 0px rgba(255, 255, 255, 0.85),
-    -1.5px -1.5px 1px rgba(58, 106, 114, 0.4);
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.8),
+    -0.5px -0.5px 0px rgba(58, 106, 114, 0.35);
 }
 
 .etymologyMeaning {
@@ -325,11 +325,11 @@
   letter-spacing: 0.05em;
   margin-bottom: 8px;
 
-  /* RAISED typography (in INSET container) */
+  /* RAISED typography SUBTLE (in INSET container) */
   color: var(--marble-base);
   text-shadow:
-    -1.5px -1.5px 0px rgba(255, 255, 255, 0.95),
-    1.5px 1.5px 0px rgba(147, 157, 170, 0.55);
+    -0.75px -0.75px 0px rgba(255, 255, 255, 0.95),
+    0.75px 0.75px 0px rgba(147, 157, 170, 0.55);
 }
 
 .synthesisHighlight {
@@ -352,6 +352,21 @@
     0.75px 0.75px 0px rgba(147, 157, 170, 0.45);
 }
 
+/* Vertical Groove - Decorative connector */
+.verticalInsetLine {
+  width: 6px;
+  height: 60px;
+  margin: 24px 0;
+  background: var(--marble-base);
+  border-radius: 3px;
+  box-shadow: var(--inset-2);
+}
+
+.etymologyWordmark {
+  margin-top: 0;
+}
+
+
 /* ─────────────────────────────────────────────────────────────────────────────
    VOICE SECTION (THE VOICE)
    ───────────────────────────────────────────────────────────────────────────── */
@@ -367,11 +382,11 @@
   line-height: 1.4;
   margin-bottom: 24px;
 
-  /* Carved letterpress - Petrol brand color */
+  /* Whisper letterpress - Petrol brand color (subtle) */
   color: var(--fing-accent);
   text-shadow:
-    1.5px 1.5px 0px rgba(255, 255, 255, 0.85),
-    -1.5px -1.5px 1px rgba(58, 106, 114, 0.4);
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.8),
+    -0.5px -0.5px 0px rgba(58, 106, 114, 0.35);
 }
 
 .voiceCard {
@@ -477,11 +492,11 @@
   font-size: 22px;
   margin-bottom: 10px;
 
-  /* Carved letterpress - Petrol brand color */
+  /* Whisper letterpress - Petrol brand color (subtle) */
   color: var(--fing-accent);
   text-shadow:
-    1.5px 1.5px 0px rgba(255, 255, 255, 0.85),
-    -1.5px -1.5px 1px rgba(58, 106, 114, 0.4);
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.8),
+    -0.5px -0.5px 0px rgba(58, 106, 114, 0.35);
 }
 
 .systemPhilosophy {
@@ -553,11 +568,11 @@
   font-size: 26px;
   margin-bottom: 28px;
 
-  /* Carved letterpress - Petrol brand color */
+  /* Whisper letterpress - Petrol brand color (subtle) */
   color: var(--fing-accent);
   text-shadow:
-    1.5px 1.5px 0px rgba(255, 255, 255, 0.85),
-    -1.5px -1.5px 1px rgba(58, 106, 114, 0.4);
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.8),
+    -0.5px -0.5px 0px rgba(58, 106, 114, 0.35);
 }
 
 .accessCtas {

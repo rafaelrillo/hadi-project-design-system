@@ -228,13 +228,13 @@ export function DashboardPage() {
           <div className={styles.kpiMeter}>
             <div className={styles.kpiMeterInner}>
               <span className={styles.kpiValueWarning}>42</span>
-              <span className={styles.kpiLabel}>RISK</span>
+              <span className={styles.kpiLabelWarning}>RISK</span>
             </div>
           </div>
           <div className={styles.kpiMeter}>
             <div className={styles.kpiMeterInner}>
               <span className={styles.kpiValuePositive}>+16%</span>
-              <span className={styles.kpiLabel}>YTD</span>
+              <span className={styles.kpiLabelPositive}>YTD</span>
             </div>
           </div>
         </div>

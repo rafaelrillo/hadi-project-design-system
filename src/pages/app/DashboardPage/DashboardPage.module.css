@@ -45,6 +45,7 @@
   display: flex;
   align-items: center;
   gap: 16px;
+  /* This width is matched by balancePill */
 }
 
 /* Avatar - RAISED circular with initials */
@@ -113,6 +114,9 @@
 }
 
 .balancePill {
+  /* Width matches headerLeft (avatar 56px + gap 16px + greetingFrame) */
+  width: 430px;
+  box-sizing: border-box;
   background: var(--marble-base);
   border-radius: 40px;
   padding: 12px 24px 12px 12px;
@@ -138,6 +142,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .balancePillBriefcase {
@@ -155,12 +160,12 @@
 
 .balancePillValue {
   font-family: var(--fing-font-mono);
-  font-size: 48px;
+  font-size: 32px;
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1;
 
-  /* Debossed - same as chartMetricValue */
+  /* Debossed - dark text */
   color: var(--text-primary);
   text-shadow:
     1px 1px 0px rgba(255, 255, 255, 0.8),
@@ -173,11 +178,11 @@
   font-weight: 500;
   letter-spacing: 0.05em;
 
-  /* Engraved - same as Portfolio Performance title */
-  color: var(--marble-dark);
+  /* Letterpress Petrol - brand color */
+  color: var(--fing-accent);
   text-shadow:
-    0.75px 0.75px 0px rgba(255, 255, 255, 0.7),
-    -0.75px -0.75px 0px rgba(130, 140, 155, 0.5);
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
+    -0.5px -0.5px 0px rgba(58, 106, 114, 0.25);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -427,11 +432,39 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
 
-  /* Contenedor INSET → Tipografia RAISED (embossed sutil) */
-  color: var(--marble-base);
+  /* Contenedor INSET → Tipografia RAISED - Teal/Accent */
+  color: var(--fing-accent-primary);
   text-shadow:
     -0.5px -0.5px 0px rgba(255, 255, 255, 0.9),
-    0.5px 0.5px 0px rgba(147, 157, 170, 0.45);
+    0.5px 0.5px 0px rgba(58, 106, 114, 0.4);
+}
+
+.kpiLabelWarning {
+  font-family: var(--fing-font-primary);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  /* Contenedor INSET → Tipografia RAISED - Warning/Gold */
+  color: var(--fing-status-warning);
+  text-shadow:
+    -0.5px -0.5px 0px rgba(255, 255, 255, 0.9),
+    0.5px 0.5px 0px rgba(196, 163, 90, 0.4);
+}
+
+.kpiLabelPositive {
+  font-family: var(--fing-font-primary);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  /* Contenedor INSET → Tipografia RAISED - Positive/Jade */
+  color: var(--fing-status-positive);
+  text-shadow:
+    -0.5px -0.5px 0px rgba(255, 255, 255, 0.9),
+    0.5px 0.5px 0px rgba(74, 154, 124, 0.4);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
