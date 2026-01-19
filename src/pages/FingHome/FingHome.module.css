@@ -84,11 +84,11 @@
   letter-spacing: 0.12em;
   margin-bottom: 12px;
 
-  /* Carved letterpress - engraved effect */
-  color: var(--marble-dark);
+  /* Carved letterpress - Petrol brand color */
+  color: var(--fing-accent);
   text-shadow:
     1.5px 1.5px 0px rgba(255, 255, 255, 0.85),
-    -1.5px -1.5px 1px rgba(130, 140, 155, 0.5);
+    -1.5px -1.5px 1px rgba(58, 106, 114, 0.4);
 }
 
 .heroDescriptor {
@@ -252,11 +252,11 @@
   font-style: italic;
   margin-bottom: 6px;
 
-  /* Carved letterpress - Charcoal */
-  color: var(--marble-base);
+  /* Carved letterpress - Petrol brand color */
+  color: var(--fing-accent);
   text-shadow:
-    2px 2px 2px var(--shadow-light),
-    -2px -2px 2px var(--shadow-dark);
+    1.5px 1.5px 0px rgba(255, 255, 255, 0.85),
+    -1.5px -1.5px 1px rgba(58, 106, 114, 0.4);
 }
 
 .etymologyMeaning {
@@ -341,11 +341,11 @@
   line-height: 1.4;
   margin-bottom: 24px;
 
-  /* Carved letterpress - Charcoal */
-  color: var(--marble-base);
+  /* Carved letterpress - Petrol brand color */
+  color: var(--fing-accent);
   text-shadow:
-    2px 2px 2px var(--shadow-light),
-    -2px -2px 2px var(--shadow-dark);
+    1.5px 1.5px 0px rgba(255, 255, 255, 0.85),
+    -1.5px -1.5px 1px rgba(58, 106, 114, 0.4);
 }
 
 .voiceCard {
@@ -451,11 +451,11 @@
   font-size: 22px;
   margin-bottom: 10px;
 
-  /* Carved letterpress - Charcoal */
-  color: var(--marble-base);
+  /* Carved letterpress - Petrol brand color */
+  color: var(--fing-accent);
   text-shadow:
-    2px 2px 2px var(--shadow-light),
-    -2px -2px 2px var(--shadow-dark);
+    1.5px 1.5px 0px rgba(255, 255, 255, 0.85),
+    -1.5px -1.5px 1px rgba(58, 106, 114, 0.4);
 }
 
 .systemPhilosophy {
@@ -527,11 +527,11 @@
   font-size: 26px;
   margin-bottom: 28px;
 
-  /* Carved letterpress - Charcoal */
-  color: var(--marble-base);
+  /* Carved letterpress - Petrol brand color */
+  color: var(--fing-accent);
   text-shadow:
-    2px 2px 2px var(--shadow-light),
-    -2px -2px 2px var(--shadow-dark);
+    1.5px 1.5px 0px rgba(255, 255, 255, 0.85),
+    -1.5px -1.5px 1px rgba(58, 106, 114, 0.4);
 }
 
 .accessCtas {

@@ -54,14 +54,16 @@
   color: #d5d8dc;
 }
 
-/* Carved (Recommended) */
+/* Carved (Recommended) - Petrol brand color */
 .insetCarved {
   box-shadow: var(--fing-wm-inset-carved);
 }
 
 .textCarved {
-  text-shadow: var(--fing-wm-text-carved);
-  color: #d5d8dc;
+  text-shadow:
+    1.5px 1.5px 0px rgba(255, 255, 255, 0.85),
+    -1.5px -1.5px 1px rgba(58, 106, 114, 0.4);
+  color: var(--fing-accent);
 }
 
 /* Pressed (Recommended Alternative) */
