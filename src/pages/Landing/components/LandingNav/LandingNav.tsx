@@ -1,31 +1,22 @@
 // Path: src/pages/Landing/components/LandingNav/LandingNav.tsx
-import { useState, useEffect } from 'react';
+// FING Brand Navigation - Stone Marble Neumorphism
+
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
-import { Button } from '@/components/atoms/Button';
+import { Menu, X, ArrowRight } from 'lucide-react';
+import { FingEmblem } from '@/components/atoms/FingEmblem';
 import styles from './LandingNav.module.css';
 
 const navLinks = [
   { label: 'Features', href: '#features' },
-  { label: 'Demo', href: '#demo' },
-  { label: 'Pricing', href: '#pricing' },
-  { label: 'Login', href: '/app/login' },
+  { label: 'Design System', href: '/showcase' },
+  { label: 'App', href: '/app/dashboard' },
 ];
 
 export function LandingNav() {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const handleNavClick = (href: string) => {
     setIsMobileMenuOpen(false);
@@ -39,52 +30,16 @@ export function LandingNav() {
 
   return (
     <motion.nav
-      className={`${styles.nav} ${isScrolled ? styles.scrolled : ''}`}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
+      className={styles.nav}
+      initial={{ y: -20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.45, 0, 0.15, 1] }}
     >
       <div className={styles.container}>
         {/* Logo */}
         <Link to="/" className={styles.logo}>
-          <svg
-            className={styles.logoSvg}
-            viewBox="0 0 120 120"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <circle
-              cx="60"
-              cy="60"
-              r="55"
-              stroke="var(--sentinel-accent-primary)"
-              strokeWidth="1"
-              strokeOpacity="0.3"
-            />
-            <circle
-              cx="60"
-              cy="60"
-              r="42"
-              stroke="var(--sentinel-accent-primary)"
-              strokeWidth="1.5"
-              strokeOpacity="0.5"
-            />
-            <circle
-              cx="60"
-              cy="60"
-              r="28"
-              stroke="var(--sentinel-accent-primary)"
-              strokeWidth="2"
-              strokeOpacity="0.8"
-            />
-            <circle
-              cx="60"
-              cy="60"
-              r="8"
-              fill="var(--sentinel-accent-primary)"
-            />
-          </svg>
-          <span className={styles.logoText}>SENTINEL</span>
+          <FingEmblem size={32} animation="none" />
+          <span className={styles.logoText}>fing</span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -98,12 +53,15 @@ export function LandingNav() {
               {link.label}
             </button>
           ))}
-          <Button
-            variant="primary"
-            onClick={() => navigate('/app/login')}
+          <button
+            className={styles.ctaButton}
+            onClick={() => navigate('/showcase')}
           >
-            Get Access
-          </Button>
+            <span>Explore</span>
+            <span className={styles.ctaIconCircle}>
+              <ArrowRight size={12} className={styles.ctaIcon} />
+            </span>
+          </button>
         </div>
 
         {/* Mobile Menu Button */}
@@ -112,7 +70,7 @@ export function LandingNav() {
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle menu"
         >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
 
@@ -138,21 +96,19 @@ export function LandingNav() {
                 {link.label}
               </motion.button>
             ))}
-            <motion.div
+            <motion.button
+              className={styles.mobileCta}
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                navigate('/showcase');
+              }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
+              transition={{ delay: 0.3 }}
             >
-              <Button
-                variant="primary"
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  navigate('/app/login');
-                }}
-              >
-                Get Access
-              </Button>
-            </motion.div>
+              <span>Explore Design System</span>
+              <ArrowRight size={14} />
+            </motion.button>
           </motion.div>
         )}
       </AnimatePresence>

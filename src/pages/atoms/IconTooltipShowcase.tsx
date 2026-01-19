@@ -15,20 +15,20 @@ function IconTooltipContent() {
     return { x: Math.cos(shadowAngle), y: Math.sin(shadowAngle) };
   }, [lightAngle]);
 
-  const LIGHT = {
-    base: '#e0e5ec',
-    shadowDark: 'hsl(220 15% 72%)',
-    shadowLight: 'hsl(0 0% 100%)',
+  const MARBLE = {
+    base: '#d5d8dc',
+    shadowDark: '#a8acb3',
+    shadowLight: '#ffffff',
   };
 
   const getNeuPanelShadow = (distance: number, blur: number): string => {
     const { x, y } = shadowOffsets;
-    return `${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}`;
+    return `${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}`;
   };
 
   const getNeuInsetShadow = (distance: number, blur: number): string => {
     const { x, y } = shadowOffsets;
-    return `inset ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}`;
+    return `inset ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}`;
   };
 
   const getGlassReflection = (): string => {
@@ -41,7 +41,7 @@ function IconTooltipContent() {
   const pageHeaderStyles: React.CSSProperties = {
     marginBottom: '32px',
     padding: '24px',
-    background: LIGHT.base,
+    background: MARBLE.base,
     borderRadius: '15px',
     boxShadow: getNeuPanelShadow(20, 60),
     transition: 'box-shadow 50ms linear',
@@ -68,7 +68,7 @@ function IconTooltipContent() {
   const iconBoxStyles: React.CSSProperties = {
     width: '52px',
     height: '52px',
-    background: LIGHT.base,
+    background: MARBLE.base,
     borderRadius: '15px',
     boxShadow: getNeuPanelShadow(8, 24),
     display: 'flex',
@@ -93,7 +93,7 @@ function IconTooltipContent() {
   });
 
   return (
-    <div style={{ background: LIGHT.base, minHeight: '100%', padding: '24px' }}>
+    <div style={{ background: MARBLE.base, minHeight: '100%', padding: '24px' }}>
       <header style={pageHeaderStyles}>
         <h1 style={titleStyles}>&gt; Icon & Tooltip_</h1>
         <p style={descStyles}>// Iconos Lucide con 4 tamaños y Tooltip con variantes</p>
@@ -108,7 +108,7 @@ function IconTooltipContent() {
           alignItems: 'center',
           gap: '24px',
           padding: '24px',
-          background: LIGHT.base,
+          background: MARBLE.base,
           borderRadius: '15px',
           boxShadow: getNeuPanelShadow(8, 24),
           transition: 'box-shadow 50ms linear',
@@ -202,7 +202,7 @@ function IconTooltipContent() {
           gap: '40px',
           alignItems: 'center',
           padding: '32px',
-          background: LIGHT.base,
+          background: MARBLE.base,
           borderRadius: '15px',
           boxShadow: getNeuPanelShadow(8, 24),
           justifyContent: 'center',
@@ -236,7 +236,7 @@ function IconTooltipContent() {
           gridTemplateColumns: 'repeat(2, 1fr)',
           gap: '32px',
           padding: '48px',
-          background: LIGHT.base,
+          background: MARBLE.base,
           borderRadius: '15px',
           boxShadow: getNeuInsetShadow(5, 15),
           transition: 'box-shadow 50ms linear',
@@ -267,7 +267,7 @@ function IconTooltipContent() {
           display: 'flex',
           gap: '16px',
           padding: '24px',
-          background: LIGHT.base,
+          background: MARBLE.base,
           borderRadius: '15px',
           boxShadow: getNeuPanelShadow(8, 24),
           alignItems: 'center',
@@ -299,7 +299,7 @@ function IconTooltipContent() {
           padding: '20px',
           borderRadius: '15px',
           boxShadow: getNeuInsetShadow(5, 15),
-          background: LIGHT.base,
+          background: MARBLE.base,
           fontSize: '12px',
           fontFamily: 'var(--sentinel-font-mono)',
           color: '#636E72',
@@ -316,7 +316,7 @@ function IconTooltipContent() {
           <p>✓ <strong>Padding:</strong> 8px 12px</p>
           <p>✓ <strong>Border radius:</strong> 15px</p>
           <p>✓ <strong>Font:</strong> Space Mono, 12px</p>
-          <p>✓ <strong>Dark:</strong> bg #2D3436</p>
+          <p>✓ <strong>Dark:</strong> bg #252528</p>
           <p>✓ <strong>Light:</strong> bg #FFFFFF</p>
         </div>
       </ShowcaseSection>

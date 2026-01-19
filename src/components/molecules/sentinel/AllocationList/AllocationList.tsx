@@ -21,7 +21,7 @@ export interface AllocationListProps {
 }
 
 const defaultColors = [
-  '#5ba3a5', '#7ecbcc', '#4a9a7c', '#5a8fb8',
+  '#5ba3a5', '#7ecbcc', '#4a7a6a', '#5a8fb8',
   '#8b7ec7', '#c4a35a', '#c47a5a', '#b85c5c',
 ];
 

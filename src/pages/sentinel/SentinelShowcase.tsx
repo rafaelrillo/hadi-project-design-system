@@ -22,7 +22,7 @@ import {
   RiskProfileSelector,
   AllocationSummary,
 } from '../../components/molecules/sentinel';
-import { FinancialLineChart } from '../../components/charts/FinancialLineChart';
+import { LineChart } from '../../components/charts/echarts/LineChart';
 import type { MarketState, RiskLevel } from '../../components/organisms/sentinel';
 import type { RiskProfile } from '../../components/molecules/sentinel';
 import { LightEngineProvider, useLightEngine } from '@/contexts/LightEngineContext';
@@ -33,7 +33,8 @@ import { LightEngineProvider, useLightEngine } from '@/contexts/LightEngineConte
 
 const financialData = [
   {
-    id: 'Portfolio Value',
+    id: 'portfolio-value',
+    name: 'Portfolio Value',
     data: [
       { x: '2024-01-01', y: 100000 },
       { x: '2024-02-01', y: 105000 },
@@ -83,24 +84,24 @@ function SentinelShowcaseContent() {
     return { x: Math.cos(shadowAngle), y: Math.sin(shadowAngle) };
   }, [lightAngle]);
 
-  const LIGHT = {
-    base: '#e0e5ec',
-    shadowDark: 'hsl(220 15% 72%)',
-    shadowLight: 'hsl(0 0% 100%)',
+  const MARBLE = {
+    base: '#d5d8dc',
+    shadowDark: '#a8acb3',
+    shadowLight: '#ffffff',
   };
 
   const getNeuPanelShadow = (distance: number, blur: number): string => {
     const { x, y } = shadowOffsets;
-    return `${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}`;
+    return `${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}`;
   };
 
   const getNeuInsetShadow = (distance: number, blur: number): string => {
     const { x, y } = shadowOffsets;
-    return `inset ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}`;
+    return `inset ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}`;
   };
 
   const pageHeaderStyles: React.CSSProperties = {
-    marginBottom: '32px', padding: '24px', background: LIGHT.base, borderRadius: '15px',
+    marginBottom: '32px', padding: '24px', background: MARBLE.base, borderRadius: '15px',
     boxShadow: getNeuPanelShadow(20, 60), transition: 'box-shadow 50ms linear',
   };
 
@@ -121,23 +122,23 @@ function SentinelShowcaseContent() {
   };
 
   const contentContainerStyles: React.CSSProperties = {
-    padding: '24px', background: LIGHT.base, borderRadius: '15px',
+    padding: '24px', background: MARBLE.base, borderRadius: '15px',
     boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear',
   };
 
   const insetContainerStyles: React.CSSProperties = {
     padding: '20px', borderRadius: '15px', boxShadow: getNeuInsetShadow(5, 15),
-    background: LIGHT.base, transition: 'box-shadow 50ms linear',
+    background: MARBLE.base, transition: 'box-shadow 50ms linear',
   };
 
   const lightEngineBoxBase: React.CSSProperties = {
-    width: '120px', height: '120px', backgroundColor: LIGHT.base, borderRadius: '15px',
+    width: '120px', height: '120px', backgroundColor: MARBLE.base, borderRadius: '15px',
     display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column',
     gap: '6px', boxShadow: getNeuPanelShadow(6, 18), transition: 'box-shadow 50ms linear, transform 200ms ease',
   };
 
   return (
-    <div style={{ background: LIGHT.base, minHeight: '100%', padding: '24px' }}>
+    <div style={{ background: MARBLE.base, minHeight: '100%', padding: '24px' }}>
       <header style={pageHeaderStyles}>
         <h1 style={titleStyles}>&gt; SENTINEL_Components_</h1>
         <p style={descStyles}>// Librería completa de componentes para análisis de inversiones</p>
@@ -151,7 +152,7 @@ function SentinelShowcaseContent() {
           <div style={{ display: 'flex', gap: '24px', justifyContent: 'center', flexWrap: 'wrap' }}>
             <div style={{ textAlign: 'center' }}>
               <div style={lightEngineBoxBase}>
-                <span style={{ fontFamily: 'var(--sentinel-font-display)', fontSize: '14px', fontWeight: 600, color: '#2D3436' }}>Layered</span>
+                <span style={{ fontFamily: 'var(--sentinel-font-display)', fontSize: '14px', fontWeight: 600, color: 'var(--sentinel-text-primary)' }}>Layered</span>
                 <span style={{ fontFamily: 'var(--sentinel-font-mono)', fontSize: '10px', color: '#636E72' }}>5 capas</span>
               </div>
               <p style={{ marginTop: '8px', fontSize: '11px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)' }}>Cards, Panels</p>
@@ -159,7 +160,7 @@ function SentinelShowcaseContent() {
 
             <div style={{ textAlign: 'center' }}>
               <div style={{ ...lightEngineBoxBase, boxShadow: getNeuInsetShadow(4, 12) }}>
-                <span style={{ fontFamily: 'var(--sentinel-font-display)', fontSize: '14px', fontWeight: 600, color: '#2D3436' }}>Inset</span>
+                <span style={{ fontFamily: 'var(--sentinel-font-display)', fontSize: '14px', fontWeight: 600, color: 'var(--sentinel-text-primary)' }}>Inset</span>
                 <span style={{ fontFamily: 'var(--sentinel-font-mono)', fontSize: '10px', color: '#636E72' }}>recessed</span>
               </div>
               <p style={{ marginTop: '8px', fontSize: '11px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)' }}>Inputs, Wells</p>
@@ -167,7 +168,7 @@ function SentinelShowcaseContent() {
 
             <div style={{ textAlign: 'center' }}>
               <div style={{ ...lightEngineBoxBase, background: 'rgba(91, 163, 165, 0.1)', border: '1px solid rgba(91, 163, 165, 0.2)' }}>
-                <span style={{ fontFamily: 'var(--sentinel-font-display)', fontSize: '14px', fontWeight: 600, color: '#2D3436' }}>Glass</span>
+                <span style={{ fontFamily: 'var(--sentinel-font-display)', fontSize: '14px', fontWeight: 600, color: 'var(--sentinel-text-primary)' }}>Glass</span>
                 <span style={{ fontFamily: 'var(--sentinel-font-mono)', fontSize: '10px', color: '#636E72' }}>+ reflection</span>
               </div>
               <p style={{ marginTop: '8px', fontSize: '11px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)' }}>Overlays, Modals</p>
@@ -183,7 +184,7 @@ function SentinelShowcaseContent() {
         <div style={contentContainerStyles}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px' }}>
             {marketStates.map((state) => (
-              <div key={state} style={{ padding: '16px', borderRadius: '12px', boxShadow: getNeuPanelShadow(4, 12), background: LIGHT.base }}>
+              <div key={state} style={{ padding: '16px', borderRadius: '12px', boxShadow: getNeuPanelShadow(4, 12), background: MARBLE.base }}>
                 <MarketStateIndicator state={state} size="sm" />
               </div>
             ))}
@@ -195,7 +196,7 @@ function SentinelShowcaseContent() {
         <div style={contentContainerStyles}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '16px' }}>
             {riskLevels.map((level, index) => (
-              <div key={level} style={{ padding: '12px', borderRadius: '12px', boxShadow: getNeuPanelShadow(4, 12), background: LIGHT.base }}>
+              <div key={level} style={{ padding: '12px', borderRadius: '12px', boxShadow: getNeuPanelShadow(4, 12), background: MARBLE.base }}>
                 <RiskGauge level={level} value={(index + 1) * 20 - 10} size="sm" />
               </div>
             ))}
@@ -231,16 +232,16 @@ function SentinelShowcaseContent() {
       <ShowcaseSection title="TrendIndicator" description="Simple trend display for specific metrics">
         <div style={contentContainerStyles}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px' }}>
-            <div style={{ padding: '16px', borderRadius: '12px', boxShadow: getNeuPanelShadow(4, 12), background: LIGHT.base }}>
+            <div style={{ padding: '16px', borderRadius: '12px', boxShadow: getNeuPanelShadow(4, 12), background: MARBLE.base }}>
               <TrendIndicator label="S&P 500" value="4,892.31" trend="up" change="+1.2%" period="vs yesterday" />
             </div>
-            <div style={{ padding: '16px', borderRadius: '12px', boxShadow: getNeuPanelShadow(4, 12), background: LIGHT.base }}>
+            <div style={{ padding: '16px', borderRadius: '12px', boxShadow: getNeuPanelShadow(4, 12), background: MARBLE.base }}>
               <TrendIndicator label="NASDAQ" value="15,628.95" trend="down" change="-0.8%" period="vs yesterday" />
             </div>
-            <div style={{ padding: '16px', borderRadius: '12px', boxShadow: getNeuPanelShadow(4, 12), background: LIGHT.base }}>
+            <div style={{ padding: '16px', borderRadius: '12px', boxShadow: getNeuPanelShadow(4, 12), background: MARBLE.base }}>
               <TrendIndicator label="VIX" value="18.42" trend="stable" change="+0.1%" period="vs last week" />
             </div>
-            <div style={{ padding: '16px', borderRadius: '12px', boxShadow: getNeuPanelShadow(4, 12), background: LIGHT.base }}>
+            <div style={{ padding: '16px', borderRadius: '12px', boxShadow: getNeuPanelShadow(4, 12), background: MARBLE.base }}>
               <TrendIndicator label="10Y Treasury" value="4.25%" trend="up" change="+0.05%" />
             </div>
           </div>
@@ -258,10 +259,10 @@ function SentinelShowcaseContent() {
       <ShowcaseSection title="CyclePosition" description="Shows position in the economic cycle">
         <div style={contentContainerStyles}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px' }}>
-            <div style={{ padding: '16px', borderRadius: '12px', boxShadow: getNeuPanelShadow(4, 12), background: LIGHT.base }}>
+            <div style={{ padding: '16px', borderRadius: '12px', boxShadow: getNeuPanelShadow(4, 12), background: MARBLE.base }}>
               <CyclePosition currentPhase="expansion" confidence={78} />
             </div>
-            <div style={{ padding: '16px', borderRadius: '12px', boxShadow: getNeuPanelShadow(4, 12), background: LIGHT.base }}>
+            <div style={{ padding: '16px', borderRadius: '12px', boxShadow: getNeuPanelShadow(4, 12), background: MARBLE.base }}>
               <CyclePosition currentPhase="peak" confidence={65} description="Approaching maximum output, prepare for transition" />
             </div>
           </div>
@@ -274,10 +275,10 @@ function SentinelShowcaseContent() {
       <ShowcaseSection title="RecommendationCard" description="Primary investment recommendation cards">
         <div style={contentContainerStyles}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px' }}>
-            <div style={{ padding: '16px', borderRadius: '12px', boxShadow: getNeuPanelShadow(4, 12), background: LIGHT.base }}>
+            <div style={{ padding: '16px', borderRadius: '12px', boxShadow: getNeuPanelShadow(4, 12), background: MARBLE.base }}>
               <RecommendationCard type="buy" assetClass="stocks" title="Increase Equity Exposure" rationale="Market conditions favor growth stocks with strong fundamentals. Consider increasing allocation by 5-10%." confidence={78} timeframe="3-6 months" priority="high" />
             </div>
-            <div style={{ padding: '16px', borderRadius: '12px', boxShadow: getNeuPanelShadow(4, 12), background: LIGHT.base }}>
+            <div style={{ padding: '16px', borderRadius: '12px', boxShadow: getNeuPanelShadow(4, 12), background: MARBLE.base }}>
               <RecommendationCard type="hold" assetClass="bonds" title="Maintain Bond Position" rationale="Current yield curve suggests stability. No immediate action required." confidence={65} timeframe="6-12 months" priority="medium" />
             </div>
           </div>
@@ -287,16 +288,16 @@ function SentinelShowcaseContent() {
       <ShowcaseSection title="StockSuggestion" description="Individual stock/asset suggestions">
         <div style={contentContainerStyles}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px' }}>
-            <div style={{ padding: '12px', borderRadius: '12px', boxShadow: getNeuPanelShadow(4, 12), background: LIGHT.base }}>
+            <div style={{ padding: '12px', borderRadius: '12px', boxShadow: getNeuPanelShadow(4, 12), background: MARBLE.base }}>
               <StockSuggestion symbol="AAPL" name="Apple Inc." action="buy" currentPrice={178.23} targetPrice={195.00} confidence={72} sector="Technology" reasoning="Strong iPhone sales and services growth." />
             </div>
-            <div style={{ padding: '12px', borderRadius: '12px', boxShadow: getNeuPanelShadow(4, 12), background: LIGHT.base }}>
+            <div style={{ padding: '12px', borderRadius: '12px', boxShadow: getNeuPanelShadow(4, 12), background: MARBLE.base }}>
               <StockSuggestion symbol="MSFT" name="Microsoft Corp." action="hold" currentPrice={378.91} targetPrice={390.00} confidence={68} sector="Technology" />
             </div>
-            <div style={{ padding: '12px', borderRadius: '12px', boxShadow: getNeuPanelShadow(4, 12), background: LIGHT.base }}>
+            <div style={{ padding: '12px', borderRadius: '12px', boxShadow: getNeuPanelShadow(4, 12), background: MARBLE.base }}>
               <StockSuggestion symbol="NVDA" name="NVIDIA Corp." action="buy" currentPrice={495.22} targetPrice={550.00} confidence={81} sector="Semiconductors" reasoning="AI demand continues to drive growth." />
             </div>
-            <div style={{ padding: '12px', borderRadius: '12px', boxShadow: getNeuPanelShadow(4, 12), background: LIGHT.base }}>
+            <div style={{ padding: '12px', borderRadius: '12px', boxShadow: getNeuPanelShadow(4, 12), background: MARBLE.base }}>
               <StockSuggestion symbol="XOM" name="Exxon Mobil" action="sell" currentPrice={104.56} targetPrice={95.00} confidence={62} sector="Energy" />
             </div>
           </div>
@@ -326,7 +327,7 @@ function SentinelShowcaseContent() {
         <div style={contentContainerStyles}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '16px' }}>
             {([1, 2, 3, 4, 5] as const).map((depth) => (
-              <div key={depth} style={{ padding: '8px', borderRadius: '12px', boxShadow: getNeuPanelShadow(depth * 2, depth * 6), background: LIGHT.base }}>
+              <div key={depth} style={{ padding: '8px', borderRadius: '12px', boxShadow: getNeuPanelShadow(depth * 2, depth * 6), background: MARBLE.base }}>
                 <DepthLayer depth={depth}>
                   <div style={{ padding: '24px', textAlign: 'center' }}>
                     <span style={{ fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px', color: '#636E72' }}>Depth {depth}</span>
@@ -353,9 +354,9 @@ function SentinelShowcaseContent() {
       {/* FINANCIAL CHARTS */}
       <h2 style={sectionHeaderStyles}>&gt; Financial_Charts</h2>
 
-      <ShowcaseSection title="FinancialLineChart" description="Investment-focused line chart with financial formatting">
+      <ShowcaseSection title="LineChart (ECharts)" description="Investment-focused line chart with financial formatting">
         <div style={contentContainerStyles}>
-          <FinancialLineChart data={financialData} height={300} enableArea formatValue={(v) => `$${(v / 1000).toFixed(0)}K`} />
+          <LineChart data={financialData} height={300} enableArea smooth formatValue={(v) => `$${(v / 1000).toFixed(0)}K`} />
         </div>
       </ShowcaseSection>
 

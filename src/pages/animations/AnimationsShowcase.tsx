@@ -29,26 +29,26 @@ function AnimationsContent() {
     return { x: Math.cos(shadowAngle), y: Math.sin(shadowAngle) };
   }, [lightAngle]);
 
-  const LIGHT = {
-    base: '#e0e5ec',
-    shadowDark: 'hsl(220 15% 72%)',
-    shadowLight: 'hsl(0 0% 100%)',
+  const MARBLE = {
+    base: '#d5d8dc',
+    shadowDark: '#a8acb3',
+    shadowLight: '#ffffff',
   };
 
   const getNeuPanelShadow = (distance: number, blur: number): string => {
     const { x, y } = shadowOffsets;
-    return `${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}`;
+    return `${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}`;
   };
 
   const getNeuInsetShadow = (distance: number, blur: number): string => {
     const { x, y } = shadowOffsets;
-    return `inset ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}`;
+    return `inset ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}`;
   };
 
   const pageHeaderStyles: React.CSSProperties = {
     marginBottom: '32px',
     padding: '24px',
-    background: LIGHT.base,
+    background: MARBLE.base,
     borderRadius: '15px',
     boxShadow: getNeuPanelShadow(20, 60),
     transition: 'box-shadow 50ms linear',
@@ -79,7 +79,7 @@ function AnimationsContent() {
     marginTop: '48px',
     marginBottom: '24px',
     padding: '16px 20px',
-    background: LIGHT.base,
+    background: MARBLE.base,
     borderRadius: '15px',
     boxShadow: getNeuPanelShadow(6, 18),
     fontFamily: 'var(--sentinel-font-mono)',
@@ -90,7 +90,7 @@ function AnimationsContent() {
 
   const cardStyles: React.CSSProperties = {
     padding: '24px',
-    background: LIGHT.base,
+    background: MARBLE.base,
     borderRadius: '15px',
     boxShadow: getNeuPanelShadow(6, 18),
     cursor: 'pointer',
@@ -99,7 +99,7 @@ function AnimationsContent() {
 
   const cardInsetStyles: React.CSSProperties = {
     padding: '24px',
-    background: LIGHT.base,
+    background: MARBLE.base,
     borderRadius: '15px',
     boxShadow: getNeuInsetShadow(4, 12),
     transition: 'box-shadow 50ms linear',
@@ -107,7 +107,7 @@ function AnimationsContent() {
 
   const buttonStyles: React.CSSProperties = {
     padding: '12px 24px',
-    background: LIGHT.base,
+    background: MARBLE.base,
     color: 'var(--sentinel-accent-primary)',
     border: 'none',
     borderRadius: '15px',
@@ -136,7 +136,7 @@ function AnimationsContent() {
   ];
 
   return (
-    <div style={{ background: LIGHT.base, minHeight: '100%', padding: '24px' }}>
+    <div style={{ background: MARBLE.base, minHeight: '100%', padding: '24px' }}>
       {/* Scroll Progress Bar */}
       <ScrollProgress color="var(--sentinel-accent-primary)" height={3} />
 
@@ -157,18 +157,18 @@ function AnimationsContent() {
         title="MotionCard - Variantes de Hover"
         description="Cards interactivas con diferentes efectos hover"
       >
-        <div style={{ padding: '24px', background: LIGHT.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
+        <div style={{ padding: '24px', background: MARBLE.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', width: '100%' }}>
             <MotionCard variant="default" style={cardStyles}>
-              <h4 style={{ color: '#2D3436', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Default</h4>
+              <h4 style={{ color: 'var(--sentinel-text-primary)', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Default</h4>
               <p style={{ color: '#636E72', fontSize: '12px' }}>Border glow on hover</p>
             </MotionCard>
             <MotionCard variant="scale" style={cardStyles}>
-              <h4 style={{ color: '#2D3436', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Scale</h4>
+              <h4 style={{ color: 'var(--sentinel-text-primary)', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Scale</h4>
               <p style={{ color: '#636E72', fontSize: '12px' }}>Subtle scale on hover</p>
             </MotionCard>
             <MotionCard variant="glow" style={cardStyles}>
-              <h4 style={{ color: '#2D3436', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Glow</h4>
+              <h4 style={{ color: 'var(--sentinel-text-primary)', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Glow</h4>
               <p style={{ color: '#636E72', fontSize: '12px' }}>Box shadow glow</p>
             </MotionCard>
           </div>
@@ -179,7 +179,7 @@ function AnimationsContent() {
         title="Spring Button"
         description="Botones con física de resorte al hacer click"
       >
-        <div style={{ padding: '24px', background: LIGHT.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
+        <div style={{ padding: '24px', background: MARBLE.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
           <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
             <motion.button
               style={buttonStyles}
@@ -218,24 +218,24 @@ function AnimationsContent() {
         title="FadeIn - Direcciones"
         description="Elementos que aparecen desde diferentes direcciones"
       >
-        <div style={{ padding: '24px', background: LIGHT.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
+        <div style={{ padding: '24px', background: MARBLE.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', width: '100%' }}>
             <FadeIn direction="up" delay={0}>
               <div style={cardStyles}>
                 <ArrowDown style={{ color: 'var(--sentinel-accent-primary)', marginBottom: '8px', transform: 'rotate(180deg)' }} size={24} />
-                <p style={{ color: '#2D3436', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>Fade In Up</p>
+                <p style={{ color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>Fade In Up</p>
               </div>
             </FadeIn>
             <FadeIn direction="down" delay={0.1}>
               <div style={cardStyles}>
                 <ArrowDown style={{ color: 'var(--sentinel-accent-primary)', marginBottom: '8px' }} size={24} />
-                <p style={{ color: '#2D3436', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>Fade In Down</p>
+                <p style={{ color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>Fade In Down</p>
               </div>
             </FadeIn>
             <FadeIn direction="scale" delay={0.2}>
               <div style={cardStyles}>
                 <Layers style={{ color: 'var(--sentinel-accent-primary)', marginBottom: '8px' }} size={24} />
-                <p style={{ color: '#2D3436', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>Scale In</p>
+                <p style={{ color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>Scale In</p>
               </div>
             </FadeIn>
           </div>
@@ -251,7 +251,7 @@ function AnimationsContent() {
         title="StaggerList - Lista Animada"
         description="Items que aparecen secuencialmente con delay"
       >
-        <div style={{ padding: '24px', background: LIGHT.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
+        <div style={{ padding: '24px', background: MARBLE.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px', width: '100%' }}>
             <div>
               <h4 style={{ color: '#636E72', marginBottom: '16px', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>
@@ -261,7 +261,7 @@ function AnimationsContent() {
                 {listItems.map((item, i) => (
                   <div key={i} style={{
                     padding: '12px 16px',
-                    background: LIGHT.base,
+                    background: MARBLE.base,
                     borderRadius: '15px',
                     boxShadow: getNeuInsetShadow(3, 8),
                     marginBottom: '8px',
@@ -283,7 +283,7 @@ function AnimationsContent() {
                 {listItems.map((item, i) => (
                   <div key={i} style={{
                     padding: '12px 16px',
-                    background: LIGHT.base,
+                    background: MARBLE.base,
                     borderRadius: '15px',
                     boxShadow: getNeuInsetShadow(3, 8),
                     marginBottom: '8px',
@@ -305,7 +305,7 @@ function AnimationsContent() {
         title="Stagger Grid"
         description="Grid de cards con animación escalonada usando presets"
       >
-        <div style={{ padding: '24px', background: LIGHT.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
+        <div style={{ padding: '24px', background: MARBLE.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
           <motion.div
             style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px', width: '100%' }}
             variants={staggerContainer}
@@ -322,7 +322,7 @@ function AnimationsContent() {
                   borderRadius: '15px',
                 }}
               >
-                <h4 style={{ color: '#2D3436', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)', fontSize: '14px' }}>
+                <h4 style={{ color: 'var(--sentinel-text-primary)', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)', fontSize: '14px' }}>
                   {card.title}
                 </h4>
                 <p style={{ color: card.color, fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>
@@ -343,7 +343,7 @@ function AnimationsContent() {
         title="Toggle Visibility"
         description="Elementos que animan al entrar y salir del DOM"
       >
-        <div style={{ padding: '24px', background: LIGHT.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
+        <div style={{ padding: '24px', background: MARBLE.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
           <div style={{ width: '100%' }}>
             <motion.button
               style={{ ...buttonStyles, marginBottom: '24px' }}
@@ -384,7 +384,7 @@ function AnimationsContent() {
         title="Card Selection"
         description="Selección con animación de entrada/salida"
       >
-        <div style={{ padding: '24px', background: LIGHT.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
+        <div style={{ padding: '24px', background: MARBLE.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
           <div style={{ width: '100%' }}>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px', marginBottom: '24px' }}>
               {gridCards.map((card) => (
@@ -399,7 +399,7 @@ function AnimationsContent() {
                   whileTap={{ scale: 0.98 }}
                   onClick={() => setSelectedCard(selectedCard === card.id ? null : card.id)}
                 >
-                  <h4 style={{ color: '#2D3436', fontFamily: 'var(--sentinel-font-mono)', fontSize: '14px' }}>
+                  <h4 style={{ color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)', fontSize: '14px' }}>
                     {card.title}
                   </h4>
                 </motion.div>
@@ -451,7 +451,7 @@ function AnimationsContent() {
                 ...cardStyles,
                 borderLeft: '4px solid var(--sentinel-accent-primary)',
               }}>
-                <h4 style={{ color: '#2D3436', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>
+                <h4 style={{ color: 'var(--sentinel-text-primary)', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>
                   Log Entry #{i}
                 </h4>
                 <p style={{ color: '#636E72', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>
@@ -468,13 +468,13 @@ function AnimationsContent() {
         title="ScrollProgress"
         description="Barra de progreso vinculada al scroll (visible en la parte superior)"
       >
-        <div style={{ padding: '24px', background: LIGHT.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
+        <div style={{ padding: '24px', background: MARBLE.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
           <div style={{
             ...cardInsetStyles,
             textAlign: 'center',
           }}>
             <Zap style={{ color: 'var(--sentinel-accent-primary)', marginBottom: '16px' }} size={48} />
-            <h4 style={{ color: '#2D3436', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>
+            <h4 style={{ color: 'var(--sentinel-text-primary)', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>
               Scroll Progress Active
             </h4>
             <p style={{ color: '#636E72', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>
@@ -503,7 +503,7 @@ function AnimationsContent() {
                 textAlign: 'center',
               }}>
                 <ArrowDown style={{ color: 'var(--sentinel-status-positive)', marginBottom: '8px' }} size={24} />
-                <h4 style={{ color: '#2D3436', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Slow (0.3)</h4>
+                <h4 style={{ color: 'var(--sentinel-text-primary)', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Slow (0.3)</h4>
                 <p style={{ color: '#636E72', fontFamily: 'var(--sentinel-font-mono)', fontSize: '11px' }}>
                   Se mueve lentamente
                 </p>
@@ -516,7 +516,7 @@ function AnimationsContent() {
                 textAlign: 'center',
               }}>
                 <ArrowDown style={{ color: 'var(--sentinel-status-warning)', marginBottom: '8px' }} size={24} />
-                <h4 style={{ color: '#2D3436', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Medium (0.6)</h4>
+                <h4 style={{ color: 'var(--sentinel-text-primary)', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Medium (0.6)</h4>
                 <p style={{ color: '#636E72', fontFamily: 'var(--sentinel-font-mono)', fontSize: '11px' }}>
                   Velocidad media
                 </p>
@@ -529,7 +529,7 @@ function AnimationsContent() {
                 textAlign: 'center',
               }}>
                 <ArrowDown style={{ color: 'var(--sentinel-status-info)', marginBottom: '8px', transform: 'rotate(180deg)' }} size={24} />
-                <h4 style={{ color: '#2D3436', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Reverse (-0.4)</h4>
+                <h4 style={{ color: 'var(--sentinel-text-primary)', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Reverse (-0.4)</h4>
                 <p style={{ color: '#636E72', fontFamily: 'var(--sentinel-font-mono)', fontSize: '11px' }}>
                   Dirección opuesta
                 </p>
@@ -548,7 +548,7 @@ function AnimationsContent() {
         title="SharedElement - Transición entre estados"
         description="Elementos que animan suavemente entre diferentes posiciones y tamaños"
       >
-        <div style={{ padding: '24px', background: LIGHT.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
+        <div style={{ padding: '24px', background: MARBLE.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
           <div style={{ width: '100%' }}>
             <LayoutContainer>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', marginBottom: '24px' }}>
@@ -564,7 +564,7 @@ function AnimationsContent() {
                       }}
                     >
                       <Box style={{ color: 'var(--sentinel-accent-primary)', marginBottom: '8px' }} size={20} />
-                      <h4 style={{ color: '#2D3436', fontFamily: 'var(--sentinel-font-mono)', fontSize: '14px' }}>
+                      <h4 style={{ color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)', fontSize: '14px' }}>
                         {id.toUpperCase()}
                       </h4>
                       <p style={{ color: '#636E72', fontFamily: 'var(--sentinel-font-mono)', fontSize: '11px' }}>
@@ -615,13 +615,13 @@ function AnimationsContent() {
         title="DraggablePanel - Paneles arrastrables"
         description="Elementos que se pueden arrastrar con restricciones y física"
       >
-        <div style={{ padding: '24px', background: LIGHT.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
+        <div style={{ padding: '24px', background: MARBLE.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
           <div
             ref={dragConstraintsRef}
             style={{
               width: '100%',
               height: '300px',
-              background: LIGHT.base,
+              background: MARBLE.base,
               borderRadius: '15px',
               boxShadow: getNeuInsetShadow(5, 15),
               position: 'relative',
@@ -654,14 +654,14 @@ function AnimationsContent() {
                 left: '20px',
                 width: '160px',
                 padding: '24px 16px 16px 16px',
-                background: LIGHT.base,
+                background: MARBLE.base,
                 borderRadius: '15px',
                 boxShadow: getNeuPanelShadow(6, 18),
                 borderLeft: '4px solid var(--sentinel-accent-primary)',
               }}
             >
               <Move style={{ color: 'var(--sentinel-accent-primary)', marginBottom: '8px' }} size={20} />
-              <h4 style={{ color: '#2D3436', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>
+              <h4 style={{ color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>
                 Panel A
               </h4>
               <p style={{ color: '#636E72', fontFamily: 'var(--sentinel-font-mono)', fontSize: '10px' }}>
@@ -680,14 +680,14 @@ function AnimationsContent() {
                 right: '20px',
                 width: '160px',
                 padding: '24px 16px 16px 16px',
-                background: LIGHT.base,
+                background: MARBLE.base,
                 borderRadius: '15px',
                 boxShadow: getNeuPanelShadow(6, 18),
                 borderLeft: '4px solid var(--sentinel-status-positive)',
               }}
             >
               <Move style={{ color: 'var(--sentinel-status-positive)', marginBottom: '8px' }} size={20} />
-              <h4 style={{ color: '#2D3436', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>
+              <h4 style={{ color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>
                 Panel B
               </h4>
               <p style={{ color: '#636E72', fontFamily: 'var(--sentinel-font-mono)', fontSize: '10px' }}>
@@ -707,7 +707,7 @@ function AnimationsContent() {
                 transform: 'translateX(-50%)',
                 width: '200px',
                 padding: '16px',
-                background: LIGHT.base,
+                background: MARBLE.base,
                 borderRadius: '15px',
                 boxShadow: getNeuPanelShadow(6, 18),
                 borderLeft: '4px solid var(--sentinel-status-warning)',
@@ -736,7 +736,7 @@ function AnimationsContent() {
           padding: '20px',
           borderRadius: '15px',
           boxShadow: getNeuInsetShadow(5, 15),
-          background: LIGHT.base,
+          background: MARBLE.base,
           fontSize: '12px',
           fontFamily: 'var(--sentinel-font-mono)',
           color: '#636E72',

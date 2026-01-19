@@ -1,920 +1,102 @@
 // Path: src/pages/Home.tsx
-// SENTINEL Design System Home - Powered by Dynamic Light Engine
-import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
+// FING Design System - Home Page
+
 import { Link } from 'react-router-dom';
-import {
-  LogIn, TrendingUp, DollarSign, BarChart2, Activity,
-  Bell, Settings, ChevronRight, Zap, Star, ArrowUpRight,
-  Sun, Pause, Play
-} from 'lucide-react';
-import { LineChart } from '@/components/charts/echarts';
-
-// ═══════════════════════════════════════════════════════════════════════════
-// DYNAMIC LIGHT ENGINE SYSTEM - OPTIMIZED
-//
-// La luz se mueve usando CSS animations (GPU-accelerated).
-// Las sombras se actualizan con throttle para evitar re-renders excesivos.
-// ═══════════════════════════════════════════════════════════════════════════
-
-// Throttle interval for shadow updates (ms)
-const SHADOW_UPDATE_INTERVAL = 100;
+import { LogIn } from 'lucide-react';
+import { FingEmblem } from '@/components/atoms/FingEmblem';
+import { FingWordmarkText } from '@/components/atoms/FingWordmark';
 
 export function Home() {
-  // ═══════════════════════════════════════════════════════════════════════════
-  // OPTIMIZED LIGHT STATE
-  // - shadowAngle: State for shadow calculations (throttled updates)
-  // - visualAngle: Ref for smooth visual animation (no re-renders)
-  // ═══════════════════════════════════════════════════════════════════════════
-  const [shadowAngle, setShadowAngle] = useState(135);
-  const [isAnimating, setIsAnimating] = useState(true);
-  const [animationSpeed, setAnimationSpeed] = useState(0.3);
-
-  // Refs for animation (no re-renders)
-  const visualAngleRef = useRef(135);
-  const animationFrameRef = useRef<number | null>(null);
-  const lastShadowUpdateRef = useRef(0);
-
-  // Update shadow angle with throttle
-  const updateShadowAngle = useCallback((angle: number) => {
-    const now = performance.now();
-    if (now - lastShadowUpdateRef.current >= SHADOW_UPDATE_INTERVAL) {
-      setShadowAngle(angle);
-      lastShadowUpdateRef.current = now;
-    }
-  }, []);
-
-  // Optimized animation loop using requestAnimationFrame
-  useEffect(() => {
-    if (!isAnimating) {
-      if (animationFrameRef.current) {
-        cancelAnimationFrame(animationFrameRef.current);
-        animationFrameRef.current = null;
-      }
-      return;
-    }
-
-    let lastTime = performance.now();
-
-    const animate = (currentTime: number) => {
-      const deltaTime = currentTime - lastTime;
-      lastTime = currentTime;
-
-      // Update visual angle (in ref, no re-render)
-      const increment = (animationSpeed * deltaTime) / 16.67; // Normalize to 60fps
-      visualAngleRef.current = (visualAngleRef.current + increment) % 360;
-
-      // Throttled shadow update (only triggers re-render every SHADOW_UPDATE_INTERVAL ms)
-      updateShadowAngle(visualAngleRef.current);
-
-      animationFrameRef.current = requestAnimationFrame(animate);
-    };
-
-    animationFrameRef.current = requestAnimationFrame(animate);
-
-    return () => {
-      if (animationFrameRef.current) {
-        cancelAnimationFrame(animationFrameRef.current);
-      }
-    };
-  }, [isAnimating, animationSpeed, updateShadowAngle]);
-
-  // Use shadowAngle for calculations (throttled state)
-  const lightAngle = shadowAngle;
-
-  // ═══════════════════════════════════════════════════════════════════════════
-  // SHADOW CALCULATIONS
-  // Convertir el angulo de luz a offsets X/Y para las sombras
-  // La sombra se proyecta en direccion OPUESTA a la luz
-  // ═══════════════════════════════════════════════════════════════════════════
-  const shadowOffsets = useMemo(() => {
-    // Convertir angulo a radianes (la sombra va en direccion opuesta)
-    const shadowAngle = (lightAngle + 180) * (Math.PI / 180);
-
-    // Calcular offsets normalizados (-1 a 1)
-    const x = Math.cos(shadowAngle);
-    const y = Math.sin(shadowAngle);
-
-    return { x, y, angle: lightAngle };
-  }, [lightAngle]);
-
-  // Handle manual angle change from slider
-  const handleManualAngleChange = useCallback((newAngle: number) => {
-    setIsAnimating(false);
-    visualAngleRef.current = newAngle;
-    setShadowAngle(newAngle);
-  }, []);
-
-  // ═══════════════════════════════════════════════════════════════════════════
-  // DYNAMIC SHADOW GENERATORS
-  // Estas funciones generan sombras basadas en la posicion actual de la luz
-  // ═══════════════════════════════════════════════════════════════════════════
-
-  // Stone Marble palette
-  const LIGHT = {
-    base: '#d5d8dc',           // --marble-base
-    shadowDark: 'rgba(147, 157, 170, 0.55)',  // --shadow-dark
-    shadowLight: 'rgba(255, 255, 255, 0.95)', // --shadow-light
-  };
-
-  // Generar sombra neumorphica elevada
-  const getNeuPanelShadow = (distance: number, blur: number): string => {
-    const { x, y } = shadowOffsets;
-    // Highlight en direccion de la luz (inverso de la sombra)
-    const hlX = -x * distance;
-    const hlY = -y * distance;
-    // Sombra en direccion opuesta a la luz
-    const shX = x * distance;
-    const shY = y * distance;
-
-    return `
-      ${hlX}px ${hlY}px ${blur}px ${LIGHT.shadowLight},
-      ${shX}px ${shY}px ${blur}px ${LIGHT.shadowDark}
-    `;
-  };
-
-  // Generar sombra neumorphica inset
-  const getNeuInsetShadow = (distance: number, blur: number): string => {
-    const { x, y } = shadowOffsets;
-    const shX = x * distance;
-    const shY = y * distance;
-
-    return `
-      inset ${shX}px ${shY}px ${blur}px ${LIGHT.shadowDark},
-      inset ${-shX}px ${-shY}px ${blur}px ${LIGHT.shadowLight}
-    `;
-  };
-
-  // Generar sombra layered (multicapa) dinamica
-  const getLayeredShadow = (hue: number, sat: number): string => {
-    const { x, y } = shadowOffsets;
-    const layers = [
-      { dist: 0.5, blur: 1, opacity: 0.12 },
-      { dist: 1, blur: 2, opacity: 0.10 },
-      { dist: 2, blur: 4, opacity: 0.08 },
-      { dist: 4, blur: 8, opacity: 0.06 },
-    ];
-
-    return layers.map(layer =>
-      `${x * layer.dist}px ${y * layer.dist * 1.5}px ${layer.blur}px hsla(${hue}, ${sat * 0.6}%, 35%, ${layer.opacity})`
-    ).join(',\n      ');
-  };
-
-  // Generar reflexion de luz en glass
-  const getGlassReflection = (): string => {
-    const { x, y } = shadowOffsets;
-    // El highlight va en la direccion de la luz (inverso de la sombra)
-    const hlX = -x;
-    const hlY = -y;
-
-    // Determinar que bordes iluminar basado en la direccion de la luz
-    const topHighlight = hlY < 0 ? 0.6 : 0.2;
-    const leftHighlight = hlX < 0 ? 0.4 : 0.15;
-
-    return `
-      inset 0 ${hlY < 0 ? '-1px' : '1px'} 0 hsla(0, 0%, 100%, ${topHighlight}),
-      inset ${hlX < 0 ? '-1px' : '1px'} 0 0 hsla(0, 0%, 100%, ${leftHighlight})
-    `;
-  };
-
-  // ═══════════════════════════════════════════════════════════════════════════
-  // DYNAMIC STYLES
-  // ═══════════════════════════════════════════════════════════════════════════
-
-  const pageBackground: React.CSSProperties = {
-    minHeight: '100vh',
-    padding: '40px',
-    background: LIGHT.base,
-    position: 'relative',
-    overflow: 'hidden',
-  };
-
-  const neuPanel: React.CSSProperties = {
-    background: LIGHT.base,
-    borderRadius: '15px',
-    padding: '32px',
-    boxShadow: getNeuPanelShadow(20, 60),
-    position: 'relative' as const,
-    transition: 'box-shadow 50ms linear',
-  };
-
-  const neuInset: React.CSSProperties = {
-    background: LIGHT.base,
-    borderRadius: '15px',
-    boxShadow: getNeuInsetShadow(5, 15),
-    transition: 'box-shadow 50ms linear',
-  };
-
-  const neuInsetSm: React.CSSProperties = {
-    background: LIGHT.base,
-    borderRadius: '15px',
-    boxShadow: getNeuInsetShadow(3, 8),
-    transition: 'box-shadow 50ms linear',
-  };
-
-  // Glass con sombras dinamicas
-  const glassCard = (hue: number, sat: number): React.CSSProperties => ({
-    background: `
-      linear-gradient(
-        ${lightAngle + 45}deg,
-        hsla(${hue}, ${sat}%, 70%, 0.28) 0%,
-        hsla(${hue}, ${sat}%, 65%, 0.12) 50%,
-        hsla(${hue}, ${sat}%, 60%, 0.20) 100%
-      )
-    `,
-    backdropFilter: 'blur(8px) saturate(140%)',
-    WebkitBackdropFilter: 'blur(8px) saturate(140%)',
-    borderRadius: '15px',
-    border: `1px solid hsla(${hue}, ${sat}%, 80%, 0.35)`,
-    boxShadow: `
-      ${getGlassReflection()},
-      ${getLayeredShadow(hue, sat)}
-    `,
-    position: 'relative' as const,
-    overflow: 'hidden' as const,
-    transition: 'box-shadow 50ms linear, background 100ms linear',
-  });
-
-  const glassBadge = (hue: number, sat: number): React.CSSProperties => ({
-    display: 'inline-flex',
-    alignItems: 'center',
-    gap: '4px',
-    padding: '6px 12px',
-    background: `
-      linear-gradient(
-        ${lightAngle}deg,
-        hsla(${hue}, ${sat}%, 65%, 0.25) 0%,
-        hsla(${hue}, ${sat}%, 60%, 0.12) 50%,
-        hsla(${hue}, ${sat}%, 65%, 0.20) 100%
-      )
-    `,
-    backdropFilter: 'blur(4px)',
-    WebkitBackdropFilter: 'blur(4px)',
-    border: `1px solid hsla(${hue}, ${sat}%, 75%, 0.25)`,
-    borderRadius: '15px',
-    fontSize: '12px',
-    fontWeight: 600,
-    color: `hsl(${hue}, ${sat * 0.8}%, 30%)`,
-    boxShadow: `
-      ${getGlassReflection()},
-      ${shadowOffsets.x * 1}px ${shadowOffsets.y * 2}px 4px hsla(${hue}, ${sat * 0.5}%, 40%, 0.12)
-    `,
-    transition: 'box-shadow 50ms linear',
-  });
-
-  const glassButton: React.CSSProperties = {
-    display: 'inline-flex',
-    alignItems: 'center',
-    gap: '8px',
-    padding: '14px 28px',
-    background: `
-      linear-gradient(
-        ${lightAngle + 45}deg,
-        hsla(175, 35%, 60%, 0.28) 0%,
-        hsla(175, 35%, 55%, 0.12) 50%,
-        hsla(175, 35%, 60%, 0.22) 100%
-      )
-    `,
-    backdropFilter: 'blur(8px) saturate(120%)',
-    WebkitBackdropFilter: 'blur(8px) saturate(120%)',
-    border: '1px solid hsla(175, 35%, 75%, 0.30)',
-    borderRadius: '15px',
-    color: '#2D3436',
-    fontSize: '14px',
-    fontWeight: 600,
-    fontFamily: 'var(--sentinel-font-mono)',
-    textDecoration: 'none',
-    cursor: 'pointer',
-    transition: 'transform 400ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 50ms linear',
-    boxShadow: `
-      ${getGlassReflection()},
-      ${getLayeredShadow(175, 35)}
-    `,
-  };
-
-  // ═══════════════════════════════════════════════════════════════════════════
-  // TYPOGRAPHY
-  // ═══════════════════════════════════════════════════════════════════════════
-  const title: React.CSSProperties = {
-    fontSize: '42px',
-    fontWeight: 700,
-    color: '#2D3436',
-    fontFamily: 'var(--sentinel-font-display)',
-    letterSpacing: '0.02em',
-    margin: 0,
-    textShadow: `${-shadowOffsets.x}px ${-shadowOffsets.y}px 0 rgba(255,255,255,0.8), ${shadowOffsets.x}px ${shadowOffsets.y * 2}px 2px rgba(0,0,0,0.08)`,
-    transition: 'text-shadow 50ms linear',
-  };
-
-  const subtitle: React.CSSProperties = {
-    fontSize: '14px',
-    color: '#636E72',
-    fontFamily: 'var(--sentinel-font-mono)',
-    marginTop: '8px',
-  };
-
-  const sectionTitle: React.CSSProperties = {
-    fontSize: '12px',
-    fontWeight: 600,
-    color: '#4A9A9C',
-    fontFamily: 'var(--sentinel-font-mono)',
-    textTransform: 'uppercase' as const,
-    letterSpacing: '0.12em',
-    marginBottom: '20px',
-    display: 'flex',
-    alignItems: 'center',
-    gap: '8px',
-  };
-
-  const cardTitle: React.CSSProperties = {
-    fontSize: '20px',
-    fontWeight: 600,
-    color: '#2D3436',
-    fontFamily: 'var(--sentinel-font-display)',
-    marginBottom: '24px',
-  };
-
-  // ═══════════════════════════════════════════════════════════════════════════
-  // RENDER
-  // ═══════════════════════════════════════════════════════════════════════════
   return (
-    <div style={pageBackground}>
-      {/* ════════════════════════════════════════════════════════════════════
-          DYNAMIC LIGHT INDICATOR - CSS-animated orbiting sun
-          Uses CSS animation for smooth GPU-accelerated movement
-          ════════════════════════════════════════════════════════════════════ */}
+    <div
+      style={{
+        minHeight: '100vh',
+        background: '#d5d8dc',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        position: 'relative',
+      }}
+    >
+      {/* Centered Content */}
       <div
-        className="light-orbit-container"
         style={{
-          position: 'absolute',
-          left: '50%',
-          top: '50%',
-          width: '90vmin',
-          height: '90vmin',
-          transform: 'translate(-50%, -50%)',
-          pointerEvents: 'none',
-          zIndex: 100,
-          animation: isAnimating
-            ? `sunOrbit ${360 / (animationSpeed * 60)}s linear infinite`
-            : 'none',
-          // When not animating, use the current angle
-          ...(isAnimating ? {} : { transform: `translate(-50%, -50%) rotate(${lightAngle}deg)` }),
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '24px',
         }}
       >
-        {/* Sun positioned at the edge of the orbit */}
-        <div
+        {/* FING Emblem */}
+        <FingEmblem size={180} animation="none" svgScale={0.85} />
+
+        {/* FING Wordmark */}
+        <FingWordmarkText variant="carved" size={96} />
+
+        {/* Design System Label */}
+        <p
           style={{
-            position: 'absolute',
-            left: '50%',
-            top: '0',
-            transform: 'translate(-50%, -50%)',
-            width: '60px',
-            height: '60px',
-            borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(251,191,36,0.9) 0%, rgba(251,191,36,0.4) 40%, transparent 70%)',
-            boxShadow: '0 0 60px rgba(251,191,36,0.6), 0 0 120px rgba(251,191,36,0.3)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
+            fontSize: '18px',
+            fontFamily: 'var(--sentinel-font-mono)',
+            color: '#636E72',
+            letterSpacing: '0.1em',
+            textTransform: 'uppercase',
+            marginTop: '8px',
           }}
         >
-          <Sun size={28} style={{ color: '#FCD34D' }} />
-        </div>
+          Design System
+        </p>
       </div>
 
-      {/* Light rays - uses CSS transform for smooth rotation */}
-      <div
+      {/* Launch App Button - Bottom Right */}
+      <Link
+        to="/app/login"
         style={{
           position: 'absolute',
-          left: '50%',
-          top: '50%',
-          transform: `translate(-50%, -50%) rotate(${lightAngle}deg)`,
-          width: '400px',
-          height: '400px',
-          background: 'conic-gradient(from 0deg, transparent 0deg, rgba(251,191,36,0.08) 20deg, transparent 40deg, transparent 360deg)',
-          borderRadius: '50%',
-          pointerEvents: 'none',
-          zIndex: 1,
-          transition: 'transform 100ms linear',
+          bottom: '40px',
+          right: '40px',
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '8px',
+          padding: '14px 28px',
+          background: 'rgba(255, 255, 255, 0.25)',
+          backdropFilter: 'blur(8px)',
+          border: '1px solid rgba(255, 255, 255, 0.5)',
+          borderRadius: '15px',
+          color: 'var(--sentinel-text-primary)',
+          fontSize: '14px',
+          fontWeight: 600,
+          fontFamily: 'var(--sentinel-font-mono)',
+          textDecoration: 'none',
+          cursor: 'pointer',
+          boxShadow: `
+            inset 0 -1px 0 rgba(255, 255, 255, 0.6),
+            inset -1px 0 0 rgba(255, 255, 255, 0.4),
+            2px 4px 8px rgba(147, 157, 170, 0.25)
+          `,
+          transition: 'transform 200ms ease, box-shadow 200ms ease',
         }}
-      />
-
-      {/* ════════════════════════════════════════════════════════════════════
-          LIGHT CONTROLS
-          ════════════════════════════════════════════════════════════════════ */}
-      <div style={{
-        position: 'fixed',
-        bottom: '24px',
-        left: '50%',
-        transform: 'translateX(-50%)',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '16px',
-        padding: '12px 24px',
-        background: 'rgba(255,255,255,0.9)',
-        backdropFilter: 'blur(12px)',
-        borderRadius: '15px',
-        boxShadow: '0 4px 24px rgba(0,0,0,0.15)',
-        zIndex: 1000,
-        fontFamily: 'var(--sentinel-font-mono)',
-        fontSize: '12px',
-      }}>
-        <button
-          onClick={() => setIsAnimating(!isAnimating)}
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '6px',
-            padding: '8px 16px',
-            background: isAnimating ? '#4A9A9C' : '#636E72',
-            color: 'white',
-            border: 'none',
-            borderRadius: '15px',
-            cursor: 'pointer',
-            fontSize: '12px',
-            fontWeight: 600,
-          }}
-        >
-          {isAnimating ? <Pause size={14} /> : <Play size={14} />}
-          {isAnimating ? 'Pause' : 'Play'}
-        </button>
-
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <span style={{ color: '#636E72' }}>Speed:</span>
-          <input
-            type="range"
-            min="0.1"
-            max="2"
-            step="0.1"
-            value={animationSpeed}
-            onChange={(e) => setAnimationSpeed(parseFloat(e.target.value))}
-            style={{ width: '80px', cursor: 'pointer' }}
-          />
-        </div>
-
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <span style={{ color: '#636E72' }}>Angle:</span>
-          <input
-            type="range"
-            min="0"
-            max="360"
-            value={lightAngle}
-            onChange={(e) => handleManualAngleChange(parseFloat(e.target.value))}
-            style={{ width: '100px', cursor: 'pointer' }}
-          />
-          <span style={{ color: '#2D3436', fontWeight: 600, minWidth: '36px' }}>
-            {Math.round(lightAngle)}°
-          </span>
-        </div>
-      </div>
-
-      {/* ════════════════════════════════════════════════════════════════════
-          HERO HEADER
-          ════════════════════════════════════════════════════════════════════ */}
-      <header style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'flex-start',
-        marginBottom: '48px',
-        marginTop: '20px',
-        position: 'relative',
-        zIndex: 10,
-      }}>
-        <div>
-          <h1 style={title}>SENTINEL</h1>
-          <p style={subtitle}>Dynamic Light Engine Demo</p>
-        </div>
-
-        <Link to="/app/login" style={glassButton}>
-          <LogIn size={18} />
-          Launch App
-        </Link>
-      </header>
-
-      {/* ════════════════════════════════════════════════════════════════════
-          MAIN GRID
-          ════════════════════════════════════════════════════════════════════ */}
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))',
-        gap: '32px',
-        marginBottom: '48px',
-        position: 'relative',
-        zIndex: 10,
-      }}>
-
-        {/* ──────────────────────────────────────────────────────────────────
-            CARD 1: Neumorphic Demo
-            ────────────────────────────────────────────────────────────────── */}
-        <div style={neuPanel}>
-          <h3 style={sectionTitle}>
-            <span style={{
-              width: '8px',
-              height: '8px',
-              borderRadius: '50%',
-              background: `linear-gradient(${lightAngle}deg, #fff, #4A9A9C)`,
-              boxShadow: '0 1px 3px rgba(74,154,156,0.3)',
-            }} />
-            Neumorphic Shadows
-          </h3>
-          <h2 style={cardTitle}>Portfolio Overview</h2>
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            <div style={{ ...neuInset, padding: '20px', display: 'flex', alignItems: 'center', gap: '16px' }}>
-              <div style={{ ...neuInsetSm, width: '52px', height: '52px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <DollarSign size={24} color="#4A9A9C" />
-              </div>
-              <div>
-                <div style={{ fontSize: '28px', fontWeight: 700, color: '#2D3436', fontFamily: 'var(--sentinel-font-mono)' }}>
-                  $124,500
-                </div>
-                <div style={{ fontSize: '12px', color: '#636E72' }}>Total Value</div>
-              </div>
-            </div>
-
-            <div style={{ ...neuInset, padding: '20px', display: 'flex', alignItems: 'center', gap: '16px' }}>
-              <div style={{ ...neuInsetSm, width: '52px', height: '52px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <TrendingUp size={24} color="#22C55E" />
-              </div>
-              <div>
-                <div style={{ fontSize: '28px', fontWeight: 700, color: '#22C55E', fontFamily: 'var(--sentinel-font-mono)' }}>
-                  +12.5%
-                </div>
-                <div style={{ fontSize: '12px', color: '#636E72' }}>Monthly Return</div>
-              </div>
-            </div>
-          </div>
-
-          {/* Elevation Demo with dynamic shadows */}
-          <div style={{ marginTop: '24px', display: 'flex', gap: '12px', justifyContent: 'center' }}>
-            {[1, 2, 3, 4, 5].map((level) => (
-              <div
-                key={level}
-                style={{
-                  width: '48px',
-                  height: '48px',
-                  background: LIGHT.base,
-                  borderRadius: '15px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: '11px',
-                  fontWeight: 600,
-                  color: '#636E72',
-                  fontFamily: 'var(--sentinel-font-mono)',
-                  boxShadow: getNeuPanelShadow(level * 3, level * 8),
-                  transition: 'box-shadow 50ms linear',
-                }}
-              >
-                {level}
-              </div>
-            ))}
-          </div>
-          <div style={{ textAlign: 'center', marginTop: '8px', fontSize: '10px', color: '#9BA4B0', fontFamily: 'var(--sentinel-font-mono)' }}>
-            Dynamic Elevation 1-5
-          </div>
-
-          {/* Glass element - Blue/Info */}
-          <div style={{
-            ...glassCard(215, 50),
-            position: 'absolute' as const,
-            top: '-14px',
-            left: '24px',
-            padding: '8px 14px',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '6px',
-            zIndex: 10,
-          }}>
-            <Activity size={14} color="#2d4a6b" />
-            <span style={{ fontSize: '11px', fontWeight: 600, color: '#1e3550' }}>Live Data</span>
-          </div>
-
-          {/* Glass element - Purple/Premium */}
-          <div style={{
-            ...glassCard(280, 40),
-            position: 'absolute' as const,
-            bottom: '-12px',
-            right: '20px',
-            padding: '8px 12px',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '5px',
-            zIndex: 10,
-          }}>
-            <Star size={12} color="#5a3d7a" />
-            <span style={{ fontSize: '11px', fontWeight: 600, color: '#4a2d6a' }}>Pro</span>
-          </div>
-        </div>
-
-        {/* ──────────────────────────────────────────────────────────────────
-            CARD 2: Performance Chart - Spans 2 columns (INSET style test)
-            ────────────────────────────────────────────────────────────────── */}
-        <div style={{ ...neuInset, padding: '32px', overflow: 'visible', gridColumn: 'span 2' }}>
-          <h3 style={sectionTitle}>
-            <span style={{
-              width: '8px',
-              height: '8px',
-              borderRadius: '50%',
-              background: `linear-gradient(${lightAngle}deg, #fff, #EF4444)`,
-              boxShadow: '0 1px 3px rgba(239,68,68,0.3)',
-            }} />
-            Glass Light Reflection
-          </h3>
-          <h2 style={cardTitle}>Performance</h2>
-
-          <div style={{
-            ...neuInset,
-            padding: '8px',
-            marginBottom: '16px',
-          }}>
-            <LineChart
-              data={[
-                {
-                  id: 'portfolio',
-                  name: 'Portfolio',
-                  color: '#4A9A9C',
-                  data: [
-                    { x: 'Jan', y: 0 }, { x: 'Feb', y: 12 }, { x: 'Mar', y: 8 },
-                    { x: 'Apr', y: 22 }, { x: 'May', y: 28 }, { x: 'Jun', y: 35 },
-                    { x: 'Jul', y: 42 }, { x: 'Aug', y: 38 }, { x: 'Sep', y: 48 },
-                    { x: 'Oct', y: 52 }, { x: 'Nov', y: 58 }, { x: 'Dec', y: 55 },
-                  ],
-                },
-                {
-                  id: 'nasdaq',
-                  name: 'NASDAQ',
-                  color: '#8B5CF6',
-                  data: [
-                    { x: 'Jan', y: 0 }, { x: 'Feb', y: 8 }, { x: 'Mar', y: 12 },
-                    { x: 'Apr', y: 18 }, { x: 'May', y: 22 }, { x: 'Jun', y: 28 },
-                    { x: 'Jul', y: 32 }, { x: 'Aug', y: 28 }, { x: 'Sep', y: 35 },
-                    { x: 'Oct', y: 38 }, { x: 'Nov', y: 42 }, { x: 'Dec', y: 40 },
-                  ],
-                },
-                {
-                  id: 'sp500',
-                  name: 'S&P 500',
-                  color: '#F59E0B',
-                  data: [
-                    { x: 'Jan', y: 0 }, { x: 'Feb', y: 5 }, { x: 'Mar', y: 8 },
-                    { x: 'Apr', y: 12 }, { x: 'May', y: 15 }, { x: 'Jun', y: 20 },
-                    { x: 'Jul', y: 24 }, { x: 'Aug', y: 22 }, { x: 'Sep', y: 28 },
-                    { x: 'Oct', y: 30 }, { x: 'Nov', y: 32 }, { x: 'Dec', y: 30 },
-                  ],
-                },
-              ]}
-              smooth
-              height={220}
-              formatValue={(v) => `${v > 0 ? '+' : ''}${v}%`}
-            />
-          </div>
-
-          <div style={{
-            ...neuInset,
-            padding: '16px 24px',
-            display: 'flex',
-            justifyContent: 'space-around',
-          }}>
-            {[
-              { label: 'S&P 500', value: '+30%', color: '#F59E0B' },
-              { label: 'NASDAQ', value: '+40%', color: '#8B5CF6' },
-              { label: 'Portfolio', value: '+55%', color: '#4A9A9C' },
-            ].map((item, i, arr) => (
-              <div key={item.label} style={{ display: 'flex', alignItems: 'center', gap: i < arr.length - 1 ? '20px' : 0 }}>
-                <div style={{ textAlign: 'center' }}>
-                  <div style={{ fontSize: '13px', fontWeight: 600, color: '#2D3436' }}>{item.label}</div>
-                  <div style={{ fontSize: '16px', color: item.color, fontWeight: 700 }}>{item.value}</div>
-                </div>
-                {i < arr.length - 1 && (
-                  <div style={{ width: '1px', height: '30px', background: 'rgba(163, 177, 198, 0.3)' }} />
-                )}
-              </div>
-            ))}
-          </div>
-
-          {/* Glass Overlay - watch the reflection move! */}
-          <div style={{
-            ...glassCard(355, 35),
-            position: 'absolute' as const,
-            top: '-12px',
-            right: '-12px',
-            padding: '12px 16px',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px',
-            zIndex: 10,
-          }}>
-            <Bell size={16} color="#c45a5a" />
-            <span style={{ fontSize: '13px', fontWeight: 600, color: '#7a2c2c' }}>3 Alerts</span>
-            <div style={{
-              width: '8px',
-              height: '8px',
-              borderRadius: '50%',
-              background: '#EF4444',
-              boxShadow: '0 0 8px rgba(239, 68, 68, 0.5)',
-            }} />
-          </div>
-
-          {/* Glass element - Green/Success */}
-          <div style={{
-            ...glassCard(145, 45),
-            position: 'absolute' as const,
-            bottom: '-16px',
-            left: '-12px',
-            padding: '10px 14px',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '6px',
-            zIndex: 10,
-          }}>
-            <TrendingUp size={14} color="#2d6b4a" />
-            <span style={{ fontSize: '12px', fontWeight: 600, color: '#1e4d35' }}>+18.2%</span>
-          </div>
-        </div>
-
-        {/* ──────────────────────────────────────────────────────────────────
-            CARD 3: Color-Matched Dynamic Shadows
-            ────────────────────────────────────────────────────────────────── */}
-        <div style={{ ...neuPanel, overflow: 'visible' }}>
-          <h3 style={sectionTitle}>
-            <span style={{
-              width: '8px',
-              height: '8px',
-              borderRadius: '50%',
-              background: `linear-gradient(${lightAngle}deg, #fff, #22C55E)`,
-              boxShadow: '0 1px 3px rgba(34,197,94,0.3)',
-            }} />
-            Color-Matched Shadows
-          </h3>
-          <h2 style={cardTitle}>Quick Actions</h2>
-
-          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' as const, marginBottom: '24px' }}>
-            <span style={glassBadge(145, 40)}>
-              <Zap size={12} /> Active
-            </span>
-            <span style={glassBadge(175, 35)}>
-              <Star size={12} /> Premium
-            </span>
-            <span style={glassBadge(215, 40)}>
-              <ArrowUpRight size={12} /> +24%
-            </span>
-          </div>
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            {[
-              { symbol: 'AAPL', action: 'BUY', hue: 145, sat: 40 },
-              { symbol: 'GOOGL', action: 'SELL', hue: 355, sat: 35 },
-              { symbol: 'MSFT', action: 'HOLD', hue: 35, sat: 45 },
-            ].map((item) => (
-              <div key={item.symbol} style={{
-                ...neuInset,
-                padding: '14px 18px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-              }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <Activity size={16} color="#4A9A9C" />
-                  <span style={{ fontWeight: 600, color: '#2D3436', fontFamily: 'var(--sentinel-font-mono)' }}>
-                    {item.symbol}
-                  </span>
-                </div>
-                <span style={glassBadge(item.hue, item.sat)}>
-                  {item.action}
-                </span>
-              </div>
-            ))}
-          </div>
-
-          {/* Glass notification - teal */}
-          <div style={{
-            ...glassCard(175, 35),
-            position: 'absolute' as const,
-            bottom: '-16px',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            padding: '10px 20px',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '10px',
-            whiteSpace: 'nowrap' as const,
-            zIndex: 10,
-          }}>
-            <Settings size={14} color="#3d7a7c" style={{ animation: 'spin 4s linear infinite' }} />
-            <span style={{ fontSize: '12px', color: '#2d5a5c', fontWeight: 500 }}>Auto-rebalancing enabled</span>
-            <ChevronRight size={14} color="#4A9A9C" />
-          </div>
-
-          {/* Glass element - Amber/Warning */}
-          <div style={{
-            ...glassCard(35, 55),
-            position: 'absolute' as const,
-            top: '-10px',
-            left: '30%',
-            padding: '8px 14px',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '6px',
-            zIndex: 10,
-          }}>
-            <Zap size={13} color="#8a6520" />
-            <span style={{ fontSize: '11px', fontWeight: 600, color: '#6b4f18' }}>High Priority</span>
-          </div>
-
-          {/* Glass element - Cyan */}
-          <div style={{
-            ...glassCard(190, 50),
-            position: 'absolute' as const,
-            top: '40%',
-            right: '-18px',
-            padding: '10px 12px',
-            display: 'flex',
-            flexDirection: 'column' as const,
-            alignItems: 'center',
-            gap: '4px',
-            zIndex: 10,
-          }}>
-            <BarChart2 size={16} color="#1e5a6b" />
-            <span style={{ fontSize: '10px', fontWeight: 700, color: '#154550', fontFamily: 'var(--sentinel-font-mono)' }}>24h</span>
-          </div>
-        </div>
-      </div>
-
-      {/* ════════════════════════════════════════════════════════════════════
-          LIGHT ENGINE INFO
-          ════════════════════════════════════════════════════════════════════ */}
-      <div style={{ ...neuPanel, position: 'relative', zIndex: 10 }}>
-        <h3 style={sectionTitle}>
-          <Sun size={14} style={{ color: '#F59E0B' }} />
-          Dynamic Light Engine
-        </h3>
-
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-          gap: '24px',
-          marginBottom: '24px',
-        }}>
-          <div style={{ ...neuInset, padding: '20px' }}>
-            <div style={{ fontSize: '13px', fontWeight: 700, color: '#4A9A9C', marginBottom: '8px' }}>
-              Real-time Calculations
-            </div>
-            <p style={{ fontSize: '12px', color: '#636E72', lineHeight: 1.6, margin: 0 }}>
-              Shadow X = cos(angle) × distance<br/>
-              Shadow Y = sin(angle) × distance<br/>
-              Highlight = opposite direction
-            </p>
-          </div>
-
-          <div style={{ ...neuInset, padding: '20px' }}>
-            <div style={{ fontSize: '13px', fontWeight: 700, color: '#4A9A9C', marginBottom: '8px' }}>
-              Glass Reflections
-            </div>
-            <p style={{ fontSize: '12px', color: '#636E72', lineHeight: 1.6, margin: 0 }}>
-              Light-facing edges get brighter highlights.<br/>
-              Gradient direction follows light angle.<br/>
-              Shadow color matches glass hue.
-            </p>
-          </div>
-
-          <div style={{ ...glassCard(175, 35), padding: '20px' }}>
-            <div style={{ fontSize: '13px', fontWeight: 700, color: '#2d5a5c', marginBottom: '8px' }}>
-              Current Light: {Math.round(lightAngle)}°
-            </div>
-            <p style={{ fontSize: '12px', color: '#3d6a6c', lineHeight: 1.6, margin: 0 }}>
-              X offset: {shadowOffsets.x.toFixed(2)}<br/>
-              Y offset: {shadowOffsets.y.toFixed(2)}<br/>
-              {isAnimating ? 'Animating...' : 'Paused'}
-            </p>
-          </div>
-        </div>
-
-        <div style={{ textAlign: 'center' }}>
-          <Link
-            to="/showcase/styles/light-engine"
-            style={glassButton}
-          >
-            View Full Documentation
-            <ChevronRight size={16} />
-          </Link>
-        </div>
-      </div>
-
-      <style>{`
-        @keyframes spin {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-
-        @keyframes sunOrbit {
-          from { transform: translate(-50%, -50%) rotate(0deg); }
-          to { transform: translate(-50%, -50%) rotate(360deg); }
-        }
-
-        .light-orbit-container {
-          will-change: transform;
-        }
-      `}</style>
+        onMouseEnter={(e) => {
+          e.currentTarget.style.transform = 'translateY(-2px)';
+          e.currentTarget.style.boxShadow = `
+            inset 0 -1px 0 rgba(255, 255, 255, 0.6),
+            inset -1px 0 0 rgba(255, 255, 255, 0.4),
+            4px 8px 16px rgba(147, 157, 170, 0.35)
+          `;
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform = 'translateY(0)';
+          e.currentTarget.style.boxShadow = `
+            inset 0 -1px 0 rgba(255, 255, 255, 0.6),
+            inset -1px 0 0 rgba(255, 255, 255, 0.4),
+            2px 4px 8px rgba(147, 157, 170, 0.25)
+          `;
+        }}
+      >
+        <LogIn size={18} />
+        Launch App
+      </Link>
     </div>
   );
 }

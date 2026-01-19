@@ -1,0 +1,676 @@
+/* Path: src/pages/FingHome/FingHome.module.css */
+/* ═══════════════════════════════════════════════════════════════════════════════
+   FING HOME PAGE - Stone Marble Neumorphism with Natural Color Palette
+
+   Natural Mineral Colors:
+   - Charcoal (#252528) - Primary text, burned wood carbon
+   - Petrol (#3a6a72) - Brand accent, petroleum deposits
+   - Steel (#4a6a7a) - Secondary text, refined iron alloy
+   - Jade (#4a7a6a) - Positive/success, green stone
+   - Gold (#a08a4a) - Warning, pure metal
+   - Rust (#8a5a4a) - Negative/error, iron oxide
+
+   Letterpress Effect:
+   - Light highlight: rgba(255, 255, 255, 0.9)
+   - Color shadow: rgba(R, G, B, 0.25) based on text color
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   BASE LAYOUT
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.home {
+  min-height: 100vh;
+  background: var(--marble-base);
+  font-family: var(--sentinel-font-primary);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+}
+
+.sectionLabel {
+  font-family: var(--sentinel-font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+
+  /* Letterpress - Steel */
+  color: var(--fing-text-accent);
+  text-shadow:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
+    -0.5px -0.5px 0px rgba(74, 106, 122, 0.25);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   HERO SECTION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.hero {
+  text-align: center;
+  min-height: 100vh;
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+
+.heroLogo {
+  width: 160px;
+  height: 160px;
+  background: var(--marble-base);
+  border-radius: 50%;
+  box-shadow: var(--inset-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 32px;
+}
+
+.heroLogo svg {
+  filter:
+    drop-shadow(1px 1px 0px var(--shadow-light))
+    drop-shadow(-1px -1px 0px rgba(147, 157, 170, 0.4));
+}
+
+.heroWordmark {
+  font-family: var(--sentinel-font-primary);
+  font-size: 96px;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  margin-bottom: 12px;
+
+  /* Carved letterpress - engraved effect */
+  color: var(--marble-dark);
+  text-shadow:
+    1.5px 1.5px 0px rgba(255, 255, 255, 0.85),
+    -1.5px -1.5px 1px rgba(130, 140, 155, 0.5);
+}
+
+.heroDescriptor {
+  font-family: var(--sentinel-font-mono);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  margin-top: 24px;
+  margin-bottom: 28px;
+
+  /* Letterpress - Muted */
+  color: var(--fing-text-muted);
+  text-shadow:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
+    -0.5px -0.5px 0px rgba(138, 143, 150, 0.25);
+}
+
+.heroCtas {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   BUTTONS - Stone Marble Pill Frame
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.btn {
+  padding: 12px 24px;
+  border-radius: 50px;
+  border: none;
+  font-family: var(--sentinel-font-primary);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+
+.btnPrimary {
+  background: var(--marble-base);
+  box-shadow:
+    var(--raised-3),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+
+  /* Letterpress - Petrol */
+  color: var(--fing-accent);
+  text-shadow:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.8),
+    -0.5px -0.5px 0px rgba(58, 106, 114, 0.3);
+}
+
+.btnPrimary:hover {
+  box-shadow:
+    var(--raised-4),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.8),
+    0 0 20px rgba(58, 106, 114, 0.15);
+}
+
+.btnSecondary {
+  background: var(--marble-base);
+  box-shadow: var(--raised-2);
+
+  /* Letterpress - Muted */
+  color: var(--fing-text-muted);
+  text-shadow:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
+    -0.5px -0.5px 0px rgba(138, 143, 150, 0.25);
+}
+
+.btnSecondary:hover {
+  box-shadow: var(--raised-3);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   SCROLL INDICATOR
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.scrollIndicator {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.scrollIndicator span {
+  font-family: var(--sentinel-font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+
+  /* Letterpress - Steel */
+  color: var(--fing-text-accent);
+  text-shadow:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
+    -0.5px -0.5px 0px rgba(74, 106, 122, 0.25);
+}
+
+.scrollIndicator svg {
+  opacity: 0.5;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   ETYMOLOGY SECTION (THE NAME)
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.etymologyGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  max-width: 600px;
+  margin-bottom: 24px;
+}
+
+.etymologyCard {
+  background: var(--marble-base);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: var(--raised-3);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.etymologyCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 0.75),
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  pointer-events: none;
+}
+
+.etymologyRoot {
+  font-family: var(--sentinel-font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  margin-bottom: 8px;
+
+  /* Letterpress - Steel */
+  color: var(--fing-text-accent);
+  text-shadow:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
+    -0.5px -0.5px 0px rgba(74, 106, 122, 0.25);
+}
+
+.etymologyWord {
+  font-family: var(--sentinel-font-display);
+  font-size: 24px;
+  font-style: italic;
+  margin-bottom: 6px;
+
+  /* Carved letterpress - Charcoal */
+  color: var(--marble-base);
+  text-shadow:
+    2px 2px 2px var(--shadow-light),
+    -2px -2px 2px var(--shadow-dark);
+}
+
+.etymologyMeaning {
+  font-size: 13px;
+  line-height: 1.4;
+
+  /* Letterpress - Muted */
+  color: var(--fing-text-muted);
+  text-shadow:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
+    -0.5px -0.5px 0px rgba(138, 143, 150, 0.25);
+}
+
+.etymologyModern {
+  font-family: var(--sentinel-font-mono);
+  font-size: 10px;
+  margin-top: 8px;
+
+  /* Letterpress - Steel */
+  color: var(--fing-text-accent);
+  text-shadow:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
+    -0.5px -0.5px 0px rgba(74, 106, 122, 0.25);
+}
+
+/* Synthesis Card - INSET */
+.synthesisCard {
+  background: var(--marble-base);
+  border-radius: 20px;
+  padding: 20px 32px;
+  box-shadow: var(--inset-3);
+  text-align: center;
+  max-width: 420px;
+}
+
+.synthesisFormula {
+  font-family: var(--sentinel-font-mono);
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+
+  /* RAISED typography (in INSET container) */
+  color: var(--marble-base);
+  text-shadow:
+    -1.5px -1.5px 0px rgba(255, 255, 255, 0.95),
+    1.5px 1.5px 0px rgba(147, 157, 170, 0.55);
+}
+
+.synthesisHighlight {
+  /* RAISED typography - Petrol */
+  color: var(--fing-accent);
+  text-shadow:
+    -1.5px -1.5px 1px rgba(255, 255, 255, 0.9),
+    1.5px 1.5px 1px rgba(58, 106, 114, 0.3);
+}
+
+.synthesisResult {
+  font-family: var(--sentinel-font-display);
+  font-size: 16px;
+  font-style: italic;
+
+  /* RAISED typography (subtle) */
+  color: var(--fing-text-muted);
+  text-shadow:
+    -0.75px -0.75px 0px rgba(255, 255, 255, 0.9),
+    0.75px 0.75px 0px rgba(147, 157, 170, 0.45);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   VOICE SECTION (THE VOICE)
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.voiceContainer {
+  max-width: 520px;
+  text-align: center;
+}
+
+.voiceHeadline {
+  font-family: var(--sentinel-font-display);
+  font-size: 20px;
+  line-height: 1.4;
+  margin-bottom: 24px;
+
+  /* Carved letterpress - Charcoal */
+  color: var(--marble-base);
+  text-shadow:
+    2px 2px 2px var(--shadow-light),
+    -2px -2px 2px var(--shadow-dark);
+}
+
+.voiceCard {
+  background: var(--marble-base);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: var(--raised-3);
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.voiceCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 0.75),
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  pointer-events: none;
+}
+
+.voiceExamples {
+  background: var(--marble-base);
+  border-radius: 16px;
+  padding: 16px 24px;
+  box-shadow: var(--inset-2);
+}
+
+.voiceExample {
+  font-family: var(--sentinel-font-display);
+  font-size: 14px;
+  font-style: italic;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(147, 157, 170, 0.15);
+
+  /* RAISED typography - Petrol */
+  color: var(--fing-accent);
+  text-shadow:
+    -0.75px -0.75px 0px rgba(255, 255, 255, 0.9),
+    0.75px 0.75px 0px rgba(58, 106, 114, 0.25);
+}
+
+.voiceExample:last-child {
+  border-bottom: none;
+}
+
+.antiExamples {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.antiPill {
+  background: var(--marble-base);
+  border-radius: 16px;
+  padding: 8px 14px;
+  box-shadow: var(--inset-2);
+  font-family: var(--sentinel-font-mono);
+  font-size: 11px;
+
+  /* RAISED typography (subtle) */
+  color: var(--fing-text-accent);
+  text-shadow:
+    -0.5px -0.5px 0px rgba(255, 255, 255, 0.9),
+    0.5px 0.5px 0px rgba(147, 157, 170, 0.4);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   SYSTEM SECTION (THE SYSTEM)
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.systemContainer {
+  max-width: 500px;
+  text-align: center;
+}
+
+.systemName {
+  font-family: var(--sentinel-font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+
+  /* Letterpress - Steel */
+  color: var(--fing-text-accent);
+  text-shadow:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
+    -0.5px -0.5px 0px rgba(74, 106, 122, 0.25);
+}
+
+.systemTitle {
+  font-family: var(--sentinel-font-display);
+  font-size: 22px;
+  margin-bottom: 10px;
+
+  /* Carved letterpress - Charcoal */
+  color: var(--marble-base);
+  text-shadow:
+    2px 2px 2px var(--shadow-light),
+    -2px -2px 2px var(--shadow-dark);
+}
+
+.systemPhilosophy {
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 28px;
+
+  /* Letterpress - Muted */
+  color: var(--fing-text-muted);
+  text-shadow:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
+    -0.5px -0.5px 0px rgba(138, 143, 150, 0.25);
+}
+
+.systemDemo {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+}
+
+.demoRaised {
+  width: 90px;
+  height: 90px;
+  background: var(--marble-base);
+  border-radius: 20px;
+  box-shadow: var(--raised-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.demoInset {
+  width: 56px;
+  height: 56px;
+  background: var(--marble-base);
+  border-radius: 12px;
+  box-shadow: var(--inset-2);
+}
+
+.demoLabel {
+  font-family: var(--sentinel-font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  margin-top: 10px;
+
+  /* Letterpress - Steel */
+  color: var(--fing-text-accent);
+  text-shadow:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
+    -0.5px -0.5px 0px rgba(74, 106, 122, 0.25);
+}
+
+.demoArrow {
+  font-size: 24px;
+  color: var(--fing-text-accent);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   ACCESS SECTION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.accessContainer {
+  text-align: center;
+}
+
+.accessTitle {
+  font-family: var(--sentinel-font-display);
+  font-size: 26px;
+  margin-bottom: 28px;
+
+  /* Carved letterpress - Charcoal */
+  color: var(--marble-base);
+  text-shadow:
+    2px 2px 2px var(--shadow-light),
+    -2px -2px 2px var(--shadow-dark);
+}
+
+.accessCtas {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   FOOTER
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.footer {
+  padding: 24px;
+  text-align: center;
+  border-top: 1px solid rgba(147, 157, 170, 0.15);
+}
+
+.footerText {
+  font-family: var(--sentinel-font-mono);
+  font-size: 12px;
+
+  /* Letterpress - Steel */
+  color: var(--fing-text-accent);
+  text-shadow:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
+    -0.5px -0.5px 0px rgba(74, 106, 122, 0.25);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   RESPONSIVE - Tablet
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .section {
+    padding: 40px 20px;
+  }
+
+  .heroLogo {
+    width: 150px;
+    height: 150px;
+  }
+
+  .heroWordmark {
+    font-size: 72px;
+  }
+
+  .etymologyGrid {
+    gap: 16px;
+  }
+
+  .etymologyCard {
+    padding: 20px;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   RESPONSIVE - Mobile
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .section {
+    padding: 32px 16px;
+  }
+
+  .heroLogo {
+    width: 140px;
+    height: 140px;
+    margin-bottom: 24px;
+  }
+
+  .heroWordmark {
+    font-size: 56px;
+  }
+
+  .etymologyGrid {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+  }
+
+  .heroCtas,
+  .accessCtas {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 240px;
+  }
+
+  .voiceHeadline,
+  .systemTitle {
+    font-size: 18px;
+  }
+
+  .voiceCard {
+    padding: 16px;
+  }
+
+  .voiceExamples {
+    padding: 14px;
+  }
+
+  .voiceExample {
+    font-size: 13px;
+  }
+
+  .antiExamples {
+    flex-direction: row;
+  }
+
+  .systemDemo {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .demoRaised {
+    width: 80px;
+    height: 80px;
+  }
+
+  .demoInset {
+    width: 48px;
+    height: 48px;
+  }
+
+  .accessTitle {
+    font-size: 22px;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   REDUCED MOTION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition: none;
+  }
+}

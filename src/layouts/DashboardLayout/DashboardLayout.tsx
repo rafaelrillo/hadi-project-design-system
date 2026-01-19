@@ -19,6 +19,7 @@ import { MoreMenu } from '../../components/organisms/MoreMenu';
 import { Sidebar } from '@organisms/Sidebar';
 import type { TabItem } from '@atoms/Button';
 import { LightEngineProvider, useLightEngineOptional } from '@contexts/LightEngineContext';
+import { FingEmblem } from '@atoms/FingEmblem';
 
 import styles from './DashboardLayout.module.css';
 
@@ -178,61 +179,8 @@ function DashboardLayoutInner({
     );
   }
 
-  // Animated SENTINEL Logo SVG
-  const AnimatedLogo = (
-    <svg
-      viewBox="0 0 60 60"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={styles.animatedLogo}
-    >
-      {/* Outer ring */}
-      <circle
-        cx="30"
-        cy="30"
-        r="27"
-        stroke="var(--sentinel-accent-primary, #4a9a9c)"
-        strokeWidth="1"
-        strokeOpacity="0.3"
-      />
-      {/* Middle ring */}
-      <circle
-        cx="30"
-        cy="30"
-        r="20"
-        stroke="var(--sentinel-accent-primary, #4a9a9c)"
-        strokeWidth="1.5"
-        strokeOpacity="0.5"
-      />
-      {/* Inner ring */}
-      <circle
-        cx="30"
-        cy="30"
-        r="13"
-        stroke="var(--sentinel-accent-primary, #4a9a9c)"
-        strokeWidth="2"
-        strokeOpacity="0.8"
-      />
-      {/* Center dot */}
-      <circle
-        cx="30"
-        cy="30"
-        r="4"
-        fill="var(--sentinel-accent-primary, #4a9a9c)"
-      />
-      {/* Scanning line */}
-      <line
-        x1="30"
-        y1="3"
-        x2="30"
-        y2="30"
-        stroke="var(--sentinel-accent-primary, #4a9a9c)"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        className={styles.scanLine}
-      />
-    </svg>
-  );
+  // FING Emblem - Radar Symbol with slow ripple animation
+  const FingLogo = <FingEmblem size={40} animation="rippleSlow" />;
 
   // Desktop Layout
   return (
@@ -243,7 +191,7 @@ function DashboardLayoutInner({
       <div className={styles.layout}>
         {/* Neumorphic Sidebar with TabGroup Navigation */}
         <Sidebar
-          productLogo={AnimatedLogo}
+          productLogo={FingLogo}
           mainTabs={mainTabs}
           activeTab={activeTabIndex}
           onTabChange={handleTabChange}

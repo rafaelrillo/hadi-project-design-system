@@ -1,11 +1,245 @@
 // Path: src/pages/styles/LightEngineShowcase.tsx
 // SENTINEL Light Engine Showcase - Sistema de Iluminacion Unificado
-import React, { useState } from 'react';
+import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
+import {
+  Sun, Pause, Play, TrendingUp, DollarSign, BarChart2, Activity,
+  Bell, Settings, ChevronRight, Zap, Star, ArrowUpRight
+} from 'lucide-react';
+import { LineChart } from '@/components/charts/echarts';
 import { ShowcaseSection, ComponentPreview } from '../../components/showcase';
+
+// Throttle interval for shadow updates (ms)
+const SHADOW_UPDATE_INTERVAL = 100;
 
 export function LightEngineShowcase() {
   const [activeElevation, setActiveElevation] = useState(3);
 
+  // ═══════════════════════════════════════════════════════════════════════════
+  // DYNAMIC LIGHT ENGINE STATE
+  // ═══════════════════════════════════════════════════════════════════════════
+  const [shadowAngle, setShadowAngle] = useState(135);
+  const [isAnimating, setIsAnimating] = useState(true);
+  const [animationSpeed, setAnimationSpeed] = useState(0.3);
+
+  const visualAngleRef = useRef(135);
+  const animationFrameRef = useRef<number | null>(null);
+  const lastShadowUpdateRef = useRef(0);
+
+  const updateShadowAngle = useCallback((angle: number) => {
+    const now = performance.now();
+    if (now - lastShadowUpdateRef.current >= SHADOW_UPDATE_INTERVAL) {
+      setShadowAngle(angle);
+      lastShadowUpdateRef.current = now;
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!isAnimating) {
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+        animationFrameRef.current = null;
+      }
+      return;
+    }
+
+    let lastTime = performance.now();
+
+    const animate = (currentTime: number) => {
+      const deltaTime = currentTime - lastTime;
+      lastTime = currentTime;
+
+      const increment = (animationSpeed * deltaTime) / 16.67;
+      visualAngleRef.current = (visualAngleRef.current + increment) % 360;
+
+      updateShadowAngle(visualAngleRef.current);
+
+      animationFrameRef.current = requestAnimationFrame(animate);
+    };
+
+    animationFrameRef.current = requestAnimationFrame(animate);
+
+    return () => {
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+    };
+  }, [isAnimating, animationSpeed, updateShadowAngle]);
+
+  const lightAngle = shadowAngle;
+
+  const shadowOffsets = useMemo(() => {
+    const shadowAngleRad = (lightAngle + 180) * (Math.PI / 180);
+    const x = Math.cos(shadowAngleRad);
+    const y = Math.sin(shadowAngleRad);
+    return { x, y, angle: lightAngle };
+  }, [lightAngle]);
+
+  const handleManualAngleChange = useCallback((newAngle: number) => {
+    setIsAnimating(false);
+    visualAngleRef.current = newAngle;
+    setShadowAngle(newAngle);
+  }, []);
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // DYNAMIC SHADOW GENERATORS
+  // ═══════════════════════════════════════════════════════════════════════════
+  const LIGHT = {
+    base: '#d5d8dc',
+    shadowDark: 'rgba(147, 157, 170, 0.55)',
+    shadowLight: 'rgba(255, 255, 255, 0.95)',
+  };
+
+  const getNeuPanelShadow = (distance: number, blur: number): string => {
+    const { x, y } = shadowOffsets;
+    const hlX = -x * distance;
+    const hlY = -y * distance;
+    const shX = x * distance;
+    const shY = y * distance;
+
+    return `
+      ${hlX}px ${hlY}px ${blur}px ${LIGHT.shadowLight},
+      ${shX}px ${shY}px ${blur}px ${LIGHT.shadowDark}
+    `;
+  };
+
+  const getNeuInsetShadow = (distance: number, blur: number): string => {
+    const { x, y } = shadowOffsets;
+    const shX = x * distance;
+    const shY = y * distance;
+
+    return `
+      inset ${shX}px ${shY}px ${blur}px ${LIGHT.shadowDark},
+      inset ${-shX}px ${-shY}px ${blur}px ${LIGHT.shadowLight}
+    `;
+  };
+
+  const getLayeredShadow = (hue: number, sat: number): string => {
+    const { x, y } = shadowOffsets;
+    const layers = [
+      { dist: 0.5, blur: 1, opacity: 0.12 },
+      { dist: 1, blur: 2, opacity: 0.10 },
+      { dist: 2, blur: 4, opacity: 0.08 },
+      { dist: 4, blur: 8, opacity: 0.06 },
+    ];
+
+    return layers.map(layer =>
+      `${x * layer.dist}px ${y * layer.dist * 1.5}px ${layer.blur}px hsla(${hue}, ${sat * 0.6}%, 35%, ${layer.opacity})`
+    ).join(',\n      ');
+  };
+
+  const getGlassReflection = (): string => {
+    const { x, y } = shadowOffsets;
+    const hlX = -x;
+    const hlY = -y;
+
+    const topHighlight = hlY < 0 ? 0.6 : 0.2;
+    const leftHighlight = hlX < 0 ? 0.4 : 0.15;
+
+    return `
+      inset 0 ${hlY < 0 ? '-1px' : '1px'} 0 hsla(0, 0%, 100%, ${topHighlight}),
+      inset ${hlX < 0 ? '-1px' : '1px'} 0 0 hsla(0, 0%, 100%, ${leftHighlight})
+    `;
+  };
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // DYNAMIC STYLES FOR INTERACTIVE DEMO
+  // ═══════════════════════════════════════════════════════════════════════════
+  const neuPanel: React.CSSProperties = {
+    background: LIGHT.base,
+    borderRadius: '15px',
+    padding: '32px',
+    boxShadow: getNeuPanelShadow(20, 60),
+    position: 'relative' as const,
+    transition: 'box-shadow 50ms linear',
+  };
+
+  const neuInset: React.CSSProperties = {
+    background: LIGHT.base,
+    borderRadius: '15px',
+    boxShadow: getNeuInsetShadow(5, 15),
+    transition: 'box-shadow 50ms linear',
+  };
+
+  const neuInsetSm: React.CSSProperties = {
+    background: LIGHT.base,
+    borderRadius: '15px',
+    boxShadow: getNeuInsetShadow(3, 8),
+    transition: 'box-shadow 50ms linear',
+  };
+
+  const glassCard = (hue: number, sat: number): React.CSSProperties => ({
+    background: `
+      linear-gradient(
+        ${lightAngle + 45}deg,
+        hsla(${hue}, ${sat}%, 70%, 0.28) 0%,
+        hsla(${hue}, ${sat}%, 65%, 0.12) 50%,
+        hsla(${hue}, ${sat}%, 60%, 0.20) 100%
+      )
+    `,
+    backdropFilter: 'blur(8px) saturate(140%)',
+    WebkitBackdropFilter: 'blur(8px) saturate(140%)',
+    borderRadius: '15px',
+    border: `1px solid hsla(${hue}, ${sat}%, 80%, 0.35)`,
+    boxShadow: `
+      ${getGlassReflection()},
+      ${getLayeredShadow(hue, sat)}
+    `,
+    position: 'relative' as const,
+    overflow: 'hidden' as const,
+    transition: 'box-shadow 50ms linear, background 100ms linear',
+  });
+
+  const glassBadge = (hue: number, sat: number): React.CSSProperties => ({
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: '4px',
+    padding: '6px 12px',
+    background: `
+      linear-gradient(
+        ${lightAngle}deg,
+        hsla(${hue}, ${sat}%, 65%, 0.25) 0%,
+        hsla(${hue}, ${sat}%, 60%, 0.12) 50%,
+        hsla(${hue}, ${sat}%, 65%, 0.20) 100%
+      )
+    `,
+    backdropFilter: 'blur(4px)',
+    WebkitBackdropFilter: 'blur(4px)',
+    border: `1px solid hsla(${hue}, ${sat}%, 75%, 0.25)`,
+    borderRadius: '15px',
+    fontSize: '12px',
+    fontWeight: 600,
+    color: `hsl(${hue}, ${sat * 0.8}%, 30%)`,
+    boxShadow: `
+      ${getGlassReflection()},
+      ${shadowOffsets.x * 1}px ${shadowOffsets.y * 2}px 4px hsla(${hue}, ${sat * 0.5}%, 40%, 0.12)
+    `,
+    transition: 'box-shadow 50ms linear',
+  });
+
+  const sectionTitle: React.CSSProperties = {
+    fontSize: '12px',
+    fontWeight: 600,
+    color: '#3a6a72',
+    fontFamily: 'var(--sentinel-font-mono)',
+    textTransform: 'uppercase' as const,
+    letterSpacing: '0.12em',
+    marginBottom: '20px',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '8px',
+  };
+
+  const cardTitle: React.CSSProperties = {
+    fontSize: '20px',
+    fontWeight: 600,
+    color: 'var(--sentinel-text-primary)',
+    fontFamily: 'var(--sentinel-font-display)',
+    marginBottom: '24px',
+  };
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // STATIC DOCUMENTATION STYLES
+  // ═══════════════════════════════════════════════════════════════════════════
   const pageHeaderStyles: React.CSSProperties = {
     marginBottom: '48px'
   };
@@ -60,7 +294,6 @@ export function LightEngineShowcase() {
     lineHeight: 1.6
   };
 
-  // Demo box base styles
   const demoBoxBase: React.CSSProperties = {
     width: '140px',
     height: '140px',
@@ -85,9 +318,445 @@ export function LightEngineShowcase() {
         </p>
       </header>
 
-      {/* ═══════════════════════════════════════════════════════════════════════ */}
-      {/* PHILOSOPHY SECTION */}
-      {/* ═══════════════════════════════════════════════════════════════════════ */}
+      {/* ═══════════════════════════════════════════════════════════════════════════
+          INTERACTIVE DEMO SECTION
+          ═══════════════════════════════════════════════════════════════════════════ */}
+      <h2 style={sectionHeaderStyles}>Demo Interactivo</h2>
+
+      <div
+        style={{
+          background: LIGHT.base,
+          borderRadius: '20px',
+          padding: '40px',
+          position: 'relative',
+          overflow: 'hidden',
+          marginBottom: '48px',
+        }}
+      >
+        {/* Dynamic Light Indicator */}
+        <div
+          className="light-orbit-container"
+          style={{
+            position: 'absolute',
+            left: '50%',
+            top: '50%',
+            width: '80%',
+            height: '80%',
+            transform: 'translate(-50%, -50%)',
+            pointerEvents: 'none',
+            zIndex: 100,
+            animation: isAnimating
+              ? `sunOrbit ${360 / (animationSpeed * 60)}s linear infinite`
+              : 'none',
+            ...(isAnimating ? {} : { transform: `translate(-50%, -50%) rotate(${lightAngle}deg)` }),
+          }}
+        >
+          <div
+            style={{
+              position: 'absolute',
+              left: '50%',
+              top: '0',
+              transform: 'translate(-50%, -50%)',
+              width: '50px',
+              height: '50px',
+              borderRadius: '50%',
+              background: 'radial-gradient(circle, rgba(251,191,36,0.9) 0%, rgba(251,191,36,0.4) 40%, transparent 70%)',
+              boxShadow: '0 0 40px rgba(251,191,36,0.6), 0 0 80px rgba(251,191,36,0.3)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <Sun size={22} style={{ color: '#FCD34D' }} />
+          </div>
+        </div>
+
+        {/* Light rays */}
+        <div
+          style={{
+            position: 'absolute',
+            left: '50%',
+            top: '50%',
+            transform: `translate(-50%, -50%) rotate(${lightAngle}deg)`,
+            width: '300px',
+            height: '300px',
+            background: 'conic-gradient(from 0deg, transparent 0deg, rgba(251,191,36,0.08) 20deg, transparent 40deg, transparent 360deg)',
+            borderRadius: '50%',
+            pointerEvents: 'none',
+            zIndex: 1,
+            transition: 'transform 100ms linear',
+          }}
+        />
+
+        {/* Controls */}
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '16px',
+          padding: '12px 24px',
+          background: 'rgba(255,255,255,0.9)',
+          backdropFilter: 'blur(12px)',
+          borderRadius: '15px',
+          boxShadow: '0 4px 24px rgba(0,0,0,0.15)',
+          fontFamily: 'var(--sentinel-font-mono)',
+          fontSize: '12px',
+          marginBottom: '32px',
+          position: 'relative',
+          zIndex: 200,
+          width: 'fit-content',
+        }}>
+          <button
+            onClick={() => setIsAnimating(!isAnimating)}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px',
+              padding: '8px 16px',
+              background: isAnimating ? '#3a6a72' : '#636E72',
+              color: 'white',
+              border: 'none',
+              borderRadius: '15px',
+              cursor: 'pointer',
+              fontSize: '12px',
+              fontWeight: 600,
+            }}
+          >
+            {isAnimating ? <Pause size={14} /> : <Play size={14} />}
+            {isAnimating ? 'Pause' : 'Play'}
+          </button>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <span style={{ color: '#636E72' }}>Speed:</span>
+            <input
+              type="range"
+              min="0.1"
+              max="2"
+              step="0.1"
+              value={animationSpeed}
+              onChange={(e) => setAnimationSpeed(parseFloat(e.target.value))}
+              style={{ width: '80px', cursor: 'pointer' }}
+            />
+          </div>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <span style={{ color: '#636E72' }}>Angle:</span>
+            <input
+              type="range"
+              min="0"
+              max="360"
+              value={lightAngle}
+              onChange={(e) => handleManualAngleChange(parseFloat(e.target.value))}
+              style={{ width: '100px', cursor: 'pointer' }}
+            />
+            <span style={{ color: 'var(--sentinel-text-primary)', fontWeight: 600, minWidth: '36px' }}>
+              {Math.round(lightAngle)}°
+            </span>
+          </div>
+        </div>
+
+        {/* Demo Grid */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gap: '24px',
+          position: 'relative',
+          zIndex: 10,
+        }}>
+          {/* Neumorphic Card */}
+          <div style={neuPanel}>
+            <h3 style={sectionTitle}>
+              <span style={{
+                width: '8px',
+                height: '8px',
+                borderRadius: '50%',
+                background: `linear-gradient(${lightAngle}deg, #fff, #3a6a72)`,
+                boxShadow: '0 1px 3px rgba(58,106,114,0.3)',
+              }} />
+              Neumorphic Shadows
+            </h3>
+            <h2 style={cardTitle}>Portfolio</h2>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <div style={{ ...neuInset, padding: '16px', display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <div style={{ ...neuInsetSm, width: '42px', height: '42px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <DollarSign size={20} color="#3a6a72" />
+                </div>
+                <div>
+                  <div style={{ fontSize: '20px', fontWeight: 700, color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)' }}>
+                    $124,500
+                  </div>
+                  <div style={{ fontSize: '11px', color: '#636E72' }}>Total Value</div>
+                </div>
+              </div>
+
+              <div style={{ ...neuInset, padding: '16px', display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <div style={{ ...neuInsetSm, width: '42px', height: '42px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <TrendingUp size={20} color="#22C55E" />
+                </div>
+                <div>
+                  <div style={{ fontSize: '20px', fontWeight: 700, color: '#22C55E', fontFamily: 'var(--sentinel-font-mono)' }}>
+                    +12.5%
+                  </div>
+                  <div style={{ fontSize: '11px', color: '#636E72' }}>Return</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Elevation Demo */}
+            <div style={{ marginTop: '20px', display: 'flex', gap: '8px', justifyContent: 'center' }}>
+              {[1, 2, 3, 4, 5].map((level) => (
+                <div
+                  key={level}
+                  style={{
+                    width: '36px',
+                    height: '36px',
+                    background: LIGHT.base,
+                    borderRadius: '10px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: '10px',
+                    fontWeight: 600,
+                    color: '#636E72',
+                    fontFamily: 'var(--sentinel-font-mono)',
+                    boxShadow: getNeuPanelShadow(level * 3, level * 8),
+                    transition: 'box-shadow 50ms linear',
+                  }}
+                >
+                  {level}
+                </div>
+              ))}
+            </div>
+
+            {/* Glass element */}
+            <div style={{
+              ...glassCard(215, 50),
+              position: 'absolute' as const,
+              top: '-12px',
+              left: '20px',
+              padding: '6px 12px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px',
+              zIndex: 10,
+            }}>
+              <Activity size={12} color="#2d4a6b" />
+              <span style={{ fontSize: '10px', fontWeight: 600, color: '#1e3550' }}>Live</span>
+            </div>
+          </div>
+
+          {/* Performance Chart */}
+          <div style={{ ...neuInset, padding: '24px', overflow: 'visible' }}>
+            <h3 style={sectionTitle}>
+              <span style={{
+                width: '8px',
+                height: '8px',
+                borderRadius: '50%',
+                background: `linear-gradient(${lightAngle}deg, #fff, #EF4444)`,
+                boxShadow: '0 1px 3px rgba(239,68,68,0.3)',
+              }} />
+              Glass Reflection
+            </h3>
+            <h2 style={cardTitle}>Performance</h2>
+
+            <div style={{ ...neuInset, padding: '8px', marginBottom: '12px' }}>
+              <LineChart
+                data={[
+                  {
+                    id: 'portfolio',
+                    name: 'Portfolio',
+                    color: '#3a6a72',
+                    data: [
+                      { x: 'Jan', y: 0 }, { x: 'Feb', y: 12 }, { x: 'Mar', y: 8 },
+                      { x: 'Apr', y: 22 }, { x: 'May', y: 28 }, { x: 'Jun', y: 35 },
+                    ],
+                  },
+                  {
+                    id: 'nasdaq',
+                    name: 'NASDAQ',
+                    color: '#8B5CF6',
+                    data: [
+                      { x: 'Jan', y: 0 }, { x: 'Feb', y: 8 }, { x: 'Mar', y: 12 },
+                      { x: 'Apr', y: 18 }, { x: 'May', y: 22 }, { x: 'Jun', y: 28 },
+                    ],
+                  },
+                ]}
+                smooth
+                height={140}
+                formatValue={(v) => `${v > 0 ? '+' : ''}${v}%`}
+              />
+            </div>
+
+            {/* Glass Overlay */}
+            <div style={{
+              ...glassCard(355, 35),
+              position: 'absolute' as const,
+              top: '-10px',
+              right: '-10px',
+              padding: '8px 12px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px',
+              zIndex: 10,
+            }}>
+              <Bell size={12} color="#c45a5a" />
+              <span style={{ fontSize: '10px', fontWeight: 600, color: '#7a2c2c' }}>3 Alerts</span>
+            </div>
+
+            {/* Green Glass */}
+            <div style={{
+              ...glassCard(145, 45),
+              position: 'absolute' as const,
+              bottom: '-12px',
+              left: '-10px',
+              padding: '8px 10px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '4px',
+              zIndex: 10,
+            }}>
+              <TrendingUp size={12} color="#2d6b4a" />
+              <span style={{ fontSize: '10px', fontWeight: 600, color: '#1e4d35' }}>+18.2%</span>
+            </div>
+          </div>
+
+          {/* Actions Card */}
+          <div style={{ ...neuPanel, overflow: 'visible' }}>
+            <h3 style={sectionTitle}>
+              <span style={{
+                width: '8px',
+                height: '8px',
+                borderRadius: '50%',
+                background: `linear-gradient(${lightAngle}deg, #fff, #22C55E)`,
+                boxShadow: '0 1px 3px rgba(34,197,94,0.3)',
+              }} />
+              Color-Matched
+            </h3>
+            <h2 style={cardTitle}>Quick Actions</h2>
+
+            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' as const, marginBottom: '16px' }}>
+              <span style={glassBadge(145, 40)}>
+                <Zap size={10} /> Active
+              </span>
+              <span style={glassBadge(175, 35)}>
+                <Star size={10} /> Premium
+              </span>
+              <span style={glassBadge(215, 40)}>
+                <ArrowUpRight size={10} /> +24%
+              </span>
+            </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              {[
+                { symbol: 'AAPL', action: 'BUY', hue: 145, sat: 40 },
+                { symbol: 'GOOGL', action: 'SELL', hue: 355, sat: 35 },
+              ].map((item) => (
+                <div key={item.symbol} style={{
+                  ...neuInset,
+                  padding: '12px 14px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <Activity size={14} color="#3a6a72" />
+                    <span style={{ fontWeight: 600, color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)', fontSize: '13px' }}>
+                      {item.symbol}
+                    </span>
+                  </div>
+                  <span style={glassBadge(item.hue, item.sat)}>
+                    {item.action}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            {/* Teal Glass */}
+            <div style={{
+              ...glassCard(175, 35),
+              position: 'absolute' as const,
+              bottom: '-14px',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              padding: '8px 16px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              whiteSpace: 'nowrap' as const,
+              zIndex: 10,
+            }}>
+              <Settings size={12} color="#3d7a7c" style={{ animation: 'spin 4s linear infinite' }} />
+              <span style={{ fontSize: '10px', color: '#2d5a5c', fontWeight: 500 }}>Auto-rebalancing</span>
+              <ChevronRight size={12} color="#3a6a72" />
+            </div>
+
+            {/* Amber Glass */}
+            <div style={{
+              ...glassCard(35, 55),
+              position: 'absolute' as const,
+              top: '-8px',
+              left: '30%',
+              padding: '6px 10px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '4px',
+              zIndex: 10,
+            }}>
+              <Zap size={10} color="#8a6520" />
+              <span style={{ fontSize: '9px', fontWeight: 600, color: '#6b4f18' }}>Priority</span>
+            </div>
+
+            {/* Cyan Glass */}
+            <div style={{
+              ...glassCard(190, 50),
+              position: 'absolute' as const,
+              top: '40%',
+              right: '-14px',
+              padding: '8px 10px',
+              display: 'flex',
+              flexDirection: 'column' as const,
+              alignItems: 'center',
+              gap: '2px',
+              zIndex: 10,
+            }}>
+              <BarChart2 size={14} color="#1e5a6b" />
+              <span style={{ fontSize: '9px', fontWeight: 700, color: '#154550', fontFamily: 'var(--sentinel-font-mono)' }}>24h</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Light Engine Info Panel */}
+        <div style={{
+          ...glassCard(175, 35),
+          padding: '16px 24px',
+          marginTop: '24px',
+          position: 'relative',
+          zIndex: 10,
+        }}>
+          <div style={{ display: 'flex', gap: '32px', flexWrap: 'wrap' }}>
+            <div>
+              <div style={{ fontSize: '11px', fontWeight: 700, color: '#2d5a5c', marginBottom: '4px' }}>
+                Current Light: {Math.round(lightAngle)}°
+              </div>
+              <p style={{ fontSize: '10px', color: '#3d6a6c', margin: 0 }}>
+                X: {shadowOffsets.x.toFixed(2)} | Y: {shadowOffsets.y.toFixed(2)} | {isAnimating ? 'Animating' : 'Paused'}
+              </p>
+            </div>
+            <div>
+              <div style={{ fontSize: '11px', fontWeight: 700, color: '#2d5a5c', marginBottom: '4px' }}>
+                Shadow Formula
+              </div>
+              <p style={{ fontSize: '10px', color: '#3d6a6c', margin: 0 }}>
+                X = cos(angle) × distance | Y = sin(angle) × distance
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ═══════════════════════════════════════════════════════════════════════
+          PHILOSOPHY SECTION
+          ═══════════════════════════════════════════════════════════════════════ */}
       <h2 style={sectionHeaderStyles}>Filosofia del Sistema</h2>
 
       <div style={conceptBoxStyles}>
@@ -122,9 +791,9 @@ export function LightEngineShowcase() {
         </div>
       </div>
 
-      {/* ═══════════════════════════════════════════════════════════════════════ */}
-      {/* LAYERED SHADOWS */}
-      {/* ═══════════════════════════════════════════════════════════════════════ */}
+      {/* ═══════════════════════════════════════════════════════════════════════
+          LAYERED SHADOWS
+          ═══════════════════════════════════════════════════════════════════════ */}
       <h2 style={sectionHeaderStyles}>Sombras en Capas (Layered Shadows)</h2>
 
       <ShowcaseSection
@@ -216,9 +885,9 @@ activeElevation === 4 ? `--elevation-4:
         </pre>
       </div>
 
-      {/* ═══════════════════════════════════════════════════════════════════════ */}
-      {/* NEUMORPHIC SYSTEM */}
-      {/* ═══════════════════════════════════════════════════════════════════════ */}
+      {/* ═══════════════════════════════════════════════════════════════════════
+          NEUMORPHIC SYSTEM
+          ═══════════════════════════════════════════════════════════════════════ */}
       <h2 style={sectionHeaderStyles}>Neumorfismo con Fuente de Luz Unificada</h2>
 
       <ShowcaseSection
@@ -309,9 +978,9 @@ activeElevation === 4 ? `--elevation-4:
         </ComponentPreview>
       </ShowcaseSection>
 
-      {/* ═══════════════════════════════════════════════════════════════════════ */}
-      {/* GLASS SYSTEM */}
-      {/* ═══════════════════════════════════════════════════════════════════════ */}
+      {/* ═══════════════════════════════════════════════════════════════════════
+          GLASS SYSTEM
+          ═══════════════════════════════════════════════════════════════════════ */}
       <h2 style={sectionHeaderStyles}>Glassmorphism con Reflexion de Luz</h2>
 
       <ShowcaseSection
@@ -361,337 +1030,9 @@ activeElevation === 4 ? `--elevation-4:
         </ComponentPreview>
       </ShowcaseSection>
 
-      {/* ═══════════════════════════════════════════════════════════════════════ */}
-      {/* COLOR-TINTED SHADOWS */}
-      {/* ═══════════════════════════════════════════════════════════════════════ */}
-      <h2 style={sectionHeaderStyles}>Sombras con Color (Color-Matched)</h2>
-
-      <ShowcaseSection
-        title="Sombras Tintadas por Contexto"
-        description="Las sombras heredan el tono del elemento o fondo, nunca son negro puro. Esto evita el efecto 'niebla gris'."
-      >
-        <ComponentPreview>
-          <div style={{
-            backgroundColor: 'var(--sentinel-bg-base)',
-            padding: '48px',
-            borderRadius: 'var(--sentinel-radius-xl)',
-            display: 'flex',
-            gap: '32px',
-            justifyContent: 'center',
-            flexWrap: 'wrap'
-          }}>
-            <div
-              className="shadow-positive"
-              style={{
-                ...demoBoxBase,
-                backgroundColor: 'var(--sentinel-status-positive-subtle)',
-                border: '1px solid var(--sentinel-status-positive-border)',
-              }}
-            >
-              <span style={{ fontFamily: 'var(--sentinel-font-display)', fontSize: '16px', fontWeight: 600, color: 'var(--sentinel-status-positive-text)' }}>
-                Positive
-              </span>
-              <span style={{ fontFamily: 'var(--sentinel-font-mono)', fontSize: '10px', color: 'var(--sentinel-status-positive-text)' }}>
-                hsl(145 40% 25%)
-              </span>
-            </div>
-
-            <div
-              className="shadow-negative"
-              style={{
-                ...demoBoxBase,
-                backgroundColor: 'var(--sentinel-status-negative-subtle)',
-                border: '1px solid var(--sentinel-status-negative-border)',
-              }}
-            >
-              <span style={{ fontFamily: 'var(--sentinel-font-display)', fontSize: '16px', fontWeight: 600, color: 'var(--sentinel-status-negative-text)' }}>
-                Negative
-              </span>
-              <span style={{ fontFamily: 'var(--sentinel-font-mono)', fontSize: '10px', color: 'var(--sentinel-status-negative-text)' }}>
-                hsl(0 50% 35%)
-              </span>
-            </div>
-
-            <div
-              className="shadow-warning"
-              style={{
-                ...demoBoxBase,
-                backgroundColor: 'var(--sentinel-status-warning-subtle)',
-                border: '1px solid var(--sentinel-status-warning-border)',
-              }}
-            >
-              <span style={{ fontFamily: 'var(--sentinel-font-display)', fontSize: '16px', fontWeight: 600, color: 'var(--sentinel-status-warning-text)' }}>
-                Warning
-              </span>
-              <span style={{ fontFamily: 'var(--sentinel-font-mono)', fontSize: '10px', color: 'var(--sentinel-status-warning-text)' }}>
-                hsl(38 50% 30%)
-              </span>
-            </div>
-
-            <div
-              className="shadow-accent"
-              style={{
-                ...demoBoxBase,
-                backgroundColor: 'var(--sentinel-accent-subtle)',
-                border: '1px solid var(--sentinel-border-accent)',
-              }}
-            >
-              <span style={{ fontFamily: 'var(--sentinel-font-display)', fontSize: '16px', fontWeight: 600, color: 'var(--sentinel-accent-primary)' }}>
-                Accent
-              </span>
-              <span style={{ fontFamily: 'var(--sentinel-font-mono)', fontSize: '10px', color: 'var(--sentinel-accent-secondary)' }}>
-                hsl(181 35% 30%)
-              </span>
-            </div>
-
-            <div
-              className="shadow-info"
-              style={{
-                ...demoBoxBase,
-                backgroundColor: 'var(--sentinel-status-info-subtle)',
-                border: '1px solid var(--sentinel-status-info-border)',
-              }}
-            >
-              <span style={{ fontFamily: 'var(--sentinel-font-display)', fontSize: '16px', fontWeight: 600, color: 'var(--sentinel-status-info-text)' }}>
-                Info
-              </span>
-              <span style={{ fontFamily: 'var(--sentinel-font-mono)', fontSize: '10px', color: 'var(--sentinel-status-info-text)' }}>
-                hsl(210 50% 30%)
-              </span>
-            </div>
-          </div>
-        </ComponentPreview>
-      </ShowcaseSection>
-
-      {/* ═══════════════════════════════════════════════════════════════════════ */}
-      {/* INTERACTIVE STATES */}
-      {/* ═══════════════════════════════════════════════════════════════════════ */}
-      <h2 style={sectionHeaderStyles}>Estados Interactivos</h2>
-
-      <ShowcaseSection
-        title="Hover, Active, Focus"
-        description="La elevacion cambia con la interaccion. Usamos transform en lugar de animar box-shadow directamente para mejor performance."
-      >
-        <ComponentPreview>
-          <div style={{
-            backgroundColor: 'var(--sentinel-bg-base)',
-            padding: '48px',
-            borderRadius: 'var(--sentinel-radius-xl)',
-            display: 'flex',
-            gap: '48px',
-            justifyContent: 'center',
-            flexWrap: 'wrap'
-          }}>
-            {/* Layered Interactive */}
-            <div style={{ textAlign: 'center' }}>
-              <div
-                className="elevation-interactive"
-                style={{
-                  ...demoBoxBase,
-                  cursor: 'pointer',
-                }}
-              >
-                <span style={{ fontFamily: 'var(--sentinel-font-display)', fontSize: '16px', fontWeight: 600, color: 'var(--sentinel-text-primary)' }}>
-                  Layered
-                </span>
-                <span style={{ fontFamily: 'var(--sentinel-font-mono)', fontSize: '11px', color: 'var(--sentinel-text-tertiary)' }}>
-                  hover me
-                </span>
-              </div>
-              <p style={{ marginTop: '12px', fontSize: '11px', color: 'var(--sentinel-text-tertiary)' }}>
-                .elevation-interactive
-              </p>
-            </div>
-
-            {/* Neumorphic Interactive */}
-            <div style={{ textAlign: 'center' }}>
-              <div
-                className="neu-interactive"
-                style={{
-                  ...demoBoxBase,
-                  backgroundColor: 'var(--sentinel-bg-base)',
-                  cursor: 'pointer',
-                }}
-              >
-                <span style={{ fontFamily: 'var(--sentinel-font-display)', fontSize: '16px', fontWeight: 600, color: 'var(--sentinel-text-primary)' }}>
-                  Neumorphic
-                </span>
-                <span style={{ fontFamily: 'var(--sentinel-font-mono)', fontSize: '11px', color: 'var(--sentinel-text-tertiary)' }}>
-                  hover me
-                </span>
-              </div>
-              <p style={{ marginTop: '12px', fontSize: '11px', color: 'var(--sentinel-text-tertiary)' }}>
-                .neu-interactive
-              </p>
-            </div>
-
-            {/* Glass Interactive */}
-            <div style={{ textAlign: 'center' }}>
-              <div
-                className="glass-interactive"
-                style={{
-                  ...demoBoxBase,
-                  backgroundColor: 'var(--sentinel-glass-bg)',
-                  backdropFilter: 'blur(12px)',
-                  border: '1px solid var(--sentinel-glass-border)',
-                  cursor: 'pointer',
-                }}
-              >
-                <span style={{ fontFamily: 'var(--sentinel-font-display)', fontSize: '16px', fontWeight: 600, color: 'var(--sentinel-text-primary)' }}>
-                  Glass
-                </span>
-                <span style={{ fontFamily: 'var(--sentinel-font-mono)', fontSize: '11px', color: 'var(--sentinel-text-tertiary)' }}>
-                  hover me
-                </span>
-              </div>
-              <p style={{ marginTop: '12px', fontSize: '11px', color: 'var(--sentinel-text-tertiary)' }}>
-                .glass-interactive
-              </p>
-            </div>
-          </div>
-        </ComponentPreview>
-      </ShowcaseSection>
-
-      {/* ═══════════════════════════════════════════════════════════════════════ */}
-      {/* COMPONENT PRESETS */}
-      {/* ═══════════════════════════════════════════════════════════════════════ */}
-      <h2 style={sectionHeaderStyles}>Presets para Componentes</h2>
-
-      <ShowcaseSection
-        title="Sombras Semanticas"
-        description="Clases pre-configuradas para casos de uso comunes"
-      >
-        <ComponentPreview>
-          <div style={{
-            backgroundColor: 'var(--sentinel-bg-base)',
-            padding: '48px',
-            borderRadius: 'var(--sentinel-radius-xl)',
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '32px'
-          }}>
-            {/* Card */}
-            <div style={{ textAlign: 'center' }}>
-              <div
-                className="shadow-card"
-                style={{
-                  ...demoBoxBase,
-                  width: '100%',
-                  height: '120px',
-                }}
-              >
-                <span style={{ fontFamily: 'var(--sentinel-font-display)', fontSize: '14px', fontWeight: 600, color: 'var(--sentinel-text-primary)' }}>
-                  Card
-                </span>
-              </div>
-              <code style={{ fontSize: '11px', color: 'var(--sentinel-accent-primary)' }}>.shadow-card</code>
-            </div>
-
-            {/* Button */}
-            <div style={{ textAlign: 'center' }}>
-              <div
-                className="shadow-button"
-                style={{
-                  width: '100%',
-                  height: '48px',
-                  backgroundColor: 'var(--sentinel-accent-primary)',
-                  borderRadius: 'var(--sentinel-radius-md)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  cursor: 'pointer',
-                  transition: 'all 200ms ease'
-                }}
-              >
-                <span style={{ fontFamily: 'var(--sentinel-font-primary)', fontSize: '14px', fontWeight: 500, color: 'white' }}>
-                  Button
-                </span>
-              </div>
-              <code style={{ marginTop: '12px', display: 'block', fontSize: '11px', color: 'var(--sentinel-accent-primary)' }}>.shadow-button</code>
-            </div>
-
-            {/* Input */}
-            <div style={{ textAlign: 'center' }}>
-              <div
-                className="shadow-input"
-                style={{
-                  width: '100%',
-                  height: '48px',
-                  backgroundColor: 'var(--sentinel-bg-base)',
-                  borderRadius: 'var(--sentinel-radius-md)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  padding: '0 16px',
-                }}
-              >
-                <span style={{ fontFamily: 'var(--sentinel-font-primary)', fontSize: '14px', color: 'var(--sentinel-text-tertiary)' }}>
-                  Input field...
-                </span>
-              </div>
-              <code style={{ marginTop: '12px', display: 'block', fontSize: '11px', color: 'var(--sentinel-accent-primary)' }}>.shadow-input</code>
-            </div>
-
-            {/* Dropdown */}
-            <div style={{ textAlign: 'center' }}>
-              <div
-                className="shadow-dropdown"
-                style={{
-                  ...demoBoxBase,
-                  width: '100%',
-                  height: '160px',
-                }}
-              >
-                <span style={{ fontFamily: 'var(--sentinel-font-display)', fontSize: '14px', fontWeight: 600, color: 'var(--sentinel-text-primary)' }}>
-                  Dropdown
-                </span>
-              </div>
-              <code style={{ fontSize: '11px', color: 'var(--sentinel-accent-primary)' }}>.shadow-dropdown</code>
-            </div>
-
-            {/* Modal */}
-            <div style={{ textAlign: 'center' }}>
-              <div
-                className="shadow-modal"
-                style={{
-                  ...demoBoxBase,
-                  width: '100%',
-                  height: '160px',
-                }}
-              >
-                <span style={{ fontFamily: 'var(--sentinel-font-display)', fontSize: '14px', fontWeight: 600, color: 'var(--sentinel-text-primary)' }}>
-                  Modal
-                </span>
-              </div>
-              <code style={{ fontSize: '11px', color: 'var(--sentinel-accent-primary)' }}>.shadow-modal</code>
-            </div>
-
-            {/* Tooltip */}
-            <div style={{ textAlign: 'center' }}>
-              <div
-                className="shadow-tooltip"
-                style={{
-                  width: '100%',
-                  height: '48px',
-                  backgroundColor: 'var(--sentinel-bg-surface)',
-                  borderRadius: 'var(--sentinel-radius-sm)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-              >
-                <span style={{ fontFamily: 'var(--sentinel-font-primary)', fontSize: '12px', color: 'var(--sentinel-text-primary)' }}>
-                  Tooltip text
-                </span>
-              </div>
-              <code style={{ marginTop: '12px', display: 'block', fontSize: '11px', color: 'var(--sentinel-accent-primary)' }}>.shadow-tooltip</code>
-            </div>
-          </div>
-        </ComponentPreview>
-      </ShowcaseSection>
-
-      {/* ═══════════════════════════════════════════════════════════════════════ */}
-      {/* USAGE GUIDE */}
-      {/* ═══════════════════════════════════════════════════════════════════════ */}
+      {/* ═══════════════════════════════════════════════════════════════════════
+          USAGE GUIDE
+          ═══════════════════════════════════════════════════════════════════════ */}
       <h2 style={sectionHeaderStyles}>Guia de Uso</h2>
 
       <div style={conceptBoxStyles}>
@@ -725,55 +1066,21 @@ activeElevation === 4 ? `--elevation-4:
         </pre>
       </div>
 
-      <div style={conceptBoxStyles}>
-        <h4 style={{ fontSize: '14px', fontWeight: 600, color: 'var(--sentinel-text-primary)', marginBottom: '16px' }}>
-          Clases Utilitarias
-        </h4>
-        <pre style={codeBlockStyles}>
-{`/* Aplicar directamente */
-<div class="elevation-3">Card con sombra layered</div>
-<div class="neu-elevation-2">Elemento neumorphic</div>
-<div class="glass-elevation-2">Panel de vidrio</div>
+      <style>{`
+        @keyframes spin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
 
-/* Interactivos (incluyen hover/active) */
-<button class="elevation-interactive">...</button>
-<button class="neu-interactive">...</button>
-<button class="glass-interactive">...</button>
+        @keyframes sunOrbit {
+          from { transform: translate(-50%, -50%) rotate(0deg); }
+          to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
 
-/* Presets semanticos */
-<div class="shadow-card">...</div>
-<button class="shadow-button">...</button>
-<input class="shadow-input" />
-<div class="shadow-dropdown">...</div>
-<div class="shadow-modal">...</div>`}
-        </pre>
-      </div>
-
-      <div style={conceptBoxStyles}>
-        <h4 style={{ fontSize: '14px', fontWeight: 600, color: 'var(--sentinel-text-primary)', marginBottom: '16px' }}>
-          Performance: Animar Correctamente
-        </h4>
-        <pre style={codeBlockStyles}>
-{`/* MAL: Animar box-shadow directamente (costoso) */
-.card {
-  box-shadow: var(--elevation-2);
-  transition: box-shadow 300ms;
-}
-.card:hover {
-  box-shadow: var(--elevation-4);  /* Repaint costoso */
-}
-
-/* BIEN: Animar transform, pre-definir sombras */
-.card {
-  box-shadow: var(--elevation-hover);  /* Sombra "flotante" */
-  transition: transform 300ms;
-}
-.card:hover {
-  transform: translateY(-4px);  /* GPU-accelerated */
-}`}
-        </pre>
-      </div>
-
+        .light-orbit-container {
+          will-change: transform;
+        }
+      `}</style>
     </div>
   );
 }

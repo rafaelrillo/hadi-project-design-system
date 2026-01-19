@@ -858,9 +858,9 @@ export function ButtonShowcase() {
                 style={{
                   width: '60px',
                   height: '60px',
-                  background: 'rgba(74, 154, 156, 0.15)',
+                  background: 'rgba(58, 106, 114, 0.15)',
                   borderRadius: '50%',
-                  boxShadow: 'var(--raised-2), inset 0 0 0 2px rgba(74, 154, 156, 0.3)',
+                  boxShadow: 'var(--raised-2), inset 0 0 0 2px rgba(58, 106, 114, 0.3)',
                   border: 'none',
                   cursor: 'pointer',
                   display: 'flex',
@@ -915,7 +915,7 @@ export function ButtonShowcase() {
                 style={{
                   width: '70px',
                   height: '80px',
-                  background: 'rgba(74, 154, 156, 0.1)',
+                  background: 'rgba(58, 106, 114, 0.1)',
                   clipPath: 'polygon(50% 0%, 100% 15%, 100% 65%, 50% 100%, 0% 65%, 0% 15%)',
                   filter: 'drop-shadow(3px 3px 6px var(--shadow-dark)) drop-shadow(-3px -3px 6px var(--shadow-light))',
                   border: 'none',

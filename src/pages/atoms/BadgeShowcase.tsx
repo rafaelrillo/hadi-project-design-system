@@ -13,20 +13,20 @@ function BadgeContent() {
     return { x: Math.cos(shadowAngle), y: Math.sin(shadowAngle) };
   }, [lightAngle]);
 
-  const LIGHT = {
-    base: '#e0e5ec',
-    shadowDark: 'hsl(220 15% 72%)',
-    shadowLight: 'hsl(0 0% 100%)',
+  const MARBLE = {
+    base: '#d5d8dc',
+    shadowDark: '#a8acb3',
+    shadowLight: '#ffffff',
   };
 
   const getNeuPanelShadow = (distance: number, blur: number): string => {
     const { x, y } = shadowOffsets;
-    return `${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}`;
+    return `${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}`;
   };
 
   const getNeuInsetShadow = (distance: number, blur: number): string => {
     const { x, y } = shadowOffsets;
-    return `inset ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}`;
+    return `inset ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}`;
   };
 
   const getGlassReflection = (): string => {
@@ -39,7 +39,7 @@ function BadgeContent() {
   const pageHeaderStyles: React.CSSProperties = {
     marginBottom: '32px',
     padding: '24px',
-    background: LIGHT.base,
+    background: MARBLE.base,
     borderRadius: '15px',
     boxShadow: getNeuPanelShadow(20, 60),
     transition: 'box-shadow 50ms linear',
@@ -68,7 +68,7 @@ function BadgeContent() {
     flexWrap: 'wrap',
     gap: '12px',
     padding: '20px',
-    background: LIGHT.base,
+    background: MARBLE.base,
     borderRadius: '15px',
     boxShadow: getNeuPanelShadow(8, 24),
     transition: 'box-shadow 50ms linear',
@@ -86,7 +86,7 @@ function BadgeContent() {
   });
 
   return (
-    <div style={{ background: LIGHT.base, minHeight: '100%', padding: '24px' }}>
+    <div style={{ background: MARBLE.base, minHeight: '100%', padding: '24px' }}>
       <header style={pageHeaderStyles}>
         <h1 style={titleStyles}>&gt; Badge_</h1>
         <p style={descStyles}>// Indicador visual de estado o categoría</p>
@@ -166,7 +166,7 @@ function BadgeContent() {
               fontSize: '12px',
               fontWeight: 600,
               marginBottom: '12px',
-              color: '#2D3436',
+              color: 'var(--sentinel-text-primary)',
               fontFamily: 'var(--sentinel-font-mono)',
               textTransform: 'uppercase',
               letterSpacing: '0.1em',
@@ -188,7 +188,7 @@ function BadgeContent() {
               fontSize: '12px',
               fontWeight: 600,
               marginBottom: '12px',
-              color: '#2D3436',
+              color: 'var(--sentinel-text-primary)',
               fontFamily: 'var(--sentinel-font-mono)',
               textTransform: 'uppercase',
               letterSpacing: '0.1em',
@@ -222,25 +222,25 @@ function BadgeContent() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '100%' }}>
           <div style={{
             padding: '20px',
-            background: LIGHT.base,
+            background: MARBLE.base,
             borderRadius: '15px',
             boxShadow: getNeuInsetShadow(5, 15),
             transition: 'box-shadow 50ms linear',
           }}>
-            <h4 style={{ fontSize: '12px', fontWeight: 600, marginBottom: '16px', color: '#2D3436', fontFamily: 'var(--sentinel-font-mono)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+            <h4 style={{ fontSize: '12px', fontWeight: 600, marginBottom: '16px', color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
               Estados de Usuario
             </h4>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ fontSize: '14px', color: '#2D3436', fontFamily: 'var(--sentinel-font-mono)' }}>Juan Pérez</span>
+                <span style={{ fontSize: '14px', color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)' }}>Juan Pérez</span>
                 <Badge variant="success">Activo</Badge>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ fontSize: '14px', color: '#2D3436', fontFamily: 'var(--sentinel-font-mono)' }}>María García</span>
+                <span style={{ fontSize: '14px', color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)' }}>María García</span>
                 <Badge variant="error">Inactivo</Badge>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ fontSize: '14px', color: '#2D3436', fontFamily: 'var(--sentinel-font-mono)' }}>Carlos López</span>
+                <span style={{ fontSize: '14px', color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)' }}>Carlos López</span>
                 <Badge variant="warning">Pendiente</Badge>
               </div>
             </div>
@@ -248,25 +248,25 @@ function BadgeContent() {
 
           <div style={{
             padding: '20px',
-            background: LIGHT.base,
+            background: MARBLE.base,
             borderRadius: '15px',
             boxShadow: getNeuInsetShadow(5, 15),
             transition: 'box-shadow 50ms linear',
           }}>
-            <h4 style={{ fontSize: '12px', fontWeight: 600, marginBottom: '16px', color: '#2D3436', fontFamily: 'var(--sentinel-font-mono)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+            <h4 style={{ fontSize: '12px', fontWeight: 600, marginBottom: '16px', color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
               Estados de Orden
             </h4>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ fontSize: '14px', color: '#2D3436', fontFamily: 'var(--sentinel-font-mono)' }}>Orden #1234</span>
+                <span style={{ fontSize: '14px', color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)' }}>Orden #1234</span>
                 <Badge variant="success">Entregado</Badge>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ fontSize: '14px', color: '#2D3436', fontFamily: 'var(--sentinel-font-mono)' }}>Orden #1235</span>
+                <span style={{ fontSize: '14px', color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)' }}>Orden #1235</span>
                 <Badge variant="info">En camino</Badge>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ fontSize: '14px', color: '#2D3436', fontFamily: 'var(--sentinel-font-mono)' }}>Orden #1236</span>
+                <span style={{ fontSize: '14px', color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)' }}>Orden #1236</span>
                 <Badge variant="warning">Procesando</Badge>
               </div>
             </div>
@@ -279,7 +279,7 @@ function BadgeContent() {
           padding: '20px',
           borderRadius: '15px',
           boxShadow: getNeuInsetShadow(5, 15),
-          background: LIGHT.base,
+          background: MARBLE.base,
           fontSize: '12px',
           fontFamily: 'var(--sentinel-font-mono)',
           color: '#636E72',

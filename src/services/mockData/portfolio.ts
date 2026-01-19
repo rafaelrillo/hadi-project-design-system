@@ -244,7 +244,7 @@ export const allocations: Allocation[] = [
     value: 30811.45,
     change: 1.8,
     target: 15,
-    color: "#4a9a7c",
+    color: "#4a7a6a",
   },
   {
     id: "a4",

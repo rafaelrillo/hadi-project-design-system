@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FING — Natural Semantic Colors</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&family=Libre+Baskerville:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --marble-base: #d5d8dc;
+      --shadow-light: rgba(255, 255, 255, 0.95);
+      --shadow-dark: rgba(147, 157, 170, 0.55);
+      
+      --text-muted: #8a8f96;
+      --text-subtle: #9a9fa6;
+      
+      --font-display: 'Libre Baskerville', Georgia, serif;
+      --font-primary: 'IBM Plex Sans', -apple-system, sans-serif;
+      --font-mono: 'IBM Plex Mono', monospace;
+      
+      --raised-2: 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
+      --raised-3: 6px 6px 12px var(--shadow-dark), -6px -6px 12px var(--shadow-light);
+      --inset-2: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
+      
+      --lp-whisper: 0.5px 0.5px 0px var(--shadow-light), -0.5px -0.5px 0px var(--shadow-dark);
+      --lp-subtle: 0.75px 0.75px 0px var(--shadow-light), -0.75px -0.75px 0px var(--shadow-dark);
+      --lp-medium: 1px 1px 1px var(--shadow-light), -1px -1px 1px var(--shadow-dark);
+      --lp-carved: 2px 2px 2px var(--shadow-light), -2px -2px 2px var(--shadow-dark);
+    }
+
+    body {
+      font-family: var(--font-primary);
+      background: var(--marble-base);
+      min-height: 100vh;
+      padding: 48px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .header-title {
+      font-family: var(--font-display);
+      font-size: 28px;
+      color: var(--marble-base);
+      text-shadow: var(--lp-carved);
+      margin-bottom: 8px;
+    }
+
+    .header-subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      text-shadow: var(--lp-subtle);
+    }
+
+    .section {
+      margin-bottom: 64px;
+    }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--marble-base);
+      text-shadow: var(--lp-subtle);
+      margin-bottom: 24px;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       COLOR GRID
+       ═══════════════════════════════════════════════════════════════ */
+
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+    }
+
+    .color-card {
+      background: var(--marble-base);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: var(--raised-3);
+    }
+
+    .color-swatch {
+      width: 100%;
+      height: 60px;
+      border-radius: 12px;
+      margin-bottom: 12px;
+      box-shadow: var(--raised-2);
+    }
+
+    .color-name {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--marble-base);
+      text-shadow: var(--lp-medium);
+      margin-bottom: 2px;
+    }
+
+    .color-hex {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-muted);
+      text-shadow: var(--lp-whisper);
+      margin-bottom: 4px;
+    }
+
+    .color-source {
+      font-size: 10px;
+      color: var(--text-subtle);
+      text-shadow: var(--lp-whisper);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       PREVIEW SECTION
+       ═══════════════════════════════════════════════════════════════ */
+
+    .preview-card {
+      background: var(--marble-base);
+      border-radius: 28px;
+      padding: 40px;
+      box-shadow: var(--raised-3);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .preview-title {
+      font-family: var(--font-display);
+      font-size: 20px;
+      color: var(--marble-base);
+      text-shadow: var(--lp-carved);
+      margin-bottom: 32px;
+      text-align: center;
+    }
+
+    .preview-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .preview-item {
+      text-align: center;
+    }
+
+    .preview-label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      color: var(--text-subtle);
+      text-shadow: var(--lp-whisper);
+      margin-bottom: 8px;
+    }
+
+    .preview-badge {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      box-shadow: var(--raised-2);
+    }
+
+    .preview-text {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .preview-inset {
+      background: var(--marble-base);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: var(--inset-2);
+      margin-top: 32px;
+    }
+
+    .preview-metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      text-align: center;
+    }
+
+    .metric-value {
+      font-family: var(--font-mono);
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .metric-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-shadow: var(--lp-whisper);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       ESTABLISHED COLORS
+       ═══════════════════════════════════════════════════════════════ */
+
+    /* Petrol - Accent */
+    .swatch-petrol { background: #3a6a72; }
+    
+    /* Steel - Text */
+    .swatch-steel { background: #4a6a7a; }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SUCCESS / POSITIVE - Greens
+       ═══════════════════════════════════════════════════════════════ */
+
+    /* Jade - piedra verde */
+    .swatch-jade { background: #4a7a6a; }
+    .text-jade { 
+      color: #4a7a6a; 
+      text-shadow: 0.5px 0.5px 0px rgba(255,255,255,0.9), -0.5px -0.5px 0px rgba(74,122,106,0.25);
+    }
+
+    /* Moss - musgo */
+    .swatch-moss { background: #5a7a5a; }
+    .text-moss { 
+      color: #5a7a5a; 
+      text-shadow: 0.5px 0.5px 0px rgba(255,255,255,0.9), -0.5px -0.5px 0px rgba(90,122,90,0.25);
+    }
+
+    /* Forest - bosque */
+    .swatch-forest { background: #3a6a52; }
+    .text-forest { 
+      color: #3a6a52; 
+      text-shadow: 0.5px 0.5px 0px rgba(255,255,255,0.9), -0.5px -0.5px 0px rgba(58,106,82,0.25);
+    }
+
+    /* Malachite - malaquita */
+    .swatch-malachite { background: #2a6a5a; }
+    .text-malachite { 
+      color: #2a6a5a; 
+      text-shadow: 0.5px 0.5px 0px rgba(255,255,255,0.9), -0.5px -0.5px 0px rgba(42,106,90,0.25);
+    }
+
+    /* Serpentine - serpentina */
+    .swatch-serpentine { background: #4a6a52; }
+    .text-serpentine { 
+      color: #4a6a52; 
+      text-shadow: 0.5px 0.5px 0px rgba(255,255,255,0.9), -0.5px -0.5px 0px rgba(74,106,82,0.25);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       WARNING - Golds/Ambers
+       ═══════════════════════════════════════════════════════════════ */
+
+    /* Gold - oro */
+    .swatch-gold { background: #a08a4a; }
+    .text-gold { 
+      color: #a08a4a; 
+      text-shadow: 0.5px 0.5px 0px rgba(255,255,255,0.9), -0.5px -0.5px 0px rgba(160,138,74,0.25);
+    }
+
+    /* Amber - ámbar */
+    .swatch-amber { background: #9a7a42; }
+    .text-amber { 
+      color: #9a7a42; 
+      text-shadow: 0.5px 0.5px 0px rgba(255,255,255,0.9), -0.5px -0.5px 0px rgba(154,122,66,0.25);
+    }
+
+    /* Ochre - ocre */
+    .swatch-ochre { background: #8a7a4a; }
+    .text-ochre { 
+      color: #8a7a4a; 
+      text-shadow: 0.5px 0.5px 0px rgba(255,255,255,0.9), -0.5px -0.5px 0px rgba(138,122,74,0.25);
+    }
+
+    /* Brass - latón */
+    .swatch-brass { background: #8a8252; }
+    .text-brass { 
+      color: #8a8252; 
+      text-shadow: 0.5px 0.5px 0px rgba(255,255,255,0.9), -0.5px -0.5px 0px rgba(138,130,82,0.25);
+    }
+
+    /* Honey - miel */
+    .swatch-honey { background: #9a8a52; }
+    .text-honey { 
+      color: #9a8a52; 
+      text-shadow: 0.5px 0.5px 0px rgba(255,255,255,0.9), -0.5px -0.5px 0px rgba(154,138,82,0.25);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       ERROR / NEGATIVE - Reds
+       ═══════════════════════════════════════════════════════════════ */
+
+    /* Rust - óxido */
+    .swatch-rust { background: #8a5a4a; }
+    .text-rust { 
+      color: #8a5a4a; 
+      text-shadow: 0.5px 0.5px 0px rgba(255,255,255,0.9), -0.5px -0.5px 0px rgba(138,90,74,0.25);
+    }
+
+    /* Terracotta - terracota */
+    .swatch-terracotta { background: #9a6a5a; }
+    .text-terracotta { 
+      color: #9a6a5a; 
+      text-shadow: 0.5px 0.5px 0px rgba(255,255,255,0.9), -0.5px -0.5px 0px rgba(154,106,90,0.25);
+    }
+
+    /* Clay - arcilla */
+    .swatch-clay { background: #8a6a5a; }
+    .text-clay { 
+      color: #8a6a5a; 
+      text-shadow: 0.5px 0.5px 0px rgba(255,255,255,0.9), -0.5px -0.5px 0px rgba(138,106,90,0.25);
+    }
+
+    /* Copper - cobre */
+    .swatch-copper { background: #8a5a52; }
+    .text-copper { 
+      color: #8a5a52; 
+      text-shadow: 0.5px 0.5px 0px rgba(255,255,255,0.9), -0.5px -0.5px 0px rgba(138,90,82,0.25);
+    }
+
+    /* Garnet - granate */
+    .swatch-garnet { background: #7a4a4a; }
+    .text-garnet { 
+      color: #7a4a4a; 
+      text-shadow: 0.5px 0.5px 0px rgba(255,255,255,0.9), -0.5px -0.5px 0px rgba(122,74,74,0.25);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       INFO - Blues (optional)
+       ═══════════════════════════════════════════════════════════════ */
+
+    /* Slate - pizarra (ya lo tenemos como Steel) */
+    .swatch-slate { background: #5a6a7a; }
+    .text-slate { 
+      color: #5a6a7a; 
+      text-shadow: 0.5px 0.5px 0px rgba(255,255,255,0.9), -0.5px -0.5px 0px rgba(90,106,122,0.25);
+    }
+
+    /* Lapis - lapislázuli */
+    .swatch-lapis { background: #4a5a7a; }
+    .text-lapis { 
+      color: #4a5a7a; 
+      text-shadow: 0.5px 0.5px 0px rgba(255,255,255,0.9), -0.5px -0.5px 0px rgba(74,90,122,0.25);
+    }
+
+    @media (max-width: 768px) {
+      .preview-row, .preview-metrics {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <h1 class="header-title">Natural Semantic Colors</h1>
+    <p class="header-subtitle">Every color from nature — minerals, stones, earth</p>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       ESTABLISHED
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="section">
+    <div class="section-label">Established — Accent & Text</div>
+    <div class="color-grid">
+      <div class="color-card">
+        <div class="color-swatch swatch-petrol"></div>
+        <div class="color-name">Petrol</div>
+        <div class="color-hex">#3a6a72</div>
+        <div class="color-source">Petroleum, oil deposits</div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch swatch-steel"></div>
+        <div class="color-name">Steel</div>
+        <div class="color-hex">#4a6a7a</div>
+        <div class="color-source">Refined iron alloy</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       SUCCESS / POSITIVE
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="section">
+    <div class="section-label">Success / Positive — Natural Greens</div>
+    <div class="color-grid">
+      <div class="color-card">
+        <div class="color-swatch swatch-jade"></div>
+        <div class="color-name">Jade</div>
+        <div class="color-hex">#4a7a6a</div>
+        <div class="color-source">Jade stone, China</div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch swatch-moss"></div>
+        <div class="color-name">Moss</div>
+        <div class="color-hex">#5a7a5a</div>
+        <div class="color-source">Forest moss</div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch swatch-forest"></div>
+        <div class="color-name">Forest</div>
+        <div class="color-hex">#3a6a52</div>
+        <div class="color-source">Deep forest</div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch swatch-malachite"></div>
+        <div class="color-name">Malachite</div>
+        <div class="color-hex">#2a6a5a</div>
+        <div class="color-source">Copper carbonate mineral</div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch swatch-serpentine"></div>
+        <div class="color-name">Serpentine</div>
+        <div class="color-hex">#4a6a52</div>
+        <div class="color-source">Serpentine rock</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       WARNING
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="section">
+    <div class="section-label">Warning — Golds & Ambers</div>
+    <div class="color-grid">
+      <div class="color-card">
+        <div class="color-swatch swatch-gold"></div>
+        <div class="color-name">Gold</div>
+        <div class="color-hex">#a08a4a</div>
+        <div class="color-source">Pure gold metal</div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch swatch-amber"></div>
+        <div class="color-name">Amber</div>
+        <div class="color-hex">#9a7a42</div>
+        <div class="color-source">Fossilized tree resin</div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch swatch-ochre"></div>
+        <div class="color-name">Ochre</div>
+        <div class="color-hex">#8a7a4a</div>
+        <div class="color-source">Natural earth pigment</div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch swatch-brass"></div>
+        <div class="color-name">Brass</div>
+        <div class="color-hex">#8a8252</div>
+        <div class="color-source">Copper-zinc alloy</div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch swatch-honey"></div>
+        <div class="color-name">Honey</div>
+        <div class="color-hex">#9a8a52</div>
+        <div class="color-source">Natural bee honey</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       ERROR / NEGATIVE
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="section">
+    <div class="section-label">Error / Negative — Earth Reds</div>
+    <div class="color-grid">
+      <div class="color-card">
+        <div class="color-swatch swatch-rust"></div>
+        <div class="color-name">Rust</div>
+        <div class="color-hex">#8a5a4a</div>
+        <div class="color-source">Iron oxide</div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch swatch-terracotta"></div>
+        <div class="color-name">Terracotta</div>
+        <div class="color-hex">#9a6a5a</div>
+        <div class="color-source">Fired clay pottery</div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch swatch-clay"></div>
+        <div class="color-name">Clay</div>
+        <div class="color-hex">#8a6a5a</div>
+        <div class="color-source">Natural clay earth</div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch swatch-copper"></div>
+        <div class="color-name">Copper</div>
+        <div class="color-hex">#8a5a52</div>
+        <div class="color-source">Oxidized copper</div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch swatch-garnet"></div>
+        <div class="color-name">Garnet</div>
+        <div class="color-hex">#7a4a4a</div>
+        <div class="color-source">Garnet gemstone</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       INFO (optional)
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="section">
+    <div class="section-label">Info (optional) — Blues</div>
+    <div class="color-grid">
+      <div class="color-card">
+        <div class="color-swatch swatch-slate"></div>
+        <div class="color-name">Slate</div>
+        <div class="color-hex">#5a6a7a</div>
+        <div class="color-source">Slate rock</div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch swatch-lapis"></div>
+        <div class="color-name">Lapis</div>
+        <div class="color-hex">#4a5a7a</div>
+        <div class="color-source">Lapis lazuli stone</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       PREVIEW IN CONTEXT
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="section">
+    <div class="section-label">Preview — My Recommendation</div>
+    <div class="preview-card">
+      <h2 class="preview-title">Jade + Gold + Rust</h2>
+      
+      <div class="preview-row">
+        <div class="preview-item">
+          <div class="preview-label">POSITIVE</div>
+          <span class="preview-badge" style="background: var(--marble-base); color: #4a7a6a;">+12.5%</span>
+        </div>
+        <div class="preview-item">
+          <div class="preview-label">WARNING</div>
+          <span class="preview-badge" style="background: var(--marble-base); color: #a08a4a;">Moderate</span>
+        </div>
+        <div class="preview-item">
+          <div class="preview-label">NEGATIVE</div>
+          <span class="preview-badge" style="background: var(--marble-base); color: #8a5a4a;">-3.2%</span>
+        </div>
+        <div class="preview-item">
+          <div class="preview-label">INFO</div>
+          <span class="preview-badge" style="background: var(--marble-base); color: #4a6a7a;">Updated</span>
+        </div>
+      </div>
+
+      <div class="preview-inset">
+        <div class="preview-metrics">
+          <div>
+            <div class="metric-value text-jade">+16.5%</div>
+            <div class="metric-label">This month</div>
+          </div>
+          <div>
+            <div class="metric-value text-gold">Moderate</div>
+            <div class="metric-label">Risk level</div>
+          </div>
+          <div>
+            <div class="metric-value text-rust">-2.3%</div>
+            <div class="metric-label">Last week</div>
+          </div>
+          <div>
+            <div class="metric-value text-slate">47</div>
+            <div class="metric-label">Indicators</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       ALTERNATIVE PREVIEW
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="section">
+    <div class="section-label">Alternative — Malachite + Amber + Terracotta</div>
+    <div class="preview-card">
+      <h2 class="preview-title">Malachite + Amber + Terracotta</h2>
+      
+      <div class="preview-row">
+        <div class="preview-item">
+          <div class="preview-label">POSITIVE</div>
+          <span class="preview-badge" style="background: var(--marble-base); color: #2a6a5a;">+12.5%</span>
+        </div>
+        <div class="preview-item">
+          <div class="preview-label">WARNING</div>
+          <span class="preview-badge" style="background: var(--marble-base); color: #9a7a42;">Moderate</span>
+        </div>
+        <div class="preview-item">
+          <div class="preview-label">NEGATIVE</div>
+          <span class="preview-badge" style="background: var(--marble-base); color: #9a6a5a;">-3.2%</span>
+        </div>
+        <div class="preview-item">
+          <div class="preview-label">INFO</div>
+          <span class="preview-badge" style="background: var(--marble-base); color: #4a6a7a;">Updated</span>
+        </div>
+      </div>
+
+      <div class="preview-inset">
+        <div class="preview-metrics">
+          <div>
+            <div class="metric-value text-malachite">+16.5%</div>
+            <div class="metric-label">This month</div>
+          </div>
+          <div>
+            <div class="metric-value text-amber">Moderate</div>
+            <div class="metric-label">Risk level</div>
+          </div>
+          <div>
+            <div class="metric-value text-terracotta">-2.3%</div>
+            <div class="metric-label">Last week</div>
+          </div>
+          <div>
+            <div class="metric-value text-slate">47</div>
+            <div class="metric-label">Indicators</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

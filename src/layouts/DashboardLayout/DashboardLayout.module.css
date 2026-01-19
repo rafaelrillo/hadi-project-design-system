@@ -30,7 +30,7 @@
 .animatedLogo {
   width: 28px;
   height: 28px;
-  filter: drop-shadow(0 0 6px rgba(74, 154, 156, 0.4));
+  filter: drop-shadow(0 0 6px rgba(58, 106, 114, 0.4));
 }
 
 .scanLine {
@@ -109,7 +109,7 @@
 
 .headerIcon {
   color: var(--sentinel-accent-primary);
-  filter: drop-shadow(0 0 4px rgba(74, 154, 156, 0.25));
+  filter: drop-shadow(0 0 4px rgba(58, 106, 114, 0.25));
 }
 
 .title {

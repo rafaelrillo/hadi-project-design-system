@@ -820,7 +820,7 @@ export function ButtonShowcase() {
                     -4px -4px 8px rgba(255, 255, 255, 0.95)
                   `,
                   color: 'var(--sentinel-accent-primary)',
-                  textShadow: '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(74, 154, 156, 0.3)',
+                  textShadow: '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(58, 106, 114, 0.3)',
                   transition: 'all 150ms ease',
                 }}
               >
@@ -884,7 +884,7 @@ export function ButtonShowcase() {
                       -2px -2px 4px rgba(255, 255, 255, 0.95)
                     `,
                     color: 'var(--sentinel-accent-primary)',
-                    textShadow: '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(74, 154, 156, 0.3)',
+                    textShadow: '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(58, 106, 114, 0.3)',
                     transition: 'all 200ms ease',
                   }}
                 >
@@ -949,7 +949,7 @@ export function ButtonShowcase() {
                       -1px -1px 2px rgba(255, 255, 255, 0.95)
                     `,
                     color: 'var(--sentinel-accent-primary)',
-                    textShadow: '0.75px 0.75px 0px rgba(255, 255, 255, 0.85), -0.75px -0.75px 0px rgba(74, 154, 156, 0.25)',
+                    textShadow: '0.75px 0.75px 0px rgba(255, 255, 255, 0.85), -0.75px -0.75px 0px rgba(58, 106, 114, 0.25)',
                     transition: 'all 200ms ease',
                   }}
                 >

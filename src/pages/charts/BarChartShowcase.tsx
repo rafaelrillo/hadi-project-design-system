@@ -23,9 +23,9 @@ const simpleBarData: BarDataPoint[] = [
 
 const performanceCategories = ['AAPL', 'MSFT', 'GOOGL', 'AMZN', 'META', 'TSLA'];
 const performanceData: BarDataPoint[] = [
-  { category: 'AAPL', value: 12.5, color: '#4a9a7c' },
-  { category: 'MSFT', value: 8.3, color: '#4a9a7c' },
-  { category: 'GOOGL', value: 5.2, color: '#4a9a7c' },
+  { category: 'AAPL', value: 12.5, color: '#4a7a6a' },
+  { category: 'MSFT', value: 8.3, color: '#4a7a6a' },
+  { category: 'GOOGL', value: 5.2, color: '#4a7a6a' },
   { category: 'AMZN', value: -2.1, color: '#b85c5c' },
   { category: 'META', value: -4.8, color: '#b85c5c' },
   { category: 'TSLA', value: -8.2, color: '#b85c5c' },
@@ -57,26 +57,26 @@ function BarChartContent() {
     return { x: Math.cos(shadowAngle), y: Math.sin(shadowAngle) };
   }, [lightAngle]);
 
-  const LIGHT = {
-    base: '#e0e5ec',
-    shadowDark: 'hsl(220 15% 72%)',
-    shadowLight: 'hsl(0 0% 100%)',
+  const MARBLE = {
+    base: '#d5d8dc',
+    shadowDark: '#a8acb3',
+    shadowLight: '#ffffff',
   };
 
   const getNeuPanelShadow = (distance: number, blur: number): string => {
     const { x, y } = shadowOffsets;
-    return `${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}`;
+    return `${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}`;
   };
 
   const getNeuInsetShadow = (distance: number, blur: number): string => {
     const { x, y } = shadowOffsets;
-    return `inset ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}`;
+    return `inset ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}`;
   };
 
   const pageHeaderStyles: React.CSSProperties = {
     marginBottom: '32px',
     padding: '24px',
-    background: LIGHT.base,
+    background: MARBLE.base,
     borderRadius: '15px',
     boxShadow: getNeuPanelShadow(20, 60),
     transition: 'box-shadow 50ms linear',
@@ -102,7 +102,7 @@ function BarChartContent() {
 
   const chartContainerStyles: React.CSSProperties = {
     padding: '24px',
-    background: LIGHT.base,
+    background: MARBLE.base,
     borderRadius: '15px',
     boxShadow: getNeuPanelShadow(8, 24),
     transition: 'box-shadow 50ms linear',
@@ -112,13 +112,13 @@ function BarChartContent() {
     padding: '20px',
     borderRadius: '15px',
     boxShadow: getNeuInsetShadow(5, 15),
-    background: LIGHT.base,
+    background: MARBLE.base,
     overflowX: 'auto',
     transition: 'box-shadow 50ms linear',
   };
 
   return (
-    <div style={{ background: LIGHT.base, minHeight: '100%', padding: '24px' }}>
+    <div style={{ background: MARBLE.base, minHeight: '100%', padding: '24px' }}>
       <header style={pageHeaderStyles}>
         <h1 style={titleStyles}>&gt; BarChart_</h1>
         <p style={descStyles}>// Gráfico de barras para comparar datos categóricos</p>
@@ -201,7 +201,7 @@ function BarChartContent() {
                 { prop: 'formatValue', type: '(v: number) => string', default: '-', desc: 'Value formatter function' },
               ].map((row, i) => (
                 <tr key={i}>
-                  <td style={{ padding: '12px 16px', color: '#2D3436' }}>{row.prop}</td>
+                  <td style={{ padding: '12px 16px', color: 'var(--sentinel-text-primary)' }}>{row.prop}</td>
                   <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.type}</td>
                   <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.default}</td>
                   <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.desc}</td>

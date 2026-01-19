@@ -1,187 +1,388 @@
 // Path: src/pages/styles/SpacingShowcase.tsx
-// SENTINEL Design System - Glass-Neumorphism Spacing
-import React, { useMemo } from 'react';
-import { ShowcaseSection } from '../../components/showcase';
-import { LightEngineProvider, useLightEngine } from '@/contexts/LightEngineContext';
+// SENTINEL Design System - Stone Marble Spacing
+import React from 'react';
 
-function SpacingContent() {
-  const { lightAngle } = useLightEngine();
+interface SpacingToken {
+  name: string;
+  variable: string;
+  value: string;
+  usage: string;
+}
 
-  const shadowOffsets = useMemo(() => {
-    const shadowAngle = (lightAngle + 180) * (Math.PI / 180);
-    return { x: Math.cos(shadowAngle), y: Math.sin(shadowAngle) };
-  }, [lightAngle]);
+export function SpacingShowcase() {
+  // ═══════════════════════════════════════════════════════════════════════════
+  // STYLES - Stone Marble Design System
+  // ═══════════════════════════════════════════════════════════════════════════
 
-  const LIGHT = {
-    base: '#e0e5ec',
-    shadowDark: 'hsl(220 15% 72%)',
-    shadowLight: 'hsl(0 0% 100%)',
+  const showcaseStyles: React.CSSProperties = {
+    minHeight: '100vh',
+    background: 'var(--marble-base)',
+    padding: '32px',
+    fontFamily: 'var(--sentinel-font-primary)',
   };
 
-  const getNeuPanelShadow = (distance: number, blur: number): string => {
-    const { x, y } = shadowOffsets;
-    return `${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}`;
-  };
-
-  const getNeuInsetShadow = (distance: number, blur: number): string => {
-    const { x, y } = shadowOffsets;
-    return `inset ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}`;
-  };
-
-  const pageHeaderStyles: React.CSSProperties = {
+  const headerStyles: React.CSSProperties = {
+    textAlign: 'center',
     marginBottom: '32px',
-    padding: '24px',
-    background: LIGHT.base,
-    borderRadius: '15px',
-    boxShadow: getNeuPanelShadow(20, 60),
-    transition: 'box-shadow 50ms linear',
   };
 
-  const titleStyles: React.CSSProperties = {
-    fontSize: '28px',
-    fontWeight: 700,
-    color: 'var(--sentinel-accent-primary)',
-    marginBottom: '8px',
+  const headerTitleStyles: React.CSSProperties = {
     fontFamily: 'var(--sentinel-font-display)',
-    textTransform: 'uppercase',
-    letterSpacing: '0.1em',
+    fontSize: '32px',
+    fontWeight: 700,
+    letterSpacing: '-0.02em',
+    color: 'var(--marble-base)',
+    textShadow: '2px 2px 2px var(--shadow-light), -2px -2px 2px var(--shadow-dark)',
   };
 
-  const descStyles: React.CSSProperties = {
+  const headerSubtitleStyles: React.CSSProperties = {
     fontSize: '14px',
-    color: 'var(--sentinel-text-secondary)',
-    fontFamily: 'var(--sentinel-font-mono)',
-    textTransform: 'uppercase',
-    letterSpacing: '0.03em',
+    marginTop: '8px',
+    color: 'var(--marble-base)',
+    textShadow: '0.75px 0.75px 0px var(--shadow-light), -0.75px -0.75px 0px var(--shadow-dark)',
   };
 
-  interface SpacingToken {
-    name: string;
-    variable: string;
-    value: string;
-    pixels: string;
-    usage: string;
-  }
+  const sectionStyles: React.CSSProperties = {
+    background: 'var(--marble-base)',
+    borderRadius: '24px',
+    boxShadow: 'var(--raised-3)',
+    padding: '32px',
+    marginBottom: '24px',
+  };
+
+  const sectionTitleStyles: React.CSSProperties = {
+    fontFamily: 'var(--sentinel-font-primary)',
+    fontSize: '11px',
+    fontWeight: 600,
+    letterSpacing: '0.12em',
+    textTransform: 'uppercase',
+    color: 'var(--marble-base)',
+    textShadow: '1px 1px 1px var(--shadow-light), -1px -1px 1px var(--shadow-dark)',
+    marginBottom: '24px',
+    paddingBottom: '12px',
+    borderBottom: '1px solid var(--marble-dark)',
+  };
+
+  // Letterpress para superficies RAISED (elevadas)
+  const lpStyles = (intensity: 'whisper' | 'subtle' | 'soft' | 'medium'): React.CSSProperties => {
+    const shadows: Record<string, string> = {
+      whisper: '0.5px 0.5px 0px var(--shadow-light), -0.5px -0.5px 0px var(--shadow-dark)',
+      subtle: '0.75px 0.75px 0px var(--shadow-light), -0.75px -0.75px 0px var(--shadow-dark)',
+      soft: '1px 1px 1px var(--shadow-light), -1px -1px 1px var(--shadow-dark)',
+      medium: '1.5px 1.5px 1px var(--shadow-light), -1.5px -1.5px 1px var(--shadow-dark)',
+    };
+    return {
+      color: 'var(--marble-base)',
+      textShadow: shadows[intensity],
+    };
+  };
+
+  // Letterpress para superficies INSET (cavadas) - sombras invertidas
+  const lpInsetStyles = (intensity: 'whisper' | 'subtle' | 'soft' | 'medium'): React.CSSProperties => {
+    const shadows: Record<string, string> = {
+      whisper: '-0.5px -0.5px 0px var(--shadow-light), 0.5px 0.5px 0px var(--shadow-dark)',
+      subtle: '-0.75px -0.75px 0px var(--shadow-light), 0.75px 0.75px 0px var(--shadow-dark)',
+      soft: '-1px -1px 1px var(--shadow-light), 1px 1px 1px var(--shadow-dark)',
+      medium: '-1.5px -1.5px 1px var(--shadow-light), 1.5px 1.5px 1px var(--shadow-dark)',
+    };
+    return {
+      color: 'var(--marble-base)',
+      textShadow: shadows[intensity],
+    };
+  };
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // SPACING DATA
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  const spacingScale: SpacingToken[] = [
+    { name: 'Extra Small', variable: '--spacing-xs', value: '5px', usage: 'Espaciado mínimo entre elementos' },
+    { name: 'Small', variable: '--spacing-sm', value: '10px', usage: 'Espaciado pequeño entre elementos relacionados' },
+    { name: 'Medium', variable: '--spacing-md', value: '15px', usage: 'Espaciado medio entre secciones relacionadas' },
+    { name: 'Large', variable: '--spacing-lg', value: '20px', usage: 'Espaciado estándar entre elementos y secciones' },
+    { name: 'Extra Large', variable: '--spacing-xl', value: '30px', usage: 'Espaciado grande entre secciones principales' },
+    { name: '2X Large', variable: '--spacing-2xl', value: '40px', usage: 'Espaciado extra grande para separación de bloques' },
+  ];
+
+  const specialSpacings: SpacingToken[] = [
+    { name: 'Content Padding', variable: '--content-padding', value: '30px', usage: 'Padding del área de contenido principal' },
+    { name: 'Gap Elements', variable: '--gap-elements', value: '20px', usage: 'Gap estándar entre elementos (grid, flex)' },
+    { name: 'Container Padding', variable: '--container-padding', value: '20px', usage: 'Padding interno de contenedores' },
+  ];
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // COMPONENTS
+  // ═══════════════════════════════════════════════════════════════════════════
 
   const SpacingSample = ({ token }: { token: SpacingToken }) => (
     <div style={{
-      padding: '16px',
-      background: LIGHT.base,
-      borderRadius: '15px',
-      boxShadow: getNeuInsetShadow(3, 8),
+      background: 'var(--marble-base)',
+      borderRadius: '14px',
+      boxShadow: 'var(--inset-2)',
+      padding: '16px 20px',
       marginBottom: '12px',
-      transition: 'box-shadow 50ms linear',
+      display: 'flex',
+      alignItems: 'center',
+      gap: '20px',
     }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-        <div style={{
-          width: token.value,
-          height: '40px',
-          background: LIGHT.base,
-          borderRadius: '15px',
-          boxShadow: getNeuPanelShadow(8, 24),
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          transition: 'box-shadow 50ms linear',
+      {/* Visual representation - RAISED element inside INSET container */}
+      <div style={{
+        width: token.value,
+        minWidth: '40px',
+        height: '40px',
+        background: 'var(--marble-base)',
+        borderRadius: '10px',
+        boxShadow: 'var(--raised-2)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}>
+        {/* Text on RAISED surface uses lpStyles */}
+        <span style={{
+          ...lpStyles('subtle'),
+          fontSize: '10px',
+          fontWeight: 600,
+          fontFamily: 'var(--sentinel-font-mono)',
         }}>
-          <span style={{
-            fontSize: '10px',
-            color: '#2D3436',
-            fontWeight: 600,
-            fontFamily: 'var(--sentinel-font-mono)'
-          }}>
-            {token.pixels}
-          </span>
+          {token.value}
+        </span>
+      </div>
+
+      {/* Info - on INSET surface */}
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <div style={{
+          ...lpInsetStyles('medium'),
+          fontFamily: 'var(--sentinel-font-primary)',
+          fontSize: '13px',
+          fontWeight: 600,
+          marginBottom: '6px',
+        }}>
+          {token.name}
         </div>
-        <div style={{ flex: 1 }}>
-          <div style={{
-            fontSize: '14px',
-            fontWeight: 600,
-            color: '#2D3436',
-            marginBottom: '4px',
-            fontFamily: 'var(--sentinel-font-display)'
+        <div style={{
+          display: 'inline-block',
+          padding: '3px 10px',
+          background: 'var(--sentinel-glass-teal-bg)',
+          border: '1px solid var(--sentinel-glass-teal-border)',
+          borderRadius: '100px',
+          marginBottom: '6px',
+        }}>
+          <code style={{
+            fontFamily: 'var(--sentinel-font-mono)',
+            fontSize: '10px',
+            color: 'var(--sentinel-glass-teal-text)',
+            fontWeight: 500,
           }}>
-            {token.name}
-          </div>
-          <div style={{ fontSize: '12px', color: '#636E72', marginBottom: '2px' }}>
-            <code style={{
-              backgroundColor: 'rgba(74, 154, 156, 0.15)',
-              padding: '2px 6px',
-              borderRadius: '15px',
-              color: 'var(--sentinel-accent-primary)',
-              fontFamily: 'var(--sentinel-font-mono)'
-            }}>
-              var({token.variable})
-            </code>
-            {' = '}{token.value}
-          </div>
-          <div style={{ fontSize: '11px', color: '#9BA4B0', fontFamily: 'var(--sentinel-font-mono)' }}>
-            {token.usage}
-          </div>
+            {token.variable}
+          </code>
+        </div>
+        <div style={{
+          ...lpInsetStyles('whisper'),
+          fontFamily: 'var(--sentinel-font-mono)',
+          fontSize: '10px',
+        }}>
+          {token.usage}
         </div>
       </div>
     </div>
   );
 
-  const spacingScale: SpacingToken[] = [
-    { name: 'Extra Small', variable: '--spacing-xs', value: '5px', pixels: '5px', usage: 'Espaciado mínimo entre elementos' },
-    { name: 'Small', variable: '--spacing-sm', value: '10px', pixels: '10px', usage: 'Espaciado pequeño entre elementos relacionados' },
-    { name: 'Medium', variable: '--spacing-md', value: '15px', pixels: '15px', usage: 'Espaciado medio entre secciones relacionadas' },
-    { name: 'Large', variable: '--spacing-lg', value: '20px', pixels: '20px', usage: 'Espaciado estándar entre elementos y secciones' },
-    { name: 'Extra Large', variable: '--spacing-xl', value: '30px', pixels: '30px', usage: 'Espaciado grande entre secciones principales' },
-    { name: '2X Large', variable: '--spacing-2xl', value: '40px', pixels: '40px', usage: 'Espaciado extra grande para separación de bloques' }
-  ];
-
-  const specialSpacings: SpacingToken[] = [
-    { name: 'Content Padding', variable: '--content-padding', value: '30px', pixels: '30px', usage: 'Padding del área de contenido principal' },
-    { name: 'Gap Elements', variable: '--gap-elements', value: '20px', pixels: '20px', usage: 'Gap estándar entre elementos (grid, flex)' },
-    { name: 'Container Padding', variable: '--container-padding', value: '20px', pixels: '20px', usage: 'Padding interno de contenedores' }
-  ];
+  // ═══════════════════════════════════════════════════════════════════════════
+  // RENDER
+  // ═══════════════════════════════════════════════════════════════════════════
 
   return (
-    <div style={{ background: LIGHT.base, minHeight: '100%', padding: '24px' }}>
-      <header style={pageHeaderStyles}>
-        <h1 style={titleStyles}>&gt; Spacing_</h1>
-        <p style={descStyles}>// Sistema de espaciado basado en escala de 5px</p>
+    <div style={showcaseStyles}>
+      {/* Header */}
+      <header style={headerStyles}>
+        <h1 style={headerTitleStyles}>SENTINEL Spacing</h1>
+        <p style={headerSubtitleStyles}>Sistema de espaciado Stone Marble - Escala basada en 5px</p>
       </header>
 
-      <ShowcaseSection
-        title="Escala de Espaciado"
-        description="Tokens de espaciado base desde 5px hasta 40px"
-      >
+      {/* Spacing Scale */}
+      <section style={sectionStyles}>
+        <div style={sectionTitleStyles}>Escala de Espaciado</div>
         <div>
           {spacingScale.map((token) => (
             <SpacingSample key={token.variable} token={token} />
           ))}
         </div>
-      </ShowcaseSection>
 
-      <ShowcaseSection
-        title="Espaciados Especiales"
-        description="Tokens específicos para áreas de contenido"
-      >
+        {/* Visual Scale Preview */}
+        <div style={{
+          marginTop: '24px',
+          padding: '20px',
+          background: 'var(--marble-base)',
+          borderRadius: '14px',
+          boxShadow: 'var(--inset-2)',
+        }}>
+          <div style={{
+            ...lpInsetStyles('whisper'),
+            fontFamily: 'var(--sentinel-font-mono)',
+            fontSize: '10px',
+            letterSpacing: '0.1em',
+            textTransform: 'uppercase',
+            marginBottom: '16px',
+          }}>
+            Visual Scale
+          </div>
+          <div style={{ display: 'flex', alignItems: 'flex-end', gap: '8px', flexWrap: 'wrap' }}>
+            {spacingScale.map((token) => (
+              <div
+                key={token.variable}
+                style={{
+                  width: token.value,
+                  height: token.value,
+                  background: 'var(--marble-base)',
+                  borderRadius: '8px',
+                  boxShadow: 'var(--raised-1)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <span style={{
+                  ...lpStyles('whisper'),
+                  fontFamily: 'var(--sentinel-font-mono)',
+                  fontSize: '8px',
+                  fontWeight: 600,
+                }}>
+                  {token.value.replace('px', '')}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Special Spacings */}
+      <section style={sectionStyles}>
+        <div style={sectionTitleStyles}>Espaciados Especiales</div>
         <div>
           {specialSpacings.map((token) => (
             <SpacingSample key={token.variable} token={token} />
           ))}
         </div>
-      </ShowcaseSection>
+      </section>
 
-      <ShowcaseSection title="Código de Ejemplo">
+      {/* Usage Example */}
+      <section style={sectionStyles}>
+        <div style={sectionTitleStyles}>Ejemplo de Uso</div>
         <div style={{
-          padding: '20px',
-          borderRadius: '15px',
-          boxShadow: getNeuInsetShadow(5, 15),
-          background: LIGHT.base,
-          fontSize: '12px',
-          fontFamily: 'var(--sentinel-font-mono)',
-          color: '#636E72',
-          transition: 'box-shadow 50ms linear',
+          background: 'var(--marble-base)',
+          borderRadius: '14px',
+          boxShadow: 'var(--inset-3)',
+          padding: '24px',
         }}>
-          <pre style={{ margin: 0, whiteSpace: 'pre-wrap' }}>{`.neu-card {
+          <div style={{
+            ...lpInsetStyles('whisper'),
+            fontFamily: 'var(--sentinel-font-mono)',
+            fontSize: '10px',
+            letterSpacing: '0.1em',
+            textTransform: 'uppercase',
+            marginBottom: '16px',
+          }}>
+            Card Layout Example
+          </div>
+
+          {/* Demo card inside inset - this is RAISED */}
+          <div style={{
+            background: 'var(--marble-base)',
+            borderRadius: '14px',
+            boxShadow: 'var(--raised-2)',
+            padding: '20px', // --container-padding
+          }}>
+            <div style={{
+              ...lpStyles('medium'),
+              fontFamily: 'var(--sentinel-font-display)',
+              fontSize: '16px',
+              fontWeight: 600,
+              marginBottom: '10px', // --spacing-sm
+            }}>
+              Card Title
+            </div>
+            <div style={{
+              ...lpStyles('whisper'),
+              fontFamily: 'var(--sentinel-font-primary)',
+              fontSize: '12px',
+              marginBottom: '20px', // --spacing-lg
+            }}>
+              Content with proper spacing between elements
+            </div>
+            <div style={{ display: 'flex', gap: '10px' }}> {/* --spacing-sm */}
+              <div style={{
+                padding: '8px 16px',
+                background: 'var(--sentinel-glass-teal-bg)',
+                border: '1px solid var(--sentinel-glass-teal-border)',
+                borderRadius: '8px',
+              }}>
+                <span style={{
+                  fontFamily: 'var(--sentinel-font-primary)',
+                  fontSize: '12px',
+                  fontWeight: 500,
+                  color: 'var(--sentinel-glass-teal-text)',
+                }}>
+                  Action 1
+                </span>
+              </div>
+              <div style={{
+                padding: '8px 16px',
+                background: 'var(--sentinel-glass-teal-bg)',
+                border: '1px solid var(--sentinel-glass-teal-border)',
+                borderRadius: '8px',
+              }}>
+                <span style={{
+                  fontFamily: 'var(--sentinel-font-primary)',
+                  fontSize: '12px',
+                  fontWeight: 500,
+                  color: 'var(--sentinel-glass-teal-text)',
+                }}>
+                  Action 2
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Code Reference */}
+      <section style={sectionStyles}>
+        <div style={sectionTitleStyles}>Código de Referencia</div>
+        <div style={{
+          padding: '24px',
+          background: 'var(--marble-base)',
+          borderRadius: '14px',
+          boxShadow: 'var(--inset-3)',
+        }}>
+          <pre style={{
+            margin: 0,
+            fontFamily: 'var(--sentinel-font-mono)',
+            fontSize: '11px',
+            lineHeight: 1.6,
+            color: 'var(--marble-base)',
+            textShadow: '-0.75px -0.75px 0px var(--shadow-light), 0.75px 0.75px 0px var(--shadow-dark)',
+            whiteSpace: 'pre-wrap',
+          }}>
+{`:root {
+  /* Base Scale (5px increments) */
+  --spacing-xs: 5px;
+  --spacing-sm: 10px;
+  --spacing-md: 15px;
+  --spacing-lg: 20px;
+  --spacing-xl: 30px;
+  --spacing-2xl: 40px;
+
+  /* Special Spacings */
+  --content-padding: 30px;
+  --gap-elements: 20px;
+  --container-padding: 20px;
+}
+
+/* Usage Examples */
+.card {
   padding: var(--container-padding);
   margin-bottom: var(--spacing-lg);
-  border-radius: 15px;
+  border-radius: 14px;
 }
 
 .section {
@@ -192,17 +393,12 @@ function SpacingContent() {
 .button-group {
   display: flex;
   gap: var(--spacing-sm);
-}`}</pre>
+}`}
+          </pre>
         </div>
-      </ShowcaseSection>
+      </section>
     </div>
   );
 }
 
-export function SpacingShowcase() {
-  return (
-    <LightEngineProvider initialAnimating={true} initialSpeed={0.3}>
-      <SpacingContent />
-    </LightEngineProvider>
-  );
-}
+export default SpacingShowcase;

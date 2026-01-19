@@ -43,25 +43,236 @@
   --fing-logo-light-2: #ededf0;
 
   /* ─────────────────────────────────────────────────────────────────────────
-     BRAND ACCENT - Teal (shared with SENTINEL accent)
+     BRAND ACCENT - Petrol (natural mineral color)
      ───────────────────────────────────────────────────────────────────────── */
-  --fing-teal: #4A9A9C;
-  --fing-teal-light: #6fb3b5;
-  --fing-teal-dark: #3a7a7c;
+  --fing-accent: #3a6a72;
+  --fing-accent-light: #4a7a82;
+  --fing-accent-dark: #2a5a62;
+
+  /* Text accent - Steel (refined iron alloy) */
+  --fing-text-accent: #4a6a7a;
+
+  /* Legacy aliases */
+  --fing-teal: var(--fing-accent);
+  --fing-teal-light: var(--fing-accent-light);
+  --fing-teal-dark: var(--fing-accent-dark);
 
   /* ─────────────────────────────────────────────────────────────────────────
-     BRAND SEMANTIC - Conservative tones for "Senior Analyst" voice
+     BRAND SEMANTIC - Natural mineral colors for "Senior Analyst" voice
      ───────────────────────────────────────────────────────────────────────── */
-  --fing-positive: #4a9a7c;
-  --fing-negative: #c98a8a;
-  --fing-warning: #c9a87a;
+
+  /* Positive/Success - Jade (green stone) */
+  --fing-positive: #4a7a6a;
+  --fing-positive-light: #5a8a7a;
+  --fing-positive-dark: #3a6a5a;
+
+  /* Warning - Gold (pure metal) */
+  --fing-warning: #a08a4a;
+  --fing-warning-light: #b09a5a;
+  --fing-warning-dark: #8a7a3a;
+
+  /* Negative/Error - Rust (iron oxide) */
+  --fing-negative: #8a5a4a;
+  --fing-negative-light: #9a6a5a;
+  --fing-negative-dark: #7a4a3a;
+
+  /* Info - Steel (same as text accent) */
+  --fing-info: #4a6a7a;
+  --fing-info-light: #5a7a8a;
+  --fing-info-dark: #3a5a6a;
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     PRIMARY BLACK - Charcoal (burned wood carbon)
+     ───────────────────────────────────────────────────────────────────────── */
+  --fing-black: #252528;
+  --fing-black-rgb: 37, 37, 40;
 
   /* ─────────────────────────────────────────────────────────────────────────
      BRAND TEXT
      ───────────────────────────────────────────────────────────────────────── */
+  --fing-text-primary: var(--fing-black);
   --fing-text-light: #f0f0f2;
   --fing-text-muted: #8a8f96;
-  --fing-text-dark: #1a1a1e;
+  --fing-text-dark: var(--fing-black);
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     FING EMBLEM - Radar Symbol Tokens
+     ───────────────────────────────────────────────────────────────────────── */
+  --fing-marble-base: #d5d8dc;
+  --fing-shadow-light: rgba(255, 255, 255, 0.95);
+  --fing-shadow-dark: rgba(147, 157, 170, 0.55);
+  --fing-teal-glow: rgba(58, 106, 114, 0.5);  /* Petrol glow */
+
+  /* Radar symbol colors */
+  --fing-symbol-fill: #babec4;
+  --fing-symbol-stroke: #b2b6bc;
+
+  /* Carve/Engrave effect colors */
+  --fing-carve-light: rgba(255, 255, 255, 0.92);
+  --fing-carve-dark: rgba(140, 150, 165, 0.65);
+
+  /* Emblem animation tokens */
+  --fing-anim-duration: 3s;
+  --fing-anim-delay: 0.4s;
+  --fing-anim-easing: ease-in-out;
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     FING WORDMARK - Inset Typography System
+     Cormorant Garamond Light with 12 carved/inset variations
+     ───────────────────────────────────────────────────────────────────────── */
+
+  /* Wordmark Font */
+  --fing-wordmark-font: 'Cormorant Garamond', serif;
+  --fing-wordmark-weight: 300;
+  --fing-wordmark-tracking: 0.06em;
+
+  /* Shadow base colors for inset effects */
+  --fing-wm-shadow-light: rgba(255, 255, 255, 0.9);
+  --fing-wm-shadow-dark: rgba(147, 157, 170, 0.55);
+  --fing-wm-shadow-darker: rgba(130, 140, 155, 0.55);
+  --fing-wm-shadow-darkest: rgba(115, 125, 140, 0.65);
+
+  /* ═══ INSET CONTAINER PRESETS ═══ */
+
+  /* 1. WHISPER - Casi plano, muy sutil */
+  --fing-wm-inset-whisper:
+    inset 2px 2px 4px rgba(147, 157, 170, 0.3),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.7);
+
+  /* 2. SOFT - Suave estándar */
+  --fing-wm-inset-soft:
+    inset 3px 3px 6px rgba(147, 157, 170, 0.4),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.85);
+
+  /* 3. MEDIUM - Moderado, equilibrado */
+  --fing-wm-inset-medium:
+    inset 4px 4px 8px rgba(147, 157, 170, 0.5),
+    inset -4px -4px 8px rgba(255, 255, 255, 0.9);
+
+  /* 4. DEEP - Profundo, más sombra */
+  --fing-wm-inset-deep:
+    inset 6px 6px 12px rgba(130, 140, 155, 0.6),
+    inset -6px -6px 12px rgba(255, 255, 255, 0.95);
+
+  /* 5. CARVED ⭐ - Tallado invertido (recomendado) */
+  --fing-wm-inset-carved:
+    inset 5px 5px 10px rgba(130, 140, 155, 0.55),
+    inset -5px -5px 10px rgba(255, 255, 255, 0.9);
+
+  /* 6. PRESSED ⭐ - Presionado fuerte (alternativa recomendada) */
+  --fing-wm-inset-pressed:
+    inset 8px 8px 16px rgba(115, 125, 140, 0.65),
+    inset -8px -8px 16px rgba(255, 255, 255, 0.85);
+
+  /* 7. BOWL - Cuenco con gradiente radial */
+  --fing-wm-inset-bowl:
+    inset 4px 4px 12px rgba(130, 140, 155, 0.5),
+    inset -4px -4px 12px rgba(255, 255, 255, 0.8),
+    inset 0 2px 4px rgba(130, 140, 155, 0.3);
+
+  /* 8. CHANNEL - Canal/ranura, sombras más horizontales */
+  --fing-wm-inset-channel:
+    inset 0 4px 8px rgba(130, 140, 155, 0.5),
+    inset 0 -4px 8px rgba(255, 255, 255, 0.9),
+    inset 4px 0 8px rgba(130, 140, 155, 0.25),
+    inset -4px 0 8px rgba(255, 255, 255, 0.5);
+
+  /* 9. ETCHED - Grabado con borde interior */
+  --fing-wm-inset-etched:
+    inset 4px 4px 8px rgba(130, 140, 155, 0.45),
+    inset -4px -4px 8px rgba(255, 255, 255, 0.9),
+    inset 0 0 0 1px rgba(130, 140, 155, 0.15);
+
+  /* 10. CRATER - Cráter profundo con sombra direccional */
+  --fing-wm-inset-crater:
+    inset 8px 8px 20px rgba(115, 125, 140, 0.6),
+    inset -6px -6px 15px rgba(255, 255, 255, 0.7);
+
+  /* 11. PILLOW - Almohadilla con gradiente diagonal suave */
+  --fing-wm-inset-pillow:
+    inset 5px 5px 10px rgba(130, 140, 155, 0.4),
+    inset -5px -5px 10px rgba(255, 255, 255, 0.85);
+
+  /* 12. SHARP - Bordes definidos, menos blur */
+  --fing-wm-inset-sharp:
+    inset 3px 3px 3px rgba(115, 125, 140, 0.6),
+    inset -3px -3px 3px rgba(255, 255, 255, 0.95);
+
+  /* ═══ TEXT SHADOW PRESETS ═══ */
+
+  /* 1. WHISPER */
+  --fing-wm-text-whisper:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.8),
+    -0.5px -0.5px 0px rgba(147, 157, 170, 0.35);
+
+  /* 2. SOFT */
+  --fing-wm-text-soft:
+    1px 1px 0px rgba(255, 255, 255, 0.9),
+    -1px -1px 1px rgba(147, 157, 170, 0.4);
+
+  /* 3. MEDIUM */
+  --fing-wm-text-medium:
+    1.5px 1.5px 1px rgba(255, 255, 255, 0.95),
+    -1.5px -1.5px 1px rgba(147, 157, 170, 0.45);
+
+  /* 4. DEEP */
+  --fing-wm-text-deep:
+    2px 2px 1px rgba(255, 255, 255, 1),
+    -2px -2px 2px rgba(130, 140, 155, 0.5);
+
+  /* 5. CARVED ⭐ - Inverted shadow direction (recomendado) */
+  --fing-wm-text-carved:
+    -1px -1px 0px rgba(255, 255, 255, 0.9),
+    1px 1px 2px rgba(130, 140, 155, 0.6);
+
+  /* 6. PRESSED ⭐ - Inverted for pressed effect */
+  --fing-wm-text-pressed:
+    -1.5px -1.5px 1px rgba(255, 255, 255, 0.8),
+    1.5px 1.5px 2px rgba(115, 125, 140, 0.7);
+
+  /* 7. BOWL */
+  --fing-wm-text-bowl:
+    1.5px 1.5px 1px rgba(255, 255, 255, 0.95),
+    -1.5px -1.5px 1px rgba(130, 140, 155, 0.4);
+
+  /* 8. CHANNEL */
+  --fing-wm-text-channel:
+    0 1.5px 1px rgba(255, 255, 255, 0.95),
+    0 -1.5px 1px rgba(130, 140, 155, 0.45);
+
+  /* 9. ETCHED */
+  --fing-wm-text-etched:
+    1px 1px 0px rgba(255, 255, 255, 0.95),
+    -1px -1px 1px rgba(130, 140, 155, 0.5);
+
+  /* 10. CRATER */
+  --fing-wm-text-crater:
+    2px 2px 2px rgba(255, 255, 255, 0.8),
+    -2px -2px 2px rgba(115, 125, 140, 0.5);
+
+  /* 11. PILLOW */
+  --fing-wm-text-pillow:
+    1px 1px 1px rgba(255, 255, 255, 0.9),
+    -1px -1px 1px rgba(130, 140, 155, 0.4);
+
+  /* 12. SHARP */
+  --fing-wm-text-sharp:
+    1px 1px 0px rgba(255, 255, 255, 1),
+    -1px -1px 0px rgba(115, 125, 140, 0.55);
+
+  /* ═══ GRADIENT BACKGROUNDS ═══ */
+
+  /* Pressed - directional gradient */
+  --fing-wm-bg-pressed: linear-gradient(145deg, #caced3, #dce0e5);
+
+  /* Bowl - radial gradient */
+  --fing-wm-bg-bowl: radial-gradient(ellipse at center, #cdd1d6 0%, #d5d8dc 70%);
+
+  /* Crater - directional radial gradient */
+  --fing-wm-bg-crater: radial-gradient(ellipse at 30% 30%, #d5d8dc 0%, #c5c9ce 100%);
+
+  /* Pillow - diagonal gradient */
+  --fing-wm-bg-pillow: linear-gradient(135deg, #d0d4d9 0%, #dadee3 50%, #d0d4d9 100%);
 
   /* ─────────────────────────────────────────────────────────────────────────
      MARBLE BASE COLORS
@@ -185,8 +396,8 @@
   --sentinel-glass-inset-focus: var(--marble-base);
 
   /* Glass con tinte de acento */
-  --sentinel-glass-accent: rgba(74, 154, 156, 0.08);
-  --sentinel-glass-accent-strong: rgba(74, 154, 156, 0.15);
+  --sentinel-glass-accent: rgba(58, 106, 114, 0.08);
+  --sentinel-glass-accent-strong: rgba(58, 106, 114, 0.15);
 
   /* ═══ COLORES PARA SOMBRAS NEUMÓRFICAS (STONE MARBLE) ═══ */
   --sentinel-neu-light: var(--shadow-light);
@@ -260,8 +471,8 @@
   /* ═══ BORDES GLASS - Sutiles en light theme ═══ */
   --sentinel-glass-border: rgba(255, 255, 255, 0.8);
   --sentinel-glass-border-hover: rgba(255, 255, 255, 0.9);
-  --sentinel-glass-border-focus: rgba(74, 154, 156, 0.5);
-  --sentinel-glass-border-glow: rgba(74, 154, 156, 0.3);
+  --sentinel-glass-border-focus: rgba(58, 106, 114, 0.5);
+  --sentinel-glass-border-glow: rgba(58, 106, 114, 0.3);
 
   /* ═══ BACKDROP BLUR VALUES ═══ */
   --sentinel-blur-xs: 4px;
@@ -292,19 +503,19 @@
   --sentinel-bg-scrim: rgba(224, 229, 236, 0.85);
 
   /* Gradientes atmosféricos de fondo */
-  --sentinel-ambient-top: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(74, 154, 156, 0.08), transparent);
-  --sentinel-ambient-bottom: radial-gradient(ellipse 60% 40% at 100% 100%, rgba(74, 154, 156, 0.05), transparent);
+  --sentinel-ambient-top: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(58, 106, 114, 0.08), transparent);
+  --sentinel-ambient-bottom: radial-gradient(ellipse 60% 40% at 100% 100%, rgba(58, 106, 114, 0.05), transparent);
 
   /* ─────────────────────────────────────────────────────────────────────────────
      TEXTO - Jerarquía tipográfica (Light Theme)
-     Usar grises oscuros - nunca negro puro
+     Usar Charcoal (#252528) como negro primario - nunca negro puro
      ───────────────────────────────────────────────────────────────────────────── */
 
-  --sentinel-text-primary: #2D3436;                       /* Texto principal - gris oscuro */
-  --sentinel-text-secondary: rgba(45, 52, 54, 0.75);      /* Texto secundario, labels */
-  --sentinel-text-tertiary: rgba(45, 52, 54, 0.55);       /* Texto terciario, hints */
-  --sentinel-text-muted: rgba(45, 52, 54, 0.4);           /* Texto muy sutil */
-  --sentinel-text-disabled: rgba(45, 52, 54, 0.3);        /* Texto deshabilitado */
+  --sentinel-text-primary: var(--fing-black);             /* Texto principal - Charcoal */
+  --sentinel-text-secondary: rgba(var(--fing-black-rgb), 0.75);  /* Texto secundario, labels */
+  --sentinel-text-tertiary: rgba(var(--fing-black-rgb), 0.55);   /* Texto terciario, hints */
+  --sentinel-text-muted: rgba(var(--fing-black-rgb), 0.4);       /* Texto muy sutil */
+  --sentinel-text-disabled: rgba(var(--fing-black-rgb), 0.3);    /* Texto deshabilitado */
   --sentinel-text-inverse: #FFFFFF;                       /* Texto sobre fondos oscuros/acento */
   --sentinel-text-link: #3D8587;                          /* Links - acento más oscuro para contraste */
 
@@ -316,59 +527,59 @@
   --sentinel-border-subtle: rgba(163, 177, 198, 0.2);    /* Bordes casi invisibles */
   --sentinel-border-default: rgba(163, 177, 198, 0.35); /* Bordes estándar */
   --sentinel-border-strong: rgba(163, 177, 198, 0.5);    /* Bordes con énfasis (hover) */
-  --sentinel-border-focus: #4A9A9C;                       /* Focus rings - acento */
-  --sentinel-border-accent: rgba(74, 154, 156, 0.4);     /* Bordes de acento */
+  --sentinel-border-focus: var(--fing-accent);           /* Focus rings - Petrol */
+  --sentinel-border-accent: rgba(58, 106, 114, 0.4);    /* Bordes de acento - Petrol */
 
   /* ─────────────────────────────────────────────────────────────────────────────
      ACENTO - El color distintivo de Sentinel (Light Theme)
-     Teal institucional - ajustado para contraste en fondo claro
+     Petrol - natural mineral color for institutional feel
      ───────────────────────────────────────────────────────────────────────────── */
 
-  --sentinel-accent-primary: #4A9A9C;       /* Acento principal - más oscuro para contraste */
-  --sentinel-accent-hover: #3D8587;         /* Acento hover - aún más oscuro */
-  --sentinel-accent-secondary: #5BA3A5;     /* Acento secundario */
-  --sentinel-accent-tertiary: #6DB4B6;      /* Acento terciario - más claro */
-  --sentinel-accent-subtle: rgba(74, 154, 156, 0.12);   /* Versión muy sutil */
-  --sentinel-accent-glow: rgba(74, 154, 156, 0.25);     /* Para efectos de glow */
-  --sentinel-accent-muted: rgba(74, 154, 156, 0.5);     /* Versión apagada */
+  --sentinel-accent-primary: var(--fing-accent);       /* Petrol #3a6a72 */
+  --sentinel-accent-hover: var(--fing-accent-dark);    /* Darker petrol #2a5a62 */
+  --sentinel-accent-secondary: var(--fing-accent-light); /* Lighter petrol #4a7a82 */
+  --sentinel-accent-tertiary: #5a8a92;                 /* Even lighter for tertiary */
+  --sentinel-accent-subtle: rgba(58, 106, 114, 0.12);  /* Petrol subtle */
+  --sentinel-accent-glow: rgba(58, 106, 114, 0.25);    /* Petrol glow */
+  --sentinel-accent-muted: rgba(58, 106, 114, 0.5);    /* Petrol muted */
 
   /* HSL components for dynamic color manipulation */
-  --sentinel-accent-teal-h: 181;
-  --sentinel-accent-teal-s: 35%;
-  --sentinel-accent-teal-l: 45%;
+  --sentinel-accent-h: 188;
+  --sentinel-accent-s: 33%;
+  --sentinel-accent-l: 34%;
 
   /* ─────────────────────────────────────────────────────────────────────────────
      ESTADOS SEMÁNTICOS (Light Theme)
-     Colores más saturados para contraste en fondo claro
+     Natural mineral colors for institutional voice
      ───────────────────────────────────────────────────────────────────────────── */
 
-  /* Positivo/Ganancia - Verde conservador (Fing Brand) */
-  --sentinel-status-positive: var(--fing-positive);
-  --sentinel-status-positive-subtle: rgba(74, 154, 124, 0.15);
-  --sentinel-status-positive-muted: rgba(74, 154, 124, 0.1);
-  --sentinel-status-positive-text: #3d7a62;
-  --sentinel-status-positive-border: rgba(74, 154, 124, 0.3);
+  /* Positivo/Ganancia - Jade (green stone) */
+  --sentinel-status-positive: var(--fing-positive);           /* #4a7a6a */
+  --sentinel-status-positive-subtle: rgba(74, 122, 106, 0.15);
+  --sentinel-status-positive-muted: rgba(74, 122, 106, 0.1);
+  --sentinel-status-positive-text: var(--fing-positive-dark); /* #3a6a5a */
+  --sentinel-status-positive-border: rgba(74, 122, 106, 0.3);
 
-  /* Negativo/Pérdida - Coral conservador (Fing Brand) */
-  --sentinel-status-negative: var(--fing-negative);
-  --sentinel-status-negative-subtle: rgba(201, 138, 138, 0.15);
-  --sentinel-status-negative-muted: rgba(201, 138, 138, 0.1);
-  --sentinel-status-negative-text: #a06a6a;
-  --sentinel-status-negative-border: rgba(201, 138, 138, 0.3);
+  /* Negativo/Pérdida - Rust (iron oxide) */
+  --sentinel-status-negative: var(--fing-negative);           /* #8a5a4a */
+  --sentinel-status-negative-subtle: rgba(138, 90, 74, 0.15);
+  --sentinel-status-negative-muted: rgba(138, 90, 74, 0.1);
+  --sentinel-status-negative-text: var(--fing-negative-dark); /* #7a4a3a */
+  --sentinel-status-negative-border: rgba(138, 90, 74, 0.3);
 
-  /* Advertencia - Ámbar conservador (Fing Brand) */
-  --sentinel-status-warning: var(--fing-warning);
-  --sentinel-status-warning-subtle: rgba(201, 168, 122, 0.15);
-  --sentinel-status-warning-muted: rgba(201, 168, 122, 0.1);
-  --sentinel-status-warning-text: #9a7a4a;
-  --sentinel-status-warning-border: rgba(201, 168, 122, 0.3);
+  /* Advertencia - Gold (pure metal) */
+  --sentinel-status-warning: var(--fing-warning);             /* #a08a4a */
+  --sentinel-status-warning-subtle: rgba(160, 138, 74, 0.15);
+  --sentinel-status-warning-muted: rgba(160, 138, 74, 0.1);
+  --sentinel-status-warning-text: var(--fing-warning-dark);   /* #8a7a3a */
+  --sentinel-status-warning-border: rgba(160, 138, 74, 0.3);
 
-  /* Informativo - Azul vibrante */
-  --sentinel-status-info: #3B82F6;
-  --sentinel-status-info-subtle: rgba(59, 130, 246, 0.15);
-  --sentinel-status-info-muted: rgba(59, 130, 246, 0.1);
-  --sentinel-status-info-text: #2563EB;
-  --sentinel-status-info-border: rgba(59, 130, 246, 0.3);
+  /* Informativo - Steel (refined iron) */
+  --sentinel-status-info: var(--fing-info);                   /* #4a6a7a */
+  --sentinel-status-info-subtle: rgba(74, 106, 122, 0.15);
+  --sentinel-status-info-muted: rgba(74, 106, 122, 0.1);
+  --sentinel-status-info-text: var(--fing-info-dark);         /* #3a5a6a */
+  --sentinel-status-info-border: rgba(74, 106, 122, 0.3);
 
   /* Neutral - Gris medio */
   --sentinel-status-neutral: #6B7280;
@@ -376,61 +587,60 @@
 
   /* ─────────────────────────────────────────────────────────────────────────────
      NIVELES DE RIESGO (específico de Sentinel)
-     Escala de 5 niveles, gradiente controlado
-     Del azul calmo al ámbar/terracota, nunca al rojo alarma
+     Escala de 5 niveles using natural mineral colors
      ───────────────────────────────────────────────────────────────────────────── */
 
-  --sentinel-risk-low: #4a9a7c;           /* Riesgo bajo - verde teal */
-  --sentinel-risk-moderate: #5ba3a5;      /* Riesgo moderado - cyan (acento) */
-  --sentinel-risk-elevated: #c4a35a;      /* Riesgo elevado - ámbar */
-  --sentinel-risk-high: #c47a5a;          /* Riesgo alto - terracota */
-  --sentinel-risk-severe: #b85c5c;        /* Riesgo severo - coral apagado */
+  --sentinel-risk-low: var(--fing-positive);              /* Jade #4a7a6a */
+  --sentinel-risk-moderate: var(--fing-accent);           /* Petrol #3a6a72 */
+  --sentinel-risk-elevated: var(--fing-warning);          /* Gold #a08a4a */
+  --sentinel-risk-high: #9a6a5a;                          /* Terracotta */
+  --sentinel-risk-severe: var(--fing-negative);           /* Rust #8a5a4a */
 
   /* Fondos sutiles para cada nivel */
-  --sentinel-risk-low-bg: rgba(74, 154, 124, 0.1);
-  --sentinel-risk-moderate-bg: rgba(91, 163, 165, 0.1);
-  --sentinel-risk-elevated-bg: rgba(196, 163, 90, 0.1);
-  --sentinel-risk-high-bg: rgba(196, 122, 90, 0.1);
-  --sentinel-risk-severe-bg: rgba(184, 92, 92, 0.1);
+  --sentinel-risk-low-bg: rgba(74, 122, 106, 0.1);        /* Jade bg */
+  --sentinel-risk-moderate-bg: rgba(58, 106, 114, 0.1);   /* Petrol bg */
+  --sentinel-risk-elevated-bg: rgba(160, 138, 74, 0.1);   /* Gold bg */
+  --sentinel-risk-high-bg: rgba(154, 106, 90, 0.1);       /* Terracotta bg */
+  --sentinel-risk-severe-bg: rgba(138, 90, 74, 0.1);      /* Rust bg */
 
   /* ─────────────────────────────────────────────────────────────────────────────
      NIVEL DE CONFIANZA DEL SISTEMA
      Indica qué tan seguro está Sentinel de su análisis
      ───────────────────────────────────────────────────────────────────────────── */
 
-  --sentinel-confidence-high: #5ba3a5;     /* Confianza alta - acento */
-  --sentinel-confidence-medium: #7a8a8c;   /* Confianza media - gris-teal */
-  --sentinel-confidence-low: #5f6368;      /* Confianza baja - gris */
+  --sentinel-confidence-high: var(--fing-accent);          /* Petrol */
+  --sentinel-confidence-medium: var(--fing-text-accent);   /* Steel */
+  --sentinel-confidence-low: #5f6368;                      /* Grey */
 
   /* ─────────────────────────────────────────────────────────────────────────────
      ESTADOS DEL MERCADO
      Bull, Bear, Neutral, Uncertain
      ───────────────────────────────────────────────────────────────────────────── */
 
-  --sentinel-market-bull: #4a9a7c;         /* Mercado alcista */
-  --sentinel-market-bear: #b85c5c;         /* Mercado bajista */
-  --sentinel-market-neutral: #5ba3a5;      /* Mercado neutral */
-  --sentinel-market-uncertain: #6b7280;    /* Incertidumbre */
+  --sentinel-market-bull: var(--fing-positive);     /* Jade - Mercado alcista */
+  --sentinel-market-bear: var(--fing-negative);     /* Rust - Mercado bajista */
+  --sentinel-market-neutral: var(--fing-accent);    /* Petrol - Mercado neutral */
+  --sentinel-market-uncertain: #6b7280;             /* Grey - Incertidumbre */
 
   /* ─────────────────────────────────────────────────────────────────────────────
      CHARTS Y VISUALIZACIÓN DE DATOS (Light Theme)
-     Paleta armónica con mayor saturación para fondos claros
+     Natural mineral palette for data visualization
      ───────────────────────────────────────────────────────────────────────────── */
 
-  --sentinel-chart-1: #4A9A9C;          /* Serie 1 - acento principal */
-  --sentinel-chart-2: #3D8587;          /* Serie 2 - acento oscuro */
-  --sentinel-chart-3: #2E7D32;          /* Serie 3 - verde */
-  --sentinel-chart-4: #1976D2;          /* Serie 4 - azul */
-  --sentinel-chart-5: #7B1FA2;          /* Serie 5 - púrpura */
-  --sentinel-chart-6: #F57C00;          /* Serie 6 - naranja */
-  --sentinel-chart-7: #C2185B;          /* Serie 7 - rosa */
-  --sentinel-chart-8: #455A64;          /* Serie 8 - gris azulado */
+  --sentinel-chart-1: var(--fing-accent);      /* Serie 1 - Petrol */
+  --sentinel-chart-2: var(--fing-accent-dark); /* Serie 2 - Dark Petrol */
+  --sentinel-chart-3: var(--fing-positive);    /* Serie 3 - Jade */
+  --sentinel-chart-4: var(--fing-info);        /* Serie 4 - Steel */
+  --sentinel-chart-5: #6a5a7a;                 /* Serie 5 - Amethyst (muted purple) */
+  --sentinel-chart-6: var(--fing-warning);     /* Serie 6 - Gold */
+  --sentinel-chart-7: var(--fing-negative);    /* Serie 7 - Rust */
+  --sentinel-chart-8: #5a6a6a;                 /* Serie 8 - Slate grey */
 
   --sentinel-chart-grid: rgba(163, 177, 198, 0.25);       /* Líneas de grid */
   --sentinel-chart-axis: #5F6C7A;                         /* Texto de ejes */
   --sentinel-chart-tooltip-bg: #FFFFFF;                   /* Fondo de tooltips */
   --sentinel-chart-tooltip-border: rgba(163, 177, 198, 0.3);
-  --sentinel-chart-crosshair: rgba(74, 154, 156, 0.6);   /* Línea de crosshair */
+  --sentinel-chart-crosshair: rgba(58, 106, 114, 0.6);   /* Línea de crosshair - Petrol */
 
   /* ─────────────────────────────────────────────────────────────────────────────
      TIPOGRAFÍA - Fuentes
@@ -707,14 +917,14 @@
   --sentinel-shadow-highlight-strong: inset 0 1px 0 rgba(255, 255, 255, 0.8);
 
   /* ═══ GLOW EFFECTS (Light Theme) ═══ */
-  --sentinel-shadow-glow-sm: 0 0 10px rgba(74, 154, 156, 0.2);
-  --sentinel-shadow-glow-md: 0 0 20px rgba(74, 154, 156, 0.25);
-  --sentinel-shadow-glow-lg: 0 0 30px rgba(74, 154, 156, 0.3);
+  --sentinel-shadow-glow-sm: 0 0 10px rgba(58, 106, 114, 0.2);
+  --sentinel-shadow-glow-md: 0 0 20px rgba(58, 106, 114, 0.25);
+  --sentinel-shadow-glow-lg: 0 0 30px rgba(58, 106, 114, 0.3);
 
-  --sentinel-glow-positive: 0 0 15px rgba(34, 197, 94, 0.25);
-  --sentinel-glow-negative: 0 0 15px rgba(239, 68, 68, 0.25);
-  --sentinel-glow-warning: 0 0 15px rgba(245, 158, 11, 0.25);
-  --sentinel-glow-info: 0 0 15px rgba(59, 130, 246, 0.25);
+  --sentinel-glow-positive: 0 0 15px rgba(74, 122, 106, 0.25);   /* Jade glow */
+  --sentinel-glow-negative: 0 0 15px rgba(138, 90, 74, 0.25);   /* Rust glow */
+  --sentinel-glow-warning: 0 0 15px rgba(160, 138, 74, 0.25);   /* Gold glow */
+  --sentinel-glow-info: 0 0 15px rgba(74, 106, 122, 0.25);      /* Steel glow */
 
   /* ═══ COMPATIBILIDAD ═══ */
   --elevation-sm: var(--sentinel-shadow-sm);
@@ -733,12 +943,12 @@
   --sentinel-glass-light: rgba(255, 255, 255, 0.4);
   --sentinel-glass-medium: rgba(255, 255, 255, 0.55);
   --sentinel-glass-heavy: rgba(255, 255, 255, 0.7);
-  --sentinel-glass-accent: rgba(74, 154, 156, 0.08);
-  --sentinel-glass-accent-strong: rgba(74, 154, 156, 0.15);
+  --sentinel-glass-accent: rgba(58, 106, 114, 0.08);
+  --sentinel-glass-accent-strong: rgba(58, 106, 114, 0.15);
 
   /* Gradientes de borde con luz */
-  --sentinel-border-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(74, 154, 156, 0.2) 100%);
-  --sentinel-border-gradient-subtle: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(74, 154, 156, 0.1) 100%);
+  --sentinel-border-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(58, 106, 114, 0.2) 100%);
+  --sentinel-border-gradient-subtle: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(58, 106, 114, 0.1) 100%);
 
   /* Highlights internos (efecto de luz superior) */
   --sentinel-inner-highlight-subtle: inset 0 1px 0 rgba(255, 255, 255, 0.25);
@@ -747,14 +957,14 @@
   --sentinel-inner-highlight-strong: inset 0 1px 0 rgba(255, 255, 255, 0.55);
 
   /* Sombras con glow de acento */
-  --sentinel-shadow-glow-accent: 0 4px 20px rgba(163, 177, 198, 0.3), 0 0 30px rgba(74, 154, 156, 0.1);
-  --sentinel-shadow-glow-accent-strong: 0 4px 24px rgba(163, 177, 198, 0.4), 0 0 40px rgba(74, 154, 156, 0.15);
+  --sentinel-shadow-glow-accent: 0 4px 20px rgba(163, 177, 198, 0.3), 0 0 30px rgba(58, 106, 114, 0.1);
+  --sentinel-shadow-glow-accent-strong: 0 4px 24px rgba(163, 177, 198, 0.4), 0 0 40px rgba(58, 106, 114, 0.15);
 
-  /* Glow por estado semántico (light theme) */
-  --sentinel-glow-positive: 0 0 30px rgba(34, 197, 94, 0.15);
-  --sentinel-glow-negative: 0 0 30px rgba(239, 68, 68, 0.15);
-  --sentinel-glow-warning: 0 0 30px rgba(245, 158, 11, 0.15);
-  --sentinel-glow-info: 0 0 30px rgba(59, 130, 246, 0.15);
+  /* Glow por estado semántico - Natural minerals (light theme) */
+  --sentinel-glow-positive-lg: 0 0 30px rgba(74, 122, 106, 0.15);   /* Jade */
+  --sentinel-glow-negative-lg: 0 0 30px rgba(138, 90, 74, 0.15);   /* Rust */
+  --sentinel-glow-warning-lg: 0 0 30px rgba(160, 138, 74, 0.15);   /* Gold */
+  --sentinel-glow-info-lg: 0 0 30px rgba(74, 106, 122, 0.15);      /* Steel */
 
   /* Backdrop blur values */
   --sentinel-blur-sm: blur(8px);
@@ -901,26 +1111,26 @@
   --muted: var(--sentinel-border-subtle);
   --grid-line: var(--sentinel-chart-grid);
 
-  /* Estados */
+  /* Estados - Natural mineral glows */
   --success: var(--sentinel-status-positive);
   --success-light: var(--sentinel-status-positive-subtle);
-  --success-glow: rgba(74, 154, 124, 0.5);
+  --success-glow: rgba(74, 122, 106, 0.5);               /* Jade glow */
 
   --warning: var(--sentinel-status-warning);
   --warning-light: var(--sentinel-status-warning-subtle);
-  --warning-glow: rgba(196, 163, 90, 0.5);
+  --warning-glow: rgba(160, 138, 74, 0.5);               /* Gold glow */
 
   --destructive: var(--sentinel-status-negative);
-  --destructive-dark: #a04a4a;
+  --destructive-dark: var(--fing-negative-dark);
   --destructive-light: var(--sentinel-status-negative-subtle);
-  --destructive-glow: rgba(184, 92, 92, 0.5);
+  --destructive-glow: rgba(138, 90, 74, 0.5);            /* Rust glow */
 
   --info: var(--sentinel-status-info);
-  --info-glow: rgba(90, 143, 184, 0.5);
+  --info-glow: rgba(74, 106, 122, 0.5);                  /* Steel glow */
 
   /* Grises (compatibilidad) */
   --color-white: #ffffff;
-  --color-black: #000000;
+  --color-black: var(--fing-black);  /* Charcoal instead of pure black */
   --color-gray-5: var(--sentinel-bg-elevated);
   --color-gray-4: var(--sentinel-bg-overlay);
   --color-gray-3: var(--sentinel-border-default);
@@ -966,18 +1176,18 @@
      ───────────────────────────────────────────────────────────────────────────── */
 
   /* === DATA VISUALIZATION === */
-  --sentinel-data-glow: rgba(74, 154, 156, 0.2);
-  --sentinel-data-pulse: rgba(74, 154, 156, 0.3);
+  --sentinel-data-glow: rgba(58, 106, 114, 0.2);
+  --sentinel-data-pulse: rgba(58, 106, 114, 0.3);
 
   /* === TICKER TAPE (mantener oscuro para contraste) === */
   --sentinel-ticker-bg: #1a1f2e;
-  --sentinel-ticker-border: rgba(74, 154, 156, 0.2);
+  --sentinel-ticker-border: rgba(58, 106, 114, 0.2);
   --sentinel-ticker-separator: rgba(255, 255, 255, 0.1);
 
   /* === GRID SYSTEM === */
   --sentinel-grid-line: rgba(163, 177, 198, 0.15);
   --sentinel-grid-line-strong: rgba(163, 177, 198, 0.25);
-  --sentinel-grid-accent: rgba(74, 154, 156, 0.12);
+  --sentinel-grid-accent: rgba(58, 106, 114, 0.12);
 
   /* === CANDLESTICK === */
   --sentinel-candle-bullish: var(--sentinel-status-positive);
@@ -996,11 +1206,11 @@
   --sentinel-value-unchanged: var(--sentinel-text-secondary);
   --sentinel-value-up: var(--sentinel-status-positive);
   --sentinel-value-down: var(--sentinel-status-negative);
-  --sentinel-value-flash: rgba(74, 154, 156, 0.3);
+  --sentinel-value-flash: rgba(58, 106, 114, 0.3);
 
   /* === PANEL SYSTEM === */
   --sentinel-panel-border: rgba(163, 177, 198, 0.25);
-  --sentinel-panel-header-bg: rgba(74, 154, 156, 0.08);
+  --sentinel-panel-header-bg: rgba(58, 106, 114, 0.08);
   --sentinel-panel-divider: rgba(163, 177, 198, 0.2);
 
   /* === SENTINEL TYPOGRAPHY SYSTEM ===
@@ -1045,11 +1255,11 @@
   --sentinel-tracking-data: 0em;
   --sentinel-tracking-led: 0.05em;
 
-  /* LED Glow Effects (Light Theme - más sutiles) */
-  --sentinel-glow-positive: 0 0 8px rgba(34, 197, 94, 0.3), 0 0 16px rgba(34, 197, 94, 0.15);
-  --sentinel-glow-negative: 0 0 8px rgba(239, 68, 68, 0.3), 0 0 16px rgba(239, 68, 68, 0.15);
-  --sentinel-glow-accent: 0 0 8px rgba(74, 154, 156, 0.3), 0 0 16px rgba(74, 154, 156, 0.15);
-  --sentinel-glow-neutral: 0 0 6px rgba(107, 114, 128, 0.2);
+  /* LED Glow Effects (Light Theme - Natural minerals) */
+  --sentinel-led-glow-positive: 0 0 8px rgba(74, 122, 106, 0.3), 0 0 16px rgba(74, 122, 106, 0.15);  /* Jade */
+  --sentinel-led-glow-negative: 0 0 8px rgba(138, 90, 74, 0.3), 0 0 16px rgba(138, 90, 74, 0.15);    /* Rust */
+  --sentinel-led-glow-accent: 0 0 8px rgba(58, 106, 114, 0.3), 0 0 16px rgba(58, 106, 114, 0.15);    /* Petrol */
+  --sentinel-led-glow-neutral: 0 0 6px rgba(107, 114, 128, 0.2);
 
   /* ═══ SIDEBAR DARK THEME (Mantener oscuro para contraste) ═══ */
   --sentinel-sidebar-bg: rgba(20, 25, 35, 0.95);
@@ -1057,7 +1267,7 @@
   --sentinel-sidebar-text: rgba(255, 255, 255, 0.85);
   --sentinel-sidebar-text-muted: rgba(255, 255, 255, 0.6);
   --sentinel-sidebar-border: rgba(255, 255, 255, 0.08);
-  --sentinel-sidebar-active-bg: rgba(74, 154, 156, 0.2);
+  --sentinel-sidebar-active-bg: rgba(58, 106, 114, 0.2);
 
   /* ═══════════════════════════════════════════════════════════════════════════════
      SENTINEL BUTTON SYSTEM TOKENS
@@ -1080,31 +1290,61 @@
   --sentinel-btn-glass-shadow: rgba(163, 177, 198, 0.4);
 
   /* ─────────────────────────────────────────────
-     Glass Colors - Teal (Accent)
+     Glass Colors - Petrol (Accent)
      ───────────────────────────────────────────── */
-  --sentinel-glass-teal-bg: rgba(74, 154, 156, 0.15);
-  --sentinel-glass-teal-bg-hover: rgba(74, 154, 156, 0.25);
-  --sentinel-glass-teal-border: rgba(74, 154, 156, 0.35);
-  --sentinel-glass-teal-glow: rgba(74, 154, 156, 0.4);
-  --sentinel-glass-teal-text: #3D8587;
+  --sentinel-glass-petrol-bg: rgba(58, 106, 114, 0.15);
+  --sentinel-glass-petrol-bg-hover: rgba(58, 106, 114, 0.25);
+  --sentinel-glass-petrol-border: rgba(58, 106, 114, 0.35);
+  --sentinel-glass-petrol-glow: rgba(58, 106, 114, 0.4);
+  --sentinel-glass-petrol-text: var(--fing-accent-dark);
+
+  /* Legacy alias */
+  --sentinel-glass-teal-bg: var(--sentinel-glass-petrol-bg);
+  --sentinel-glass-teal-bg-hover: var(--sentinel-glass-petrol-bg-hover);
+  --sentinel-glass-teal-border: var(--sentinel-glass-petrol-border);
+  --sentinel-glass-teal-glow: var(--sentinel-glass-petrol-glow);
+  --sentinel-glass-teal-text: var(--sentinel-glass-petrol-text);
 
   /* ─────────────────────────────────────────────
-     Glass Colors - Amber
+     Glass Colors - Gold (Warning)
      ───────────────────────────────────────────── */
-  --sentinel-glass-amber-bg: rgba(196, 163, 90, 0.15);
-  --sentinel-glass-amber-bg-hover: rgba(196, 163, 90, 0.25);
-  --sentinel-glass-amber-border: rgba(196, 163, 90, 0.35);
-  --sentinel-glass-amber-glow: rgba(196, 163, 90, 0.4);
-  --sentinel-glass-amber-text: #9A7B2D;
+  --sentinel-glass-gold-bg: rgba(160, 138, 74, 0.15);
+  --sentinel-glass-gold-bg-hover: rgba(160, 138, 74, 0.25);
+  --sentinel-glass-gold-border: rgba(160, 138, 74, 0.35);
+  --sentinel-glass-gold-glow: rgba(160, 138, 74, 0.4);
+  --sentinel-glass-gold-text: var(--fing-warning-dark);
+
+  /* Legacy alias */
+  --sentinel-glass-amber-bg: var(--sentinel-glass-gold-bg);
+  --sentinel-glass-amber-bg-hover: var(--sentinel-glass-gold-bg-hover);
+  --sentinel-glass-amber-border: var(--sentinel-glass-gold-border);
+  --sentinel-glass-amber-glow: var(--sentinel-glass-gold-glow);
+  --sentinel-glass-amber-text: var(--sentinel-glass-gold-text);
 
   /* ─────────────────────────────────────────────
-     Glass Colors - Rose
+     Glass Colors - Rust (Negative)
      ───────────────────────────────────────────── */
-  --sentinel-glass-rose-bg: rgba(184, 92, 112, 0.15);
-  --sentinel-glass-rose-bg-hover: rgba(184, 92, 112, 0.25);
-  --sentinel-glass-rose-border: rgba(184, 92, 112, 0.35);
-  --sentinel-glass-rose-glow: rgba(184, 92, 112, 0.4);
-  --sentinel-glass-rose-text: #9A4A5C;
+  --sentinel-glass-rust-bg: rgba(138, 90, 74, 0.15);
+  --sentinel-glass-rust-bg-hover: rgba(138, 90, 74, 0.25);
+  --sentinel-glass-rust-border: rgba(138, 90, 74, 0.35);
+  --sentinel-glass-rust-glow: rgba(138, 90, 74, 0.4);
+  --sentinel-glass-rust-text: var(--fing-negative-dark);
+
+  /* Legacy alias */
+  --sentinel-glass-rose-bg: var(--sentinel-glass-rust-bg);
+  --sentinel-glass-rose-bg-hover: var(--sentinel-glass-rust-bg-hover);
+  --sentinel-glass-rose-border: var(--sentinel-glass-rust-border);
+  --sentinel-glass-rose-glow: var(--sentinel-glass-rust-glow);
+  --sentinel-glass-rose-text: var(--sentinel-glass-rust-text);
+
+  /* ─────────────────────────────────────────────
+     Glass Colors - Jade (Positive)
+     ───────────────────────────────────────────── */
+  --sentinel-glass-jade-bg: rgba(74, 122, 106, 0.15);
+  --sentinel-glass-jade-bg-hover: rgba(74, 122, 106, 0.25);
+  --sentinel-glass-jade-border: rgba(74, 122, 106, 0.35);
+  --sentinel-glass-jade-glow: rgba(74, 122, 106, 0.4);
+  --sentinel-glass-jade-text: var(--fing-positive-dark);
 
   /* ─────────────────────────────────────────────
      Glass Colors - Violet
@@ -1116,22 +1356,29 @@
   --sentinel-glass-violet-text: #6B4E99;
 
   /* ─────────────────────────────────────────────
-     Glass Colors - Emerald
+     Glass Colors - Emerald (alias to Jade)
      ───────────────────────────────────────────── */
-  --sentinel-glass-emerald-bg: rgba(74, 154, 124, 0.15);
-  --sentinel-glass-emerald-bg-hover: rgba(74, 154, 124, 0.25);
-  --sentinel-glass-emerald-border: rgba(74, 154, 124, 0.35);
-  --sentinel-glass-emerald-glow: rgba(74, 154, 124, 0.4);
-  --sentinel-glass-emerald-text: #2D7A5C;
+  --sentinel-glass-emerald-bg: var(--sentinel-glass-jade-bg);
+  --sentinel-glass-emerald-bg-hover: var(--sentinel-glass-jade-bg-hover);
+  --sentinel-glass-emerald-border: var(--sentinel-glass-jade-border);
+  --sentinel-glass-emerald-glow: var(--sentinel-glass-jade-glow);
+  --sentinel-glass-emerald-text: var(--sentinel-glass-jade-text);
 
   /* ─────────────────────────────────────────────
-     Glass Colors - Sky
+     Glass Colors - Steel (Info)
      ───────────────────────────────────────────── */
-  --sentinel-glass-sky-bg: rgba(90, 140, 200, 0.15);
-  --sentinel-glass-sky-bg-hover: rgba(90, 140, 200, 0.25);
-  --sentinel-glass-sky-border: rgba(90, 140, 200, 0.35);
-  --sentinel-glass-sky-glow: rgba(90, 140, 200, 0.4);
-  --sentinel-glass-sky-text: #3A6A99;
+  --sentinel-glass-steel-bg: rgba(74, 106, 122, 0.15);
+  --sentinel-glass-steel-bg-hover: rgba(74, 106, 122, 0.25);
+  --sentinel-glass-steel-border: rgba(74, 106, 122, 0.35);
+  --sentinel-glass-steel-glow: rgba(74, 106, 122, 0.4);
+  --sentinel-glass-steel-text: var(--fing-info-dark);
+
+  /* Legacy alias */
+  --sentinel-glass-sky-bg: var(--sentinel-glass-steel-bg);
+  --sentinel-glass-sky-bg-hover: var(--sentinel-glass-steel-bg-hover);
+  --sentinel-glass-sky-border: var(--sentinel-glass-steel-border);
+  --sentinel-glass-sky-glow: var(--sentinel-glass-steel-glow);
+  --sentinel-glass-sky-text: var(--sentinel-glass-steel-text);
 
   /* ─────────────────────────────────────────────
      Glass Colors - Smoke (Neutral)
@@ -1418,4 +1665,83 @@
   );
   background-size: 200% 100%;
   animation: sentinel-shimmer 2s linear infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   LETTERPRESS TEXT UTILITIES - Natural Mineral Colors
+   Use on marble background for neumorphic text effect
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* Positive - Jade */
+.text-positive,
+.text-jade {
+  color: var(--fing-positive);
+  text-shadow:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
+    -0.5px -0.5px 0px rgba(74, 122, 106, 0.25);
+}
+
+/* Warning - Gold */
+.text-warning,
+.text-gold {
+  color: var(--fing-warning);
+  text-shadow:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
+    -0.5px -0.5px 0px rgba(160, 138, 74, 0.25);
+}
+
+/* Negative - Rust */
+.text-negative,
+.text-rust {
+  color: var(--fing-negative);
+  text-shadow:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
+    -0.5px -0.5px 0px rgba(138, 90, 74, 0.25);
+}
+
+/* Info - Steel */
+.text-info,
+.text-steel {
+  color: var(--fing-info);
+  text-shadow:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
+    -0.5px -0.5px 0px rgba(74, 106, 122, 0.25);
+}
+
+/* Accent - Petrol */
+.text-accent,
+.text-petrol {
+  color: var(--fing-accent);
+  text-shadow:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
+    -0.5px -0.5px 0px rgba(58, 106, 114, 0.25);
+}
+
+/* Primary - Charcoal */
+.text-primary,
+.text-charcoal {
+  color: var(--fing-black);
+  text-shadow:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
+    -0.5px -0.5px 0px rgba(37, 37, 40, 0.2);
+}
+
+/* Primary Strong - Charcoal (for headlines) */
+.text-primary-strong {
+  color: var(--fing-black);
+  text-shadow:
+    1px 1px 0px rgba(255, 255, 255, 0.9),
+    -1px -1px 0px rgba(37, 37, 40, 0.25);
+}
+
+/* Letterpress Token Variables */
+:root {
+  /* Letterpress shadows for semantic colors */
+  --lp-primary: 0.5px 0.5px 0px rgba(255,255,255,0.9), -0.5px -0.5px 0px rgba(37,37,40,0.2);
+  --lp-primary-strong: 1px 1px 0px rgba(255,255,255,0.9), -1px -1px 0px rgba(37,37,40,0.25);
+  --lp-positive: 0.5px 0.5px 0px rgba(255,255,255,0.9), -0.5px -0.5px 0px rgba(74,122,106,0.25);
+  --lp-warning: 0.5px 0.5px 0px rgba(255,255,255,0.9), -0.5px -0.5px 0px rgba(160,138,74,0.25);
+  --lp-negative: 0.5px 0.5px 0px rgba(255,255,255,0.9), -0.5px -0.5px 0px rgba(138,90,74,0.25);
+  --lp-info: 0.5px 0.5px 0px rgba(255,255,255,0.9), -0.5px -0.5px 0px rgba(74,106,122,0.25);
+  --lp-accent: 0.5px 0.5px 0px rgba(255,255,255,0.9), -0.5px -0.5px 0px rgba(58,106,114,0.25);
 }

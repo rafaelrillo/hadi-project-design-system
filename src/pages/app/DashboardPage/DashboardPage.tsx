@@ -14,7 +14,7 @@ import { usePortfolioStore } from '../../../store';
 
 // Components
 import { NewsCard } from '../../../components/molecules/sentinel/NewsCard';
-import { LineChart } from '../../../components/charts/echarts';
+import { PortfolioPerformance } from '../../../components/organisms/investor/PortfolioPerformance';
 
 import styles from './DashboardPage.module.css';
 
@@ -75,57 +75,6 @@ export function DashboardPage() {
     return { totalValue, totalGain, gainPercent };
   }, [holdings]);
 
-  // Performance comparison chart data - SENTINEL vs alternatives
-  const performanceComparisonData = useMemo(() => {
-    const months = 12;
-    const startValue = 10000;
-
-    const sentinelData: Array<{ x: string; y: number }> = [];
-    const sp500Data: Array<{ x: string; y: number }> = [];
-    const nasdaqData: Array<{ x: string; y: number }> = [];
-    const bondsData: Array<{ x: string; y: number }> = [];
-    const goldData: Array<{ x: string; y: number }> = [];
-
-    const sentinelReturns = [0.018, 0.012, 0.022, 0.008, 0.015, 0.019, 0.011, 0.016, 0.014, 0.020, 0.013, 0.017];
-    const sp500Returns = [0.010, 0.005, 0.012, -0.003, 0.008, 0.011, 0.004, 0.009, 0.006, 0.010, 0.007, 0.008];
-    const nasdaqReturns = [0.012, 0.007, 0.014, -0.005, 0.010, 0.013, 0.005, 0.011, 0.008, 0.012, 0.009, 0.010];
-    const bondsReturns = [0.003, 0.002, 0.004, 0.001, 0.003, 0.002, 0.003, 0.002, 0.004, 0.003, 0.002, 0.003];
-    const goldReturns = [0.004, 0.001, 0.005, 0.002, 0.002, 0.003, 0.001, 0.004, 0.002, 0.003, 0.001, 0.002];
-
-    let sentinelValue = startValue;
-    let sp500Value = startValue;
-    let nasdaqValue = startValue;
-    let bondsValue = startValue;
-    let goldValue = startValue;
-
-    for (let i = 0; i < months; i++) {
-      const date = new Date();
-      date.setMonth(date.getMonth() - (months - 1 - i));
-      // Format as YYYY-MM-DD for lightweight-charts compatibility
-      const dateStr = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-01`;
-
-      sentinelValue = sentinelValue * (1 + sentinelReturns[i]);
-      sp500Value = sp500Value * (1 + sp500Returns[i]);
-      nasdaqValue = nasdaqValue * (1 + nasdaqReturns[i]);
-      bondsValue = bondsValue * (1 + bondsReturns[i]);
-      goldValue = goldValue * (1 + goldReturns[i]);
-
-      sentinelData.push({ x: dateStr, y: Math.round(sentinelValue) });
-      sp500Data.push({ x: dateStr, y: Math.round(sp500Value) });
-      nasdaqData.push({ x: dateStr, y: Math.round(nasdaqValue) });
-      bondsData.push({ x: dateStr, y: Math.round(bondsValue) });
-      goldData.push({ x: dateStr, y: Math.round(goldValue) });
-    }
-
-    return [
-      { id: 'SENTINEL', name: 'SENTINEL', data: sentinelData, color: '#5BA3A5' },
-      { id: 'NASDAQ', name: 'NASDAQ', data: nasdaqData, color: '#9b8ab8' },
-      { id: 'S&P 500', name: 'S&P 500', data: sp500Data, color: '#7a99b8' },
-      { id: 'Gold', name: 'Gold', data: goldData, color: '#b8a07a' },
-      { id: 'Bonds', name: 'Bonds', data: bondsData, color: '#a89878' },
-    ];
-  }, []);
-
   // Mobile Layout
   if (isMobile) {
     return (
@@ -150,42 +99,8 @@ export function DashboardPage() {
           </div>
         </div>
 
-        {/* Chart Card */}
-        <div className={styles.mobileChartCard}>
-          <div className={styles.mobileChartWrapper}>
-            <LineChart
-              data={performanceComparisonData}
-              height={160}
-              enableArea={true}
-              areaOpacity={0.25}
-              smooth={true}
-              formatValue={(value) => `$${value.toLocaleString()}`}
-              minimal={true}
-            />
-          </div>
-          <div className={styles.mobileLegend}>
-            <div className={styles.mobileLegendItem}>
-              <img src="/sentinel-favicon.svg" alt="" className={styles.mobileLegendLogo} />
-              <span>SENTINEL</span>
-            </div>
-            <div className={styles.mobileLegendItem}>
-              <span className={styles.mobileLegendDot} style={{ background: '#9b8ab8' }} />
-              <span>NASDAQ</span>
-            </div>
-            <div className={styles.mobileLegendItem}>
-              <span className={styles.mobileLegendDot} style={{ background: '#7a99b8' }} />
-              <span>S&P 500</span>
-            </div>
-            <div className={styles.mobileLegendItem}>
-              <span className={styles.mobileLegendDot} style={{ background: '#b8a07a' }} />
-              <span>Gold</span>
-            </div>
-            <div className={styles.mobileLegendItem}>
-              <span className={styles.mobileLegendDot} style={{ background: '#a89878' }} />
-              <span>Bonds</span>
-            </div>
-          </div>
-        </div>
+        {/* Portfolio Performance */}
+        <PortfolioPerformance />
 
         {/* Top Buys & Sells Grid */}
         <div className={styles.mobilePicksGrid}>
@@ -255,111 +170,22 @@ export function DashboardPage() {
   // Desktop Layout - Simple Two Column
   return (
     <div className={styles.container}>
-      {/* Main Chart - Full Width */}
-      <div className={styles.mainChart}>
-        <div className={styles.chartHeader}>
-          <div className={styles.chartHeaderLeft}>
-            <h2 className={styles.chartTitle}>
-              <span
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: '24px',
-                  height: '24px',
-                  borderRadius: '50%',
-                  background: 'var(--marble-base)',
-                  boxShadow: 'inset 1.5px 1.5px 3px var(--shadow-dark), inset -1.5px -1.5px 3px var(--shadow-light)',
-                }}
-              >
-                <Briefcase
-                  size={13}
-                  style={{
-                    color: 'var(--sentinel-accent-primary)',
-                    filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))',
-                  }}
-                />
-              </span>
-              My Portfolio
-            </h2>
-            <div className={styles.chartMetrics}>
-              <span className={styles.chartMetricValue}>
-                ${portfolioTotals.totalValue.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
-              </span>
-              <span
-                className={styles.chartMetricChange}
-                data-positive={portfolioTotals.gainPercent >= 0}
-              >
-                {portfolioTotals.gainPercent >= 0 ? '+' : ''}
-                {portfolioTotals.gainPercent.toFixed(1)}%
-              </span>
-            </div>
-          </div>
-        </div>
-        <div className={styles.chartArea}>
-          {/* Chart Inset Container */}
-          <div className={styles.chartInset}>
-            <LineChart
-              data={performanceComparisonData}
-              height={220}
-              enableArea={true}
-              areaOpacity={0.25}
-              smooth={true}
-              formatValue={(value) => `$${value.toLocaleString()}`}
-              showLegend={false}
-            />
+      {/* Header Row */}
+      <div className={styles.headerRow}>
+        {/* Left side - Avatar + Title */}
+        <div className={styles.headerLeft}>
+          {/* Avatar - Raised circular with initials */}
+          <div className={styles.headerAvatar}>
+            <span className={styles.headerAvatarInitials}>PB</span>
           </div>
 
-          {/* Legend Inset Container */}
-          <div className={styles.legendInset}>
-            <div className={styles.floatingLegend}>
-              <div className={styles.floatingLegendItem}>
-                <img src="/sentinel-favicon.svg" alt="" className={styles.floatingLegendLogo} />
-                <span>SENTINEL</span>
-              </div>
-              <div className={styles.floatingLegendItem}>
-                <span className={styles.floatingLegendDot} style={{ background: '#9b8ab8' }} />
-                <span>NASDAQ</span>
-              </div>
-              <div className={styles.floatingLegendItem}>
-                <span className={styles.floatingLegendDot} style={{ background: '#7a99b8' }} />
-                <span>S&P 500</span>
-              </div>
-              <div className={styles.floatingLegendItem}>
-                <span className={styles.floatingLegendDot} style={{ background: '#b8a07a' }} />
-                <span>Gold</span>
-              </div>
-              <div className={styles.floatingLegendItem}>
-                <span className={styles.floatingLegendDot} style={{ background: '#a89878' }} />
-                <span>Bonds</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* KPI Indicators Row */}
-      <div className={styles.kpiRow}>
-        <div className={styles.kpiMeter}>
-          <div className={styles.kpiMeterInner}>
-            <span className={styles.kpiValue}>87</span>
-            <span className={styles.kpiLabel}>SCORE</span>
-          </div>
-        </div>
-        <div className={styles.kpiMeter}>
-          <div className={styles.kpiMeterInner}>
-            <span className={styles.kpiValueWarning}>42</span>
-            <span className={styles.kpiLabel}>RISK</span>
-          </div>
-        </div>
-        <div className={styles.kpiMeter}>
-          <div className={styles.kpiMeterInner}>
-            <span className={styles.kpiValuePositive}>+16%</span>
-            <span className={styles.kpiLabel}>YTD</span>
+          {/* Text - Pillow soft 3D typography with raised frame */}
+          <div className={styles.greetingFrame}>
+            <h1 className={styles.headerTitle}>Welcome Pierpaolo</h1>
           </div>
         </div>
 
-        {/* RAISED Button (standalone) */}
+        {/* Portfolio Button - Right side */}
         <button
           onClick={() => navigate('/app/dashboard/portfolio')}
           className={styles.raisedButton}
@@ -370,6 +196,52 @@ export function DashboardPage() {
           </span>
         </button>
       </div>
+
+      {/* Balance Row - Pill + KPIs */}
+      <div className={styles.balanceRow}>
+        {/* Balance Pill Indicator */}
+        <div className={styles.balancePill}>
+          {/* Inset circle with portfolio icon */}
+          <div className={styles.balancePillIcon}>
+            <Briefcase
+              size={24}
+              className={styles.balancePillBriefcase}
+            />
+          </div>
+          {/* Value and label */}
+          <div className={styles.balancePillContent}>
+            <div className={styles.balancePillValue}>
+              ${portfolioTotals.totalValue.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
+            </div>
+            <div className={styles.balancePillLabel}>TOTAL BALANCE</div>
+          </div>
+        </div>
+
+        {/* KPI Indicators */}
+        <div className={styles.balanceKpis}>
+          <div className={styles.kpiMeter}>
+            <div className={styles.kpiMeterInner}>
+              <span className={styles.kpiValue}>87</span>
+              <span className={styles.kpiLabel}>SCORE</span>
+            </div>
+          </div>
+          <div className={styles.kpiMeter}>
+            <div className={styles.kpiMeterInner}>
+              <span className={styles.kpiValueWarning}>42</span>
+              <span className={styles.kpiLabel}>RISK</span>
+            </div>
+          </div>
+          <div className={styles.kpiMeter}>
+            <div className={styles.kpiMeterInner}>
+              <span className={styles.kpiValuePositive}>+16%</span>
+              <span className={styles.kpiLabel}>YTD</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Portfolio Performance */}
+      <PortfolioPerformance />
 
       {/* Bottom Grid - Two Cards */}
       <div className={styles.bottomGrid}>
@@ -412,49 +284,54 @@ export function DashboardPage() {
               </button>
             </div>
           </div>
-          <div className={styles.recommendationsGrid}>
-            {/* Top Buys Column */}
-            <div className={styles.recommendationsColumn}>
-              <div className={styles.columnHeader}>
-                <TrendingUp size={14} />
-                <span>Top Buys</span>
+
+          {/* Data Tables Grid */}
+          <div className={styles.dataTablesGrid}>
+            {/* Top Buys Data Table */}
+            <div className={styles.dataTableContainer}>
+              <div className={styles.dataTableHeader}>
+                <TrendingUp size={14} className={styles.dataTableIconBuy} />
+                <span className={styles.dataTableTitle}>Top Buys</span>
               </div>
-              <div className={styles.recommendationsList}>
+              <div className={styles.dataTableBody}>
                 {TOP_BUYS.slice(0, 3).map((rec, index) => (
-                  <div key={rec.ticker} className={styles.recommendationItemBuy}>
-                    <span className={styles.recRank}>#{index + 1}</span>
-                    <div className={styles.recInfo}>
-                      <span className={styles.recTicker}>{rec.ticker}</span>
+                  <div key={rec.ticker} className={styles.rowFrameInset}>
+                    <div className={styles.dataTableRowBuy}>
+                      <span className={styles.dataTableCellRank}>{index + 1}</span>
+                      <span className={styles.dataTableCellTicker}>{rec.ticker}</span>
+                      <span className={styles.dataTableCellPrice}>${rec.price.toFixed(0)}</span>
+                      <span
+                        className={styles.dataTableCellChange}
+                        data-positive={rec.change >= 0}
+                      >
+                        {rec.change >= 0 ? '+' : ''}{rec.change.toFixed(2)}%
+                      </span>
                     </div>
-                    <span
-                      className={styles.recChange}
-                      data-positive={rec.change >= 0}
-                    >
-                      {rec.change >= 0 ? '+' : ''}{rec.change.toFixed(2)}%
-                    </span>
                   </div>
                 ))}
               </div>
             </div>
-            {/* Top Sells Column */}
-            <div className={styles.recommendationsColumn}>
-              <div className={styles.columnHeaderSell}>
-                <TrendingDown size={14} />
-                <span>Top Sells</span>
+
+            {/* Top Sells Data Table */}
+            <div className={styles.dataTableContainer}>
+              <div className={styles.dataTableHeader}>
+                <TrendingDown size={14} className={styles.dataTableIconSell} />
+                <span className={styles.dataTableTitleSell}>Top Sells</span>
               </div>
-              <div className={styles.recommendationsList}>
+              <div className={styles.dataTableBody}>
                 {topSells.slice(0, 3).map((rec, index) => (
-                  <div key={rec.ticker} className={styles.recommendationItemSell}>
-                    <span className={styles.recRankSell}>#{index + 1}</span>
-                    <div className={styles.recInfo}>
-                      <span className={styles.recTicker}>{rec.ticker}</span>
+                  <div key={rec.ticker} className={styles.rowFrameInset}>
+                    <div className={styles.dataTableRowSell}>
+                      <span className={styles.dataTableCellRankSell}>{index + 1}</span>
+                      <span className={styles.dataTableCellTicker}>{rec.ticker}</span>
+                      <span className={styles.dataTableCellPrice}>${rec.price.toFixed(0)}</span>
+                      <span
+                        className={styles.dataTableCellChange}
+                        data-positive={rec.change >= 0}
+                      >
+                        {rec.change >= 0 ? '+' : ''}{rec.change.toFixed(2)}%
+                      </span>
                     </div>
-                    <span
-                      className={styles.recChange}
-                      data-positive={rec.change >= 0}
-                    >
-                      {rec.change >= 0 ? '+' : ''}{rec.change.toFixed(2)}%
-                    </span>
                   </div>
                 ))}
               </div>

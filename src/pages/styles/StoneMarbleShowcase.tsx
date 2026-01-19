@@ -146,18 +146,18 @@ export function StoneMarbleShowcase() {
     const colors: Record<string, { color: string; shadow: string }> = {
       teal: {
         color: 'var(--sentinel-accent-tertiary, #6fb3b5)',
-        shadow: '1px 1px 1px var(--shadow-light), -1px -1px 1px rgba(74, 154, 156, 0.4)',
+        shadow: '1px 1px 1px var(--shadow-light), -1px -1px 1px rgba(58, 106, 114, 0.4)',
       },
       positive: {
         color: '#7cb89a',
         shadow: '1px 1px 1px var(--shadow-light), -1px -1px 1px rgba(22, 163, 74, 0.3)',
       },
       negative: {
-        color: '#c98a8a',
+        color: '#8a5a4a',
         shadow: '1px 1px 1px var(--shadow-light), -1px -1px 1px rgba(220, 38, 38, 0.3)',
       },
       warning: {
-        color: '#c9a87a',
+        color: '#a08a4a',
         shadow: '1px 1px 1px var(--shadow-light), -1px -1px 1px rgba(217, 119, 6, 0.3)',
       },
     };
@@ -240,7 +240,7 @@ export function StoneMarbleShowcase() {
 
   const btnTealStyles: React.CSSProperties = {
     ...btnBaseStyles,
-    background: 'linear-gradient(135deg, var(--sentinel-accent-tertiary, #6fb3b5), var(--sentinel-accent-primary, #4A9A9C))',
+    background: 'linear-gradient(135deg, var(--sentinel-accent-tertiary, #6fb3b5), var(--sentinel-accent-primary, #3a6a72))',
     color: 'white',
     textShadow: '0 1px 2px rgba(0,0,0,0.2)',
     boxShadow: 'var(--raised-2), inset 0 1px 0 rgba(255,255,255,0.2)',
@@ -266,7 +266,7 @@ export function StoneMarbleShowcase() {
     width: '56px',
     height: '30px',
     background: isActive
-      ? 'linear-gradient(135deg, var(--sentinel-accent-tertiary, #6fb3b5), var(--sentinel-accent-primary, #4A9A9C))'
+      ? 'linear-gradient(135deg, var(--sentinel-accent-tertiary, #6fb3b5), var(--sentinel-accent-primary, #3a6a72))'
       : 'var(--marble-base)',
     borderRadius: '100px',
     boxShadow: 'var(--inset-2)',
@@ -648,7 +648,7 @@ REGLAS:
               </div>
               <div style={{ maxWidth: '300px', margin: '0 auto', width: '100%' }}>
                 <div style={{ width: '100%', height: '8px', background: 'var(--marble-base)', borderRadius: '100px', boxShadow: 'var(--inset-2)', position: 'relative' }}>
-                  <div style={{ width: `${sliderValue}%`, height: '100%', background: 'linear-gradient(90deg, var(--sentinel-accent-tertiary, #6fb3b5), var(--sentinel-accent-primary, #4A9A9C))', borderRadius: '100px' }} />
+                  <div style={{ width: `${sliderValue}%`, height: '100%', background: 'linear-gradient(90deg, var(--sentinel-accent-tertiary, #6fb3b5), var(--sentinel-accent-primary, #3a6a72))', borderRadius: '100px' }} />
                   <div style={{ width: '24px', height: '24px', background: 'var(--marble-base)', borderRadius: '50%', boxShadow: 'var(--raised-2)', position: 'absolute', top: '50%', left: `${sliderValue}%`, transform: 'translate(-50%, -50%)' }} />
                 </div>
                 <div style={{ textAlign: 'center', marginTop: '8px' }}>
@@ -694,13 +694,13 @@ REGLAS:
               <div>
                 <div style={{ ...lpStyles('subtle'), fontSize: '11px', marginBottom: '8px' }}>25% Complete</div>
                 <div style={{ height: '12px', background: 'var(--marble-base)', borderRadius: '100px', boxShadow: 'var(--inset-2)', overflow: 'hidden' }}>
-                  <div style={{ width: '25%', height: '100%', background: 'linear-gradient(90deg, var(--sentinel-accent-tertiary, #6fb3b5), var(--sentinel-accent-primary, #4A9A9C))', borderRadius: '100px' }} />
+                  <div style={{ width: '25%', height: '100%', background: 'linear-gradient(90deg, var(--sentinel-accent-tertiary, #6fb3b5), var(--sentinel-accent-primary, #3a6a72))', borderRadius: '100px' }} />
                 </div>
               </div>
               <div>
                 <div style={{ ...lpStyles('subtle'), fontSize: '11px', marginBottom: '8px' }}>75% Complete</div>
                 <div style={{ height: '12px', background: 'var(--marble-base)', borderRadius: '100px', boxShadow: 'var(--inset-2)', overflow: 'hidden' }}>
-                  <div style={{ width: '75%', height: '100%', background: 'linear-gradient(90deg, var(--sentinel-accent-tertiary, #6fb3b5), var(--sentinel-accent-primary, #4A9A9C))', borderRadius: '100px' }} />
+                  <div style={{ width: '75%', height: '100%', background: 'linear-gradient(90deg, var(--sentinel-accent-tertiary, #6fb3b5), var(--sentinel-accent-primary, #3a6a72))', borderRadius: '100px' }} />
                 </div>
               </div>
             </div>
@@ -1113,7 +1113,7 @@ REGLAS:
                   height: '50px',
                   background: 'linear-gradient(90deg, var(--sentinel-accent-tertiary), var(--sentinel-accent-primary))',
                   borderRadius: '25px',
-                  boxShadow: 'var(--raised-2), 0 4px 12px rgba(74, 154, 156, 0.3)',
+                  boxShadow: 'var(--raised-2), 0 4px 12px rgba(58, 106, 114, 0.3)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -1332,7 +1332,7 @@ REGLAS:
                   height: '120px',
                   background: 'linear-gradient(135deg, var(--sentinel-accent-tertiary), var(--sentinel-accent-primary))',
                   borderRadius: '50%',
-                  boxShadow: 'var(--raised-3), 0 4px 20px rgba(74, 154, 156, 0.3)',
+                  boxShadow: 'var(--raised-3), 0 4px 20px rgba(58, 106, 114, 0.3)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -1643,7 +1643,7 @@ REGLAS:
                       background: 'linear-gradient(135deg, var(--sentinel-accent-tertiary), var(--sentinel-accent-primary))',
                       transform: 'rotate(45deg)',
                       borderRadius: '10px',
-                      boxShadow: 'var(--raised-2), 0 4px 12px rgba(74, 154, 156, 0.3)',
+                      boxShadow: 'var(--raised-2), 0 4px 12px rgba(58, 106, 114, 0.3)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -2392,7 +2392,7 @@ REGLAS:
               {/* Teal Accent Divider */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <div style={{ flex: 1, height: '2px', background: 'linear-gradient(90deg, transparent, var(--sentinel-accent-primary))', borderRadius: '1px' }} />
-                <div style={{ width: '40px', height: '4px', background: 'linear-gradient(90deg, var(--sentinel-accent-tertiary), var(--sentinel-accent-primary))', borderRadius: '2px', boxShadow: '0 2px 4px rgba(74, 154, 156, 0.3)' }} />
+                <div style={{ width: '40px', height: '4px', background: 'linear-gradient(90deg, var(--sentinel-accent-tertiary), var(--sentinel-accent-primary))', borderRadius: '2px', boxShadow: '0 2px 4px rgba(58, 106, 114, 0.3)' }} />
                 <div style={{ flex: 1, height: '2px', background: 'linear-gradient(90deg, var(--sentinel-accent-primary), transparent)', borderRadius: '1px' }} />
               </div>
             </div>
@@ -2408,9 +2408,9 @@ REGLAS:
               <div style={showcaseItemStyles}>
                 <div style={{ display: 'flex', gap: '12px' }}>
                   {[
-                    { color: '#4a9a7c', label: 'Active' },
-                    { color: '#c9a87a', label: 'Pending' },
-                    { color: '#c98a8a', label: 'Error' },
+                    { color: '#4a7a6a', label: 'Active' },
+                    { color: '#a08a4a', label: 'Pending' },
+                    { color: '#8a5a4a', label: 'Error' },
                     { color: 'var(--marble-dark)', label: 'Inactive' },
                   ].map(status => (
                     <div key={status.label} style={{

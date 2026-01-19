@@ -1,140 +1,293 @@
 /* Path: src/pages/Landing/components/LandingNav/LandingNav.module.css */
+/* ═══════════════════════════════════════════════════════════════════════════════
+   FING BRAND NAVIGATION - Stone Marble Neumorphism
+
+   This navbar is NOT fixed - it's part of the page flow.
+   Uses RAISED container style with INSET typography.
+   ═══════════════════════════════════════════════════════════════════════════════ */
 
 .nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  position: relative;
   z-index: 100;
-  padding: var(--sentinel-space-4) 0;
-  transition: all var(--sentinel-duration-normal) var(--sentinel-ease-smooth);
-  pointer-events: auto;
-}
-
-.nav.scrolled {
-  background-color: rgba(10, 11, 16, 0.95);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--sentinel-border-subtle);
-  padding: var(--sentinel-space-3) 0;
+  padding: 16px 24px 0;
+  background: var(--marble-base);
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 900px;
   margin: 0 auto;
-  padding: 0 var(--sentinel-space-6);
+  padding: 12px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background: var(--marble-base);
+  border-radius: 20px;
+
+  /* Stone Marble - RAISED Level 2 */
+  box-shadow: var(--raised-2);
 }
 
-/* Logo */
+/* ─────────────────────────────────────────────────────────────────────────────
+   LOGO
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .logo {
   display: flex;
   align-items: center;
-  gap: var(--sentinel-space-3);
+  gap: 10px;
   text-decoration: none;
 }
 
-.logoSvg {
-  width: 36px;
-  height: 36px;
-  flex-shrink: 0;
-}
-
 .logoText {
-  font-family: var(--sentinel-font-led);
-  font-size: var(--sentinel-text-lg);
-  font-weight: var(--sentinel-font-semibold);
-  color: var(--sentinel-text-primary);
-  letter-spacing: var(--sentinel-tracking-led);
+  font-family: var(--sentinel-font-primary);
+  font-size: 22px;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0.04em;
+  line-height: 1;
+
+  /* Stone Marble INSET typography - subtle carved (same as "Quiet intelligence") */
+  color: var(--marble-dark);
+  text-shadow:
+    0.75px 0.75px 0px rgba(255, 255, 255, 0.7),
+    -0.75px -0.75px 0px rgba(130, 140, 155, 0.4);
 }
 
-/* Desktop Navigation */
+/* ─────────────────────────────────────────────────────────────────────────────
+   DESKTOP NAVIGATION
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .desktopNav {
   display: flex;
   align-items: center;
-  gap: var(--sentinel-space-6);
+  gap: 8px;
 }
 
 .navLink {
   background: none;
   border: none;
   font-family: var(--sentinel-font-primary);
-  font-size: var(--sentinel-text-sm);
-  font-weight: var(--sentinel-font-medium);
-  color: var(--sentinel-text-secondary);
+  font-size: 13px;
+  font-weight: 500;
   cursor: pointer;
-  padding: var(--sentinel-space-2) var(--sentinel-space-3);
-  border-radius: var(--sentinel-radius-sm);
-  transition: all var(--sentinel-duration-fast);
-  pointer-events: auto;
-  position: relative;
-  z-index: 1;
+  padding: 10px 16px;
+  border-radius: 12px;
+  transition: all 150ms ease;
+
+  /* INSET typography (debossed subtle) */
+  color: var(--marble-dark);
+  text-shadow:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.7),
+    -0.5px -0.5px 0px rgba(130, 140, 155, 0.35);
 }
 
 .navLink:hover {
-  color: var(--sentinel-text-primary);
-  background-color: var(--sentinel-bg-elevated);
+  background: var(--glass-bg);
 }
 
 .navLink:active {
-  transform: scale(0.98);
+  background: var(--glass-bg-strong);
 }
 
+/* CTA Button - Small RAISED pill */
 .ctaButton {
-  margin-left: var(--sentinel-space-4);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: var(--marble-base);
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  font-family: var(--sentinel-font-primary);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  margin-left: 8px;
+
+  /* RAISED shadow */
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.7),
+    inset 0 0 0 2px rgba(168, 172, 179, 0.25),
+    3px 3px 6px rgba(147, 157, 170, 0.5),
+    -3px -3px 6px rgba(255, 255, 255, 0.9);
+
+  /* INSET typography - teal */
+  color: var(--sentinel-accent-primary);
+  text-shadow:
+    0.75px 0.75px 0px rgba(255, 255, 255, 0.85),
+    -0.75px -0.75px 0px rgba(58, 106, 114, 0.25);
+
+  transition: all 150ms ease;
 }
 
-/* Mobile Menu Button */
+.ctaButton:hover {
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.8),
+    inset 0 0 0 2px rgba(58, 106, 114, 0.2),
+    4px 4px 8px rgba(147, 157, 170, 0.55),
+    -4px -4px 8px rgba(255, 255, 255, 0.95),
+    0 0 12px rgba(58, 106, 114, 0.1);
+}
+
+.ctaButton:active {
+  box-shadow:
+    inset 1px 1px 3px rgba(147, 157, 170, 0.45),
+    inset -1px -1px 3px rgba(255, 255, 255, 0.85);
+}
+
+/* Icon Circle - INSET */
+.ctaIconCircle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--marble-base);
+  box-shadow:
+    inset 1px 1px 2px rgba(147, 157, 170, 0.5),
+    inset -1px -1px 2px rgba(255, 255, 255, 0.9);
+}
+
+/* Icon - RAISED effect via filter */
+.ctaIcon {
+  color: var(--sentinel-accent-primary);
+  filter:
+    drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9))
+    drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.35));
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   MOBILE MENU BUTTON
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .mobileMenuButton {
   display: none;
-  background: none;
+  background: var(--marble-base);
   border: none;
-  color: var(--sentinel-text-primary);
   cursor: pointer;
-  padding: var(--sentinel-space-2);
+  padding: 8px;
+  border-radius: 10px;
+
+  /* Small RAISED */
+  box-shadow:
+    2px 2px 4px rgba(147, 157, 170, 0.45),
+    -2px -2px 4px rgba(255, 255, 255, 0.9);
+
+  /* Icon color */
+  color: var(--marble-dark);
 }
 
-/* Mobile Menu */
+.mobileMenuButton:active {
+  box-shadow:
+    inset 1px 1px 2px rgba(147, 157, 170, 0.4),
+    inset -1px -1px 2px rgba(255, 255, 255, 0.85);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   MOBILE MENU - RAISED dropdown
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .mobileMenu {
   display: none;
   flex-direction: column;
-  padding: var(--sentinel-space-4) var(--sentinel-space-6);
-  background-color: var(--sentinel-bg-elevated);
-  border-bottom: 1px solid var(--sentinel-border-subtle);
+  gap: 4px;
+  padding: 16px;
+  margin-top: 12px;
+  background: var(--marble-base);
+  border-radius: 16px;
   overflow: hidden;
+
+  /* RAISED Level 2 */
+  box-shadow: var(--raised-2);
 }
 
 .mobileNavLink {
   background: none;
   border: none;
   font-family: var(--sentinel-font-primary);
-  font-size: var(--sentinel-text-base);
-  font-weight: var(--sentinel-font-medium);
-  color: var(--sentinel-text-secondary);
+  font-size: 14px;
+  font-weight: 500;
   cursor: pointer;
-  padding: var(--sentinel-space-3) 0;
+  padding: 12px 16px;
+  border-radius: 10px;
   text-align: left;
-  transition: color var(--sentinel-duration-fast);
+  transition: all 150ms ease;
+
+  /* INSET typography (debossed) */
+  color: var(--marble-dark);
+  text-shadow:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.7),
+    -0.5px -0.5px 0px rgba(130, 140, 155, 0.35);
 }
 
 .mobileNavLink:hover {
-  color: var(--sentinel-text-primary);
+  background: var(--glass-bg);
+}
+
+.mobileNavLink:active {
+  background: var(--glass-bg-strong);
 }
 
 .mobileCta {
-  margin-top: var(--sentinel-space-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+  padding: 14px 20px;
+  background: var(--marble-base);
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  font-family: var(--sentinel-font-primary);
+  font-size: 14px;
+  font-weight: 600;
   width: 100%;
+
+  /* RAISED shadow */
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.7),
+    inset 0 0 0 2px rgba(168, 172, 179, 0.25),
+    3px 3px 6px rgba(147, 157, 170, 0.5),
+    -3px -3px 6px rgba(255, 255, 255, 0.9);
+
+  /* INSET typography - teal */
+  color: var(--sentinel-accent-primary);
+  text-shadow:
+    0.75px 0.75px 0px rgba(255, 255, 255, 0.85),
+    -0.75px -0.75px 0px rgba(58, 106, 114, 0.25);
 }
 
-/* Responsive */
+.mobileCta:active {
+  box-shadow:
+    inset 1px 1px 3px rgba(147, 157, 170, 0.45),
+    inset -1px -1px 3px rgba(255, 255, 255, 0.85);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   RESPONSIVE - Mobile
+   ───────────────────────────────────────────────────────────────────────────── */
+
 @media (max-width: 768px) {
+  .nav {
+    padding: 16px 16px 0;
+  }
+
+  .container {
+    padding: 10px 16px;
+    border-radius: 16px;
+  }
+
   .desktopNav {
     display: none;
   }
 
   .mobileMenuButton {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .mobileMenu {
@@ -142,6 +295,19 @@
   }
 
   .logoText {
-    display: none;
+    font-size: 18px;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   REDUCED MOTION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .navLink,
+  .ctaButton,
+  .mobileNavLink,
+  .mobileCta {
+    transition: none;
   }
 }

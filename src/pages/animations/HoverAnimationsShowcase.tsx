@@ -14,26 +14,26 @@ function HoverAnimationsContent() {
     return { x: Math.cos(shadowAngle), y: Math.sin(shadowAngle) };
   }, [lightAngle]);
 
-  const LIGHT = {
-    base: '#e0e5ec',
-    shadowDark: 'hsl(220 15% 72%)',
-    shadowLight: 'hsl(0 0% 100%)',
+  const MARBLE = {
+    base: '#d5d8dc',
+    shadowDark: '#a8acb3',
+    shadowLight: '#ffffff',
   };
 
   const getNeuPanelShadow = (distance: number, blur: number): string => {
     const { x, y } = shadowOffsets;
-    return `${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}`;
+    return `${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}`;
   };
 
   const getNeuInsetShadow = (distance: number, blur: number): string => {
     const { x, y } = shadowOffsets;
-    return `inset ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}`;
+    return `inset ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}`;
   };
 
   const pageHeaderStyles: React.CSSProperties = {
     marginBottom: '32px',
     padding: '24px',
-    background: LIGHT.base,
+    background: MARBLE.base,
     borderRadius: '15px',
     boxShadow: getNeuPanelShadow(20, 60),
     transition: 'box-shadow 50ms linear',
@@ -59,7 +59,7 @@ function HoverAnimationsContent() {
 
   const cardStyles: React.CSSProperties = {
     padding: '24px',
-    background: LIGHT.base,
+    background: MARBLE.base,
     borderRadius: '15px',
     boxShadow: getNeuPanelShadow(6, 18),
     cursor: 'pointer',
@@ -68,7 +68,7 @@ function HoverAnimationsContent() {
 
   const buttonStyles: React.CSSProperties = {
     padding: '12px 24px',
-    background: LIGHT.base,
+    background: MARBLE.base,
     color: 'var(--sentinel-accent-primary)',
     border: 'none',
     borderRadius: '15px',
@@ -82,25 +82,25 @@ function HoverAnimationsContent() {
   };
 
   return (
-    <div style={{ background: LIGHT.base, minHeight: '100%', padding: '24px' }}>
+    <div style={{ background: MARBLE.base, minHeight: '100%', padding: '24px' }}>
       <header style={pageHeaderStyles}>
         <h1 style={titleStyles}>&gt; Hover & Tap_</h1>
         <p style={descStyles}>// Animaciones de hover y tap con Framer Motion</p>
       </header>
 
       <ShowcaseSection title="MotionCard Variants" description="Cards con diferentes efectos hover">
-        <div style={{ padding: '24px', background: LIGHT.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
+        <div style={{ padding: '24px', background: MARBLE.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', width: '100%' }}>
             <MotionCard variant="default" style={cardStyles}>
-              <h4 style={{ color: '#2D3436', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Default</h4>
+              <h4 style={{ color: 'var(--sentinel-text-primary)', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Default</h4>
               <p style={{ color: '#636E72', fontSize: '12px' }}>Border glow on hover</p>
             </MotionCard>
             <MotionCard variant="scale" style={cardStyles}>
-              <h4 style={{ color: '#2D3436', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Scale</h4>
+              <h4 style={{ color: 'var(--sentinel-text-primary)', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Scale</h4>
               <p style={{ color: '#636E72', fontSize: '12px' }}>Subtle scale on hover</p>
             </MotionCard>
             <MotionCard variant="glow" style={cardStyles}>
-              <h4 style={{ color: '#2D3436', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Glow</h4>
+              <h4 style={{ color: 'var(--sentinel-text-primary)', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Glow</h4>
               <p style={{ color: '#636E72', fontSize: '12px' }}>Box shadow glow</p>
             </MotionCard>
           </div>
@@ -108,7 +108,7 @@ function HoverAnimationsContent() {
       </ShowcaseSection>
 
       <ShowcaseSection title="Spring Buttons" description="Botones con física de resorte">
-        <div style={{ padding: '24px', background: LIGHT.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
+        <div style={{ padding: '24px', background: MARBLE.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
           <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
             {[
               { label: 'Execute', color: 'var(--sentinel-accent-primary)' },
@@ -131,25 +131,25 @@ function HoverAnimationsContent() {
       </ShowcaseSection>
 
       <ShowcaseSection title="Custom Hover Effects" description="Efectos personalizados">
-        <div style={{ padding: '24px', background: LIGHT.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
+        <div style={{ padding: '24px', background: MARBLE.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
           <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
             <motion.div
               style={{ ...cardStyles, width: '150px', textAlign: 'center' }}
               whileHover={{ y: -5 }}
             >
-              <p style={{ color: '#2D3436', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>Lift Up</p>
+              <p style={{ color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>Lift Up</p>
             </motion.div>
             <motion.div
               style={{ ...cardStyles, width: '150px', textAlign: 'center' }}
               whileHover={{ rotate: 2, scale: 1.02 }}
             >
-              <p style={{ color: '#2D3436', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>Tilt</p>
+              <p style={{ color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>Tilt</p>
             </motion.div>
             <motion.div
               style={{ ...cardStyles, width: '150px', textAlign: 'center' }}
               whileHover={{ scale: 1.05 }}
             >
-              <p style={{ color: '#2D3436', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>Scale</p>
+              <p style={{ color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>Scale</p>
             </motion.div>
           </div>
         </div>
@@ -160,7 +160,7 @@ function HoverAnimationsContent() {
           padding: '20px',
           borderRadius: '15px',
           boxShadow: getNeuInsetShadow(5, 15),
-          background: LIGHT.base,
+          background: MARBLE.base,
           fontSize: '12px',
           fontFamily: 'var(--sentinel-font-mono)',
           color: '#636E72',

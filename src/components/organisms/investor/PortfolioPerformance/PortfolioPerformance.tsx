@@ -3,6 +3,8 @@
 
 import { useState, useMemo } from 'react';
 import { LineChart } from '@/components/charts/echarts';
+import { FingEmblem } from '@/components/atoms/FingEmblem';
+import { FingWordmarkText } from '@/components/atoms/FingWordmark';
 import styles from './PortfolioPerformance.module.css';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -75,7 +77,7 @@ function generatePerformanceData(months: number): SeriesData[] {
 
   // Return as SeriesData[] format expected by LineChart
   return [
-    { id: 'SENTINEL', name: 'SENTINEL', data: sentinelData, color: '#5BA3A5' },
+    { id: 'FING', name: 'FING', data: sentinelData, color: '#5BA3A5' },
     { id: 'NASDAQ', name: 'NASDAQ', data: nasdaqData, color: '#9b8ab8' },
     { id: 'S&P 500', name: 'S&P 500', data: sp500Data, color: '#7a99b8' },
     { id: 'Gold', name: 'Gold', data: goldData, color: '#b8a07a' },
@@ -142,39 +144,19 @@ export function PortfolioPerformance({ className }: PortfolioPerformanceProps) {
 
       {/* Legend */}
       <div className={styles.legendWrapper}>
-        {/* SENTINEL Meter - Raised → Inset */}
-        <div className={styles.sentinelMeter}>
-          <div className={styles.sentinelMeterInner}>
-            {/* Radar Symbol - Teal Brand Color */}
-            <svg
-              width={28}
-              height={28}
-              viewBox="0 0 100 100"
-              className={styles.radarSymbol}
-            >
-              <defs>
-                <filter id="sentinel-carve" x="-25%" y="-25%" width="150%" height="150%">
-                  <feOffset dx="1.5" dy="1.5" in="SourceAlpha" result="light" />
-                  <feGaussianBlur in="light" stdDeviation="0.5" result="lightBlur" />
-                  <feFlood floodColor="rgba(255,255,255,0.9)" result="lightColor" />
-                  <feComposite in="lightColor" in2="lightBlur" operator="in" result="lightShadow" />
-                  <feOffset dx="-1.5" dy="-1.5" in="SourceAlpha" result="dark" />
-                  <feGaussianBlur in="dark" stdDeviation="0.7" result="darkBlur" />
-                  <feFlood floodColor="rgba(74,154,156,0.5)" result="darkColor" />
-                  <feComposite in="darkColor" in2="darkBlur" operator="in" result="darkShadow" />
-                  <feMerge>
-                    <feMergeNode in="darkShadow" />
-                    <feMergeNode in="lightShadow" />
-                    <feMergeNode in="SourceGraphic" />
-                  </feMerge>
-                </filter>
-              </defs>
-              <circle cx="50" cy="50" r="6" fill="#4a9a9c" filter="url(#sentinel-carve)" />
-              <circle cx="50" cy="50" r="18" fill="none" stroke="#4a9a9c" strokeWidth="2.5" filter="url(#sentinel-carve)" />
-              <circle cx="50" cy="50" r="32" fill="none" stroke="#4a9a9c" strokeWidth="2.5" filter="url(#sentinel-carve)" />
-            </svg>
+        {/* FING Indicator - Same as sidebar logo */}
+        <div className={styles.fingIndicator}>
+          <div className={styles.fingLogo}>
+            <FingEmblem size={42} animation="rippleSlow" />
           </div>
-          <span className={styles.legendTextSentinel}>SENTINEL</span>
+          <FingWordmarkText
+            variant="sharp"
+            size={24}
+            style={{
+              color: 'var(--fing-accent)',
+              textShadow: '0.5px 0.5px 0px rgba(255, 255, 255, 0.9), -0.5px -0.5px 0px rgba(58, 106, 114, 0.25)',
+            }}
+          />
         </div>
 
         {/* Other Indicators */}

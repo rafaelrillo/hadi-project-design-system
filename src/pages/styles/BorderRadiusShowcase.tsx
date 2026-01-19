@@ -19,10 +19,10 @@ function BorderRadiusContent() {
     return { x, y };
   }, [lightAngle]);
 
-  const LIGHT = {
-    base: '#e0e5ec',
-    shadowDark: 'hsl(220 15% 72%)',
-    shadowLight: 'hsl(0 0% 100%)',
+  const MARBLE = {
+    base: '#d5d8dc',
+    shadowDark: '#a8acb3',
+    shadowLight: '#ffffff',
   };
 
   // Neumorphic elevated shadow
@@ -32,7 +32,7 @@ function BorderRadiusContent() {
     const hlY = -y * distance;
     const shX = x * distance;
     const shY = y * distance;
-    return `${hlX}px ${hlY}px ${blur}px ${LIGHT.shadowLight}, ${shX}px ${shY}px ${blur}px ${LIGHT.shadowDark}`;
+    return `${hlX}px ${hlY}px ${blur}px ${MARBLE.shadowLight}, ${shX}px ${shY}px ${blur}px ${MARBLE.shadowDark}`;
   };
 
   // Neumorphic inset shadow
@@ -40,7 +40,7 @@ function BorderRadiusContent() {
     const { x, y } = shadowOffsets;
     const shX = x * distance;
     const shY = y * distance;
-    return `inset ${shX}px ${shY}px ${blur}px ${LIGHT.shadowDark}, inset ${-shX}px ${-shY}px ${blur}px ${LIGHT.shadowLight}`;
+    return `inset ${shX}px ${shY}px ${blur}px ${MARBLE.shadowDark}, inset ${-shX}px ${-shY}px ${blur}px ${MARBLE.shadowLight}`;
   };
 
   // Glass reflection
@@ -73,7 +73,7 @@ function BorderRadiusContent() {
   const pageHeaderStyles: React.CSSProperties = {
     marginBottom: '32px',
     padding: '24px',
-    background: LIGHT.base,
+    background: MARBLE.base,
     borderRadius: '15px',
     boxShadow: getNeuPanelShadow(20, 60),
     transition: 'box-shadow 50ms linear',
@@ -108,7 +108,7 @@ function BorderRadiusContent() {
   const neuBox = (radius: string): React.CSSProperties => ({
     width: '100px',
     height: '100px',
-    background: LIGHT.base,
+    background: MARBLE.base,
     borderRadius: radius,
     display: 'flex',
     flexDirection: 'column',
@@ -138,13 +138,13 @@ function BorderRadiusContent() {
 
   const neuButton = (radius: string): React.CSSProperties => ({
     padding: '12px 24px',
-    background: LIGHT.base,
+    background: MARBLE.base,
     borderRadius: radius,
     border: 'none',
     boxShadow: getNeuPanelShadow(8, 24),
     fontSize: '14px',
     fontWeight: 600,
-    color: '#2D3436',
+    color: 'var(--sentinel-text-primary)',
     fontFamily: 'var(--sentinel-font-mono)',
     cursor: 'pointer',
     transition: 'box-shadow 50ms linear',
@@ -159,7 +159,7 @@ function BorderRadiusContent() {
     border: '1px solid hsla(175, 35%, 75%, 0.30)',
     fontSize: '14px',
     fontWeight: 600,
-    color: '#2D3436',
+    color: 'var(--sentinel-text-primary)',
     fontFamily: 'var(--sentinel-font-mono)',
     cursor: 'pointer',
     boxShadow: `${getGlassReflection()}, ${getLayeredShadow(175, 35)}`,
@@ -167,7 +167,7 @@ function BorderRadiusContent() {
   });
 
   return (
-    <div style={{ background: LIGHT.base, minHeight: '100%', padding: '24px' }}>
+    <div style={{ background: MARBLE.base, minHeight: '100%', padding: '24px' }}>
       {/* Page Header */}
       <header style={pageHeaderStyles}>
         <h1 style={titleStyles}>&gt; Border Radius_</h1>
@@ -185,10 +185,10 @@ function BorderRadiusContent() {
           {/* Neumorphic Square */}
           <div style={{ textAlign: 'center' }}>
             <div style={neuBox('15px')}>
-              <Square size={20} color="#4A9A9C" />
+              <Square size={20} color="#3a6a72" />
               <span style={{ fontSize: '11px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)' }}>Square</span>
             </div>
-            <div style={{ marginTop: '12px', fontSize: '12px', color: '#2D3436', fontWeight: 600, fontFamily: 'var(--sentinel-font-mono)' }}>
+            <div style={{ marginTop: '12px', fontSize: '12px', color: 'var(--sentinel-text-primary)', fontWeight: 600, fontFamily: 'var(--sentinel-font-mono)' }}>
               15px
             </div>
             <div style={{ fontSize: '10px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)' }}>
@@ -199,10 +199,10 @@ function BorderRadiusContent() {
           {/* Neumorphic Rectangle */}
           <div style={{ textAlign: 'center' }}>
             <div style={{ ...neuBox('15px'), width: '160px', height: '80px' }}>
-              <RectangleHorizontal size={20} color="#4A9A9C" />
+              <RectangleHorizontal size={20} color="#3a6a72" />
               <span style={{ fontSize: '11px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)' }}>Rectangle</span>
             </div>
-            <div style={{ marginTop: '12px', fontSize: '12px', color: '#2D3436', fontWeight: 600, fontFamily: 'var(--sentinel-font-mono)' }}>
+            <div style={{ marginTop: '12px', fontSize: '12px', color: 'var(--sentinel-text-primary)', fontWeight: 600, fontFamily: 'var(--sentinel-font-mono)' }}>
               15px
             </div>
             <div style={{ fontSize: '10px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)' }}>
@@ -216,7 +216,7 @@ function BorderRadiusContent() {
               <Square size={20} color="#2d5a5c" />
               <span style={{ fontSize: '11px', color: '#3d6a6c', fontFamily: 'var(--sentinel-font-mono)' }}>Square</span>
             </div>
-            <div style={{ marginTop: '12px', fontSize: '12px', color: '#2D3436', fontWeight: 600, fontFamily: 'var(--sentinel-font-mono)' }}>
+            <div style={{ marginTop: '12px', fontSize: '12px', color: 'var(--sentinel-text-primary)', fontWeight: 600, fontFamily: 'var(--sentinel-font-mono)' }}>
               15px
             </div>
             <div style={{ fontSize: '10px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)' }}>
@@ -230,7 +230,7 @@ function BorderRadiusContent() {
               <RectangleHorizontal size={20} color="#1e3a5c" />
               <span style={{ fontSize: '11px', color: '#2d4a6b', fontFamily: 'var(--sentinel-font-mono)' }}>Rectangle</span>
             </div>
-            <div style={{ marginTop: '12px', fontSize: '12px', color: '#2D3436', fontWeight: 600, fontFamily: 'var(--sentinel-font-mono)' }}>
+            <div style={{ marginTop: '12px', fontSize: '12px', color: 'var(--sentinel-text-primary)', fontWeight: 600, fontFamily: 'var(--sentinel-font-mono)' }}>
               15px
             </div>
             <div style={{ fontSize: '10px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)' }}>
@@ -249,10 +249,10 @@ function BorderRadiusContent() {
           {/* Neumorphic Circle */}
           <div style={{ textAlign: 'center' }}>
             <div style={neuBox('50%')}>
-              <Circle size={20} color="#4A9A9C" />
+              <Circle size={20} color="#3a6a72" />
               <span style={{ fontSize: '11px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)' }}>Circle</span>
             </div>
-            <div style={{ marginTop: '12px', fontSize: '12px', color: '#2D3436', fontWeight: 600, fontFamily: 'var(--sentinel-font-mono)' }}>
+            <div style={{ marginTop: '12px', fontSize: '12px', color: 'var(--sentinel-text-primary)', fontWeight: 600, fontFamily: 'var(--sentinel-font-mono)' }}>
               50%
             </div>
             <div style={{ fontSize: '10px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)' }}>
@@ -266,7 +266,7 @@ function BorderRadiusContent() {
               <Circle size={20} color="#2d5a4a" />
               <span style={{ fontSize: '11px', color: '#3d6a5c', fontFamily: 'var(--sentinel-font-mono)' }}>Circle</span>
             </div>
-            <div style={{ marginTop: '12px', fontSize: '12px', color: '#2D3436', fontWeight: 600, fontFamily: 'var(--sentinel-font-mono)' }}>
+            <div style={{ marginTop: '12px', fontSize: '12px', color: 'var(--sentinel-text-primary)', fontWeight: 600, fontFamily: 'var(--sentinel-font-mono)' }}>
               50%
             </div>
             <div style={{ fontSize: '10px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)' }}>
@@ -277,9 +277,9 @@ function BorderRadiusContent() {
           {/* Neumorphic Pill */}
           <div style={{ textAlign: 'center' }}>
             <div style={{ ...neuBox('9999px'), width: '140px', height: '48px', flexDirection: 'row', gap: '8px' }}>
-              <span style={{ fontSize: '12px', fontWeight: 600, color: '#2D3436', fontFamily: 'var(--sentinel-font-mono)' }}>Pill Badge</span>
+              <span style={{ fontSize: '12px', fontWeight: 600, color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)' }}>Pill Badge</span>
             </div>
-            <div style={{ marginTop: '12px', fontSize: '12px', color: '#2D3436', fontWeight: 600, fontFamily: 'var(--sentinel-font-mono)' }}>
+            <div style={{ marginTop: '12px', fontSize: '12px', color: 'var(--sentinel-text-primary)', fontWeight: 600, fontFamily: 'var(--sentinel-font-mono)' }}>
               9999px
             </div>
             <div style={{ fontSize: '10px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)' }}>
@@ -292,7 +292,7 @@ function BorderRadiusContent() {
             <div style={{ ...glassBox('9999px', 280, 40), width: '140px', height: '48px', flexDirection: 'row', gap: '8px' }}>
               <span style={{ fontSize: '12px', fontWeight: 600, color: '#4a2d6a', fontFamily: 'var(--sentinel-font-mono)' }}>Glass Pill</span>
             </div>
-            <div style={{ marginTop: '12px', fontSize: '12px', color: '#2D3436', fontWeight: 600, fontFamily: 'var(--sentinel-font-mono)' }}>
+            <div style={{ marginTop: '12px', fontSize: '12px', color: 'var(--sentinel-text-primary)', fontWeight: 600, fontFamily: 'var(--sentinel-font-mono)' }}>
               9999px
             </div>
             <div style={{ fontSize: '10px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)' }}>
@@ -333,7 +333,7 @@ function BorderRadiusContent() {
         description="Panel elevado con elementos inset internos - todos usan 15px"
       >
         <div style={{
-          background: LIGHT.base,
+          background: MARBLE.base,
           borderRadius: '15px',
           padding: '24px',
           boxShadow: getNeuPanelShadow(20, 60),
@@ -354,7 +354,7 @@ function BorderRadiusContent() {
                 padding: '20px',
                 borderRadius: '15px',
                 boxShadow: getNeuInsetShadow(5, 15),
-                background: LIGHT.base,
+                background: MARBLE.base,
                 transition: 'box-shadow 50ms linear',
                 textAlign: 'center',
               }}>
@@ -379,7 +379,7 @@ function BorderRadiusContent() {
           padding: '20px',
           borderRadius: '15px',
           boxShadow: getNeuInsetShadow(5, 15),
-          background: LIGHT.base,
+          background: MARBLE.base,
           transition: 'box-shadow 50ms linear',
         }}>
           <div style={specTextStyles}>
@@ -406,7 +406,7 @@ function BorderRadiusContent() {
           padding: '20px',
           borderRadius: '15px',
           boxShadow: getNeuInsetShadow(5, 15),
-          background: LIGHT.base,
+          background: MARBLE.base,
           fontSize: '12px',
           fontFamily: 'var(--sentinel-font-mono)',
           color: 'var(--sentinel-text-secondary)',

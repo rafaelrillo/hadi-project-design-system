@@ -36,32 +36,32 @@ describe('Card Component', () => {
     });
   });
 
-  describe('Variants', () => {
-    it('should render success variant', () => {
-      const { container } = render(<Card variant="success">Content</Card>);
+  describe('Status', () => {
+    it('should render success status', () => {
+      const { container } = render(<Card status="success">Content</Card>);
       const card = container.firstChild as HTMLElement;
       expect(card).toBeInTheDocument();
     });
 
-    it('should render warning variant', () => {
-      const { container } = render(<Card variant="warning">Content</Card>);
+    it('should render warning status', () => {
+      const { container } = render(<Card status="warning">Content</Card>);
       const card = container.firstChild as HTMLElement;
       expect(card).toBeInTheDocument();
     });
 
-    it('should render error variant', () => {
-      const { container } = render(<Card variant="error">Content</Card>);
+    it('should render error status', () => {
+      const { container } = render(<Card status="error">Content</Card>);
       const card = container.firstChild as HTMLElement;
       expect(card).toBeInTheDocument();
     });
 
-    it('should render neutral variant', () => {
-      const { container } = render(<Card variant="neutral">Content</Card>);
+    it('should render neutral status', () => {
+      const { container } = render(<Card status="neutral">Content</Card>);
       const card = container.firstChild as HTMLElement;
       expect(card).toBeInTheDocument();
     });
 
-    it('should render without variant border when variant is not specified', () => {
+    it('should render without status border when status is not specified', () => {
       const { container } = render(<Card>Content</Card>);
       const card = container.firstChild as HTMLElement;
       expect(card).toBeInTheDocument();
@@ -153,7 +153,7 @@ describe('Card Component', () => {
 
     it('should render success notification card', () => {
       render(
-        <Card variant="success">
+        <Card status="success">
           <div>Operation completed successfully!</div>
         </Card>
       );
@@ -162,7 +162,7 @@ describe('Card Component', () => {
 
     it('should render error notification card', () => {
       render(
-        <Card variant="error">
+        <Card status="error">
           <div>An error occurred</div>
         </Card>
       );
@@ -194,7 +194,7 @@ describe('Card Component', () => {
         <Card
           header={<h3>Complex Card</h3>}
           footer={<div>Footer Content</div>}
-          variant="success"
+          status="success"
           className="custom-card"
         >
           <p>Body content with all features</p>
@@ -209,14 +209,14 @@ describe('Card Component', () => {
       expect(card).toHaveClass('custom-card');
     });
 
-    it('should render multiple cards with different variants', () => {
-      const { rerender } = render(<Card variant="success">Success Card</Card>);
+    it('should render multiple cards with different status values', () => {
+      const { rerender } = render(<Card status="success">Success Card</Card>);
       expect(screen.getByText('Success Card')).toBeInTheDocument();
 
-      rerender(<Card variant="error">Error Card</Card>);
+      rerender(<Card status="error">Error Card</Card>);
       expect(screen.getByText('Error Card')).toBeInTheDocument();
 
-      rerender(<Card variant="warning">Warning Card</Card>);
+      rerender(<Card status="warning">Warning Card</Card>);
       expect(screen.getByText('Warning Card')).toBeInTheDocument();
     });
   });

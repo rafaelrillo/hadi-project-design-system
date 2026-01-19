@@ -175,18 +175,18 @@ export function Sidebar({
   // Neumorphic shadow generators
   const getNeuPanelShadow = (distance: number, blur: number): string => {
     if (!shadowOffsets) {
-      return `${distance}px ${distance}px ${blur}px #a3b1c6, ${-distance}px ${-distance}px ${blur}px #ffffff`;
+      return `${distance}px ${distance}px ${blur}px #a8acb3, ${-distance}px ${-distance}px ${blur}px #ffffff`;
     }
     const { x, y } = shadowOffsets;
-    return `${x * distance}px ${y * distance}px ${blur}px #a3b1c6, ${-x * distance}px ${-y * distance}px ${blur}px #ffffff`;
+    return `${x * distance}px ${y * distance}px ${blur}px #a8acb3, ${-x * distance}px ${-y * distance}px ${blur}px #ffffff`;
   };
 
   const getNeuInsetShadow = (distance: number, blur: number): string => {
     if (!shadowOffsets) {
-      return `inset ${distance}px ${distance}px ${blur}px #a3b1c6, inset ${-distance}px ${-distance}px ${blur}px #ffffff`;
+      return `inset ${distance}px ${distance}px ${blur}px #a8acb3, inset ${-distance}px ${-distance}px ${blur}px #ffffff`;
     }
     const { x, y } = shadowOffsets;
-    return `inset ${x * distance}px ${y * distance}px ${blur}px #a3b1c6, inset ${-x * distance}px ${-y * distance}px ${blur}px #ffffff`;
+    return `inset ${x * distance}px ${y * distance}px ${blur}px #a8acb3, inset ${-x * distance}px ${-y * distance}px ${blur}px #ffffff`;
   };
 
   // Build sidebar className

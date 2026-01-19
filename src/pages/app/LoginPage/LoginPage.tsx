@@ -6,6 +6,7 @@ import { useAuthStore } from "../../../store/authStore";
 import { AtmosphericBackground } from "../../../components/atoms/sentinel/AtmosphericBackground";
 import { InputText } from "../../../components/atoms/Input";
 import { FingEmblem } from "../../../components/atoms/FingEmblem";
+import { FingWordmarkText } from "../../../components/atoms/FingWordmark";
 import styles from "./LoginPage.module.css";
 
 export function LoginPage() {
@@ -52,8 +53,8 @@ export function LoginPage() {
           {/* FING Emblem with framed variant (outer raised + inner inset) */}
           <FingEmblem size={140} animation="rippleSlow" variant="framed" />
           <div className={styles.brandText}>
-            <h1 className={styles.title}>fing</h1>
-            <p className={styles.subtitle}>Quiet intelligence</p>
+            <FingWordmarkText variant="carved" size={72} />
+            <p className={styles.subtitle}>Finance engine.</p>
           </div>
         </div>
 

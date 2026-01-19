@@ -34,6 +34,8 @@ export interface FingEmblemProps {
   borderRadius?: number | string;
   /** Visual variant: 'simple' (inset only) or 'framed' (outer raised + inner inset) */
   variant?: FingEmblemVariant;
+  /** SVG scale relative to container (0-1, default: 0.65 for simple, 0.52 for framed) */
+  svgScale?: number;
 }
 
 // ═══════════════════════════════════════════════════════════════════════════════
@@ -169,6 +171,7 @@ export const FingEmblem: React.FC<FingEmblemProps> = ({
   wordmarkPosition = 'right',
   borderRadius,
   variant = 'simple',
+  svgScale,
 }) => {
   const containerClasses = [
     styles.emblemContainer,
@@ -185,7 +188,7 @@ export const FingEmblem: React.FC<FingEmblemProps> = ({
   if (variant === 'framed') {
     const outerSize = size;
     const innerSize = size * 0.75;
-    const svgSize = size * 0.52;
+    const framedSvgSize = size * (svgScale ?? 0.52);
 
     return (
       <div className={containerClasses}>
@@ -207,7 +210,7 @@ export const FingEmblem: React.FC<FingEmblemProps> = ({
               borderRadius: radiusStyle,
             }}
           >
-            <RadarSymbol size={svgSize} animation={animation} />
+            <RadarSymbol size={framedSvgSize} animation={animation} />
           </div>
         </div>
         {showWordmark && <Wordmark size={size} />}
@@ -216,7 +219,7 @@ export const FingEmblem: React.FC<FingEmblemProps> = ({
   }
 
   // Simple variant: single inset container
-  const svgSize = size * 0.65;
+  const svgSize = size * (svgScale ?? 0.65);
 
   const insetClasses = [
     styles.emblemInset,

@@ -19,10 +19,10 @@ function ShadowsContent() {
     return { x, y };
   }, [lightAngle]);
 
-  const LIGHT = {
-    base: '#e0e5ec',
-    shadowDark: 'hsl(220 15% 72%)',
-    shadowLight: 'hsl(0 0% 100%)',
+  const MARBLE = {
+    base: '#d5d8dc',
+    shadowDark: '#a8acb3',
+    shadowLight: '#ffffff',
   };
 
   // Neumorphic elevated shadow
@@ -32,7 +32,7 @@ function ShadowsContent() {
     const hlY = -y * distance;
     const shX = x * distance;
     const shY = y * distance;
-    return `${hlX}px ${hlY}px ${blur}px ${LIGHT.shadowLight}, ${shX}px ${shY}px ${blur}px ${LIGHT.shadowDark}`;
+    return `${hlX}px ${hlY}px ${blur}px ${MARBLE.shadowLight}, ${shX}px ${shY}px ${blur}px ${MARBLE.shadowDark}`;
   };
 
   // Neumorphic inset shadow
@@ -40,7 +40,7 @@ function ShadowsContent() {
     const { x, y } = shadowOffsets;
     const shX = x * distance;
     const shY = y * distance;
-    return `inset ${shX}px ${shY}px ${blur}px ${LIGHT.shadowDark}, inset ${-shX}px ${-shY}px ${blur}px ${LIGHT.shadowLight}`;
+    return `inset ${shX}px ${shY}px ${blur}px ${MARBLE.shadowDark}, inset ${-shX}px ${-shY}px ${blur}px ${MARBLE.shadowLight}`;
   };
 
   // Layered shadow for glass elements
@@ -73,7 +73,7 @@ function ShadowsContent() {
   const pageHeaderStyles: React.CSSProperties = {
     marginBottom: '32px',
     padding: '24px',
-    background: LIGHT.base,
+    background: MARBLE.base,
     borderRadius: '15px',
     boxShadow: getNeuPanelShadow(20, 60),
     transition: 'box-shadow 50ms linear',
@@ -108,7 +108,7 @@ function ShadowsContent() {
   const neuElevatedBox = (level: number): React.CSSProperties => ({
     width: '120px',
     height: '120px',
-    background: LIGHT.base,
+    background: MARBLE.base,
     borderRadius: '15px',
     display: 'flex',
     flexDirection: 'column',
@@ -122,7 +122,7 @@ function ShadowsContent() {
   const neuInsetBox: React.CSSProperties = {
     width: '120px',
     height: '120px',
-    background: LIGHT.base,
+    background: MARBLE.base,
     borderRadius: '15px',
     display: 'flex',
     flexDirection: 'column',
@@ -151,7 +151,7 @@ function ShadowsContent() {
   });
 
   return (
-    <div style={{ background: LIGHT.base, minHeight: '100%', padding: '24px' }}>
+    <div style={{ background: MARBLE.base, minHeight: '100%', padding: '24px' }}>
       {/* Page Header */}
       <header style={pageHeaderStyles}>
         <h1 style={titleStyles}>&gt; Shadows_</h1>
@@ -169,7 +169,7 @@ function ShadowsContent() {
           {[1, 2, 3, 4, 5].map((level) => (
             <div key={level} style={{ textAlign: 'center' }}>
               <div style={neuElevatedBox(level)}>
-                <div style={{ fontSize: '24px', fontWeight: 700, color: '#2D3436', fontFamily: 'var(--sentinel-font-mono)' }}>
+                <div style={{ fontSize: '24px', fontWeight: 700, color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)' }}>
                   {level}
                 </div>
                 <div style={{ fontSize: '10px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)' }}>
@@ -200,7 +200,7 @@ function ShadowsContent() {
                 ...neuInsetBox,
                 boxShadow: getNeuInsetShadow(config.dist, config.blur),
               }}>
-                <div style={{ fontSize: '14px', fontWeight: 600, color: '#2D3436', fontFamily: 'var(--sentinel-font-mono)' }}>
+                <div style={{ fontSize: '14px', fontWeight: 600, color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)' }}>
                   {config.label}
                 </div>
                 <div style={{ fontSize: '10px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)' }}>
@@ -252,7 +252,7 @@ function ShadowsContent() {
         description="Combinación de elevated panel con elementos inset internos"
       >
         <div style={{
-          background: LIGHT.base,
+          background: MARBLE.base,
           borderRadius: '15px',
           padding: '24px',
           boxShadow: getNeuPanelShadow(20, 60),
@@ -264,10 +264,10 @@ function ShadowsContent() {
               padding: '20px',
               borderRadius: '15px',
               boxShadow: getNeuInsetShadow(5, 15),
-              background: LIGHT.base,
+              background: MARBLE.base,
               transition: 'box-shadow 50ms linear',
             }}>
-              <div style={{ fontSize: '13px', fontWeight: 600, color: '#2D3436', marginBottom: '4px' }}>Inset Content</div>
+              <div style={{ fontSize: '13px', fontWeight: 600, color: 'var(--sentinel-text-primary)', marginBottom: '4px' }}>Inset Content</div>
               <div style={{ fontSize: '11px', color: '#636E72' }}>Area hundida dentro del panel</div>
             </div>
             <div style={{
@@ -275,10 +275,10 @@ function ShadowsContent() {
               padding: '20px',
               borderRadius: '15px',
               boxShadow: getNeuInsetShadow(5, 15),
-              background: LIGHT.base,
+              background: MARBLE.base,
               transition: 'box-shadow 50ms linear',
             }}>
-              <div style={{ fontSize: '13px', fontWeight: 600, color: '#2D3436', marginBottom: '4px' }}>Inset Content</div>
+              <div style={{ fontSize: '13px', fontWeight: 600, color: 'var(--sentinel-text-primary)', marginBottom: '4px' }}>Inset Content</div>
               <div style={{ fontSize: '11px', color: '#636E72' }}>Area hundida dentro del panel</div>
             </div>
           </div>
@@ -286,7 +286,7 @@ function ShadowsContent() {
             padding: '16px',
             borderRadius: '15px',
             boxShadow: getNeuInsetShadow(3, 10),
-            background: LIGHT.base,
+            background: MARBLE.base,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -310,7 +310,7 @@ function ShadowsContent() {
           padding: '20px',
           borderRadius: '15px',
           boxShadow: getNeuInsetShadow(5, 15),
-          background: LIGHT.base,
+          background: MARBLE.base,
           transition: 'box-shadow 50ms linear',
         }}>
           <div style={specTextStyles}>
@@ -342,7 +342,7 @@ function ShadowsContent() {
           padding: '20px',
           borderRadius: '15px',
           boxShadow: getNeuInsetShadow(5, 15),
-          background: LIGHT.base,
+          background: MARBLE.base,
           fontSize: '12px',
           fontFamily: 'var(--sentinel-font-mono)',
           color: 'var(--sentinel-text-secondary)',
@@ -350,7 +350,7 @@ function ShadowsContent() {
         }}>
           <pre style={{ margin: 0, whiteSpace: 'pre-wrap' }}>{`// Neumorphic Panel (elevated)
 const neuPanel = {
-  background: '#e0e5ec',
+  background: '#d5d8dc',
   borderRadius: '15px',
   boxShadow: \`
     \${-x * 20}px \${-y * 20}px 60px #ffffff,
@@ -360,7 +360,7 @@ const neuPanel = {
 
 // Neumorphic Inset (carved)
 const neuInset = {
-  background: '#e0e5ec',
+  background: '#d5d8dc',
   borderRadius: '15px',
   boxShadow: \`
     inset \${x * 5}px \${y * 5}px 15px hsl(220, 15%, 72%),

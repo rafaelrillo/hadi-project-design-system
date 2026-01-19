@@ -18,26 +18,26 @@ function LayoutAnimationsContent() {
     return { x: Math.cos(shadowAngle), y: Math.sin(shadowAngle) };
   }, [lightAngle]);
 
-  const LIGHT = {
-    base: '#e0e5ec',
-    shadowDark: 'hsl(220 15% 72%)',
-    shadowLight: 'hsl(0 0% 100%)',
+  const MARBLE = {
+    base: '#d5d8dc',
+    shadowDark: '#a8acb3',
+    shadowLight: '#ffffff',
   };
 
   const getNeuPanelShadow = (distance: number, blur: number): string => {
     const { x, y } = shadowOffsets;
-    return `${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}`;
+    return `${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}`;
   };
 
   const getNeuInsetShadow = (distance: number, blur: number): string => {
     const { x, y } = shadowOffsets;
-    return `inset ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}`;
+    return `inset ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}`;
   };
 
   const pageHeaderStyles: React.CSSProperties = {
     marginBottom: '32px',
     padding: '24px',
-    background: LIGHT.base,
+    background: MARBLE.base,
     borderRadius: '15px',
     boxShadow: getNeuPanelShadow(20, 60),
     transition: 'box-shadow 50ms linear',
@@ -63,7 +63,7 @@ function LayoutAnimationsContent() {
 
   const cardStyles: React.CSSProperties = {
     padding: '24px',
-    background: LIGHT.base,
+    background: MARBLE.base,
     borderRadius: '15px',
     boxShadow: getNeuPanelShadow(6, 18),
     transition: 'box-shadow 50ms linear',
@@ -71,7 +71,7 @@ function LayoutAnimationsContent() {
 
   const buttonStyles: React.CSSProperties = {
     padding: '12px 24px',
-    background: LIGHT.base,
+    background: MARBLE.base,
     color: 'var(--sentinel-accent-primary)',
     border: 'none',
     borderRadius: '15px',
@@ -91,14 +91,14 @@ function LayoutAnimationsContent() {
   ];
 
   return (
-    <div style={{ background: LIGHT.base, minHeight: '100%', padding: '24px' }}>
+    <div style={{ background: MARBLE.base, minHeight: '100%', padding: '24px' }}>
       <header style={pageHeaderStyles}>
         <h1 style={titleStyles}>&gt; Layout Animations_</h1>
         <p style={descStyles}>// Transiciones de layout y AnimatePresence</p>
       </header>
 
       <ShowcaseSection title="SharedElement" description="Transición suave entre estados">
-        <div style={{ padding: '24px', background: LIGHT.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
+        <div style={{ padding: '24px', background: MARBLE.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
           <div style={{ width: '100%' }}>
             <LayoutContainer>
               {/* Grid de nodos - siempre visible */}
@@ -119,7 +119,7 @@ function LayoutAnimationsContent() {
                   >
                     <Box style={{ color: expandedId === id ? 'var(--sentinel-accent-primary)' : '#636E72', marginBottom: '8px' }} size={20} />
                     <h4 style={{
-                      color: expandedId === id ? 'var(--sentinel-accent-primary)' : '#2D3436',
+                      color: expandedId === id ? 'var(--sentinel-accent-primary)' : 'var(--sentinel-text-primary)',
                       fontFamily: 'var(--sentinel-font-mono)',
                       fontSize: '14px',
                       marginBottom: '4px'
@@ -176,7 +176,7 @@ function LayoutAnimationsContent() {
       </ShowcaseSection>
 
       <ShowcaseSection title="AnimatePresence - Toggle" description="Animación de entrada/salida">
-        <div style={{ padding: '24px', background: LIGHT.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
+        <div style={{ padding: '24px', background: MARBLE.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
           <div style={{ width: '100%' }}>
             <motion.button
               style={{ ...buttonStyles, marginBottom: '24px' }}
@@ -210,7 +210,7 @@ function LayoutAnimationsContent() {
       </ShowcaseSection>
 
       <ShowcaseSection title="Card Selection" description="Selección con panel expandible">
-        <div style={{ padding: '24px', background: LIGHT.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
+        <div style={{ padding: '24px', background: MARBLE.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
           <div style={{ width: '100%' }}>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px', marginBottom: '24px' }}>
               {gridCards.map((card) => (
@@ -225,7 +225,7 @@ function LayoutAnimationsContent() {
                   whileTap={{ scale: 0.98 }}
                   onClick={() => setSelectedCard(selectedCard === card.id ? null : card.id)}
                 >
-                  <h4 style={{ color: '#2D3436', fontFamily: 'var(--sentinel-font-mono)', fontSize: '14px' }}>{card.title}</h4>
+                  <h4 style={{ color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)', fontSize: '14px' }}>{card.title}</h4>
                 </motion.div>
               ))}
             </div>
@@ -260,7 +260,7 @@ function LayoutAnimationsContent() {
           padding: '20px',
           borderRadius: '15px',
           boxShadow: getNeuInsetShadow(5, 15),
-          background: LIGHT.base,
+          background: MARBLE.base,
           fontSize: '12px',
           fontFamily: 'var(--sentinel-font-mono)',
           color: '#636E72',

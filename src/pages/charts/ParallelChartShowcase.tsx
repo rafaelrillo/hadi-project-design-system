@@ -22,7 +22,7 @@ const stockDimensions: ParallelDimension[] = [
 const stockData: ParallelSeriesData[] = [
   { name: 'AAPL', value: [28, 35, 25, 1.2, 0.5, 8], color: '#5ba3a5' },
   { name: 'MSFT', value: [32, 12, 35, 0.4, 0.8, 12], color: '#7ecbcc' },
-  { name: 'GOOGL', value: [25, 6, 28, 0.1, 0, 15], color: '#4a9a7c' },
+  { name: 'GOOGL', value: [25, 6, 28, 0.1, 0, 15], color: '#4a7a6a' },
   { name: 'AMZN', value: [45, 8, 18, 0.8, 0, 22], color: '#c4a35a' },
   { name: 'JNJ', value: [15, 5, 22, 0.5, 2.8, 5], color: '#8b7ec7' },
   { name: 'JPM', value: [10, 1.5, 15, 1.2, 3.2, 8], color: '#c47a5a' },
@@ -39,7 +39,7 @@ const portfolioDimensions: ParallelDimension[] = [
 const portfolioData: ParallelSeriesData[] = [
   { name: 'Aggressive', value: [35, 28, 1.2, 35, 1.4], color: '#b85c5c' },
   { name: 'Balanced', value: [18, 15, 1.5, 18, 0.9], color: '#5ba3a5' },
-  { name: 'Conservative', value: [8, 8, 1.1, 8, 0.5], color: '#4a9a7c' },
+  { name: 'Conservative', value: [8, 8, 1.1, 8, 0.5], color: '#4a7a6a' },
   { name: 'Income', value: [12, 10, 1.3, 12, 0.6], color: '#c4a35a' },
 ];
 
@@ -55,24 +55,24 @@ function ParallelChartContent() {
     return { x: Math.cos(shadowAngle), y: Math.sin(shadowAngle) };
   }, [lightAngle]);
 
-  const LIGHT = {
-    base: '#e0e5ec',
-    shadowDark: 'hsl(220 15% 72%)',
-    shadowLight: 'hsl(0 0% 100%)',
+  const MARBLE = {
+    base: '#d5d8dc',
+    shadowDark: '#a8acb3',
+    shadowLight: '#ffffff',
   };
 
   const getNeuPanelShadow = (distance: number, blur: number): string => {
     const { x, y } = shadowOffsets;
-    return `${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}`;
+    return `${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}`;
   };
 
   const getNeuInsetShadow = (distance: number, blur: number): string => {
     const { x, y } = shadowOffsets;
-    return `inset ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}`;
+    return `inset ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}`;
   };
 
   const pageHeaderStyles: React.CSSProperties = {
-    marginBottom: '32px', padding: '24px', background: LIGHT.base, borderRadius: '15px',
+    marginBottom: '32px', padding: '24px', background: MARBLE.base, borderRadius: '15px',
     boxShadow: getNeuPanelShadow(20, 60), transition: 'box-shadow 50ms linear',
   };
 
@@ -87,17 +87,17 @@ function ParallelChartContent() {
   };
 
   const chartContainerStyles: React.CSSProperties = {
-    padding: '24px', background: LIGHT.base, borderRadius: '15px',
+    padding: '24px', background: MARBLE.base, borderRadius: '15px',
     boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear',
   };
 
   const tableContainerStyles: React.CSSProperties = {
     padding: '20px', borderRadius: '15px', boxShadow: getNeuInsetShadow(5, 15),
-    background: LIGHT.base, overflowX: 'auto', transition: 'box-shadow 50ms linear',
+    background: MARBLE.base, overflowX: 'auto', transition: 'box-shadow 50ms linear',
   };
 
   return (
-    <div style={{ background: LIGHT.base, minHeight: '100%', padding: '24px' }}>
+    <div style={{ background: MARBLE.base, minHeight: '100%', padding: '24px' }}>
       <header style={pageHeaderStyles}>
         <h1 style={titleStyles}>&gt; ParallelChart_</h1>
         <p style={descStyles}>// Visualización multi-dimensional con ejes paralelos</p>
@@ -147,7 +147,7 @@ function ParallelChartContent() {
                 { prop: 'colors', type: 'string[]', default: 'chartPalette', desc: 'Custom color palette' },
               ].map((row, i) => (
                 <tr key={i}>
-                  <td style={{ padding: '12px 16px', color: '#2D3436' }}>{row.prop}</td>
+                  <td style={{ padding: '12px 16px', color: 'var(--sentinel-text-primary)' }}>{row.prop}</td>
                   <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.type}</td>
                   <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.default}</td>
                   <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.desc}</td>

@@ -15,26 +15,26 @@ function DragAnimationsContent() {
     return { x: Math.cos(shadowAngle), y: Math.sin(shadowAngle) };
   }, [lightAngle]);
 
-  const LIGHT = {
-    base: '#e0e5ec',
-    shadowDark: 'hsl(220 15% 72%)',
-    shadowLight: 'hsl(0 0% 100%)',
+  const MARBLE = {
+    base: '#d5d8dc',
+    shadowDark: '#a8acb3',
+    shadowLight: '#ffffff',
   };
 
   const getNeuPanelShadow = (distance: number, blur: number): string => {
     const { x, y } = shadowOffsets;
-    return `${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}`;
+    return `${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}`;
   };
 
   const getNeuInsetShadow = (distance: number, blur: number): string => {
     const { x, y } = shadowOffsets;
-    return `inset ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}`;
+    return `inset ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}`;
   };
 
   const pageHeaderStyles: React.CSSProperties = {
     marginBottom: '32px',
     padding: '24px',
-    background: LIGHT.base,
+    background: MARBLE.base,
     borderRadius: '15px',
     boxShadow: getNeuPanelShadow(20, 60),
     transition: 'box-shadow 50ms linear',
@@ -59,20 +59,20 @@ function DragAnimationsContent() {
   };
 
   return (
-    <div style={{ background: LIGHT.base, minHeight: '100%', padding: '24px' }}>
+    <div style={{ background: MARBLE.base, minHeight: '100%', padding: '24px' }}>
       <header style={pageHeaderStyles}>
         <h1 style={titleStyles}>&gt; Drag Interactions_</h1>
         <p style={descStyles}>// Paneles arrastrables con Framer Motion</p>
       </header>
 
       <ShowcaseSection title="DraggablePanel" description="Paneles arrastrables con restricciones">
-        <div style={{ padding: '24px', background: LIGHT.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
+        <div style={{ padding: '24px', background: MARBLE.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
           <div
             ref={dragConstraintsRef}
             style={{
               width: '100%',
               height: '400px',
-              background: LIGHT.base,
+              background: MARBLE.base,
               borderRadius: '15px',
               boxShadow: getNeuInsetShadow(5, 15),
               position: 'relative',
@@ -105,14 +105,14 @@ function DragAnimationsContent() {
                 left: '20px',
                 width: '160px',
                 padding: '24px 16px 16px 16px',
-                background: LIGHT.base,
+                background: MARBLE.base,
                 borderRadius: '15px',
                 boxShadow: getNeuPanelShadow(6, 18),
                 borderLeft: '4px solid var(--sentinel-accent-primary)',
               }}
             >
               <Move style={{ color: 'var(--sentinel-accent-primary)', marginBottom: '8px' }} size={20} />
-              <h4 style={{ color: '#2D3436', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>Panel A</h4>
+              <h4 style={{ color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>Panel A</h4>
               <p style={{ color: '#636E72', fontFamily: 'var(--sentinel-font-mono)', fontSize: '10px' }}>Free movement</p>
             </DraggablePanel>
 
@@ -127,14 +127,14 @@ function DragAnimationsContent() {
                 right: '20px',
                 width: '160px',
                 padding: '24px 16px 16px 16px',
-                background: LIGHT.base,
+                background: MARBLE.base,
                 borderRadius: '15px',
                 boxShadow: getNeuPanelShadow(6, 18),
                 borderLeft: '4px solid var(--sentinel-status-positive)',
               }}
             >
               <Move style={{ color: 'var(--sentinel-status-positive)', marginBottom: '8px' }} size={20} />
-              <h4 style={{ color: '#2D3436', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>Panel B</h4>
+              <h4 style={{ color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>Panel B</h4>
               <p style={{ color: '#636E72', fontFamily: 'var(--sentinel-font-mono)', fontSize: '10px' }}>More elastic</p>
             </DraggablePanel>
 
@@ -150,7 +150,7 @@ function DragAnimationsContent() {
                 transform: 'translateX(-50%)',
                 width: '200px',
                 padding: '16px',
-                background: LIGHT.base,
+                background: MARBLE.base,
                 borderRadius: '15px',
                 boxShadow: getNeuPanelShadow(6, 18),
                 borderLeft: '4px solid var(--sentinel-status-warning)',
@@ -173,7 +173,7 @@ function DragAnimationsContent() {
                 left: '20px',
                 width: '120px',
                 padding: '16px',
-                background: LIGHT.base,
+                background: MARBLE.base,
                 borderRadius: '15px',
                 boxShadow: getNeuPanelShadow(6, 18),
                 borderLeft: '4px solid var(--sentinel-status-info)',
@@ -193,7 +193,7 @@ function DragAnimationsContent() {
           padding: '20px',
           borderRadius: '15px',
           boxShadow: getNeuInsetShadow(5, 15),
-          background: LIGHT.base,
+          background: MARBLE.base,
           fontSize: '12px',
           fontFamily: 'var(--sentinel-font-mono)',
           color: '#636E72',

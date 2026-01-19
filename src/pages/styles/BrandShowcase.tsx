@@ -1,6 +1,7 @@
 // Path: src/pages/styles/BrandShowcase.tsx
 // FING Brand Guidelines - Stone Marble Design System
 import React from 'react';
+import { FingEmblem, FingLockupHorizontal, FingLockupVertical, type FingEmblemAnimation } from '@atoms/FingEmblem';
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // FING LOGO COMPONENTS
@@ -107,7 +108,86 @@ const FingSymbol: React.FC<{ variant: 'dark' | 'stone' | 'white' | 'light'; size
 // ═══════════════════════════════════════════════════════════════════════════════
 
 export function BrandShowcase() {
-  // ═══ STYLES ═══
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // NEUMORPHIC TYPOGRAPHY SYSTEM
+  //
+  // REGLA CRÍTICA:
+  // - Contenedor RAISED → Tipografía INSET (cavada/debossed/engraved)
+  // - Contenedor INSET → Tipografía RAISED (elevada/embossed)
+  // - Fondo BASE → Tipografía INSET (el fondo actúa como superficie raised)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // Tipografía INSET (cavada) - para usar en contenedores RAISED o sobre fondo BASE
+  // La luz viene de arriba-izquierda, creando sombra abajo-derecha dentro del texto
+  const typoInset = {
+    whisper: {
+      color: 'var(--marble-dark)',
+      textShadow: '0.5px 0.5px 0px rgba(255, 255, 255, 0.7), -0.5px -0.5px 0px rgba(130, 140, 155, 0.4)',
+    } as React.CSSProperties,
+    soft: {
+      color: 'var(--marble-dark)',
+      textShadow: '0.75px 0.75px 0px rgba(255, 255, 255, 0.7), -0.75px -0.75px 0px rgba(130, 140, 155, 0.5)',
+    } as React.CSSProperties,
+    medium: {
+      color: 'var(--marble-dark)',
+      textShadow: '1px 1px 0px rgba(255, 255, 255, 0.8), -1px -1px 0px rgba(130, 140, 155, 0.5)',
+    } as React.CSSProperties,
+    strong: {
+      color: 'var(--marble-dark)',
+      textShadow: '1.5px 1.5px 1px rgba(255, 255, 255, 0.85), -1.5px -1.5px 1px rgba(130, 140, 155, 0.55)',
+    } as React.CSSProperties,
+    display: {
+      color: 'var(--marble-dark)',
+      textShadow: '2px 2px 1px rgba(255, 255, 255, 0.9), -2px -2px 1px rgba(130, 140, 155, 0.6)',
+    } as React.CSSProperties,
+  };
+
+  // Tipografía RAISED (elevada) - para usar en contenedores INSET
+  // La luz viene de arriba-izquierda, creando highlight arriba-izquierda del texto
+  const typoRaised = {
+    whisper: {
+      color: 'var(--marble-base)',
+      textShadow: '-0.5px -0.5px 0px rgba(255, 255, 255, 0.9), 0.5px 0.5px 0px rgba(147, 157, 170, 0.4)',
+    } as React.CSSProperties,
+    soft: {
+      color: 'var(--marble-base)',
+      textShadow: '-0.75px -0.75px 0px rgba(255, 255, 255, 0.9), 0.75px 0.75px 0px rgba(147, 157, 170, 0.45)',
+    } as React.CSSProperties,
+    medium: {
+      color: 'var(--marble-base)',
+      textShadow: '-1px -1px 0px rgba(255, 255, 255, 0.95), 1px 1px 0px rgba(147, 157, 170, 0.5)',
+    } as React.CSSProperties,
+    strong: {
+      color: 'var(--marble-base)',
+      textShadow: '-1.5px -1.5px 0px rgba(255, 255, 255, 0.95), 1.5px 1.5px 1px rgba(147, 157, 170, 0.55)',
+    } as React.CSSProperties,
+    display: {
+      color: 'var(--marble-base)',
+      textShadow: '-2px -2px 1px rgba(255, 255, 255, 0.95), 2px 2px 1px rgba(147, 157, 170, 0.6)',
+    } as React.CSSProperties,
+  };
+
+  // Tipografía con color de acento - para usar en contenedores INSET
+  const typoAccent = {
+    teal: {
+      color: 'var(--fing-teal)',
+      textShadow: '-0.75px -0.75px 0px rgba(255, 255, 255, 0.8), 0.75px 0.75px 0px rgba(58, 106, 114, 0.3)',
+    } as React.CSSProperties,
+    tealStrong: {
+      color: 'var(--fing-teal)',
+      textShadow: '-1px -1px 0px rgba(255, 255, 255, 0.85), 1px 1px 0px rgba(58, 106, 114, 0.35)',
+    } as React.CSSProperties,
+    positive: {
+      color: 'var(--fing-positive)',
+      textShadow: '-0.75px -0.75px 0px rgba(255, 255, 255, 0.8), 0.75px 0.75px 0px rgba(74, 154, 124, 0.3)',
+    } as React.CSSProperties,
+    negative: {
+      color: 'var(--fing-negative)',
+      textShadow: '-0.75px -0.75px 0px rgba(255, 255, 255, 0.8), 0.75px 0.75px 0px rgba(201, 138, 138, 0.3)',
+    } as React.CSSProperties,
+  };
+
+  // ═══ CONTAINER STYLES ═══
   const showcaseStyles: React.CSSProperties = {
     minHeight: '100vh',
     background: 'var(--marble-base)',
@@ -120,23 +200,7 @@ export function BrandShowcase() {
     marginBottom: '48px',
   };
 
-  const headerTitleStyles: React.CSSProperties = {
-    fontFamily: 'var(--sentinel-font-display)',
-    fontSize: '36px',
-    fontWeight: 700,
-    letterSpacing: '-0.02em',
-    color: 'var(--marble-base)',
-    textShadow: '2px 2px 2px var(--shadow-light), -2px -2px 2px var(--shadow-dark)',
-    marginBottom: '8px',
-  };
-
-  const headerSubtitleStyles: React.CSSProperties = {
-    fontSize: '16px',
-    fontStyle: 'italic',
-    color: 'var(--marble-base)',
-    textShadow: '0.75px 0.75px 0px var(--shadow-light), -0.75px -0.75px 0px var(--shadow-dark)',
-  };
-
+  // RAISED container (section) styles
   const sectionStyles: React.CSSProperties = {
     background: 'var(--marble-base)',
     borderRadius: '24px',
@@ -145,18 +209,7 @@ export function BrandShowcase() {
     marginBottom: '24px',
   };
 
-  const sectionTitleStyles: React.CSSProperties = {
-    fontFamily: 'var(--sentinel-font-primary)',
-    fontSize: '11px',
-    fontWeight: 600,
-    letterSpacing: '0.15em',
-    textTransform: 'uppercase',
-    color: 'var(--fing-teal)',
-    marginBottom: '24px',
-    paddingBottom: '12px',
-    borderBottom: '1px solid var(--marble-dark)',
-  };
-
+  // INSET container styles
   const insetStyles: React.CSSProperties = {
     background: 'var(--marble-base)',
     borderRadius: '16px',
@@ -164,30 +217,12 @@ export function BrandShowcase() {
     padding: '24px',
   };
 
-  // Letterpress for RAISED surfaces
-  const lpRaised = (intensity: 'soft' | 'medium'): React.CSSProperties => {
-    const shadows = {
-      soft: '0.75px 0.75px 0px var(--shadow-light), -0.75px -0.75px 0px var(--shadow-dark)',
-      medium: '1px 1px 1px var(--shadow-light), -1px -1px 1px var(--shadow-dark)',
-    };
-    return { color: 'var(--marble-base)', textShadow: shadows[intensity] };
-  };
-
-  // Letterpress for INSET surfaces (inverted shadows)
-  const lpInset = (intensity: 'soft' | 'medium'): React.CSSProperties => {
-    const shadows = {
-      soft: '-0.75px -0.75px 0px var(--shadow-light), 0.75px 0.75px 0px var(--shadow-dark)',
-      medium: '-1px -1px 1px var(--shadow-light), 1px 1px 1px var(--shadow-dark)',
-    };
-    return { color: 'var(--marble-base)', textShadow: shadows[intensity] };
-  };
-
   // ═══ DATA ═══
   const brandColors = [
-    { name: 'Fing Teal', variable: '--fing-teal', value: '#4A9A9C' },
-    { name: 'Fing Positive', variable: '--fing-positive', value: '#4a9a7c' },
-    { name: 'Fing Negative', variable: '--fing-negative', value: '#c98a8a' },
-    { name: 'Fing Warning', variable: '--fing-warning', value: '#c9a87a' },
+    { name: 'Fing Teal', variable: '--fing-teal', value: '#3a6a72' },
+    { name: 'Fing Positive', variable: '--fing-positive', value: '#4a7a6a' },
+    { name: 'Fing Negative', variable: '--fing-negative', value: '#8a5a4a' },
+    { name: 'Fing Warning', variable: '--fing-warning', value: '#a08a4a' },
   ];
 
   const logoColors = [
@@ -214,73 +249,98 @@ export function BrandShowcase() {
   // ═══ RENDER ═══
   return (
     <div style={showcaseStyles}>
-      {/* Header */}
+      {/* Header - sobre fondo BASE, usa tipografía INSET */}
       <header style={headerStyles}>
-        <h1 style={headerTitleStyles}>FING Brand Guidelines</h1>
-        <p style={headerSubtitleStyles}>Quiet intelligence</p>
+        <h1 style={{
+          fontFamily: 'var(--sentinel-font-display)',
+          fontSize: '36px',
+          fontWeight: 700,
+          letterSpacing: '-0.02em',
+          marginBottom: '8px',
+          ...typoInset.display,
+        }}>
+          FING Brand Guidelines
+        </h1>
+        <p style={{
+          fontSize: '16px',
+          fontStyle: 'italic',
+          ...typoInset.soft,
+        }}>
+          Quiet intelligence
+        </p>
       </header>
 
       {/* ═══════════════════════════════════════════════════════════════════════
-          SECTION 1: NAME ORIGIN
+          SECTION 1: NAME ORIGIN (RAISED container)
           ═══════════════════════════════════════════════════════════════════════ */}
       <section style={sectionStyles}>
-        <div style={sectionTitleStyles}>The Name</div>
+        {/* Section title - en RAISED, usa tipografía INSET */}
+        <div style={{
+          fontSize: '11px',
+          fontWeight: 600,
+          letterSpacing: '0.15em',
+          textTransform: 'uppercase',
+          marginBottom: '24px',
+          paddingBottom: '12px',
+          borderBottom: '1px solid var(--marble-dark)',
+          ...typoAccent.teal,
+        }}>
+          The Name
+        </div>
+
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', marginBottom: '32px' }}>
-          {/* FINIS */}
+          {/* FINIS - INSET container, usa tipografía RAISED */}
           <div style={insetStyles}>
             <div style={{
-              ...lpInset('medium'),
+              ...typoAccent.tealStrong,
               fontSize: '10px',
               fontWeight: 600,
               letterSpacing: '0.15em',
               textTransform: 'uppercase',
-              color: 'var(--fing-teal)',
               marginBottom: '12px',
             }}>
               FINIS → FINANCE
             </div>
-            <div style={{ ...lpInset('medium'), fontSize: '18px', fontWeight: 500, marginBottom: '8px' }}>
+            <div style={{ ...typoRaised.strong, fontSize: '18px', fontWeight: 500, marginBottom: '8px' }}>
               To resolve, to conclude
             </div>
-            <div style={{ ...lpInset('soft'), fontSize: '13px', lineHeight: 1.6 }}>
+            <div style={{ ...typoRaised.soft, fontSize: '13px', lineHeight: 1.6 }}>
               From Latin <em>fīnis</em> — the root that gave us "finance."
               The original meaning wasn't about money, but about <strong>completing what's pending</strong>:
               settling debts, fulfilling commitments, reaching objectives.
             </div>
           </div>
 
-          {/* INGENIUM */}
+          {/* INGENIUM - INSET container, usa tipografía RAISED */}
           <div style={insetStyles}>
             <div style={{
-              ...lpInset('medium'),
+              ...typoAccent.tealStrong,
               fontSize: '10px',
               fontWeight: 600,
               letterSpacing: '0.15em',
               textTransform: 'uppercase',
-              color: 'var(--fing-teal)',
               marginBottom: '12px',
             }}>
               INGENIUM → ENGINE
             </div>
-            <div style={{ ...lpInset('medium'), fontSize: '18px', fontWeight: 500, marginBottom: '8px' }}>
+            <div style={{ ...typoRaised.strong, fontSize: '18px', fontWeight: 500, marginBottom: '8px' }}>
               Innate talent, ingenuity
             </div>
-            <div style={{ ...lpInset('soft'), fontSize: '13px', lineHeight: 1.6 }}>
+            <div style={{ ...typoRaised.soft, fontSize: '13px', lineHeight: 1.6 }}>
               From Latin <em>ingenium</em> — "what is born within." Before meaning "machine,"
               engine meant <strong>ingenuity</strong>: the human ability to create devices that solve problems.
             </div>
           </div>
         </div>
 
-        {/* Synthesis */}
+        {/* Synthesis - INSET container, usa tipografía RAISED */}
         <div style={{ ...insetStyles, textAlign: 'center', padding: '40px' }}>
           <div style={{
-            ...lpInset('medium'),
+            ...typoAccent.tealStrong,
             fontSize: '10px',
             fontWeight: 600,
             letterSpacing: '0.15em',
             textTransform: 'uppercase',
-            color: 'var(--fing-teal)',
             marginBottom: '16px',
           }}>
             The Synthesis
@@ -291,23 +351,34 @@ export function BrandShowcase() {
             fontWeight: 500,
             marginBottom: '16px',
           }}>
-            <span style={{ color: 'var(--fing-teal)' }}>F</span>
-            <span style={lpInset('medium')}>IN + </span>
-            <span style={{ color: 'var(--fing-teal)' }}>ING</span>
-            <span style={lpInset('medium')}>ENIUM</span>
+            <span style={{ ...typoAccent.tealStrong }}>F</span>
+            <span style={typoRaised.display}>IN + </span>
+            <span style={{ ...typoAccent.tealStrong }}>ING</span>
+            <span style={typoRaised.display}>ENIUM</span>
           </div>
-          <div style={{ ...lpInset('soft'), fontSize: '16px', fontStyle: 'italic' }}>
+          <div style={{ ...typoRaised.medium, fontSize: '16px', fontStyle: 'italic' }}>
             The engine of conclusions. Intelligence that doesn't speculate — it resolves.
           </div>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════════
-          SECTION 2: LOGO VARIATIONS
+          SECTION 2: LOGO VARIATIONS (RAISED container)
           ═══════════════════════════════════════════════════════════════════════ */}
       <section style={sectionStyles}>
-        <div style={sectionTitleStyles}>Logo Variations</div>
-        <p style={{ ...lpRaised('soft'), fontSize: '14px', marginBottom: '24px', maxWidth: '600px' }}>
+        <div style={{
+          fontSize: '11px',
+          fontWeight: 600,
+          letterSpacing: '0.15em',
+          textTransform: 'uppercase',
+          marginBottom: '24px',
+          paddingBottom: '12px',
+          borderBottom: '1px solid var(--marble-dark)',
+          ...typoAccent.teal,
+        }}>
+          Logo Variations
+        </div>
+        <p style={{ ...typoInset.soft, fontSize: '14px', marginBottom: '24px', maxWidth: '600px' }}>
           The Fing logo consists of two organic forms — representing duality (risk/return),
           balance, and dialogue. They overlap, creating depth.
         </p>
@@ -328,7 +399,7 @@ export function BrandShowcase() {
             </span>
           </div>
 
-          {/* Stone */}
+          {/* Stone - INSET, usa tipografía RAISED */}
           <div style={{
             ...insetStyles,
             display: 'flex',
@@ -338,7 +409,7 @@ export function BrandShowcase() {
             padding: '48px',
           }}>
             <FingLogo variant="stone" size={1} />
-            <span style={{ ...lpInset('soft'), fontSize: '10px', fontWeight: 500, letterSpacing: '0.15em', textTransform: 'uppercase' }}>
+            <span style={{ ...typoRaised.whisper, fontSize: '10px', fontWeight: 500, letterSpacing: '0.15em', textTransform: 'uppercase' }}>
               Stone Marble
             </span>
           </div>
@@ -378,11 +449,22 @@ export function BrandShowcase() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════════
-          SECTION 3: SYMBOL
+          SECTION 3: SYMBOL (RAISED container)
           ═══════════════════════════════════════════════════════════════════════ */}
       <section style={sectionStyles}>
-        <div style={sectionTitleStyles}>Standalone Symbol</div>
-        <p style={{ ...lpRaised('soft'), fontSize: '14px', marginBottom: '24px', maxWidth: '600px' }}>
+        <div style={{
+          fontSize: '11px',
+          fontWeight: 600,
+          letterSpacing: '0.15em',
+          textTransform: 'uppercase',
+          marginBottom: '24px',
+          paddingBottom: '12px',
+          borderBottom: '1px solid var(--marble-dark)',
+          ...typoAccent.teal,
+        }}>
+          Standalone Symbol
+        </div>
+        <p style={{ ...typoInset.soft, fontSize: '14px', marginBottom: '24px', maxWidth: '600px' }}>
           The symbol can be used independently when brand recognition is established,
           such as app icons, favicons, or social media avatars.
         </p>
@@ -431,18 +513,106 @@ export function BrandShowcase() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════════
-          SECTION 4: BRAND COLORS
+          SECTION 3B: FING EMBLEM - Radar Symbol (RAISED container)
           ═══════════════════════════════════════════════════════════════════════ */}
       <section style={sectionStyles}>
-        <div style={sectionTitleStyles}>Brand Colors</div>
-        <p style={{ ...lpRaised('soft'), fontSize: '14px', marginBottom: '24px' }}>
+        <div style={{
+          fontSize: '11px',
+          fontWeight: 600,
+          letterSpacing: '0.15em',
+          textTransform: 'uppercase',
+          marginBottom: '24px',
+          paddingBottom: '12px',
+          borderBottom: '1px solid var(--marble-dark)',
+          ...typoAccent.teal,
+        }}>
+          FING Emblem — Radar Symbol
+        </div>
+        <p style={{ ...typoInset.soft, fontSize: '14px', marginBottom: '24px', maxWidth: '700px' }}>
+          The FING emblem consists of a radar/pulse symbol (central dot + 3 concentric rings)
+          carved with a subtle inset effect inside a circular stone marble container.
+          It represents <strong>quiet intelligence</strong> — scanning, analyzing, resolving.
+        </p>
+
+        {/* Emblem Sizes */}
+        <div style={{ marginBottom: '32px' }}>
+          <div style={{ ...typoInset.soft, fontSize: '10px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '16px' }}>
+            Recommended Sizes
+          </div>
+          <div style={{ display: 'flex', alignItems: 'flex-end', gap: '24px', flexWrap: 'wrap' }}>
+            {[32, 48, 64, 100, 120].map((size) => (
+              <div key={size} style={{ ...insetStyles, padding: '24px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
+                <FingEmblem size={size} />
+                <span style={{ ...typoRaised.whisper, fontSize: '10px', fontFamily: 'var(--sentinel-font-mono)' }}>{size}px</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Animations */}
+        <div style={{ marginBottom: '32px' }}>
+          <div style={{ ...typoInset.soft, fontSize: '10px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '16px' }}>
+            Animations
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '16px' }}>
+            {(['none', 'breathe', 'pulse', 'glow', 'ripple', 'rotate'] as FingEmblemAnimation[]).map((anim) => (
+              <div key={anim} style={{ ...insetStyles, padding: '24px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
+                <FingEmblem size={64} animation={anim} />
+                <span style={{ ...typoRaised.whisper, fontSize: '10px', textTransform: 'capitalize' }}>{anim}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Lockups */}
+        <div>
+          <div style={{ ...typoInset.soft, fontSize: '10px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '16px' }}>
+            Lockups with Wordmark
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+            {/* Horizontal Lockup */}
+            <div style={{ ...insetStyles, padding: '40px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>
+              <FingLockupHorizontal size={70} animation="ripple" />
+              <span style={{ ...typoRaised.whisper, fontSize: '10px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+                Horizontal Lockup
+              </span>
+            </div>
+
+            {/* Vertical Lockup */}
+            <div style={{ ...insetStyles, padding: '40px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>
+              <FingLockupVertical size={80} />
+              <span style={{ ...typoRaised.whisper, fontSize: '10px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+                Vertical Lockup
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════════
+          SECTION 4: BRAND COLORS (RAISED container)
+          ═══════════════════════════════════════════════════════════════════════ */}
+      <section style={sectionStyles}>
+        <div style={{
+          fontSize: '11px',
+          fontWeight: 600,
+          letterSpacing: '0.15em',
+          textTransform: 'uppercase',
+          marginBottom: '24px',
+          paddingBottom: '12px',
+          borderBottom: '1px solid var(--marble-dark)',
+          ...typoAccent.teal,
+        }}>
+          Brand Colors
+        </div>
+        <p style={{ ...typoInset.soft, fontSize: '14px', marginBottom: '24px' }}>
           The Fing palette balances warm neutrals with a distinctive teal accent.
           Semantic colors are conservative, reflecting the "Senior Analyst" voice.
         </p>
 
-        {/* Primary Colors */}
+        {/* Semantic Colors - label en RAISED usa INSET */}
         <div style={{ marginBottom: '32px' }}>
-          <div style={{ ...lpRaised('soft'), fontSize: '10px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '16px' }}>
+          <div style={{ ...typoInset.soft, fontSize: '10px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '16px' }}>
             Semantic Colors
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px' }}>
@@ -456,13 +626,14 @@ export function BrandShowcase() {
                   boxShadow: 'var(--raised-1)',
                   marginBottom: '12px',
                 }} />
-                <div style={{ ...lpInset('medium'), fontSize: '12px', fontWeight: 600, marginBottom: '4px' }}>
+                {/* En INSET usa RAISED */}
+                <div style={{ ...typoRaised.medium, fontSize: '12px', fontWeight: 600, marginBottom: '4px' }}>
                   {color.name}
                 </div>
                 <code style={{
                   fontFamily: 'var(--sentinel-font-mono)',
                   fontSize: '10px',
-                  color: 'var(--fing-teal)',
+                  ...typoAccent.teal,
                 }}>
                   {color.value}
                 </code>
@@ -473,7 +644,7 @@ export function BrandShowcase() {
 
         {/* Logo Colors */}
         <div>
-          <div style={{ ...lpRaised('soft'), fontSize: '10px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '16px' }}>
+          <div style={{ ...typoInset.soft, fontSize: '10px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '16px' }}>
             Logo Colors
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px' }}>
@@ -487,13 +658,13 @@ export function BrandShowcase() {
                   boxShadow: 'var(--raised-1)',
                   marginBottom: '12px',
                 }} />
-                <div style={{ ...lpInset('medium'), fontSize: '12px', fontWeight: 600, marginBottom: '4px' }}>
+                <div style={{ ...typoRaised.medium, fontSize: '12px', fontWeight: 600, marginBottom: '4px' }}>
                   {color.name}
                 </div>
                 <code style={{
                   fontFamily: 'var(--sentinel-font-mono)',
                   fontSize: '10px',
-                  color: 'var(--fing-teal)',
+                  ...typoAccent.teal,
                 }}>
                   {color.value}
                 </code>
@@ -504,14 +675,27 @@ export function BrandShowcase() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════════
-          SECTION 5: TYPOGRAPHY
+          SECTION 5: TYPOGRAPHY (RAISED container)
           ═══════════════════════════════════════════════════════════════════════ */}
       <section style={sectionStyles}>
-        <div style={sectionTitleStyles}>Typography</div>
-        <p style={{ ...lpRaised('soft'), fontSize: '14px', marginBottom: '24px', maxWidth: '600px' }}>
+        <div style={{
+          fontSize: '11px',
+          fontWeight: 600,
+          letterSpacing: '0.15em',
+          textTransform: 'uppercase',
+          marginBottom: '24px',
+          paddingBottom: '12px',
+          borderBottom: '1px solid var(--marble-dark)',
+          ...typoAccent.teal,
+        }}>
+          Typography
+        </div>
+        <p style={{ ...typoInset.soft, fontSize: '14px', marginBottom: '24px', maxWidth: '600px' }}>
           DM Sans is the primary typeface, chosen for its friendly geometry and excellent legibility.
           IBM Plex Mono is used for data and financial figures.
         </p>
+
+        {/* Typography showcase - INSET container */}
         <div style={insetStyles}>
           {/* Display */}
           <div style={{ marginBottom: '32px', paddingBottom: '32px', borderBottom: '1px solid var(--marble-dark)' }}>
@@ -520,13 +704,13 @@ export function BrandShowcase() {
               fontWeight: 500,
               letterSpacing: '0.15em',
               textTransform: 'uppercase',
-              color: 'var(--fing-teal)',
               marginBottom: '12px',
+              ...typoAccent.teal,
             }}>
               Display — DM Sans Medium
             </div>
             <div style={{
-              ...lpInset('medium'),
+              ...typoRaised.display,
               fontFamily: 'var(--sentinel-font-primary)',
               fontSize: '48px',
               fontWeight: 500,
@@ -543,13 +727,13 @@ export function BrandShowcase() {
               fontWeight: 500,
               letterSpacing: '0.15em',
               textTransform: 'uppercase',
-              color: 'var(--fing-teal)',
               marginBottom: '12px',
+              ...typoAccent.teal,
             }}>
               Heading — DM Sans Medium
             </div>
             <div style={{
-              ...lpInset('medium'),
+              ...typoRaised.strong,
               fontFamily: 'var(--sentinel-font-primary)',
               fontSize: '32px',
               fontWeight: 500,
@@ -565,13 +749,13 @@ export function BrandShowcase() {
               fontWeight: 500,
               letterSpacing: '0.15em',
               textTransform: 'uppercase',
-              color: 'var(--fing-teal)',
               marginBottom: '12px',
+              ...typoAccent.teal,
             }}>
               Body — DM Sans Regular
             </div>
             <div style={{
-              ...lpInset('soft'),
+              ...typoRaised.medium,
               fontFamily: 'var(--sentinel-font-primary)',
               fontSize: '16px',
               fontWeight: 400,
@@ -589,8 +773,8 @@ export function BrandShowcase() {
               fontWeight: 500,
               letterSpacing: '0.15em',
               textTransform: 'uppercase',
-              color: 'var(--fing-teal)',
               marginBottom: '12px',
+              ...typoAccent.teal,
             }}>
               Mono — IBM Plex Mono
             </div>
@@ -598,7 +782,7 @@ export function BrandShowcase() {
               fontFamily: 'var(--sentinel-font-mono)',
               fontSize: '16px',
               fontWeight: 400,
-              color: 'var(--fing-teal-light)',
+              ...typoAccent.tealStrong,
             }}>
               $1,234,567.89 • +16.5% • 2025-01-15
             </div>
@@ -607,30 +791,41 @@ export function BrandShowcase() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════════
-          SECTION 6: PERSONALITY & VOICE
+          SECTION 6: PERSONALITY & VOICE (RAISED container)
           ═══════════════════════════════════════════════════════════════════════ */}
       <section style={sectionStyles}>
-        <div style={sectionTitleStyles}>Brand Personality</div>
-        <p style={{ ...lpRaised('soft'), fontSize: '14px', marginBottom: '24px', maxWidth: '700px' }}>
+        <div style={{
+          fontSize: '11px',
+          fontWeight: 600,
+          letterSpacing: '0.15em',
+          textTransform: 'uppercase',
+          marginBottom: '24px',
+          paddingBottom: '12px',
+          borderBottom: '1px solid var(--marble-dark)',
+          ...typoAccent.teal,
+        }}>
+          Brand Personality
+        </div>
+        <p style={{ ...typoInset.soft, fontSize: '14px', marginBottom: '24px', maxWidth: '700px' }}>
           FING embodies the archetype of the <strong>Senior Analyst</strong> — someone who has seen complete cycles,
           who isn't impressed by daily noise, who speaks only when there's something worth saying.
         </p>
 
-        {/* Traits */}
+        {/* Traits - INSET containers */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '16px', marginBottom: '32px' }}>
           {traits.map((trait) => (
             <div key={trait.name} style={{ ...insetStyles, textAlign: 'center', padding: '24px 16px' }}>
-              <div style={{ ...lpInset('medium'), fontSize: '15px', fontWeight: 500, marginBottom: '8px' }}>
+              <div style={{ ...typoRaised.strong, fontSize: '15px', fontWeight: 500, marginBottom: '8px' }}>
                 {trait.name}
               </div>
-              <div style={{ ...lpInset('soft'), fontSize: '11px' }}>
+              <div style={{ ...typoRaised.soft, fontSize: '11px' }}>
                 {trait.desc}
               </div>
             </div>
           ))}
         </div>
 
-        {/* Voice Do's and Don'ts */}
+        {/* Voice Do's and Don'ts - INSET containers */}
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '32px' }}>
           {/* Do */}
           <div style={insetStyles}>
@@ -639,13 +834,13 @@ export function BrandShowcase() {
               alignItems: 'center',
               gap: '8px',
               marginBottom: '16px',
-              color: 'var(--fing-positive)',
               fontWeight: 600,
               fontSize: '13px',
+              ...typoAccent.positive,
             }}>
               <span>✓</span> We say
             </div>
-            <div style={{ ...lpInset('soft'), fontSize: '13px', lineHeight: 2 }}>
+            <div style={{ ...typoRaised.soft, fontSize: '13px', lineHeight: 2 }}>
               "The market shows signs of consolidation"<br />
               "We observe a moderate risk level"<br />
               "Analysis suggests a neutral position"
@@ -659,13 +854,13 @@ export function BrandShowcase() {
               alignItems: 'center',
               gap: '8px',
               marginBottom: '16px',
-              color: 'var(--fing-negative)',
               fontWeight: 600,
               fontSize: '13px',
+              ...typoAccent.negative,
             }}>
               <span>✗</span> We don't say
             </div>
-            <div style={{ ...lpInset('soft'), fontSize: '13px', lineHeight: 2 }}>
+            <div style={{ ...typoRaised.soft, fontSize: '13px', lineHeight: 2 }}>
               "BUY NOW! Don't miss this opportunity!"<br />
               "We guarantee 20% returns"<br />
               "ALERT: Market crash imminent!"
@@ -673,12 +868,12 @@ export function BrandShowcase() {
           </div>
         </div>
 
-        {/* Taglines */}
+        {/* Taglines - INSET containers */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
           {taglines.map((item) => (
             <div key={item.text} style={{ ...insetStyles, textAlign: 'center', padding: '32px 24px' }}>
               <div style={{
-                ...lpInset('medium'),
+                ...typoRaised.strong,
                 fontFamily: 'var(--sentinel-font-primary)',
                 fontSize: '22px',
                 fontWeight: 400,
@@ -702,15 +897,26 @@ export function BrandShowcase() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════════
-          SECTION 7: USAGE GUIDELINES
+          SECTION 7: USAGE GUIDELINES (RAISED container)
           ═══════════════════════════════════════════════════════════════════════ */}
       <section style={sectionStyles}>
-        <div style={sectionTitleStyles}>Usage Guidelines</div>
-        <p style={{ ...lpRaised('soft'), fontSize: '14px', marginBottom: '24px' }}>
+        <div style={{
+          fontSize: '11px',
+          fontWeight: 600,
+          letterSpacing: '0.15em',
+          textTransform: 'uppercase',
+          marginBottom: '24px',
+          paddingBottom: '12px',
+          borderBottom: '1px solid var(--marble-dark)',
+          ...typoAccent.teal,
+        }}>
+          Usage Guidelines
+        </div>
+        <p style={{ ...typoInset.soft, fontSize: '14px', marginBottom: '24px' }}>
           Maintain brand integrity by following these guidelines.
         </p>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px' }}>
-          {/* Do: Approved colors */}
+          {/* Do: Approved colors - INSET */}
           <div style={insetStyles}>
             <div style={{
               display: 'flex',
@@ -734,11 +940,11 @@ export function BrandShowcase() {
                 fontSize: '12px',
                 fontWeight: 700,
               }}>✓</span>
-              <span style={{ ...lpInset('soft'), fontSize: '12px' }}>Use approved color combinations</span>
+              <span style={{ ...typoRaised.soft, fontSize: '12px' }}>Use approved color combinations</span>
             </div>
           </div>
 
-          {/* Don't: Stretch */}
+          {/* Don't: Stretch - INSET */}
           <div style={insetStyles}>
             <div style={{
               display: 'flex',
@@ -764,11 +970,11 @@ export function BrandShowcase() {
                 fontSize: '12px',
                 fontWeight: 700,
               }}>✗</span>
-              <span style={{ ...lpInset('soft'), fontSize: '12px' }}>Don't stretch or distort</span>
+              <span style={{ ...typoRaised.soft, fontSize: '12px' }}>Don't stretch or distort</span>
             </div>
           </div>
 
-          {/* Do: Spacing */}
+          {/* Do: Spacing - INSET */}
           <div style={insetStyles}>
             <div style={{
               display: 'flex',
@@ -792,11 +998,11 @@ export function BrandShowcase() {
                 fontSize: '12px',
                 fontWeight: 700,
               }}>✓</span>
-              <span style={{ ...lpInset('soft'), fontSize: '12px' }}>Maintain proper spacing</span>
+              <span style={{ ...typoRaised.soft, fontSize: '12px' }}>Maintain proper spacing</span>
             </div>
           </div>
 
-          {/* Don't: Rotate */}
+          {/* Don't: Rotate - INSET */}
           <div style={insetStyles}>
             <div style={{
               display: 'flex',
@@ -822,18 +1028,18 @@ export function BrandShowcase() {
                 fontSize: '12px',
                 fontWeight: 700,
               }}>✗</span>
-              <span style={{ ...lpInset('soft'), fontSize: '12px' }}>Don't rotate the logo</span>
+              <span style={{ ...typoRaised.soft, fontSize: '12px' }}>Don't rotate the logo</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
+      {/* Footer - sobre fondo BASE, usa tipografía INSET */}
       <footer style={{ textAlign: 'center', padding: '32px 0' }}>
         <div style={{ marginBottom: '16px' }}>
           <FingLogo variant="stone" size={0.6} />
         </div>
-        <p style={{ ...lpRaised('soft'), fontSize: '11px' }}>
+        <p style={{ ...typoInset.whisper, fontSize: '11px' }}>
           © 2025 Fing. Brand Guidelines v1.0
         </p>
       </footer>

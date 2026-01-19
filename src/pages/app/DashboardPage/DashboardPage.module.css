@@ -70,26 +70,34 @@
   color: var(--sentinel-accent-primary);
   text-shadow:
     1px 1px 1px var(--shadow-light),
-    -1px -1px 1px rgba(74, 154, 156, 0.4);
+    -1px -1px 1px rgba(58, 106, 114, 0.4);
 }
 
 /* Title - Pillow effect (soft 3D for hero sections) */
+/* Greeting Frame - Same style as avatar (RAISED pill) */
+.greetingFrame {
+  padding: 14px 32px;
+  background: var(--marble-base);
+  border-radius: 100px;
+  box-shadow: var(--raised-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .headerTitle {
-  font-family: 'IBM Plex Sans', var(--sentinel-font-primary);
-  font-size: 42px;
+  font-family: var(--sentinel-font-primary);
+  font-size: 24px;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
   line-height: 1;
   margin: 0;
 
-  /* Efecto almohada — soft 3D (marble-dark base) */
-  color: var(--marble-dark);
+  /* Letterpress petrol - same as avatar initials */
+  color: var(--sentinel-accent-primary);
   text-shadow:
-    -1px -1px 1px rgba(255, 255, 255, 0.7),
-    1px 1px 1px rgba(140, 150, 165, 0.5),
-    -2px -2px 3px rgba(255, 255, 255, 0.35),
-    2px 2px 3px rgba(140, 150, 165, 0.25);
+    1px 1px 1px var(--shadow-light),
+    -1px -1px 1px rgba(58, 106, 114, 0.4);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -136,7 +144,7 @@
   color: var(--sentinel-accent-primary);
   filter:
     drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9))
-    drop-shadow(0.5px 0.5px 0px rgba(74, 154, 156, 0.4));
+    drop-shadow(0.5px 0.5px 0px rgba(58, 106, 114, 0.4));
 }
 
 .balancePillContent {
@@ -165,11 +173,11 @@
   font-weight: 500;
   letter-spacing: 0.05em;
 
-  /* Whisper letterpress */
-  color: var(--marble-base);
+  /* Engraved - same as Portfolio Performance title */
+  color: var(--marble-dark);
   text-shadow:
-    0.5px 0.5px 0px var(--shadow-light),
-    -0.5px -0.5px 0px var(--shadow-dark);
+    0.75px 0.75px 0px rgba(255, 255, 255, 0.7),
+    -0.75px -0.75px 0px rgba(130, 140, 155, 0.5);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -385,7 +393,7 @@
   color: var(--sentinel-accent-primary);
   text-shadow:
     1px 1px 0px rgba(255, 255, 255, 0.8),
-    -1px -1px 0px rgba(74, 154, 156, 0.4);
+    -1px -1px 0px rgba(58, 106, 114, 0.4);
 }
 
 .kpiValuePositive {
@@ -542,7 +550,7 @@
 
 .cardTitle svg {
   color: var(--sentinel-accent-primary);
-  filter: drop-shadow(0 0 4px rgba(74, 154, 156, 0.5));
+  filter: drop-shadow(0 0 4px rgba(58, 106, 114, 0.5));
 }
 
 /* Top Sells Card Title */
@@ -565,252 +573,279 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   RECOMMENDATIONS LIST - Inset container
+   STONE MARBLE DATA TABLES
+
+   Hierarchy: CARD (RAISED) → Header (INSET typography) → Table (INSET) → Rows (GLASS)
    ───────────────────────────────────────────────────────────────────────────── */
 
-/* Recommendations Grid - Two columns */
-.recommendationsGrid {
+/* Data Tables Grid - Two columns */
+.dataTablesGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  gap: 16px;
   flex: 1;
   min-height: 0;
 }
 
-.recommendationsColumn {
+/* Each table container */
+.dataTableContainer {
   display: flex;
   flex-direction: column;
   min-height: 0;
 }
 
-.columnHeader {
+/* Table Header (outside inset) - INSET typography on RAISED */
+.dataTableHeader {
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-family: var(--sentinel-font-primary);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  margin-bottom: 8px;
+  gap: 8px;
+  margin-bottom: 10px;
+  padding-left: 4px;
+}
 
-  /* Engraved Colored - Teal accent */
-  color: #5ba3a5;
+.dataTableIconBuy {
+  color: var(--sentinel-accent-primary);
+  filter: drop-shadow(0 0 4px rgba(58, 106, 114, 0.5));
+}
+
+.dataTableIconSell {
+  color: var(--sentinel-status-negative);
+  filter: drop-shadow(0 0 4px rgba(184, 92, 92, 0.4));
+}
+
+.dataTableTitle {
+  font-family: var(--sentinel-font-primary);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+
+  /* INSET typography - Engraved Teal */
+  color: var(--sentinel-accent-primary);
   text-shadow:
     0.75px 0.75px 0px rgba(255, 255, 255, 0.7),
-    -0.75px -0.75px 0px rgba(74, 154, 156, 0.35);
+    -0.75px -0.75px 0px rgba(58, 106, 114, 0.35);
 }
 
-.columnHeader svg {
-  color: var(--sentinel-accent-primary);
-  filter: drop-shadow(0 0 3px rgba(74, 154, 156, 0.4));
-}
-
-.columnHeaderSell {
-  display: flex;
-  align-items: center;
-  gap: 6px;
+.dataTableTitleSell {
   font-family: var(--sentinel-font-primary);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  margin-bottom: 8px;
 
-  /* Engraved Colored - Negative accent */
-  color: #b87a7a;
+  /* INSET typography - Engraved Coral */
+  color: var(--sentinel-status-negative);
   text-shadow:
     0.75px 0.75px 0px rgba(255, 255, 255, 0.7),
     -0.75px -0.75px 0px rgba(184, 92, 92, 0.35);
 }
 
-.columnHeaderSell svg {
-  color: var(--sentinel-status-negative);
-  filter: drop-shadow(0 0 3px rgba(184, 92, 92, 0.4));
-}
-
-.recommendationsList {
+/* Table Body */
+.dataTableBody {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
   flex: 1;
-  min-height: 0;
   overflow: hidden;
-  padding: 10px;
-  background: var(--marble-dark);
-  border-radius: var(--sentinel-radius-md);
+}
 
-  /* Stone Marble - INSET Level 1 */
+/* ═══════════════════════════════════════════════════════════════════════════
+   ROW FRAME - INSET wrapper (like pillFrameWrapper)
+   ═══════════════════════════════════════════════════════════════════════════ */
+.rowFrameInset {
+  padding: 4px;
+  border-radius: 16px;
+  background: var(--marble-base);
+
+  /* INSET container */
   box-shadow: var(--inset-1);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   TOP BUYS - Stone Marble Glass Item
+   DATA TABLE ROW - BUY (Ridge Frame RAISED inside INSET)
    ═══════════════════════════════════════════════════════════════════════════ */
-.recommendationItemBuy {
+.dataTableRowBuy {
   display: grid;
-  grid-template-columns: 28px 1fr auto;
+  grid-template-columns: 32px 1fr 70px 70px;
   align-items: center;
   gap: 8px;
-  padding: 10px 12px;
-  position: relative;
+  padding: 12px 14px;
 
-  /* Stone Marble Glass */
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  border-radius: 10px;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  transition: all 0.15s ease;
-  flex-shrink: 0;
+  /* Stone Marble RAISED */
+  background: var(--marble-base);
+  border-radius: 12px;
+
+  /* Ridge Frame - double inner border + raised shadow */
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.8),
+    inset 0 0 0 2px rgba(168, 172, 179, 0.25),
+    2px 2px 4px rgba(147, 157, 170, 0.5),
+    -2px -2px 4px rgba(255, 255, 255, 0.9);
+
+  transition: box-shadow 0.15s ease;
 }
 
-.recommendationItemBuy:hover {
-  background: var(--glass-bg-strong);
-  border-color: var(--glass-border-strong);
+.dataTableRowBuy:hover {
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.9),
+    inset 0 0 0 2px rgba(58, 106, 114, 0.2),
+    2px 2px 5px rgba(147, 157, 170, 0.5),
+    -2px -2px 5px rgba(255, 255, 255, 0.85);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   TOP SELLS - Stone Marble Glass Item
+   DATA TABLE ROW - SELL (Ridge Frame RAISED inside INSET)
    ═══════════════════════════════════════════════════════════════════════════ */
-.recommendationItemSell {
+.dataTableRowSell {
   display: grid;
-  grid-template-columns: 28px 1fr auto;
+  grid-template-columns: 32px 1fr 70px 70px;
   align-items: center;
   gap: 8px;
-  padding: 10px 12px;
-  position: relative;
+  padding: 12px 14px;
 
-  /* Stone Marble Glass */
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  border-radius: 10px;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  transition: all 0.15s ease;
-  flex-shrink: 0;
+  /* Stone Marble RAISED */
+  background: var(--marble-base);
+  border-radius: 12px;
+
+  /* Ridge Frame - double inner border + raised shadow */
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.8),
+    inset 0 0 0 2px rgba(168, 172, 179, 0.25),
+    2px 2px 4px rgba(147, 157, 170, 0.5),
+    -2px -2px 4px rgba(255, 255, 255, 0.9);
+
+  transition: box-shadow 0.15s ease;
 }
 
-.recommendationItemSell:hover {
-  background: var(--glass-bg-strong);
-  border-color: var(--glass-border-strong);
+.dataTableRowSell:hover {
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.9),
+    inset 0 0 0 2px rgba(184, 92, 92, 0.15),
+    2px 2px 5px rgba(147, 157, 170, 0.5),
+    -2px -2px 5px rgba(255, 255, 255, 0.85);
 }
 
-.recRank {
-  font-family: var(--sentinel-font-numeric);
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--sentinel-accent-primary);
-  text-shadow: 0 0 6px rgba(74, 154, 156, 0.5);
-  letter-spacing: var(--sentinel-tracking-led);
-}
-
-.recRankSell {
-  font-family: var(--sentinel-font-numeric);
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--sentinel-status-negative);
-  text-shadow: 0 0 6px rgba(248, 113, 113, 0.5);
-  letter-spacing: var(--sentinel-tracking-led);
-}
-
-.recInfo {
+/* Cell: Rank - INSET circle with teal number */
+.dataTableCellRank {
+  font-family: var(--sentinel-font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  width: 28px;
+  height: 28px;
   display: flex;
-  flex-direction: column;
-  gap: 2px;
-  min-width: 0;
+  align-items: center;
+  justify-content: center;
+  background: var(--marble-base);
+  border-radius: 50%;
+
+  /* Mini INSET circle */
+  box-shadow:
+    inset 1.5px 1.5px 3px rgba(147, 157, 170, 0.5),
+    inset -1.5px -1.5px 3px rgba(255, 255, 255, 0.9);
+
+  /* RAISED typography inside INSET - Teal */
+  color: var(--sentinel-accent-primary);
+  text-shadow:
+    -0.5px -0.5px 0px rgba(255, 255, 255, 0.9),
+    0.5px 0.5px 0px rgba(58, 106, 114, 0.35);
 }
 
-.recTicker {
-  font-family: var(--sentinel-font-ticker);
+/* Cell: Rank Sell - INSET circle with coral number */
+.dataTableCellRankSell {
+  font-family: var(--sentinel-font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--marble-base);
+  border-radius: 50%;
+
+  /* Mini INSET circle */
+  box-shadow:
+    inset 1.5px 1.5px 3px rgba(147, 157, 170, 0.5),
+    inset -1.5px -1.5px 3px rgba(255, 255, 255, 0.9);
+
+  /* RAISED typography inside INSET - Coral */
+  color: var(--sentinel-status-negative);
+  text-shadow:
+    -0.5px -0.5px 0px rgba(255, 255, 255, 0.9),
+    0.5px 0.5px 0px rgba(184, 92, 92, 0.35);
+}
+
+/* Cell: Ticker - INSET typography with subtle fill (inside RAISED row) */
+.dataTableCellTicker {
+  font-family: var(--sentinel-font-mono);
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.06em;
+  padding: 4px 10px;
+  border-radius: 8px;
 
-  /* GLASS dentro de INSET → Tipografia RAISED (embossed sutil) */
+  /* Subtle fill - very light inset */
+  background: rgba(200, 203, 208, 0.35);
+  box-shadow:
+    inset 0.5px 0.5px 1.5px rgba(147, 157, 170, 0.25),
+    inset -0.5px -0.5px 1.5px rgba(255, 255, 255, 0.5);
+
+  /* INSET typography - debossed/engraved */
   color: var(--text-primary);
   text-shadow:
-    -0.5px -0.5px 0px rgba(255, 255, 255, 0.9),
-    0.5px 0.5px 0px rgba(147, 157, 170, 0.35);
+    0.75px 0.75px 0px rgba(255, 255, 255, 0.8),
+    -0.75px -0.75px 0px rgba(130, 140, 155, 0.4);
 }
 
-.recName {
+/* Cell: Price - INSET typography subtle */
+.dataTableCellPrice {
+  font-family: var(--sentinel-font-mono);
   font-size: 12px;
-  color: var(--sentinel-text-secondary);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-weight: 500;
+  text-align: right;
+  letter-spacing: 0.03em;
+
+  /* INSET typography subtle */
+  color: var(--text-secondary);
+  text-shadow:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.7),
+    -0.5px -0.5px 0px rgba(130, 140, 155, 0.3);
 }
 
-.recPrice {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 2px;
-}
-
-.recPriceValue {
-  font-family: var(--sentinel-font-numeric);
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--sentinel-text-primary);
-  letter-spacing: 0.05em;
-}
-
-.recChange {
-  font-family: var(--sentinel-font-numeric);
+/* Cell: Change - INSET typography colored */
+.dataTableCellChange {
+  font-family: var(--sentinel-font-mono);
   font-size: 12px;
   font-weight: 600;
+  text-align: right;
   letter-spacing: 0.03em;
 }
 
-.recChange[data-positive="true"] {
-  /* GLASS dentro de INSET → Tipografia RAISED (embossed colored) */
+.dataTableCellChange[data-positive="true"] {
+  /* INSET typography - Engraved Positive green */
   color: var(--sentinel-status-positive);
   text-shadow:
-    -0.5px -0.5px 0px rgba(255, 255, 255, 0.85),
-    0.5px 0.5px 0px rgba(74, 154, 124, 0.3);
+    0.75px 0.75px 0px rgba(255, 255, 255, 0.8),
+    -0.75px -0.75px 0px rgba(74, 154, 124, 0.35);
 }
 
-.recChange[data-positive="false"] {
-  /* GLASS dentro de INSET → Tipografia RAISED (embossed colored) */
+.dataTableCellChange[data-positive="false"] {
+  /* INSET typography - Engraved Negative coral */
   color: var(--sentinel-status-negative);
   text-shadow:
-    -0.5px -0.5px 0px rgba(255, 255, 255, 0.85),
-    0.5px 0.5px 0px rgba(184, 92, 92, 0.3);
+    0.75px 0.75px 0px rgba(255, 255, 255, 0.8),
+    -0.75px -0.75px 0px rgba(184, 92, 92, 0.35);
 }
 
-/* Score badge - Light Glass pill */
-.recScore {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 6px 10px;
-  background: var(--marble-base);
-  border: none;
-  border-radius: var(--sentinel-radius-sm);
-  min-width: 44px;
-
-  /* Stone Marble - RAISED Level 1 */
-  box-shadow: var(--raised-1);
-}
-
-.scoreValue {
-  font-family: var(--sentinel-font-numeric);
-  font-size: 18px;
-  font-weight: 400;
-  color: var(--sentinel-accent-primary);
-  line-height: 1;
-  letter-spacing: 0.05em;
-  text-shadow: 0 0 10px rgba(74, 154, 156, 0.5);
-}
-
-.scoreLabel {
-  font-size: 9px;
-  font-weight: 600;
-  color: var(--sentinel-text-tertiary);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+/* Responsive: Stack tables on smaller screens */
+@media (max-width: 900px) {
+  .dataTablesGrid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -820,17 +855,23 @@
 .newsList {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 6px;
   flex: 1;
   min-height: 0;
   overflow: hidden;
-  padding: 12px;
+  padding: 8px;
   margin: 0 -4px;
   background: var(--marble-dark);
   border-radius: var(--sentinel-radius-md);
 
   /* Stone Marble - INSET Level 1 */
   box-shadow: var(--inset-1);
+}
+
+/* Make news cards fill available space */
+.newsList > * {
+  flex: 1;
+  min-height: 0;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -889,7 +930,7 @@
 
 .mobileValueIcon {
   color: var(--sentinel-accent-primary);
-  filter: drop-shadow(0 0 4px rgba(74, 154, 156, 0.5));
+  filter: drop-shadow(0 0 4px rgba(58, 106, 114, 0.5));
 }
 
 .mobileValueLabel {
@@ -1039,7 +1080,7 @@
 
 .mobilePicksIcon {
   color: var(--sentinel-accent-primary);
-  filter: drop-shadow(0 0 4px rgba(74, 154, 156, 0.5));
+  filter: drop-shadow(0 0 4px rgba(58, 106, 114, 0.5));
 }
 
 .mobilePicksTitle {
@@ -1092,18 +1133,18 @@
   background: linear-gradient(
     135deg,
     rgba(255, 255, 255, 0.25) 0%,
-    rgba(74, 154, 156, 0.12) 100%
+    rgba(58, 106, 114, 0.12) 100%
   );
   backdrop-filter: blur(12px) saturate(180%);
   -webkit-backdrop-filter: blur(12px) saturate(180%);
 
-  border: 1px solid rgba(74, 154, 156, 0.25);
+  border: 1px solid rgba(58, 106, 114, 0.25);
   border-radius: 12px;
   transition: all 0.15s ease;
 
   /* SUBTLE - Teal glass shadow */
   box-shadow:
-    0 4px 16px rgba(74, 154, 156, 0.06),
+    0 4px 16px rgba(58, 106, 114, 0.06),
     inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
@@ -1115,7 +1156,7 @@
   left: 20%;
   right: 20%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(74, 154, 156, 0.3), rgba(74, 154, 156, 0.4), rgba(74, 154, 156, 0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(58, 106, 114, 0.3), rgba(58, 106, 114, 0.4), rgba(58, 106, 114, 0.3), transparent);
   border-radius: 12px 12px 0 0;
   pointer-events: none;
 }
@@ -1124,12 +1165,12 @@
   background: linear-gradient(
     135deg,
     rgba(255, 255, 255, 0.35) 0%,
-    rgba(74, 154, 156, 0.15) 100%
+    rgba(58, 106, 114, 0.15) 100%
   );
   transform: scale(0.98);
   /* SUBTLE active */
   box-shadow:
-    0 2px 8px rgba(74, 154, 156, 0.08),
+    0 2px 8px rgba(58, 106, 114, 0.08),
     inset 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
@@ -1148,18 +1189,18 @@
   background: linear-gradient(
     135deg,
     rgba(255, 255, 255, 0.25) 0%,
-    rgba(74, 154, 156, 0.12) 100%
+    rgba(58, 106, 114, 0.12) 100%
   );
   backdrop-filter: blur(12px) saturate(180%);
   -webkit-backdrop-filter: blur(12px) saturate(180%);
 
-  border: 1px solid rgba(74, 154, 156, 0.25);
+  border: 1px solid rgba(58, 106, 114, 0.25);
   border-radius: 12px;
   transition: all 0.15s ease;
 
   /* SUBTLE - Teal glass shadow */
   box-shadow:
-    0 4px 16px rgba(74, 154, 156, 0.06),
+    0 4px 16px rgba(58, 106, 114, 0.06),
     inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
@@ -1171,7 +1212,7 @@
   left: 20%;
   right: 20%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(74, 154, 156, 0.3), rgba(74, 154, 156, 0.4), rgba(74, 154, 156, 0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(58, 106, 114, 0.3), rgba(58, 106, 114, 0.4), rgba(58, 106, 114, 0.3), transparent);
   border-radius: 12px 12px 0 0;
   pointer-events: none;
 }
@@ -1180,12 +1221,12 @@
   background: linear-gradient(
     135deg,
     rgba(255, 255, 255, 0.35) 0%,
-    rgba(74, 154, 156, 0.15) 100%
+    rgba(58, 106, 114, 0.15) 100%
   );
   transform: scale(0.98);
   /* SUBTLE active */
   box-shadow:
-    0 2px 8px rgba(74, 154, 156, 0.08),
+    0 2px 8px rgba(58, 106, 114, 0.08),
     inset 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
@@ -1194,7 +1235,7 @@
   font-size: 11px;
   font-weight: 600;
   color: var(--sentinel-accent-primary);
-  text-shadow: 0 0 6px rgba(74, 154, 156, 0.5);
+  text-shadow: 0 0 6px rgba(58, 106, 114, 0.5);
   letter-spacing: var(--sentinel-tracking-led);
 }
 
@@ -1276,12 +1317,12 @@
   background: linear-gradient(
     135deg,
     rgba(255, 255, 255, 0.25) 0%,
-    rgba(74, 154, 156, 0.12) 100%
+    rgba(58, 106, 114, 0.12) 100%
   );
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 
-  border: 1px solid rgba(74, 154, 156, 0.25);
+  border: 1px solid rgba(58, 106, 114, 0.25);
   border-radius: var(--sentinel-radius-lg);
   cursor: pointer;
   transition: all 0.15s ease;
@@ -1290,7 +1331,7 @@
 
   /* SUBTLE - GLASS Level */
   box-shadow:
-    2px 2px 4px rgba(74, 154, 156, 0.06),
+    2px 2px 4px rgba(58, 106, 114, 0.06),
     -2px -2px 4px rgba(255, 255, 255, 0.25);
 }
 
@@ -1302,7 +1343,7 @@
   left: 20%;
   right: 20%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(74, 154, 156, 0.3), rgba(74, 154, 156, 0.4), rgba(74, 154, 156, 0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(58, 106, 114, 0.3), rgba(58, 106, 114, 0.4), rgba(58, 106, 114, 0.3), transparent);
   border-radius: var(--sentinel-radius-lg) var(--sentinel-radius-lg) 0 0;
   pointer-events: none;
 }
@@ -1311,20 +1352,20 @@
   background: linear-gradient(
     135deg,
     rgba(255, 255, 255, 0.35) 0%,
-    rgba(74, 154, 156, 0.15) 100%
+    rgba(58, 106, 114, 0.15) 100%
   );
-  border-color: rgba(74, 154, 156, 0.30);
+  border-color: rgba(58, 106, 114, 0.30);
   transform: scale(0.99);
   /* SUBTLE active */
   box-shadow:
-    1px 1px 3px rgba(74, 154, 156, 0.08),
+    1px 1px 3px rgba(58, 106, 114, 0.08),
     -1px -1px 3px rgba(255, 255, 255, 0.20);
 }
 
 .mobileNewsIcon {
   color: var(--sentinel-accent-primary);
   flex-shrink: 0;
-  filter: drop-shadow(0 0 4px rgba(74, 154, 156, 0.5));
+  filter: drop-shadow(0 0 4px rgba(58, 106, 114, 0.5));
 }
 
 .mobileNewsContent {
@@ -1395,19 +1436,19 @@
   color: var(--sentinel-accent-primary);
   text-shadow:
     1px 1px 0px rgba(255, 255, 255, 0.85),
-    -1px -1px 0px rgba(74, 154, 156, 0.3);
+    -1px -1px 0px rgba(58, 106, 114, 0.3);
 
   transition: all 150ms ease;
 }
 
 .raisedButton:hover {
-  background: linear-gradient(135deg, rgba(74, 154, 156, 0.08) 0%, rgba(74, 154, 156, 0.04) 100%);
+  background: linear-gradient(135deg, rgba(58, 106, 114, 0.08) 0%, rgba(58, 106, 114, 0.04) 100%);
   box-shadow:
     inset 0 0 0 1px rgba(255, 255, 255, 0.9),
-    inset 0 0 0 2px rgba(74, 154, 156, 0.25),
+    inset 0 0 0 2px rgba(58, 106, 114, 0.25),
     6px 6px 12px rgba(147, 157, 170, 0.6),
     -6px -6px 12px rgba(255, 255, 255, 0.95),
-    0 0 16px rgba(74, 154, 156, 0.15);
+    0 0 16px rgba(58, 106, 114, 0.15);
 }
 
 .raisedButton:active {
@@ -1418,7 +1459,7 @@
 
 /* Icon hover effect for raised button */
 .raisedButton:hover .buttonIconCircle {
-  background: linear-gradient(135deg, rgba(74, 154, 156, 0.15) 0%, rgba(74, 154, 156, 0.08) 100%);
+  background: linear-gradient(135deg, rgba(58, 106, 114, 0.15) 0%, rgba(58, 106, 114, 0.08) 100%);
 }
 
 .raisedButton:hover .buttonIcon {
@@ -1465,19 +1506,19 @@
   color: var(--sentinel-accent-primary);
   text-shadow:
     1px 1px 0px rgba(255, 255, 255, 0.85),
-    -1px -1px 0px rgba(74, 154, 156, 0.3);
+    -1px -1px 0px rgba(58, 106, 114, 0.3);
 
   transition: all 200ms ease;
 }
 
 .pillFrameButton:hover {
-  background: linear-gradient(135deg, rgba(74, 154, 156, 0.08) 0%, rgba(74, 154, 156, 0.04) 100%);
+  background: linear-gradient(135deg, rgba(58, 106, 114, 0.08) 0%, rgba(58, 106, 114, 0.04) 100%);
   box-shadow:
     inset 0 0 0 1px rgba(255, 255, 255, 0.9),
-    inset 0 0 0 2px rgba(74, 154, 156, 0.25),
+    inset 0 0 0 2px rgba(58, 106, 114, 0.25),
     3px 3px 6px rgba(147, 157, 170, 0.6),
     -3px -3px 6px rgba(255, 255, 255, 0.95),
-    0 0 12px rgba(74, 154, 156, 0.15);
+    0 0 12px rgba(58, 106, 114, 0.15);
 }
 
 .pillFrameButton:active {
@@ -1490,7 +1531,7 @@
 
 /* Icon hover effect for pill frame button */
 .pillFrameButton:hover .buttonIconCircle {
-  background: linear-gradient(135deg, rgba(74, 154, 156, 0.15) 0%, rgba(74, 154, 156, 0.08) 100%);
+  background: linear-gradient(135deg, rgba(58, 106, 114, 0.15) 0%, rgba(58, 106, 114, 0.08) 100%);
 }
 
 .pillFrameButton:hover .buttonIcon {
@@ -1532,19 +1573,19 @@
   color: var(--sentinel-accent-primary);
   text-shadow:
     0.75px 0.75px 0px rgba(255, 255, 255, 0.85),
-    -0.75px -0.75px 0px rgba(74, 154, 156, 0.25);
+    -0.75px -0.75px 0px rgba(58, 106, 114, 0.25);
 
   transition: all 200ms ease;
 }
 
 .pillFrameButtonSm:hover {
-  background: linear-gradient(135deg, rgba(74, 154, 156, 0.08) 0%, rgba(74, 154, 156, 0.04) 100%);
+  background: linear-gradient(135deg, rgba(58, 106, 114, 0.08) 0%, rgba(58, 106, 114, 0.04) 100%);
   box-shadow:
     inset 0 0 0 1px rgba(255, 255, 255, 0.9),
-    inset 0 0 0 2px rgba(74, 154, 156, 0.25),
+    inset 0 0 0 2px rgba(58, 106, 114, 0.25),
     2px 2px 4px rgba(147, 157, 170, 0.6),
     -2px -2px 4px rgba(255, 255, 255, 0.95),
-    0 0 10px rgba(74, 154, 156, 0.12);
+    0 0 10px rgba(58, 106, 114, 0.12);
 }
 
 .pillFrameButtonSm:active {
@@ -1557,7 +1598,7 @@
 
 /* Icon hover effect for small pill frame button */
 .pillFrameButtonSm:hover .buttonIconCircleSm {
-  background: linear-gradient(135deg, rgba(74, 154, 156, 0.15) 0%, rgba(74, 154, 156, 0.08) 100%);
+  background: linear-gradient(135deg, rgba(58, 106, 114, 0.15) 0%, rgba(58, 106, 114, 0.08) 100%);
 }
 
 .pillFrameButtonSm:hover .buttonIcon {

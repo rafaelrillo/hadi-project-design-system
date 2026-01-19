@@ -68,9 +68,155 @@ El logo consiste en dos formas organicas que representan **dualidad** (riesgo/re
 3. **White** (fondos de acento teal)
 4. **Light** (fondos blancos): `--fing-logo-light-1`, `--fing-logo-light-2`
 
-### Colores de Marca
+### FING Emblem — Radar Symbol
+
+El emblema de FING es un **simbolo de radar/pulso** (punto central + 3 aros concentricos) tallado con efecto sutil dentro de un **contenedor circular hundido (inset)**. Representa "quiet intelligence" — escaneando, analizando, resolviendo.
+
+#### Componente
+
+```tsx
+import { FingEmblem, FingLockupHorizontal, FingLockupVertical } from '@atoms/FingEmblem';
+
+// Emblema basico
+<FingEmblem size={100} animation="ripple" />
+
+// Lockup horizontal (emblema + wordmark)
+<FingLockupHorizontal size={70} animation="ripple" />
+
+// Lockup vertical
+<FingLockupVertical size={80} />
+```
+
+#### Props
+
+| Prop | Tipo | Default | Descripcion |
+|------|------|---------|-------------|
+| `size` | `number` | `100` | Tamaño del contenedor en px |
+| `animation` | `'none' | 'breathe' | 'pulse' | 'glow' | 'ripple' | 'rotate' | 'heartbeat'` | `'none'` | Animacion |
+| `showWordmark` | `boolean` | `false` | Mostrar wordmark |
+| `wordmarkPosition` | `'right' | 'bottom'` | `'right'` | Posicion del wordmark |
+
+#### Animaciones
+
+| Animacion | Descripcion | Uso recomendado |
+|-----------|-------------|-----------------|
+| `breathe` | Expansion/contraccion sutil del SVG | Loading states |
+| `pulse` | Opacity en cascada de los aros | Status activo |
+| `glow` | Brillo teal que pulsa en el contenedor | Highlight/focus |
+| `ripple` | Ondas que emanan del centro | Default, navigation |
+| `rotate` | Giro muy lento (30s/vuelta) | Background ambient |
+| `heartbeat` | Cascada de opacity rapida | Alertas sutiles |
+
+#### Tokens CSS
 
 ```css
+/* Emblem base */
+--fing-marble-base: #d5d8dc;
+--fing-shadow-light: rgba(255, 255, 255, 0.95);
+--fing-shadow-dark: rgba(147, 157, 170, 0.55);
+--fing-teal-glow: rgba(58, 106, 114, 0.5);  /* Petrol glow */
+
+/* Radar symbol */
+--fing-symbol-fill: #babec4;
+--fing-symbol-stroke: #b2b6bc;
+
+/* Carve effect */
+--fing-carve-light: rgba(255, 255, 255, 0.92);
+--fing-carve-dark: rgba(140, 150, 165, 0.65);
+```
+
+#### Ubicacion
+
+- Archivo: `src/components/atoms/FingEmblem/`
+- Showcase: `/showcase/styles/brand` (seccion "FING Emblem — Radar Symbol")
+
+### FING Wordmark — Inset Typography System
+
+El wordmark de FING utiliza **Cormorant Garamond Light** con 12 variaciones de efecto inset/cavado que se alinean con la filosofia Stone Marble.
+
+#### Tipografia
+
+| Propiedad | Valor |
+|-----------|-------|
+| Font | Cormorant Garamond |
+| Weight | 300 (Light) |
+| Letter Spacing | 0.06em |
+
+#### Componente
+
+```tsx
+import { FingWordmark, FingWordmarkText } from '@atoms/FingWordmark';
+
+// Con contenedor (default)
+<FingWordmark variant="carved" size={72} />
+
+// Solo texto (sin contenedor)
+<FingWordmarkText variant="carved" size={72} />
+```
+
+#### Props
+
+| Prop | Tipo | Default | Descripcion |
+|------|------|---------|-------------|
+| `variant` | `FingWordmarkVariant` | `'carved'` | Variacion de inset |
+| `size` | `number` | `72` | Tamaño de fuente en px |
+| `showContainer` | `boolean` | `true` | Mostrar contenedor |
+| `containerPadding` | `number` | `32` | Padding del contenedor |
+| `containerRadius` | `number` | `16` | Border radius del contenedor |
+
+#### 12 Variaciones
+
+| # | Variante | Descripcion | Uso recomendado |
+|---|----------|-------------|-----------------|
+| 1 | `whisper` | Casi plano, muy sutil | Minimo efecto |
+| 2 | `soft` | Suave estandar | Equilibrio visibilidad/sutileza |
+| 3 | `medium` | Moderado, equilibrado | Mayoria de usos |
+| 4 | `deep` | Profundo, mas sombra | Mas presencia |
+| 5 | `carved` ⭐ | Tallado invertido | **Logo/Wordmark (recomendado)** |
+| 6 | `pressed` ⭐ | Presionado con gradiente | **Alternativa recomendada** |
+| 7 | `bowl` | Cuenco con gradiente radial | Depresion suave |
+| 8 | `channel` | Canal/ranura horizontal | Efecto de ranura |
+| 9 | `etched` | Grabado con borde interior | Definicion extra |
+| 10 | `crater` | Crater profundo direccional | Hero/Display |
+| 11 | `pillow` | Almohadilla diagonal | Efecto suave |
+| 12 | `sharp` | Bordes definidos | Tecnico/preciso |
+
+#### Tokens CSS
+
+```css
+/* Wordmark Font */
+--fing-wordmark-font: 'Cormorant Garamond', serif;
+--fing-wordmark-weight: 300;
+--fing-wordmark-tracking: 0.06em;
+
+/* Recomendado: Carved */
+--fing-wm-inset-carved: inset 5px 5px 10px rgba(130, 140, 155, 0.55),
+                        inset -5px -5px 10px rgba(255, 255, 255, 0.9);
+--fing-wm-text-carved: -1px -1px 0px rgba(255, 255, 255, 0.9),
+                       1px 1px 2px rgba(130, 140, 155, 0.6);
+
+/* Recomendado: Pressed */
+--fing-wm-inset-pressed: inset 8px 8px 16px rgba(115, 125, 140, 0.65),
+                         inset -8px -8px 16px rgba(255, 255, 255, 0.85);
+--fing-wm-text-pressed: -1.5px -1.5px 1px rgba(255, 255, 255, 0.8),
+                        1.5px 1.5px 2px rgba(115, 125, 140, 0.7);
+--fing-wm-bg-pressed: linear-gradient(145deg, #caced3, #dce0e5);
+```
+
+#### Ubicacion
+
+- Archivo: `src/components/atoms/FingWordmark/`
+- Showcase: `/showcase/styles/wordmark`
+
+### Colores de Marca — Natural Mineral Palette
+
+Todos los colores semanticos derivan de materiales naturales: minerales, piedras, metales y tierra.
+
+```css
+/* Primary Black - Charcoal (burned wood carbon) */
+--fing-black: #252528;
+--fing-black-rgb: 37, 37, 40;
+
 /* Logo Colors - Dark Variant */
 --fing-logo-slate-1: #3a3a42;
 --fing-logo-slate-2: #44444c;
@@ -83,20 +229,109 @@ El logo consiste en dos formas organicas que representan **dualidad** (riesgo/re
 --fing-logo-light-1: #e8e8ec;
 --fing-logo-light-2: #ededf0;
 
-/* Brand Accent */
---fing-teal: #4A9A9C;
---fing-teal-light: #6fb3b5;
---fing-teal-dark: #3a7a7c;
+/* Brand Accent - Petrol (petroleum deposits) */
+--fing-accent: #3a6a72;
+--fing-accent-light: #4a7a82;
+--fing-accent-dark: #2a5a62;
 
-/* Semantic Colors (Conservadores - voz "Senior Analyst") */
---fing-positive: #4a9a7c;    /* Verde desaturado */
---fing-negative: #c98a8a;    /* Coral suave */
---fing-warning: #c9a87a;     /* Ambar conservador */
+/* Text Accent - Steel (refined iron alloy) */
+--fing-text-accent: #4a6a7a;
+
+/* Semantic Colors - Natural Minerals */
+--fing-positive: #4a7a6a;       /* Jade (green stone) */
+--fing-positive-light: #5a8a7a;
+--fing-positive-dark: #3a6a5a;
+
+--fing-warning: #a08a4a;        /* Gold (pure metal) */
+--fing-warning-light: #b09a5a;
+--fing-warning-dark: #8a7a3a;
+
+--fing-negative: #8a5a4a;       /* Rust (iron oxide) */
+--fing-negative-light: #9a6a5a;
+--fing-negative-dark: #7a4a3a;
+
+--fing-info: #4a6a7a;           /* Steel (same as text accent) */
+--fing-info-light: #5a7a8a;
+--fing-info-dark: #3a5a6a;
 
 /* Text Colors */
+--fing-text-primary: var(--fing-black);
 --fing-text-light: #f0f0f2;
 --fing-text-muted: #8a8f96;
---fing-text-dark: #1a1a1e;
+--fing-text-dark: var(--fing-black);
+```
+
+| Token | Name | Hex | Natural Origin |
+|-------|------|-----|----------------|
+| `--fing-black` | Charcoal | #252528 | Burned wood carbon |
+| `--fing-accent` | Petrol | #3a6a72 | Petroleum deposits |
+| `--fing-text-accent` | Steel | #4a6a7a | Refined iron alloy |
+| `--fing-positive` | Jade | #4a7a6a | Jade stone |
+| `--fing-warning` | Gold | #a08a4a | Pure gold metal |
+| `--fing-negative` | Rust | #8a5a4a | Iron oxide |
+| `--fing-info` | Steel | #4a6a7a | Refined iron alloy |
+| `--marble-base` | Marble | #d5d8dc | Natural stone |
+
+### Letterpress Text Shadows
+
+Para texto coloreado sobre fondo marble, usar este patron:
+
+```css
+/* Positive - Jade */
+.text-positive {
+  color: var(--fing-positive);
+  text-shadow:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
+    -0.5px -0.5px 0px rgba(74, 122, 106, 0.25);
+}
+
+/* Warning - Gold */
+.text-warning {
+  color: var(--fing-warning);
+  text-shadow:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
+    -0.5px -0.5px 0px rgba(160, 138, 74, 0.25);
+}
+
+/* Negative - Rust */
+.text-negative {
+  color: var(--fing-negative);
+  text-shadow:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
+    -0.5px -0.5px 0px rgba(138, 90, 74, 0.25);
+}
+
+/* Primary - Charcoal */
+.text-primary,
+.text-charcoal {
+  color: var(--fing-black);
+  text-shadow:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
+    -0.5px -0.5px 0px rgba(37, 37, 40, 0.2);
+}
+
+/* Primary Strong - Charcoal (for larger text) */
+.text-primary-strong {
+  color: var(--fing-black);
+  text-shadow:
+    1px 1px 0px rgba(255, 255, 255, 0.9),
+    -1px -1px 0px rgba(37, 37, 40, 0.25);
+}
+```
+
+### CSS Variables for Letterpress
+
+```css
+/* Semantic Colors */
+--lp-positive: 0.5px 0.5px 0px rgba(255,255,255,0.9), -0.5px -0.5px 0px rgba(74,122,106,0.25);
+--lp-warning: 0.5px 0.5px 0px rgba(255,255,255,0.9), -0.5px -0.5px 0px rgba(160,138,74,0.25);
+--lp-negative: 0.5px 0.5px 0px rgba(255,255,255,0.9), -0.5px -0.5px 0px rgba(138,90,74,0.25);
+--lp-info: 0.5px 0.5px 0px rgba(255,255,255,0.9), -0.5px -0.5px 0px rgba(74,106,122,0.25);
+--lp-accent: 0.5px 0.5px 0px rgba(255,255,255,0.9), -0.5px -0.5px 0px rgba(58,106,114,0.25);
+
+/* Primary Text - Charcoal */
+--lp-primary: 0.5px 0.5px 0px rgba(255,255,255,0.9), -0.5px -0.5px 0px rgba(37,37,40,0.2);
+--lp-primary-strong: 1px 1px 0px rgba(255,255,255,0.9), -1px -1px 0px rgba(37,37,40,0.25);
 ```
 
 ### Tipografia de Marca
@@ -106,6 +341,7 @@ El logo consiste en dos formas organicas que representan **dualidad** (riesgo/re
 | **DM Sans** | UI general, titulos, cuerpo | `--sentinel-font-primary` |
 | **IBM Plex Mono** | Datos financieros, tickers | `--sentinel-font-mono` |
 | **Libre Baskerville** | Display, headlines elegantes | `--sentinel-font-display` |
+| **Cormorant Garamond** | Wordmark FING | `--fing-wordmark-font` |
 
 ### Brand Showcase
 
@@ -533,6 +769,7 @@ npm run lint          # ESLint
 
 ```
 /showcase/styles/brand          → FING Brand Guidelines
+/showcase/styles/wordmark       → FING Wordmark Inset Variations
 /showcase/styles/colors         → Paleta de colores
 /showcase/styles/typography     → Sistema tipografico
 /showcase/styles/spacing        → Espaciado
@@ -589,10 +826,93 @@ npm run lint          # ESLint
   - [x] Migracion tipografica a DM Sans
   - [x] BrandShowcase.tsx con guidelines completas
   - [x] Documentacion en CLAUDE.md
+- [x] **FING Emblem — Radar Symbol** (2026-01-18)
+  - [x] FingEmblem component con 6 animaciones (breathe, pulse, glow, ripple, rotate, heartbeat)
+  - [x] Contenedor inset circular con efecto de tallado SVG
+  - [x] Lockups horizontal y vertical con wordmark
+  - [x] Tokens CSS para emblem (--fing-symbol-fill, --fing-symbol-stroke, --fing-carve-*)
+  - [x] Integracion en DashboardLayout, LandingHero, SidebarShowcase, ShowcaseLayout
+  - [x] Seccion en BrandShowcase con demos de tamaños y animaciones
+- [x] **Natural Mineral Color Palette** (2026-01-19)
+  - [x] Nuevo sistema de colores basado en materiales naturales
+  - [x] Primary Black: Charcoal (#252528) - carbon de madera quemada
+  - [x] Accent: Teal → Petrol (#3a6a72)
+  - [x] Positive: Verde → Jade (#4a7a6a)
+  - [x] Warning: Amber → Gold (#a08a4a)
+  - [x] Negative: Coral → Rust (#8a5a4a)
+  - [x] Info: Blue → Steel (#4a6a7a)
+  - [x] Actualizados 45+ archivos CSS/TSX
+  - [x] Letterpress text shadow utilities (.text-positive, .text-warning, .text-primary, etc.)
+  - [x] CSS variables para letterpress (--lp-positive, --lp-warning, --lp-primary, etc.)
+  - [x] Documentacion actualizada en CLAUDE.md
+- [x] **FING Wordmark — Inset Typography System** (2026-01-19)
+  - [x] Cormorant Garamond Light (300) como fuente del wordmark
+  - [x] 12 variaciones de efecto inset/cavado
+  - [x] FingWordmark y FingWordmarkText components
+  - [x] Variables CSS para containers (--fing-wm-inset-*) y texto (--fing-wm-text-*)
+  - [x] 4 gradientes especiales (pressed, bowl, crater, pillow)
+  - [x] WordmarkShowcase con demos de todas las variaciones
+  - [x] Ruta: `/showcase/styles/wordmark`
 
 ---
 
 ## DECISIONES TOMADAS
+
+**[2026-01-19] FING Wordmark — Inset Typography System**
+- **Decision**: Crear sistema de wordmark con 12 variaciones inset usando Cormorant Garamond
+- **Cambios principales**:
+  - Tipografia: Cormorant Garamond Light (weight 300, letter-spacing 0.06em)
+  - 12 variaciones: whisper, soft, medium, deep, carved, pressed, bowl, channel, etched, crater, pillow, sharp
+  - Variaciones recomendadas: **CARVED** (tallado invertido) y **PRESSED** (gradiente direccional)
+  - Componentes: FingWordmark (con contenedor) y FingWordmarkText (solo texto)
+- **Archivos clave**:
+  - `/src/components/atoms/FingWordmark/FingWordmark.tsx`
+  - `/src/components/atoms/FingWordmark/FingWordmark.module.css`
+  - `/src/styles/theme.css` (tokens --fing-wm-*, --fing-wordmark-*)
+  - `/src/pages/styles/WordmarkShowcase.tsx`
+  - `/index.html` (import Cormorant Garamond)
+- **Variables CSS agregadas**:
+  - Font: `--fing-wordmark-font`, `--fing-wordmark-weight`, `--fing-wordmark-tracking`
+  - Containers: `--fing-wm-inset-whisper` a `--fing-wm-inset-sharp`
+  - Text shadows: `--fing-wm-text-whisper` a `--fing-wm-text-sharp`
+  - Gradientes: `--fing-wm-bg-pressed`, `--fing-wm-bg-bowl`, `--fing-wm-bg-crater`, `--fing-wm-bg-pillow`
+- **Razon**: El wordmark necesita un efecto "carved in stone" que se alinee con la estetica Stone Marble
+
+**[2026-01-19] Natural Mineral Color Palette**
+- **Decision**: Migrar toda la paleta de colores a materiales naturales
+- **Cambios principales**:
+  - Primary Black: Charcoal (#252528) - carbon de madera quemada
+  - Accent: Teal (#4A9A9C) → Petrol (#3a6a72) - depositos de petroleo
+  - Positive: Verde (#4a9a7c) → Jade (#4a7a6a) - piedra de jade
+  - Warning: Amber (#c9a87a) → Gold (#a08a4a) - oro puro
+  - Negative: Coral (#c98a8a) → Rust (#8a5a4a) - oxido de hierro
+  - Info: Blue → Steel (#4a6a7a) - aleacion de hierro refinado
+  - Letterpress text shadows para cada color semantico
+- **Archivos clave**:
+  - `/src/styles/theme.css` - Variables CSS actualizadas
+  - 45+ archivos CSS modules y TSX actualizados
+  - `/src/components/charts/echarts/sentinelTheme.ts` - Tema de graficos
+- **Utilities agregados**:
+  - Clases CSS: `.text-positive`, `.text-warning`, `.text-negative`, `.text-info`, `.text-accent`, `.text-primary`, `.text-charcoal`, `.text-primary-strong`
+  - Variables: `--lp-positive`, `--lp-warning`, `--lp-negative`, `--lp-info`, `--lp-accent`, `--lp-primary`, `--lp-primary-strong`
+- **Razon**: Todos los colores ahora tienen un origen natural (minerales, piedras, metales, tierra, carbon) para coherencia con la estetica Stone Marble
+
+**[2026-01-18] FING Emblem — Radar Symbol**
+- **Decision**: Crear nuevo emblema combinando el logo de SENTINEL con FING
+- **Cambios principales**:
+  - Componente FingEmblem: punto central + 3 aros concentricos en contenedor inset
+  - 6 animaciones CSS: breathe, pulse, glow, ripple, rotate, heartbeat
+  - Efecto de tallado SVG usando filtros (feOffset, feGaussianBlur, feMerge)
+  - Lockups con wordmark en posicion horizontal y vertical
+- **Archivos clave**:
+  - `/src/components/atoms/FingEmblem/FingEmblem.tsx`
+  - `/src/components/atoms/FingEmblem/FingEmblem.module.css`
+  - `/src/styles/theme.css` (tokens --fing-symbol-*, --fing-carve-*)
+- **Integracion**:
+  - DashboardLayout: Sidebar logo con animation="ripple"
+  - LandingHero: Hero logo size=120 con animation="ripple"
+  - ShowcaseLayout: Sidebar logo size=36 con animation="breathe"
+  - SidebarShowcase: Demos con animation="ripple"
 
 **[2026-01-18] FING Brand Integration**
 - **Decision**: Integrar el branding de FING al design system SENTINEL

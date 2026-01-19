@@ -19,8 +19,6 @@ export interface CardProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'>
   subtitle?: ReactNode;
   /** Status variant with left border accent */
   status?: CardStatus;
-  /** @deprecated Use status instead */
-  variant?: CardStatus;
   /** Visual style variant */
   cardStyle?: CardStyle;
   /** Size variant affecting padding */
@@ -42,7 +40,6 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
     title,
     subtitle,
     status,
-    variant,
     cardStyle = 'default',
     size = 'default',
     interactive = false,
@@ -57,9 +54,6 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
   // Get light engine context (optional)
   const lightEngine = useLightEngineOptional();
 
-  // Handle deprecated variant prop
-  const resolvedStatus = status || variant;
-
   // Build className
   const getCardClassName = (): string => {
     const classes = [styles.card];
@@ -71,7 +65,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
       error: styles.variantError,
       neutral: styles.variantNeutral,
     };
-    if (resolvedStatus) classes.push(statusMap[resolvedStatus]);
+    if (status) classes.push(statusMap[status]);
 
     // Add style variant
     const styleMap: Record<CardStyle, string | undefined> = {
@@ -94,8 +88,8 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
     if (interactive || onClick) classes.push(styles.interactive);
     if (showStatusDot) {
       classes.push(styles.status);
-      if (resolvedStatus === 'warning') classes.push(styles.statusWarning);
-      if (resolvedStatus === 'error') classes.push(styles.statusError);
+      if (status === 'warning') classes.push(styles.statusWarning);
+      if (status === 'error') classes.push(styles.statusError);
     }
 
     // Add dynamic shadows class

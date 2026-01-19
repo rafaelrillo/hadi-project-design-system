@@ -3,7 +3,7 @@ import { Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { ShowcaseLayout } from './layouts/ShowcaseLayout';
 import { Home } from './pages/Home';
-import { Landing } from './pages/Landing';
+import { FingHome } from './pages/FingHome';
 
 // Loading Screen for Suspense fallback
 import { LoadingScreen } from './components/atoms/LoadingScreen';
@@ -29,6 +29,7 @@ const Level4Showcase = lazy(() => import('./pages/sentinel/Level4Showcase').then
 
 // Styles (can be lazy loaded)
 const BrandShowcase = lazy(() => import('./pages/styles').then(m => ({ default: m.BrandShowcase })));
+const StylesButtonShowcase = lazy(() => import('./pages/styles').then(m => ({ default: m.ButtonShowcase })));
 const ColorsShowcase = lazy(() => import('./pages/styles').then(m => ({ default: m.ColorsShowcase })));
 const TypographyStylesShowcase = lazy(() => import('./pages/styles').then(m => ({ default: m.TypographyShowcase })));
 const SpacingShowcase = lazy(() => import('./pages/styles').then(m => ({ default: m.SpacingShowcase })));
@@ -37,6 +38,7 @@ const BorderRadiusShowcase = lazy(() => import('./pages/styles').then(m => ({ de
 const IconsShowcase = lazy(() => import('./pages/styles').then(m => ({ default: m.IconsShowcase })));
 const LightEngineShowcase = lazy(() => import('./pages/styles').then(m => ({ default: m.LightEngineShowcase })));
 const StoneMarbleShowcase = lazy(() => import('./pages/styles').then(m => ({ default: m.StoneMarbleShowcase })));
+const WordmarkShowcase = lazy(() => import('./pages/styles').then(m => ({ default: m.WordmarkShowcase })));
 
 // Atoms
 const ButtonShowcase = lazy(() => import('./pages/atoms/ButtonShowcase').then(m => ({ default: m.ButtonShowcase })));
@@ -118,14 +120,14 @@ function ShowcaseLoader() {
 function AppRoutes() {
   return (
     <Routes>
-      {/* Landing Page - Root */}
-      <Route path="/" element={<Landing />} />
+      {/* FING Home Page - Root */}
+      <Route path="/" element={<FingHome />} />
 
-      {/* SENTINEL App - Investment Analysis Application */}
+      {/* FING App - Investment Analysis Application */}
       <Route path="/app" element={<AppLayout />}>
         <Route index element={<Navigate to="dashboard" replace />} />
         <Route path="login" element={
-          <Suspense fallback={<LoadingScreen message="Loading login" />}>
+          <Suspense fallback={null}>
             <LoginPage />
           </Suspense>
         } />
@@ -223,6 +225,8 @@ function AppRoutes() {
         <Route path="styles/icons" element={<Suspense fallback={<ShowcaseLoader />}><IconsShowcase /></Suspense>} />
         <Route path="styles/light-engine" element={<Suspense fallback={<ShowcaseLoader />}><LightEngineShowcase /></Suspense>} />
         <Route path="styles/stone-marble" element={<Suspense fallback={<ShowcaseLoader />}><StoneMarbleShowcase /></Suspense>} />
+        <Route path="styles/wordmark" element={<Suspense fallback={<ShowcaseLoader />}><WordmarkShowcase /></Suspense>} />
+        <Route path="styles/buttons" element={<Suspense fallback={<ShowcaseLoader />}><StylesButtonShowcase /></Suspense>} />
 
         {/* Atoms */}
         <Route path="atoms/button" element={<Suspense fallback={<ShowcaseLoader />}><ButtonShowcase /></Suspense>} />

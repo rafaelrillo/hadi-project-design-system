@@ -18,7 +18,7 @@ const investorData: PictorialBarDataPoint[] = [
 ];
 
 const growthData: PictorialBarDataPoint[] = [
-  { name: 'Q1', value: 15, color: '#4a9a7c' },
+  { name: 'Q1', value: 15, color: '#4a7a6a' },
   { name: 'Q2', value: 22, color: '#5ba3a5' },
   { name: 'Q3', value: 18, color: '#7ecbcc' },
   { name: 'Q4', value: 28, color: '#5ba3a5' },
@@ -51,24 +51,24 @@ function PictorialBarChartContent() {
     return { x: Math.cos(shadowAngle), y: Math.sin(shadowAngle) };
   }, [lightAngle]);
 
-  const LIGHT = {
-    base: '#e0e5ec',
-    shadowDark: 'hsl(220 15% 72%)',
-    shadowLight: 'hsl(0 0% 100%)',
+  const MARBLE = {
+    base: '#d5d8dc',
+    shadowDark: '#a8acb3',
+    shadowLight: '#ffffff',
   };
 
   const getNeuPanelShadow = (distance: number, blur: number): string => {
     const { x, y } = shadowOffsets;
-    return `${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}`;
+    return `${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}`;
   };
 
   const getNeuInsetShadow = (distance: number, blur: number): string => {
     const { x, y } = shadowOffsets;
-    return `inset ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}`;
+    return `inset ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}`;
   };
 
   const pageHeaderStyles: React.CSSProperties = {
-    marginBottom: '32px', padding: '24px', background: LIGHT.base, borderRadius: '15px',
+    marginBottom: '32px', padding: '24px', background: MARBLE.base, borderRadius: '15px',
     boxShadow: getNeuPanelShadow(20, 60), transition: 'box-shadow 50ms linear',
   };
 
@@ -83,13 +83,13 @@ function PictorialBarChartContent() {
   };
 
   const chartContainerStyles: React.CSSProperties = {
-    padding: '24px', background: LIGHT.base, borderRadius: '15px',
+    padding: '24px', background: MARBLE.base, borderRadius: '15px',
     boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear',
   };
 
   const tableContainerStyles: React.CSSProperties = {
     padding: '20px', borderRadius: '15px', boxShadow: getNeuInsetShadow(5, 15),
-    background: LIGHT.base, overflowX: 'auto', transition: 'box-shadow 50ms linear',
+    background: MARBLE.base, overflowX: 'auto', transition: 'box-shadow 50ms linear',
   };
 
   const symbolChipStyles: React.CSSProperties = {
@@ -102,7 +102,7 @@ function PictorialBarChartContent() {
   };
 
   return (
-    <div style={{ background: LIGHT.base, minHeight: '100%', padding: '24px' }}>
+    <div style={{ background: MARBLE.base, minHeight: '100%', padding: '24px' }}>
       <header style={pageHeaderStyles}>
         <h1 style={titleStyles}>&gt; PictorialBarChart_</h1>
         <p style={descStyles}>// Barras con símbolos personalizados</p>
@@ -202,7 +202,7 @@ function PictorialBarChartContent() {
                 { prop: 'maxValue', type: 'number', default: 'auto', desc: 'Maximum axis value' },
               ].map((row, i) => (
                 <tr key={i}>
-                  <td style={{ padding: '12px 16px', color: '#2D3436' }}>{row.prop}</td>
+                  <td style={{ padding: '12px 16px', color: 'var(--sentinel-text-primary)' }}>{row.prop}</td>
                   <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.type}</td>
                   <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.default}</td>
                   <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.desc}</td>
@@ -213,7 +213,7 @@ function PictorialBarChartContent() {
         </div>
 
         <div style={{ marginTop: '24px' }}>
-          <h4 style={{ color: '#2D3436', marginBottom: '12px', fontSize: '14px', fontWeight: 600 }}>Available Symbols (pictorialSymbols)</h4>
+          <h4 style={{ color: 'var(--sentinel-text-primary)', marginBottom: '12px', fontSize: '14px', fontWeight: 600 }}>Available Symbols (pictorialSymbols)</h4>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
             {Object.keys(pictorialSymbols).map((key) => (
               <span key={key} style={symbolChipStyles}>{key}</span>

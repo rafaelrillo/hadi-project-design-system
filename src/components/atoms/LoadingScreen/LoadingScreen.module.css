@@ -1,4 +1,5 @@
 /* Path: src/components/atoms/LoadingScreen/LoadingScreen.module.css */
+/* Stone Marble Loading Screen */
 
 .container {
   position: fixed;
@@ -6,7 +7,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--sentinel-bg-base);
+  background: var(--marble-base, #d5d8dc);
   z-index: var(--sentinel-z-modal);
 }
 
@@ -16,7 +17,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--sentinel-space-6);
+  gap: var(--sentinel-space-6, 24px);
 }
 
 /* Logo */
@@ -24,57 +25,19 @@
   position: relative;
 }
 
-.logo {
-  width: 80px;
-  height: 80px;
-}
-
-.outerRing {
-  animation: rotate 20s linear infinite;
-  transform-origin: center;
-}
-
-.middleRing {
-  animation: rotate 15s linear infinite reverse;
-  transform-origin: center;
-}
-
-.centerDot {
-  animation: pulse 2s ease-in-out infinite;
-}
-
-.scanLine {
-  animation: rotate 4s linear infinite;
-  transform-origin: 50px 50px;
-}
-
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-}
-
-/* Title */
+/* Title - Letterpress style */
 .title {
-  font-family: var(--sentinel-font-led);
-  font-size: var(--sentinel-text-2xl);
-  font-weight: var(--sentinel-font-bold);
-  color: var(--sentinel-accent-primary);
-  letter-spacing: 0.3em;
-  text-shadow: var(--sentinel-glow-accent);
+  font-family: var(--sentinel-font-primary, 'DM Sans', sans-serif);
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
   margin: 0;
+
+  /* Letterpress petrol on marble */
+  color: var(--fing-accent, #3a6a72);
+  text-shadow:
+    1px 1px 1px var(--shadow-light, #ffffff),
+    -1px -1px 1px rgba(58, 106, 114, 0.4);
 }
 
 /* Message */
@@ -85,11 +48,16 @@
 }
 
 .message {
-  font-family: var(--sentinel-font-led);
-  font-size: var(--sentinel-text-sm);
-  color: var(--sentinel-text-tertiary);
+  font-family: var(--sentinel-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 11px;
   text-transform: uppercase;
-  letter-spacing: var(--sentinel-tracking-led);
+  letter-spacing: 0.1em;
+
+  /* Subtle letterpress on marble */
+  color: var(--marble-dark, #c8cbd0);
+  text-shadow:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.8),
+    -0.5px -0.5px 0px rgba(130, 140, 155, 0.3);
 }
 
 .dots {
@@ -98,9 +66,12 @@
 }
 
 .dot {
-  font-family: var(--sentinel-font-led);
-  font-size: var(--sentinel-text-sm);
-  color: var(--sentinel-text-tertiary);
+  font-family: var(--sentinel-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 11px;
+  color: var(--marble-dark, #c8cbd0);
+  text-shadow:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.8),
+    -0.5px -0.5px 0px rgba(130, 140, 155, 0.3);
   animation: blink 1.4s infinite;
 }
 
@@ -125,25 +96,30 @@
   }
 }
 
-/* Progress bar */
+/* Progress bar - Inset track with raised fill */
 .progressBar {
-  width: 200px;
-  height: 2px;
-  background-color: var(--sentinel-bg-elevated);
-  border-radius: var(--sentinel-radius-full);
+  width: 180px;
+  height: 4px;
+  background: var(--marble-base, #d5d8dc);
+  border-radius: 100px;
   overflow: hidden;
+
+  /* Inset track */
+  box-shadow:
+    inset 1px 1px 2px var(--shadow-dark, #a8acb3),
+    inset -1px -1px 2px var(--shadow-light, #ffffff);
 }
 
 .progressFill {
   height: 100%;
   width: 30%;
-  background: linear-gradient(
-    90deg,
-    var(--sentinel-accent-primary),
-    var(--sentinel-accent-secondary)
-  );
-  border-radius: var(--sentinel-radius-full);
+  background: var(--fing-accent, #3a6a72);
+  border-radius: 100px;
   animation: progress 1.5s ease-in-out infinite;
+
+  /* Subtle raised effect */
+  box-shadow:
+    0 0 4px rgba(58, 106, 114, 0.3);
 }
 
 @keyframes progress {

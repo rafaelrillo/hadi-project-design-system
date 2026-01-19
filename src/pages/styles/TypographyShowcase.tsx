@@ -133,12 +133,13 @@ export function TypographyShowcase() {
       };
     };
 
-    // LETTERPRESS - Efecto de imprenta clásica
-    const letterpress = (intensity: 'soft' | 'medium' | 'deep' = 'medium'): React.CSSProperties => {
+    // LETTERPRESS - Efecto de imprenta clásica (raised/elevated)
+    const letterpress = (intensity: 'soft' | 'medium' | 'deep' | 'stamped' = 'medium'): React.CSSProperties => {
       const configs = {
         soft: { d: 1, b: 0, o: 0.6 },
         medium: { d: 1.5, b: 1, o: 0.7 },
         deep: { d: 2, b: 1, o: 0.8 },
+        stamped: { d: 2.5, b: 2, o: 0.9 },
       };
       const { d, b, o } = configs[intensity];
       return {
@@ -147,9 +148,54 @@ export function TypographyShowcase() {
       };
     };
 
-    // ENGRAVED - Grabado fino (efecto de incisión delicada)
-    const engraved = (intensity: 'subtle' | 'visible' | 'deep' = 'visible'): React.CSSProperties => {
+    // LETTERPRESS INSET - Letterpress pero hundido (inset)
+    const letterpressInset = (intensity: 'whisper' | 'subtle' | 'soft' | 'medium' = 'subtle'): React.CSSProperties => {
       const configs = {
+        whisper: { d: 0.3, b: 0, light: 0.5, dark: 0.25 },
+        subtle: { d: 0.5, b: 0, light: 0.6, dark: 0.3 },
+        soft: { d: 0.75, b: 0, light: 0.7, dark: 0.35 },
+        medium: { d: 1, b: 1, light: 0.8, dark: 0.4 },
+      };
+      const { d, b, light, dark } = configs[intensity];
+      return {
+        color: MARBLE.dark,
+        textShadow: `${d}px ${d}px ${b}px rgba(255, 255, 255, ${light}), ${-d}px ${-d}px ${b}px rgba(130, 140, 155, ${dark})`,
+      };
+    };
+
+    // LETTERPRESS COLORED - Letterpress con color
+    const letterpressColored = (hue: 'teal' | 'positive' | 'negative' | 'warning' = 'teal'): React.CSSProperties => {
+      const colors = {
+        teal: { color: '#3a6a72', shadow: 'rgba(58, 106, 114, 0.45)' },
+        positive: { color: '#4a7a6a', shadow: 'rgba(74, 154, 124, 0.45)' },
+        negative: { color: '#9a5a5a', shadow: 'rgba(154, 90, 90, 0.45)' },
+        warning: { color: '#9a8a4a', shadow: 'rgba(154, 138, 74, 0.45)' },
+      };
+      const { color, shadow } = colors[hue];
+      return {
+        color,
+        textShadow: `1px 1px 1px rgba(255, 255, 255, 0.7), -1px -1px 1px ${shadow}`,
+      };
+    };
+
+    // LETTERPRESS COLORED INSET - Letterpress hundido con color
+    const letterpressColoredInset = (hue: 'teal' | 'positive' | 'negative' = 'teal'): React.CSSProperties => {
+      const colors = {
+        teal: { color: '#5ba3a5', shadow: 'rgba(58, 106, 114, 0.35)' },
+        positive: { color: '#5a9a7c', shadow: 'rgba(74, 154, 124, 0.35)' },
+        negative: { color: '#b87070', shadow: 'rgba(184, 92, 92, 0.35)' },
+      };
+      const { color, shadow } = colors[hue];
+      return {
+        color,
+        textShadow: `0.5px 0.5px 0px rgba(255, 255, 255, 0.6), -0.5px -0.5px 0px ${shadow}`,
+      };
+    };
+
+    // ENGRAVED - Grabado fino (efecto de incisión delicada)
+    const engraved = (intensity: 'whisper' | 'subtle' | 'visible' | 'deep' = 'subtle'): React.CSSProperties => {
+      const configs = {
+        whisper: { d: 0.3, light: 0.4, dark: 0.25 },
         subtle: { d: 0.5, light: 0.5, dark: 0.35 },
         visible: { d: 0.75, light: 0.7, dark: 0.5 },
         deep: { d: 1, light: 0.85, dark: 0.6 },
@@ -164,7 +210,7 @@ export function TypographyShowcase() {
     // ENGRAVED COLORED - Grabado con color (para títulos con acento)
     const engravedColored = (hue: 'teal' | 'positive' | 'negative' | 'warning' = 'teal'): React.CSSProperties => {
       const colors = {
-        teal: { color: '#5ba3a5', shadow: 'rgba(74, 154, 156, 0.35)' },
+        teal: { color: '#5ba3a5', shadow: 'rgba(58, 106, 114, 0.35)' },
         positive: { color: '#5a9a7c', shadow: 'rgba(74, 154, 124, 0.35)' },
         negative: { color: '#b87070', shadow: 'rgba(184, 92, 92, 0.35)' },
         warning: { color: '#c4a35a', shadow: 'rgba(196, 163, 90, 0.35)' },
@@ -177,18 +223,23 @@ export function TypographyShowcase() {
     };
 
     // LONG SHADOW - Sombra larga dramática (para hero sections)
-    const longShadow = (direction: 'se' | 'sw' | 'ne' | 'nw' = 'se'): React.CSSProperties => {
+    const longShadow = (
+      length: 'short' | 'medium' | 'long' | 'dramatic' = 'medium',
+      direction: 'se' | 'sw' | 'ne' | 'nw' = 'se'
+    ): React.CSSProperties => {
+      const lengths = { short: 3, medium: 6, long: 10, dramatic: 15 };
       const dirs = {
-        se: { x: 1, y: 1 },   // sureste
-        sw: { x: -1, y: 1 },  // suroeste
-        ne: { x: 1, y: -1 },  // noreste
-        nw: { x: -1, y: -1 }, // noroeste
+        se: { x: 1, y: 1 },
+        sw: { x: -1, y: 1 },
+        ne: { x: 1, y: -1 },
+        nw: { x: -1, y: -1 },
       };
+      const count = lengths[length];
       const { x, y } = dirs[direction];
       const shadows = [];
-      for (let i = 1; i <= 6; i++) {
-        const opacity = 0.12 - i * 0.015;
-        shadows.push(`${x * i}px ${y * i}px 0px rgba(120, 130, 145, ${opacity})`);
+      for (let i = 1; i <= count; i++) {
+        const opacity = 0.15 - (i * (0.15 / count));
+        shadows.push(`${x * i}px ${y * i}px 0px rgba(120, 130, 145, ${Math.max(0.02, opacity)})`);
       }
       return {
         color: MARBLE.light,
@@ -197,11 +248,11 @@ export function TypographyShowcase() {
     };
 
     // BEVELED - Efecto biselado 3D
-    const beveled = (intensity: 'subtle' | 'medium' | 'strong' = 'medium'): React.CSSProperties => {
+    const beveled = (intensity: 'soft' | 'medium' | 'sharp' = 'medium'): React.CSSProperties => {
       const configs = {
-        subtle: { d: 1, blur: 0, light: 0.7, dark: 0.3 },
+        soft: { d: 1, blur: 1, light: 0.6, dark: 0.25 },
         medium: { d: 1.5, blur: 0, light: 0.85, dark: 0.4 },
-        strong: { d: 2, blur: 1, light: 0.95, dark: 0.5 },
+        sharp: { d: 2, blur: 0, light: 0.95, dark: 0.55 },
       };
       const { d, blur, light, dark } = configs[intensity];
       return {
@@ -274,7 +325,7 @@ export function TypographyShowcase() {
     // COLORED DEBOSSED - Hundido con color (para títulos de secciones con énfasis)
     const coloredDebossed = (hue: 'teal' | 'positive' | 'negative' | 'warning' | 'neutral' = 'teal'): React.CSSProperties => {
       const colors = {
-        teal: { color: '#5ba3a5', shadow: 'rgba(74, 154, 156, 0.4)' },
+        teal: { color: '#5ba3a5', shadow: 'rgba(58, 106, 114, 0.4)' },
         positive: { color: '#5a9a7c', shadow: 'rgba(74, 154, 124, 0.4)' },
         negative: { color: '#b87070', shadow: 'rgba(184, 92, 92, 0.4)' },
         warning: { color: '#c4a35a', shadow: 'rgba(196, 163, 90, 0.4)' },
@@ -348,7 +399,7 @@ export function TypographyShowcase() {
     // OUTLINE GLOW - Contorno con resplandor sutil
     const outlineGlow = (hue: 'teal' | 'positive' | 'negative' | 'warning' | 'white' = 'white'): React.CSSProperties => {
       const glowColors = {
-        teal: 'rgba(74, 154, 156, 0.4)',
+        teal: 'rgba(58, 106, 114, 0.4)',
         positive: 'rgba(74, 154, 124, 0.4)',
         negative: 'rgba(184, 92, 92, 0.4)',
         warning: 'rgba(196, 163, 90, 0.4)',
@@ -384,17 +435,148 @@ export function TypographyShowcase() {
       `.trim().replace(/\s+/g, ' '),
     });
 
+    // COLORED EMBOSSED - Embossed con color (para logos y branding)
+    const coloredEmbossed = (hue: 'teal' | 'positive' | 'negative' | 'warning' = 'teal'): React.CSSProperties => {
+      const colors = {
+        teal: { color: '#3a6a72', light: 'rgba(120, 200, 202, 0.7)', dark: 'rgba(50, 120, 122, 0.5)' },
+        positive: { color: '#4a7a6a', light: 'rgba(120, 200, 160, 0.7)', dark: 'rgba(50, 120, 100, 0.5)' },
+        negative: { color: '#9a5a5a', light: 'rgba(200, 140, 140, 0.7)', dark: 'rgba(120, 70, 70, 0.5)' },
+        warning: { color: '#9a8a4a', light: 'rgba(200, 180, 120, 0.7)', dark: 'rgba(120, 100, 50, 0.5)' },
+      };
+      const { color, light, dark } = colors[hue];
+      return {
+        color,
+        textShadow: `-1.5px -1.5px 1px ${light}, 1.5px 1.5px 1px ${dark}`,
+      };
+    };
+
+    // SUNKEN - Efecto muy hundido (como grabado en metal)
+    const sunken = (depth: 'shallow' | 'medium' | 'deep' = 'medium'): React.CSSProperties => {
+      const configs = {
+        shallow: { d: 0.5, light: 0.7, dark: 0.25 },
+        medium: { d: 1, light: 0.85, dark: 0.35 },
+        deep: { d: 1.5, light: 0.95, dark: 0.45 },
+      };
+      const { d, light, dark } = configs[depth];
+      return {
+        color: MARBLE.deeper,
+        textShadow: `
+          ${d}px ${d}px 0px rgba(255, 255, 255, ${light}),
+          ${-d * 0.5}px ${-d * 0.5}px 0px rgba(130, 140, 155, ${dark}),
+          ${d * 0.5}px ${d * 0.5}px 1px rgba(255, 255, 255, ${light * 0.5})
+        `.trim().replace(/\s+/g, ' '),
+      };
+    };
+
+    // RAISED - Efecto elevado simple (versión más limpia de embossed)
+    const raised = (level: 'subtle' | 'medium' | 'strong' = 'medium'): React.CSSProperties => {
+      const configs = {
+        subtle: { d: 0.5, light: 0.7, dark: 0.3 },
+        medium: { d: 1, light: 0.85, dark: 0.4 },
+        strong: { d: 1.5, light: 0.95, dark: 0.5 },
+      };
+      const { d, light, dark } = configs[level];
+      return {
+        color: MARBLE.base,
+        textShadow: `${-d}px ${-d}px 0px rgba(255, 255, 255, ${light}), ${d}px ${d}px 0px rgba(140, 150, 165, ${dark})`,
+      };
+    };
+
+    // GHOST - Efecto fantasma (muy sutil, apenas visible)
+    const ghost = (): React.CSSProperties => ({
+      color: MARBLE.dark,
+      textShadow: `
+        0.25px 0.25px 0px rgba(255, 255, 255, 0.5),
+        -0.25px -0.25px 0px rgba(130, 140, 155, 0.15)
+      `.trim().replace(/\s+/g, ' '),
+    });
+
+    // DOUBLE - Efecto de doble sombra (para énfasis)
+    const double = (): React.CSSProperties => ({
+      color: MARBLE.base,
+      textShadow: `
+        -1px -1px 0px rgba(255, 255, 255, 0.9),
+        1px 1px 0px rgba(140, 150, 165, 0.5),
+        -2px -2px 0px rgba(255, 255, 255, 0.5),
+        2px 2px 0px rgba(140, 150, 165, 0.25)
+      `.trim().replace(/\s+/g, ' '),
+    });
+
+    // CARVED LIGHT - Tallado ligero (más sutil que carvedDeep)
+    const carvedLight = (): React.CSSProperties => ({
+      color: MARBLE.dark,
+      textShadow: `
+        0.75px 0.75px 0px rgba(255, 255, 255, 0.8),
+        -0.5px -0.5px 0px rgba(130, 140, 155, 0.35)
+      `.trim().replace(/\s+/g, ' '),
+    });
+
+    // FROSTED - Efecto esmerilado (como vidrio esmerilado)
+    const frosted = (): React.CSSProperties => ({
+      color: 'rgba(213, 216, 220, 0.8)',
+      textShadow: `
+        0 0 2px rgba(255, 255, 255, 0.6),
+        -1px -1px 1px rgba(255, 255, 255, 0.4),
+        1px 1px 1px rgba(140, 150, 165, 0.3)
+      `.trim().replace(/\s+/g, ' '),
+    });
+
+    // METALLIC - Efecto metálico (como grabado en metal)
+    const metallic = (tone: 'silver' | 'gold' | 'bronze' = 'silver'): React.CSSProperties => {
+      const tones = {
+        silver: { base: '#b8bcc2', light: 'rgba(220, 225, 230, 0.9)', dark: 'rgba(130, 140, 155, 0.6)' },
+        gold: { base: '#c4a860', light: 'rgba(230, 210, 150, 0.9)', dark: 'rgba(140, 120, 60, 0.6)' },
+        bronze: { base: '#a08060', light: 'rgba(200, 170, 140, 0.9)', dark: 'rgba(100, 80, 50, 0.6)' },
+      };
+      const { base, light, dark } = tones[tone];
+      return {
+        color: base,
+        textShadow: `-1px -1px 0px ${light}, 1px 1px 0px ${dark}, 0px -0.5px 0px ${light}`,
+      };
+    };
+
+    // NEON - Efecto neón (resplandor suave)
+    const neon = (hue: 'teal' | 'positive' | 'negative' | 'warning' = 'teal'): React.CSSProperties => {
+      const glows = {
+        teal: { color: '#3a6a72', glow: 'rgba(58, 106, 114, 0.6)' },
+        positive: { color: '#4a7a6a', glow: 'rgba(74, 154, 124, 0.6)' },
+        negative: { color: '#b85c5c', glow: 'rgba(184, 92, 92, 0.6)' },
+        warning: { color: '#c4a35a', glow: 'rgba(196, 163, 90, 0.6)' },
+      };
+      const { color, glow } = glows[hue];
+      return {
+        color,
+        textShadow: `0 0 4px ${glow}, 0 0 8px ${glow}, 0 0 12px ${glow}`,
+      };
+    };
+
+    // RETRO - Efecto retro (offset shadow)
+    const retro = (offset: 'small' | 'medium' | 'large' = 'medium'): React.CSSProperties => {
+      const offsets = { small: 2, medium: 3, large: 5 };
+      const d = offsets[offset];
+      return {
+        color: MARBLE.light,
+        textShadow: `${d}px ${d}px 0px rgba(100, 110, 125, 0.5)`,
+      };
+    };
+
     return {
       // Legible
       title, subtitle, body, caption, muted, inset,
-      // Colored
+      // Colored Legible
       teal, positive, negative, warning,
       // Decorative - Neumorphic Classic
-      embossed, debossed, letterpress, engraved, engravedColored,
-      longShadow, beveled, carvedDeep, pillow,
-      // Decorative - Additional Neumorphic
-      chiseled, softRelief, coloredDebossed, stamped,
-      intaglio, pressed, extruded, outlineGlow, vintage, crisp,
+      embossed, debossed, raised, sunken,
+      letterpress, letterpressInset, letterpressColored, letterpressColoredInset,
+      engraved, engravedColored,
+      // Decorative - Shadows & Depth
+      longShadow, beveled, carvedDeep, carvedLight, pillow,
+      // Decorative - Textured
+      chiseled, softRelief, coloredDebossed, coloredEmbossed, stamped,
+      intaglio, pressed, extruded,
+      // Decorative - Special FX
+      outlineGlow, vintage, crisp, ghost, double, frosted,
+      metallic, neon, retro,
     };
   }, []);
 
@@ -1536,7 +1718,7 @@ export function TypographyShowcase() {
                   Beveled — Biselado 3D
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                  {(['subtle', 'medium', 'strong'] as const).map(intensity => (
+                  {(['soft', 'medium', 'sharp'] as const).map(intensity => (
                     <div key={intensity} style={{ ...glassBox, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                       <div style={{
                         ...fx.beveled(intensity),
@@ -1568,10 +1750,10 @@ export function TypographyShowcase() {
                   Long Shadow — Sombra Dramática
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                  {(['se', 'sw', 'ne', 'nw'] as const).map(dir => (
-                    <div key={dir} style={{ ...glassBox, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  {(['short', 'medium', 'long', 'dramatic'] as const).map(len => (
+                    <div key={len} style={{ ...glassBox, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                       <div style={{
-                        ...fx.longShadow(dir),
+                        ...fx.longShadow(len, 'se'),
                         fontFamily: FONTS.display,
                         fontSize: '26px',
                         fontWeight: 700,
@@ -1579,7 +1761,7 @@ export function TypographyShowcase() {
                         MARKETS
                       </div>
                       <code style={{ ...fx.muted(), fontFamily: FONTS.mono, fontSize: '10px' }}>
-                        fx.longShadow("{dir}")
+                        fx.longShadow("{len}")
                       </code>
                     </div>
                   ))}
@@ -2003,6 +2185,258 @@ export function TypographyShowcase() {
             </div>
           </section>
 
+          {/* Letterpress Variants */}
+          <section style={card}>
+            <div style={cardTitle}>Letterpress Variants — Variantes de Imprenta</div>
+            <div style={grid(2, 24)}>
+              {/* Letterpress Inset */}
+              <div style={insetBox}>
+                <div style={{
+                  ...fx.teal(),
+                  fontFamily: FONTS.primary,
+                  fontSize: '11px',
+                  fontWeight: 600,
+                  letterSpacing: '0.1em',
+                  textTransform: 'uppercase',
+                  marginBottom: '16px',
+                }}>
+                  Letterpress Inset — Hundido
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                  {(['whisper', 'subtle', 'soft', 'medium'] as const).map(intensity => (
+                    <div key={intensity} style={{ ...glassBox, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                      <div style={{
+                        ...fx.letterpressInset(intensity),
+                        fontFamily: FONTS.display,
+                        fontSize: '22px',
+                        fontWeight: 700,
+                      }}>
+                        INSET
+                      </div>
+                      <code style={{ ...fx.muted(), fontFamily: FONTS.mono, fontSize: '9px' }}>
+                        {intensity}
+                      </code>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Letterpress Colored */}
+              <div style={insetBox}>
+                <div style={{
+                  ...fx.teal(),
+                  fontFamily: FONTS.primary,
+                  fontSize: '11px',
+                  fontWeight: 600,
+                  letterSpacing: '0.1em',
+                  textTransform: 'uppercase',
+                  marginBottom: '16px',
+                }}>
+                  Letterpress Colored
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                  {(['teal', 'positive', 'negative', 'warning'] as const).map(hue => (
+                    <div key={hue} style={{ ...glassBox, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                      <div style={{
+                        ...fx.letterpressColored(hue),
+                        fontFamily: FONTS.display,
+                        fontSize: '22px',
+                        fontWeight: 700,
+                      }}>
+                        COLOR
+                      </div>
+                      <code style={{ ...fx.muted(), fontFamily: FONTS.mono, fontSize: '9px' }}>
+                        {hue}
+                      </code>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Metallic Effects */}
+          <section style={card}>
+            <div style={cardTitle}>Metallic — Efectos Metálicos</div>
+            <div style={grid(3, 24)}>
+              {(['silver', 'gold', 'bronze'] as const).map(tone => (
+                <div key={tone} style={{ ...insetBox, textAlign: 'center' }}>
+                  <div style={{
+                    ...fx.metallic(tone),
+                    fontFamily: FONTS.display,
+                    fontSize: '32px',
+                    fontWeight: 700,
+                    marginBottom: '12px',
+                  }}>
+                    METAL
+                  </div>
+                  <code style={{ ...fx.muted(), fontFamily: FONTS.mono, fontSize: '10px' }}>
+                    fx.metallic("{tone}")
+                  </code>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Neon Effects */}
+          <section style={card}>
+            <div style={cardTitle}>Neon — Resplandor</div>
+            <div style={grid(4)}>
+              {(['teal', 'positive', 'negative', 'warning'] as const).map(hue => (
+                <div key={hue} style={{ ...insetBox, textAlign: 'center' }}>
+                  <div style={{
+                    ...fx.neon(hue),
+                    fontFamily: FONTS.display,
+                    fontSize: '28px',
+                    fontWeight: 700,
+                    marginBottom: '8px',
+                  }}>
+                    NEON
+                  </div>
+                  <code style={{ ...fx.muted(), fontFamily: FONTS.mono, fontSize: '9px' }}>
+                    fx.neon("{hue}")
+                  </code>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* More Special Effects */}
+          <section style={card}>
+            <div style={cardTitle}>Más Efectos Especiales</div>
+            <div style={grid(4)}>
+              {/* Raised */}
+              <div style={{ ...insetBox, textAlign: 'center' }}>
+                <div style={{
+                  ...fx.raised('strong'),
+                  fontFamily: FONTS.display,
+                  fontSize: '28px',
+                  fontWeight: 700,
+                  marginBottom: '8px',
+                }}>
+                  RAISED
+                </div>
+                <code style={{ ...fx.muted(), fontFamily: FONTS.mono, fontSize: '9px' }}>
+                  fx.raised()
+                </code>
+              </div>
+
+              {/* Sunken */}
+              <div style={{ ...insetBox, textAlign: 'center' }}>
+                <div style={{
+                  ...fx.sunken('deep'),
+                  fontFamily: FONTS.display,
+                  fontSize: '28px',
+                  fontWeight: 700,
+                  marginBottom: '8px',
+                }}>
+                  SUNKEN
+                </div>
+                <code style={{ ...fx.muted(), fontFamily: FONTS.mono, fontSize: '9px' }}>
+                  fx.sunken()
+                </code>
+              </div>
+
+              {/* Ghost */}
+              <div style={{ ...insetBox, textAlign: 'center' }}>
+                <div style={{
+                  ...fx.ghost(),
+                  fontFamily: FONTS.display,
+                  fontSize: '28px',
+                  fontWeight: 700,
+                  marginBottom: '8px',
+                }}>
+                  GHOST
+                </div>
+                <code style={{ ...fx.muted(), fontFamily: FONTS.mono, fontSize: '9px' }}>
+                  fx.ghost()
+                </code>
+              </div>
+
+              {/* Double */}
+              <div style={{ ...insetBox, textAlign: 'center' }}>
+                <div style={{
+                  ...fx.double(),
+                  fontFamily: FONTS.display,
+                  fontSize: '28px',
+                  fontWeight: 700,
+                  marginBottom: '8px',
+                }}>
+                  DOUBLE
+                </div>
+                <code style={{ ...fx.muted(), fontFamily: FONTS.mono, fontSize: '9px' }}>
+                  fx.double()
+                </code>
+              </div>
+            </div>
+
+            <div style={{ ...grid(4), marginTop: '16px' }}>
+              {/* Carved Light */}
+              <div style={{ ...insetBox, textAlign: 'center' }}>
+                <div style={{
+                  ...fx.carvedLight(),
+                  fontFamily: FONTS.display,
+                  fontSize: '28px',
+                  fontWeight: 700,
+                  marginBottom: '8px',
+                }}>
+                  CARVED
+                </div>
+                <code style={{ ...fx.muted(), fontFamily: FONTS.mono, fontSize: '9px' }}>
+                  fx.carvedLight()
+                </code>
+              </div>
+
+              {/* Frosted */}
+              <div style={{ ...insetBox, textAlign: 'center' }}>
+                <div style={{
+                  ...fx.frosted(),
+                  fontFamily: FONTS.display,
+                  fontSize: '28px',
+                  fontWeight: 700,
+                  marginBottom: '8px',
+                }}>
+                  FROSTED
+                </div>
+                <code style={{ ...fx.muted(), fontFamily: FONTS.mono, fontSize: '9px' }}>
+                  fx.frosted()
+                </code>
+              </div>
+
+              {/* Retro */}
+              <div style={{ ...insetBox, textAlign: 'center' }}>
+                <div style={{
+                  ...fx.retro('large'),
+                  fontFamily: FONTS.display,
+                  fontSize: '28px',
+                  fontWeight: 700,
+                  marginBottom: '8px',
+                }}>
+                  RETRO
+                </div>
+                <code style={{ ...fx.muted(), fontFamily: FONTS.mono, fontSize: '9px' }}>
+                  fx.retro()
+                </code>
+              </div>
+
+              {/* Colored Embossed */}
+              <div style={{ ...insetBox, textAlign: 'center' }}>
+                <div style={{
+                  ...fx.coloredEmbossed('teal'),
+                  fontFamily: FONTS.display,
+                  fontSize: '28px',
+                  fontWeight: 700,
+                  marginBottom: '8px',
+                }}>
+                  COLOR
+                </div>
+                <code style={{ ...fx.muted(), fontFamily: FONTS.mono, fontSize: '9px' }}>
+                  fx.coloredEmbossed()
+                </code>
+              </div>
+            </div>
+          </section>
+
           {/* ═══════════════════════════════════════════════════════════════════════
               CARVED ALPHABET - Alfabeto Completo Tallado
               ═══════════════════════════════════════════════════════════════════════ */}
@@ -2231,7 +2665,7 @@ export function TypographyShowcase() {
                   { name: 'Stamped (heavy)', effect: fx.stamped('heavy'), desc: 'Estampado - Presión con fuerza' },
                   { name: 'Pressed (deep)', effect: fx.pressed('deep'), desc: 'Presionado - Como botón' },
                   { name: 'Intaglio', effect: fx.intaglio(), desc: 'Grabado profundo - Moneda/medalla' },
-                  { name: 'Beveled (strong)', effect: fx.beveled('strong'), desc: 'Biselado - 3D con bordes' },
+                  { name: 'Beveled (sharp)', effect: fx.beveled('sharp'), desc: 'Biselado - 3D con bordes' },
                   { name: 'Pillow', effect: fx.pillow(), desc: 'Almohada - Soft 3D' },
                   { name: 'Soft Relief (gentle)', effect: fx.softRelief('gentle'), desc: 'Relieve suave - Delicado' },
                   { name: 'Carved Deep', effect: fx.carvedDeep(), desc: 'Tallado profundo - Muy decorativo' },
@@ -2352,7 +2786,7 @@ export function TypographyShowcase() {
                 {/* Portfolio Pro */}
                 <div style={{ ...glassBox, textAlign: 'center', padding: '32px' }}>
                   <div style={{
-                    ...fx.beveled('strong'),
+                    ...fx.beveled('sharp'),
                     fontFamily: FONTS.display,
                     fontSize: '38px',
                     fontWeight: 700,
@@ -2693,7 +3127,7 @@ export function TypographyShowcase() {
                       fontSize: '11px',
                       fontWeight: 600,
                       padding: '4px 8px',
-                      background: 'rgba(74, 154, 156, 0.1)',
+                      background: 'rgba(58, 106, 114, 0.1)',
                       borderRadius: '4px',
                     }}>
                       {ticker}
@@ -2785,7 +3219,7 @@ export function TypographyShowcase() {
                     padding: '12px 24px',
                     border: 'none',
                     borderRadius: '10px',
-                    background: '#4a9a9c',
+                    background: '#3a6a72',
                     cursor: 'pointer',
                   }}>
                     Confirm Purchase

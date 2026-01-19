@@ -1,0 +1,140 @@
+/* Path: src/components/atoms/FingWordmark/FingWordmark.module.css */
+/* FING Wordmark Component Styles */
+
+.container {
+  transition: box-shadow 200ms ease, transform 200ms ease;
+}
+
+.wordmark {
+  display: block;
+  transition: text-shadow 200ms ease;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   VARIANT-SPECIFIC CLASSES (optional utility classes)
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* Whisper */
+.insetWhisper {
+  box-shadow: var(--fing-wm-inset-whisper);
+}
+
+.textWhisper {
+  text-shadow: var(--fing-wm-text-whisper);
+  color: #d5d8dc;
+}
+
+/* Soft */
+.insetSoft {
+  box-shadow: var(--fing-wm-inset-soft);
+}
+
+.textSoft {
+  text-shadow: var(--fing-wm-text-soft);
+  color: #d5d8dc;
+}
+
+/* Medium */
+.insetMedium {
+  box-shadow: var(--fing-wm-inset-medium);
+}
+
+.textMedium {
+  text-shadow: var(--fing-wm-text-medium);
+  color: #d5d8dc;
+}
+
+/* Deep */
+.insetDeep {
+  box-shadow: var(--fing-wm-inset-deep);
+}
+
+.textDeep {
+  text-shadow: var(--fing-wm-text-deep);
+  color: #d5d8dc;
+}
+
+/* Carved (Recommended) */
+.insetCarved {
+  box-shadow: var(--fing-wm-inset-carved);
+}
+
+.textCarved {
+  text-shadow: var(--fing-wm-text-carved);
+  color: #d5d8dc;
+}
+
+/* Pressed (Recommended Alternative) */
+.insetPressed {
+  background: var(--fing-wm-bg-pressed);
+  box-shadow: var(--fing-wm-inset-pressed);
+}
+
+.textPressed {
+  text-shadow: var(--fing-wm-text-pressed);
+  color: #c5c9ce;
+}
+
+/* Bowl */
+.insetBowl {
+  background: var(--fing-wm-bg-bowl);
+  box-shadow: var(--fing-wm-inset-bowl);
+}
+
+.textBowl {
+  text-shadow: var(--fing-wm-text-bowl);
+  color: #d5d8dc;
+}
+
+/* Channel */
+.insetChannel {
+  box-shadow: var(--fing-wm-inset-channel);
+}
+
+.textChannel {
+  text-shadow: var(--fing-wm-text-channel);
+  color: #d5d8dc;
+}
+
+/* Etched */
+.insetEtched {
+  box-shadow: var(--fing-wm-inset-etched);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.textEtched {
+  text-shadow: var(--fing-wm-text-etched);
+  color: #d5d8dc;
+}
+
+/* Crater */
+.insetCrater {
+  background: var(--fing-wm-bg-crater);
+  box-shadow: var(--fing-wm-inset-crater);
+}
+
+.textCrater {
+  text-shadow: var(--fing-wm-text-crater);
+  color: #caced3;
+}
+
+/* Pillow */
+.insetPillow {
+  background: var(--fing-wm-bg-pillow);
+  box-shadow: var(--fing-wm-inset-pillow);
+}
+
+.textPillow {
+  text-shadow: var(--fing-wm-text-pillow);
+  color: #d5d8dc;
+}
+
+/* Sharp */
+.insetSharp {
+  box-shadow: var(--fing-wm-inset-sharp);
+}
+
+.textSharp {
+  text-shadow: var(--fing-wm-text-sharp);
+  color: #d5d8dc;
+}

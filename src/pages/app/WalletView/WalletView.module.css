@@ -13,7 +13,7 @@
   display: flex;
   flex-direction: column;
   min-height: 100%;
-  background: var(--neu-base, #e0e5ec);
+  background: var(--neu-base, #d5d8dc);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -94,7 +94,7 @@
 
 .headerIcon {
   color: var(--sentinel-accent-primary);
-  filter: drop-shadow(0 0 4px rgba(74, 154, 156, 0.5));
+  filter: drop-shadow(0 0 4px rgba(58, 106, 114, 0.5));
 }
 
 .title {
@@ -168,8 +168,8 @@
   justify-content: center;
   width: 44px;
   height: 44px;
-  background: rgba(74, 154, 156, 0.12);
-  border: 1px solid rgba(74, 154, 156, 0.2);
+  background: rgba(58, 106, 114, 0.12);
+  border: 1px solid rgba(58, 106, 114, 0.2);
   border-radius: var(--sentinel-radius-md);
   color: var(--sentinel-accent-primary);
   flex-shrink: 0;
@@ -180,7 +180,7 @@
 }
 
 .summaryIcon svg {
-  filter: drop-shadow(0 0 4px rgba(74, 154, 156, 0.4));
+  filter: drop-shadow(0 0 4px rgba(58, 106, 114, 0.4));
 }
 
 .summaryIcon.positive {
@@ -340,11 +340,11 @@
 
 .searchBox:focus-within {
   background: rgba(255, 255, 255, 0.7);
-  border-color: rgba(74, 154, 156, 0.4);
+  border-color: rgba(58, 106, 114, 0.4);
   box-shadow:
     inset 2px 2px 4px rgba(163, 177, 198, 0.1),
     inset -2px -2px 4px rgba(255, 255, 255, 0.7),
-    0 0 0 3px rgba(74, 154, 156, 0.1);
+    0 0 0 3px rgba(58, 106, 114, 0.1);
 }
 
 .searchIcon {

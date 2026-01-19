@@ -7,22 +7,27 @@ import styles from './Button.module.css';
  * Maps variant names to CSS module class names
  */
 const variantClasses: Record<ButtonVariant, string> = {
-  // Neumorphism variants
-  'neu-soft': styles.neuSoft,
-  'neu-flat': styles.neuFlat,
-  'neu-minimal': styles.neuMinimal,
-  'neu-deep': styles.neuDeep,
-  'neu-pillow': styles.neuPillow,
-  'neu-ridge': styles.neuRidge,
-  'neu-sharp': styles.neuSharp,
-  'neu-float': styles.neuFloat,
-  'neu-layered': styles.neuLayered,
-  'neu-outline': styles.neuOutline,
-  'neu-emboss': styles.neuEmboss,
-  'neu-pressed': styles.neuPressed,
-  'neu-concave': styles.neuConcave,
-  'neu-accent': styles.neuAccent,
-  'neu-glow': styles.neuGlow,
+  // Stone Marble Neumorphic variants (20)
+  'marble-raised': styles.marbleRaised,
+  'marble-soft': styles.marbleSoft,
+  'marble-deep': styles.marbleDeep,
+  'marble-inset': styles.marbleInset,
+  'marble-carved': styles.marbleCarved,
+  'marble-embossed': styles.marbleEmbossed,
+  'marble-pillow': styles.marblePillow,
+  'marble-ridge': styles.marbleRidge,
+  'marble-layered': styles.marbleLayered,
+  'marble-outline': styles.marbleOutline,
+  'marble-accent': styles.marbleAccent,
+  'marble-accent-inset': styles.marbleAccentInset,
+  'marble-diamond': styles.marbleDiamond,
+  'marble-frame': styles.marbleFrame,
+  'marble-seal': styles.marbleSeal,
+  'marble-pill': styles.marblePill,
+  'marble-stadium': styles.marbleStadium,
+  'marble-sharp': styles.marbleSharp,
+  'marble-float': styles.marbleFloat,
+  'marble-glow': styles.marbleGlow,
   // Glass variants
   'glass-teal': styles.glassTeal,
   'glass-amber': styles.glassAmber,
@@ -43,10 +48,10 @@ const variantClasses: Record<ButtonVariant, string> = {
   'glass-neu-frost': styles.glassNeuFrost,
   // Legacy variants (backward compatibility)
   'primary': styles.glassTeal,
-  'secondary': styles.neuFlat,
+  'secondary': styles.marbleSoft,
   'destructive': styles.glassRose,
   'success': styles.glassEmerald,
-  'ghost': styles.neuMinimal,
+  'ghost': styles.marbleOutline,
   'glass': styles.glassTeal,
   'with-icon': styles.glassTeal,
 };
@@ -69,7 +74,7 @@ const sizeClasses: Record<ButtonSize, string> = {
  * // Basic icon button
  * <IconButton
  *   icon={<Settings size={20} />}
- *   variant="neu-soft"
+ *   variant="marble-raised"
  *   aria-label="Open settings"
  *   onClick={openSettings}
  * />
@@ -86,7 +91,7 @@ const sizeClasses: Record<ButtonSize, string> = {
  */
 export function IconButton({
   icon,
-  variant = 'neu-soft',
+  variant = 'marble-raised',
   size = 'md',
   badge,
   tooltip,
@@ -101,7 +106,7 @@ export function IconButton({
     styles.iconButton,
     variantClasses[variant],
     sizeClasses[size],
-    pressed && styles.neuPressed,
+    pressed && styles.marbleInset,
     disabled && styles.disabled,
     className,
   ]

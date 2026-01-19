@@ -68,24 +68,24 @@ function ThemeRiverChartContent() {
     return { x: Math.cos(shadowAngle), y: Math.sin(shadowAngle) };
   }, [lightAngle]);
 
-  const LIGHT = {
-    base: '#e0e5ec',
-    shadowDark: 'hsl(220 15% 72%)',
-    shadowLight: 'hsl(0 0% 100%)',
+  const MARBLE = {
+    base: '#d5d8dc',
+    shadowDark: '#a8acb3',
+    shadowLight: '#ffffff',
   };
 
   const getNeuPanelShadow = (distance: number, blur: number): string => {
     const { x, y } = shadowOffsets;
-    return `${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}`;
+    return `${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}`;
   };
 
   const getNeuInsetShadow = (distance: number, blur: number): string => {
     const { x, y } = shadowOffsets;
-    return `inset ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}`;
+    return `inset ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}`;
   };
 
   const pageHeaderStyles: React.CSSProperties = {
-    marginBottom: '32px', padding: '24px', background: LIGHT.base, borderRadius: '15px',
+    marginBottom: '32px', padding: '24px', background: MARBLE.base, borderRadius: '15px',
     boxShadow: getNeuPanelShadow(20, 60), transition: 'box-shadow 50ms linear',
   };
 
@@ -100,17 +100,17 @@ function ThemeRiverChartContent() {
   };
 
   const chartContainerStyles: React.CSSProperties = {
-    padding: '24px', background: LIGHT.base, borderRadius: '15px',
+    padding: '24px', background: MARBLE.base, borderRadius: '15px',
     boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear',
   };
 
   const tableContainerStyles: React.CSSProperties = {
     padding: '20px', borderRadius: '15px', boxShadow: getNeuInsetShadow(5, 15),
-    background: LIGHT.base, overflowX: 'auto', transition: 'box-shadow 50ms linear',
+    background: MARBLE.base, overflowX: 'auto', transition: 'box-shadow 50ms linear',
   };
 
   return (
-    <div style={{ background: LIGHT.base, minHeight: '100%', padding: '24px' }}>
+    <div style={{ background: MARBLE.base, minHeight: '100%', padding: '24px' }}>
       <header style={pageHeaderStyles}>
         <h1 style={titleStyles}>&gt; ThemeRiverChart_</h1>
         <p style={descStyles}>// Stream graph mostrando proporciones en el tiempo</p>
@@ -124,13 +124,13 @@ function ThemeRiverChartContent() {
 
       <ShowcaseSection title="Market Sentiment" description="Shifting sentiment proportions">
         <div style={chartContainerStyles}>
-          <ThemeRiverChart data={sentimentData} title="Market Sentiment Flow" height={350} colors={['#4a9a7c', '#5a8fb8', '#b85c5c']} />
+          <ThemeRiverChart data={sentimentData} title="Market Sentiment Flow" height={350} colors={['#4a7a6a', '#5a8fb8', '#b85c5c']} />
         </div>
       </ShowcaseSection>
 
       <ShowcaseSection title="Custom Colors" description="Theme-matched color palette">
         <div style={chartContainerStyles}>
-          <ThemeRiverChart data={sectorFlowData} title="Portfolio Distribution" height={350} colors={['#5ba3a5', '#7ecbcc', '#4a9a7c', '#c4a35a', '#8b7ec7']} />
+          <ThemeRiverChart data={sectorFlowData} title="Portfolio Distribution" height={350} colors={['#5ba3a5', '#7ecbcc', '#4a7a6a', '#c4a35a', '#8b7ec7']} />
         </div>
       </ShowcaseSection>
 
@@ -160,7 +160,7 @@ function ThemeRiverChartContent() {
                 { prop: 'formatValue', type: '(v: number) => string', default: '-', desc: 'Value formatter' },
               ].map((row, i) => (
                 <tr key={i}>
-                  <td style={{ padding: '12px 16px', color: '#2D3436' }}>{row.prop}</td>
+                  <td style={{ padding: '12px 16px', color: 'var(--sentinel-text-primary)' }}>{row.prop}</td>
                   <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.type}</td>
                   <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.default}</td>
                   <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.desc}</td>

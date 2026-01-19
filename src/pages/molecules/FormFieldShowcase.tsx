@@ -20,26 +20,26 @@ function FormFieldContent() {
     return { x: Math.cos(shadowAngle), y: Math.sin(shadowAngle) };
   }, [lightAngle]);
 
-  const LIGHT = {
-    base: '#e0e5ec',
-    shadowDark: 'hsl(220 15% 72%)',
-    shadowLight: 'hsl(0 0% 100%)',
+  const MARBLE = {
+    base: '#d5d8dc',
+    shadowDark: '#a8acb3',
+    shadowLight: '#ffffff',
   };
 
   const getNeuPanelShadow = (distance: number, blur: number): string => {
     const { x, y } = shadowOffsets;
-    return `${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}`;
+    return `${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}`;
   };
 
   const getNeuInsetShadow = (distance: number, blur: number): string => {
     const { x, y } = shadowOffsets;
-    return `inset ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}`;
+    return `inset ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}`;
   };
 
   const pageHeaderStyles: React.CSSProperties = {
     marginBottom: '32px',
     padding: '24px',
-    background: LIGHT.base,
+    background: MARBLE.base,
     borderRadius: '15px',
     boxShadow: getNeuPanelShadow(20, 60),
     transition: 'box-shadow 50ms linear',
@@ -67,7 +67,7 @@ function FormFieldContent() {
     maxWidth: '400px',
     width: '100%',
     padding: '24px',
-    background: LIGHT.base,
+    background: MARBLE.base,
     borderRadius: '15px',
     boxShadow: getNeuPanelShadow(8, 24),
     transition: 'box-shadow 50ms linear',
@@ -82,7 +82,7 @@ function FormFieldContent() {
   ];
 
   return (
-    <div style={{ background: LIGHT.base, minHeight: '100%', padding: '24px' }}>
+    <div style={{ background: MARBLE.base, minHeight: '100%', padding: '24px' }}>
       <header style={pageHeaderStyles}>
         <h1 style={titleStyles}>&gt; FormField_</h1>
         <p style={descStyles}>// Contenedor para campos con label, helper text y errores</p>
@@ -186,7 +186,7 @@ function FormFieldContent() {
           maxWidth: '500px',
           width: '100%',
           padding: '24px',
-          background: LIGHT.base,
+          background: MARBLE.base,
           borderRadius: '15px',
           boxShadow: getNeuInsetShadow(5, 15),
           display: 'flex',
@@ -198,7 +198,7 @@ function FormFieldContent() {
             fontSize: '16px',
             fontWeight: 600,
             margin: 0,
-            color: '#2D3436',
+            color: 'var(--sentinel-text-primary)',
             fontFamily: 'var(--sentinel-font-display)',
             textTransform: 'uppercase',
             letterSpacing: '0.05em',
@@ -232,13 +232,13 @@ function FormFieldContent() {
             alignItems: 'center',
             gap: '12px',
             padding: '12px',
-            background: LIGHT.base,
+            background: MARBLE.base,
             borderRadius: '15px',
             boxShadow: terms ? getNeuInsetShadow(3, 8) : getNeuPanelShadow(4, 12),
             transition: 'box-shadow 150ms ease',
           }}>
             <Checkbox checked={terms} onChange={setTerms} id="terms-checkbox" />
-            <label htmlFor="terms-checkbox" style={{ fontSize: '14px', cursor: 'pointer', color: '#2D3436', fontFamily: 'var(--sentinel-font-mono)' }}>
+            <label htmlFor="terms-checkbox" style={{ fontSize: '14px', cursor: 'pointer', color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)' }}>
               Acepto los términos y condiciones
             </label>
           </div>
@@ -246,7 +246,7 @@ function FormFieldContent() {
           <div style={{ marginTop: '8px', display: 'flex', gap: '12px' }}>
             <button style={{
               padding: '12px 24px',
-              background: LIGHT.base,
+              background: MARBLE.base,
               border: 'none',
               borderRadius: '15px',
               boxShadow: getNeuPanelShadow(6, 18),
@@ -261,7 +261,7 @@ function FormFieldContent() {
             </button>
             <button style={{
               padding: '12px 24px',
-              background: LIGHT.base,
+              background: MARBLE.base,
               border: 'none',
               borderRadius: '15px',
               boxShadow: getNeuPanelShadow(4, 12),
@@ -283,7 +283,7 @@ function FormFieldContent() {
           padding: '20px',
           borderRadius: '15px',
           boxShadow: getNeuInsetShadow(5, 15),
-          background: LIGHT.base,
+          background: MARBLE.base,
           fontSize: '12px',
           fontFamily: 'var(--sentinel-font-mono)',
           color: '#636E72',
@@ -292,7 +292,7 @@ function FormFieldContent() {
         }}>
           <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Display:</strong> flex, flex-direction column</p>
           <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Gap:</strong> 8px entre elementos</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Label:</strong> 12px, color #2D3436</p>
+          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Label:</strong> 12px, color #252528</p>
           <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Required:</strong> asterisco color var(--sentinel-status-negative)</p>
           <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Helper/Error:</strong> 11px, color #636E72 / negative</p>
         </div>

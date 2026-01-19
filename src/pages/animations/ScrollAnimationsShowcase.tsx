@@ -15,26 +15,26 @@ function ScrollAnimationsContent() {
     return { x: Math.cos(shadowAngle), y: Math.sin(shadowAngle) };
   }, [lightAngle]);
 
-  const LIGHT = {
-    base: '#e0e5ec',
-    shadowDark: 'hsl(220 15% 72%)',
-    shadowLight: 'hsl(0 0% 100%)',
+  const MARBLE = {
+    base: '#d5d8dc',
+    shadowDark: '#a8acb3',
+    shadowLight: '#ffffff',
   };
 
   const getNeuPanelShadow = (distance: number, blur: number): string => {
     const { x, y } = shadowOffsets;
-    return `${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}`;
+    return `${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}`;
   };
 
   const getNeuInsetShadow = (distance: number, blur: number): string => {
     const { x, y } = shadowOffsets;
-    return `inset ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}`;
+    return `inset ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}`;
   };
 
   const pageHeaderStyles: React.CSSProperties = {
     marginBottom: '32px',
     padding: '24px',
-    background: LIGHT.base,
+    background: MARBLE.base,
     borderRadius: '15px',
     boxShadow: getNeuPanelShadow(20, 60),
     transition: 'box-shadow 50ms linear',
@@ -60,14 +60,14 @@ function ScrollAnimationsContent() {
 
   const cardStyles: React.CSSProperties = {
     padding: '24px',
-    background: LIGHT.base,
+    background: MARBLE.base,
     borderRadius: '15px',
     boxShadow: getNeuPanelShadow(6, 18),
     transition: 'box-shadow 50ms linear',
   };
 
   return (
-    <div style={{ background: LIGHT.base, minHeight: '100%', padding: '24px' }}>
+    <div style={{ background: MARBLE.base, minHeight: '100%', padding: '24px' }}>
       <ScrollProgress color="var(--sentinel-accent-primary)" height={3} />
 
       <header style={pageHeaderStyles}>
@@ -76,14 +76,14 @@ function ScrollAnimationsContent() {
       </header>
 
       <ShowcaseSection title="ScrollProgress" description="Barra de progreso en la parte superior">
-        <div style={{ padding: '24px', background: LIGHT.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
+        <div style={{ padding: '24px', background: MARBLE.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
           <div style={{
             ...cardStyles,
             boxShadow: getNeuInsetShadow(4, 12),
             textAlign: 'center',
           }}>
             <Zap style={{ color: 'var(--sentinel-accent-primary)', marginBottom: '16px' }} size={48} />
-            <h4 style={{ color: '#2D3436', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>
+            <h4 style={{ color: 'var(--sentinel-text-primary)', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>
               Scroll Progress Active
             </h4>
             <p style={{ color: '#636E72', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>
@@ -101,7 +101,7 @@ function ScrollAnimationsContent() {
                 ...cardStyles,
                 borderLeft: '4px solid var(--sentinel-accent-primary)',
               }}>
-                <h4 style={{ color: '#2D3436', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>
+                <h4 style={{ color: 'var(--sentinel-text-primary)', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>
                   Log Entry #{i}
                 </h4>
                 <p style={{ color: '#636E72', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>
@@ -123,7 +123,7 @@ function ScrollAnimationsContent() {
                 textAlign: 'center',
               }}>
                 <ArrowDown style={{ color: 'var(--sentinel-status-positive)', marginBottom: '8px' }} size={24} />
-                <h4 style={{ color: '#2D3436', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Slow (0.3)</h4>
+                <h4 style={{ color: 'var(--sentinel-text-primary)', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Slow (0.3)</h4>
               </div>
             </Parallax>
             <Parallax speed={0.6}>
@@ -133,7 +133,7 @@ function ScrollAnimationsContent() {
                 textAlign: 'center',
               }}>
                 <ArrowDown style={{ color: 'var(--sentinel-status-warning)', marginBottom: '8px' }} size={24} />
-                <h4 style={{ color: '#2D3436', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Medium (0.6)</h4>
+                <h4 style={{ color: 'var(--sentinel-text-primary)', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Medium (0.6)</h4>
               </div>
             </Parallax>
             <Parallax speed={-0.4}>
@@ -143,7 +143,7 @@ function ScrollAnimationsContent() {
                 textAlign: 'center',
               }}>
                 <ArrowDown style={{ color: 'var(--sentinel-status-info)', marginBottom: '8px', transform: 'rotate(180deg)' }} size={24} />
-                <h4 style={{ color: '#2D3436', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Reverse (-0.4)</h4>
+                <h4 style={{ color: 'var(--sentinel-text-primary)', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Reverse (-0.4)</h4>
               </div>
             </Parallax>
           </div>
@@ -155,7 +155,7 @@ function ScrollAnimationsContent() {
           padding: '20px',
           borderRadius: '15px',
           boxShadow: getNeuInsetShadow(5, 15),
-          background: LIGHT.base,
+          background: MARBLE.base,
           fontSize: '12px',
           fontFamily: 'var(--sentinel-font-mono)',
           color: '#636E72',

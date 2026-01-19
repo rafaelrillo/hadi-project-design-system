@@ -56,14 +56,14 @@
 }
 
 .input:focus {
-  border-color: rgba(74, 154, 156, 0.6);
+  border-color: rgba(58, 106, 114, 0.6);
   background: var(--marble-base);
 
   /* INSET shadow + accent focus glow */
   box-shadow:
     var(--inset-3),
-    0 0 0 3px rgba(74, 154, 156, 0.15),
-    0 0 12px rgba(74, 154, 156, 0.1);
+    0 0 0 3px rgba(58, 106, 114, 0.15),
+    0 0 12px rgba(58, 106, 114, 0.1);
 }
 
 .input:disabled {
@@ -238,8 +238,8 @@
   /* Add focus ring while keeping dynamic shadow from inline style */
   box-shadow:
     var(--sentinel-neu-pressed-sm),
-    0 0 0 3px rgba(74, 154, 156, 0.15),
-    0 0 12px rgba(74, 154, 156, 0.1) !important;
+    0 0 0 3px rgba(58, 106, 114, 0.15),
+    0 0 12px rgba(58, 106, 114, 0.1) !important;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────

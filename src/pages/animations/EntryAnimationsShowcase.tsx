@@ -17,26 +17,26 @@ function EntryAnimationsContent() {
     return { x: Math.cos(shadowAngle), y: Math.sin(shadowAngle) };
   }, [lightAngle]);
 
-  const LIGHT = {
-    base: '#e0e5ec',
-    shadowDark: 'hsl(220 15% 72%)',
-    shadowLight: 'hsl(0 0% 100%)',
+  const MARBLE = {
+    base: '#d5d8dc',
+    shadowDark: '#a8acb3',
+    shadowLight: '#ffffff',
   };
 
   const getNeuPanelShadow = (distance: number, blur: number): string => {
     const { x, y } = shadowOffsets;
-    return `${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}`;
+    return `${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}`;
   };
 
   const getNeuInsetShadow = (distance: number, blur: number): string => {
     const { x, y } = shadowOffsets;
-    return `inset ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}`;
+    return `inset ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}`;
   };
 
   const pageHeaderStyles: React.CSSProperties = {
     marginBottom: '32px',
     padding: '24px',
-    background: LIGHT.base,
+    background: MARBLE.base,
     borderRadius: '15px',
     boxShadow: getNeuPanelShadow(20, 60),
     transition: 'box-shadow 50ms linear',
@@ -62,7 +62,7 @@ function EntryAnimationsContent() {
 
   const cardStyles: React.CSSProperties = {
     padding: '24px',
-    background: LIGHT.base,
+    background: MARBLE.base,
     borderRadius: '15px',
     boxShadow: getNeuPanelShadow(6, 18),
     transition: 'box-shadow 50ms linear',
@@ -79,20 +79,20 @@ function EntryAnimationsContent() {
   const listItems = ['System initializing...', 'Loading modules...', 'Connecting...', 'Ready.'];
 
   return (
-    <div style={{ background: LIGHT.base, minHeight: '100%', padding: '24px' }}>
+    <div style={{ background: MARBLE.base, minHeight: '100%', padding: '24px' }}>
       <header style={pageHeaderStyles}>
         <h1 style={titleStyles}>&gt; Entry Animations_</h1>
         <p style={descStyles}>// Animaciones de entrada con FadeIn y StaggerList</p>
       </header>
 
       <ShowcaseSection title="FadeIn Directions" description="Entrada desde diferentes direcciones">
-        <div style={{ padding: '24px', background: LIGHT.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
+        <div style={{ padding: '24px', background: MARBLE.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '16px', width: '100%' }}>
             {directions.map(({ dir, icon: Icon, label }, i) => (
               <FadeIn key={dir} direction={dir} delay={i * 0.1}>
                 <div style={{ ...cardStyles, textAlign: 'center' }}>
                   <Icon style={{ color: 'var(--sentinel-accent-primary)', marginBottom: '8px' }} size={24} />
-                  <p style={{ color: '#2D3436', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>{label}</p>
+                  <p style={{ color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>{label}</p>
                 </div>
               </FadeIn>
             ))}
@@ -101,7 +101,7 @@ function EntryAnimationsContent() {
       </ShowcaseSection>
 
       <ShowcaseSection title="StaggerList" description="Lista con animación escalonada">
-        <div style={{ padding: '24px', background: LIGHT.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
+        <div style={{ padding: '24px', background: MARBLE.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px', width: '100%' }}>
             <div>
               <h4 style={{ color: '#636E72', marginBottom: '16px', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>
@@ -111,7 +111,7 @@ function EntryAnimationsContent() {
                 {listItems.map((item, i) => (
                   <div key={i} style={{
                     padding: '12px 16px',
-                    background: LIGHT.base,
+                    background: MARBLE.base,
                     borderRadius: '15px',
                     boxShadow: getNeuInsetShadow(3, 8),
                     marginBottom: '8px',
@@ -133,7 +133,7 @@ function EntryAnimationsContent() {
                 {listItems.map((item, i) => (
                   <div key={i} style={{
                     padding: '12px 16px',
-                    background: LIGHT.base,
+                    background: MARBLE.base,
                     borderRadius: '15px',
                     boxShadow: getNeuInsetShadow(3, 8),
                     marginBottom: '8px',
@@ -152,7 +152,7 @@ function EntryAnimationsContent() {
       </ShowcaseSection>
 
       <ShowcaseSection title="Stagger Grid" description="Grid con animación usando presets">
-        <div style={{ padding: '24px', background: LIGHT.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
+        <div style={{ padding: '24px', background: MARBLE.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
           <motion.div
             style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px', width: '100%' }}
             variants={staggerContainer}
@@ -175,7 +175,7 @@ function EntryAnimationsContent() {
           padding: '20px',
           borderRadius: '15px',
           boxShadow: getNeuInsetShadow(5, 15),
-          background: LIGHT.base,
+          background: MARBLE.base,
           fontSize: '12px',
           fontFamily: 'var(--sentinel-font-mono)',
           color: '#636E72',

@@ -342,7 +342,7 @@ export const usePortfolioStore = create<PortfolioState & PortfolioActions>()(
       const colors: Record<string, string> = {
         Technology: "#5ba3a5",
         Financial: "#7ecbcc",
-        Healthcare: "#4a9a7c",
+        Healthcare: "#4a7a6a",
         "Consumer Discretionary": "#c4a35a",
         "Consumer Staples": "#c47a5a",
         Energy: "#b85c5c",

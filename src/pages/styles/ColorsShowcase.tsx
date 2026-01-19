@@ -1,123 +1,258 @@
 // Path: src/pages/styles/ColorsShowcase.tsx
-// SENTINEL Design System - Glass-Neumorphism Color Palette
-import React, { useMemo } from 'react';
-import { ShowcaseSection } from '../../components/showcase';
-import { LightEngineProvider, useLightEngine } from '@/contexts/LightEngineContext';
+// SENTINEL Design System - Stone Marble Color Palette
+import React from 'react';
 
-function ColorsContent() {
-  const { lightAngle } = useLightEngine();
+interface ColorToken {
+  name: string;
+  variable: string;
+  value: string;
+  description?: string;
+}
 
-  const shadowOffsets = useMemo(() => {
-    const shadowAngle = (lightAngle + 180) * (Math.PI / 180);
-    return { x: Math.cos(shadowAngle), y: Math.sin(shadowAngle) };
-  }, [lightAngle]);
+export function ColorsShowcase() {
+  // ═══════════════════════════════════════════════════════════════════════════
+  // STYLES - Stone Marble Design System
+  // ═══════════════════════════════════════════════════════════════════════════
 
-  const LIGHT = {
-    base: '#e0e5ec',
-    shadowDark: 'hsl(220 15% 72%)',
-    shadowLight: 'hsl(0 0% 100%)',
+  const showcaseStyles: React.CSSProperties = {
+    minHeight: '100vh',
+    background: 'var(--marble-base)',
+    padding: '32px',
+    fontFamily: 'var(--sentinel-font-primary)',
   };
 
-  const getNeuPanelShadow = (distance: number, blur: number): string => {
-    const { x, y } = shadowOffsets;
-    return `${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}`;
-  };
-
-  const getNeuInsetShadow = (distance: number, blur: number): string => {
-    const { x, y } = shadowOffsets;
-    return `inset ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}`;
-  };
-
-  const pageHeaderStyles: React.CSSProperties = {
+  const headerStyles: React.CSSProperties = {
+    textAlign: 'center',
     marginBottom: '32px',
-    padding: '24px',
-    background: LIGHT.base,
-    borderRadius: '15px',
-    boxShadow: getNeuPanelShadow(20, 60),
-    transition: 'box-shadow 50ms linear',
   };
 
-  const titleStyles: React.CSSProperties = {
-    fontSize: '28px',
-    fontWeight: 700,
-    color: 'var(--sentinel-accent-primary)',
-    marginBottom: '8px',
+  const headerTitleStyles: React.CSSProperties = {
     fontFamily: 'var(--sentinel-font-display)',
-    textTransform: 'uppercase',
-    letterSpacing: '0.1em',
+    fontSize: '32px',
+    fontWeight: 700,
+    letterSpacing: '-0.02em',
+    color: 'var(--marble-base)',
+    textShadow: '2px 2px 2px var(--shadow-light), -2px -2px 2px var(--shadow-dark)',
   };
 
-  const descStyles: React.CSSProperties = {
+  const headerSubtitleStyles: React.CSSProperties = {
     fontSize: '14px',
-    color: 'var(--sentinel-text-secondary)',
-    fontFamily: 'var(--sentinel-font-mono)',
-    textTransform: 'uppercase',
-    letterSpacing: '0.03em',
+    marginTop: '8px',
+    color: 'var(--marble-base)',
+    textShadow: '0.75px 0.75px 0px var(--shadow-light), -0.75px -0.75px 0px var(--shadow-dark)',
   };
 
-  interface ColorToken {
-    name: string;
-    variable: string;
-    value: string;
-    description?: string;
-  }
+  const sectionStyles: React.CSSProperties = {
+    background: 'var(--marble-base)',
+    borderRadius: '24px',
+    boxShadow: 'var(--raised-3)',
+    padding: '32px',
+    marginBottom: '24px',
+  };
+
+  const sectionTitleStyles: React.CSSProperties = {
+    fontFamily: 'var(--sentinel-font-primary)',
+    fontSize: '11px',
+    fontWeight: 600,
+    letterSpacing: '0.12em',
+    textTransform: 'uppercase',
+    color: 'var(--marble-base)',
+    textShadow: '1px 1px 1px var(--shadow-light), -1px -1px 1px var(--shadow-dark)',
+    marginBottom: '24px',
+    paddingBottom: '12px',
+    borderBottom: '1px solid var(--marble-dark)',
+  };
+
+  const gridStyles: React.CSSProperties = {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+    gap: '16px',
+  };
+
+  const swatchContainerStyles: React.CSSProperties = {
+    background: 'var(--marble-base)',
+    borderRadius: '14px',
+    boxShadow: 'var(--inset-2)',
+    padding: '16px',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '16px',
+  };
+
+  const colorBoxStyles = (variable: string): React.CSSProperties => ({
+    width: '56px',
+    height: '56px',
+    borderRadius: '12px',
+    backgroundColor: `var(${variable})`,
+    boxShadow: 'var(--raised-2)',
+    flexShrink: 0,
+  });
+
+  // Letterpress para superficies RAISED (elevadas)
+  const lpStyles = (intensity: 'whisper' | 'subtle' | 'soft' | 'medium'): React.CSSProperties => {
+    const shadows: Record<string, string> = {
+      whisper: '0.5px 0.5px 0px var(--shadow-light), -0.5px -0.5px 0px var(--shadow-dark)',
+      subtle: '0.75px 0.75px 0px var(--shadow-light), -0.75px -0.75px 0px var(--shadow-dark)',
+      soft: '1px 1px 1px var(--shadow-light), -1px -1px 1px var(--shadow-dark)',
+      medium: '1.5px 1.5px 1px var(--shadow-light), -1.5px -1.5px 1px var(--shadow-dark)',
+    };
+    return {
+      color: 'var(--marble-base)',
+      textShadow: shadows[intensity],
+    };
+  };
+
+  // Letterpress para superficies INSET (cavadas) - sombras invertidas
+  const lpInsetStyles = (intensity: 'whisper' | 'subtle' | 'soft' | 'medium'): React.CSSProperties => {
+    const shadows: Record<string, string> = {
+      whisper: '-0.5px -0.5px 0px var(--shadow-light), 0.5px 0.5px 0px var(--shadow-dark)',
+      subtle: '-0.75px -0.75px 0px var(--shadow-light), 0.75px 0.75px 0px var(--shadow-dark)',
+      soft: '-1px -1px 1px var(--shadow-light), 1px 1px 1px var(--shadow-dark)',
+      medium: '-1.5px -1.5px 1px var(--shadow-light), 1.5px 1.5px 1px var(--shadow-dark)',
+    };
+    return {
+      color: 'var(--marble-base)',
+      textShadow: shadows[intensity],
+    };
+  };
+
+  // Letterpress con color para superficies RAISED
+  const lpColorStyles = (color: 'teal' | 'positive' | 'negative' | 'warning'): React.CSSProperties => {
+    const colors: Record<string, { color: string; shadow: string }> = {
+      teal: {
+        color: 'var(--sentinel-accent-tertiary, #6fb3b5)',
+        shadow: '1px 1px 1px var(--shadow-light), -1px -1px 1px rgba(58, 106, 114, 0.4)',
+      },
+      positive: {
+        color: '#7cb89a',
+        shadow: '1px 1px 1px var(--shadow-light), -1px -1px 1px rgba(22, 163, 74, 0.3)',
+      },
+      negative: {
+        color: '#8a5a4a',
+        shadow: '1px 1px 1px var(--shadow-light), -1px -1px 1px rgba(220, 38, 38, 0.3)',
+      },
+      warning: {
+        color: '#a08a4a',
+        shadow: '1px 1px 1px var(--shadow-light), -1px -1px 1px rgba(217, 119, 6, 0.3)',
+      },
+    };
+    return {
+      color: colors[color].color,
+      textShadow: colors[color].shadow,
+    };
+  };
+
+  // Letterpress con color para superficies INSET - sombras invertidas
+  const lpColorInsetStyles = (color: 'teal' | 'positive' | 'negative' | 'warning'): React.CSSProperties => {
+    const colors: Record<string, { color: string; shadow: string }> = {
+      teal: {
+        color: 'var(--sentinel-accent-tertiary, #6fb3b5)',
+        shadow: '-1px -1px 1px var(--shadow-light), 1px 1px 1px rgba(58, 106, 114, 0.4)',
+      },
+      positive: {
+        color: '#7cb89a',
+        shadow: '-1px -1px 1px var(--shadow-light), 1px 1px 1px rgba(22, 163, 74, 0.3)',
+      },
+      negative: {
+        color: '#8a5a4a',
+        shadow: '-1px -1px 1px var(--shadow-light), 1px 1px 1px rgba(220, 38, 38, 0.3)',
+      },
+      warning: {
+        color: '#a08a4a',
+        shadow: '-1px -1px 1px var(--shadow-light), 1px 1px 1px rgba(217, 119, 6, 0.3)',
+      },
+    };
+    return {
+      color: colors[color].color,
+      textShadow: colors[color].shadow,
+    };
+  };
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // COLOR DATA
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  const marbleColors: ColorToken[] = [
+    { name: 'Marble Base', variable: '--marble-base', value: '#d5d8dc', description: 'Fondo principal' },
+    { name: 'Marble Light', variable: '--marble-light', value: '#e2e5e9', description: 'Variante clara' },
+    { name: 'Marble Dark', variable: '--marble-dark', value: '#c8ccd1', description: 'Variante oscura' },
+    { name: 'Shadow Light', variable: '--shadow-light', value: 'rgba(255,255,255,0.95)', description: 'Highlight' },
+    { name: 'Shadow Dark', variable: '--shadow-dark', value: 'rgba(147,157,170,0.55)', description: 'Sombra' },
+  ];
+
+  const accentColors: ColorToken[] = [
+    { name: 'Accent Primary', variable: '--sentinel-accent-primary', value: '#3a6a72', description: 'Teal principal' },
+    { name: 'Accent Secondary', variable: '--sentinel-accent-secondary', value: '#5ba3a5', description: 'Teal secundario' },
+    { name: 'Accent Tertiary', variable: '--sentinel-accent-tertiary', value: '#6fb3b5', description: 'Teal claro' },
+  ];
+
+  const statusColors: ColorToken[] = [
+    { name: 'Positive', variable: '--sentinel-status-positive', value: '#4a7a6a', description: 'Success' },
+    { name: 'Negative', variable: '--sentinel-status-negative', value: '#b85c5c', description: 'Error' },
+    { name: 'Warning', variable: '--sentinel-status-warning', value: '#c4a35a', description: 'Warning' },
+    { name: 'Info', variable: '--sentinel-status-info', value: '#5a8fb8', description: 'Info' },
+  ];
+
+  const glassColors: ColorToken[] = [
+    { name: 'Glass BG', variable: '--glass-bg', value: 'rgba(255,255,255,0.25)', description: 'Fondo glass' },
+    { name: 'Glass BG Strong', variable: '--glass-bg-strong', value: 'rgba(255,255,255,0.40)', description: 'Glass fuerte' },
+    { name: 'Glass Border', variable: '--glass-border', value: 'rgba(255,255,255,0.35)', description: 'Borde glass' },
+    { name: 'Glass Teal BG', variable: '--sentinel-glass-teal-bg', value: 'rgba(58,106,114,0.15)', description: 'Glass teal' },
+  ];
+
+  const textColors: ColorToken[] = [
+    { name: 'Text Primary', variable: '--sentinel-text-primary', value: '#252528', description: 'Texto principal' },
+    { name: 'Text Secondary', variable: '--sentinel-text-secondary', value: '#636E72', description: 'Texto secundario' },
+    { name: 'Text Tertiary', variable: '--sentinel-text-tertiary', value: '#9BA4B0', description: 'Texto terciario' },
+  ];
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // COLOR SWATCH COMPONENT
+  // ═══════════════════════════════════════════════════════════════════════════
 
   const ColorSwatch = ({ color }: { color: ColorToken }) => (
-    <div style={{
-      display: 'flex',
-      alignItems: 'center',
-      gap: '16px',
-      padding: '16px',
-      background: LIGHT.base,
-      borderRadius: '15px',
-      boxShadow: getNeuInsetShadow(3, 8),
-      marginBottom: '8px',
-      transition: 'box-shadow 50ms linear',
-    }}>
-      <div style={{
-        width: '56px',
-        height: '56px',
-        borderRadius: '15px',
-        backgroundColor: `var(${color.variable})`,
-        boxShadow: getNeuPanelShadow(6, 18),
-        flexShrink: 0,
-        transition: 'box-shadow 50ms linear',
-      }} />
-      <div style={{ flex: 1 }}>
+    <div style={swatchContainerStyles}>
+      <div style={colorBoxStyles(color.variable)} />
+      <div style={{ flex: 1, minWidth: 0 }}>
         <div style={{
-          fontSize: '14px',
+          ...lpInsetStyles('medium'),
+          fontFamily: 'var(--sentinel-font-primary)',
+          fontSize: '13px',
           fontWeight: 600,
-          color: '#2D3436',
           marginBottom: '4px',
-          fontFamily: 'var(--sentinel-font-display)'
         }}>
           {color.name}
         </div>
-        <code style={{
-          display: 'inline-block',
-          fontSize: '11px',
-          backgroundColor: 'rgba(74, 154, 156, 0.15)',
-          padding: '2px 8px',
-          borderRadius: '15px',
-          color: 'var(--sentinel-accent-primary)',
-          fontFamily: 'var(--sentinel-font-mono)',
-          marginBottom: '4px'
-        }}>
-          var({color.variable})
-        </code>
         <div style={{
-          fontSize: '11px',
-          color: '#636E72',
-          fontFamily: 'var(--sentinel-font-mono)'
+          display: 'inline-block',
+          padding: '3px 10px',
+          background: 'var(--sentinel-glass-teal-bg)',
+          border: '1px solid var(--sentinel-glass-teal-border)',
+          borderRadius: '100px',
+          marginBottom: '4px',
+        }}>
+          <code style={{
+            fontFamily: 'var(--sentinel-font-mono)',
+            fontSize: '10px',
+            color: 'var(--sentinel-glass-teal-text)',
+            fontWeight: 500,
+          }}>
+            {color.variable}
+          </code>
+        </div>
+        <div style={{
+          ...lpInsetStyles('whisper'),
+          fontFamily: 'var(--sentinel-font-mono)',
+          fontSize: '10px',
         }}>
           {color.value}
         </div>
         {color.description && (
           <div style={{
-            fontSize: '11px',
-            color: '#9BA4B0',
-            marginTop: '4px',
-            fontFamily: 'var(--sentinel-font-mono)'
+            ...lpInsetStyles('whisper'),
+            fontSize: '10px',
+            marginTop: '2px',
+            opacity: 0.7,
           }}>
             {color.description}
           </div>
@@ -126,142 +261,245 @@ function ColorsContent() {
     </div>
   );
 
-  const backgroundColors: ColorToken[] = [
-    { name: 'Neumorphic Base', variable: '--neu-base', value: '#e0e5ec', description: 'Base for neumorphic elements' },
-    { name: 'Shadow Light', variable: '--neu-shadow-light', value: '#ffffff', description: 'Light highlight' },
-    { name: 'Shadow Dark', variable: '--neu-shadow-dark', value: 'hsl(220, 15%, 72%)', description: 'Dark shadow' },
-  ];
-
-  const accentColors: ColorToken[] = [
-    { name: 'Accent Primary', variable: '--sentinel-accent-primary', value: '#5ba3a5', description: 'Primary teal accent' },
-    { name: 'Accent Secondary', variable: '--sentinel-accent-secondary', value: '#4a8a8c', description: 'Secondary accent' },
-  ];
-
-  const glassColors: ColorToken[] = [
-    { name: 'Glass Teal', variable: '--glass-teal', value: 'hsla(175, 35%, 60%, 0.28)', description: 'Primary glass' },
-    { name: 'Glass Blue', variable: '--glass-blue', value: 'hsla(215, 50%, 65%, 0.28)', description: 'Info glass' },
-    { name: 'Glass Green', variable: '--glass-green', value: 'hsla(145, 45%, 60%, 0.28)', description: 'Success glass' },
-    { name: 'Glass Red', variable: '--glass-red', value: 'hsla(355, 35%, 60%, 0.28)', description: 'Error glass' },
-    { name: 'Glass Amber', variable: '--glass-amber', value: 'hsla(35, 55%, 60%, 0.28)', description: 'Warning glass' },
-    { name: 'Glass Purple', variable: '--glass-purple', value: 'hsla(280, 40%, 65%, 0.28)', description: 'Premium glass' },
-  ];
-
-  const statusColors: ColorToken[] = [
-    { name: 'Positive', variable: '--sentinel-status-positive', value: '#4a9a7c', description: 'Success states' },
-    { name: 'Negative', variable: '--sentinel-status-negative', value: '#b85c5c', description: 'Error states' },
-    { name: 'Warning', variable: '--sentinel-status-warning', value: '#c4a35a', description: 'Warning states' },
-    { name: 'Info', variable: '--sentinel-status-info', value: '#5a8fb8', description: 'Info states' },
-  ];
-
-  const textColors: ColorToken[] = [
-    { name: 'Text Primary', variable: '--sentinel-text-primary', value: '#2D3436', description: 'Main text on light' },
-    { name: 'Text Secondary', variable: '--sentinel-text-secondary', value: '#636E72', description: 'Secondary text' },
-    { name: 'Text Tertiary', variable: '--sentinel-text-tertiary', value: '#9BA4B0', description: 'Muted text' },
-  ];
+  // ═══════════════════════════════════════════════════════════════════════════
+  // RENDER
+  // ═══════════════════════════════════════════════════════════════════════════
 
   return (
-    <div style={{ background: LIGHT.base, minHeight: '100%', padding: '24px' }}>
-      <header style={pageHeaderStyles}>
-        <h1 style={titleStyles}>&gt; Colors_</h1>
-        <p style={descStyles}>// Paleta de colores para Glass-Neumorphism</p>
+    <div style={showcaseStyles}>
+      {/* Header */}
+      <header style={headerStyles}>
+        <h1 style={headerTitleStyles}>SENTINEL Colors</h1>
+        <p style={headerSubtitleStyles}>Sistema de colores Stone Marble - Referencia visual de todas las variables</p>
       </header>
 
-      <ShowcaseSection
-        title="Colores Neumórficos"
-        description="Base y sombras para el sistema neumórfico"
-      >
-        <div style={{ width: '100%' }}>
-          {backgroundColors.map((color) => (
+      {/* Stone Marble Base */}
+      <section style={sectionStyles}>
+        <div style={sectionTitleStyles}>Stone Marble (Base del Sistema)</div>
+        <div style={gridStyles}>
+          {marbleColors.map((color) => (
             <ColorSwatch key={color.variable} color={color} />
           ))}
         </div>
-      </ShowcaseSection>
+      </section>
 
-      <ShowcaseSection
-        title="Colores de Acento"
-        description="Acentos teal institucionales"
-      >
-        <div style={{ width: '100%' }}>
+      {/* Accent Colors */}
+      <section style={sectionStyles}>
+        <div style={sectionTitleStyles}>Colores de Acento (Teal Institucional)</div>
+        <div style={gridStyles}>
           {accentColors.map((color) => (
             <ColorSwatch key={color.variable} color={color} />
           ))}
         </div>
-      </ShowcaseSection>
-
-      <ShowcaseSection
-        title="Colores Glass"
-        description="Colores semitransparentes para elementos glassmorphism"
-      >
-        <div style={{ width: '100%' }}>
-          {glassColors.map((color) => (
-            <ColorSwatch key={color.variable} color={color} />
-          ))}
+        {/* Preview de uso - dentro de inset, usar lpColorInsetStyles */}
+        <div style={{
+          marginTop: '24px',
+          padding: '20px',
+          background: 'var(--marble-base)',
+          borderRadius: '14px',
+          boxShadow: 'var(--inset-2)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '24px',
+        }}>
+          <div style={{
+            ...lpColorInsetStyles('teal'),
+            fontFamily: 'var(--sentinel-font-mono)',
+            fontSize: '32px',
+            fontWeight: 700,
+          }}>
+            $191,856
+          </div>
+          <div style={{
+            ...lpColorInsetStyles('positive'),
+            fontFamily: 'var(--sentinel-font-mono)',
+            fontSize: '18px',
+            fontWeight: 600,
+          }}>
+            +16.5%
+          </div>
         </div>
-      </ShowcaseSection>
+      </section>
 
-      <ShowcaseSection
-        title="Colores de Estado"
-        description="Colores semánticos para feedback"
-      >
-        <div style={{ width: '100%' }}>
+      {/* Status Colors */}
+      <section style={sectionStyles}>
+        <div style={sectionTitleStyles}>Colores de Estado (Feedback Semántico)</div>
+        <div style={gridStyles}>
           {statusColors.map((color) => (
             <ColorSwatch key={color.variable} color={color} />
           ))}
         </div>
-      </ShowcaseSection>
+        {/* Preview de uso */}
+        <div style={{
+          marginTop: '24px',
+          display: 'flex',
+          gap: '16px',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
+        }}>
+          {[
+            { label: '+12.5%', style: lpColorStyles('positive') },
+            { label: '-8.3%', style: lpColorStyles('negative') },
+            { label: 'ALERT', style: lpColorStyles('warning') },
+            { label: 'INFO', style: lpColorStyles('teal') },
+          ].map((item, i) => (
+            <div
+              key={i}
+              style={{
+                padding: '10px 20px',
+                background: 'var(--marble-base)',
+                borderRadius: '100px',
+                boxShadow: 'var(--raised-1)',
+              }}
+            >
+              <span style={{
+                ...item.style,
+                fontFamily: 'var(--sentinel-font-mono)',
+                fontSize: '13px',
+                fontWeight: 600,
+              }}>
+                {item.label}
+              </span>
+            </div>
+          ))}
+        </div>
+      </section>
 
-      <ShowcaseSection
-        title="Colores de Texto"
-        description="Jerarquía tipográfica"
-      >
-        <div style={{ width: '100%' }}>
+      {/* Glass Colors */}
+      <section style={sectionStyles}>
+        <div style={sectionTitleStyles}>Colores Glass (Glassmorphism)</div>
+        <div style={gridStyles}>
+          {glassColors.map((color) => (
+            <ColorSwatch key={color.variable} color={color} />
+          ))}
+        </div>
+        {/* Preview de glass */}
+        <div style={{
+          marginTop: '24px',
+          padding: '20px',
+          background: 'var(--marble-base)',
+          borderRadius: '14px',
+          boxShadow: 'var(--inset-3)',
+          display: 'flex',
+          gap: '16px',
+          justifyContent: 'center',
+          flexWrap: 'wrap',
+        }}>
+          <div style={{
+            padding: '12px 24px',
+            background: 'var(--glass-bg)',
+            border: '1px solid var(--glass-border)',
+            borderRadius: '12px',
+            backdropFilter: 'blur(8px)',
+          }}>
+            <span style={{ ...lpStyles('medium'), fontSize: '13px', fontWeight: 500 }}>Glass Item</span>
+          </div>
+          <div style={{
+            padding: '12px 24px',
+            background: 'var(--sentinel-glass-teal-bg)',
+            border: '1px solid var(--sentinel-glass-teal-border)',
+            borderRadius: '12px',
+            backdropFilter: 'blur(8px)',
+          }}>
+            <span style={{
+              fontFamily: 'var(--sentinel-font-primary)',
+              fontSize: '13px',
+              fontWeight: 600,
+              color: 'var(--sentinel-glass-teal-text)',
+            }}>Glass Teal</span>
+          </div>
+        </div>
+      </section>
+
+      {/* Text Colors */}
+      <section style={sectionStyles}>
+        <div style={sectionTitleStyles}>Colores de Texto (Jerarquía Tipográfica)</div>
+        <div style={gridStyles}>
           {textColors.map((color) => (
             <ColorSwatch key={color.variable} color={color} />
           ))}
         </div>
-      </ShowcaseSection>
-
-      <ShowcaseSection title="Código de Ejemplo">
+        {/* Preview de jerarquía - dentro de inset, usar lpInsetStyles */}
         <div style={{
-          padding: '20px',
-          borderRadius: '15px',
-          boxShadow: getNeuInsetShadow(5, 15),
-          background: LIGHT.base,
-          fontSize: '12px',
-          fontFamily: 'var(--sentinel-font-mono)',
-          color: '#636E72',
-          transition: 'box-shadow 50ms linear',
+          marginTop: '24px',
+          padding: '24px',
+          background: 'var(--marble-base)',
+          borderRadius: '14px',
+          boxShadow: 'var(--inset-2)',
         }}>
-          <pre style={{ margin: 0, whiteSpace: 'pre-wrap' }}>{`:root {
-  /* Neumorphic Base */
-  --neu-base: #e0e5ec;
-  --neu-shadow-light: #ffffff;
-  --neu-shadow-dark: hsl(220, 15%, 72%);
-
-  /* Glass Colors (HSLA) */
-  --glass-teal: hsla(175, 35%, 60%, 0.28);
-  --glass-blue: hsla(215, 50%, 65%, 0.28);
-  --glass-green: hsla(145, 45%, 60%, 0.28);
-  --glass-red: hsla(355, 35%, 60%, 0.28);
-
-  /* Usage */
-  .neu-panel {
-    background: var(--neu-base);
-    box-shadow:
-      -20px -20px 60px var(--neu-shadow-light),
-      20px 20px 60px var(--neu-shadow-dark);
-  }
-}`}</pre>
+          <div style={{
+            ...lpInsetStyles('medium'),
+            fontFamily: 'var(--sentinel-font-display)',
+            fontSize: '24px',
+            fontWeight: 700,
+            marginBottom: '8px',
+          }}>
+            Título Principal
+          </div>
+          <div style={{
+            ...lpInsetStyles('soft'),
+            fontFamily: 'var(--sentinel-font-primary)',
+            fontSize: '14px',
+            marginBottom: '4px',
+          }}>
+            Texto secundario con información adicional
+          </div>
+          <div style={{
+            ...lpInsetStyles('whisper'),
+            fontFamily: 'var(--sentinel-font-mono)',
+            fontSize: '11px',
+          }}>
+            // metadata o texto terciario
+          </div>
         </div>
-      </ShowcaseSection>
+      </section>
+
+      {/* Code Example */}
+      <section style={sectionStyles}>
+        <div style={sectionTitleStyles}>Código de Referencia</div>
+        <div style={{
+          padding: '24px',
+          background: 'var(--marble-base)',
+          borderRadius: '14px',
+          boxShadow: 'var(--inset-3)',
+        }}>
+          <pre style={{
+            margin: 0,
+            fontFamily: 'var(--sentinel-font-mono)',
+            fontSize: '11px',
+            lineHeight: 1.6,
+            color: 'var(--marble-base)',
+            textShadow: '0.75px 0.75px 0px var(--shadow-light), -0.75px -0.75px 0px var(--shadow-dark)',
+            whiteSpace: 'pre-wrap',
+          }}>
+{`:root {
+  /* Stone Marble Base */
+  --marble-base: #d5d8dc;
+  --marble-light: #e2e5e9;
+  --marble-dark: #c8ccd1;
+
+  /* Shadows */
+  --shadow-light: rgba(255, 255, 255, 0.95);
+  --shadow-dark: rgba(147, 157, 170, 0.55);
+
+  /* Raised Levels (1-5) */
+  --raised-1: 2px 2px 4px var(--shadow-dark), -2px -2px 4px var(--shadow-light);
+  --raised-2: 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
+
+  /* Inset Levels (1-5) */
+  --inset-1: inset 2px 2px 4px var(--shadow-dark), inset -2px -2px 4px var(--shadow-light);
+  --inset-2: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
+
+  /* Glass */
+  --glass-bg: rgba(255, 255, 255, 0.25);
+  --glass-border: rgba(255, 255, 255, 0.35);
+}`}
+          </pre>
+        </div>
+      </section>
     </div>
   );
 }
 
-export function ColorsShowcase() {
-  return (
-    <LightEngineProvider initialAnimating={true} initialSpeed={0.3}>
-      <ColorsContent />
-    </LightEngineProvider>
-  );
-}
+export default ColorsShowcase;

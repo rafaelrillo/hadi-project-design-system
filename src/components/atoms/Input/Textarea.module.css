@@ -1,8 +1,11 @@
 /* Path: src/components/atoms/Input/Textarea.module.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   SENTINEL DESIGN SYSTEM - Textarea Component
+   SENTINEL DESIGN SYSTEM v3.3 - Textarea Component
 
-   Multi-line text input
+   STONE MARBLE NEUMORPHISM - INSET (Level 2)
+   - Uses --marble-dark background for sunken appearance
+   - Uses --inset-* shadow variables for consistent depth
+   - Follows hierarchy: RAISED → INSET → GLASS
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -22,20 +25,23 @@
   width: 100%;
   min-height: 80px;
   padding: var(--sentinel-space-3);
-  border: 1px solid var(--sentinel-border-default);
+  border: 1px solid rgba(163, 177, 198, 0.3);
   border-radius: var(--sentinel-radius-md);
   font-size: var(--sentinel-text-sm);
-  font-family: var(--sentinel-font-led);
+  font-family: var(--sentinel-font-primary);
   font-weight: var(--sentinel-font-normal);
-  letter-spacing: var(--sentinel-tracking-led);
+  letter-spacing: 0;
   line-height: 1.6;
   color: var(--sentinel-text-primary);
-  background-color: var(--sentinel-bg-elevated);
   cursor: text;
   box-sizing: border-box;
   resize: vertical;
-  transition: var(--sentinel-transition-normal);
+  transition: all 0.2s ease;
   outline: none;
+
+  /* Stone Marble INSET styling - sunken into surface */
+  background: var(--marble-dark);
+  box-shadow: var(--inset-2);
 }
 
 .textarea::placeholder {
@@ -49,21 +55,28 @@
 
 /* Hover state */
 .textarea:hover:not(:disabled):not(:focus) {
-  border-color: var(--sentinel-border-strong);
+  border-color: rgba(163, 177, 198, 0.5);
 }
 
 /* Focus state */
 .textarea:focus {
-  border-color: var(--sentinel-accent-primary);
-  background-color: var(--sentinel-bg-overlay);
+  border-color: rgba(58, 106, 114, 0.6);
+  background: var(--marble-base);
+
+  /* INSET shadow + accent focus glow */
+  box-shadow:
+    var(--inset-3),
+    0 0 0 3px rgba(58, 106, 114, 0.15),
+    0 0 12px rgba(58, 106, 114, 0.1);
 }
 
 /* Disabled state */
 .textarea:disabled {
-  background-color: var(--sentinel-bg-subtle);
-  border-color: var(--sentinel-border-subtle);
+  background: var(--marble-deeper);
+  border-color: rgba(163, 177, 198, 0.2);
   color: var(--sentinel-text-disabled);
   cursor: not-allowed;
+  box-shadow: var(--inset-1);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -71,15 +84,22 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .textareaError {
-  border-color: var(--sentinel-status-negative);
+  border-color: rgba(184, 92, 92, 0.5);
+  box-shadow:
+    var(--inset-2),
+    inset 0 0 8px rgba(184, 92, 92, 0.08);
 }
 
 .textareaError:hover:not(:disabled):not(:focus) {
-  border-color: var(--sentinel-status-negative);
+  border-color: rgba(184, 92, 92, 0.7);
 }
 
 .textareaError:focus {
   border-color: var(--sentinel-status-negative);
+  box-shadow:
+    var(--inset-3),
+    0 0 0 3px rgba(184, 92, 92, 0.15),
+    0 0 12px rgba(184, 92, 92, 0.1);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────

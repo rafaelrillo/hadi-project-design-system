@@ -1,14 +1,34 @@
 /* Path: src/pages/Landing/components/LandingHero/LandingHero.module.css */
+/* ═══════════════════════════════════════════════════════════════════════════════
+   FING BRAND LANDING PAGE - Stone Marble Neumorphism
+
+   HIERARCHY RULES (CRITICAL):
+   - RAISED containers: --raised-* shadows, --marble-base background
+   - INSET containers: --inset-* shadows, --marble-dark background
+   - GLASS elements: --glass-bg, backdrop-filter, --glass-border
+
+   TYPOGRAPHY RULES (CRITICAL):
+   - In RAISED container → INSET typography (debossed/engraved)
+   - In INSET container → RAISED typography (embossed)
+
+   Visual Effects:
+   - Debossed: light highlight bottom-right, dark shadow top-left
+   - Embossed: light highlight top-left, dark shadow bottom-right
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   BASE LAYOUT
+   ───────────────────────────────────────────────────────────────────────────── */
 
 .hero {
   position: relative;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: var(--sentinel-space-24) var(--sentinel-space-6);
-  overflow: hidden;
+  justify-content: flex-start;
+  padding: 24px 24px 80px;
+  overflow-x: hidden;
+  background: var(--marble-base);
 }
 
 .content {
@@ -17,137 +37,745 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
-  max-width: 800px;
+  gap: 20px;
+  width: 100%;
+  max-width: 900px;
 }
 
-/* Logo */
-.logoContainer {
-  margin-bottom: var(--sentinel-space-8);
-}
+/* ─────────────────────────────────────────────────────────────────────────────
+   FING LOGO - Stone Marble Variant
+   ───────────────────────────────────────────────────────────────────────────── */
 
-.logo {
-  width: 160px;
-  height: 160px;
-  filter: drop-shadow(0 0 20px var(--sentinel-accent-glow));
-}
-
-.scanLine {
-  transform-origin: 60px 60px;
-  animation: scan 4s linear infinite;
-}
-
-@keyframes scan {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* Title */
-.title {
-  font-family: var(--sentinel-font-led);
-  font-size: clamp(3rem, 8vw, 5rem);
-  font-weight: var(--sentinel-font-bold);
-  color: var(--sentinel-text-primary);
-  letter-spacing: 0.2em;
-  margin: 0 0 var(--sentinel-space-4);
-  text-shadow: 0 0 40px var(--sentinel-accent-glow);
-}
-
-/* Subtitle */
-.subtitle {
-  font-family: var(--sentinel-font-primary);
-  font-size: var(--sentinel-text-xl);
-  font-weight: var(--sentinel-font-medium);
-  color: var(--sentinel-accent-primary);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  margin: 0 0 var(--sentinel-space-6);
-}
-
-/* Tagline */
-.tagline {
-  font-family: var(--sentinel-font-primary);
-  font-size: var(--sentinel-text-lg);
-  color: var(--sentinel-text-secondary);
-  font-style: italic;
-  margin: 0 0 var(--sentinel-space-8);
-}
-
-/* CTA */
-.ctaContainer {
+.fingLogo {
   display: flex;
-  gap: var(--sentinel-space-4);
-  margin-bottom: var(--sentinel-space-12);
+  align-items: center;
+  gap: 16px;
 }
 
-.ctaButton {
-  min-width: 180px;
+.fingLogoSvg {
+  filter:
+    drop-shadow(5px 5px 10px var(--shadow-dark))
+    drop-shadow(-4px -4px 8px var(--shadow-light));
 }
 
-/* Disabled button wrapper for mobile */
-.disabledButtonWrapper {
+.fingWordmark {
+  font-family: var(--sentinel-font-primary);
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0.04em;
+  line-height: 1;
+
+  /* Stone Marble INSET typography - subtle carved (same as "Quiet intelligence") */
+  color: var(--marble-dark);
+  text-shadow:
+    0.75px 0.75px 0px rgba(255, 255, 255, 0.7),
+    -0.75px -0.75px 0px rgba(130, 140, 155, 0.4);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   HERO SECTION - Direct on marble surface (no container)
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.heroSection {
+  width: 100%;
+  padding: 48px 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: 16px;
+}
+
+.emblemContainer {
+  margin-bottom: 16px;
+}
+
+/* Brand Name - Large italic wordmark */
+.brandName {
+  font-family: var(--sentinel-font-primary);
+  font-size: 120px;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  margin: 0 0 8px;
+
+  /* Stone Marble INSET typography - subtle carved */
+  color: var(--marble-dark);
+  text-shadow:
+    2px 2px 1px rgba(255, 255, 255, 0.85),
+    -2px -2px 1px rgba(130, 140, 155, 0.55);
+}
+
+/* Hero Tagline - INSET typography in RAISED container */
+.heroTagline {
+  font-family: var(--sentinel-font-primary);
+  font-size: 42px;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  margin: 0;
+  text-align: center;
+
+  /* Debossed - Engraved effect */
+  color: var(--marble-dark);
+  text-shadow:
+    1px 1px 0px rgba(255, 255, 255, 0.8),
+    -1px -1px 0px rgba(130, 140, 155, 0.5);
+}
+
+/* Subtitle - INSET typography (more subtle) */
+.heroSubtitle {
+  font-family: var(--sentinel-font-primary);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0;
+
+  /* Engraved subtle */
+  color: var(--marble-dark);
+  text-shadow:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.7),
+    -0.5px -0.5px 0px rgba(130, 140, 155, 0.4);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   NAME CARD - RAISED Container
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.nameCard {
   width: 100%;
+  background: var(--marble-base);
+  border-radius: 24px;
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+
+  /* Stone Marble - RAISED Level 3 */
+  box-shadow: var(--raised-3);
 }
 
-.desktopOnlyHint {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 10px;
-  background: var(--sentinel-bg-glass);
-  border: 1px solid var(--sentinel-border-subtle);
-  border-radius: var(--sentinel-radius-full);
-  font-family: var(--sentinel-font-ticker);
+.nameCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 0.75),
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  pointer-events: none;
+}
+
+/* Section Label - INSET typography (teal accent) */
+.sectionLabel {
+  font-family: var(--sentinel-font-primary);
   font-size: 11px;
-  color: var(--sentinel-text-tertiary);
-  letter-spacing: 0.05em;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--marble-dark);
+
+  /* Engraved Colored - Teal accent */
+  color: var(--fing-teal);
+  text-shadow:
+    0.75px 0.75px 0px rgba(255, 255, 255, 0.7),
+    -0.75px -0.75px 0px rgba(58, 106, 114, 0.35);
 }
 
-.desktopOnlyHint svg {
-  opacity: 0.7;
+/* Name Grid - Two columns */
+.nameGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
 }
 
-/* Mobile full-width button */
-.mobileButton {
-  width: 100% !important;
-}
-
-/* Indicators */
-.indicators {
+/* Name INSET containers */
+.nameInset {
+  background: var(--marble-base);
+  border-radius: 16px;
+  padding: 20px;
   display: flex;
-  gap: var(--sentinel-space-6);
-  padding: var(--sentinel-space-6);
-  background-color: var(--sentinel-bg-glass);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--sentinel-border-subtle);
-  border-radius: var(--sentinel-radius-lg);
-  margin-bottom: var(--sentinel-space-6);
+  flex-direction: column;
+  gap: 4px;
+
+  /* Stone Marble - INSET Level 2 */
+  box-shadow: var(--inset-2);
 }
 
-.indicatorWrapper {
+.nameAccentLabel {
+  font-family: var(--sentinel-font-primary);
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  display: inline;
+
+  /* RAISED typography (embossed) - Teal color */
+  color: var(--fing-teal);
+  text-shadow:
+    -1px -1px 0px rgba(255, 255, 255, 0.9),
+    1px 1px 0px rgba(58, 106, 114, 0.35);
+}
+
+.nameTitle {
+  font-family: var(--sentinel-font-primary);
+  font-size: 28px;
+  font-weight: 400;
+  display: inline;
+
+  /* RAISED typography (embossed) */
+  color: var(--marble-base);
+  text-shadow:
+    -1px -1px 0px rgba(255, 255, 255, 0.95),
+    1px 1px 0px rgba(147, 157, 170, 0.5);
+}
+
+.nameDesc {
+  font-family: var(--sentinel-font-primary);
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 8px 0 0;
+
+  /* RAISED typography (embossed subtle) */
+  color: var(--marble-base);
+  text-shadow:
+    -0.5px -0.5px 0px rgba(255, 255, 255, 0.9),
+    0.5px 0.5px 0px rgba(147, 157, 170, 0.4);
+}
+
+.nameDesc em {
+  font-style: italic;
+}
+
+/* Synthesis INSET - Deep carved area */
+.synthesisInset {
+  background: var(--marble-base);
+  border-radius: 20px;
+  padding: 28px;
+  text-align: center;
+
+  /* Stone Marble - INSET Level 3 (deeper) */
+  box-shadow: var(--inset-3);
+}
+
+.synthesisFormula {
+  font-family: var(--sentinel-font-primary);
+  font-size: 32px;
+  font-weight: 500;
+  margin-bottom: 12px;
   display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 2px;
+}
+
+.synthesisAccent {
+  /* RAISED typography (embossed) - Teal */
+  color: var(--fing-teal);
+  text-shadow:
+    -1px -1px 0px rgba(255, 255, 255, 0.9),
+    1px 1px 0px rgba(58, 106, 114, 0.35);
+}
+
+.synthesisText {
+  font-size: 26px;
+
+  /* RAISED typography (embossed) */
+  color: var(--marble-base);
+  text-shadow:
+    -1px -1px 0px rgba(255, 255, 255, 0.95),
+    1px 1px 0px rgba(147, 157, 170, 0.5);
+}
+
+.synthesisPlus {
+  font-size: 22px;
+  padding: 0 8px;
+
+  /* RAISED typography (embossed subtle) */
+  color: var(--marble-deeper);
+  text-shadow:
+    -0.5px -0.5px 0px rgba(255, 255, 255, 0.9),
+    0.5px 0.5px 0px rgba(147, 157, 170, 0.4);
+}
+
+.synthesisMeaning {
+  font-family: var(--sentinel-font-primary);
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.5;
+  margin: 0;
+
+  /* RAISED typography (embossed) */
+  color: var(--marble-base);
+  text-shadow:
+    -0.75px -0.75px 0px rgba(255, 255, 255, 0.9),
+    0.75px 0.75px 0px rgba(147, 157, 170, 0.45);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   PHILOSOPHY CARD - RAISED Container
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.philosophyCard {
+  width: 100%;
+  background: var(--marble-base);
+  border-radius: 24px;
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+
+  /* Stone Marble - RAISED Level 3 */
+  box-shadow: var(--raised-3);
+}
+
+.philosophyCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 0.75),
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  pointer-events: none;
+}
+
+.philosophyContent {
+  margin-bottom: 24px;
+}
+
+.philosophyTitle {
+  font-family: var(--sentinel-font-primary);
+  font-size: 24px;
+  font-weight: 500;
+  font-style: italic;
+  margin: 0 0 16px;
+
+  /* INSET typography (engraved) */
+  color: var(--marble-dark);
+  text-shadow:
+    1px 1px 0px rgba(255, 255, 255, 0.8),
+    -1px -1px 0px rgba(130, 140, 155, 0.45);
+}
+
+.philosophyText {
+  font-family: var(--sentinel-font-primary);
+  font-size: 14px;
+  line-height: 1.7;
+  margin: 0 0 12px;
+
+  /* INSET typography (subtle) */
+  color: var(--marble-dark);
+  text-shadow:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.7),
+    -0.5px -0.5px 0px rgba(130, 140, 155, 0.35);
+}
+
+.philosophyText:last-child {
+  margin-bottom: 0;
+}
+
+.philosophyText strong {
+  color: var(--fing-teal);
+  font-weight: 600;
+  text-shadow:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.7),
+    -0.5px -0.5px 0px rgba(58, 106, 114, 0.3);
+}
+
+/* Principles Grid - 3 columns */
+.principlesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+/* Principle INSET */
+.principleInset {
+  background: var(--marble-base);
+  border-radius: 16px;
+  padding: 20px 16px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  gap: 8px;
+
+  /* Stone Marble - INSET Level 2 */
+  box-shadow: var(--inset-2);
+}
+
+.principleIcon {
+  font-size: 12px;
+  color: var(--fing-teal);
+  text-shadow:
+    -0.5px -0.5px 0px rgba(255, 255, 255, 0.9),
+    0.5px 0.5px 0px rgba(58, 106, 114, 0.35);
+}
+
+.principleName {
+  font-family: var(--sentinel-font-primary);
+  font-size: 16px;
+  font-weight: 600;
+
+  /* RAISED typography (embossed) */
+  color: var(--marble-base);
+  text-shadow:
+    -0.75px -0.75px 0px rgba(255, 255, 255, 0.95),
+    0.75px 0.75px 0px rgba(147, 157, 170, 0.5);
+}
+
+.principleDesc {
+  font-family: var(--sentinel-font-primary);
+  font-size: 11px;
+  line-height: 1.4;
+
+  /* RAISED typography (embossed subtle) */
+  color: var(--marble-base);
+  text-shadow:
+    -0.5px -0.5px 0px rgba(255, 255, 255, 0.9),
+    0.5px 0.5px 0px rgba(147, 157, 170, 0.4);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   PERSONALITY CARD - RAISED Container
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.personalityCard {
+  width: 100%;
+  background: var(--marble-base);
+  border-radius: 24px;
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+
+  /* Stone Marble - RAISED Level 3 */
+  box-shadow: var(--raised-3);
+}
+
+.personalityCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 0.75),
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  pointer-events: none;
+}
+
+/* Traits Grid - 5 columns */
+.traitsGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+/* Trait INSET */
+.traitInset {
+  background: var(--marble-base);
+  border-radius: 14px;
+  padding: 16px 12px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  /* Stone Marble - INSET Level 2 */
+  box-shadow: var(--inset-2);
+}
+
+.traitName {
+  font-family: var(--sentinel-font-primary);
+  font-size: 14px;
+  font-weight: 600;
+
+  /* RAISED typography (embossed) */
+  color: var(--marble-base);
+  text-shadow:
+    -0.75px -0.75px 0px rgba(255, 255, 255, 0.95),
+    0.75px 0.75px 0px rgba(147, 157, 170, 0.5);
+}
+
+.traitDesc {
+  font-family: var(--sentinel-font-primary);
+  font-size: 10px;
+  line-height: 1.4;
+
+  /* RAISED typography (embossed subtle) */
+  color: var(--marble-base);
+  text-shadow:
+    -0.5px -0.5px 0px rgba(255, 255, 255, 0.9),
+    0.5px 0.5px 0px rgba(147, 157, 170, 0.4);
+}
+
+/* Taglines Grid - 3 columns */
+.taglinesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+/* Tagline INSET */
+.taglineInset {
+  background: var(--marble-base);
+  border-radius: 16px;
+  padding: 24px 16px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  /* Stone Marble - INSET Level 2 */
+  box-shadow: var(--inset-2);
+}
+
+.taglineText {
+  font-family: var(--sentinel-font-primary);
+  font-size: 18px;
+  font-weight: 400;
+  font-style: italic;
+
+  /* RAISED typography (embossed) */
+  color: var(--marble-base);
+  text-shadow:
+    -1px -1px 0px rgba(255, 255, 255, 0.95),
+    1px 1px 0px rgba(147, 157, 170, 0.5);
+}
+
+.taglineEmphasis {
+  font-family: var(--sentinel-font-primary);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  color: var(--fing-text-muted);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   CTA SECTION - Buttons
+   Based on DashboardPage raisedButton style
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.ctaSection {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
-/* Live Badge */
-.liveBadge {
+.ctaDisabledWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.ctaDesktopHint {
   display: flex;
   align-items: center;
-  gap: var(--sentinel-space-2);
-  font-family: var(--sentinel-font-ticker);
-  font-size: var(--sentinel-text-xs);
-  color: var(--sentinel-text-tertiary);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  gap: 6px;
+  padding: 4px 12px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--sentinel-radius-full);
+  font-family: var(--sentinel-font-mono);
+  font-size: 11px;
+  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+}
+
+/* Primary CTA Button - RAISED */
+.ctaButtonPrimary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: var(--marble-base);
+  border-radius: 28px;
+  border: none;
+  cursor: pointer;
+  font-family: var(--sentinel-font-primary);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+
+  /* RAISED shadow */
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.8),
+    inset 0 0 0 2px rgba(168, 172, 179, 0.3),
+    5px 5px 10px rgba(147, 157, 170, 0.55),
+    -5px -5px 10px rgba(255, 255, 255, 0.95);
+
+  /* INSET typography */
+  color: var(--sentinel-accent-primary);
+  text-shadow:
+    1px 1px 0px rgba(255, 255, 255, 0.85),
+    -1px -1px 0px rgba(58, 106, 114, 0.3);
+
+  transition: all 150ms ease;
+}
+
+.ctaButtonPrimary:hover:not(:disabled) {
+  background: linear-gradient(135deg, rgba(58, 106, 114, 0.08) 0%, rgba(58, 106, 114, 0.04) 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.9),
+    inset 0 0 0 2px rgba(58, 106, 114, 0.25),
+    7px 7px 14px rgba(147, 157, 170, 0.6),
+    -7px -7px 14px rgba(255, 255, 255, 0.95),
+    0 0 20px rgba(58, 106, 114, 0.15);
+}
+
+.ctaButtonPrimary:active:not(:disabled) {
+  box-shadow:
+    inset 2px 2px 4px rgba(147, 157, 170, 0.5),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.9);
+}
+
+.ctaButtonPrimary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Secondary CTA Button - RAISED (subtler) */
+.ctaButtonSecondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: var(--marble-base);
+  border-radius: 28px;
+  border: none;
+  cursor: pointer;
+  font-family: var(--sentinel-font-primary);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+
+  /* RAISED shadow (subtler) */
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.7),
+    inset 0 0 0 2px rgba(168, 172, 179, 0.25),
+    4px 4px 8px rgba(147, 157, 170, 0.5),
+    -4px -4px 8px rgba(255, 255, 255, 0.9);
+
+  /* INSET typography (neutral) */
+  color: var(--text-primary);
+  text-shadow:
+    0.75px 0.75px 0px rgba(255, 255, 255, 0.8),
+    -0.75px -0.75px 0px rgba(130, 140, 155, 0.35);
+
+  transition: all 150ms ease;
+}
+
+.ctaButtonSecondary:hover {
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.8),
+    inset 0 0 0 2px rgba(168, 172, 179, 0.3),
+    5px 5px 10px rgba(147, 157, 170, 0.55),
+    -5px -5px 10px rgba(255, 255, 255, 0.95);
+}
+
+.ctaButtonSecondary:active {
+  box-shadow:
+    inset 2px 2px 4px rgba(147, 157, 170, 0.45),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.85);
+}
+
+/* Icon Circle - INSET */
+.ctaIconCircle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--marble-base);
+  box-shadow:
+    inset 1px 1px 2px rgba(147, 157, 170, 0.55),
+    inset -1px -1px 2px rgba(255, 255, 255, 0.95);
+  transition: background 150ms ease;
+}
+
+.ctaButtonPrimary:hover:not(:disabled) .ctaIconCircle {
+  background: linear-gradient(135deg, rgba(58, 106, 114, 0.15) 0%, rgba(58, 106, 114, 0.08) 100%);
+}
+
+/* Icon - RAISED effect via filter */
+.ctaIcon {
+  color: var(--sentinel-accent-primary);
+  filter:
+    drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9))
+    drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4));
+  transition: color 150ms ease;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   INDICATORS CARD - RAISED Container
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.indicatorsCard {
+  width: 100%;
+  background: var(--marble-base);
+  border-radius: 20px;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+
+  /* Stone Marble - RAISED Level 2 */
+  box-shadow: var(--raised-2);
+}
+
+.indicatorsCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0.65),
+    rgba(255, 255, 255, 0.5),
+    transparent
+  );
+  pointer-events: none;
+}
+
+.indicatorsHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
 }
 
 .liveDot {
@@ -169,30 +797,78 @@
   }
 }
 
-/* Scroll Indicator */
+.liveLabel {
+  font-family: var(--sentinel-font-primary);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  /* INSET typography (engraved) */
+  color: var(--marble-dark);
+  text-shadow:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.7),
+    -0.5px -0.5px 0px rgba(130, 140, 155, 0.4);
+}
+
+.indicatorsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+/* Indicator INSET */
+.indicatorInset {
+  background: var(--marble-dark);
+  border-radius: 14px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Stone Marble - INSET Level 1 */
+  box-shadow: var(--inset-1);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   SCROLL INDICATOR
+   ───────────────────────────────────────────────────────────────────────────── */
+
 .scrollIndicator {
   position: absolute;
-  bottom: var(--sentinel-space-8);
+  bottom: 24px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--sentinel-space-2);
+  gap: 4px;
   background: none;
   border: none;
-  color: var(--sentinel-text-tertiary);
   cursor: pointer;
-  font-family: var(--sentinel-font-ticker);
-  font-size: var(--sentinel-text-xs);
+  font-family: var(--sentinel-font-mono);
+  font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  transition: color var(--sentinel-duration-fast);
+  transition: opacity 200ms ease;
   animation: bounce 2s ease-in-out infinite;
+
+  /* INSET typography */
+  color: var(--marble-dark);
+  text-shadow:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.7),
+    -0.5px -0.5px 0px rgba(130, 140, 155, 0.4);
 }
 
 .scrollIndicator:hover {
-  color: var(--sentinel-text-primary);
+  opacity: 0.8;
+}
+
+.scrollIndicator svg {
+  color: var(--marble-dark);
+  filter:
+    drop-shadow(0.5px 0.5px 0px rgba(255, 255, 255, 0.7))
+    drop-shadow(-0.5px -0.5px 0px rgba(130, 140, 155, 0.4));
 }
 
 @keyframes bounce {
@@ -204,72 +880,202 @@
   }
 }
 
-/* Responsive */
+/* ─────────────────────────────────────────────────────────────────────────────
+   RESPONSIVE - Tablet
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .traitsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .traitsGrid .traitInset:nth-child(4),
+  .traitsGrid .traitInset:nth-child(5) {
+    grid-column: span 1;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   RESPONSIVE - Mobile
+   ───────────────────────────────────────────────────────────────────────────── */
+
 @media (max-width: 768px) {
   .hero {
-    padding: var(--sentinel-space-16) var(--sentinel-space-4);
-    align-items: center;
-    justify-content: center;
+    padding: 24px 16px 100px;
   }
 
   .content {
-    width: 100%;
-    align-items: center;
-    padding: 0 var(--sentinel-space-4);
+    gap: 16px;
   }
 
-  .logo {
-    width: 100px;
-    height: 100px;
+  /* Hero Section */
+  .heroSection {
+    padding: 32px 16px;
   }
 
-  .logoContainer {
-    margin-bottom: var(--sentinel-space-6);
+  .brandName {
+    font-size: 72px;
   }
 
-  .title {
-    letter-spacing: 0.08em;
-    font-size: clamp(2.2rem, 10vw, 3rem);
+  .heroSubtitle {
+    font-size: 12px;
   }
 
-  .subtitle {
-    font-size: var(--sentinel-text-sm);
-    letter-spacing: 0.08em;
+  /* Name Card */
+  .nameCard {
+    padding: 20px;
+    border-radius: 20px;
   }
 
-  .tagline {
-    font-size: var(--sentinel-text-sm);
-    margin-bottom: var(--sentinel-space-6);
+  .nameGrid {
+    grid-template-columns: 1fr;
+    gap: 12px;
   }
 
-  .ctaContainer {
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 260px;
-    margin-bottom: var(--sentinel-space-8);
+  .nameInset {
+    padding: 16px;
   }
 
-  .indicators {
-    flex-direction: column;
-    align-items: stretch;
-    gap: var(--sentinel-space-3);
-    width: 100%;
-    max-width: 260px;
-    padding: var(--sentinel-space-4);
-    margin-bottom: var(--sentinel-space-4);
+  .nameAccentLabel,
+  .nameTitle {
+    font-size: 22px;
   }
 
-  .indicatorWrapper {
-    width: 100%;
+  .synthesisInset {
+    padding: 20px;
+  }
+
+  .synthesisFormula {
+    font-size: 24px;
+    flex-wrap: wrap;
     justify-content: center;
   }
 
-  .liveBadge {
-    margin-bottom: var(--sentinel-space-4);
+  .synthesisText {
+    font-size: 20px;
   }
 
+  .synthesisPlus {
+    font-size: 18px;
+  }
+
+  .synthesisMeaning {
+    font-size: 13px;
+  }
+
+  /* Philosophy Card */
+  .philosophyCard {
+    padding: 20px;
+    border-radius: 20px;
+  }
+
+  .philosophyTitle {
+    font-size: 20px;
+  }
+
+  .philosophyText {
+    font-size: 13px;
+  }
+
+  .principlesGrid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .principleInset {
+    padding: 16px;
+  }
+
+  /* Personality Card */
+  .personalityCard {
+    padding: 20px;
+    border-radius: 20px;
+  }
+
+  .traitsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .traitsGrid .traitInset:nth-child(5) {
+    grid-column: span 2;
+  }
+
+  .traitInset {
+    padding: 14px 10px;
+  }
+
+  .traitName {
+    font-size: 13px;
+  }
+
+  .traitDesc {
+    font-size: 9px;
+  }
+
+  .taglinesGrid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .taglineInset {
+    padding: 20px 16px;
+  }
+
+  .taglineText {
+    font-size: 16px;
+  }
+
+  /* CTA */
+  .ctaSection {
+    flex-direction: column;
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .ctaButtonPrimary,
+  .ctaButtonSecondary {
+    width: 100%;
+    padding: 14px 24px;
+    font-size: 13px;
+  }
+
+  /* Indicators */
+  .indicatorsCard {
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  .indicatorsGrid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .indicatorInset {
+    padding: 10px;
+  }
+
+  /* Scroll Indicator */
   .scrollIndicator {
-    bottom: var(--sentinel-space-4);
+    bottom: 16px;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   REDUCED MOTION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .scrollIndicator {
+    animation: none;
+  }
+
+  .liveDot {
+    animation: none;
+  }
+
+  .ctaButtonPrimary,
+  .ctaButtonSecondary {
+    transition: none;
   }
 }

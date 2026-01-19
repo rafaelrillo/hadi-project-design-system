@@ -1,35 +1,19 @@
 /* Path: src/pages/Landing/Landing.module.css */
 
 /* ═══════════════════════════════════════════════════════════════════════════════
-   SENTINEL LANDING PAGE
-   Investment Observatory - Entry Point
+   FING LANDING PAGE - Stone Marble Neumorphism
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 .container {
   position: relative;
   min-height: 100vh;
-  background: var(--sentinel-bg-base);
-  color: var(--sentinel-text-primary);
+  background: var(--marble-base);
+  color: var(--text-primary);
 }
 
 .main {
   position: relative;
   z-index: 1;
-}
-
-/* Ensure each section has proper stacking and background */
-.main > section {
-  position: relative;
-  z-index: 1;
-  /* Ensure sections are visible above the atmospheric background */
-  isolation: isolate;
-}
-
-/* Footer needs same treatment as sections */
-.container > footer {
-  position: relative;
-  z-index: 1;
-  isolation: isolate;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════════

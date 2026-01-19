@@ -19,8 +19,8 @@ export const sentinelColors = {
   bgSubtle: '#F0F4F8',
   bgInteractive: 'rgba(255, 255, 255, 0.6)',
 
-  // Text (Dark on Light)
-  textPrimary: '#2D3436',
+  // Text (Dark on Light) - Charcoal
+  textPrimary: '#252528',
   textSecondary: '#5F6C7A',
   textTertiary: '#8B9CAD',
   textDisabled: '#B8C5D1',
@@ -31,10 +31,10 @@ export const sentinelColors = {
   borderStrong: 'rgba(163, 177, 198, 0.5)',
 
   // Accent (Institutional Teal - darker for contrast)
-  accentPrimary: '#4A9A9C',
+  accentPrimary: '#3a6a72',
   accentSecondary: '#3D8587',
-  accentSubtle: 'rgba(74, 154, 156, 0.12)',
-  accentGlow: 'rgba(74, 154, 156, 0.25)',
+  accentSubtle: 'rgba(58, 106, 114, 0.12)',
+  accentGlow: 'rgba(58, 106, 114, 0.25)',
 
   // Status (More saturated for light backgrounds)
   positive: '#22C55E',
@@ -48,7 +48,7 @@ export const sentinelColors = {
 
   // Risk levels
   riskLow: '#22C55E',
-  riskModerate: '#4A9A9C',
+  riskModerate: '#3a6a72',
   riskElevated: '#F59E0B',
   riskHigh: '#F97316',
   riskSevere: '#EF4444',
@@ -56,13 +56,13 @@ export const sentinelColors = {
   // Market states
   marketBull: '#22C55E',
   marketBear: '#EF4444',
-  marketNeutral: '#4A9A9C',
+  marketNeutral: '#3a6a72',
   marketUncertain: '#6B7280',
 };
 
 // 8-color harmonious palette for chart series (adjusted for light bg)
 export const chartPalette = [
-  '#4A9A9C', // Teal accent (primary)
+  '#3a6a72', // Teal accent (primary)
   '#3D8587', // Dark teal
   '#2E7D32', // Green
   '#1976D2', // Blue
@@ -89,7 +89,7 @@ export const divergingColors = [
   '#F97316',
   '#F59E0B',
   '#9E9E9E', // Neutral
-  '#4A9A9C',
+  '#3a6a72',
   '#22C55E',
   '#16A34A', // Positive
 ];

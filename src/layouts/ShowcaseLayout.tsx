@@ -1,6 +1,7 @@
 // Path: src/layouts/ShowcaseLayout.tsx
 import { useState, useEffect } from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
+import { FingEmblem } from '@/components/atoms/FingEmblem';
 import { SidebarGroup } from '../components/showcase';
 import {
   Home,
@@ -38,7 +39,9 @@ import {
   Gauge,
   LayoutDashboard,
   MessageSquare,
-  Sun
+  Sun,
+  Gem,
+  Fingerprint
 } from 'lucide-react';
 
 export function ShowcaseLayout() {
@@ -103,21 +106,6 @@ export function ShowcaseLayout() {
     display: 'flex',
     alignItems: 'center',
     gap: '12px'
-  };
-
-  const logoMarkStyles: React.CSSProperties = {
-    width: '32px',
-    height: '32px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'rgba(91, 163, 165, 0.1)',
-    border: '1px solid var(--sentinel-accent-primary)',
-    borderRadius: 'var(--sentinel-radius-md)',
-    fontFamily: 'var(--sentinel-font-mono)',
-    fontSize: '14px',
-    fontWeight: 600,
-    color: 'var(--sentinel-accent-primary)'
   };
 
   const logoTextStyles: React.CSSProperties = {
@@ -196,12 +184,16 @@ export function ShowcaseLayout() {
   ];
 
   const stylesItems = [
+    { path: '/showcase/styles/brand', label: 'Brand', icon: Fingerprint },
+    { path: '/showcase/styles/wordmark', label: 'Wordmark', icon: Type },
+    { path: '/showcase/styles/buttons', label: 'Buttons', icon: SquareStack },
     { path: '/showcase/styles/colors', label: 'Colors', icon: Palette },
     { path: '/showcase/styles/typography', label: 'Typography', icon: Type },
     { path: '/showcase/styles/spacing', label: 'Spacing', icon: Ruler },
     { path: '/showcase/styles/shadows', label: 'Shadows', icon: Copy },
     { path: '/showcase/styles/border-radius', label: 'Border Radius', icon: Circle },
-    { path: '/showcase/styles/icons', label: 'Icons', icon: Image }
+    { path: '/showcase/styles/icons', label: 'Icons', icon: Image },
+    { path: '/showcase/styles/stone-marble', label: 'Stone Marble', icon: Gem }
   ];
 
   // Charts - ECharts
@@ -251,7 +243,7 @@ export function ShowcaseLayout() {
         {/* Logo */}
         <div style={logoContainerStyles}>
           <div style={logoSvgContainerStyles}>
-            <div style={logoMarkStyles}>S</div>
+            <FingEmblem size={36} animation="breathe" />
             <h1 style={logoTextStyles}>SENTINEL</h1>
           </div>
           <p style={versionStyles}>Design System v2.0</p>

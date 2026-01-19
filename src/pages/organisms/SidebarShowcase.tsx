@@ -23,6 +23,7 @@ import {
   Newspaper,
 } from 'lucide-react';
 import { LightEngineProvider, useLightEngine } from '@/contexts/LightEngineContext';
+import { FingEmblem } from '@/components/atoms/FingEmblem';
 
 function SidebarContent() {
   const { lightAngle } = useLightEngine();
@@ -33,26 +34,26 @@ function SidebarContent() {
     return { x: Math.cos(shadowAngle), y: Math.sin(shadowAngle) };
   }, [lightAngle]);
 
-  const LIGHT = {
-    base: '#e0e5ec',
-    shadowDark: 'hsl(220 15% 72%)',
-    shadowLight: 'hsl(0 0% 100%)',
+  const MARBLE = {
+    base: '#d5d8dc',
+    shadowDark: '#a8acb3',
+    shadowLight: '#ffffff',
   };
 
   const getNeuPanelShadow = (distance: number, blur: number): string => {
     const { x, y } = shadowOffsets;
-    return `${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}`;
+    return `${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}`;
   };
 
   const getNeuInsetShadow = (distance: number, blur: number): string => {
     const { x, y } = shadowOffsets;
-    return `inset ${x * distance}px ${y * distance}px ${blur}px ${LIGHT.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${LIGHT.shadowLight}`;
+    return `inset ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}`;
   };
 
   const pageHeaderStyles: React.CSSProperties = {
     marginBottom: '32px',
     padding: '24px',
-    background: LIGHT.base,
+    background: MARBLE.base,
     borderRadius: '15px',
     boxShadow: getNeuPanelShadow(20, 60),
     transition: 'box-shadow 50ms linear',
@@ -78,18 +79,14 @@ function SidebarContent() {
 
   const sidebarContainerStyles: React.CSSProperties = {
     padding: '20px',
-    background: LIGHT.base,
+    background: MARBLE.base,
     borderRadius: '15px',
     boxShadow: getNeuPanelShadow(8, 24),
     transition: 'box-shadow 50ms linear',
   };
 
-  // Logo for sidebar
-  const SentinelLogo = () => (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-    </svg>
-  );
+  // FING Emblem Logo for sidebar
+  const FingLogo = <FingEmblem size={48} animation="ripple" />;
 
   // Main navigation sections (like a real app)
   const mainSections: SidebarSection[] = [
@@ -156,7 +153,7 @@ function SidebarContent() {
   };
 
   return (
-    <div style={{ background: LIGHT.base, minHeight: '100%', padding: '24px' }}>
+    <div style={{ background: MARBLE.base, minHeight: '100%', padding: '24px' }}>
       <header style={pageHeaderStyles}>
         <h1 style={titleStyles}>&gt; Sidebar_</h1>
         <p style={descStyles}>
@@ -172,7 +169,7 @@ function SidebarContent() {
         <div style={sidebarContainerStyles}>
           <div style={{ height: '700px', position: 'relative', display: 'flex' }}>
             <Sidebar
-              productLogo={<SentinelLogo />}
+              productLogo={FingLogo}
               sections={mainSections}
               user={user}
               onUserClick={() => console.log('User profile clicked')}
@@ -187,7 +184,7 @@ function SidebarContent() {
               flex: 1,
               marginLeft: '24px',
               padding: '32px',
-              background: LIGHT.base,
+              background: MARBLE.base,
               borderRadius: '24px',
               boxShadow: getNeuPanelShadow(8, 24),
               display: 'flex',
@@ -226,7 +223,7 @@ function SidebarContent() {
         <div style={sidebarContainerStyles}>
           <div style={{ height: '650px', position: 'relative', display: 'flex' }}>
             <Sidebar
-              productLogo={<SentinelLogo />}
+              productLogo={FingLogo}
               sections={expandedSections}
               user={user}
               onSearch={(value) => console.log('Search:', value)}
@@ -236,7 +233,7 @@ function SidebarContent() {
               flex: 1,
               marginLeft: '24px',
               padding: '24px',
-              background: LIGHT.base,
+              background: MARBLE.base,
               borderRadius: '20px',
               boxShadow: getNeuInsetShadow(5, 15),
             }}>
@@ -256,7 +253,7 @@ function SidebarContent() {
         <div style={sidebarContainerStyles}>
           <div style={{ height: '500px', position: 'relative', display: 'flex' }}>
             <Sidebar
-              productLogo={<SentinelLogo />}
+              productLogo={FingLogo}
               menuItems={simpleMenuItems}
               user={user}
               onSettingsClick={() => console.log('Settings')}
@@ -267,7 +264,7 @@ function SidebarContent() {
               flex: 1,
               marginLeft: '24px',
               padding: '24px',
-              background: LIGHT.base,
+              background: MARBLE.base,
               borderRadius: '20px',
               boxShadow: getNeuPanelShadow(4, 12),
               display: 'flex',
@@ -290,7 +287,7 @@ function SidebarContent() {
         <div style={sidebarContainerStyles}>
           <div style={{ height: '500px', position: 'relative', display: 'flex' }}>
             <Sidebar
-              productLogo={<SentinelLogo />}
+              productLogo={FingLogo}
               sections={mainSections}
               position="relative"
               collapsed={true}
@@ -299,7 +296,7 @@ function SidebarContent() {
               flex: 1,
               marginLeft: '24px',
               padding: '24px',
-              background: LIGHT.base,
+              background: MARBLE.base,
               borderRadius: '20px',
               boxShadow: getNeuPanelShadow(4, 12),
               display: 'flex',
@@ -322,7 +319,7 @@ function SidebarContent() {
         <div style={sidebarContainerStyles}>
           <div style={{ height: '400px', position: 'relative', display: 'flex' }}>
             <Sidebar
-              productLogo={<SentinelLogo />}
+              productLogo={FingLogo}
               menuItems={simpleMenuItems.slice(0, 4)}
               position="relative"
             />
@@ -330,7 +327,7 @@ function SidebarContent() {
               flex: 1,
               marginLeft: '24px',
               padding: '24px',
-              background: LIGHT.base,
+              background: MARBLE.base,
               borderRadius: '20px',
               boxShadow: getNeuInsetShadow(5, 15),
             }}>
@@ -376,7 +373,7 @@ function SidebarContent() {
                 fontFamily: 'var(--sentinel-font-mono)',
                 lineHeight: '2',
               }}>
-                <li>+ Background: #e0e5ec</li>
+                <li>+ Background: #d5d8dc</li>
                 <li>+ Border-radius: 24px</li>
                 <li>+ Elevated shadow</li>
                 <li>+ Dynamic via Light Engine</li>
@@ -445,7 +442,7 @@ function SidebarContent() {
           padding: '20px',
           borderRadius: '15px',
           boxShadow: getNeuInsetShadow(5, 15),
-          background: LIGHT.base,
+          background: MARBLE.base,
           fontSize: '12px',
           fontFamily: 'var(--sentinel-font-mono)',
           color: '#636E72',
@@ -489,7 +486,7 @@ function SidebarContent() {
           padding: '20px',
           borderRadius: '15px',
           boxShadow: getNeuInsetShadow(5, 15),
-          background: LIGHT.base,
+          background: MARBLE.base,
           fontSize: '12px',
           fontFamily: 'var(--sentinel-font-mono)',
           color: '#636E72',

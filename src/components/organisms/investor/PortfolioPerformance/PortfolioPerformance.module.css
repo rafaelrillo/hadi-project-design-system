@@ -55,7 +55,7 @@
   box-shadow: var(--inset-1);
 }
 
-/* Tab Individual - GLASS cuando activo */
+/* Tab Individual - Like sidebar selector */
 .tab {
   padding: 6px 12px;
   font-family: var(--sentinel-font-primary);
@@ -68,46 +68,29 @@
   background: transparent;
   transition: all 150ms ease;
 
-  /* Inset typography - letterpress in INSET container */
-  color: var(--marble-base);
+  /* Non-selected: RAISED/embossed text effect */
+  color: var(--sentinel-text-secondary);
   text-shadow:
-    0.5px 0.5px 0px var(--shadow-light),
-    -0.5px -0.5px 0px var(--shadow-dark);
+    -0.75px -0.75px 0px rgba(255, 255, 255, 0.9),
+    0.75px 0.75px 0px rgba(147, 157, 170, 0.5);
 }
 
-.tab:hover {
-  /* Teal gradient background like buttons */
-  background: linear-gradient(135deg, rgba(74, 154, 156, 0.12) 0%, rgba(74, 154, 156, 0.06) 100%);
-
-  /* Teal accent with letterpress */
-  color: var(--sentinel-accent-primary);
-  text-shadow:
-    0.5px 0.5px 0px var(--shadow-light),
-    -0.5px -0.5px 0px rgba(74, 154, 156, 0.4);
-
-  /* Subtle glow */
-  box-shadow:
-    1px 1px 2px rgba(163, 177, 198, 0.2),
-    -1px -1px 2px rgba(255, 255, 255, 0.7),
-    0 0 8px rgba(74, 154, 156, 0.1);
+.tab:hover:not(.tabActive) {
+  color: var(--sentinel-text-primary);
 }
 
 .tabActive {
-  /* GLASS effect */
-  background: var(--glass-bg-hover);
-  backdrop-filter: blur(8px);
-  border: 1px solid var(--glass-border);
+  /* RAISED container inside INSET */
+  background: var(--marble-base);
+  box-shadow:
+    2px 2px 4px rgba(147, 157, 170, 0.4),
+    -2px -2px 4px rgba(255, 255, 255, 0.5);
 
-  /* Teal accent with inset letterpress */
+  /* Teal color with INSET/engraved text effect */
   color: var(--sentinel-accent-primary);
   text-shadow:
-    0.5px 0.5px 0px var(--shadow-light),
-    -0.5px -0.5px 0px rgba(74, 154, 156, 0.4);
-
-  /* Subtle raised effect within inset */
-  box-shadow:
-    1px 1px 2px rgba(163, 177, 198, 0.25),
-    -1px -1px 2px rgba(255, 255, 255, 0.8);
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.7),
+    -0.5px -0.5px 0px rgba(58, 106, 114, 0.4);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -189,32 +172,23 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   SENTINEL METER - RAISED → INSET
+   FING INDICATOR - Same as sidebar logo
    ───────────────────────────────────────────────────────────────────────────── */
 
-.sentinelMeter {
+.fingIndicator {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 6px 14px 6px 6px;
-  background: var(--marble-base);
-  border-radius: 50px;
-  box-shadow: var(--raised-2);
+  gap: 8px;
 }
 
-.sentinelMeterInner {
+.fingLogo {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background: var(--marble-base);
-  box-shadow: var(--inset-2);
-}
 
-.radarSymbol {
-  flex-shrink: 0;
+  /* Apply brand teal color to FingEmblem (same as sidebar) */
+  --fing-symbol-fill: var(--sentinel-accent-primary);
+  --fing-symbol-stroke: var(--sentinel-accent-primary);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -251,17 +225,17 @@
   flex-shrink: 0;
 }
 
-/* SENTINEL text - INSET/engraved (inside RAISED container) */
+/* FING text - brand typography */
 .legendTextSentinel {
   font-family: var(--sentinel-font-led);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--sentinel-accent-primary);
   text-shadow:
     0.75px 0.75px 0px rgba(255, 255, 255, 0.7),
-    -0.75px -0.75px 0px rgba(74, 154, 156, 0.5);
+    -0.75px -0.75px 0px rgba(58, 106, 114, 0.5);
 }
 
 .legendTextNasdaq {
