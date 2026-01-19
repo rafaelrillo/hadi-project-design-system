@@ -72,11 +72,25 @@ export function LineChart({
           ? { show: false }
           : {
               trigger: 'axis',
+              backgroundColor: 'rgba(255, 255, 255, 0.85)',
+              borderColor: 'rgba(58, 106, 114, 0.25)',
+              borderWidth: 1,
+              borderRadius: 16,
+              padding: [14, 18],
+              extraCssText: `
+                z-index: 9999 !important;
+                backdrop-filter: blur(16px) saturate(180%);
+                -webkit-backdrop-filter: blur(16px) saturate(180%);
+                box-shadow:
+                  0 8px 32px rgba(58, 106, 114, 0.15),
+                  0 4px 16px rgba(0, 0, 0, 0.08),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.6);
+              `,
               formatter: (params: unknown) => {
                 const paramArray = params as Array<{ axisValue: string; value: number }>;
                 const point = paramArray[0];
                 return `
-                  <div style="font-family: 'Space Mono', monospace; font-size: 11px;">
+                  <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px;">
                     <div style="color: ${fingColors.textTertiary}; margin-bottom: 4px;">${point.axisValue}</div>
                     <div style="color: ${fingColors.textPrimary}; font-weight: 600;">${formatValue(point.value)}</div>
                   </div>
@@ -170,6 +184,20 @@ export function LineChart({
         ? { show: false }
         : {
             trigger: 'axis',
+            backgroundColor: 'rgba(255, 255, 255, 0.85)',
+            borderColor: 'rgba(58, 106, 114, 0.25)',
+            borderWidth: 1,
+            borderRadius: 16,
+            padding: [14, 18],
+            extraCssText: `
+              z-index: 9999 !important;
+              backdrop-filter: blur(16px) saturate(180%);
+              -webkit-backdrop-filter: blur(16px) saturate(180%);
+              box-shadow:
+                0 8px 32px rgba(58, 106, 114, 0.15),
+                0 4px 16px rgba(0, 0, 0, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            `,
             formatter: (params: unknown) => {
               const paramArray = params as Array<{
                 axisValue: string;
@@ -177,7 +205,7 @@ export function LineChart({
                 value: number;
                 color: string;
               }>;
-              let html = `<div style="font-family: 'Space Mono', monospace; font-size: 11px;">`;
+              let html = `<div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px;">`;
               html += `<div style="color: ${fingColors.textTertiary}; margin-bottom: 8px;">${paramArray[0].axisValue}</div>`;
               paramArray.forEach((p) => {
                 html += `

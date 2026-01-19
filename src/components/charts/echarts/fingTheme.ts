@@ -153,19 +153,27 @@ export const fingEChartsTheme: Record<string, unknown> = {
     pageIconInactiveColor: fingColors.textDisabled,
   },
 
-  // Tooltip
+  // Tooltip - Glass effect with high z-index
   tooltip: {
-    backgroundColor: fingColors.bgOverlay,
-    borderColor: fingColors.borderDefault,
+    backgroundColor: 'rgba(255, 255, 255, 0.85)',
+    borderColor: 'rgba(58, 106, 114, 0.25)',
     borderWidth: 1,
-    borderRadius: 12,
-    padding: [12, 16],
+    borderRadius: 16,
+    padding: [14, 18],
     textStyle: {
       color: fingColors.textPrimary,
       fontFamily: "'IBM Plex Sans', sans-serif",
       fontSize: 12,
     },
-    extraCssText: 'box-shadow: -8px -8px 16px rgba(255, 255, 255, 0.7), 8px 8px 16px rgba(163, 177, 198, 0.4);',
+    extraCssText: `
+      z-index: 9999 !important;
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      box-shadow:
+        0 8px 32px rgba(58, 106, 114, 0.15),
+        0 4px 16px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    `,
   },
 
   // Axis pointer (crosshair)
@@ -625,7 +633,7 @@ export const fingEChartsTheme: Record<string, unknown> = {
 // REGISTER THEME
 // ─────────────────────────────────────────────────────────────────────────────
 
-echarts.registerTheme('sentinel', fingEChartsTheme);
+echarts.registerTheme('fing', fingEChartsTheme);
 
 // ─────────────────────────────────────────────────────────────────────────────
 // ANIMATION PRESETS
