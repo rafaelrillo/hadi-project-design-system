@@ -1,11 +1,11 @@
 /* Path: src/components/organisms/Form/Form.module.css */
-/* SENTINEL Design System */
+/* FING Design System */
 
 /* Form */
 .form {
   width: 100%;
-  font-family: var(--sentinel-font-led);
-  letter-spacing: var(--sentinel-tracking-led);
+  font-family: var(--fing-font-led);
+  letter-spacing: var(--fing-tracking-led);
 }
 
 /* Fields Container */

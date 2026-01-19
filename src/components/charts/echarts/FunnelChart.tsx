@@ -2,7 +2,7 @@
 import { useMemo } from 'react';
 import type { EChartsOption } from 'echarts';
 import { EChart } from './EChart';
-import { sentinelColors, chartPalette, tooltipFormatters } from './sentinelTheme';
+import { fingColors, chartPalette, tooltipFormatters } from './fingTheme';
 import type { FunnelDataPoint, BaseChartProps } from './types';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -80,14 +80,14 @@ export function FunnelChart({
                 <span style="font-weight: 500;">${p.name}</span>
               </div>
               <div style="display: flex; justify-content: space-between; gap: 24px; margin-bottom: 4px;">
-                <span style="color: ${sentinelColors.textTertiary};">Value</span>
+                <span style="color: ${fingColors.textTertiary};">Value</span>
                 <span style="font-family: 'Space Mono', monospace; font-weight: 600;">${formatValue(p.value)}</span>
               </div>
               ${
                 showPercent
                   ? `
               <div style="display: flex; justify-content: space-between; gap: 24px;">
-                <span style="color: ${sentinelColors.textTertiary};">Rate</span>
+                <span style="color: ${fingColors.textTertiary};">Rate</span>
                 <span style="font-family: 'Space Mono', monospace; font-weight: 600;">${percent}%</span>
               </div>
               `
@@ -104,7 +104,7 @@ export function FunnelChart({
         right: 10,
         top: 'center',
         textStyle: {
-          color: sentinelColors.textSecondary,
+          color: fingColors.textSecondary,
           fontSize: 11,
         },
       },
@@ -125,7 +125,7 @@ export function FunnelChart({
           label: {
             show: true,
             position: labelPosition,
-            color: sentinelColors.textSecondary,
+            color: fingColors.textSecondary,
             fontSize: 11,
             fontFamily: "'Inter', sans-serif",
             formatter: (params: unknown) => {
@@ -141,11 +141,11 @@ export function FunnelChart({
             show: labelPosition === 'outer',
             length: 10,
             lineStyle: {
-              color: sentinelColors.borderDefault,
+              color: fingColors.borderDefault,
             },
           },
           itemStyle: {
-            borderColor: sentinelColors.bgBase,
+            borderColor: fingColors.bgBase,
             borderWidth: 1,
           },
           emphasis: {

@@ -3,35 +3,35 @@
 .menu {
   display: flex;
   flex-direction: column;
-  gap: var(--sentinel-space-1);
+  gap: var(--fing-space-1);
 }
 
 .menuItem {
   display: flex;
   align-items: center;
-  gap: var(--sentinel-space-4);
+  gap: var(--fing-space-4);
   width: 100%;
-  padding: var(--sentinel-space-4);
+  padding: var(--fing-space-4);
   background: transparent;
   border: none;
-  border-radius: var(--sentinel-radius-md);
-  color: var(--sentinel-text-primary);
-  font-family: var(--sentinel-font-primary);
-  font-size: var(--sentinel-text-base);
+  border-radius: var(--fing-radius-md);
+  color: var(--fing-text-primary);
+  font-family: var(--fing-font-primary);
+  font-size: var(--fing-text-base);
   text-align: left;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
-  transition: background var(--sentinel-duration-fast) var(--sentinel-ease-default);
-  min-height: var(--sentinel-touch-target-min);
+  transition: background var(--fing-duration-fast) var(--fing-ease-default);
+  min-height: var(--fing-touch-target-min);
 }
 
 .menuItem:hover,
 .menuItem:active {
-  background: var(--sentinel-bg-subtle);
+  background: var(--fing-bg-subtle);
 }
 
 .menuItem.destructive {
-  color: var(--sentinel-status-negative);
+  color: var(--fing-status-negative);
 }
 
 .icon {
@@ -40,11 +40,11 @@
   justify-content: center;
   width: 24px;
   height: 24px;
-  color: var(--sentinel-text-secondary);
+  color: var(--fing-text-secondary);
 }
 
 .menuItem.destructive .icon {
-  color: var(--sentinel-status-negative);
+  color: var(--fing-status-negative);
 }
 
 .label {

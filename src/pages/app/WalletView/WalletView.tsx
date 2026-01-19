@@ -12,9 +12,9 @@ import {
   RefreshCw,
   Search,
 } from 'lucide-react';
-import { PositionRow } from '@/components/molecules/sentinel/PositionRow';
-import { TransactionRow } from '@/components/molecules/sentinel/TransactionRow';
-import { TradeModal } from '@/components/molecules/sentinel/TradeModal';
+import { PositionRow } from '@/components/molecules/fing/PositionRow';
+import { TransactionRow } from '@/components/molecules/fing/TransactionRow';
+import { TradeModal } from '@/components/molecules/fing/TradeModal';
 import { Button } from '@/components/atoms/Button';
 import { paperTradingService } from '@/services/paperTrading';
 import type { Position, Transaction, WalletSummary, TradeOrder } from '@/services/paperTrading';

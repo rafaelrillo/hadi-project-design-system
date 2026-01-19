@@ -3,7 +3,7 @@ import { useRef, useEffect, forwardRef, useImperativeHandle } from 'react';
 import * as echarts from 'echarts';
 import ReactEChartsCore from 'echarts-for-react/lib/core';
 import { motion } from 'framer-motion';
-import './sentinelTheme'; // Register theme on import
+import './fingTheme'; // Register theme on import
 import styles from './EChart.module.css';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -52,7 +52,7 @@ const containerVariants = {
     y: 0,
     transition: {
       duration: 0.7,
-      ease: [0.4, 0, 0.2, 1] as [number, number, number, number], // --sentinel-ease-default
+      ease: [0.4, 0, 0.2, 1] as [number, number, number, number], // --fing-ease-default
     },
   },
 };
@@ -139,7 +139,7 @@ export const EChart = forwardRef<EChartRef, EChartProps>(
         ref={chartRef}
         echarts={echarts}
         option={option}
-        theme="sentinel"
+        theme="fing"
         style={{ height: heightValue, width: '100%' }}
         notMerge={notMerge}
         lazyUpdate={lazyUpdate}

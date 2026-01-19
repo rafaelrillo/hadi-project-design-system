@@ -1,0 +1,225 @@
+/* Path: src/components/molecules/fing/FactorWeight/FactorWeight.module.css */
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   FACTOR WEIGHT
+   Shows which factors weigh most in the current analysis
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.container {
+  background: var(--fing-bg-elevated);
+  border: 1px solid var(--fing-border-subtle);
+  border-radius: var(--fing-radius-md);
+  padding: 20px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   HEADER
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.header {
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--fing-border-subtle);
+}
+
+.title {
+  font-family: var(--fing-font-primary);
+  font-size: var(--fing-font-xs);
+  font-weight: 500;
+  color: var(--fing-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   FACTORS LIST
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.factorsList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.factorRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 8px 0;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+/* Animation states */
+.animated .factorRow {
+  animation: factorReveal 500ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: calc(var(--factor-index, 0) * 80ms);
+}
+
+@keyframes factorReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Non-animated state */
+.container:not(.animated) .factorRow {
+  opacity: 1;
+  transform: none;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   FACTOR INFO
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.factorInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.factorName {
+  font-family: var(--fing-font-primary);
+  font-size: var(--fing-font-sm);
+  font-weight: 400;
+  color: var(--fing-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   FACTOR METRICS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.factorMetrics {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.barContainer {
+  width: 120px;
+  height: 6px;
+  background: var(--fing-bg-subtle);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.bar {
+  height: 100%;
+  border-radius: 3px;
+  transition: width var(--fing-transition-slow);
+  background: var(--fing-text-tertiary);
+}
+
+/* Impact colors */
+.positive .bar {
+  background: var(--fing-status-positive);
+}
+
+.negative .bar {
+  background: var(--fing-status-negative);
+}
+
+.neutral .bar {
+  background: var(--fing-text-tertiary);
+}
+
+.weight {
+  font-family: var(--fing-font-numeric);
+  font-size: var(--fing-font-xs);
+  font-weight: 500;
+  color: var(--fing-text-secondary);
+  letter-spacing: var(--fing-tracking-led);
+  min-width: 36px;
+  text-align: right;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   TREND INDICATOR
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.trend {
+  font-size: 12px;
+  width: 16px;
+  text-align: center;
+  opacity: 0.7;
+  transition: opacity var(--fing-transition-fast);
+}
+
+.factorRow:hover .trend {
+  opacity: 1;
+}
+
+.trendUp {
+  color: var(--fing-status-positive-text);
+}
+
+.trendDown {
+  color: var(--fing-status-negative-text);
+}
+
+.trendStable {
+  color: var(--fing-text-tertiary);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   EXPAND BUTTON
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.expandButton {
+  display: block;
+  width: 100%;
+  margin-top: 16px;
+  padding: 10px;
+  background: transparent;
+  border: 1px solid var(--fing-border-subtle);
+  border-radius: var(--fing-radius-sm);
+  font-family: var(--fing-font-primary);
+  font-size: var(--fing-font-xs);
+  color: var(--fing-text-secondary);
+  cursor: pointer;
+  transition:
+    background-color var(--fing-transition-fast),
+    border-color var(--fing-transition-fast),
+    color var(--fing-transition-fast);
+}
+
+.expandButton:hover {
+  background: var(--fing-bg-subtle);
+  border-color: var(--fing-border-default);
+  color: var(--fing-text-primary);
+}
+
+.expandButton:focus-visible {
+  outline: 2px solid var(--fing-accent-primary);
+  outline-offset: 2px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   REDUCED MOTION
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  .animated .factorRow {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .bar {
+    transition: none;
+  }
+
+  .trend {
+    transition: none;
+  }
+
+  .expandButton {
+    transition: none;
+  }
+}

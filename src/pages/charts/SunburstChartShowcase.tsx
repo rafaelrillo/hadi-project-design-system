@@ -1,5 +1,5 @@
 // Path: src/pages/charts/SunburstChartShowcase.tsx
-// SENTINEL Design System - Glass-Neumorphism Sunburst Chart
+// FING Design System - Glass-Neumorphism Sunburst Chart
 import React, { useMemo } from 'react';
 import { ShowcaseSection } from '../../components/showcase';
 import { SunburstChart } from '../../components/charts/echarts';
@@ -71,12 +71,12 @@ function SunburstChartContent() {
   };
 
   const titleStyles: React.CSSProperties = {
-    fontSize: '28px', fontWeight: 700, color: 'var(--sentinel-accent-primary)', marginBottom: '8px',
-    fontFamily: 'var(--sentinel-font-display)', textTransform: 'uppercase', letterSpacing: '0.1em',
+    fontSize: '28px', fontWeight: 700, color: 'var(--fing-accent-primary)', marginBottom: '8px',
+    fontFamily: 'var(--fing-font-display)', textTransform: 'uppercase', letterSpacing: '0.1em',
   };
 
   const descStyles: React.CSSProperties = {
-    fontSize: '14px', color: 'var(--sentinel-text-secondary)', fontFamily: 'var(--sentinel-font-mono)',
+    fontSize: '14px', color: 'var(--fing-text-secondary)', fontFamily: 'var(--fing-font-mono)',
     textTransform: 'uppercase', letterSpacing: '0.03em',
   };
 
@@ -126,11 +126,11 @@ function SunburstChartContent() {
           <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap', justifyContent: 'center' }}>
             <div style={{ width: '300px' }}>
               <SunburstChart data={[sectorData]} height={300} innerRadius="10%" showLabels={false} />
-              <p style={{ textAlign: 'center', color: '#636E72', fontSize: '12px', marginTop: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Inner: 10%</p>
+              <p style={{ textAlign: 'center', color: '#636E72', fontSize: '12px', marginTop: '8px', fontFamily: 'var(--fing-font-mono)' }}>Inner: 10%</p>
             </div>
             <div style={{ width: '300px' }}>
               <SunburstChart data={[sectorData]} height={300} innerRadius="30%" showLabels={false} />
-              <p style={{ textAlign: 'center', color: '#636E72', fontSize: '12px', marginTop: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Inner: 30%</p>
+              <p style={{ textAlign: 'center', color: '#636E72', fontSize: '12px', marginTop: '8px', fontFamily: 'var(--fing-font-mono)' }}>Inner: 30%</p>
             </div>
           </div>
         </div>
@@ -151,13 +151,13 @@ function SunburstChartContent() {
 
       <ShowcaseSection title="Especificaciones Técnicas">
         <div style={tableContainerStyles}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12px', fontFamily: 'var(--sentinel-font-mono)' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12px', fontFamily: 'var(--fing-font-mono)' }}>
             <thead>
               <tr>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-accent-primary)', fontWeight: 600 }}>Prop</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-accent-primary)', fontWeight: 600 }}>Type</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-accent-primary)', fontWeight: 600 }}>Default</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-accent-primary)', fontWeight: 600 }}>Description</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent-primary)', fontWeight: 600 }}>Prop</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent-primary)', fontWeight: 600 }}>Type</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent-primary)', fontWeight: 600 }}>Default</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent-primary)', fontWeight: 600 }}>Description</th>
               </tr>
             </thead>
             <tbody>
@@ -170,7 +170,7 @@ function SunburstChartContent() {
                 { prop: 'colors', type: 'string[]', default: 'chartPalette', desc: 'Custom color palette' },
               ].map((row, i) => (
                 <tr key={i}>
-                  <td style={{ padding: '12px 16px', color: 'var(--sentinel-text-primary)' }}>{row.prop}</td>
+                  <td style={{ padding: '12px 16px', color: 'var(--fing-text-primary)' }}>{row.prop}</td>
                   <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.type}</td>
                   <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.default}</td>
                   <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.desc}</td>

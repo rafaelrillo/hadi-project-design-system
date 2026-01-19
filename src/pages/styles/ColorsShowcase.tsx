@@ -1,5 +1,5 @@
 // Path: src/pages/styles/ColorsShowcase.tsx
-// SENTINEL Design System - Stone Marble Color Palette
+// FING Design System - Stone Marble Color Palette
 import React from 'react';
 
 interface ColorToken {
@@ -18,7 +18,7 @@ export function ColorsShowcase() {
     minHeight: '100vh',
     background: 'var(--marble-base)',
     padding: '32px',
-    fontFamily: 'var(--sentinel-font-primary)',
+    fontFamily: 'var(--fing-font-primary)',
   };
 
   const headerStyles: React.CSSProperties = {
@@ -27,7 +27,7 @@ export function ColorsShowcase() {
   };
 
   const headerTitleStyles: React.CSSProperties = {
-    fontFamily: 'var(--sentinel-font-display)',
+    fontFamily: 'var(--fing-font-display)',
     fontSize: '32px',
     fontWeight: 700,
     letterSpacing: '-0.02em',
@@ -51,7 +51,7 @@ export function ColorsShowcase() {
   };
 
   const sectionTitleStyles: React.CSSProperties = {
-    fontFamily: 'var(--sentinel-font-primary)',
+    fontFamily: 'var(--fing-font-primary)',
     fontSize: '11px',
     fontWeight: 600,
     letterSpacing: '0.12em',
@@ -120,7 +120,7 @@ export function ColorsShowcase() {
   const lpColorStyles = (color: 'teal' | 'positive' | 'negative' | 'warning'): React.CSSProperties => {
     const colors: Record<string, { color: string; shadow: string }> = {
       teal: {
-        color: 'var(--sentinel-accent-tertiary, #6fb3b5)',
+        color: 'var(--fing-accent-tertiary, #6fb3b5)',
         shadow: '1px 1px 1px var(--shadow-light), -1px -1px 1px rgba(58, 106, 114, 0.4)',
       },
       positive: {
@@ -146,7 +146,7 @@ export function ColorsShowcase() {
   const lpColorInsetStyles = (color: 'teal' | 'positive' | 'negative' | 'warning'): React.CSSProperties => {
     const colors: Record<string, { color: string; shadow: string }> = {
       teal: {
-        color: 'var(--sentinel-accent-tertiary, #6fb3b5)',
+        color: 'var(--fing-accent-tertiary, #6fb3b5)',
         shadow: '-1px -1px 1px var(--shadow-light), 1px 1px 1px rgba(58, 106, 114, 0.4)',
       },
       positive: {
@@ -181,29 +181,29 @@ export function ColorsShowcase() {
   ];
 
   const accentColors: ColorToken[] = [
-    { name: 'Accent Primary', variable: '--sentinel-accent-primary', value: '#3a6a72', description: 'Teal principal' },
-    { name: 'Accent Secondary', variable: '--sentinel-accent-secondary', value: '#5ba3a5', description: 'Teal secundario' },
-    { name: 'Accent Tertiary', variable: '--sentinel-accent-tertiary', value: '#6fb3b5', description: 'Teal claro' },
+    { name: 'Accent Primary', variable: '--fing-accent-primary', value: '#3a6a72', description: 'Teal principal' },
+    { name: 'Accent Secondary', variable: '--fing-accent-secondary', value: '#5ba3a5', description: 'Teal secundario' },
+    { name: 'Accent Tertiary', variable: '--fing-accent-tertiary', value: '#6fb3b5', description: 'Teal claro' },
   ];
 
   const statusColors: ColorToken[] = [
-    { name: 'Positive', variable: '--sentinel-status-positive', value: '#4a7a6a', description: 'Success' },
-    { name: 'Negative', variable: '--sentinel-status-negative', value: '#b85c5c', description: 'Error' },
-    { name: 'Warning', variable: '--sentinel-status-warning', value: '#c4a35a', description: 'Warning' },
-    { name: 'Info', variable: '--sentinel-status-info', value: '#5a8fb8', description: 'Info' },
+    { name: 'Positive', variable: '--fing-status-positive', value: '#4a7a6a', description: 'Success' },
+    { name: 'Negative', variable: '--fing-status-negative', value: '#b85c5c', description: 'Error' },
+    { name: 'Warning', variable: '--fing-status-warning', value: '#c4a35a', description: 'Warning' },
+    { name: 'Info', variable: '--fing-status-info', value: '#5a8fb8', description: 'Info' },
   ];
 
   const glassColors: ColorToken[] = [
     { name: 'Glass BG', variable: '--glass-bg', value: 'rgba(255,255,255,0.25)', description: 'Fondo glass' },
     { name: 'Glass BG Strong', variable: '--glass-bg-strong', value: 'rgba(255,255,255,0.40)', description: 'Glass fuerte' },
     { name: 'Glass Border', variable: '--glass-border', value: 'rgba(255,255,255,0.35)', description: 'Borde glass' },
-    { name: 'Glass Teal BG', variable: '--sentinel-glass-teal-bg', value: 'rgba(58,106,114,0.15)', description: 'Glass teal' },
+    { name: 'Glass Teal BG', variable: '--fing-glass-teal-bg', value: 'rgba(58,106,114,0.15)', description: 'Glass teal' },
   ];
 
   const textColors: ColorToken[] = [
-    { name: 'Text Primary', variable: '--sentinel-text-primary', value: '#252528', description: 'Texto principal' },
-    { name: 'Text Secondary', variable: '--sentinel-text-secondary', value: '#636E72', description: 'Texto secundario' },
-    { name: 'Text Tertiary', variable: '--sentinel-text-tertiary', value: '#9BA4B0', description: 'Texto terciario' },
+    { name: 'Text Primary', variable: '--fing-text-primary', value: '#252528', description: 'Texto principal' },
+    { name: 'Text Secondary', variable: '--fing-text-secondary', value: '#636E72', description: 'Texto secundario' },
+    { name: 'Text Tertiary', variable: '--fing-text-tertiary', value: '#9BA4B0', description: 'Texto terciario' },
   ];
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -216,7 +216,7 @@ export function ColorsShowcase() {
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={{
           ...lpInsetStyles('medium'),
-          fontFamily: 'var(--sentinel-font-primary)',
+          fontFamily: 'var(--fing-font-primary)',
           fontSize: '13px',
           fontWeight: 600,
           marginBottom: '4px',
@@ -226,15 +226,15 @@ export function ColorsShowcase() {
         <div style={{
           display: 'inline-block',
           padding: '3px 10px',
-          background: 'var(--sentinel-glass-teal-bg)',
-          border: '1px solid var(--sentinel-glass-teal-border)',
+          background: 'var(--fing-glass-teal-bg)',
+          border: '1px solid var(--fing-glass-teal-border)',
           borderRadius: '100px',
           marginBottom: '4px',
         }}>
           <code style={{
-            fontFamily: 'var(--sentinel-font-mono)',
+            fontFamily: 'var(--fing-font-mono)',
             fontSize: '10px',
-            color: 'var(--sentinel-glass-teal-text)',
+            color: 'var(--fing-glass-teal-text)',
             fontWeight: 500,
           }}>
             {color.variable}
@@ -242,7 +242,7 @@ export function ColorsShowcase() {
         </div>
         <div style={{
           ...lpInsetStyles('whisper'),
-          fontFamily: 'var(--sentinel-font-mono)',
+          fontFamily: 'var(--fing-font-mono)',
           fontSize: '10px',
         }}>
           {color.value}
@@ -269,7 +269,7 @@ export function ColorsShowcase() {
     <div style={showcaseStyles}>
       {/* Header */}
       <header style={headerStyles}>
-        <h1 style={headerTitleStyles}>SENTINEL Colors</h1>
+        <h1 style={headerTitleStyles}>FING Colors</h1>
         <p style={headerSubtitleStyles}>Sistema de colores Stone Marble - Referencia visual de todas las variables</p>
       </header>
 
@@ -305,7 +305,7 @@ export function ColorsShowcase() {
         }}>
           <div style={{
             ...lpColorInsetStyles('teal'),
-            fontFamily: 'var(--sentinel-font-mono)',
+            fontFamily: 'var(--fing-font-mono)',
             fontSize: '32px',
             fontWeight: 700,
           }}>
@@ -313,7 +313,7 @@ export function ColorsShowcase() {
           </div>
           <div style={{
             ...lpColorInsetStyles('positive'),
-            fontFamily: 'var(--sentinel-font-mono)',
+            fontFamily: 'var(--fing-font-mono)',
             fontSize: '18px',
             fontWeight: 600,
           }}>
@@ -355,7 +355,7 @@ export function ColorsShowcase() {
             >
               <span style={{
                 ...item.style,
-                fontFamily: 'var(--sentinel-font-mono)',
+                fontFamily: 'var(--fing-font-mono)',
                 fontSize: '13px',
                 fontWeight: 600,
               }}>
@@ -397,16 +397,16 @@ export function ColorsShowcase() {
           </div>
           <div style={{
             padding: '12px 24px',
-            background: 'var(--sentinel-glass-teal-bg)',
-            border: '1px solid var(--sentinel-glass-teal-border)',
+            background: 'var(--fing-glass-teal-bg)',
+            border: '1px solid var(--fing-glass-teal-border)',
             borderRadius: '12px',
             backdropFilter: 'blur(8px)',
           }}>
             <span style={{
-              fontFamily: 'var(--sentinel-font-primary)',
+              fontFamily: 'var(--fing-font-primary)',
               fontSize: '13px',
               fontWeight: 600,
-              color: 'var(--sentinel-glass-teal-text)',
+              color: 'var(--fing-glass-teal-text)',
             }}>Glass Teal</span>
           </div>
         </div>
@@ -430,7 +430,7 @@ export function ColorsShowcase() {
         }}>
           <div style={{
             ...lpInsetStyles('medium'),
-            fontFamily: 'var(--sentinel-font-display)',
+            fontFamily: 'var(--fing-font-display)',
             fontSize: '24px',
             fontWeight: 700,
             marginBottom: '8px',
@@ -439,7 +439,7 @@ export function ColorsShowcase() {
           </div>
           <div style={{
             ...lpInsetStyles('soft'),
-            fontFamily: 'var(--sentinel-font-primary)',
+            fontFamily: 'var(--fing-font-primary)',
             fontSize: '14px',
             marginBottom: '4px',
           }}>
@@ -447,7 +447,7 @@ export function ColorsShowcase() {
           </div>
           <div style={{
             ...lpInsetStyles('whisper'),
-            fontFamily: 'var(--sentinel-font-mono)',
+            fontFamily: 'var(--fing-font-mono)',
             fontSize: '11px',
           }}>
             // metadata o texto terciario
@@ -466,7 +466,7 @@ export function ColorsShowcase() {
         }}>
           <pre style={{
             margin: 0,
-            fontFamily: 'var(--sentinel-font-mono)',
+            fontFamily: 'var(--fing-font-mono)',
             fontSize: '11px',
             lineHeight: 1.6,
             color: 'var(--marble-base)',

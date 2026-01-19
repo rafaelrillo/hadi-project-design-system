@@ -8,7 +8,7 @@
   align-items: center;
   justify-content: center;
   background: var(--marble-base, #d5d8dc);
-  z-index: var(--sentinel-z-modal);
+  z-index: var(--fing-z-modal);
 }
 
 .content {
@@ -17,7 +17,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--sentinel-space-6, 24px);
+  gap: var(--fing-space-6, 24px);
 }
 
 /* Logo */
@@ -27,7 +27,7 @@
 
 /* Title - Letterpress style */
 .title {
-  font-family: var(--sentinel-font-primary, 'DM Sans', sans-serif);
+  font-family: var(--fing-font-primary, 'DM Sans', sans-serif);
   font-size: 28px;
   font-weight: 600;
   letter-spacing: 0.2em;
@@ -48,7 +48,7 @@
 }
 
 .message {
-  font-family: var(--sentinel-font-mono, 'IBM Plex Mono', monospace);
+  font-family: var(--fing-font-mono, 'IBM Plex Mono', monospace);
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -66,7 +66,7 @@
 }
 
 .dot {
-  font-family: var(--sentinel-font-mono, 'IBM Plex Mono', monospace);
+  font-family: var(--fing-font-mono, 'IBM Plex Mono', monospace);
   font-size: 11px;
   color: var(--marble-dark, #c8cbd0);
   text-shadow:

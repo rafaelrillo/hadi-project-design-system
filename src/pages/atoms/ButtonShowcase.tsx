@@ -1,5 +1,5 @@
 // Path: src/pages/atoms/ButtonShowcase.tsx
-// SENTINEL Design System - Complete Button System Showcase
+// FING Design System - Complete Button System Showcase
 import React, { useState } from 'react';
 import {
   Button,
@@ -58,17 +58,17 @@ export function ButtonShowcase() {
   const titleStyles: React.CSSProperties = {
     fontSize: '28px',
     fontWeight: 700,
-    color: 'var(--sentinel-accent-primary)',
+    color: 'var(--fing-accent-primary)',
     marginBottom: '8px',
-    fontFamily: 'var(--sentinel-font-display)',
+    fontFamily: 'var(--fing-font-display)',
     textTransform: 'uppercase',
     letterSpacing: '0.1em',
   };
 
   const descStyles: React.CSSProperties = {
     fontSize: '14px',
-    color: 'var(--sentinel-text-secondary)',
-    fontFamily: 'var(--sentinel-font-mono)',
+    color: 'var(--fing-text-secondary)',
+    fontFamily: 'var(--fing-font-mono)',
     textTransform: 'uppercase',
     letterSpacing: '0.03em',
   };
@@ -76,21 +76,21 @@ export function ButtonShowcase() {
   const categoryTitleStyles: React.CSSProperties = {
     fontSize: '20px',
     fontWeight: 700,
-    color: 'var(--sentinel-accent-primary)',
+    color: 'var(--fing-accent-primary)',
     marginBottom: '8px',
     marginTop: '48px',
-    fontFamily: 'var(--sentinel-font-display)',
+    fontFamily: 'var(--fing-font-display)',
     textTransform: 'uppercase',
     letterSpacing: '0.05em',
-    borderBottom: '2px solid var(--sentinel-accent-primary)',
+    borderBottom: '2px solid var(--fing-accent-primary)',
     paddingBottom: '8px',
   };
 
   const variantLabelStyles: React.CSSProperties = {
     fontSize: '11px',
     fontWeight: 500,
-    color: 'var(--sentinel-text-tertiary)',
-    fontFamily: 'var(--sentinel-font-mono)',
+    color: 'var(--fing-text-tertiary)',
+    fontFamily: 'var(--fing-font-mono)',
     textTransform: 'uppercase',
     letterSpacing: '0.05em',
     marginTop: '8px',
@@ -809,7 +809,7 @@ export function ButtonShowcase() {
                   borderRadius: '24px',
                   border: 'none',
                   cursor: 'pointer',
-                  fontFamily: 'var(--sentinel-font-primary)',
+                  fontFamily: 'var(--fing-font-primary)',
                   fontSize: '13px',
                   fontWeight: 600,
                   letterSpacing: '0.05em',
@@ -819,7 +819,7 @@ export function ButtonShowcase() {
                     4px 4px 8px rgba(147, 157, 170, 0.55),
                     -4px -4px 8px rgba(255, 255, 255, 0.95)
                   `,
-                  color: 'var(--sentinel-accent-primary)',
+                  color: 'var(--fing-accent-primary)',
                   textShadow: '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(58, 106, 114, 0.3)',
                   transition: 'all 150ms ease',
                 }}
@@ -840,7 +840,7 @@ export function ButtonShowcase() {
                   <Briefcase
                     size={12}
                     style={{
-                      color: 'var(--sentinel-accent-primary)',
+                      color: 'var(--fing-accent-primary)',
                       filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))',
                     }}
                   />
@@ -873,7 +873,7 @@ export function ButtonShowcase() {
                     borderRadius: '24px',
                     border: 'none',
                     cursor: 'pointer',
-                    fontFamily: 'var(--sentinel-font-primary)',
+                    fontFamily: 'var(--fing-font-primary)',
                     fontSize: '13px',
                     fontWeight: 600,
                     letterSpacing: '0.05em',
@@ -883,7 +883,7 @@ export function ButtonShowcase() {
                       2px 2px 4px rgba(147, 157, 170, 0.55),
                       -2px -2px 4px rgba(255, 255, 255, 0.95)
                     `,
-                    color: 'var(--sentinel-accent-primary)',
+                    color: 'var(--fing-accent-primary)',
                     textShadow: '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(58, 106, 114, 0.3)',
                     transition: 'all 200ms ease',
                   }}
@@ -904,7 +904,7 @@ export function ButtonShowcase() {
                     <ChevronRight
                       size={14}
                       style={{
-                        color: 'var(--sentinel-accent-primary)',
+                        color: 'var(--fing-accent-primary)',
                         filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))',
                       }}
                     />
@@ -938,7 +938,7 @@ export function ButtonShowcase() {
                     borderRadius: '20px',
                     border: 'none',
                     cursor: 'pointer',
-                    fontFamily: 'var(--sentinel-font-primary)',
+                    fontFamily: 'var(--fing-font-primary)',
                     fontSize: '12px',
                     fontWeight: 600,
                     letterSpacing: '0.05em',
@@ -948,7 +948,7 @@ export function ButtonShowcase() {
                       1px 1px 2px rgba(147, 157, 170, 0.55),
                       -1px -1px 2px rgba(255, 255, 255, 0.95)
                     `,
-                    color: 'var(--sentinel-accent-primary)',
+                    color: 'var(--fing-accent-primary)',
                     textShadow: '0.75px 0.75px 0px rgba(255, 255, 255, 0.85), -0.75px -0.75px 0px rgba(58, 106, 114, 0.25)',
                     transition: 'all 200ms ease',
                   }}
@@ -969,7 +969,7 @@ export function ButtonShowcase() {
                     <ArrowRight
                       size={11}
                       style={{
-                        color: 'var(--sentinel-accent-primary)',
+                        color: 'var(--fing-accent-primary)',
                         filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))',
                       }}
                     />
@@ -990,52 +990,52 @@ export function ButtonShowcase() {
               gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
               gap: '16px',
               fontSize: '13px',
-              fontFamily: 'var(--sentinel-font-mono)',
+              fontFamily: 'var(--fing-font-mono)',
             }}
           >
             <div style={{ padding: '16px', background: 'rgba(255,255,255,0.3)', borderRadius: '12px' }}>
-              <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Wrapper INSET:</strong>
-              <p style={{ margin: '8px 0 0', color: 'var(--sentinel-text-secondary)', fontSize: '11px' }}>
+              <strong style={{ color: 'var(--fing-accent-primary)' }}>Wrapper INSET:</strong>
+              <p style={{ margin: '8px 0 0', color: 'var(--fing-text-secondary)', fontSize: '11px' }}>
                 padding: 4px (lg) / 3px (sm)<br />
                 border-radius: 28px / 24px<br />
                 box-shadow: var(--inset-1)
               </p>
             </div>
             <div style={{ padding: '16px', background: 'rgba(255,255,255,0.3)', borderRadius: '12px' }}>
-              <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Button RAISED:</strong>
-              <p style={{ margin: '8px 0 0', color: 'var(--sentinel-text-secondary)', fontSize: '11px' }}>
+              <strong style={{ color: 'var(--fing-accent-primary)' }}>Button RAISED:</strong>
+              <p style={{ margin: '8px 0 0', color: 'var(--fing-text-secondary)', fontSize: '11px' }}>
                 border-radius: 24px / 20px<br />
                 shadow: inner borders + outer raised<br />
-                color: --sentinel-accent-primary
+                color: --fing-accent-primary
               </p>
             </div>
             <div style={{ padding: '16px', background: 'rgba(255,255,255,0.3)', borderRadius: '12px' }}>
-              <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Icon Circle INSET:</strong>
-              <p style={{ margin: '8px 0 0', color: 'var(--sentinel-text-secondary)', fontSize: '11px' }}>
+              <strong style={{ color: 'var(--fing-accent-primary)' }}>Icon Circle INSET:</strong>
+              <p style={{ margin: '8px 0 0', color: 'var(--fing-text-secondary)', fontSize: '11px' }}>
                 width/height: 22px / 20px<br />
                 border-radius: 50%<br />
                 box-shadow: inset shadows
               </p>
             </div>
             <div style={{ padding: '16px', background: 'rgba(255,255,255,0.3)', borderRadius: '12px' }}>
-              <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Icon RAISED:</strong>
-              <p style={{ margin: '8px 0 0', color: 'var(--sentinel-text-secondary)', fontSize: '11px' }}>
-                color: --sentinel-accent-primary<br />
+              <strong style={{ color: 'var(--fing-accent-primary)' }}>Icon RAISED:</strong>
+              <p style={{ margin: '8px 0 0', color: 'var(--fing-text-secondary)', fontSize: '11px' }}>
+                color: --fing-accent-primary<br />
                 filter: drop-shadow (carved effect)<br />
-                hover: --sentinel-accent-secondary
+                hover: --fing-accent-secondary
               </p>
             </div>
             <div style={{ padding: '16px', background: 'rgba(255,255,255,0.3)', borderRadius: '12px' }}>
-              <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Hover States:</strong>
-              <p style={{ margin: '8px 0 0', color: 'var(--sentinel-text-secondary)', fontSize: '11px' }}>
+              <strong style={{ color: 'var(--fing-accent-primary)' }}>Hover States:</strong>
+              <p style={{ margin: '8px 0 0', color: 'var(--fing-text-secondary)', fontSize: '11px' }}>
                 Button: teal gradient bg + glow<br />
                 Icon circle: teal gradient fill<br />
                 Icon: lighter teal color
               </p>
             </div>
             <div style={{ padding: '16px', background: 'rgba(255,255,255,0.3)', borderRadius: '12px' }}>
-              <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Active State:</strong>
-              <p style={{ margin: '8px 0 0', color: 'var(--sentinel-text-secondary)', fontSize: '11px' }}>
+              <strong style={{ color: 'var(--fing-accent-primary)' }}>Active State:</strong>
+              <p style={{ margin: '8px 0 0', color: 'var(--fing-text-secondary)', fontSize: '11px' }}>
                 Button shadow: fully inset<br />
                 Creates "pressed" appearance
               </p>
@@ -1058,60 +1058,60 @@ export function ButtonShowcase() {
               gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
               gap: '16px',
               fontSize: '13px',
-              fontFamily: 'var(--sentinel-font-mono)',
+              fontFamily: 'var(--fing-font-mono)',
             }}
           >
             <div style={{ padding: '16px', background: 'rgba(255,255,255,0.3)', borderRadius: '12px' }}>
-              <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Primary Actions:</strong>
-              <p style={{ margin: '8px 0 0', color: 'var(--sentinel-text-secondary)' }}>
+              <strong style={{ color: 'var(--fing-accent-primary)' }}>Primary Actions:</strong>
+              <p style={{ margin: '8px 0 0', color: 'var(--fing-text-secondary)' }}>
                 glass-teal, marble-accent, glass-neu-teal
               </p>
             </div>
             <div style={{ padding: '16px', background: 'rgba(255,255,255,0.3)', borderRadius: '12px' }}>
-              <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Secondary Actions:</strong>
-              <p style={{ margin: '8px 0 0', color: 'var(--sentinel-text-secondary)' }}>
+              <strong style={{ color: 'var(--fing-accent-primary)' }}>Secondary Actions:</strong>
+              <p style={{ margin: '8px 0 0', color: 'var(--fing-text-secondary)' }}>
                 marble-soft, marble-raised, glass-smoke
               </p>
             </div>
             <div style={{ padding: '16px', background: 'rgba(255,255,255,0.3)', borderRadius: '12px' }}>
-              <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Destructive:</strong>
-              <p style={{ margin: '8px 0 0', color: 'var(--sentinel-text-secondary)' }}>
+              <strong style={{ color: 'var(--fing-accent-primary)' }}>Destructive:</strong>
+              <p style={{ margin: '8px 0 0', color: 'var(--fing-text-secondary)' }}>
                 glass-rose, glass-neu-rose
               </p>
             </div>
             <div style={{ padding: '16px', background: 'rgba(255,255,255,0.3)', borderRadius: '12px' }}>
-              <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Success/Confirm:</strong>
-              <p style={{ margin: '8px 0 0', color: 'var(--sentinel-text-secondary)' }}>
+              <strong style={{ color: 'var(--fing-accent-primary)' }}>Success/Confirm:</strong>
+              <p style={{ margin: '8px 0 0', color: 'var(--fing-text-secondary)' }}>
                 glass-emerald, glass-neu-emerald
               </p>
             </div>
             <div style={{ padding: '16px', background: 'rgba(255,255,255,0.3)', borderRadius: '12px' }}>
-              <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Warning:</strong>
-              <p style={{ margin: '8px 0 0', color: 'var(--sentinel-text-secondary)' }}>
+              <strong style={{ color: 'var(--fing-accent-primary)' }}>Warning:</strong>
+              <p style={{ margin: '8px 0 0', color: 'var(--fing-text-secondary)' }}>
                 glass-amber, glass-neu-amber
               </p>
             </div>
             <div style={{ padding: '16px', background: 'rgba(255,255,255,0.3)', borderRadius: '12px' }}>
-              <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Info/Links:</strong>
-              <p style={{ margin: '8px 0 0', color: 'var(--sentinel-text-secondary)' }}>
+              <strong style={{ color: 'var(--fing-accent-primary)' }}>Info/Links:</strong>
+              <p style={{ margin: '8px 0 0', color: 'var(--fing-text-secondary)' }}>
                 glass-sky, glass-neu-sky
               </p>
             </div>
             <div style={{ padding: '16px', background: 'rgba(255,255,255,0.3)', borderRadius: '12px' }}>
-              <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Premium/Special:</strong>
-              <p style={{ margin: '8px 0 0', color: 'var(--sentinel-text-secondary)' }}>
+              <strong style={{ color: 'var(--fing-accent-primary)' }}>Premium/Special:</strong>
+              <p style={{ margin: '8px 0 0', color: 'var(--fing-text-secondary)' }}>
                 glass-violet, glass-neu-violet, marble-pillow
               </p>
             </div>
             <div style={{ padding: '16px', background: 'rgba(255,255,255,0.3)', borderRadius: '12px' }}>
-              <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Toolbars:</strong>
-              <p style={{ margin: '8px 0 0', color: 'var(--sentinel-text-secondary)' }}>
+              <strong style={{ color: 'var(--fing-accent-primary)' }}>Toolbars:</strong>
+              <p style={{ margin: '8px 0 0', color: 'var(--fing-text-secondary)' }}>
                 marble-raised, marble-outline, marble-ridge
               </p>
             </div>
             <div style={{ padding: '16px', background: 'rgba(255,255,255,0.3)', borderRadius: '12px' }}>
-              <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Toggle Active:</strong>
-              <p style={{ margin: '8px 0 0', color: 'var(--sentinel-text-secondary)' }}>
+              <strong style={{ color: 'var(--fing-accent-primary)' }}>Toggle Active:</strong>
+              <p style={{ margin: '8px 0 0', color: 'var(--fing-text-secondary)' }}>
                 marble-inset, marble-embossed
               </p>
             </div>

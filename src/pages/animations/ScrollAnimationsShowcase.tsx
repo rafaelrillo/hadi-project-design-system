@@ -1,5 +1,5 @@
 // Path: src/pages/animations/ScrollAnimationsShowcase.tsx
-// SENTINEL Design System - Glass-Neumorphism Scroll Animations
+// FING Design System - Glass-Neumorphism Scroll Animations
 import React, { useMemo } from 'react';
 import { ScrollReveal, ScrollProgress } from '../../components/animations/ScrollReveal';
 import { Parallax } from '../../components/animations/Parallax';
@@ -43,17 +43,17 @@ function ScrollAnimationsContent() {
   const titleStyles: React.CSSProperties = {
     fontSize: '28px',
     fontWeight: 700,
-    color: 'var(--sentinel-accent-primary)',
+    color: 'var(--fing-accent-primary)',
     marginBottom: '8px',
-    fontFamily: 'var(--sentinel-font-display)',
+    fontFamily: 'var(--fing-font-display)',
     textTransform: 'uppercase',
     letterSpacing: '0.1em',
   };
 
   const descStyles: React.CSSProperties = {
     fontSize: '14px',
-    color: 'var(--sentinel-text-secondary)',
-    fontFamily: 'var(--sentinel-font-mono)',
+    color: 'var(--fing-text-secondary)',
+    fontFamily: 'var(--fing-font-mono)',
     textTransform: 'uppercase',
     letterSpacing: '0.03em',
   };
@@ -68,7 +68,7 @@ function ScrollAnimationsContent() {
 
   return (
     <div style={{ background: MARBLE.base, minHeight: '100%', padding: '24px' }}>
-      <ScrollProgress color="var(--sentinel-accent-primary)" height={3} />
+      <ScrollProgress color="var(--fing-accent-primary)" height={3} />
 
       <header style={pageHeaderStyles}>
         <h1 style={titleStyles}>&gt; Scroll Animations_</h1>
@@ -82,11 +82,11 @@ function ScrollAnimationsContent() {
             boxShadow: getNeuInsetShadow(4, 12),
             textAlign: 'center',
           }}>
-            <Zap style={{ color: 'var(--sentinel-accent-primary)', marginBottom: '16px' }} size={48} />
-            <h4 style={{ color: 'var(--sentinel-text-primary)', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>
+            <Zap style={{ color: 'var(--fing-accent-primary)', marginBottom: '16px' }} size={48} />
+            <h4 style={{ color: 'var(--fing-text-primary)', marginBottom: '8px', fontFamily: 'var(--fing-font-mono)' }}>
               Scroll Progress Active
             </h4>
-            <p style={{ color: '#636E72', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>
+            <p style={{ color: '#636E72', fontFamily: 'var(--fing-font-mono)', fontSize: '12px' }}>
               La barra en la parte superior muestra el progreso de scroll.
             </p>
           </div>
@@ -99,12 +99,12 @@ function ScrollAnimationsContent() {
             <ScrollReveal key={i}>
               <div style={{
                 ...cardStyles,
-                borderLeft: '4px solid var(--sentinel-accent-primary)',
+                borderLeft: '4px solid var(--fing-accent-primary)',
               }}>
-                <h4 style={{ color: 'var(--sentinel-text-primary)', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>
+                <h4 style={{ color: 'var(--fing-text-primary)', marginBottom: '8px', fontFamily: 'var(--fing-font-mono)' }}>
                   Log Entry #{i}
                 </h4>
-                <p style={{ color: '#636E72', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>
+                <p style={{ color: '#636E72', fontFamily: 'var(--fing-font-mono)', fontSize: '12px' }}>
                   Este elemento aparece con animación cuando entra en el viewport.
                 </p>
               </div>
@@ -119,31 +119,31 @@ function ScrollAnimationsContent() {
             <Parallax speed={0.3}>
               <div style={{
                 ...cardStyles,
-                borderLeft: '4px solid var(--sentinel-status-positive)',
+                borderLeft: '4px solid var(--fing-status-positive)',
                 textAlign: 'center',
               }}>
-                <ArrowDown style={{ color: 'var(--sentinel-status-positive)', marginBottom: '8px' }} size={24} />
-                <h4 style={{ color: 'var(--sentinel-text-primary)', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Slow (0.3)</h4>
+                <ArrowDown style={{ color: 'var(--fing-status-positive)', marginBottom: '8px' }} size={24} />
+                <h4 style={{ color: 'var(--fing-text-primary)', marginBottom: '8px', fontFamily: 'var(--fing-font-mono)' }}>Slow (0.3)</h4>
               </div>
             </Parallax>
             <Parallax speed={0.6}>
               <div style={{
                 ...cardStyles,
-                borderLeft: '4px solid var(--sentinel-status-warning)',
+                borderLeft: '4px solid var(--fing-status-warning)',
                 textAlign: 'center',
               }}>
-                <ArrowDown style={{ color: 'var(--sentinel-status-warning)', marginBottom: '8px' }} size={24} />
-                <h4 style={{ color: 'var(--sentinel-text-primary)', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Medium (0.6)</h4>
+                <ArrowDown style={{ color: 'var(--fing-status-warning)', marginBottom: '8px' }} size={24} />
+                <h4 style={{ color: 'var(--fing-text-primary)', marginBottom: '8px', fontFamily: 'var(--fing-font-mono)' }}>Medium (0.6)</h4>
               </div>
             </Parallax>
             <Parallax speed={-0.4}>
               <div style={{
                 ...cardStyles,
-                borderLeft: '4px solid var(--sentinel-status-info)',
+                borderLeft: '4px solid var(--fing-status-info)',
                 textAlign: 'center',
               }}>
-                <ArrowDown style={{ color: 'var(--sentinel-status-info)', marginBottom: '8px', transform: 'rotate(180deg)' }} size={24} />
-                <h4 style={{ color: 'var(--sentinel-text-primary)', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Reverse (-0.4)</h4>
+                <ArrowDown style={{ color: 'var(--fing-status-info)', marginBottom: '8px', transform: 'rotate(180deg)' }} size={24} />
+                <h4 style={{ color: 'var(--fing-text-primary)', marginBottom: '8px', fontFamily: 'var(--fing-font-mono)' }}>Reverse (-0.4)</h4>
               </div>
             </Parallax>
           </div>
@@ -157,15 +157,15 @@ function ScrollAnimationsContent() {
           boxShadow: getNeuInsetShadow(5, 15),
           background: MARBLE.base,
           fontSize: '12px',
-          fontFamily: 'var(--sentinel-font-mono)',
+          fontFamily: 'var(--fing-font-mono)',
           color: '#636E72',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>ScrollProgress:</strong> Fixed progress bar, customizable color and height</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>ScrollReveal:</strong> Intersection Observer based, once: true</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Parallax speed:</strong> -1 to 1 (negative = opposite direction)</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Default threshold:</strong> 0.1 (10% visibility triggers animation)</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>ScrollProgress:</strong> Fixed progress bar, customizable color and height</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>ScrollReveal:</strong> Intersection Observer based, once: true</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Parallax speed:</strong> -1 to 1 (negative = opposite direction)</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Default threshold:</strong> 0.1 (10% visibility triggers animation)</p>
         </div>
       </ShowcaseSection>
     </div>

@@ -1,0 +1,229 @@
+/* Path: src/components/molecules/fing/RiskProfileSelector/RiskProfileSelector.module.css */
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   RISK PROFILE SELECTOR
+   User risk profile selection component
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.container {
+  background: var(--fing-bg-elevated);
+  border: 1px solid var(--fing-border-subtle);
+  border-radius: var(--fing-radius-md);
+  padding: 20px;
+}
+
+.disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   HEADER
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.header {
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--fing-border-subtle);
+}
+
+.title {
+  font-family: var(--fing-font-primary);
+  font-size: var(--fing-font-xs);
+  font-weight: 500;
+  color: var(--fing-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   OPTIONS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: var(--fing-bg-subtle);
+  border: 1px solid var(--fing-border-subtle);
+  border-radius: var(--fing-radius-sm);
+  cursor: pointer;
+  transition:
+    background-color var(--fing-transition-fast),
+    border-color var(--fing-transition-fast);
+}
+
+.option:hover {
+  background: var(--fing-bg-interactive);
+  border-color: var(--fing-border-default);
+}
+
+.option.selected {
+  background: hsla(var(--fing-accent-teal-h), var(--fing-accent-teal-s), var(--fing-accent-teal-l), 0.1);
+  border-color: var(--fing-accent-primary);
+}
+
+.radio {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.radioIndicator {
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--fing-border-default);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color var(--fing-transition-fast);
+}
+
+.selected .radioIndicator {
+  border-color: var(--fing-accent-primary);
+}
+
+.radioInner {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: transparent;
+  transition: background-color var(--fing-transition-fast);
+}
+
+.selected .radioInner {
+  background: var(--fing-accent-primary);
+}
+
+.label {
+  font-family: var(--fing-font-primary);
+  font-size: var(--fing-font-sm);
+  color: var(--fing-text-secondary);
+  transition: color var(--fing-transition-fast);
+}
+
+.selected .label {
+  color: var(--fing-text-primary);
+  font-weight: 500;
+}
+
+/* Focus state */
+.radio:focus-visible + .radioIndicator {
+  outline: 2px solid var(--fing-accent-primary);
+  outline-offset: 2px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   DESCRIPTION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.descriptionContainer {
+  padding: 12px;
+  background: var(--fing-bg-subtle);
+  border-radius: var(--fing-radius-sm);
+  margin-bottom: 16px;
+}
+
+.description {
+  font-family: var(--fing-font-primary);
+  font-size: var(--fing-font-sm);
+  color: var(--fing-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   RISK SCALE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.riskScale {
+  padding-top: 12px;
+  border-top: 1px solid var(--fing-border-subtle);
+}
+
+.scaleTrack {
+  position: relative;
+  height: 6px;
+  background: linear-gradient(
+    90deg,
+    var(--fing-status-positive) 0%,
+    var(--fing-status-warning) 50%,
+    var(--fing-status-negative) 100%
+  );
+  border-radius: 3px;
+  opacity: 0.3;
+}
+
+.scaleFill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--fing-status-positive) 0%,
+    var(--fing-status-warning) 50%,
+    var(--fing-status-negative) 100%
+  );
+  border-radius: 3px;
+  opacity: 1;
+  transition: width var(--fing-transition-normal);
+}
+
+.scaleIndicator {
+  position: absolute;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  background: var(--fing-bg-base);
+  border: 2px solid var(--fing-accent-primary);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: left var(--fing-transition-normal);
+}
+
+.scaleLabels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.scaleLabels span {
+  font-family: var(--fing-font-primary);
+  font-size: 10px;
+  color: var(--fing-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   REDUCED MOTION
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  .option {
+    transition: none;
+  }
+
+  .radioIndicator,
+  .radioInner,
+  .label {
+    transition: none;
+  }
+
+  .scaleFill,
+  .scaleIndicator {
+    transition: none;
+  }
+}

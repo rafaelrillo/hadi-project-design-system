@@ -1,6 +1,6 @@
 /* Path: src/components/molecules/FormField/FormField.module.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   SENTINEL DESIGN SYSTEM - FormField Component
+   FING DESIGN SYSTEM - FormField Component
 
    Form field wrapper with label and helper text
    ═══════════════════════════════════════════════════════════════════════════════ */
@@ -12,7 +12,7 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: var(--sentinel-space-1);
+  gap: var(--fing-space-1);
   width: 100%;
 }
 
@@ -21,18 +21,18 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .label {
-  font-size: var(--sentinel-text-sm);
-  font-weight: var(--sentinel-font-medium);
-  color: var(--sentinel-text-secondary);
-  font-family: var(--sentinel-font-primary);
+  font-size: var(--fing-text-sm);
+  font-weight: var(--fing-font-medium);
+  color: var(--fing-text-secondary);
+  font-family: var(--fing-font-primary);
   line-height: 1.5;
   margin: 0;
 }
 
 /* Required asterisk */
 .required {
-  color: var(--sentinel-status-negative-text);
-  margin-left: var(--sentinel-space-1);
+  color: var(--fing-status-negative-text);
+  margin-left: var(--fing-space-1);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -40,10 +40,10 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .helperText {
-  font-size: var(--sentinel-text-xs);
-  font-weight: var(--sentinel-font-normal);
-  color: var(--sentinel-text-tertiary);
-  font-family: var(--sentinel-font-primary);
+  font-size: var(--fing-text-xs);
+  font-weight: var(--fing-font-normal);
+  color: var(--fing-text-tertiary);
+  font-family: var(--fing-font-primary);
   line-height: 1.5;
   margin: 0;
 }
@@ -53,10 +53,10 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .errorMessage {
-  font-size: var(--sentinel-text-xs);
-  font-weight: var(--sentinel-font-normal);
-  color: var(--sentinel-status-negative-text);
-  font-family: var(--sentinel-font-primary);
+  font-size: var(--fing-text-xs);
+  font-weight: var(--fing-font-normal);
+  color: var(--fing-status-negative-text);
+  font-family: var(--fing-font-primary);
   line-height: 1.5;
   margin: 0;
 }

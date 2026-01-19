@@ -5,7 +5,7 @@
 
 // ─────────────────────────────────────────────────────────────────────────────
 // ECHARTS - Primary Chart Library
-// Full-featured charts with SENTINEL theme integration
+// Full-featured charts with FING theme integration
 // ─────────────────────────────────────────────────────────────────────────────
 
 // Re-export everything from echarts

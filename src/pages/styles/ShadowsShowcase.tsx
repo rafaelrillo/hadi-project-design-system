@@ -1,5 +1,5 @@
 // Path: src/pages/styles/ShadowsShowcase.tsx
-// SENTINEL Design System - Glass-Neumorphism Shadows
+// FING Design System - Glass-Neumorphism Shadows
 import React, { useMemo } from 'react';
 import { ShowcaseSection } from '../../components/showcase';
 import { LightEngineProvider, useLightEngine } from '@/contexts/LightEngineContext';
@@ -82,26 +82,26 @@ function ShadowsContent() {
   const titleStyles: React.CSSProperties = {
     fontSize: '28px',
     fontWeight: 700,
-    color: 'var(--sentinel-accent-primary)',
+    color: 'var(--fing-accent-primary)',
     marginBottom: '8px',
-    fontFamily: 'var(--sentinel-font-display)',
+    fontFamily: 'var(--fing-font-display)',
     textTransform: 'uppercase',
     letterSpacing: '0.1em',
   };
 
   const descStyles: React.CSSProperties = {
     fontSize: '14px',
-    color: 'var(--sentinel-text-secondary)',
-    fontFamily: 'var(--sentinel-font-mono)',
+    color: 'var(--fing-text-secondary)',
+    fontFamily: 'var(--fing-font-mono)',
     textTransform: 'uppercase',
     letterSpacing: '0.03em',
   };
 
   const specTextStyles: React.CSSProperties = {
     fontSize: '12px',
-    color: 'var(--sentinel-text-secondary)',
+    color: 'var(--fing-text-secondary)',
     lineHeight: '1.8',
-    fontFamily: 'var(--sentinel-font-mono)',
+    fontFamily: 'var(--fing-font-mono)',
   };
 
   // Shadow demo boxes
@@ -169,14 +169,14 @@ function ShadowsContent() {
           {[1, 2, 3, 4, 5].map((level) => (
             <div key={level} style={{ textAlign: 'center' }}>
               <div style={neuElevatedBox(level)}>
-                <div style={{ fontSize: '24px', fontWeight: 700, color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)' }}>
+                <div style={{ fontSize: '24px', fontWeight: 700, color: 'var(--fing-text-primary)', fontFamily: 'var(--fing-font-mono)' }}>
                   {level}
                 </div>
-                <div style={{ fontSize: '10px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)' }}>
+                <div style={{ fontSize: '10px', color: '#636E72', fontFamily: 'var(--fing-font-mono)' }}>
                   Level
                 </div>
               </div>
-              <div style={{ marginTop: '12px', fontSize: '11px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)' }}>
+              <div style={{ marginTop: '12px', fontSize: '11px', color: '#636E72', fontFamily: 'var(--fing-font-mono)' }}>
                 {level * 4}px / {level * 12}px blur
               </div>
             </div>
@@ -200,14 +200,14 @@ function ShadowsContent() {
                 ...neuInsetBox,
                 boxShadow: getNeuInsetShadow(config.dist, config.blur),
               }}>
-                <div style={{ fontSize: '14px', fontWeight: 600, color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)' }}>
+                <div style={{ fontSize: '14px', fontWeight: 600, color: 'var(--fing-text-primary)', fontFamily: 'var(--fing-font-mono)' }}>
                   {config.label}
                 </div>
-                <div style={{ fontSize: '10px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)' }}>
+                <div style={{ fontSize: '10px', color: '#636E72', fontFamily: 'var(--fing-font-mono)' }}>
                   Inset
                 </div>
               </div>
-              <div style={{ marginTop: '12px', fontSize: '11px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)' }}>
+              <div style={{ marginTop: '12px', fontSize: '11px', color: '#636E72', fontFamily: 'var(--fing-font-mono)' }}>
                 {config.dist}px / {config.blur}px blur
               </div>
             </div>
@@ -231,14 +231,14 @@ function ShadowsContent() {
           ].map((config) => (
             <div key={config.label} style={{ textAlign: 'center' }}>
               <div style={glassBox(config.hue, config.sat)}>
-                <div style={{ fontSize: '14px', fontWeight: 600, color: `hsl(${config.hue}, ${config.sat * 0.8}%, 25%)`, fontFamily: 'var(--sentinel-font-mono)' }}>
+                <div style={{ fontSize: '14px', fontWeight: 600, color: `hsl(${config.hue}, ${config.sat * 0.8}%, 25%)`, fontFamily: 'var(--fing-font-mono)' }}>
                   {config.label}
                 </div>
-                <div style={{ fontSize: '10px', color: `hsl(${config.hue}, ${config.sat * 0.6}%, 35%)`, fontFamily: 'var(--sentinel-font-mono)' }}>
+                <div style={{ fontSize: '10px', color: `hsl(${config.hue}, ${config.sat * 0.6}%, 35%)`, fontFamily: 'var(--fing-font-mono)' }}>
                   Glass
                 </div>
               </div>
-              <div style={{ marginTop: '12px', fontSize: '11px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)' }}>
+              <div style={{ marginTop: '12px', fontSize: '11px', color: '#636E72', fontFamily: 'var(--fing-font-mono)' }}>
                 hue: {config.hue}°
               </div>
             </div>
@@ -267,7 +267,7 @@ function ShadowsContent() {
               background: MARBLE.base,
               transition: 'box-shadow 50ms linear',
             }}>
-              <div style={{ fontSize: '13px', fontWeight: 600, color: 'var(--sentinel-text-primary)', marginBottom: '4px' }}>Inset Content</div>
+              <div style={{ fontSize: '13px', fontWeight: 600, color: 'var(--fing-text-primary)', marginBottom: '4px' }}>Inset Content</div>
               <div style={{ fontSize: '11px', color: '#636E72' }}>Area hundida dentro del panel</div>
             </div>
             <div style={{
@@ -278,7 +278,7 @@ function ShadowsContent() {
               background: MARBLE.base,
               transition: 'box-shadow 50ms linear',
             }}>
-              <div style={{ fontSize: '13px', fontWeight: 600, color: 'var(--sentinel-text-primary)', marginBottom: '4px' }}>Inset Content</div>
+              <div style={{ fontSize: '13px', fontWeight: 600, color: 'var(--fing-text-primary)', marginBottom: '4px' }}>Inset Content</div>
               <div style={{ fontSize: '11px', color: '#636E72' }}>Area hundida dentro del panel</div>
             </div>
           </div>
@@ -294,7 +294,7 @@ function ShadowsContent() {
             transition: 'box-shadow 50ms linear',
           }}>
             <Sun size={16} style={{ color: '#F59E0B' }} />
-            <span style={{ fontSize: '12px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)' }}>
+            <span style={{ fontSize: '12px', color: '#636E72', fontFamily: 'var(--fing-font-mono)' }}>
               Light Angle: {Math.round(lightAngle)}°
             </span>
           </div>
@@ -314,22 +314,22 @@ function ShadowsContent() {
           transition: 'box-shadow 50ms linear',
         }}>
           <div style={specTextStyles}>
-            <p><strong style={{ color: 'var(--sentinel-accent-primary)' }}>Neumorphic Elevated (neuPanel):</strong></p>
+            <p><strong style={{ color: 'var(--fing-accent-primary)' }}>Neumorphic Elevated (neuPanel):</strong></p>
             <p>✓ Highlight: X = -cos(angle) × distance, Y = -sin(angle) × distance</p>
             <p>✓ Shadow: X = cos(angle) × distance, Y = sin(angle) × distance</p>
             <p>✓ Color: Light side = #ffffff, Dark side = hsl(220, 15%, 72%)</p>
 
-            <p style={{ marginTop: '16px' }}><strong style={{ color: 'var(--sentinel-accent-primary)' }}>Neumorphic Inset (neuInset):</strong></p>
+            <p style={{ marginTop: '16px' }}><strong style={{ color: 'var(--fing-accent-primary)' }}>Neumorphic Inset (neuInset):</strong></p>
             <p>✓ Inner Shadow: inset X Y blur darkColor</p>
             <p>✓ Inner Highlight: inset -X -Y blur lightColor</p>
 
-            <p style={{ marginTop: '16px' }}><strong style={{ color: 'var(--sentinel-accent-primary)' }}>Glass Layered:</strong></p>
+            <p style={{ marginTop: '16px' }}><strong style={{ color: 'var(--fing-accent-primary)' }}>Glass Layered:</strong></p>
             <p>✓ 4 capas con opacidad decreciente (0.12, 0.10, 0.08, 0.06)</p>
             <p>✓ Distancia multiplicada por layer index</p>
             <p>✓ Color: hsla(hue, sat%, 35%, opacity)</p>
             <p>✓ Y offset = X offset × 1.5 (luz desde arriba)</p>
 
-            <p style={{ marginTop: '16px' }}><strong style={{ color: 'var(--sentinel-accent-primary)' }}>Glass Reflection:</strong></p>
+            <p style={{ marginTop: '16px' }}><strong style={{ color: 'var(--fing-accent-primary)' }}>Glass Reflection:</strong></p>
             <p>✓ Top highlight: más brillante cuando luz viene de arriba</p>
             <p>✓ Side highlight: más brillante cuando luz viene del lado</p>
           </div>
@@ -344,8 +344,8 @@ function ShadowsContent() {
           boxShadow: getNeuInsetShadow(5, 15),
           background: MARBLE.base,
           fontSize: '12px',
-          fontFamily: 'var(--sentinel-font-mono)',
-          color: 'var(--sentinel-text-secondary)',
+          fontFamily: 'var(--fing-font-mono)',
+          color: 'var(--fing-text-secondary)',
           transition: 'box-shadow 50ms linear',
         }}>
           <pre style={{ margin: 0, whiteSpace: 'pre-wrap' }}>{`// Neumorphic Panel (elevated)

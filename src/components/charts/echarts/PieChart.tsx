@@ -2,7 +2,7 @@
 import { useMemo } from 'react';
 import type { EChartsOption } from 'echarts';
 import { EChart } from './EChart';
-import { sentinelColors, chartPalette, tooltipFormatters } from './sentinelTheme';
+import { fingColors, chartPalette, tooltipFormatters } from './fingTheme';
 import type { PieDataPoint, BaseChartProps } from './types';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -99,11 +99,11 @@ export function PieChart({
                 <span style="font-weight: 500;">${p.name}</span>
               </div>
               <div style="display: flex; justify-content: space-between; gap: 24px;">
-                <span style="color: ${sentinelColors.textTertiary};">Value</span>
+                <span style="color: ${fingColors.textTertiary};">Value</span>
                 <span style="font-family: 'Space Mono', monospace; font-weight: 600;">${formatValue(p.value)}</span>
               </div>
               <div style="display: flex; justify-content: space-between; gap: 24px;">
-                <span style="color: ${sentinelColors.textTertiary};">Share</span>
+                <span style="color: ${fingColors.textTertiary};">Share</span>
                 <span style="font-family: 'Space Mono', monospace; font-weight: 600;">${p.percent.toFixed(1)}%</span>
               </div>
             </div>
@@ -117,7 +117,7 @@ export function PieChart({
             top: 'center',
             data: data.map((d) => d.name),
             textStyle: {
-              color: sentinelColors.textSecondary,
+              color: fingColors.textSecondary,
               fontSize: 11,
             },
             formatter: (name: string) => {
@@ -142,7 +142,7 @@ export function PieChart({
                           type: 'text',
                           style: {
                             text: centerValue,
-                            fill: sentinelColors.textPrimary,
+                            fill: fingColors.textPrimary,
                             font: "600 28px 'Space Mono', monospace",
                             textAlign: 'center',
                           },
@@ -156,7 +156,7 @@ export function PieChart({
                           type: 'text',
                           style: {
                             text: centerLabel,
-                            fill: sentinelColors.textTertiary,
+                            fill: fingColors.textTertiary,
                             font: "400 12px 'Inter', sans-serif",
                             textAlign: 'center',
                           },
@@ -180,7 +180,7 @@ export function PieChart({
           label: showLabels
             ? {
                 show: true,
-                color: sentinelColors.textSecondary,
+                color: fingColors.textSecondary,
                 fontSize: 11,
                 fontFamily: "'Inter', sans-serif",
                 formatter: '{b}',
@@ -190,7 +190,7 @@ export function PieChart({
             ? {
                 show: true,
                 lineStyle: {
-                  color: sentinelColors.borderDefault,
+                  color: fingColors.borderDefault,
                 },
               }
             : { show: false },
@@ -207,7 +207,7 @@ export function PieChart({
             },
           },
           itemStyle: {
-            borderColor: sentinelColors.bgBase,
+            borderColor: fingColors.bgBase,
             borderWidth: 2,
             borderRadius: 4,
           },

@@ -1,0 +1,209 @@
+/* Path: src/components/atoms/fing/DepthLayer/DepthLayer.module.css */
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   DEPTH LAYER - Glass-Neumorphism Style
+   Creates Z-axis depth through glass backgrounds and neumorphic shadows
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.container {
+  position: relative;
+  border-radius: var(--fing-radius-md);
+  transition:
+    background-color 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.15s ease;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   BORDER GLOW
+   Subtle gradient border effect for hover
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.borderGlow {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.container:hover .borderGlow {
+  opacity: 1;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   DEPTH LEVELS - Glass-Neumorphism
+   Each level represents a different elevation with glass and neumorphic shadows
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* DEPTH 1 - Subtle glass, minimal elevation */
+.depth1 {
+  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow:
+    2px 2px 4px rgba(163, 177, 198, 0.2),
+    -2px -2px 4px rgba(255, 255, 255, 0.7);
+}
+
+.depth1 .borderGlow {
+  background: linear-gradient(
+    135deg,
+    rgba(58, 106, 114, 0.08) 0%,
+    transparent 50%
+  );
+}
+
+.depth1:hover {
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow:
+    3px 3px 6px rgba(163, 177, 198, 0.25),
+    -3px -3px 6px rgba(255, 255, 255, 0.75);
+}
+
+/* DEPTH 2 - Standard glass panel */
+.depth2 {
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow:
+    4px 4px 8px rgba(163, 177, 198, 0.25),
+    -4px -4px 8px rgba(255, 255, 255, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.depth2 .borderGlow {
+  background: linear-gradient(
+    135deg,
+    rgba(58, 106, 114, 0.1) 0%,
+    transparent 40%
+  );
+}
+
+.depth2:hover {
+  background: rgba(255, 255, 255, 0.6);
+  border-color: rgba(255, 255, 255, 0.8);
+  box-shadow:
+    6px 6px 12px rgba(163, 177, 198, 0.3),
+    -6px -6px 12px rgba(255, 255, 255, 0.85),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+/* DEPTH 3 - Prominent glass panel */
+.depth3 {
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow:
+    6px 6px 12px rgba(163, 177, 198, 0.3),
+    -6px -6px 12px rgba(255, 255, 255, 0.85),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.depth3 .borderGlow {
+  background: linear-gradient(
+    135deg,
+    rgba(58, 106, 114, 0.12) 0%,
+    transparent 35%
+  );
+}
+
+.depth3:hover {
+  background: rgba(255, 255, 255, 0.65);
+  border-color: rgba(58, 106, 114, 0.2);
+  box-shadow:
+    8px 8px 16px rgba(163, 177, 198, 0.35),
+    -8px -8px 16px rgba(255, 255, 255, 0.9),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85),
+    0 0 0 1px rgba(58, 106, 114, 0.1);
+}
+
+/* DEPTH 4 - Elevated glass panel */
+.depth4 {
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow:
+    8px 8px 16px rgba(163, 177, 198, 0.35),
+    -8px -8px 16px rgba(255, 255, 255, 0.9),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.depth4 .borderGlow {
+  background: linear-gradient(
+    135deg,
+    rgba(58, 106, 114, 0.15) 0%,
+    transparent 30%
+  );
+}
+
+.depth4:hover {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(58, 106, 114, 0.25);
+  box-shadow:
+    10px 10px 20px rgba(163, 177, 198, 0.4),
+    -10px -10px 20px rgba(255, 255, 255, 0.95),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 0 0 1px rgba(58, 106, 114, 0.12);
+}
+
+/* DEPTH 5 - Maximum elevation glass panel */
+.depth5 {
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow:
+    10px 10px 24px rgba(163, 177, 198, 0.4),
+    -10px -10px 24px rgba(255, 255, 255, 0.95),
+    0 0 0 1px rgba(58, 106, 114, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.depth5 .borderGlow {
+  background: linear-gradient(
+    135deg,
+    rgba(58, 106, 114, 0.18) 0%,
+    transparent 25%
+  );
+  opacity: 0.5;
+}
+
+.depth5:hover {
+  background: rgba(255, 255, 255, 0.75);
+  transform: translateY(-1px);
+  border-color: rgba(58, 106, 114, 0.3);
+  box-shadow:
+    12px 12px 32px rgba(163, 177, 198, 0.45),
+    -12px -12px 32px rgba(255, 255, 255, 1),
+    0 0 0 1px rgba(58, 106, 114, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   REDUCED MOTION
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  .container {
+    transition: none;
+  }
+
+  .borderGlow {
+    transition: none;
+  }
+
+  .depth5:hover {
+    transform: none;
+  }
+}

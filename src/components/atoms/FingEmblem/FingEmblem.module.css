@@ -89,7 +89,7 @@
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 .wordmark {
-  font-family: var(--sentinel-font-primary, 'DM Sans', sans-serif);
+  font-family: var(--fing-font-primary, 'DM Sans', sans-serif);
   font-weight: 500;
   letter-spacing: 0.06em;
   color: var(--fing-marble-base, #d5d8dc);

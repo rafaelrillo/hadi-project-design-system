@@ -1,6 +1,6 @@
 /* Path: src/layouts/DashboardLayout/DashboardLayout.module.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   SENTINEL DESIGN SYSTEM v4.0 - Dashboard Layout
+   FING DESIGN SYSTEM v4.0 - Dashboard Layout
 
    LIGHT NEUMORPHISM - Clean, minimal layout system
    - Sidebar: Dark glass for contrast (maintained from dark theme)
@@ -26,7 +26,7 @@
   --sidebar-width: 64px;
 }
 
-/* Animated SENTINEL Logo */
+/* Animated FING Logo */
 .animatedLogo {
   width: 28px;
   height: 28px;
@@ -70,12 +70,12 @@
   position: relative;
 
   /* Light glass effect */
-  background: var(--sentinel-glass-bg);
-  backdrop-filter: blur(var(--sentinel-blur-lg));
-  -webkit-backdrop-filter: blur(var(--sentinel-blur-lg));
+  background: var(--fing-glass-bg);
+  backdrop-filter: blur(var(--fing-blur-lg));
+  -webkit-backdrop-filter: blur(var(--fing-blur-lg));
 
   /* Subtle bottom border */
-  border-bottom: 1px solid var(--sentinel-border-subtle);
+  border-bottom: 1px solid var(--fing-border-subtle);
 
   /* Stone Marble - Light header shadow */
   box-shadow:
@@ -108,15 +108,15 @@
 }
 
 .headerIcon {
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
   filter: drop-shadow(0 0 4px rgba(58, 106, 114, 0.25));
 }
 
 .title {
-  font-family: var(--sentinel-font-numeric);
+  font-family: var(--fing-font-numeric);
   font-size: 17px;
   font-weight: 700;
-  color: var(--sentinel-text-primary);
+  color: var(--fing-text-primary);
   letter-spacing: 0.06em;
   text-transform: uppercase;
   margin: 0;
@@ -134,31 +134,31 @@
   align-items: center;
   gap: 8px;
   padding: 6px 12px;
-  background: var(--sentinel-glass-bg);
-  border: 1px solid var(--sentinel-glass-border);
-  border-radius: var(--sentinel-radius-full);
+  background: var(--fing-glass-bg);
+  border: 1px solid var(--fing-glass-border);
+  border-radius: var(--fing-radius-full);
   cursor: pointer;
   transition: all 0.2s ease;
 
-  backdrop-filter: blur(var(--sentinel-blur-sm));
-  -webkit-backdrop-filter: blur(var(--sentinel-blur-sm));
+  backdrop-filter: blur(var(--fing-blur-sm));
+  -webkit-backdrop-filter: blur(var(--fing-blur-sm));
 }
 
 .liveIndicator:hover {
-  background: var(--sentinel-glass-bg-hover);
-  border-color: var(--sentinel-glass-border-hover);
+  background: var(--fing-glass-bg-hover);
+  border-color: var(--fing-glass-border-hover);
 }
 
 .liveDot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--sentinel-text-tertiary);
+  background: var(--fing-text-tertiary);
   transition: all 0.2s ease;
 }
 
 .liveDot.live {
-  background: var(--sentinel-status-positive);
+  background: var(--fing-status-positive);
   box-shadow: 0 0 8px rgba(34, 197, 94, 0.5);
   animation: pulse 2s infinite;
 }
@@ -169,40 +169,40 @@
 }
 
 .liveText {
-  font-family: var(--sentinel-font-led);
+  font-family: var(--fing-font-led);
   font-size: 11px;
   font-weight: 500;
-  color: var(--sentinel-text-secondary);
-  letter-spacing: var(--sentinel-tracking-led);
+  color: var(--fing-text-secondary);
+  letter-spacing: var(--fing-tracking-led);
 }
 
 /* Data source badge - Glass */
 .dataSource {
-  font-family: var(--sentinel-font-led);
+  font-family: var(--fing-font-led);
   font-size: 10px;
   font-weight: 500;
-  color: var(--sentinel-text-tertiary);
+  color: var(--fing-text-tertiary);
   padding: 4px 10px;
-  background: var(--sentinel-glass-bg);
-  border: 1px solid var(--sentinel-glass-border);
-  border-radius: var(--sentinel-radius-sm);
-  letter-spacing: var(--sentinel-tracking-led);
+  background: var(--fing-glass-bg);
+  border: 1px solid var(--fing-glass-border);
+  border-radius: var(--fing-radius-sm);
+  letter-spacing: var(--fing-tracking-led);
 
-  backdrop-filter: blur(var(--sentinel-blur-xs));
-  -webkit-backdrop-filter: blur(var(--sentinel-blur-xs));
+  backdrop-filter: blur(var(--fing-blur-xs));
+  -webkit-backdrop-filter: blur(var(--fing-blur-xs));
 }
 
 .dataSource.realApi {
-  color: var(--sentinel-status-positive-text);
-  background: var(--sentinel-status-positive-subtle);
-  border-color: var(--sentinel-status-positive-border);
+  color: var(--fing-status-positive-text);
+  background: var(--fing-status-positive-subtle);
+  border-color: var(--fing-status-positive-border);
 }
 
 .lastUpdate {
-  font-family: var(--sentinel-font-led);
+  font-family: var(--fing-font-led);
   font-size: 11px;
-  color: var(--sentinel-text-tertiary);
-  letter-spacing: var(--sentinel-tracking-led);
+  color: var(--fing-text-tertiary);
+  letter-spacing: var(--fing-tracking-led);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -222,7 +222,7 @@
 
 .neuPanelContent {
   background: var(--marble-base);
-  margin: var(--sentinel-space-4);
+  margin: var(--fing-space-4);
   border-radius: var(--radius-standard);
   overflow: auto;
 
@@ -264,7 +264,7 @@
   top: 0;
   left: var(--sidebar-width);
   right: 0;
-  z-index: var(--sentinel-z-sticky);
+  z-index: var(--fing-z-sticky);
 }
 
 /* Adjust main content when ticker is present */
@@ -305,10 +305,10 @@
 
 .mobileTickerTape {
   position: fixed;
-  top: calc(var(--sentinel-mobile-header-height) + var(--sentinel-safe-area-top));
+  top: calc(var(--fing-mobile-header-height) + var(--fing-safe-area-top));
   left: 0;
   right: 0;
-  z-index: calc(var(--sentinel-z-sticky) - 1);
+  z-index: calc(var(--fing-z-sticky) - 1);
 }
 
 .mobileContent {
@@ -317,8 +317,8 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  padding-top: calc(var(--sentinel-mobile-header-height) + 36px + var(--sentinel-safe-area-top));
-  padding-bottom: calc(var(--sentinel-mobile-bottom-nav-height) + var(--sentinel-safe-area-bottom));
+  padding-top: calc(var(--fing-mobile-header-height) + 36px + var(--fing-safe-area-top));
+  padding-bottom: calc(var(--fing-mobile-bottom-nav-height) + var(--fing-safe-area-bottom));
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────

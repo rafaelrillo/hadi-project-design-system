@@ -1,5 +1,5 @@
 // Path: src/pages/molecules/CardShowcase.tsx
-// SENTINEL Design System - Glass-Neumorphism Cards
+// FING Design System - Glass-Neumorphism Cards
 import React, { useMemo } from 'react';
 import { Card } from '../../components/molecules/Card';
 import { Badge } from '../../components/atoms/Badge';
@@ -50,17 +50,17 @@ function CardContent() {
   const titleStyles: React.CSSProperties = {
     fontSize: '28px',
     fontWeight: 700,
-    color: 'var(--sentinel-accent-primary)',
+    color: 'var(--fing-accent-primary)',
     marginBottom: '8px',
-    fontFamily: 'var(--sentinel-font-display)',
+    fontFamily: 'var(--fing-font-display)',
     textTransform: 'uppercase',
     letterSpacing: '0.1em',
   };
 
   const descStyles: React.CSSProperties = {
     fontSize: '14px',
-    color: 'var(--sentinel-text-secondary)',
-    fontFamily: 'var(--sentinel-font-mono)',
+    color: 'var(--fing-text-secondary)',
+    fontFamily: 'var(--fing-font-mono)',
     textTransform: 'uppercase',
     letterSpacing: '0.03em',
   };
@@ -98,7 +98,7 @@ function CardContent() {
         <div style={cardContainerStyles}>
           <Card>
             <div style={{ padding: '8px 0' }}>
-              <p style={{ margin: 0, fontSize: '14px', lineHeight: '1.6', color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)' }}>
+              <p style={{ margin: 0, fontSize: '14px', lineHeight: '1.6', color: 'var(--fing-text-primary)', fontFamily: 'var(--fing-font-mono)' }}>
                 Este es un card básico con contenido simple. Perfecto para mostrar información sin estructura compleja.
               </p>
             </div>
@@ -114,15 +114,15 @@ function CardContent() {
           <Card
             header={
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <h3 style={{ margin: 0, fontSize: '16px', fontWeight: 600, color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-display)' }}>Información del Usuario</h3>
+                <h3 style={{ margin: 0, fontSize: '16px', fontWeight: 600, color: 'var(--fing-text-primary)', fontFamily: 'var(--fing-font-display)' }}>Información del Usuario</h3>
                 <Badge variant="success">Activo</Badge>
               </div>
             }
           >
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)' }}>
-              <div><strong style={{ color: 'var(--sentinel-accent-primary)' }}>Nombre:</strong> Juan Pérez</div>
-              <div><strong style={{ color: 'var(--sentinel-accent-primary)' }}>Email:</strong> juan.perez@example.com</div>
-              <div><strong style={{ color: 'var(--sentinel-accent-primary)' }}>Rol:</strong> Administrador</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', color: 'var(--fing-text-primary)', fontFamily: 'var(--fing-font-mono)' }}>
+              <div><strong style={{ color: 'var(--fing-accent-primary)' }}>Nombre:</strong> Juan Pérez</div>
+              <div><strong style={{ color: 'var(--fing-accent-primary)' }}>Email:</strong> juan.perez@example.com</div>
+              <div><strong style={{ color: 'var(--fing-accent-primary)' }}>Rol:</strong> Administrador</div>
             </div>
           </Card>
         </div>
@@ -134,9 +134,9 @@ function CardContent() {
       >
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '20px' }}>
           {[
-            { icon: Users, color: 'var(--sentinel-accent-primary)', label: 'Total Usuarios', value: '1,284' },
-            { icon: TrendingUp, color: 'var(--sentinel-status-positive)', label: 'Ingresos', value: '$45,320' },
-            { icon: ShoppingCart, color: 'var(--sentinel-status-negative)', label: 'Pedidos', value: '342' },
+            { icon: Users, color: 'var(--fing-accent-primary)', label: 'Total Usuarios', value: '1,284' },
+            { icon: TrendingUp, color: 'var(--fing-status-positive)', label: 'Ingresos', value: '$45,320' },
+            { icon: ShoppingCart, color: 'var(--fing-status-negative)', label: 'Pedidos', value: '342' },
           ].map((stat) => (
             <div key={stat.label} style={cardContainerStyles}>
               <Card>
@@ -151,8 +151,8 @@ function CardContent() {
                     <stat.icon size={32} color={stat.color} />
                   </div>
                   <div>
-                    <p style={{ margin: 0, fontSize: '12px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)', textTransform: 'uppercase' }}>{stat.label}</p>
-                    <p style={{ margin: '4px 0 0 0', fontSize: '24px', fontWeight: 700, color: stat.color, fontFamily: 'var(--sentinel-font-mono)' }}>{stat.value}</p>
+                    <p style={{ margin: 0, fontSize: '12px', color: '#636E72', fontFamily: 'var(--fing-font-mono)', textTransform: 'uppercase' }}>{stat.label}</p>
+                    <p style={{ margin: '4px 0 0 0', fontSize: '24px', fontWeight: 700, color: stat.color, fontFamily: 'var(--fing-font-mono)' }}>{stat.value}</p>
                   </div>
                 </div>
               </Card>
@@ -172,8 +172,8 @@ function CardContent() {
                 <Zap size={28} color="hsl(145, 45%, 30%)" />
               </div>
               <div>
-                <p style={{ margin: 0, fontSize: '12px', color: 'hsl(145, 45%, 25%)', fontFamily: 'var(--sentinel-font-mono)', textTransform: 'uppercase' }}>Speed Score</p>
-                <p style={{ margin: '4px 0 0', fontSize: '28px', fontWeight: 700, color: 'hsl(145, 45%, 25%)', fontFamily: 'var(--sentinel-font-display)' }}>98.5</p>
+                <p style={{ margin: 0, fontSize: '12px', color: 'hsl(145, 45%, 25%)', fontFamily: 'var(--fing-font-mono)', textTransform: 'uppercase' }}>Speed Score</p>
+                <p style={{ margin: '4px 0 0', fontSize: '28px', fontWeight: 700, color: 'hsl(145, 45%, 25%)', fontFamily: 'var(--fing-font-display)' }}>98.5</p>
               </div>
             </div>
           </div>
@@ -184,8 +184,8 @@ function CardContent() {
                 <Star size={28} color="hsl(35, 55%, 30%)" />
               </div>
               <div>
-                <p style={{ margin: 0, fontSize: '12px', color: 'hsl(35, 55%, 25%)', fontFamily: 'var(--sentinel-font-mono)', textTransform: 'uppercase' }}>User Rating</p>
-                <p style={{ margin: '4px 0 0', fontSize: '28px', fontWeight: 700, color: 'hsl(35, 55%, 25%)', fontFamily: 'var(--sentinel-font-display)' }}>4.9/5</p>
+                <p style={{ margin: 0, fontSize: '12px', color: 'hsl(35, 55%, 25%)', fontFamily: 'var(--fing-font-mono)', textTransform: 'uppercase' }}>User Rating</p>
+                <p style={{ margin: '4px 0 0', fontSize: '28px', fontWeight: 700, color: 'hsl(35, 55%, 25%)', fontFamily: 'var(--fing-font-display)' }}>4.9/5</p>
               </div>
             </div>
           </div>
@@ -196,8 +196,8 @@ function CardContent() {
                 <Shield size={28} color="hsl(175, 35%, 30%)" />
               </div>
               <div>
-                <p style={{ margin: 0, fontSize: '12px', color: 'hsl(175, 35%, 25%)', fontFamily: 'var(--sentinel-font-mono)', textTransform: 'uppercase' }}>Status</p>
-                <p style={{ margin: '4px 0 0', fontSize: '28px', fontWeight: 700, color: 'hsl(175, 35%, 25%)', fontFamily: 'var(--sentinel-font-display)' }}>Secure</p>
+                <p style={{ margin: 0, fontSize: '12px', color: 'hsl(175, 35%, 25%)', fontFamily: 'var(--fing-font-mono)', textTransform: 'uppercase' }}>Status</p>
+                <p style={{ margin: '4px 0 0', fontSize: '28px', fontWeight: 700, color: 'hsl(175, 35%, 25%)', fontFamily: 'var(--fing-font-display)' }}>Secure</p>
               </div>
             </div>
           </div>
@@ -210,9 +210,9 @@ function CardContent() {
       >
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
           {[
-            { icon: CheckCircle, color: 'var(--sentinel-status-positive)', title: 'Operación Exitosa', msg: 'El archivo se ha subido correctamente.' },
-            { icon: AlertCircle, color: 'var(--sentinel-status-negative)', title: 'Acción Requerida', msg: 'Tu suscripción vence en 3 días.' },
-            { icon: Bell, color: 'var(--sentinel-accent-primary)', title: 'Nueva Notificación', msg: 'Juan Pérez ha comentado en tu publicación.' },
+            { icon: CheckCircle, color: 'var(--fing-status-positive)', title: 'Operación Exitosa', msg: 'El archivo se ha subido correctamente.' },
+            { icon: AlertCircle, color: 'var(--fing-status-negative)', title: 'Acción Requerida', msg: 'Tu suscripción vence en 3 días.' },
+            { icon: Bell, color: 'var(--fing-accent-primary)', title: 'Nueva Notificación', msg: 'Juan Pérez ha comentado en tu publicación.' },
           ].map((notif) => (
             <div key={notif.title} style={{
               padding: '20px',
@@ -237,8 +237,8 @@ function CardContent() {
                 <notif.icon size={24} color={notif.color} />
               </div>
               <div style={{ flex: 1 }}>
-                <h4 style={{ margin: '0 0 8px 0', fontSize: '14px', fontWeight: 600, color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-display)' }}>{notif.title}</h4>
-                <p style={{ margin: 0, fontSize: '14px', color: '#636E72', lineHeight: '1.6', fontFamily: 'var(--sentinel-font-mono)' }}>{notif.msg}</p>
+                <h4 style={{ margin: '0 0 8px 0', fontSize: '14px', fontWeight: 600, color: 'var(--fing-text-primary)', fontFamily: 'var(--fing-font-display)' }}>{notif.title}</h4>
+                <p style={{ margin: 0, fontSize: '14px', color: '#636E72', lineHeight: '1.6', fontFamily: 'var(--fing-font-mono)' }}>{notif.msg}</p>
               </div>
             </div>
           ))}
@@ -252,16 +252,16 @@ function CardContent() {
           boxShadow: getNeuInsetShadow(5, 15),
           background: MARBLE.base,
           fontSize: '12px',
-          fontFamily: 'var(--sentinel-font-mono)',
+          fontFamily: 'var(--fing-font-mono)',
           color: '#636E72',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Padding:</strong> 20px</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Border radius:</strong> 15px (neumórfico)</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Sombra elevada:</strong> Dual shadow (light + dark)</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Sombra inset:</strong> Para contenedores cavados</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Glass:</strong> HSLA + backdrop-filter blur</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Padding:</strong> 20px</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Border radius:</strong> 15px (neumórfico)</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Sombra elevada:</strong> Dual shadow (light + dark)</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Sombra inset:</strong> Para contenedores cavados</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Glass:</strong> HSLA + backdrop-filter blur</p>
         </div>
       </ShowcaseSection>
     </div>

@@ -17,17 +17,17 @@ const sizeMap = {
   lg: 32
 };
 
-// Using CSS custom properties for SENTINEL theming
+// Using CSS custom properties for FING theming
 const colorMap: Record<string, string> = {
-  default: 'var(--sentinel-text-primary)',
-  secondary: 'var(--sentinel-text-secondary)',
-  primary: 'var(--sentinel-accent-primary)',
-  brand: 'var(--sentinel-accent-primary)',
-  destructive: 'var(--sentinel-status-negative)',
-  success: 'var(--sentinel-status-positive)',
-  warning: 'var(--sentinel-status-warning)',
-  info: 'var(--sentinel-accent-secondary)',
-  muted: 'var(--sentinel-text-tertiary)'
+  default: 'var(--fing-text-primary)',
+  secondary: 'var(--fing-text-secondary)',
+  primary: 'var(--fing-accent-primary)',
+  brand: 'var(--fing-accent-primary)',
+  destructive: 'var(--fing-status-negative)',
+  success: 'var(--fing-status-positive)',
+  warning: 'var(--fing-status-warning)',
+  info: 'var(--fing-accent-secondary)',
+  muted: 'var(--fing-text-tertiary)'
 };
 
 export function Icon({

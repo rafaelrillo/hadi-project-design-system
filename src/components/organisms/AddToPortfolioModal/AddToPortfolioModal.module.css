@@ -21,7 +21,7 @@
   gap: 8px;
   margin-bottom: 24px;
   padding-bottom: 20px;
-  border-bottom: 1px solid var(--sentinel-border-subtle);
+  border-bottom: 1px solid var(--fing-border-subtle);
 }
 
 .step {
@@ -37,51 +37,51 @@
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: var(--sentinel-bg-surface);
-  border: 2px solid var(--sentinel-border-default);
+  background: var(--fing-bg-surface);
+  border: 2px solid var(--fing-border-default);
   font-size: 12px;
   font-weight: 600;
-  color: var(--sentinel-text-tertiary);
-  transition: all var(--sentinel-duration-fast) var(--sentinel-ease-default);
+  color: var(--fing-text-tertiary);
+  transition: all var(--fing-duration-fast) var(--fing-ease-default);
 }
 
 .step.active .stepNumber {
-  background: var(--sentinel-accent-primary);
-  border-color: var(--sentinel-accent-primary);
+  background: var(--fing-accent-primary);
+  border-color: var(--fing-accent-primary);
   color: white;
 }
 
 .step.completed .stepNumber {
-  background: var(--sentinel-status-positive);
-  border-color: var(--sentinel-status-positive);
+  background: var(--fing-status-positive);
+  border-color: var(--fing-status-positive);
   color: white;
 }
 
 .stepLabel {
   font-size: 13px;
   font-weight: 500;
-  color: var(--sentinel-text-tertiary);
-  transition: color var(--sentinel-duration-fast) var(--sentinel-ease-default);
+  color: var(--fing-text-tertiary);
+  transition: color var(--fing-duration-fast) var(--fing-ease-default);
 }
 
 .step.active .stepLabel {
-  color: var(--sentinel-text-primary);
+  color: var(--fing-text-primary);
 }
 
 .step.completed .stepLabel {
-  color: var(--sentinel-status-positive);
+  color: var(--fing-status-positive);
 }
 
 .stepLine {
   width: 40px;
   height: 2px;
-  background: var(--sentinel-border-default);
+  background: var(--fing-border-default);
   margin: 0 4px;
 }
 
 .step.completed + .step .stepLine,
 .step.active .stepLine {
-  background: var(--sentinel-accent-primary);
+  background: var(--fing-accent-primary);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -93,8 +93,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 16px;
-  background: var(--sentinel-bg-surface);
-  border-radius: var(--sentinel-radius-md);
+  background: var(--fing-bg-surface);
+  border-radius: var(--fing-radius-md);
   margin-bottom: 24px;
 }
 
@@ -105,16 +105,16 @@
 }
 
 .stockTicker {
-  font-family: var(--sentinel-font-ticker);
+  font-family: var(--fing-font-ticker);
   font-size: 18px;
   font-weight: 700;
-  color: var(--sentinel-text-primary);
+  color: var(--fing-text-primary);
   letter-spacing: 0.08em;
 }
 
 .stockName {
   font-size: 13px;
-  color: var(--sentinel-text-secondary);
+  color: var(--fing-text-secondary);
 }
 
 .stockPrice {
@@ -126,17 +126,17 @@
 
 .priceLabel {
   font-size: 11px;
-  color: var(--sentinel-text-tertiary);
+  color: var(--fing-text-tertiary);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 .priceValue {
-  font-family: var(--sentinel-font-numeric);
+  font-family: var(--fing-font-numeric);
   font-size: 20px;
   font-weight: 700;
-  color: var(--sentinel-text-primary);
-  letter-spacing: var(--sentinel-tracking-led);
+  color: var(--fing-text-primary);
+  letter-spacing: var(--fing-tracking-led);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -158,7 +158,7 @@
 .sectionTitle {
   font-size: 14px;
   font-weight: 600;
-  color: var(--sentinel-text-primary);
+  color: var(--fing-text-primary);
   margin: 0;
 }
 
@@ -177,21 +177,21 @@
   align-items: center;
   justify-content: space-between;
   padding: 14px 16px;
-  background: var(--sentinel-bg-surface);
-  border: 1px solid var(--sentinel-border-default);
-  border-radius: var(--sentinel-radius-md);
+  background: var(--fing-bg-surface);
+  border: 1px solid var(--fing-border-default);
+  border-radius: var(--fing-radius-md);
   cursor: pointer;
-  transition: all var(--sentinel-duration-fast) var(--sentinel-ease-default);
+  transition: all var(--fing-duration-fast) var(--fing-ease-default);
 }
 
 .portfolioOption:hover {
-  border-color: var(--sentinel-border-hover);
-  background: var(--sentinel-bg-hover);
+  border-color: var(--fing-border-hover);
+  background: var(--fing-bg-hover);
 }
 
 .portfolioOption.selected {
-  border-color: var(--sentinel-accent-primary);
-  background: rgba(var(--sentinel-accent-primary-rgb, 91, 163, 165), 0.1);
+  border-color: var(--fing-accent-primary);
+  background: rgba(var(--fing-accent-primary-rgb, 91, 163, 165), 0.1);
 }
 
 .portfolioInfo {
@@ -204,14 +204,14 @@
 .portfolioName {
   font-size: 14px;
   font-weight: 500;
-  color: var(--sentinel-text-primary);
+  color: var(--fing-text-primary);
 }
 
 .portfolioValue {
-  font-family: var(--sentinel-font-numeric);
+  font-family: var(--fing-font-numeric);
   font-size: 13px;
-  color: var(--sentinel-text-secondary);
-  letter-spacing: var(--sentinel-tracking-led);
+  color: var(--fing-text-secondary);
+  letter-spacing: var(--fing-tracking-led);
 }
 
 .portfolioCheck {
@@ -221,10 +221,10 @@
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background: var(--sentinel-accent-primary);
+  background: var(--fing-accent-primary);
   color: white;
   opacity: 0;
-  transition: opacity var(--sentinel-duration-fast) var(--sentinel-ease-default);
+  transition: opacity var(--fing-duration-fast) var(--fing-ease-default);
 }
 
 .portfolioOption.selected .portfolioCheck {
@@ -240,9 +240,9 @@
   align-items: center;
   justify-content: space-between;
   padding: 16px;
-  background: var(--sentinel-bg-surface);
-  border: 1px solid var(--sentinel-border-default);
-  border-radius: var(--sentinel-radius-md);
+  background: var(--fing-bg-surface);
+  border: 1px solid var(--fing-border-default);
+  border-radius: var(--fing-radius-md);
 }
 
 .cashInfo {
@@ -254,25 +254,25 @@
 
 .cashLabel {
   font-size: 11px;
-  color: var(--sentinel-text-tertiary);
+  color: var(--fing-text-tertiary);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 .cashValue {
-  font-family: var(--sentinel-font-numeric);
+  font-family: var(--fing-font-numeric);
   font-size: 16px;
   font-weight: 600;
-  color: var(--sentinel-status-positive);
-  letter-spacing: var(--sentinel-tracking-led);
+  color: var(--fing-status-positive);
+  letter-spacing: var(--fing-tracking-led);
 }
 
 .errorMessage {
   font-size: 12px;
-  color: var(--sentinel-status-negative);
+  color: var(--fing-status-negative);
   padding: 8px 12px;
-  background: rgba(var(--sentinel-status-negative-rgb, 229, 115, 115), 0.1);
-  border-radius: var(--sentinel-radius-sm);
+  background: rgba(var(--fing-status-negative-rgb, 229, 115, 115), 0.1);
+  border-radius: var(--fing-radius-sm);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -284,22 +284,22 @@
   align-items: center;
   gap: 8px;
   padding: 12px 16px;
-  background: var(--sentinel-bg-surface);
-  border: 1px solid var(--sentinel-border-default);
-  border-radius: var(--sentinel-radius-md);
-  transition: border-color var(--sentinel-duration-fast) var(--sentinel-ease-default);
+  background: var(--fing-bg-surface);
+  border: 1px solid var(--fing-border-default);
+  border-radius: var(--fing-radius-md);
+  transition: border-color var(--fing-duration-fast) var(--fing-ease-default);
 }
 
 .amountInput:focus-within {
-  border-color: var(--sentinel-accent-primary);
+  border-color: var(--fing-accent-primary);
 }
 
 .currencySymbol {
-  font-family: var(--sentinel-font-numeric);
+  font-family: var(--fing-font-numeric);
   font-size: 18px;
   font-weight: 600;
-  color: var(--sentinel-text-secondary);
-  letter-spacing: var(--sentinel-tracking-led);
+  color: var(--fing-text-secondary);
+  letter-spacing: var(--fing-tracking-led);
 }
 
 .input {
@@ -307,11 +307,11 @@
   background: transparent;
   border: none;
   outline: none;
-  font-family: var(--sentinel-font-numeric);
+  font-family: var(--fing-font-numeric);
   font-size: 18px;
   font-weight: 600;
-  color: var(--sentinel-text-primary);
-  letter-spacing: var(--sentinel-tracking-led);
+  color: var(--fing-text-primary);
+  letter-spacing: var(--fing-tracking-led);
 }
 
 .input::-webkit-outer-spin-button,
@@ -325,27 +325,27 @@
   align-items: center;
   gap: 8px;
   padding: 10px 12px;
-  background: rgba(var(--sentinel-accent-primary-rgb, 91, 163, 165), 0.1);
-  border-radius: var(--sentinel-radius-sm);
+  background: rgba(var(--fing-accent-primary-rgb, 91, 163, 165), 0.1);
+  border-radius: var(--fing-radius-sm);
   font-size: 13px;
-  color: var(--sentinel-text-secondary);
+  color: var(--fing-text-secondary);
 }
 
 .recommendedAmount svg {
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
 }
 
 .useRecommended {
   margin-left: auto;
   padding: 4px 12px;
-  background: var(--sentinel-accent-primary);
+  background: var(--fing-accent-primary);
   border: none;
-  border-radius: var(--sentinel-radius-sm);
+  border-radius: var(--fing-radius-sm);
   font-size: 12px;
   font-weight: 500;
   color: white;
   cursor: pointer;
-  transition: opacity var(--sentinel-duration-fast) var(--sentinel-ease-default);
+  transition: opacity var(--fing-duration-fast) var(--fing-ease-default);
 }
 
 .useRecommended:hover {
@@ -353,11 +353,11 @@
 }
 
 .sharesPreview {
-  font-family: var(--sentinel-font-numeric);
+  font-family: var(--fing-font-numeric);
   font-size: 13px;
-  color: var(--sentinel-text-tertiary);
+  color: var(--fing-text-tertiary);
   text-align: right;
-  letter-spacing: var(--sentinel-tracking-led);
+  letter-spacing: var(--fing-tracking-led);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -375,9 +375,9 @@
   align-items: flex-start;
   gap: 12px;
   padding: 16px;
-  background: var(--sentinel-bg-surface);
-  border: 1px solid var(--sentinel-border-subtle);
-  border-radius: var(--sentinel-radius-md);
+  background: var(--fing-bg-surface);
+  border: 1px solid var(--fing-border-subtle);
+  border-radius: var(--fing-radius-md);
 }
 
 .benefitIcon {
@@ -386,9 +386,9 @@
   justify-content: center;
   width: 40px;
   height: 40px;
-  background: rgba(var(--sentinel-accent-primary-rgb, 91, 163, 165), 0.1);
-  border-radius: var(--sentinel-radius-md);
-  color: var(--sentinel-accent-primary);
+  background: rgba(var(--fing-accent-primary-rgb, 91, 163, 165), 0.1);
+  border-radius: var(--fing-radius-md);
+  color: var(--fing-accent-primary);
   flex-shrink: 0;
 }
 
@@ -401,27 +401,27 @@
 .benefitLabel {
   font-size: 11px;
   font-weight: 600;
-  color: var(--sentinel-text-tertiary);
+  color: var(--fing-text-tertiary);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 .benefitValue {
-  font-family: var(--sentinel-font-numeric);
+  font-family: var(--fing-font-numeric);
   font-size: 18px;
   font-weight: 700;
-  color: var(--sentinel-text-primary);
-  letter-spacing: var(--sentinel-tracking-led);
+  color: var(--fing-text-primary);
+  letter-spacing: var(--fing-tracking-led);
 }
 
 .benefitValue.positive {
-  color: var(--sentinel-status-positive);
-  text-shadow: var(--sentinel-glow-positive);
+  color: var(--fing-status-positive);
+  text-shadow: var(--fing-glow-positive);
 }
 
 .benefitDetail {
   font-size: 12px;
-  color: var(--sentinel-text-secondary);
+  color: var(--fing-text-secondary);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -433,25 +433,25 @@
   align-items: flex-start;
   gap: 12px;
   padding: 16px;
-  background: rgba(var(--sentinel-accent-primary-rgb, 91, 163, 165), 0.1);
-  border: 1px solid rgba(var(--sentinel-accent-primary-rgb, 91, 163, 165), 0.2);
-  border-radius: var(--sentinel-radius-md);
-  color: var(--sentinel-accent-primary);
+  background: rgba(var(--fing-accent-primary-rgb, 91, 163, 165), 0.1);
+  border: 1px solid rgba(var(--fing-accent-primary-rgb, 91, 163, 165), 0.2);
+  border-radius: var(--fing-radius-md);
+  color: var(--fing-accent-primary);
 }
 
 .impactText {
   font-size: 14px;
   line-height: 1.5;
-  color: var(--sentinel-text-secondary);
+  color: var(--fing-text-secondary);
 }
 
 .impactText strong {
-  color: var(--sentinel-text-primary);
+  color: var(--fing-text-primary);
 }
 
 .highlight {
   font-weight: 600;
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
   text-transform: capitalize;
 }
 
@@ -465,9 +465,9 @@
   align-items: center;
   gap: 24px;
   padding: 24px;
-  background: var(--sentinel-bg-surface);
-  border: 1px solid var(--sentinel-border-subtle);
-  border-radius: var(--sentinel-radius-lg);
+  background: var(--fing-bg-surface);
+  border: 1px solid var(--fing-border-subtle);
+  border-radius: var(--fing-radius-lg);
 }
 
 .confirmHeader {
@@ -483,15 +483,15 @@
   justify-content: center;
   width: 64px;
   height: 64px;
-  background: rgba(var(--sentinel-status-positive-rgb, 129, 199, 132), 0.15);
+  background: rgba(var(--fing-status-positive-rgb, 129, 199, 132), 0.15);
   border-radius: 50%;
-  color: var(--sentinel-status-positive);
+  color: var(--fing-status-positive);
 }
 
 .confirmTitle {
   font-size: 20px;
   font-weight: 600;
-  color: var(--sentinel-text-primary);
+  color: var(--fing-text-primary);
   margin: 0;
 }
 
@@ -501,8 +501,8 @@
   flex-direction: column;
   gap: 12px;
   padding: 16px;
-  background: var(--sentinel-bg-base);
-  border-radius: var(--sentinel-radius-md);
+  background: var(--fing-bg-base);
+  border-radius: var(--fing-radius-md);
 }
 
 .confirmRow {
@@ -513,30 +513,30 @@
 
 .confirmLabel {
   font-size: 13px;
-  color: var(--sentinel-text-secondary);
+  color: var(--fing-text-secondary);
 }
 
 .confirmValue {
   font-size: 14px;
   font-weight: 500;
-  color: var(--sentinel-text-primary);
+  color: var(--fing-text-primary);
 }
 
 .confirmFooter {
   padding-top: 16px;
-  border-top: 1px solid var(--sentinel-border-subtle);
+  border-top: 1px solid var(--fing-border-subtle);
   width: 100%;
   text-align: center;
 }
 
 .expectedReturn {
   font-size: 14px;
-  color: var(--sentinel-text-secondary);
+  color: var(--fing-text-secondary);
 }
 
 .positive {
-  color: var(--sentinel-status-positive);
-  text-shadow: var(--sentinel-glow-positive);
+  color: var(--fing-status-positive);
+  text-shadow: var(--fing-glow-positive);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────

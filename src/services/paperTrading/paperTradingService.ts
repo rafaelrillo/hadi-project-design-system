@@ -14,7 +14,7 @@ import type {
 // CONSTANTS
 // ─────────────────────────────────────────────────────────────────────────────
 
-const STORAGE_KEY = 'sentinel_paper_trading';
+const STORAGE_KEY = 'fing_paper_trading';
 const INITIAL_BALANCE = 100000; // $100,000 starting balance
 const TRADE_FEE = 0; // No fees for paper trading
 

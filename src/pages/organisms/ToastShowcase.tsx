@@ -1,5 +1,5 @@
 // Path: src/pages/organisms/ToastShowcase.tsx
-// SENTINEL Design System - Glass-Neumorphism Toasts
+// FING Design System - Glass-Neumorphism Toasts
 import { ToastProvider, useToast } from '../../components/organisms/Toast';
 import { ShowcaseSection } from '../../components/showcase';
 import { Button } from '../../components/atoms/Button';
@@ -59,33 +59,33 @@ function ToastDemoContent() {
   const titleStyles: React.CSSProperties = {
     fontSize: '28px',
     fontWeight: 700,
-    color: 'var(--sentinel-accent-primary)',
+    color: 'var(--fing-accent-primary)',
     marginBottom: '8px',
-    fontFamily: 'var(--sentinel-font-display)',
+    fontFamily: 'var(--fing-font-display)',
     textTransform: 'uppercase',
     letterSpacing: '0.1em',
   };
 
   const descStyles: React.CSSProperties = {
     fontSize: '14px',
-    color: 'var(--sentinel-text-secondary)',
-    fontFamily: 'var(--sentinel-font-mono)',
+    color: 'var(--fing-text-secondary)',
+    fontFamily: 'var(--fing-font-mono)',
     textTransform: 'uppercase',
     letterSpacing: '0.03em',
   };
 
   const specTextStyles: React.CSSProperties = {
     fontSize: '12px',
-    color: 'var(--sentinel-text-secondary)',
+    color: 'var(--fing-text-secondary)',
     lineHeight: '1.8',
-    fontFamily: 'var(--sentinel-font-mono)',
+    fontFamily: 'var(--fing-font-mono)',
   };
 
   const codeBlockStyles: React.CSSProperties = {
     fontSize: '12px',
-    color: 'var(--sentinel-text-secondary)',
+    color: 'var(--fing-text-secondary)',
     lineHeight: '1.6',
-    fontFamily: 'var(--sentinel-font-mono)',
+    fontFamily: 'var(--fing-font-mono)',
     backgroundColor: 'var(--neu-base)',
     padding: '16px',
     borderRadius: '12px',
@@ -348,8 +348,8 @@ function ToastDemoContent() {
           <p style={{
             marginTop: '16px',
             fontSize: '12px',
-            color: 'var(--sentinel-text-tertiary)',
-            fontFamily: 'var(--sentinel-font-mono)',
+            color: 'var(--fing-text-tertiary)',
+            fontFamily: 'var(--fing-font-mono)',
           }}>
             Los toasts glass aparecen en la esquina superior derecha con sombras dinámicas del Light Engine
           </p>
@@ -359,16 +359,16 @@ function ToastDemoContent() {
       {/* Technical Specifications */}
       <ShowcaseSection title="Especificaciones Técnicas">
         <div style={specTextStyles}>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Types:</strong> default, success, error, warning, info</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Positions:</strong> top-left, top-center, top-right, bottom-left, bottom-center, bottom-right</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Duration:</strong> Configurable, 0 para persistente</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Actions:</strong> Botón de acción opcional con callback</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Icons:</strong> Iconos por defecto según tipo o custom</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Animations:</strong> Entrada/salida animada con reduced motion support</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>API:</strong> useToast hook con toast(), success(), error(), warning(), info()</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Control:</strong> dismiss(id), dismissAll(), update(id, options)</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Max Visible:</strong> Configurable, auto-remove de los más antiguos</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Accessibility:</strong> role="alert", aria-live, keyboard dismissible</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Types:</strong> default, success, error, warning, info</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Positions:</strong> top-left, top-center, top-right, bottom-left, bottom-center, bottom-right</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Duration:</strong> Configurable, 0 para persistente</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Actions:</strong> Botón de acción opcional con callback</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Icons:</strong> Iconos por defecto según tipo o custom</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Animations:</strong> Entrada/salida animada con reduced motion support</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>API:</strong> useToast hook con toast(), success(), error(), warning(), info()</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Control:</strong> dismiss(id), dismissAll(), update(id, options)</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Max Visible:</strong> Configurable, auto-remove de los más antiguos</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Accessibility:</strong> role="alert", aria-live, keyboard dismissible</p>
         </div>
       </ShowcaseSection>
 

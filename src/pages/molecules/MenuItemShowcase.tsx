@@ -1,5 +1,5 @@
 // Path: src/pages/molecules/MenuItemShowcase.tsx
-// SENTINEL Design System - Glass-Neumorphism Menu Items
+// FING Design System - Glass-Neumorphism Menu Items
 import React, { useState, useMemo } from 'react';
 import { MenuItem } from '../../components/molecules/MenuItem';
 import { ShowcaseSection } from '../../components/showcase';
@@ -43,17 +43,17 @@ function MenuItemContent() {
   const titleStyles: React.CSSProperties = {
     fontSize: '28px',
     fontWeight: 700,
-    color: 'var(--sentinel-accent-primary)',
+    color: 'var(--fing-accent-primary)',
     marginBottom: '8px',
-    fontFamily: 'var(--sentinel-font-display)',
+    fontFamily: 'var(--fing-font-display)',
     textTransform: 'uppercase',
     letterSpacing: '0.1em',
   };
 
   const descStyles: React.CSSProperties = {
     fontSize: '14px',
-    color: 'var(--sentinel-text-secondary)',
-    fontFamily: 'var(--sentinel-font-mono)',
+    color: 'var(--fing-text-secondary)',
+    fontFamily: 'var(--fing-font-mono)',
     textTransform: 'uppercase',
     letterSpacing: '0.03em',
   };
@@ -140,7 +140,7 @@ function MenuItemContent() {
             fontSize: '12px',
             fontWeight: 600,
             color: '#636E72',
-            fontFamily: 'var(--sentinel-font-mono)',
+            fontFamily: 'var(--fing-font-mono)',
             textTransform: 'uppercase',
             letterSpacing: '0.05em',
           }}>
@@ -163,17 +163,17 @@ function MenuItemContent() {
           boxShadow: getNeuInsetShadow(5, 15),
           background: MARBLE.base,
           fontSize: '12px',
-          fontFamily: 'var(--sentinel-font-mono)',
+          fontFamily: 'var(--fing-font-mono)',
           color: '#636E72',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Altura:</strong> 40px</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Padding:</strong> 12px 16px</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Gap:</strong> 12px entre ícono y label</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Border radius:</strong> 15px</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Ícono:</strong> 20px</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Label:</strong> 14px, 400 normal / 600 active</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Altura:</strong> 40px</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Padding:</strong> 12px 16px</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Gap:</strong> 12px entre ícono y label</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Border radius:</strong> 15px</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Ícono:</strong> 20px</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Label:</strong> 14px, 400 normal / 600 active</p>
         </div>
       </ShowcaseSection>
     </div>

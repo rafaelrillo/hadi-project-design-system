@@ -1,5 +1,5 @@
 // Path: src/pages/atoms/CheckboxShowcase.tsx
-// SENTINEL Design System - Glass-Neumorphism Checkboxes
+// FING Design System - Glass-Neumorphism Checkboxes
 import React, { useState, useMemo } from 'react';
 import { Checkbox } from '../../components/atoms/Checkbox';
 import { ShowcaseSection } from '../../components/showcase';
@@ -44,17 +44,17 @@ function CheckboxContent() {
   const titleStyles: React.CSSProperties = {
     fontSize: '28px',
     fontWeight: 700,
-    color: 'var(--sentinel-accent-primary)',
+    color: 'var(--fing-accent-primary)',
     marginBottom: '8px',
-    fontFamily: 'var(--sentinel-font-display)',
+    fontFamily: 'var(--fing-font-display)',
     textTransform: 'uppercase',
     letterSpacing: '0.1em',
   };
 
   const descStyles: React.CSSProperties = {
     fontSize: '14px',
-    color: 'var(--sentinel-text-secondary)',
-    fontFamily: 'var(--sentinel-font-mono)',
+    color: 'var(--fing-text-secondary)',
+    fontFamily: 'var(--fing-font-mono)',
     textTransform: 'uppercase',
     letterSpacing: '0.03em',
   };
@@ -73,8 +73,8 @@ function CheckboxContent() {
   const labelStyles: React.CSSProperties = {
     fontSize: '14px',
     cursor: 'pointer',
-    color: 'var(--sentinel-text-primary)',
-    fontFamily: 'var(--sentinel-font-mono)',
+    color: 'var(--fing-text-primary)',
+    fontFamily: 'var(--fing-font-mono)',
   };
 
   const disabledLabelStyles: React.CSSProperties = {
@@ -174,8 +174,8 @@ function CheckboxContent() {
             fontSize: '14px',
             fontWeight: 600,
             marginBottom: '20px',
-            color: 'var(--sentinel-text-primary)',
-            fontFamily: 'var(--sentinel-font-display)',
+            color: 'var(--fing-text-primary)',
+            fontFamily: 'var(--fing-font-display)',
             textTransform: 'uppercase',
             letterSpacing: '0.05em',
           }}>
@@ -217,16 +217,16 @@ function CheckboxContent() {
           boxShadow: getNeuInsetShadow(5, 15),
           background: MARBLE.base,
           fontSize: '12px',
-          fontFamily: 'var(--sentinel-font-mono)',
+          fontFamily: 'var(--fing-font-mono)',
           color: '#636E72',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Tamaño:</strong> 20x20px</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Border radius:</strong> 6px (redondeado)</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Sombra unchecked:</strong> Elevado neumórfico</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Sombra checked:</strong> Inset neumórfico</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Accent color:</strong> var(--sentinel-accent-primary)</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Tamaño:</strong> 20x20px</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Border radius:</strong> 6px (redondeado)</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Sombra unchecked:</strong> Elevado neumórfico</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Sombra checked:</strong> Inset neumórfico</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Accent color:</strong> var(--fing-accent-primary)</p>
         </div>
       </ShowcaseSection>
     </div>

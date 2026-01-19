@@ -1,5 +1,5 @@
 // Path: src/pages/molecules/PaginationShowcase.tsx
-// SENTINEL Design System - Glass-Neumorphism Pagination
+// FING Design System - Glass-Neumorphism Pagination
 import React, { useState } from 'react';
 import { Pagination } from '../../components/molecules/Pagination';
 import { ShowcaseSection } from '../../components/showcase';
@@ -22,17 +22,17 @@ export function PaginationShowcase() {
   const titleStyles: React.CSSProperties = {
     fontSize: '28px',
     fontWeight: 700,
-    color: 'var(--sentinel-accent-primary)',
+    color: 'var(--fing-accent-primary)',
     marginBottom: '8px',
-    fontFamily: 'var(--sentinel-font-display)',
+    fontFamily: 'var(--fing-font-display)',
     textTransform: 'uppercase',
     letterSpacing: '0.1em',
   };
 
   const descStyles: React.CSSProperties = {
     fontSize: '14px',
-    color: 'var(--sentinel-text-secondary)',
-    fontFamily: 'var(--sentinel-font-mono)',
+    color: 'var(--fing-text-secondary)',
+    fontFamily: 'var(--fing-font-mono)',
     textTransform: 'uppercase',
     letterSpacing: '0.03em',
   };
@@ -40,15 +40,15 @@ export function PaginationShowcase() {
   const infoLabelStyles: React.CSSProperties = {
     marginBottom: '12px',
     fontSize: '14px',
-    color: 'var(--sentinel-text-secondary)',
-    fontFamily: 'var(--sentinel-font-mono)',
+    color: 'var(--fing-text-secondary)',
+    fontFamily: 'var(--fing-font-mono)',
   };
 
   const specTextStyles: React.CSSProperties = {
     fontSize: '12px',
-    color: 'var(--sentinel-text-secondary)',
+    color: 'var(--fing-text-secondary)',
     lineHeight: '1.8',
-    fontFamily: 'var(--sentinel-font-mono)',
+    fontFamily: 'var(--fing-font-mono)',
   };
 
   return (
@@ -69,7 +69,7 @@ export function PaginationShowcase() {
         >
           <div>
             <div style={infoLabelStyles}>
-              Página actual: <strong style={{ color: 'var(--sentinel-accent-primary)' }}>{page1}</strong> de 10
+              Página actual: <strong style={{ color: 'var(--fing-accent-primary)' }}>{page1}</strong> de 10
             </div>
             <Pagination
               currentPage={page1}
@@ -87,7 +87,7 @@ export function PaginationShowcase() {
         >
           <div>
             <div style={infoLabelStyles}>
-              Página actual: <strong style={{ color: 'var(--sentinel-accent-primary)' }}>{page2}</strong> de 20
+              Página actual: <strong style={{ color: 'var(--fing-accent-primary)' }}>{page2}</strong> de 20
             </div>
             <Pagination
               currentPage={page2}
@@ -105,7 +105,7 @@ export function PaginationShowcase() {
         >
           <div>
             <div style={infoLabelStyles}>
-              Página actual: <strong style={{ color: 'var(--sentinel-accent-primary)' }}>{page3}</strong> de 100
+              Página actual: <strong style={{ color: 'var(--fing-accent-primary)' }}>{page3}</strong> de 100
             </div>
             <Pagination
               currentPage={page3}
@@ -140,7 +140,7 @@ export function PaginationShowcase() {
         >
           <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', width: '100%' }}>
             <div>
-              <div style={{ marginBottom: '8px', fontSize: '12px', color: 'var(--sentinel-text-tertiary)', fontFamily: 'var(--sentinel-font-mono)' }}>3 páginas totales:</div>
+              <div style={{ marginBottom: '8px', fontSize: '12px', color: 'var(--fing-text-tertiary)', fontFamily: 'var(--fing-font-mono)' }}>3 páginas totales:</div>
               <Pagination
                 currentPage={2}
                 totalPages={3}
@@ -149,7 +149,7 @@ export function PaginationShowcase() {
               />
             </div>
             <div>
-              <div style={{ marginBottom: '8px', fontSize: '12px', color: 'var(--sentinel-text-tertiary)', fontFamily: 'var(--sentinel-font-mono)' }}>5 páginas totales:</div>
+              <div style={{ marginBottom: '8px', fontSize: '12px', color: 'var(--fing-text-tertiary)', fontFamily: 'var(--fing-font-mono)' }}>5 páginas totales:</div>
               <Pagination
                 currentPage={3}
                 totalPages={5}
@@ -158,7 +158,7 @@ export function PaginationShowcase() {
               />
             </div>
             <div>
-              <div style={{ marginBottom: '8px', fontSize: '12px', color: 'var(--sentinel-text-tertiary)', fontFamily: 'var(--sentinel-font-mono)' }}>50 páginas totales:</div>
+              <div style={{ marginBottom: '8px', fontSize: '12px', color: 'var(--fing-text-tertiary)', fontFamily: 'var(--fing-font-mono)' }}>50 páginas totales:</div>
               <Pagination
                 currentPage={25}
                 totalPages={50}
@@ -176,11 +176,11 @@ export function PaginationShowcase() {
         >
           <div style={{ width: '100%' }}>
             <div style={{ marginBottom: '16px' }}>
-              <div style={{ fontSize: '16px', fontWeight: 600, marginBottom: '8px', color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)', textTransform: 'uppercase' }}>
+              <div style={{ fontSize: '16px', fontWeight: 600, marginBottom: '8px', color: 'var(--fing-text-primary)', fontFamily: 'var(--fing-font-mono)', textTransform: 'uppercase' }}>
                 Resultados de Búsqueda
               </div>
-              <div style={{ fontSize: '14px', color: 'var(--sentinel-text-secondary)', fontFamily: 'var(--sentinel-font-mono)' }}>
-                Mostrando página <strong style={{ color: 'var(--sentinel-accent-primary)' }}>{pageNeu}</strong> de 15 • 150 resultados totales
+              <div style={{ fontSize: '14px', color: 'var(--fing-text-secondary)', fontFamily: 'var(--fing-font-mono)' }}>
+                Mostrando página <strong style={{ color: 'var(--fing-accent-primary)' }}>{pageNeu}</strong> de 15 • 150 resultados totales
               </div>
             </div>
 
@@ -191,7 +191,7 @@ export function PaginationShowcase() {
               borderRadius: '12px',
               boxShadow: 'inset 3px 3px 8px var(--neu-shadow-dark), inset -3px -3px 8px var(--neu-shadow-light)',
             }}>
-              <div style={{ fontSize: '14px', color: 'var(--sentinel-text-secondary)', fontFamily: 'var(--sentinel-font-mono)' }}>
+              <div style={{ fontSize: '14px', color: 'var(--fing-text-secondary)', fontFamily: 'var(--fing-font-mono)' }}>
                 [Contenido de la página {pageNeu}]
               </div>
             </div>
@@ -209,22 +209,22 @@ export function PaginationShowcase() {
         {/* Technical Specifications */}
         <ShowcaseSection title="Especificaciones Técnicas">
           <div style={specTextStyles}>
-            <p><strong style={{ color: 'var(--sentinel-accent-primary)' }}>Botones de Números:</strong></p>
-            <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Tamaño:</strong> 20x20px (circular)</p>
-            <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Border-radius:</strong> 50%</p>
-            <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Estilo neuInset:</strong> Glass activo con sombras neumórficas</p>
-            <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Font-size:</strong> 12px</p>
+            <p><strong style={{ color: 'var(--fing-accent-primary)' }}>Botones de Números:</strong></p>
+            <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Tamaño:</strong> 20x20px (circular)</p>
+            <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Border-radius:</strong> 50%</p>
+            <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Estilo neuInset:</strong> Glass activo con sombras neumórficas</p>
+            <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Font-size:</strong> 12px</p>
 
-            <p style={{ marginTop: '16px' }}><strong style={{ color: 'var(--sentinel-accent-primary)' }}>Botones de Flechas:</strong></p>
-            <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Tamaño:</strong> 20x20px (circular)</p>
-            <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Íconos:</strong> ChevronLeft y ChevronRight, 14px</p>
-            <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Hover:</strong> Elevación con sombra dinámica</p>
+            <p style={{ marginTop: '16px' }}><strong style={{ color: 'var(--fing-accent-primary)' }}>Botones de Flechas:</strong></p>
+            <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Tamaño:</strong> 20x20px (circular)</p>
+            <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Íconos:</strong> ChevronLeft y ChevronRight, 14px</p>
+            <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Hover:</strong> Elevación con sombra dinámica</p>
 
-            <p style={{ marginTop: '16px' }}><strong style={{ color: 'var(--sentinel-accent-primary)' }}>General:</strong></p>
-            <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Gap:</strong> 8px entre elementos</p>
-            <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Disabled:</strong> opacity 0.6</p>
-            <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>maxVisiblePages:</strong> 5 por defecto</p>
-            <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Light Engine:</strong> Sombras dinámicas integradas</p>
+            <p style={{ marginTop: '16px' }}><strong style={{ color: 'var(--fing-accent-primary)' }}>General:</strong></p>
+            <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Gap:</strong> 8px entre elementos</p>
+            <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Disabled:</strong> opacity 0.6</p>
+            <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>maxVisiblePages:</strong> 5 por defecto</p>
+            <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Light Engine:</strong> Sombras dinámicas integradas</p>
           </div>
         </ShowcaseSection>
       </div>

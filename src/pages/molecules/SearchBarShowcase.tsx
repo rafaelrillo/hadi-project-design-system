@@ -1,5 +1,5 @@
 // Path: src/pages/molecules/SearchBarShowcase.tsx
-// SENTINEL Design System - Glass-Neumorphism Search Bar
+// FING Design System - Glass-Neumorphism Search Bar
 import React, { useState, useMemo } from 'react';
 import { SearchBar } from '../../components/molecules/SearchBar';
 import { ShowcaseSection } from '../../components/showcase';
@@ -56,17 +56,17 @@ function SearchBarContent() {
   const titleStyles: React.CSSProperties = {
     fontSize: '28px',
     fontWeight: 700,
-    color: 'var(--sentinel-accent-primary)',
+    color: 'var(--fing-accent-primary)',
     marginBottom: '8px',
-    fontFamily: 'var(--sentinel-font-display)',
+    fontFamily: 'var(--fing-font-display)',
     textTransform: 'uppercase',
     letterSpacing: '0.1em',
   };
 
   const descStyles: React.CSSProperties = {
     fontSize: '14px',
-    color: 'var(--sentinel-text-secondary)',
-    fontFamily: 'var(--sentinel-font-mono)',
+    color: 'var(--fing-text-secondary)',
+    fontFamily: 'var(--fing-font-mono)',
     textTransform: 'uppercase',
     letterSpacing: '0.03em',
   };
@@ -125,7 +125,7 @@ function SearchBarContent() {
                 fontWeight: 600,
                 marginBottom: '12px',
                 color: '#636E72',
-                fontFamily: 'var(--sentinel-font-mono)',
+                fontFamily: 'var(--fing-font-mono)',
                 textTransform: 'uppercase',
               }}>
                 Resultados de búsqueda:
@@ -134,8 +134,8 @@ function SearchBarContent() {
                 <div key={index} style={{
                   fontSize: '14px',
                   padding: '8px 0',
-                  color: 'var(--sentinel-text-primary)',
-                  fontFamily: 'var(--sentinel-font-mono)',
+                  color: 'var(--fing-text-primary)',
+                  fontFamily: 'var(--fing-font-mono)',
                   borderBottom: index < searchResults.length - 1 ? '1px solid rgba(0,0,0,0.05)' : 'none',
                 }}>
                   • {result}
@@ -188,8 +188,8 @@ function SearchBarContent() {
               fontSize: '16px',
               fontWeight: 600,
               marginBottom: '8px',
-              color: 'var(--sentinel-text-primary)',
-              fontFamily: 'var(--sentinel-font-display)',
+              color: 'var(--fing-text-primary)',
+              fontFamily: 'var(--fing-font-display)',
               textTransform: 'uppercase',
             }}>
               Biblioteca de Documentos
@@ -197,7 +197,7 @@ function SearchBarContent() {
             <p style={{
               fontSize: '14px',
               color: '#636E72',
-              fontFamily: 'var(--sentinel-font-mono)',
+              fontFamily: 'var(--fing-font-mono)',
             }}>
               Encuentra documentos por nombre o contenido
             </p>
@@ -219,8 +219,8 @@ function SearchBarContent() {
                   boxShadow: getNeuPanelShadow(4, 12),
                   fontSize: '14px',
                   cursor: 'pointer',
-                  color: 'var(--sentinel-text-primary)',
-                  fontFamily: 'var(--sentinel-font-mono)',
+                  color: 'var(--fing-text-primary)',
+                  fontFamily: 'var(--fing-font-mono)',
                   transition: 'box-shadow 150ms ease',
                 }}
               >
@@ -238,17 +238,17 @@ function SearchBarContent() {
           boxShadow: getNeuInsetShadow(5, 15),
           background: MARBLE.base,
           fontSize: '12px',
-          fontFamily: 'var(--sentinel-font-mono)',
+          fontFamily: 'var(--fing-font-mono)',
           color: '#636E72',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Altura:</strong> 40px</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Padding:</strong> 0 40px (espacio para íconos)</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Border radius:</strong> 15px</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Ícono Search:</strong> 18px, position left</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Botón Clear:</strong> X icon 16px, position right</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Enter key:</strong> Activa onSearch callback</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Altura:</strong> 40px</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Padding:</strong> 0 40px (espacio para íconos)</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Border radius:</strong> 15px</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Ícono Search:</strong> 18px, position left</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Botón Clear:</strong> X icon 16px, position right</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Enter key:</strong> Activa onSearch callback</p>
         </div>
       </ShowcaseSection>
     </div>

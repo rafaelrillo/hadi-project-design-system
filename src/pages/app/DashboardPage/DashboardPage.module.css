@@ -1,6 +1,6 @@
 /* Path: src/pages/app/DashboardPage/DashboardPage.module.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   SENTINEL DESIGN SYSTEM v4.0 - Dashboard Page
+   FING DESIGN SYSTEM v4.0 - Dashboard Page
 
    STONE MARBLE NEUMORPHISM WITH TYPOGRAPHY RULES
 
@@ -61,13 +61,13 @@
 }
 
 .headerAvatarInitials {
-  font-family: var(--sentinel-font-primary);
+  font-family: var(--fing-font-primary);
   font-size: 20px;
   font-weight: 600;
   letter-spacing: 0.02em;
 
   /* Letterpress teal - brand color */
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
   text-shadow:
     1px 1px 1px var(--shadow-light),
     -1px -1px 1px rgba(58, 106, 114, 0.4);
@@ -86,7 +86,7 @@
 }
 
 .headerTitle {
-  font-family: var(--sentinel-font-primary);
+  font-family: var(--fing-font-primary);
   font-size: 24px;
   font-weight: 600;
   letter-spacing: 0.02em;
@@ -94,7 +94,7 @@
   margin: 0;
 
   /* Letterpress petrol - same as avatar initials */
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
   text-shadow:
     1px 1px 1px var(--shadow-light),
     -1px -1px 1px rgba(58, 106, 114, 0.4);
@@ -141,7 +141,7 @@
 }
 
 .balancePillBriefcase {
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
   filter:
     drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9))
     drop-shadow(0.5px 0.5px 0px rgba(58, 106, 114, 0.4));
@@ -154,7 +154,7 @@
 }
 
 .balancePillValue {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--fing-font-mono);
   font-size: 48px;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -168,7 +168,7 @@
 }
 
 .balancePillLabel {
-  font-family: var(--sentinel-font-primary);
+  font-family: var(--fing-font-primary);
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.05em;
@@ -187,7 +187,7 @@
 .mainChart {
   background: var(--marble-base);
   border: none;
-  border-radius: var(--sentinel-radius-lg);
+  border-radius: var(--fing-radius-lg);
   padding: 24px;
   flex-shrink: 0;
   position: relative;
@@ -213,7 +213,7 @@
     rgba(255, 255, 255, 0.6),
     transparent
   );
-  border-radius: var(--sentinel-radius-lg) var(--sentinel-radius-lg) 0 0;
+  border-radius: var(--fing-radius-lg) var(--fing-radius-lg) 0 0;
   pointer-events: none;
   z-index: 1;
 }
@@ -223,7 +223,7 @@
 }
 
 .chartTitle {
-  font-family: var(--sentinel-font-led);
+  font-family: var(--fing-font-led);
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.06em;
@@ -249,10 +249,10 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  font-family: var(--sentinel-font-led);
+  font-family: var(--fing-font-led);
   font-size: 12px;
   font-weight: 500;
-  color: var(--sentinel-text-secondary);
+  color: var(--fing-text-secondary);
   letter-spacing: 0.04em;
 }
 
@@ -284,10 +284,10 @@
   height: 100%;
 
   /* Glass Teal - like Light Engine buttons */
-  background: var(--sentinel-glass-teal-bg);
+  background: var(--fing-glass-teal-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--sentinel-glass-teal-border);
+  border: 1px solid var(--fing-glass-teal-border);
   border-radius: 12px;
 
   /* Inner highlight */
@@ -298,7 +298,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-family: var(--sentinel-font-primary);
+  font-family: var(--fing-font-primary);
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.03em;
@@ -335,7 +335,7 @@
   flex: 1;
   background: var(--marble-dark);
   border: none;
-  border-radius: var(--sentinel-radius-md);
+  border-radius: var(--fing-radius-md);
   padding: 16px 12px 12px 12px;
   position: relative;
   overflow: hidden;
@@ -350,7 +350,7 @@
   flex-shrink: 0;
   background: var(--marble-dark);
   border: none;
-  border-radius: var(--sentinel-radius-md);
+  border-radius: var(--fing-radius-md);
   padding: 8px;
 
   /* Stone Marble INSET Level 5 - Deep carved effect */
@@ -385,43 +385,43 @@
 }
 
 .kpiValue {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--fing-font-mono);
   font-size: 22px;
   font-weight: 700;
 
   /* Debossed - Mismo efecto que chartMetricValue con color teal */
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
   text-shadow:
     1px 1px 0px rgba(255, 255, 255, 0.8),
     -1px -1px 0px rgba(58, 106, 114, 0.4);
 }
 
 .kpiValuePositive {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--fing-font-mono);
   font-size: 20px;
   font-weight: 700;
 
   /* Debossed - Mismo efecto que chartMetricValue con color positivo */
-  color: var(--sentinel-status-positive);
+  color: var(--fing-status-positive);
   text-shadow:
     1px 1px 0px rgba(255, 255, 255, 0.8),
     -1px -1px 0px rgba(74, 154, 124, 0.4);
 }
 
 .kpiValueWarning {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--fing-font-mono);
   font-size: 22px;
   font-weight: 700;
 
   /* Debossed - Mismo efecto que chartMetricValue con color warning */
-  color: var(--sentinel-status-warning);
+  color: var(--fing-status-warning);
   text-shadow:
     1px 1px 0px rgba(255, 255, 255, 0.8),
     -1px -1px 0px rgba(196, 163, 90, 0.4);
 }
 
 .kpiLabel {
-  font-family: var(--sentinel-font-primary);
+  font-family: var(--fing-font-primary);
   font-size: 9px;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -490,7 +490,7 @@
 .card {
   background: var(--marble-base);
   border: none;
-  border-radius: var(--sentinel-radius-lg);
+  border-radius: var(--fing-radius-lg);
   padding: 16px;
   display: flex;
   flex-direction: column;
@@ -518,7 +518,7 @@
     rgba(255, 255, 255, 0.5),
     transparent
   );
-  border-radius: var(--sentinel-radius-lg) var(--sentinel-radius-lg) 0 0;
+  border-radius: var(--fing-radius-lg) var(--fing-radius-lg) 0 0;
   pointer-events: none;
 }
 
@@ -534,7 +534,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-family: var(--sentinel-font-led);
+  font-family: var(--fing-font-led);
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.06em;
@@ -549,7 +549,7 @@
 }
 
 .cardTitle svg {
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
   filter: drop-shadow(0 0 4px rgba(58, 106, 114, 0.5));
 }
 
@@ -558,17 +558,17 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-family: var(--sentinel-font-led);
+  font-family: var(--fing-font-led);
   font-size: 12px;
   font-weight: 500;
-  color: var(--sentinel-text-tertiary);
-  letter-spacing: var(--sentinel-tracking-led);
+  color: var(--fing-text-tertiary);
+  letter-spacing: var(--fing-tracking-led);
   text-transform: uppercase;
   margin: 0;
 }
 
 .cardTitleSell svg {
-  color: var(--sentinel-status-negative);
+  color: var(--fing-status-negative);
   filter: drop-shadow(0 0 4px rgba(248, 113, 113, 0.4));
 }
 
@@ -604,38 +604,38 @@
 }
 
 .dataTableIconBuy {
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
   filter: drop-shadow(0 0 4px rgba(58, 106, 114, 0.5));
 }
 
 .dataTableIconSell {
-  color: var(--sentinel-status-negative);
+  color: var(--fing-status-negative);
   filter: drop-shadow(0 0 4px rgba(184, 92, 92, 0.4));
 }
 
 .dataTableTitle {
-  font-family: var(--sentinel-font-primary);
+  font-family: var(--fing-font-primary);
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 
   /* INSET typography - Engraved Teal */
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
   text-shadow:
     0.75px 0.75px 0px rgba(255, 255, 255, 0.7),
     -0.75px -0.75px 0px rgba(58, 106, 114, 0.35);
 }
 
 .dataTableTitleSell {
-  font-family: var(--sentinel-font-primary);
+  font-family: var(--fing-font-primary);
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 
   /* INSET typography - Engraved Coral */
-  color: var(--sentinel-status-negative);
+  color: var(--fing-status-negative);
   text-shadow:
     0.75px 0.75px 0px rgba(255, 255, 255, 0.7),
     -0.75px -0.75px 0px rgba(184, 92, 92, 0.35);
@@ -728,7 +728,7 @@
 
 /* Cell: Rank - INSET circle with teal number */
 .dataTableCellRank {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--fing-font-mono);
   font-size: 12px;
   font-weight: 700;
   text-align: center;
@@ -746,7 +746,7 @@
     inset -1.5px -1.5px 3px rgba(255, 255, 255, 0.9);
 
   /* RAISED typography inside INSET - Teal */
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
   text-shadow:
     -0.5px -0.5px 0px rgba(255, 255, 255, 0.9),
     0.5px 0.5px 0px rgba(58, 106, 114, 0.35);
@@ -754,7 +754,7 @@
 
 /* Cell: Rank Sell - INSET circle with coral number */
 .dataTableCellRankSell {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--fing-font-mono);
   font-size: 12px;
   font-weight: 700;
   text-align: center;
@@ -772,7 +772,7 @@
     inset -1.5px -1.5px 3px rgba(255, 255, 255, 0.9);
 
   /* RAISED typography inside INSET - Coral */
-  color: var(--sentinel-status-negative);
+  color: var(--fing-status-negative);
   text-shadow:
     -0.5px -0.5px 0px rgba(255, 255, 255, 0.9),
     0.5px 0.5px 0px rgba(184, 92, 92, 0.35);
@@ -780,7 +780,7 @@
 
 /* Cell: Ticker - INSET typography with subtle fill (inside RAISED row) */
 .dataTableCellTicker {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--fing-font-mono);
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.06em;
@@ -802,7 +802,7 @@
 
 /* Cell: Price - INSET typography subtle */
 .dataTableCellPrice {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--fing-font-mono);
   font-size: 12px;
   font-weight: 500;
   text-align: right;
@@ -817,7 +817,7 @@
 
 /* Cell: Change - INSET typography colored */
 .dataTableCellChange {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--fing-font-mono);
   font-size: 12px;
   font-weight: 600;
   text-align: right;
@@ -826,7 +826,7 @@
 
 .dataTableCellChange[data-positive="true"] {
   /* INSET typography - Engraved Positive green */
-  color: var(--sentinel-status-positive);
+  color: var(--fing-status-positive);
   text-shadow:
     0.75px 0.75px 0px rgba(255, 255, 255, 0.8),
     -0.75px -0.75px 0px rgba(74, 154, 124, 0.35);
@@ -834,7 +834,7 @@
 
 .dataTableCellChange[data-positive="false"] {
   /* INSET typography - Engraved Negative coral */
-  color: var(--sentinel-status-negative);
+  color: var(--fing-status-negative);
   text-shadow:
     0.75px 0.75px 0px rgba(255, 255, 255, 0.8),
     -0.75px -0.75px 0px rgba(184, 92, 92, 0.35);
@@ -862,7 +862,7 @@
   padding: 8px;
   margin: 0 -4px;
   background: var(--marble-dark);
-  border-radius: var(--sentinel-radius-md);
+  border-radius: var(--fing-radius-md);
 
   /* Stone Marble - INSET Level 1 */
   box-shadow: var(--inset-1);
@@ -891,7 +891,7 @@
 .mobileValueCard {
   background: var(--marble-base);
   border: none;
-  border-radius: var(--sentinel-radius-lg);
+  border-radius: var(--fing-radius-lg);
   padding: 18px 16px;
   display: flex;
   flex-direction: column;
@@ -929,12 +929,12 @@
 }
 
 .mobileValueIcon {
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
   filter: drop-shadow(0 0 4px rgba(58, 106, 114, 0.5));
 }
 
 .mobileValueLabel {
-  font-family: var(--sentinel-font-led);
+  font-family: var(--fing-font-led);
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -954,7 +954,7 @@
 }
 
 .mobileValueAmount {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--fing-font-mono);
   font-size: 34px;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -968,7 +968,7 @@
 }
 
 .mobileValueChange {
-  font-family: var(--sentinel-font-numeric);
+  font-family: var(--fing-font-numeric);
   font-size: 16px;
   font-weight: 600;
   letter-spacing: 0.02em;
@@ -977,7 +977,7 @@
 
 .mobileValueChange[data-positive="true"] {
   /* Contenedor RAISED → Tipografia INSET (engraved colored) */
-  color: var(--sentinel-status-positive);
+  color: var(--fing-status-positive);
   text-shadow:
     0.75px 0.75px 0px rgba(255, 255, 255, 0.7),
     -0.75px -0.75px 0px rgba(74, 154, 124, 0.35);
@@ -985,7 +985,7 @@
 
 .mobileValueChange[data-positive="false"] {
   /* Contenedor RAISED → Tipografia INSET (engraved colored) */
-  color: var(--sentinel-status-negative);
+  color: var(--fing-status-negative);
   text-shadow:
     0.75px 0.75px 0px rgba(255, 255, 255, 0.7),
     -0.75px -0.75px 0px rgba(184, 92, 92, 0.35);
@@ -995,7 +995,7 @@
 .mobileChartCard {
   background: var(--marble-base);
   border: none;
-  border-radius: var(--sentinel-radius-lg);
+  border-radius: var(--fing-radius-lg);
   padding: 10px 12px;
   display: flex;
   flex-direction: column;
@@ -1012,7 +1012,7 @@
   overflow: hidden;
   padding: 8px;
   background: var(--marble-dark);
-  border-radius: var(--sentinel-radius-md);
+  border-radius: var(--fing-radius-md);
 
   /* Stone Marble INSET - Contenedor del chart */
   box-shadow: var(--inset-1);
@@ -1029,7 +1029,7 @@
   display: flex;
   align-items: center;
   gap: 5px;
-  font-family: var(--sentinel-font-primary);
+  font-family: var(--fing-font-primary);
   font-size: 10px;
   font-weight: 500;
 
@@ -1058,7 +1058,7 @@
 .mobilePicksCard {
   background: var(--marble-base);
   border: none;
-  border-radius: var(--sentinel-radius-lg);
+  border-radius: var(--fing-radius-lg);
   padding: 10px 12px;
   display: flex;
   flex-direction: column;
@@ -1079,12 +1079,12 @@
 }
 
 .mobilePicksIcon {
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
   filter: drop-shadow(0 0 4px rgba(58, 106, 114, 0.5));
 }
 
 .mobilePicksTitle {
-  font-family: var(--sentinel-font-led);
+  font-family: var(--fing-font-led);
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -1104,7 +1104,7 @@
   gap: 4px;
   font-size: 12px;
   font-weight: 500;
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
   background: none;
   border: none;
   padding: 0;
@@ -1231,12 +1231,12 @@
 }
 
 .mobilePickRank {
-  font-family: var(--sentinel-font-numeric);
+  font-family: var(--fing-font-numeric);
   font-size: 11px;
   font-weight: 600;
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
   text-shadow: 0 0 6px rgba(58, 106, 114, 0.5);
-  letter-spacing: var(--sentinel-tracking-led);
+  letter-spacing: var(--fing-tracking-led);
 }
 
 .mobilePickInfo {
@@ -1244,7 +1244,7 @@
 }
 
 .mobilePickTicker {
-  font-family: var(--sentinel-font-ticker);
+  font-family: var(--fing-font-ticker);
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -1257,15 +1257,15 @@
 }
 
 .mobilePickPrice {
-  font-family: var(--sentinel-font-numeric);
+  font-family: var(--fing-font-numeric);
   font-size: 11px;
   font-weight: 400;
-  color: var(--sentinel-text-secondary);
+  color: var(--fing-text-secondary);
   letter-spacing: 0.05em;
 }
 
 .mobilePickChange {
-  font-family: var(--sentinel-font-numeric);
+  font-family: var(--fing-font-numeric);
   font-size: 12px;
   font-weight: 600;
   min-width: 50px;
@@ -1275,7 +1275,7 @@
 
 .mobilePickChange[data-positive="true"] {
   /* GLASS en contexto RAISED → Tipografia engraved colored */
-  color: var(--sentinel-status-positive);
+  color: var(--fing-status-positive);
   text-shadow:
     0.5px 0.5px 0px rgba(255, 255, 255, 0.7),
     -0.5px -0.5px 0px rgba(74, 154, 124, 0.25);
@@ -1283,7 +1283,7 @@
 
 .mobilePickChange[data-positive="false"] {
   /* GLASS en contexto RAISED → Tipografia engraved colored */
-  color: var(--sentinel-status-negative);
+  color: var(--fing-status-negative);
   text-shadow:
     0.5px 0.5px 0px rgba(255, 255, 255, 0.7),
     -0.5px -0.5px 0px rgba(184, 92, 92, 0.25);
@@ -1299,7 +1299,7 @@
 
 /* Sells Icon */
 .mobileSellsIcon {
-  color: var(--sentinel-status-negative);
+  color: var(--fing-status-negative);
   filter: drop-shadow(0 0 4px rgba(248, 113, 113, 0.4));
 }
 
@@ -1323,7 +1323,7 @@
   -webkit-backdrop-filter: blur(12px);
 
   border: 1px solid rgba(58, 106, 114, 0.25);
-  border-radius: var(--sentinel-radius-lg);
+  border-radius: var(--fing-radius-lg);
   cursor: pointer;
   transition: all 0.15s ease;
   -webkit-tap-highlight-color: transparent;
@@ -1344,7 +1344,7 @@
   right: 20%;
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(58, 106, 114, 0.3), rgba(58, 106, 114, 0.4), rgba(58, 106, 114, 0.3), transparent);
-  border-radius: var(--sentinel-radius-lg) var(--sentinel-radius-lg) 0 0;
+  border-radius: var(--fing-radius-lg) var(--fing-radius-lg) 0 0;
   pointer-events: none;
 }
 
@@ -1363,7 +1363,7 @@
 }
 
 .mobileNewsIcon {
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
   flex-shrink: 0;
   filter: drop-shadow(0 0 4px rgba(58, 106, 114, 0.5));
 }
@@ -1376,7 +1376,7 @@
 }
 
 .mobileNewsTitle {
-  font-family: var(--sentinel-font-led);
+  font-family: var(--fing-font-led);
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.06em;
@@ -1391,11 +1391,11 @@
 
 .mobileNewsCount {
   font-size: 12px;
-  color: var(--sentinel-text-tertiary);
+  color: var(--fing-text-tertiary);
 }
 
 .mobileNewsArrow {
-  color: var(--sentinel-text-tertiary);
+  color: var(--fing-text-tertiary);
   flex-shrink: 0;
 }
 
@@ -1420,7 +1420,7 @@
   border-radius: 24px;
   border: none;
   cursor: pointer;
-  font-family: var(--sentinel-font-primary);
+  font-family: var(--fing-font-primary);
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.05em;
@@ -1433,7 +1433,7 @@
     -4px -4px 8px rgba(255, 255, 255, 0.95);
 
   /* Stone Marble INSET typography */
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
   text-shadow:
     1px 1px 0px rgba(255, 255, 255, 0.85),
     -1px -1px 0px rgba(58, 106, 114, 0.3);
@@ -1463,7 +1463,7 @@
 }
 
 .raisedButton:hover .buttonIcon {
-  color: var(--sentinel-accent-secondary, #6fb3b5);
+  color: var(--fing-accent-secondary, #6fb3b5);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -1490,7 +1490,7 @@
   border-radius: 24px;
   border: none;
   cursor: pointer;
-  font-family: var(--sentinel-font-primary);
+  font-family: var(--fing-font-primary);
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.05em;
@@ -1503,7 +1503,7 @@
     -2px -2px 4px rgba(255, 255, 255, 0.95);
 
   /* Stone Marble INSET typography */
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
   text-shadow:
     1px 1px 0px rgba(255, 255, 255, 0.85),
     -1px -1px 0px rgba(58, 106, 114, 0.3);
@@ -1535,7 +1535,7 @@
 }
 
 .pillFrameButton:hover .buttonIcon {
-  color: var(--sentinel-accent-secondary, #6fb3b5);
+  color: var(--fing-accent-secondary, #6fb3b5);
 }
 
 /* Small button wrapper (card headers) */
@@ -1557,7 +1557,7 @@
   border-radius: 20px;
   border: none;
   cursor: pointer;
-  font-family: var(--sentinel-font-primary);
+  font-family: var(--fing-font-primary);
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.05em;
@@ -1570,7 +1570,7 @@
     -1px -1px 2px rgba(255, 255, 255, 0.95);
 
   /* Stone Marble INSET typography */
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
   text-shadow:
     0.75px 0.75px 0px rgba(255, 255, 255, 0.85),
     -0.75px -0.75px 0px rgba(58, 106, 114, 0.25);
@@ -1602,7 +1602,7 @@
 }
 
 .pillFrameButtonSm:hover .buttonIcon {
-  color: var(--sentinel-accent-secondary, #6fb3b5);
+  color: var(--fing-accent-secondary, #6fb3b5);
 }
 
 /* Icon circle - INSET */
@@ -1636,7 +1636,7 @@
 
 /* Icon - RAISED effect via filter */
 .buttonIcon {
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
   filter:
     drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9))
     drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4));

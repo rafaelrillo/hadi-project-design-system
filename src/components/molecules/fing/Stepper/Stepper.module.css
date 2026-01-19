@@ -1,0 +1,217 @@
+/* Path: src/components/molecules/fing/Stepper/Stepper.module.css */
+
+/* Container */
+.container {
+  display: flex;
+  width: 100%;
+}
+
+.horizontal {
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.vertical {
+  flex-direction: column;
+}
+
+/* Step */
+.step {
+  display: flex;
+  position: relative;
+}
+
+.horizontal .step {
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+}
+
+.horizontal .step:last-child {
+  flex: 0;
+}
+
+.vertical .step {
+  flex-direction: row;
+  align-items: flex-start;
+  padding-bottom: 24px;
+}
+
+.vertical .step:last-child {
+  padding-bottom: 0;
+}
+
+/* Indicator */
+.indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 2px solid var(--fing-border-default);
+  background: var(--fing-bg-surface);
+  color: var(--fing-text-tertiary);
+  cursor: default;
+  transition: all var(--fing-duration-fast) var(--fing-ease-default);
+}
+
+/* Size variants */
+.sizeSm .indicator {
+  width: 24px;
+  height: 24px;
+  font-size: 11px;
+}
+
+.sizeMd .indicator {
+  width: 32px;
+  height: 32px;
+  font-size: 13px;
+}
+
+.sizeLg .indicator {
+  width: 40px;
+  height: 40px;
+  font-size: 15px;
+}
+
+/* Status variants */
+.completed .indicator {
+  background: var(--fing-accent-primary);
+  border-color: var(--fing-accent-primary);
+  color: white;
+}
+
+.active .indicator {
+  background: var(--fing-bg-elevated);
+  border-color: var(--fing-accent-primary);
+  color: var(--fing-accent-primary);
+  box-shadow: 0 0 0 4px rgba(var(--fing-accent-primary-rgb, 91, 163, 165), 0.15);
+}
+
+.pending .indicator {
+  background: var(--fing-bg-surface);
+  border-color: var(--fing-border-default);
+  color: var(--fing-text-tertiary);
+}
+
+/* Clickable */
+.clickable .indicator {
+  cursor: pointer;
+}
+
+.clickable .indicator:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 0 4px rgba(var(--fing-accent-primary-rgb, 91, 163, 165), 0.2);
+}
+
+.clickable .indicator:active {
+  transform: scale(0.98);
+}
+
+/* Number */
+.number {
+  font-family: var(--fing-font-numeric);
+  font-weight: 600;
+  letter-spacing: var(--fing-tracking-led);
+}
+
+/* Dot */
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+/* Content */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.horizontal .content {
+  align-items: center;
+  text-align: center;
+  margin-top: 8px;
+}
+
+.vertical .content {
+  margin-left: 12px;
+  padding-top: 4px;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--fing-text-secondary);
+  transition: color var(--fing-duration-fast) var(--fing-ease-default);
+}
+
+.active .label {
+  color: var(--fing-text-primary);
+  font-weight: 600;
+}
+
+.completed .label {
+  color: var(--fing-text-primary);
+}
+
+.description {
+  font-size: 11px;
+  color: var(--fing-text-tertiary);
+  max-width: 120px;
+}
+
+.horizontal .description {
+  max-width: 100px;
+}
+
+/* Connector */
+.connector {
+  position: absolute;
+  background: var(--fing-border-default);
+  transition: background var(--fing-duration-fast) var(--fing-ease-default);
+}
+
+.connectorCompleted {
+  background: var(--fing-accent-primary);
+}
+
+/* Horizontal connector */
+.horizontal .connector {
+  top: 15px; /* Half of medium indicator height minus border */
+  left: calc(50% + 20px);
+  right: calc(-50% + 20px);
+  height: 2px;
+}
+
+.horizontal.sizeSm .connector {
+  top: 11px;
+  left: calc(50% + 16px);
+  right: calc(-50% + 16px);
+}
+
+.horizontal.sizeLg .connector {
+  top: 19px;
+  left: calc(50% + 24px);
+  right: calc(-50% + 24px);
+}
+
+/* Vertical connector */
+.vertical .connector {
+  left: 15px; /* Half of medium indicator width minus border */
+  top: 36px;
+  bottom: 4px;
+  width: 2px;
+}
+
+.vertical.sizeSm .connector {
+  left: 11px;
+  top: 28px;
+}
+
+.vertical.sizeLg .connector {
+  left: 19px;
+  top: 44px;
+}

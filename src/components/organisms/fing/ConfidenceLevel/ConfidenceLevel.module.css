@@ -1,0 +1,293 @@
+/* Path: src/components/organisms/fing/ConfidenceLevel/ConfidenceLevel.module.css */
+/* ═══════════════════════════════════════════════════════════════════════════════
+   FING DESIGN SYSTEM - ConfidenceLevel
+
+   Circular indicator showing system analysis confidence
+   Compact and elegant with ring progress visualization
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   CONTAINER
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--fing-space-3);
+  padding: var(--fing-space-4);
+  /* Glassmorphism effect */
+  background: linear-gradient(
+    135deg,
+    rgba(16, 18, 26, 0.9) 0%,
+    rgba(16, 18, 26, 0.7) 100%
+  );
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--fing-radius-lg);
+  font-family: var(--fing-font-primary);
+  box-shadow: var(--fing-inner-highlight), var(--fing-shadow-card);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Top light line effect */
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   SIZE VARIANTS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.sm {
+  padding: var(--fing-space-3);
+  gap: var(--fing-space-2);
+}
+
+.sm .ringContainer {
+  width: 72px;
+  height: 72px;
+}
+
+.sm .levelText {
+  font-size: var(--fing-text-sm);
+}
+
+.md .ringContainer {
+  width: 96px;
+  height: 96px;
+}
+
+.lg {
+  padding: var(--fing-space-5);
+  gap: var(--fing-space-4);
+}
+
+.lg .ringContainer {
+  width: 120px;
+  height: 120px;
+}
+
+.lg .levelText {
+  font-size: var(--fing-text-xl);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   LEVEL COLORS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.high {
+  --confidence-color: var(--fing-accent-primary);
+  --confidence-color-rgb: 91, 163, 165;
+}
+
+.medium {
+  --confidence-color: var(--fing-text-secondary);
+  --confidence-color-rgb: 154, 160, 166;
+}
+
+.low {
+  --confidence-color: var(--fing-status-warning);
+  --confidence-color-rgb: 196, 163, 90;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   LABEL
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.label {
+  font-size: var(--fing-text-xs);
+  font-weight: var(--fing-font-medium);
+  color: var(--fing-text-tertiary);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   RING CONTAINER
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.ringContainer {
+  position: relative;
+  width: 96px;
+  height: 96px;
+}
+
+.ring {
+  width: 100%;
+  height: 100%;
+}
+
+/* Background ring */
+.ringBg {
+  stroke: var(--fing-bg-subtle);
+}
+
+/* Progress ring */
+.ringProgress {
+  stroke: var(--confidence-color);
+  transition: stroke-dashoffset 700ms var(--fing-ease-smooth),
+              stroke 700ms var(--fing-ease-smooth);
+}
+
+/* Glow effect */
+.ringGlow {
+  stroke: var(--confidence-color);
+  opacity: 0.2;
+  filter: blur(3px);
+  transition: stroke-dashoffset 700ms var(--fing-ease-smooth),
+              stroke 700ms var(--fing-ease-smooth);
+}
+
+.animated .ringProgress {
+  animation: ringPulse 4s ease-in-out infinite;
+}
+
+@keyframes ringPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   RING CENTER
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.ringCenter {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.percentageText {
+  font-size: var(--fing-text-xl);
+  font-weight: 600;
+  font-family: var(--fing-font-numeric);
+  color: var(--confidence-color);
+  letter-spacing: var(--fing-tracking-led);
+  text-shadow: 0 0 15px rgba(var(--confidence-color-rgb), 0.6),
+               0 0 30px rgba(var(--confidence-color-rgb), 0.3);
+  transition: color 700ms var(--fing-ease-smooth),
+              text-shadow 700ms var(--fing-ease-smooth);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   LEVEL INDICATOR (bars alternative to percentage)
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.levelIndicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.levelBars {
+  display: flex;
+  gap: 4px;
+  align-items: flex-end;
+  height: 24px;
+}
+
+.bar {
+  width: 6px;
+  background-color: var(--fing-bg-subtle);
+  border-radius: 2px;
+  transition: background-color 700ms var(--fing-ease-smooth),
+              height 300ms var(--fing-ease-smooth);
+}
+
+.bar:nth-child(1) {
+  height: 8px;
+}
+
+.bar:nth-child(2) {
+  height: 14px;
+}
+
+.bar:nth-child(3) {
+  height: 20px;
+}
+
+.barActive {
+  background-color: var(--confidence-color);
+}
+
+.animated .barActive {
+  animation: barPulse 3s ease-in-out infinite;
+}
+
+@keyframes barPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   LEVEL DISPLAY
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.levelDisplay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.levelText {
+  font-family: var(--fing-font-numeric);
+  font-size: var(--fing-text-base);
+  font-weight: 600;
+  color: var(--confidence-color);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-shadow: 0 0 12px rgba(var(--confidence-color-rgb), 0.5),
+               0 0 24px rgba(var(--confidence-color-rgb), 0.25);
+  transition: color 700ms var(--fing-ease-smooth),
+              text-shadow 700ms var(--fing-ease-smooth);
+}
+
+.percentageSubtext {
+  font-size: var(--fing-text-xs);
+  color: var(--fing-text-tertiary);
+  text-transform: lowercase;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   REDUCED MOTION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .animated .ringProgress,
+  .animated .barActive {
+    animation: none;
+  }
+
+  .ringProgress,
+  .ringGlow,
+  .bar,
+  .levelText {
+    transition: none;
+  }
+}

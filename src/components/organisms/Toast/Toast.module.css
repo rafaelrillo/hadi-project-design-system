@@ -1,6 +1,6 @@
 /* Path: src/components/organisms/Toast/Toast.module.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   SENTINEL DESIGN SYSTEM v3.2 - Toast Notification System
+   FING DESIGN SYSTEM v3.2 - Toast Notification System
 
    LIGHT NEUMORPHISM - Elevated light notifications
    - Light frosted glass backgrounds
@@ -15,11 +15,11 @@
 
 .toastContainer {
   position: fixed;
-  z-index: var(--sentinel-z-notification);
+  z-index: var(--fing-z-notification);
   display: flex;
   flex-direction: column;
   pointer-events: none;
-  padding: var(--sentinel-space-4);
+  padding: var(--fing-space-4);
   max-width: 420px;
   width: 100%;
 }
@@ -64,19 +64,19 @@
 .toast {
   display: flex;
   align-items: flex-start;
-  gap: var(--sentinel-space-3);
-  padding: var(--sentinel-space-4);
+  gap: var(--fing-space-3);
+  padding: var(--fing-space-4);
   background: rgba(255, 255, 255, 0.95);
   border: 1px solid rgba(255, 255, 255, 0.8);
-  border-radius: var(--sentinel-radius-lg);
+  border-radius: var(--fing-radius-lg);
   pointer-events: auto;
   max-width: 100%;
   overflow: hidden;
   position: relative;
 
   /* Strong glass blur */
-  backdrop-filter: blur(var(--sentinel-blur-lg));
-  -webkit-backdrop-filter: blur(var(--sentinel-blur-lg));
+  backdrop-filter: blur(var(--fing-blur-lg));
+  -webkit-backdrop-filter: blur(var(--fing-blur-lg));
 
   /* Light neumorphic elevation */
   box-shadow:
@@ -102,7 +102,7 @@
     rgba(255, 255, 255, 0.9),
     transparent
   );
-  border-radius: var(--sentinel-radius-lg) var(--sentinel-radius-lg) 0 0;
+  border-radius: var(--fing-radius-lg) var(--fing-radius-lg) 0 0;
   pointer-events: none;
 }
 
@@ -120,7 +120,7 @@
 }
 
 .typeDefault .toastIcon {
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
 }
 
 .typeSuccess {
@@ -134,7 +134,7 @@
 }
 
 .typeSuccess .toastIcon {
-  color: var(--sentinel-status-positive);
+  color: var(--fing-status-positive);
 }
 
 .typeError {
@@ -148,7 +148,7 @@
 }
 
 .typeError .toastIcon {
-  color: var(--sentinel-status-negative);
+  color: var(--fing-status-negative);
 }
 
 .typeWarning {
@@ -162,7 +162,7 @@
 }
 
 .typeWarning .toastIcon {
-  color: var(--sentinel-status-warning);
+  color: var(--fing-status-warning);
 }
 
 .typeInfo {
@@ -176,7 +176,7 @@
 }
 
 .typeInfo .toastIcon {
-  color: var(--sentinel-status-info);
+  color: var(--fing-status-info);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -223,7 +223,7 @@
 }
 
 .glassDefault .toastIcon {
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
 }
 
 /* Glass Success (green) */
@@ -245,7 +245,7 @@
 }
 
 .glassSuccess .toastIcon {
-  color: var(--sentinel-status-positive);
+  color: var(--fing-status-positive);
 }
 
 /* Glass Error (red) */
@@ -267,7 +267,7 @@
 }
 
 .glassError .toastIcon {
-  color: var(--sentinel-status-negative);
+  color: var(--fing-status-negative);
 }
 
 /* Glass Warning (orange/amber) */
@@ -289,7 +289,7 @@
 }
 
 .glassWarning .toastIcon {
-  color: var(--sentinel-status-warning);
+  color: var(--fing-status-warning);
 }
 
 /* Glass Info (blue) */
@@ -311,7 +311,7 @@
 }
 
 .glassInfo .toastIcon {
-  color: var(--sentinel-status-info);
+  color: var(--fing-status-info);
 }
 
 /* Dynamic shadows - Light Engine Integration */
@@ -340,24 +340,24 @@
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--sentinel-space-1);
+  gap: var(--fing-space-1);
 }
 
 .toastTitle {
   margin: 0;
-  font-family: var(--sentinel-font-primary);
-  font-size: var(--sentinel-text-sm);
-  font-weight: var(--sentinel-font-semibold);
-  color: var(--sentinel-text-primary);
-  line-height: var(--sentinel-leading-tight);
+  font-family: var(--fing-font-primary);
+  font-size: var(--fing-text-sm);
+  font-weight: var(--fing-font-semibold);
+  color: var(--fing-text-primary);
+  line-height: var(--fing-leading-tight);
 }
 
 .toastDescription {
   margin: 0;
-  font-family: var(--sentinel-font-primary);
-  font-size: var(--sentinel-text-sm);
-  color: var(--sentinel-text-secondary);
-  line-height: var(--sentinel-leading-normal);
+  font-family: var(--fing-font-primary);
+  font-size: var(--fing-text-sm);
+  color: var(--fing-text-secondary);
+  line-height: var(--fing-leading-normal);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -366,20 +366,20 @@
 
 .toastAction {
   align-self: flex-start;
-  margin-top: var(--sentinel-space-2);
-  padding: var(--sentinel-space-1) var(--sentinel-space-3);
+  margin-top: var(--fing-space-2);
+  padding: var(--fing-space-1) var(--fing-space-3);
   background: rgba(58, 106, 114, 0.1);
   border: 1px solid rgba(58, 106, 114, 0.3);
-  border-radius: var(--sentinel-radius-md);
-  color: var(--sentinel-accent-primary);
-  font-family: var(--sentinel-font-primary);
-  font-size: var(--sentinel-text-xs);
-  font-weight: var(--sentinel-font-medium);
+  border-radius: var(--fing-radius-md);
+  color: var(--fing-accent-primary);
+  font-family: var(--fing-font-primary);
+  font-size: var(--fing-text-xs);
+  font-weight: var(--fing-font-medium);
   cursor: pointer;
   transition: all 0.15s ease;
 
-  backdrop-filter: blur(var(--sentinel-blur-xs));
-  -webkit-backdrop-filter: blur(var(--sentinel-blur-xs));
+  backdrop-filter: blur(var(--fing-blur-xs));
+  -webkit-backdrop-filter: blur(var(--fing-blur-xs));
 
   box-shadow:
     2px 2px 4px rgba(163, 177, 198, 0.2),
@@ -414,8 +414,8 @@
   padding: 0;
   background: rgba(255, 255, 255, 0.7);
   border: none;
-  border-radius: var(--sentinel-radius-sm);
-  color: var(--sentinel-text-tertiary);
+  border-radius: var(--fing-radius-sm);
+  color: var(--fing-text-tertiary);
   cursor: pointer;
   transition: all 0.15s ease;
 
@@ -425,7 +425,7 @@
 }
 
 .toastDismiss:hover {
-  color: var(--sentinel-text-primary);
+  color: var(--fing-text-primary);
   background: rgba(255, 255, 255, 0.9);
   box-shadow:
     3px 3px 6px rgba(163, 177, 198, 0.25),
@@ -448,28 +448,28 @@
 
 /* Enter animations */
 .enterLeft {
-  animation: slideInLeft var(--sentinel-duration-normal) var(--sentinel-ease-out) forwards;
+  animation: slideInLeft var(--fing-duration-normal) var(--fing-ease-out) forwards;
 }
 
 .enterRight {
-  animation: slideInRight var(--sentinel-duration-normal) var(--sentinel-ease-out) forwards;
+  animation: slideInRight var(--fing-duration-normal) var(--fing-ease-out) forwards;
 }
 
 .enterCenter {
-  animation: slideInDown var(--sentinel-duration-normal) var(--sentinel-ease-out) forwards;
+  animation: slideInDown var(--fing-duration-normal) var(--fing-ease-out) forwards;
 }
 
 /* Exit animations */
 .exitLeft {
-  animation: slideOutLeft var(--sentinel-duration-fast) var(--sentinel-ease-in) forwards;
+  animation: slideOutLeft var(--fing-duration-fast) var(--fing-ease-in) forwards;
 }
 
 .exitRight {
-  animation: slideOutRight var(--sentinel-duration-fast) var(--sentinel-ease-in) forwards;
+  animation: slideOutRight var(--fing-duration-fast) var(--fing-ease-in) forwards;
 }
 
 .exitCenter {
-  animation: slideOutUp var(--sentinel-duration-fast) var(--sentinel-ease-in) forwards;
+  animation: slideOutUp var(--fing-duration-fast) var(--fing-ease-in) forwards;
 }
 
 @keyframes slideInLeft {
@@ -575,7 +575,7 @@
 @media (max-width: 480px) {
   .toastContainer {
     max-width: 100%;
-    padding: var(--sentinel-space-3);
+    padding: var(--fing-space-3);
   }
 
   .positionTopLeft,
@@ -595,6 +595,6 @@
   }
 
   .toast {
-    border-radius: var(--sentinel-radius-md);
+    border-radius: var(--fing-radius-md);
   }
 }

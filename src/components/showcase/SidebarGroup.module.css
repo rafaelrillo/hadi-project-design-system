@@ -1,28 +1,28 @@
 /* Path: src/components/showcase/SidebarGroup.module.css */
-/* SENTINEL Design System Version */
+/* FING Design System Version */
 
 /* Group Header */
 .groupHeader {
   display: flex;
   align-items: center;
-  gap: var(--sentinel-space-2);
+  gap: var(--fing-space-2);
   padding: 12px 16px;
   cursor: pointer;
   background-color: transparent;
   border: none;
   width: 100%;
-  color: var(--sentinel-text-primary);
-  font-family: var(--sentinel-font-primary);
-  font-size: var(--sentinel-text-sm);
-  font-weight: var(--sentinel-font-medium);
-  transition: all var(--sentinel-transition-fast);
+  color: var(--fing-text-primary);
+  font-family: var(--fing-font-primary);
+  font-size: var(--fing-text-sm);
+  font-weight: var(--fing-font-medium);
+  transition: all var(--fing-transition-fast);
   user-select: none;
   letter-spacing: 0.02em;
 }
 
 .groupHeader:hover {
-  background-color: var(--sentinel-bg-subtle);
-  color: var(--sentinel-accent-primary);
+  background-color: var(--fing-bg-subtle);
+  color: var(--fing-accent-primary);
 }
 
 /* Title */
@@ -46,33 +46,33 @@
 .item {
   display: flex;
   align-items: center;
-  gap: var(--sentinel-space-2);
-  padding: var(--sentinel-space-2) 16px var(--sentinel-space-2) 40px;
-  color: var(--sentinel-text-secondary);
+  gap: var(--fing-space-2);
+  padding: var(--fing-space-2) 16px var(--fing-space-2) 40px;
+  color: var(--fing-text-secondary);
   text-decoration: none;
-  font-family: var(--sentinel-font-primary);
+  font-family: var(--fing-font-primary);
   font-size: 12px;
-  font-weight: var(--sentinel-font-regular);
+  font-weight: var(--fing-font-regular);
   background-color: transparent;
   border-left: 3px solid transparent;
-  transition: all var(--sentinel-transition-fast);
+  transition: all var(--fing-transition-fast);
   letter-spacing: 0.02em;
 }
 
 .item:hover {
-  background-color: var(--sentinel-bg-subtle);
-  color: var(--sentinel-text-primary);
-  border-left-color: var(--sentinel-border-default);
+  background-color: var(--fing-bg-subtle);
+  color: var(--fing-text-primary);
+  border-left-color: var(--fing-border-default);
 }
 
 .itemActive {
-  color: var(--sentinel-accent-primary);
-  font-weight: var(--sentinel-font-medium);
-  background-color: var(--sentinel-bg-elevated);
-  border-left: 3px solid var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
+  font-weight: var(--fing-font-medium);
+  background-color: var(--fing-bg-elevated);
+  border-left: 3px solid var(--fing-accent-primary);
 }
 
 .itemActive:hover {
-  background-color: var(--sentinel-bg-elevated);
-  color: var(--sentinel-accent-primary);
+  background-color: var(--fing-bg-elevated);
+  color: var(--fing-accent-primary);
 }

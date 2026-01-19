@@ -2,7 +2,7 @@
 import { useMemo } from 'react';
 import type { EChartsOption } from 'echarts';
 import { EChart } from './EChart';
-import { sentinelColors, chartPalette, tooltipFormatters } from './sentinelTheme';
+import { fingColors, chartPalette, tooltipFormatters } from './fingTheme';
 import type { SeriesData, TimeSeriesDataPoint, BaseChartProps } from './types';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -77,8 +77,8 @@ export function LineChart({
                 const point = paramArray[0];
                 return `
                   <div style="font-family: 'Space Mono', monospace; font-size: 11px;">
-                    <div style="color: ${sentinelColors.textTertiary}; margin-bottom: 4px;">${point.axisValue}</div>
-                    <div style="color: ${sentinelColors.textPrimary}; font-weight: 600;">${formatValue(point.value)}</div>
+                    <div style="color: ${fingColors.textTertiary}; margin-bottom: 4px;">${point.axisValue}</div>
+                    <div style="color: ${fingColors.textPrimary}; font-weight: 600;">${formatValue(point.value)}</div>
                   </div>
                 `;
               },
@@ -90,9 +90,9 @@ export function LineChart({
           type: 'category',
           data: times,
           show: !minimal,
-          axisLine: { lineStyle: { color: sentinelColors.borderSubtle } },
+          axisLine: { lineStyle: { color: fingColors.borderSubtle } },
           axisLabel: {
-            color: sentinelColors.textTertiary,
+            color: fingColors.textTertiary,
             fontSize: 10,
             fontFamily: "'Space Mono', monospace",
           },
@@ -104,13 +104,13 @@ export function LineChart({
           axisLine: { show: false },
           axisTick: { show: false },
           axisLabel: {
-            color: sentinelColors.textTertiary,
+            color: fingColors.textTertiary,
             fontSize: 10,
             fontFamily: "'Space Mono', monospace",
             formatter: (value: number) => formatValue(value),
           },
           splitLine: {
-            lineStyle: { color: sentinelColors.borderSubtle },
+            lineStyle: { color: fingColors.borderSubtle },
             show: !minimal,
           },
         },
@@ -178,13 +178,13 @@ export function LineChart({
                 color: string;
               }>;
               let html = `<div style="font-family: 'Space Mono', monospace; font-size: 11px;">`;
-              html += `<div style="color: ${sentinelColors.textTertiary}; margin-bottom: 8px;">${paramArray[0].axisValue}</div>`;
+              html += `<div style="color: ${fingColors.textTertiary}; margin-bottom: 8px;">${paramArray[0].axisValue}</div>`;
               paramArray.forEach((p) => {
                 html += `
                   <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
                     <span style="width: 8px; height: 8px; border-radius: 50%; background: ${p.color};"></span>
-                    <span style="color: ${sentinelColors.textSecondary};">${p.seriesName}</span>
-                    <span style="color: ${sentinelColors.textPrimary}; font-weight: 500; margin-left: auto;">${formatValue(p.value)}</span>
+                    <span style="color: ${fingColors.textSecondary};">${p.seriesName}</span>
+                    <span style="color: ${fingColors.textPrimary}; font-weight: 500; margin-left: auto;">${formatValue(p.value)}</span>
                   </div>
                 `;
               });
@@ -198,7 +198,7 @@ export function LineChart({
         top: title ? 30 : 0,
         right: 0,
         textStyle: {
-          color: sentinelColors.textSecondary,
+          color: fingColors.textSecondary,
           fontSize: 11,
         },
       },
@@ -214,9 +214,9 @@ export function LineChart({
         type: 'category',
         data: allTimes,
         show: !minimal,
-        axisLine: { lineStyle: { color: sentinelColors.borderSubtle } },
+        axisLine: { lineStyle: { color: fingColors.borderSubtle } },
         axisLabel: {
-          color: sentinelColors.textTertiary,
+          color: fingColors.textTertiary,
           fontSize: 10,
           fontFamily: "'Space Mono', monospace",
         },
@@ -228,13 +228,13 @@ export function LineChart({
         axisLine: { show: false },
         axisTick: { show: false },
         axisLabel: {
-          color: sentinelColors.textTertiary,
+          color: fingColors.textTertiary,
           fontSize: 10,
           fontFamily: "'Space Mono', monospace",
           formatter: (value: number) => formatValue(value),
         },
         splitLine: {
-          lineStyle: { color: sentinelColors.borderSubtle },
+          lineStyle: { color: fingColors.borderSubtle },
           show: !minimal,
         },
       },

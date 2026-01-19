@@ -1,5 +1,5 @@
 // Path: src/pages/styles/ButtonShowcase.tsx
-// SENTINEL Design System - Complete Button System Showcase (Stone Marble + Glass)
+// FING Design System - Complete Button System Showcase (Stone Marble + Glass)
 
 import React, { useState } from 'react';
 import {
@@ -80,7 +80,7 @@ export function ButtonShowcase() {
     fontWeight: 700,
     color: 'var(--text-primary)',
     marginBottom: '8px',
-    fontFamily: 'var(--sentinel-font-display)',
+    fontFamily: 'var(--fing-font-display)',
     letterSpacing: '0.05em',
     textShadow: `
       1px 1px 0px rgba(255, 255, 255, 0.8),
@@ -91,7 +91,7 @@ export function ButtonShowcase() {
   const subtitleStyles: React.CSSProperties = {
     fontSize: '14px',
     color: 'var(--text-secondary)',
-    fontFamily: 'var(--sentinel-font-mono)',
+    fontFamily: 'var(--fing-font-mono)',
     letterSpacing: '0.02em',
     textShadow: `
       0.5px 0.5px 0px rgba(255, 255, 255, 0.6),
@@ -102,13 +102,13 @@ export function ButtonShowcase() {
   const categoryStyles: React.CSSProperties = {
     fontSize: '22px',
     fontWeight: 700,
-    color: 'var(--sentinel-accent-primary)',
+    color: 'var(--fing-accent-primary)',
     marginBottom: '12px',
     marginTop: '56px',
-    fontFamily: 'var(--sentinel-font-display)',
+    fontFamily: 'var(--fing-font-display)',
     letterSpacing: '0.08em',
     paddingBottom: '12px',
-    borderBottom: '3px solid var(--sentinel-accent-primary)',
+    borderBottom: '3px solid var(--fing-accent-primary)',
     textShadow: `
       -1px -1px 0px rgba(255, 255, 255, 0.9),
       1px 1px 0px rgba(147, 157, 170, 0.5)
@@ -119,7 +119,7 @@ export function ButtonShowcase() {
     fontSize: '11px',
     fontWeight: 600,
     color: 'var(--text-muted)',
-    fontFamily: 'var(--sentinel-font-mono)',
+    fontFamily: 'var(--fing-font-mono)',
     letterSpacing: '0.08em',
     marginTop: '10px',
     textAlign: 'center',
@@ -278,7 +278,7 @@ export function ButtonShowcase() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontFamily: 'var(--sentinel-font-primary)',
+                  fontFamily: 'var(--fing-font-primary)',
                   fontSize: '14px',
                   fontWeight: 600,
                   color: 'var(--text-primary)',
@@ -317,7 +317,7 @@ export function ButtonShowcase() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontFamily: 'var(--sentinel-font-primary)',
+                  fontFamily: 'var(--fing-font-primary)',
                   fontSize: '14px',
                   fontWeight: 600,
                   color: 'var(--text-primary)',
@@ -354,7 +354,7 @@ export function ButtonShowcase() {
                   alignItems: 'center',
                   justifyContent: 'center',
                   gap: '8px',
-                  fontFamily: 'var(--sentinel-font-primary)',
+                  fontFamily: 'var(--fing-font-primary)',
                   fontSize: '13px',
                   fontWeight: 600,
                   color: 'var(--text-primary)',
@@ -499,7 +499,7 @@ export function ButtonShowcase() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontFamily: 'var(--sentinel-font-primary)',
+                  fontFamily: 'var(--fing-font-primary)',
                   fontSize: '13px',
                   fontWeight: 600,
                   color: 'var(--text-primary)',
@@ -531,7 +531,7 @@ export function ButtonShowcase() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontFamily: 'var(--sentinel-font-primary)',
+                  fontFamily: 'var(--fing-font-primary)',
                   fontSize: '13px',
                   fontWeight: 600,
                   color: 'var(--text-primary)',
@@ -563,7 +563,7 @@ export function ButtonShowcase() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontFamily: 'var(--sentinel-font-primary)',
+                  fontFamily: 'var(--fing-font-primary)',
                   fontSize: '13px',
                   fontWeight: 600,
                   color: 'var(--text-primary)',
@@ -596,7 +596,7 @@ export function ButtonShowcase() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontFamily: 'var(--sentinel-font-primary)',
+                  fontFamily: 'var(--fing-font-primary)',
                   fontSize: '13px',
                   fontWeight: 600,
                   color: 'var(--text-primary)',
@@ -628,7 +628,7 @@ export function ButtonShowcase() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontFamily: 'var(--sentinel-font-primary)',
+                  fontFamily: 'var(--fing-font-primary)',
                   fontSize: '13px',
                   fontWeight: 600,
                   color: 'var(--text-primary)',
@@ -659,7 +659,7 @@ export function ButtonShowcase() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontFamily: 'var(--sentinel-font-primary)',
+                  fontFamily: 'var(--fing-font-primary)',
                   fontSize: '13px',
                   fontWeight: 600,
                   color: 'var(--text-primary)',
@@ -743,7 +743,7 @@ export function ButtonShowcase() {
                   alignItems: 'center',
                   justifyContent: 'center',
                   gap: '8px',
-                  fontFamily: 'var(--sentinel-font-primary)',
+                  fontFamily: 'var(--fing-font-primary)',
                   fontSize: '13px',
                   fontWeight: 600,
                   color: 'var(--text-primary)',
@@ -772,7 +772,7 @@ export function ButtonShowcase() {
                   alignItems: 'center',
                   justifyContent: 'center',
                   gap: '8px',
-                  fontFamily: 'var(--sentinel-font-primary)',
+                  fontFamily: 'var(--fing-font-primary)',
                   fontSize: '13px',
                   fontWeight: 600,
                   color: 'var(--text-primary)',
@@ -838,7 +838,7 @@ export function ButtonShowcase() {
                   alignItems: 'center',
                   justifyContent: 'center',
                   gap: '10px',
-                  fontFamily: 'var(--sentinel-font-primary)',
+                  fontFamily: 'var(--fing-font-primary)',
                   fontSize: '14px',
                   fontWeight: 600,
                   color: 'var(--text-primary)',
@@ -866,7 +866,7 @@ export function ButtonShowcase() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color: 'var(--sentinel-accent-primary)',
+                  color: 'var(--fing-accent-primary)',
                   transition: 'all 150ms ease',
                 }}
               >
@@ -895,7 +895,7 @@ export function ButtonShowcase() {
                   alignItems: 'center',
                   justifyContent: 'center',
                   gap: '10px',
-                  fontFamily: 'var(--sentinel-font-primary)',
+                  fontFamily: 'var(--fing-font-primary)',
                   fontSize: '14px',
                   fontWeight: 600,
                   color: 'var(--text-primary)',
@@ -925,10 +925,10 @@ export function ButtonShowcase() {
                   alignItems: 'center',
                   justifyContent: 'center',
                   gap: '2px',
-                  fontFamily: 'var(--sentinel-font-mono)',
+                  fontFamily: 'var(--fing-font-mono)',
                   fontSize: '10px',
                   fontWeight: 600,
-                  color: 'var(--sentinel-accent-primary)',
+                  color: 'var(--fing-accent-primary)',
                   transition: 'all 150ms ease',
                 }}
               >
@@ -1548,7 +1548,7 @@ export function ButtonShowcase() {
                     -4px -4px 8px var(--shadow-light)
                   `,
                   cursor: 'pointer',
-                  fontFamily: 'var(--sentinel-font-primary)',
+                  fontFamily: 'var(--fing-font-primary)',
                   fontSize: '13px',
                   fontWeight: 600,
                   letterSpacing: '0.05em',
@@ -1558,7 +1558,7 @@ export function ButtonShowcase() {
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.boxShadow = 'inset 0 0 0 1px var(--shadow-light), inset 0 0 0 2px rgba(168, 172, 179, 0.3), 6px 6px 12px var(--shadow-dark), -6px -6px 12px var(--shadow-light)';
-                  e.currentTarget.style.color = 'var(--sentinel-accent-primary)';
+                  e.currentTarget.style.color = 'var(--fing-accent-primary)';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.boxShadow = 'inset 0 0 0 1px var(--shadow-light), inset 0 0 0 2px rgba(168, 172, 179, 0.3), 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light)';
@@ -1616,7 +1616,7 @@ export function ButtonShowcase() {
                     -3px -3px 6px var(--shadow-light)
                   `,
                   cursor: 'pointer',
-                  fontFamily: 'var(--sentinel-font-primary)',
+                  fontFamily: 'var(--fing-font-primary)',
                   fontSize: '12px',
                   fontWeight: 600,
                   letterSpacing: '0.05em',
@@ -1699,7 +1699,7 @@ export function ButtonShowcase() {
                       -1px -1px 2px var(--shadow-light)
                     `,
                     cursor: 'pointer',
-                    fontFamily: 'var(--sentinel-font-primary)',
+                    fontFamily: 'var(--fing-font-primary)',
                     fontSize: '12px',
                     fontWeight: 600,
                     letterSpacing: '0.05em',
@@ -1708,7 +1708,7 @@ export function ButtonShowcase() {
                     transition: 'all 150ms ease',
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.color = 'var(--sentinel-accent-primary)';
+                    e.currentTarget.style.color = 'var(--fing-accent-primary)';
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.color = 'var(--marble-dark)';
@@ -1743,11 +1743,11 @@ export function ButtonShowcase() {
 
           {/* Código de referencia */}
           <div style={{ ...insetContainerStyles, marginTop: '24px' }}>
-            <p style={{ ...labelStyles, marginBottom: '12px', marginTop: 0, textAlign: 'left', color: 'var(--sentinel-accent-primary)' }}>
+            <p style={{ ...labelStyles, marginBottom: '12px', marginTop: 0, textAlign: 'left', color: 'var(--fing-accent-primary)' }}>
               ESTRUCTURA DE JERARQUÍA:
             </p>
             <pre style={{
-              fontFamily: 'var(--sentinel-font-mono)',
+              fontFamily: 'var(--fing-font-mono)',
               fontSize: '11px',
               color: 'var(--text-secondary)',
               lineHeight: 1.6,
@@ -1795,7 +1795,7 @@ export function ButtonShowcase() {
                       -2px -2px 4px var(--shadow-light)
                     `,
                     cursor: 'pointer',
-                    fontFamily: 'var(--sentinel-font-primary)',
+                    fontFamily: 'var(--fing-font-primary)',
                     fontSize: size.fontSize,
                     fontWeight: 600,
                     letterSpacing: '0.05em',
@@ -1859,7 +1859,7 @@ export function ButtonShowcase() {
                     -2px -2px 4px var(--shadow-light)
                   `,
                   cursor: 'pointer',
-                  fontFamily: 'var(--sentinel-font-primary)',
+                  fontFamily: 'var(--fing-font-primary)',
                   fontSize: '12px',
                   fontWeight: 600,
                   letterSpacing: '0.05em',
@@ -1892,7 +1892,7 @@ export function ButtonShowcase() {
                     -2px -2px 4px var(--shadow-light)
                   `,
                   cursor: 'pointer',
-                  fontFamily: 'var(--sentinel-font-primary)',
+                  fontFamily: 'var(--fing-font-primary)',
                   fontSize: '12px',
                   fontWeight: 600,
                   letterSpacing: '0.05em',
@@ -1925,7 +1925,7 @@ export function ButtonShowcase() {
                     -2px -2px 4px var(--shadow-light)
                   `,
                   cursor: 'pointer',
-                  fontFamily: 'var(--sentinel-font-primary)',
+                  fontFamily: 'var(--fing-font-primary)',
                   fontSize: '12px',
                   fontWeight: 600,
                   letterSpacing: '0.05em',
@@ -2024,7 +2024,7 @@ export function ButtonShowcase() {
                     -2px -2px 4px var(--shadow-light)
                   `,
                   cursor: 'pointer',
-                  fontFamily: 'var(--sentinel-font-primary)',
+                  fontFamily: 'var(--fing-font-primary)',
                   fontSize: '12px',
                   fontWeight: 600,
                   letterSpacing: '0.05em',
@@ -2057,7 +2057,7 @@ export function ButtonShowcase() {
                     -2px -2px 4px var(--shadow-light)
                   `,
                   cursor: 'pointer',
-                  fontFamily: 'var(--sentinel-font-primary)',
+                  fontFamily: 'var(--fing-font-primary)',
                   fontSize: '12px',
                   fontWeight: 600,
                   letterSpacing: '0.05em',
@@ -2090,7 +2090,7 @@ export function ButtonShowcase() {
                     -2px -2px 4px var(--shadow-light)
                   `,
                   cursor: 'pointer',
-                  fontFamily: 'var(--sentinel-font-primary)',
+                  fontFamily: 'var(--fing-font-primary)',
                   fontSize: '12px',
                   fontWeight: 600,
                   letterSpacing: '0.05em',
@@ -2136,7 +2136,7 @@ export function ButtonShowcase() {
                     -2px -2px 4px var(--shadow-light)
                   `,
                   cursor: 'pointer',
-                  fontFamily: 'var(--sentinel-font-primary)',
+                  fontFamily: 'var(--fing-font-primary)',
                   fontSize: '12px',
                   fontWeight: 600,
                   letterSpacing: '0.05em',
@@ -2182,7 +2182,7 @@ export function ButtonShowcase() {
                     -2px -2px 4px var(--shadow-light)
                   `,
                   cursor: 'pointer',
-                  fontFamily: 'var(--sentinel-font-primary)',
+                  fontFamily: 'var(--fing-font-primary)',
                   fontSize: '12px',
                   fontWeight: 600,
                   letterSpacing: '0.05em',
@@ -2252,7 +2252,7 @@ export function ButtonShowcase() {
                     -2px -2px 4px var(--shadow-light)
                   `,
                   cursor: 'pointer',
-                  fontFamily: 'var(--sentinel-font-primary)',
+                  fontFamily: 'var(--fing-font-primary)',
                   fontSize: '12px',
                   fontWeight: 600,
                   letterSpacing: '0.05em',
@@ -2287,7 +2287,7 @@ export function ButtonShowcase() {
                     -2px -2px 4px var(--shadow-light)
                   `,
                   cursor: 'pointer',
-                  fontFamily: 'var(--sentinel-font-primary)',
+                  fontFamily: 'var(--fing-font-primary)',
                   fontSize: '12px',
                   fontWeight: 600,
                   letterSpacing: '0.05em',
@@ -2296,7 +2296,7 @@ export function ButtonShowcase() {
                 }}
               >
                 <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '20px', height: '20px', borderRadius: '50%', background: 'var(--marble-base)', boxShadow: 'inset 1px 1px 2px var(--shadow-dark), inset -1px -1px 2px var(--shadow-light)' }}>
-                  <TrendingUp size={11} style={{ color: 'var(--sentinel-accent-primary)', filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))' }} />
+                  <TrendingUp size={11} style={{ color: 'var(--fing-accent-primary)', filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))' }} />
                 </span>
                 Portfolio
               </button>
@@ -2322,7 +2322,7 @@ export function ButtonShowcase() {
                     -2px -2px 4px var(--shadow-light)
                   `,
                   cursor: 'pointer',
-                  fontFamily: 'var(--sentinel-font-primary)',
+                  fontFamily: 'var(--fing-font-primary)',
                   fontSize: '12px',
                   fontWeight: 600,
                   letterSpacing: '0.05em',
@@ -2331,7 +2331,7 @@ export function ButtonShowcase() {
                 }}
               >
                 <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '20px', height: '20px', borderRadius: '50%', background: 'var(--marble-base)', boxShadow: 'inset 1px 1px 2px var(--shadow-dark), inset -1px -1px 2px var(--shadow-light)' }}>
-                  <Check size={11} style={{ color: 'var(--sentinel-status-positive)', filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))' }} />
+                  <Check size={11} style={{ color: 'var(--fing-status-positive)', filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))' }} />
                 </span>
                 Confirm
               </button>
@@ -2357,7 +2357,7 @@ export function ButtonShowcase() {
                     -2px -2px 4px var(--shadow-light)
                   `,
                   cursor: 'pointer',
-                  fontFamily: 'var(--sentinel-font-primary)',
+                  fontFamily: 'var(--fing-font-primary)',
                   fontSize: '12px',
                   fontWeight: 600,
                   letterSpacing: '0.05em',
@@ -2366,7 +2366,7 @@ export function ButtonShowcase() {
                 }}
               >
                 <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '20px', height: '20px', borderRadius: '50%', background: 'var(--marble-base)', boxShadow: 'inset 1px 1px 2px var(--shadow-dark), inset -1px -1px 2px var(--shadow-light)' }}>
-                  <AlertTriangle size={11} style={{ color: 'var(--sentinel-status-warning)', filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))' }} />
+                  <AlertTriangle size={11} style={{ color: 'var(--fing-status-warning)', filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))' }} />
                 </span>
                 Review
               </button>
@@ -2392,7 +2392,7 @@ export function ButtonShowcase() {
                     -2px -2px 4px var(--shadow-light)
                   `,
                   cursor: 'pointer',
-                  fontFamily: 'var(--sentinel-font-primary)',
+                  fontFamily: 'var(--fing-font-primary)',
                   fontSize: '12px',
                   fontWeight: 600,
                   letterSpacing: '0.05em',
@@ -2401,7 +2401,7 @@ export function ButtonShowcase() {
                 }}
               >
                 <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '20px', height: '20px', borderRadius: '50%', background: 'var(--marble-base)', boxShadow: 'inset 1px 1px 2px var(--shadow-dark), inset -1px -1px 2px var(--shadow-light)' }}>
-                  <Trash2 size={11} style={{ color: 'var(--sentinel-status-negative)', filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))' }} />
+                  <Trash2 size={11} style={{ color: 'var(--fing-status-negative)', filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))' }} />
                 </span>
                 Delete
               </button>
@@ -2440,11 +2440,11 @@ export function ButtonShowcase() {
                       border: 'none',
                       boxShadow: i === 1 ? '1px 1px 2px var(--shadow-dark), -1px -1px 2px var(--shadow-light)' : 'none',
                       cursor: 'pointer',
-                      fontFamily: 'var(--sentinel-font-primary)',
+                      fontFamily: 'var(--fing-font-primary)',
                       fontSize: '11px',
                       fontWeight: i === 1 ? 600 : 500,
                       letterSpacing: '0.05em',
-                      color: i === 1 ? 'var(--sentinel-accent-primary)' : 'var(--marble-dark)',
+                      color: i === 1 ? 'var(--fing-accent-primary)' : 'var(--marble-dark)',
                       textShadow: i === 1 ? '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(130, 140, 155, 0.65)' : 'none',
                       transition: 'all 150ms ease',
                     }}
@@ -2475,7 +2475,7 @@ export function ButtonShowcase() {
                       -2px -2px 4px var(--shadow-light)
                     `,
                     cursor: 'pointer',
-                    fontFamily: 'var(--sentinel-font-primary)',
+                    fontFamily: 'var(--fing-font-primary)',
                     fontSize: '12px',
                     fontWeight: 600,
                     letterSpacing: '0.05em',
@@ -2526,7 +2526,7 @@ export function ButtonShowcase() {
                   { icon: Copy, label: 'Copy' },
                   { icon: Edit3, label: 'Edit' },
                   { icon: Share2, label: 'Share' },
-                  { icon: Trash2, label: 'Delete', color: 'var(--sentinel-status-negative)' },
+                  { icon: Trash2, label: 'Delete', color: 'var(--fing-status-negative)' },
                 ].map(({ icon: Icon, label, color }) => (
                   <button
                     key={label}
@@ -2572,7 +2572,7 @@ export function ButtonShowcase() {
                 boxShadow: 'var(--inset-2)',
               }}
             >
-              <p style={{ ...labelStyles, marginTop: 0, marginBottom: '16px', textAlign: 'left', color: 'var(--sentinel-accent-primary)' }}>
+              <p style={{ ...labelStyles, marginTop: 0, marginBottom: '16px', textAlign: 'left', color: 'var(--fing-accent-primary)' }}>
                 Sobre fondo marble-base:
               </p>
               <button
@@ -2592,7 +2592,7 @@ export function ButtonShowcase() {
                     -2px -2px 4px var(--shadow-light)
                   `,
                   cursor: 'pointer',
-                  fontFamily: 'var(--sentinel-font-primary)',
+                  fontFamily: 'var(--fing-font-primary)',
                   fontSize: '12px',
                   fontWeight: 600,
                   letterSpacing: '0.05em',
@@ -2617,7 +2617,7 @@ export function ButtonShowcase() {
                 boxShadow: 'var(--raised-3)',
               }}
             >
-              <p style={{ ...labelStyles, marginTop: 0, marginBottom: '16px', textAlign: 'left', color: 'var(--sentinel-accent-primary)' }}>
+              <p style={{ ...labelStyles, marginTop: 0, marginBottom: '16px', textAlign: 'left', color: 'var(--fing-accent-primary)' }}>
                 Dentro de Card RAISED:
               </p>
               <div
@@ -2646,7 +2646,7 @@ export function ButtonShowcase() {
                       -1px -1px 2px var(--shadow-light)
                     `,
                     cursor: 'pointer',
-                    fontFamily: 'var(--sentinel-font-primary)',
+                    fontFamily: 'var(--fing-font-primary)',
                     fontSize: '12px',
                     fontWeight: 600,
                     letterSpacing: '0.05em',
@@ -2674,7 +2674,7 @@ export function ButtonShowcase() {
                 boxShadow: 'var(--inset-3)',
               }}
             >
-              <p style={{ ...labelStyles, marginTop: 0, marginBottom: '16px', textAlign: 'left', color: 'var(--sentinel-accent-primary)' }}>
+              <p style={{ ...labelStyles, marginTop: 0, marginBottom: '16px', textAlign: 'left', color: 'var(--fing-accent-primary)' }}>
                 Dentro de sección INSET:
               </p>
               <button
@@ -2690,7 +2690,7 @@ export function ButtonShowcase() {
                   border: '1px solid var(--glass-border)',
                   boxShadow: 'none',
                   cursor: 'pointer',
-                  fontFamily: 'var(--sentinel-font-primary)',
+                  fontFamily: 'var(--fing-font-primary)',
                   fontSize: '12px',
                   fontWeight: 600,
                   letterSpacing: '0.05em',
@@ -2746,8 +2746,8 @@ export function ButtonShowcase() {
                 }}
               >
                 <strong style={{
-                  color: 'var(--sentinel-accent-primary)',
-                  fontFamily: 'var(--sentinel-font-primary)',
+                  color: 'var(--fing-accent-primary)',
+                  fontFamily: 'var(--fing-font-primary)',
                   fontSize: '13px',
                   textShadow: '-0.5px -0.5px 0px rgba(255,255,255,0.8), 0.5px 0.5px 0px rgba(147,157,170,0.4)',
                 }}>
@@ -2756,7 +2756,7 @@ export function ButtonShowcase() {
                 <p style={{
                   margin: '8px 0 0',
                   color: 'var(--text-secondary)',
-                  fontFamily: 'var(--sentinel-font-mono)',
+                  fontFamily: 'var(--fing-font-mono)',
                   fontSize: '11px',
                 }}>
                   {variants}

@@ -22,7 +22,7 @@
 .home {
   min-height: 100vh;
   background: var(--marble-base);
-  font-family: var(--sentinel-font-primary);
+  font-family: var(--fing-font-primary);
 }
 
 .section {
@@ -34,7 +34,7 @@
 }
 
 .sectionLabel {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--fing-font-mono);
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.2em;
@@ -78,7 +78,7 @@
 }
 
 .heroWordmark {
-  font-family: var(--sentinel-font-primary);
+  font-family: var(--fing-font-primary);
   font-size: 96px;
   font-weight: 300;
   letter-spacing: 0.12em;
@@ -92,7 +92,7 @@
 }
 
 .heroDescriptor {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--fing-font-mono);
   font-size: 14px;
   font-weight: 400;
   letter-spacing: 0.08em;
@@ -121,7 +121,7 @@
   padding: 12px 24px;
   border-radius: 50px;
   border: none;
-  font-family: var(--sentinel-font-primary);
+  font-family: var(--fing-font-primary);
   font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.04em;
@@ -177,7 +177,7 @@
 }
 
 .scrollIndicator span {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--fing-font-mono);
   font-size: 10px;
   letter-spacing: 0.1em;
 
@@ -233,7 +233,7 @@
 }
 
 .etymologyRoot {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--fing-font-mono);
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.12em;
@@ -247,7 +247,7 @@
 }
 
 .etymologyWord {
-  font-family: var(--sentinel-font-display);
+  font-family: var(--fing-font-display);
   font-size: 24px;
   font-style: italic;
   margin-bottom: 6px;
@@ -271,7 +271,7 @@
 }
 
 .etymologyModern {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--fing-font-mono);
   font-size: 10px;
   margin-top: 8px;
 
@@ -293,7 +293,7 @@
 }
 
 .synthesisFormula {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--fing-font-mono);
   font-size: 16px;
   font-weight: 500;
   letter-spacing: 0.05em;
@@ -315,7 +315,7 @@
 }
 
 .synthesisResult {
-  font-family: var(--sentinel-font-display);
+  font-family: var(--fing-font-display);
   font-size: 16px;
   font-style: italic;
 
@@ -336,7 +336,7 @@
 }
 
 .voiceHeadline {
-  font-family: var(--sentinel-font-display);
+  font-family: var(--fing-font-display);
   font-size: 20px;
   line-height: 1.4;
   margin-bottom: 24px;
@@ -384,7 +384,7 @@
 }
 
 .voiceExample {
-  font-family: var(--sentinel-font-display);
+  font-family: var(--fing-font-display);
   font-size: 14px;
   font-style: italic;
   padding: 12px 0;
@@ -413,7 +413,7 @@
   border-radius: 16px;
   padding: 8px 14px;
   box-shadow: var(--inset-2);
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--fing-font-mono);
   font-size: 11px;
 
   /* RAISED typography (subtle) */
@@ -433,7 +433,7 @@
 }
 
 .systemName {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--fing-font-mono);
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.1em;
@@ -447,7 +447,7 @@
 }
 
 .systemTitle {
-  font-family: var(--sentinel-font-display);
+  font-family: var(--fing-font-display);
   font-size: 22px;
   margin-bottom: 10px;
 
@@ -497,7 +497,7 @@
 }
 
 .demoLabel {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--fing-font-mono);
   font-size: 10px;
   letter-spacing: 0.1em;
   margin-top: 10px;
@@ -523,7 +523,7 @@
 }
 
 .accessTitle {
-  font-family: var(--sentinel-font-display);
+  font-family: var(--fing-font-display);
   font-size: 26px;
   margin-bottom: 28px;
 
@@ -552,7 +552,7 @@
 }
 
 .footerText {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--fing-font-mono);
   font-size: 12px;
 
   /* Letterpress - Steel */

@@ -49,7 +49,7 @@
   border-radius: 20px;
   border: none;
   cursor: pointer;
-  font-family: var(--sentinel-font-primary, 'DM Sans', sans-serif);
+  font-family: var(--fing-font-primary, 'DM Sans', sans-serif);
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.05em;
@@ -129,8 +129,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--sentinel-space-6);
-  padding: var(--sentinel-space-8);
+  gap: var(--fing-space-6);
+  padding: var(--fing-space-8);
   max-width: 420px;
   width: 100%;
 }
@@ -143,7 +143,7 @@
   display: flex;
   align-items: center;
   gap: 24px;
-  margin-bottom: var(--sentinel-space-6);
+  margin-bottom: var(--fing-space-6);
 }
 
 .brandText {
@@ -157,7 +157,7 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .title {
-  font-family: var(--sentinel-font-primary, 'DM Sans', sans-serif);
+  font-family: var(--fing-font-primary, 'DM Sans', sans-serif);
   font-size: 72px;
   font-weight: 500;
   letter-spacing: 0.06em;
@@ -173,7 +173,7 @@
 }
 
 .subtitle {
-  font-family: var(--sentinel-font-primary, 'DM Sans', sans-serif);
+  font-family: var(--fing-font-primary, 'DM Sans', sans-serif);
   font-size: 14px;
   font-weight: 400;
   font-style: italic;
@@ -211,8 +211,8 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: var(--sentinel-space-5);
-  padding: var(--sentinel-space-6);
+  gap: var(--fing-space-5);
+  padding: var(--fing-space-6);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -222,7 +222,7 @@
 .inputGroup {
   display: flex;
   flex-direction: column;
-  gap: var(--sentinel-space-2);
+  gap: var(--fing-space-2);
 }
 
 /* Wrapper adds INSET effect around input for better depth perception */
@@ -246,7 +246,7 @@
 }
 
 .inputGroup :global(.input)::placeholder {
-  color: var(--sentinel-text-muted, #8896a6);
+  color: var(--fing-text-muted, #8896a6);
 }
 
 /* Icon styling within stone marble inputs */
@@ -259,7 +259,7 @@
 }
 
 .inputGroup:focus-within :global(.icon) {
-  color: var(--sentinel-accent-primary, #3a6a72);
+  color: var(--fing-accent-primary, #3a6a72);
   /* Raised with accent glow on focus */
   filter:
     drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9))
@@ -267,7 +267,7 @@
 }
 
 .label {
-  font-family: var(--sentinel-font-primary, 'DM Sans', sans-serif);
+  font-family: var(--fing-font-primary, 'DM Sans', sans-serif);
   font-size: 11px;
   font-weight: 500;
   text-transform: uppercase;
@@ -286,14 +286,14 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .error {
-  font-size: var(--sentinel-text-sm);
-  color: var(--sentinel-status-negative, #b85c5c);
+  font-size: var(--fing-text-sm);
+  color: var(--fing-status-negative, #b85c5c);
   text-align: center;
   margin: 0;
   padding: 8px 12px;
   background: rgba(184, 92, 92, 0.1);
   border: 1px solid rgba(184, 92, 92, 0.2);
-  border-radius: var(--sentinel-radius-sm);
+  border-radius: var(--fing-radius-sm);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -305,7 +305,7 @@
   border-radius: 28px;
   background: var(--marble-base, #d5d8dc);
   box-shadow: var(--inset-1, inset 2px 2px 4px rgba(147, 157, 170, 0.55), inset -2px -2px 4px rgba(255, 255, 255, 0.95));
-  margin-top: var(--sentinel-space-2);
+  margin-top: var(--fing-space-2);
 }
 
 .pillFrameButton {
@@ -319,7 +319,7 @@
   border-radius: 24px;
   border: none;
   cursor: pointer;
-  font-family: var(--sentinel-font-primary, 'DM Sans', sans-serif);
+  font-family: var(--fing-font-primary, 'DM Sans', sans-serif);
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.05em;
@@ -342,7 +342,7 @@
 
 /* ENABLED state - subtle teal to indicate clickable */
 .pillFrameButton:not(:disabled) {
-  color: var(--sentinel-accent-primary, #3a6a72);
+  color: var(--fing-accent-primary, #3a6a72);
   box-shadow:
     inset 0 0 0 1px rgba(255, 255, 255, 0.85),
     inset 0 0 0 2px rgba(58, 106, 114, 0.15),
@@ -414,7 +414,7 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .hint {
-  font-family: var(--sentinel-font-mono, 'IBM Plex Mono', monospace);
+  font-family: var(--fing-font-mono, 'IBM Plex Mono', monospace);
   font-size: 11px;
   text-align: center;
   margin: 0;

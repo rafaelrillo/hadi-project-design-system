@@ -436,7 +436,7 @@ export const useWalletStore = create<WalletState & WalletActions>()(
       },
     }),
     {
-      name: "sentinel-wallet",
+      name: "fing-wallet",
       partialize: (state) => ({
         balance: state.balance,
         positions: state.positions,

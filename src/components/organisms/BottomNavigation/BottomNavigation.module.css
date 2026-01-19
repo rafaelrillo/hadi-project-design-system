@@ -5,14 +5,14 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: calc(var(--sentinel-mobile-bottom-nav-height) + var(--sentinel-safe-area-bottom));
-  padding-bottom: var(--sentinel-safe-area-bottom);
-  background: var(--sentinel-bg-elevated);
-  border-top: 1px solid var(--sentinel-border-subtle);
+  height: calc(var(--fing-mobile-bottom-nav-height) + var(--fing-safe-area-bottom));
+  padding-bottom: var(--fing-safe-area-bottom);
+  background: var(--fing-bg-elevated);
+  border-top: 1px solid var(--fing-border-subtle);
   display: flex;
   align-items: stretch;
   justify-content: space-around;
-  z-index: var(--sentinel-z-sticky);
+  z-index: var(--fing-z-sticky);
 }
 
 .navItem {
@@ -21,24 +21,24 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: var(--sentinel-space-1);
-  padding: var(--sentinel-space-2) var(--sentinel-space-1);
+  gap: var(--fing-space-1);
+  padding: var(--fing-space-2) var(--fing-space-1);
   background: transparent;
   border: none;
   cursor: pointer;
-  color: var(--sentinel-text-tertiary);
+  color: var(--fing-text-tertiary);
   -webkit-tap-highlight-color: transparent;
-  transition: color var(--sentinel-duration-fast) var(--sentinel-ease-default);
-  min-height: var(--sentinel-touch-target-min);
+  transition: color var(--fing-duration-fast) var(--fing-ease-default);
+  min-height: var(--fing-touch-target-min);
   position: relative;
 }
 
 .navItem:hover {
-  color: var(--sentinel-text-secondary);
+  color: var(--fing-text-secondary);
 }
 
 .navItem.active {
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
 }
 
 /* Active indicator */
@@ -50,8 +50,8 @@
   transform: translateX(-50%);
   width: 24px;
   height: 2px;
-  background: var(--sentinel-accent-primary);
-  border-radius: 0 0 var(--sentinel-radius-full) var(--sentinel-radius-full);
+  background: var(--fing-accent-primary);
+  border-radius: 0 0 var(--fing-radius-full) var(--fing-radius-full);
 }
 
 .icon {
@@ -63,9 +63,9 @@
 }
 
 .label {
-  font-family: var(--sentinel-font-primary);
+  font-family: var(--fing-font-primary);
   font-size: 10px;
-  font-weight: var(--sentinel-font-medium);
+  font-weight: var(--fing-font-medium);
   letter-spacing: 0.02em;
   text-transform: uppercase;
 }

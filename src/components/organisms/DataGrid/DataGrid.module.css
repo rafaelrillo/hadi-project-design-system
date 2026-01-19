@@ -1,6 +1,6 @@
 /* Path: src/components/organisms/DataGrid/DataGrid.module.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   SENTINEL DESIGN SYSTEM - DataGrid Component
+   FING DESIGN SYSTEM - DataGrid Component
 
    Advanced data table with sorting, filtering, pagination, and virtualization
    Optimized for financial/analytical data display
@@ -14,10 +14,10 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: var(--sentinel-space-4);
-  background-color: var(--sentinel-bg-elevated);
-  border: 1px solid var(--sentinel-border-default);
-  border-radius: var(--sentinel-radius-lg);
+  gap: var(--fing-space-4);
+  background-color: var(--fing-bg-elevated);
+  border: 1px solid var(--fing-border-default);
+  border-radius: var(--fing-radius-lg);
   overflow: hidden;
 }
 
@@ -37,37 +37,37 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: var(--sentinel-space-4);
-  padding: var(--sentinel-space-4);
-  border-bottom: 1px solid var(--sentinel-border-subtle);
-  background-color: var(--sentinel-bg-overlay);
+  gap: var(--fing-space-4);
+  padding: var(--fing-space-4);
+  border-bottom: 1px solid var(--fing-border-subtle);
+  background-color: var(--fing-bg-overlay);
 }
 
 .exportButton {
   display: inline-flex;
   align-items: center;
-  gap: var(--sentinel-space-2);
-  padding: var(--sentinel-space-2) var(--sentinel-space-4);
+  gap: var(--fing-space-2);
+  padding: var(--fing-space-2) var(--fing-space-4);
   background-color: transparent;
-  border: 1px solid var(--sentinel-border-default);
-  border-radius: var(--sentinel-radius-md);
-  color: var(--sentinel-text-secondary);
-  font-family: var(--sentinel-font-primary);
-  font-size: var(--sentinel-text-sm);
-  font-weight: var(--sentinel-font-medium);
+  border: 1px solid var(--fing-border-default);
+  border-radius: var(--fing-radius-md);
+  color: var(--fing-text-secondary);
+  font-family: var(--fing-font-primary);
+  font-size: var(--fing-text-sm);
+  font-weight: var(--fing-font-medium);
   cursor: pointer;
-  transition: var(--sentinel-transition-fast);
+  transition: var(--fing-transition-fast);
   white-space: nowrap;
 }
 
 .exportButton:hover {
-  border-color: var(--sentinel-accent-primary);
-  color: var(--sentinel-accent-primary);
-  background-color: var(--sentinel-accent-subtle);
+  border-color: var(--fing-accent-primary);
+  color: var(--fing-accent-primary);
+  background-color: var(--fing-accent-subtle);
 }
 
 .exportButton:focus-visible {
-  outline: 2px solid var(--sentinel-accent-primary);
+  outline: 2px solid var(--fing-accent-primary);
   outline-offset: 2px;
 }
 
@@ -79,33 +79,33 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: var(--sentinel-space-3);
+  gap: var(--fing-space-3);
 }
 
 .filtersHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--sentinel-space-3);
+  gap: var(--fing-space-3);
 }
 
 .filtersTitle {
   display: flex;
   align-items: center;
-  gap: var(--sentinel-space-2);
-  color: var(--sentinel-text-secondary);
-  font-size: var(--sentinel-text-sm);
-  font-weight: var(--sentinel-font-medium);
+  gap: var(--fing-space-2);
+  color: var(--fing-text-secondary);
+  font-size: var(--fing-text-sm);
+  font-weight: var(--fing-font-medium);
 }
 
 .filtersClearAll {
   background: none;
   border: none;
-  color: var(--sentinel-accent-primary);
-  font-family: var(--sentinel-font-primary);
-  font-size: var(--sentinel-text-sm);
+  color: var(--fing-accent-primary);
+  font-family: var(--fing-font-primary);
+  font-size: var(--fing-text-sm);
   cursor: pointer;
-  transition: var(--sentinel-transition-fast);
+  transition: var(--fing-transition-fast);
 }
 
 .filtersClearAll:hover {
@@ -115,7 +115,7 @@
 .filtersGrid {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--sentinel-space-2);
+  gap: var(--fing-space-2);
 }
 
 .filterControl {
@@ -125,28 +125,28 @@
 .filterButton {
   display: inline-flex;
   align-items: center;
-  gap: var(--sentinel-space-1-5);
-  padding: var(--sentinel-space-1-5) var(--sentinel-space-3);
-  background-color: var(--sentinel-bg-subtle);
-  border: 1px solid var(--sentinel-border-subtle);
-  border-radius: var(--sentinel-radius-md);
-  color: var(--sentinel-text-secondary);
-  font-family: var(--sentinel-font-primary);
-  font-size: var(--sentinel-text-xs);
-  font-weight: var(--sentinel-font-medium);
+  gap: var(--fing-space-1-5);
+  padding: var(--fing-space-1-5) var(--fing-space-3);
+  background-color: var(--fing-bg-subtle);
+  border: 1px solid var(--fing-border-subtle);
+  border-radius: var(--fing-radius-md);
+  color: var(--fing-text-secondary);
+  font-family: var(--fing-font-primary);
+  font-size: var(--fing-text-xs);
+  font-weight: var(--fing-font-medium);
   cursor: pointer;
-  transition: var(--sentinel-transition-fast);
+  transition: var(--fing-transition-fast);
 }
 
 .filterButton:hover {
-  border-color: var(--sentinel-border-default);
-  background-color: var(--sentinel-bg-interactive);
+  border-color: var(--fing-border-default);
+  background-color: var(--fing-bg-interactive);
 }
 
 .filterButtonActive {
-  border-color: var(--sentinel-accent-primary);
-  background-color: var(--sentinel-accent-subtle);
-  color: var(--sentinel-accent-primary);
+  border-color: var(--fing-accent-primary);
+  background-color: var(--fing-accent-subtle);
+  color: var(--fing-accent-primary);
 }
 
 .filterButtonLabel {
@@ -161,18 +161,18 @@
   align-items: center;
   justify-content: center;
   padding: 2px;
-  margin-left: var(--sentinel-space-1);
-  border-radius: var(--sentinel-radius-sm);
-  transition: var(--sentinel-transition-fast);
+  margin-left: var(--fing-space-1);
+  border-radius: var(--fing-radius-sm);
+  transition: var(--fing-transition-fast);
 }
 
 .filterButtonClear:hover {
-  background-color: var(--sentinel-status-negative-subtle);
-  color: var(--sentinel-status-negative);
+  background-color: var(--fing-status-negative-subtle);
+  color: var(--fing-status-negative);
 }
 
 .filterButtonChevron {
-  transition: transform var(--sentinel-duration-fast) var(--sentinel-ease-default);
+  transition: transform var(--fing-duration-fast) var(--fing-ease-default);
 }
 
 .filterButtonChevronOpen {
@@ -183,15 +183,15 @@
   position: absolute;
   top: 100%;
   left: 0;
-  z-index: var(--sentinel-z-dropdown);
+  z-index: var(--fing-z-dropdown);
   min-width: 200px;
-  margin-top: var(--sentinel-space-1);
-  padding: var(--sentinel-space-3);
-  background-color: var(--sentinel-bg-overlay);
-  border: 1px solid var(--sentinel-border-default);
-  border-radius: var(--sentinel-radius-md);
-  box-shadow: var(--sentinel-shadow-dropdown);
-  animation: sentinel-emerge var(--sentinel-duration-fast) var(--sentinel-ease-out);
+  margin-top: var(--fing-space-1);
+  padding: var(--fing-space-3);
+  background-color: var(--fing-bg-overlay);
+  border: 1px solid var(--fing-border-default);
+  border-radius: var(--fing-radius-md);
+  box-shadow: var(--fing-shadow-dropdown);
+  animation: fing-emerge var(--fing-duration-fast) var(--fing-ease-out);
 }
 
 .filterInputWrapper {
@@ -202,65 +202,65 @@
 
 .filterInputIcon {
   position: absolute;
-  left: var(--sentinel-space-3);
-  color: var(--sentinel-text-tertiary);
+  left: var(--fing-space-3);
+  color: var(--fing-text-tertiary);
   pointer-events: none;
 }
 
 .filterInput {
   width: 100%;
-  padding: var(--sentinel-space-2) var(--sentinel-space-3);
-  padding-left: var(--sentinel-space-8);
-  background-color: var(--sentinel-bg-subtle);
-  border: 1px solid var(--sentinel-border-subtle);
-  border-radius: var(--sentinel-radius-sm);
-  color: var(--sentinel-text-primary);
-  font-family: var(--sentinel-font-led);
-  font-size: var(--sentinel-text-sm);
-  letter-spacing: var(--sentinel-tracking-led);
-  transition: var(--sentinel-transition-fast);
+  padding: var(--fing-space-2) var(--fing-space-3);
+  padding-left: var(--fing-space-8);
+  background-color: var(--fing-bg-subtle);
+  border: 1px solid var(--fing-border-subtle);
+  border-radius: var(--fing-radius-sm);
+  color: var(--fing-text-primary);
+  font-family: var(--fing-font-led);
+  font-size: var(--fing-text-sm);
+  letter-spacing: var(--fing-tracking-led);
+  transition: var(--fing-transition-fast);
 }
 
 .filterInput:focus {
   outline: none;
-  border-color: var(--sentinel-accent-primary);
-  background-color: var(--sentinel-bg-base);
+  border-color: var(--fing-accent-primary);
+  background-color: var(--fing-bg-base);
 }
 
 .filterInput::placeholder {
-  color: var(--sentinel-text-tertiary);
+  color: var(--fing-text-tertiary);
 }
 
 .filterSelect {
   width: 100%;
-  padding: var(--sentinel-space-2) var(--sentinel-space-3);
-  background-color: var(--sentinel-bg-subtle);
-  border: 1px solid var(--sentinel-border-subtle);
-  border-radius: var(--sentinel-radius-sm);
-  color: var(--sentinel-text-primary);
-  font-family: var(--sentinel-font-primary);
-  font-size: var(--sentinel-text-sm);
+  padding: var(--fing-space-2) var(--fing-space-3);
+  background-color: var(--fing-bg-subtle);
+  border: 1px solid var(--fing-border-subtle);
+  border-radius: var(--fing-radius-sm);
+  color: var(--fing-text-primary);
+  font-family: var(--fing-font-primary);
+  font-size: var(--fing-text-sm);
   cursor: pointer;
-  transition: var(--sentinel-transition-fast);
+  transition: var(--fing-transition-fast);
 }
 
 .filterSelect:focus {
   outline: none;
-  border-color: var(--sentinel-accent-primary);
+  border-color: var(--fing-accent-primary);
 }
 
 .filterRangeInputs {
   display: flex;
   align-items: center;
-  gap: var(--sentinel-space-2);
+  gap: var(--fing-space-2);
 }
 
 .filterRangeInputs .filterInput {
-  padding-left: var(--sentinel-space-3);
+  padding-left: var(--fing-space-3);
 }
 
 .filterRangeSeparator {
-  color: var(--sentinel-text-tertiary);
+  color: var(--fing-text-tertiary);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -271,7 +271,7 @@
   position: relative;
   overflow: auto;
   scrollbar-width: thin;
-  scrollbar-color: var(--sentinel-bg-interactive) var(--sentinel-bg-elevated);
+  scrollbar-color: var(--fing-bg-interactive) var(--fing-bg-elevated);
 }
 
 .tableContainer::-webkit-scrollbar {
@@ -280,16 +280,16 @@
 }
 
 .tableContainer::-webkit-scrollbar-track {
-  background: var(--sentinel-bg-elevated);
+  background: var(--fing-bg-elevated);
 }
 
 .tableContainer::-webkit-scrollbar-thumb {
-  background-color: var(--sentinel-bg-interactive);
-  border-radius: var(--sentinel-radius-full);
+  background-color: var(--fing-bg-interactive);
+  border-radius: var(--fing-radius-full);
 }
 
 .tableContainer::-webkit-scrollbar-thumb:hover {
-  background-color: var(--sentinel-border-strong);
+  background-color: var(--fing-border-strong);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -300,10 +300,10 @@
   --table-row-height: 44px;
   width: 100%;
   border-collapse: collapse;
-  font-family: var(--sentinel-font-led);
-  font-size: var(--sentinel-text-sm);
-  letter-spacing: var(--sentinel-tracking-led);
-  background-color: var(--sentinel-bg-elevated);
+  font-family: var(--fing-font-led);
+  font-size: var(--fing-text-sm);
+  letter-spacing: var(--fing-tracking-led);
+  background-color: var(--fing-bg-elevated);
 }
 
 .dataGridCompact .table {
@@ -315,67 +315,67 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .thead {
-  background-color: var(--sentinel-bg-overlay);
+  background-color: var(--fing-bg-overlay);
 }
 
 .theadSticky {
   position: sticky;
   top: 0;
-  z-index: var(--sentinel-z-sticky);
-  background-color: var(--sentinel-bg-overlay);
+  z-index: var(--fing-z-sticky);
+  background-color: var(--fing-bg-overlay);
 }
 
 .headerRow {
-  border-bottom: 1px solid var(--sentinel-border-default);
+  border-bottom: 1px solid var(--fing-border-default);
 }
 
 .th {
   position: relative;
-  padding: var(--sentinel-space-3) var(--sentinel-space-4);
+  padding: var(--fing-space-3) var(--fing-space-4);
   height: var(--table-row-height);
   text-align: left;
-  font-family: var(--sentinel-font-primary);
-  font-weight: var(--sentinel-font-semibold);
-  font-size: var(--sentinel-text-xs);
-  color: var(--sentinel-text-secondary);
+  font-family: var(--fing-font-primary);
+  font-weight: var(--fing-font-semibold);
+  font-size: var(--fing-text-xs);
+  color: var(--fing-text-secondary);
   letter-spacing: 0.03em;
   text-transform: uppercase;
   white-space: nowrap;
-  background-color: var(--sentinel-bg-overlay);
+  background-color: var(--fing-bg-overlay);
   user-select: none;
 }
 
 .thCheckbox,
 .thExpand {
   width: 44px;
-  padding: var(--sentinel-space-2);
+  padding: var(--fing-space-2);
   text-align: center;
 }
 
 .thSortable {
   cursor: pointer;
-  transition: var(--sentinel-transition-fast);
+  transition: var(--fing-transition-fast);
 }
 
 .thSortable:hover {
-  color: var(--sentinel-text-primary);
-  background-color: var(--sentinel-bg-subtle);
+  color: var(--fing-text-primary);
+  background-color: var(--fing-bg-subtle);
 }
 
 .thSorted {
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
 }
 
 .thSticky {
   position: sticky;
-  z-index: calc(var(--sentinel-z-sticky) + 1);
-  background-color: var(--sentinel-bg-overlay);
+  z-index: calc(var(--fing-z-sticky) + 1);
+  background-color: var(--fing-bg-overlay);
 }
 
 .thContent {
   display: flex;
   align-items: center;
-  gap: var(--sentinel-space-2);
+  gap: var(--fing-space-2);
 }
 
 .thLabel {
@@ -396,7 +396,7 @@
 }
 
 .sortIconActive {
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -413,9 +413,9 @@
   align-items: center;
   justify-content: center;
   cursor: col-resize;
-  color: var(--sentinel-text-tertiary);
+  color: var(--fing-text-tertiary);
   opacity: 0;
-  transition: var(--sentinel-transition-fast);
+  transition: var(--fing-transition-fast);
 }
 
 .th:hover .resizeHandle {
@@ -423,8 +423,8 @@
 }
 
 .resizeHandle:hover {
-  color: var(--sentinel-accent-primary);
-  background-color: var(--sentinel-accent-subtle);
+  color: var(--fing-accent-primary);
+  background-color: var(--fing-accent-subtle);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -432,7 +432,7 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .tbody {
-  background-color: var(--sentinel-bg-elevated);
+  background-color: var(--fing-bg-elevated);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -440,9 +440,9 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .tr {
-  background-color: var(--sentinel-bg-elevated);
-  border-bottom: 1px solid var(--sentinel-border-subtle);
-  transition: background-color var(--sentinel-duration-fast) var(--sentinel-ease-default);
+  background-color: var(--fing-bg-elevated);
+  border-bottom: 1px solid var(--fing-border-subtle);
+  transition: background-color var(--fing-duration-fast) var(--fing-ease-default);
 }
 
 .tr:last-child {
@@ -450,15 +450,15 @@
 }
 
 .trHoverable:hover {
-  background-color: var(--sentinel-bg-overlay);
+  background-color: var(--fing-bg-overlay);
 }
 
 .trSelected {
-  background-color: var(--sentinel-accent-subtle);
+  background-color: var(--fing-accent-subtle);
 }
 
 .trSelected:hover {
-  background-color: var(--sentinel-accent-subtle);
+  background-color: var(--fing-accent-subtle);
 }
 
 .trClickable {
@@ -470,12 +470,12 @@
 }
 
 .trClickable:focus-visible {
-  outline: 2px solid var(--sentinel-accent-primary);
+  outline: 2px solid var(--fing-accent-primary);
   outline-offset: -2px;
 }
 
 .trStriped {
-  background-color: var(--sentinel-bg-overlay);
+  background-color: var(--fing-bg-overlay);
 }
 
 .trCompact {
@@ -487,13 +487,13 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .td {
-  padding: var(--sentinel-space-3) var(--sentinel-space-4);
+  padding: var(--fing-space-3) var(--fing-space-4);
   height: var(--table-row-height);
-  font-size: var(--sentinel-text-sm);
-  font-weight: var(--sentinel-font-regular);
-  color: var(--sentinel-text-primary);
-  font-family: var(--sentinel-font-led);
-  letter-spacing: var(--sentinel-tracking-led);
+  font-size: var(--fing-text-sm);
+  font-weight: var(--fing-font-regular);
+  color: var(--fing-text-primary);
+  font-family: var(--fing-font-led);
+  letter-spacing: var(--fing-tracking-led);
   text-align: left;
   vertical-align: middle;
 }
@@ -501,7 +501,7 @@
 .tdCheckbox,
 .tdExpand {
   width: 44px;
-  padding: var(--sentinel-space-2);
+  padding: var(--fing-space-2);
   text-align: center;
 }
 
@@ -543,19 +543,19 @@
   padding: 0;
   background: none;
   border: none;
-  border-radius: var(--sentinel-radius-sm);
-  color: var(--sentinel-text-tertiary);
+  border-radius: var(--fing-radius-sm);
+  color: var(--fing-text-tertiary);
   cursor: pointer;
-  transition: var(--sentinel-transition-fast);
+  transition: var(--fing-transition-fast);
 }
 
 .expandButton:hover {
-  color: var(--sentinel-accent-primary);
-  background-color: var(--sentinel-accent-subtle);
+  color: var(--fing-accent-primary);
+  background-color: var(--fing-accent-subtle);
 }
 
 .expandButton:focus-visible {
-  outline: 2px solid var(--sentinel-accent-primary);
+  outline: 2px solid var(--fing-accent-primary);
   outline-offset: 2px;
 }
 
@@ -564,13 +564,13 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .expandedRow {
-  background-color: var(--sentinel-bg-overlay);
+  background-color: var(--fing-bg-overlay);
 }
 
 .expandedCell {
-  padding: var(--sentinel-space-4) var(--sentinel-space-6);
-  border-left: 3px solid var(--sentinel-accent-primary);
-  animation: sentinel-emerge var(--sentinel-duration-normal) var(--sentinel-ease-out);
+  padding: var(--fing-space-4) var(--fing-space-6);
+  border-left: 3px solid var(--fing-accent-primary);
+  animation: fing-emerge var(--fing-duration-normal) var(--fing-ease-out);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -578,8 +578,8 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .tfoot {
-  background-color: var(--sentinel-bg-overlay);
-  border-top: 1px solid var(--sentinel-border-default);
+  background-color: var(--fing-bg-overlay);
+  border-top: 1px solid var(--fing-border-default);
 }
 
 .footerRow {
@@ -587,13 +587,13 @@
 }
 
 .tf {
-  padding: var(--sentinel-space-3) var(--sentinel-space-4);
+  padding: var(--fing-space-3) var(--fing-space-4);
   height: var(--table-row-height);
-  font-family: var(--sentinel-font-led);
-  font-size: var(--sentinel-text-sm);
-  font-weight: var(--sentinel-font-semibold);
-  letter-spacing: var(--sentinel-tracking-led);
-  color: var(--sentinel-text-primary);
+  font-family: var(--fing-font-led);
+  font-size: var(--fing-text-sm);
+  font-weight: var(--fing-font-semibold);
+  letter-spacing: var(--fing-tracking-led);
+  color: var(--fing-text-primary);
   text-align: left;
   vertical-align: middle;
 }
@@ -605,7 +605,7 @@
 .tfSticky {
   position: sticky;
   z-index: 1;
-  background-color: var(--sentinel-bg-overlay);
+  background-color: var(--fing-bg-overlay);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -616,63 +616,63 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--sentinel-space-4);
-  padding: var(--sentinel-space-4);
-  border-top: 1px solid var(--sentinel-border-subtle);
-  background-color: var(--sentinel-bg-overlay);
+  gap: var(--fing-space-4);
+  padding: var(--fing-space-4);
+  border-top: 1px solid var(--fing-border-subtle);
+  background-color: var(--fing-bg-overlay);
   flex-wrap: wrap;
 }
 
 .paginationInfo {
   display: flex;
   align-items: center;
-  gap: var(--sentinel-space-2);
+  gap: var(--fing-space-2);
 }
 
 .paginationText {
-  color: var(--sentinel-text-secondary);
-  font-family: var(--sentinel-font-primary);
-  font-size: var(--sentinel-text-sm);
+  color: var(--fing-text-secondary);
+  font-family: var(--fing-font-primary);
+  font-size: var(--fing-text-sm);
 }
 
 .paginationPageSize {
   display: flex;
   align-items: center;
-  gap: var(--sentinel-space-2);
+  gap: var(--fing-space-2);
 }
 
 .paginationLabel {
-  color: var(--sentinel-text-secondary);
-  font-family: var(--sentinel-font-primary);
-  font-size: var(--sentinel-text-sm);
+  color: var(--fing-text-secondary);
+  font-family: var(--fing-font-primary);
+  font-size: var(--fing-text-sm);
 }
 
 .paginationSelect {
-  padding: var(--sentinel-space-1-5) var(--sentinel-space-3);
-  background-color: var(--sentinel-bg-subtle);
-  border: 1px solid var(--sentinel-border-subtle);
-  border-radius: var(--sentinel-radius-sm);
-  color: var(--sentinel-text-primary);
-  font-family: var(--sentinel-font-led);
-  font-size: var(--sentinel-text-sm);
-  letter-spacing: var(--sentinel-tracking-led);
+  padding: var(--fing-space-1-5) var(--fing-space-3);
+  background-color: var(--fing-bg-subtle);
+  border: 1px solid var(--fing-border-subtle);
+  border-radius: var(--fing-radius-sm);
+  color: var(--fing-text-primary);
+  font-family: var(--fing-font-led);
+  font-size: var(--fing-text-sm);
+  letter-spacing: var(--fing-tracking-led);
   cursor: pointer;
-  transition: var(--sentinel-transition-fast);
+  transition: var(--fing-transition-fast);
 }
 
 .paginationSelect:hover {
-  border-color: var(--sentinel-border-default);
+  border-color: var(--fing-border-default);
 }
 
 .paginationSelect:focus {
   outline: none;
-  border-color: var(--sentinel-accent-primary);
+  border-color: var(--fing-accent-primary);
 }
 
 .paginationNav {
   display: flex;
   align-items: center;
-  gap: var(--sentinel-space-1);
+  gap: var(--fing-space-1);
 }
 
 .paginationButton {
@@ -683,17 +683,17 @@
   height: 32px;
   padding: 0;
   background-color: transparent;
-  border: 1px solid var(--sentinel-border-subtle);
-  border-radius: var(--sentinel-radius-sm);
-  color: var(--sentinel-text-secondary);
+  border: 1px solid var(--fing-border-subtle);
+  border-radius: var(--fing-radius-sm);
+  color: var(--fing-text-secondary);
   cursor: pointer;
-  transition: var(--sentinel-transition-fast);
+  transition: var(--fing-transition-fast);
 }
 
 .paginationButton:hover:not(:disabled) {
-  border-color: var(--sentinel-accent-primary);
-  color: var(--sentinel-accent-primary);
-  background-color: var(--sentinel-accent-subtle);
+  border-color: var(--fing-accent-primary);
+  color: var(--fing-accent-primary);
+  background-color: var(--fing-accent-subtle);
 }
 
 .paginationButton:disabled {
@@ -702,15 +702,15 @@
 }
 
 .paginationButton:focus-visible {
-  outline: 2px solid var(--sentinel-accent-primary);
+  outline: 2px solid var(--fing-accent-primary);
   outline-offset: 2px;
 }
 
 .paginationPages {
   display: flex;
   align-items: center;
-  gap: var(--sentinel-space-1);
-  margin: 0 var(--sentinel-space-2);
+  gap: var(--fing-space-1);
+  margin: 0 var(--fing-space-2);
 }
 
 .paginationPageButton {
@@ -719,28 +719,28 @@
   justify-content: center;
   min-width: 32px;
   height: 32px;
-  padding: 0 var(--sentinel-space-2);
+  padding: 0 var(--fing-space-2);
   background-color: transparent;
   border: 1px solid transparent;
-  border-radius: var(--sentinel-radius-sm);
-  color: var(--sentinel-text-secondary);
-  font-family: var(--sentinel-font-led);
-  font-size: var(--sentinel-text-sm);
-  letter-spacing: var(--sentinel-tracking-led);
+  border-radius: var(--fing-radius-sm);
+  color: var(--fing-text-secondary);
+  font-family: var(--fing-font-led);
+  font-size: var(--fing-text-sm);
+  letter-spacing: var(--fing-tracking-led);
   cursor: pointer;
-  transition: var(--sentinel-transition-fast);
+  transition: var(--fing-transition-fast);
 }
 
 .paginationPageButton:hover {
-  border-color: var(--sentinel-border-subtle);
-  background-color: var(--sentinel-bg-subtle);
+  border-color: var(--fing-border-subtle);
+  background-color: var(--fing-bg-subtle);
 }
 
 .paginationPageButtonActive {
-  border-color: var(--sentinel-accent-primary);
-  background-color: var(--sentinel-accent-subtle);
-  color: var(--sentinel-accent-primary);
-  font-weight: var(--sentinel-font-semibold);
+  border-color: var(--fing-accent-primary);
+  background-color: var(--fing-accent-subtle);
+  color: var(--fing-accent-primary);
+  font-weight: var(--fing-font-semibold);
 }
 
 .paginationEllipsis {
@@ -749,9 +749,9 @@
   justify-content: center;
   min-width: 32px;
   height: 32px;
-  color: var(--sentinel-text-tertiary);
-  font-family: var(--sentinel-font-led);
-  letter-spacing: var(--sentinel-tracking-led);
+  color: var(--fing-text-tertiary);
+  font-family: var(--fing-font-led);
+  letter-spacing: var(--fing-tracking-led);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -767,55 +767,55 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: var(--sentinel-space-12) var(--sentinel-space-6);
+  padding: var(--fing-space-12) var(--fing-space-6);
   text-align: center;
 }
 
 .emptyIcon {
-  margin-bottom: var(--sentinel-space-4);
-  color: var(--sentinel-text-tertiary);
+  margin-bottom: var(--fing-space-4);
+  color: var(--fing-text-tertiary);
 }
 
 .emptyIconError {
-  color: var(--sentinel-status-negative);
+  color: var(--fing-status-negative);
 }
 
 .emptyTitle {
-  margin: 0 0 var(--sentinel-space-2);
-  font-family: var(--sentinel-font-primary);
-  font-size: var(--sentinel-text-lg);
-  font-weight: var(--sentinel-font-semibold);
-  color: var(--sentinel-text-primary);
+  margin: 0 0 var(--fing-space-2);
+  font-family: var(--fing-font-primary);
+  font-size: var(--fing-text-lg);
+  font-weight: var(--fing-font-semibold);
+  color: var(--fing-text-primary);
 }
 
 .emptyDescription {
-  margin: 0 0 var(--sentinel-space-4);
-  font-family: var(--sentinel-font-primary);
-  font-size: var(--sentinel-text-sm);
-  color: var(--sentinel-text-secondary);
+  margin: 0 0 var(--fing-space-4);
+  font-family: var(--fing-font-primary);
+  font-size: var(--fing-text-sm);
+  color: var(--fing-text-secondary);
   max-width: 320px;
 }
 
 .emptyAction {
-  margin-top: var(--sentinel-space-2);
+  margin-top: var(--fing-space-2);
 }
 
 .clearFiltersButton {
-  padding: var(--sentinel-space-2) var(--sentinel-space-4);
-  background-color: var(--sentinel-accent-subtle);
-  border: 1px solid var(--sentinel-accent-primary);
-  border-radius: var(--sentinel-radius-md);
-  color: var(--sentinel-accent-primary);
-  font-family: var(--sentinel-font-primary);
-  font-size: var(--sentinel-text-sm);
-  font-weight: var(--sentinel-font-medium);
+  padding: var(--fing-space-2) var(--fing-space-4);
+  background-color: var(--fing-accent-subtle);
+  border: 1px solid var(--fing-accent-primary);
+  border-radius: var(--fing-radius-md);
+  color: var(--fing-accent-primary);
+  font-family: var(--fing-font-primary);
+  font-size: var(--fing-text-sm);
+  font-weight: var(--fing-font-medium);
   cursor: pointer;
-  transition: var(--sentinel-transition-fast);
+  transition: var(--fing-transition-fast);
 }
 
 .clearFiltersButton:hover {
-  background-color: var(--sentinel-accent-primary);
-  color: var(--sentinel-text-inverse);
+  background-color: var(--fing-accent-primary);
+  color: var(--fing-text-inverse);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -823,15 +823,15 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .loadingContainer {
-  padding: var(--sentinel-space-4);
+  padding: var(--fing-space-4);
 }
 
 .loadingHeader {
   display: flex;
-  gap: var(--sentinel-space-4);
-  padding: var(--sentinel-space-3) var(--sentinel-space-4);
-  background-color: var(--sentinel-bg-overlay);
-  border-bottom: 1px solid var(--sentinel-border-subtle);
+  gap: var(--fing-space-4);
+  padding: var(--fing-space-3) var(--fing-space-4);
+  background-color: var(--fing-bg-overlay);
+  border-bottom: 1px solid var(--fing-border-subtle);
 }
 
 .loadingBody {
@@ -841,9 +841,9 @@
 
 .loadingRow {
   display: flex;
-  gap: var(--sentinel-space-4);
-  padding: var(--sentinel-space-3) var(--sentinel-space-4);
-  border-bottom: 1px solid var(--sentinel-border-subtle);
+  gap: var(--fing-space-4);
+  padding: var(--fing-space-3) var(--fing-space-4);
+  border-bottom: 1px solid var(--fing-border-subtle);
 }
 
 .loadingRow:last-child {
@@ -859,41 +859,41 @@
   height: 16px;
   background: linear-gradient(
     90deg,
-    var(--sentinel-bg-subtle) 0%,
-    var(--sentinel-bg-interactive) 50%,
-    var(--sentinel-bg-subtle) 100%
+    var(--fing-bg-subtle) 0%,
+    var(--fing-bg-interactive) 50%,
+    var(--fing-bg-subtle) 100%
   );
   background-size: 200% 100%;
-  border-radius: var(--sentinel-radius-sm);
-  animation: sentinel-shimmer 1.5s ease-in-out infinite;
+  border-radius: var(--fing-radius-sm);
+  animation: fing-shimmer 1.5s ease-in-out infinite;
 }
 
 .loadingOverlay {
   position: absolute;
   inset: 0;
-  z-index: var(--sentinel-z-overlay);
+  z-index: var(--fing-z-overlay);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: var(--sentinel-space-3);
-  background-color: var(--sentinel-bg-glass);
+  gap: var(--fing-space-3);
+  background-color: var(--fing-bg-glass);
   backdrop-filter: blur(2px);
 }
 
 .loadingSpinner {
   width: 32px;
   height: 32px;
-  border: 3px solid var(--sentinel-border-subtle);
-  border-top-color: var(--sentinel-accent-primary);
+  border: 3px solid var(--fing-border-subtle);
+  border-top-color: var(--fing-accent-primary);
   border-radius: 50%;
-  animation: sentinel-rotate-slow 0.8s linear infinite;
+  animation: fing-rotate-slow 0.8s linear infinite;
 }
 
 .loadingMessage {
-  color: var(--sentinel-text-secondary);
-  font-family: var(--sentinel-font-primary);
-  font-size: var(--sentinel-text-sm);
+  color: var(--fing-text-secondary);
+  font-family: var(--fing-font-primary);
+  font-size: var(--fing-text-sm);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -907,7 +907,7 @@
   }
 
   .loadingSkeleton {
-    background: var(--sentinel-bg-subtle);
+    background: var(--fing-bg-subtle);
   }
 
   .expandedCell,
@@ -937,7 +937,7 @@
 
   .pagination {
     flex-direction: column;
-    gap: var(--sentinel-space-3);
+    gap: var(--fing-space-3);
   }
 
   .paginationNav {

@@ -24,21 +24,21 @@
   width: 96px;
   height: 96px;
   border-radius: 50%;
-  background: var(--sentinel-bg-elevated);
-  border: 1px solid var(--sentinel-border-subtle);
-  color: var(--sentinel-accent-primary);
+  background: var(--fing-bg-elevated);
+  border: 1px solid var(--fing-border-subtle);
+  color: var(--fing-accent-primary);
 }
 
 .title {
   font-size: 24px;
   font-weight: 600;
-  color: var(--sentinel-text-primary);
+  color: var(--fing-text-primary);
   margin: 0;
 }
 
 .description {
   font-size: 14px;
-  color: var(--sentinel-text-secondary);
+  color: var(--fing-text-secondary);
   margin: 0;
   max-width: 280px;
 }

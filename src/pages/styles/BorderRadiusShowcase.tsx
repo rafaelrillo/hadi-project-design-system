@@ -1,5 +1,5 @@
 // Path: src/pages/styles/BorderRadiusShowcase.tsx
-// SENTINEL Design System - Glass-Neumorphism Border Radius
+// FING Design System - Glass-Neumorphism Border Radius
 import React, { useMemo } from 'react';
 import { ShowcaseSection } from '../../components/showcase';
 import { LightEngineProvider, useLightEngine } from '@/contexts/LightEngineContext';
@@ -82,26 +82,26 @@ function BorderRadiusContent() {
   const titleStyles: React.CSSProperties = {
     fontSize: '28px',
     fontWeight: 700,
-    color: 'var(--sentinel-accent-primary)',
+    color: 'var(--fing-accent-primary)',
     marginBottom: '8px',
-    fontFamily: 'var(--sentinel-font-display)',
+    fontFamily: 'var(--fing-font-display)',
     textTransform: 'uppercase',
     letterSpacing: '0.1em',
   };
 
   const descStyles: React.CSSProperties = {
     fontSize: '14px',
-    color: 'var(--sentinel-text-secondary)',
-    fontFamily: 'var(--sentinel-font-mono)',
+    color: 'var(--fing-text-secondary)',
+    fontFamily: 'var(--fing-font-mono)',
     textTransform: 'uppercase',
     letterSpacing: '0.03em',
   };
 
   const specTextStyles: React.CSSProperties = {
     fontSize: '12px',
-    color: 'var(--sentinel-text-secondary)',
+    color: 'var(--fing-text-secondary)',
     lineHeight: '1.8',
-    fontFamily: 'var(--sentinel-font-mono)',
+    fontFamily: 'var(--fing-font-mono)',
   };
 
   // Box styles with different radius
@@ -144,8 +144,8 @@ function BorderRadiusContent() {
     boxShadow: getNeuPanelShadow(8, 24),
     fontSize: '14px',
     fontWeight: 600,
-    color: 'var(--sentinel-text-primary)',
-    fontFamily: 'var(--sentinel-font-mono)',
+    color: 'var(--fing-text-primary)',
+    fontFamily: 'var(--fing-font-mono)',
     cursor: 'pointer',
     transition: 'box-shadow 50ms linear',
   });
@@ -159,8 +159,8 @@ function BorderRadiusContent() {
     border: '1px solid hsla(175, 35%, 75%, 0.30)',
     fontSize: '14px',
     fontWeight: 600,
-    color: 'var(--sentinel-text-primary)',
-    fontFamily: 'var(--sentinel-font-mono)',
+    color: 'var(--fing-text-primary)',
+    fontFamily: 'var(--fing-font-mono)',
     cursor: 'pointer',
     boxShadow: `${getGlassReflection()}, ${getLayeredShadow(175, 35)}`,
     transition: 'box-shadow 50ms linear',
@@ -186,12 +186,12 @@ function BorderRadiusContent() {
           <div style={{ textAlign: 'center' }}>
             <div style={neuBox('15px')}>
               <Square size={20} color="#3a6a72" />
-              <span style={{ fontSize: '11px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)' }}>Square</span>
+              <span style={{ fontSize: '11px', color: '#636E72', fontFamily: 'var(--fing-font-mono)' }}>Square</span>
             </div>
-            <div style={{ marginTop: '12px', fontSize: '12px', color: 'var(--sentinel-text-primary)', fontWeight: 600, fontFamily: 'var(--sentinel-font-mono)' }}>
+            <div style={{ marginTop: '12px', fontSize: '12px', color: 'var(--fing-text-primary)', fontWeight: 600, fontFamily: 'var(--fing-font-mono)' }}>
               15px
             </div>
-            <div style={{ fontSize: '10px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)' }}>
+            <div style={{ fontSize: '10px', color: '#636E72', fontFamily: 'var(--fing-font-mono)' }}>
               Neumorphic
             </div>
           </div>
@@ -200,12 +200,12 @@ function BorderRadiusContent() {
           <div style={{ textAlign: 'center' }}>
             <div style={{ ...neuBox('15px'), width: '160px', height: '80px' }}>
               <RectangleHorizontal size={20} color="#3a6a72" />
-              <span style={{ fontSize: '11px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)' }}>Rectangle</span>
+              <span style={{ fontSize: '11px', color: '#636E72', fontFamily: 'var(--fing-font-mono)' }}>Rectangle</span>
             </div>
-            <div style={{ marginTop: '12px', fontSize: '12px', color: 'var(--sentinel-text-primary)', fontWeight: 600, fontFamily: 'var(--sentinel-font-mono)' }}>
+            <div style={{ marginTop: '12px', fontSize: '12px', color: 'var(--fing-text-primary)', fontWeight: 600, fontFamily: 'var(--fing-font-mono)' }}>
               15px
             </div>
-            <div style={{ fontSize: '10px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)' }}>
+            <div style={{ fontSize: '10px', color: '#636E72', fontFamily: 'var(--fing-font-mono)' }}>
               Neumorphic
             </div>
           </div>
@@ -214,12 +214,12 @@ function BorderRadiusContent() {
           <div style={{ textAlign: 'center' }}>
             <div style={glassBox('15px', 175, 35)}>
               <Square size={20} color="#2d5a5c" />
-              <span style={{ fontSize: '11px', color: '#3d6a6c', fontFamily: 'var(--sentinel-font-mono)' }}>Square</span>
+              <span style={{ fontSize: '11px', color: '#3d6a6c', fontFamily: 'var(--fing-font-mono)' }}>Square</span>
             </div>
-            <div style={{ marginTop: '12px', fontSize: '12px', color: 'var(--sentinel-text-primary)', fontWeight: 600, fontFamily: 'var(--sentinel-font-mono)' }}>
+            <div style={{ marginTop: '12px', fontSize: '12px', color: 'var(--fing-text-primary)', fontWeight: 600, fontFamily: 'var(--fing-font-mono)' }}>
               15px
             </div>
-            <div style={{ fontSize: '10px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)' }}>
+            <div style={{ fontSize: '10px', color: '#636E72', fontFamily: 'var(--fing-font-mono)' }}>
               Glass
             </div>
           </div>
@@ -228,12 +228,12 @@ function BorderRadiusContent() {
           <div style={{ textAlign: 'center' }}>
             <div style={{ ...glassBox('15px', 215, 50), width: '160px', height: '80px' }}>
               <RectangleHorizontal size={20} color="#1e3a5c" />
-              <span style={{ fontSize: '11px', color: '#2d4a6b', fontFamily: 'var(--sentinel-font-mono)' }}>Rectangle</span>
+              <span style={{ fontSize: '11px', color: '#2d4a6b', fontFamily: 'var(--fing-font-mono)' }}>Rectangle</span>
             </div>
-            <div style={{ marginTop: '12px', fontSize: '12px', color: 'var(--sentinel-text-primary)', fontWeight: 600, fontFamily: 'var(--sentinel-font-mono)' }}>
+            <div style={{ marginTop: '12px', fontSize: '12px', color: 'var(--fing-text-primary)', fontWeight: 600, fontFamily: 'var(--fing-font-mono)' }}>
               15px
             </div>
-            <div style={{ fontSize: '10px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)' }}>
+            <div style={{ fontSize: '10px', color: '#636E72', fontFamily: 'var(--fing-font-mono)' }}>
               Glass
             </div>
           </div>
@@ -250,12 +250,12 @@ function BorderRadiusContent() {
           <div style={{ textAlign: 'center' }}>
             <div style={neuBox('50%')}>
               <Circle size={20} color="#3a6a72" />
-              <span style={{ fontSize: '11px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)' }}>Circle</span>
+              <span style={{ fontSize: '11px', color: '#636E72', fontFamily: 'var(--fing-font-mono)' }}>Circle</span>
             </div>
-            <div style={{ marginTop: '12px', fontSize: '12px', color: 'var(--sentinel-text-primary)', fontWeight: 600, fontFamily: 'var(--sentinel-font-mono)' }}>
+            <div style={{ marginTop: '12px', fontSize: '12px', color: 'var(--fing-text-primary)', fontWeight: 600, fontFamily: 'var(--fing-font-mono)' }}>
               50%
             </div>
-            <div style={{ fontSize: '10px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)' }}>
+            <div style={{ fontSize: '10px', color: '#636E72', fontFamily: 'var(--fing-font-mono)' }}>
               Avatar
             </div>
           </div>
@@ -264,12 +264,12 @@ function BorderRadiusContent() {
           <div style={{ textAlign: 'center' }}>
             <div style={glassBox('50%', 145, 45)}>
               <Circle size={20} color="#2d5a4a" />
-              <span style={{ fontSize: '11px', color: '#3d6a5c', fontFamily: 'var(--sentinel-font-mono)' }}>Circle</span>
+              <span style={{ fontSize: '11px', color: '#3d6a5c', fontFamily: 'var(--fing-font-mono)' }}>Circle</span>
             </div>
-            <div style={{ marginTop: '12px', fontSize: '12px', color: 'var(--sentinel-text-primary)', fontWeight: 600, fontFamily: 'var(--sentinel-font-mono)' }}>
+            <div style={{ marginTop: '12px', fontSize: '12px', color: 'var(--fing-text-primary)', fontWeight: 600, fontFamily: 'var(--fing-font-mono)' }}>
               50%
             </div>
-            <div style={{ fontSize: '10px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)' }}>
+            <div style={{ fontSize: '10px', color: '#636E72', fontFamily: 'var(--fing-font-mono)' }}>
               Glass Avatar
             </div>
           </div>
@@ -277,12 +277,12 @@ function BorderRadiusContent() {
           {/* Neumorphic Pill */}
           <div style={{ textAlign: 'center' }}>
             <div style={{ ...neuBox('9999px'), width: '140px', height: '48px', flexDirection: 'row', gap: '8px' }}>
-              <span style={{ fontSize: '12px', fontWeight: 600, color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)' }}>Pill Badge</span>
+              <span style={{ fontSize: '12px', fontWeight: 600, color: 'var(--fing-text-primary)', fontFamily: 'var(--fing-font-mono)' }}>Pill Badge</span>
             </div>
-            <div style={{ marginTop: '12px', fontSize: '12px', color: 'var(--sentinel-text-primary)', fontWeight: 600, fontFamily: 'var(--sentinel-font-mono)' }}>
+            <div style={{ marginTop: '12px', fontSize: '12px', color: 'var(--fing-text-primary)', fontWeight: 600, fontFamily: 'var(--fing-font-mono)' }}>
               9999px
             </div>
-            <div style={{ fontSize: '10px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)' }}>
+            <div style={{ fontSize: '10px', color: '#636E72', fontFamily: 'var(--fing-font-mono)' }}>
               Badge
             </div>
           </div>
@@ -290,12 +290,12 @@ function BorderRadiusContent() {
           {/* Glass Pill */}
           <div style={{ textAlign: 'center' }}>
             <div style={{ ...glassBox('9999px', 280, 40), width: '140px', height: '48px', flexDirection: 'row', gap: '8px' }}>
-              <span style={{ fontSize: '12px', fontWeight: 600, color: '#4a2d6a', fontFamily: 'var(--sentinel-font-mono)' }}>Glass Pill</span>
+              <span style={{ fontSize: '12px', fontWeight: 600, color: '#4a2d6a', fontFamily: 'var(--fing-font-mono)' }}>Glass Pill</span>
             </div>
-            <div style={{ marginTop: '12px', fontSize: '12px', color: 'var(--sentinel-text-primary)', fontWeight: 600, fontFamily: 'var(--sentinel-font-mono)' }}>
+            <div style={{ marginTop: '12px', fontSize: '12px', color: 'var(--fing-text-primary)', fontWeight: 600, fontFamily: 'var(--fing-font-mono)' }}>
               9999px
             </div>
-            <div style={{ fontSize: '10px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)' }}>
+            <div style={{ fontSize: '10px', color: '#636E72', fontFamily: 'var(--fing-font-mono)' }}>
               Glass Badge
             </div>
           </div>
@@ -310,19 +310,19 @@ function BorderRadiusContent() {
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '24px', justifyContent: 'center', alignItems: 'center' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', alignItems: 'center' }}>
             <button style={neuButton('15px')}>Neumorphic 15px</button>
-            <span style={{ fontSize: '10px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)' }}>Standard</span>
+            <span style={{ fontSize: '10px', color: '#636E72', fontFamily: 'var(--fing-font-mono)' }}>Standard</span>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', alignItems: 'center' }}>
             <button style={neuButton('9999px')}>Neumorphic Pill</button>
-            <span style={{ fontSize: '10px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)' }}>Pill</span>
+            <span style={{ fontSize: '10px', color: '#636E72', fontFamily: 'var(--fing-font-mono)' }}>Pill</span>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', alignItems: 'center' }}>
             <button style={glassButton('15px')}>Glass 15px</button>
-            <span style={{ fontSize: '10px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)' }}>Glass Standard</span>
+            <span style={{ fontSize: '10px', color: '#636E72', fontFamily: 'var(--fing-font-mono)' }}>Glass Standard</span>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', alignItems: 'center' }}>
             <button style={glassButton('9999px')}>Glass Pill</button>
-            <span style={{ fontSize: '10px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)' }}>Glass Pill</span>
+            <span style={{ fontSize: '10px', color: '#636E72', fontFamily: 'var(--fing-font-mono)' }}>Glass Pill</span>
           </div>
         </div>
       </ShowcaseSection>
@@ -361,7 +361,7 @@ function BorderRadiusContent() {
                 <div style={{ fontSize: '13px', fontWeight: 600, color: `hsl(${item.color}, 35%, 35%)`, marginBottom: '4px' }}>
                   {item.label}
                 </div>
-                <div style={{ fontSize: '10px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)' }}>
+                <div style={{ fontSize: '10px', color: '#636E72', fontFamily: 'var(--fing-font-mono)' }}>
                   15px radius
                 </div>
               </div>
@@ -383,19 +383,19 @@ function BorderRadiusContent() {
           transition: 'box-shadow 50ms linear',
         }}>
           <div style={specTextStyles}>
-            <p><strong style={{ color: 'var(--sentinel-accent-primary)' }}>Consistencia Visual:</strong></p>
+            <p><strong style={{ color: 'var(--fing-accent-primary)' }}>Consistencia Visual:</strong></p>
             <p>✓ Un solo valor de radius crea cohesión en toda la interfaz</p>
             <p>✓ Elimina decisiones arbitrarias sobre cuánto redondear</p>
             <p>✓ Facilita la implementación y mantenimiento</p>
 
-            <p style={{ marginTop: '16px' }}><strong style={{ color: 'var(--sentinel-accent-primary)' }}>Balance Neumórfico:</strong></p>
+            <p style={{ marginTop: '16px' }}><strong style={{ color: 'var(--fing-accent-primary)' }}>Balance Neumórfico:</strong></p>
             <p>✓ 15px es suficiente para suavizar sin perder forma</p>
             <p>✓ Funciona bien con las sombras de profundidad variable</p>
             <p>✓ Compatible con el efecto glass y sus reflexiones</p>
 
-            <p style={{ marginTop: '16px' }}><strong style={{ color: 'var(--sentinel-accent-primary)' }}>Excepciones:</strong></p>
-            <p>✓ <code style={{ color: 'var(--sentinel-accent-primary)' }}>50%</code> para círculos (avatars)</p>
-            <p>✓ <code style={{ color: 'var(--sentinel-accent-primary)' }}>9999px</code> para pills (badges, tags)</p>
+            <p style={{ marginTop: '16px' }}><strong style={{ color: 'var(--fing-accent-primary)' }}>Excepciones:</strong></p>
+            <p>✓ <code style={{ color: 'var(--fing-accent-primary)' }}>50%</code> para círculos (avatars)</p>
+            <p>✓ <code style={{ color: 'var(--fing-accent-primary)' }}>9999px</code> para pills (badges, tags)</p>
           </div>
         </div>
       </ShowcaseSection>
@@ -408,8 +408,8 @@ function BorderRadiusContent() {
           boxShadow: getNeuInsetShadow(5, 15),
           background: MARBLE.base,
           fontSize: '12px',
-          fontFamily: 'var(--sentinel-font-mono)',
-          color: 'var(--sentinel-text-secondary)',
+          fontFamily: 'var(--fing-font-mono)',
+          color: 'var(--fing-text-secondary)',
           transition: 'box-shadow 50ms linear',
         }}>
           <pre style={{ margin: 0, whiteSpace: 'pre-wrap' }}>{`// Standard radius for all components

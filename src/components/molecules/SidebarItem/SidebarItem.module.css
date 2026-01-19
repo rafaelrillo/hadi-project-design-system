@@ -1,6 +1,6 @@
 /* Path: src/components/molecules/SidebarItem/SidebarItem.module.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   SENTINEL DESIGN SYSTEM - SidebarItem Component
+   FING DESIGN SYSTEM - SidebarItem Component
 
    Navigation item for sidebar menus
    Clean styling with active state indicator
@@ -15,30 +15,30 @@
   display: flex;
   align-items: center;
   height: 40px;
-  padding: 0 var(--sentinel-space-4);
-  font-size: var(--sentinel-text-sm);
-  font-weight: var(--sentinel-font-normal);
-  color: var(--sentinel-text-secondary);
+  padding: 0 var(--fing-space-4);
+  font-size: var(--fing-text-sm);
+  font-weight: var(--fing-font-normal);
+  color: var(--fing-text-secondary);
   background-color: transparent;
   cursor: pointer;
-  font-family: var(--sentinel-font-primary);
+  font-family: var(--fing-font-primary);
   line-height: 1.5;
   text-decoration: none;
   border: none;
   width: 100%;
   text-align: left;
-  transition: var(--sentinel-transition-normal);
+  transition: var(--fing-transition-normal);
   outline: none;
   user-select: none;
 }
 
 .container:hover:not(.disabled) {
-  background-color: var(--sentinel-bg-overlay);
-  color: var(--sentinel-text-primary);
+  background-color: var(--fing-bg-overlay);
+  color: var(--fing-text-primary);
 }
 
 .container:focus-visible {
-  outline: 2px solid var(--sentinel-accent-primary);
+  outline: 2px solid var(--fing-accent-primary);
   outline-offset: -2px;
 }
 
@@ -47,13 +47,13 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .active {
-  font-weight: var(--sentinel-font-medium);
-  color: var(--sentinel-accent-primary);
-  background-color: var(--sentinel-accent-subtle);
+  font-weight: var(--fing-font-medium);
+  color: var(--fing-accent-primary);
+  background-color: var(--fing-accent-subtle);
 }
 
 .active:hover {
-  background-color: var(--sentinel-accent-subtle);
+  background-color: var(--fing-accent-subtle);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -61,7 +61,7 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .disabled {
-  color: var(--sentinel-text-disabled);
+  color: var(--fing-text-disabled);
   cursor: not-allowed;
   background-color: transparent;
 }
@@ -76,9 +76,9 @@
   top: 0;
   bottom: 0;
   width: 3px;
-  background-color: var(--sentinel-accent-primary);
+  background-color: var(--fing-accent-primary);
   opacity: 0;
-  transition: opacity var(--sentinel-transition-normal);
+  transition: opacity var(--fing-transition-normal);
 }
 
 .leftBarVisible {
@@ -90,7 +90,7 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .iconContainer {
-  margin-right: var(--sentinel-space-3);
+  margin-right: var(--fing-space-3);
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -118,14 +118,14 @@
   justify-content: center;
   min-width: 20px;
   height: 20px;
-  padding: 0 var(--sentinel-space-1);
+  padding: 0 var(--fing-space-1);
   font-size: 10px;
-  font-weight: var(--sentinel-font-semibold);
-  color: var(--sentinel-bg-base);
-  background-color: var(--sentinel-accent-primary);
-  border-radius: var(--sentinel-radius-full);
-  margin-left: var(--sentinel-space-2);
-  font-family: var(--sentinel-font-led);
-  letter-spacing: var(--sentinel-tracking-led);
-  text-shadow: var(--sentinel-glow-accent);
+  font-weight: var(--fing-font-semibold);
+  color: var(--fing-bg-base);
+  background-color: var(--fing-accent-primary);
+  border-radius: var(--fing-radius-full);
+  margin-left: var(--fing-space-2);
+  font-family: var(--fing-font-led);
+  letter-spacing: var(--fing-tracking-led);
+  text-shadow: var(--fing-glow-accent);
 }

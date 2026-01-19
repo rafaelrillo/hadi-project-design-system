@@ -5,15 +5,15 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 export {
-  sentinelColors,
+  fingColors,
   chartPalette,
   sequentialColors,
   divergingColors,
   riskColors,
-  sentinelEChartsTheme,
+  fingEChartsTheme,
   tooltipFormatters,
   animationPresets,
-} from './sentinelTheme';
+} from './fingTheme';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // TYPES

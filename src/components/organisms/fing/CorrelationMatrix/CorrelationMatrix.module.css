@@ -1,0 +1,333 @@
+/* Path: src/components/organisms/fing/CorrelationMatrix/CorrelationMatrix.module.css */
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   CORRELATION MATRIX - Level 4 Depth Component
+   Heatmap-style matrix with FING aesthetic
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.container {
+  background: var(--fing-bg-elevated);
+  border: 1px solid var(--fing-border-subtle);
+  border-radius: var(--fing-radius-lg, 12px);
+  overflow: hidden;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   HEADER
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--fing-border-subtle);
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.headerContent {
+  flex: 1;
+}
+
+.title {
+  font-family: var(--fing-font-primary);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--fing-text-primary);
+  margin: 0 0 4px 0;
+  letter-spacing: -0.01em;
+}
+
+.subtitle {
+  font-family: var(--fing-font-primary);
+  font-size: 13px;
+  color: var(--fing-text-secondary);
+  margin: 0;
+}
+
+.legend {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--fing-font-numeric);
+  font-size: 10px;
+  color: var(--fing-text-tertiary);
+  letter-spacing: var(--fing-tracking-led);
+}
+
+.legendColor {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+}
+
+.legendGradient {
+  width: 80px;
+  height: 8px;
+  background: linear-gradient(
+    to right,
+    var(--fing-status-negative),
+    var(--fing-bg-subtle) 50%,
+    var(--fing-status-positive)
+  );
+  border-radius: 2px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   MATRIX
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.matrixWrapper {
+  padding: 16px;
+  overflow-x: auto;
+}
+
+.matrix {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.headerRow,
+.dataRow {
+  display: flex;
+  gap: 2px;
+}
+
+/* Cell Sizes */
+.cellSm {
+  width: 36px;
+  height: 36px;
+  font-size: 9px;
+}
+
+.cellMd {
+  width: 48px;
+  height: 48px;
+  font-size: 11px;
+}
+
+.cellLg {
+  width: 64px;
+  height: 64px;
+  font-size: 12px;
+}
+
+/* Corner Cell */
+.cornerCell {
+  background: transparent;
+  flex-shrink: 0;
+}
+
+/* Header Cells */
+.headerCell {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 6px;
+  background: var(--fing-bg-subtle);
+  border-radius: var(--fing-radius-xs, 4px);
+  transition: background-color 200ms;
+  flex-shrink: 0;
+}
+
+.headerCell.highlighted {
+  background: var(--fing-accent-subtle);
+}
+
+.headerLabel {
+  font-family: var(--fing-font-ticker);
+  font-size: inherit;
+  font-weight: 500;
+  color: var(--fing-text-secondary);
+  letter-spacing: 0.08em;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* Row Labels */
+.rowLabel {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 8px;
+  background: var(--fing-bg-subtle);
+  border-radius: var(--fing-radius-xs, 4px);
+  transition: background-color 200ms;
+  flex-shrink: 0;
+}
+
+.rowLabel.highlighted {
+  background: var(--fing-accent-subtle);
+}
+
+.rowLabel span {
+  font-family: var(--fing-font-ticker);
+  font-size: inherit;
+  font-weight: 500;
+  color: var(--fing-text-secondary);
+  letter-spacing: 0.08em;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* Data Cells */
+.cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: var(--fing-radius-xs, 4px);
+  cursor: pointer;
+  transition: all 200ms;
+  flex-shrink: 0;
+  padding: 0;
+}
+
+.cell:focus-visible {
+  outline: 2px solid var(--fing-border-focus);
+  outline-offset: 1px;
+  z-index: 1;
+}
+
+.cell:hover:not(.diagonal) {
+  border-color: var(--fing-accent-primary);
+  transform: scale(1.05);
+  z-index: 2;
+}
+
+.cell.diagonal {
+  cursor: default;
+  background: var(--fing-bg-subtle) !important;
+}
+
+.cell.highCorrelation {
+  border-color: var(--fing-border-strong);
+}
+
+.cell.selected {
+  border-color: var(--fing-accent-primary);
+  box-shadow: 0 0 0 2px var(--fing-accent-glow);
+}
+
+.cell.hovered {
+  border-color: var(--fing-accent-primary);
+}
+
+.cellValue {
+  font-family: var(--fing-font-numeric);
+  font-size: inherit;
+  font-weight: 500;
+  color: var(--fing-text-primary);
+  letter-spacing: var(--fing-tracking-led);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.diagonalMark {
+  font-family: var(--fing-font-numeric);
+  font-size: inherit;
+  color: var(--fing-text-disabled);
+  letter-spacing: var(--fing-tracking-led);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   FOOTER
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  border-top: 1px solid var(--fing-border-subtle);
+  background: var(--fing-bg-base);
+  gap: 16px;
+  flex-wrap: wrap;
+  min-height: 44px;
+}
+
+.footerInfo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--fing-font-primary);
+  font-size: 11px;
+  color: var(--fing-text-tertiary);
+}
+
+.footerInfo svg {
+  flex-shrink: 0;
+}
+
+.hoveredInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 12px;
+  background: var(--fing-accent-subtle);
+  border-radius: var(--fing-radius-sm, 6px);
+}
+
+.hoveredLabels {
+  font-family: var(--fing-font-primary);
+  font-size: 12px;
+  color: var(--fing-text-primary);
+}
+
+.hoveredValue {
+  font-family: var(--fing-font-numeric);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--fing-accent-primary);
+  letter-spacing: var(--fing-tracking-led);
+  text-shadow: var(--fing-glow-accent);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   RESPONSIVE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+  .header {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .hoveredInfo {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   REDUCED MOTION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .cell,
+  .headerCell,
+  .rowLabel {
+    transition: none;
+  }
+
+  .cell:hover:not(.diagonal) {
+    transform: none;
+  }
+}

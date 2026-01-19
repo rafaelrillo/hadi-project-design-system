@@ -2,7 +2,7 @@
 import { useMemo } from 'react';
 import type { EChartsOption } from 'echarts';
 import { EChart } from './EChart';
-import { sentinelColors, chartPalette, tooltipFormatters } from './sentinelTheme';
+import { fingColors, chartPalette, tooltipFormatters } from './fingTheme';
 import type { SankeyData, BaseChartProps } from './types';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -84,9 +84,9 @@ export function SankeyChart({
           return `
             <div style="font-family: 'Inter', sans-serif; font-size: 12px;">
               <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
-                <span style="color: ${sentinelColors.textSecondary};">${p.data.source}</span>
-                <span style="color: ${sentinelColors.textTertiary};">→</span>
-                <span style="color: ${sentinelColors.textSecondary};">${p.data.target}</span>
+                <span style="color: ${fingColors.textSecondary};">${p.data.source}</span>
+                <span style="color: ${fingColors.textTertiary};">→</span>
+                <span style="color: ${fingColors.textSecondary};">${p.data.target}</span>
               </div>
               <div style="font-family: 'Space Mono', monospace; font-weight: 600; font-size: 14px;">
                 ${formatValue(p.value)}
@@ -122,7 +122,7 @@ export function SankeyChart({
           label: {
             show: true,
             position: orient === 'horizontal' ? 'right' : 'bottom',
-            color: sentinelColors.textSecondary,
+            color: fingColors.textSecondary,
             fontSize: 11,
             fontFamily: "'Inter', sans-serif",
             formatter: '{b}',

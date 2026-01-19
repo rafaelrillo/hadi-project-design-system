@@ -1,6 +1,6 @@
 /* Path: src/components/atoms/Tooltip/Tooltip.module.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   SENTINEL DESIGN SYSTEM v3.2 - Tooltip Component
+   FING DESIGN SYSTEM v3.2 - Tooltip Component
 
    GLASS-NEUMORPHISM - Elevated floating glass tooltips
    - Strong backdrop blur for visibility
@@ -24,14 +24,14 @@
 
 .tooltip {
   position: absolute;
-  z-index: var(--sentinel-z-tooltip);
+  z-index: var(--fing-z-tooltip);
   pointer-events: none;
   max-width: 280px;
   padding: 10px 14px;
-  border-radius: var(--sentinel-radius-md);
+  border-radius: var(--fing-radius-md);
   font-size: 12px;
-  font-weight: var(--sentinel-font-medium);
-  font-family: var(--sentinel-font-primary);
+  font-weight: var(--fing-font-medium);
+  font-family: var(--fing-font-primary);
   line-height: 1.5;
   white-space: normal;
   word-wrap: break-word;
@@ -104,17 +104,17 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .variantDark {
-  background: var(--sentinel-glass-elevated);
-  color: var(--sentinel-text-primary);
-  border: 1px solid var(--sentinel-glass-border);
+  background: var(--fing-glass-elevated);
+  color: var(--fing-text-primary);
+  border: 1px solid var(--fing-glass-border);
 
   /* Strong glass blur */
-  backdrop-filter: blur(var(--sentinel-blur-lg));
-  -webkit-backdrop-filter: blur(var(--sentinel-blur-lg));
+  backdrop-filter: blur(var(--fing-blur-lg));
+  -webkit-backdrop-filter: blur(var(--fing-blur-lg));
 
   /* Neumorphic elevation + glow */
   box-shadow:
-    var(--sentinel-neu-elevated-md),
+    var(--fing-neu-elevated-md),
     inset 0 1px 0 rgba(255, 255, 255, 0.08),
     0 0 20px rgba(0, 0, 0, 0.3);
 }
@@ -135,7 +135,7 @@
     rgba(255, 255, 255, 0.15),
     transparent
   );
-  border-radius: var(--sentinel-radius-md) var(--sentinel-radius-md) 0 0;
+  border-radius: var(--fing-radius-md) var(--fing-radius-md) 0 0;
   pointer-events: none;
 }
 
@@ -148,11 +148,11 @@
   color: #0a0a0c;
   border: 1px solid rgba(255, 255, 255, 0.3);
 
-  backdrop-filter: blur(var(--sentinel-blur-md));
-  -webkit-backdrop-filter: blur(var(--sentinel-blur-md));
+  backdrop-filter: blur(var(--fing-blur-md));
+  -webkit-backdrop-filter: blur(var(--fing-blur-md));
 
   box-shadow:
-    var(--sentinel-shadow-lg),
+    var(--fing-shadow-lg),
     inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
@@ -168,7 +168,7 @@
     hsla(215, 30%, 65%, 0.12) 50%,
     hsla(215, 30%, 60%, 0.20) 100%
   );
-  color: var(--sentinel-text-primary);
+  color: var(--fing-text-primary);
   border: 1px solid hsla(215, 30%, 80%, 0.35);
 
   /* Glass blur */
@@ -222,11 +222,11 @@
 }
 
 .arrowDark {
-  background: var(--sentinel-glass-elevated);
-  border: 1px solid var(--sentinel-glass-border);
+  background: var(--fing-glass-elevated);
+  border: 1px solid var(--fing-glass-border);
 
-  backdrop-filter: blur(var(--sentinel-blur-md));
-  -webkit-backdrop-filter: blur(var(--sentinel-blur-md));
+  backdrop-filter: blur(var(--fing-blur-md));
+  -webkit-backdrop-filter: blur(var(--fing-blur-md));
 }
 
 .arrowLight {

@@ -1,0 +1,135 @@
+/* Path: src/components/molecules/fing/AllocationList/AllocationList.module.css */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fing-space-3);
+}
+
+.compact {
+  gap: var(--fing-space-2);
+}
+
+.emptyState {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--fing-space-8);
+  color: var(--fing-text-tertiary);
+  font-size: var(--fing-font-sm);
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fing-space-2);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--fing-space-3);
+}
+
+.symbolGroup {
+  display: flex;
+  align-items: center;
+  gap: var(--fing-space-2);
+  min-width: 0;
+  flex: 1;
+}
+
+.colorDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.symbol {
+  font-family: var(--fing-font-mono);
+  font-size: var(--fing-font-sm);
+  font-weight: 600;
+  color: var(--fing-text-primary);
+  letter-spacing: 0.02em;
+}
+
+.name {
+  font-size: var(--fing-font-xs);
+  color: var(--fing-text-tertiary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.values {
+  display: flex;
+  align-items: center;
+  gap: var(--fing-space-3);
+  flex-shrink: 0;
+}
+
+.value {
+  font-family: var(--fing-font-mono);
+  font-size: var(--fing-font-sm);
+  color: var(--fing-text-secondary);
+}
+
+.change {
+  font-family: var(--fing-font-mono);
+  font-size: var(--fing-font-xs);
+  font-weight: 500;
+}
+
+.change.positive {
+  color: var(--fing-status-positive-text);
+}
+
+.change.negative {
+  color: var(--fing-status-negative-text);
+}
+
+.barContainer {
+  display: flex;
+  align-items: center;
+  gap: var(--fing-space-2);
+  height: 6px;
+}
+
+.bar {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 400ms var(--fing-easing-default);
+  opacity: 0.8;
+}
+
+.percent {
+  font-family: var(--fing-font-mono);
+  font-size: var(--fing-font-xs);
+  color: var(--fing-text-tertiary);
+  min-width: 40px;
+  text-align: right;
+}
+
+/* Compact mode adjustments */
+.compact .item {
+  gap: var(--fing-space-1);
+}
+
+.compact .symbol {
+  font-size: var(--fing-font-xs);
+}
+
+.compact .value {
+  font-size: var(--fing-font-xs);
+}
+
+.compact .barContainer {
+  height: 4px;
+}
+
+.compact .percent {
+  font-size: 10px;
+  min-width: 32px;
+}

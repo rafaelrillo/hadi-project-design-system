@@ -1,0 +1,301 @@
+/* Path: src/components/molecules/fing/PositionRow/PositionRow.module.css */
+
+.container {
+  display: grid;
+  grid-template-columns: 2fr 1.2fr 1fr 1.2fr 1.2fr auto;
+  gap: 16px;
+  align-items: center;
+  padding: 14px 18px;
+  margin: 6px 8px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: var(--fing-radius-md);
+  transition: all 0.15s ease;
+
+  /* Glass blur effect */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  /* Floating glass shadow */
+  box-shadow:
+    4px 4px 8px rgba(163, 177, 198, 0.3),
+    -4px -4px 8px rgba(255, 255, 255, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.container:last-child {
+  margin-bottom: 8px;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.clickable:hover {
+  background: rgba(255, 255, 255, 0.75);
+  border-color: rgba(58, 106, 114, 0.2);
+  transform: translateY(-1px);
+  box-shadow:
+    6px 6px 12px rgba(163, 177, 198, 0.35),
+    -6px -6px 12px rgba(255, 255, 255, 0.9),
+    inset 0 1px 0 rgba(255, 255, 255, 1),
+    0 0 0 1px rgba(58, 106, 114, 0.1);
+}
+
+.compact {
+  grid-template-columns: 2fr 1fr 1.2fr 1.2fr auto;
+  padding: 12px 16px;
+}
+
+/* Stock Info */
+.stockInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.tickerRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ticker {
+  font-family: var(--fing-font-ticker);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--fing-text-primary);
+  letter-spacing: 0.08em;
+}
+
+.allocation {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 2px 6px;
+  background: rgba(var(--fing-accent-primary-rgb, 91, 163, 165), 0.1);
+  color: var(--fing-accent-primary);
+  border-radius: var(--fing-radius-xs);
+}
+
+.name {
+  font-size: 12px;
+  color: var(--fing-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Shares Info */
+.sharesInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.shares {
+  font-family: var(--fing-font-numeric);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--fing-text-primary);
+  letter-spacing: var(--fing-tracking-led);
+}
+
+.avgCost {
+  font-size: 12px;
+  color: var(--fing-text-tertiary);
+}
+
+/* Price Info */
+.priceInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: right;
+}
+
+.price {
+  font-family: var(--fing-font-numeric);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--fing-text-primary);
+  letter-spacing: var(--fing-tracking-led);
+}
+
+.dayChange {
+  font-family: var(--fing-font-numeric);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: var(--fing-tracking-led);
+}
+
+.dayChange.positive {
+  color: var(--fing-status-positive);
+  text-shadow: var(--fing-glow-positive);
+}
+
+.dayChange.negative {
+  color: var(--fing-status-negative);
+  text-shadow: var(--fing-glow-negative);
+}
+
+/* Value Info */
+.valueInfo {
+  text-align: right;
+}
+
+.marketValue {
+  font-family: var(--fing-font-numeric);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--fing-text-primary);
+  letter-spacing: var(--fing-tracking-led);
+}
+
+/* Gain/Loss */
+.gainLoss {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.gainLossIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--fing-radius-sm);
+}
+
+.gainLoss.positive .gainLossIcon {
+  background: rgba(var(--fing-status-positive-rgb, 129, 199, 132), 0.15);
+  color: var(--fing-status-positive);
+}
+
+.gainLoss.negative .gainLossIcon {
+  background: rgba(var(--fing-status-negative-rgb, 229, 115, 115), 0.15);
+  color: var(--fing-status-negative);
+}
+
+.gainLossValues {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1px;
+}
+
+.gainLossAmount {
+  font-family: var(--fing-font-numeric);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: var(--fing-tracking-led);
+}
+
+.gainLossPercent {
+  font-family: var(--fing-font-numeric);
+  font-size: 11px;
+  letter-spacing: var(--fing-tracking-led);
+}
+
+.gainLoss.positive .gainLossAmount,
+.gainLoss.positive .gainLossPercent {
+  color: var(--fing-status-positive);
+  text-shadow: var(--fing-glow-positive);
+}
+
+.gainLoss.negative .gainLossAmount,
+.gainLoss.negative .gainLossPercent {
+  color: var(--fing-status-negative);
+  text-shadow: var(--fing-glow-negative);
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.actionBtn {
+  padding: 6px 12px;
+  border-radius: var(--fing-radius-sm);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--fing-duration-fast) var(--fing-ease-default);
+}
+
+.buyBtn {
+  background: transparent;
+  border: 1px solid var(--fing-status-positive);
+  color: var(--fing-status-positive);
+}
+
+.buyBtn:hover {
+  background: rgba(var(--fing-status-positive-rgb, 129, 199, 132), 0.1);
+}
+
+.sellBtn {
+  background: transparent;
+  border: 1px solid var(--fing-status-negative);
+  color: var(--fing-status-negative);
+}
+
+.sellBtn:hover {
+  background: rgba(var(--fing-status-negative-rgb, 229, 115, 115), 0.1);
+}
+
+/* Menu Button */
+.menuBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  border-radius: var(--fing-radius-sm);
+  color: var(--fing-text-tertiary);
+  cursor: pointer;
+  transition: all var(--fing-duration-fast) var(--fing-ease-default);
+}
+
+.menuBtn:hover {
+  background: var(--fing-bg-surface);
+  color: var(--fing-text-primary);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .container {
+    grid-template-columns: 1.5fr 1fr 1fr auto;
+  }
+
+  .sharesInfo,
+  .valueInfo {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    grid-template-columns: 1fr auto auto;
+    gap: 12px;
+    padding: 12px 16px;
+  }
+
+  .priceInfo {
+    display: none;
+  }
+
+  .actions {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .actionBtn {
+    padding: 4px 8px;
+    font-size: 11px;
+  }
+}

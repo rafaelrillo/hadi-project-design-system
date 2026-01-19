@@ -1,5 +1,5 @@
 // Path: src/pages/app/DashboardPage/DashboardPage.tsx
-// SENTINEL 3.0 - Simple, Clean Dashboard
+// FING 3.0 - Simple, Clean Dashboard
 
 import { useMemo, useEffect } from 'react';
 import { TrendingUp, TrendingDown, ArrowRight, Briefcase, Newspaper } from 'lucide-react';
@@ -13,7 +13,7 @@ import { useIsMobile } from '../../../hooks/useBreakpoint';
 import { usePortfolioStore } from '../../../store';
 
 // Components
-import { NewsCard } from '../../../components/molecules/sentinel/NewsCard';
+import { NewsCard } from '../../../components/molecules/fing/NewsCard';
 import { PortfolioPerformance } from '../../../components/organisms/investor/PortfolioPerformance';
 
 import styles from './DashboardPage.module.css';
@@ -264,7 +264,7 @@ export function DashboardPage() {
                 <TrendingUp
                   size={15}
                   style={{
-                    color: 'var(--sentinel-accent-primary)',
+                    color: 'var(--fing-accent-primary)',
                     filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))',
                   }}
                 />
@@ -358,7 +358,7 @@ export function DashboardPage() {
                 <Newspaper
                   size={15}
                   style={{
-                    color: 'var(--sentinel-accent-primary)',
+                    color: 'var(--fing-accent-primary)',
                     filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))',
                   }}
                 />

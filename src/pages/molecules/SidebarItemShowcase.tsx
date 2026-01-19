@@ -1,5 +1,5 @@
 // Path: src/pages/molecules/SidebarItemShowcase.tsx
-// SENTINEL Design System - Glass-Neumorphism Sidebar Items
+// FING Design System - Glass-Neumorphism Sidebar Items
 import React, { useState, useMemo } from 'react';
 import { SidebarItem } from '../../components/molecules/SidebarItem';
 import { ShowcaseSection } from '../../components/showcase';
@@ -43,17 +43,17 @@ function SidebarItemContent() {
   const titleStyles: React.CSSProperties = {
     fontSize: '28px',
     fontWeight: 700,
-    color: 'var(--sentinel-accent-primary)',
+    color: 'var(--fing-accent-primary)',
     marginBottom: '8px',
-    fontFamily: 'var(--sentinel-font-display)',
+    fontFamily: 'var(--fing-font-display)',
     textTransform: 'uppercase',
     letterSpacing: '0.1em',
   };
 
   const descStyles: React.CSSProperties = {
     fontSize: '14px',
-    color: 'var(--sentinel-text-secondary)',
-    fontFamily: 'var(--sentinel-font-mono)',
+    color: 'var(--fing-text-secondary)',
+    fontFamily: 'var(--fing-font-mono)',
     textTransform: 'uppercase',
     letterSpacing: '0.03em',
   };
@@ -171,17 +171,17 @@ function SidebarItemContent() {
           boxShadow: getNeuInsetShadow(5, 15),
           background: MARBLE.base,
           fontSize: '12px',
-          fontFamily: 'var(--sentinel-font-mono)',
+          fontFamily: 'var(--fing-font-mono)',
           color: '#636E72',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Altura:</strong> 40px</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Padding:</strong> 0 16px</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Barra izquierda:</strong> 4px ancho, visible en active/hover</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Ícono:</strong> 18px, margin-right 12px</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Label:</strong> 14px, 400 normal / 600 active</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Badge:</strong> background accent, border-radius pill</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Altura:</strong> 40px</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Padding:</strong> 0 16px</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Barra izquierda:</strong> 4px ancho, visible en active/hover</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Ícono:</strong> 18px, margin-right 12px</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Label:</strong> 14px, 400 normal / 600 active</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Badge:</strong> background accent, border-radius pill</p>
         </div>
       </ShowcaseSection>
     </div>

@@ -1,6 +1,6 @@
 /* Path: src/pages/app/PortfolioView/PortfolioView.module.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   SENTINEL DESIGN SYSTEM v3.3 - Portfolio View
+   FING DESIGN SYSTEM v3.3 - Portfolio View
 
    LIGHT NEUMORPHISM - Soft light glass portfolio interface
    - Light semi-transparent glass backgrounds
@@ -27,7 +27,7 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-  color: var(--sentinel-text-secondary);
+  color: var(--fing-text-secondary);
   font-size: 14px;
 }
 
@@ -38,14 +38,14 @@
 .card {
   background: rgba(255, 255, 255, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.8);
-  border-radius: var(--sentinel-radius-lg);
+  border-radius: var(--fing-radius-lg);
   overflow: hidden;
   flex-shrink: 0;
   position: relative;
 
   /* Glass blur */
-  backdrop-filter: blur(var(--sentinel-blur-md));
-  -webkit-backdrop-filter: blur(var(--sentinel-blur-md));
+  backdrop-filter: blur(var(--fing-blur-md));
+  -webkit-backdrop-filter: blur(var(--fing-blur-md));
 
   /* Light neumorphic elevation */
   box-shadow:
@@ -70,7 +70,7 @@
     rgba(255, 255, 255, 0.9),
     transparent
   );
-  border-radius: var(--sentinel-radius-lg) var(--sentinel-radius-lg) 0 0;
+  border-radius: var(--fing-radius-lg) var(--fing-radius-lg) 0 0;
   pointer-events: none;
   z-index: 1;
 }
@@ -104,8 +104,8 @@
   width: 36px;
   height: 36px;
   background: rgba(58, 106, 114, 0.15);
-  border-radius: var(--sentinel-radius-md);
-  color: var(--sentinel-accent-primary);
+  border-radius: var(--fing-radius-md);
+  color: var(--fing-accent-primary);
   filter: drop-shadow(0 0 6px rgba(58, 106, 114, 0.3));
   box-shadow:
     2px 2px 4px rgba(163, 177, 198, 0.25),
@@ -113,23 +113,23 @@
 }
 
 .cardTitle {
-  font-family: var(--sentinel-font-numeric);
+  font-family: var(--fing-font-numeric);
   font-size: 13px;
   font-weight: 600;
-  color: var(--sentinel-text-primary);
-  letter-spacing: var(--sentinel-tracking-led);
+  color: var(--fing-text-primary);
+  letter-spacing: var(--fing-tracking-led);
   text-transform: uppercase;
   margin: 0;
 }
 
 .cardBadge {
   font-size: 12px;
-  color: var(--sentinel-text-tertiary);
+  color: var(--fing-text-tertiary);
   padding: 4px 10px;
   background: rgba(255, 255, 255, 0.5);
-  border-radius: var(--sentinel-radius-sm);
-  backdrop-filter: blur(var(--sentinel-blur-xs));
-  -webkit-backdrop-filter: blur(var(--sentinel-blur-xs));
+  border-radius: var(--fing-radius-sm);
+  backdrop-filter: blur(var(--fing-blur-xs));
+  -webkit-backdrop-filter: blur(var(--fing-blur-xs));
   box-shadow:
     inset 2px 2px 4px rgba(163, 177, 198, 0.2),
     inset -2px -2px 4px rgba(255, 255, 255, 0.7);
@@ -156,17 +156,17 @@
 .summaryLabel {
   font-size: 11px;
   font-weight: 600;
-  color: var(--sentinel-text-tertiary);
+  color: var(--fing-text-tertiary);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 .summaryValue {
-  font-family: var(--sentinel-font-numeric);
+  font-family: var(--fing-font-numeric);
   font-size: 28px;
   font-weight: 700;
-  color: var(--sentinel-text-primary);
-  letter-spacing: var(--sentinel-tracking-led);
+  color: var(--fing-text-primary);
+  letter-spacing: var(--fing-tracking-led);
 }
 
 .summaryStats {
@@ -183,28 +183,28 @@
 .summaryStatLabel {
   font-size: 11px;
   font-weight: 600;
-  color: var(--sentinel-text-tertiary);
+  color: var(--fing-text-tertiary);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 .summaryStatValue {
-  font-family: var(--sentinel-font-numeric);
+  font-family: var(--fing-font-numeric);
   font-size: 16px;
   font-weight: 600;
-  color: var(--sentinel-text-primary);
-  letter-spacing: var(--sentinel-tracking-led);
+  color: var(--fing-text-primary);
+  letter-spacing: var(--fing-tracking-led);
   display: flex;
   align-items: baseline;
   gap: 6px;
 }
 
 .summaryStatValue.positive {
-  color: var(--sentinel-status-positive);
+  color: var(--fing-status-positive);
 }
 
 .summaryStatValue.negative {
-  color: var(--sentinel-status-negative);
+  color: var(--fing-status-negative);
 }
 
 .summaryStatPercent {
@@ -232,11 +232,11 @@
 }
 
 .sectionTitle {
-  font-family: var(--sentinel-font-numeric);
+  font-family: var(--fing-font-numeric);
   font-size: 13px;
   font-weight: 600;
-  color: var(--sentinel-text-primary);
-  letter-spacing: var(--sentinel-tracking-led);
+  color: var(--fing-text-primary);
+  letter-spacing: var(--fing-tracking-led);
   text-transform: uppercase;
   margin: 0;
 }
@@ -249,29 +249,29 @@
 
 .sortLabel {
   font-size: 12px;
-  color: var(--sentinel-text-tertiary);
+  color: var(--fing-text-tertiary);
 }
 
 .sortSelect {
   background: rgba(255, 255, 255, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.8);
-  border-radius: var(--sentinel-radius-sm);
+  border-radius: var(--fing-radius-sm);
   padding: 6px 12px;
   font-size: 12px;
-  color: var(--sentinel-text-primary);
+  color: var(--fing-text-primary);
   cursor: pointer;
   outline: none;
-  transition: border-color var(--sentinel-duration-fast) var(--sentinel-ease-default);
+  transition: border-color var(--fing-duration-fast) var(--fing-ease-default);
 
-  backdrop-filter: blur(var(--sentinel-blur-xs));
-  -webkit-backdrop-filter: blur(var(--sentinel-blur-xs));
+  backdrop-filter: blur(var(--fing-blur-xs));
+  -webkit-backdrop-filter: blur(var(--fing-blur-xs));
   box-shadow:
     2px 2px 4px rgba(163, 177, 198, 0.2),
     -2px -2px 4px rgba(255, 255, 255, 0.7);
 }
 
 .sortSelect:focus {
-  border-color: var(--sentinel-accent-primary);
+  border-color: var(--fing-accent-primary);
   box-shadow:
     2px 2px 4px rgba(163, 177, 198, 0.2),
     -2px -2px 4px rgba(255, 255, 255, 0.7),
@@ -287,7 +287,7 @@
   overflow: hidden;
   margin: 12px;
   background: rgba(220, 225, 232, 0.5);
-  border-radius: var(--sentinel-radius-md);
+  border-radius: var(--fing-radius-md);
 
   /* Neumorphic inset shadow - pressed into surface */
   box-shadow:
@@ -304,7 +304,7 @@
   border-bottom: 1px solid rgba(163, 177, 198, 0.2);
   font-size: 10px;
   font-weight: 600;
-  color: var(--sentinel-text-tertiary);
+  color: var(--fing-text-tertiary);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   flex-shrink: 0;
@@ -324,7 +324,7 @@
   align-items: center;
   background: rgba(255, 255, 255, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.8);
-  border-radius: var(--sentinel-radius-md);
+  border-radius: var(--fing-radius-md);
   transition: all 0.15s ease;
 
   /* Glass blur effect */
@@ -362,16 +362,16 @@
 }
 
 .ticker {
-  font-family: var(--sentinel-font-ticker);
+  font-family: var(--fing-font-ticker);
   font-size: 13px;
   font-weight: 600;
-  color: var(--sentinel-text-primary);
+  color: var(--fing-text-primary);
   letter-spacing: 0.08em;
 }
 
 .name {
   font-size: 11px;
-  color: var(--sentinel-text-secondary);
+  color: var(--fing-text-secondary);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -380,27 +380,27 @@
 .colShares,
 .colPrice,
 .colValue {
-  font-family: var(--sentinel-font-numeric);
+  font-family: var(--fing-font-numeric);
   font-size: 12px;
-  color: var(--sentinel-text-primary);
-  letter-spacing: var(--sentinel-tracking-led);
+  color: var(--fing-text-primary);
+  letter-spacing: var(--fing-tracking-led);
 }
 
 .colReturn {
   display: flex;
   flex-direction: column;
-  font-family: var(--sentinel-font-numeric);
+  font-family: var(--fing-font-numeric);
   font-size: 12px;
   font-weight: 500;
-  letter-spacing: var(--sentinel-tracking-led);
+  letter-spacing: var(--fing-tracking-led);
 }
 
 .colReturn.positive {
-  color: var(--sentinel-status-positive);
+  color: var(--fing-status-positive);
 }
 
 .colReturn.negative {
-  color: var(--sentinel-status-negative);
+  color: var(--fing-status-negative);
 }
 
 .percent {
@@ -430,19 +430,19 @@
   height: 100%;
   background: linear-gradient(
     90deg,
-    var(--sentinel-accent-primary),
-    var(--sentinel-accent-secondary)
+    var(--fing-accent-primary),
+    var(--fing-accent-secondary)
   );
   border-radius: 3px;
-  transition: width var(--sentinel-duration-normal) var(--sentinel-ease-default);
+  transition: width var(--fing-duration-normal) var(--fing-ease-default);
   box-shadow: 0 0 4px rgba(58, 106, 114, 0.4);
 }
 
 .allocationPercent {
-  font-family: var(--sentinel-font-numeric);
+  font-family: var(--fing-font-numeric);
   font-size: 11px;
-  color: var(--sentinel-text-secondary);
-  letter-spacing: var(--sentinel-tracking-led);
+  color: var(--fing-text-secondary);
+  letter-spacing: var(--fing-tracking-led);
   min-width: 40px;
   text-align: right;
 }
@@ -455,10 +455,10 @@
   height: 28px;
   background: rgba(255, 255, 255, 0.5);
   border: none;
-  border-radius: var(--sentinel-radius-sm);
-  color: var(--sentinel-text-tertiary);
+  border-radius: var(--fing-radius-sm);
+  color: var(--fing-text-tertiary);
   cursor: pointer;
-  transition: all var(--sentinel-duration-fast) var(--sentinel-ease-default);
+  transition: all var(--fing-duration-fast) var(--fing-ease-default);
   box-shadow:
     2px 2px 4px rgba(163, 177, 198, 0.25),
     -2px -2px 4px rgba(255, 255, 255, 0.7);
@@ -466,7 +466,7 @@
 
 .actionButton:hover {
   background: rgba(58, 106, 114, 0.15);
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
   box-shadow:
     2px 2px 4px rgba(163, 177, 198, 0.25),
     -2px -2px 4px rgba(255, 255, 255, 0.7),
@@ -481,7 +481,7 @@
   padding: 16px;
   margin: 12px;
   background: rgba(220, 225, 232, 0.5);
-  border-radius: var(--sentinel-radius-md);
+  border-radius: var(--fing-radius-md);
 
   /* Neumorphic inset shadow - pressed into surface */
   box-shadow:
@@ -564,13 +564,13 @@
 .mobileHeader {
   background: rgba(255, 255, 255, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.8);
-  border-radius: var(--sentinel-radius-lg);
+  border-radius: var(--fing-radius-lg);
   padding: 12px 14px;
   flex-shrink: 0;
   position: relative;
 
-  backdrop-filter: blur(var(--sentinel-blur-md));
-  -webkit-backdrop-filter: blur(var(--sentinel-blur-md));
+  backdrop-filter: blur(var(--fing-blur-md));
+  -webkit-backdrop-filter: blur(var(--fing-blur-md));
 
   box-shadow:
     8px 8px 16px rgba(163, 177, 198, 0.35),
@@ -594,7 +594,7 @@
     rgba(255, 255, 255, 0.9),
     transparent
   );
-  border-radius: var(--sentinel-radius-lg) var(--sentinel-radius-lg) 0 0;
+  border-radius: var(--fing-radius-lg) var(--fing-radius-lg) 0 0;
   pointer-events: none;
 }
 
@@ -611,11 +611,11 @@
   gap: 8px;
   font-size: 14px;
   font-weight: 600;
-  color: var(--sentinel-text-primary);
+  color: var(--fing-text-primary);
 }
 
 .mobileHeaderLabel svg {
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
   filter: drop-shadow(0 0 4px rgba(58, 106, 114, 0.4));
 }
 
@@ -626,38 +626,38 @@
 }
 
 .mobileValue {
-  font-family: var(--sentinel-font-numeric);
+  font-family: var(--fing-font-numeric);
   font-size: 22px;
   font-weight: 700;
-  color: var(--sentinel-text-primary);
-  letter-spacing: var(--sentinel-tracking-led);
+  color: var(--fing-text-primary);
+  letter-spacing: var(--fing-tracking-led);
 }
 
 .mobileChange {
-  font-family: var(--sentinel-font-numeric);
+  font-family: var(--fing-font-numeric);
   font-size: 14px;
   font-weight: 600;
-  letter-spacing: var(--sentinel-tracking-led);
+  letter-spacing: var(--fing-tracking-led);
 }
 
 .mobileChange.positive {
-  color: var(--sentinel-status-positive);
+  color: var(--fing-status-positive);
 }
 
 .mobileChange.negative {
-  color: var(--sentinel-status-negative);
+  color: var(--fing-status-negative);
 }
 
 /* Allocation List */
 .mobileAllocationList {
-  padding: var(--sentinel-space-4);
+  padding: var(--fing-space-4);
   background: rgba(255, 255, 255, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.8);
-  border-radius: var(--sentinel-radius-lg);
+  border-radius: var(--fing-radius-lg);
   position: relative;
 
-  backdrop-filter: blur(var(--sentinel-blur-md));
-  -webkit-backdrop-filter: blur(var(--sentinel-blur-md));
+  backdrop-filter: blur(var(--fing-blur-md));
+  -webkit-backdrop-filter: blur(var(--fing-blur-md));
 
   box-shadow:
     8px 8px 16px rgba(163, 177, 198, 0.35),
@@ -673,12 +673,12 @@
   flex-direction: column;
   background: rgba(255, 255, 255, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.8);
-  border-radius: var(--sentinel-radius-lg);
+  border-radius: var(--fing-radius-lg);
   overflow: hidden;
   position: relative;
 
-  backdrop-filter: blur(var(--sentinel-blur-md));
-  -webkit-backdrop-filter: blur(var(--sentinel-blur-md));
+  backdrop-filter: blur(var(--fing-blur-md));
+  -webkit-backdrop-filter: blur(var(--fing-blur-md));
 
   box-shadow:
     8px 8px 16px rgba(163, 177, 198, 0.35),
@@ -702,17 +702,17 @@
     rgba(255, 255, 255, 0.9),
     transparent
   );
-  border-radius: var(--sentinel-radius-lg) var(--sentinel-radius-lg) 0 0;
+  border-radius: var(--fing-radius-lg) var(--fing-radius-lg) 0 0;
   pointer-events: none;
   z-index: 1;
 }
 
 .mobileHoldingsTitle {
-  font-family: var(--sentinel-font-numeric);
+  font-family: var(--fing-font-numeric);
   font-size: 12px;
   font-weight: 600;
-  color: var(--sentinel-text-primary);
-  letter-spacing: var(--sentinel-tracking-led);
+  color: var(--fing-text-primary);
+  letter-spacing: var(--fing-tracking-led);
   text-transform: uppercase;
   margin: 0;
   padding: 12px 12px 10px;
@@ -737,7 +737,7 @@
   padding: 12px 14px;
   background: rgba(255, 255, 255, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.8);
-  border-radius: var(--sentinel-radius-md);
+  border-radius: var(--fing-radius-md);
   flex-shrink: 0;
   transition: all 0.15s ease;
 
@@ -764,20 +764,20 @@
 }
 
 .mobileHoldingTicker {
-  font-family: var(--sentinel-font-ticker);
+  font-family: var(--fing-font-ticker);
   font-size: 14px;
   font-weight: 700;
-  color: var(--sentinel-text-primary);
+  color: var(--fing-text-primary);
   letter-spacing: 0.08em;
   min-width: 50px;
 }
 
 .mobileHoldingAllocation {
-  font-family: var(--sentinel-font-numeric);
+  font-family: var(--fing-font-numeric);
   font-size: 12px;
   font-weight: 500;
-  color: var(--sentinel-text-tertiary);
-  letter-spacing: var(--sentinel-tracking-led);
+  color: var(--fing-text-tertiary);
+  letter-spacing: var(--fing-tracking-led);
 }
 
 .mobileHoldingRight {
@@ -787,28 +787,28 @@
 }
 
 .mobileHoldingValue {
-  font-family: var(--sentinel-font-numeric);
+  font-family: var(--fing-font-numeric);
   font-size: 14px;
   font-weight: 600;
-  color: var(--sentinel-text-primary);
-  letter-spacing: var(--sentinel-tracking-led);
+  color: var(--fing-text-primary);
+  letter-spacing: var(--fing-tracking-led);
 }
 
 .mobileHoldingChange {
-  font-family: var(--sentinel-font-numeric);
+  font-family: var(--fing-font-numeric);
   font-size: 12px;
   font-weight: 600;
-  letter-spacing: var(--sentinel-tracking-led);
+  letter-spacing: var(--fing-tracking-led);
   min-width: 55px;
   text-align: right;
 }
 
 .mobileHoldingChange.positive {
-  color: var(--sentinel-status-positive);
+  color: var(--fing-status-positive);
 }
 
 .mobileHoldingChange.negative {
-  color: var(--sentinel-status-negative);
+  color: var(--fing-status-negative);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────

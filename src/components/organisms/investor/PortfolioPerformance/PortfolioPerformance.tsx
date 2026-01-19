@@ -36,20 +36,20 @@ interface SeriesData {
 function generatePerformanceData(months: number): SeriesData[] {
   const startValue = 10000;
 
-  const sentinelData: SeriesDataPoint[] = [];
+  const fingData: SeriesDataPoint[] = [];
   const sp500Data: SeriesDataPoint[] = [];
   const nasdaqData: SeriesDataPoint[] = [];
   const bondsData: SeriesDataPoint[] = [];
   const goldData: SeriesDataPoint[] = [];
 
   // Monthly returns (annualized patterns)
-  const sentinelReturns = [0.018, 0.012, 0.022, 0.008, 0.015, 0.019, 0.011, 0.016, 0.014, 0.020, 0.013, 0.017];
+  const fingReturns = [0.018, 0.012, 0.022, 0.008, 0.015, 0.019, 0.011, 0.016, 0.014, 0.020, 0.013, 0.017];
   const sp500Returns = [0.010, 0.005, 0.012, -0.003, 0.008, 0.011, 0.004, 0.009, 0.006, 0.010, 0.007, 0.008];
   const nasdaqReturns = [0.012, 0.007, 0.014, -0.005, 0.010, 0.013, 0.005, 0.011, 0.008, 0.012, 0.009, 0.010];
   const bondsReturns = [0.003, 0.002, 0.004, 0.001, 0.003, 0.002, 0.003, 0.002, 0.004, 0.003, 0.002, 0.003];
   const goldReturns = [0.004, 0.001, 0.005, 0.002, 0.002, 0.003, 0.001, 0.004, 0.002, 0.003, 0.001, 0.002];
 
-  let sentinelValue = startValue;
+  let fingValue = startValue;
   let sp500Value = startValue;
   let nasdaqValue = startValue;
   let bondsValue = startValue;
@@ -62,13 +62,13 @@ function generatePerformanceData(months: number): SeriesData[] {
     date.setMonth(date.getMonth() - (11 - i));
     const dateStr = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-01`;
 
-    sentinelValue = sentinelValue * (1 + sentinelReturns[i]);
+    fingValue = fingValue * (1 + fingReturns[i]);
     sp500Value = sp500Value * (1 + sp500Returns[i]);
     nasdaqValue = nasdaqValue * (1 + nasdaqReturns[i]);
     bondsValue = bondsValue * (1 + bondsReturns[i]);
     goldValue = goldValue * (1 + goldReturns[i]);
 
-    sentinelData.push({ x: dateStr, y: Math.round(sentinelValue) });
+    fingData.push({ x: dateStr, y: Math.round(fingValue) });
     sp500Data.push({ x: dateStr, y: Math.round(sp500Value) });
     nasdaqData.push({ x: dateStr, y: Math.round(nasdaqValue) });
     bondsData.push({ x: dateStr, y: Math.round(bondsValue) });
@@ -77,7 +77,7 @@ function generatePerformanceData(months: number): SeriesData[] {
 
   // Return as SeriesData[] format expected by LineChart
   return [
-    { id: 'FING', name: 'FING', data: sentinelData, color: '#5BA3A5' },
+    { id: 'FING', name: 'FING', data: fingData, color: '#5BA3A5' },
     { id: 'NASDAQ', name: 'NASDAQ', data: nasdaqData, color: '#9b8ab8' },
     { id: 'S&P 500', name: 'S&P 500', data: sp500Data, color: '#7a99b8' },
     { id: 'Gold', name: 'Gold', data: goldData, color: '#b8a07a' },

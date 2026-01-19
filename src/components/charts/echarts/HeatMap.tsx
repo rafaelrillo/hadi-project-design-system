@@ -2,7 +2,7 @@
 import { useMemo } from 'react';
 import type { EChartsOption } from 'echarts';
 import { EChart } from './EChart';
-import { sentinelColors, sequentialColors, divergingColors } from './sentinelTheme';
+import { fingColors, sequentialColors, divergingColors } from './fingTheme';
 import type { HeatMapDataPoint, BaseChartProps } from './types';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -88,9 +88,9 @@ export function HeatMap({
           return `
             <div style="font-family: 'Inter', sans-serif; font-size: 12px;">
               <div style="display: flex; gap: 8px; margin-bottom: 8px;">
-                <span style="color: ${sentinelColors.textTertiary};">${xCategories[xIdx]}</span>
-                <span style="color: ${sentinelColors.textTertiary};">×</span>
-                <span style="color: ${sentinelColors.textTertiary};">${yCategories[yIdx]}</span>
+                <span style="color: ${fingColors.textTertiary};">${xCategories[xIdx]}</span>
+                <span style="color: ${fingColors.textTertiary};">×</span>
+                <span style="color: ${fingColors.textTertiary};">${yCategories[yIdx]}</span>
               </div>
               <div style="font-family: 'Space Mono', monospace; font-weight: 600; font-size: 14px;">
                 ${formatValue(value)}
@@ -112,7 +112,7 @@ export function HeatMap({
         axisLine: { show: false },
         axisTick: { show: false },
         axisLabel: {
-          color: sentinelColors.textTertiary,
+          color: fingColors.textTertiary,
           fontSize: 10,
           fontFamily: "'Inter', sans-serif",
           rotate: xCategories.length > 10 ? 45 : 0,
@@ -125,7 +125,7 @@ export function HeatMap({
         axisLine: { show: false },
         axisTick: { show: false },
         axisLabel: {
-          color: sentinelColors.textTertiary,
+          color: fingColors.textTertiary,
           fontSize: 10,
           fontFamily: "'Inter', sans-serif",
         },
@@ -141,7 +141,7 @@ export function HeatMap({
           color: inRangeColors,
         },
         textStyle: {
-          color: sentinelColors.textSecondary,
+          color: fingColors.textSecondary,
           fontSize: 10,
           fontFamily: "'Space Mono', monospace",
         },
@@ -153,7 +153,7 @@ export function HeatMap({
           label: showValues
             ? {
                 show: true,
-                color: sentinelColors.textPrimary,
+                color: fingColors.textPrimary,
                 fontSize: 10,
                 fontFamily: "'Space Mono', monospace",
                 formatter: (params: unknown) => {
@@ -163,7 +163,7 @@ export function HeatMap({
               }
             : { show: false },
           itemStyle: {
-            borderColor: sentinelColors.bgBase,
+            borderColor: fingColors.bgBase,
             borderWidth: 1,
           },
           emphasis: {

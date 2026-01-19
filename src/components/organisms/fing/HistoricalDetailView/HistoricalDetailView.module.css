@@ -1,0 +1,492 @@
+/* Path: src/components/organisms/fing/HistoricalDetailView/HistoricalDetailView.module.css */
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   HISTORICAL DETAIL VIEW - Level 4 Depth Component
+   Follows FING design philosophy: Slow Revelation, Silent Complexity
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.container {
+  background: var(--fing-bg-elevated);
+  border: 1px solid var(--fing-border-subtle);
+  border-radius: var(--fing-radius-lg, 12px);
+  overflow: hidden;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   HEADER
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--fing-border-subtle);
+  gap: 16px;
+}
+
+.headerContent {
+  flex: 1;
+}
+
+.title {
+  font-family: var(--fing-font-primary);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--fing-text-primary);
+  margin: 0 0 4px 0;
+  letter-spacing: -0.01em;
+}
+
+.subtitle {
+  font-family: var(--fing-font-primary);
+  font-size: 13px;
+  color: var(--fing-text-secondary);
+  margin: 0;
+}
+
+.currentPeriod {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: var(--fing-accent-subtle);
+  border-radius: var(--fing-radius-sm, 6px);
+  font-family: var(--fing-font-numeric);
+  font-size: 11px;
+  color: var(--fing-accent-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-shadow: var(--fing-glow-accent);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   PERIODS LIST
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.periodsList {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.periodCard {
+  background: var(--fing-bg-base);
+  border: 1px solid var(--fing-border-subtle);
+  border-radius: var(--fing-radius-md, 8px);
+  overflow: hidden;
+  transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.periodCard:hover {
+  border-color: var(--fing-border-default);
+}
+
+.periodCard.expanded {
+  border-color: var(--fing-accent-primary);
+  box-shadow: 0 0 0 1px var(--fing-accent-subtle);
+}
+
+.periodCard[data-similarity="high"] {
+  border-left: 3px solid var(--fing-accent-primary);
+}
+
+.periodCard[data-similarity="medium"] {
+  border-left: 3px solid var(--fing-status-warning);
+}
+
+.periodCard[data-similarity="low"] {
+  border-left: 3px solid var(--fing-text-tertiary);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   PERIOD HEADER (Clickable)
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.periodHeader {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 16px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 200ms;
+}
+
+.periodHeader:hover {
+  background: var(--fing-bg-subtle);
+}
+
+.periodHeader:focus-visible {
+  outline: 2px solid var(--fing-border-focus);
+  outline-offset: -2px;
+}
+
+.periodRank {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--fing-bg-subtle);
+  border-radius: var(--fing-radius-sm, 6px);
+  flex-shrink: 0;
+}
+
+.rankNumber {
+  font-family: var(--fing-font-numeric);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--fing-text-secondary);
+  letter-spacing: var(--fing-tracking-led);
+}
+
+.periodInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.periodName {
+  font-family: var(--fing-font-primary);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--fing-text-primary);
+  margin: 0 0 2px 0;
+}
+
+.periodDates {
+  font-family: var(--fing-font-numeric);
+  font-size: 11px;
+  color: var(--fing-text-tertiary);
+  letter-spacing: var(--fing-tracking-led);
+}
+
+.periodMetrics {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.similarityBadge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px 12px;
+  background: var(--fing-bg-subtle);
+  border-radius: var(--fing-radius-sm, 6px);
+}
+
+.similarityBadge[data-level="high"] {
+  background: var(--fing-accent-subtle);
+}
+
+.similarityBadge[data-level="high"] .similarityValue {
+  color: var(--fing-accent-primary);
+}
+
+.similarityValue {
+  font-family: var(--fing-font-numeric);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--fing-text-primary);
+  letter-spacing: var(--fing-tracking-led);
+}
+
+.similarityLabel {
+  font-family: var(--fing-font-numeric);
+  font-size: 9px;
+  color: var(--fing-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.returnBadge {
+  font-family: var(--fing-font-numeric);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: var(--fing-radius-sm, 6px);
+  letter-spacing: var(--fing-tracking-led);
+}
+
+.returnBadge[data-positive="true"] {
+  color: var(--fing-status-positive-text);
+  background: var(--fing-status-positive-subtle);
+  text-shadow: var(--fing-glow-positive);
+}
+
+.returnBadge[data-positive="false"] {
+  color: var(--fing-status-negative-text);
+  background: var(--fing-status-negative-subtle);
+  text-shadow: var(--fing-glow-negative);
+}
+
+.expandIcon {
+  color: var(--fing-text-tertiary);
+  transition: transform 300ms;
+}
+
+.periodCard.expanded .expandIcon {
+  color: var(--fing-accent-primary);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   EXPANDED CONTENT
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.periodContent {
+  padding: 0 16px 16px 16px;
+  animation: slideDown 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.periodContent[hidden] {
+  display: none;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   METRICS GRID
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  padding: 16px;
+  background: var(--fing-bg-subtle);
+  border-radius: var(--fing-radius-md, 8px);
+  margin-bottom: 16px;
+}
+
+.metricItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.metricLabel {
+  font-family: var(--fing-font-numeric);
+  font-size: 10px;
+  color: var(--fing-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.metricValue {
+  font-family: var(--fing-font-numeric);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--fing-text-primary);
+  letter-spacing: var(--fing-tracking-led);
+}
+
+.metricValue[data-positive="true"] {
+  color: var(--fing-status-positive-text);
+  text-shadow: var(--fing-glow-positive);
+}
+
+.metricValue[data-positive="false"] {
+  color: var(--fing-status-negative-text);
+  text-shadow: var(--fing-glow-negative);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   TIMELINE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.timeline {
+  padding-top: 8px;
+}
+
+.timelineTitle {
+  font-family: var(--fing-font-primary);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--fing-text-secondary);
+  margin: 0 0 12px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.timelineList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  padding-left: 24px;
+}
+
+.timelineList::before {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: var(--fing-border-subtle);
+}
+
+.timelineEvent {
+  display: flex;
+  gap: 12px;
+  position: relative;
+}
+
+.eventMarker {
+  position: absolute;
+  left: -24px;
+  top: 4px;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--fing-bg-base);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.timelineEvent[data-impact="positive"] .eventMarker {
+  color: var(--fing-status-positive);
+}
+
+.timelineEvent[data-impact="negative"] .eventMarker {
+  color: var(--fing-status-negative);
+}
+
+.timelineEvent[data-impact="neutral"] .eventMarker {
+  color: var(--fing-text-tertiary);
+}
+
+.eventContent {
+  flex: 1;
+  padding: 12px;
+  background: var(--fing-bg-subtle);
+  border-radius: var(--fing-radius-sm, 6px);
+  border-left: 2px solid transparent;
+}
+
+.timelineEvent[data-impact="positive"] .eventContent {
+  border-left-color: var(--fing-status-positive);
+}
+
+.timelineEvent[data-impact="negative"] .eventContent {
+  border-left-color: var(--fing-status-negative);
+}
+
+.timelineEvent[data-magnitude="high"] .eventContent {
+  background: var(--fing-bg-interactive);
+}
+
+.eventHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.eventDate {
+  font-family: var(--fing-font-numeric);
+  font-size: 10px;
+  color: var(--fing-text-tertiary);
+  letter-spacing: var(--fing-tracking-led);
+}
+
+.eventMagnitude {
+  font-family: var(--fing-font-numeric);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 2px 6px;
+  background: var(--fing-bg-base);
+  border-radius: var(--fing-radius-xs, 4px);
+  color: var(--fing-text-tertiary);
+}
+
+.eventTitle {
+  font-family: var(--fing-font-primary);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--fing-text-primary);
+  margin: 0 0 4px 0;
+}
+
+.eventDescription {
+  font-family: var(--fing-font-primary);
+  font-size: 12px;
+  color: var(--fing-text-secondary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   FOOTER
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.footer {
+  padding: 16px 24px;
+  border-top: 1px solid var(--fing-border-subtle);
+}
+
+.disclaimer {
+  font-family: var(--fing-font-primary);
+  font-size: 11px;
+  color: var(--fing-text-tertiary);
+  margin: 0;
+  font-style: italic;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   REDUCED MOTION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .periodCard,
+  .periodContent,
+  .expandIcon {
+    transition: none;
+  }
+
+  .periodContent {
+    animation: none;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   RESPONSIVE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+  .header {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .currentPeriod {
+    align-self: flex-start;
+  }
+
+  .metricsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .periodMetrics {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+  }
+}

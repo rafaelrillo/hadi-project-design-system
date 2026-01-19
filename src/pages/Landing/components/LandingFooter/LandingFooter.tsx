@@ -45,7 +45,7 @@ export function LandingFooter() {
           <div className={styles.brand}>
             <div className={styles.logo}>
               <span className={styles.logoMark}>S</span>
-              <span className={styles.logoText}>SENTINEL</span>
+              <span className={styles.logoText}>FING</span>
             </div>
             <p className={styles.tagline}>
               Investment Observatory
@@ -126,7 +126,7 @@ export function LandingFooter() {
         {/* Bottom Bar */}
         <div className={styles.bottomBar}>
           <p className={styles.copyright}>
-            © {currentYear} SENTINEL. All rights reserved.
+            © {currentYear} FING. All rights reserved.
           </p>
           <p className={styles.version}>
             v2.0.0

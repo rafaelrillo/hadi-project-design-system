@@ -8,7 +8,7 @@ import {
   PieChart,
 } from 'lucide-react';
 import { Button } from '@/components/atoms/Button';
-import { AllocationList } from '@/components/molecules/sentinel/AllocationList';
+import { AllocationList } from '@/components/molecules/fing/AllocationList';
 import { useIsMobile } from '@/hooks/useBreakpoint';
 import { usePortfolioStore } from '@/store';
 import styles from './PortfolioView.module.css';

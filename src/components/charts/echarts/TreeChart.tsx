@@ -2,7 +2,7 @@
 import { useMemo } from 'react';
 import type { EChartsOption } from 'echarts';
 import { EChart } from './EChart';
-import { sentinelColors, chartPalette } from './sentinelTheme';
+import { fingColors, chartPalette } from './fingTheme';
 import type { BaseChartProps } from './types';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -140,7 +140,7 @@ export function TreeChart({
           let html = `<div style="font-family: 'Inter', sans-serif; font-size: 12px;">`;
 
           if (path && path !== p.name) {
-            html += `<div style="color: ${sentinelColors.textTertiary}; font-size: 10px; margin-bottom: 8px;">${path}</div>`;
+            html += `<div style="color: ${fingColors.textTertiary}; font-size: 10px; margin-bottom: 8px;">${path}</div>`;
           }
 
           html += `<div style="display: flex; align-items: center; gap: 8px; font-weight: 500;">`;
@@ -150,7 +150,7 @@ export function TreeChart({
           if (p.data.value !== undefined) {
             html += `
               <div style="margin-top: 8px; display: flex; justify-content: space-between; gap: 16px;">
-                <span style="color: ${sentinelColors.textTertiary};">Value</span>
+                <span style="color: ${fingColors.textTertiary};">Value</span>
                 <span style="font-family: 'Space Mono', monospace; font-weight: 500;">${p.data.value}</span>
               </div>
             `;
@@ -160,7 +160,7 @@ export function TreeChart({
           if (childCount > 0) {
             html += `
               <div style="display: flex; justify-content: space-between; gap: 16px;">
-                <span style="color: ${sentinelColors.textTertiary};">Children</span>
+                <span style="color: ${fingColors.textTertiary};">Children</span>
                 <span style="font-family: 'Space Mono', monospace;">${childCount}</span>
               </div>
             `;
@@ -191,7 +191,7 @@ export function TreeChart({
                 verticalAlign: 'middle',
                 fontSize: 11,
                 fontFamily: "'Inter', sans-serif",
-                color: sentinelColors.textSecondary,
+                color: fingColors.textSecondary,
                 distance: 8,
               }
             : { show: false },
@@ -202,19 +202,19 @@ export function TreeChart({
                   position: getLabelPosition(),
                   fontSize: 11,
                   fontFamily: "'Inter', sans-serif",
-                  color: sentinelColors.textTertiary,
+                  color: fingColors.textTertiary,
                 }
               : { show: false },
           },
           lineStyle: {
-            color: sentinelColors.borderDefault,
+            color: fingColors.borderDefault,
             width: 1.5,
             curveness: 0.5,
           },
           emphasis: {
             focus: 'descendant',
             lineStyle: {
-              color: sentinelColors.accentPrimary,
+              color: fingColors.accentPrimary,
               width: 2,
             },
           },

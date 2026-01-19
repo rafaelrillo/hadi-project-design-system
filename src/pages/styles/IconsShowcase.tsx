@@ -1,5 +1,5 @@
 // Path: src/pages/styles/IconsShowcase.tsx
-// SENTINEL Design System - Glass-Neumorphism Icons
+// FING Design System - Glass-Neumorphism Icons
 import React, { useMemo } from 'react';
 import { ShowcaseSection } from '../../components/showcase';
 import { LightEngineProvider, useLightEngine } from '@/contexts/LightEngineContext';
@@ -48,17 +48,17 @@ function IconsContent() {
   const titleStyles: React.CSSProperties = {
     fontSize: '28px',
     fontWeight: 700,
-    color: 'var(--sentinel-accent-primary)',
+    color: 'var(--fing-accent-primary)',
     marginBottom: '8px',
-    fontFamily: 'var(--sentinel-font-display)',
+    fontFamily: 'var(--fing-font-display)',
     textTransform: 'uppercase',
     letterSpacing: '0.1em',
   };
 
   const descStyles: React.CSSProperties = {
     fontSize: '14px',
-    color: 'var(--sentinel-text-secondary)',
-    fontFamily: 'var(--sentinel-font-mono)',
+    color: 'var(--fing-text-secondary)',
+    fontFamily: 'var(--fing-font-mono)',
     textTransform: 'uppercase',
     letterSpacing: '0.03em',
   };
@@ -124,7 +124,7 @@ function IconsContent() {
                   <Database size={size.pixels} color="#3a6a72" />
                 </div>
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: '14px', fontWeight: 600, color: 'var(--sentinel-text-primary)', marginBottom: '4px', fontFamily: 'var(--sentinel-font-display)' }}>
+                  <div style={{ fontSize: '14px', fontWeight: 600, color: 'var(--fing-text-primary)', marginBottom: '4px', fontFamily: 'var(--fing-font-display)' }}>
                     {size.name}
                   </div>
                   <code style={{
@@ -132,12 +132,12 @@ function IconsContent() {
                     backgroundColor: 'rgba(58, 106, 114, 0.15)',
                     padding: '2px 8px',
                     borderRadius: '15px',
-                    color: 'var(--sentinel-accent-primary)',
-                    fontFamily: 'var(--sentinel-font-mono)'
+                    color: 'var(--fing-accent-primary)',
+                    fontFamily: 'var(--fing-font-mono)'
                   }}>
                     {size.pixels}px
                   </code>
-                  <div style={{ fontSize: '11px', color: '#9BA4B0', marginTop: '4px', fontFamily: 'var(--sentinel-font-mono)' }}>
+                  <div style={{ fontSize: '11px', color: '#9BA4B0', marginTop: '4px', fontFamily: 'var(--fing-font-mono)' }}>
                     {size.usage}
                   </div>
                 </div>
@@ -164,7 +164,7 @@ function IconsContent() {
               <div style={glassIconBox(item.hue, item.sat)}>
                 <item.icon size={24} color={`hsl(${item.hue}, ${item.sat * 0.8}%, 30%)`} />
               </div>
-              <div style={{ marginTop: '8px', fontSize: '11px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)' }}>
+              <div style={{ marginTop: '8px', fontSize: '11px', color: '#636E72', fontFamily: 'var(--fing-font-mono)' }}>
                 {item.label}
               </div>
             </div>
@@ -225,17 +225,17 @@ function IconsContent() {
           boxShadow: getNeuInsetShadow(5, 15),
           background: MARBLE.base,
           fontSize: '12px',
-          fontFamily: 'var(--sentinel-font-mono)',
+          fontFamily: 'var(--fing-font-mono)',
           color: '#636E72',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Librería:</strong> Lucide React (MIT)</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Tamaño estándar:</strong> 24px</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Escala:</strong> 16px, 20px, 24px, 32px</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Color primario:</strong> var(--sentinel-accent-primary)</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Stroke width:</strong> 2px</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Contenedores:</strong> Elevated, Inset, Glass</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Librería:</strong> Lucide React (MIT)</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Tamaño estándar:</strong> 24px</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Escala:</strong> 16px, 20px, 24px, 32px</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Color primario:</strong> var(--fing-accent-primary)</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Stroke width:</strong> 2px</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Contenedores:</strong> Elevated, Inset, Glass</p>
         </div>
       </ShowcaseSection>
 
@@ -246,7 +246,7 @@ function IconsContent() {
           boxShadow: getNeuInsetShadow(5, 15),
           background: MARBLE.base,
           fontSize: '12px',
-          fontFamily: 'var(--sentinel-font-mono)',
+          fontFamily: 'var(--fing-font-mono)',
           color: '#636E72',
           transition: 'box-shadow 50ms linear',
         }}>
@@ -258,9 +258,9 @@ function IconsContent() {
 <Database size={16} /> // Extra pequeño
 
 // Con colores del tema
-<Terminal color="var(--sentinel-accent-primary)" />
-<Check color="var(--sentinel-status-positive)" />
-<X color="var(--sentinel-status-negative)" />
+<Terminal color="var(--fing-accent-primary)" />
+<Check color="var(--fing-status-positive)" />
+<X color="var(--fing-status-negative)" />
 
 // En contenedor neumórfico
 <div style={{ boxShadow: getNeuPanelShadow(8, 24) }}>

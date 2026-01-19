@@ -1,5 +1,5 @@
 // Path: src/pages/organisms/FormShowcase.tsx
-// SENTINEL Design System - Glass-Neumorphism Forms
+// FING Design System - Glass-Neumorphism Forms
 import React, { useState, useMemo } from 'react';
 import { Form } from '../../components/organisms/Form';
 import { FormField } from '../../components/molecules/FormField';
@@ -47,17 +47,17 @@ function FormContent() {
   const titleStyles: React.CSSProperties = {
     fontSize: '28px',
     fontWeight: 700,
-    color: 'var(--sentinel-accent-primary)',
+    color: 'var(--fing-accent-primary)',
     marginBottom: '8px',
-    fontFamily: 'var(--sentinel-font-display)',
+    fontFamily: 'var(--fing-font-display)',
     textTransform: 'uppercase',
     letterSpacing: '0.1em',
   };
 
   const descStyles: React.CSSProperties = {
     fontSize: '14px',
-    color: 'var(--sentinel-text-secondary)',
-    fontFamily: 'var(--sentinel-font-mono)',
+    color: 'var(--fing-text-secondary)',
+    fontFamily: 'var(--fing-font-mono)',
     textTransform: 'uppercase',
     letterSpacing: '0.03em',
   };
@@ -219,9 +219,9 @@ function FormContent() {
             fontSize: '20px',
             fontWeight: 600,
             marginBottom: '8px',
-            fontFamily: 'var(--sentinel-font-display)',
+            fontFamily: 'var(--fing-font-display)',
             textTransform: 'uppercase',
-            color: 'var(--sentinel-text-primary)',
+            color: 'var(--fing-text-primary)',
           }}>
             Crear Nueva Cuenta
           </h2>
@@ -229,7 +229,7 @@ function FormContent() {
             fontSize: '14px',
             color: '#636E72',
             marginBottom: '24px',
-            fontFamily: 'var(--sentinel-font-mono)',
+            fontFamily: 'var(--fing-font-mono)',
           }}>
             Completa el formulario para registrarte en la plataforma
           </p>
@@ -296,8 +296,8 @@ function FormContent() {
                     <label htmlFor="terms" style={{
                       fontSize: '14px',
                       cursor: 'pointer',
-                      fontFamily: 'var(--sentinel-font-mono)',
-                      color: 'var(--sentinel-text-primary)',
+                      fontFamily: 'var(--fing-font-mono)',
+                      color: 'var(--fing-text-primary)',
                     }}>
                       Acepto los términos y condiciones *
                     </label>
@@ -307,8 +307,8 @@ function FormContent() {
                     <label htmlFor="newsletter" style={{
                       fontSize: '14px',
                       cursor: 'pointer',
-                      fontFamily: 'var(--sentinel-font-mono)',
-                      color: 'var(--sentinel-text-primary)',
+                      fontFamily: 'var(--fing-font-mono)',
+                      color: 'var(--fing-text-primary)',
                     }}>
                       Quiero recibir novedades por email
                     </label>
@@ -327,20 +327,20 @@ function FormContent() {
           boxShadow: getNeuInsetShadow(5, 15),
           background: MARBLE.base,
           fontSize: '12px',
-          fontFamily: 'var(--sentinel-font-mono)',
+          fontFamily: 'var(--fing-font-mono)',
           color: '#636E72',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Width:</strong> 100% (se adapta al contenedor)</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Layout:</strong> CSS Grid</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Columns:</strong> 1 o 2 (prop columns)</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Gap:</strong> 20px entre campos</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Footer margin-top:</strong> 20px</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Footer layout:</strong> flex, gap 20px, justify-content flex-end</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>onSubmit:</strong> Automáticamente ejecuta e.preventDefault()</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Submit button:</strong> Debe tener type="submit" para activar onSubmit</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Campos full-width:</strong> Usar style gridColumn: '1 / -1' en el campo</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Width:</strong> 100% (se adapta al contenedor)</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Layout:</strong> CSS Grid</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Columns:</strong> 1 o 2 (prop columns)</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Gap:</strong> 20px entre campos</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Footer margin-top:</strong> 20px</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Footer layout:</strong> flex, gap 20px, justify-content flex-end</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>onSubmit:</strong> Automáticamente ejecuta e.preventDefault()</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Submit button:</strong> Debe tener type="submit" para activar onSubmit</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Campos full-width:</strong> Usar style gridColumn: '1 / -1' en el campo</p>
         </div>
       </ShowcaseSection>
     </div>

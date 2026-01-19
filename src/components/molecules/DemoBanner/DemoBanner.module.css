@@ -4,46 +4,46 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--sentinel-space-4);
-  padding: var(--sentinel-space-2) var(--sentinel-space-4);
+  gap: var(--fing-space-4);
+  padding: var(--fing-space-2) var(--fing-space-4);
   background-color: rgba(77, 171, 154, 0.1);
-  border-bottom: 1px solid var(--sentinel-accent-subtle);
+  border-bottom: 1px solid var(--fing-accent-subtle);
 }
 
 .content {
   display: flex;
   align-items: center;
-  gap: var(--sentinel-space-2);
+  gap: var(--fing-space-2);
 }
 
 .icon {
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
   opacity: 0.8;
 }
 
 .message {
-  font-family: var(--sentinel-font-led);
-  font-size: var(--sentinel-text-xs);
-  color: var(--sentinel-accent-primary);
-  letter-spacing: var(--sentinel-tracking-led);
-  text-shadow: var(--sentinel-glow-accent);
+  font-family: var(--fing-font-led);
+  font-size: var(--fing-text-xs);
+  color: var(--fing-accent-primary);
+  letter-spacing: var(--fing-tracking-led);
+  text-shadow: var(--fing-glow-accent);
 }
 
 .closeButton {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--sentinel-space-1);
+  padding: var(--fing-space-1);
   background: transparent;
   border: none;
-  border-radius: var(--sentinel-radius-sm);
-  color: var(--sentinel-accent-primary);
+  border-radius: var(--fing-radius-sm);
+  color: var(--fing-accent-primary);
   opacity: 0.6;
   cursor: pointer;
-  transition: var(--sentinel-transition-fast);
+  transition: var(--fing-transition-fast);
 }
 
 .closeButton:hover {
   opacity: 1;
-  background-color: var(--sentinel-accent-subtle);
+  background-color: var(--fing-accent-subtle);
 }

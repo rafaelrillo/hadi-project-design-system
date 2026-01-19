@@ -57,10 +57,10 @@ export function SidebarItem({
   );
 
   const iconColor = disabled
-    ? 'var(--sentinel-text-disabled)'
+    ? 'var(--fing-text-disabled)'
     : isActive
-    ? 'var(--sentinel-accent-primary)'
-    : 'var(--sentinel-text-secondary)';
+    ? 'var(--fing-accent-primary)'
+    : 'var(--fing-text-secondary)';
 
   const Component = href ? 'a' : 'button';
 

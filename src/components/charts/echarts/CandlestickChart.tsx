@@ -2,7 +2,7 @@
 import { useMemo } from 'react';
 import type { EChartsOption } from 'echarts';
 import { EChart } from './EChart';
-import { sentinelColors, tooltipFormatters } from './sentinelTheme';
+import { fingColors, tooltipFormatters } from './fingTheme';
 import type { OHLCData, BaseChartProps } from './types';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -27,8 +27,8 @@ export function CandlestickChart({
   height = 400,
   showVolume = true,
   showDataZoom = true,
-  upColor = sentinelColors.positive,
-  downColor = sentinelColors.negative,
+  upColor = fingColors.positive,
+  downColor = fingColors.negative,
   title,
   className,
   animate = true,
@@ -73,7 +73,7 @@ export function CandlestickChart({
           const [open, close, low, high] = candleData.data;
           return `
             <div style="font-family: 'Space Mono', monospace; font-size: 11px;">
-              <div style="margin-bottom: 8px; color: ${sentinelColors.textTertiary};">${candleData.axisValue}</div>
+              <div style="margin-bottom: 8px; color: ${fingColors.textTertiary};">${candleData.axisValue}</div>
               ${tooltipFormatters.ohlc({ open, high, low, close })}
             </div>
           `;
@@ -105,9 +105,9 @@ export function CandlestickChart({
           type: 'category',
           data: dates,
           boundaryGap: true,
-          axisLine: { lineStyle: { color: sentinelColors.borderSubtle } },
+          axisLine: { lineStyle: { color: fingColors.borderSubtle } },
           axisLabel: {
-            color: sentinelColors.textTertiary,
+            color: fingColors.textTertiary,
             fontSize: 10,
             fontFamily: "'Space Mono', monospace",
           },
@@ -138,12 +138,12 @@ export function CandlestickChart({
           axisLine: { show: false },
           axisTick: { show: false },
           axisLabel: {
-            color: sentinelColors.textTertiary,
+            color: fingColors.textTertiary,
             fontSize: 10,
             fontFamily: "'Space Mono', monospace",
           },
           splitLine: {
-            lineStyle: { color: sentinelColors.borderSubtle },
+            lineStyle: { color: fingColors.borderSubtle },
           },
         },
         ...(showVolume
@@ -176,14 +176,14 @@ export function CandlestickChart({
               end: 100,
               bottom: 10,
               height: 20,
-              backgroundColor: sentinelColors.bgSubtle,
-              borderColor: sentinelColors.borderSubtle,
-              fillerColor: sentinelColors.accentSubtle,
+              backgroundColor: fingColors.bgSubtle,
+              borderColor: fingColors.borderSubtle,
+              fillerColor: fingColors.accentSubtle,
               handleStyle: {
-                color: sentinelColors.accentPrimary,
+                color: fingColors.accentPrimary,
               },
               textStyle: {
-                color: sentinelColors.textTertiary,
+                color: fingColors.textTertiary,
                 fontSize: 10,
               },
             },

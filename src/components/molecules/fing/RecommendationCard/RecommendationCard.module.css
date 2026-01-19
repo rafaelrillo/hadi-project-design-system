@@ -1,0 +1,200 @@
+/* Path: src/components/molecules/fing/RecommendationCard/RecommendationCard.module.css */
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   RECOMMENDATION CARD
+   Primary investment recommendation card
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.container {
+  background: var(--fing-glass-bg);
+  backdrop-filter: blur(var(--fing-blur-md));
+  -webkit-backdrop-filter: blur(var(--fing-blur-md));
+  border: 1px solid var(--fing-glass-border);
+  border-radius: var(--fing-radius-md);
+  overflow: hidden;
+  transition: all var(--fing-transition-normal);
+  box-shadow:
+    var(--fing-neu-elevated-sm),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.container:hover {
+  border-color: var(--fing-glass-border-hover);
+  box-shadow:
+    var(--fing-neu-elevated-md),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   HEADER
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--fing-bg-subtle);
+  border-bottom: 1px solid var(--fing-border-subtle);
+}
+
+.assetInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.assetDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--fing-accent-primary);
+}
+
+.assetClass {
+  font-family: var(--fing-font-primary);
+  font-size: var(--fing-font-xs);
+  font-weight: 500;
+  color: var(--fing-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.priority {
+  font-family: var(--fing-font-primary);
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 4px 8px;
+  border-radius: var(--fing-radius-sm);
+  background: var(--fing-bg-interactive);
+  color: var(--fing-text-tertiary);
+}
+
+.priorityHigh {
+  background: hsla(var(--fing-accent-teal-h), var(--fing-accent-teal-s), var(--fing-accent-teal-l), 0.15);
+  color: var(--fing-accent-primary);
+}
+
+.priorityMedium {
+  background: var(--fing-bg-interactive);
+  color: var(--fing-text-secondary);
+}
+
+.priorityLow {
+  background: var(--fing-bg-subtle);
+  color: var(--fing-text-tertiary);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   CONTENT
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.content {
+  padding: 16px;
+}
+
+.actionRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.actionBadge {
+  flex-shrink: 0;
+  font-family: var(--fing-font-numeric);
+  font-size: var(--fing-font-xs);
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: var(--fing-radius-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Action badge variants - subtle, never screaming */
+.actionBuy {
+  background: var(--fing-status-positive-subtle);
+  color: var(--fing-status-positive-text);
+  border: 1px solid var(--fing-status-positive-border);
+}
+
+.actionSell {
+  background: var(--fing-status-negative-subtle);
+  color: var(--fing-status-negative-text);
+  border: 1px solid var(--fing-status-negative-border);
+}
+
+.actionHold {
+  background: var(--fing-bg-interactive);
+  color: var(--fing-text-secondary);
+}
+
+.actionWatch {
+  background: hsla(45, 60%, 50%, 0.12);
+  color: var(--fing-status-warning-text);
+}
+
+.title {
+  font-family: var(--fing-font-primary);
+  font-size: var(--fing-font-base);
+  font-weight: 500;
+  color: var(--fing-text-primary);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.rationale {
+  font-family: var(--fing-font-primary);
+  font-size: var(--fing-font-sm);
+  font-weight: 400;
+  color: var(--fing-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   FOOTER
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.footer {
+  display: flex;
+  gap: 24px;
+  padding: 12px 16px;
+  background: var(--fing-bg-subtle);
+  border-top: 1px solid var(--fing-border-subtle);
+}
+
+.footerItem {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.footerLabel {
+  font-family: var(--fing-font-primary);
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--fing-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.footerValue {
+  font-family: var(--fing-font-numeric);
+  font-size: var(--fing-font-sm);
+  font-weight: 500;
+  color: var(--fing-text-primary);
+  letter-spacing: var(--fing-tracking-led);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   REDUCED MOTION
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  .container {
+    transition: none;
+  }
+}

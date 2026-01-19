@@ -19,5 +19,5 @@ export * from './Form';
 export * from './ErrorBoundary';
 export * from './AddToPortfolioModal';
 
-// Sentinel-specific organisms
-export * from './sentinel';
+// Fing-specific organisms
+export * from './fing';

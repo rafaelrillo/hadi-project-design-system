@@ -1,0 +1,177 @@
+/* Path: src/components/molecules/fing/AllocationSummary/AllocationSummary.module.css */
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   ALLOCATION SUMMARY
+   Portfolio allocation breakdown
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.container {
+  background: var(--fing-bg-elevated);
+  border: 1px solid var(--fing-border-subtle);
+  border-radius: var(--fing-radius-md);
+  padding: 20px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   HEADER
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.header {
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--fing-border-subtle);
+}
+
+.title {
+  font-family: var(--fing-font-primary);
+  font-size: var(--fing-font-xs);
+  font-weight: 500;
+  color: var(--fing-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   ALLOCATIONS LIST
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.allocationsList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.allocationRow {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 16px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   BAR SECTION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.barSection {
+  flex: 1;
+  min-width: 0;
+}
+
+.barTrack {
+  height: 8px;
+  background: var(--fing-bg-subtle);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.barFill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width var(--fing-transition-slow);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   LABEL SECTION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.labelSection {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 100px;
+}
+
+.colorDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.assetClass {
+  font-family: var(--fing-font-primary);
+  font-size: var(--fing-font-sm);
+  color: var(--fing-text-primary);
+  white-space: nowrap;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   VALUE SECTION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.valueSection {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 80px;
+  justify-content: flex-end;
+}
+
+.percentage {
+  font-family: var(--fing-font-numeric);
+  font-size: var(--fing-font-sm);
+  font-weight: 600;
+  color: var(--fing-text-primary);
+  letter-spacing: var(--fing-tracking-led);
+  min-width: 36px;
+  text-align: right;
+}
+
+.change {
+  font-family: var(--fing-font-numeric);
+  font-size: var(--fing-font-xs);
+  font-weight: 400;
+  letter-spacing: var(--fing-tracking-led);
+  white-space: nowrap;
+}
+
+.change.positive {
+  color: var(--fing-status-positive-text);
+  text-shadow: var(--fing-glow-positive);
+}
+
+.change.negative {
+  color: var(--fing-status-negative-text);
+  text-shadow: var(--fing-glow-negative);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   TOTAL
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.total {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 16px;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--fing-border-subtle);
+}
+
+.totalLabel {
+  font-family: var(--fing-font-primary);
+  font-size: var(--fing-font-xs);
+  color: var(--fing-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.totalValue {
+  font-family: var(--fing-font-numeric);
+  font-size: var(--fing-font-sm);
+  font-weight: 600;
+  color: var(--fing-text-secondary);
+  letter-spacing: var(--fing-tracking-led);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   REDUCED MOTION
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  .barFill {
+    transition: none;
+  }
+}

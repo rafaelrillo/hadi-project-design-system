@@ -1,5 +1,5 @@
 // Path: src/pages/molecules/SearchbarItemShowcase.tsx
-// SENTINEL Design System - Glass-Neumorphism Searchbar Item
+// FING Design System - Glass-Neumorphism Searchbar Item
 import React, { useState, useMemo } from 'react';
 import { SearchbarItem } from '../../components/molecules/SearchbarItem';
 import { ShowcaseSection } from '../../components/showcase';
@@ -56,17 +56,17 @@ function SearchbarItemContent() {
   const titleStyles: React.CSSProperties = {
     fontSize: '28px',
     fontWeight: 700,
-    color: 'var(--sentinel-accent-primary)',
+    color: 'var(--fing-accent-primary)',
     marginBottom: '8px',
-    fontFamily: 'var(--sentinel-font-display)',
+    fontFamily: 'var(--fing-font-display)',
     textTransform: 'uppercase',
     letterSpacing: '0.1em',
   };
 
   const descStyles: React.CSSProperties = {
     fontSize: '14px',
-    color: 'var(--sentinel-text-secondary)',
-    fontFamily: 'var(--sentinel-font-mono)',
+    color: 'var(--fing-text-secondary)',
+    fontFamily: 'var(--fing-font-mono)',
     textTransform: 'uppercase',
     letterSpacing: '0.03em',
   };
@@ -126,7 +126,7 @@ function SearchbarItemContent() {
                 fontWeight: 600,
                 marginBottom: '12px',
                 color: '#636E72',
-                fontFamily: 'var(--sentinel-font-mono)',
+                fontFamily: 'var(--fing-font-mono)',
                 textTransform: 'uppercase',
               }}>
                 Resultados:
@@ -135,8 +135,8 @@ function SearchbarItemContent() {
                 <div key={index} style={{
                   fontSize: '14px',
                   padding: '8px 0',
-                  color: 'var(--sentinel-text-primary)',
-                  fontFamily: 'var(--sentinel-font-mono)',
+                  color: 'var(--fing-text-primary)',
+                  fontFamily: 'var(--fing-font-mono)',
                 }}>
                   • {result}
                 </div>
@@ -151,7 +151,7 @@ function SearchbarItemContent() {
         description="Border destaca al hacer focus"
       >
         <div style={searchContainerStyles}>
-          <div style={{ fontSize: '12px', marginBottom: '12px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)' }}>
+          <div style={{ fontSize: '12px', marginBottom: '12px', color: '#636E72', fontFamily: 'var(--fing-font-mono)' }}>
             Click en el input para ver el focus:
           </div>
           <SearchbarItem placeholder="Click aquí..." />
@@ -189,17 +189,17 @@ function SearchbarItemContent() {
           boxShadow: getNeuInsetShadow(5, 15),
           background: MARBLE.base,
           fontSize: '12px',
-          fontFamily: 'var(--sentinel-font-mono)',
+          fontFamily: 'var(--fing-font-mono)',
           color: '#636E72',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Altura:</strong> 40px</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Border radius:</strong> 15px</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Search icon button:</strong> 40x40px, clickeable</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Input:</strong> flex 1, padding 0 8px</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Clear button:</strong> 32x32px, X icon 16px</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Diferencia con SearchBar:</strong> Layout integrado con ícono clickeable</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Altura:</strong> 40px</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Border radius:</strong> 15px</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Search icon button:</strong> 40x40px, clickeable</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Input:</strong> flex 1, padding 0 8px</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Clear button:</strong> 32x32px, X icon 16px</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Diferencia con SearchBar:</strong> Layout integrado con ícono clickeable</p>
         </div>
       </ShowcaseSection>
     </div>

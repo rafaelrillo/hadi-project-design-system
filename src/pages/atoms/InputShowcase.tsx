@@ -1,5 +1,5 @@
 // Path: src/pages/atoms/InputShowcase.tsx
-// SENTINEL Design System - Glass-Neumorphism Inputs
+// FING Design System - Glass-Neumorphism Inputs
 import React, { useState, useMemo } from 'react';
 import { InputText, InputDropdown, Textarea, DropdownOption } from '../../components/atoms/Input';
 import { ShowcaseSection } from '../../components/showcase';
@@ -47,17 +47,17 @@ function InputContent() {
   const titleStyles: React.CSSProperties = {
     fontSize: '28px',
     fontWeight: 700,
-    color: 'var(--sentinel-accent-primary)',
+    color: 'var(--fing-accent-primary)',
     marginBottom: '8px',
-    fontFamily: 'var(--sentinel-font-display)',
+    fontFamily: 'var(--fing-font-display)',
     textTransform: 'uppercase',
     letterSpacing: '0.1em',
   };
 
   const descStyles: React.CSSProperties = {
     fontSize: '14px',
-    color: 'var(--sentinel-text-secondary)',
-    fontFamily: 'var(--sentinel-font-mono)',
+    color: 'var(--fing-text-secondary)',
+    fontFamily: 'var(--fing-font-mono)',
     textTransform: 'uppercase',
     letterSpacing: '0.03em',
   };
@@ -120,7 +120,7 @@ function InputContent() {
       >
         <div style={inputContainerStyles}>
           <div>
-            <div style={{ fontSize: '12px', marginBottom: '8px', color: 'var(--sentinel-status-negative)', fontFamily: 'var(--sentinel-font-mono)', textTransform: 'uppercase' }}>
+            <div style={{ fontSize: '12px', marginBottom: '8px', color: 'var(--fing-status-negative)', fontFamily: 'var(--fing-font-mono)', textTransform: 'uppercase' }}>
               Campo con error
             </div>
             <InputText
@@ -131,7 +131,7 @@ function InputContent() {
             />
           </div>
           <div>
-            <div style={{ fontSize: '12px', marginBottom: '8px', color: '#636E72', fontFamily: 'var(--sentinel-font-mono)', textTransform: 'uppercase' }}>
+            <div style={{ fontSize: '12px', marginBottom: '8px', color: '#636E72', fontFamily: 'var(--fing-font-mono)', textTransform: 'uppercase' }}>
               Campo deshabilitado
             </div>
             <InputText
@@ -194,18 +194,18 @@ function InputContent() {
           boxShadow: getNeuInsetShadow(5, 15),
           background: MARBLE.base,
           fontSize: '12px',
-          fontFamily: 'var(--sentinel-font-mono)',
+          fontFamily: 'var(--fing-font-mono)',
           color: '#636E72',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>
-          <p><strong style={{ color: 'var(--sentinel-accent-primary)' }}>InputText & InputDropdown:</strong></p>
+          <p><strong style={{ color: 'var(--fing-accent-primary)' }}>InputText & InputDropdown:</strong></p>
           <p>✓ <strong>Altura:</strong> 40px</p>
           <p>✓ <strong>Padding:</strong> 8px 12px</p>
           <p>✓ <strong>Border radius:</strong> 15px (neumórfico)</p>
           <p>✓ <strong>Background:</strong> var(--neu-base)</p>
           <p>✓ <strong>Sombra inset:</strong> Para efecto cavado</p>
-          <p style={{ marginTop: '16px' }}><strong style={{ color: 'var(--sentinel-accent-primary)' }}>Textarea:</strong></p>
+          <p style={{ marginTop: '16px' }}><strong style={{ color: 'var(--fing-accent-primary)' }}>Textarea:</strong></p>
           <p>✓ <strong>Min-height:</strong> 80px</p>
           <p>✓ <strong>Contador:</strong> 12px, color #9BA4B0</p>
         </div>

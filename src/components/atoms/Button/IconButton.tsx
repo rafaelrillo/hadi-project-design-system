@@ -46,6 +46,8 @@ const variantClasses: Record<ButtonVariant, string> = {
   'glass-neu-sky': styles.glassNeuSky,
   'glass-neu-smoke': styles.glassNeuSmoke,
   'glass-neu-frost': styles.glassNeuFrost,
+  // Selected variants
+  'selected-ghost-nav': styles.selectedGhostNav,
   // Legacy variants (backward compatibility)
   'primary': styles.glassTeal,
   'secondary': styles.marbleSoft,

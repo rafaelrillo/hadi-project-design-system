@@ -1,5 +1,5 @@
 // src/components/animations/presets.ts
-// Framer Motion animation presets for SENTINEL design system
+// Framer Motion animation presets for FING design system
 
 import type { Variants, Transition } from 'framer-motion';
 
@@ -36,7 +36,7 @@ export const gentleTransition: Transition = {
 
 export const cardHover = {
   whileHover: {
-    borderColor: 'var(--sentinel-accent-primary, #5ba3a5)',
+    borderColor: 'var(--fing-accent-primary, #5ba3a5)',
     boxShadow: '0 0 15px rgba(91, 163, 165, 0.2)'
   },
   transition: { duration: 0.2 }

@@ -2,7 +2,7 @@
 import { useMemo } from 'react';
 import type { EChartsOption } from 'echarts';
 import { EChart } from './EChart';
-import { sentinelColors, chartPalette } from './sentinelTheme';
+import { fingColors, chartPalette } from './fingTheme';
 import type { BaseChartProps } from './types';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -186,14 +186,14 @@ export function EffectScatterChart({
 
           html += `
             <div style="display: grid; grid-template-columns: auto 1fr; gap: 4px 16px;">
-              <span style="color: ${sentinelColors.textTertiary};">X</span>
+              <span style="color: ${fingColors.textTertiary};">X</span>
               <span style="font-family: 'Space Mono', monospace; text-align: right;">${formatValue(x)}</span>
-              <span style="color: ${sentinelColors.textTertiary};">Y</span>
+              <span style="color: ${fingColors.textTertiary};">Y</span>
               <span style="font-family: 'Space Mono', monospace; text-align: right;">${formatValue(y)}</span>
               ${
                 value > 1
                   ? `
-                <span style="color: ${sentinelColors.textTertiary};">Value</span>
+                <span style="color: ${fingColors.textTertiary};">Value</span>
                 <span style="font-family: 'Space Mono', monospace; text-align: right;">${formatValue(value)}</span>
               `
                   : ''
@@ -212,7 +212,7 @@ export function EffectScatterChart({
             top: title ? 30 : 0,
             right: 0,
             textStyle: {
-              color: sentinelColors.textSecondary,
+              color: fingColors.textSecondary,
               fontSize: 11,
             },
           }
@@ -229,19 +229,19 @@ export function EffectScatterChart({
         nameLocation: 'middle',
         nameGap: 30,
         nameTextStyle: {
-          color: sentinelColors.textSecondary,
+          color: fingColors.textSecondary,
           fontSize: 11,
           fontFamily: "'Inter', sans-serif",
         },
-        axisLine: { lineStyle: { color: sentinelColors.borderSubtle } },
+        axisLine: { lineStyle: { color: fingColors.borderSubtle } },
         axisTick: { show: false },
         axisLabel: {
-          color: sentinelColors.textTertiary,
+          color: fingColors.textTertiary,
           fontSize: 10,
           fontFamily: "'Space Mono', monospace",
         },
         splitLine: {
-          lineStyle: { color: sentinelColors.borderSubtle },
+          lineStyle: { color: fingColors.borderSubtle },
         },
       },
       yAxis: {
@@ -250,19 +250,19 @@ export function EffectScatterChart({
         nameLocation: 'middle',
         nameGap: 40,
         nameTextStyle: {
-          color: sentinelColors.textSecondary,
+          color: fingColors.textSecondary,
           fontSize: 11,
           fontFamily: "'Inter', sans-serif",
         },
         axisLine: { show: false },
         axisTick: { show: false },
         axisLabel: {
-          color: sentinelColors.textTertiary,
+          color: fingColors.textTertiary,
           fontSize: 10,
           fontFamily: "'Space Mono', monospace",
         },
         splitLine: {
-          lineStyle: { color: sentinelColors.borderSubtle },
+          lineStyle: { color: fingColors.borderSubtle },
         },
       },
       series,

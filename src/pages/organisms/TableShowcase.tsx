@@ -1,5 +1,5 @@
 // Path: src/pages/organisms/TableShowcase.tsx
-// SENTINEL Design System - Glass-Neumorphism Tables
+// FING Design System - Glass-Neumorphism Tables
 import React, { useState, useMemo } from 'react';
 import { Table, TableColumn, TableRow } from '../../components/organisms/Table';
 import { ShowcaseSection } from '../../components/showcase';
@@ -43,17 +43,17 @@ function TableContent() {
   const titleStyles: React.CSSProperties = {
     fontSize: '28px',
     fontWeight: 700,
-    color: 'var(--sentinel-accent-primary)',
+    color: 'var(--fing-accent-primary)',
     marginBottom: '8px',
-    fontFamily: 'var(--sentinel-font-display)',
+    fontFamily: 'var(--fing-font-display)',
     textTransform: 'uppercase',
     letterSpacing: '0.1em',
   };
 
   const descStyles: React.CSSProperties = {
     fontSize: '14px',
-    color: 'var(--sentinel-text-secondary)',
-    fontFamily: 'var(--sentinel-font-mono)',
+    color: 'var(--fing-text-secondary)',
+    fontFamily: 'var(--fing-font-mono)',
     textTransform: 'uppercase',
     letterSpacing: '0.03em',
   };
@@ -150,9 +150,9 @@ function TableContent() {
             marginBottom: '12px',
             fontSize: '13px',
             color: '#636E72',
-            fontFamily: 'var(--sentinel-font-mono)',
+            fontFamily: 'var(--fing-font-mono)',
           }}>
-            Filas seleccionadas: <strong style={{ color: 'var(--sentinel-accent-primary)' }}>{selectedRows.length}</strong>
+            Filas seleccionadas: <strong style={{ color: 'var(--fing-accent-primary)' }}>{selectedRows.length}</strong>
           </div>
           <Table
             columns={columns}
@@ -196,17 +196,17 @@ function TableContent() {
           boxShadow: getNeuInsetShadow(5, 15),
           background: MARBLE.base,
           fontSize: '12px',
-          fontFamily: 'var(--sentinel-font-mono)',
+          fontFamily: 'var(--fing-font-mono)',
           color: '#636E72',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Altura de fila:</strong> 40px (standard) | 30px (compact)</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Header:</strong> Font-weight 600</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Selección:</strong> Checkbox 14x14px</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Hover:</strong> Background sutil</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Bordes:</strong> Adaptativos según número de columnas</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Acciones:</strong> Iconos 16px en última columna</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Altura de fila:</strong> 40px (standard) | 30px (compact)</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Header:</strong> Font-weight 600</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Selección:</strong> Checkbox 14x14px</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Hover:</strong> Background sutil</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Bordes:</strong> Adaptativos según número de columnas</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Acciones:</strong> Iconos 16px en última columna</p>
         </div>
       </ShowcaseSection>
     </div>

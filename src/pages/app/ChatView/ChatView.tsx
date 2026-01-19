@@ -36,7 +36,7 @@ interface SuggestedPrompt {
 // ─────────────────────────────────────────────────────────────────────────────
 
 const MOCK_RESPONSES: Record<string, string> = {
-  default: `I'm SENTINEL AI, your market analysis assistant. I can help you with:
+  default: `I'm FING AI, your market analysis assistant. I can help you with:
 
 • **Market Analysis** - Get insights on market conditions and trends
 • **Stock Research** - Analyze specific stocks and their fundamentals
@@ -225,7 +225,7 @@ export function ChatView() {
         <div className={styles.headerTitle}>
           <Bot size={24} className={styles.headerIcon} />
           <div>
-            <h1 className={styles.title}>SENTINEL AI</h1>
+            <h1 className={styles.title}>FING AI</h1>
             <p className={styles.subtitle}>Your intelligent market analysis assistant</p>
           </div>
         </div>
@@ -242,7 +242,7 @@ export function ChatView() {
             <div className={styles.welcomeIcon}>
               <MessageSquare size={48} />
             </div>
-            <h2>Welcome to SENTINEL AI</h2>
+            <h2>Welcome to FING AI</h2>
             <p>Ask me anything about markets, stocks, or your portfolio</p>
 
             <div className={styles.suggestedPrompts}>
@@ -275,7 +275,7 @@ export function ChatView() {
                 <div className={styles.messageContent}>
                   <div className={styles.messageHeader}>
                     <span className={styles.messageSender}>
-                      {message.role === 'user' ? 'You' : 'SENTINEL AI'}
+                      {message.role === 'user' ? 'You' : 'FING AI'}
                     </span>
                     <span className={styles.messageTime}>
                       {message.timestamp.toLocaleTimeString([], {
@@ -300,7 +300,7 @@ export function ChatView() {
                 </div>
                 <div className={styles.typingIndicator}>
                   <Loader2 size={16} className={styles.spinner} />
-                  <span>SENTINEL is thinking...</span>
+                  <span>FING is thinking...</span>
                 </div>
               </div>
             )}
@@ -318,7 +318,7 @@ export function ChatView() {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyPress}
-            placeholder="Ask SENTINEL about markets, stocks, or your portfolio..."
+            placeholder="Ask FING about markets, stocks, or your portfolio..."
             className={styles.input}
             rows={1}
             disabled={isTyping}
@@ -333,7 +333,7 @@ export function ChatView() {
           </Button>
         </div>
         <p className={styles.disclaimer}>
-          SENTINEL AI provides analysis for educational purposes only. Not financial advice.
+          FING AI provides analysis for educational purposes only. Not financial advice.
         </p>
       </div>
     </div>

@@ -2,7 +2,7 @@
 import { useMemo } from 'react';
 import type { EChartsOption } from 'echarts';
 import { EChart } from './EChart';
-import { sentinelColors, sequentialColors, divergingColors } from './sentinelTheme';
+import { fingColors, sequentialColors, divergingColors } from './fingTheme';
 import type { CalendarDataPoint, BaseChartProps } from './types';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -100,7 +100,7 @@ export function CalendarChart({
 
           return `
             <div style="font-family: 'Inter', sans-serif; font-size: 12px;">
-              <div style="color: ${sentinelColors.textTertiary}; margin-bottom: 8px;">${formattedDate}</div>
+              <div style="color: ${fingColors.textTertiary}; margin-bottom: 8px;">${formattedDate}</div>
               <div style="font-family: 'Space Mono', monospace; font-weight: 600; font-size: 14px;">
                 ${formatValue(value)}
               </div>
@@ -120,7 +120,7 @@ export function CalendarChart({
           color: inRangeColors,
         },
         textStyle: {
-          color: sentinelColors.textSecondary,
+          color: fingColors.textSecondary,
           fontSize: 10,
           fontFamily: "'Space Mono', monospace",
         },
@@ -139,7 +139,7 @@ export function CalendarChart({
         monthLabel: monthLabel
           ? {
               show: true,
-              color: sentinelColors.textSecondary,
+              color: fingColors.textSecondary,
               fontSize: 10,
               fontFamily: "'Inter', sans-serif",
               nameMap: 'en',
@@ -149,21 +149,21 @@ export function CalendarChart({
           ? {
               show: true,
               firstDay: 0,
-              color: sentinelColors.textTertiary,
+              color: fingColors.textTertiary,
               fontSize: 9,
               fontFamily: "'Inter', sans-serif",
               nameMap: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
             }
           : { show: false },
         itemStyle: {
-          color: sentinelColors.bgSubtle,
-          borderColor: sentinelColors.bgBase,
+          color: fingColors.bgSubtle,
+          borderColor: fingColors.bgBase,
           borderWidth: 2,
         },
         splitLine: {
           show: true,
           lineStyle: {
-            color: sentinelColors.borderSubtle,
+            color: fingColors.borderSubtle,
             width: 1,
           },
         },

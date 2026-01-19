@@ -1,6 +1,6 @@
 /* Path: src/pages/app/ChatView/ChatView.module.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   SENTINEL DESIGN SYSTEM v3.3 - Chat View
+   FING DESIGN SYSTEM v3.3 - Chat View
 
    LIGHT GLASS-NEUMORPHISM - Frosted glass panels on light theme
    - Light glass backgrounds with rgba(255,255,255,0.5-0.7)
@@ -65,20 +65,20 @@
 }
 
 .headerIcon {
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
   filter: drop-shadow(0 0 4px rgba(58, 106, 114, 0.5));
 }
 
 .title {
   font-size: 20px;
   font-weight: 600;
-  color: var(--sentinel-text-primary);
+  color: var(--fing-text-primary);
   margin: 0;
 }
 
 .subtitle {
   font-size: 13px;
-  color: var(--sentinel-text-secondary);
+  color: var(--fing-text-secondary);
   margin: 2px 0 0;
 }
 
@@ -89,8 +89,8 @@
   padding: 6px 12px;
   background: rgba(58, 106, 114, 0.12);
   border: 1px solid rgba(58, 106, 114, 0.25);
-  border-radius: var(--sentinel-radius-full);
-  color: var(--sentinel-accent-primary);
+  border-radius: var(--fing-radius-full);
+  color: var(--fing-accent-primary);
   font-size: 12px;
   font-weight: 500;
 
@@ -112,7 +112,7 @@
   padding: 24px 32px;
   margin: 16px;
   background: rgba(220, 225, 232, 0.4);
-  border-radius: var(--sentinel-radius-lg);
+  border-radius: var(--fing-radius-lg);
   box-shadow:
     inset 4px 4px 8px rgba(163, 177, 198, 0.35),
     inset -4px -4px 8px rgba(255, 255, 255, 0.6);
@@ -140,8 +140,8 @@
   width: 80px;
   height: 80px;
   background: var(--neu-base, #d5d8dc);
-  border-radius: var(--sentinel-radius-xl);
-  color: var(--sentinel-accent-primary);
+  border-radius: var(--fing-radius-xl);
+  color: var(--fing-accent-primary);
   margin-bottom: 24px;
 
   /* Neumorphic inset shadow */
@@ -157,13 +157,13 @@
 .welcomeState h2 {
   font-size: 24px;
   font-weight: 600;
-  color: var(--sentinel-text-primary);
+  color: var(--fing-text-primary);
   margin: 0 0 8px;
 }
 
 .welcomeState p {
   font-size: 14px;
-  color: var(--sentinel-text-secondary);
+  color: var(--fing-text-secondary);
   margin: 0 0 32px;
 }
 
@@ -185,7 +185,7 @@
   padding: 12px 20px;
   background: rgba(255, 255, 255, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.7);
-  border-radius: var(--sentinel-radius-md);
+  border-radius: var(--fing-radius-md);
   cursor: pointer;
   transition: all 0.15s ease;
 
@@ -207,13 +207,13 @@
 }
 
 .promptIcon {
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
   filter: drop-shadow(0 0 4px rgba(58, 106, 114, 0.4));
 }
 
 .promptLabel {
   font-size: 14px;
-  color: var(--sentinel-text-primary);
+  color: var(--fing-text-primary);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -247,13 +247,13 @@
   justify-content: center;
   width: 36px;
   height: 36px;
-  border-radius: var(--sentinel-radius-full);
+  border-radius: var(--fing-radius-full);
   flex-shrink: 0;
 }
 
 /* User avatar - Accent glass */
 .message.user .messageAvatar {
-  background: linear-gradient(135deg, var(--sentinel-accent-primary), var(--sentinel-accent-secondary, #5ba3a5));
+  background: linear-gradient(135deg, var(--fing-accent-primary), var(--fing-accent-secondary, #5ba3a5));
   color: white;
   box-shadow:
     0 2px 8px rgba(58, 106, 114, 0.4),
@@ -263,7 +263,7 @@
 /* Assistant avatar - Light glass */
 .message.assistant .messageAvatar {
   background: rgba(255, 255, 255, 0.6);
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
   border: 1px solid rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -299,24 +299,24 @@
 .messageSender {
   font-size: 13px;
   font-weight: 600;
-  color: var(--sentinel-text-primary);
+  color: var(--fing-text-primary);
 }
 
 .messageTime {
   font-size: 11px;
-  color: var(--sentinel-text-tertiary);
+  color: var(--fing-text-tertiary);
 }
 
 .messageText {
   padding: 12px 16px;
-  border-radius: var(--sentinel-radius-lg);
+  border-radius: var(--fing-radius-lg);
   font-size: 14px;
   line-height: 1.6;
 }
 
 /* User message - Accent glass */
 .message.user .messageText {
-  background: linear-gradient(135deg, var(--sentinel-accent-primary), var(--sentinel-accent-secondary, #5ba3a5));
+  background: linear-gradient(135deg, var(--fing-accent-primary), var(--fing-accent-secondary, #5ba3a5));
   color: white;
   border-bottom-right-radius: 4px;
   box-shadow:
@@ -328,7 +328,7 @@
 /* Assistant message - Light glass */
 .message.assistant .messageText {
   background: rgba(255, 255, 255, 0.6);
-  color: var(--sentinel-text-primary);
+  color: var(--fing-text-primary);
   border: 1px solid rgba(255, 255, 255, 0.8);
   border-bottom-left-radius: 4px;
 
@@ -360,9 +360,9 @@
   padding: 12px 16px;
   background: rgba(255, 255, 255, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.7);
-  border-radius: var(--sentinel-radius-lg);
+  border-radius: var(--fing-radius-lg);
   border-bottom-left-radius: 4px;
-  color: var(--sentinel-text-secondary);
+  color: var(--fing-text-secondary);
   font-size: 13px;
 
   backdrop-filter: blur(8px);
@@ -375,7 +375,7 @@
 
 .spinner {
   animation: spin 1s linear infinite;
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
 }
 
 @keyframes spin {
@@ -415,9 +415,9 @@
   padding: 12px 16px;
   background: rgba(255, 255, 255, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.7);
-  border-radius: var(--sentinel-radius-md);
+  border-radius: var(--fing-radius-md);
   font-size: 14px;
-  color: var(--sentinel-text-primary);
+  color: var(--fing-text-primary);
   resize: none;
   outline: none;
   min-height: 44px;
@@ -442,7 +442,7 @@
 }
 
 .input::placeholder {
-  color: var(--sentinel-text-tertiary);
+  color: var(--fing-text-tertiary);
 }
 
 .input:disabled {
@@ -453,7 +453,7 @@
 .disclaimer {
   text-align: center;
   font-size: 11px;
-  color: var(--sentinel-text-tertiary);
+  color: var(--fing-text-tertiary);
   margin: 12px 0 0;
 }
 

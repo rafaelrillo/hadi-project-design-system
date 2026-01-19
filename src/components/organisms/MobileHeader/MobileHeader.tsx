@@ -34,8 +34,8 @@ export const MobileHeader: React.FC<MobileHeaderProps> = ({
         ) : (
           <div className={styles.brand}>
             <img
-              src="/sentinel-favicon.svg"
-              alt="Sentinel"
+              src="/fing-favicon.svg"
+              alt="Fing"
               className={styles.logo}
             />
           </div>

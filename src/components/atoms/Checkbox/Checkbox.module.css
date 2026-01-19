@@ -1,6 +1,6 @@
 /* Path: src/components/atoms/Checkbox/Checkbox.module.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   SENTINEL DESIGN SYSTEM v3.0 - Checkbox Component
+   FING DESIGN SYSTEM v3.0 - Checkbox Component
 
    Form checkbox input with premium styling
    Clean dark recessed style
@@ -15,7 +15,7 @@
   -webkit-appearance: none;
   width: 18px;
   height: 18px;
-  border: 1px solid var(--sentinel-border-default);
+  border: 1px solid var(--fing-border-default);
   border-radius: 6px;
   cursor: pointer;
   margin: 0;
@@ -23,19 +23,19 @@
   background: rgba(0, 0, 0, 0.3);
   transition: all 0.2s ease;
   position: relative;
-  box-shadow: var(--sentinel-shadow-inner);
+  box-shadow: var(--fing-shadow-inner);
 }
 
 .checkbox:hover:not(:disabled) {
-  border-color: var(--sentinel-border-strong);
+  border-color: var(--fing-border-strong);
 }
 
 .checkbox:checked {
-  background: linear-gradient(145deg, var(--sentinel-accent-primary), var(--sentinel-accent-secondary));
-  border-color: var(--sentinel-accent-primary);
+  background: linear-gradient(145deg, var(--fing-accent-primary), var(--fing-accent-secondary));
+  border-color: var(--fing-accent-primary);
   box-shadow:
     0 2px 8px rgba(91, 163, 165, 0.3),
-    var(--sentinel-shadow-highlight);
+    var(--fing-shadow-highlight);
 }
 
 .checkbox:checked::after {
@@ -53,27 +53,27 @@
 .checkbox:focus-visible {
   outline: none;
   box-shadow:
-    var(--sentinel-shadow-inner),
+    var(--fing-shadow-inner),
     0 0 0 3px rgba(91, 163, 165, 0.2);
 }
 
 .checkbox:checked:focus-visible {
   box-shadow:
     0 2px 8px rgba(91, 163, 165, 0.3),
-    var(--sentinel-shadow-highlight),
+    var(--fing-shadow-highlight),
     0 0 0 3px rgba(91, 163, 165, 0.2);
 }
 
 .checkbox:disabled {
   cursor: not-allowed;
   background: rgba(255, 255, 255, 0.02);
-  border-color: var(--sentinel-border-subtle);
+  border-color: var(--fing-border-subtle);
   box-shadow: none;
 }
 
 .checkbox:disabled:checked {
-  background: var(--sentinel-text-disabled);
-  border-color: var(--sentinel-text-disabled);
+  background: var(--fing-text-disabled);
+  border-color: var(--fing-text-disabled);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -92,17 +92,17 @@
 }
 
 .label {
-  font-family: var(--sentinel-font-primary);
+  font-family: var(--fing-font-primary);
   font-size: 14px;
-  color: var(--sentinel-text-secondary);
+  color: var(--fing-text-secondary);
   user-select: none;
   transition: color 0.2s ease;
 }
 
 .container:hover .label {
-  color: var(--sentinel-text-primary);
+  color: var(--fing-text-primary);
 }
 
 .container:has(.checkbox:disabled) .label {
-  color: var(--sentinel-text-disabled);
+  color: var(--fing-text-disabled);
 }

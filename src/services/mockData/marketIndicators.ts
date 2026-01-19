@@ -347,22 +347,22 @@ export function getMarketStateInfo(state: MarketState) {
     bullish: {
       label: "Bullish",
       description: "Market conditions favor upward price movement",
-      color: "var(--sentinel-market-bull)",
+      color: "var(--fing-market-bull)",
     },
     bearish: {
       label: "Bearish",
       description: "Market conditions suggest downward pressure",
-      color: "var(--sentinel-market-bear)",
+      color: "var(--fing-market-bear)",
     },
     neutral: {
       label: "Neutral",
       description: "Market lacking clear directional bias",
-      color: "var(--sentinel-market-neutral)",
+      color: "var(--fing-market-neutral)",
     },
     uncertain: {
       label: "Uncertain",
       description: "High uncertainty with conflicting signals",
-      color: "var(--sentinel-market-uncertain)",
+      color: "var(--fing-market-uncertain)",
     },
   };
   return stateInfo[state];
@@ -373,27 +373,27 @@ export function getRiskLevelInfo(level: RiskLevel) {
     low: {
       label: "Low",
       description: "Minimal risk environment",
-      color: "var(--sentinel-risk-low)",
+      color: "var(--fing-risk-low)",
     },
     moderate: {
       label: "Moderate",
       description: "Normal risk levels",
-      color: "var(--sentinel-risk-moderate)",
+      color: "var(--fing-risk-moderate)",
     },
     elevated: {
       label: "Elevated",
       description: "Above-average risk",
-      color: "var(--sentinel-risk-elevated)",
+      color: "var(--fing-risk-elevated)",
     },
     high: {
       label: "High",
       description: "Significant risk factors present",
-      color: "var(--sentinel-risk-high)",
+      color: "var(--fing-risk-high)",
     },
     severe: {
       label: "Severe",
       description: "Extreme risk conditions",
-      color: "var(--sentinel-risk-severe)",
+      color: "var(--fing-risk-severe)",
     },
   };
   return riskInfo[level];

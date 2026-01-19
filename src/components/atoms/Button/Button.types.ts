@@ -3,7 +3,7 @@
 import type { ReactNode, MouseEvent } from 'react';
 
 /**
- * All available button variants in the SENTINEL design system
+ * All available button variants in the FING design system
  * - Stone Marble (20): Carved, elegant neumorphic buttons
  * - Glass (8): Translucent buttons with backdrop blur
  * - Glass-Neu (8): Hybrid combining glass and neumorphic effects

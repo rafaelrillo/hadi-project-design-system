@@ -57,7 +57,7 @@ export function LiveDemoWidget() {
           transition={{ duration: 0.6 }}
         >
           <span className={styles.label}>LIVE DEMO</span>
-          <h2 className={styles.title}>Experience SENTINEL</h2>
+          <h2 className={styles.title}>Experience FING</h2>
           <p className={styles.subtitle}>
             Real-time market intelligence, right now
           </p>
@@ -75,7 +75,7 @@ export function LiveDemoWidget() {
           <div className={styles.widgetHeader}>
             <div className={styles.widgetTitle}>
               <span className={styles.pulse} />
-              <span>SENTINEL LIVE</span>
+              <span>FING LIVE</span>
             </div>
             <span className={styles.timestamp}>{formatTime(currentTime)}</span>
           </div>

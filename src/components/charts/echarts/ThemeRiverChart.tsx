@@ -2,7 +2,7 @@
 import { useMemo } from 'react';
 import type { EChartsOption } from 'echarts';
 import { EChart } from './EChart';
-import { sentinelColors, chartPalette } from './sentinelTheme';
+import { fingColors, chartPalette } from './fingTheme';
 import type { BaseChartProps } from './types';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -62,7 +62,7 @@ export function ThemeRiverChart({
         axisPointer: {
           type: 'line',
           lineStyle: {
-            color: sentinelColors.accentPrimary,
+            color: fingColors.accentPrimary,
             width: 1,
             type: 'dashed',
           },
@@ -78,7 +78,7 @@ export function ThemeRiverChart({
           const date = paramArray[0].data[0];
 
           let html = `<div style="font-family: 'Inter', sans-serif; font-size: 12px;">`;
-          html += `<div style="color: ${sentinelColors.textTertiary}; margin-bottom: 8px;">${date}</div>`;
+          html += `<div style="color: ${fingColors.textTertiary}; margin-bottom: 8px;">${date}</div>`;
 
           paramArray.forEach((p) => {
             const value = p.data[1];
@@ -86,7 +86,7 @@ export function ThemeRiverChart({
             html += `
               <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
                 <span style="width: 10px; height: 10px; border-radius: 2px; background: ${p.color};"></span>
-                <span style="color: ${sentinelColors.textSecondary};">${name}</span>
+                <span style="color: ${fingColors.textSecondary};">${name}</span>
                 <span style="font-family: 'Space Mono', monospace; font-weight: 500; margin-left: auto;">${formatValue(value)}</span>
               </div>
             `;
@@ -102,7 +102,7 @@ export function ThemeRiverChart({
         top: title ? 30 : 0,
         right: 0,
         textStyle: {
-          color: sentinelColors.textSecondary,
+          color: fingColors.textSecondary,
           fontSize: 11,
         },
       },
@@ -115,11 +115,11 @@ export function ThemeRiverChart({
             right: 60,
             axisLine: {
               lineStyle: {
-                color: sentinelColors.borderSubtle,
+                color: fingColors.borderSubtle,
               },
             },
             axisLabel: {
-              color: sentinelColors.textTertiary,
+              color: fingColors.textTertiary,
               fontSize: 10,
               fontFamily: "'Space Mono', monospace",
             },
@@ -147,7 +147,7 @@ export function ThemeRiverChart({
             },
           },
           itemStyle: {
-            borderColor: sentinelColors.bgBase,
+            borderColor: fingColors.bgBase,
             borderWidth: 1,
           },
           color: colors,

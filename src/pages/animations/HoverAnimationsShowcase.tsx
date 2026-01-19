@@ -1,5 +1,5 @@
 // Path: src/pages/animations/HoverAnimationsShowcase.tsx
-// SENTINEL Design System - Glass-Neumorphism Hover Animations
+// FING Design System - Glass-Neumorphism Hover Animations
 import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { MotionCard } from '../../components/animations/MotionCard';
@@ -42,17 +42,17 @@ function HoverAnimationsContent() {
   const titleStyles: React.CSSProperties = {
     fontSize: '28px',
     fontWeight: 700,
-    color: 'var(--sentinel-accent-primary)',
+    color: 'var(--fing-accent-primary)',
     marginBottom: '8px',
-    fontFamily: 'var(--sentinel-font-display)',
+    fontFamily: 'var(--fing-font-display)',
     textTransform: 'uppercase',
     letterSpacing: '0.1em',
   };
 
   const descStyles: React.CSSProperties = {
     fontSize: '14px',
-    color: 'var(--sentinel-text-secondary)',
-    fontFamily: 'var(--sentinel-font-mono)',
+    color: 'var(--fing-text-secondary)',
+    fontFamily: 'var(--fing-font-mono)',
     textTransform: 'uppercase',
     letterSpacing: '0.03em',
   };
@@ -69,11 +69,11 @@ function HoverAnimationsContent() {
   const buttonStyles: React.CSSProperties = {
     padding: '12px 24px',
     background: MARBLE.base,
-    color: 'var(--sentinel-accent-primary)',
+    color: 'var(--fing-accent-primary)',
     border: 'none',
     borderRadius: '15px',
     boxShadow: getNeuPanelShadow(4, 12),
-    fontFamily: 'var(--sentinel-font-mono)',
+    fontFamily: 'var(--fing-font-mono)',
     fontWeight: 600,
     cursor: 'pointer',
     textTransform: 'uppercase',
@@ -92,15 +92,15 @@ function HoverAnimationsContent() {
         <div style={{ padding: '24px', background: MARBLE.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', width: '100%' }}>
             <MotionCard variant="default" style={cardStyles}>
-              <h4 style={{ color: 'var(--sentinel-text-primary)', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Default</h4>
+              <h4 style={{ color: 'var(--fing-text-primary)', marginBottom: '8px', fontFamily: 'var(--fing-font-mono)' }}>Default</h4>
               <p style={{ color: '#636E72', fontSize: '12px' }}>Border glow on hover</p>
             </MotionCard>
             <MotionCard variant="scale" style={cardStyles}>
-              <h4 style={{ color: 'var(--sentinel-text-primary)', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Scale</h4>
+              <h4 style={{ color: 'var(--fing-text-primary)', marginBottom: '8px', fontFamily: 'var(--fing-font-mono)' }}>Scale</h4>
               <p style={{ color: '#636E72', fontSize: '12px' }}>Subtle scale on hover</p>
             </MotionCard>
             <MotionCard variant="glow" style={cardStyles}>
-              <h4 style={{ color: 'var(--sentinel-text-primary)', marginBottom: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Glow</h4>
+              <h4 style={{ color: 'var(--fing-text-primary)', marginBottom: '8px', fontFamily: 'var(--fing-font-mono)' }}>Glow</h4>
               <p style={{ color: '#636E72', fontSize: '12px' }}>Box shadow glow</p>
             </MotionCard>
           </div>
@@ -111,10 +111,10 @@ function HoverAnimationsContent() {
         <div style={{ padding: '24px', background: MARBLE.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
           <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
             {[
-              { label: 'Execute', color: 'var(--sentinel-accent-primary)' },
-              { label: 'Confirm', color: 'var(--sentinel-status-positive)' },
-              { label: 'Cancel', color: 'var(--sentinel-status-negative)' },
-              { label: 'Info', color: 'var(--sentinel-status-info)' }
+              { label: 'Execute', color: 'var(--fing-accent-primary)' },
+              { label: 'Confirm', color: 'var(--fing-status-positive)' },
+              { label: 'Cancel', color: 'var(--fing-status-negative)' },
+              { label: 'Info', color: 'var(--fing-status-info)' }
             ].map(({ label, color }) => (
               <motion.button
                 key={label}
@@ -137,19 +137,19 @@ function HoverAnimationsContent() {
               style={{ ...cardStyles, width: '150px', textAlign: 'center' }}
               whileHover={{ y: -5 }}
             >
-              <p style={{ color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>Lift Up</p>
+              <p style={{ color: 'var(--fing-text-primary)', fontFamily: 'var(--fing-font-mono)', fontSize: '12px' }}>Lift Up</p>
             </motion.div>
             <motion.div
               style={{ ...cardStyles, width: '150px', textAlign: 'center' }}
               whileHover={{ rotate: 2, scale: 1.02 }}
             >
-              <p style={{ color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>Tilt</p>
+              <p style={{ color: 'var(--fing-text-primary)', fontFamily: 'var(--fing-font-mono)', fontSize: '12px' }}>Tilt</p>
             </motion.div>
             <motion.div
               style={{ ...cardStyles, width: '150px', textAlign: 'center' }}
               whileHover={{ scale: 1.05 }}
             >
-              <p style={{ color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>Scale</p>
+              <p style={{ color: 'var(--fing-text-primary)', fontFamily: 'var(--fing-font-mono)', fontSize: '12px' }}>Scale</p>
             </motion.div>
           </div>
         </div>
@@ -162,15 +162,15 @@ function HoverAnimationsContent() {
           boxShadow: getNeuInsetShadow(5, 15),
           background: MARBLE.base,
           fontSize: '12px',
-          fontFamily: 'var(--sentinel-font-mono)',
+          fontFamily: 'var(--fing-font-mono)',
           color: '#636E72',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>MotionCard variants:</strong> default, scale, glow</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Spring config:</strong> stiffness: 400, damping: 17</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Hover scale:</strong> 1.05 (5% increase)</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Tap scale:</strong> 0.95 (5% decrease)</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>MotionCard variants:</strong> default, scale, glow</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Spring config:</strong> stiffness: 400, damping: 17</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Hover scale:</strong> 1.05 (5% increase)</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Tap scale:</strong> 0.95 (5% decrease)</p>
         </div>
       </ShowcaseSection>
     </div>

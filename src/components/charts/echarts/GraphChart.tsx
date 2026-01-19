@@ -2,7 +2,7 @@
 import { useMemo } from 'react';
 import type { EChartsOption } from 'echarts';
 import { EChart } from './EChart';
-import { sentinelColors, chartPalette } from './sentinelTheme';
+import { fingColors, chartPalette } from './fingTheme';
 import type { GraphData, BaseChartProps } from './types';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -64,7 +64,7 @@ export function GraphChart({
               show: true,
               position: 'bottom' as const,
               formatter: '{b}',
-              color: sentinelColors.textSecondary,
+              color: fingColors.textSecondary,
               fontSize: 10,
               fontFamily: "'Inter', sans-serif",
             }
@@ -76,7 +76,7 @@ export function GraphChart({
     const links = data.links.map((link) => ({
       ...link,
       lineStyle: {
-        color: sentinelColors.borderDefault,
+        color: fingColors.borderDefault,
         width: link.value ? Math.max(1, Math.min(5, link.value / 10)) : 1,
         curveness: 0.2,
       },
@@ -116,9 +116,9 @@ export function GraphChart({
             return `
               <div style="font-family: 'Inter', sans-serif; font-size: 12px;">
                 <div style="display: flex; align-items: center; gap: 8px;">
-                  <span style="color: ${sentinelColors.textSecondary};">${p.data.source}</span>
-                  <span style="color: ${sentinelColors.textTertiary};">→</span>
-                  <span style="color: ${sentinelColors.textSecondary};">${p.data.target}</span>
+                  <span style="color: ${fingColors.textSecondary};">${p.data.source}</span>
+                  <span style="color: ${fingColors.textTertiary};">→</span>
+                  <span style="color: ${fingColors.textSecondary};">${p.data.target}</span>
                 </div>
                 ${
                   p.data.value
@@ -151,7 +151,7 @@ export function GraphChart({
             top: title ? 30 : 0,
             right: 0,
             textStyle: {
-              color: sentinelColors.textSecondary,
+              color: fingColors.textSecondary,
               fontSize: 11,
             },
           }

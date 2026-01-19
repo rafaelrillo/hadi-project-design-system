@@ -1,6 +1,6 @@
 /* Path: src/components/molecules/MenuItem/MenuItem.module.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   SENTINEL DESIGN SYSTEM - MenuItem Component
+   FING DESIGN SYSTEM - MenuItem Component
 
    Menu navigation item with icon and label
    ═══════════════════════════════════════════════════════════════════════════════ */
@@ -12,25 +12,25 @@
 .container {
   display: flex;
   align-items: center;
-  gap: var(--sentinel-space-3);
-  padding: var(--sentinel-space-3) var(--sentinel-space-4);
+  gap: var(--fing-space-3);
+  padding: var(--fing-space-3) var(--fing-space-4);
   background-color: transparent;
   border: none;
-  border-radius: var(--sentinel-radius-md);
+  border-radius: var(--fing-radius-md);
   cursor: pointer;
-  transition: var(--sentinel-transition-normal);
+  transition: var(--fing-transition-normal);
   width: 100%;
   text-decoration: none;
   position: relative;
-  font-family: var(--sentinel-font-primary);
+  font-family: var(--fing-font-primary);
 }
 
 .container:hover:not(.disabled):not(.active) {
-  background-color: var(--sentinel-bg-overlay);
+  background-color: var(--fing-bg-overlay);
 }
 
 .container:focus-visible {
-  outline: 2px solid var(--sentinel-accent-primary);
+  outline: 2px solid var(--fing-accent-primary);
   outline-offset: -2px;
 }
 
@@ -39,7 +39,7 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .active {
-  background-color: var(--sentinel-accent-subtle);
+  background-color: var(--fing-accent-subtle);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -58,15 +58,15 @@
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  color: var(--sentinel-text-tertiary);
+  color: var(--fing-text-tertiary);
 }
 
 .active .iconContainer {
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
 }
 
 .disabled .iconContainer {
-  color: var(--sentinel-text-disabled);
+  color: var(--fing-text-disabled);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -74,22 +74,22 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .label {
-  font-size: var(--sentinel-text-sm);
-  font-weight: var(--sentinel-font-normal);
-  color: var(--sentinel-text-primary);
-  font-family: var(--sentinel-font-primary);
+  font-size: var(--fing-text-sm);
+  font-weight: var(--fing-font-normal);
+  color: var(--fing-text-primary);
+  font-family: var(--fing-font-primary);
   line-height: 1.5;
   flex: 1;
   text-align: left;
 }
 
 .labelActive {
-  font-weight: var(--sentinel-font-medium);
-  color: var(--sentinel-accent-primary);
+  font-weight: var(--fing-font-medium);
+  color: var(--fing-accent-primary);
 }
 
 .labelDisabled {
-  color: var(--sentinel-text-disabled);
+  color: var(--fing-text-disabled);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -98,13 +98,13 @@
 
 .badge {
   font-size: 10px;
-  font-weight: var(--sentinel-font-semibold);
-  background-color: var(--sentinel-accent-primary);
-  color: var(--sentinel-bg-base);
-  padding: 2px var(--sentinel-space-2);
-  border-radius: var(--sentinel-radius-full);
+  font-weight: var(--fing-font-semibold);
+  background-color: var(--fing-accent-primary);
+  color: var(--fing-bg-base);
+  padding: 2px var(--fing-space-2);
+  border-radius: var(--fing-radius-full);
   margin-left: auto;
-  font-family: var(--sentinel-font-led);
-  letter-spacing: var(--sentinel-tracking-led);
-  text-shadow: var(--sentinel-glow-accent);
+  font-family: var(--fing-font-led);
+  letter-spacing: var(--fing-tracking-led);
+  text-shadow: var(--fing-glow-accent);
 }

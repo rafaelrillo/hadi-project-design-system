@@ -1,0 +1,85 @@
+/* Path: src/components/atoms/fing/InsetContainer/InsetContainer.module.css */
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   INSET CONTAINER - Carved/Sunken Areas (INSET Level)
+   Part of 3-Level Hierarchy: RAISED → INSET → GLASS
+   Creates carved/sunken areas within RAISED containers
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.container {
+  background: var(--fing-inset-bg, #d5d8dc);
+  transition: all 0.15s ease;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   INSET LEVELS
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* LEVEL 1 - Subtle inset */
+.level1 {
+  border-radius: var(--fing-radius-md, 12px);
+  box-shadow: var(--fing-inset-1-shadow,
+    inset 2px 2px 5px rgba(163, 177, 198, 0.25),
+    inset -2px -2px 5px rgba(255, 255, 255, 0.60)
+  );
+}
+
+/* LEVEL 2 - Standard inset (default) */
+.level2 {
+  border-radius: var(--fing-radius-md, 14px);
+  box-shadow: var(--fing-inset-2-shadow,
+    inset 3px 3px 6px rgba(163, 177, 198, 0.30),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.65)
+  );
+}
+
+/* LEVEL 3 - Deep inset */
+.level3 {
+  border-radius: var(--fing-radius-lg, 16px);
+  box-shadow: var(--fing-inset-3-shadow,
+    inset 5px 5px 10px rgba(163, 177, 198, 0.40),
+    inset -5px -5px 10px rgba(255, 255, 255, 0.70)
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   SHAPE VARIANTS
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.circle {
+  border-radius: 50%;
+}
+
+.pill {
+  border-radius: 100px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   PADDING VARIANTS
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.paddingNone {
+  padding: 0;
+}
+
+.paddingSm {
+  padding: var(--fing-space-2, 8px);
+}
+
+.paddingMd {
+  padding: var(--fing-space-4, 16px);
+}
+
+.paddingLg {
+  padding: var(--fing-space-6, 24px);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   REDUCED MOTION
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  .container {
+    transition: none;
+  }
+}

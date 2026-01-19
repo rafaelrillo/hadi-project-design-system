@@ -1,6 +1,6 @@
 /* Path: src/components/organisms/Sidebar/Sidebar.module.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   SENTINEL DESIGN SYSTEM v5.0 - Neumorphic Sidebar
+   FING DESIGN SYSTEM v5.0 - Neumorphic Sidebar
 
    DISEÑO COMPLETAMENTE NEUMÓRFICO
    - Container principal: Superficie neumórfica elevada (flota)
@@ -27,8 +27,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  z-index: var(--sentinel-z-sticky, 100);
-  font-family: var(--sentinel-font-primary, 'IBM Plex Sans', sans-serif);
+  z-index: var(--fing-z-sticky, 100);
+  font-family: var(--fing-font-primary, 'IBM Plex Sans', sans-serif);
   height: 100vh;
   width: 64px;
   margin: 0;
@@ -60,7 +60,7 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   LOGO SECTION - Animated SENTINEL logo
+   LOGO SECTION - Animated FING logo
    ───────────────────────────────────────────────────────────────────────────── */
 
 .logoSection {
@@ -75,12 +75,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
   transition: 200ms ease;
 
   /* Apply brand teal color to FingEmblem */
-  --fing-symbol-fill: var(--sentinel-accent-primary);
-  --fing-symbol-stroke: var(--sentinel-accent-primary);
+  --fing-symbol-fill: var(--fing-accent-primary);
+  --fing-symbol-stroke: var(--fing-accent-primary);
 }
 
 /* Scan line animation */
@@ -201,7 +201,7 @@
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid var(--glass-border);
-  color: var(--sentinel-text-secondary);
+  color: var(--fing-text-secondary);
 
   /* Glass shadow */
   box-shadow:
@@ -215,7 +215,7 @@
   /* Brighter glass on hover */
   background: var(--glass-bg-strong);
   border-color: var(--glass-border-strong);
-  color: var(--sentinel-text-primary);
+  color: var(--fing-text-primary);
 
   box-shadow:
     0 4px 12px rgba(0, 0, 0, 0.06),
@@ -226,7 +226,7 @@
   /* Active glass with accent tint */
   background: rgba(255, 255, 255, 0.6);
   border-color: rgba(255, 255, 255, 0.8);
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
 
   box-shadow:
     0 4px 16px rgba(58, 106, 114, 0.12),
@@ -234,7 +234,7 @@
 }
 
 .menuItemDisabled {
-  color: var(--sentinel-text-muted);
+  color: var(--fing-text-muted);
   cursor: not-allowed;
   opacity: 0.4;
   background: rgba(255, 255, 255, 0.2);
@@ -303,7 +303,7 @@
   /* Circular INSET container */
   background: var(--marble-base);
   box-shadow: var(--inset-2);
-  color: var(--sentinel-text-secondary);
+  color: var(--fing-text-secondary);
 }
 
 .footerAction svg {
@@ -318,7 +318,7 @@
 }
 
 .footerAction:hover {
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
 }
 
 .footerAction:hover svg {
@@ -328,7 +328,7 @@
 }
 
 .footerAction.danger:hover {
-  color: var(--sentinel-status-negative);
+  color: var(--fing-status-negative);
 }
 
 .footerAction.danger:hover svg {
@@ -364,19 +364,19 @@
   border-radius: 10px;
   border: none;
   background: transparent;
-  color: var(--sentinel-text-muted);
+  color: var(--fing-text-muted);
   cursor: pointer;
   transition: 150ms ease;
 }
 
 .quickNavItem:hover {
   background: var(--glass-bg-strong);
-  color: var(--sentinel-text-primary);
+  color: var(--fing-text-primary);
 }
 
 .quickNavItemActive {
   background: rgba(255, 255, 255, 0.6);
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
   box-shadow:
     0 2px 8px rgba(58, 106, 114, 0.15),
     inset 0 1px 0 var(--shadow-light);
@@ -433,7 +433,7 @@
   align-items: center;
   justify-content: center;
   background: transparent;
-  color: var(--sentinel-text-secondary);
+  color: var(--fing-text-secondary);
   border: none;
   transition: all 0.2s ease;
 }
@@ -447,13 +447,13 @@
 }
 
 .mainNavTabs button:hover:not([aria-selected="true"]) {
-  color: var(--sentinel-text-primary);
+  color: var(--fing-text-primary);
 }
 
 /* Active tab - Stone Marble RAISED inside INSET */
 .mainNavTabs button[aria-selected="true"] {
   background: var(--marble-base);
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
 
   /* Stone Marble RAISED-2 */
   box-shadow: var(--raised-2);

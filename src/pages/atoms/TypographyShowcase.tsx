@@ -1,5 +1,5 @@
 // Path: src/pages/atoms/TypographyShowcase.tsx
-// SENTINEL Design System
+// FING Design System
 import type { CSSProperties } from 'react';
 import { Heading1, Heading2, Heading3, Heading4, Paragraph, Label, ProductKey } from '../../components/atoms/Typography';
 import { ShowcaseSection, ComponentPreview } from '../../components/showcase';
@@ -130,7 +130,7 @@ export function TypographyShowcase() {
       >
         <ComponentPreview>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', alignItems: 'flex-start' }}>
-            <ProductKey>SENTINEL</ProductKey>
+            <ProductKey>FING</ProductKey>
             <ProductKey>Design System v2.0.0</ProductKey>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <ProductKey>SNT</ProductKey>
@@ -148,7 +148,7 @@ export function TypographyShowcase() {
         <ComponentPreview>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', width: '100%', maxWidth: '700px' }}>
             <div>
-              <ProductKey>SENTINEL</ProductKey>
+              <ProductKey>FING</ProductKey>
               <Paragraph style={{ marginTop: '8px', color: 'var(--foreground-muted)' }}>Design System v2.0.0</Paragraph>
             </div>
 

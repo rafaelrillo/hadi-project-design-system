@@ -33,7 +33,7 @@ export function CTASection() {
           transition={{ duration: 0.8 }}
         >
           <h2 className={styles.title}>READY TO SEE CLEARLY?</h2>
-          <p className={styles.subtitle}>Request access to the SENTINEL system.</p>
+          <p className={styles.subtitle}>Request access to the FING system.</p>
 
           {!isSubmitted ? (
             <motion.form

@@ -1,6 +1,6 @@
 /* Path: src/components/molecules/Tabs/Tabs.module.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   SENTINEL DESIGN SYSTEM v3.2 - Tabs Component
+   FING DESIGN SYSTEM v3.2 - Tabs Component
 
    LIGHT NEUMORPHISM - Tab navigation with soft depth
    - Container: Inset glass (sunken)
@@ -14,17 +14,17 @@
 .tabs {
   display: flex;
   gap: 4px;
-  background: var(--sentinel-glass-inset);
+  background: var(--fing-glass-inset);
   padding: 4px;
-  border-radius: var(--sentinel-radius-md);
-  border: 1px solid var(--sentinel-glass-border);
+  border-radius: var(--fing-radius-md);
+  border: 1px solid var(--fing-glass-border);
 
   /* Glass blur */
-  backdrop-filter: blur(var(--sentinel-blur-sm));
-  -webkit-backdrop-filter: blur(var(--sentinel-blur-sm));
+  backdrop-filter: blur(var(--fing-blur-sm));
+  -webkit-backdrop-filter: blur(var(--fing-blur-sm));
 
   /* Neumorphic pressed shadow */
-  box-shadow: var(--sentinel-neu-pressed-sm);
+  box-shadow: var(--fing-neu-pressed-sm);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -38,18 +38,18 @@
   padding: 10px 16px;
   border: none;
   background: transparent;
-  color: var(--sentinel-text-muted);
-  font-family: var(--sentinel-font-primary);
+  color: var(--fing-text-muted);
+  font-family: var(--fing-font-primary);
   font-size: 12px;
-  font-weight: var(--sentinel-font-medium);
-  border-radius: var(--sentinel-radius-sm);
+  font-weight: var(--fing-font-medium);
+  border-radius: var(--fing-radius-sm);
   cursor: pointer;
   transition: all 0.2s ease;
   white-space: nowrap;
 }
 
 .tab:hover:not(.disabled):not(.active) {
-  color: var(--sentinel-text-secondary);
+  color: var(--fing-text-secondary);
   background: rgba(255, 255, 255, 0.5);
 }
 
@@ -60,16 +60,16 @@
 
 /* Active tab - Light-Neumorphic elevated */
 .tab.active {
-  color: var(--sentinel-text-primary);
-  background: var(--sentinel-glass-bg);
+  color: var(--fing-text-primary);
+  background: var(--fing-glass-bg);
 
   /* Glass blur on active */
-  backdrop-filter: blur(var(--sentinel-blur-sm));
-  -webkit-backdrop-filter: blur(var(--sentinel-blur-sm));
+  backdrop-filter: blur(var(--fing-blur-sm));
+  -webkit-backdrop-filter: blur(var(--fing-blur-sm));
 
   /* Elevated + inner highlight */
   box-shadow:
-    var(--sentinel-neu-elevated-xs),
+    var(--fing-neu-elevated-xs),
     inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
@@ -109,34 +109,34 @@
 }
 
 .pills .tab {
-  background: var(--sentinel-glass-bg);
-  border: 1px solid var(--sentinel-glass-border);
-  border-radius: var(--sentinel-radius-full);
+  background: var(--fing-glass-bg);
+  border: 1px solid var(--fing-glass-border);
+  border-radius: var(--fing-radius-full);
   padding: 8px 16px;
 
-  backdrop-filter: blur(var(--sentinel-blur-sm));
-  -webkit-backdrop-filter: blur(var(--sentinel-blur-sm));
+  backdrop-filter: blur(var(--fing-blur-sm));
+  -webkit-backdrop-filter: blur(var(--fing-blur-sm));
 
   box-shadow:
-    var(--sentinel-neu-elevated-xs),
+    var(--fing-neu-elevated-xs),
     inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
 .pills .tab:hover:not(.disabled):not(.active) {
-  border-color: var(--sentinel-glass-border-hover);
-  background: var(--sentinel-glass-bg-hover);
+  border-color: var(--fing-glass-border-hover);
+  background: var(--fing-glass-bg-hover);
   box-shadow:
-    var(--sentinel-neu-elevated-sm),
+    var(--fing-neu-elevated-sm),
     inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
 .pills .tab.active {
   background: rgba(255, 255, 255, 0.8);
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
   border-color: rgba(58, 106, 114, 0.4);
 
   box-shadow:
-    var(--sentinel-neu-elevated-sm),
+    var(--fing-neu-elevated-sm),
     inset 0 1px 0 rgba(255, 255, 255, 0.7),
     0 4px 15px rgba(58, 106, 114, 0.2);
 }
@@ -162,16 +162,16 @@
 .neuInset .tab {
   background: transparent;
   border-radius: calc(var(--radius-standard) - 4px);
-  color: var(--sentinel-text-secondary);
+  color: var(--fing-text-secondary);
 }
 
 .neuInset .tab:hover:not(.disabled):not(.active) {
-  color: var(--sentinel-text-primary);
+  color: var(--fing-text-primary);
   background: rgba(255, 255, 255, 0.4);
 }
 
 .neuInset .tab.active {
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
   background: linear-gradient(
     180deg,
     hsla(175, 35%, 70%, 0.28) 0%,
@@ -207,7 +207,7 @@
 .underline {
   background: transparent;
   border: none;
-  border-bottom: 1px solid var(--sentinel-border-subtle);
+  border-bottom: 1px solid var(--fing-border-subtle);
   border-radius: 0;
   padding: 0;
   gap: 0;
@@ -225,13 +225,13 @@
 
 .underline .tab:hover:not(.disabled):not(.active) {
   background: transparent;
-  color: var(--sentinel-text-secondary);
+  color: var(--fing-text-secondary);
 }
 
 .underline .tab.active {
   background: transparent;
-  color: var(--sentinel-accent-primary);
-  border-bottom-color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
+  border-bottom-color: var(--fing-accent-primary);
   box-shadow: none;
 }
 

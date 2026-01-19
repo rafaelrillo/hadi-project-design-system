@@ -1,5 +1,5 @@
 // Path: src/components/organisms/Sidebar/Sidebar.tsx
-// SENTINEL Design System v5.0 - Neumorphic Sidebar
+// FING Design System v5.0 - Neumorphic Sidebar
 import { useState, useMemo, type ReactNode, type MouseEvent, type KeyboardEvent, type CSSProperties } from 'react';
 import { LucideIcon, LogOut, ScrollText, Search, ChevronDown, Settings, Plus } from 'lucide-react';
 import { useLightEngine } from '@contexts/LightEngineContext';

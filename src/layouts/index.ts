@@ -7,4 +7,4 @@ export * from './ResponsiveLayout';
 // Existing Layouts
 export * from './DashboardLayout';
 export * from './LandingLayout';
-export * from './SentinelDashboard';
+export * from './FingDashboard';

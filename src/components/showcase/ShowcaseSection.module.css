@@ -34,9 +34,9 @@
 .title {
   font-size: 18px;
   font-weight: 600;
-  color: var(--sentinel-text-primary);
+  color: var(--fing-text-primary);
   margin-bottom: 20px;
-  font-family: var(--sentinel-font-display, 'Libre Baskerville', serif);
+  font-family: var(--fing-font-display, 'Libre Baskerville', serif);
   letter-spacing: -0.01em;
 }
 
@@ -52,7 +52,7 @@
   font-size: 13px;
   color: #636E72;
   margin-bottom: 20px;
-  font-family: var(--sentinel-font-mono, 'IBM Plex Mono', monospace);
+  font-family: var(--fing-font-mono, 'IBM Plex Mono', monospace);
   line-height: 1.5;
 }
 

@@ -1,5 +1,5 @@
 // Path: src/pages/animations/DragAnimationsShowcase.tsx
-// SENTINEL Design System - Glass-Neumorphism Drag Animations
+// FING Design System - Glass-Neumorphism Drag Animations
 import React, { useRef, useMemo } from 'react';
 import { DraggablePanel } from '../../components/animations/DraggablePanel';
 import { ShowcaseSection } from '../../components/showcase';
@@ -43,17 +43,17 @@ function DragAnimationsContent() {
   const titleStyles: React.CSSProperties = {
     fontSize: '28px',
     fontWeight: 700,
-    color: 'var(--sentinel-accent-primary)',
+    color: 'var(--fing-accent-primary)',
     marginBottom: '8px',
-    fontFamily: 'var(--sentinel-font-display)',
+    fontFamily: 'var(--fing-font-display)',
     textTransform: 'uppercase',
     letterSpacing: '0.1em',
   };
 
   const descStyles: React.CSSProperties = {
     fontSize: '14px',
-    color: 'var(--sentinel-text-secondary)',
-    fontFamily: 'var(--sentinel-font-mono)',
+    color: 'var(--fing-text-secondary)',
+    fontFamily: 'var(--fing-font-mono)',
     textTransform: 'uppercase',
     letterSpacing: '0.03em',
   };
@@ -86,7 +86,7 @@ function DragAnimationsContent() {
               left: '50%',
               transform: 'translate(-50%, -50%)',
               color: '#636E72',
-              fontFamily: 'var(--sentinel-font-mono)',
+              fontFamily: 'var(--fing-font-mono)',
               fontSize: '12px',
               textAlign: 'center',
               pointerEvents: 'none'
@@ -108,12 +108,12 @@ function DragAnimationsContent() {
                 background: MARBLE.base,
                 borderRadius: '15px',
                 boxShadow: getNeuPanelShadow(6, 18),
-                borderLeft: '4px solid var(--sentinel-accent-primary)',
+                borderLeft: '4px solid var(--fing-accent-primary)',
               }}
             >
-              <Move style={{ color: 'var(--sentinel-accent-primary)', marginBottom: '8px' }} size={20} />
-              <h4 style={{ color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>Panel A</h4>
-              <p style={{ color: '#636E72', fontFamily: 'var(--sentinel-font-mono)', fontSize: '10px' }}>Free movement</p>
+              <Move style={{ color: 'var(--fing-accent-primary)', marginBottom: '8px' }} size={20} />
+              <h4 style={{ color: 'var(--fing-text-primary)', fontFamily: 'var(--fing-font-mono)', fontSize: '12px' }}>Panel A</h4>
+              <p style={{ color: '#636E72', fontFamily: 'var(--fing-font-mono)', fontSize: '10px' }}>Free movement</p>
             </DraggablePanel>
 
             <DraggablePanel
@@ -130,12 +130,12 @@ function DragAnimationsContent() {
                 background: MARBLE.base,
                 borderRadius: '15px',
                 boxShadow: getNeuPanelShadow(6, 18),
-                borderLeft: '4px solid var(--sentinel-status-positive)',
+                borderLeft: '4px solid var(--fing-status-positive)',
               }}
             >
-              <Move style={{ color: 'var(--sentinel-status-positive)', marginBottom: '8px' }} size={20} />
-              <h4 style={{ color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>Panel B</h4>
-              <p style={{ color: '#636E72', fontFamily: 'var(--sentinel-font-mono)', fontSize: '10px' }}>More elastic</p>
+              <Move style={{ color: 'var(--fing-status-positive)', marginBottom: '8px' }} size={20} />
+              <h4 style={{ color: 'var(--fing-text-primary)', fontFamily: 'var(--fing-font-mono)', fontSize: '12px' }}>Panel B</h4>
+              <p style={{ color: '#636E72', fontFamily: 'var(--fing-font-mono)', fontSize: '10px' }}>More elastic</p>
             </DraggablePanel>
 
             <DraggablePanel
@@ -153,13 +153,13 @@ function DragAnimationsContent() {
                 background: MARBLE.base,
                 borderRadius: '15px',
                 boxShadow: getNeuPanelShadow(6, 18),
-                borderLeft: '4px solid var(--sentinel-status-warning)',
+                borderLeft: '4px solid var(--fing-status-warning)',
                 textAlign: 'center',
                 cursor: 'grab'
               }}
             >
-              <h4 style={{ color: 'var(--sentinel-status-warning)', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>Horizontal Only</h4>
-              <p style={{ color: '#636E72', fontFamily: 'var(--sentinel-font-mono)', fontSize: '10px' }}>axis="x"</p>
+              <h4 style={{ color: 'var(--fing-status-warning)', fontFamily: 'var(--fing-font-mono)', fontSize: '12px' }}>Horizontal Only</h4>
+              <p style={{ color: '#636E72', fontFamily: 'var(--fing-font-mono)', fontSize: '10px' }}>axis="x"</p>
             </DraggablePanel>
 
             <DraggablePanel
@@ -176,13 +176,13 @@ function DragAnimationsContent() {
                 background: MARBLE.base,
                 borderRadius: '15px',
                 boxShadow: getNeuPanelShadow(6, 18),
-                borderLeft: '4px solid var(--sentinel-status-info)',
+                borderLeft: '4px solid var(--fing-status-info)',
                 textAlign: 'center',
                 cursor: 'grab'
               }}
             >
-              <h4 style={{ color: 'var(--sentinel-status-info)', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>Vertical</h4>
-              <p style={{ color: '#636E72', fontFamily: 'var(--sentinel-font-mono)', fontSize: '10px' }}>axis="y"</p>
+              <h4 style={{ color: 'var(--fing-status-info)', fontFamily: 'var(--fing-font-mono)', fontSize: '12px' }}>Vertical</h4>
+              <p style={{ color: '#636E72', fontFamily: 'var(--fing-font-mono)', fontSize: '10px' }}>axis="y"</p>
             </DraggablePanel>
           </div>
         </div>
@@ -195,16 +195,16 @@ function DragAnimationsContent() {
           boxShadow: getNeuInsetShadow(5, 15),
           background: MARBLE.base,
           fontSize: '12px',
-          fontFamily: 'var(--sentinel-font-mono)',
+          fontFamily: 'var(--fing-font-mono)',
           color: '#636E72',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>constraints:</strong> Ref to parent element for boundaries</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>axis:</strong> "x" | "y" | undefined (both)</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>elastic:</strong> 0-1 bounce factor at boundaries</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>showHandle:</strong> Visual drag handle indicator</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>handlePosition:</strong> "top" | "bottom" | "left" | "right"</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>constraints:</strong> Ref to parent element for boundaries</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>axis:</strong> "x" | "y" | undefined (both)</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>elastic:</strong> 0-1 bounce factor at boundaries</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>showHandle:</strong> Visual drag handle indicator</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>handlePosition:</strong> "top" | "bottom" | "left" | "right"</p>
         </div>
       </ShowcaseSection>
     </div>

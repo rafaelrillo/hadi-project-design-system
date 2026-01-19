@@ -106,7 +106,7 @@ export const useAuthStore = create<AuthState & AuthActions>()(
       },
     }),
     {
-      name: "sentinel-auth",
+      name: "fing-auth",
       partialize: (state) => ({
         user: state.user,
         isAuthenticated: state.isAuthenticated,

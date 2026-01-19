@@ -1,5 +1,5 @@
 // Path: src/pages/animations/EntryAnimationsShowcase.tsx
-// SENTINEL Design System - Glass-Neumorphism Entry Animations
+// FING Design System - Glass-Neumorphism Entry Animations
 import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { FadeIn } from '../../components/animations/FadeIn';
@@ -45,17 +45,17 @@ function EntryAnimationsContent() {
   const titleStyles: React.CSSProperties = {
     fontSize: '28px',
     fontWeight: 700,
-    color: 'var(--sentinel-accent-primary)',
+    color: 'var(--fing-accent-primary)',
     marginBottom: '8px',
-    fontFamily: 'var(--sentinel-font-display)',
+    fontFamily: 'var(--fing-font-display)',
     textTransform: 'uppercase',
     letterSpacing: '0.1em',
   };
 
   const descStyles: React.CSSProperties = {
     fontSize: '14px',
-    color: 'var(--sentinel-text-secondary)',
-    fontFamily: 'var(--sentinel-font-mono)',
+    color: 'var(--fing-text-secondary)',
+    fontFamily: 'var(--fing-font-mono)',
     textTransform: 'uppercase',
     letterSpacing: '0.03em',
   };
@@ -91,8 +91,8 @@ function EntryAnimationsContent() {
             {directions.map(({ dir, icon: Icon, label }, i) => (
               <FadeIn key={dir} direction={dir} delay={i * 0.1}>
                 <div style={{ ...cardStyles, textAlign: 'center' }}>
-                  <Icon style={{ color: 'var(--sentinel-accent-primary)', marginBottom: '8px' }} size={24} />
-                  <p style={{ color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>{label}</p>
+                  <Icon style={{ color: 'var(--fing-accent-primary)', marginBottom: '8px' }} size={24} />
+                  <p style={{ color: 'var(--fing-text-primary)', fontFamily: 'var(--fing-font-mono)', fontSize: '12px' }}>{label}</p>
                 </div>
               </FadeIn>
             ))}
@@ -104,7 +104,7 @@ function EntryAnimationsContent() {
         <div style={{ padding: '24px', background: MARBLE.base, borderRadius: '15px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px', width: '100%' }}>
             <div>
-              <h4 style={{ color: '#636E72', marginBottom: '16px', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>
+              <h4 style={{ color: '#636E72', marginBottom: '16px', fontFamily: 'var(--fing-font-mono)', fontSize: '12px' }}>
                 // Normal Speed, Up Direction
               </h4>
               <StaggerList speed="normal" direction="up" itemClassName="">
@@ -115,8 +115,8 @@ function EntryAnimationsContent() {
                     borderRadius: '15px',
                     boxShadow: getNeuInsetShadow(3, 8),
                     marginBottom: '8px',
-                    color: 'var(--sentinel-status-positive)',
-                    fontFamily: 'var(--sentinel-font-mono)',
+                    color: 'var(--fing-status-positive)',
+                    fontFamily: 'var(--fing-font-mono)',
                     fontSize: '12px',
                     transition: 'box-shadow 50ms linear',
                   }}>
@@ -126,7 +126,7 @@ function EntryAnimationsContent() {
               </StaggerList>
             </div>
             <div>
-              <h4 style={{ color: '#636E72', marginBottom: '16px', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>
+              <h4 style={{ color: '#636E72', marginBottom: '16px', fontFamily: 'var(--fing-font-mono)', fontSize: '12px' }}>
                 // Slow Speed, Left Direction
               </h4>
               <StaggerList speed="slow" direction="left" itemClassName="">
@@ -137,8 +137,8 @@ function EntryAnimationsContent() {
                     borderRadius: '15px',
                     boxShadow: getNeuInsetShadow(3, 8),
                     marginBottom: '8px',
-                    color: 'var(--sentinel-status-info)',
-                    fontFamily: 'var(--sentinel-font-mono)',
+                    color: 'var(--fing-status-info)',
+                    fontFamily: 'var(--fing-font-mono)',
                     fontSize: '12px',
                     transition: 'box-shadow 50ms linear',
                   }}>
@@ -161,7 +161,7 @@ function EntryAnimationsContent() {
           >
             {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
               <motion.div key={i} variants={staggerItem} style={cardStyles}>
-                <p style={{ color: 'var(--sentinel-accent-primary)', fontFamily: 'var(--sentinel-font-mono)', fontSize: '14px' }}>
+                <p style={{ color: 'var(--fing-accent-primary)', fontFamily: 'var(--fing-font-mono)', fontSize: '14px' }}>
                   Item {i}
                 </p>
               </motion.div>
@@ -177,15 +177,15 @@ function EntryAnimationsContent() {
           boxShadow: getNeuInsetShadow(5, 15),
           background: MARBLE.base,
           fontSize: '12px',
-          fontFamily: 'var(--sentinel-font-mono)',
+          fontFamily: 'var(--fing-font-mono)',
           color: '#636E72',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>FadeIn directions:</strong> up, down, left, right, scale</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>StaggerList speeds:</strong> fast, normal, slow</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Stagger delay:</strong> 0.05s (fast), 0.08s (normal), 0.12s (slow)</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Default duration:</strong> 0.4s ease-out</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>FadeIn directions:</strong> up, down, left, right, scale</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>StaggerList speeds:</strong> fast, normal, slow</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Stagger delay:</strong> 0.05s (fast), 0.08s (normal), 0.12s (slow)</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Default duration:</strong> 0.4s ease-out</p>
         </div>
       </ShowcaseSection>
     </div>

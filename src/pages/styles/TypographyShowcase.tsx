@@ -1,5 +1,5 @@
 // Path: src/pages/styles/TypographyShowcase.tsx
-// SENTINEL Design System - Typography System Reference Guide
+// FING Design System - Typography System Reference Guide
 import React, { useState, useMemo } from 'react';
 
 type TypographySection =
@@ -695,7 +695,7 @@ export function TypographyShowcase() {
           fontSize: '15px',
           marginTop: '12px',
         }}>
-          SENTINEL Design System - Guía de Referencia Tipográfica
+          FING Design System - Guía de Referencia Tipográfica
         </p>
       </header>
 
@@ -718,7 +718,7 @@ export function TypographyShowcase() {
             <div style={cardTitle}>Sistema Tipográfico</div>
             <div style={insetBox}>
               <p style={{ ...fx.body(), fontSize: '15px', lineHeight: 1.8, margin: 0 }}>
-                SENTINEL utiliza un sistema de <strong>tres familias tipográficas</strong> cuidadosamente
+                FING utiliza un sistema de <strong>tres familias tipográficas</strong> cuidadosamente
                 seleccionadas para crear una jerarquía visual clara y profesional. Cada familia tiene un
                 propósito específico que refuerza la identidad de marca y optimiza la legibilidad de
                 datos financieros.
@@ -749,7 +749,7 @@ export function TypographyShowcase() {
                     fontSize: '11px',
                     letterSpacing: '0.05em',
                   }}>
-                    --sentinel-font-display
+                    --fing-font-display
                   </div>
                 </div>
                 <div style={{ flex: 2 }}>
@@ -772,7 +772,7 @@ export function TypographyShowcase() {
                   fontSize: '28px',
                   fontWeight: 700,
                 }}>
-                  SENTINEL
+                  FING
                 </div>
                 <div style={label}>Brand / Logo</div>
               </div>
@@ -824,7 +824,7 @@ export function TypographyShowcase() {
                     fontSize: '11px',
                     letterSpacing: '0.05em',
                   }}>
-                    --sentinel-font-primary
+                    --fing-font-primary
                   </div>
                 </div>
                 <div style={{ flex: 2 }}>
@@ -911,7 +911,7 @@ export function TypographyShowcase() {
                     fontSize: '11px',
                     letterSpacing: '0.05em',
                   }}>
-                    --sentinel-font-mono
+                    --fing-font-mono
                   </div>
                 </div>
                 <div style={{ flex: 2 }}>
@@ -989,7 +989,7 @@ export function TypographyShowcase() {
             <div style={cardTitle}>Escala Tipográfica</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {[
-                { name: 'Hero', size: '48px', weight: 700, font: 'display', sample: 'SENTINEL' },
+                { name: 'Hero', size: '48px', weight: 700, font: 'display', sample: 'FING' },
                 { name: 'H1', size: '36px', weight: 700, font: 'display', sample: 'Page Title' },
                 { name: 'H2', size: '28px', weight: 700, font: 'display', sample: 'Section Header' },
                 { name: 'H3', size: '22px', weight: 600, font: 'primary', sample: 'Card Title' },
@@ -1573,7 +1573,7 @@ export function TypographyShowcase() {
                           fontSize: '28px',
                           fontWeight: 700,
                         }}>
-                          SENTINEL
+                          FING
                         </div>
                         <code style={{ ...fx.muted(), fontFamily: FONTS.mono, fontSize: '10px' }}>
                           fx.embossed({level})
@@ -1604,7 +1604,7 @@ export function TypographyShowcase() {
                           fontSize: '28px',
                           fontWeight: 700,
                         }}>
-                          SENTINEL
+                          FING
                         </div>
                         <code style={{ ...fx.muted(), fontFamily: FONTS.mono, fontSize: '10px' }}>
                           fx.debossed({level})
@@ -2678,7 +2678,7 @@ export function TypographyShowcase() {
                       fontWeight: 700,
                       textAlign: 'center',
                     }}>
-                      SENTINEL
+                      FING
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <code style={{ ...fx.teal(), fontFamily: FONTS.mono, fontSize: '10px' }}>

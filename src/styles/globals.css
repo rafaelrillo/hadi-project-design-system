@@ -1,10 +1,10 @@
 /* src/styles/globals.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   SENTINEL DESIGN SYSTEM - Global Styles
+   FING DESIGN SYSTEM - Global Styles
 
    Reset CSS y estilos base
    Las variables de tema están en theme.css
-   La tipografía está en typography/sentinel.css
+   La tipografía está en typography/fing.css
 
    ═══════════════════════════════════════════════════════════════════════════════ */
 
@@ -35,9 +35,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   /* Light Neumorphism Base */
-  background: var(--sentinel-bg-void);
-  color: var(--sentinel-text-primary);
-  font-family: var(--sentinel-font-primary);
+  background: var(--fing-bg-void);
+  color: var(--fing-text-primary);
+  font-family: var(--fing-font-primary);
 }
 
 /* Media defaults - SVG excluded to allow Nivo charts to work properly */
@@ -150,11 +150,11 @@ p {
   position: absolute;
   top: -40px;
   left: 0;
-  background: var(--sentinel-bg-elevated);
-  color: var(--sentinel-text-primary);
-  padding: var(--sentinel-space-2) var(--sentinel-space-4);
-  z-index: var(--sentinel-z-max);
-  transition: var(--sentinel-transition-fast);
+  background: var(--fing-bg-elevated);
+  color: var(--fing-text-primary);
+  padding: var(--fing-space-2) var(--fing-space-4);
+  z-index: var(--fing-z-max);
+  transition: var(--fing-transition-fast);
 }
 
 .skip-link:focus {
@@ -171,8 +171,8 @@ p {
   max-width: 1440px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: var(--sentinel-space-page);
-  padding-right: var(--sentinel-space-page);
+  padding-left: var(--fing-space-page);
+  padding-right: var(--fing-space-page);
 }
 
 /* Flex utilities */
@@ -204,13 +204,13 @@ p {
 .grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 
 /* Gap utilities */
-.gap-1 { gap: var(--sentinel-space-1); }
-.gap-2 { gap: var(--sentinel-space-2); }
-.gap-3 { gap: var(--sentinel-space-3); }
-.gap-4 { gap: var(--sentinel-space-4); }
-.gap-5 { gap: var(--sentinel-space-5); }
-.gap-6 { gap: var(--sentinel-space-6); }
-.gap-8 { gap: var(--sentinel-space-8); }
+.gap-1 { gap: var(--fing-space-1); }
+.gap-2 { gap: var(--fing-space-2); }
+.gap-3 { gap: var(--fing-space-3); }
+.gap-4 { gap: var(--fing-space-4); }
+.gap-5 { gap: var(--fing-space-5); }
+.gap-6 { gap: var(--fing-space-6); }
+.gap-8 { gap: var(--fing-space-8); }
 
 /* ─────────────────────────────────────────────────────────────────────────────
    SPACING UTILITIES
@@ -224,13 +224,13 @@ p {
 
 /* Padding */
 .p-0 { padding: 0; }
-.p-1 { padding: var(--sentinel-space-1); }
-.p-2 { padding: var(--sentinel-space-2); }
-.p-3 { padding: var(--sentinel-space-3); }
-.p-4 { padding: var(--sentinel-space-4); }
-.p-5 { padding: var(--sentinel-space-5); }
-.p-6 { padding: var(--sentinel-space-6); }
-.p-8 { padding: var(--sentinel-space-8); }
+.p-1 { padding: var(--fing-space-1); }
+.p-2 { padding: var(--fing-space-2); }
+.p-3 { padding: var(--fing-space-3); }
+.p-4 { padding: var(--fing-space-4); }
+.p-5 { padding: var(--fing-space-5); }
+.p-6 { padding: var(--fing-space-6); }
+.p-8 { padding: var(--fing-space-8); }
 
 /* ─────────────────────────────────────────────────────────────────────────────
    DISPLAY UTILITIES
@@ -280,38 +280,38 @@ p {
    BORDER UTILITIES
    ───────────────────────────────────────────────────────────────────────────── */
 
-.rounded-none { border-radius: var(--sentinel-radius-none); }
-.rounded-sm { border-radius: var(--sentinel-radius-sm); }
-.rounded { border-radius: var(--sentinel-radius-md); }
-.rounded-lg { border-radius: var(--sentinel-radius-lg); }
-.rounded-xl { border-radius: var(--sentinel-radius-xl); }
-.rounded-full { border-radius: var(--sentinel-radius-full); }
+.rounded-none { border-radius: var(--fing-radius-none); }
+.rounded-sm { border-radius: var(--fing-radius-sm); }
+.rounded { border-radius: var(--fing-radius-md); }
+.rounded-lg { border-radius: var(--fing-radius-lg); }
+.rounded-xl { border-radius: var(--fing-radius-xl); }
+.rounded-full { border-radius: var(--fing-radius-full); }
 
-.border { border: 1px solid var(--sentinel-border-default); }
+.border { border: 1px solid var(--fing-border-default); }
 .border-none { border: none; }
-.border-subtle { border-color: var(--sentinel-border-subtle); }
-.border-strong { border-color: var(--sentinel-border-strong); }
+.border-subtle { border-color: var(--fing-border-subtle); }
+.border-strong { border-color: var(--fing-border-strong); }
 
 /* ─────────────────────────────────────────────────────────────────────────────
    SHADOW UTILITIES
    ───────────────────────────────────────────────────────────────────────────── */
 
 .shadow-none { box-shadow: none; }
-.shadow-sm { box-shadow: var(--sentinel-shadow-sm); }
-.shadow { box-shadow: var(--sentinel-shadow-md); }
-.shadow-lg { box-shadow: var(--sentinel-shadow-lg); }
-.shadow-xl { box-shadow: var(--sentinel-shadow-xl); }
+.shadow-sm { box-shadow: var(--fing-shadow-sm); }
+.shadow { box-shadow: var(--fing-shadow-md); }
+.shadow-lg { box-shadow: var(--fing-shadow-lg); }
+.shadow-xl { box-shadow: var(--fing-shadow-xl); }
 
 /* ─────────────────────────────────────────────────────────────────────────────
    BACKGROUND UTILITIES
    ───────────────────────────────────────────────────────────────────────────── */
 
-.bg-void { background-color: var(--sentinel-bg-void); }
-.bg-base { background-color: var(--sentinel-bg-base); }
-.bg-elevated { background-color: var(--sentinel-bg-elevated); }
-.bg-overlay { background-color: var(--sentinel-bg-overlay); }
-.bg-subtle { background-color: var(--sentinel-bg-subtle); }
-.bg-interactive { background-color: var(--sentinel-bg-interactive); }
+.bg-void { background-color: var(--fing-bg-void); }
+.bg-base { background-color: var(--fing-bg-base); }
+.bg-elevated { background-color: var(--fing-bg-elevated); }
+.bg-overlay { background-color: var(--fing-bg-overlay); }
+.bg-subtle { background-color: var(--fing-bg-subtle); }
+.bg-interactive { background-color: var(--fing-bg-interactive); }
 .bg-transparent { background-color: transparent; }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -343,10 +343,10 @@ p {
    ───────────────────────────────────────────────────────────────────────────── */
 
 .transition-none { transition: none; }
-.transition-fast { transition: var(--sentinel-transition-fast); }
-.transition { transition: var(--sentinel-transition-normal); }
-.transition-slow { transition: var(--sentinel-transition-slow); }
-.transition-slower { transition: var(--sentinel-transition-slower); }
+.transition-fast { transition: var(--fing-transition-fast); }
+.transition { transition: var(--fing-transition-normal); }
+.transition-slow { transition: var(--fing-transition-slow); }
+.transition-slower { transition: var(--fing-transition-slower); }
 
 /* ─────────────────────────────────────────────────────────────────────────────
    OPACITY UTILITIES
@@ -361,11 +361,11 @@ p {
    Z-INDEX UTILITIES
    ───────────────────────────────────────────────────────────────────────────── */
 
-.z-0 { z-index: var(--sentinel-z-base); }
-.z-10 { z-index: var(--sentinel-z-elevated); }
-.z-50 { z-index: var(--sentinel-z-dropdown); }
-.z-modal { z-index: var(--sentinel-z-modal); }
-.z-tooltip { z-index: var(--sentinel-z-tooltip); }
+.z-0 { z-index: var(--fing-z-base); }
+.z-10 { z-index: var(--fing-z-elevated); }
+.z-50 { z-index: var(--fing-z-dropdown); }
+.z-modal { z-index: var(--fing-z-modal); }
+.z-tooltip { z-index: var(--fing-z-tooltip); }
 
 /* ─────────────────────────────────────────────────────────────────────────────
    3-LEVEL NEUMORPHIC SYSTEM UTILITIES
@@ -377,7 +377,7 @@ p {
 .raised-1 {
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
-  border-radius: var(--sentinel-radius-lg, 16px);
+  border-radius: var(--fing-radius-lg, 16px);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   box-shadow: var(--raised-1);
@@ -386,7 +386,7 @@ p {
 .raised-2 {
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
-  border-radius: var(--sentinel-radius-lg, 16px);
+  border-radius: var(--fing-radius-lg, 16px);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   box-shadow: var(--raised-2);
@@ -395,7 +395,7 @@ p {
 .raised-3 {
   background: var(--glass-bg-strong);
   border: 1px solid var(--glass-border-strong);
-  border-radius: var(--sentinel-radius-lg, 16px);
+  border-radius: var(--fing-radius-lg, 16px);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   box-shadow: var(--raised-3);
@@ -404,7 +404,7 @@ p {
 .raised-4 {
   background: var(--glass-bg-strong);
   border: 1px solid var(--glass-border-strong);
-  border-radius: var(--sentinel-radius-lg, 16px);
+  border-radius: var(--fing-radius-lg, 16px);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   box-shadow: var(--raised-4);
@@ -413,7 +413,7 @@ p {
 .raised-5 {
   background: var(--glass-bg-strong);
   border: 1px solid var(--glass-border-strong);
-  border-radius: var(--sentinel-radius-xl, 20px);
+  border-radius: var(--fing-radius-xl, 20px);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   box-shadow: var(--raised-5);
@@ -423,70 +423,70 @@ p {
 
 .inset-1 {
   background: var(--marble-dark);
-  border-radius: var(--sentinel-radius-md, 12px);
+  border-radius: var(--fing-radius-md, 12px);
   box-shadow: var(--inset-1);
 }
 
 .inset-2 {
   background: var(--marble-dark);
-  border-radius: var(--sentinel-radius-md, 14px);
+  border-radius: var(--fing-radius-md, 14px);
   box-shadow: var(--inset-2);
 }
 
 .inset-3 {
   background: var(--marble-dark);
-  border-radius: var(--sentinel-radius-lg, 16px);
+  border-radius: var(--fing-radius-lg, 16px);
   box-shadow: var(--inset-3);
 }
 
 .inset-4 {
   background: var(--marble-dark);
-  border-radius: var(--sentinel-radius-lg, 16px);
+  border-radius: var(--fing-radius-lg, 16px);
   box-shadow: var(--inset-4);
 }
 
 .inset-5 {
   background: var(--marble-deeper);
-  border-radius: var(--sentinel-radius-xl, 20px);
+  border-radius: var(--fing-radius-xl, 20px);
   box-shadow: var(--inset-5);
 }
 
 /* ═══ LEVEL 3: GLASS - Floating items inside INSET (NO neumorphic shadows) ═══ */
 
 .glass-item {
-  background: var(--sentinel-glass-item-bg, rgba(255, 255, 255, 0.35));
-  border: 1px solid var(--sentinel-glass-item-border, rgba(255, 255, 255, 0.40));
-  border-radius: var(--sentinel-radius-md, 12px);
+  background: var(--fing-glass-item-bg, rgba(255, 255, 255, 0.35));
+  border: 1px solid var(--fing-glass-item-border, rgba(255, 255, 255, 0.40));
+  border-radius: var(--fing-radius-md, 12px);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   transition: all 0.15s ease;
 }
 
 .glass-item:hover {
-  background: var(--sentinel-glass-item-bg-hover, rgba(255, 255, 255, 0.45));
-  border-color: var(--sentinel-glass-item-border-hover, rgba(255, 255, 255, 0.50));
+  background: var(--fing-glass-item-bg-hover, rgba(255, 255, 255, 0.45));
+  border-color: var(--fing-glass-item-border-hover, rgba(255, 255, 255, 0.50));
 }
 
 .glass-item-active {
-  background: var(--sentinel-glass-item-bg-active, rgba(255, 255, 255, 0.50));
-  border-color: var(--sentinel-glass-item-border-active, rgba(255, 255, 255, 0.55));
+  background: var(--fing-glass-item-bg-active, rgba(255, 255, 255, 0.50));
+  border-color: var(--fing-glass-item-border-active, rgba(255, 255, 255, 0.55));
 }
 
 /* ═══ LEGACY UTILITIES (kept for backwards compatibility) ═══ */
 
 /* Glass backgrounds */
 .glass {
-  background: var(--sentinel-glass-bg);
-  backdrop-filter: blur(var(--sentinel-blur-md));
-  -webkit-backdrop-filter: blur(var(--sentinel-blur-md));
-  border: 1px solid var(--sentinel-glass-border);
+  background: var(--fing-glass-bg);
+  backdrop-filter: blur(var(--fing-blur-md));
+  -webkit-backdrop-filter: blur(var(--fing-blur-md));
+  border: 1px solid var(--fing-glass-border);
 }
 
 .glass-elevated {
   background: var(--glass-bg-strong);
   border: 1px solid var(--glass-border-strong);
-  backdrop-filter: blur(var(--sentinel-blur-lg));
-  -webkit-backdrop-filter: blur(var(--sentinel-blur-lg));
+  backdrop-filter: blur(var(--fing-blur-lg));
+  -webkit-backdrop-filter: blur(var(--fing-blur-lg));
   box-shadow: var(--raised-4);
 }
 
@@ -499,9 +499,9 @@ p {
 .glass-panel {
   background: var(--glass-bg-strong);
   border: 1px solid var(--glass-border-strong);
-  backdrop-filter: blur(var(--sentinel-blur-md));
-  -webkit-backdrop-filter: blur(var(--sentinel-blur-md));
-  border-radius: var(--sentinel-radius-lg);
+  backdrop-filter: blur(var(--fing-blur-md));
+  -webkit-backdrop-filter: blur(var(--fing-blur-md));
+  border-radius: var(--fing-radius-lg);
   box-shadow: var(--raised-3);
   position: relative;
 }
@@ -522,7 +522,7 @@ p {
     rgba(255, 255, 255, 0.4),
     transparent
   );
-  border-radius: var(--sentinel-radius-lg) var(--sentinel-radius-lg) 0 0;
+  border-radius: var(--fing-radius-lg) var(--fing-radius-lg) 0 0;
   pointer-events: none;
 }
 
@@ -536,10 +536,10 @@ p {
 }
 
 /* Blur utilities */
-.blur-sm { backdrop-filter: blur(var(--sentinel-blur-sm)); -webkit-backdrop-filter: blur(var(--sentinel-blur-sm)); }
-.blur-md { backdrop-filter: blur(var(--sentinel-blur-md)); -webkit-backdrop-filter: blur(var(--sentinel-blur-md)); }
-.blur-lg { backdrop-filter: blur(var(--sentinel-blur-lg)); -webkit-backdrop-filter: blur(var(--sentinel-blur-lg)); }
-.blur-xl { backdrop-filter: blur(var(--sentinel-blur-xl)); -webkit-backdrop-filter: blur(var(--sentinel-blur-xl)); }
+.blur-sm { backdrop-filter: blur(var(--fing-blur-sm)); -webkit-backdrop-filter: blur(var(--fing-blur-sm)); }
+.blur-md { backdrop-filter: blur(var(--fing-blur-md)); -webkit-backdrop-filter: blur(var(--fing-blur-md)); }
+.blur-lg { backdrop-filter: blur(var(--fing-blur-lg)); -webkit-backdrop-filter: blur(var(--fing-blur-lg)); }
+.blur-xl { backdrop-filter: blur(var(--fing-blur-xl)); -webkit-backdrop-filter: blur(var(--fing-blur-xl)); }
 
 /* Inner highlight utility */
 .inner-highlight {
@@ -548,9 +548,9 @@ p {
 
 /* Luminous border utilities */
 .border-luminous {
-  border-color: var(--sentinel-glass-border);
+  border-color: var(--fing-glass-border);
 }
 
 .border-luminous-hover:hover {
-  border-color: var(--sentinel-glass-border-hover);
+  border-color: var(--fing-glass-border-hover);
 }

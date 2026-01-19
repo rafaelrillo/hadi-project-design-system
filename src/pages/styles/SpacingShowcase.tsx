@@ -1,5 +1,5 @@
 // Path: src/pages/styles/SpacingShowcase.tsx
-// SENTINEL Design System - Stone Marble Spacing
+// FING Design System - Stone Marble Spacing
 import React from 'react';
 
 interface SpacingToken {
@@ -18,7 +18,7 @@ export function SpacingShowcase() {
     minHeight: '100vh',
     background: 'var(--marble-base)',
     padding: '32px',
-    fontFamily: 'var(--sentinel-font-primary)',
+    fontFamily: 'var(--fing-font-primary)',
   };
 
   const headerStyles: React.CSSProperties = {
@@ -27,7 +27,7 @@ export function SpacingShowcase() {
   };
 
   const headerTitleStyles: React.CSSProperties = {
-    fontFamily: 'var(--sentinel-font-display)',
+    fontFamily: 'var(--fing-font-display)',
     fontSize: '32px',
     fontWeight: 700,
     letterSpacing: '-0.02em',
@@ -51,7 +51,7 @@ export function SpacingShowcase() {
   };
 
   const sectionTitleStyles: React.CSSProperties = {
-    fontFamily: 'var(--sentinel-font-primary)',
+    fontFamily: 'var(--fing-font-primary)',
     fontSize: '11px',
     fontWeight: 600,
     letterSpacing: '0.12em',
@@ -142,7 +142,7 @@ export function SpacingShowcase() {
           ...lpStyles('subtle'),
           fontSize: '10px',
           fontWeight: 600,
-          fontFamily: 'var(--sentinel-font-mono)',
+          fontFamily: 'var(--fing-font-mono)',
         }}>
           {token.value}
         </span>
@@ -152,7 +152,7 @@ export function SpacingShowcase() {
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={{
           ...lpInsetStyles('medium'),
-          fontFamily: 'var(--sentinel-font-primary)',
+          fontFamily: 'var(--fing-font-primary)',
           fontSize: '13px',
           fontWeight: 600,
           marginBottom: '6px',
@@ -162,15 +162,15 @@ export function SpacingShowcase() {
         <div style={{
           display: 'inline-block',
           padding: '3px 10px',
-          background: 'var(--sentinel-glass-teal-bg)',
-          border: '1px solid var(--sentinel-glass-teal-border)',
+          background: 'var(--fing-glass-teal-bg)',
+          border: '1px solid var(--fing-glass-teal-border)',
           borderRadius: '100px',
           marginBottom: '6px',
         }}>
           <code style={{
-            fontFamily: 'var(--sentinel-font-mono)',
+            fontFamily: 'var(--fing-font-mono)',
             fontSize: '10px',
-            color: 'var(--sentinel-glass-teal-text)',
+            color: 'var(--fing-glass-teal-text)',
             fontWeight: 500,
           }}>
             {token.variable}
@@ -178,7 +178,7 @@ export function SpacingShowcase() {
         </div>
         <div style={{
           ...lpInsetStyles('whisper'),
-          fontFamily: 'var(--sentinel-font-mono)',
+          fontFamily: 'var(--fing-font-mono)',
           fontSize: '10px',
         }}>
           {token.usage}
@@ -195,7 +195,7 @@ export function SpacingShowcase() {
     <div style={showcaseStyles}>
       {/* Header */}
       <header style={headerStyles}>
-        <h1 style={headerTitleStyles}>SENTINEL Spacing</h1>
+        <h1 style={headerTitleStyles}>FING Spacing</h1>
         <p style={headerSubtitleStyles}>Sistema de espaciado Stone Marble - Escala basada en 5px</p>
       </header>
 
@@ -218,7 +218,7 @@ export function SpacingShowcase() {
         }}>
           <div style={{
             ...lpInsetStyles('whisper'),
-            fontFamily: 'var(--sentinel-font-mono)',
+            fontFamily: 'var(--fing-font-mono)',
             fontSize: '10px',
             letterSpacing: '0.1em',
             textTransform: 'uppercase',
@@ -243,7 +243,7 @@ export function SpacingShowcase() {
               >
                 <span style={{
                   ...lpStyles('whisper'),
-                  fontFamily: 'var(--sentinel-font-mono)',
+                  fontFamily: 'var(--fing-font-mono)',
                   fontSize: '8px',
                   fontWeight: 600,
                 }}>
@@ -276,7 +276,7 @@ export function SpacingShowcase() {
         }}>
           <div style={{
             ...lpInsetStyles('whisper'),
-            fontFamily: 'var(--sentinel-font-mono)',
+            fontFamily: 'var(--fing-font-mono)',
             fontSize: '10px',
             letterSpacing: '0.1em',
             textTransform: 'uppercase',
@@ -294,7 +294,7 @@ export function SpacingShowcase() {
           }}>
             <div style={{
               ...lpStyles('medium'),
-              fontFamily: 'var(--sentinel-font-display)',
+              fontFamily: 'var(--fing-font-display)',
               fontSize: '16px',
               fontWeight: 600,
               marginBottom: '10px', // --spacing-sm
@@ -303,7 +303,7 @@ export function SpacingShowcase() {
             </div>
             <div style={{
               ...lpStyles('whisper'),
-              fontFamily: 'var(--sentinel-font-primary)',
+              fontFamily: 'var(--fing-font-primary)',
               fontSize: '12px',
               marginBottom: '20px', // --spacing-lg
             }}>
@@ -312,30 +312,30 @@ export function SpacingShowcase() {
             <div style={{ display: 'flex', gap: '10px' }}> {/* --spacing-sm */}
               <div style={{
                 padding: '8px 16px',
-                background: 'var(--sentinel-glass-teal-bg)',
-                border: '1px solid var(--sentinel-glass-teal-border)',
+                background: 'var(--fing-glass-teal-bg)',
+                border: '1px solid var(--fing-glass-teal-border)',
                 borderRadius: '8px',
               }}>
                 <span style={{
-                  fontFamily: 'var(--sentinel-font-primary)',
+                  fontFamily: 'var(--fing-font-primary)',
                   fontSize: '12px',
                   fontWeight: 500,
-                  color: 'var(--sentinel-glass-teal-text)',
+                  color: 'var(--fing-glass-teal-text)',
                 }}>
                   Action 1
                 </span>
               </div>
               <div style={{
                 padding: '8px 16px',
-                background: 'var(--sentinel-glass-teal-bg)',
-                border: '1px solid var(--sentinel-glass-teal-border)',
+                background: 'var(--fing-glass-teal-bg)',
+                border: '1px solid var(--fing-glass-teal-border)',
                 borderRadius: '8px',
               }}>
                 <span style={{
-                  fontFamily: 'var(--sentinel-font-primary)',
+                  fontFamily: 'var(--fing-font-primary)',
                   fontSize: '12px',
                   fontWeight: 500,
-                  color: 'var(--sentinel-glass-teal-text)',
+                  color: 'var(--fing-glass-teal-text)',
                 }}>
                   Action 2
                 </span>
@@ -356,7 +356,7 @@ export function SpacingShowcase() {
         }}>
           <pre style={{
             margin: 0,
-            fontFamily: 'var(--sentinel-font-mono)',
+            fontFamily: 'var(--fing-font-mono)',
             fontSize: '11px',
             lineHeight: 1.6,
             color: 'var(--marble-base)',

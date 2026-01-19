@@ -1,5 +1,5 @@
 // Path: src/pages/styles/StoneMarbleShowcase.tsx
-// SENTINEL Design System - Stone Marble Neumorphism Reference
+// FING Design System - Stone Marble Neumorphism Reference
 import React, { useState } from 'react';
 
 type Section = 'typography' | 'containers' | 'buttons' | 'inputs' | 'badges' | 'indicators' | 'cards' | 'decorative' | 'icons';
@@ -29,7 +29,7 @@ export function StoneMarbleShowcase() {
     minHeight: '100vh',
     background: 'var(--marble-base)',
     padding: '32px',
-    fontFamily: 'var(--sentinel-font-primary)',
+    fontFamily: 'var(--fing-font-primary)',
   };
 
   const headerStyles: React.CSSProperties = {
@@ -38,7 +38,7 @@ export function StoneMarbleShowcase() {
   };
 
   const headerTitleStyles: React.CSSProperties = {
-    fontFamily: 'var(--sentinel-font-display)',
+    fontFamily: 'var(--fing-font-display)',
     fontSize: '32px',
     fontWeight: 700,
     letterSpacing: '-0.02em',
@@ -72,7 +72,7 @@ export function StoneMarbleShowcase() {
     padding: '10px 18px',
     border: 'none',
     borderRadius: '10px',
-    fontFamily: 'var(--sentinel-font-primary)',
+    fontFamily: 'var(--fing-font-primary)',
     fontSize: '12px',
     fontWeight: isActive ? 600 : 500,
     cursor: 'pointer',
@@ -94,7 +94,7 @@ export function StoneMarbleShowcase() {
   };
 
   const sectionTitleStyles: React.CSSProperties = {
-    fontFamily: 'var(--sentinel-font-primary)',
+    fontFamily: 'var(--fing-font-primary)',
     fontSize: '11px',
     fontWeight: 600,
     letterSpacing: '0.12em',
@@ -114,7 +114,7 @@ export function StoneMarbleShowcase() {
   };
 
   const demoLabelStyles: React.CSSProperties = {
-    fontFamily: 'var(--sentinel-font-mono)',
+    fontFamily: 'var(--fing-font-mono)',
     fontSize: '9px',
     fontWeight: 500,
     color: '#64748b',
@@ -145,7 +145,7 @@ export function StoneMarbleShowcase() {
   const lpColorStyles = (color: 'teal' | 'positive' | 'negative' | 'warning'): React.CSSProperties => {
     const colors: Record<string, { color: string; shadow: string }> = {
       teal: {
-        color: 'var(--sentinel-accent-tertiary, #6fb3b5)',
+        color: 'var(--fing-accent-tertiary, #6fb3b5)',
         shadow: '1px 1px 1px var(--shadow-light), -1px -1px 1px rgba(58, 106, 114, 0.4)',
       },
       positive: {
@@ -209,7 +209,7 @@ export function StoneMarbleShowcase() {
     padding: '12px 24px',
     border: 'none',
     cursor: 'pointer',
-    fontFamily: 'var(--sentinel-font-primary)',
+    fontFamily: 'var(--fing-font-primary)',
     fontSize: '13px',
     fontWeight: 600,
     transition: 'all 0.15s ease',
@@ -240,7 +240,7 @@ export function StoneMarbleShowcase() {
 
   const btnTealStyles: React.CSSProperties = {
     ...btnBaseStyles,
-    background: 'linear-gradient(135deg, var(--sentinel-accent-tertiary, #6fb3b5), var(--sentinel-accent-primary, #3a6a72))',
+    background: 'linear-gradient(135deg, var(--fing-accent-tertiary, #6fb3b5), var(--fing-accent-primary, #3a6a72))',
     color: 'white',
     textShadow: '0 1px 2px rgba(0,0,0,0.2)',
     boxShadow: 'var(--raised-2), inset 0 1px 0 rgba(255,255,255,0.2)',
@@ -252,7 +252,7 @@ export function StoneMarbleShowcase() {
     width: '100%',
     padding: '14px 18px',
     border: 'none',
-    fontFamily: 'var(--sentinel-font-primary)',
+    fontFamily: 'var(--fing-font-primary)',
     fontSize: '14px',
     background: 'var(--marble-base)',
     borderRadius: '12px',
@@ -266,7 +266,7 @@ export function StoneMarbleShowcase() {
     width: '56px',
     height: '30px',
     background: isActive
-      ? 'linear-gradient(135deg, var(--sentinel-accent-tertiary, #6fb3b5), var(--sentinel-accent-primary, #3a6a72))'
+      ? 'linear-gradient(135deg, var(--fing-accent-tertiary, #6fb3b5), var(--fing-accent-primary, #3a6a72))'
       : 'var(--marble-base)',
     borderRadius: '100px',
     boxShadow: 'var(--inset-2)',
@@ -291,7 +291,7 @@ export function StoneMarbleShowcase() {
     display: 'inline-flex',
     alignItems: 'center',
     padding: '6px 14px',
-    fontFamily: 'var(--sentinel-font-mono)',
+    fontFamily: 'var(--fing-font-mono)',
     fontSize: '11px',
     fontWeight: 600,
   };
@@ -395,7 +395,7 @@ export function StoneMarbleShowcase() {
   return (
     <div style={showcaseStyles}>
       <header style={headerStyles}>
-        <h1 style={headerTitleStyles}>SENTINEL Stone Marble</h1>
+        <h1 style={headerTitleStyles}>FING Stone Marble</h1>
         <p style={headerSubtitleStyles}>Sistema de diseño neumórfico completo - Referencia visual de todas las variables</p>
       </header>
 
@@ -428,8 +428,8 @@ export function StoneMarbleShowcase() {
                 { name: 'Stamped', intensity: 'stamped', size: '32px' },
               ].map(v => (
                 <div key={v.name} style={{ ...insetStyles(2), ...showcaseItemStyles }}>
-                  <div style={{ ...lpStyles(v.intensity), fontFamily: 'var(--sentinel-font-primary)', fontSize: v.size, fontWeight: 700 }}>
-                    SENTINEL
+                  <div style={{ ...lpStyles(v.intensity), fontFamily: 'var(--fing-font-primary)', fontSize: v.size, fontWeight: 700 }}>
+                    FING
                   </div>
                   <div style={demoLabelStyles}>{v.name}</div>
                 </div>
@@ -441,19 +441,19 @@ export function StoneMarbleShowcase() {
             <div style={sectionTitleStyles}>Letterpress con Color</div>
             <div style={grid(4)}>
               <div style={{ ...insetStyles(2), ...showcaseItemStyles }}>
-                <div style={{ ...lpStyles('medium'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '24px', fontWeight: 700 }}>$191,856</div>
+                <div style={{ ...lpStyles('medium'), fontFamily: 'var(--fing-font-mono)', fontSize: '24px', fontWeight: 700 }}>$191,856</div>
                 <div style={demoLabelStyles}>Neutral</div>
               </div>
               <div style={{ ...insetStyles(2), ...showcaseItemStyles }}>
-                <div style={{ ...lpColorStyles('teal'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '24px', fontWeight: 700 }}>$191,856</div>
+                <div style={{ ...lpColorStyles('teal'), fontFamily: 'var(--fing-font-mono)', fontSize: '24px', fontWeight: 700 }}>$191,856</div>
                 <div style={demoLabelStyles}>Teal</div>
               </div>
               <div style={{ ...insetStyles(2), ...showcaseItemStyles }}>
-                <div style={{ ...lpColorStyles('positive'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '24px', fontWeight: 700 }}>+16.5%</div>
+                <div style={{ ...lpColorStyles('positive'), fontFamily: 'var(--fing-font-mono)', fontSize: '24px', fontWeight: 700 }}>+16.5%</div>
                 <div style={demoLabelStyles}>Positive</div>
               </div>
               <div style={{ ...insetStyles(2), ...showcaseItemStyles }}>
-                <div style={{ ...lpColorStyles('negative'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '24px', fontWeight: 700 }}>-8.2%</div>
+                <div style={{ ...lpColorStyles('negative'), fontFamily: 'var(--fing-font-mono)', fontSize: '24px', fontWeight: 700 }}>-8.2%</div>
                 <div style={demoLabelStyles}>Negative</div>
               </div>
             </div>
@@ -462,12 +462,12 @@ export function StoneMarbleShowcase() {
           <div style={sectionStyles}>
             <div style={sectionTitleStyles}>Jerarquía Completa</div>
             <div style={{ ...insetStyles(3), padding: '24px' }}>
-              <div style={{ ...lpStyles('monumental'), fontFamily: 'var(--sentinel-font-display)', fontSize: '48px', fontWeight: 700, letterSpacing: '-0.02em', marginBottom: '24px' }}>SENTINEL</div>
-              <div style={{ ...lpStyles('stamped'), fontFamily: 'var(--sentinel-font-display)', fontSize: '36px', fontWeight: 700, marginBottom: '16px' }}>Portfolio Value</div>
-              <div style={{ ...lpStyles('deep'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '56px', fontWeight: 700, marginBottom: '8px' }}>$1,234,567</div>
-              <div style={{ ...lpColorStyles('positive'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '20px', fontWeight: 600, marginBottom: '24px' }}>+16.5% this month</div>
-              <div style={{ ...lpStyles('medium'), fontFamily: 'var(--sentinel-font-primary)', fontSize: '11px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '12px' }}>Performance Metrics</div>
-              <div style={{ ...lpStyles('soft'), fontFamily: 'var(--sentinel-font-primary)', fontSize: '15px', lineHeight: 1.6 }}>
+              <div style={{ ...lpStyles('monumental'), fontFamily: 'var(--fing-font-display)', fontSize: '48px', fontWeight: 700, letterSpacing: '-0.02em', marginBottom: '24px' }}>FING</div>
+              <div style={{ ...lpStyles('stamped'), fontFamily: 'var(--fing-font-display)', fontSize: '36px', fontWeight: 700, marginBottom: '16px' }}>Portfolio Value</div>
+              <div style={{ ...lpStyles('deep'), fontFamily: 'var(--fing-font-mono)', fontSize: '56px', fontWeight: 700, marginBottom: '8px' }}>$1,234,567</div>
+              <div style={{ ...lpColorStyles('positive'), fontFamily: 'var(--fing-font-mono)', fontSize: '20px', fontWeight: 600, marginBottom: '24px' }}>+16.5% this month</div>
+              <div style={{ ...lpStyles('medium'), fontFamily: 'var(--fing-font-primary)', fontSize: '11px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '12px' }}>Performance Metrics</div>
+              <div style={{ ...lpStyles('soft'), fontFamily: 'var(--fing-font-primary)', fontSize: '15px', lineHeight: 1.6 }}>
                 Your portfolio has shown consistent growth over the past quarter, outperforming the market benchmark by 3.2 percentage points.
               </div>
             </div>
@@ -525,7 +525,7 @@ export function StoneMarbleShowcase() {
           <div style={sectionStyles}>
             <div style={sectionTitleStyles}>Jerarquía de Anidación</div>
             <div style={{ ...insetStyles(3), padding: '24px' }}>
-              <pre style={{ fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px', color: 'var(--sentinel-text-secondary)', lineHeight: 1.8 }}>
+              <pre style={{ fontFamily: 'var(--fing-font-mono)', fontSize: '12px', color: 'var(--fing-text-secondary)', lineHeight: 1.8 }}>
 {`FONDO (--marble-base)
   └── RAISED (cards, sections, modals)
         └── INSET (inputs, listas, areas internas)
@@ -648,11 +648,11 @@ REGLAS:
               </div>
               <div style={{ maxWidth: '300px', margin: '0 auto', width: '100%' }}>
                 <div style={{ width: '100%', height: '8px', background: 'var(--marble-base)', borderRadius: '100px', boxShadow: 'var(--inset-2)', position: 'relative' }}>
-                  <div style={{ width: `${sliderValue}%`, height: '100%', background: 'linear-gradient(90deg, var(--sentinel-accent-tertiary, #6fb3b5), var(--sentinel-accent-primary, #3a6a72))', borderRadius: '100px' }} />
+                  <div style={{ width: `${sliderValue}%`, height: '100%', background: 'linear-gradient(90deg, var(--fing-accent-tertiary, #6fb3b5), var(--fing-accent-primary, #3a6a72))', borderRadius: '100px' }} />
                   <div style={{ width: '24px', height: '24px', background: 'var(--marble-base)', borderRadius: '50%', boxShadow: 'var(--raised-2)', position: 'absolute', top: '50%', left: `${sliderValue}%`, transform: 'translate(-50%, -50%)' }} />
                 </div>
                 <div style={{ textAlign: 'center', marginTop: '8px' }}>
-                  <span style={{ ...lpStyles('strong'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '20px', fontWeight: 700 }}>{sliderValue}%</span>
+                  <span style={{ ...lpStyles('strong'), fontFamily: 'var(--fing-font-mono)', fontSize: '20px', fontWeight: 700 }}>{sliderValue}%</span>
                 </div>
               </div>
             </div>
@@ -668,20 +668,20 @@ REGLAS:
                 <div style={demoLabelStyles}>Unchecked</div>
               </div>
               <div style={showcaseItemStyles}>
-                <div style={{ width: '24px', height: '24px', background: 'var(--sentinel-accent-primary)', borderRadius: '6px', boxShadow: 'var(--raised-1)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
+                <div style={{ width: '24px', height: '24px', background: 'var(--fing-accent-primary)', borderRadius: '6px', boxShadow: 'var(--raised-1)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
                   <span style={{ color: 'white', fontSize: '14px' }}>✓</span>
                 </div>
                 <div style={demoLabelStyles}>Checked</div>
               </div>
               <div style={showcaseItemStyles}>
                 <div style={{ ...insetStyles(2), width: '24px', height: '24px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', borderRadius: '50%' }}>
-                  <div style={{ width: '10px', height: '10px', background: 'var(--sentinel-accent-primary)', borderRadius: '50%', boxShadow: 'var(--raised-1)', opacity: 0 }} />
+                  <div style={{ width: '10px', height: '10px', background: 'var(--fing-accent-primary)', borderRadius: '50%', boxShadow: 'var(--raised-1)', opacity: 0 }} />
                 </div>
                 <div style={demoLabelStyles}>Unselected</div>
               </div>
               <div style={showcaseItemStyles}>
                 <div style={{ ...insetStyles(2), width: '24px', height: '24px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', borderRadius: '50%' }}>
-                  <div style={{ width: '10px', height: '10px', background: 'var(--sentinel-accent-primary)', borderRadius: '50%', boxShadow: 'var(--raised-1)' }} />
+                  <div style={{ width: '10px', height: '10px', background: 'var(--fing-accent-primary)', borderRadius: '50%', boxShadow: 'var(--raised-1)' }} />
                 </div>
                 <div style={demoLabelStyles}>Selected</div>
               </div>
@@ -694,13 +694,13 @@ REGLAS:
               <div>
                 <div style={{ ...lpStyles('subtle'), fontSize: '11px', marginBottom: '8px' }}>25% Complete</div>
                 <div style={{ height: '12px', background: 'var(--marble-base)', borderRadius: '100px', boxShadow: 'var(--inset-2)', overflow: 'hidden' }}>
-                  <div style={{ width: '25%', height: '100%', background: 'linear-gradient(90deg, var(--sentinel-accent-tertiary, #6fb3b5), var(--sentinel-accent-primary, #3a6a72))', borderRadius: '100px' }} />
+                  <div style={{ width: '25%', height: '100%', background: 'linear-gradient(90deg, var(--fing-accent-tertiary, #6fb3b5), var(--fing-accent-primary, #3a6a72))', borderRadius: '100px' }} />
                 </div>
               </div>
               <div>
                 <div style={{ ...lpStyles('subtle'), fontSize: '11px', marginBottom: '8px' }}>75% Complete</div>
                 <div style={{ height: '12px', background: 'var(--marble-base)', borderRadius: '100px', boxShadow: 'var(--inset-2)', overflow: 'hidden' }}>
-                  <div style={{ width: '75%', height: '100%', background: 'linear-gradient(90deg, var(--sentinel-accent-tertiary, #6fb3b5), var(--sentinel-accent-primary, #3a6a72))', borderRadius: '100px' }} />
+                  <div style={{ width: '75%', height: '100%', background: 'linear-gradient(90deg, var(--fing-accent-tertiary, #6fb3b5), var(--fing-accent-primary, #3a6a72))', borderRadius: '100px' }} />
                 </div>
               </div>
             </div>
@@ -716,7 +716,7 @@ REGLAS:
             <div style={flex('center', 'center', 12)}>
               <span style={{ ...badgeBaseStyles, ...raisedStyles(1), borderRadius: '100px', ...lpStyles('subtle') }}>Raised</span>
               <span style={{ ...badgeBaseStyles, ...insetStyles(1), borderRadius: '100px', ...lpColorStyles('teal') }}>Inset</span>
-              <span style={{ ...badgeBaseStyles, background: 'linear-gradient(135deg, var(--sentinel-accent-tertiary), var(--sentinel-accent-primary))', color: 'white', borderRadius: '100px' }}>Teal</span>
+              <span style={{ ...badgeBaseStyles, background: 'linear-gradient(135deg, var(--fing-accent-tertiary), var(--fing-accent-primary))', color: 'white', borderRadius: '100px' }}>Teal</span>
               <span style={{ ...badgeBaseStyles, ...raisedStyles(1), borderRadius: '100px', ...lpColorStyles('positive') }}>+12.5%</span>
               <span style={{ ...badgeBaseStyles, ...raisedStyles(1), borderRadius: '100px', ...lpColorStyles('negative') }}>-8.3%</span>
             </div>
@@ -726,7 +726,7 @@ REGLAS:
             <div style={sectionTitleStyles}>Tags (Tickers)</div>
             <div style={flex('center', 'center', 8)}>
               {['$AAPL', '$MSFT', '$GOOGL', '$NVDA', '$TSLA'].map(ticker => (
-                <span key={ticker} style={{ display: 'inline-block', padding: '4px 12px', fontFamily: 'var(--sentinel-font-mono)', fontSize: '10px', fontWeight: 600, background: 'var(--marble-base)', borderRadius: '6px', boxShadow: 'var(--inset-1)', ...lpColorStyles('teal') }}>{ticker}</span>
+                <span key={ticker} style={{ display: 'inline-block', padding: '4px 12px', fontFamily: 'var(--fing-font-mono)', fontSize: '10px', fontWeight: 600, background: 'var(--marble-base)', borderRadius: '6px', boxShadow: 'var(--inset-1)', ...lpColorStyles('teal') }}>{ticker}</span>
               ))}
             </div>
           </div>
@@ -735,15 +735,15 @@ REGLAS:
             <div style={sectionTitleStyles}>Avatars</div>
             <div style={flex('center', 'center', 16)}>
               <div style={showcaseItemStyles}>
-                <div style={{ ...raisedStyles(2), width: '48px', height: '48px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--sentinel-font-primary)', fontWeight: 600, fontSize: '18px', ...lpStyles('medium') }}>JD</div>
+                <div style={{ ...raisedStyles(2), width: '48px', height: '48px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--fing-font-primary)', fontWeight: 600, fontSize: '18px', ...lpStyles('medium') }}>JD</div>
                 <div style={demoLabelStyles}>Raised</div>
               </div>
               <div style={showcaseItemStyles}>
-                <div style={{ ...insetStyles(2), width: '48px', height: '48px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--sentinel-font-primary)', fontWeight: 600, fontSize: '18px', ...lpStyles('soft') }}>AB</div>
+                <div style={{ ...insetStyles(2), width: '48px', height: '48px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--fing-font-primary)', fontWeight: 600, fontSize: '18px', ...lpStyles('soft') }}>AB</div>
                 <div style={demoLabelStyles}>Inset</div>
               </div>
               <div style={showcaseItemStyles}>
-                <div style={{ ...raisedStyles(2), width: '48px', height: '48px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--sentinel-font-primary)', fontWeight: 600, fontSize: '18px', ...lpStyles('medium') }}>MK</div>
+                <div style={{ ...raisedStyles(2), width: '48px', height: '48px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--fing-font-primary)', fontWeight: 600, fontSize: '18px', ...lpStyles('medium') }}>MK</div>
                 <div style={demoLabelStyles}>Square</div>
               </div>
             </div>
@@ -763,7 +763,7 @@ REGLAS:
               <div style={showcaseItemStyles}>
                 <div style={meterStyles}>
                   <div style={meterInnerStyles}>
-                    <div style={{ ...lpStyles('deep'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '24px', fontWeight: 700 }}>87</div>
+                    <div style={{ ...lpStyles('deep'), fontFamily: 'var(--fing-font-mono)', fontSize: '24px', fontWeight: 700 }}>87</div>
                     <div style={{ ...lpStyles('whisper'), fontSize: '10px', fontWeight: 500 }}>SCORE</div>
                   </div>
                 </div>
@@ -772,7 +772,7 @@ REGLAS:
               <div style={showcaseItemStyles}>
                 <div style={meterStyles}>
                   <div style={meterInnerStyles}>
-                    <div style={{ ...lpColorStyles('warning'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '24px', fontWeight: 700 }}>42</div>
+                    <div style={{ ...lpColorStyles('warning'), fontFamily: 'var(--fing-font-mono)', fontSize: '24px', fontWeight: 700 }}>42</div>
                     <div style={{ ...lpStyles('whisper'), fontSize: '10px', fontWeight: 500 }}>RISK</div>
                   </div>
                 </div>
@@ -781,7 +781,7 @@ REGLAS:
               <div style={showcaseItemStyles}>
                 <div style={meterStyles}>
                   <div style={meterInnerStyles}>
-                    <div style={{ ...lpColorStyles('positive'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '24px', fontWeight: 700 }}>+16%</div>
+                    <div style={{ ...lpColorStyles('positive'), fontFamily: 'var(--fing-font-mono)', fontSize: '24px', fontWeight: 700 }}>+16%</div>
                     <div style={{ ...lpStyles('whisper'), fontSize: '10px', fontWeight: 500 }}>YTD</div>
                   </div>
                 </div>
@@ -820,7 +820,7 @@ REGLAS:
                     justifyContent: 'center',
                   }}>
                     <div style={{ transform: 'rotate(-45deg)', textAlign: 'center' }}>
-                      <div style={{ ...lpStyles('deep'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '22px', fontWeight: 700 }}>78</div>
+                      <div style={{ ...lpStyles('deep'), fontFamily: 'var(--fing-font-mono)', fontSize: '22px', fontWeight: 700 }}>78</div>
                       <div style={{ ...lpStyles('whisper'), fontSize: '8px', letterSpacing: '0.08em' }}>QUALITY</div>
                     </div>
                   </div>
@@ -837,7 +837,7 @@ REGLAS:
                   transform: 'rotate(45deg)',
                   borderRadius: '12px',
                   boxShadow: 'var(--raised-3)',
-                  border: '3px solid var(--sentinel-accent-primary)',
+                  border: '3px solid var(--fing-accent-primary)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -853,7 +853,7 @@ REGLAS:
                     justifyContent: 'center',
                   }}>
                     <div style={{ transform: 'rotate(-45deg)', textAlign: 'center' }}>
-                      <div style={{ ...lpColorStyles('teal'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '18px', fontWeight: 700 }}>$12K</div>
+                      <div style={{ ...lpColorStyles('teal'), fontFamily: 'var(--fing-font-mono)', fontSize: '18px', fontWeight: 700 }}>$12K</div>
                       <div style={{ ...lpStyles('whisper'), fontSize: '7px', letterSpacing: '0.08em' }}>DAILY</div>
                     </div>
                   </div>
@@ -887,7 +887,7 @@ REGLAS:
                     <div style={{
                       width: '50px',
                       height: '50px',
-                      background: 'linear-gradient(135deg, var(--sentinel-accent-tertiary), var(--sentinel-accent-primary))',
+                      background: 'linear-gradient(135deg, var(--fing-accent-tertiary), var(--fing-accent-primary))',
                       borderRadius: '6px',
                       boxShadow: 'var(--raised-2)',
                       display: 'flex',
@@ -895,7 +895,7 @@ REGLAS:
                       justifyContent: 'center',
                     }}>
                       <div style={{ transform: 'rotate(-45deg)', textAlign: 'center' }}>
-                        <div style={{ color: 'white', fontFamily: 'var(--sentinel-font-mono)', fontSize: '16px', fontWeight: 700, textShadow: '0 1px 2px rgba(0,0,0,0.2)' }}>★</div>
+                        <div style={{ color: 'white', fontFamily: 'var(--fing-font-mono)', fontSize: '16px', fontWeight: 700, textShadow: '0 1px 2px rgba(0,0,0,0.2)' }}>★</div>
                         <div style={{ color: 'rgba(255,255,255,0.8)', fontSize: '7px', letterSpacing: '0.05em' }}>PREMIUM</div>
                       </div>
                     </div>
@@ -928,7 +928,7 @@ REGLAS:
                     justifyContent: 'center',
                   }}>
                     <div style={{ transform: 'rotate(-45deg)', textAlign: 'center' }}>
-                      <div style={{ ...lpColorStyles('negative'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '18px', fontWeight: 700 }}>-3.2%</div>
+                      <div style={{ ...lpColorStyles('negative'), fontFamily: 'var(--fing-font-mono)', fontSize: '18px', fontWeight: 700 }}>-3.2%</div>
                       <div style={{ ...lpStyles('whisper'), fontSize: '7px', letterSpacing: '0.08em' }}>DRAWDOWN</div>
                     </div>
                   </div>
@@ -989,7 +989,7 @@ REGLAS:
                     justifyContent: 'center',
                     paddingTop: '6px',
                   }}>
-                    <div style={{ ...lpColorStyles('teal'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '20px', fontWeight: 700 }}>A</div>
+                    <div style={{ ...lpColorStyles('teal'), fontFamily: 'var(--fing-font-mono)', fontSize: '20px', fontWeight: 700 }}>A</div>
                     <div style={{ ...lpStyles('whisper'), fontSize: '7px', letterSpacing: '0.08em', marginTop: '2px' }}>GRADE</div>
                   </div>
                 </div>
@@ -1001,7 +1001,7 @@ REGLAS:
                 <div style={{
                   width: '80px',
                   height: '96px',
-                  background: 'linear-gradient(180deg, var(--sentinel-accent-primary), var(--sentinel-accent-tertiary))',
+                  background: 'linear-gradient(180deg, var(--fing-accent-primary), var(--fing-accent-tertiary))',
                   clipPath: 'polygon(50% 0%, 100% 15%, 100% 65%, 50% 100%, 0% 65%, 0% 15%)',
                   filter: 'drop-shadow(4px 4px 8px var(--shadow-dark)) drop-shadow(-4px -4px 8px var(--shadow-light))',
                   display: 'flex',
@@ -1041,7 +1041,7 @@ REGLAS:
                   paddingTop: '8px',
                 }}>
                   <div style={{ ...lpColorStyles('warning'), fontSize: '20px', marginBottom: '2px' }}>⚠</div>
-                  <div style={{ ...lpColorStyles('warning'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '14px', fontWeight: 700 }}>MED</div>
+                  <div style={{ ...lpColorStyles('warning'), fontFamily: 'var(--fing-font-mono)', fontSize: '14px', fontWeight: 700 }}>MED</div>
                   <div style={{ ...lpStyles('whisper'), fontSize: '7px', letterSpacing: '0.08em' }}>ALERT</div>
                 </div>
                 <div style={demoLabelStyles}>Alert Level</div>
@@ -1082,7 +1082,7 @@ REGLAS:
                     <span style={{ ...lpColorStyles('positive'), fontSize: '14px' }}>↑</span>
                   </div>
                   <div>
-                    <div style={{ ...lpStyles('strong'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '16px', fontWeight: 700 }}>$247</div>
+                    <div style={{ ...lpStyles('strong'), fontFamily: 'var(--fing-font-mono)', fontSize: '16px', fontWeight: 700 }}>$247</div>
                     <div style={{ ...lpStyles('whisper'), fontSize: '8px', letterSpacing: '0.05em' }}>PRICE</div>
                   </div>
                 </div>
@@ -1099,7 +1099,7 @@ REGLAS:
                   justifyContent: 'center',
                   gap: '10px',
                 }}>
-                  <div style={{ ...lpColorStyles('teal'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '18px', fontWeight: 700 }}>12</div>
+                  <div style={{ ...lpColorStyles('teal'), fontFamily: 'var(--fing-font-mono)', fontSize: '18px', fontWeight: 700 }}>12</div>
                   <div style={{ width: '1px', height: '24px', background: 'var(--marble-dark)' }} />
                   <div>
                     <div style={{ ...lpStyles('medium'), fontSize: '10px', fontWeight: 600 }}>HOLDINGS</div>
@@ -1111,7 +1111,7 @@ REGLAS:
                 <div style={{
                   width: '150px',
                   height: '50px',
-                  background: 'linear-gradient(90deg, var(--sentinel-accent-tertiary), var(--sentinel-accent-primary))',
+                  background: 'linear-gradient(90deg, var(--fing-accent-tertiary), var(--fing-accent-primary))',
                   borderRadius: '25px',
                   boxShadow: 'var(--raised-2), 0 4px 12px rgba(58, 106, 114, 0.3)',
                   display: 'flex',
@@ -1133,7 +1133,7 @@ REGLAS:
                     <span style={{ ...lpStyles('medium'), fontSize: '12px' }}>🎯</span>
                   </div>
                   <div>
-                    <div style={{ color: 'white', fontFamily: 'var(--sentinel-font-mono)', fontSize: '16px', fontWeight: 700, textShadow: '0 1px 2px rgba(0,0,0,0.2)' }}>94.2%</div>
+                    <div style={{ color: 'white', fontFamily: 'var(--fing-font-mono)', fontSize: '16px', fontWeight: 700, textShadow: '0 1px 2px rgba(0,0,0,0.2)' }}>94.2%</div>
                     <div style={{ color: 'rgba(255,255,255,0.8)', fontSize: '8px', letterSpacing: '0.05em' }}>HIT RATE</div>
                   </div>
                 </div>
@@ -1154,17 +1154,17 @@ REGLAS:
                   padding: '0 16px',
                 }}>
                   <div style={{ textAlign: 'center' }}>
-                    <div style={{ ...lpColorStyles('positive'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '16px', fontWeight: 700 }}>+18</div>
+                    <div style={{ ...lpColorStyles('positive'), fontFamily: 'var(--fing-font-mono)', fontSize: '16px', fontWeight: 700 }}>+18</div>
                     <div style={{ ...lpStyles('whisper'), fontSize: '8px' }}>WINS</div>
                   </div>
                   <div style={{ width: '1px', height: '30px', background: 'var(--marble-dark)' }} />
                   <div style={{ textAlign: 'center' }}>
-                    <div style={{ ...lpColorStyles('negative'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '16px', fontWeight: 700 }}>-4</div>
+                    <div style={{ ...lpColorStyles('negative'), fontFamily: 'var(--fing-font-mono)', fontSize: '16px', fontWeight: 700 }}>-4</div>
                     <div style={{ ...lpStyles('whisper'), fontSize: '8px' }}>LOSSES</div>
                   </div>
                   <div style={{ width: '1px', height: '30px', background: 'var(--marble-dark)' }} />
                   <div style={{ textAlign: 'center' }}>
-                    <div style={{ ...lpColorStyles('teal'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '16px', fontWeight: 700 }}>82%</div>
+                    <div style={{ ...lpColorStyles('teal'), fontFamily: 'var(--fing-font-mono)', fontSize: '16px', fontWeight: 700 }}>82%</div>
                     <div style={{ ...lpStyles('whisper'), fontSize: '8px' }}>RATE</div>
                   </div>
                 </div>
@@ -1191,8 +1191,8 @@ REGLAS:
                     justifyContent: 'center',
                     gap: '12px',
                   }}>
-                    <div style={{ ...lpStyles('stamped'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '20px', fontWeight: 700 }}>$1.2M</div>
-                    <div style={{ ...lpStyles('stamped'), color: 'var(--sentinel-status-positive)', fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px', fontWeight: 600 }}>↑ 12%</div>
+                    <div style={{ ...lpStyles('stamped'), fontFamily: 'var(--fing-font-mono)', fontSize: '20px', fontWeight: 700 }}>$1.2M</div>
+                    <div style={{ ...lpStyles('stamped'), color: 'var(--fing-status-positive)', fontFamily: 'var(--fing-font-mono)', fontSize: '12px', fontWeight: 600 }}>↑ 12%</div>
                   </div>
                 </div>
               </div>
@@ -1219,9 +1219,9 @@ REGLAS:
                 textAlign: 'center',
               }}>
                 <div style={{ ...lpStyles('whisper'), fontSize: '9px', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '8px' }}>NET WORTH</div>
-                <div style={{ ...lpStyles('monumental'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '32px', fontWeight: 700 }}>$2.4M</div>
+                <div style={{ ...lpStyles('monumental'), fontFamily: 'var(--fing-font-mono)', fontSize: '32px', fontWeight: 700 }}>$2.4M</div>
                 <div style={{ display: 'flex', justifyContent: 'center', gap: '6px', marginTop: '8px' }}>
-                  <span style={{ ...lpColorStyles('positive'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>↑ 8.2%</span>
+                  <span style={{ ...lpColorStyles('positive'), fontFamily: 'var(--fing-font-mono)', fontSize: '12px' }}>↑ 8.2%</span>
                   <span style={{ ...lpStyles('whisper'), fontSize: '10px' }}>YTD</span>
                 </div>
               </div>
@@ -1252,7 +1252,7 @@ REGLAS:
                     fontSize: '18px',
                   }}>📊</div>
                 </div>
-                <div style={{ ...lpColorStyles('teal'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '28px', fontWeight: 700 }}>156</div>
+                <div style={{ ...lpColorStyles('teal'), fontFamily: 'var(--fing-font-mono)', fontSize: '28px', fontWeight: 700 }}>156</div>
                 <div style={{ ...lpStyles('medium'), fontSize: '10px', letterSpacing: '0.1em', textTransform: 'uppercase', marginTop: '4px' }}>TRANSACTIONS</div>
               </div>
 
@@ -1266,13 +1266,13 @@ REGLAS:
                 position: 'relative',
               }}>
                 {/* Corner accents */}
-                <div style={{ position: 'absolute', top: '0', left: '0', width: '20px', height: '20px', borderTopLeftRadius: '16px', borderTop: '3px solid var(--sentinel-accent-primary)', borderLeft: '3px solid var(--sentinel-accent-primary)' }} />
-                <div style={{ position: 'absolute', top: '0', right: '0', width: '20px', height: '20px', borderTopRightRadius: '16px', borderTop: '3px solid var(--sentinel-accent-primary)', borderRight: '3px solid var(--sentinel-accent-primary)' }} />
-                <div style={{ position: 'absolute', bottom: '0', left: '0', width: '20px', height: '20px', borderBottomLeftRadius: '16px', borderBottom: '3px solid var(--sentinel-accent-primary)', borderLeft: '3px solid var(--sentinel-accent-primary)' }} />
-                <div style={{ position: 'absolute', bottom: '0', right: '0', width: '20px', height: '20px', borderBottomRightRadius: '16px', borderBottom: '3px solid var(--sentinel-accent-primary)', borderRight: '3px solid var(--sentinel-accent-primary)' }} />
+                <div style={{ position: 'absolute', top: '0', left: '0', width: '20px', height: '20px', borderTopLeftRadius: '16px', borderTop: '3px solid var(--fing-accent-primary)', borderLeft: '3px solid var(--fing-accent-primary)' }} />
+                <div style={{ position: 'absolute', top: '0', right: '0', width: '20px', height: '20px', borderTopRightRadius: '16px', borderTop: '3px solid var(--fing-accent-primary)', borderRight: '3px solid var(--fing-accent-primary)' }} />
+                <div style={{ position: 'absolute', bottom: '0', left: '0', width: '20px', height: '20px', borderBottomLeftRadius: '16px', borderBottom: '3px solid var(--fing-accent-primary)', borderLeft: '3px solid var(--fing-accent-primary)' }} />
+                <div style={{ position: 'absolute', bottom: '0', right: '0', width: '20px', height: '20px', borderBottomRightRadius: '16px', borderBottom: '3px solid var(--fing-accent-primary)', borderRight: '3px solid var(--fing-accent-primary)' }} />
 
                 <div style={{ ...lpStyles('whisper'), fontSize: '9px', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '8px' }}>SHARPE RATIO</div>
-                <div style={{ ...lpStyles('stamped'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '36px', fontWeight: 700 }}>1.84</div>
+                <div style={{ ...lpStyles('stamped'), fontFamily: 'var(--fing-font-mono)', fontSize: '36px', fontWeight: 700 }}>1.84</div>
                 <div style={{ ...lpColorStyles('positive'), fontSize: '11px', marginTop: '4px' }}>Excellent</div>
               </div>
             </div>
@@ -1317,7 +1317,7 @@ REGLAS:
                       alignItems: 'center',
                       justifyContent: 'center',
                     }}>
-                      <div style={{ ...lpStyles('stamped'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '22px', fontWeight: 700 }}>98</div>
+                      <div style={{ ...lpStyles('stamped'), fontFamily: 'var(--fing-font-mono)', fontSize: '22px', fontWeight: 700 }}>98</div>
                       <div style={{ ...lpStyles('whisper'), fontSize: '8px', letterSpacing: '0.08em' }}>SCORE</div>
                     </div>
                   </div>
@@ -1330,7 +1330,7 @@ REGLAS:
                 <div style={{
                   width: '120px',
                   height: '120px',
-                  background: 'linear-gradient(135deg, var(--sentinel-accent-tertiary), var(--sentinel-accent-primary))',
+                  background: 'linear-gradient(135deg, var(--fing-accent-tertiary), var(--fing-accent-primary))',
                   borderRadius: '50%',
                   boxShadow: 'var(--raised-3), 0 4px 20px rgba(58, 106, 114, 0.3)',
                   display: 'flex',
@@ -1358,8 +1358,8 @@ REGLAS:
                       alignItems: 'center',
                       justifyContent: 'center',
                     }}>
-                      <div style={{ ...lpColorStyles('teal'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '18px', fontWeight: 700 }}>TOP</div>
-                      <div style={{ ...lpStyles('deep'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '24px', fontWeight: 700 }}>5%</div>
+                      <div style={{ ...lpColorStyles('teal'), fontFamily: 'var(--fing-font-mono)', fontSize: '18px', fontWeight: 700 }}>TOP</div>
+                      <div style={{ ...lpStyles('deep'), fontFamily: 'var(--fing-font-mono)', fontSize: '24px', fontWeight: 700 }}>5%</div>
                     </div>
                   </div>
                 </div>
@@ -1400,7 +1400,7 @@ REGLAS:
                       justifyContent: 'center',
                     }}>
                       <div style={{ color: '#5a4800', fontSize: '20px' }}>★</div>
-                      <div style={{ color: '#5a4800', fontFamily: 'var(--sentinel-font-mono)', fontSize: '10px', fontWeight: 700, letterSpacing: '0.05em' }}>GOLD</div>
+                      <div style={{ color: '#5a4800', fontFamily: 'var(--fing-font-mono)', fontSize: '10px', fontWeight: 700, letterSpacing: '0.05em' }}>GOLD</div>
                     </div>
                   </div>
                 </div>
@@ -1417,22 +1417,22 @@ REGLAS:
             <div style={grid(4, 16)}>
               <div style={statCardStyles}>
                 <div style={statIconStyles}>💰</div>
-                <div style={{ ...lpStyles('deep'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '28px', fontWeight: 700 }}>$191K</div>
+                <div style={{ ...lpStyles('deep'), fontFamily: 'var(--fing-font-mono)', fontSize: '28px', fontWeight: 700 }}>$191K</div>
                 <div style={{ ...lpStyles('whisper'), fontSize: '11px', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.05em', marginTop: '4px' }}>Portfolio</div>
               </div>
               <div style={statCardStyles}>
                 <div style={statIconStyles}>📈</div>
-                <div style={{ ...lpColorStyles('positive'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '28px', fontWeight: 700 }}>+16.5%</div>
+                <div style={{ ...lpColorStyles('positive'), fontFamily: 'var(--fing-font-mono)', fontSize: '28px', fontWeight: 700 }}>+16.5%</div>
                 <div style={{ ...lpStyles('whisper'), fontSize: '11px', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.05em', marginTop: '4px' }}>Returns</div>
               </div>
               <div style={statCardStyles}>
                 <div style={statIconStyles}>⚖️</div>
-                <div style={{ ...lpColorStyles('warning'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '28px', fontWeight: 700 }}>42</div>
+                <div style={{ ...lpColorStyles('warning'), fontFamily: 'var(--fing-font-mono)', fontSize: '28px', fontWeight: 700 }}>42</div>
                 <div style={{ ...lpStyles('whisper'), fontSize: '11px', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.05em', marginTop: '4px' }}>Risk Score</div>
               </div>
               <div style={statCardStyles}>
                 <div style={statIconStyles}>🎯</div>
-                <div style={{ ...lpColorStyles('teal'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '28px', fontWeight: 700 }}>87%</div>
+                <div style={{ ...lpColorStyles('teal'), fontFamily: 'var(--fing-font-mono)', fontSize: '28px', fontWeight: 700 }}>87%</div>
                 <div style={{ ...lpStyles('whisper'), fontSize: '11px', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.05em', marginTop: '4px' }}>Confidence</div>
               </div>
             </div>
@@ -1457,7 +1457,7 @@ REGLAS:
                   <div style={{
                     width: '50px',
                     height: '43px',
-                    background: 'linear-gradient(135deg, var(--sentinel-accent-tertiary), var(--sentinel-accent-primary))',
+                    background: 'linear-gradient(135deg, var(--fing-accent-tertiary), var(--fing-accent-primary))',
                     clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)',
                     filter: 'drop-shadow(2px 2px 4px var(--shadow-dark))',
                     display: 'flex',
@@ -1480,19 +1480,19 @@ REGLAS:
                   gap: '16px',
                 }}>
                   <div style={{ textAlign: 'center' }}>
-                    <div style={{ ...lpStyles('deep'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '20px', fontWeight: 700 }}>$247K</div>
+                    <div style={{ ...lpStyles('deep'), fontFamily: 'var(--fing-font-mono)', fontSize: '20px', fontWeight: 700 }}>$247K</div>
                     <div style={{ ...lpStyles('whisper'), fontSize: '9px', letterSpacing: '0.08em' }}>TOTAL VALUE</div>
                   </div>
                   <div style={{ textAlign: 'center' }}>
-                    <div style={{ ...lpColorStyles('positive'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '20px', fontWeight: 700 }}>+12.4%</div>
+                    <div style={{ ...lpColorStyles('positive'), fontFamily: 'var(--fing-font-mono)', fontSize: '20px', fontWeight: 700 }}>+12.4%</div>
                     <div style={{ ...lpStyles('whisper'), fontSize: '9px', letterSpacing: '0.08em' }}>YTD RETURN</div>
                   </div>
                   <div style={{ textAlign: 'center' }}>
-                    <div style={{ ...lpColorStyles('teal'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '20px', fontWeight: 700 }}>24</div>
+                    <div style={{ ...lpColorStyles('teal'), fontFamily: 'var(--fing-font-mono)', fontSize: '20px', fontWeight: 700 }}>24</div>
                     <div style={{ ...lpStyles('whisper'), fontSize: '9px', letterSpacing: '0.08em' }}>HOLDINGS</div>
                   </div>
                   <div style={{ textAlign: 'center' }}>
-                    <div style={{ ...lpColorStyles('warning'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '20px', fontWeight: 700 }}>38</div>
+                    <div style={{ ...lpColorStyles('warning'), fontFamily: 'var(--fing-font-mono)', fontSize: '20px', fontWeight: 700 }}>38</div>
                     <div style={{ ...lpStyles('whisper'), fontSize: '9px', letterSpacing: '0.08em' }}>RISK SCORE</div>
                   </div>
                 </div>
@@ -1535,11 +1535,11 @@ REGLAS:
                       gap: '12px',
                     }}>
                       <div>
-                        <div style={{ ...lpColorStyles('positive'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '14px', fontWeight: 700 }}>100%</div>
+                        <div style={{ ...lpColorStyles('positive'), fontFamily: 'var(--fing-font-mono)', fontSize: '14px', fontWeight: 700 }}>100%</div>
                         <div style={{ ...lpStyles('whisper'), fontSize: '8px' }}>ENCRYPTED</div>
                       </div>
                       <div>
-                        <div style={{ ...lpColorStyles('teal'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '14px', fontWeight: 700 }}>2FA</div>
+                        <div style={{ ...lpColorStyles('teal'), fontFamily: 'var(--fing-font-mono)', fontSize: '14px', fontWeight: 700 }}>2FA</div>
                         <div style={{ ...lpStyles('whisper'), fontSize: '8px' }}>ENABLED</div>
                       </div>
                     </div>
@@ -1581,7 +1581,7 @@ REGLAS:
                         alignItems: 'center',
                         justifyContent: 'center',
                       }}>
-                        <div style={{ ...lpColorStyles('positive'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '16px', fontWeight: 700 }}>+18%</div>
+                        <div style={{ ...lpColorStyles('positive'), fontFamily: 'var(--fing-font-mono)', fontSize: '16px', fontWeight: 700 }}>+18%</div>
                       </div>
                     </div>
                     <div style={{ ...lpStyles('medium'), fontSize: '11px', fontWeight: 600 }}>YOUR PORTFOLIO</div>
@@ -1629,7 +1629,7 @@ REGLAS:
                         alignItems: 'center',
                         justifyContent: 'center',
                       }}>
-                        <div style={{ ...lpStyles('deep'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '16px', fontWeight: 700 }}>+12%</div>
+                        <div style={{ ...lpStyles('deep'), fontFamily: 'var(--fing-font-mono)', fontSize: '16px', fontWeight: 700 }}>+12%</div>
                       </div>
                     </div>
                     <div style={{ ...lpStyles('medium'), fontSize: '11px', fontWeight: 600 }}>S&P 500</div>
@@ -1640,7 +1640,7 @@ REGLAS:
                     <div style={{
                       width: '70px',
                       height: '70px',
-                      background: 'linear-gradient(135deg, var(--sentinel-accent-tertiary), var(--sentinel-accent-primary))',
+                      background: 'linear-gradient(135deg, var(--fing-accent-tertiary), var(--fing-accent-primary))',
                       transform: 'rotate(45deg)',
                       borderRadius: '10px',
                       boxShadow: 'var(--raised-2), 0 4px 12px rgba(58, 106, 114, 0.3)',
@@ -1650,7 +1650,7 @@ REGLAS:
                       margin: '0 auto 12px',
                     }}>
                       <div style={{ transform: 'rotate(-45deg)', textAlign: 'center' }}>
-                        <div style={{ color: 'white', fontFamily: 'var(--sentinel-font-mono)', fontSize: '16px', fontWeight: 700, textShadow: '0 1px 2px rgba(0,0,0,0.2)' }}>+6%</div>
+                        <div style={{ color: 'white', fontFamily: 'var(--fing-font-mono)', fontSize: '16px', fontWeight: 700, textShadow: '0 1px 2px rgba(0,0,0,0.2)' }}>+6%</div>
                         <div style={{ color: 'rgba(255,255,255,0.8)', fontSize: '7px', letterSpacing: '0.05em' }}>ALPHA</div>
                       </div>
                     </div>
@@ -1693,11 +1693,11 @@ REGLAS:
                 { rank: '#3', sym: 'GOOGL', name: 'Alphabet', price: '$143', change: '-0.86%', pos: false },
               ].map((s, i) => (
                 <div key={i} style={tableRowStyles}>
-                  <span style={{ ...lpColorStyles('teal'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '11px', fontWeight: 600 }}>{s.rank}</span>
-                  <span style={{ ...lpStyles('strong'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '14px', fontWeight: 600 }}>{s.sym}</span>
+                  <span style={{ ...lpColorStyles('teal'), fontFamily: 'var(--fing-font-mono)', fontSize: '11px', fontWeight: 600 }}>{s.rank}</span>
+                  <span style={{ ...lpStyles('strong'), fontFamily: 'var(--fing-font-mono)', fontSize: '14px', fontWeight: 600 }}>{s.sym}</span>
                   <span style={{ ...lpStyles('subtle'), fontSize: '12px' }}>{s.name}</span>
-                  <span style={{ ...lpStyles('medium'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '14px', fontWeight: 500 }}>{s.price}</span>
-                  <span style={{ ...(s.pos ? lpColorStyles('positive') : lpColorStyles('negative')), fontFamily: 'var(--sentinel-font-mono)', fontSize: '13px', fontWeight: 500 }}>{s.change}</span>
+                  <span style={{ ...lpStyles('medium'), fontFamily: 'var(--fing-font-mono)', fontSize: '14px', fontWeight: 500 }}>{s.price}</span>
+                  <span style={{ ...(s.pos ? lpColorStyles('positive') : lpColorStyles('negative')), fontFamily: 'var(--fing-font-mono)', fontSize: '13px', fontWeight: 500 }}>{s.change}</span>
                 </div>
               ))}
             </div>
@@ -1713,8 +1713,8 @@ REGLAS:
               <div style={{ ...insetStyles(2), padding: '16px' }}>
                 {['META', 'AVGO', 'CRM'].map((sym, i) => (
                   <div key={sym} style={{ ...glassStyles, display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 16px', marginTop: i > 0 ? '8px' : 0 }}>
-                    <span style={{ ...lpStyles('medium'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '13px', fontWeight: 600 }}>{sym}</span>
-                    <span style={{ ...lpColorStyles('positive'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px', fontWeight: 500 }}>+{(Math.random() * 3).toFixed(2)}%</span>
+                    <span style={{ ...lpStyles('medium'), fontFamily: 'var(--fing-font-mono)', fontSize: '13px', fontWeight: 600 }}>{sym}</span>
+                    <span style={{ ...lpColorStyles('positive'), fontFamily: 'var(--fing-font-mono)', fontSize: '12px', fontWeight: 500 }}>+{(Math.random() * 3).toFixed(2)}%</span>
                   </div>
                 ))}
               </div>
@@ -1993,7 +1993,7 @@ REGLAS:
                 borderRadius: '16px',
                 boxShadow: 'var(--raised-2)',
                 padding: '20px',
-                borderLeft: '4px solid var(--sentinel-accent-primary)',
+                borderLeft: '4px solid var(--fing-accent-primary)',
               }}>
                 <div style={{ ...lpColorStyles('teal'), fontSize: '11px', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '8px' }}>CALLOUT</div>
                 <div style={{ ...lpStyles('medium'), fontSize: '14px', lineHeight: 1.5 }}>Important information highlighted with accent border.</div>
@@ -2020,8 +2020,8 @@ REGLAS:
                 textAlign: 'center',
               }}>
                 <div style={{ ...lpStyles('whisper'), fontSize: '10px', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '8px' }}>PORTFOLIO VALUE</div>
-                <div style={{ ...lpStyles('stamped'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '32px', fontWeight: 700 }}>$191,856</div>
-                <div style={{ ...lpColorStyles('positive'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '13px', marginTop: '4px' }}>+16.5%</div>
+                <div style={{ ...lpStyles('stamped'), fontFamily: 'var(--fing-font-mono)', fontSize: '32px', fontWeight: 700 }}>$191,856</div>
+                <div style={{ ...lpColorStyles('positive'), fontFamily: 'var(--fing-font-mono)', fontSize: '13px', marginTop: '4px' }}>+16.5%</div>
               </div>
 
               {/* Label Card */}
@@ -2032,7 +2032,7 @@ REGLAS:
                 overflow: 'hidden',
               }}>
                 <div style={{
-                  background: 'linear-gradient(135deg, var(--sentinel-accent-tertiary), var(--sentinel-accent-primary))',
+                  background: 'linear-gradient(135deg, var(--fing-accent-tertiary), var(--fing-accent-primary))',
                   padding: '10px 20px',
                   color: 'white',
                   fontSize: '10px',
@@ -2063,11 +2063,11 @@ REGLAS:
                 }}>
                   <div style={{ textAlign: 'center' }}>
                     <div style={{ ...lpStyles('whisper'), fontSize: '9px', letterSpacing: '0.1em', textTransform: 'uppercase' }}>RISK</div>
-                    <div style={{ ...lpColorStyles('warning'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '20px', fontWeight: 700 }}>42</div>
+                    <div style={{ ...lpColorStyles('warning'), fontFamily: 'var(--fing-font-mono)', fontSize: '20px', fontWeight: 700 }}>42</div>
                   </div>
                   <div style={{ textAlign: 'center' }}>
                     <div style={{ ...lpStyles('whisper'), fontSize: '9px', letterSpacing: '0.1em', textTransform: 'uppercase' }}>SCORE</div>
-                    <div style={{ ...lpColorStyles('teal'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '20px', fontWeight: 700 }}>87</div>
+                    <div style={{ ...lpColorStyles('teal'), fontFamily: 'var(--fing-font-mono)', fontSize: '20px', fontWeight: 700 }}>87</div>
                   </div>
                 </div>
               </div>
@@ -2092,7 +2092,7 @@ REGLAS:
                   alignItems: 'center',
                   justifyContent: 'center',
                   ...lpColorStyles('teal'),
-                  fontFamily: 'var(--sentinel-font-mono)',
+                  fontFamily: 'var(--fing-font-mono)',
                   fontSize: '16px',
                   fontWeight: 700,
                   flexShrink: 0,
@@ -2112,7 +2112,7 @@ REGLAS:
               <div style={showcaseItemStyles}>
                 <div style={emblemStyles}>
                   <div style={emblemInnerStyles}>
-                    <span style={{ ...lpStyles('stamped'), fontFamily: 'var(--sentinel-font-display)', fontSize: '32px', fontWeight: 700 }}>S</span>
+                    <span style={{ ...lpStyles('stamped'), fontFamily: 'var(--fing-font-display)', fontSize: '32px', fontWeight: 700 }}>S</span>
                   </div>
                 </div>
                 <div style={demoLabelStyles}>Classic Emblem</div>
@@ -2163,7 +2163,7 @@ REGLAS:
                 <div style={{
                   width: '90px',
                   height: '90px',
-                  background: 'linear-gradient(135deg, var(--sentinel-accent-tertiary), var(--sentinel-accent-primary))',
+                  background: 'linear-gradient(135deg, var(--fing-accent-tertiary), var(--fing-accent-primary))',
                   borderRadius: '50%',
                   boxShadow: 'var(--raised-3), inset 0 2px 4px rgba(255,255,255,0.3)',
                   display: 'flex',
@@ -2210,7 +2210,7 @@ REGLAS:
                     alignItems: 'center',
                     justifyContent: 'center',
                   }}>
-                    <span style={{ ...lpColorStyles('teal'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '18px', fontWeight: 700 }}>PRO</span>
+                    <span style={{ ...lpColorStyles('teal'), fontFamily: 'var(--fing-font-mono)', fontSize: '18px', fontWeight: 700 }}>PRO</span>
                   </div>
                 </div>
                 <div style={demoLabelStyles}>Hex Badge</div>
@@ -2306,10 +2306,10 @@ REGLAS:
                 minHeight: '100px',
               }}>
                 {/* Teal accent corners */}
-                <div style={{ position: 'absolute', top: '0', left: '0', width: '24px', height: '24px', borderTopLeftRadius: '16px', borderTop: '3px solid var(--sentinel-accent-primary)', borderLeft: '3px solid var(--sentinel-accent-primary)' }} />
-                <div style={{ position: 'absolute', top: '0', right: '0', width: '24px', height: '24px', borderTopRightRadius: '16px', borderTop: '3px solid var(--sentinel-accent-primary)', borderRight: '3px solid var(--sentinel-accent-primary)' }} />
-                <div style={{ position: 'absolute', bottom: '0', left: '0', width: '24px', height: '24px', borderBottomLeftRadius: '16px', borderBottom: '3px solid var(--sentinel-accent-primary)', borderLeft: '3px solid var(--sentinel-accent-primary)' }} />
-                <div style={{ position: 'absolute', bottom: '0', right: '0', width: '24px', height: '24px', borderBottomRightRadius: '16px', borderBottom: '3px solid var(--sentinel-accent-primary)', borderRight: '3px solid var(--sentinel-accent-primary)' }} />
+                <div style={{ position: 'absolute', top: '0', left: '0', width: '24px', height: '24px', borderTopLeftRadius: '16px', borderTop: '3px solid var(--fing-accent-primary)', borderLeft: '3px solid var(--fing-accent-primary)' }} />
+                <div style={{ position: 'absolute', top: '0', right: '0', width: '24px', height: '24px', borderTopRightRadius: '16px', borderTop: '3px solid var(--fing-accent-primary)', borderRight: '3px solid var(--fing-accent-primary)' }} />
+                <div style={{ position: 'absolute', bottom: '0', left: '0', width: '24px', height: '24px', borderBottomLeftRadius: '16px', borderBottom: '3px solid var(--fing-accent-primary)', borderLeft: '3px solid var(--fing-accent-primary)' }} />
+                <div style={{ position: 'absolute', bottom: '0', right: '0', width: '24px', height: '24px', borderBottomRightRadius: '16px', borderBottom: '3px solid var(--fing-accent-primary)', borderRight: '3px solid var(--fing-accent-primary)' }} />
                 <div style={{ textAlign: 'center', ...lpStyles('medium'), fontSize: '12px' }}>Corner Accents</div>
               </div>
             </div>
@@ -2347,7 +2347,7 @@ REGLAS:
                   <div key={i} style={{
                     width: `${size}px`,
                     height: `${size}px`,
-                    background: i === 4 ? 'var(--sentinel-accent-primary)' : 'var(--marble-base)',
+                    background: i === 4 ? 'var(--fing-accent-primary)' : 'var(--marble-base)',
                     borderRadius: '50%',
                     boxShadow: i === 4 ? 'var(--raised-2)' : 'var(--raised-1)',
                   }} />
@@ -2391,9 +2391,9 @@ REGLAS:
 
               {/* Teal Accent Divider */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <div style={{ flex: 1, height: '2px', background: 'linear-gradient(90deg, transparent, var(--sentinel-accent-primary))', borderRadius: '1px' }} />
-                <div style={{ width: '40px', height: '4px', background: 'linear-gradient(90deg, var(--sentinel-accent-tertiary), var(--sentinel-accent-primary))', borderRadius: '2px', boxShadow: '0 2px 4px rgba(58, 106, 114, 0.3)' }} />
-                <div style={{ flex: 1, height: '2px', background: 'linear-gradient(90deg, var(--sentinel-accent-primary), transparent)', borderRadius: '1px' }} />
+                <div style={{ flex: 1, height: '2px', background: 'linear-gradient(90deg, transparent, var(--fing-accent-primary))', borderRadius: '1px' }} />
+                <div style={{ width: '40px', height: '4px', background: 'linear-gradient(90deg, var(--fing-accent-tertiary), var(--fing-accent-primary))', borderRadius: '2px', boxShadow: '0 2px 4px rgba(58, 106, 114, 0.3)' }} />
+                <div style={{ flex: 1, height: '2px', background: 'linear-gradient(90deg, var(--fing-accent-primary), transparent)', borderRadius: '1px' }} />
               </div>
             </div>
           </div>
@@ -2432,7 +2432,7 @@ REGLAS:
                     <div key={i} style={{
                       width: '10px',
                       height: '10px',
-                      background: i <= 3 ? 'var(--sentinel-accent-primary)' : 'var(--marble-base)',
+                      background: i <= 3 ? 'var(--fing-accent-primary)' : 'var(--marble-base)',
                       borderRadius: '50%',
                       boxShadow: i <= 3 ? 'var(--raised-1)' : 'var(--inset-1)',
                     }} />
@@ -2449,7 +2449,7 @@ REGLAS:
                       <div style={{
                         width: '24px',
                         height: '24px',
-                        background: i <= 2 ? 'var(--sentinel-accent-primary)' : 'var(--marble-base)',
+                        background: i <= 2 ? 'var(--fing-accent-primary)' : 'var(--marble-base)',
                         borderRadius: '50%',
                         boxShadow: i <= 2 ? 'var(--raised-1)' : 'var(--inset-1)',
                         display: 'flex',
@@ -2459,7 +2459,7 @@ REGLAS:
                         fontWeight: 600,
                         color: i <= 2 ? 'white' : 'var(--marble-dark)',
                       }}>{i}</div>
-                      {i < 4 && <div style={{ width: '20px', height: '2px', background: i < 2 ? 'var(--sentinel-accent-primary)' : 'var(--marble-base)', boxShadow: i < 2 ? 'none' : 'var(--inset-1)', borderRadius: '1px' }} />}
+                      {i < 4 && <div style={{ width: '20px', height: '2px', background: i < 2 ? 'var(--fing-accent-primary)' : 'var(--marble-base)', boxShadow: i < 2 ? 'none' : 'var(--inset-1)', borderRadius: '1px' }} />}
                     </React.Fragment>
                   ))}
                 </div>
@@ -2473,7 +2473,7 @@ REGLAS:
                     <div key={i} style={{
                       width: '5px',
                       height: `${h}px`,
-                      background: i < 3 ? 'var(--sentinel-accent-primary)' : 'var(--marble-base)',
+                      background: i < 3 ? 'var(--fing-accent-primary)' : 'var(--marble-base)',
                       borderRadius: '2px',
                       boxShadow: i < 3 ? 'var(--raised-1)' : 'var(--inset-1)',
                     }} />
@@ -2496,7 +2496,7 @@ REGLAS:
                 <div style={{ width: '6px', height: '6px', background: 'var(--marble-base)', borderRadius: '50%', boxShadow: 'var(--inset-1)' }} />
                 <div style={{ width: '70px', height: '70px', background: 'var(--marble-base)', borderRadius: '50%', boxShadow: 'var(--raised-3)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <div style={{ width: '50px', height: '50px', background: 'var(--marble-base)', borderRadius: '50%', boxShadow: 'var(--inset-2)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <span style={{ ...lpStyles('stamped'), fontFamily: 'var(--sentinel-font-display)', fontSize: '24px', fontWeight: 700 }}>S</span>
+                    <span style={{ ...lpStyles('stamped'), fontFamily: 'var(--fing-font-display)', fontSize: '24px', fontWeight: 700 }}>S</span>
                   </div>
                 </div>
                 <div style={{ width: '6px', height: '6px', background: 'var(--marble-base)', borderRadius: '50%', boxShadow: 'var(--inset-1)' }} />
@@ -2504,7 +2504,7 @@ REGLAS:
               </div>
 
               {/* Title */}
-              <div style={{ ...lpStyles('monumental'), fontFamily: 'var(--sentinel-font-display)', fontSize: '36px', fontWeight: 700, letterSpacing: '-0.02em' }}>SENTINEL</div>
+              <div style={{ ...lpStyles('monumental'), fontFamily: 'var(--fing-font-display)', fontSize: '36px', fontWeight: 700, letterSpacing: '-0.02em' }}>FING</div>
               <div style={{ ...lpStyles('medium'), marginTop: '8px', fontSize: '11px', letterSpacing: '0.25em', textTransform: 'uppercase' }}>Investment Analytics Platform</div>
 
               {/* Bottom ornament */}
@@ -2515,7 +2515,7 @@ REGLAS:
                     <div key={i} style={{
                       width: i === 2 ? '10px' : '6px',
                       height: i === 2 ? '10px' : '6px',
-                      background: i === 2 ? 'var(--sentinel-accent-primary)' : 'var(--marble-base)',
+                      background: i === 2 ? 'var(--fing-accent-primary)' : 'var(--marble-base)',
                       borderRadius: '50%',
                       boxShadow: i === 2 ? 'var(--raised-2)' : 'var(--raised-1)',
                     }} />
@@ -2583,7 +2583,7 @@ REGLAS:
                   <span
                     style={{
                       fontSize: '14px',
-                      color: 'var(--sentinel-accent-primary)',
+                      color: 'var(--fing-accent-primary)',
                       filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))',
                     }}
                   >📈</span>
@@ -2608,7 +2608,7 @@ REGLAS:
                   <span
                     style={{
                       fontSize: '12px',
-                      color: 'var(--sentinel-accent-primary)',
+                      color: 'var(--fing-accent-primary)',
                       filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))',
                     }}
                   >💼</span>
@@ -2633,7 +2633,7 @@ REGLAS:
                   <span
                     style={{
                       fontSize: '18px',
-                      color: 'var(--sentinel-accent-primary)',
+                      color: 'var(--fing-accent-primary)',
                       filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))',
                     }}
                   >🔔</span>
@@ -2696,7 +2696,7 @@ REGLAS:
                       boxShadow: 'inset 1.5px 1.5px 3px var(--shadow-dark), inset -1.5px -1.5px 3px var(--shadow-light)',
                     }}
                   >
-                    <span style={{ fontSize: '14px', color: 'var(--sentinel-accent-primary)', filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))' }}>📈</span>
+                    <span style={{ fontSize: '14px', color: 'var(--fing-accent-primary)', filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))' }}>📈</span>
                   </span>
                   <span style={{ ...lpStyles('strong'), fontSize: '16px', fontWeight: 600 }}>Recommendations</span>
                 </div>
@@ -2712,7 +2712,7 @@ REGLAS:
             <div style={sectionTitleStyles}>Código de Referencia</div>
             <div style={{ ...insetStyles(2), padding: '24px' }}>
               <pre style={{
-                fontFamily: 'var(--sentinel-font-mono)',
+                fontFamily: 'var(--fing-font-mono)',
                 fontSize: '11px',
                 color: 'var(--text-secondary)',
                 lineHeight: 1.8,
@@ -2735,7 +2735,7 @@ REGLAS:
 
 /* RAISED ICON (via drop-shadow filter) */
 .iconRaised {
-  color: var(--sentinel-accent-primary);  /* o var(--marble-dark) para neutral */
+  color: var(--fing-accent-primary);  /* o var(--marble-dark) para neutral */
   filter:
     drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9))
     drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4));
@@ -2763,18 +2763,18 @@ Card RAISED
                 <div style={{ ...lpStyles('whisper'), fontSize: '10px', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Uso</div>
 
                 <div style={{ ...lpStyles('medium'), fontSize: '12px' }}>Small</div>
-                <div style={{ ...lpStyles('medium'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>24px</div>
-                <div style={{ ...lpStyles('medium'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>12-13px</div>
+                <div style={{ ...lpStyles('medium'), fontFamily: 'var(--fing-font-mono)', fontSize: '12px' }}>24px</div>
+                <div style={{ ...lpStyles('medium'), fontFamily: 'var(--fing-font-mono)', fontSize: '12px' }}>12-13px</div>
                 <div style={{ ...lpStyles('soft'), fontSize: '12px' }}>Títulos de chart, headers pequeños</div>
 
                 <div style={{ ...lpStyles('medium'), fontSize: '12px' }}>Medium</div>
-                <div style={{ ...lpStyles('medium'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>28px</div>
-                <div style={{ ...lpStyles('medium'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>14-15px</div>
+                <div style={{ ...lpStyles('medium'), fontFamily: 'var(--fing-font-mono)', fontSize: '12px' }}>28px</div>
+                <div style={{ ...lpStyles('medium'), fontFamily: 'var(--fing-font-mono)', fontSize: '12px' }}>14-15px</div>
                 <div style={{ ...lpStyles('soft'), fontSize: '12px' }}>Títulos de card, secciones principales</div>
 
                 <div style={{ ...lpStyles('medium'), fontSize: '12px' }}>Large</div>
-                <div style={{ ...lpStyles('medium'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>36px</div>
-                <div style={{ ...lpStyles('medium'), fontFamily: 'var(--sentinel-font-mono)', fontSize: '12px' }}>18-20px</div>
+                <div style={{ ...lpStyles('medium'), fontFamily: 'var(--fing-font-mono)', fontSize: '12px' }}>36px</div>
+                <div style={{ ...lpStyles('medium'), fontFamily: 'var(--fing-font-mono)', fontSize: '12px' }}>18-20px</div>
                 <div style={{ ...lpStyles('soft'), fontSize: '12px' }}>Headers de página, KPIs destacados</div>
               </div>
             </div>

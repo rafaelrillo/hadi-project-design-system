@@ -2,7 +2,7 @@
 import { useMemo } from 'react';
 import type { EChartsOption } from 'echarts';
 import { EChart } from './EChart';
-import { sentinelColors } from './sentinelTheme';
+import { fingColors } from './fingTheme';
 import type { GaugeData, BaseChartProps } from './types';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -28,26 +28,26 @@ export interface GaugeChartProps extends BaseChartProps {
 
 const variantColors = {
   default: [
-    [0.3, sentinelColors.positive],
-    [0.7, sentinelColors.warning],
-    [1, sentinelColors.negative],
+    [0.3, fingColors.positive],
+    [0.7, fingColors.warning],
+    [1, fingColors.negative],
   ],
   risk: [
-    [0.2, sentinelColors.riskLow],
-    [0.4, sentinelColors.riskModerate],
-    [0.6, sentinelColors.riskElevated],
-    [0.8, sentinelColors.riskHigh],
-    [1, sentinelColors.riskSevere],
+    [0.2, fingColors.riskLow],
+    [0.4, fingColors.riskModerate],
+    [0.6, fingColors.riskElevated],
+    [0.8, fingColors.riskHigh],
+    [1, fingColors.riskSevere],
   ],
   progress: [
-    [0.5, sentinelColors.warning],
-    [0.8, sentinelColors.accentPrimary],
-    [1, sentinelColors.positive],
+    [0.5, fingColors.warning],
+    [0.8, fingColors.accentPrimary],
+    [1, fingColors.positive],
   ],
   score: [
-    [0.4, sentinelColors.negative],
-    [0.7, sentinelColors.warning],
-    [1, sentinelColors.positive],
+    [0.4, fingColors.negative],
+    [0.7, fingColors.warning],
+    [1, fingColors.positive],
   ],
 };
 
@@ -115,7 +115,7 @@ export function GaugeChart({
             distance: -18,
             length: 4,
             lineStyle: {
-              color: sentinelColors.textTertiary,
+              color: fingColors.textTertiary,
               width: 1,
             },
           },
@@ -124,14 +124,14 @@ export function GaugeChart({
             distance: -22,
             length: 8,
             lineStyle: {
-              color: sentinelColors.textTertiary,
+              color: fingColors.textTertiary,
               width: 1,
             },
           },
           axisLabel: {
             show: true,
             distance: 28,
-            color: sentinelColors.textTertiary,
+            color: fingColors.textTertiary,
             fontSize: 10,
             fontFamily: "'Space Mono', monospace",
           },
@@ -141,7 +141,7 @@ export function GaugeChart({
             size: 16,
             itemStyle: {
               borderWidth: 4,
-              borderColor: sentinelColors.bgOverlay,
+              borderColor: fingColors.bgOverlay,
               color: 'auto',
             },
           },
@@ -163,7 +163,7 @@ export function GaugeChart({
                 offsetCenter: [0, '55%'],
                 fontSize: 12,
                 fontFamily: "'Inter', sans-serif",
-                color: sentinelColors.textSecondary,
+                color: fingColors.textSecondary,
               }
             : { show: false },
           data: [

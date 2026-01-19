@@ -1,6 +1,6 @@
 /* Path: src/components/atoms/Badge/Badge.module.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   SENTINEL DESIGN SYSTEM v3.2 - Badge Component
+   FING DESIGN SYSTEM v3.2 - Badge Component
 
    LIGHT NEUMORPHISM - Small glass status indicators
    - Semi-transparent light backgrounds
@@ -16,20 +16,20 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-family: var(--sentinel-font-primary);
+  font-family: var(--fing-font-primary);
   font-size: 12px;
-  font-weight: var(--sentinel-font-medium);
+  font-weight: var(--fing-font-medium);
   letter-spacing: 0.02em;
   padding: 6px 12px;
-  border-radius: var(--sentinel-radius-full);
+  border-radius: var(--fing-radius-full);
   border: 1px solid transparent;
   white-space: nowrap;
   line-height: 1.2;
   transition: all 0.2s ease;
 
   /* Glass blur */
-  backdrop-filter: blur(var(--sentinel-blur-xs));
-  -webkit-backdrop-filter: blur(var(--sentinel-blur-xs));
+  backdrop-filter: blur(var(--fing-blur-xs));
+  -webkit-backdrop-filter: blur(var(--fing-blur-xs));
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -37,12 +37,12 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .default {
-  background: var(--sentinel-glass-bg);
-  border-color: var(--sentinel-glass-border);
-  color: var(--sentinel-text-primary);
+  background: var(--fing-glass-bg);
+  border-color: var(--fing-glass-border);
+  color: var(--fing-text-primary);
 
   box-shadow:
-    var(--sentinel-neu-elevated-xs),
+    var(--fing-neu-elevated-xs),
     inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
@@ -53,10 +53,10 @@
 .primary {
   background: rgba(255, 255, 255, 0.6);
   border-color: rgba(58, 106, 114, 0.3);
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
 
   box-shadow:
-    var(--sentinel-neu-elevated-xs),
+    var(--fing-neu-elevated-xs),
     inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
@@ -67,10 +67,10 @@
 .success {
   background: rgba(255, 255, 255, 0.6);
   border-color: rgba(74, 222, 128, 0.35);
-  color: var(--sentinel-status-positive);
+  color: var(--fing-status-positive);
 
   box-shadow:
-    var(--sentinel-neu-elevated-xs),
+    var(--fing-neu-elevated-xs),
     inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
@@ -81,10 +81,10 @@
 .error {
   background: rgba(255, 255, 255, 0.6);
   border-color: rgba(248, 113, 113, 0.35);
-  color: var(--sentinel-status-negative);
+  color: var(--fing-status-negative);
 
   box-shadow:
-    var(--sentinel-neu-elevated-xs),
+    var(--fing-neu-elevated-xs),
     inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
@@ -95,10 +95,10 @@
 .warning {
   background: rgba(255, 255, 255, 0.6);
   border-color: rgba(251, 191, 36, 0.35);
-  color: var(--sentinel-status-warning);
+  color: var(--fing-status-warning);
 
   box-shadow:
-    var(--sentinel-neu-elevated-xs),
+    var(--fing-neu-elevated-xs),
     inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
@@ -109,10 +109,10 @@
 .info {
   background: rgba(255, 255, 255, 0.6);
   border-color: rgba(96, 165, 250, 0.35);
-  color: var(--sentinel-status-info);
+  color: var(--fing-status-info);
 
   box-shadow:
-    var(--sentinel-neu-elevated-xs),
+    var(--fing-neu-elevated-xs),
     inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
@@ -122,8 +122,8 @@
 
 .neutral {
   background: rgba(255, 255, 255, 0.4);
-  border-color: var(--sentinel-border-subtle);
-  color: var(--sentinel-text-secondary);
+  border-color: var(--fing-border-subtle);
+  color: var(--fing-text-secondary);
   backdrop-filter: none;
   box-shadow: none;
 }
@@ -145,7 +145,7 @@
   -webkit-backdrop-filter: blur(4px);
 
   box-shadow:
-    var(--sentinel-neu-elevated-xs),
+    var(--fing-neu-elevated-xs),
     inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
@@ -165,7 +165,7 @@
   -webkit-backdrop-filter: blur(4px);
   border: 1px solid hsla(var(--glass-hue-primary), calc(var(--glass-sat-primary) * 1%), 75%, 0.25);
   border-radius: var(--radius-standard);
-  font-weight: var(--sentinel-font-semibold);
+  font-weight: var(--fing-font-semibold);
 
   /* Fast transition for light engine responsiveness */
   transition: var(--transition-shadow);
@@ -182,27 +182,27 @@
 }
 
 .outlined.primary {
-  border-color: var(--sentinel-accent-primary);
+  border-color: var(--fing-accent-primary);
 }
 
 .outlined.success {
-  border-color: var(--sentinel-status-positive);
+  border-color: var(--fing-status-positive);
 }
 
 .outlined.error {
-  border-color: var(--sentinel-status-negative);
+  border-color: var(--fing-status-negative);
 }
 
 .outlined.warning {
-  border-color: var(--sentinel-status-warning);
+  border-color: var(--fing-status-warning);
 }
 
 .outlined.info {
-  border-color: var(--sentinel-status-info);
+  border-color: var(--fing-status-info);
 }
 
 .outlined.neutral {
-  border-color: var(--sentinel-border-default);
+  border-color: var(--fing-border-default);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -212,10 +212,10 @@
 .solid.primary {
   background: rgba(255, 255, 255, 0.8);
   border-color: rgba(58, 106, 114, 0.5);
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
 
   box-shadow:
-    var(--sentinel-neu-elevated-xs),
+    var(--fing-neu-elevated-xs),
     inset 0 1px 0 rgba(255, 255, 255, 0.7),
     0 2px 10px rgba(58, 106, 114, 0.25);
 }
@@ -223,10 +223,10 @@
 .solid.success {
   background: rgba(255, 255, 255, 0.8);
   border-color: rgba(74, 222, 128, 0.5);
-  color: var(--sentinel-status-positive);
+  color: var(--fing-status-positive);
 
   box-shadow:
-    var(--sentinel-neu-elevated-xs),
+    var(--fing-neu-elevated-xs),
     inset 0 1px 0 rgba(255, 255, 255, 0.7),
     0 2px 10px rgba(74, 222, 128, 0.25);
 }
@@ -234,10 +234,10 @@
 .solid.error {
   background: rgba(255, 255, 255, 0.8);
   border-color: rgba(248, 113, 113, 0.5);
-  color: var(--sentinel-status-negative);
+  color: var(--fing-status-negative);
 
   box-shadow:
-    var(--sentinel-neu-elevated-xs),
+    var(--fing-neu-elevated-xs),
     inset 0 1px 0 rgba(255, 255, 255, 0.7),
     0 2px 10px rgba(248, 113, 113, 0.25);
 }
@@ -245,10 +245,10 @@
 .solid.warning {
   background: rgba(255, 255, 255, 0.8);
   border-color: rgba(251, 191, 36, 0.5);
-  color: var(--sentinel-status-warning);
+  color: var(--fing-status-warning);
 
   box-shadow:
-    var(--sentinel-neu-elevated-xs),
+    var(--fing-neu-elevated-xs),
     inset 0 1px 0 rgba(255, 255, 255, 0.7),
     0 2px 10px rgba(251, 191, 36, 0.25);
 }
@@ -256,10 +256,10 @@
 .solid.info {
   background: rgba(255, 255, 255, 0.8);
   border-color: rgba(96, 165, 250, 0.5);
-  color: var(--sentinel-status-info);
+  color: var(--fing-status-info);
 
   box-shadow:
-    var(--sentinel-neu-elevated-xs),
+    var(--fing-neu-elevated-xs),
     inset 0 1px 0 rgba(255, 255, 255, 0.7),
     0 2px 10px rgba(96, 165, 250, 0.25);
 }
@@ -306,7 +306,7 @@
 .sm {
   font-size: 10px;
   padding: 4px 8px;
-  border-radius: var(--sentinel-radius-full);
+  border-radius: var(--fing-radius-full);
 }
 
 .sm.withDot::before {
@@ -317,7 +317,7 @@
 .lg {
   font-size: 13px;
   padding: 8px 14px;
-  border-radius: var(--sentinel-radius-full);
+  border-radius: var(--fing-radius-full);
 }
 
 .lg.withDot::before {

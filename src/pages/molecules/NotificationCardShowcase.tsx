@@ -1,5 +1,5 @@
 // Path: src/pages/molecules/NotificationCardShowcase.tsx
-// SENTINEL Design System - Glass-Neumorphism Notification Cards
+// FING Design System - Glass-Neumorphism Notification Cards
 import React, { useState, useMemo } from 'react';
 import { NotificationCard } from '../../components/molecules/NotificationCard';
 import { ShowcaseSection } from '../../components/showcase';
@@ -45,17 +45,17 @@ function NotificationCardContent() {
   const titleStyles: React.CSSProperties = {
     fontSize: '28px',
     fontWeight: 700,
-    color: 'var(--sentinel-accent-primary)',
+    color: 'var(--fing-accent-primary)',
     marginBottom: '8px',
-    fontFamily: 'var(--sentinel-font-display)',
+    fontFamily: 'var(--fing-font-display)',
     textTransform: 'uppercase',
     letterSpacing: '0.1em',
   };
 
   const descStyles: React.CSSProperties = {
     fontSize: '14px',
-    color: 'var(--sentinel-text-secondary)',
-    fontFamily: 'var(--sentinel-font-mono)',
+    color: 'var(--fing-text-secondary)',
+    fontFamily: 'var(--fing-font-mono)',
     textTransform: 'uppercase',
     letterSpacing: '0.03em',
   };
@@ -210,7 +210,7 @@ function NotificationCardContent() {
               background: MARBLE.base,
               borderRadius: '15px',
               boxShadow: getNeuPanelShadow(4, 12),
-              fontFamily: 'var(--sentinel-font-mono)',
+              fontFamily: 'var(--fing-font-mono)',
             }}>
               Todas las notificaciones fueron cerradas.
             </div>
@@ -225,18 +225,18 @@ function NotificationCardContent() {
           boxShadow: getNeuInsetShadow(5, 15),
           background: MARBLE.base,
           fontSize: '12px',
-          fontFamily: 'var(--sentinel-font-mono)',
+          fontFamily: 'var(--fing-font-mono)',
           color: '#636E72',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Padding:</strong> 15px</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Border-left:</strong> 4px solid (color según variante)</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Border-radius:</strong> 15px</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Gap:</strong> 12px entre ícono y contenido</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Ícono:</strong> 20px, color según variante</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Título:</strong> 14px Semibold</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Mensaje:</strong> 12px Regular</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Padding:</strong> 15px</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Border-left:</strong> 4px solid (color según variante)</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Border-radius:</strong> 15px</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Gap:</strong> 12px entre ícono y contenido</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Ícono:</strong> 20px, color según variante</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Título:</strong> 14px Semibold</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Mensaje:</strong> 12px Regular</p>
         </div>
       </ShowcaseSection>
     </div>

@@ -1,0 +1,102 @@
+/* Path: src/components/atoms/fing/Sparkline/Sparkline.module.css */
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   SPARKLINE
+   Mini gráfico de línea inline para mostrar tendencias
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.sparkline {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.noData {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: var(--fing-text-tertiary);
+  font-size: var(--fing-data-xs);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   LINE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.line {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   FILL AREA
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.fill {
+  opacity: 0.15;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   DOT (last point)
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.dot {
+  opacity: 0.9;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   COLOR VARIANTS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Positive (uptrend) */
+.sparkline.positive .line {
+  stroke: var(--fing-status-positive);
+}
+
+.sparkline.positive .fill {
+  fill: var(--fing-status-positive);
+}
+
+.sparkline.positive .dot {
+  fill: var(--fing-status-positive);
+}
+
+/* Negative (downtrend) */
+.sparkline.negative .line {
+  stroke: var(--fing-status-negative);
+}
+
+.sparkline.negative .fill {
+  fill: var(--fing-status-negative);
+}
+
+.sparkline.negative .dot {
+  fill: var(--fing-status-negative);
+}
+
+/* Neutral */
+.sparkline.neutral .line {
+  stroke: var(--fing-text-tertiary);
+}
+
+.sparkline.neutral .fill {
+  fill: var(--fing-text-tertiary);
+}
+
+.sparkline.neutral .dot {
+  fill: var(--fing-text-tertiary);
+}
+
+/* Accent */
+.sparkline.accent .line {
+  stroke: var(--fing-accent-primary);
+}
+
+.sparkline.accent .fill {
+  fill: var(--fing-accent-primary);
+}
+
+.sparkline.accent .dot {
+  fill: var(--fing-accent-primary);
+}

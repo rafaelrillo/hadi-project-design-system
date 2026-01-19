@@ -1,6 +1,6 @@
 /* Path: src/components/atoms/Input/InputText.module.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   SENTINEL DESIGN SYSTEM v3.3 - InputText Component
+   FING DESIGN SYSTEM v3.3 - InputText Component
 
    STONE MARBLE NEUMORPHISM - INSET (Level 2)
    - Uses --marble-dark background for sunken appearance
@@ -30,14 +30,14 @@
 .input {
   width: 100%;
   height: 44px;
-  font-family: var(--sentinel-font-primary);
+  font-family: var(--fing-font-primary);
   font-size: 14px;
   letter-spacing: 0;
   padding: 14px 16px;
   background: var(--marble-dark);
   border: 1px solid rgba(163, 177, 198, 0.3);
-  border-radius: var(--sentinel-radius-input);
-  color: var(--sentinel-text-primary);
+  border-radius: var(--fing-radius-input);
+  color: var(--fing-text-primary);
   transition: all 0.2s ease;
   box-sizing: border-box;
   outline: none;
@@ -47,7 +47,7 @@
 }
 
 .input::placeholder {
-  color: var(--sentinel-text-muted);
+  color: var(--fing-text-muted);
 }
 
 .input:hover:not(:disabled):not(:focus) {
@@ -69,7 +69,7 @@
 .input:disabled {
   background: var(--marble-deeper);
   border-color: rgba(163, 177, 198, 0.2);
-  color: var(--sentinel-text-disabled);
+  color: var(--fing-text-disabled);
   cursor: not-allowed;
   box-shadow: var(--inset-1);
 }
@@ -90,7 +90,7 @@
 }
 
 .inputError:focus {
-  border-color: var(--sentinel-status-negative);
+  border-color: var(--fing-status-negative);
   box-shadow:
     var(--inset-3),
     0 0 0 3px rgba(184, 92, 92, 0.15),
@@ -113,7 +113,7 @@
 }
 
 .inputSuccess:focus {
-  border-color: var(--sentinel-status-positive);
+  border-color: var(--fing-status-positive);
   box-shadow:
     var(--inset-3),
     0 0 0 3px rgba(74, 154, 124, 0.15),
@@ -137,14 +137,14 @@
   align-items: center;
   justify-content: center;
   line-height: 0;
-  color: var(--sentinel-text-muted);
+  color: var(--fing-text-muted);
   pointer-events: none;
   transition: color 0.2s ease;
 }
 
 /* Icon color on focus */
 .container:focus-within .icon {
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -160,7 +160,7 @@
   right: 14px;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--sentinel-text-muted);
+  color: var(--fing-text-muted);
   pointer-events: none;
 }
 
@@ -172,7 +172,7 @@
   height: 36px;
   font-size: 13px;
   padding: 10px 14px;
-  border-radius: var(--sentinel-radius-sm);
+  border-radius: var(--fing-radius-sm);
   box-shadow: var(--inset-1);
 }
 
@@ -184,7 +184,7 @@
   height: 52px;
   font-size: 15px;
   padding: 16px 18px;
-  border-radius: var(--sentinel-radius-md);
+  border-radius: var(--fing-radius-md);
   box-shadow: var(--inset-3);
 }
 
@@ -198,10 +198,10 @@
 
 .label {
   display: block;
-  font-family: var(--sentinel-font-primary);
+  font-family: var(--fing-font-primary);
   font-size: 12px;
-  font-weight: var(--sentinel-font-medium);
-  color: var(--sentinel-text-secondary);
+  font-weight: var(--fing-font-medium);
+  color: var(--fing-text-secondary);
   margin-bottom: 8px;
   letter-spacing: 0.02em;
 }
@@ -212,16 +212,16 @@
 
 .helperText {
   font-size: 12px;
-  color: var(--sentinel-text-muted);
+  color: var(--fing-text-muted);
   margin-top: 6px;
 }
 
 .helperTextError {
-  color: var(--sentinel-status-negative);
+  color: var(--fing-status-negative);
 }
 
 .helperTextSuccess {
-  color: var(--sentinel-status-positive);
+  color: var(--fing-status-positive);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -237,7 +237,7 @@
 .dynamicShadows:focus {
   /* Add focus ring while keeping dynamic shadow from inline style */
   box-shadow:
-    var(--sentinel-neu-pressed-sm),
+    var(--fing-neu-pressed-sm),
     0 0 0 3px rgba(58, 106, 114, 0.15),
     0 0 12px rgba(58, 106, 114, 0.1) !important;
 }

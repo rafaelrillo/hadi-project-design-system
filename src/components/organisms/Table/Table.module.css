@@ -1,6 +1,6 @@
 /* Path: src/components/organisms/Table/Table.module.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   SENTINEL DESIGN SYSTEM v3.2 - Table Component
+   FING DESIGN SYSTEM v3.2 - Table Component
 
    LIGHT NEUMORPHISM - Soft light glass data tables
    - Light semi-transparent glass backgrounds
@@ -17,12 +17,12 @@
   overflow-x: auto;
   background: rgba(255, 255, 255, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.7);
-  border-radius: var(--sentinel-radius-lg);
+  border-radius: var(--fing-radius-lg);
   position: relative;
 
   /* Glass blur */
-  backdrop-filter: blur(var(--sentinel-blur-md));
-  -webkit-backdrop-filter: blur(var(--sentinel-blur-md));
+  backdrop-filter: blur(var(--fing-blur-md));
+  -webkit-backdrop-filter: blur(var(--fing-blur-md));
 
   /* Light neumorphic elevation */
   box-shadow:
@@ -47,7 +47,7 @@
     rgba(255, 255, 255, 0.8),
     transparent
   );
-  border-radius: var(--sentinel-radius-lg) var(--sentinel-radius-lg) 0 0;
+  border-radius: var(--fing-radius-lg) var(--fing-radius-lg) 0 0;
   pointer-events: none;
   z-index: 1;
 }
@@ -60,9 +60,9 @@
   --table-row-height: 44px;
   width: 100%;
   border-collapse: collapse;
-  font-family: var(--sentinel-font-led);
-  font-size: var(--sentinel-text-sm);
-  letter-spacing: var(--sentinel-tracking-led);
+  font-family: var(--fing-font-led);
+  font-size: var(--fing-text-sm);
+  letter-spacing: var(--fing-tracking-led);
   background: transparent;
 }
 
@@ -72,7 +72,7 @@
 
 .tableFull {
   border: 1px solid rgba(163, 177, 198, 0.2);
-  border-radius: var(--sentinel-radius-lg);
+  border-radius: var(--fing-radius-lg);
   overflow: hidden;
 }
 
@@ -86,15 +86,15 @@
 }
 
 .th {
-  padding: var(--sentinel-space-3) var(--sentinel-space-4);
+  padding: var(--fing-space-3) var(--fing-space-4);
   height: var(--table-row-height);
   text-align: left;
-  font-weight: var(--sentinel-font-semibold);
-  font-size: var(--sentinel-text-xs);
-  color: var(--sentinel-text-secondary);
+  font-weight: var(--fing-font-semibold);
+  font-size: var(--fing-text-xs);
+  color: var(--fing-text-secondary);
   letter-spacing: 0.03em;
   white-space: nowrap;
-  font-family: var(--sentinel-font-primary);
+  font-family: var(--fing-font-primary);
   background: transparent;
 }
 
@@ -136,12 +136,12 @@
 }
 
 .thSortable:hover {
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
   background: rgba(255, 255, 255, 0.4);
 }
 
 .thSorted {
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -181,7 +181,7 @@
 }
 
 .trRounded {
-  border-radius: var(--sentinel-radius-md);
+  border-radius: var(--fing-radius-md);
 }
 
 .trSelectedIndicator {
@@ -203,13 +203,13 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .td {
-  padding: var(--sentinel-space-3) var(--sentinel-space-4);
+  padding: var(--fing-space-3) var(--fing-space-4);
   height: var(--table-row-height);
-  font-size: var(--sentinel-text-sm);
-  font-weight: var(--sentinel-font-normal);
-  color: var(--sentinel-text-primary);
-  font-family: var(--sentinel-font-led);
-  letter-spacing: var(--sentinel-tracking-led);
+  font-size: var(--fing-text-sm);
+  font-weight: var(--fing-font-normal);
+  color: var(--fing-text-primary);
+  font-family: var(--fing-font-led);
+  letter-spacing: var(--fing-tracking-led);
   text-align: left;
   vertical-align: middle;
 }
@@ -233,28 +233,28 @@
 
 .actionsContainer {
   display: inline-flex;
-  gap: var(--sentinel-space-2);
-  margin-left: var(--sentinel-space-2);
+  gap: var(--fing-space-2);
+  margin-left: var(--fing-space-2);
 }
 
 .actionButton {
   background: rgba(255, 255, 255, 0.5);
   border: none;
   cursor: pointer;
-  padding: var(--sentinel-space-1);
+  padding: var(--fing-space-1);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--sentinel-text-tertiary);
+  color: var(--fing-text-tertiary);
   transition: all 0.15s ease;
-  border-radius: var(--sentinel-radius-sm);
+  border-radius: var(--fing-radius-sm);
   box-shadow:
     2px 2px 4px rgba(163, 177, 198, 0.3),
     -2px -2px 4px rgba(255, 255, 255, 0.8);
 }
 
 .actionButton:hover {
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
   background: rgba(255, 255, 255, 0.7);
   box-shadow:
     3px 3px 6px rgba(163, 177, 198, 0.35),
@@ -262,11 +262,11 @@
 }
 
 .actionButtonDestructive {
-  color: var(--sentinel-status-negative);
+  color: var(--fing-status-negative);
 }
 
 .actionButtonDestructive:hover {
-  color: var(--sentinel-status-negative);
+  color: var(--fing-status-negative);
   background: rgba(248, 113, 113, 0.1);
 }
 
@@ -278,19 +278,19 @@
   background: none;
   border: none;
   cursor: pointer;
-  padding: var(--sentinel-space-1);
+  padding: var(--fing-space-1);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--sentinel-text-tertiary);
+  color: var(--fing-text-tertiary);
   transition: all 0.15s ease;
   width: 24px;
   height: 24px;
-  border-radius: var(--sentinel-radius-sm);
+  border-radius: var(--fing-radius-sm);
 }
 
 .expandButton:hover {
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
   background: rgba(255, 255, 255, 0.5);
   box-shadow:
     2px 2px 4px rgba(163, 177, 198, 0.25),
@@ -302,7 +302,7 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .expandedCell {
-  padding: var(--sentinel-space-4);
+  padding: var(--fing-space-4);
   background: rgba(255, 255, 255, 0.4);
   border-left: 3px solid rgba(91, 163, 165, 0.5);
 
@@ -329,14 +329,14 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .empty {
-  padding: var(--sentinel-space-12);
+  padding: var(--fing-space-12);
   text-align: center;
-  color: var(--sentinel-text-secondary);
+  color: var(--fing-text-secondary);
 }
 
 .emptyIcon {
-  margin-bottom: var(--sentinel-space-3);
-  color: var(--sentinel-text-tertiary);
+  margin-bottom: var(--fing-space-3);
+  color: var(--fing-text-tertiary);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -355,10 +355,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
 
-  backdrop-filter: blur(var(--sentinel-blur-sm));
-  -webkit-backdrop-filter: blur(var(--sentinel-blur-sm));
+  backdrop-filter: blur(var(--fing-blur-sm));
+  -webkit-backdrop-filter: blur(var(--fing-blur-sm));
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -385,11 +385,11 @@
 }
 
 .tdPositive {
-  color: var(--sentinel-status-positive);
+  color: var(--fing-status-positive);
 }
 
 .tdNegative {
-  color: var(--sentinel-status-negative);
+  color: var(--fing-status-negative);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────

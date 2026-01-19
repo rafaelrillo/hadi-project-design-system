@@ -1,6 +1,6 @@
 /* Path: src/components/organisms/Header/Header.module.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   SENTINEL DESIGN SYSTEM v4.0 - Header Component
+   FING DESIGN SYSTEM v4.0 - Header Component
 
    LIGHT NEUMORPHISM + GLASSMORPHISM - Flexible header styles
    - Default: Minimal transparent header
@@ -17,10 +17,10 @@
   align-items: center;
   justify-content: space-between;
   min-height: 56px;
-  padding: var(--sentinel-space-3) var(--sentinel-space-6);
+  padding: var(--fing-space-3) var(--fing-space-6);
   position: relative;
   flex-shrink: 0;
-  gap: var(--sentinel-space-4);
+  gap: var(--fing-space-4);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -33,8 +33,8 @@
   border-radius: var(--radius-standard);
 
   /* Glass blur */
-  backdrop-filter: blur(var(--sentinel-blur-lg));
-  -webkit-backdrop-filter: blur(var(--sentinel-blur-lg));
+  backdrop-filter: blur(var(--fing-blur-lg));
+  -webkit-backdrop-filter: blur(var(--fing-blur-lg));
 
   /* Layered shadow */
   box-shadow:
@@ -94,7 +94,7 @@
 .left {
   display: flex;
   align-items: center;
-  gap: var(--sentinel-space-3);
+  gap: var(--fing-space-3);
   flex: 1;
   min-width: 0;
 }
@@ -102,13 +102,13 @@
 .right {
   display: flex;
   align-items: center;
-  gap: var(--sentinel-space-3);
+  gap: var(--fing-space-3);
   flex-shrink: 0;
 }
 
 .extra {
   width: 100%;
-  margin-top: var(--sentinel-space-3);
+  margin-top: var(--fing-space-3);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -118,7 +118,7 @@
 .titleGroup {
   display: flex;
   align-items: center;
-  gap: var(--sentinel-space-2);
+  gap: var(--fing-space-2);
   min-width: 0;
 }
 
@@ -126,15 +126,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
   flex-shrink: 0;
 }
 
 .title {
-  font-family: var(--sentinel-font-numeric);
-  font-size: var(--sentinel-text-lg);
+  font-family: var(--fing-font-numeric);
+  font-size: var(--fing-text-lg);
   font-weight: 700;
-  color: var(--sentinel-text-primary);
+  color: var(--fing-text-primary);
   letter-spacing: 0.04em;
   text-transform: uppercase;
   margin: 0;

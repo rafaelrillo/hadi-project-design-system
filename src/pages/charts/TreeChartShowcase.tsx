@@ -1,5 +1,5 @@
 // Path: src/pages/charts/TreeChartShowcase.tsx
-// SENTINEL Design System - Glass-Neumorphism Tree Chart
+// FING Design System - Glass-Neumorphism Tree Chart
 import React, { useMemo } from 'react';
 import { ShowcaseSection } from '../../components/showcase';
 import { TreeChart } from '../../components/charts/echarts';
@@ -69,12 +69,12 @@ function TreeChartContent() {
   };
 
   const titleStyles: React.CSSProperties = {
-    fontSize: '28px', fontWeight: 700, color: 'var(--sentinel-accent-primary)', marginBottom: '8px',
-    fontFamily: 'var(--sentinel-font-display)', textTransform: 'uppercase', letterSpacing: '0.1em',
+    fontSize: '28px', fontWeight: 700, color: 'var(--fing-accent-primary)', marginBottom: '8px',
+    fontFamily: 'var(--fing-font-display)', textTransform: 'uppercase', letterSpacing: '0.1em',
   };
 
   const descStyles: React.CSSProperties = {
-    fontSize: '14px', color: 'var(--sentinel-text-secondary)', fontFamily: 'var(--sentinel-font-mono)',
+    fontSize: '14px', color: 'var(--fing-text-secondary)', fontFamily: 'var(--fing-font-mono)',
     textTransform: 'uppercase', letterSpacing: '0.03em',
   };
 
@@ -136,13 +136,13 @@ function TreeChartContent() {
 
       <ShowcaseSection title="Especificaciones Técnicas">
         <div style={tableContainerStyles}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12px', fontFamily: 'var(--sentinel-font-mono)' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12px', fontFamily: 'var(--fing-font-mono)' }}>
             <thead>
               <tr>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-accent-primary)', fontWeight: 600 }}>Prop</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-accent-primary)', fontWeight: 600 }}>Type</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-accent-primary)', fontWeight: 600 }}>Default</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-accent-primary)', fontWeight: 600 }}>Description</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent-primary)', fontWeight: 600 }}>Prop</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent-primary)', fontWeight: 600 }}>Type</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent-primary)', fontWeight: 600 }}>Default</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent-primary)', fontWeight: 600 }}>Description</th>
               </tr>
             </thead>
             <tbody>
@@ -157,7 +157,7 @@ function TreeChartContent() {
                 { prop: 'initialExpandLevel', type: 'number', default: '3', desc: 'Initial tree depth' },
               ].map((row, i) => (
                 <tr key={i}>
-                  <td style={{ padding: '12px 16px', color: 'var(--sentinel-text-primary)' }}>{row.prop}</td>
+                  <td style={{ padding: '12px 16px', color: 'var(--fing-text-primary)' }}>{row.prop}</td>
                   <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.type}</td>
                   <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.default}</td>
                   <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.desc}</td>

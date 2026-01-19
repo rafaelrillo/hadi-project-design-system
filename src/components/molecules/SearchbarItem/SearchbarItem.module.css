@@ -2,7 +2,7 @@
 
 /* ═══════════════════════════════════════════════════════════════════════════════
    SEARCHBAR ITEM
-   SENTINEL Observatory Theme
+   FING Observatory Theme
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 /* SearchbarItem container */
@@ -11,22 +11,22 @@
   display: flex;
   align-items: center;
   height: 40px;
-  background-color: var(--sentinel-bg-elevated);
-  border: 1px solid var(--sentinel-border-subtle);
-  border-radius: var(--sentinel-radius-sm);
-  font-family: var(--sentinel-font-led);
-  letter-spacing: var(--sentinel-tracking-led);
-  transition: all var(--sentinel-transition-normal);
+  background-color: var(--fing-bg-elevated);
+  border: 1px solid var(--fing-border-subtle);
+  border-radius: var(--fing-radius-sm);
+  font-family: var(--fing-font-led);
+  letter-spacing: var(--fing-tracking-led);
+  transition: all var(--fing-transition-normal);
   overflow: hidden;
 }
 
 .containerFocused {
-  border-color: var(--sentinel-accent-primary);
-  box-shadow: 0 0 0 2px var(--sentinel-focus-ring);
+  border-color: var(--fing-accent-primary);
+  box-shadow: 0 0 0 2px var(--fing-focus-ring);
 }
 
 .containerDisabled {
-  background-color: var(--sentinel-bg-subtle);
+  background-color: var(--fing-bg-subtle);
   opacity: 0.5;
 }
 
@@ -39,18 +39,18 @@
   height: 40px;
   flex-shrink: 0;
   cursor: pointer;
-  color: var(--sentinel-text-tertiary);
+  color: var(--fing-text-tertiary);
   background: transparent;
   border: none;
-  transition: all var(--sentinel-transition-normal);
+  transition: all var(--fing-transition-normal);
 }
 
 .searchIconButton:hover:not(:disabled) {
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
 }
 
 .searchIconButton:disabled {
-  color: var(--sentinel-text-disabled);
+  color: var(--fing-text-disabled);
   cursor: not-allowed;
 }
 
@@ -61,29 +61,29 @@
   border: none;
   outline: none;
   background-color: transparent;
-  font-size: var(--sentinel-font-sm);
+  font-size: var(--fing-font-sm);
   font-weight: 400;
-  color: var(--sentinel-text-primary);
-  font-family: var(--sentinel-font-led);
-  letter-spacing: var(--sentinel-tracking-led);
+  color: var(--fing-text-primary);
+  font-family: var(--fing-font-led);
+  letter-spacing: var(--fing-tracking-led);
   line-height: 1.5;
   padding: 0 8px;
   cursor: text;
 }
 
 .input::placeholder {
-  color: var(--sentinel-text-tertiary);
+  color: var(--fing-text-tertiary);
   text-transform: uppercase;
   letter-spacing: 0.03em;
 }
 
 .input:disabled {
-  color: var(--sentinel-text-disabled);
+  color: var(--fing-text-disabled);
   cursor: not-allowed;
 }
 
 .input:disabled::placeholder {
-  color: var(--sentinel-text-disabled);
+  color: var(--fing-text-disabled);
 }
 
 /* Clear button */
@@ -96,17 +96,17 @@
   margin-right: 4px;
   flex-shrink: 0;
   cursor: pointer;
-  color: var(--sentinel-text-tertiary);
+  color: var(--fing-text-tertiary);
   background-color: transparent;
-  border: 1px solid var(--sentinel-border-subtle);
-  border-radius: var(--sentinel-radius-xs);
-  transition: all var(--sentinel-transition-normal);
+  border: 1px solid var(--fing-border-subtle);
+  border-radius: var(--fing-radius-xs);
+  transition: all var(--fing-transition-normal);
 }
 
 .clearButton:hover:not(:disabled) {
-  background-color: var(--sentinel-bg-subtle);
-  border-color: var(--sentinel-accent-primary);
-  color: var(--sentinel-accent-primary);
+  background-color: var(--fing-bg-subtle);
+  border-color: var(--fing-accent-primary);
+  color: var(--fing-accent-primary);
 }
 
 .clearButton:disabled {

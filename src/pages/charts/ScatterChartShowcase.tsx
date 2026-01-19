@@ -1,5 +1,5 @@
 // Path: src/pages/charts/ScatterChartShowcase.tsx
-// SENTINEL Design System - Glass-Neumorphism Scatter Chart
+// FING Design System - Glass-Neumorphism Scatter Chart
 import React, { useMemo } from 'react';
 import { ShowcaseSection } from '../../components/showcase';
 import { ScatterChart } from '../../components/charts/echarts';
@@ -104,17 +104,17 @@ function ScatterChartContent() {
   const titleStyles: React.CSSProperties = {
     fontSize: '28px',
     fontWeight: 700,
-    color: 'var(--sentinel-accent-primary)',
+    color: 'var(--fing-accent-primary)',
     marginBottom: '8px',
-    fontFamily: 'var(--sentinel-font-display)',
+    fontFamily: 'var(--fing-font-display)',
     textTransform: 'uppercase',
     letterSpacing: '0.1em',
   };
 
   const descStyles: React.CSSProperties = {
     fontSize: '14px',
-    color: 'var(--sentinel-text-secondary)',
-    fontFamily: 'var(--sentinel-font-mono)',
+    color: 'var(--fing-text-secondary)',
+    fontFamily: 'var(--fing-font-mono)',
     textTransform: 'uppercase',
     letterSpacing: '0.03em',
   };
@@ -166,11 +166,11 @@ function ScatterChartContent() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '24px', width: '100%' }}>
             <div>
               <ScatterChart data={riskReturnData} xAxisLabel="Risk" yAxisLabel="Return" height={300} symbolSize={10} />
-              <p style={{ textAlign: 'center', color: '#636E72', fontSize: '12px', marginTop: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Fixed Size: 10</p>
+              <p style={{ textAlign: 'center', color: '#636E72', fontSize: '12px', marginTop: '8px', fontFamily: 'var(--fing-font-mono)' }}>Fixed Size: 10</p>
             </div>
             <div>
               <ScatterChart data={riskReturnData} xAxisLabel="Risk" yAxisLabel="Return" height={300} symbolSize={20} />
-              <p style={{ textAlign: 'center', color: '#636E72', fontSize: '12px', marginTop: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Fixed Size: 20</p>
+              <p style={{ textAlign: 'center', color: '#636E72', fontSize: '12px', marginTop: '8px', fontFamily: 'var(--fing-font-mono)' }}>Fixed Size: 20</p>
             </div>
           </div>
         </div>
@@ -190,14 +190,14 @@ function ScatterChartContent() {
             width: '100%',
             borderCollapse: 'collapse',
             fontSize: '12px',
-            fontFamily: 'var(--sentinel-font-mono)',
+            fontFamily: 'var(--fing-font-mono)',
           }}>
             <thead>
               <tr>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-accent-primary)', fontWeight: 600 }}>Prop</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-accent-primary)', fontWeight: 600 }}>Type</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-accent-primary)', fontWeight: 600 }}>Default</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-accent-primary)', fontWeight: 600 }}>Description</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent-primary)', fontWeight: 600 }}>Prop</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent-primary)', fontWeight: 600 }}>Type</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent-primary)', fontWeight: 600 }}>Default</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent-primary)', fontWeight: 600 }}>Description</th>
               </tr>
             </thead>
             <tbody>
@@ -211,7 +211,7 @@ function ScatterChartContent() {
                 { prop: 'colors', type: 'string[]', default: 'chartPalette', desc: 'Custom color palette' },
               ].map((row, i) => (
                 <tr key={i}>
-                  <td style={{ padding: '12px 16px', color: 'var(--sentinel-text-primary)' }}>{row.prop}</td>
+                  <td style={{ padding: '12px 16px', color: 'var(--fing-text-primary)' }}>{row.prop}</td>
                   <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.type}</td>
                   <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.default}</td>
                   <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.desc}</td>

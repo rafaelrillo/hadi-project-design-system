@@ -6,11 +6,11 @@
   background: rgba(45, 52, 54, 0.3);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  z-index: var(--sentinel-z-modal);
+  z-index: var(--fing-z-modal);
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  animation: fadeIn var(--sentinel-duration-fast) var(--sentinel-ease-out);
+  animation: fadeIn var(--fing-duration-fast) var(--fing-ease-out);
 }
 
 @keyframes fadeIn {
@@ -19,23 +19,23 @@
 }
 
 .sheet {
-  background: var(--sentinel-glass-elevated);
-  backdrop-filter: blur(var(--sentinel-blur-lg));
-  -webkit-backdrop-filter: blur(var(--sentinel-blur-lg));
-  border: 1px solid var(--sentinel-glass-border);
+  background: var(--fing-glass-elevated);
+  backdrop-filter: blur(var(--fing-blur-lg));
+  -webkit-backdrop-filter: blur(var(--fing-blur-lg));
+  border: 1px solid var(--fing-glass-border);
   border-bottom: none;
-  border-top-left-radius: var(--sentinel-radius-xl);
-  border-top-right-radius: var(--sentinel-radius-xl);
+  border-top-left-radius: var(--fing-radius-xl);
+  border-top-right-radius: var(--fing-radius-xl);
   width: 100%;
   max-width: 100%;
-  max-height: calc(100vh - var(--sentinel-safe-area-top) - 24px);
+  max-height: calc(100vh - var(--fing-safe-area-top) - 24px);
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  animation: slideUp var(--sentinel-duration-normal) var(--sentinel-ease-out);
-  padding-bottom: var(--sentinel-safe-area-bottom);
+  animation: slideUp var(--fing-duration-normal) var(--fing-ease-out);
+  padding-bottom: var(--fing-safe-area-bottom);
   box-shadow:
-    var(--sentinel-neu-elevated-lg),
+    var(--fing-neu-elevated-lg),
     inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
@@ -61,15 +61,15 @@
 }
 
 .full {
-  height: calc(100vh - var(--sentinel-safe-area-top) - 24px);
+  height: calc(100vh - var(--fing-safe-area-top) - 24px);
 }
 
 .handle {
   width: 36px;
   height: 4px;
-  background: var(--sentinel-border-strong);
-  border-radius: var(--sentinel-radius-full);
-  margin: var(--sentinel-space-3) auto;
+  background: var(--fing-border-strong);
+  border-radius: var(--fing-radius-full);
+  margin: var(--fing-space-3) auto;
   flex-shrink: 0;
 }
 
@@ -77,16 +77,16 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--sentinel-space-4) var(--sentinel-space-5);
-  border-bottom: 1px solid var(--sentinel-border-subtle);
+  padding: var(--fing-space-4) var(--fing-space-5);
+  border-bottom: 1px solid var(--fing-border-subtle);
   flex-shrink: 0;
 }
 
 .title {
-  font-family: var(--sentinel-font-primary);
-  font-size: var(--sentinel-text-lg);
-  font-weight: var(--sentinel-font-semibold);
-  color: var(--sentinel-text-primary);
+  font-family: var(--fing-font-primary);
+  font-size: var(--fing-text-lg);
+  font-weight: var(--fing-font-semibold);
+  color: var(--fing-text-primary);
   margin: 0;
 }
 
@@ -98,22 +98,22 @@
   height: 36px;
   background: transparent;
   border: none;
-  border-radius: var(--sentinel-radius-md);
-  color: var(--sentinel-text-secondary);
+  border-radius: var(--fing-radius-md);
+  color: var(--fing-text-secondary);
   cursor: pointer;
-  transition: background var(--sentinel-duration-fast) var(--sentinel-ease-default),
-              color var(--sentinel-duration-fast) var(--sentinel-ease-default);
+  transition: background var(--fing-duration-fast) var(--fing-ease-default),
+              color var(--fing-duration-fast) var(--fing-ease-default);
 }
 
 .closeButton:hover {
-  background: var(--sentinel-bg-subtle);
-  color: var(--sentinel-text-primary);
+  background: var(--fing-bg-subtle);
+  color: var(--fing-text-primary);
 }
 
 .content {
   flex: 1;
   overflow-y: auto;
-  padding: var(--sentinel-space-5);
+  padding: var(--fing-space-5);
   -webkit-overflow-scrolling: touch;
 }
 
@@ -126,8 +126,8 @@
   .sheet {
     max-width: 480px;
     max-height: 80vh;
-    border-radius: var(--sentinel-radius-xl);
-    margin: var(--sentinel-space-6);
+    border-radius: var(--fing-radius-xl);
+    margin: var(--fing-space-6);
   }
 
   .handle {

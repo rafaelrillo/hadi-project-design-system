@@ -1,12 +1,12 @@
 /* Path: src/components/showcase/ComponentPreview.module.css */
-/* SENTINEL Design System Version */
+/* FING Design System Version */
 
 .container {
-  padding: var(--sentinel-space-6);
-  border-radius: var(--sentinel-radius-md);
+  padding: var(--fing-space-6);
+  border-radius: var(--fing-radius-md);
   display: flex;
   flex-wrap: wrap;
-  gap: var(--sentinel-space-4);
+  gap: var(--fing-space-4);
   align-items: flex-start;
   border: 1px solid rgba(163, 177, 198, 0.2);
   background: rgba(255, 255, 255, 0.25);

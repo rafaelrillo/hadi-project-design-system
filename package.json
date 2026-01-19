@@ -1,8 +1,8 @@
 {
-  "name": "sentinel-design-system",
+  "name": "fing-design-system",
   "version": "1.0.0",
   "type": "module",
-  "description": "SENTINEL Design System - Investment analysis and recommendation platform UI components",
+  "description": "FING Design System - Investment analysis and recommendation platform UI components",
   "overrides": {
     "@testing-library/react": {
       "react": "^19.0.0",

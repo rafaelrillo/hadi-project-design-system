@@ -1,0 +1,169 @@
+/* Path: src/components/molecules/fing/HistoricalAlignment/HistoricalAlignment.module.css */
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   HISTORICAL ALIGNMENT
+   Compares current state with historical patterns
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.container {
+  background: var(--fing-bg-elevated);
+  border: 1px solid var(--fing-border-subtle);
+  border-radius: var(--fing-radius-md);
+  padding: 20px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   HEADER
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.header {
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--fing-border-subtle);
+}
+
+.title {
+  font-family: var(--fing-font-primary);
+  font-size: var(--fing-font-xs);
+  font-weight: 500;
+  color: var(--fing-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.intro {
+  font-family: var(--fing-font-primary);
+  font-size: var(--fing-font-sm);
+  color: var(--fing-text-secondary);
+  margin: 0 0 16px 0;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   PERIODS LIST
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.periodsList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.periodCard {
+  background: var(--fing-bg-subtle);
+  border: 1px solid var(--fing-border-subtle);
+  border-radius: var(--fing-radius-sm);
+  padding: 14px;
+  transition:
+    border-color var(--fing-transition-fast),
+    background-color var(--fing-transition-fast);
+}
+
+.periodCard:hover {
+  border-color: var(--fing-border-default);
+}
+
+/* Primary (highest similarity) card */
+.primary {
+  background: hsla(var(--fing-accent-teal-h), var(--fing-accent-teal-s), var(--fing-accent-teal-l), 0.05);
+  border-color: hsla(var(--fing-accent-teal-h), var(--fing-accent-teal-s), var(--fing-accent-teal-l), 0.2);
+}
+
+.primary:hover {
+  border-color: hsla(var(--fing-accent-teal-h), var(--fing-accent-teal-s), var(--fing-accent-teal-l), 0.3);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   PERIOD HEADER
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.periodHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.periodInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.periodLabel {
+  font-family: var(--fing-font-primary);
+  font-size: var(--fing-font-sm);
+  font-weight: 500;
+  color: var(--fing-text-primary);
+}
+
+.periodYear {
+  font-family: var(--fing-font-numeric);
+  font-size: var(--fing-font-xs);
+  color: var(--fing-text-tertiary);
+  letter-spacing: var(--fing-tracking-led);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   SIMILARITY BADGE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.similarityBadge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.similarityValue {
+  font-family: var(--fing-font-numeric);
+  font-size: var(--fing-font-sm);
+  font-weight: 600;
+  color: var(--fing-accent-primary);
+  letter-spacing: var(--fing-tracking-led);
+  text-shadow: var(--fing-glow-accent);
+}
+
+.similarityBars {
+  display: flex;
+  gap: 2px;
+}
+
+.similarityBar {
+  width: 4px;
+  height: 12px;
+  background: var(--fing-bg-interactive);
+  border-radius: 1px;
+  transition: background-color var(--fing-transition-fast);
+}
+
+.similarityBar.active {
+  background: var(--fing-accent-primary);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   OUTCOME
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.outcome {
+  font-family: var(--fing-font-primary);
+  font-size: var(--fing-font-xs);
+  color: var(--fing-text-secondary);
+  margin: 10px 0 0 0;
+  padding-top: 10px;
+  border-top: 1px solid var(--fing-border-subtle);
+  line-height: 1.5;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   REDUCED MOTION
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  .periodCard {
+    transition: none;
+  }
+
+  .similarityBar {
+    transition: none;
+  }
+}

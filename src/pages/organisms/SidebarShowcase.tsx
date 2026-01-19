@@ -1,5 +1,5 @@
 // Path: src/pages/organisms/SidebarShowcase.tsx
-// SENTINEL Design System v5.0 - Neumorphic Sidebar Showcase
+// FING Design System v5.0 - Neumorphic Sidebar Showcase
 import { useState, useMemo } from 'react';
 import { Sidebar } from '../../components/organisms/Sidebar';
 import type { SidebarSection } from '../../components/organisms/Sidebar';
@@ -62,17 +62,17 @@ function SidebarContent() {
   const titleStyles: React.CSSProperties = {
     fontSize: '28px',
     fontWeight: 700,
-    color: 'var(--sentinel-accent-primary)',
+    color: 'var(--fing-accent-primary)',
     marginBottom: '8px',
-    fontFamily: 'var(--sentinel-font-display)',
+    fontFamily: 'var(--fing-font-display)',
     textTransform: 'uppercase',
     letterSpacing: '0.1em',
   };
 
   const descStyles: React.CSSProperties = {
     fontSize: '14px',
-    color: 'var(--sentinel-text-secondary)',
-    fontFamily: 'var(--sentinel-font-mono)',
+    color: 'var(--fing-text-secondary)',
+    fontFamily: 'var(--fing-font-mono)',
     textTransform: 'uppercase',
     letterSpacing: '0.03em',
   };
@@ -149,7 +149,7 @@ function SidebarContent() {
   // User profile
   const user = {
     name: 'John Doe',
-    email: 'john.doe@sentinel.io',
+    email: 'john.doe@fing.io',
   };
 
   return (
@@ -195,7 +195,7 @@ function SidebarContent() {
               <h2 style={{
                 fontSize: '28px',
                 fontWeight: 700,
-                fontFamily: 'var(--sentinel-font-display)',
+                fontFamily: 'var(--fing-font-display)',
                 color: '#2d3748',
                 marginBottom: '12px',
               }}>
@@ -204,7 +204,7 @@ function SidebarContent() {
               <p style={{
                 fontSize: '14px',
                 color: '#8896a6',
-                fontFamily: 'var(--sentinel-font-mono)',
+                fontFamily: 'var(--fing-font-mono)',
                 textTransform: 'uppercase',
                 letterSpacing: '0.05em',
               }}>
@@ -237,7 +237,7 @@ function SidebarContent() {
               borderRadius: '20px',
               boxShadow: getNeuInsetShadow(5, 15),
             }}>
-              <p style={{ color: '#5a6578', fontSize: '14px', fontFamily: 'var(--sentinel-font-mono)' }}>
+              <p style={{ color: '#5a6578', fontSize: '14px', fontFamily: 'var(--fing-font-mono)' }}>
                 // Cada sección tiene su propio contenedor inset
               </p>
             </div>
@@ -271,7 +271,7 @@ function SidebarContent() {
               alignItems: 'center',
               justifyContent: 'center',
             }}>
-              <p style={{ color: '#8896a6', fontSize: '14px', fontFamily: 'var(--sentinel-font-mono)' }}>
+              <p style={{ color: '#8896a6', fontSize: '14px', fontFamily: 'var(--fing-font-mono)' }}>
                 // Menú simple sin secciones
               </p>
             </div>
@@ -303,7 +303,7 @@ function SidebarContent() {
               alignItems: 'center',
               justifyContent: 'center',
             }}>
-              <p style={{ color: '#8896a6', fontSize: '14px', fontFamily: 'var(--sentinel-font-mono)' }}>
+              <p style={{ color: '#8896a6', fontSize: '14px', fontFamily: 'var(--fing-font-mono)' }}>
                 // collapsed=true para modo compacto
               </p>
             </div>
@@ -331,7 +331,7 @@ function SidebarContent() {
               borderRadius: '20px',
               boxShadow: getNeuInsetShadow(5, 15),
             }}>
-              <p style={{ color: '#5a6578', fontSize: '14px', fontFamily: 'var(--sentinel-font-mono)' }}>
+              <p style={{ color: '#5a6578', fontSize: '14px', fontFamily: 'var(--fing-font-mono)' }}>
                 // Sin user, sin search, sin footer
               </p>
             </div>
@@ -358,9 +358,9 @@ function SidebarContent() {
               <h4 style={{
                 fontSize: '14px',
                 fontWeight: 600,
-                color: 'var(--sentinel-accent-primary)',
+                color: 'var(--fing-accent-primary)',
                 marginBottom: '16px',
-                fontFamily: 'var(--sentinel-font-mono)',
+                fontFamily: 'var(--fing-font-mono)',
               }}>
                 NEUMORPHIC CONTAINER
               </h4>
@@ -370,7 +370,7 @@ function SidebarContent() {
                 margin: 0,
                 fontSize: '13px',
                 color: '#5a6578',
-                fontFamily: 'var(--sentinel-font-mono)',
+                fontFamily: 'var(--fing-font-mono)',
                 lineHeight: '2',
               }}>
                 <li>+ Background: #d5d8dc</li>
@@ -384,9 +384,9 @@ function SidebarContent() {
               <h4 style={{
                 fontSize: '14px',
                 fontWeight: 600,
-                color: 'var(--sentinel-accent-primary)',
+                color: 'var(--fing-accent-primary)',
                 marginBottom: '16px',
-                fontFamily: 'var(--sentinel-font-mono)',
+                fontFamily: 'var(--fing-font-mono)',
               }}>
                 INSET SECTIONS (Cavados)
               </h4>
@@ -396,7 +396,7 @@ function SidebarContent() {
                 margin: 0,
                 fontSize: '13px',
                 color: '#5a6578',
-                fontFamily: 'var(--sentinel-font-mono)',
+                fontFamily: 'var(--fing-font-mono)',
                 lineHeight: '2',
               }}>
                 <li>+ Inset shadow</li>
@@ -410,9 +410,9 @@ function SidebarContent() {
               <h4 style={{
                 fontSize: '14px',
                 fontWeight: 600,
-                color: 'var(--sentinel-accent-primary)',
+                color: 'var(--fing-accent-primary)',
                 marginBottom: '16px',
-                fontFamily: 'var(--sentinel-font-mono)',
+                fontFamily: 'var(--fing-font-mono)',
               }}>
                 GLASS ITEMS
               </h4>
@@ -422,7 +422,7 @@ function SidebarContent() {
                 margin: 0,
                 fontSize: '13px',
                 color: '#5a6578',
-                fontFamily: 'var(--sentinel-font-mono)',
+                fontFamily: 'var(--fing-font-mono)',
                 lineHeight: '2',
               }}>
                 <li>+ Background: rgba(255,255,255,0.45)</li>
@@ -444,34 +444,34 @@ function SidebarContent() {
           boxShadow: getNeuInsetShadow(5, 15),
           background: MARBLE.base,
           fontSize: '12px',
-          fontFamily: 'var(--sentinel-font-mono)',
+          fontFamily: 'var(--fing-font-mono)',
           color: '#636E72',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
             <div>
-              <p style={{ fontWeight: 600, color: 'var(--sentinel-accent-primary)', marginBottom: '8px' }}>MAIN CONTAINER</p>
+              <p style={{ fontWeight: 600, color: 'var(--fing-accent-primary)', marginBottom: '8px' }}>MAIN CONTAINER</p>
               <p>+ Width: 280px (expanded), 80px (collapsed)</p>
               <p>+ Border-radius: 24px</p>
               <p>+ Shadow: 10px 10px 30px (elevated)</p>
               <p>+ Margin: 12px (floats)</p>
             </div>
             <div>
-              <p style={{ fontWeight: 600, color: 'var(--sentinel-accent-primary)', marginBottom: '8px' }}>INSET SECTIONS</p>
+              <p style={{ fontWeight: 600, color: 'var(--fing-accent-primary)', marginBottom: '8px' }}>INSET SECTIONS</p>
               <p>+ Shadow: inset 3px 3px 8px</p>
               <p>+ Border-radius: 16px</p>
               <p>+ Padding: 8px</p>
             </div>
             <div>
-              <p style={{ fontWeight: 600, color: 'var(--sentinel-accent-primary)', marginBottom: '8px' }}>MENU ITEMS</p>
+              <p style={{ fontWeight: 600, color: 'var(--fing-accent-primary)', marginBottom: '8px' }}>MENU ITEMS</p>
               <p>+ Padding: 11px 14px</p>
               <p>+ Border-radius: 12px</p>
               <p>+ Backdrop-blur: 8px (hover), 12px (active)</p>
               <p>+ Glass background on hover/active</p>
             </div>
             <div>
-              <p style={{ fontWeight: 600, color: 'var(--sentinel-accent-primary)', marginBottom: '8px' }}>USER PROFILE</p>
+              <p style={{ fontWeight: 600, color: 'var(--fing-accent-primary)', marginBottom: '8px' }}>USER PROFILE</p>
               <p>+ Glass card with blur(10px)</p>
               <p>+ Avatar: 42x42px, border-radius: 50%</p>
               <p>+ Chevron indicator for dropdown</p>
@@ -488,7 +488,7 @@ function SidebarContent() {
           boxShadow: getNeuInsetShadow(5, 15),
           background: MARBLE.base,
           fontSize: '12px',
-          fontFamily: 'var(--sentinel-font-mono)',
+          fontFamily: 'var(--fing-font-mono)',
           color: '#636E72',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',

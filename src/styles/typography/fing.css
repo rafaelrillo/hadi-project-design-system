@@ -1,0 +1,322 @@
+/* src/styles/typography/fing.css */
+/* ═══════════════════════════════════════════════════════════════════════════════
+   FING TYPOGRAPHY
+
+   Sistema tipográfico para Fing
+   - IBM Plex Sans para UI general (claridad profesional)
+   - Libre Baskerville para display/headlines (elegancia serif)
+   - IBM Plex Mono para datos financieros (precisión numérica)
+
+   NOTA: Las fuentes se cargan via Google Fonts CDN en index.html
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   BASE BODY STYLES
+   ───────────────────────────────────────────────────────────────────────────── */
+
+body {
+  font-family: var(--fing-font-primary);
+  font-size: var(--fing-text-sm);
+  font-weight: var(--fing-font-regular);
+  line-height: var(--fing-leading-normal);
+  color: var(--fing-text-primary);
+  background-color: var(--fing-bg-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   HEADINGS
+   h1-h3: Libre Baskerville (serif elegante)
+   h4-h6: IBM Plex Sans (sans-serif profesional)
+   ───────────────────────────────────────────────────────────────────────────── */
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--fing-font-semibold);
+  line-height: var(--fing-leading-tight);
+  letter-spacing: var(--fing-tracking-tight);
+  color: var(--fing-text-primary);
+  margin: 0;
+}
+
+/* Display headings - Libre Baskerville (serif) */
+h1, h2, h3 {
+  font-family: var(--fing-font-display);
+  font-variant-numeric: lining-nums; /* Evitar oldstyle numerals en headings */
+}
+
+h1 {
+  font-size: var(--fing-text-3xl);
+  font-weight: var(--fing-font-bold);
+}
+
+h2 {
+  font-size: var(--fing-text-2xl);
+  font-weight: var(--fing-font-bold);
+}
+
+h3 {
+  font-size: var(--fing-text-xl);
+  font-weight: var(--fing-font-bold);
+}
+
+/* Section headings - IBM Plex Sans (sans-serif) */
+h4, h5, h6 {
+  font-family: var(--fing-font-primary);
+}
+
+h4 {
+  font-size: var(--fing-text-lg);
+  font-weight: var(--fing-font-semibold);
+}
+
+h5 {
+  font-size: var(--fing-text-base);
+  font-weight: var(--fing-font-semibold);
+}
+
+h6 {
+  font-size: var(--fing-text-sm);
+  font-weight: var(--fing-font-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--fing-tracking-wide);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   PARAGRAPH AND TEXT
+   ───────────────────────────────────────────────────────────────────────────── */
+
+p {
+  font-size: var(--fing-text-sm);
+  line-height: var(--fing-leading-relaxed);
+  color: var(--fing-text-secondary);
+  margin: 0;
+}
+
+small {
+  font-size: var(--fing-text-xs);
+  color: var(--fing-text-tertiary);
+}
+
+strong, b {
+  font-weight: var(--fing-font-semibold);
+}
+
+em, i {
+  font-style: italic;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   MONOSPACE - For Data, Numbers, Code
+   IBM Plex Mono para datos financieros con números tabulares
+   ───────────────────────────────────────────────────────────────────────────── */
+
+code, pre, kbd, samp, .mono, .data {
+  font-family: var(--fing-font-mono);
+  font-feature-settings: "liga" 1, "calt" 1, "tnum" 1;
+  font-variant-numeric: tabular-nums lining-nums; /* Alineación perfecta en tablas */
+}
+
+code {
+  font-size: 0.9em;
+  padding: var(--fing-space-0-5) var(--fing-space-1);
+  background-color: var(--fing-bg-elevated);
+  border-radius: var(--fing-radius-sm);
+  color: var(--fing-text-primary);
+}
+
+pre {
+  font-size: var(--fing-text-sm);
+  padding: var(--fing-space-4);
+  background-color: var(--fing-bg-elevated);
+  border-radius: var(--fing-radius-md);
+  overflow-x: auto;
+}
+
+/* Tabular numbers for financial data alignment */
+.tabular-nums {
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   LABELS AND CAPTIONS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+label {
+  font-size: var(--fing-text-xs);
+  font-weight: var(--fing-font-medium);
+  color: var(--fing-text-secondary);
+  letter-spacing: var(--fing-tracking-wide);
+  text-transform: uppercase;
+}
+
+figcaption, caption {
+  font-size: var(--fing-text-xs);
+  color: var(--fing-text-tertiary);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   LINKS
+   Subtle but clear, with smooth transitions
+   ───────────────────────────────────────────────────────────────────────────── */
+
+a {
+  color: var(--fing-text-link);
+  text-decoration: none;
+  transition: var(--fing-transition-fast);
+}
+
+a:hover {
+  color: var(--fing-accent-primary);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--fing-border-focus);
+  outline-offset: 2px;
+  border-radius: var(--fing-radius-sm);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   SELECTION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+::selection {
+  background-color: var(--fing-accent-subtle);
+  color: var(--fing-text-primary);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   SCROLLBAR - Minimal, dark theme
+   ───────────────────────────────────────────────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--fing-bg-base);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--fing-border-default);
+  border-radius: var(--fing-radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--fing-border-strong);
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--fing-border-default) var(--fing-bg-base);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   PLACEHOLDER TEXT
+   ───────────────────────────────────────────────────────────────────────────── */
+
+::placeholder {
+  color: var(--fing-text-tertiary);
+  opacity: 1;
+}
+
+:-ms-input-placeholder {
+  color: var(--fing-text-tertiary);
+}
+
+::-ms-input-placeholder {
+  color: var(--fing-text-tertiary);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   FOCUS STATES
+   ───────────────────────────────────────────────────────────────────────────── */
+
+:focus-visible {
+  outline: 2px solid var(--fing-border-focus);
+  outline-offset: 2px;
+}
+
+/* Remove focus outline for mouse users */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   UTILITY CLASSES - Typography
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Size utilities */
+.text-xs { font-size: var(--fing-text-xs); }
+.text-sm { font-size: var(--fing-text-sm); }
+.text-base { font-size: var(--fing-text-base); }
+.text-lg { font-size: var(--fing-text-lg); }
+.text-xl { font-size: var(--fing-text-xl); }
+.text-2xl { font-size: var(--fing-text-2xl); }
+.text-3xl { font-size: var(--fing-text-3xl); }
+.text-4xl { font-size: var(--fing-text-4xl); }
+
+/* Weight utilities */
+.font-light { font-weight: var(--fing-font-light); }
+.font-regular { font-weight: var(--fing-font-regular); }
+.font-medium { font-weight: var(--fing-font-medium); }
+.font-semibold { font-weight: var(--fing-font-semibold); }
+.font-bold { font-weight: var(--fing-font-bold); }
+
+/* Color utilities */
+.text-primary { color: var(--fing-text-primary); }
+.text-secondary { color: var(--fing-text-secondary); }
+.text-tertiary { color: var(--fing-text-tertiary); }
+.text-disabled { color: var(--fing-text-disabled); }
+.text-accent { color: var(--fing-accent-primary); }
+.text-positive { color: var(--fing-status-positive-text); }
+.text-negative { color: var(--fing-status-negative-text); }
+.text-warning { color: var(--fing-status-warning-text); }
+
+/* Tracking utilities */
+.tracking-tight { letter-spacing: var(--fing-tracking-tight); }
+.tracking-normal { letter-spacing: var(--fing-tracking-normal); }
+.tracking-wide { letter-spacing: var(--fing-tracking-wide); }
+
+/* Line height utilities */
+.leading-none { line-height: var(--fing-leading-none); }
+.leading-tight { line-height: var(--fing-leading-tight); }
+.leading-normal { line-height: var(--fing-leading-normal); }
+.leading-relaxed { line-height: var(--fing-leading-relaxed); }
+
+/* Align utilities */
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+
+/* Transform utilities */
+.uppercase { text-transform: uppercase; }
+.lowercase { text-transform: lowercase; }
+.capitalize { text-transform: capitalize; }
+.normal-case { text-transform: none; }
+
+/* Truncate */
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Line clamp */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

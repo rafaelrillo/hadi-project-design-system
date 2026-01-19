@@ -1,6 +1,6 @@
 /* Path: src/components/molecules/Card/Card.module.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   SENTINEL DESIGN SYSTEM v3.2 - Card Component
+   FING DESIGN SYSTEM v3.2 - Card Component
 
    LIGHT NEUMORPHISM - Soft, tactile depth on light surfaces
    - Light semi-transparent background with subtle blur
@@ -17,10 +17,10 @@
   position: relative;
   background: rgba(255, 255, 255, 0.35);
   border: 1px solid rgba(255, 255, 255, 0.6);
-  border-radius: var(--sentinel-radius-card);
+  border-radius: var(--fing-radius-card);
   overflow: hidden;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  font-family: var(--sentinel-font-primary);
+  font-family: var(--fing-font-primary);
   box-sizing: border-box;
 
   /* Glass effect - strong frosted blur */
@@ -92,7 +92,7 @@
 
 .interactive:focus-visible {
   outline: none;
-  border-color: var(--sentinel-accent-primary);
+  border-color: var(--fing-accent-primary);
   box-shadow:
     8px 8px 16px rgba(163, 177, 198, 0.35),
     -8px -8px 16px rgba(255, 255, 255, 0.9),
@@ -113,7 +113,7 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .variantSuccess {
-  border-left: 3px solid var(--sentinel-status-positive);
+  border-left: 3px solid var(--fing-status-positive);
   box-shadow:
     8px 8px 16px rgba(163, 177, 198, 0.35),
     -8px -8px 16px rgba(255, 255, 255, 0.9),
@@ -122,7 +122,7 @@
 }
 
 .variantWarning {
-  border-left: 3px solid var(--sentinel-status-warning);
+  border-left: 3px solid var(--fing-status-warning);
   box-shadow:
     8px 8px 16px rgba(163, 177, 198, 0.35),
     -8px -8px 16px rgba(255, 255, 255, 0.9),
@@ -131,7 +131,7 @@
 }
 
 .variantError {
-  border-left: 3px solid var(--sentinel-status-negative);
+  border-left: 3px solid var(--fing-status-negative);
   box-shadow:
     8px 8px 16px rgba(163, 177, 198, 0.35),
     -8px -8px 16px rgba(255, 255, 255, 0.9),
@@ -140,7 +140,7 @@
 }
 
 .variantNeutral {
-  border-left: 3px solid var(--sentinel-accent-primary);
+  border-left: 3px solid var(--fing-accent-primary);
   box-shadow:
     8px 8px 16px rgba(163, 177, 198, 0.35),
     -8px -8px 16px rgba(255, 255, 255, 0.9),
@@ -159,16 +159,16 @@
 }
 
 .title {
-  font-family: var(--sentinel-font-primary);
+  font-family: var(--fing-font-primary);
   font-size: 16px;
-  font-weight: var(--sentinel-font-semibold);
-  color: var(--sentinel-text-primary);
+  font-weight: var(--fing-font-semibold);
+  color: var(--fing-text-primary);
   line-height: 1.4;
 }
 
 .subtitle {
   font-size: 13px;
-  color: var(--sentinel-text-secondary);
+  color: var(--fing-text-secondary);
   margin-top: 4px;
 }
 
@@ -215,8 +215,8 @@
 /* Elevated - Stronger neumorphic effect */
 .elevated {
   background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(var(--sentinel-blur-lg));
-  -webkit-backdrop-filter: blur(var(--sentinel-blur-lg));
+  backdrop-filter: blur(var(--fing-blur-lg));
+  -webkit-backdrop-filter: blur(var(--fing-blur-lg));
   box-shadow:
     12px 12px 24px rgba(163, 177, 198, 0.45),
     -12px -12px 24px rgba(255, 255, 255, 0.95),
@@ -278,8 +278,8 @@
 
 .pressed {
   background: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(var(--sentinel-blur-sm));
-  -webkit-backdrop-filter: blur(var(--sentinel-blur-sm));
+  backdrop-filter: blur(var(--fing-blur-sm));
+  -webkit-backdrop-filter: blur(var(--fing-blur-sm));
   box-shadow:
     inset 6px 6px 12px rgba(163, 177, 198, 0.4),
     inset -6px -6px 12px rgba(255, 255, 255, 0.7);
@@ -312,17 +312,17 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: var(--sentinel-status-positive);
+  background-color: var(--fing-status-positive);
   box-shadow: 0 0 10px currentColor;
-  animation: sentinel-pulse-subtle 3s ease-in-out infinite;
+  animation: fing-pulse-subtle 3s ease-in-out infinite;
 }
 
 .statusWarning::after {
-  background-color: var(--sentinel-status-warning);
+  background-color: var(--fing-status-warning);
 }
 
 .statusError::after {
-  background-color: var(--sentinel-status-negative);
+  background-color: var(--fing-status-negative);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -330,7 +330,7 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .compact {
-  border-radius: var(--sentinel-radius-lg);
+  border-radius: var(--fing-radius-lg);
 }
 
 .compact .header {

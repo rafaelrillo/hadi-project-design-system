@@ -1,5 +1,5 @@
 // Path: src/pages/atoms/BadgeShowcase.tsx
-// SENTINEL Design System - Glass-Neumorphism Badges
+// FING Design System - Glass-Neumorphism Badges
 import React, { useMemo } from 'react';
 import { Badge } from '../../components/atoms/Badge';
 import { ShowcaseSection } from '../../components/showcase';
@@ -48,17 +48,17 @@ function BadgeContent() {
   const titleStyles: React.CSSProperties = {
     fontSize: '28px',
     fontWeight: 700,
-    color: 'var(--sentinel-accent-primary)',
+    color: 'var(--fing-accent-primary)',
     marginBottom: '8px',
-    fontFamily: 'var(--sentinel-font-display)',
+    fontFamily: 'var(--fing-font-display)',
     textTransform: 'uppercase',
     letterSpacing: '0.1em',
   };
 
   const descStyles: React.CSSProperties = {
     fontSize: '14px',
-    color: 'var(--sentinel-text-secondary)',
-    fontFamily: 'var(--sentinel-font-mono)',
+    color: 'var(--fing-text-secondary)',
+    fontFamily: 'var(--fing-font-mono)',
     textTransform: 'uppercase',
     letterSpacing: '0.03em',
   };
@@ -166,8 +166,8 @@ function BadgeContent() {
               fontSize: '12px',
               fontWeight: 600,
               marginBottom: '12px',
-              color: 'var(--sentinel-text-primary)',
-              fontFamily: 'var(--sentinel-font-mono)',
+              color: 'var(--fing-text-primary)',
+              fontFamily: 'var(--fing-font-mono)',
               textTransform: 'uppercase',
               letterSpacing: '0.1em',
             }}>
@@ -188,8 +188,8 @@ function BadgeContent() {
               fontSize: '12px',
               fontWeight: 600,
               marginBottom: '12px',
-              color: 'var(--sentinel-text-primary)',
-              fontFamily: 'var(--sentinel-font-mono)',
+              color: 'var(--fing-text-primary)',
+              fontFamily: 'var(--fing-font-mono)',
               textTransform: 'uppercase',
               letterSpacing: '0.1em',
             }}>
@@ -209,7 +209,7 @@ function BadgeContent() {
           marginTop: '16px',
           fontSize: '12px',
           color: '#636E72',
-          fontFamily: 'var(--sentinel-font-mono)',
+          fontFamily: 'var(--fing-font-mono)',
         }}>
           Las sombras responden dinámicamente al Light Engine global
         </p>
@@ -227,20 +227,20 @@ function BadgeContent() {
             boxShadow: getNeuInsetShadow(5, 15),
             transition: 'box-shadow 50ms linear',
           }}>
-            <h4 style={{ fontSize: '12px', fontWeight: 600, marginBottom: '16px', color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+            <h4 style={{ fontSize: '12px', fontWeight: 600, marginBottom: '16px', color: 'var(--fing-text-primary)', fontFamily: 'var(--fing-font-mono)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
               Estados de Usuario
             </h4>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ fontSize: '14px', color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)' }}>Juan Pérez</span>
+                <span style={{ fontSize: '14px', color: 'var(--fing-text-primary)', fontFamily: 'var(--fing-font-mono)' }}>Juan Pérez</span>
                 <Badge variant="success">Activo</Badge>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ fontSize: '14px', color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)' }}>María García</span>
+                <span style={{ fontSize: '14px', color: 'var(--fing-text-primary)', fontFamily: 'var(--fing-font-mono)' }}>María García</span>
                 <Badge variant="error">Inactivo</Badge>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ fontSize: '14px', color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)' }}>Carlos López</span>
+                <span style={{ fontSize: '14px', color: 'var(--fing-text-primary)', fontFamily: 'var(--fing-font-mono)' }}>Carlos López</span>
                 <Badge variant="warning">Pendiente</Badge>
               </div>
             </div>
@@ -253,20 +253,20 @@ function BadgeContent() {
             boxShadow: getNeuInsetShadow(5, 15),
             transition: 'box-shadow 50ms linear',
           }}>
-            <h4 style={{ fontSize: '12px', fontWeight: 600, marginBottom: '16px', color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+            <h4 style={{ fontSize: '12px', fontWeight: 600, marginBottom: '16px', color: 'var(--fing-text-primary)', fontFamily: 'var(--fing-font-mono)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
               Estados de Orden
             </h4>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ fontSize: '14px', color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)' }}>Orden #1234</span>
+                <span style={{ fontSize: '14px', color: 'var(--fing-text-primary)', fontFamily: 'var(--fing-font-mono)' }}>Orden #1234</span>
                 <Badge variant="success">Entregado</Badge>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ fontSize: '14px', color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)' }}>Orden #1235</span>
+                <span style={{ fontSize: '14px', color: 'var(--fing-text-primary)', fontFamily: 'var(--fing-font-mono)' }}>Orden #1235</span>
                 <Badge variant="info">En camino</Badge>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ fontSize: '14px', color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)' }}>Orden #1236</span>
+                <span style={{ fontSize: '14px', color: 'var(--fing-text-primary)', fontFamily: 'var(--fing-font-mono)' }}>Orden #1236</span>
                 <Badge variant="warning">Procesando</Badge>
               </div>
             </div>
@@ -281,16 +281,16 @@ function BadgeContent() {
           boxShadow: getNeuInsetShadow(5, 15),
           background: MARBLE.base,
           fontSize: '12px',
-          fontFamily: 'var(--sentinel-font-mono)',
+          fontFamily: 'var(--fing-font-mono)',
           color: '#636E72',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Padding:</strong> 4px 8px</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Border radius:</strong> 15px (neumórfico)</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Tipografía:</strong> 12px Semibold, Space Mono</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Display:</strong> inline-flex, align-items center</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Glass:</strong> HSLA colores con backdrop-filter blur</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Padding:</strong> 4px 8px</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Border radius:</strong> 15px (neumórfico)</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Tipografía:</strong> 12px Semibold, Space Mono</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Display:</strong> inline-flex, align-items center</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Glass:</strong> HSLA colores con backdrop-filter blur</p>
         </div>
       </ShowcaseSection>
     </div>

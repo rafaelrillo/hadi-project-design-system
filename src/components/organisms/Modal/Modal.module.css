@@ -1,6 +1,6 @@
 /* Path: src/components/organisms/Modal/Modal.module.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   SENTINEL DESIGN SYSTEM v3.2 - Modal Component
+   FING DESIGN SYSTEM v3.2 - Modal Component
 
    LIGHT NEUMORPHISM - Soft shadows on light surfaces
    - Light frosted glass overlay
@@ -19,19 +19,19 @@
   right: 0;
   bottom: 0;
   display: flex;
-  z-index: var(--sentinel-z-modal);
-  font-family: var(--sentinel-font-primary);
+  z-index: var(--fing-z-modal);
+  font-family: var(--fing-font-primary);
 }
 
 .overlayCenter {
   background-color: rgba(224, 229, 236, 0.85);
   align-items: center;
   justify-content: center;
-  animation: sentinel-fade-in 200ms ease-out;
+  animation: fing-fade-in 200ms ease-out;
 
   /* Glass blur on overlay */
-  backdrop-filter: blur(var(--sentinel-blur-sm));
-  -webkit-backdrop-filter: blur(var(--sentinel-blur-sm));
+  backdrop-filter: blur(var(--fing-blur-sm));
+  -webkit-backdrop-filter: blur(var(--fing-blur-sm));
 }
 
 .overlayDrawer {
@@ -39,8 +39,8 @@
   align-items: flex-start;
   justify-content: flex-end;
 
-  backdrop-filter: blur(var(--sentinel-blur-xs));
-  -webkit-backdrop-filter: blur(var(--sentinel-blur-xs));
+  backdrop-filter: blur(var(--fing-blur-xs));
+  -webkit-backdrop-filter: blur(var(--fing-blur-xs));
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -56,8 +56,8 @@
   overflow: hidden;
 
   /* Strong glass blur */
-  backdrop-filter: blur(var(--sentinel-blur-xl));
-  -webkit-backdrop-filter: blur(var(--sentinel-blur-xl));
+  backdrop-filter: blur(var(--fing-blur-xl));
+  -webkit-backdrop-filter: blur(var(--fing-blur-xl));
 
   /* Light neumorphic elevation */
   box-shadow:
@@ -88,18 +88,18 @@
 }
 
 .modalCenter {
-  border-radius: var(--sentinel-radius-xl);
+  border-radius: var(--fing-radius-xl);
   width: 90%;
   max-width: 560px;
   max-height: 85vh;
-  animation: sentinel-scale-in 300ms var(--sentinel-ease-out);
+  animation: fing-scale-in 300ms var(--fing-ease-out);
 }
 
 .modalDrawer {
   width: 50%;
   max-width: 800px;
   height: 100vh;
-  animation: sentinel-slide-in-right 400ms var(--sentinel-ease-out);
+  animation: fing-slide-in-right 400ms var(--fing-ease-out);
   border-left: 1px solid rgba(163, 177, 198, 0.3);
   border-radius: 0;
 }
@@ -125,18 +125,18 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: var(--sentinel-space-4) var(--sentinel-space-5);
+  padding: var(--fing-space-4) var(--fing-space-5);
   border-bottom: 1px solid rgba(163, 177, 198, 0.2);
   background: rgba(255, 255, 255, 0.5);
   flex-shrink: 0;
 }
 
 .title {
-  font-size: var(--sentinel-text-lg);
-  font-weight: var(--sentinel-font-semibold);
-  color: var(--sentinel-text-primary);
+  font-size: var(--fing-text-lg);
+  font-weight: var(--fing-font-semibold);
+  color: var(--fing-text-primary);
   margin: 0;
-  font-family: var(--sentinel-font-primary);
+  font-family: var(--fing-font-primary);
   line-height: 1.3;
 }
 
@@ -144,13 +144,13 @@
   background: rgba(255, 255, 255, 0.6);
   border: 1px solid transparent;
   cursor: pointer;
-  padding: var(--sentinel-space-1);
+  padding: var(--fing-space-1);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--sentinel-text-tertiary);
-  transition: var(--sentinel-transition-fast);
-  border-radius: var(--sentinel-radius-sm);
+  color: var(--fing-text-tertiary);
+  transition: var(--fing-transition-fast);
+  border-radius: var(--fing-radius-sm);
   width: 32px;
   height: 32px;
 
@@ -161,7 +161,7 @@
 }
 
 .closeButton:hover {
-  color: var(--sentinel-text-primary);
+  color: var(--fing-text-primary);
   background: rgba(255, 255, 255, 0.8);
   border-color: rgba(163, 177, 198, 0.2);
 
@@ -183,11 +183,11 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .body {
-  padding: var(--sentinel-space-5);
+  padding: var(--fing-space-5);
   flex: 1;
   overflow-y: auto;
-  color: var(--sentinel-text-secondary);
-  font-size: var(--sentinel-text-sm);
+  color: var(--fing-text-secondary);
+  font-size: var(--fing-text-sm);
   line-height: 1.6;
 }
 
@@ -196,9 +196,9 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .footer {
-  padding: var(--sentinel-space-4) var(--sentinel-space-5);
+  padding: var(--fing-space-4) var(--fing-space-5);
   display: flex;
-  gap: var(--sentinel-space-3);
+  gap: var(--fing-space-3);
   justify-content: flex-end;
   flex-shrink: 0;
   border-top: 1px solid rgba(163, 177, 198, 0.2);
@@ -209,7 +209,7 @@
    ANIMATIONS
    ───────────────────────────────────────────────────────────────────────────── */
 
-@keyframes sentinel-fade-in {
+@keyframes fing-fade-in {
   from {
     opacity: 0;
   }
@@ -218,7 +218,7 @@
   }
 }
 
-@keyframes sentinel-scale-in {
+@keyframes fing-scale-in {
   from {
     opacity: 0;
     transform: scale(0.96);
@@ -229,7 +229,7 @@
   }
 }
 
-@keyframes sentinel-slide-in-right {
+@keyframes fing-slide-in-right {
   from {
     transform: translateX(100%);
   }

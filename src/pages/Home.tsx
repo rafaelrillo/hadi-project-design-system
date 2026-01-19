@@ -38,7 +38,7 @@ export function Home() {
         <p
           style={{
             fontSize: '18px',
-            fontFamily: 'var(--sentinel-font-mono)',
+            fontFamily: 'var(--fing-font-mono)',
             color: '#636E72',
             letterSpacing: '0.1em',
             textTransform: 'uppercase',
@@ -64,10 +64,10 @@ export function Home() {
           backdropFilter: 'blur(8px)',
           border: '1px solid rgba(255, 255, 255, 0.5)',
           borderRadius: '15px',
-          color: 'var(--sentinel-text-primary)',
+          color: 'var(--fing-text-primary)',
           fontSize: '14px',
           fontWeight: 600,
-          fontFamily: 'var(--sentinel-font-mono)',
+          fontFamily: 'var(--fing-font-mono)',
           textDecoration: 'none',
           cursor: 'pointer',
           boxShadow: `

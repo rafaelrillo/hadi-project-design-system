@@ -1,5 +1,5 @@
 // Path: src/pages/charts/PictorialBarChartShowcase.tsx
-// SENTINEL Design System - Glass-Neumorphism PictorialBar Chart
+// FING Design System - Glass-Neumorphism PictorialBar Chart
 import React, { useMemo } from 'react';
 import { ShowcaseSection } from '../../components/showcase';
 import { PictorialBarChart, pictorialSymbols } from '../../components/charts/echarts';
@@ -73,12 +73,12 @@ function PictorialBarChartContent() {
   };
 
   const titleStyles: React.CSSProperties = {
-    fontSize: '28px', fontWeight: 700, color: 'var(--sentinel-accent-primary)', marginBottom: '8px',
-    fontFamily: 'var(--sentinel-font-display)', textTransform: 'uppercase', letterSpacing: '0.1em',
+    fontSize: '28px', fontWeight: 700, color: 'var(--fing-accent-primary)', marginBottom: '8px',
+    fontFamily: 'var(--fing-font-display)', textTransform: 'uppercase', letterSpacing: '0.1em',
   };
 
   const descStyles: React.CSSProperties = {
-    fontSize: '14px', color: 'var(--sentinel-text-secondary)', fontFamily: 'var(--sentinel-font-mono)',
+    fontSize: '14px', color: 'var(--fing-text-secondary)', fontFamily: 'var(--fing-font-mono)',
     textTransform: 'uppercase', letterSpacing: '0.03em',
   };
 
@@ -97,7 +97,7 @@ function PictorialBarChartContent() {
     background: 'rgba(91, 163, 165, 0.15)',
     borderRadius: '8px',
     fontSize: '12px',
-    fontFamily: 'var(--sentinel-font-mono)',
+    fontFamily: 'var(--fing-font-mono)',
     color: '#636E72',
   };
 
@@ -159,19 +159,19 @@ function PictorialBarChartContent() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '24px' }}>
             <div>
               <PictorialBarChart data={walletData.slice(0, 3)} height={220} symbol={pictorialSymbols.circle} symbolSize={40} showLabels={false} />
-              <p style={{ textAlign: 'center', color: '#636E72', fontSize: '12px', marginTop: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Circle</p>
+              <p style={{ textAlign: 'center', color: '#636E72', fontSize: '12px', marginTop: '8px', fontFamily: 'var(--fing-font-mono)' }}>Circle</p>
             </div>
             <div>
               <PictorialBarChart data={walletData.slice(0, 3)} height={220} symbol={pictorialSymbols.diamond} symbolSize={40} showLabels={false} />
-              <p style={{ textAlign: 'center', color: '#636E72', fontSize: '12px', marginTop: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Diamond</p>
+              <p style={{ textAlign: 'center', color: '#636E72', fontSize: '12px', marginTop: '8px', fontFamily: 'var(--fing-font-mono)' }}>Diamond</p>
             </div>
             <div>
               <PictorialBarChart data={walletData.slice(0, 3)} height={220} symbol={pictorialSymbols.roundRect} showLabels={false} />
-              <p style={{ textAlign: 'center', color: '#636E72', fontSize: '12px', marginTop: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Round Rect</p>
+              <p style={{ textAlign: 'center', color: '#636E72', fontSize: '12px', marginTop: '8px', fontFamily: 'var(--fing-font-mono)' }}>Round Rect</p>
             </div>
             <div>
               <PictorialBarChart data={walletData.slice(0, 3)} height={220} symbol={pictorialSymbols.triangle} symbolSize={40} showLabels={false} />
-              <p style={{ textAlign: 'center', color: '#636E72', fontSize: '12px', marginTop: '8px', fontFamily: 'var(--sentinel-font-mono)' }}>Triangle</p>
+              <p style={{ textAlign: 'center', color: '#636E72', fontSize: '12px', marginTop: '8px', fontFamily: 'var(--fing-font-mono)' }}>Triangle</p>
             </div>
           </div>
         </div>
@@ -179,13 +179,13 @@ function PictorialBarChartContent() {
 
       <ShowcaseSection title="Especificaciones Técnicas">
         <div style={tableContainerStyles}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12px', fontFamily: 'var(--sentinel-font-mono)' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12px', fontFamily: 'var(--fing-font-mono)' }}>
             <thead>
               <tr>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-accent-primary)', fontWeight: 600 }}>Prop</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-accent-primary)', fontWeight: 600 }}>Type</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-accent-primary)', fontWeight: 600 }}>Default</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--sentinel-accent-primary)', fontWeight: 600 }}>Description</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent-primary)', fontWeight: 600 }}>Prop</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent-primary)', fontWeight: 600 }}>Type</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent-primary)', fontWeight: 600 }}>Default</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent-primary)', fontWeight: 600 }}>Description</th>
               </tr>
             </thead>
             <tbody>
@@ -202,7 +202,7 @@ function PictorialBarChartContent() {
                 { prop: 'maxValue', type: 'number', default: 'auto', desc: 'Maximum axis value' },
               ].map((row, i) => (
                 <tr key={i}>
-                  <td style={{ padding: '12px 16px', color: 'var(--sentinel-text-primary)' }}>{row.prop}</td>
+                  <td style={{ padding: '12px 16px', color: 'var(--fing-text-primary)' }}>{row.prop}</td>
                   <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.type}</td>
                   <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.default}</td>
                   <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.desc}</td>
@@ -213,13 +213,13 @@ function PictorialBarChartContent() {
         </div>
 
         <div style={{ marginTop: '24px' }}>
-          <h4 style={{ color: 'var(--sentinel-text-primary)', marginBottom: '12px', fontSize: '14px', fontWeight: 600 }}>Available Symbols (pictorialSymbols)</h4>
+          <h4 style={{ color: 'var(--fing-text-primary)', marginBottom: '12px', fontSize: '14px', fontWeight: 600 }}>Available Symbols (pictorialSymbols)</h4>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
             {Object.keys(pictorialSymbols).map((key) => (
               <span key={key} style={symbolChipStyles}>{key}</span>
             ))}
           </div>
-          <p style={{ marginTop: '12px', fontSize: '12px', color: '#636E72', fontStyle: 'italic', fontFamily: 'var(--sentinel-font-mono)' }}>
+          <p style={{ marginTop: '12px', fontSize: '12px', color: '#636E72', fontStyle: 'italic', fontFamily: 'var(--fing-font-mono)' }}>
             Note: Basic shapes (circle, rect, roundRect, triangle, diamond, pin, arrow) work best.
             Custom SVG path symbols (person, dollar, chart, growth, star) may require specific symbolSize tuning.
           </p>

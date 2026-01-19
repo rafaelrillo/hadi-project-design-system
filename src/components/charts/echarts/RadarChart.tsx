@@ -2,7 +2,7 @@
 import { useMemo } from 'react';
 import type { EChartsOption } from 'echarts';
 import { EChart } from './EChart';
-import { sentinelColors, chartPalette } from './sentinelTheme';
+import { fingColors, chartPalette } from './fingTheme';
 import type { RadarIndicator, RadarSeriesData, BaseChartProps } from './types';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -62,7 +62,7 @@ export function RadarChart({
           indicators.forEach((ind, i) => {
             html += `
               <div style="display: flex; justify-content: space-between; gap: 16px; margin-bottom: 4px;">
-                <span style="color: ${sentinelColors.textTertiary};">${ind.name}</span>
+                <span style="color: ${fingColors.textTertiary};">${ind.name}</span>
                 <span style="font-family: 'Space Mono', monospace;">${p.value[i]}</span>
               </div>
             `;
@@ -77,7 +77,7 @@ export function RadarChart({
             top: title ? 30 : 0,
             right: 0,
             textStyle: {
-              color: sentinelColors.textSecondary,
+              color: fingColors.textSecondary,
               fontSize: 11,
             },
           }
@@ -92,24 +92,24 @@ export function RadarChart({
           min: ind.min,
         })),
         axisName: {
-          color: sentinelColors.textSecondary,
+          color: fingColors.textSecondary,
           fontSize: 11,
           fontFamily: "'Inter', sans-serif",
         },
         axisLine: {
           lineStyle: {
-            color: sentinelColors.borderDefault,
+            color: fingColors.borderDefault,
           },
         },
         splitLine: {
           lineStyle: {
-            color: sentinelColors.borderSubtle,
+            color: fingColors.borderSubtle,
           },
         },
         splitArea: {
           show: true,
           areaStyle: {
-            color: ['transparent', sentinelColors.bgSubtle],
+            color: ['transparent', fingColors.bgSubtle],
           },
         },
       },

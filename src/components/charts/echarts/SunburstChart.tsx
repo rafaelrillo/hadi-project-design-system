@@ -2,7 +2,7 @@
 import { useMemo } from 'react';
 import type { EChartsOption } from 'echarts';
 import { EChart } from './EChart';
-import { sentinelColors, chartPalette, tooltipFormatters } from './sentinelTheme';
+import { fingColors, chartPalette, tooltipFormatters } from './fingTheme';
 import type { SunburstNode, BaseChartProps } from './types';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -94,7 +94,7 @@ export function SunburstChart({
             <div style="font-family: 'Inter', sans-serif; font-size: 12px;">
               ${
                 path
-                  ? `<div style="color: ${sentinelColors.textTertiary}; font-size: 10px; margin-bottom: 8px;">${path}</div>`
+                  ? `<div style="color: ${fingColors.textTertiary}; font-size: 10px; margin-bottom: 8px;">${path}</div>`
                   : ''
               }
               <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
@@ -102,11 +102,11 @@ export function SunburstChart({
                 <span style="font-weight: 500;">${p.name}</span>
               </div>
               <div style="display: flex; justify-content: space-between; gap: 24px; margin-bottom: 4px;">
-                <span style="color: ${sentinelColors.textTertiary};">Value</span>
+                <span style="color: ${fingColors.textTertiary};">Value</span>
                 <span style="font-family: 'Space Mono', monospace; font-weight: 600;">${formatValue(p.value)}</span>
               </div>
               <div style="display: flex; justify-content: space-between; gap: 24px;">
-                <span style="color: ${sentinelColors.textTertiary};">Share</span>
+                <span style="color: ${fingColors.textTertiary};">Share</span>
                 <span style="font-family: 'Space Mono', monospace; font-weight: 600;">${percent}%</span>
               </div>
             </div>
@@ -127,7 +127,7 @@ export function SunburstChart({
             ? {
                 show: true,
                 rotate: 'radial',
-                color: sentinelColors.textPrimary,
+                color: fingColors.textPrimary,
                 fontSize: 10,
                 fontFamily: "'Inter', sans-serif",
                 minAngle: 15,
@@ -135,7 +135,7 @@ export function SunburstChart({
               }
             : { show: false },
           itemStyle: {
-            borderColor: sentinelColors.bgBase,
+            borderColor: fingColors.bgBase,
             borderWidth: 2,
           },
           levels: [

@@ -10,7 +10,7 @@
 .label {
   font-size: 13px;
   font-weight: 500;
-  color: var(--sentinel-text-secondary);
+  color: var(--fing-text-secondary);
 }
 
 .sliderWrapper {
@@ -22,9 +22,9 @@
 .minLabel,
 .maxLabel {
   font-size: 12px;
-  font-family: var(--sentinel-font-led);
-  color: var(--sentinel-text-tertiary);
-  letter-spacing: var(--sentinel-tracking-led);
+  font-family: var(--fing-font-led);
+  color: var(--fing-text-tertiary);
+  letter-spacing: var(--fing-tracking-led);
   min-width: 40px;
 }
 
@@ -41,7 +41,7 @@
   flex: 1;
   position: relative;
   height: 6px;
-  background: var(--sentinel-bg-elevated);
+  background: var(--fing-bg-elevated);
   border-radius: 3px;
   cursor: pointer;
   touch-action: none;
@@ -58,7 +58,7 @@
   top: 0;
   left: 0;
   height: 100%;
-  background: var(--sentinel-accent-primary);
+  background: var(--fing-accent-primary);
   border-radius: 3px;
   transition: width 0.05s ease-out;
   pointer-events: none;
@@ -75,8 +75,8 @@
   transform: translate(-50%, -50%);
   width: 18px;
   height: 18px;
-  background: var(--sentinel-bg-surface);
-  border: 2px solid var(--sentinel-accent-primary);
+  background: var(--fing-bg-surface);
+  border: 2px solid var(--fing-accent-primary);
   border-radius: 50%;
   cursor: grab;
   transition: transform 0.1s ease, box-shadow 0.1s ease;
@@ -85,13 +85,13 @@
 
 .thumb:hover {
   transform: translate(-50%, -50%) scale(1.1);
-  box-shadow: 0 0 0 4px rgba(var(--sentinel-accent-primary-rgb, 91, 163, 165), 0.15);
+  box-shadow: 0 0 0 4px rgba(var(--fing-accent-primary-rgb, 91, 163, 165), 0.15);
 }
 
 .thumb:focus {
   outline: none;
   transform: translate(-50%, -50%) scale(1.1);
-  box-shadow: 0 0 0 4px rgba(var(--sentinel-accent-primary-rgb, 91, 163, 165), 0.25);
+  box-shadow: 0 0 0 4px rgba(var(--fing-accent-primary-rgb, 91, 163, 165), 0.25);
 }
 
 .dragging .thumb {
@@ -102,7 +102,7 @@
 
 .disabled .thumb {
   cursor: not-allowed;
-  border-color: var(--sentinel-text-tertiary);
+  border-color: var(--fing-text-tertiary);
 }
 
 /* Tooltip */
@@ -112,20 +112,20 @@
   left: 50%;
   transform: translateX(-50%);
   padding: 4px 8px;
-  background: var(--sentinel-bg-elevated);
-  border: 1px solid var(--sentinel-border-default);
-  border-radius: var(--sentinel-radius-sm);
+  background: var(--fing-bg-elevated);
+  border: 1px solid var(--fing-border-default);
+  border-radius: var(--fing-radius-sm);
   font-size: 12px;
-  font-family: var(--sentinel-font-led);
+  font-family: var(--fing-font-led);
   font-weight: 500;
-  letter-spacing: var(--sentinel-tracking-led);
-  color: var(--sentinel-text-primary);
+  letter-spacing: var(--fing-tracking-led);
+  color: var(--fing-text-primary);
   white-space: nowrap;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.15s ease, visibility 0.15s ease;
   pointer-events: none;
-  box-shadow: var(--sentinel-shadow-md);
+  box-shadow: var(--fing-shadow-md);
 }
 
 .tooltip::after {
@@ -135,7 +135,7 @@
   left: 50%;
   transform: translateX(-50%);
   border: 5px solid transparent;
-  border-top-color: var(--sentinel-border-default);
+  border-top-color: var(--fing-border-default);
 }
 
 .thumb:hover .tooltip,
@@ -160,7 +160,7 @@
   top: 4px;
   width: 1px;
   height: 4px;
-  background: var(--sentinel-border-default);
+  background: var(--fing-border-default);
   transform: translateX(-50%);
 }
 
@@ -195,40 +195,40 @@
 
 /* Color variants */
 .variantSuccess .fill {
-  background: var(--sentinel-status-positive);
+  background: var(--fing-status-positive);
 }
 
 .variantSuccess .thumb {
-  border-color: var(--sentinel-status-positive);
+  border-color: var(--fing-status-positive);
 }
 
 .variantSuccess .thumb:hover,
 .variantSuccess .thumb:focus {
-  box-shadow: 0 0 0 4px rgba(var(--sentinel-status-positive-rgb, 74, 154, 124), 0.15);
+  box-shadow: 0 0 0 4px rgba(var(--fing-status-positive-rgb, 74, 154, 124), 0.15);
 }
 
 .variantWarning .fill {
-  background: var(--sentinel-status-warning);
+  background: var(--fing-status-warning);
 }
 
 .variantWarning .thumb {
-  border-color: var(--sentinel-status-warning);
+  border-color: var(--fing-status-warning);
 }
 
 .variantWarning .thumb:hover,
 .variantWarning .thumb:focus {
-  box-shadow: 0 0 0 4px rgba(var(--sentinel-status-warning-rgb, 196, 163, 90), 0.15);
+  box-shadow: 0 0 0 4px rgba(var(--fing-status-warning-rgb, 196, 163, 90), 0.15);
 }
 
 .variantError .fill {
-  background: var(--sentinel-status-negative);
+  background: var(--fing-status-negative);
 }
 
 .variantError .thumb {
-  border-color: var(--sentinel-status-negative);
+  border-color: var(--fing-status-negative);
 }
 
 .variantError .thumb:hover,
 .variantError .thumb:focus {
-  box-shadow: 0 0 0 4px rgba(var(--sentinel-status-negative-rgb, 184, 92, 92), 0.15);
+  box-shadow: 0 0 0 4px rgba(var(--fing-status-negative-rgb, 184, 92, 92), 0.15);
 }

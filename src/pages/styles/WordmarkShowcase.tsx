@@ -114,7 +114,7 @@ export function WordmarkShowcase() {
     minHeight: '100vh',
     background: 'var(--marble-base)',
     padding: '32px',
-    fontFamily: 'var(--sentinel-font-primary)',
+    fontFamily: 'var(--fing-font-primary)',
   };
 
   const headerStyles: React.CSSProperties = {
@@ -142,7 +142,7 @@ export function WordmarkShowcase() {
       {/* Header */}
       <header style={headerStyles}>
         <h1 style={{
-          fontFamily: 'var(--sentinel-font-display)',
+          fontFamily: 'var(--fing-font-display)',
           fontSize: '36px',
           fontWeight: 700,
           letterSpacing: '-0.02em',
@@ -195,7 +195,7 @@ export function WordmarkShowcase() {
               <strong>Font:</strong> Cormorant Garamond<br />
               <strong>Weight:</strong> 300 (Light)<br />
               <strong>Letter Spacing:</strong> 0.06em<br />
-              <strong>Google Fonts:</strong> <code style={{ fontFamily: 'var(--sentinel-font-mono)', fontSize: '11px' }}>family=Cormorant+Garamond:wght@300</code>
+              <strong>Google Fonts:</strong> <code style={{ fontFamily: 'var(--fing-font-mono)', fontSize: '11px' }}>family=Cormorant+Garamond:wght@300</code>
             </div>
           </div>
 
@@ -205,7 +205,7 @@ export function WordmarkShowcase() {
               CSS Implementation
             </div>
             <pre style={{
-              fontFamily: 'var(--sentinel-font-mono)',
+              fontFamily: 'var(--fing-font-mono)',
               fontSize: '11px',
               background: 'rgba(0,0,0,0.05)',
               padding: '16px',
@@ -303,7 +303,7 @@ export function WordmarkShowcase() {
                 marginBottom: '8px',
               }}>
                 <span style={{
-                  fontFamily: 'var(--sentinel-font-mono)',
+                  fontFamily: 'var(--fing-font-mono)',
                   fontSize: '10px',
                   color: 'var(--fing-teal)',
                   background: 'rgba(58, 106, 114, 0.1)',
@@ -348,7 +348,7 @@ export function WordmarkShowcase() {
           {[24, 36, 48, 72, 96, 120].map((size) => (
             <div key={size} style={{ ...insetStyles, padding: '24px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
               <FingWordmark variant="carved" size={size} containerPadding={size * 0.4} containerRadius={size * 0.2} />
-              <span style={{ ...typoRaised.whisper, fontSize: '10px', fontFamily: 'var(--sentinel-font-mono)' }}>
+              <span style={{ ...typoRaised.whisper, fontSize: '10px', fontFamily: 'var(--fing-font-mono)' }}>
                 {size}px
               </span>
             </div>
@@ -486,7 +486,7 @@ export function WordmarkShowcase() {
 
         <div style={insetStyles}>
           <pre style={{
-            fontFamily: 'var(--sentinel-font-mono)',
+            fontFamily: 'var(--fing-font-mono)',
             fontSize: '11px',
             lineHeight: 1.8,
             overflow: 'auto',
@@ -538,7 +538,7 @@ export function WordmarkShowcase() {
 
         <div style={insetStyles}>
           <pre style={{
-            fontFamily: 'var(--sentinel-font-mono)',
+            fontFamily: 'var(--fing-font-mono)',
             fontSize: '11px',
             lineHeight: 1.8,
             overflow: 'auto',

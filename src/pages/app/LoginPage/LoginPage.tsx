@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Loader2, ChevronRight, ChevronLeft, Mail, Lock } from "lucide-react";
 import { useAuthStore } from "../../../store/authStore";
-import { AtmosphericBackground } from "../../../components/atoms/sentinel/AtmosphericBackground";
+import { AtmosphericBackground } from "../../../components/atoms/fing/AtmosphericBackground";
 import { InputText } from "../../../components/atoms/Input";
 import { FingEmblem } from "../../../components/atoms/FingEmblem";
 import { FingWordmarkText } from "../../../components/atoms/FingWordmark";

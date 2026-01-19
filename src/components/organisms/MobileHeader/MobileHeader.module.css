@@ -4,9 +4,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: calc(var(--sentinel-mobile-header-height) + var(--sentinel-safe-area-top));
-  padding: 0 var(--sentinel-space-4);
-  padding-top: var(--sentinel-safe-area-top);
+  height: calc(var(--fing-mobile-header-height) + var(--fing-safe-area-top));
+  padding: 0 var(--fing-space-4);
+  padding-top: var(--fing-safe-area-top);
   background: linear-gradient(
     180deg,
     rgba(5, 6, 10, 0.95) 0%,
@@ -19,7 +19,7 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: var(--sentinel-z-sticky);
+  z-index: var(--fing-z-sticky);
 }
 
 .left {
@@ -38,10 +38,10 @@
 }
 
 .title {
-  font-family: var(--sentinel-font-primary);
-  font-size: var(--sentinel-text-base);
-  font-weight: var(--sentinel-font-semibold);
-  color: var(--sentinel-text-primary);
+  font-family: var(--fing-font-primary);
+  font-size: var(--fing-text-base);
+  font-weight: var(--fing-font-semibold);
+  color: var(--fing-text-primary);
   margin: 0;
   letter-spacing: 0.01em;
 }
@@ -55,22 +55,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: var(--sentinel-touch-target-min);
-  height: var(--sentinel-touch-target-min);
+  width: var(--fing-touch-target-min);
+  height: var(--fing-touch-target-min);
   background: transparent;
   border: none;
-  border-radius: var(--sentinel-radius-md);
-  color: var(--sentinel-text-secondary);
+  border-radius: var(--fing-radius-md);
+  color: var(--fing-text-secondary);
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
-  transition: background var(--sentinel-duration-fast) var(--sentinel-ease-default),
-              color var(--sentinel-duration-fast) var(--sentinel-ease-default);
+  transition: background var(--fing-duration-fast) var(--fing-ease-default),
+              color var(--fing-duration-fast) var(--fing-ease-default);
 }
 
 .iconButton:hover,
 .iconButton:active {
-  background: var(--sentinel-bg-subtle);
-  color: var(--sentinel-text-primary);
+  background: var(--fing-bg-subtle);
+  color: var(--fing-text-primary);
 }
 
 /* Hide on desktop */

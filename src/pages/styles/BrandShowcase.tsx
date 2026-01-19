@@ -63,7 +63,7 @@ const FingLogo: React.FC<FingLogoProps> = ({ variant, size = 1, showWordmark = t
       {showWordmark && (
         <span
           style={{
-            fontFamily: 'var(--sentinel-font-primary)',
+            fontFamily: 'var(--fing-font-primary)',
             fontWeight: 500,
             letterSpacing: '0.06em',
             fontSize,
@@ -192,7 +192,7 @@ export function BrandShowcase() {
     minHeight: '100vh',
     background: 'var(--marble-base)',
     padding: '32px',
-    fontFamily: 'var(--sentinel-font-primary)',
+    fontFamily: 'var(--fing-font-primary)',
   };
 
   const headerStyles: React.CSSProperties = {
@@ -252,7 +252,7 @@ export function BrandShowcase() {
       {/* Header - sobre fondo BASE, usa tipografía INSET */}
       <header style={headerStyles}>
         <h1 style={{
-          fontFamily: 'var(--sentinel-font-display)',
+          fontFamily: 'var(--fing-font-display)',
           fontSize: '36px',
           fontWeight: 700,
           letterSpacing: '-0.02em',
@@ -346,7 +346,7 @@ export function BrandShowcase() {
             The Synthesis
           </div>
           <div style={{
-            fontFamily: 'var(--sentinel-font-primary)',
+            fontFamily: 'var(--fing-font-primary)',
             fontSize: '48px',
             fontWeight: 500,
             marginBottom: '16px',
@@ -543,7 +543,7 @@ export function BrandShowcase() {
             {[32, 48, 64, 100, 120].map((size) => (
               <div key={size} style={{ ...insetStyles, padding: '24px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
                 <FingEmblem size={size} />
-                <span style={{ ...typoRaised.whisper, fontSize: '10px', fontFamily: 'var(--sentinel-font-mono)' }}>{size}px</span>
+                <span style={{ ...typoRaised.whisper, fontSize: '10px', fontFamily: 'var(--fing-font-mono)' }}>{size}px</span>
               </div>
             ))}
           </div>
@@ -631,7 +631,7 @@ export function BrandShowcase() {
                   {color.name}
                 </div>
                 <code style={{
-                  fontFamily: 'var(--sentinel-font-mono)',
+                  fontFamily: 'var(--fing-font-mono)',
                   fontSize: '10px',
                   ...typoAccent.teal,
                 }}>
@@ -662,7 +662,7 @@ export function BrandShowcase() {
                   {color.name}
                 </div>
                 <code style={{
-                  fontFamily: 'var(--sentinel-font-mono)',
+                  fontFamily: 'var(--fing-font-mono)',
                   fontSize: '10px',
                   ...typoAccent.teal,
                 }}>
@@ -711,7 +711,7 @@ export function BrandShowcase() {
             </div>
             <div style={{
               ...typoRaised.display,
-              fontFamily: 'var(--sentinel-font-primary)',
+              fontFamily: 'var(--fing-font-primary)',
               fontSize: '48px',
               fontWeight: 500,
               letterSpacing: '-0.02em',
@@ -734,7 +734,7 @@ export function BrandShowcase() {
             </div>
             <div style={{
               ...typoRaised.strong,
-              fontFamily: 'var(--sentinel-font-primary)',
+              fontFamily: 'var(--fing-font-primary)',
               fontSize: '32px',
               fontWeight: 500,
             }}>
@@ -756,7 +756,7 @@ export function BrandShowcase() {
             </div>
             <div style={{
               ...typoRaised.medium,
-              fontFamily: 'var(--sentinel-font-primary)',
+              fontFamily: 'var(--fing-font-primary)',
               fontSize: '16px',
               fontWeight: 400,
               lineHeight: 1.7,
@@ -779,7 +779,7 @@ export function BrandShowcase() {
               Mono — IBM Plex Mono
             </div>
             <div style={{
-              fontFamily: 'var(--sentinel-font-mono)',
+              fontFamily: 'var(--fing-font-mono)',
               fontSize: '16px',
               fontWeight: 400,
               ...typoAccent.tealStrong,
@@ -874,7 +874,7 @@ export function BrandShowcase() {
             <div key={item.text} style={{ ...insetStyles, textAlign: 'center', padding: '32px 24px' }}>
               <div style={{
                 ...typoRaised.strong,
-                fontFamily: 'var(--sentinel-font-primary)',
+                fontFamily: 'var(--fing-font-primary)',
                 fontSize: '22px',
                 fontWeight: 400,
                 fontStyle: 'italic',

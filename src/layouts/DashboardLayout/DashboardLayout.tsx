@@ -11,7 +11,7 @@ import {
 } from 'lucide-react';
 
 import { useAuthStore } from '../../store';
-import { AtmosphericBackground } from '../../components/atoms/sentinel';
+import { AtmosphericBackground } from '../../components/atoms/fing';
 import { useIsMobile } from '../../hooks/useBreakpoint';
 import { MobileHeader } from '../../components/organisms/MobileHeader';
 import { BottomNavigation } from '../../components/organisms/BottomNavigation';

@@ -24,8 +24,8 @@ const NewsView = lazy(() => import('./pages/app/NewsView').then(m => ({ default:
 import { PlaceholderPage } from './pages/app/PlaceholderPage';
 import { User, Settings, Bell, Shield, HelpCircle } from 'lucide-react';
 
-const SentinelShowcase = lazy(() => import('./pages/sentinel/SentinelShowcase').then(m => ({ default: m.SentinelShowcase })));
-const Level4Showcase = lazy(() => import('./pages/sentinel/Level4Showcase').then(m => ({ default: m.Level4Showcase })));
+const FingShowcase = lazy(() => import('./pages/fing/FingShowcase').then(m => ({ default: m.FingShowcase })));
+const Level4Showcase = lazy(() => import('./pages/fing/Level4Showcase').then(m => ({ default: m.Level4Showcase })));
 
 // Styles (can be lazy loaded)
 const BrandShowcase = lazy(() => import('./pages/styles').then(m => ({ default: m.BrandShowcase })));
@@ -108,8 +108,8 @@ function ShowcaseLoader() {
       alignItems: 'center',
       justifyContent: 'center',
       height: '50vh',
-      color: 'var(--sentinel-text-tertiary)',
-      fontFamily: 'var(--sentinel-font-mono)',
+      color: 'var(--fing-text-tertiary)',
+      fontFamily: 'var(--fing-font-mono)',
       fontSize: '14px',
     }}>
       Loading...
@@ -199,13 +199,13 @@ function AppRoutes() {
         </Route>
       </Route>
 
-      {/* SENTINEL Showcase - Standalone */}
-      <Route path="/showcase/sentinel" element={
+      {/* FING Showcase - Standalone */}
+      <Route path="/showcase/fing" element={
         <Suspense fallback={<LoadingScreen message="Loading showcase" />}>
-          <SentinelShowcase />
+          <FingShowcase />
         </Suspense>
       } />
-      <Route path="/showcase/sentinel/level4" element={
+      <Route path="/showcase/fing/level4" element={
         <Suspense fallback={<LoadingScreen message="Loading showcase" />}>
           <Level4Showcase />
         </Suspense>

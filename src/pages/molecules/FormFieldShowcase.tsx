@@ -1,5 +1,5 @@
 // Path: src/pages/molecules/FormFieldShowcase.tsx
-// SENTINEL Design System - Glass-Neumorphism Form Fields
+// FING Design System - Glass-Neumorphism Form Fields
 import React, { useState, useMemo } from 'react';
 import { FormField } from '../../components/molecules/FormField';
 import { InputText, Textarea, InputDropdown, DropdownOption } from '../../components/atoms/Input';
@@ -48,17 +48,17 @@ function FormFieldContent() {
   const titleStyles: React.CSSProperties = {
     fontSize: '28px',
     fontWeight: 700,
-    color: 'var(--sentinel-accent-primary)',
+    color: 'var(--fing-accent-primary)',
     marginBottom: '8px',
-    fontFamily: 'var(--sentinel-font-display)',
+    fontFamily: 'var(--fing-font-display)',
     textTransform: 'uppercase',
     letterSpacing: '0.1em',
   };
 
   const descStyles: React.CSSProperties = {
     fontSize: '14px',
-    color: 'var(--sentinel-text-secondary)',
-    fontFamily: 'var(--sentinel-font-mono)',
+    color: 'var(--fing-text-secondary)',
+    fontFamily: 'var(--fing-font-mono)',
     textTransform: 'uppercase',
     letterSpacing: '0.03em',
   };
@@ -198,8 +198,8 @@ function FormFieldContent() {
             fontSize: '16px',
             fontWeight: 600,
             margin: 0,
-            color: 'var(--sentinel-text-primary)',
-            fontFamily: 'var(--sentinel-font-display)',
+            color: 'var(--fing-text-primary)',
+            fontFamily: 'var(--fing-font-display)',
             textTransform: 'uppercase',
             letterSpacing: '0.05em',
           }}>
@@ -238,7 +238,7 @@ function FormFieldContent() {
             transition: 'box-shadow 150ms ease',
           }}>
             <Checkbox checked={terms} onChange={setTerms} id="terms-checkbox" />
-            <label htmlFor="terms-checkbox" style={{ fontSize: '14px', cursor: 'pointer', color: 'var(--sentinel-text-primary)', fontFamily: 'var(--sentinel-font-mono)' }}>
+            <label htmlFor="terms-checkbox" style={{ fontSize: '14px', cursor: 'pointer', color: 'var(--fing-text-primary)', fontFamily: 'var(--fing-font-mono)' }}>
               Acepto los términos y condiciones
             </label>
           </div>
@@ -253,8 +253,8 @@ function FormFieldContent() {
               cursor: 'pointer',
               fontSize: '14px',
               fontWeight: 600,
-              color: 'var(--sentinel-accent-primary)',
-              fontFamily: 'var(--sentinel-font-mono)',
+              color: 'var(--fing-accent-primary)',
+              fontFamily: 'var(--fing-font-mono)',
               transition: 'box-shadow 150ms ease',
             }}>
               Enviar
@@ -269,7 +269,7 @@ function FormFieldContent() {
               fontSize: '14px',
               fontWeight: 500,
               color: '#636E72',
-              fontFamily: 'var(--sentinel-font-mono)',
+              fontFamily: 'var(--fing-font-mono)',
               transition: 'box-shadow 150ms ease',
             }}>
               Cancelar
@@ -285,16 +285,16 @@ function FormFieldContent() {
           boxShadow: getNeuInsetShadow(5, 15),
           background: MARBLE.base,
           fontSize: '12px',
-          fontFamily: 'var(--sentinel-font-mono)',
+          fontFamily: 'var(--fing-font-mono)',
           color: '#636E72',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Display:</strong> flex, flex-direction column</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Gap:</strong> 8px entre elementos</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Label:</strong> 12px, color #252528</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Required:</strong> asterisco color var(--sentinel-status-negative)</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Helper/Error:</strong> 11px, color #636E72 / negative</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Display:</strong> flex, flex-direction column</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Gap:</strong> 8px entre elementos</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Label:</strong> 12px, color #252528</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Required:</strong> asterisco color var(--fing-status-negative)</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Helper/Error:</strong> 11px, color #636E72 / negative</p>
         </div>
       </ShowcaseSection>
     </div>

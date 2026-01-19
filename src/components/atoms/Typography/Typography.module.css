@@ -1,12 +1,12 @@
 /* Path: src/components/atoms/Typography/Typography.module.css */
-/* SENTINEL Design System */
+/* FING Design System */
 
 /* Base typography styles */
 .base {
-  font-family: var(--sentinel-font-led);
+  font-family: var(--fing-font-led);
   line-height: var(--line-height-default);
   color: var(--foreground);
-  letter-spacing: var(--sentinel-tracking-led);
+  letter-spacing: var(--fing-tracking-led);
   margin: 0;
 }
 
@@ -64,7 +64,7 @@
 
 /* ProductKey - 24px Bold, Orange (accent branding) */
 .productKey {
-  font-family: var(--sentinel-font-ticker);
+  font-family: var(--fing-font-ticker);
   font-size: var(--text-siglas);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-default);
@@ -73,7 +73,7 @@
   display: inline-block;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  text-shadow: var(--sentinel-glow-accent);
+  text-shadow: var(--fing-glow-accent);
 }
 
 /* Code - monospace styling */

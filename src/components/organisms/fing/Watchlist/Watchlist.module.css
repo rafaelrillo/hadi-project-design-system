@@ -1,0 +1,215 @@
+/* Path: src/components/organisms/fing/Watchlist/Watchlist.module.css */
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   WATCHLIST
+   Lista de seguimiento de stocks con sparklines
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.watchlist {
+  font-family: var(--fing-font-data);
+  font-size: var(--fing-data-base);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   HEADER
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.header {
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--fing-panel-divider);
+  font-size: var(--fing-data-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--fing-text-tertiary);
+}
+
+.headerSymbol {
+  text-align: left;
+}
+
+.headerPrice,
+.headerChange {
+  text-align: right;
+  min-width: 70px;
+}
+
+.headerSparkline {
+  text-align: center;
+  min-width: 60px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   ITEMS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.items {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
+  gap: 12px;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--fing-panel-divider);
+  transition: background var(--fing-duration-fast) var(--fing-ease-default);
+}
+
+.item:last-child {
+  border-bottom: none;
+}
+
+.item.clickable {
+  cursor: pointer;
+  padding: 10px 8px;
+  margin: 0 -8px;
+  border-radius: var(--fing-radius-sm);
+}
+
+.item.clickable:hover {
+  background: var(--fing-grid-accent);
+}
+
+.item.clickable:focus-visible {
+  outline: 2px solid var(--fing-accent-primary);
+  outline-offset: -2px;
+}
+
+/* Symbol cell */
+.symbolCell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.symbol {
+  font-weight: 600;
+  color: var(--fing-text-primary);
+  letter-spacing: 0.02em;
+}
+
+.name {
+  font-size: var(--fing-data-xs);
+  color: var(--fing-text-tertiary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Price */
+.price {
+  text-align: right;
+  color: var(--fing-text-secondary);
+  min-width: 70px;
+}
+
+/* Change */
+.change {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 3px;
+  min-width: 70px;
+  font-weight: 500;
+}
+
+.change.positive {
+  color: var(--fing-value-up);
+}
+
+.change.negative {
+  color: var(--fing-value-down);
+}
+
+.change.neutral {
+  color: var(--fing-value-unchanged);
+}
+
+/* Sparkline */
+.sparkline {
+  display: flex;
+  justify-content: center;
+  min-width: 60px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   COMPACT MODE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.watchlist.compact .header {
+  padding: 6px 0;
+  font-size: 9px;
+}
+
+.watchlist.compact .item {
+  padding: 8px 0;
+}
+
+.watchlist.compact .symbol {
+  font-size: var(--fing-data-sm);
+}
+
+.watchlist.compact .price,
+.watchlist.compact .change {
+  font-size: var(--fing-data-sm);
+  min-width: 60px;
+}
+
+.watchlist.compact .headerPrice,
+.watchlist.compact .headerChange {
+  min-width: 60px;
+}
+
+.watchlist.compact .sparkline {
+  min-width: 50px;
+}
+
+.watchlist.compact .headerSparkline {
+  min-width: 50px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   EMPTY STATE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.empty {
+  padding: 24px;
+  text-align: center;
+  color: var(--fing-text-tertiary);
+  font-size: var(--fing-data-sm);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   RESPONSIVE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .header {
+    grid-template-columns: 1fr auto auto;
+  }
+
+  .headerSparkline {
+    display: none;
+  }
+
+  .item {
+    grid-template-columns: 1fr auto auto;
+  }
+
+  .sparkline {
+    display: none;
+  }
+
+  .price,
+  .change {
+    min-width: 60px;
+  }
+}

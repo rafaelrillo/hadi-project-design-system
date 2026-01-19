@@ -1,6 +1,6 @@
 /* Path: src/components/atoms/Button/Button.module.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   SENTINEL DESIGN SYSTEM v4.0 - Button System
+   FING DESIGN SYSTEM v4.0 - Button System
 
    Complete button system with:
    - 15 Neumorphic variants
@@ -14,7 +14,7 @@
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 .button {
-  font-family: var(--sentinel-font-primary);
+  font-family: var(--fing-font-primary);
   font-weight: 500;
   line-height: 1;
   letter-spacing: 0.01em;
@@ -30,14 +30,14 @@
   -webkit-tap-highlight-color: transparent;
   user-select: none;
   white-space: nowrap;
-  transition: var(--sentinel-btn-transition);
-  border-radius: var(--sentinel-btn-radius);
-  background: var(--sentinel-bg-elevated);
-  color: var(--sentinel-text-secondary);
+  transition: var(--fing-btn-transition);
+  border-radius: var(--fing-btn-radius);
+  background: var(--fing-bg-elevated);
+  color: var(--fing-text-secondary);
 }
 
 .button:focus-visible {
-  outline: 2px solid var(--sentinel-accent-primary);
+  outline: 2px solid var(--fing-accent-primary);
   outline-offset: 3px;
 }
 
@@ -67,42 +67,42 @@
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 .xs {
-  height: var(--sentinel-btn-height-xs);
-  padding: var(--sentinel-btn-padding-xs);
-  font-size: var(--sentinel-btn-font-xs);
-  border-radius: var(--sentinel-btn-radius-sm);
+  height: var(--fing-btn-height-xs);
+  padding: var(--fing-btn-padding-xs);
+  font-size: var(--fing-btn-font-xs);
+  border-radius: var(--fing-btn-radius-sm);
   gap: 6px;
 }
 
 .sm {
-  height: var(--sentinel-btn-height-sm);
-  padding: var(--sentinel-btn-padding-sm);
-  font-size: var(--sentinel-btn-font-sm);
-  border-radius: var(--sentinel-btn-radius-sm);
+  height: var(--fing-btn-height-sm);
+  padding: var(--fing-btn-padding-sm);
+  font-size: var(--fing-btn-font-sm);
+  border-radius: var(--fing-btn-radius-sm);
   gap: 6px;
 }
 
 .md {
-  height: var(--sentinel-btn-height-md);
-  padding: var(--sentinel-btn-padding-md);
-  font-size: var(--sentinel-btn-font-md);
-  border-radius: var(--sentinel-btn-radius);
+  height: var(--fing-btn-height-md);
+  padding: var(--fing-btn-padding-md);
+  font-size: var(--fing-btn-font-md);
+  border-radius: var(--fing-btn-radius);
   gap: 8px;
 }
 
 .lg {
-  height: var(--sentinel-btn-height-lg);
-  padding: var(--sentinel-btn-padding-lg);
-  font-size: var(--sentinel-btn-font-lg);
-  border-radius: var(--sentinel-btn-radius);
+  height: var(--fing-btn-height-lg);
+  padding: var(--fing-btn-padding-lg);
+  font-size: var(--fing-btn-font-lg);
+  border-radius: var(--fing-btn-radius);
   gap: 10px;
 }
 
 .xl {
-  height: var(--sentinel-btn-height-xl);
-  padding: var(--sentinel-btn-padding-xl);
-  font-size: var(--sentinel-btn-font-xl);
-  border-radius: var(--sentinel-btn-radius);
+  height: var(--fing-btn-height-xl);
+  padding: var(--fing-btn-padding-xl);
+  font-size: var(--fing-btn-font-xl);
+  border-radius: var(--fing-btn-radius);
   gap: 12px;
 }
 
@@ -111,7 +111,7 @@
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 .pill {
-  border-radius: var(--sentinel-btn-radius-pill);
+  border-radius: var(--fing-btn-radius-pill);
 }
 
 .fullWidth {
@@ -440,7 +440,7 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .marbleAccent {
-  background: linear-gradient(145deg, var(--sentinel-accent-secondary), var(--sentinel-accent-primary));
+  background: linear-gradient(145deg, var(--fing-accent-secondary), var(--fing-accent-primary));
   color: #ffffff;
   font-weight: 600;
   box-shadow: var(--raised-3);
@@ -456,7 +456,7 @@
 
 .marbleAccent:active:not(:disabled) {
   transform: translateY(0);
-  background: linear-gradient(145deg, var(--sentinel-accent-primary), var(--sentinel-accent-secondary));
+  background: linear-gradient(145deg, var(--fing-accent-primary), var(--fing-accent-secondary));
   box-shadow:
     inset 4px 4px 8px rgba(0, 0, 0, 0.15),
     inset -4px -4px 8px rgba(255, 255, 255, 0.1);
@@ -468,10 +468,10 @@
 
 .marbleAccentInset {
   background: var(--marble-base);
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
   font-weight: 600;
   box-shadow: var(--inset-2);
-  border: 2px solid var(--sentinel-accent-primary);
+  border: 2px solid var(--fing-accent-primary);
   text-shadow:
     -1px -1px 0px rgba(255, 255, 255, 0.9),
     1px 1px 0px rgba(147, 157, 170, 0.5);
@@ -542,7 +542,7 @@
 .marbleFrame:hover:not(:disabled) {
   transform: translateY(-2px);
   box-shadow: var(--raised-4);
-  outline-color: var(--sentinel-accent-primary);
+  outline-color: var(--fing-accent-primary);
 }
 
 .marbleFrame:active:not(:disabled) {
@@ -576,7 +576,7 @@
 .marbleSeal:hover:not(:disabled) {
   transform: scale(1.05);
   box-shadow: var(--raised-4);
-  border-color: var(--sentinel-accent-primary);
+  border-color: var(--fing-accent-primary);
 }
 
 .marbleSeal:active:not(:disabled) {
@@ -719,7 +719,7 @@
 }
 
 .marbleGlow:hover:not(:disabled) {
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
   transform: translateY(-2px);
   box-shadow:
     var(--raised-3),
@@ -758,7 +758,7 @@
   border-radius: 20px;
   border: none;
   cursor: pointer;
-  font-family: var(--sentinel-font-primary, 'DM Sans', sans-serif);
+  font-family: var(--fing-font-primary, 'DM Sans', sans-serif);
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.05em;
@@ -849,29 +849,29 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .glassTeal {
-  background: var(--sentinel-glass-teal-bg);
-  backdrop-filter: blur(var(--sentinel-btn-glass-blur)) saturate(180%);
-  -webkit-backdrop-filter: blur(var(--sentinel-btn-glass-blur)) saturate(180%);
-  border: 1px solid var(--sentinel-glass-teal-border);
-  color: var(--sentinel-glass-teal-text);
+  background: var(--fing-glass-teal-bg);
+  backdrop-filter: blur(var(--fing-btn-glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--fing-btn-glass-blur)) saturate(180%);
+  border: 1px solid var(--fing-glass-teal-border);
+  color: var(--fing-glass-teal-text);
   box-shadow:
-    0 4px 16px var(--sentinel-btn-glass-shadow),
-    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+    0 4px 16px var(--fing-btn-glass-shadow),
+    inset 0 1px 0 var(--fing-btn-glass-shine);
 }
 
 .glassTeal:hover:not(:disabled) {
-  background: var(--sentinel-glass-teal-bg-hover);
+  background: var(--fing-glass-teal-bg-hover);
   transform: translateY(-2px);
   box-shadow:
-    0 8px 24px var(--sentinel-btn-glass-shadow),
-    0 0 20px var(--sentinel-glass-teal-glow),
-    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+    0 8px 24px var(--fing-btn-glass-shadow),
+    0 0 20px var(--fing-glass-teal-glow),
+    inset 0 1px 0 var(--fing-btn-glass-shine);
 }
 
 .glassTeal:active:not(:disabled) {
   transform: translateY(1px);
   box-shadow:
-    0 2px 8px var(--sentinel-btn-glass-shadow),
+    0 2px 8px var(--fing-btn-glass-shadow),
     inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -880,29 +880,29 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .glassAmber {
-  background: var(--sentinel-glass-amber-bg);
-  backdrop-filter: blur(var(--sentinel-btn-glass-blur)) saturate(180%);
-  -webkit-backdrop-filter: blur(var(--sentinel-btn-glass-blur)) saturate(180%);
-  border: 1px solid var(--sentinel-glass-amber-border);
-  color: var(--sentinel-glass-amber-text);
+  background: var(--fing-glass-amber-bg);
+  backdrop-filter: blur(var(--fing-btn-glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--fing-btn-glass-blur)) saturate(180%);
+  border: 1px solid var(--fing-glass-amber-border);
+  color: var(--fing-glass-amber-text);
   box-shadow:
-    0 4px 16px var(--sentinel-btn-glass-shadow),
-    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+    0 4px 16px var(--fing-btn-glass-shadow),
+    inset 0 1px 0 var(--fing-btn-glass-shine);
 }
 
 .glassAmber:hover:not(:disabled) {
-  background: var(--sentinel-glass-amber-bg-hover);
+  background: var(--fing-glass-amber-bg-hover);
   transform: translateY(-2px);
   box-shadow:
-    0 8px 24px var(--sentinel-btn-glass-shadow),
-    0 0 20px var(--sentinel-glass-amber-glow),
-    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+    0 8px 24px var(--fing-btn-glass-shadow),
+    0 0 20px var(--fing-glass-amber-glow),
+    inset 0 1px 0 var(--fing-btn-glass-shine);
 }
 
 .glassAmber:active:not(:disabled) {
   transform: translateY(1px);
   box-shadow:
-    0 2px 8px var(--sentinel-btn-glass-shadow),
+    0 2px 8px var(--fing-btn-glass-shadow),
     inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -911,29 +911,29 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .glassRose {
-  background: var(--sentinel-glass-rose-bg);
-  backdrop-filter: blur(var(--sentinel-btn-glass-blur)) saturate(180%);
-  -webkit-backdrop-filter: blur(var(--sentinel-btn-glass-blur)) saturate(180%);
-  border: 1px solid var(--sentinel-glass-rose-border);
-  color: var(--sentinel-glass-rose-text);
+  background: var(--fing-glass-rose-bg);
+  backdrop-filter: blur(var(--fing-btn-glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--fing-btn-glass-blur)) saturate(180%);
+  border: 1px solid var(--fing-glass-rose-border);
+  color: var(--fing-glass-rose-text);
   box-shadow:
-    0 4px 16px var(--sentinel-btn-glass-shadow),
-    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+    0 4px 16px var(--fing-btn-glass-shadow),
+    inset 0 1px 0 var(--fing-btn-glass-shine);
 }
 
 .glassRose:hover:not(:disabled) {
-  background: var(--sentinel-glass-rose-bg-hover);
+  background: var(--fing-glass-rose-bg-hover);
   transform: translateY(-2px);
   box-shadow:
-    0 8px 24px var(--sentinel-btn-glass-shadow),
-    0 0 20px var(--sentinel-glass-rose-glow),
-    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+    0 8px 24px var(--fing-btn-glass-shadow),
+    0 0 20px var(--fing-glass-rose-glow),
+    inset 0 1px 0 var(--fing-btn-glass-shine);
 }
 
 .glassRose:active:not(:disabled) {
   transform: translateY(1px);
   box-shadow:
-    0 2px 8px var(--sentinel-btn-glass-shadow),
+    0 2px 8px var(--fing-btn-glass-shadow),
     inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -942,29 +942,29 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .glassViolet {
-  background: var(--sentinel-glass-violet-bg);
-  backdrop-filter: blur(var(--sentinel-btn-glass-blur)) saturate(180%);
-  -webkit-backdrop-filter: blur(var(--sentinel-btn-glass-blur)) saturate(180%);
-  border: 1px solid var(--sentinel-glass-violet-border);
-  color: var(--sentinel-glass-violet-text);
+  background: var(--fing-glass-violet-bg);
+  backdrop-filter: blur(var(--fing-btn-glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--fing-btn-glass-blur)) saturate(180%);
+  border: 1px solid var(--fing-glass-violet-border);
+  color: var(--fing-glass-violet-text);
   box-shadow:
-    0 4px 16px var(--sentinel-btn-glass-shadow),
-    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+    0 4px 16px var(--fing-btn-glass-shadow),
+    inset 0 1px 0 var(--fing-btn-glass-shine);
 }
 
 .glassViolet:hover:not(:disabled) {
-  background: var(--sentinel-glass-violet-bg-hover);
+  background: var(--fing-glass-violet-bg-hover);
   transform: translateY(-2px);
   box-shadow:
-    0 8px 24px var(--sentinel-btn-glass-shadow),
-    0 0 20px var(--sentinel-glass-violet-glow),
-    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+    0 8px 24px var(--fing-btn-glass-shadow),
+    0 0 20px var(--fing-glass-violet-glow),
+    inset 0 1px 0 var(--fing-btn-glass-shine);
 }
 
 .glassViolet:active:not(:disabled) {
   transform: translateY(1px);
   box-shadow:
-    0 2px 8px var(--sentinel-btn-glass-shadow),
+    0 2px 8px var(--fing-btn-glass-shadow),
     inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -973,29 +973,29 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .glassEmerald {
-  background: var(--sentinel-glass-emerald-bg);
-  backdrop-filter: blur(var(--sentinel-btn-glass-blur)) saturate(180%);
-  -webkit-backdrop-filter: blur(var(--sentinel-btn-glass-blur)) saturate(180%);
-  border: 1px solid var(--sentinel-glass-emerald-border);
-  color: var(--sentinel-glass-emerald-text);
+  background: var(--fing-glass-emerald-bg);
+  backdrop-filter: blur(var(--fing-btn-glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--fing-btn-glass-blur)) saturate(180%);
+  border: 1px solid var(--fing-glass-emerald-border);
+  color: var(--fing-glass-emerald-text);
   box-shadow:
-    0 4px 16px var(--sentinel-btn-glass-shadow),
-    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+    0 4px 16px var(--fing-btn-glass-shadow),
+    inset 0 1px 0 var(--fing-btn-glass-shine);
 }
 
 .glassEmerald:hover:not(:disabled) {
-  background: var(--sentinel-glass-emerald-bg-hover);
+  background: var(--fing-glass-emerald-bg-hover);
   transform: translateY(-2px);
   box-shadow:
-    0 8px 24px var(--sentinel-btn-glass-shadow),
-    0 0 20px var(--sentinel-glass-emerald-glow),
-    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+    0 8px 24px var(--fing-btn-glass-shadow),
+    0 0 20px var(--fing-glass-emerald-glow),
+    inset 0 1px 0 var(--fing-btn-glass-shine);
 }
 
 .glassEmerald:active:not(:disabled) {
   transform: translateY(1px);
   box-shadow:
-    0 2px 8px var(--sentinel-btn-glass-shadow),
+    0 2px 8px var(--fing-btn-glass-shadow),
     inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -1004,29 +1004,29 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .glassSky {
-  background: var(--sentinel-glass-sky-bg);
-  backdrop-filter: blur(var(--sentinel-btn-glass-blur)) saturate(180%);
-  -webkit-backdrop-filter: blur(var(--sentinel-btn-glass-blur)) saturate(180%);
-  border: 1px solid var(--sentinel-glass-sky-border);
-  color: var(--sentinel-glass-sky-text);
+  background: var(--fing-glass-sky-bg);
+  backdrop-filter: blur(var(--fing-btn-glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--fing-btn-glass-blur)) saturate(180%);
+  border: 1px solid var(--fing-glass-sky-border);
+  color: var(--fing-glass-sky-text);
   box-shadow:
-    0 4px 16px var(--sentinel-btn-glass-shadow),
-    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+    0 4px 16px var(--fing-btn-glass-shadow),
+    inset 0 1px 0 var(--fing-btn-glass-shine);
 }
 
 .glassSky:hover:not(:disabled) {
-  background: var(--sentinel-glass-sky-bg-hover);
+  background: var(--fing-glass-sky-bg-hover);
   transform: translateY(-2px);
   box-shadow:
-    0 8px 24px var(--sentinel-btn-glass-shadow),
-    0 0 20px var(--sentinel-glass-sky-glow),
-    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+    0 8px 24px var(--fing-btn-glass-shadow),
+    0 0 20px var(--fing-glass-sky-glow),
+    inset 0 1px 0 var(--fing-btn-glass-shine);
 }
 
 .glassSky:active:not(:disabled) {
   transform: translateY(1px);
   box-shadow:
-    0 2px 8px var(--sentinel-btn-glass-shadow),
+    0 2px 8px var(--fing-btn-glass-shadow),
     inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -1035,29 +1035,29 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .glassSmoke {
-  background: var(--sentinel-glass-smoke-bg);
-  backdrop-filter: blur(var(--sentinel-btn-glass-blur)) saturate(180%);
-  -webkit-backdrop-filter: blur(var(--sentinel-btn-glass-blur)) saturate(180%);
-  border: 1px solid var(--sentinel-glass-smoke-border);
-  color: var(--sentinel-glass-smoke-text);
+  background: var(--fing-glass-smoke-bg);
+  backdrop-filter: blur(var(--fing-btn-glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--fing-btn-glass-blur)) saturate(180%);
+  border: 1px solid var(--fing-glass-smoke-border);
+  color: var(--fing-glass-smoke-text);
   box-shadow:
-    0 4px 16px var(--sentinel-btn-glass-shadow),
-    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+    0 4px 16px var(--fing-btn-glass-shadow),
+    inset 0 1px 0 var(--fing-btn-glass-shine);
 }
 
 .glassSmoke:hover:not(:disabled) {
-  background: var(--sentinel-glass-smoke-bg-hover);
+  background: var(--fing-glass-smoke-bg-hover);
   transform: translateY(-2px);
   box-shadow:
-    0 8px 24px var(--sentinel-btn-glass-shadow),
-    0 0 20px var(--sentinel-glass-smoke-glow),
-    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+    0 8px 24px var(--fing-btn-glass-shadow),
+    0 0 20px var(--fing-glass-smoke-glow),
+    inset 0 1px 0 var(--fing-btn-glass-shine);
 }
 
 .glassSmoke:active:not(:disabled) {
   transform: translateY(1px);
   box-shadow:
-    0 2px 8px var(--sentinel-btn-glass-shadow),
+    0 2px 8px var(--fing-btn-glass-shadow),
     inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -1066,29 +1066,29 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .glassFrost {
-  background: var(--sentinel-glass-frost-bg);
-  backdrop-filter: blur(var(--sentinel-btn-glass-blur)) saturate(180%);
-  -webkit-backdrop-filter: blur(var(--sentinel-btn-glass-blur)) saturate(180%);
-  border: 1px solid var(--sentinel-glass-frost-border);
-  color: var(--sentinel-glass-frost-text);
+  background: var(--fing-glass-frost-bg);
+  backdrop-filter: blur(var(--fing-btn-glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--fing-btn-glass-blur)) saturate(180%);
+  border: 1px solid var(--fing-glass-frost-border);
+  color: var(--fing-glass-frost-text);
   box-shadow:
-    0 4px 16px var(--sentinel-btn-glass-shadow),
-    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+    0 4px 16px var(--fing-btn-glass-shadow),
+    inset 0 1px 0 var(--fing-btn-glass-shine);
 }
 
 .glassFrost:hover:not(:disabled) {
-  background: var(--sentinel-glass-frost-bg-hover);
+  background: var(--fing-glass-frost-bg-hover);
   transform: translateY(-2px);
   box-shadow:
-    0 8px 24px var(--sentinel-btn-glass-shadow),
-    0 0 20px var(--sentinel-glass-frost-glow),
-    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+    0 8px 24px var(--fing-btn-glass-shadow),
+    0 0 20px var(--fing-glass-frost-glow),
+    inset 0 1px 0 var(--fing-btn-glass-shine);
 }
 
 .glassFrost:active:not(:disabled) {
   transform: translateY(1px);
   box-shadow:
-    0 2px 8px var(--sentinel-btn-glass-shadow),
+    0 2px 8px var(--fing-btn-glass-shadow),
     inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -1101,32 +1101,32 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .glassNeuTeal {
-  background: var(--sentinel-glass-teal-bg);
+  background: var(--fing-glass-teal-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--sentinel-glass-teal-border);
-  color: var(--sentinel-glass-teal-text);
+  border: 1px solid var(--fing-glass-teal-border);
+  color: var(--fing-glass-teal-text);
   box-shadow:
-    -4px -4px 8px var(--sentinel-btn-neu-light),
-    4px 4px 8px var(--sentinel-btn-neu-dark),
-    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+    -4px -4px 8px var(--fing-btn-neu-light),
+    4px 4px 8px var(--fing-btn-neu-dark),
+    inset 0 1px 0 var(--fing-btn-glass-shine);
 }
 
 .glassNeuTeal:hover:not(:disabled) {
-  background: var(--sentinel-glass-teal-bg-hover);
+  background: var(--fing-glass-teal-bg-hover);
   transform: translateY(-2px);
   box-shadow:
-    -6px -6px 12px var(--sentinel-btn-neu-light),
-    6px 6px 12px var(--sentinel-btn-neu-dark),
-    0 0 16px var(--sentinel-glass-teal-glow),
-    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+    -6px -6px 12px var(--fing-btn-neu-light),
+    6px 6px 12px var(--fing-btn-neu-dark),
+    0 0 16px var(--fing-glass-teal-glow),
+    inset 0 1px 0 var(--fing-btn-glass-shine);
 }
 
 .glassNeuTeal:active:not(:disabled) {
   transform: translateY(0);
   box-shadow:
-    inset 3px 3px 6px var(--sentinel-btn-neu-dark),
-    inset -3px -3px 6px var(--sentinel-btn-neu-light);
+    inset 3px 3px 6px var(--fing-btn-neu-dark),
+    inset -3px -3px 6px var(--fing-btn-neu-light);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -1134,32 +1134,32 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .glassNeuAmber {
-  background: var(--sentinel-glass-amber-bg);
+  background: var(--fing-glass-amber-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--sentinel-glass-amber-border);
-  color: var(--sentinel-glass-amber-text);
+  border: 1px solid var(--fing-glass-amber-border);
+  color: var(--fing-glass-amber-text);
   box-shadow:
-    -4px -4px 8px var(--sentinel-btn-neu-light),
-    4px 4px 8px var(--sentinel-btn-neu-dark),
-    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+    -4px -4px 8px var(--fing-btn-neu-light),
+    4px 4px 8px var(--fing-btn-neu-dark),
+    inset 0 1px 0 var(--fing-btn-glass-shine);
 }
 
 .glassNeuAmber:hover:not(:disabled) {
-  background: var(--sentinel-glass-amber-bg-hover);
+  background: var(--fing-glass-amber-bg-hover);
   transform: translateY(-2px);
   box-shadow:
-    -6px -6px 12px var(--sentinel-btn-neu-light),
-    6px 6px 12px var(--sentinel-btn-neu-dark),
-    0 0 16px var(--sentinel-glass-amber-glow),
-    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+    -6px -6px 12px var(--fing-btn-neu-light),
+    6px 6px 12px var(--fing-btn-neu-dark),
+    0 0 16px var(--fing-glass-amber-glow),
+    inset 0 1px 0 var(--fing-btn-glass-shine);
 }
 
 .glassNeuAmber:active:not(:disabled) {
   transform: translateY(0);
   box-shadow:
-    inset 3px 3px 6px var(--sentinel-btn-neu-dark),
-    inset -3px -3px 6px var(--sentinel-btn-neu-light);
+    inset 3px 3px 6px var(--fing-btn-neu-dark),
+    inset -3px -3px 6px var(--fing-btn-neu-light);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -1167,32 +1167,32 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .glassNeuRose {
-  background: var(--sentinel-glass-rose-bg);
+  background: var(--fing-glass-rose-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--sentinel-glass-rose-border);
-  color: var(--sentinel-glass-rose-text);
+  border: 1px solid var(--fing-glass-rose-border);
+  color: var(--fing-glass-rose-text);
   box-shadow:
-    -4px -4px 8px var(--sentinel-btn-neu-light),
-    4px 4px 8px var(--sentinel-btn-neu-dark),
-    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+    -4px -4px 8px var(--fing-btn-neu-light),
+    4px 4px 8px var(--fing-btn-neu-dark),
+    inset 0 1px 0 var(--fing-btn-glass-shine);
 }
 
 .glassNeuRose:hover:not(:disabled) {
-  background: var(--sentinel-glass-rose-bg-hover);
+  background: var(--fing-glass-rose-bg-hover);
   transform: translateY(-2px);
   box-shadow:
-    -6px -6px 12px var(--sentinel-btn-neu-light),
-    6px 6px 12px var(--sentinel-btn-neu-dark),
-    0 0 16px var(--sentinel-glass-rose-glow),
-    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+    -6px -6px 12px var(--fing-btn-neu-light),
+    6px 6px 12px var(--fing-btn-neu-dark),
+    0 0 16px var(--fing-glass-rose-glow),
+    inset 0 1px 0 var(--fing-btn-glass-shine);
 }
 
 .glassNeuRose:active:not(:disabled) {
   transform: translateY(0);
   box-shadow:
-    inset 3px 3px 6px var(--sentinel-btn-neu-dark),
-    inset -3px -3px 6px var(--sentinel-btn-neu-light);
+    inset 3px 3px 6px var(--fing-btn-neu-dark),
+    inset -3px -3px 6px var(--fing-btn-neu-light);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -1200,32 +1200,32 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .glassNeuViolet {
-  background: var(--sentinel-glass-violet-bg);
+  background: var(--fing-glass-violet-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--sentinel-glass-violet-border);
-  color: var(--sentinel-glass-violet-text);
+  border: 1px solid var(--fing-glass-violet-border);
+  color: var(--fing-glass-violet-text);
   box-shadow:
-    -4px -4px 8px var(--sentinel-btn-neu-light),
-    4px 4px 8px var(--sentinel-btn-neu-dark),
-    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+    -4px -4px 8px var(--fing-btn-neu-light),
+    4px 4px 8px var(--fing-btn-neu-dark),
+    inset 0 1px 0 var(--fing-btn-glass-shine);
 }
 
 .glassNeuViolet:hover:not(:disabled) {
-  background: var(--sentinel-glass-violet-bg-hover);
+  background: var(--fing-glass-violet-bg-hover);
   transform: translateY(-2px);
   box-shadow:
-    -6px -6px 12px var(--sentinel-btn-neu-light),
-    6px 6px 12px var(--sentinel-btn-neu-dark),
-    0 0 16px var(--sentinel-glass-violet-glow),
-    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+    -6px -6px 12px var(--fing-btn-neu-light),
+    6px 6px 12px var(--fing-btn-neu-dark),
+    0 0 16px var(--fing-glass-violet-glow),
+    inset 0 1px 0 var(--fing-btn-glass-shine);
 }
 
 .glassNeuViolet:active:not(:disabled) {
   transform: translateY(0);
   box-shadow:
-    inset 3px 3px 6px var(--sentinel-btn-neu-dark),
-    inset -3px -3px 6px var(--sentinel-btn-neu-light);
+    inset 3px 3px 6px var(--fing-btn-neu-dark),
+    inset -3px -3px 6px var(--fing-btn-neu-light);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -1233,32 +1233,32 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .glassNeuEmerald {
-  background: var(--sentinel-glass-emerald-bg);
+  background: var(--fing-glass-emerald-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--sentinel-glass-emerald-border);
-  color: var(--sentinel-glass-emerald-text);
+  border: 1px solid var(--fing-glass-emerald-border);
+  color: var(--fing-glass-emerald-text);
   box-shadow:
-    -4px -4px 8px var(--sentinel-btn-neu-light),
-    4px 4px 8px var(--sentinel-btn-neu-dark),
-    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+    -4px -4px 8px var(--fing-btn-neu-light),
+    4px 4px 8px var(--fing-btn-neu-dark),
+    inset 0 1px 0 var(--fing-btn-glass-shine);
 }
 
 .glassNeuEmerald:hover:not(:disabled) {
-  background: var(--sentinel-glass-emerald-bg-hover);
+  background: var(--fing-glass-emerald-bg-hover);
   transform: translateY(-2px);
   box-shadow:
-    -6px -6px 12px var(--sentinel-btn-neu-light),
-    6px 6px 12px var(--sentinel-btn-neu-dark),
-    0 0 16px var(--sentinel-glass-emerald-glow),
-    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+    -6px -6px 12px var(--fing-btn-neu-light),
+    6px 6px 12px var(--fing-btn-neu-dark),
+    0 0 16px var(--fing-glass-emerald-glow),
+    inset 0 1px 0 var(--fing-btn-glass-shine);
 }
 
 .glassNeuEmerald:active:not(:disabled) {
   transform: translateY(0);
   box-shadow:
-    inset 3px 3px 6px var(--sentinel-btn-neu-dark),
-    inset -3px -3px 6px var(--sentinel-btn-neu-light);
+    inset 3px 3px 6px var(--fing-btn-neu-dark),
+    inset -3px -3px 6px var(--fing-btn-neu-light);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -1266,32 +1266,32 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .glassNeuSky {
-  background: var(--sentinel-glass-sky-bg);
+  background: var(--fing-glass-sky-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--sentinel-glass-sky-border);
-  color: var(--sentinel-glass-sky-text);
+  border: 1px solid var(--fing-glass-sky-border);
+  color: var(--fing-glass-sky-text);
   box-shadow:
-    -4px -4px 8px var(--sentinel-btn-neu-light),
-    4px 4px 8px var(--sentinel-btn-neu-dark),
-    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+    -4px -4px 8px var(--fing-btn-neu-light),
+    4px 4px 8px var(--fing-btn-neu-dark),
+    inset 0 1px 0 var(--fing-btn-glass-shine);
 }
 
 .glassNeuSky:hover:not(:disabled) {
-  background: var(--sentinel-glass-sky-bg-hover);
+  background: var(--fing-glass-sky-bg-hover);
   transform: translateY(-2px);
   box-shadow:
-    -6px -6px 12px var(--sentinel-btn-neu-light),
-    6px 6px 12px var(--sentinel-btn-neu-dark),
-    0 0 16px var(--sentinel-glass-sky-glow),
-    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+    -6px -6px 12px var(--fing-btn-neu-light),
+    6px 6px 12px var(--fing-btn-neu-dark),
+    0 0 16px var(--fing-glass-sky-glow),
+    inset 0 1px 0 var(--fing-btn-glass-shine);
 }
 
 .glassNeuSky:active:not(:disabled) {
   transform: translateY(0);
   box-shadow:
-    inset 3px 3px 6px var(--sentinel-btn-neu-dark),
-    inset -3px -3px 6px var(--sentinel-btn-neu-light);
+    inset 3px 3px 6px var(--fing-btn-neu-dark),
+    inset -3px -3px 6px var(--fing-btn-neu-light);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -1299,32 +1299,32 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .glassNeuSmoke {
-  background: var(--sentinel-glass-smoke-bg);
+  background: var(--fing-glass-smoke-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--sentinel-glass-smoke-border);
-  color: var(--sentinel-glass-smoke-text);
+  border: 1px solid var(--fing-glass-smoke-border);
+  color: var(--fing-glass-smoke-text);
   box-shadow:
-    -4px -4px 8px var(--sentinel-btn-neu-light),
-    4px 4px 8px var(--sentinel-btn-neu-dark),
-    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+    -4px -4px 8px var(--fing-btn-neu-light),
+    4px 4px 8px var(--fing-btn-neu-dark),
+    inset 0 1px 0 var(--fing-btn-glass-shine);
 }
 
 .glassNeuSmoke:hover:not(:disabled) {
-  background: var(--sentinel-glass-smoke-bg-hover);
+  background: var(--fing-glass-smoke-bg-hover);
   transform: translateY(-2px);
   box-shadow:
-    -6px -6px 12px var(--sentinel-btn-neu-light),
-    6px 6px 12px var(--sentinel-btn-neu-dark),
-    0 0 16px var(--sentinel-glass-smoke-glow),
-    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+    -6px -6px 12px var(--fing-btn-neu-light),
+    6px 6px 12px var(--fing-btn-neu-dark),
+    0 0 16px var(--fing-glass-smoke-glow),
+    inset 0 1px 0 var(--fing-btn-glass-shine);
 }
 
 .glassNeuSmoke:active:not(:disabled) {
   transform: translateY(0);
   box-shadow:
-    inset 3px 3px 6px var(--sentinel-btn-neu-dark),
-    inset -3px -3px 6px var(--sentinel-btn-neu-light);
+    inset 3px 3px 6px var(--fing-btn-neu-dark),
+    inset -3px -3px 6px var(--fing-btn-neu-light);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -1332,32 +1332,32 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .glassNeuFrost {
-  background: var(--sentinel-glass-frost-bg);
+  background: var(--fing-glass-frost-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--sentinel-glass-frost-border);
-  color: var(--sentinel-glass-frost-text);
+  border: 1px solid var(--fing-glass-frost-border);
+  color: var(--fing-glass-frost-text);
   box-shadow:
-    -4px -4px 8px var(--sentinel-btn-neu-light),
-    4px 4px 8px var(--sentinel-btn-neu-dark),
-    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+    -4px -4px 8px var(--fing-btn-neu-light),
+    4px 4px 8px var(--fing-btn-neu-dark),
+    inset 0 1px 0 var(--fing-btn-glass-shine);
 }
 
 .glassNeuFrost:hover:not(:disabled) {
-  background: var(--sentinel-glass-frost-bg-hover);
+  background: var(--fing-glass-frost-bg-hover);
   transform: translateY(-2px);
   box-shadow:
-    -6px -6px 12px var(--sentinel-btn-neu-light),
-    6px 6px 12px var(--sentinel-btn-neu-dark),
-    0 0 16px var(--sentinel-glass-frost-glow),
-    inset 0 1px 0 var(--sentinel-btn-glass-shine);
+    -6px -6px 12px var(--fing-btn-neu-light),
+    6px 6px 12px var(--fing-btn-neu-dark),
+    0 0 16px var(--fing-glass-frost-glow),
+    inset 0 1px 0 var(--fing-btn-glass-shine);
 }
 
 .glassNeuFrost:active:not(:disabled) {
   transform: translateY(0);
   box-shadow:
-    inset 3px 3px 6px var(--sentinel-btn-neu-dark),
-    inset -3px -3px 6px var(--sentinel-btn-neu-light);
+    inset 3px 3px 6px var(--fing-btn-neu-dark),
+    inset -3px -3px 6px var(--fing-btn-neu-light);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════════
@@ -1404,7 +1404,7 @@
   height: 20px;
   padding: 0 6px;
   border-radius: 10px;
-  background: var(--sentinel-status-negative);
+  background: var(--fing-status-negative);
   color: white;
   font-size: 11px;
   font-weight: 600;
@@ -1421,8 +1421,8 @@
   left: 50%;
   transform: translateX(-50%);
   padding: 6px 10px;
-  background: var(--sentinel-bg-elevated);
-  color: var(--sentinel-text-primary);
+  background: var(--fing-bg-elevated);
+  color: var(--fing-text-primary);
   font-size: 12px;
   border-radius: 6px;
   white-space: nowrap;
@@ -1430,8 +1430,8 @@
   visibility: hidden;
   transition: opacity 0.2s, visibility 0.2s;
   box-shadow:
-    -3px -3px 6px var(--sentinel-btn-neu-light),
-    3px 3px 6px var(--sentinel-btn-neu-dark);
+    -3px -3px 6px var(--fing-btn-neu-light),
+    3px 3px 6px var(--fing-btn-neu-dark);
   z-index: 100;
 }
 
@@ -1446,15 +1446,15 @@
 
 .toggleTrack {
   position: relative;
-  background: var(--sentinel-bg-elevated);
+  background: var(--fing-bg-elevated);
   border-radius: 100px;
   border: none;
   cursor: pointer;
   padding: 3px;
   box-shadow:
-    inset 3px 3px 6px var(--sentinel-btn-neu-dark),
-    inset -3px -3px 6px var(--sentinel-btn-neu-light);
-  transition: var(--sentinel-btn-transition);
+    inset 3px 3px 6px var(--fing-btn-neu-dark),
+    inset -3px -3px 6px var(--fing-btn-neu-light);
+  transition: var(--fing-btn-transition);
 }
 
 .toggleTrack:disabled {
@@ -1480,11 +1480,11 @@
 .toggleKnob {
   position: absolute;
   top: 3px;
-  background: var(--sentinel-bg-elevated);
+  background: var(--fing-bg-elevated);
   border-radius: 50%;
   box-shadow:
-    2px 2px 4px var(--sentinel-btn-neu-dark),
-    -2px -2px 4px var(--sentinel-btn-neu-light);
+    2px 2px 4px var(--fing-btn-neu-dark),
+    -2px -2px 4px var(--fing-btn-neu-light);
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -1507,11 +1507,11 @@
 }
 
 .toggleTrack.on .toggleKnob {
-  background: var(--sentinel-accent-primary);
+  background: var(--fing-accent-primary);
   box-shadow:
-    2px 2px 4px var(--sentinel-btn-neu-dark),
-    -2px -2px 4px var(--sentinel-btn-neu-light),
-    0 0 12px var(--sentinel-accent-glow);
+    2px 2px 4px var(--fing-btn-neu-dark),
+    -2px -2px 4px var(--fing-btn-neu-light),
+    0 0 12px var(--fing-accent-glow);
 }
 
 .toggleTrack.sm.on .toggleKnob {
@@ -1545,18 +1545,18 @@
 }
 
 .buttonGroupNeu {
-  background: var(--sentinel-bg-elevated);
+  background: var(--fing-bg-elevated);
   box-shadow:
-    -6px -6px 12px var(--sentinel-btn-neu-light),
-    6px 6px 12px var(--sentinel-btn-neu-dark);
+    -6px -6px 12px var(--fing-btn-neu-light),
+    6px 6px 12px var(--fing-btn-neu-dark);
 }
 
 .buttonGroupGlass {
-  background: var(--sentinel-glass-bg);
+  background: var(--fing-glass-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--sentinel-glass-border);
-  box-shadow: 0 4px 16px var(--sentinel-btn-glass-shadow);
+  border: 1px solid var(--fing-glass-border);
+  box-shadow: 0 4px 16px var(--fing-btn-glass-shadow);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════════
@@ -1565,21 +1565,21 @@
 
 .tabGroup {
   display: inline-flex;
-  background: var(--sentinel-bg-elevated);
+  background: var(--fing-bg-elevated);
   border-radius: 14px;
   padding: 6px;
   gap: 4px;
   box-shadow:
-    -6px -6px 12px var(--sentinel-btn-neu-light),
-    6px 6px 12px var(--sentinel-btn-neu-dark);
+    -6px -6px 12px var(--fing-btn-neu-light),
+    6px 6px 12px var(--fing-btn-neu-dark);
 }
 
 .tabButton {
   background: transparent;
-  color: var(--sentinel-text-secondary);
+  color: var(--fing-text-secondary);
   border: none;
   border-radius: 10px;
-  font-family: var(--sentinel-font-primary);
+  font-family: var(--fing-font-primary);
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -1604,17 +1604,17 @@
 }
 
 .tabButton:hover:not(.tabButtonActive) {
-  color: var(--sentinel-text-primary);
+  color: var(--fing-text-primary);
   background: rgba(255, 255, 255, 0.3);
 }
 
 .tabButtonActive {
-  background: var(--sentinel-bg-elevated);
-  color: var(--sentinel-accent-primary);
+  background: var(--fing-bg-elevated);
+  color: var(--fing-accent-primary);
   /* Raised/elevated shadow instead of inset */
   box-shadow:
-    -3px -3px 6px var(--sentinel-btn-neu-light),
-    3px 3px 6px var(--sentinel-btn-neu-dark);
+    -3px -3px 6px var(--fing-btn-neu-light),
+    3px 3px 6px var(--fing-btn-neu-dark);
 }
 
 /* Tab with icon - flex layout for icon + label */
@@ -1675,23 +1675,23 @@
 }
 
 .stepperNeu {
-  background: var(--sentinel-bg-elevated);
+  background: var(--fing-bg-elevated);
   box-shadow:
-    -5px -5px 10px var(--sentinel-btn-neu-light),
-    5px 5px 10px var(--sentinel-btn-neu-dark);
+    -5px -5px 10px var(--fing-btn-neu-light),
+    5px 5px 10px var(--fing-btn-neu-dark);
 }
 
 .stepperGlass {
-  background: var(--sentinel-glass-bg);
+  background: var(--fing-glass-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--sentinel-glass-border);
+  border: 1px solid var(--fing-glass-border);
 }
 
 .stepperButton {
   background: transparent;
   border: none;
-  color: var(--sentinel-text-secondary);
+  color: var(--fing-text-secondary);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -1700,7 +1700,7 @@
 }
 
 .stepperButton:hover:not(:disabled) {
-  color: var(--sentinel-text-primary);
+  color: var(--fing-text-primary);
   background: rgba(255, 255, 255, 0.3);
 }
 
@@ -1714,9 +1714,9 @@
 }
 
 .stepperValue {
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--fing-font-mono);
   font-weight: 600;
-  color: var(--sentinel-text-primary);
+  color: var(--fing-text-primary);
   text-align: center;
   background: transparent;
   border: none;

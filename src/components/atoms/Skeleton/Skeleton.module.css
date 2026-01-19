@@ -1,14 +1,14 @@
 /* Path: src/components/atoms/Skeleton/Skeleton.module.css */
 
 .skeleton {
-  background-color: var(--sentinel-bg-subtle);
-  border-radius: var(--sentinel-radius-sm);
+  background-color: var(--fing-bg-subtle);
+  border-radius: var(--fing-radius-sm);
 }
 
 /* Variants */
 .text {
   height: 1em;
-  border-radius: var(--sentinel-radius-sm);
+  border-radius: var(--fing-radius-sm);
 }
 
 .circular {
@@ -16,11 +16,11 @@
 }
 
 .rectangular {
-  border-radius: var(--sentinel-radius-md);
+  border-radius: var(--fing-radius-md);
 }
 
 .card {
-  border-radius: var(--sentinel-radius-lg);
+  border-radius: var(--fing-radius-lg);
   min-height: 100px;
 }
 
@@ -41,7 +41,7 @@
   background: linear-gradient(
     90deg,
     transparent,
-    var(--sentinel-bg-elevated) 50%,
+    var(--fing-bg-elevated) 50%,
     transparent
   );
   animation: skeleton-shimmer 1.5s infinite;
@@ -73,18 +73,18 @@
 .textContainer {
   display: flex;
   flex-direction: column;
-  gap: var(--sentinel-space-2);
+  gap: var(--fing-space-2);
 }
 
 /* Preset: Indicator Skeleton */
 .indicatorSkeleton {
   display: flex;
   flex-direction: column;
-  gap: var(--sentinel-space-2);
-  padding: var(--sentinel-space-4);
-  background-color: var(--sentinel-bg-elevated);
-  border: 1px solid var(--sentinel-border-subtle);
-  border-radius: var(--sentinel-radius-lg);
+  gap: var(--fing-space-2);
+  padding: var(--fing-space-4);
+  background-color: var(--fing-bg-elevated);
+  border: 1px solid var(--fing-border-subtle);
+  border-radius: var(--fing-radius-lg);
   min-width: 150px;
 }
 
@@ -92,42 +92,42 @@
 .cardSkeleton {
   display: flex;
   flex-direction: column;
-  gap: var(--sentinel-space-4);
-  padding: var(--sentinel-space-5);
-  background-color: var(--sentinel-bg-elevated);
-  border: 1px solid var(--sentinel-border-subtle);
-  border-radius: var(--sentinel-radius-lg);
+  gap: var(--fing-space-4);
+  padding: var(--fing-space-5);
+  background-color: var(--fing-bg-elevated);
+  border: 1px solid var(--fing-border-subtle);
+  border-radius: var(--fing-radius-lg);
 }
 
 .cardHeader {
   display: flex;
   align-items: center;
-  gap: var(--sentinel-space-3);
+  gap: var(--fing-space-3);
 }
 
 .cardHeaderText {
   display: flex;
   flex-direction: column;
-  gap: var(--sentinel-space-1);
+  gap: var(--fing-space-1);
 }
 
 .cardFooter {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: var(--sentinel-space-3);
-  border-top: 1px solid var(--sentinel-border-subtle);
+  padding-top: var(--fing-space-3);
+  border-top: 1px solid var(--fing-border-subtle);
 }
 
 /* Preset: Chart Skeleton */
 .chartSkeleton {
   display: flex;
   flex-direction: column;
-  gap: var(--sentinel-space-4);
-  padding: var(--sentinel-space-5);
-  background-color: var(--sentinel-bg-elevated);
-  border: 1px solid var(--sentinel-border-subtle);
-  border-radius: var(--sentinel-radius-lg);
+  gap: var(--fing-space-4);
+  padding: var(--fing-space-5);
+  background-color: var(--fing-bg-elevated);
+  border: 1px solid var(--fing-border-subtle);
+  border-radius: var(--fing-radius-lg);
 }
 
 .chartHeader {
@@ -145,25 +145,25 @@
 .tableRowSkeleton {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-  gap: var(--sentinel-space-4);
-  padding: var(--sentinel-space-3) var(--sentinel-space-4);
-  border-bottom: 1px solid var(--sentinel-border-subtle);
+  gap: var(--fing-space-4);
+  padding: var(--fing-space-3) var(--fing-space-4);
+  border-bottom: 1px solid var(--fing-border-subtle);
 }
 
 /* Preset: Metric Card Skeleton */
 .metricCardSkeleton {
   display: flex;
   flex-direction: column;
-  gap: var(--sentinel-space-2);
-  padding: var(--sentinel-space-4);
-  background-color: var(--sentinel-bg-elevated);
-  border: 1px solid var(--sentinel-border-subtle);
-  border-radius: var(--sentinel-radius-lg);
+  gap: var(--fing-space-2);
+  padding: var(--fing-space-4);
+  background-color: var(--fing-bg-elevated);
+  border: 1px solid var(--fing-border-subtle);
+  border-radius: var(--fing-radius-lg);
 }
 
 .metricTrend {
   display: flex;
   align-items: center;
-  gap: var(--sentinel-space-2);
-  margin-top: var(--sentinel-space-1);
+  gap: var(--fing-space-2);
+  margin-top: var(--fing-space-1);
 }

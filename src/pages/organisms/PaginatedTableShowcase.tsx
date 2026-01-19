@@ -1,5 +1,5 @@
 // Path: src/pages/organisms/PaginatedTableShowcase.tsx
-// SENTINEL Design System - Glass-Neumorphism Paginated Tables
+// FING Design System - Glass-Neumorphism Paginated Tables
 import React, { useState, useMemo } from 'react';
 import { PaginatedTable } from '../../components/organisms/PaginatedTable';
 import { TableColumn, TableRow } from '../../components/organisms/Table';
@@ -48,17 +48,17 @@ function PaginatedTableContent() {
   const titleStyles: React.CSSProperties = {
     fontSize: '28px',
     fontWeight: 700,
-    color: 'var(--sentinel-accent-primary)',
+    color: 'var(--fing-accent-primary)',
     marginBottom: '8px',
-    fontFamily: 'var(--sentinel-font-display)',
+    fontFamily: 'var(--fing-font-display)',
     textTransform: 'uppercase',
     letterSpacing: '0.1em',
   };
 
   const descStyles: React.CSSProperties = {
     fontSize: '14px',
-    color: 'var(--sentinel-text-secondary)',
-    fontFamily: 'var(--sentinel-font-mono)',
+    color: 'var(--fing-text-secondary)',
+    fontFamily: 'var(--fing-font-mono)',
     textTransform: 'uppercase',
     letterSpacing: '0.03em',
   };
@@ -144,7 +144,7 @@ function PaginatedTableContent() {
         borderRadius: '12px',
         boxShadow: getNeuInsetShadow(3, 8),
         fontSize: '14px',
-        fontFamily: 'var(--sentinel-font-mono)',
+        fontFamily: 'var(--fing-font-mono)',
       }}>
         <p><strong>Información adicional del usuario #{1001 + i}</strong></p>
         <p>Fecha de registro: 2024-{String((i % 12) + 1).padStart(2, '0')}-15</p>
@@ -187,7 +187,7 @@ function PaginatedTableContent() {
             marginBottom: '16px',
             fontSize: '14px',
             color: '#636E72',
-            fontFamily: 'var(--sentinel-font-mono)',
+            fontFamily: 'var(--fing-font-mono)',
           }}>
             Filas seleccionadas: {selectedRows.length > 0 ? selectedRows.join(', ') : 'Ninguna'}
           </div>
@@ -267,9 +267,9 @@ function PaginatedTableContent() {
             fontSize: '20px',
             fontWeight: 600,
             marginBottom: '8px',
-            fontFamily: 'var(--sentinel-font-display)',
+            fontFamily: 'var(--fing-font-display)',
             textTransform: 'uppercase',
-            color: 'var(--sentinel-text-primary)',
+            color: 'var(--fing-text-primary)',
           }}>
             Gestión de Usuarios
           </h2>
@@ -277,7 +277,7 @@ function PaginatedTableContent() {
             fontSize: '14px',
             color: '#636E72',
             marginBottom: '20px',
-            fontFamily: 'var(--sentinel-font-mono)',
+            fontFamily: 'var(--fing-font-mono)',
           }}>
             Listado completo de usuarios del sistema con paginación
           </p>
@@ -286,12 +286,12 @@ function PaginatedTableContent() {
             <div style={{
               padding: '12px 16px',
               background: MARBLE.base,
-              borderLeft: '4px solid var(--sentinel-accent-primary)',
+              borderLeft: '4px solid var(--fing-accent-primary)',
               borderRadius: '15px',
               boxShadow: getNeuPanelShadow(4, 12),
               marginBottom: '16px',
               fontSize: '14px',
-              fontFamily: 'var(--sentinel-font-mono)',
+              fontFamily: 'var(--fing-font-mono)',
             }}>
               <strong>{selectedRows.length}</strong> usuario(s) seleccionado(s): {selectedRows.join(', ')}
             </div>
@@ -319,21 +319,21 @@ function PaginatedTableContent() {
           boxShadow: getNeuInsetShadow(5, 15),
           background: MARBLE.base,
           fontSize: '12px',
-          fontFamily: 'var(--sentinel-font-mono)',
+          fontFamily: 'var(--fing-font-mono)',
           color: '#636E72',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Container:</strong> flex column, gap 20px</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Components:</strong> Combina Table + Pagination</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Data slicing:</strong> Automático basado en currentPage e itemsPerPage</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Footer:</strong> flex space-between, align-items center</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Info text:</strong> "Mostrando X-Y de Z resultados" (14px Regular)</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Pagination:</strong> Alineada a la derecha</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>showInfo:</strong> true por default, puede ocultarse</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Footer visibility:</strong> Solo se muestra si totalPages {'>'} 1</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Props heredadas de Table:</strong> selectable, selectedRows, onRowSelect, expandable, onRowClick, rowHeight</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Props de paginación:</strong> currentPage, itemsPerPage, onPageChange</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Container:</strong> flex column, gap 20px</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Components:</strong> Combina Table + Pagination</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Data slicing:</strong> Automático basado en currentPage e itemsPerPage</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Footer:</strong> flex space-between, align-items center</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Info text:</strong> "Mostrando X-Y de Z resultados" (14px Regular)</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Pagination:</strong> Alineada a la derecha</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>showInfo:</strong> true por default, puede ocultarse</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Footer visibility:</strong> Solo se muestra si totalPages {'>'} 1</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Props heredadas de Table:</strong> selectable, selectedRows, onRowSelect, expandable, onRowClick, rowHeight</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Props de paginación:</strong> currentPage, itemsPerPage, onPageChange</p>
         </div>
       </ShowcaseSection>
     </div>

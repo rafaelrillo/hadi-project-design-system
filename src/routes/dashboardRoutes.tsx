@@ -67,11 +67,11 @@ const SettingsPlaceholder = () => (
       justifyContent: 'center',
       height: '60vh',
       gap: '16px',
-      color: 'var(--sentinel-text-secondary)',
-      fontFamily: 'var(--sentinel-font-sans)',
+      color: 'var(--fing-text-secondary)',
+      fontFamily: 'var(--fing-font-sans)',
     }}
   >
-    <h2 style={{ color: 'var(--sentinel-text-primary)', fontSize: '24px', margin: 0 }}>
+    <h2 style={{ color: 'var(--fing-text-primary)', fontSize: '24px', margin: 0 }}>
       Settings
     </h2>
     <p style={{ margin: 0, maxWidth: '400px', textAlign: 'center' }}>
@@ -80,11 +80,11 @@ const SettingsPlaceholder = () => (
     <span
       style={{
         fontSize: '12px',
-        color: 'var(--sentinel-text-tertiary)',
-        fontFamily: 'var(--sentinel-font-mono)',
+        color: 'var(--fing-text-tertiary)',
+        fontFamily: 'var(--fing-font-mono)',
         padding: '8px 16px',
-        background: 'var(--sentinel-bg-elevated)',
-        borderRadius: 'var(--sentinel-radius-md)',
+        background: 'var(--fing-bg-elevated)',
+        borderRadius: 'var(--fing-radius-md)',
       }}
     >
       Coming Soon

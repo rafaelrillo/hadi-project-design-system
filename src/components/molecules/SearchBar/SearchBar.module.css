@@ -1,6 +1,6 @@
 /* Path: src/components/molecules/SearchBar/SearchBar.module.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   SENTINEL DESIGN SYSTEM - SearchBar Component
+   FING DESIGN SYSTEM - SearchBar Component
 
    Search input with icon and clear button
    ═══════════════════════════════════════════════════════════════════════════════ */
@@ -24,42 +24,42 @@
   width: 100%;
   height: 40px;
   padding: 0 40px 0 40px;
-  font-size: var(--sentinel-text-sm);
-  font-weight: var(--sentinel-font-normal);
-  color: var(--sentinel-text-primary);
-  background-color: var(--sentinel-bg-elevated);
-  border: 1px solid var(--sentinel-border-default);
-  border-radius: var(--sentinel-radius-md);
-  font-family: var(--sentinel-font-led);
-  letter-spacing: var(--sentinel-tracking-led);
+  font-size: var(--fing-text-sm);
+  font-weight: var(--fing-font-normal);
+  color: var(--fing-text-primary);
+  background-color: var(--fing-bg-elevated);
+  border: 1px solid var(--fing-border-default);
+  border-radius: var(--fing-radius-md);
+  font-family: var(--fing-font-led);
+  letter-spacing: var(--fing-tracking-led);
   outline: none;
-  transition: var(--sentinel-transition-normal);
+  transition: var(--fing-transition-normal);
   line-height: 1.5;
 }
 
 .input::placeholder {
-  color: var(--sentinel-text-tertiary);
+  color: var(--fing-text-tertiary);
 }
 
 .input:hover:not(:disabled):not(:focus) {
-  border-color: var(--sentinel-border-strong);
+  border-color: var(--fing-border-strong);
 }
 
 .input:focus {
-  border-color: var(--sentinel-accent-primary);
-  background-color: var(--sentinel-bg-overlay);
+  border-color: var(--fing-accent-primary);
+  background-color: var(--fing-bg-overlay);
 }
 
 /* Disabled input */
 .inputDisabled {
-  background-color: var(--sentinel-bg-subtle);
-  border-color: var(--sentinel-border-subtle);
-  color: var(--sentinel-text-disabled);
+  background-color: var(--fing-bg-subtle);
+  border-color: var(--fing-border-subtle);
+  color: var(--fing-text-disabled);
   cursor: not-allowed;
 }
 
 .inputDisabled::placeholder {
-  color: var(--sentinel-text-disabled);
+  color: var(--fing-text-disabled);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -68,13 +68,13 @@
 
 .searchIconContainer {
   position: absolute;
-  left: var(--sentinel-space-3);
+  left: var(--fing-space-3);
   top: 50%;
   transform: translateY(-50%);
   display: flex;
   align-items: center;
   pointer-events: none;
-  color: var(--sentinel-text-tertiary);
+  color: var(--fing-text-tertiary);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -83,27 +83,27 @@
 
 .clearButton {
   position: absolute;
-  right: var(--sentinel-space-2);
+  right: var(--fing-space-2);
   top: 50%;
   transform: translateY(-50%);
   background: transparent;
   border: none;
   cursor: pointer;
-  padding: var(--sentinel-space-1);
+  padding: var(--fing-space-1);
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--sentinel-radius-sm);
-  transition: var(--sentinel-transition-fast);
-  color: var(--sentinel-text-tertiary);
+  border-radius: var(--fing-radius-sm);
+  transition: var(--fing-transition-fast);
+  color: var(--fing-text-tertiary);
 }
 
 .clearButton:hover {
-  background-color: var(--sentinel-bg-subtle);
-  color: var(--sentinel-text-primary);
+  background-color: var(--fing-bg-subtle);
+  color: var(--fing-text-primary);
 }
 
 .clearButton:focus-visible {
-  outline: 2px solid var(--sentinel-accent-primary);
+  outline: 2px solid var(--fing-accent-primary);
   outline-offset: 2px;
 }

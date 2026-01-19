@@ -76,7 +76,7 @@ export function ShowcaseLayout() {
     display: 'flex',
     minHeight: '100vh',
     backgroundColor: 'transparent',
-    fontFamily: 'var(--sentinel-font-primary)'
+    fontFamily: 'var(--fing-font-primary)'
   };
 
   const sidebarStyles: React.CSSProperties = {
@@ -96,7 +96,7 @@ export function ShowcaseLayout() {
 
   const logoContainerStyles: React.CSSProperties = {
     padding: '20px 16px',
-    borderBottom: '1px solid var(--sentinel-border-subtle)',
+    borderBottom: '1px solid var(--fing-border-subtle)',
     display: 'flex',
     flexDirection: 'column',
     gap: '8px'
@@ -111,18 +111,18 @@ export function ShowcaseLayout() {
   const logoTextStyles: React.CSSProperties = {
     fontSize: '14px',
     fontWeight: 400,
-    color: 'var(--sentinel-text-primary)',
+    color: 'var(--fing-text-primary)',
     margin: 0,
-    fontFamily: 'var(--sentinel-font-primary)',
+    fontFamily: 'var(--fing-font-primary)',
     letterSpacing: '0.15em'
   };
 
   const versionStyles: React.CSSProperties = {
     fontSize: '11px',
     fontWeight: 400,
-    color: 'var(--sentinel-text-tertiary)',
+    color: 'var(--fing-text-tertiary)',
     margin: 0,
-    fontFamily: 'var(--sentinel-font-mono)'
+    fontFamily: 'var(--fing-font-mono)'
   };
 
   const navStyles: React.CSSProperties = {
@@ -134,9 +134,9 @@ export function ShowcaseLayout() {
     alignItems: 'center',
     gap: '10px',
     padding: '12px 16px',
-    color: 'var(--sentinel-text-primary)',
+    color: 'var(--fing-text-primary)',
     textDecoration: 'none',
-    fontFamily: 'var(--sentinel-font-primary)',
+    fontFamily: 'var(--fing-font-primary)',
     fontSize: '14px',
     fontWeight: 500,
     transition: 'all 200ms',
@@ -244,7 +244,7 @@ export function ShowcaseLayout() {
         <div style={logoContainerStyles}>
           <div style={logoSvgContainerStyles}>
             <FingEmblem size={36} animation="breathe" />
-            <h1 style={logoTextStyles}>SENTINEL</h1>
+            <h1 style={logoTextStyles}>FING</h1>
           </div>
           <p style={versionStyles}>Design System v2.0</p>
         </div>
@@ -256,14 +256,14 @@ export function ShowcaseLayout() {
             to="/"
             style={homeItemStyles}
             onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = 'var(--sentinel-bg-subtle)';
-              e.currentTarget.style.borderLeftColor = 'var(--sentinel-accent-primary)';
-              e.currentTarget.style.color = 'var(--sentinel-accent-primary)';
+              e.currentTarget.style.backgroundColor = 'var(--fing-bg-subtle)';
+              e.currentTarget.style.borderLeftColor = 'var(--fing-accent-primary)';
+              e.currentTarget.style.color = 'var(--fing-accent-primary)';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.backgroundColor = 'transparent';
               e.currentTarget.style.borderLeftColor = 'transparent';
-              e.currentTarget.style.color = 'var(--sentinel-text-primary)';
+              e.currentTarget.style.color = 'var(--fing-text-primary)';
             }}
           >
             <Home size={18} />
@@ -275,31 +275,31 @@ export function ShowcaseLayout() {
             to="/showcase"
             style={homeItemStyles}
             onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = 'var(--sentinel-bg-subtle)';
-              e.currentTarget.style.borderLeftColor = 'var(--sentinel-accent-primary)';
-              e.currentTarget.style.color = 'var(--sentinel-accent-primary)';
+              e.currentTarget.style.backgroundColor = 'var(--fing-bg-subtle)';
+              e.currentTarget.style.borderLeftColor = 'var(--fing-accent-primary)';
+              e.currentTarget.style.color = 'var(--fing-accent-primary)';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.backgroundColor = 'transparent';
               e.currentTarget.style.borderLeftColor = 'transparent';
-              e.currentTarget.style.color = 'var(--sentinel-text-primary)';
+              e.currentTarget.style.color = 'var(--fing-text-primary)';
             }}
           >
             <Sun size={18} />
             <span>Light Engine</span>
           </Link>
 
-          {/* SENTINEL Components Link */}
+          {/* FING Components Link */}
           <Link
-            to="/showcase/sentinel"
+            to="/showcase/fing"
             style={{
               ...homeItemStyles,
-              color: 'var(--sentinel-accent-primary)',
+              color: 'var(--fing-accent-primary)',
               fontWeight: 600
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = 'var(--sentinel-bg-subtle)';
-              e.currentTarget.style.borderLeftColor = 'var(--sentinel-accent-primary)';
+              e.currentTarget.style.backgroundColor = 'var(--fing-bg-subtle)';
+              e.currentTarget.style.borderLeftColor = 'var(--fing-accent-primary)';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.backgroundColor = 'transparent';
@@ -307,7 +307,7 @@ export function ShowcaseLayout() {
             }}
           >
             <BarChart3 size={18} />
-            <span>SENTINEL Components</span>
+            <span>FING Components</span>
           </Link>
 
           {/* Styles Group */}

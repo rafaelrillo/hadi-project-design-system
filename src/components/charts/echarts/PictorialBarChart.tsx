@@ -2,7 +2,7 @@
 import { useMemo } from 'react';
 import type { EChartsOption } from 'echarts';
 import { EChart } from './EChart';
-import { sentinelColors, chartPalette } from './sentinelTheme';
+import { fingColors, chartPalette } from './fingTheme';
 import type { BaseChartProps } from './types';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -133,7 +133,7 @@ export function PictorialBarChart({
       axisLine: { show: false },
       axisTick: { show: false },
       axisLabel: {
-        color: sentinelColors.textSecondary,
+        color: fingColors.textSecondary,
         fontSize: 11,
         fontFamily: "'Inter', sans-serif",
         margin: 12,
@@ -206,7 +206,7 @@ export function PictorialBarChart({
                   const p = params as { value: number };
                   return formatValue(p.value);
                 },
-                color: sentinelColors.textSecondary,
+                color: fingColors.textSecondary,
                 fontSize: 12,
                 fontFamily: "'Space Mono', monospace",
                 fontWeight: 500,

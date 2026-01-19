@@ -1,6 +1,6 @@
 /* Path: src/components/molecules/NotificationCard/NotificationCard.module.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   SENTINEL DESIGN SYSTEM - NotificationCard Component
+   FING DESIGN SYSTEM - NotificationCard Component
 
    Alert/notification cards with status variants
    Clean, professional styling
@@ -11,16 +11,16 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .container {
-  border-radius: var(--sentinel-radius-md);
-  padding: var(--sentinel-space-4);
+  border-radius: var(--fing-radius-md);
+  padding: var(--fing-space-4);
   display: flex;
-  gap: var(--sentinel-space-3);
+  gap: var(--fing-space-3);
   align-items: flex-start;
   position: relative;
-  box-shadow: var(--sentinel-shadow-md);
-  font-family: var(--sentinel-font-primary);
-  border: 1px solid var(--sentinel-border-default);
-  background-color: var(--sentinel-bg-elevated);
+  box-shadow: var(--fing-shadow-md);
+  font-family: var(--fing-font-primary);
+  border: 1px solid var(--fing-border-default);
+  background-color: var(--fing-bg-elevated);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -28,19 +28,19 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .variantSuccess {
-  border-left: 3px solid var(--sentinel-status-positive);
+  border-left: 3px solid var(--fing-status-positive);
 }
 
 .variantError {
-  border-left: 3px solid var(--sentinel-status-negative);
+  border-left: 3px solid var(--fing-status-negative);
 }
 
 .variantWarning {
-  border-left: 3px solid var(--sentinel-status-warning);
+  border-left: 3px solid var(--fing-status-warning);
 }
 
 .variantInfo {
-  border-left: 3px solid var(--sentinel-accent-primary);
+  border-left: 3px solid var(--fing-accent-primary);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -55,19 +55,19 @@
 }
 
 .variantSuccess .iconContainer {
-  color: var(--sentinel-status-positive-text);
+  color: var(--fing-status-positive-text);
 }
 
 .variantError .iconContainer {
-  color: var(--sentinel-status-negative-text);
+  color: var(--fing-status-negative-text);
 }
 
 .variantWarning .iconContainer {
-  color: var(--sentinel-status-warning-text);
+  color: var(--fing-status-warning-text);
 }
 
 .variantInfo .iconContainer {
-  color: var(--sentinel-accent-primary);
+  color: var(--fing-accent-primary);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -78,23 +78,23 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: var(--sentinel-space-1);
+  gap: var(--fing-space-1);
 }
 
 .title {
-  font-size: var(--sentinel-text-sm);
-  font-weight: var(--sentinel-font-semibold);
-  color: var(--sentinel-text-primary);
-  font-family: var(--sentinel-font-primary);
+  font-size: var(--fing-text-sm);
+  font-weight: var(--fing-font-semibold);
+  color: var(--fing-text-primary);
+  font-family: var(--fing-font-primary);
   line-height: 1.4;
   margin: 0;
 }
 
 .message {
-  font-size: var(--sentinel-text-sm);
-  font-weight: var(--sentinel-font-normal);
-  color: var(--sentinel-text-secondary);
-  font-family: var(--sentinel-font-primary);
+  font-size: var(--fing-text-sm);
+  font-weight: var(--fing-font-normal);
+  color: var(--fing-text-secondary);
+  font-family: var(--fing-font-primary);
   line-height: 1.5;
   margin: 0;
 }
@@ -105,26 +105,26 @@
 
 .closeButton {
   position: absolute;
-  top: var(--sentinel-space-3);
-  right: var(--sentinel-space-3);
+  top: var(--fing-space-3);
+  right: var(--fing-space-3);
   background: transparent;
   border: none;
   cursor: pointer;
-  padding: var(--sentinel-space-1);
+  padding: var(--fing-space-1);
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--sentinel-radius-sm);
-  transition: var(--sentinel-transition-fast);
-  color: var(--sentinel-text-tertiary);
+  border-radius: var(--fing-radius-sm);
+  transition: var(--fing-transition-fast);
+  color: var(--fing-text-tertiary);
 }
 
 .closeButton:hover {
-  background-color: var(--sentinel-bg-subtle);
-  color: var(--sentinel-text-primary);
+  background-color: var(--fing-bg-subtle);
+  color: var(--fing-text-primary);
 }
 
 .closeButton:focus-visible {
-  outline: 2px solid var(--sentinel-accent-primary);
+  outline: 2px solid var(--fing-accent-primary);
   outline-offset: 2px;
 }

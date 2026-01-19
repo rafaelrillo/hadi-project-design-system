@@ -1,0 +1,357 @@
+/* Path: src/components/organisms/fing/PeriodComparison/PeriodComparison.module.css */
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   PERIOD COMPARISON - Level 4 Depth Component
+   Visual comparison table following FING design philosophy
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.container {
+  background: var(--fing-bg-elevated);
+  border: 1px solid var(--fing-border-subtle);
+  border-radius: var(--fing-radius-lg, 12px);
+  overflow: hidden;
+}
+
+.container.compact {
+  font-size: 0.9em;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   HEADER
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.header {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--fing-border-subtle);
+}
+
+.headerContent {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.title {
+  font-family: var(--fing-font-primary);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--fing-text-primary);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.subtitle {
+  font-family: var(--fing-font-primary);
+  font-size: 13px;
+  color: var(--fing-text-secondary);
+  margin: 0;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   EMPTY STATE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 48px 24px;
+  color: var(--fing-text-tertiary);
+}
+
+.empty span {
+  font-family: var(--fing-font-primary);
+  font-size: 14px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   TABLE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.tableWrapper {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+/* Header Row */
+.table thead tr {
+  background: var(--fing-bg-subtle);
+}
+
+.metricHeader {
+  width: 180px;
+  padding: 16px 24px;
+  text-align: left;
+  font-family: var(--fing-font-numeric);
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--fing-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-bottom: 1px solid var(--fing-border-subtle);
+}
+
+.periodHeader {
+  position: relative;
+  padding: 16px 20px;
+  text-align: center;
+  border-bottom: 1px solid var(--fing-border-subtle);
+  border-left: 1px solid var(--fing-border-subtle);
+}
+
+.periodHeader.current {
+  background: var(--fing-accent-subtle);
+}
+
+.periodHeaderContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.periodName {
+  font-family: var(--fing-font-primary);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--fing-text-primary);
+}
+
+.periodDate {
+  font-family: var(--fing-font-numeric);
+  font-size: 10px;
+  color: var(--fing-text-tertiary);
+  letter-spacing: var(--fing-tracking-led);
+}
+
+.currentBadge {
+  margin-top: 4px;
+  padding: 2px 8px;
+  background: var(--fing-accent-primary);
+  color: var(--fing-text-inverse);
+  font-family: var(--fing-font-numeric);
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: var(--fing-radius-xs, 4px);
+}
+
+.deltaIndicator {
+  position: absolute;
+  right: -7px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--fing-bg-elevated);
+  border-radius: 50%;
+  color: var(--fing-text-tertiary);
+  z-index: 1;
+}
+
+/* Body Rows */
+.metricRow {
+  transition: background-color 200ms;
+}
+
+.metricRow:hover {
+  background: var(--fing-bg-subtle);
+}
+
+.metricRow:nth-child(even) {
+  background: rgba(255, 255, 255, 0.01);
+}
+
+.metricRow:nth-child(even):hover {
+  background: var(--fing-bg-subtle);
+}
+
+.metricLabel {
+  padding: 14px 24px;
+  font-family: var(--fing-font-primary);
+  font-size: 13px;
+  color: var(--fing-text-secondary);
+  border-bottom: 1px solid var(--fing-border-subtle);
+}
+
+.metricValue {
+  padding: 14px 20px;
+  text-align: center;
+  border-bottom: 1px solid var(--fing-border-subtle);
+  border-left: 1px solid var(--fing-border-subtle);
+  transition: background-color 200ms;
+}
+
+.metricValue.currentColumn {
+  background: rgba(91, 163, 165, 0.03);
+}
+
+.metricValue.best {
+  background: var(--fing-accent-subtle);
+}
+
+.metricValue.best .value {
+  color: var(--fing-accent-primary);
+  font-weight: 600;
+}
+
+.valueContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.value {
+  font-family: var(--fing-font-numeric);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--fing-text-primary);
+  letter-spacing: var(--fing-tracking-led);
+}
+
+.delta {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--fing-font-numeric);
+  font-size: 10px;
+  letter-spacing: var(--fing-tracking-led);
+  padding: 2px 6px;
+  border-radius: var(--fing-radius-xs, 4px);
+}
+
+.delta[data-sentiment="positive"] {
+  color: var(--fing-status-positive-text);
+  background: var(--fing-status-positive-subtle);
+}
+
+.delta[data-sentiment="negative"] {
+  color: var(--fing-status-negative-text);
+  background: var(--fing-status-negative-subtle);
+}
+
+.delta[data-sentiment="neutral"] {
+  color: var(--fing-text-tertiary);
+  background: var(--fing-bg-subtle);
+}
+
+.noData {
+  font-family: var(--fing-font-numeric);
+  font-size: 14px;
+  color: var(--fing-text-disabled);
+  letter-spacing: var(--fing-tracking-led);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   FOOTER / LEGEND
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.footer {
+  padding: 12px 24px;
+  border-top: 1px solid var(--fing-border-subtle);
+  background: var(--fing-bg-base);
+}
+
+.legend {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--fing-font-primary);
+  font-size: 11px;
+  color: var(--fing-text-tertiary);
+}
+
+.legendDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.legendDot[data-type="best"] {
+  background: var(--fing-accent-primary);
+}
+
+.legendDot[data-type="positive"] {
+  background: var(--fing-status-positive);
+}
+
+.legendDot[data-type="negative"] {
+  background: var(--fing-status-negative);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   COMPACT MODE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.compact .metricHeader {
+  padding: 12px 16px;
+}
+
+.compact .periodHeader {
+  padding: 12px 16px;
+}
+
+.compact .metricLabel {
+  padding: 10px 16px;
+}
+
+.compact .metricValue {
+  padding: 10px 16px;
+}
+
+.compact .value {
+  font-size: 13px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   RESPONSIVE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .metricHeader {
+    width: 120px;
+    padding: 12px 16px;
+  }
+
+  .periodHeader,
+  .metricValue {
+    min-width: 120px;
+    padding: 12px 16px;
+  }
+
+  .legend {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   REDUCED MOTION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .metricRow,
+  .metricValue {
+    transition: none;
+  }
+}

@@ -251,7 +251,7 @@ function Sparkline({ data }: { data: number[] }) {
       <path
         d={pathD}
         fill="none"
-        stroke={trendPositive ? 'var(--sentinel-status-positive)' : 'var(--sentinel-status-negative)'}
+        stroke={trendPositive ? 'var(--fing-status-positive)' : 'var(--fing-status-negative)'}
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -261,7 +261,7 @@ function Sparkline({ data }: { data: number[] }) {
         cx={parseFloat(points[points.length - 1].split(',')[0])}
         cy={parseFloat(points[points.length - 1].split(',')[1])}
         r="2"
-        fill={trendPositive ? 'var(--sentinel-status-positive)' : 'var(--sentinel-status-negative)'}
+        fill={trendPositive ? 'var(--fing-status-positive)' : 'var(--fing-status-negative)'}
       />
     </svg>
   );
@@ -302,11 +302,11 @@ function DistributionBar({ segments }: MetricCardDistribution) {
   if (total === 0) return null;
 
   const defaultColors = [
-    'var(--sentinel-chart-1)',
-    'var(--sentinel-chart-2)',
-    'var(--sentinel-chart-3)',
-    'var(--sentinel-chart-4)',
-    'var(--sentinel-chart-5)',
+    'var(--fing-chart-1)',
+    'var(--fing-chart-2)',
+    'var(--fing-chart-3)',
+    'var(--fing-chart-4)',
+    'var(--fing-chart-5)',
   ];
 
   return (

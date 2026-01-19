@@ -1,5 +1,5 @@
 // Path: src/pages/organisms/SearchbarShowcase.tsx
-// SENTINEL Design System - Glass-Neumorphism Searchbar
+// FING Design System - Glass-Neumorphism Searchbar
 import React, { useState, useMemo } from 'react';
 import { Searchbar } from '../../components/organisms/Searchbar';
 import { ShowcaseSection } from '../../components/showcase';
@@ -45,17 +45,17 @@ function SearchbarContent() {
   const titleStyles: React.CSSProperties = {
     fontSize: '28px',
     fontWeight: 700,
-    color: 'var(--sentinel-accent-primary)',
+    color: 'var(--fing-accent-primary)',
     marginBottom: '8px',
-    fontFamily: 'var(--sentinel-font-display)',
+    fontFamily: 'var(--fing-font-display)',
     textTransform: 'uppercase',
     letterSpacing: '0.1em',
   };
 
   const descStyles: React.CSSProperties = {
     fontSize: '14px',
-    color: 'var(--sentinel-text-secondary)',
-    fontFamily: 'var(--sentinel-font-mono)',
+    color: 'var(--fing-text-secondary)',
+    fontFamily: 'var(--fing-font-mono)',
     textTransform: 'uppercase',
     letterSpacing: '0.03em',
   };
@@ -106,7 +106,7 @@ function SearchbarContent() {
       >
         <div style={searchContainerStyles}>
           <Searchbar
-            productName="SENTINEL"
+            productName="FING"
             version="v1.0.1"
             onSearch={() => alert('Búsqueda ejecutada')}
           />
@@ -119,7 +119,7 @@ function SearchbarContent() {
       >
         <div style={searchContainerStyles}>
           <Searchbar
-            productName="SENTINEL"
+            productName="FING"
             version="v1.0.1"
             filters={[
               {
@@ -140,7 +140,7 @@ function SearchbarContent() {
       >
         <div style={searchContainerStyles}>
           <Searchbar
-            productName="SENTINEL"
+            productName="FING"
             version="v1.0.1"
             filters={[
               {
@@ -162,7 +162,7 @@ function SearchbarContent() {
       >
         <div style={searchContainerStyles}>
           <Searchbar
-            productName="SENTINEL"
+            productName="FING"
             version="v1.0.1"
             filters={[
               {
@@ -238,7 +238,7 @@ function SearchbarContent() {
       >
         <div style={searchContainerStyles}>
           <Searchbar
-            productName="SENTINEL"
+            productName="FING"
             version="v1.0.1"
             filters={[
               {
@@ -269,7 +269,7 @@ function SearchbarContent() {
           transition: 'box-shadow 50ms linear',
         }}>
           <Searchbar
-            productName="SENTINEL"
+            productName="FING"
             version="Design System v1.0.1"
             filters={[
               {
@@ -310,16 +310,16 @@ function SearchbarContent() {
               fontSize: '16px',
               fontWeight: 600,
               marginBottom: '12px',
-              fontFamily: 'var(--sentinel-font-display)',
+              fontFamily: 'var(--fing-font-display)',
               textTransform: 'uppercase',
-              color: 'var(--sentinel-text-primary)',
+              color: 'var(--fing-text-primary)',
             }}>
               Resultados de búsqueda
             </h3>
             <p style={{
               fontSize: '14px',
               color: '#636E72',
-              fontFamily: 'var(--sentinel-font-mono)',
+              fontFamily: 'var(--fing-font-mono)',
             }}>
               {filter1 || filter2 || textFilter ? (
                 <>
@@ -343,21 +343,21 @@ function SearchbarContent() {
           boxShadow: getNeuInsetShadow(5, 15),
           background: MARBLE.base,
           fontSize: '12px',
-          fontFamily: 'var(--sentinel-font-mono)',
+          fontFamily: 'var(--fing-font-mono)',
           color: '#636E72',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Altura total:</strong> 40px (fija)</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Layout:</strong> flex, gap 20px, justify-content space-between</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Product name:</strong> 24px Bold (700), color accent</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Version:</strong> 12px Regular (400), color secundario</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Filters container:</strong> flex, gap 20px, flex 1</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Dropdown filter width:</strong> 192px (default), customizable</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Text filter width:</strong> 297px (default), customizable</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Search button:</strong> width 192px, border-radius 15px</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Submit:</strong> Se ejecuta onSearch al presionar Enter o click en botón</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Disabled:</strong> Deshabilita todos los filtros y el botón</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Altura total:</strong> 40px (fija)</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Layout:</strong> flex, gap 20px, justify-content space-between</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Product name:</strong> 24px Bold (700), color accent</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Version:</strong> 12px Regular (400), color secundario</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Filters container:</strong> flex, gap 20px, flex 1</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Dropdown filter width:</strong> 192px (default), customizable</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Text filter width:</strong> 297px (default), customizable</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Search button:</strong> width 192px, border-radius 15px</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Submit:</strong> Se ejecuta onSearch al presionar Enter o click en botón</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Disabled:</strong> Deshabilita todos los filtros y el botón</p>
         </div>
       </ShowcaseSection>
     </div>

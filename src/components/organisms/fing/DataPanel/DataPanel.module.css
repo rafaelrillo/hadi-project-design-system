@@ -1,0 +1,159 @@
+/* Path: src/components/organisms/fing/DataPanel/DataPanel.module.css */
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   DATA PANEL
+   Multi-panel container estilo terminal financiero
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.panel {
+  background: var(--fing-bg-elevated);
+  border: 1px solid var(--fing-panel-border);
+  border-radius: var(--fing-radius-lg);
+  overflow: hidden;
+  transition: all var(--fing-duration-normal) var(--fing-ease-default);
+}
+
+.panel:hover {
+  border-color: rgba(91, 163, 165, 0.2);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   HEADER
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--fing-panel-header-bg);
+  border-bottom: 1px solid var(--fing-panel-divider);
+  user-select: none;
+}
+
+.header[role="button"] {
+  cursor: pointer;
+}
+
+.header[role="button"]:hover {
+  background: rgba(91, 163, 165, 0.08);
+}
+
+.header[role="button"]:focus-visible {
+  outline: 2px solid var(--fing-accent-primary);
+  outline-offset: -2px;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.headerIcon {
+  color: var(--fing-accent-primary);
+  flex-shrink: 0;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--fing-font-data);
+  font-size: var(--fing-data-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--fing-text-secondary);
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.toggleButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: var(--fing-radius-sm);
+  color: var(--fing-text-tertiary);
+  cursor: pointer;
+  transition: all var(--fing-duration-fast) var(--fing-ease-default);
+}
+
+.toggleButton:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--fing-text-secondary);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   CONTENT
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.content {
+  padding: 16px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   COLLAPSED STATE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.panel.collapsed .header {
+  border-bottom: none;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   VARIANTS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Compact - less padding */
+.panel.compact .header {
+  padding: 8px 12px;
+}
+
+.panel.compact .content {
+  padding: 12px;
+}
+
+.panel.compact .title {
+  font-size: var(--fing-data-xs);
+}
+
+/* Transparent - no background */
+.panel.transparent {
+  background: transparent;
+  border-color: var(--fing-border-subtle);
+}
+
+.panel.transparent .header {
+  background: transparent;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   RESPONSIVE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .header {
+    padding: 10px 12px;
+  }
+
+  .content {
+    padding: 12px;
+  }
+
+  .title {
+    font-size: var(--fing-data-xs);
+  }
+}

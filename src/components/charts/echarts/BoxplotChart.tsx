@@ -2,7 +2,7 @@
 import { useMemo } from 'react';
 import type { EChartsOption } from 'echarts';
 import { EChart } from './EChart';
-import { sentinelColors, chartPalette } from './sentinelTheme';
+import { fingColors, chartPalette } from './fingTheme';
 import type { BoxplotData, BaseChartProps } from './types';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -45,9 +45,9 @@ export function BoxplotChart({
       type: 'category' as const,
       data: categories,
       boundaryGap: true,
-      axisLine: { lineStyle: { color: sentinelColors.borderSubtle } },
+      axisLine: { lineStyle: { color: fingColors.borderSubtle } },
       axisLabel: {
-        color: sentinelColors.textTertiary,
+        color: fingColors.textTertiary,
         fontSize: 11,
         fontFamily: "'Inter', sans-serif",
       },
@@ -60,13 +60,13 @@ export function BoxplotChart({
       axisLine: { show: false },
       axisTick: { show: false },
       axisLabel: {
-        color: sentinelColors.textTertiary,
+        color: fingColors.textTertiary,
         fontSize: 10,
         fontFamily: "'Space Mono', monospace",
         formatter: (value: number) => formatValue(value),
       },
       splitLine: {
-        lineStyle: { color: sentinelColors.borderSubtle },
+        lineStyle: { color: fingColors.borderSubtle },
       },
     };
 
@@ -93,19 +93,19 @@ export function BoxplotChart({
             <div style="font-family: 'Inter', sans-serif; font-size: 12px;">
               <div style="font-weight: 500; margin-bottom: 12px;">${p.name}</div>
               <div style="display: grid; grid-template-columns: auto 1fr; gap: 8px 16px;">
-                <span style="color: ${sentinelColors.textTertiary};">Max</span>
+                <span style="color: ${fingColors.textTertiary};">Max</span>
                 <span style="font-family: 'Space Mono', monospace; text-align: right;">${formatValue(max)}</span>
-                <span style="color: ${sentinelColors.textTertiary};">Q3</span>
+                <span style="color: ${fingColors.textTertiary};">Q3</span>
                 <span style="font-family: 'Space Mono', monospace; text-align: right;">${formatValue(q3)}</span>
-                <span style="color: ${sentinelColors.accentPrimary}; font-weight: 500;">Median</span>
+                <span style="color: ${fingColors.accentPrimary}; font-weight: 500;">Median</span>
                 <span style="font-family: 'Space Mono', monospace; text-align: right; font-weight: 600;">${formatValue(median)}</span>
-                <span style="color: ${sentinelColors.textTertiary};">Q1</span>
+                <span style="color: ${fingColors.textTertiary};">Q1</span>
                 <span style="font-family: 'Space Mono', monospace; text-align: right;">${formatValue(q1)}</span>
-                <span style="color: ${sentinelColors.textTertiary};">Min</span>
+                <span style="color: ${fingColors.textTertiary};">Min</span>
                 <span style="font-family: 'Space Mono', monospace; text-align: right;">${formatValue(min)}</span>
               </div>
-              <div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid ${sentinelColors.borderSubtle};">
-                <span style="color: ${sentinelColors.textTertiary};">IQR</span>
+              <div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid ${fingColors.borderSubtle};">
+                <span style="color: ${fingColors.textTertiary};">IQR</span>
                 <span style="font-family: 'Space Mono', monospace; margin-left: 16px;">${formatValue(q3 - q1)}</span>
               </div>
             </div>
@@ -125,13 +125,13 @@ export function BoxplotChart({
           type: 'boxplot',
           data: boxData,
           itemStyle: {
-            color: sentinelColors.bgSubtle,
+            color: fingColors.bgSubtle,
             borderColor: colors[0],
             borderWidth: 2,
           },
           emphasis: {
             itemStyle: {
-              borderColor: sentinelColors.accentPrimary,
+              borderColor: fingColors.accentPrimary,
               borderWidth: 3,
               shadowBlur: 10,
               shadowColor: 'rgba(0, 0, 0, 0.3)',
@@ -145,7 +145,7 @@ export function BoxplotChart({
                 type: 'scatter' as const,
                 data: [] as number[][], // Outliers would be calculated separately if needed
                 itemStyle: {
-                  color: sentinelColors.warning,
+                  color: fingColors.warning,
                 },
                 symbolSize: 6,
               },

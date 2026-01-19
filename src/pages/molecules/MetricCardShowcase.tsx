@@ -1,5 +1,5 @@
 // Path: src/pages/molecules/MetricCardShowcase.tsx
-// SENTINEL Design System - Glass-Neumorphism Metric Cards
+// FING Design System - Glass-Neumorphism Metric Cards
 import React, { useMemo } from 'react';
 import { MetricCard } from '../../components/molecules/MetricCard';
 import { ShowcaseSection } from '../../components/showcase';
@@ -42,17 +42,17 @@ function MetricCardContent() {
   const titleStyles: React.CSSProperties = {
     fontSize: '28px',
     fontWeight: 700,
-    color: 'var(--sentinel-accent-primary)',
+    color: 'var(--fing-accent-primary)',
     marginBottom: '8px',
-    fontFamily: 'var(--sentinel-font-display)',
+    fontFamily: 'var(--fing-font-display)',
     textTransform: 'uppercase',
     letterSpacing: '0.1em',
   };
 
   const descStyles: React.CSSProperties = {
     fontSize: '14px',
-    color: 'var(--sentinel-text-secondary)',
-    fontFamily: 'var(--sentinel-font-mono)',
+    color: 'var(--fing-text-secondary)',
+    fontFamily: 'var(--fing-font-mono)',
     textTransform: 'uppercase',
     letterSpacing: '0.03em',
   };
@@ -189,18 +189,18 @@ function MetricCardContent() {
           boxShadow: getNeuInsetShadow(5, 15),
           background: MARBLE.base,
           fontSize: '12px',
-          fontFamily: 'var(--sentinel-font-mono)',
+          fontFamily: 'var(--fing-font-mono)',
           color: '#636E72',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Sizes:</strong> sm, md, lg</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Variants:</strong> default, outlined, filled</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Status:</strong> default, success, warning, error, info</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Format:</strong> number, currency, percentage, custom</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Trend:</strong> up, down, stable con sentiment</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Sparkline:</strong> Array de números para mini-gráfico</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Progress:</strong> Barra con value/max</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Sizes:</strong> sm, md, lg</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Variants:</strong> default, outlined, filled</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Status:</strong> default, success, warning, error, info</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Format:</strong> number, currency, percentage, custom</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Trend:</strong> up, down, stable con sentiment</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Sparkline:</strong> Array de números para mini-gráfico</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Progress:</strong> Barra con value/max</p>
         </div>
       </ShowcaseSection>
     </div>

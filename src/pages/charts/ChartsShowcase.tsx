@@ -1,5 +1,5 @@
 // Path: src/pages/charts/ChartsShowcase.tsx
-// SENTINEL Design System - Glass-Neumorphism Charts Hub
+// FING Design System - Glass-Neumorphism Charts Hub
 import { useMemo } from 'react';
 import { ShowcaseSection } from '../../components/showcase';
 import {
@@ -583,9 +583,9 @@ function ChartsContent() {
   const titleStyles: CSSProperties = {
     fontSize: '32px',
     fontWeight: 700,
-    color: 'var(--sentinel-accent-primary)',
+    color: 'var(--fing-accent-primary)',
     marginBottom: '12px',
-    fontFamily: 'var(--sentinel-font-display)',
+    fontFamily: 'var(--fing-font-display)',
     textTransform: 'uppercase',
     letterSpacing: '0.1em',
   };
@@ -593,7 +593,7 @@ function ChartsContent() {
   const descStyles: CSSProperties = {
     fontSize: '14px',
     color: '#636E72',
-    fontFamily: 'var(--sentinel-font-mono)',
+    fontFamily: 'var(--fing-font-mono)',
     fontWeight: 400,
     maxWidth: '700px',
     lineHeight: 1.6,
@@ -602,7 +602,7 @@ function ChartsContent() {
   const sectionTitleStyles: CSSProperties = {
     fontSize: '14px',
     fontWeight: 600,
-    color: 'var(--sentinel-accent-primary)',
+    color: 'var(--fing-accent-primary)',
     textTransform: 'uppercase',
     letterSpacing: '0.1em',
     marginBottom: '24px',
@@ -638,7 +638,7 @@ function ChartsContent() {
       <header style={pageHeaderStyles}>
         <h1 style={titleStyles}>&gt; Charts_</h1>
         <p style={descStyles}>
-          Comprehensive chart library powered by ECharts with full SENTINEL theme integration.
+          Comprehensive chart library powered by ECharts with full FING theme integration.
           High-performance, interactive visualizations for financial data, comparisons, flows, and more.
         </p>
       </header>
@@ -1061,19 +1061,19 @@ function ChartsContent() {
           ...chartContainerStyles,
           boxShadow: getNeuInsetShadow(5, 15),
           fontSize: '12px',
-          fontFamily: 'var(--sentinel-font-mono)',
+          fontFamily: 'var(--fing-font-mono)',
           color: '#636E72',
           lineHeight: '1.8',
         }}>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Financial:</strong> CandlestickChart, LineChart, BarChart</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Circular:</strong> PieChart, RadarChart, GaugeChart, SunburstChart</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Comparison:</strong> TreeMap, HeatMap, ScatterChart, BoxplotChart</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Flow:</strong> SankeyChart, FunnelChart, GraphChart</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Time-based:</strong> CalendarChart, ThemeRiverChart</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Multi-dimensional:</strong> ParallelChart</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Hierarchical:</strong> TreeChart</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Effect:</strong> EffectScatterChart</p>
-          <p>✓ <strong style={{ color: 'var(--sentinel-accent-primary)' }}>Pictorial:</strong> PictorialBarChart</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Financial:</strong> CandlestickChart, LineChart, BarChart</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Circular:</strong> PieChart, RadarChart, GaugeChart, SunburstChart</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Comparison:</strong> TreeMap, HeatMap, ScatterChart, BoxplotChart</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Flow:</strong> SankeyChart, FunnelChart, GraphChart</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Time-based:</strong> CalendarChart, ThemeRiverChart</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Multi-dimensional:</strong> ParallelChart</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Hierarchical:</strong> TreeChart</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Effect:</strong> EffectScatterChart</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Pictorial:</strong> PictorialBarChart</p>
         </div>
       </ShowcaseSection>
     </div>
