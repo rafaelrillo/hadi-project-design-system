@@ -18,6 +18,111 @@
   background: var(--marble-base, #d5d8dc);
 }
 
+/* ─────────────────────────────────────────────────────────────────────────────
+   HOME BUTTON - Subtle RAISED
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Home button position */
+.homeButtonPosition {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  z-index: 20;
+}
+
+/* INSET wrapper (same as View All) */
+.homeButtonWrapper {
+  padding: 3px;
+  border-radius: 24px;
+  background: var(--marble-base, #d5d8dc);
+  box-shadow: var(--inset-1);
+}
+
+/* RAISED button inside INSET (same as View All) */
+.homeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--marble-base, #d5d8dc);
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  font-family: var(--sentinel-font-primary, 'DM Sans', sans-serif);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+
+  /* RAISED */
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.8),
+    inset 0 0 0 2px rgba(168, 172, 179, 0.25),
+    1px 1px 2px rgba(147, 157, 170, 0.55),
+    -1px -1px 2px rgba(255, 255, 255, 0.95);
+
+  /* Text - marble gray (same tone as background) */
+  color: var(--marble-dark, #a8acb3);
+  text-shadow:
+    0.75px 0.75px 0px rgba(255, 255, 255, 0.85),
+    -0.75px -0.75px 0px rgba(130, 140, 155, 0.35);
+
+  transition: all 200ms ease;
+}
+
+.homeButton:hover {
+  background: linear-gradient(135deg, rgba(58, 106, 114, 0.08) 0%, rgba(58, 106, 114, 0.04) 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.9),
+    inset 0 0 0 2px rgba(58, 106, 114, 0.25),
+    2px 2px 4px rgba(147, 157, 170, 0.6),
+    -2px -2px 4px rgba(255, 255, 255, 0.95),
+    0 0 10px rgba(58, 106, 114, 0.12);
+
+  /* Brand color on hover */
+  color: var(--fing-accent, #3a6a72);
+}
+
+.homeButton:active {
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.7),
+    inset 0 0 0 2px rgba(168, 172, 179, 0.3),
+    inset 1px 1px 2px rgba(147, 157, 170, 0.4),
+    inset -1px -1px 2px rgba(255, 255, 255, 0.8);
+}
+
+/* Icon circle - INSET */
+.homeIconCircle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--marble-base, #d5d8dc);
+  box-shadow:
+    inset 1px 1px 2px rgba(147, 157, 170, 0.55),
+    inset -1px -1px 2px rgba(255, 255, 255, 0.95);
+  transition: background 150ms ease;
+}
+
+.homeButton:hover .homeIconCircle {
+  background: linear-gradient(135deg, rgba(58, 106, 114, 0.15) 0%, rgba(58, 106, 114, 0.08) 100%);
+}
+
+/* Icon */
+.homeIcon {
+  color: var(--marble-dark, #a8acb3);
+  filter:
+    drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9))
+    drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.5));
+  transition: color 150ms ease;
+}
+
+.homeButton:hover .homeIcon {
+  color: var(--fing-accent, #3a6a72);
+}
+
 .content {
   position: relative;
   z-index: 10;
@@ -136,8 +241,8 @@
   box-shadow:
     inset 3px 3px 6px rgba(147, 157, 170, 0.55),
     inset -3px -3px 6px rgba(255, 255, 255, 0.95),
-    0 0 0 2px rgba(74, 154, 156, 0.3),
-    0 0 12px rgba(74, 154, 156, 0.15);
+    0 0 0 2px rgba(58, 106, 114, 0.3),
+    0 0 12px rgba(58, 106, 114, 0.15);
 }
 
 .inputGroup :global(.input)::placeholder {
@@ -146,15 +251,19 @@
 
 /* Icon styling within stone marble inputs */
 .inputGroup :global(.icon) {
-  color: var(--marble-deeper, #bbbec3);
+  color: var(--marble-dark, #c8cbd0);
+  /* Raised icon inside inset input */
   filter:
-    drop-shadow(0.5px 0.5px 0px rgba(255, 255, 255, 0.8))
-    drop-shadow(-0.5px -0.5px 0px rgba(130, 140, 155, 0.4));
+    drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9))
+    drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4));
 }
 
 .inputGroup:focus-within :global(.icon) {
-  color: var(--sentinel-accent-primary, #4a9a9c);
-  filter: none;
+  color: var(--sentinel-accent-primary, #3a6a72);
+  /* Raised with accent glow on focus */
+  filter:
+    drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9))
+    drop-shadow(0.5px 0.5px 0px rgba(58, 106, 114, 0.4));
 }
 
 .label {
@@ -228,28 +337,28 @@
     1px 1px 0px rgba(255, 255, 255, 0.85),
     -1px -1px 0px rgba(130, 140, 155, 0.65);
 
-  transition: all 200ms ease;
+  transition: all 100ms ease;
 }
 
 /* ENABLED state - subtle teal to indicate clickable */
 .pillFrameButton:not(:disabled) {
-  color: var(--sentinel-accent-primary, #4a9a9c);
+  color: var(--sentinel-accent-primary, #3a6a72);
   box-shadow:
     inset 0 0 0 1px rgba(255, 255, 255, 0.85),
-    inset 0 0 0 2px rgba(74, 154, 156, 0.15),
+    inset 0 0 0 2px rgba(58, 106, 114, 0.15),
     2px 2px 4px rgba(147, 157, 170, 0.55),
     -2px -2px 4px rgba(255, 255, 255, 0.95);
 }
 
 /* HOVER state - teal background glow */
 .pillFrameButton:hover:not(:disabled) {
-  background: linear-gradient(135deg, rgba(74, 154, 156, 0.08) 0%, rgba(74, 154, 156, 0.04) 100%);
+  background: linear-gradient(135deg, rgba(58, 106, 114, 0.08) 0%, rgba(58, 106, 114, 0.04) 100%);
   box-shadow:
     inset 0 0 0 1px rgba(255, 255, 255, 0.9),
-    inset 0 0 0 2px rgba(74, 154, 156, 0.25),
+    inset 0 0 0 2px rgba(58, 106, 114, 0.25),
     3px 3px 6px rgba(147, 157, 170, 0.6),
     -3px -3px 6px rgba(255, 255, 255, 0.95),
-    0 0 12px rgba(74, 154, 156, 0.15);
+    0 0 12px rgba(58, 106, 114, 0.15);
 }
 
 .pillFrameButton:active:not(:disabled) {
@@ -261,7 +370,7 @@
 }
 
 .pillFrameButton:disabled {
-  opacity: 0.5;
+  opacity: 0.7;
   cursor: not-allowed;
 }
 
@@ -393,7 +502,7 @@
     opacity: 0;
     box-shadow:
       inset 0 0 0 1px rgba(255, 255, 255, 0),
-      inset 0 0 0 2px rgba(74, 154, 156, 0),
+      inset 0 0 0 2px rgba(58, 106, 114, 0),
       0 0 0 rgba(147, 157, 170, 0),
       0 0 0 rgba(255, 255, 255, 0);
   }
@@ -401,7 +510,7 @@
     opacity: 1;
     box-shadow:
       inset 0 0 0 1px rgba(255, 255, 255, 0.85),
-      inset 0 0 0 2px rgba(74, 154, 156, 0.15),
+      inset 0 0 0 2px rgba(58, 106, 114, 0.15),
       2px 2px 4px rgba(147, 157, 170, 0.55),
       -2px -2px 4px rgba(255, 255, 255, 0.95);
   }
@@ -474,7 +583,7 @@
 .title,
 .subtitle,
 .hint {
-  animation-duration: 2.5s;
+  animation-duration: 400ms;
   animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   animation-fill-mode: forwards;
   opacity: 0;
@@ -483,19 +592,19 @@
 /* Title */
 .title {
   animation-name: sculptTextLarge;
-  animation-delay: 100ms;
+  animation-delay: 0ms;
 }
 
 /* Subtitle */
 .subtitle {
   animation-name: sculptTextSubtle;
-  animation-delay: 200ms;
+  animation-delay: 50ms;
 }
 
 /* Form container */
 .formContainer {
   animation-name: sculptRaised;
-  animation-delay: 300ms;
+  animation-delay: 100ms;
   box-shadow:
     0 0 0 rgba(147, 157, 170, 0),
     0 0 0 rgba(255, 255, 255, 0),
@@ -505,13 +614,13 @@
 /* First label */
 .label {
   animation-name: sculptTextSubtle;
-  animation-delay: 450ms;
+  animation-delay: 150ms;
 }
 
 /* First input */
 .inputGroup :global(.input) {
   animation-name: sculptInset;
-  animation-delay: 500ms;
+  animation-delay: 175ms;
   box-shadow:
     inset 0 0 0 rgba(147, 157, 170, 0),
     inset 0 0 0 rgba(255, 255, 255, 0),
@@ -520,18 +629,18 @@
 
 /* Second label */
 .inputGroup:nth-child(2) .label {
-  animation-delay: 600ms;
+  animation-delay: 200ms;
 }
 
 /* Second input */
 .inputGroup:nth-child(2) :global(.input) {
-  animation-delay: 650ms;
+  animation-delay: 225ms;
 }
 
 /* Button wrapper */
 .buttonWrapper {
   animation-name: sculptPillWrapper;
-  animation-delay: 750ms;
+  animation-delay: 275ms;
   box-shadow:
     inset 0 0 0 rgba(147, 157, 170, 0),
     inset 0 0 0 rgba(255, 255, 255, 0);
@@ -540,10 +649,10 @@
 /* Button */
 .pillFrameButton:not(:disabled) {
   animation-name: sculptPillButton;
-  animation-delay: 800ms;
+  animation-delay: 300ms;
   box-shadow:
     inset 0 0 0 1px rgba(255, 255, 255, 0),
-    inset 0 0 0 2px rgba(74, 154, 156, 0),
+    inset 0 0 0 2px rgba(58, 106, 114, 0),
     0 0 0 rgba(147, 157, 170, 0),
     0 0 0 rgba(255, 255, 255, 0);
 }
@@ -551,7 +660,7 @@
 /* Icon circle */
 .buttonIconCircle {
   animation-name: sculptIconCircle;
-  animation-delay: 850ms;
+  animation-delay: 325ms;
   box-shadow:
     inset 0 0 0 rgba(147, 157, 170, 0),
     inset 0 0 0 rgba(255, 255, 255, 0);
@@ -560,7 +669,7 @@
 /* Hint */
 .hint {
   animation-name: sculptTextSubtle;
-  animation-delay: 950ms;
+  animation-delay: 375ms;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -615,7 +724,7 @@
   .pillFrameButton:not(:disabled) {
     box-shadow:
       inset 0 0 0 1px rgba(255, 255, 255, 0.85),
-      inset 0 0 0 2px rgba(74, 154, 156, 0.15),
+      inset 0 0 0 2px rgba(58, 106, 114, 0.15),
       2px 2px 4px rgba(147, 157, 170, 0.55),
       -2px -2px 4px rgba(255, 255, 255, 0.95);
   }

@@ -7,22 +7,29 @@ import styles from './Button.module.css';
  * Maps variant names to CSS module class names
  */
 const variantClasses: Record<ButtonVariant, string> = {
-  // Neumorphism variants
-  'neu-soft': styles.neuSoft,
-  'neu-flat': styles.neuFlat,
-  'neu-minimal': styles.neuMinimal,
-  'neu-deep': styles.neuDeep,
-  'neu-pillow': styles.neuPillow,
-  'neu-ridge': styles.neuRidge,
-  'neu-sharp': styles.neuSharp,
-  'neu-float': styles.neuFloat,
-  'neu-layered': styles.neuLayered,
-  'neu-outline': styles.neuOutline,
-  'neu-emboss': styles.neuEmboss,
-  'neu-pressed': styles.neuPressed,
-  'neu-concave': styles.neuConcave,
-  'neu-accent': styles.neuAccent,
-  'neu-glow': styles.neuGlow,
+  // Stone Marble Neumorphic variants (20)
+  'marble-raised': styles.marbleRaised,
+  'marble-soft': styles.marbleSoft,
+  'marble-deep': styles.marbleDeep,
+  'marble-inset': styles.marbleInset,
+  'marble-carved': styles.marbleCarved,
+  'marble-embossed': styles.marbleEmbossed,
+  'marble-pillow': styles.marblePillow,
+  'marble-ridge': styles.marbleRidge,
+  'marble-layered': styles.marbleLayered,
+  'marble-outline': styles.marbleOutline,
+  'marble-accent': styles.marbleAccent,
+  'marble-accent-inset': styles.marbleAccentInset,
+  'marble-diamond': styles.marbleDiamond,
+  'marble-frame': styles.marbleFrame,
+  'marble-seal': styles.marbleSeal,
+  'marble-pill': styles.marblePill,
+  'marble-stadium': styles.marbleStadium,
+  'marble-sharp': styles.marbleSharp,
+  'marble-float': styles.marbleFloat,
+  'marble-glow': styles.marbleGlow,
+  // Selected variants
+  'selected-ghost-nav': styles.selectedGhostNav,
   // Glass variants
   'glass-teal': styles.glassTeal,
   'glass-amber': styles.glassAmber,
@@ -43,10 +50,10 @@ const variantClasses: Record<ButtonVariant, string> = {
   'glass-neu-frost': styles.glassNeuFrost,
   // Legacy variants (backward compatibility)
   'primary': styles.glassTeal,
-  'secondary': styles.neuFlat,
+  'secondary': styles.marbleSoft,
   'destructive': styles.glassRose,
   'success': styles.glassEmerald,
-  'ghost': styles.neuMinimal,
+  'ghost': styles.marbleOutline,
   'glass': styles.glassTeal,
   'with-icon': styles.glassTeal,
 };
@@ -63,7 +70,7 @@ const sizeClasses: Record<ButtonSize, string> = {
 };
 
 /**
- * Button component with 31 variants across Neumorphism, Glass, and Glass-Neu styles.
+ * Button component with 36 variants across Stone Marble, Glass, and Glass-Neu styles.
  *
  * @example
  * // Primary action with teal glass
@@ -72,20 +79,26 @@ const sizeClasses: Record<ButtonSize, string> = {
  * </Button>
  *
  * @example
- * // Secondary action with neumorphism
- * <Button variant="neu-soft" size="sm">
+ * // Secondary action with Stone Marble
+ * <Button variant="marble-raised" size="sm">
  *   Cancel
  * </Button>
  *
  * @example
- * // Loading state
- * <Button variant="neu-accent" loading>
+ * // Elegant carved button
+ * <Button variant="marble-carved" size="lg">
+ *   Confirm
+ * </Button>
+ *
+ * @example
+ * // Accent primary action
+ * <Button variant="marble-accent" loading>
  *   Processing...
  * </Button>
  */
 export function Button({
   children,
-  variant = 'neu-soft',
+  variant = 'marble-raised',
   size = 'md',
   leftIcon,
   rightIcon,

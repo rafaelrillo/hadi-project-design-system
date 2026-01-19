@@ -1,7 +1,7 @@
 // Path: src/pages/app/LoginPage/LoginPage.tsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Loader2, ChevronRight, Mail, Lock } from "lucide-react";
+import { Loader2, ChevronRight, ChevronLeft, Mail, Lock } from "lucide-react";
 import { useAuthStore } from "../../../store/authStore";
 import { AtmosphericBackground } from "../../../components/atoms/sentinel/AtmosphericBackground";
 import { InputText } from "../../../components/atoms/Input";
@@ -29,6 +29,22 @@ export function LoginPage() {
   return (
     <div className={styles.container}>
       <AtmosphericBackground variant="default" animated />
+
+      {/* Back to Home - Same as "View All" button */}
+      <div className={styles.homeButtonPosition}>
+        <div className={styles.homeButtonWrapper}>
+          <button
+            type="button"
+            onClick={() => navigate("/")}
+            className={styles.homeButton}
+          >
+            <span className={styles.homeIconCircle}>
+              <ChevronLeft size={11} className={styles.homeIcon} />
+            </span>
+            Home
+          </button>
+        </div>
+      </div>
 
       <div className={styles.content}>
         {/* All elements emerge together from the marble surface */}
@@ -85,11 +101,11 @@ export function LoginPage() {
                 {isLoading ? (
                   <>
                     <Loader2 className={styles.spinner} size={16} />
-                    <span>Accessing...</span>
+                    <span>Signing in...</span>
                   </>
                 ) : (
                   <>
-                    <span>Access System</span>
+                    <span>Sign In</span>
                     <span className={styles.buttonIconCircle}>
                       <ChevronRight size={14} className={styles.buttonIcon} />
                     </span>

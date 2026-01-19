@@ -4,28 +4,35 @@ import type { ReactNode, MouseEvent } from 'react';
 
 /**
  * All available button variants in the SENTINEL design system
- * - Neumorphism (15): Tactile, extruded buttons with soft shadows
+ * - Stone Marble (20): Carved, elegant neumorphic buttons
  * - Glass (8): Translucent buttons with backdrop blur
  * - Glass-Neu (8): Hybrid combining glass and neumorphic effects
  * - Legacy (5): Backward-compatible aliases for existing code
  */
 export type ButtonVariant =
-  // Neumorphism variants (15)
-  | 'neu-soft'      // Classic elevated - general actions
-  | 'neu-flat'      // Subtle elevation - secondary, toolbars
-  | 'neu-minimal'   // Almost flat - tertiary, lists
-  | 'neu-deep'      // Strong shadows - important CTAs
-  | 'neu-pillow'    // Soft gradient - premium, highlights
-  | 'neu-ridge'     // Internal bevel - media controls
-  | 'neu-sharp'     // Hard shadow - retro, games
-  | 'neu-float'     // Bottom shadow - cards, floating
-  | 'neu-layered'   // Multi-layer - 3D effect
-  | 'neu-outline'   // Double border - alternative
-  | 'neu-emboss'    // Embossed text - headers
-  | 'neu-pressed'   // Always inset - active toggle
-  | 'neu-concave'   // Bowl shape - inputs, wells
-  | 'neu-accent'    // Colored + glow - primary action
-  | 'neu-glow'      // Hover with glow - highlight
+  // Stone Marble Neumorphic variants (20)
+  | 'marble-raised'       // Classic raised - general actions
+  | 'marble-soft'         // Soft elevation - secondary
+  | 'marble-deep'         // Strong shadows - important CTAs
+  | 'marble-inset'        // Pressed/concave - toggles, wells
+  | 'marble-carved'       // Raised with carved text - elegant
+  | 'marble-embossed'     // Inset with raised text - contrast
+  | 'marble-pillow'       // Gradient pillow - premium
+  | 'marble-ridge'        // Beveled frame - decorative
+  | 'marble-layered'      // Multi-layer depth - 3D
+  | 'marble-outline'      // Thin border raised - minimal
+  | 'marble-accent'       // Teal accent raised - primary
+  | 'marble-accent-inset' // Teal accent inset - active
+  | 'marble-diamond'      // Diamond corners - unique
+  | 'marble-frame'        // Decorative frame - formal
+  | 'marble-seal'         // Circular seal style - badges
+  | 'marble-pill'         // Pill shape - soft actions
+  | 'marble-stadium'      // Stadium track - wide actions
+  | 'marble-sharp'        // Hard shadows - retro
+  | 'marble-float'        // Bottom shadow - floating
+  | 'marble-glow'         // Accent glow on hover - highlight
+  // Selected variants - subtle navigation
+  | 'selected-ghost-nav'  // Muted pill frame, brand color on hover
   // Glass variants (8)
   | 'glass-teal'    // Primary, accent
   | 'glass-amber'   // Warning, gold
@@ -46,10 +53,10 @@ export type ButtonVariant =
   | 'glass-neu-frost'
   // Legacy variants (backward compatibility)
   | 'primary'       // Maps to glass-teal
-  | 'secondary'     // Maps to neu-flat
+  | 'secondary'     // Maps to marble-soft
   | 'destructive'   // Maps to glass-rose
   | 'success'       // Maps to glass-emerald
-  | 'ghost'         // Maps to neu-minimal
+  | 'ghost'         // Maps to marble-outline
   | 'glass'         // Maps to glass-teal
   | 'with-icon';    // Maps to glass-teal
 

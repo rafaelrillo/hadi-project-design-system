@@ -149,429 +149,695 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════════
-   NEUMORPHISM VARIANTS (15)
+   STONE MARBLE NEUMORPHIC VARIANTS (20)
+
+   Elegant carved marble buttons with letterpress typography.
+   Uses the Stone Marble hierarchy: RAISED → INSET
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   NEU-SOFT - Classic elevated, general actions
+   MARBLE-RAISED - Classic elevated, general actions
    ───────────────────────────────────────────────────────────────────────────── */
 
-.neuSoft {
-  background: var(--sentinel-bg-elevated);
-  color: var(--sentinel-text-secondary);
-  box-shadow:
-    -5px -5px 10px var(--sentinel-btn-neu-light),
-    5px 5px 10px var(--sentinel-btn-neu-dark);
+.marbleRaised {
+  background: var(--marble-base);
+  color: var(--text-primary);
+  box-shadow: var(--raised-2);
+  /* Carved text on raised surface */
+  text-shadow:
+    0.75px 0.75px 0px rgba(255, 255, 255, 0.7),
+    -0.75px -0.75px 0px rgba(130, 140, 155, 0.5);
 }
 
-.neuSoft:hover:not(:disabled) {
-  color: var(--sentinel-text-primary);
+.marbleRaised:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow:
-    -7px -7px 14px var(--sentinel-btn-neu-light),
-    7px 7px 14px var(--sentinel-btn-neu-dark);
+  box-shadow: var(--raised-3);
 }
 
-.neuSoft:active:not(:disabled) {
+.marbleRaised:active:not(:disabled) {
   transform: translateY(0);
-  box-shadow:
-    inset 4px 4px 8px var(--sentinel-btn-neu-dark),
-    inset -4px -4px 8px var(--sentinel-btn-neu-light);
+  box-shadow: var(--inset-2);
+  text-shadow:
+    -1px -1px 0px rgba(255, 255, 255, 0.9),
+    1px 1px 0px rgba(147, 157, 170, 0.5);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   NEU-FLAT - Subtle elevation, secondary/toolbars
+   MARBLE-SOFT - Soft elevation, secondary
    ───────────────────────────────────────────────────────────────────────────── */
 
-.neuFlat {
-  background: var(--sentinel-bg-elevated);
-  color: var(--sentinel-text-secondary);
-  box-shadow:
-    -3px -3px 6px var(--sentinel-btn-neu-light-soft),
-    3px 3px 6px var(--sentinel-btn-neu-dark-soft);
+.marbleSoft {
+  background: var(--marble-base);
+  color: var(--text-secondary);
+  box-shadow: var(--raised-1);
+  text-shadow:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.6),
+    -0.5px -0.5px 0px rgba(130, 140, 155, 0.4);
 }
 
-.neuFlat:hover:not(:disabled) {
-  color: var(--sentinel-text-primary);
+.marbleSoft:hover:not(:disabled) {
+  color: var(--text-primary);
+  transform: translateY(-1px);
+  box-shadow: var(--raised-2);
+}
+
+.marbleSoft:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: var(--inset-1);
+  text-shadow:
+    -0.75px -0.75px 0px rgba(255, 255, 255, 0.8),
+    0.75px 0.75px 0px rgba(147, 157, 170, 0.45);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   MARBLE-DEEP - Strong shadows, important CTAs
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.marbleDeep {
+  background: var(--marble-base);
+  color: var(--text-primary);
+  font-weight: 600;
+  box-shadow: var(--raised-4);
+  text-shadow:
+    1px 1px 0px rgba(255, 255, 255, 0.8),
+    -1px -1px 0px rgba(130, 140, 155, 0.6);
+}
+
+.marbleDeep:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: var(--raised-5);
+}
+
+.marbleDeep:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: var(--inset-3);
+  text-shadow:
+    -1.5px -1.5px 0px rgba(255, 255, 255, 0.95),
+    1.5px 1.5px 0px rgba(147, 157, 170, 0.55);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   MARBLE-INSET - Pressed/concave, toggles
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.marbleInset {
+  background: var(--marble-base);
+  color: var(--text-secondary);
+  box-shadow: var(--inset-2);
+  /* Embossed/raised text on inset surface */
+  text-shadow:
+    -1px -1px 0px rgba(255, 255, 255, 0.9),
+    1px 1px 0px rgba(147, 157, 170, 0.5);
+}
+
+.marbleInset:hover:not(:disabled) {
+  color: var(--text-primary);
+  box-shadow: var(--inset-3);
+}
+
+.marbleInset:active:not(:disabled) {
+  box-shadow: var(--inset-4);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   MARBLE-CARVED - Raised with strong carved text
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.marbleCarved {
+  background: var(--marble-base);
+  color: var(--marble-dark);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  box-shadow: var(--raised-3);
+  /* Strong carved letterpress effect */
+  text-shadow:
+    1px 1px 0px rgba(255, 255, 255, 0.85),
+    -1px -1px 0px rgba(130, 140, 155, 0.65);
+}
+
+.marbleCarved:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: var(--raised-4);
+}
+
+.marbleCarved:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: var(--inset-2);
+  text-shadow:
+    -1.5px -1.5px 0px rgba(255, 255, 255, 0.95),
+    1.5px 1.5px 0px rgba(147, 157, 170, 0.55);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   MARBLE-EMBOSSED - Inset with strong raised text
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.marbleEmbossed {
+  background: var(--marble-base);
+  color: var(--marble-base);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  box-shadow: var(--inset-2);
+  /* Strong embossed/raised letterpress effect */
+  text-shadow:
+    -1.5px -1.5px 0px rgba(255, 255, 255, 0.95),
+    1.5px 1.5px 0px rgba(147, 157, 170, 0.55);
+}
+
+.marbleEmbossed:hover:not(:disabled) {
+  box-shadow: var(--inset-3);
+}
+
+.marbleEmbossed:active:not(:disabled) {
+  box-shadow: var(--inset-4);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   MARBLE-PILLOW - Gradient pillow, premium
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.marblePillow {
+  background: linear-gradient(145deg, var(--marble-light), var(--marble-dark));
+  color: var(--text-primary);
+  box-shadow: var(--raised-3);
+  text-shadow:
+    0.75px 0.75px 0px rgba(255, 255, 255, 0.7),
+    -0.75px -0.75px 0px rgba(130, 140, 155, 0.5);
+}
+
+.marblePillow:hover:not(:disabled) {
+  background: linear-gradient(145deg, #e4e7eb, var(--marble-base));
+  transform: translateY(-2px);
+  box-shadow: var(--raised-4);
+}
+
+.marblePillow:active:not(:disabled) {
+  transform: translateY(0);
+  background: linear-gradient(145deg, var(--marble-dark), var(--marble-light));
+  box-shadow: var(--inset-2);
+  text-shadow:
+    -1px -1px 0px rgba(255, 255, 255, 0.9),
+    1px 1px 0px rgba(147, 157, 170, 0.5);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   MARBLE-RIDGE - Beveled frame, decorative
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.marbleRidge {
+  background: var(--marble-base);
+  color: var(--text-primary);
+  box-shadow:
+    var(--raised-2),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.5),
+    inset -1px -1px 2px rgba(168, 172, 179, 0.3);
+  text-shadow:
+    0.75px 0.75px 0px rgba(255, 255, 255, 0.7),
+    -0.75px -0.75px 0px rgba(130, 140, 155, 0.5);
+}
+
+.marbleRidge:hover:not(:disabled) {
   transform: translateY(-1px);
   box-shadow:
-    -5px -5px 10px var(--sentinel-btn-neu-light),
-    5px 5px 10px var(--sentinel-btn-neu-dark);
+    var(--raised-3),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.5),
+    inset -1px -1px 2px rgba(168, 172, 179, 0.3);
 }
 
-.neuFlat:active:not(:disabled) {
+.marbleRidge:active:not(:disabled) {
   transform: translateY(0);
-  box-shadow:
-    inset 3px 3px 6px var(--sentinel-btn-neu-dark-soft),
-    inset -3px -3px 6px var(--sentinel-btn-neu-light-soft);
+  box-shadow: var(--inset-2);
+  text-shadow:
+    -1px -1px 0px rgba(255, 255, 255, 0.9),
+    1px 1px 0px rgba(147, 157, 170, 0.5);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   NEU-MINIMAL - Almost flat, tertiary/lists
+   MARBLE-LAYERED - Multi-layer depth, 3D
    ───────────────────────────────────────────────────────────────────────────── */
 
-.neuMinimal {
-  background: var(--sentinel-bg-elevated);
-  color: var(--sentinel-text-tertiary);
+.marbleLayered {
+  background: var(--marble-base);
+  color: var(--text-primary);
   box-shadow:
-    -2px -2px 4px var(--sentinel-btn-neu-light-soft),
-    2px 2px 4px var(--sentinel-btn-neu-dark-soft);
+    2px 2px 4px var(--shadow-dark),
+    -2px -2px 4px var(--shadow-light),
+    5px 5px 10px rgba(168, 172, 179, 0.5),
+    -5px -5px 10px rgba(255, 255, 255, 0.7);
+  text-shadow:
+    0.75px 0.75px 0px rgba(255, 255, 255, 0.7),
+    -0.75px -0.75px 0px rgba(130, 140, 155, 0.5);
 }
 
-.neuMinimal:hover:not(:disabled) {
-  color: var(--sentinel-text-secondary);
-  box-shadow:
-    -4px -4px 8px var(--sentinel-btn-neu-light),
-    4px 4px 8px var(--sentinel-btn-neu-dark);
-}
-
-.neuMinimal:active:not(:disabled) {
-  box-shadow:
-    inset 2px 2px 4px var(--sentinel-btn-neu-dark-soft),
-    inset -2px -2px 4px var(--sentinel-btn-neu-light-soft);
-}
-
-/* ─────────────────────────────────────────────────────────────────────────────
-   NEU-DEEP - Strong shadows, important CTAs
-   ───────────────────────────────────────────────────────────────────────────── */
-
-.neuDeep {
-  background: var(--sentinel-bg-elevated);
-  color: var(--sentinel-text-primary);
-  box-shadow:
-    -8px -8px 16px var(--sentinel-btn-neu-light),
-    8px 8px 16px var(--sentinel-btn-neu-dark);
-}
-
-.neuDeep:hover:not(:disabled) {
-  transform: translateY(-3px);
-  box-shadow:
-    -10px -10px 20px var(--sentinel-btn-neu-light),
-    10px 10px 20px var(--sentinel-btn-neu-dark);
-}
-
-.neuDeep:active:not(:disabled) {
-  transform: translateY(0);
-  box-shadow:
-    inset 6px 6px 12px var(--sentinel-btn-neu-dark),
-    inset -6px -6px 12px var(--sentinel-btn-neu-light);
-}
-
-/* ─────────────────────────────────────────────────────────────────────────────
-   NEU-PILLOW - Soft gradient, premium/highlights
-   ───────────────────────────────────────────────────────────────────────────── */
-
-.neuPillow {
-  background: linear-gradient(145deg, #f0f4f8, #d8dce2);
-  color: var(--sentinel-text-secondary);
-  box-shadow:
-    -5px -5px 10px var(--sentinel-btn-neu-light),
-    5px 5px 10px var(--sentinel-btn-neu-dark);
-}
-
-.neuPillow:hover:not(:disabled) {
-  color: var(--sentinel-text-primary);
-  background: linear-gradient(145deg, #f5f9fd, #e0e4ea);
+.marbleLayered:hover:not(:disabled) {
   transform: translateY(-2px);
   box-shadow:
-    -7px -7px 14px var(--sentinel-btn-neu-light),
-    7px 7px 14px var(--sentinel-btn-neu-dark);
+    3px 3px 6px var(--shadow-dark),
+    -3px -3px 6px var(--shadow-light),
+    7px 7px 14px rgba(168, 172, 179, 0.5),
+    -7px -7px 14px rgba(255, 255, 255, 0.7);
 }
 
-.neuPillow:active:not(:disabled) {
+.marbleLayered:active:not(:disabled) {
   transform: translateY(0);
-  background: linear-gradient(145deg, #d8dce2, #f0f4f8);
-  box-shadow:
-    inset 4px 4px 8px var(--sentinel-btn-neu-dark),
-    inset -4px -4px 8px var(--sentinel-btn-neu-light);
+  box-shadow: var(--inset-3);
+  text-shadow:
+    -1px -1px 0px rgba(255, 255, 255, 0.9),
+    1px 1px 0px rgba(147, 157, 170, 0.5);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   NEU-RIDGE - Internal bevel, media controls
+   MARBLE-OUTLINE - Thin border raised, minimal
    ───────────────────────────────────────────────────────────────────────────── */
 
-.neuRidge {
-  background: var(--sentinel-bg-elevated);
-  color: var(--sentinel-text-secondary);
-  box-shadow:
-    -4px -4px 8px var(--sentinel-btn-neu-light),
-    4px 4px 8px var(--sentinel-btn-neu-dark),
-    inset 2px 2px 4px var(--sentinel-btn-neu-light-soft),
-    inset -2px -2px 4px var(--sentinel-btn-neu-dark-soft);
-}
-
-.neuRidge:hover:not(:disabled) {
-  color: var(--sentinel-text-primary);
-  transform: translateY(-1px);
-  box-shadow:
-    -6px -6px 12px var(--sentinel-btn-neu-light),
-    6px 6px 12px var(--sentinel-btn-neu-dark),
-    inset 2px 2px 4px var(--sentinel-btn-neu-light-soft),
-    inset -2px -2px 4px var(--sentinel-btn-neu-dark-soft);
-}
-
-.neuRidge:active:not(:disabled) {
-  transform: translateY(0);
-  box-shadow:
-    inset 4px 4px 8px var(--sentinel-btn-neu-dark),
-    inset -4px -4px 8px var(--sentinel-btn-neu-light);
-}
-
-/* ─────────────────────────────────────────────────────────────────────────────
-   NEU-SHARP - Hard shadow, retro/games
-   ───────────────────────────────────────────────────────────────────────────── */
-
-.neuSharp {
-  background: var(--sentinel-bg-elevated);
-  color: var(--sentinel-text-secondary);
-  box-shadow:
-    -4px -4px 0 var(--sentinel-btn-neu-light),
-    4px 4px 0 var(--sentinel-btn-neu-dark);
-}
-
-.neuSharp:hover:not(:disabled) {
-  color: var(--sentinel-text-primary);
-  transform: translate(-2px, -2px);
-  box-shadow:
-    -4px -4px 0 var(--sentinel-btn-neu-light),
-    6px 6px 0 var(--sentinel-btn-neu-dark);
-}
-
-.neuSharp:active:not(:disabled) {
-  transform: translate(2px, 2px);
-  box-shadow:
-    -2px -2px 0 var(--sentinel-btn-neu-light),
-    2px 2px 0 var(--sentinel-btn-neu-dark);
-}
-
-/* ─────────────────────────────────────────────────────────────────────────────
-   NEU-FLOAT - Bottom shadow, cards/floating
-   ───────────────────────────────────────────────────────────────────────────── */
-
-.neuFloat {
-  background: var(--sentinel-bg-elevated);
-  color: var(--sentinel-text-secondary);
-  box-shadow:
-    0 4px 12px var(--sentinel-btn-neu-dark),
-    0 -1px 2px var(--sentinel-btn-neu-light-soft);
-}
-
-.neuFloat:hover:not(:disabled) {
-  color: var(--sentinel-text-primary);
-  transform: translateY(-3px);
-  box-shadow:
-    0 8px 20px var(--sentinel-btn-neu-dark),
-    0 -1px 2px var(--sentinel-btn-neu-light-soft);
-}
-
-.neuFloat:active:not(:disabled) {
-  transform: translateY(1px);
-  box-shadow:
-    0 2px 6px var(--sentinel-btn-neu-dark),
-    0 -1px 2px var(--sentinel-btn-neu-light-soft);
-}
-
-/* ─────────────────────────────────────────────────────────────────────────────
-   NEU-LAYERED - Multi-layer, 3D effect
-   ───────────────────────────────────────────────────────────────────────────── */
-
-.neuLayered {
-  background: var(--sentinel-bg-elevated);
-  color: var(--sentinel-text-secondary);
-  box-shadow:
-    -2px -2px 4px var(--sentinel-btn-neu-light),
-    2px 2px 4px var(--sentinel-btn-neu-dark),
-    -5px -5px 10px var(--sentinel-btn-neu-light-soft),
-    5px 5px 10px var(--sentinel-btn-neu-dark-soft);
-}
-
-.neuLayered:hover:not(:disabled) {
-  color: var(--sentinel-text-primary);
-  transform: translateY(-2px);
-  box-shadow:
-    -3px -3px 6px var(--sentinel-btn-neu-light),
-    3px 3px 6px var(--sentinel-btn-neu-dark),
-    -7px -7px 14px var(--sentinel-btn-neu-light-soft),
-    7px 7px 14px var(--sentinel-btn-neu-dark-soft);
-}
-
-.neuLayered:active:not(:disabled) {
-  transform: translateY(0);
-  box-shadow:
-    inset 3px 3px 6px var(--sentinel-btn-neu-dark),
-    inset -3px -3px 6px var(--sentinel-btn-neu-light);
-}
-
-/* ─────────────────────────────────────────────────────────────────────────────
-   NEU-OUTLINE - Double border, alternative
-   ───────────────────────────────────────────────────────────────────────────── */
-
-.neuOutline {
+.marbleOutline {
   background: transparent;
-  color: var(--sentinel-text-secondary);
-  border: 2px solid var(--sentinel-border-default);
-  box-shadow:
-    -3px -3px 6px var(--sentinel-btn-neu-light-soft),
-    3px 3px 6px var(--sentinel-btn-neu-dark-soft);
-}
-
-.neuOutline:hover:not(:disabled) {
-  color: var(--sentinel-text-primary);
-  background: var(--sentinel-bg-elevated);
-  border-color: var(--sentinel-border-strong);
-  box-shadow:
-    -5px -5px 10px var(--sentinel-btn-neu-light),
-    5px 5px 10px var(--sentinel-btn-neu-dark);
-}
-
-.neuOutline:active:not(:disabled) {
-  background: var(--sentinel-bg-elevated);
-  box-shadow:
-    inset 3px 3px 6px var(--sentinel-btn-neu-dark-soft),
-    inset -3px -3px 6px var(--sentinel-btn-neu-light-soft);
-}
-
-/* ─────────────────────────────────────────────────────────────────────────────
-   NEU-EMBOSS - Embossed text, headers
-   ───────────────────────────────────────────────────────────────────────────── */
-
-.neuEmboss {
-  background: var(--sentinel-bg-elevated);
-  color: var(--sentinel-text-secondary);
+  color: var(--text-secondary);
+  border: 2px solid var(--marble-dark);
+  box-shadow: var(--raised-1);
   text-shadow:
-    1px 1px 1px var(--sentinel-btn-neu-light),
-    -1px -1px 1px var(--sentinel-btn-neu-dark-soft);
-  box-shadow:
-    -4px -4px 8px var(--sentinel-btn-neu-light),
-    4px 4px 8px var(--sentinel-btn-neu-dark);
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.6),
+    -0.5px -0.5px 0px rgba(130, 140, 155, 0.4);
 }
 
-.neuEmboss:hover:not(:disabled) {
-  color: var(--sentinel-text-primary);
-  transform: translateY(-1px);
-  box-shadow:
-    -6px -6px 12px var(--sentinel-btn-neu-light),
-    6px 6px 12px var(--sentinel-btn-neu-dark);
+.marbleOutline:hover:not(:disabled) {
+  color: var(--text-primary);
+  background: var(--marble-base);
+  border-color: var(--marble-deeper);
+  box-shadow: var(--raised-2);
 }
 
-.neuEmboss:active:not(:disabled) {
-  transform: translateY(0);
+.marbleOutline:active:not(:disabled) {
+  background: var(--marble-base);
+  box-shadow: var(--inset-1);
   text-shadow:
-    -1px -1px 1px var(--sentinel-btn-neu-light),
-    1px 1px 1px var(--sentinel-btn-neu-dark-soft);
-  box-shadow:
-    inset 4px 4px 8px var(--sentinel-btn-neu-dark),
-    inset -4px -4px 8px var(--sentinel-btn-neu-light);
+    -0.75px -0.75px 0px rgba(255, 255, 255, 0.8),
+    0.75px 0.75px 0px rgba(147, 157, 170, 0.45);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   NEU-PRESSED - Always inset, active toggle
+   MARBLE-ACCENT - Teal accent raised, primary action
    ───────────────────────────────────────────────────────────────────────────── */
 
-.neuPressed {
-  background: var(--sentinel-bg-elevated);
-  color: var(--sentinel-text-secondary);
-  box-shadow:
-    inset 4px 4px 8px var(--sentinel-btn-neu-dark),
-    inset -4px -4px 8px var(--sentinel-btn-neu-light);
-}
-
-.neuPressed:hover:not(:disabled) {
-  color: var(--sentinel-text-primary);
-  box-shadow:
-    inset 5px 5px 10px var(--sentinel-btn-neu-dark),
-    inset -5px -5px 10px var(--sentinel-btn-neu-light);
-}
-
-.neuPressed:active:not(:disabled) {
-  box-shadow:
-    inset 6px 6px 12px var(--sentinel-btn-neu-dark),
-    inset -6px -6px 12px var(--sentinel-btn-neu-light);
-}
-
-/* ─────────────────────────────────────────────────────────────────────────────
-   NEU-CONCAVE - Bowl shape, inputs/wells
-   ───────────────────────────────────────────────────────────────────────────── */
-
-.neuConcave {
-  background: linear-gradient(145deg, #d8dce2, #f0f4f8);
-  color: var(--sentinel-text-secondary);
-  box-shadow:
-    inset 3px 3px 6px var(--sentinel-btn-neu-dark-soft),
-    inset -3px -3px 6px var(--sentinel-btn-neu-light);
-}
-
-.neuConcave:hover:not(:disabled) {
-  color: var(--sentinel-text-primary);
-  background: linear-gradient(145deg, #dce0e6, #f4f8fc);
-  box-shadow:
-    inset 4px 4px 8px var(--sentinel-btn-neu-dark-soft),
-    inset -4px -4px 8px var(--sentinel-btn-neu-light);
-}
-
-.neuConcave:active:not(:disabled) {
-  box-shadow:
-    inset 5px 5px 10px var(--sentinel-btn-neu-dark),
-    inset -5px -5px 10px var(--sentinel-btn-neu-light);
-}
-
-/* ─────────────────────────────────────────────────────────────────────────────
-   NEU-ACCENT - Colored + glow, primary action
-   ───────────────────────────────────────────────────────────────────────────── */
-
-.neuAccent {
-  background: linear-gradient(145deg, #5ba8aa, #4a9294);
+.marbleAccent {
+  background: linear-gradient(145deg, var(--sentinel-accent-secondary), var(--sentinel-accent-primary));
   color: #ffffff;
-  box-shadow:
-    -5px -5px 10px var(--sentinel-btn-neu-light),
-    5px 5px 10px var(--sentinel-btn-neu-dark),
-    0 0 0 rgba(74, 154, 156, 0);
+  font-weight: 600;
+  box-shadow: var(--raised-3);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-.neuAccent:hover:not(:disabled) {
+.marbleAccent:hover:not(:disabled) {
   transform: translateY(-2px);
-  background: linear-gradient(145deg, #65b2b4, #54a0a2);
   box-shadow:
-    -7px -7px 14px var(--sentinel-btn-neu-light),
-    7px 7px 14px var(--sentinel-btn-neu-dark),
-    0 0 20px var(--sentinel-accent-glow);
+    var(--raised-4),
+    0 0 20px var(--accent-glow);
 }
 
-.neuAccent:active:not(:disabled) {
+.marbleAccent:active:not(:disabled) {
   transform: translateY(0);
-  background: linear-gradient(145deg, #4a9294, #5ba8aa);
+  background: linear-gradient(145deg, var(--sentinel-accent-primary), var(--sentinel-accent-secondary));
   box-shadow:
     inset 4px 4px 8px rgba(0, 0, 0, 0.15),
     inset -4px -4px 8px rgba(255, 255, 255, 0.1);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   NEU-GLOW - Hover with glow, highlight
+   MARBLE-ACCENT-INSET - Teal accent inset, active state
    ───────────────────────────────────────────────────────────────────────────── */
 
-.neuGlow {
-  background: var(--sentinel-bg-elevated);
-  color: var(--sentinel-text-secondary);
-  box-shadow:
-    -5px -5px 10px var(--sentinel-btn-neu-light),
-    5px 5px 10px var(--sentinel-btn-neu-dark);
+.marbleAccentInset {
+  background: var(--marble-base);
+  color: var(--sentinel-accent-primary);
+  font-weight: 600;
+  box-shadow: var(--inset-2);
+  border: 2px solid var(--sentinel-accent-primary);
+  text-shadow:
+    -1px -1px 0px rgba(255, 255, 255, 0.9),
+    1px 1px 0px rgba(147, 157, 170, 0.5);
 }
 
-.neuGlow:hover:not(:disabled) {
+.marbleAccentInset:hover:not(:disabled) {
+  box-shadow:
+    var(--inset-3),
+    0 0 15px var(--accent-glow);
+}
+
+.marbleAccentInset:active:not(:disabled) {
+  box-shadow: var(--inset-4);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   MARBLE-DIAMOND - Diamond rotated corners
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.marbleDiamond {
+  background: var(--marble-base);
+  color: var(--text-primary);
+  font-weight: 600;
+  border-radius: 4px;
+  transform: rotate(0deg);
+  box-shadow: var(--raised-3);
+  text-shadow:
+    0.75px 0.75px 0px rgba(255, 255, 255, 0.7),
+    -0.75px -0.75px 0px rgba(130, 140, 155, 0.5);
+  /* Diamond corner cuts via clip-path */
+  clip-path: polygon(
+    12px 0%, calc(100% - 12px) 0%,
+    100% 12px, 100% calc(100% - 12px),
+    calc(100% - 12px) 100%, 12px 100%,
+    0% calc(100% - 12px), 0% 12px
+  );
+}
+
+.marbleDiamond:hover:not(:disabled) {
+  filter: drop-shadow(6px 6px 12px var(--shadow-dark)) drop-shadow(-6px -6px 12px var(--shadow-light));
+}
+
+.marbleDiamond:active:not(:disabled) {
+  box-shadow: var(--inset-2);
+  text-shadow:
+    -1px -1px 0px rgba(255, 255, 255, 0.9),
+    1px 1px 0px rgba(147, 157, 170, 0.5);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   MARBLE-FRAME - Decorative double frame
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.marbleFrame {
+  background: var(--marble-base);
+  color: var(--text-primary);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  box-shadow: var(--raised-3);
+  border: 3px solid var(--marble-base);
+  outline: 2px solid var(--marble-dark);
+  outline-offset: -6px;
+  text-shadow:
+    0.75px 0.75px 0px rgba(255, 255, 255, 0.7),
+    -0.75px -0.75px 0px rgba(130, 140, 155, 0.5);
+}
+
+.marbleFrame:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: var(--raised-4);
+  outline-color: var(--sentinel-accent-primary);
+}
+
+.marbleFrame:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: var(--inset-2);
+  outline-offset: -4px;
+  text-shadow:
+    -1px -1px 0px rgba(255, 255, 255, 0.9),
+    1px 1px 0px rgba(147, 157, 170, 0.5);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   MARBLE-SEAL - Circular seal style
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.marbleSeal {
+  background: var(--marble-base);
+  color: var(--text-primary);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  border-radius: 50%;
+  aspect-ratio: 1;
+  padding: 0;
+  box-shadow: var(--raised-3);
+  border: 3px solid var(--marble-dark);
+  text-shadow:
+    0.75px 0.75px 0px rgba(255, 255, 255, 0.7),
+    -0.75px -0.75px 0px rgba(130, 140, 155, 0.5);
+}
+
+.marbleSeal:hover:not(:disabled) {
+  transform: scale(1.05);
+  box-shadow: var(--raised-4);
+  border-color: var(--sentinel-accent-primary);
+}
+
+.marbleSeal:active:not(:disabled) {
+  transform: scale(0.98);
+  box-shadow: var(--inset-2);
+  text-shadow:
+    -1px -1px 0px rgba(255, 255, 255, 0.9),
+    1px 1px 0px rgba(147, 157, 170, 0.5);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   MARBLE-PILL - Pill shape, soft actions
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.marblePill {
+  background: var(--marble-base);
+  color: var(--text-primary);
+  border-radius: 100px;
+  box-shadow: var(--raised-2);
+  text-shadow:
+    0.75px 0.75px 0px rgba(255, 255, 255, 0.7),
+    -0.75px -0.75px 0px rgba(130, 140, 155, 0.5);
+}
+
+.marblePill:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: var(--raised-3);
+}
+
+.marblePill:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: var(--inset-2);
+  text-shadow:
+    -1px -1px 0px rgba(255, 255, 255, 0.9),
+    1px 1px 0px rgba(147, 157, 170, 0.5);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   MARBLE-STADIUM - Stadium track shape, wide
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.marbleStadium {
+  background: var(--marble-base);
+  color: var(--text-primary);
+  border-radius: 100px;
+  min-width: 160px;
+  box-shadow: var(--raised-3);
+  text-shadow:
+    0.75px 0.75px 0px rgba(255, 255, 255, 0.7),
+    -0.75px -0.75px 0px rgba(130, 140, 155, 0.5);
+  /* Inner inset ring */
+  border: 3px solid var(--marble-base);
+  outline: 2px solid var(--marble-dark);
+  outline-offset: -8px;
+}
+
+.marbleStadium:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: var(--raised-4);
+}
+
+.marbleStadium:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: var(--inset-2);
+  outline-offset: -6px;
+  text-shadow:
+    -1px -1px 0px rgba(255, 255, 255, 0.9),
+    1px 1px 0px rgba(147, 157, 170, 0.5);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   MARBLE-SHARP - Hard shadows, retro
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.marbleSharp {
+  background: var(--marble-base);
+  color: var(--text-primary);
+  box-shadow:
+    -4px -4px 0 var(--shadow-light),
+    4px 4px 0 var(--shadow-dark);
+  text-shadow:
+    0.75px 0.75px 0px rgba(255, 255, 255, 0.7),
+    -0.75px -0.75px 0px rgba(130, 140, 155, 0.5);
+}
+
+.marbleSharp:hover:not(:disabled) {
+  transform: translate(-2px, -2px);
+  box-shadow:
+    -4px -4px 0 var(--shadow-light),
+    6px 6px 0 var(--shadow-dark);
+}
+
+.marbleSharp:active:not(:disabled) {
+  transform: translate(2px, 2px);
+  box-shadow:
+    -2px -2px 0 var(--shadow-light),
+    2px 2px 0 var(--shadow-dark);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   MARBLE-FLOAT - Bottom shadow, floating
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.marbleFloat {
+  background: var(--marble-base);
+  color: var(--text-primary);
+  box-shadow:
+    0 4px 12px var(--shadow-dark),
+    0 -1px 2px rgba(255, 255, 255, 0.5);
+  text-shadow:
+    0.75px 0.75px 0px rgba(255, 255, 255, 0.7),
+    -0.75px -0.75px 0px rgba(130, 140, 155, 0.5);
+}
+
+.marbleFloat:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow:
+    0 8px 20px var(--shadow-dark),
+    0 -1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.marbleFloat:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow:
+    0 2px 6px var(--shadow-dark),
+    0 -1px 2px rgba(255, 255, 255, 0.5);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   MARBLE-GLOW - Accent glow on hover
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.marbleGlow {
+  background: var(--marble-base);
+  color: var(--text-primary);
+  box-shadow: var(--raised-2);
+  text-shadow:
+    0.75px 0.75px 0px rgba(255, 255, 255, 0.7),
+    -0.75px -0.75px 0px rgba(130, 140, 155, 0.5);
+}
+
+.marbleGlow:hover:not(:disabled) {
   color: var(--sentinel-accent-primary);
   transform: translateY(-2px);
   box-shadow:
-    -7px -7px 14px var(--sentinel-btn-neu-light),
-    7px 7px 14px var(--sentinel-btn-neu-dark),
-    0 0 25px var(--sentinel-accent-glow);
+    var(--raised-3),
+    0 0 25px var(--accent-glow);
 }
 
-.neuGlow:active:not(:disabled) {
+.marbleGlow:active:not(:disabled) {
   transform: translateY(0);
   box-shadow:
-    inset 4px 4px 8px var(--sentinel-btn-neu-dark),
-    inset -4px -4px 8px var(--sentinel-btn-neu-light),
-    0 0 10px var(--sentinel-accent-glow);
+    var(--inset-2),
+    0 0 10px var(--accent-glow);
+  text-shadow:
+    -1px -1px 0px rgba(255, 255, 255, 0.9),
+    1px 1px 0px rgba(147, 157, 170, 0.5);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   SELECTED VARIANTS
+
+   Subtle navigation buttons that blend with the marble surface.
+   Muted by default, reveal brand color on hover.
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   SELECTED-GHOST-NAV - Subtle navigation with pill frame
+   INSET wrapper + RAISED button + INSET icon circle
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.selectedGhostNav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--marble-base, #d5d8dc);
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  font-family: var(--sentinel-font-primary, 'DM Sans', sans-serif);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+
+  /* RAISED */
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.8),
+    inset 0 0 0 2px rgba(168, 172, 179, 0.25),
+    1px 1px 2px rgba(147, 157, 170, 0.55),
+    -1px -1px 2px rgba(255, 255, 255, 0.95);
+
+  /* Muted text - blends with marble */
+  color: var(--marble-dark, #a8acb3);
+  text-shadow:
+    0.75px 0.75px 0px rgba(255, 255, 255, 0.85),
+    -0.75px -0.75px 0px rgba(130, 140, 155, 0.35);
+
+  transition: all 200ms ease;
+}
+
+.selectedGhostNav:hover:not(:disabled) {
+  background: linear-gradient(135deg, rgba(58, 106, 114, 0.08) 0%, rgba(58, 106, 114, 0.04) 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.9),
+    inset 0 0 0 2px rgba(58, 106, 114, 0.25),
+    2px 2px 4px rgba(147, 157, 170, 0.6),
+    -2px -2px 4px rgba(255, 255, 255, 0.95),
+    0 0 10px rgba(58, 106, 114, 0.12);
+
+  /* Brand color on hover */
+  color: var(--fing-accent, #3a6a72);
+}
+
+.selectedGhostNav:active:not(:disabled) {
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.7),
+    inset 0 0 0 2px rgba(168, 172, 179, 0.3),
+    inset 1px 1px 2px rgba(147, 157, 170, 0.4),
+    inset -1px -1px 2px rgba(255, 255, 255, 0.8);
+}
+
+/* Wrapper for pill frame effect */
+.selectedGhostNavWrapper {
+  padding: 3px;
+  border-radius: 24px;
+  background: var(--marble-base, #d5d8dc);
+  box-shadow: var(--inset-1);
+}
+
+/* Icon circle */
+.selectedGhostNavIconCircle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--marble-base, #d5d8dc);
+  box-shadow:
+    inset 1px 1px 2px rgba(147, 157, 170, 0.55),
+    inset -1px -1px 2px rgba(255, 255, 255, 0.95);
+  transition: background 150ms ease;
+}
+
+.selectedGhostNav:hover .selectedGhostNavIconCircle {
+  background: linear-gradient(135deg, rgba(58, 106, 114, 0.15) 0%, rgba(58, 106, 114, 0.08) 100%);
+}
+
+/* Icon */
+.selectedGhostNavIcon {
+  color: var(--marble-dark, #a8acb3);
+  filter:
+    drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9))
+    drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.5));
+  transition: color 150ms ease;
+}
+
+.selectedGhostNav:hover .selectedGhostNavIcon {
+  color: var(--fing-accent, #3a6a72);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════════
