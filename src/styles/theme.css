@@ -275,7 +275,7 @@
   --fing-wm-bg-pillow: linear-gradient(135deg, #d0d4d9 0%, #dadee3 50%, #d0d4d9 100%);
 
   /* ─────────────────────────────────────────────────────────────────────────
-     MARBLE BASE COLORS
+     MARBLE BASE COLORS (dynamically updated via Material Theming)
      ───────────────────────────────────────────────────────────────────────── */
   --marble-base: #d5d8dc;
   --marble-light: #e2e5e9;
@@ -283,7 +283,12 @@
   --marble-deeper: #b8bcc2;
 
   /* ─────────────────────────────────────────────────────────────────────────
-     MARBLE SHADOW COLORS
+     TEXTURE OPACITY (dynamically updated via Material Theming)
+     ───────────────────────────────────────────────────────────────────────── */
+  --texture-opacity: 0.03;
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     MARBLE SHADOW COLORS (dynamically updated via Material Theming)
      ───────────────────────────────────────────────────────────────────────── */
   --shadow-light: rgba(255, 255, 255, 0.95);
   --shadow-dark: rgba(147, 157, 170, 0.55);

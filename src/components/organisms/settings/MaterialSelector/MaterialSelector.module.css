@@ -1,0 +1,404 @@
+/* Path: src/components/organisms/settings/MaterialSelector/MaterialSelector.module.css */
+/* FING Material Selector - Stone Marble Neumorphism */
+
+.container {
+  padding: 24px;
+}
+
+.header {
+  margin-bottom: 24px;
+}
+
+.title {
+  font-family: var(--fing-font-primary);
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+
+  /* Letterpress petrol */
+  color: var(--fing-accent);
+  text-shadow:
+    1px 1px 1px var(--shadow-light),
+    -1px -1px 1px rgba(58, 106, 114, 0.4);
+}
+
+.description {
+  font-size: 13px;
+  margin: 0;
+
+  /* Subtle text */
+  color: var(--text-secondary);
+  text-shadow:
+    0.5px 0.5px 0px var(--shadow-light),
+    -0.5px -0.5px 0px rgba(130, 140, 155, 0.3);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   CURRENT INFO PANEL - INSET
+   ═══════════════════════════════════════════════════════════════ */
+
+.currentInfo {
+  background: var(--marble-base);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 24px;
+  box-shadow: var(--inset-3);
+}
+
+.currentHeader {
+  margin-bottom: 16px;
+}
+
+.currentName {
+  font-family: var(--fing-font-display);
+  font-size: 20px;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 4px;
+
+  /* Embossed text in inset container */
+  color: var(--fing-accent);
+  text-shadow:
+    -1px -1px 0px var(--shadow-light),
+    1px 1px 1px rgba(58, 106, 114, 0.3);
+}
+
+.currentOrigin {
+  font-size: 11px;
+  display: block;
+
+  color: var(--text-secondary);
+  text-shadow:
+    -0.5px -0.5px 0px var(--shadow-light),
+    0.5px 0.5px 0px rgba(130, 140, 155, 0.3);
+}
+
+.colorTokens {
+  display: flex;
+  gap: 16px;
+}
+
+.token {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.tokenSwatch {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  box-shadow: var(--raised-2);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.tokenLabel {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  color: var(--text-secondary);
+  text-shadow:
+    -0.5px -0.5px 0px var(--shadow-light),
+    0.5px 0.5px 0px rgba(130, 140, 155, 0.3);
+}
+
+.tokenHex {
+  font-family: var(--fing-font-mono);
+  font-size: 10px;
+
+  color: var(--text-muted);
+  text-shadow:
+    -0.5px -0.5px 0px var(--shadow-light),
+    0.5px 0.5px 0px rgba(130, 140, 155, 0.3);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SECTIONS
+   ═══════════════════════════════════════════════════════════════ */
+
+.section {
+  margin-bottom: 24px;
+}
+
+.sectionLabel {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+
+  color: var(--fing-accent);
+  text-shadow:
+    0.5px 0.5px 0px var(--shadow-light),
+    -0.5px -0.5px 0px rgba(58, 106, 114, 0.25);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   CATEGORIES
+   ═══════════════════════════════════════════════════════════════ */
+
+.category {
+  margin-bottom: 16px;
+}
+
+.categoryLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+
+  color: var(--text-secondary);
+  text-shadow:
+    0.5px 0.5px 0px var(--shadow-light),
+    -0.5px -0.5px 0px rgba(130, 140, 155, 0.3);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   MATERIAL GRID - RAISED CHIPS
+   ═══════════════════════════════════════════════════════════════ */
+
+.materialGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.materialChip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-family: var(--fing-font-primary);
+  font-size: 12px;
+  font-weight: 500;
+  background: var(--marble-base);
+  transition: all 0.2s ease;
+  box-shadow: var(--raised-2);
+}
+
+.materialChip:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--raised-3);
+}
+
+.materialChip.active {
+  box-shadow: var(--inset-2);
+  transform: translateY(0);
+}
+
+.chipSwatch {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
+
+.chipName {
+  color: var(--text-primary);
+  text-shadow:
+    0.5px 0.5px 0px var(--shadow-light),
+    -0.5px -0.5px 0px rgba(130, 140, 155, 0.3);
+}
+
+.materialChip.active .chipName {
+  color: var(--fing-accent);
+  text-shadow:
+    -0.5px -0.5px 0px var(--shadow-light),
+    0.5px 0.5px 0px rgba(58, 106, 114, 0.3);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   TEXTURE GRID
+   ═══════════════════════════════════════════════════════════════ */
+
+.textureGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.textureChip {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: var(--fing-font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  background: var(--marble-base);
+  transition: all 0.2s ease;
+  box-shadow: var(--raised-2);
+
+  color: var(--text-primary);
+  text-shadow:
+    0.5px 0.5px 0px var(--shadow-light),
+    -0.5px -0.5px 0px rgba(130, 140, 155, 0.3);
+}
+
+.textureChip:hover {
+  box-shadow: var(--raised-3);
+}
+
+.textureChip.active {
+  box-shadow: var(--inset-2);
+  color: var(--fing-accent);
+  text-shadow:
+    -0.5px -0.5px 0px var(--shadow-light),
+    0.5px 0.5px 0px rgba(58, 106, 114, 0.3);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   OPACITY SLIDER
+   ═══════════════════════════════════════════════════════════════ */
+
+.sliderContainer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 16px;
+  background: var(--marble-base);
+  border-radius: 12px;
+  box-shadow: var(--inset-2);
+}
+
+.sliderLabel {
+  font-size: 11px;
+  font-weight: 500;
+  min-width: 60px;
+
+  color: var(--text-secondary);
+  text-shadow:
+    -0.5px -0.5px 0px var(--shadow-light),
+    0.5px 0.5px 0px rgba(130, 140, 155, 0.3);
+}
+
+.slider {
+  flex: 1;
+  height: 8px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: var(--marble-base);
+  border-radius: 100px;
+  box-shadow:
+    inset 2px 2px 4px var(--shadow-dark),
+    inset -2px -2px 4px var(--shadow-light);
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  background: var(--marble-light);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: var(--raised-2);
+  transition: box-shadow 0.15s ease;
+}
+
+.slider::-webkit-slider-thumb:hover {
+  box-shadow: var(--raised-3);
+}
+
+.slider::-webkit-slider-thumb:active {
+  box-shadow: var(--raised-1);
+}
+
+.slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: var(--marble-light);
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  box-shadow: var(--raised-2);
+}
+
+.sliderValue {
+  font-family: var(--fing-font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  min-width: 35px;
+  text-align: right;
+
+  color: var(--fing-accent);
+  text-shadow:
+    -0.5px -0.5px 0px var(--shadow-light),
+    0.5px 0.5px 0px rgba(58, 106, 114, 0.3);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   RESET BUTTON
+   ═══════════════════════════════════════════════════════════════ */
+
+.resetButton {
+  width: 100%;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-family: var(--fing-font-primary);
+  font-size: 12px;
+  font-weight: 500;
+  background: var(--marble-base);
+  transition: all 0.2s ease;
+  box-shadow: var(--raised-2);
+
+  color: var(--text-secondary);
+  text-shadow:
+    0.5px 0.5px 0px var(--shadow-light),
+    -0.5px -0.5px 0px rgba(130, 140, 155, 0.3);
+}
+
+.resetButton:hover {
+  box-shadow: var(--raised-3);
+  color: var(--fing-accent);
+  text-shadow:
+    0.5px 0.5px 0px var(--shadow-light),
+    -0.5px -0.5px 0px rgba(58, 106, 114, 0.25);
+}
+
+.resetButton:active {
+  box-shadow: var(--raised-1);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════════ */
+
+@media (max-width: 600px) {
+  .colorTokens {
+    gap: 12px;
+  }
+
+  .tokenSwatch {
+    width: 40px;
+    height: 40px;
+  }
+
+  .materialGrid {
+    gap: 8px;
+  }
+
+  .materialChip {
+    padding: 8px 12px;
+    font-size: 11px;
+  }
+
+  .chipSwatch {
+    width: 18px;
+    height: 18px;
+  }
+}

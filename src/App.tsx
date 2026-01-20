@@ -19,10 +19,11 @@ const PortfolioView = lazy(() => import('./pages/app/PortfolioView').then(m => (
 const PortfolioSimulator = lazy(() => import('./pages/app/PortfolioSimulator').then(m => ({ default: m.PortfolioSimulator })));
 const RecommendationsView = lazy(() => import('./pages/app/RecommendationsView').then(m => ({ default: m.RecommendationsView })));
 const NewsView = lazy(() => import('./pages/app/NewsView').then(m => ({ default: m.NewsView })));
+const SettingsPage = lazy(() => import('./pages/app/SettingsPage').then(m => ({ default: m.SettingsPage })));
 
 // Menu Pages (Placeholder)
 import { PlaceholderPage } from './pages/app/PlaceholderPage';
-import { User, Settings, Bell, Shield, HelpCircle } from 'lucide-react';
+import { User, Bell, Shield, HelpCircle } from 'lucide-react';
 
 const FingShowcase = lazy(() => import('./pages/fing/FingShowcase').then(m => ({ default: m.FingShowcase })));
 const Level4Showcase = lazy(() => import('./pages/fing/Level4Showcase').then(m => ({ default: m.Level4Showcase })));
@@ -169,11 +170,9 @@ function AppRoutes() {
             />
           } />
           <Route path="settings" element={
-            <PlaceholderPage
-              icon={Settings}
-              title="Settings"
-              description="Configure app settings and notifications"
-            />
+            <Suspense fallback={<LoadingScreen message="Loading settings" />}>
+              <SettingsPage />
+            </Suspense>
           } />
           <Route path="notifications" element={
             <PlaceholderPage
