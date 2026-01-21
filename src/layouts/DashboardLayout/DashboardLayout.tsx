@@ -223,7 +223,7 @@ function DashboardLayoutInner({
 export function DashboardLayout({
   layoutStyle = 'default',
   dynamicShadows = true,
-  animateLight = false,
+  animateLight = true,
   initialLightAngle = 135,
 }: DashboardLayoutProps = {}) {
   return (
