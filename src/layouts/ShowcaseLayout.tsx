@@ -199,6 +199,7 @@ export function ShowcaseLayout() {
   // Charts - ECharts
   const chartsItems = [
     { path: '/showcase/charts', label: 'Overview', icon: LineChart },
+    { path: '/showcase/charts/docs', label: 'Documentation', icon: FileText },
     // Financial
     { path: '/showcase/charts/candlestick', label: 'Candlestick', icon: LineChart },
     { path: '/showcase/charts/line', label: 'Line', icon: LineChart },

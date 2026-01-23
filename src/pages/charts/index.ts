@@ -3,6 +3,9 @@
 // Overview
 export { ChartsShowcase } from './ChartsShowcase';
 
+// Documentation
+export { ChartsDocsShowcase } from './ChartsDocsShowcase';
+
 // ─────────────────────────────────────────────────────────────────────────────
 // FINANCIAL CHARTS
 // ─────────────────────────────────────────────────────────────────────────────

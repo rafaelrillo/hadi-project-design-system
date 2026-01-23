@@ -72,6 +72,7 @@ const ToastShowcase = lazy(() => import('./pages/organisms/ToastShowcase').then(
 
 // Charts - ECharts
 const ChartsShowcase = lazy(() => import('./pages/charts').then(m => ({ default: m.ChartsShowcase })));
+const ChartsDocsShowcase = lazy(() => import('./pages/charts').then(m => ({ default: m.ChartsDocsShowcase })));
 const CandlestickChartShowcase = lazy(() => import('./pages/charts').then(m => ({ default: m.CandlestickChartShowcase })));
 const LineChartShowcase = lazy(() => import('./pages/charts').then(m => ({ default: m.LineChartShowcase })));
 const BarChartShowcase = lazy(() => import('./pages/charts').then(m => ({ default: m.BarChartShowcase })));
@@ -258,6 +259,7 @@ function AppRoutes() {
 
         {/* Charts - ECharts */}
         <Route path="charts" element={<Suspense fallback={<ShowcaseLoader />}><ChartsShowcase /></Suspense>} />
+        <Route path="charts/docs" element={<Suspense fallback={<ShowcaseLoader />}><ChartsDocsShowcase /></Suspense>} />
         <Route path="charts/candlestick" element={<Suspense fallback={<ShowcaseLoader />}><CandlestickChartShowcase /></Suspense>} />
         <Route path="charts/line" element={<Suspense fallback={<ShowcaseLoader />}><LineChartShowcase /></Suspense>} />
         <Route path="charts/bar" element={<Suspense fallback={<ShowcaseLoader />}><BarChartShowcase /></Suspense>} />
