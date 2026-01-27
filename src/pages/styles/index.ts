@@ -10,3 +10,4 @@ export { IconsShowcase } from './IconsShowcase';
 export { LightEngineShowcase } from './LightEngineShowcase';
 export { StoneMarbleShowcase } from './StoneMarbleShowcase';
 export { WordmarkShowcase } from './WordmarkShowcase';
+export { LetterpressShowcase } from './LetterpressShowcase';

@@ -1,0 +1,168 @@
+/* ═══════════════════════════════════════════════════════════════════════════════
+   FING COLOR SYSTEM - Natural Mineral Palette
+   Extracted from FingHome + DashboardPage (Source of Truth)
+
+   All colors derive from natural materials:
+   - Charcoal (burned wood carbon)
+   - Petrol (petroleum deposits)
+   - Jade (green stone)
+   - Gold (pure metal)
+   - Rust (iron oxide)
+   - Steel (refined iron alloy)
+   - Marble (natural stone)
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ═══════════════════════════════════════════════════════════════════════════
+     MARBLE SURFACE - Base Background
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  --marble-base: #d5d8dc;           /* Primary surface color */
+  --marble-light: #e2e5e9;          /* Lighter variant */
+  --marble-dark: #c8ccd1;           /* Darker variant */
+  --marble-deeper: #b8bcc2;         /* Deep inset background */
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     PRIMARY BLACK - Charcoal (burned wood carbon)
+     Never use pure black #000000 - always use Charcoal
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  --fing-black: #252528;
+  --fing-black-rgb: 37, 37, 40;
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     BRAND ACCENT - Petrol (petroleum deposits)
+     Primary brand color for interactive elements
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  --fing-accent: #3a6a72;
+  --fing-accent-light: #4a7a82;
+  --fing-accent-dark: #2a5a62;
+  --fing-accent-glow: rgba(58, 106, 114, 0.25);
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     TEXT ACCENT - Steel (refined iron alloy)
+     For secondary accent text
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  --fing-text-accent: #4a6a7a;
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     SEMANTIC COLORS - Natural Minerals
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  /* Positive/Success - Jade (green stone) */
+  --fing-positive: #4a7a6a;
+  --fing-positive-light: #5a8a7a;
+  --fing-positive-dark: #3a6a5a;
+
+  /* Warning - Gold (pure metal) */
+  --fing-warning: #a08a4a;
+  --fing-warning-light: #b09a5a;
+  --fing-warning-dark: #8a7a3a;
+
+  /* Negative/Error - Rust (iron oxide) */
+  --fing-negative: #8a5a4a;
+  --fing-negative-light: #9a6a5a;
+  --fing-negative-dark: #7a4a3a;
+
+  /* Info - Steel (same as text accent) */
+  --fing-info: #4a6a7a;
+  --fing-info-light: #5a7a8a;
+  --fing-info-dark: #3a5a6a;
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     TEXT COLORS
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  --fing-text-primary: var(--fing-black);
+  --fing-text-secondary: rgba(37, 37, 40, 0.75);
+  --fing-text-tertiary: rgba(37, 37, 40, 0.55);
+  --fing-text-muted: #8a8f96;
+  --fing-text-disabled: rgba(37, 37, 40, 0.3);
+  --fing-text-inverse: #f0f0f2;
+  --fing-text-light: #f0f0f2;
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     LOGO COLORS - For FING emblem variants
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  /* Dark Variant (on dark backgrounds) */
+  --fing-logo-slate-1: #3a3a42;
+  --fing-logo-slate-2: #44444c;
+
+  /* Stone Variant (on marble backgrounds) */
+  --fing-logo-marble-1: #eceef2;
+  --fing-logo-marble-2: #f0f2f5;
+
+  /* Light Variant (on white backgrounds) */
+  --fing-logo-light-1: #e8e8ec;
+  --fing-logo-light-2: #ededf0;
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     EMBLEM COLORS - Radar Symbol
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  --fing-symbol-fill: #babec4;
+  --fing-symbol-stroke: #b2b6bc;
+  --fing-teal-glow: rgba(58, 106, 114, 0.5);
+
+  /* Carve effect colors */
+  --fing-carve-light: rgba(255, 255, 255, 0.92);
+  --fing-carve-dark: rgba(140, 150, 165, 0.65);
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     BORDER COLORS
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  --fing-border-subtle: rgba(163, 177, 198, 0.2);
+  --fing-border-default: rgba(163, 177, 198, 0.35);
+  --fing-border-strong: rgba(163, 177, 198, 0.5);
+  --fing-border-focus: var(--fing-accent);
+  --fing-border-accent: rgba(58, 106, 114, 0.4);
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     CHART COLORS
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  --fing-chart-1: var(--fing-accent);      /* Petrol */
+  --fing-chart-2: var(--fing-accent-dark); /* Dark Petrol */
+  --fing-chart-3: var(--fing-positive);    /* Jade */
+  --fing-chart-4: var(--fing-info);        /* Steel */
+  --fing-chart-5: #6a5a7a;                 /* Amethyst */
+  --fing-chart-6: var(--fing-warning);     /* Gold */
+  --fing-chart-7: var(--fing-negative);    /* Rust */
+  --fing-chart-8: #5a6a6a;                 /* Slate */
+
+  --fing-chart-grid: rgba(163, 177, 198, 0.25);
+  --fing-chart-axis: #5F6C7A;
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     GLASS TINT COLORS
+     For glass effects with color tinting
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  --fing-glass-accent: rgba(58, 106, 114, 0.08);
+  --fing-glass-accent-strong: rgba(58, 106, 114, 0.15);
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     STATUS BACKGROUNDS (Subtle)
+     For status indicators with low opacity
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  --fing-status-positive-subtle: rgba(74, 122, 106, 0.15);
+  --fing-status-negative-subtle: rgba(138, 90, 74, 0.15);
+  --fing-status-warning-subtle: rgba(160, 138, 74, 0.15);
+  --fing-status-info-subtle: rgba(74, 106, 122, 0.15);
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     GLOW EFFECTS
+     For focus states and highlights
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  --fing-glow-positive: 0 0 15px rgba(74, 122, 106, 0.25);
+  --fing-glow-negative: 0 0 15px rgba(138, 90, 74, 0.25);
+  --fing-glow-warning: 0 0 15px rgba(160, 138, 74, 0.25);
+  --fing-glow-info: 0 0 15px rgba(74, 106, 122, 0.25);
+  --fing-glow-accent: 0 0 15px rgba(58, 106, 114, 0.25);
+}

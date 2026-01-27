@@ -1,0 +1,128 @@
+/* ═══════════════════════════════════════════════════════════════════════════════
+   FING TYPOGRAPHY SYSTEM
+   Extracted from FingHome + DashboardPage (Source of Truth)
+
+   Fonts:
+   - DM Sans: UI primary (body, labels, buttons)
+   - IBM Plex Mono: Data, tickers, financial values
+   - Libre Baskerville: Display, headlines
+   - Cormorant Garamond: Wordmark only
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ═══════════════════════════════════════════════════════════════════════════
+     FONT FAMILIES
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  /* Primary UI Font - DM Sans */
+  --fing-font-primary: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --fing-font-sans: var(--fing-font-primary);
+
+  /* Monospace - Financial Data */
+  --fing-font-mono: 'IBM Plex Mono', 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  --fing-font-data: var(--fing-font-mono);
+  --fing-font-ticker: var(--fing-font-mono);
+  --fing-font-numeric: var(--fing-font-mono);
+
+  /* Display - Headlines */
+  --fing-font-display: 'Libre Baskerville', Georgia, 'Times New Roman', serif;
+
+  /* Wordmark - Cormorant Garamond (use only for FING wordmark) */
+  --fing-wordmark-font: 'Cormorant Garamond', serif;
+  --fing-wordmark-weight: 300;
+  --fing-wordmark-tracking: 0.06em;
+
+  /* LED/Dashboard Headers */
+  --fing-font-led: 'IBM Plex Sans', sans-serif;
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     FONT SIZES - Standard Scale (rem-based)
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  --fing-text-xs: 0.75rem;      /* 12px */
+  --fing-text-sm: 0.875rem;     /* 14px */
+  --fing-text-base: 1rem;       /* 16px */
+  --fing-text-lg: 1.125rem;     /* 18px */
+  --fing-text-xl: 1.25rem;      /* 20px */
+  --fing-text-2xl: 1.5rem;      /* 24px */
+  --fing-text-3xl: 1.875rem;    /* 30px */
+  --fing-text-4xl: 2.25rem;     /* 36px */
+  --fing-text-5xl: 3rem;        /* 48px */
+  --fing-text-6xl: 3.75rem;     /* 60px */
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     FONT SIZES - Data/Dashboard Scale (px-based for precision)
+     Used in FingHome and DashboardPage
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  --fing-data-xs: 10px;
+  --fing-data-sm: 11px;
+  --fing-data-base: 12px;
+  --fing-data-md: 13px;
+  --fing-data-lg: 14px;
+  --fing-data-xl: 16px;
+  --fing-data-2xl: 20px;
+  --fing-data-3xl: 28px;
+  --fing-data-4xl: 36px;
+  --fing-data-5xl: 48px;
+
+  /* Home Page Specific Sizes */
+  --fing-home-descriptor: 22px;     /* .heroDescriptor */
+  --fing-home-section-label: 11px; /* .sectionLabel */
+  --fing-home-headline: 26px;      /* .voiceHeadline mobile, 32px desktop */
+  --fing-home-headline-lg: 32px;
+  --fing-home-wordmark: 96px;      /* Hero wordmark size */
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     FONT WEIGHTS
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  --fing-font-light: 300;
+  --fing-font-regular: 400;
+  --fing-font-medium: 500;
+  --fing-font-semibold: 600;
+  --fing-font-bold: 700;
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     LETTER SPACING
+     Extracted from Home components
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  --fing-tracking-tight: -0.02em;      /* Tight, used for large text */
+  --fing-tracking-normal: 0;
+  --fing-tracking-wide: 0.02em;
+  --fing-tracking-wider: 0.03em;
+  --fing-tracking-widest: 0.05em;
+
+  /* Home-specific tracking values */
+  --fing-tracking-label: 0.25em;       /* Section labels (uppercase) */
+  --fing-tracking-root: 0.08em;        /* Etymology root text */
+  --fing-tracking-word: 0.04em;        /* Etymology word text */
+  --fing-tracking-meaning: 0.02em;     /* Etymology meaning text */
+  --fing-tracking-modern: 0.1em;       /* Etymology modern text */
+  --fing-tracking-formula: 0.12em;     /* Synthesis formula */
+  --fing-tracking-result: 0.06em;      /* Synthesis result */
+  --fing-tracking-pill: 0.03em;        /* Anti-example pills */
+  --fing-tracking-system-name: 0.2em;  /* System name text */
+  --fing-tracking-demo-label: 0.1em;   /* Demo label text */
+
+  /* Data tracking */
+  --fing-tracking-data: 0;
+  --fing-tracking-led: 0.05em;
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     LINE HEIGHTS
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  --fing-leading-none: 1;
+  --fing-leading-tight: 1.25;
+  --fing-leading-snug: 1.375;
+  --fing-leading-normal: 1.5;
+  --fing-leading-relaxed: 1.625;
+  --fing-leading-loose: 2;
+
+  /* Home-specific line heights */
+  --fing-leading-headline: 1.3;
+  --fing-leading-voice: 1.6;
+  --fing-leading-philosophy: 1.7;
+}

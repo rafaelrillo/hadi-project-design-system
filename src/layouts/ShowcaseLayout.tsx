@@ -41,7 +41,9 @@ import {
   MessageSquare,
   Sun,
   Gem,
-  Fingerprint
+  Fingerprint,
+  FlaskConical,
+  Stamp
 } from 'lucide-react';
 
 export function ShowcaseLayout() {
@@ -51,8 +53,11 @@ export function ShowcaseLayout() {
   // Detectar qué grupo debe estar abierto basándose en la ruta actual
   useEffect(() => {
     const path = location.pathname;
-    if (path.includes('/showcase/styles')) {
-      setExpandedGroup('styles');
+    // Lab pages (stone-marble, light-engine showcase root)
+    if (path.includes('/showcase/styles/stone-marble') || path === '/showcase') {
+      setExpandedGroup('lab');
+    } else if (path.includes('/showcase/styles')) {
+      setExpandedGroup('design-system');
     } else if (path.includes('/showcase/atoms')) {
       setExpandedGroup('atoms');
     } else if (path.includes('/showcase/molecules')) {
@@ -183,17 +188,28 @@ export function ShowcaseLayout() {
     { path: '/showcase/organisms/toast', label: 'Toast', icon: MessageSquare }
   ];
 
-  const stylesItems = [
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // DESIGN SYSTEM OFICIAL - Tokens canónicos extraídos del Home
+  // ═══════════════════════════════════════════════════════════════════════════════
+  const designSystemItems = [
     { path: '/showcase/styles/brand', label: 'Brand', icon: Fingerprint },
     { path: '/showcase/styles/wordmark', label: 'Wordmark', icon: Type },
-    { path: '/showcase/styles/buttons', label: 'Buttons', icon: SquareStack },
     { path: '/showcase/styles/colors', label: 'Colors', icon: Palette },
     { path: '/showcase/styles/typography', label: 'Typography', icon: Type },
-    { path: '/showcase/styles/spacing', label: 'Spacing', icon: Ruler },
     { path: '/showcase/styles/shadows', label: 'Shadows', icon: Copy },
+    { path: '/showcase/styles/letterpress', label: 'Letterpress', icon: Stamp },
+    { path: '/showcase/styles/spacing', label: 'Spacing', icon: Ruler },
     { path: '/showcase/styles/border-radius', label: 'Border Radius', icon: Circle },
     { path: '/showcase/styles/icons', label: 'Icons', icon: Image },
-    { path: '/showcase/styles/stone-marble', label: 'Stone Marble', icon: Gem }
+    { path: '/showcase/styles/buttons', label: 'Buttons', icon: SquareStack },
+  ];
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // LAB - Exploraciones y experimentos (no para producción)
+  // ═══════════════════════════════════════════════════════════════════════════════
+  const labItems = [
+    { path: '/showcase/styles/stone-marble', label: 'Stone Marble', icon: Gem },
+    { path: '/showcase', label: 'Light Engine', icon: Sun },
   ];
 
   // Charts - ECharts
@@ -271,25 +287,6 @@ export function ShowcaseLayout() {
             <span>Home</span>
           </Link>
 
-          {/* Light Engine Demo */}
-          <Link
-            to="/showcase"
-            style={homeItemStyles}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = 'var(--fing-bg-subtle)';
-              e.currentTarget.style.borderLeftColor = 'var(--fing-accent-primary)';
-              e.currentTarget.style.color = 'var(--fing-accent-primary)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = 'transparent';
-              e.currentTarget.style.borderLeftColor = 'transparent';
-              e.currentTarget.style.color = 'var(--fing-text-primary)';
-            }}
-          >
-            <Sun size={18} />
-            <span>Light Engine</span>
-          </Link>
-
           {/* FING Components Link */}
           <Link
             to="/showcase/fing"
@@ -311,13 +308,15 @@ export function ShowcaseLayout() {
             <span>FING Components</span>
           </Link>
 
-          {/* Styles Group */}
+          {/* ═══════════════════════════════════════════════════════════════════
+              DESIGN SYSTEM - Tokens Oficiales
+              ═══════════════════════════════════════════════════════════════════ */}
           <SidebarGroup
-            title="Styles"
+            title="Design System"
             icon={Palette}
-            items={stylesItems}
-            isExpanded={expandedGroup === 'styles'}
-            onToggle={() => handleToggleGroup('styles')}
+            items={designSystemItems}
+            isExpanded={expandedGroup === 'design-system'}
+            onToggle={() => handleToggleGroup('design-system')}
           />
 
           {/* Atoms Group */}
@@ -364,6 +363,23 @@ export function ShowcaseLayout() {
             isExpanded={expandedGroup === 'animations'}
             onToggle={() => handleToggleGroup('animations')}
           />
+
+          {/* ═══════════════════════════════════════════════════════════════════
+              LAB - Experimental (no para producción)
+              ═══════════════════════════════════════════════════════════════════ */}
+          <div style={{
+            marginTop: '16px',
+            paddingTop: '16px',
+            borderTop: '1px dashed var(--fing-border-subtle)'
+          }}>
+            <SidebarGroup
+              title="Lab"
+              icon={FlaskConical}
+              items={labItems}
+              isExpanded={expandedGroup === 'lab'}
+              onToggle={() => handleToggleGroup('lab')}
+            />
+          </div>
         </nav>
       </aside>
 

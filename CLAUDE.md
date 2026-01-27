@@ -853,10 +853,55 @@ npm run lint          # ESLint
   - [x] 4 gradientes especiales (pressed, bowl, crater, pillow)
   - [x] WordmarkShowcase con demos de todas las variaciones
   - [x] Ruta: `/showcase/styles/wordmark`
+- [x] **Design System Consolidation + Lab Separation** (2026-01-27)
+  - [x] Auditoría profunda del design system (tipografía, colores, sombras, letterpress)
+  - [x] Extracción de tokens desde FingHome y DashboardPage como fuente de verdad
+  - [x] Creación de archivos CSS modulares:
+    - `colors.css` - Paleta Natural Mineral
+    - `typography.css` - Familias, tamaños, pesos, tracking
+    - `shadows.css` - Sistema RAISED/INSET/GLASS
+    - `letterpress.css` - Text-shadows neumórficos
+  - [x] Migración de 23 valores letterpress hardcodeados a variables en FingHome.module.css
+  - [x] Separación de código experimental en `src/styles/lab/`:
+    - Movido `light-engine.css` y `textures.css` al lab
+    - Creado `lab/README.md` con reglas de uso
+  - [x] Reorganización del Sidebar en ShowcaseLayout:
+    - Sección "Design System" con tokens oficiales
+    - Sección "Lab" separada visualmente para experimental
+  - [x] Nueva página `LetterpressShowcase.tsx` en `/showcase/styles/letterpress`
+  - [x] Documentación completa en `docs/DESIGN_SYSTEM_CONSOLIDATION.md`
 
 ---
 
 ## DECISIONES TOMADAS
+
+**[2026-01-27] Design System Consolidation + Lab Separation**
+- **Decision**: Consolidar tokens CSS en archivos modulares y separar código experimental en lab/
+- **Problema identificado**:
+  - theme.css monolítico de 84KB con variables duplicadas
+  - 23 valores letterpress hardcodeados en FingHome.module.css
+  - Código experimental (light-engine, textures) importado globalmente
+  - Falta de claridad entre oficial vs experimental
+- **Solución implementada**:
+  - Archivos CSS modulares: `colors.css`, `typography.css`, `shadows.css`, `letterpress.css`
+  - Carpeta `lab/` para código experimental con README y reglas
+  - Sidebar reorganizado con secciones "Design System" y "Lab"
+- **Archivos clave creados**:
+  - `/src/styles/colors.css` - Paleta Natural Mineral
+  - `/src/styles/typography.css` - Sistema tipográfico
+  - `/src/styles/shadows.css` - RAISED/INSET/GLASS
+  - `/src/styles/letterpress.css` - Text-shadows neumórficos
+  - `/src/styles/lab/README.md` - Reglas del lab
+  - `/src/pages/styles/LetterpressShowcase.tsx` - Showcase de letterpress
+  - `/docs/DESIGN_SYSTEM_CONSOLIDATION.md` - Documentación completa
+- **Archivos movidos al lab**:
+  - `light-engine.css` → `lab/light-engine.css`
+  - `textures.css` → `lab/textures.css`
+- **Variables letterpress nuevas**:
+  - Semánticas: `--lp-primary`, `--lp-positive`, `--lp-warning`, `--lp-negative`, `--lp-info`, `--lp-accent`
+  - Contexto: `--lp-steel`, `--lp-petrol`, `--lp-petrol-whisper`, `--lp-muted`
+  - Embossed: `--lp-embossed`, `--lp-embossed-subtle`, `--lp-embossed-petrol`, etc.
+- **Razón**: Establecer una única fuente de verdad, mejorar mantenibilidad, y separar claramente producción de experimental
 
 **[2026-01-19] FING Wordmark — Inset Typography System**
 - **Decision**: Crear sistema de wordmark con 12 variaciones inset usando Cormorant Garamond

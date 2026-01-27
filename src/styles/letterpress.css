@@ -1,0 +1,169 @@
+/* ═══════════════════════════════════════════════════════════════════════════════
+   FING LETTERPRESS SYSTEM
+   Extracted from FingHome + DashboardPage (Source of Truth)
+
+   Letterpress Effect: Opposing light/dark shadows create "pressed into surface" look
+   - Light shadow: Upper-left (simulates light hitting raised edge)
+   - Dark shadow: Lower-right (simulates shadow from depression)
+
+   RULE: RAISED container → INSET typography (carved/debossed)
+         INSET container → RAISED typography (embossed)
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ═══════════════════════════════════════════════════════════════════════════
+     LETTERPRESS BASE VALUES
+     Light highlight + colored shadow creates pressed-in effect
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  /* Standard letterpress shadow offset */
+  --lp-offset: 0.5px;
+  --lp-offset-strong: 1px;
+
+  /* Light component (always white highlight) */
+  --lp-light: rgba(255, 255, 255, 0.9);
+  --lp-light-subtle: rgba(255, 255, 255, 0.8);
+  --lp-light-strong: rgba(255, 255, 255, 0.95);
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     LETTERPRESS - SEMANTIC COLORS (Natural Mineral Palette)
+     Use with corresponding --fing-* color for text color
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  /* Primary - Charcoal (#252528) */
+  --lp-primary:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
+    -0.5px -0.5px 0px rgba(37, 37, 40, 0.2);
+
+  --lp-primary-strong:
+    1px 1px 0px rgba(255, 255, 255, 0.9),
+    -1px -1px 0px rgba(37, 37, 40, 0.25);
+
+  /* Positive - Jade (#4a7a6a) */
+  --lp-positive:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
+    -0.5px -0.5px 0px rgba(74, 122, 106, 0.25);
+
+  /* Warning - Gold (#a08a4a) */
+  --lp-warning:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
+    -0.5px -0.5px 0px rgba(160, 138, 74, 0.25);
+
+  /* Negative - Rust (#8a5a4a) */
+  --lp-negative:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
+    -0.5px -0.5px 0px rgba(138, 90, 74, 0.25);
+
+  /* Info - Steel (#4a6a7a) */
+  --lp-info:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
+    -0.5px -0.5px 0px rgba(74, 106, 122, 0.25);
+
+  /* Accent - Petrol (#3a6a72) */
+  --lp-accent:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
+    -0.5px -0.5px 0px rgba(58, 106, 114, 0.25);
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     LETTERPRESS - CONTEXT VARIANTS
+     Extracted from FingHome.module.css actual usage
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  /* Steel (Text Accent) - Used in descriptors and labels */
+  --lp-steel:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
+    -0.5px -0.5px 0px rgba(74, 106, 122, 0.25);
+
+  /* Steel Strong - Used in headlines */
+  --lp-steel-strong:
+    1px 1px 0px rgba(255, 255, 255, 0.85),
+    -1px -1px 1px rgba(74, 106, 122, 0.3);
+
+  /* Petrol - Used for accent text */
+  --lp-petrol:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.8),
+    -0.5px -0.5px 0px rgba(58, 106, 114, 0.35);
+
+  /* Petrol Strong - Used for larger accent text */
+  --lp-petrol-strong:
+    1px 1px 0px rgba(255, 255, 255, 0.85),
+    -1px -1px 1px rgba(58, 106, 114, 0.4);
+
+  /* Petrol Whisper - Subtle petrol (used in wordmark, highlights) */
+  --lp-petrol-whisper:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.8),
+    -0.5px -0.5px 0px rgba(58, 106, 114, 0.35);
+
+  /* Muted - Used for section labels and subtle text */
+  --lp-muted:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.7),
+    -0.5px -0.5px 0px rgba(138, 143, 150, 0.3);
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     LETTERPRESS - INSET CONTAINER TYPOGRAPHY (Embossed/Raised)
+     For text inside INSET containers - text appears raised
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  /* Standard embossed text in inset container */
+  --lp-embossed:
+    -1.5px -1.5px 0px rgba(255, 255, 255, 0.95),
+    1.5px 1.5px 0px rgba(147, 157, 170, 0.55);
+
+  /* Subtle embossed text */
+  --lp-embossed-subtle:
+    -1px -1px 0px rgba(255, 255, 255, 0.9),
+    1px 1px 0px rgba(147, 157, 170, 0.45);
+
+  /* Strong embossed text */
+  --lp-embossed-strong:
+    -2px -2px 0px rgba(255, 255, 255, 1),
+    2px 2px 1px rgba(130, 140, 155, 0.6);
+
+  /* Embossed with Petrol tint - for FING branded text in inset */
+  --lp-embossed-petrol:
+    -1.5px -1.5px 1px rgba(255, 255, 255, 0.9),
+    1.5px 1.5px 1px rgba(58, 106, 114, 0.3);
+
+  /* Embossed small - for smaller text in inset containers */
+  --lp-embossed-sm:
+    -0.5px -0.5px 0px rgba(255, 255, 255, 0.9),
+    0.5px 0.5px 0px rgba(147, 157, 170, 0.4);
+
+  /* Embossed with Petrol tint small */
+  --lp-embossed-petrol-sm:
+    -0.75px -0.75px 0px rgba(255, 255, 255, 0.9),
+    0.75px 0.75px 0px rgba(58, 106, 114, 0.25);
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     LETTERPRESS - DASHBOARD SPECIFIC
+     Extracted from DashboardPage.module.css
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  /* Title in raised container - carved effect */
+  --lp-title-carved:
+    0.75px 0.75px 0px rgba(255, 255, 255, 0.7),
+    -0.75px -0.75px 0px rgba(130, 140, 155, 0.5);
+
+  /* Data table cell - subtle */
+  --lp-data:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.8),
+    -0.5px -0.5px 0px rgba(130, 140, 155, 0.3);
+
+  /* Rank number - accent colored */
+  --lp-rank:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.75),
+    -0.5px -0.5px 0px rgba(58, 106, 114, 0.35);
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     ICON LETTERPRESS
+     For icons that need pressed/carved effect
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  --lp-icon:
+    drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9))
+    drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4));
+
+  --lp-icon-accent:
+    drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9))
+    drop-shadow(0.5px 0.5px 0px rgba(58, 106, 114, 0.4));
+}

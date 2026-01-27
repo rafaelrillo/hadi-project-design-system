@@ -1,0 +1,193 @@
+/* ═══════════════════════════════════════════════════════════════════════════════
+   FING SHADOWS SYSTEM - Stone Marble Neumorphism
+   Extracted from FingHome + DashboardPage (Source of Truth)
+
+   HIERARCHY: RAISED → INSET → GLASS (never skip levels, never nest same level)
+
+   - RAISED: Elements floating above surface (outer shadows)
+   - INSET: Carved into surface (inner shadows)
+   - GLASS: Transparent floating items (no neumorphic shadows)
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ═══════════════════════════════════════════════════════════════════════════
+     SHADOW BASE COLORS
+     These match the marble surface characteristics
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  /* Standard shadow colors */
+  --shadow-light: rgba(255, 255, 255, 0.95);
+  --shadow-dark: rgba(147, 157, 170, 0.55);
+  --shadow-darker: rgba(130, 140, 155, 0.65);
+
+  /* Alternative shadow color values (used in some components) */
+  --shadow-dark-alt: rgba(168, 172, 179, 0.5);  /* #a8acb3 at 50% */
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     RAISED SHADOWS (5 Levels)
+     Elements that float above the marble surface
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  --raised-1:
+    2px 2px 4px var(--shadow-dark),
+    -2px -2px 4px var(--shadow-light);
+
+  --raised-2:
+    4px 4px 8px var(--shadow-dark),
+    -4px -4px 8px var(--shadow-light);
+
+  --raised-3:
+    6px 6px 12px var(--shadow-dark),
+    -6px -6px 12px var(--shadow-light);
+
+  --raised-4:
+    8px 8px 16px var(--shadow-dark),
+    -8px -8px 16px var(--shadow-light);
+
+  --raised-5:
+    12px 12px 24px var(--shadow-dark),
+    -12px -12px 24px var(--shadow-light);
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     INSET SHADOWS (5 Levels)
+     Elements carved into the marble surface
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  --inset-1:
+    inset 2px 2px 4px var(--shadow-dark),
+    inset -2px -2px 4px var(--shadow-light);
+
+  --inset-2:
+    inset 3px 3px 6px var(--shadow-dark),
+    inset -3px -3px 6px var(--shadow-light);
+
+  --inset-3:
+    inset 4px 4px 8px var(--shadow-dark),
+    inset -4px -4px 8px var(--shadow-light);
+
+  --inset-4:
+    inset 6px 6px 12px var(--shadow-dark),
+    inset -6px -6px 12px var(--shadow-light);
+
+  --inset-5:
+    inset 8px 8px 16px var(--shadow-darker),
+    inset -8px -8px 16px var(--shadow-light);
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     GLASS BACKGROUNDS
+     Transparent items floating within inset containers
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  --glass-bg: rgba(255, 255, 255, 0.25);
+  --glass-bg-hover: rgba(255, 255, 255, 0.35);
+  --glass-bg-active: rgba(255, 255, 255, 0.45);
+  --glass-bg-strong: rgba(255, 255, 255, 0.40);
+
+  --glass-border: rgba(255, 255, 255, 0.35);
+  --glass-border-strong: rgba(255, 255, 255, 0.50);
+  --glass-border-hover: rgba(255, 255, 255, 0.60);
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     SPECIALTY SHADOWS - Extracted from Home Components
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  /* Ridge Frame - Double inner border + raised effect (used for buttons) */
+  --shadow-ridge-frame:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.8),
+    inset 0 0 0 2px rgba(168, 172, 179, 0.25),
+    2px 2px 4px rgba(147, 157, 170, 0.5),
+    -2px -2px 4px rgba(255, 255, 255, 0.9);
+
+  /* Ridge Frame Hover */
+  --shadow-ridge-frame-hover:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.9),
+    inset 0 0 0 2px rgba(168, 172, 179, 0.3),
+    3px 3px 6px rgba(147, 157, 170, 0.55),
+    -3px -3px 6px rgba(255, 255, 255, 0.95);
+
+  /* Ridge Frame Active/Pressed */
+  --shadow-ridge-frame-active:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.6),
+    inset 0 0 0 2px rgba(168, 172, 179, 0.35),
+    inset 2px 2px 4px rgba(147, 157, 170, 0.3),
+    inset -1px -1px 2px rgba(255, 255, 255, 0.5);
+
+  /* Pill Frame Wrapper - Inset container for buttons */
+  --shadow-pill-frame:
+    inset 2px 2px 4px rgba(147, 157, 170, 0.45),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.85);
+
+  /* Etymology Card - Raised with subtle depth */
+  --shadow-etymology-card:
+    4px 4px 10px rgba(147, 157, 170, 0.45),
+    -4px -4px 10px rgba(255, 255, 255, 0.9);
+
+  /* Synthesis Card - Deep inset */
+  --shadow-synthesis-card:
+    inset 4px 4px 10px rgba(147, 157, 170, 0.5),
+    inset -4px -4px 10px rgba(255, 255, 255, 0.85);
+
+  /* Voice Card - Raised container */
+  --shadow-voice-card:
+    5px 5px 12px rgba(147, 157, 170, 0.45),
+    -5px -5px 12px rgba(255, 255, 255, 0.9);
+
+  /* Voice Example - Inset area */
+  --shadow-voice-example:
+    inset 2px 2px 5px rgba(147, 157, 170, 0.4),
+    inset -2px -2px 5px rgba(255, 255, 255, 0.85);
+
+  /* Anti Pill - Small raised */
+  --shadow-anti-pill:
+    2px 2px 5px rgba(147, 157, 170, 0.35),
+    -2px -2px 5px rgba(255, 255, 255, 0.85);
+
+  /* Demo Raised Container */
+  --shadow-demo-raised:
+    8px 8px 16px rgba(147, 157, 170, 0.5),
+    -8px -8px 16px rgba(255, 255, 255, 0.9);
+
+  /* Demo Inner Inset */
+  --shadow-demo-inset:
+    inset 6px 6px 12px rgba(147, 157, 170, 0.55),
+    inset -6px -6px 12px rgba(255, 255, 255, 0.85);
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     GLASS EFFECTS - Teal Tinted (Petrol Accent)
+     Used in Dashboard glass cards
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  /* Glass with teal gradient */
+  --glass-teal-gradient:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.25) 0%,
+      rgba(58, 106, 114, 0.12) 100%
+    );
+
+  /* Glass card shadow with teal glow */
+  --glass-teal-shadow:
+    0 4px 24px rgba(147, 157, 170, 0.35),
+    0 0 0 1px rgba(58, 106, 114, 0.15);
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     BORDER RADIUS - Stone Marble Standard Values
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  --radius-sm: 8px;      /* Small elements, badges */
+  --radius-md: 12px;     /* Medium elements, inputs */
+  --radius-lg: 15px;     /* Cards, sections */
+  --radius-xl: 20px;     /* Containers, panels */
+  --radius-2xl: 24px;    /* Large containers */
+  --radius-3xl: 32px;    /* Hero elements */
+  --radius-full: 9999px; /* Pills, avatars */
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     TRANSITIONS
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  --transition-shadow: box-shadow 50ms linear;
+  --transition-fast: all 150ms ease;
+  --transition-normal: all 200ms ease;
+  --transition-slow: all 300ms ease;
+}

@@ -43,9 +43,7 @@
 
   /* Letterpress - Steel */
   color: var(--fing-text-accent);
-  text-shadow:
-    0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
-    -0.5px -0.5px 0px rgba(74, 106, 122, 0.25);
+  text-shadow: var(--lp-steel);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -80,9 +78,7 @@
 
   /* Letterpress - Muted */
   color: var(--fing-text-muted);
-  text-shadow:
-    0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
-    -0.5px -0.5px 0px rgba(138, 143, 150, 0.25);
+  text-shadow: var(--lp-muted);
 }
 
 .heroLogo {
@@ -112,9 +108,7 @@
 
   /* Whisper letterpress - Petrol brand color (subtle) */
   color: var(--fing-accent);
-  text-shadow:
-    0.5px 0.5px 0px rgba(255, 255, 255, 0.8),
-    -0.5px -0.5px 0px rgba(58, 106, 114, 0.35);
+  text-shadow: var(--lp-petrol-whisper);
 }
 
 .heroDescriptor {
@@ -127,9 +121,7 @@
 
   /* Letterpress - Muted */
   color: var(--fing-text-muted);
-  text-shadow:
-    0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
-    -0.5px -0.5px 0px rgba(138, 143, 150, 0.25);
+  text-shadow: var(--lp-muted);
 }
 
 .heroCtas {
@@ -163,9 +155,7 @@
 
   /* Letterpress - Petrol */
   color: var(--fing-accent);
-  text-shadow:
-    0.5px 0.5px 0px rgba(255, 255, 255, 0.8),
-    -0.5px -0.5px 0px rgba(58, 106, 114, 0.3);
+  text-shadow: var(--lp-petrol);
 }
 
 .btnPrimary:hover {
@@ -181,9 +171,7 @@
 
   /* Letterpress - Muted */
   color: var(--fing-text-muted);
-  text-shadow:
-    0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
-    -0.5px -0.5px 0px rgba(138, 143, 150, 0.25);
+  text-shadow: var(--lp-muted);
 }
 
 .btnSecondary:hover {
@@ -209,9 +197,7 @@
 
   /* Letterpress - Steel */
   color: var(--fing-text-accent);
-  text-shadow:
-    0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
-    -0.5px -0.5px 0px rgba(74, 106, 122, 0.25);
+  text-shadow: var(--lp-steel);
 }
 
 .scrollIndicator svg {
@@ -267,9 +253,7 @@
 
   /* Letterpress - Steel */
   color: var(--fing-text-accent);
-  text-shadow:
-    0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
-    -0.5px -0.5px 0px rgba(74, 106, 122, 0.25);
+  text-shadow: var(--lp-steel);
 }
 
 .etymologyWord {
@@ -280,9 +264,7 @@
 
   /* Whisper letterpress - Petrol brand color (subtle) */
   color: var(--fing-accent);
-  text-shadow:
-    0.5px 0.5px 0px rgba(255, 255, 255, 0.8),
-    -0.5px -0.5px 0px rgba(58, 106, 114, 0.35);
+  text-shadow: var(--lp-petrol-whisper);
 }
 
 .etymologyMeaning {
@@ -291,9 +273,7 @@
 
   /* Letterpress - Muted */
   color: var(--fing-text-muted);
-  text-shadow:
-    0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
-    -0.5px -0.5px 0px rgba(138, 143, 150, 0.25);
+  text-shadow: var(--lp-muted);
 }
 
 .etymologyModern {
@@ -303,9 +283,7 @@
 
   /* Letterpress - Steel */
   color: var(--fing-text-accent);
-  text-shadow:
-    0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
-    -0.5px -0.5px 0px rgba(74, 106, 122, 0.25);
+  text-shadow: var(--lp-steel);
 }
 
 /* Synthesis Card - INSET */
@@ -327,17 +305,13 @@
 
   /* RAISED typography SUBTLE (in INSET container) */
   color: var(--marble-base);
-  text-shadow:
-    -0.75px -0.75px 0px rgba(255, 255, 255, 0.95),
-    0.75px 0.75px 0px rgba(147, 157, 170, 0.55);
+  text-shadow: var(--lp-embossed-subtle);
 }
 
 .synthesisHighlight {
   /* RAISED typography - Petrol */
   color: var(--fing-accent);
-  text-shadow:
-    -1.5px -1.5px 1px rgba(255, 255, 255, 0.9),
-    1.5px 1.5px 1px rgba(58, 106, 114, 0.3);
+  text-shadow: var(--lp-embossed-petrol);
 }
 
 .synthesisResult {
@@ -347,9 +321,7 @@
 
   /* RAISED typography (subtle) */
   color: var(--fing-text-muted);
-  text-shadow:
-    -0.75px -0.75px 0px rgba(255, 255, 255, 0.9),
-    0.75px 0.75px 0px rgba(147, 157, 170, 0.45);
+  text-shadow: var(--lp-embossed-subtle);
 }
 
 /* Vertical Groove - Decorative connector */
@@ -384,9 +356,7 @@
 
   /* Whisper letterpress - Petrol brand color (subtle) */
   color: var(--fing-accent);
-  text-shadow:
-    0.5px 0.5px 0px rgba(255, 255, 255, 0.8),
-    -0.5px -0.5px 0px rgba(58, 106, 114, 0.35);
+  text-shadow: var(--lp-petrol-whisper);
 }
 
 .voiceCard {
@@ -433,9 +403,7 @@
 
   /* RAISED typography - Petrol */
   color: var(--fing-accent);
-  text-shadow:
-    -0.75px -0.75px 0px rgba(255, 255, 255, 0.9),
-    0.75px 0.75px 0px rgba(58, 106, 114, 0.25);
+  text-shadow: var(--lp-embossed-petrol-sm);
 }
 
 .voiceExample:last-child {
@@ -459,9 +427,7 @@
 
   /* RAISED typography (subtle) */
   color: var(--fing-text-accent);
-  text-shadow:
-    -0.5px -0.5px 0px rgba(255, 255, 255, 0.9),
-    0.5px 0.5px 0px rgba(147, 157, 170, 0.4);
+  text-shadow: var(--lp-embossed-sm);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -482,9 +448,7 @@
 
   /* Letterpress - Steel */
   color: var(--fing-text-accent);
-  text-shadow:
-    0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
-    -0.5px -0.5px 0px rgba(74, 106, 122, 0.25);
+  text-shadow: var(--lp-steel);
 }
 
 .systemTitle {
@@ -494,9 +458,7 @@
 
   /* Whisper letterpress - Petrol brand color (subtle) */
   color: var(--fing-accent);
-  text-shadow:
-    0.5px 0.5px 0px rgba(255, 255, 255, 0.8),
-    -0.5px -0.5px 0px rgba(58, 106, 114, 0.35);
+  text-shadow: var(--lp-petrol-whisper);
 }
 
 .systemPhilosophy {
@@ -506,9 +468,7 @@
 
   /* Letterpress - Muted */
   color: var(--fing-text-muted);
-  text-shadow:
-    0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
-    -0.5px -0.5px 0px rgba(138, 143, 150, 0.25);
+  text-shadow: var(--lp-muted);
 }
 
 .systemDemo {
@@ -545,9 +505,7 @@
 
   /* Letterpress - Steel */
   color: var(--fing-text-accent);
-  text-shadow:
-    0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
-    -0.5px -0.5px 0px rgba(74, 106, 122, 0.25);
+  text-shadow: var(--lp-steel);
 }
 
 .demoArrow {
@@ -570,9 +528,7 @@
 
   /* Whisper letterpress - Petrol brand color (subtle) */
   color: var(--fing-accent);
-  text-shadow:
-    0.5px 0.5px 0px rgba(255, 255, 255, 0.8),
-    -0.5px -0.5px 0px rgba(58, 106, 114, 0.35);
+  text-shadow: var(--lp-petrol-whisper);
 }
 
 .accessCtas {
@@ -598,9 +554,7 @@
 
   /* Letterpress - Steel */
   color: var(--fing-text-accent);
-  text-shadow:
-    0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
-    -0.5px -0.5px 0px rgba(74, 106, 122, 0.25);
+  text-shadow: var(--lp-steel);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
