@@ -1,0 +1,59 @@
+id: TKT-002
+title: "Auto-generation of Skills per Feature"
+type: enhancement
+priority: low
+system: .claude
+status: open
+
+description: |
+  Implement system that auto-generates skills when a feature requires capabilities
+  that don't exist yet.
+
+  Proposed flow:
+  /feature take <new-feature>
+    -> STATUS.md has required_skills: [unknown-skill]
+    -> skill-lookup searches for similar existing skill
+    -> Not found -> skill-creator generates one based on:
+       - Feature type (frontend, backend, data, etc.)
+       - Project tech stack
+       - Existing patterns in codebase
+    -> Saves to .claude/skills/<new-skill>/SKILL.md
+    -> Next similar feature -> skill already exists, reused
+
+  Benefits:
+  - Self-improving system
+  - Knowledge accumulates with each feature
+  - Reduces manual skill creation work
+  - Project-specific skills evolve organically
+
+affected_files:
+  - .claude/skills/
+  - .claude/commands/feature.md
+  - .claude/skills/skill-creator/SKILL.md
+  - .claude/skills/skill-lookup/SKILL.md
+
+acceptance_criteria:
+  - [ ] Detects when a required skill doesn't exist
+  - [ ] Searches for similar skills with skill-lookup
+  - [ ] Generates new skill if not found (using skill-creator)
+  - [ ] Saves skill for reuse in .claude/skills/<skill-name>/
+  - [ ] Generated skill follows standard YAML frontmatter structure
+  - [ ] Logs skill generation in CHANGELOG.md
+
+related_tickets:
+  - TKT-001
+
+notes: |
+  Future enhancement ticket. Current system with manual skills covers ~80% of cases.
+  This would make the system self-improving over time.
+
+  Implementation considerations:
+  - skill-lookup already searches prompts.chat - extend to search local skills first
+  - skill-creator already has generation logic - add auto-trigger capability
+  - Need to define "skill not found" detection in /feature take flow
+  - Consider caching generated skills across projects (shared skill library)
+
+  Priority: Low - manual skill creation works fine for now.
+  Value: High - would make each project self-improving.
+
+created_at: 2026-01-27

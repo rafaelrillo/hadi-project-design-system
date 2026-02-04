@@ -1,0 +1,50 @@
+# Ticket Template
+# Copy this file to _tickets/open/TKT-XXX.yaml
+
+id: TKT-XXX
+title: "Brief description of the issue"
+type: bug       # bug | feature | chore
+priority: medium  # critical | high | medium | low
+system: all     # [system1, system2] | all
+
+description: |
+  Detailed description of the issue.
+
+  For bugs, include:
+  - Steps to reproduce
+  - Expected behavior
+  - Actual behavior
+  - Screenshots/logs if applicable
+
+affected_files:
+  - path/to/file1.ts
+  - path/to/file2.ts
+
+acceptance_criteria:
+  - [ ] Criterion 1
+  - [ ] Criterion 2
+  - [ ] Criterion 3
+
+related_tickets:
+  - TKT-YYY  # Related ticket if any
+
+# === Fields below are added during lifecycle ===
+
+# Added when ticket is taken (/ticket take TKT-XXX)
+# assigned_to: session-id
+# started_at: 2026-01-20T10:00:00Z
+
+# Added when ticket is closed (/ticket close TKT-XXX)
+# resolution: |
+#   How the issue was resolved.
+#   Include:
+#   - What was changed
+#   - What tests were added
+#   - Any side effects
+# closed_at: 2026-01-20T12:00:00Z
+
+# === Notes ===
+# - Tickets move: open/ -> in-progress/ -> closed/
+# - Use /ticket take TKT-XXX to start working
+# - Use /ticket close TKT-XXX when done
+# - Bug fixes MUST include a regression test

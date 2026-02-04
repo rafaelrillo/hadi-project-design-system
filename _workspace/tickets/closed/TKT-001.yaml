@@ -1,0 +1,71 @@
+id: TKT-001
+title: "Robust Skill Loading System"
+type: enhancement
+priority: high
+system: .claude
+status: closed
+
+description: |
+  Current skill loading system depends on Claude "deciding" to follow /feature take
+  instructions. This is not robust because:
+  1. Claude can ignore instructions
+  2. Subagents don't inherit skill context
+  3. In autonomous mode, skills may not load
+
+  Solution: Implement automatic skill loading via dynamically generated file.
+
+  Architecture:
+  /feature take <name>
+    -> Read STATUS.md -> extract required_skills
+    -> CONCATENATE content of each skill
+    -> WRITE to .claude/context/ACTIVE_SKILLS.md
+    -> This file is REFERENCED in CLAUDE.md
+
+  Result: Claude ALWAYS has ACTIVE_SKILLS.md in context because CLAUDE.md
+  instructs to read it before any implementation work.
+
+affected_files:
+  - .claude/context/ACTIVE_SKILLS.md
+  - .claude/commands/feature.md
+  - .claude/skills/implementation-guard/SKILL.md
+  - .claude/skills/feature-planning/SKILL.md
+  - CLAUDE.md
+
+acceptance_criteria:
+  - [x] .claude/context/ exists
+  - [x] /feature take generates ACTIVE_SKILLS.md with concatenated skills
+  - [x] CLAUDE.md references the file with "CRITICAL: Active Skills Context" section
+  - [x] /feature complete cleans the file (documented in command)
+  - [x] /feature pause cleans the file (documented in command)
+  - [x] implementation-guard skill created
+  - [x] feature-planning skill created
+  - [x] Golden Rules #7 and #8 added to CLAUDE.md
+  - [ ] Subagents have access to skills (pending verification)
+
+related_tickets: []
+
+resolution: |
+  Implemented multi-layer enforcement approach:
+
+  1. CLAUDE.md has "CRITICAL: Active Skills Context" section instructing to read
+     .claude/context/ACTIVE_SKILLS.md before any implementation work
+
+  2. /feature take:
+     - Generates ACTIVE_SKILLS.md by concatenating required skills
+     - Shows pre-implementation checklist
+     - Displays TDD cycle reminder
+
+  3. /feature complete|pause clean the ACTIVE_SKILLS.md file
+
+  4. New skills created:
+     - implementation-guard: Prevents skill bypass, enforces TDD
+     - feature-planning: Feature granularity and documentation guide
+
+  5. Golden Rules added:
+     - #7: Implementation Guard (NEVER write code without /feature take)
+     - #8: Use Templates (check _workspace/templates/)
+
+  Note: Subagent skill inheritance pending verification - no test case yet.
+  Note: settings.json doesn't support includeFiles, so used CLAUDE.md reference.
+
+closed_at: 2026-01-27
