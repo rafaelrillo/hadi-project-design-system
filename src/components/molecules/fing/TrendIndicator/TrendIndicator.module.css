@@ -42,7 +42,7 @@
 }
 
 .sm .value {
-  font-size: var(--fing-font-lg);
+  font-size: var(--fing-text-lg);
 }
 
 .sm .trendIcon {
@@ -62,7 +62,7 @@
 }
 
 .lg .value {
-  font-size: var(--fing-font-2xl);
+  font-size: var(--fing-text-2xl);
 }
 
 .lg .trendIcon {
@@ -76,7 +76,7 @@
 .label {
   display: block;
   font-family: var(--fing-font-primary);
-  font-size: var(--fing-font-xs);
+  font-size: var(--fing-text-xs);
   font-weight: 400;
   color: var(--fing-text-secondary);
   margin-bottom: 6px;
@@ -94,7 +94,7 @@
 
 .value {
   font-family: var(--fing-font-numeric);
-  font-size: var(--fing-font-xl);
+  font-size: var(--fing-text-xl);
   font-weight: 500;
   color: var(--fing-text-primary);
   letter-spacing: var(--fing-tracking-led);
@@ -135,7 +135,7 @@
 
 .change {
   font-family: var(--fing-font-numeric);
-  font-size: var(--fing-font-xs);
+  font-size: var(--fing-text-xs);
   font-weight: 500;
   color: var(--fing-text-secondary);
   letter-spacing: var(--fing-tracking-led);
@@ -153,7 +153,7 @@
 
 .period {
   font-family: var(--fing-font-primary);
-  font-size: var(--fing-font-xs);
+  font-size: var(--fing-text-xs);
   color: var(--fing-text-tertiary);
 }
 

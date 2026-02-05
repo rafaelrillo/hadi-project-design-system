@@ -4,7 +4,7 @@
 /* Base typography styles */
 .base {
   font-family: var(--fing-font-led);
-  line-height: var(--line-height-default);
+  line-height: var(--fing-leading-normal);
   color: var(--foreground);
   letter-spacing: var(--fing-tracking-led);
   margin: 0;
@@ -13,8 +13,8 @@
 /* Heading1 - h1 18px Bold */
 .heading1 {
   composes: base;
-  font-size: var(--text-titulo-1);
-  font-weight: var(--font-weight-bold);
+  font-size: var(--fing-text-lg);
+  font-weight: var(--fing-font-bold);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -22,8 +22,8 @@
 /* Heading2 - h2 16px Bold */
 .heading2 {
   composes: base;
-  font-size: var(--text-titulo-2);
-  font-weight: var(--font-weight-bold);
+  font-size: var(--fing-text-base);
+  font-weight: var(--fing-font-bold);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -31,8 +31,8 @@
 /* Heading3 - h3 16px Semibold */
 .heading3 {
   composes: base;
-  font-size: var(--text-titulo-2);
-  font-weight: var(--font-weight-semibold);
+  font-size: var(--fing-text-base);
+  font-weight: var(--fing-font-semibold);
   text-transform: uppercase;
   letter-spacing: 0.03em;
 }
@@ -40,23 +40,23 @@
 /* Heading4 - h4 14px Semibold */
 .heading4 {
   composes: base;
-  font-size: var(--text-cuerpo-1);
-  font-weight: var(--font-weight-semibold);
+  font-size: var(--fing-text-sm);
+  font-weight: var(--fing-font-semibold);
 }
 
 /* Paragraph - p 14px Regular */
 .paragraph {
   composes: base;
-  font-size: var(--text-cuerpo-1);
-  font-weight: var(--font-weight-normal);
-  line-height: var(--line-height-normal);
+  font-size: var(--fing-text-sm);
+  font-weight: var(--fing-font-regular);
+  line-height: var(--fing-leading-normal);
 }
 
 /* Label - label 12px Regular */
 .label {
   composes: base;
-  font-size: var(--text-cuerpo-2);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--fing-text-xs);
+  font-weight: var(--fing-font-regular);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--foreground-muted);
@@ -65,9 +65,9 @@
 /* ProductKey - 24px Bold, Orange (accent branding) */
 .productKey {
   font-family: var(--fing-font-ticker);
-  font-size: var(--text-siglas);
-  font-weight: var(--font-weight-bold);
-  line-height: var(--line-height-default);
+  font-size: var(--fing-text-2xl);
+  font-weight: var(--fing-font-bold);
+  line-height: var(--fing-leading-normal);
   color: var(--primary);
   margin: 0;
   display: inline-block;
@@ -79,10 +79,71 @@
 /* Code - monospace styling */
 .code {
   composes: base;
-  font-size: var(--text-cuerpo-2);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--fing-text-xs);
+  font-weight: var(--fing-font-regular);
   background-color: var(--background-tertiary);
   padding: 2px 6px;
   border-radius: var(--radius-sm);
   border: 1px solid var(--border);
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   TEXT EFFECTS - Neumorphic Carved & Embossed
+   Applied via the `effect` prop on Typography components
+   RULE: RAISED container → carved   (text pressed into surface)
+         INSET container  → embossed (text raised from surface)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Carved (debossed) - text appears pressed into RAISED surface ────────── */
+
+/* Standard (0.5px offset) */
+.carved              { text-shadow: var(--lp-primary); }
+.carvedStrong        { text-shadow: var(--lp-primary-strong); }
+.carvedSteel         { text-shadow: var(--lp-steel); }
+.carvedPetrol        { text-shadow: var(--lp-petrol); }
+.carvedMuted         { text-shadow: var(--lp-muted); }
+.carvedPositive      { text-shadow: var(--lp-positive); }
+.carvedWarning       { text-shadow: var(--lp-warning); }
+.carvedNegative      { text-shadow: var(--lp-negative); }
+.carvedInfo          { text-shadow: var(--lp-info); }
+.carvedAccent        { text-shadow: var(--lp-accent); }
+
+/* Whisper - ultra-subtle (mobile/compact) */
+.carvedWhisper       { text-shadow: var(--lp-whisper); }
+
+/* Strong semantic (1px offset) - for KPI values, hero numbers */
+.carvedPositiveStrong  { text-shadow: var(--lp-positive-strong); }
+.carvedWarningStrong   { text-shadow: var(--lp-warning-strong); }
+.carvedNegativeStrong  { text-shadow: var(--lp-negative-strong); }
+.carvedInfoStrong      { text-shadow: var(--lp-info-strong); }
+.carvedAccentStrong    { text-shadow: var(--lp-accent-strong); }
+
+/* Medium semantic (0.75px offset) - for titles, change values */
+.carvedPetrolMd      { text-shadow: var(--lp-petrol-md); }
+.carvedPositiveMd    { text-shadow: var(--lp-positive-md); }
+.carvedWarningMd     { text-shadow: var(--lp-warning-md); }
+.carvedNegativeMd    { text-shadow: var(--lp-negative-md); }
+
+/* Glow - non-directional for active/highlighted elements */
+.glowPetrol          { text-shadow: var(--lp-glow-petrol); }
+.glowPositive        { text-shadow: var(--lp-glow-positive); }
+.glowNegative        { text-shadow: var(--lp-glow-negative); }
+
+/* ── Embossed (raised) - text appears elevated from INSET surface ────────── */
+
+/* Standard */
+.embossed            { text-shadow: var(--lp-embossed); }
+.embossedSubtle      { text-shadow: var(--lp-embossed-subtle); }
+.embossedStrong      { text-shadow: var(--lp-embossed-strong); }
+.embossedPetrol      { text-shadow: var(--lp-embossed-petrol); }
+.embossedPositive    { text-shadow: var(--lp-embossed-positive); }
+.embossedWarning     { text-shadow: var(--lp-embossed-warning); }
+.embossedNegative    { text-shadow: var(--lp-embossed-negative); }
+.embossedInfo        { text-shadow: var(--lp-embossed-info); }
+
+/* Small semantic (0.5px offset) - for KPI labels in INSET */
+.embossedPetrolSm    { text-shadow: var(--lp-embossed-petrol-sm); }
+.embossedPositiveSm  { text-shadow: var(--lp-embossed-positive-sm); }
+.embossedWarningSm   { text-shadow: var(--lp-embossed-warning-sm); }
+.embossedNegativeSm  { text-shadow: var(--lp-embossed-negative-sm); }
+.embossedInfoSm      { text-shadow: var(--lp-embossed-info-sm); }

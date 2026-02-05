@@ -772,10 +772,15 @@ npm run lint          # ESLint
 /showcase/styles/wordmark       → FING Wordmark Inset Variations
 /showcase/styles/colors         → Paleta de colores
 /showcase/styles/typography     → Sistema tipografico
-/showcase/styles/spacing        → Espaciado
 /showcase/styles/shadows        → Sombras y elevaciones
-/showcase/styles/stone-marble   → Showcase Stone Marble
+/showcase/styles/letterpress    → Letterpress text shadows neumórficos
+/showcase/styles/css-animations → CSS Keyframes y scroll-triggered
+/showcase/styles/text-catalog   → Catálogo de texto
+/showcase/styles/spacing        → Espaciado
+/showcase/styles/border-radius  → Border radius
 /showcase/styles/icons          → Iconografia
+/showcase/styles/buttons        → Sistema de botones
+/showcase/styles/stone-marble   → [LAB] Showcase Stone Marble
 /showcase/atoms/*               → Componentes atomicos
 /showcase/molecules/*           → Componentes moleculares
 /showcase/organisms/*           → Organismos (Sidebar, Modal, etc.)
@@ -870,6 +875,39 @@ npm run lint          # ESLint
     - Sección "Lab" separada visualmente para experimental
   - [x] Nueva página `LetterpressShowcase.tsx` en `/showcase/styles/letterpress`
   - [x] Documentación completa en `docs/DESIGN_SYSTEM_CONSOLIDATION.md`
+- [x] **Design System Consolidation Phase 2** (2026-02-05)
+  - [x] Creación de `animations.css` (~350 líneas):
+    - Tokens de duración y easing
+    - 17+ @keyframes (breathe, pulse, emerge, fade-in, scale-in, slide-up, etc.)
+    - Sistema scroll-triggered con `[data-animate]` attribute
+    - Soporte stagger con `[data-animate-stagger]`
+    - Soporte `prefers-reduced-motion`
+  - [x] Creación de `wordmark.css` (~193 líneas):
+    - Tipografía: Cormorant Garamond Light
+    - 12 variantes inset (whisper→sharp, carved/pressed recomendados)
+    - Tokens para container inset y text shadow
+    - 4 gradient backgrounds especiales
+  - [x] Creación de `buttons.css` (~177 líneas):
+    - Neumorphism shadows para botones
+    - 8 glass colors (petrol, gold, rust, jade, violet, steel, smoke, frost)
+    - 5 tamaños (xs→xl) con height, padding, font
+    - Border radius y transitions
+    - Legacy aliases (teal, amber, rose, sky, emerald)
+  - [x] Nueva página `CSSAnimationsShowcase.tsx`:
+    - Secciones: Atmosféricas, Entrada, Efectos, Stock Market
+    - Demos scroll-triggered con Intersection Observer
+    - Animaciones stagger para listas
+    - Botones replay para cada animación
+  - [x] Mejoras a `LetterpressShowcase.tsx`:
+    - Escala de 9 profundidades (whisper→monumental)
+    - Comparación RAISED vs INSET
+    - Matriz Color × Profundidad
+    - Ejemplos reales (KPI Cards, Stock Table, Alerts)
+  - [x] Actualización de `index.css`:
+    - Import centralizado de todos los archivos CSS
+    - Orden de cascada documentado
+  - [x] Reducción de `theme.css`: ~84KB → ~780 líneas
+  - [x] Documentación actualizada en `docs/DESIGN_SYSTEM_CONSOLIDATION.md`
 
 ---
 
@@ -902,6 +940,38 @@ npm run lint          # ESLint
   - Contexto: `--lp-steel`, `--lp-petrol`, `--lp-petrol-whisper`, `--lp-muted`
   - Embossed: `--lp-embossed`, `--lp-embossed-subtle`, `--lp-embossed-petrol`, etc.
 - **Razón**: Establecer una única fuente de verdad, mejorar mantenibilidad, y separar claramente producción de experimental
+
+**[2026-02-05] Design System Consolidation Phase 2**
+- **Decision**: Continuar extracción de tokens de theme.css a archivos modulares
+- **Problema identificado**:
+  - Animaciones, keyframes, y utilidades de animación en theme.css
+  - Tokens de wordmark duplicados
+  - Tokens de botones (~160 líneas) en theme.css
+  - Falta de showcase para animaciones CSS nativas
+- **Solución implementada**:
+  - `animations.css` - Sistema completo de animaciones con scroll-triggered
+  - `wordmark.css` - 12 variantes inset para FING wordmark
+  - `buttons.css` - 8 glass colors, 5 tamaños, transitions
+  - `CSSAnimationsShowcase.tsx` - Showcase interactivo con demos
+- **Archivos clave creados**:
+  - `/src/styles/animations.css` - Keyframes + scroll-triggered + stagger (~350 líneas)
+  - `/src/styles/wordmark.css` - Wordmark inset system (~193 líneas)
+  - `/src/styles/buttons.css` - Button system tokens (~177 líneas)
+  - `/src/pages/styles/CSSAnimationsShowcase.tsx` - Showcase de animaciones
+- **Características de animations.css**:
+  - Tokens de duración: `--fing-duration-instant` (100ms) a `--fing-duration-slower` (700ms)
+  - Tokens de easing: `--fing-ease-out`, `--fing-ease-in-out`, `--fing-ease-spring`
+  - 17+ @keyframes organizados por categoría
+  - Sistema `[data-animate]` para scroll-triggered con Intersection Observer
+  - Sistema `[data-animate-stagger]` para animaciones secuenciales
+  - Soporte completo `@media (prefers-reduced-motion: reduce)`
+- **Características de buttons.css**:
+  - 8 glass colors: petrol, gold, rust, jade, violet, steel, smoke, frost
+  - Cada color con: `-bg`, `-bg-hover`, `-border`, `-glow`, `-text`
+  - 5 tamaños con height, padding, font-size
+  - Legacy aliases mantenidos para compatibilidad (teal, amber, rose, sky, emerald)
+- **Resultado**: `theme.css` reducido de ~84KB a ~780 líneas
+- **Razón**: Continuar modularización para mejor mantenibilidad y documentación
 
 **[2026-01-19] FING Wordmark — Inset Typography System**
 - **Decision**: Crear sistema de wordmark con 12 variaciones inset usando Cormorant Garamond

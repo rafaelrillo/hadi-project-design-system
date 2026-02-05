@@ -22,7 +22,7 @@
 .textWhisper {
   text-shadow:
     0.5px 0.5px 0px rgba(255, 255, 255, 0.8),
-    -0.5px -0.5px 0px rgba(58, 106, 114, 0.35);
+    -0.5px -0.5px 0px rgba(var(--fing-accent-rgb), 0.35);
   color: var(--fing-accent);
 }
 
@@ -64,7 +64,7 @@
 .textCarved {
   text-shadow:
     1.5px 1.5px 0px rgba(255, 255, 255, 0.85),
-    -1.5px -1.5px 1px rgba(58, 106, 114, 0.4);
+    -1.5px -1.5px 1px rgba(var(--fing-accent-rgb), 0.4);
   color: var(--fing-accent);
 }
 

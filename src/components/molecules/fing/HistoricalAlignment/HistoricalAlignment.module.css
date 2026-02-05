@@ -24,7 +24,7 @@
 
 .title {
   font-family: var(--fing-font-primary);
-  font-size: var(--fing-font-xs);
+  font-size: var(--fing-text-xs);
   font-weight: 500;
   color: var(--fing-text-secondary);
   text-transform: uppercase;
@@ -34,7 +34,7 @@
 
 .intro {
   font-family: var(--fing-font-primary);
-  font-size: var(--fing-font-sm);
+  font-size: var(--fing-text-sm);
   color: var(--fing-text-secondary);
   margin: 0 0 16px 0;
 }
@@ -92,14 +92,14 @@
 
 .periodLabel {
   font-family: var(--fing-font-primary);
-  font-size: var(--fing-font-sm);
+  font-size: var(--fing-text-sm);
   font-weight: 500;
   color: var(--fing-text-primary);
 }
 
 .periodYear {
   font-family: var(--fing-font-numeric);
-  font-size: var(--fing-font-xs);
+  font-size: var(--fing-text-xs);
   color: var(--fing-text-tertiary);
   letter-spacing: var(--fing-tracking-led);
 }
@@ -116,7 +116,7 @@
 
 .similarityValue {
   font-family: var(--fing-font-numeric);
-  font-size: var(--fing-font-sm);
+  font-size: var(--fing-text-sm);
   font-weight: 600;
   color: var(--fing-accent-primary);
   letter-spacing: var(--fing-tracking-led);
@@ -146,7 +146,7 @@
 
 .outcome {
   font-family: var(--fing-font-primary);
-  font-size: var(--fing-font-xs);
+  font-size: var(--fing-text-xs);
   color: var(--fing-text-secondary);
   margin: 10px 0 0 0;
   padding-top: 10px;

@@ -25,10 +25,7 @@
   -webkit-backdrop-filter: blur(var(--fing-blur-md));
 
   /* Light neumorphic elevation */
-  box-shadow:
-    8px 8px 16px rgba(163, 177, 198, 0.35),
-    -8px -8px 16px rgba(255, 255, 255, 0.9),
-    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  box-shadow: var(--raised-3), var(--fing-shadow-highlight);
 }
 
 /* Luminous top edge */
@@ -186,7 +183,7 @@
 
 .trSelectedIndicator {
   border-left: 3px solid rgba(91, 163, 165, 0.6);
-  box-shadow: inset 3px 0 10px rgba(91, 163, 165, 0.1);
+  box-shadow: inset 3px 0 10px rgba(var(--fing-accent-rgb), 0.1);
 }
 
 .trClickable {
@@ -195,7 +192,7 @@
 
 .trFocused {
   outline: none;
-  box-shadow: inset 0 0 0 2px rgba(91, 163, 165, 0.4);
+  box-shadow: inset 0 0 0 2px rgba(var(--fing-accent-rgb), 0.4);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -248,17 +245,13 @@
   color: var(--fing-text-tertiary);
   transition: all 0.15s ease;
   border-radius: var(--fing-radius-sm);
-  box-shadow:
-    2px 2px 4px rgba(163, 177, 198, 0.3),
-    -2px -2px 4px rgba(255, 255, 255, 0.8);
+  box-shadow: var(--raised-1);
 }
 
 .actionButton:hover {
   color: var(--fing-accent-primary);
   background: rgba(255, 255, 255, 0.7);
-  box-shadow:
-    3px 3px 6px rgba(163, 177, 198, 0.35),
-    -3px -3px 6px rgba(255, 255, 255, 0.9);
+  box-shadow: var(--raised-2);
 }
 
 .actionButtonDestructive {
@@ -292,9 +285,7 @@
 .expandButton:hover {
   color: var(--fing-accent-primary);
   background: rgba(255, 255, 255, 0.5);
-  box-shadow:
-    2px 2px 4px rgba(163, 177, 198, 0.25),
-    -2px -2px 4px rgba(255, 255, 255, 0.7);
+  box-shadow: var(--raised-1);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -307,9 +298,7 @@
   border-left: 3px solid rgba(91, 163, 165, 0.5);
 
   /* Light neumorphic pressed effect */
-  box-shadow:
-    inset 4px 4px 8px rgba(163, 177, 198, 0.25),
-    inset -4px -4px 8px rgba(255, 255, 255, 0.7);
+  box-shadow: var(--inset-3);
 }
 
 .expandedCellBorder {
@@ -407,7 +396,7 @@
   box-shadow:
     8px 8px 16px var(--neu-shadow-dark),
     -8px -8px 16px var(--neu-shadow-light),
-    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    var(--fing-shadow-highlight);
 }
 
 .neuPanel::before {

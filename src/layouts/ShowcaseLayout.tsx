@@ -44,7 +44,8 @@ import {
   Fingerprint,
   FlaskConical,
   Stamp,
-  BookOpen
+  BookOpen,
+  Play
 } from 'lucide-react';
 
 export function ShowcaseLayout() {
@@ -196,6 +197,7 @@ export function ShowcaseLayout() {
     { path: '/showcase/styles/typography', label: 'Typography', icon: Type },
     { path: '/showcase/styles/shadows', label: 'Shadows', icon: Copy },
     { path: '/showcase/styles/letterpress', label: 'Letterpress', icon: Stamp },
+    { path: '/showcase/styles/css-animations', label: 'CSS Animations', icon: Play },
     { path: '/showcase/styles/text-catalog', label: 'Text Catalog', icon: BookOpen },
     { path: '/showcase/styles/spacing', label: 'Spacing', icon: Ruler },
     { path: '/showcase/styles/border-radius', label: 'Border Radius', icon: Circle },

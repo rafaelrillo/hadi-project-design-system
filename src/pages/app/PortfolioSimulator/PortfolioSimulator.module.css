@@ -32,7 +32,7 @@
 
   /* Light neumorphic elevation + inner highlight */
   box-shadow:
-    0 4px 12px rgba(163, 177, 198, 0.25),
+    0 4px 12px rgba(var(--fing-border-base-rgb), 0.25),
     inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
@@ -65,7 +65,7 @@
 
 .headerIcon {
   color: var(--fing-accent-primary);
-  filter: drop-shadow(0 0 4px rgba(58, 106, 114, 0.5));
+  filter: drop-shadow(0 0 4px rgba(var(--fing-accent-rgb), 0.5));
 }
 
 .title {
@@ -94,7 +94,7 @@
   -webkit-backdrop-filter: blur(8px);
 
   box-shadow:
-    0 2px 8px rgba(163, 177, 198, 0.15),
+    0 2px 8px rgba(var(--fing-border-base-rgb), 0.15),
     inset 0 1px 0 rgba(255, 255, 255, 0.6);
 }
 
@@ -171,17 +171,17 @@
   -webkit-backdrop-filter: blur(8px);
 
   box-shadow:
-    inset 2px 2px 4px rgba(163, 177, 198, 0.2),
+    inset 2px 2px 4px rgba(var(--fing-border-base-rgb), 0.2),
     inset -2px -2px 4px rgba(255, 255, 255, 0.7);
 }
 
 .amountInput:focus-within {
   background: rgba(255, 255, 255, 0.7);
-  border-color: rgba(58, 106, 114, 0.4);
+  border-color: rgba(var(--fing-accent-rgb), 0.4);
   box-shadow:
-    inset 2px 2px 4px rgba(163, 177, 198, 0.15),
+    inset 2px 2px 4px rgba(var(--fing-border-base-rgb), 0.15),
     inset -2px -2px 4px rgba(255, 255, 255, 0.8),
-    0 0 0 3px rgba(58, 106, 114, 0.1);
+    0 0 0 3px rgba(var(--fing-accent-rgb), 0.1);
 }
 
 .currencySymbol {
@@ -248,17 +248,17 @@
   -webkit-backdrop-filter: blur(8px);
 
   box-shadow:
-    inset 2px 2px 4px rgba(163, 177, 198, 0.15),
+    inset 2px 2px 4px rgba(var(--fing-border-base-rgb), 0.15),
     inset -2px -2px 4px rgba(255, 255, 255, 0.6);
 }
 
 .searchBox:focus-within {
   background: rgba(255, 255, 255, 0.7);
-  border-color: rgba(58, 106, 114, 0.4);
+  border-color: rgba(var(--fing-accent-rgb), 0.4);
   box-shadow:
-    inset 2px 2px 4px rgba(163, 177, 198, 0.1),
+    inset 2px 2px 4px rgba(var(--fing-border-base-rgb), 0.1),
     inset -2px -2px 4px rgba(255, 255, 255, 0.7),
-    0 0 0 3px rgba(58, 106, 114, 0.1);
+    0 0 0 3px rgba(var(--fing-accent-rgb), 0.1);
 }
 
 .searchIcon {
@@ -289,7 +289,7 @@
   background: rgba(220, 225, 232, 0.5);
   border-radius: var(--fing-radius-md);
   box-shadow:
-    inset 4px 4px 8px rgba(163, 177, 198, 0.4),
+    inset 4px 4px 8px rgba(var(--fing-border-base-rgb), 0.4),
     inset -4px -4px 8px rgba(255, 255, 255, 0.7);
 }
 
@@ -308,7 +308,7 @@
   -webkit-backdrop-filter: blur(8px);
 
   box-shadow:
-    6px 6px 12px rgba(163, 177, 198, 0.3),
+    6px 6px 12px rgba(var(--fing-border-base-rgb), 0.3),
     -6px -6px 12px rgba(255, 255, 255, 0.85),
     inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
@@ -356,7 +356,7 @@
   font-size: 14px;
   color: var(--fing-text-tertiary);
   background: rgba(255, 255, 255, 0.3);
-  border: 1px dashed rgba(163, 177, 198, 0.4);
+  border: 1px dashed rgba(var(--fing-border-base-rgb), 0.4);
   border-radius: var(--fing-radius-md);
 }
 
@@ -379,7 +379,7 @@
   -webkit-backdrop-filter: blur(8px);
 
   box-shadow:
-    4px 4px 8px rgba(163, 177, 198, 0.25),
+    4px 4px 8px rgba(var(--fing-border-base-rgb), 0.25),
     -4px -4px 8px rgba(255, 255, 255, 0.8),
     inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
@@ -437,7 +437,7 @@
   -webkit-backdrop-filter: blur(8px);
 
   box-shadow:
-    4px 4px 8px rgba(163, 177, 198, 0.25),
+    4px 4px 8px rgba(var(--fing-border-base-rgb), 0.25),
     -4px -4px 8px rgba(255, 255, 255, 0.8),
     inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
@@ -471,7 +471,7 @@
   -webkit-backdrop-filter: blur(12px);
 
   box-shadow:
-    8px 8px 16px rgba(163, 177, 198, 0.35),
+    8px 8px 16px rgba(var(--fing-border-base-rgb), 0.35),
     -8px -8px 16px rgba(255, 255, 255, 0.9),
     inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
@@ -560,7 +560,7 @@
   font-weight: 600;
   color: var(--fing-accent-primary);
   letter-spacing: var(--fing-tracking-led);
-  text-shadow: 0 0 8px rgba(58, 106, 114, 0.4);
+  text-shadow: 0 0 8px rgba(var(--fing-accent-rgb), 0.4);
 }
 
 .reviewAmount {
@@ -589,7 +589,7 @@
   -webkit-backdrop-filter: blur(12px);
 
   box-shadow:
-    0 -4px 12px rgba(163, 177, 198, 0.15),
+    0 -4px 12px rgba(var(--fing-border-base-rgb), 0.15),
     inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
@@ -621,7 +621,7 @@
   -webkit-backdrop-filter: blur(12px);
 
   box-shadow:
-    8px 8px 16px rgba(163, 177, 198, 0.35),
+    8px 8px 16px rgba(var(--fing-border-base-rgb), 0.35),
     -8px -8px 16px rgba(255, 255, 255, 0.9),
     inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
@@ -669,7 +669,7 @@
   -webkit-backdrop-filter: blur(8px);
 
   box-shadow:
-    6px 6px 12px rgba(163, 177, 198, 0.3),
+    6px 6px 12px rgba(var(--fing-border-base-rgb), 0.3),
     -6px -6px 12px rgba(255, 255, 255, 0.85),
     inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
@@ -703,7 +703,7 @@
 
 .legendDot[data-type="new"] {
   background: var(--fing-accent-primary);
-  box-shadow: 0 0 6px rgba(58, 106, 114, 0.5);
+  box-shadow: 0 0 6px rgba(var(--fing-accent-rgb), 0.5);
 }
 
 .barChart {
@@ -754,7 +754,7 @@
 
 .bar[data-type="new"] {
   background: linear-gradient(90deg, var(--fing-accent-primary), var(--fing-accent-secondary, #5ba3a5));
-  box-shadow: 0 2px 6px rgba(58, 106, 114, 0.3);
+  box-shadow: 0 2px 6px rgba(var(--fing-accent-rgb), 0.3);
 }
 
 .barValue {
@@ -781,7 +781,7 @@
   -webkit-backdrop-filter: blur(12px);
 
   box-shadow:
-    8px 8px 16px rgba(163, 177, 198, 0.35),
+    8px 8px 16px rgba(var(--fing-border-base-rgb), 0.35),
     -8px -8px 16px rgba(255, 255, 255, 0.9),
     inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
@@ -873,12 +873,12 @@
   -webkit-backdrop-filter: blur(8px);
 
   box-shadow:
-    4px 4px 8px rgba(163, 177, 198, 0.25),
+    4px 4px 8px rgba(var(--fing-border-base-rgb), 0.25),
     -4px -4px 8px rgba(255, 255, 255, 0.8);
 }
 
 .summaryDivider svg {
-  filter: drop-shadow(0 0 4px rgba(58, 106, 114, 0.4));
+  filter: drop-shadow(0 0 4px rgba(var(--fing-accent-rgb), 0.4));
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -901,7 +901,7 @@
   -webkit-backdrop-filter: blur(8px);
 
   box-shadow:
-    2px 2px 4px rgba(163, 177, 198, 0.15),
+    2px 2px 4px rgba(var(--fing-border-base-rgb), 0.15),
     -2px -2px 4px rgba(255, 255, 255, 0.6);
 }
 

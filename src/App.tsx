@@ -41,6 +41,8 @@ const LightEngineShowcase = lazy(() => import('./pages/styles').then(m => ({ def
 const StoneMarbleShowcase = lazy(() => import('./pages/styles').then(m => ({ default: m.StoneMarbleShowcase })));
 const WordmarkShowcase = lazy(() => import('./pages/styles').then(m => ({ default: m.WordmarkShowcase })));
 const LetterpressShowcase = lazy(() => import('./pages/styles').then(m => ({ default: m.LetterpressShowcase })));
+const CSSAnimationsShowcase = lazy(() => import('./pages/styles').then(m => ({ default: m.CSSAnimationsShowcase })));
+const TypographyCatalogShowcase = lazy(() => import('./pages/styles').then(m => ({ default: m.TypographyCatalogShowcase })));
 
 // Atoms
 const ButtonShowcase = lazy(() => import('./pages/atoms/ButtonShowcase').then(m => ({ default: m.ButtonShowcase })));
@@ -223,6 +225,8 @@ function AppRoutes() {
         <Route path="styles/spacing" element={<Suspense fallback={<ShowcaseLoader />}><SpacingShowcase /></Suspense>} />
         <Route path="styles/shadows" element={<Suspense fallback={<ShowcaseLoader />}><ShadowsShowcase /></Suspense>} />
         <Route path="styles/letterpress" element={<Suspense fallback={<ShowcaseLoader />}><LetterpressShowcase /></Suspense>} />
+        <Route path="styles/css-animations" element={<Suspense fallback={<ShowcaseLoader />}><CSSAnimationsShowcase /></Suspense>} />
+        <Route path="styles/text-catalog" element={<Suspense fallback={<ShowcaseLoader />}><TypographyCatalogShowcase /></Suspense>} />
         <Route path="styles/border-radius" element={<Suspense fallback={<ShowcaseLoader />}><BorderRadiusShowcase /></Suspense>} />
         <Route path="styles/icons" element={<Suspense fallback={<ShowcaseLoader />}><IconsShowcase /></Suspense>} />
         <Route path="styles/light-engine" element={<Suspense fallback={<ShowcaseLoader />}><LightEngineShowcase /></Suspense>} />

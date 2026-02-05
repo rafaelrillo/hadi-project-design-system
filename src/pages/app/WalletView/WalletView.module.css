@@ -56,7 +56,7 @@
 
   /* Light neumorphic elevation + inner highlight */
   box-shadow:
-    0 4px 12px rgba(163, 177, 198, 0.25),
+    0 4px 12px rgba(var(--fing-border-base-rgb), 0.25),
     inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
@@ -94,7 +94,7 @@
 
 .headerIcon {
   color: var(--fing-accent-primary);
-  filter: drop-shadow(0 0 4px rgba(58, 106, 114, 0.5));
+  filter: drop-shadow(0 0 4px rgba(var(--fing-accent-rgb), 0.5));
 }
 
 .title {
@@ -157,7 +157,7 @@
   -webkit-backdrop-filter: blur(8px);
 
   box-shadow:
-    4px 4px 8px rgba(163, 177, 198, 0.25),
+    4px 4px 8px rgba(var(--fing-border-base-rgb), 0.25),
     -4px -4px 8px rgba(255, 255, 255, 0.8),
     inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
@@ -168,19 +168,19 @@
   justify-content: center;
   width: 44px;
   height: 44px;
-  background: rgba(58, 106, 114, 0.12);
-  border: 1px solid rgba(58, 106, 114, 0.2);
+  background: rgba(var(--fing-accent-rgb), 0.12);
+  border: 1px solid rgba(var(--fing-accent-rgb), 0.2);
   border-radius: var(--fing-radius-md);
   color: var(--fing-accent-primary);
   flex-shrink: 0;
 
   box-shadow:
-    2px 2px 4px rgba(163, 177, 198, 0.15),
+    2px 2px 4px rgba(var(--fing-border-base-rgb), 0.15),
     -2px -2px 4px rgba(255, 255, 255, 0.6);
 }
 
 .summaryIcon svg {
-  filter: drop-shadow(0 0 4px rgba(58, 106, 114, 0.4));
+  filter: drop-shadow(0 0 4px rgba(var(--fing-accent-rgb), 0.4));
 }
 
 .summaryIcon.positive {
@@ -283,7 +283,7 @@
   -webkit-backdrop-filter: blur(8px);
 
   box-shadow:
-    inset 2px 2px 4px rgba(163, 177, 198, 0.15),
+    inset 2px 2px 4px rgba(var(--fing-border-base-rgb), 0.15),
     inset -2px -2px 4px rgba(255, 255, 255, 0.6);
 }
 
@@ -311,7 +311,7 @@
   background: rgba(255, 255, 255, 0.7);
   color: var(--fing-text-primary);
   box-shadow:
-    2px 2px 4px rgba(163, 177, 198, 0.2),
+    2px 2px 4px rgba(var(--fing-border-base-rgb), 0.2),
     -2px -2px 4px rgba(255, 255, 255, 0.7);
 }
 
@@ -334,17 +334,17 @@
   -webkit-backdrop-filter: blur(8px);
 
   box-shadow:
-    inset 2px 2px 4px rgba(163, 177, 198, 0.15),
+    inset 2px 2px 4px rgba(var(--fing-border-base-rgb), 0.15),
     inset -2px -2px 4px rgba(255, 255, 255, 0.6);
 }
 
 .searchBox:focus-within {
   background: rgba(255, 255, 255, 0.7);
-  border-color: rgba(58, 106, 114, 0.4);
+  border-color: rgba(var(--fing-accent-rgb), 0.4);
   box-shadow:
-    inset 2px 2px 4px rgba(163, 177, 198, 0.1),
+    inset 2px 2px 4px rgba(var(--fing-border-base-rgb), 0.1),
     inset -2px -2px 4px rgba(255, 255, 255, 0.7),
-    0 0 0 3px rgba(58, 106, 114, 0.1);
+    0 0 0 3px rgba(var(--fing-accent-rgb), 0.1);
 }
 
 .searchIcon {
@@ -381,7 +381,7 @@
   -webkit-backdrop-filter: blur(12px);
 
   box-shadow:
-    8px 8px 16px rgba(163, 177, 198, 0.35),
+    8px 8px 16px rgba(var(--fing-border-base-rgb), 0.35),
     -8px -8px 16px rgba(255, 255, 255, 0.9),
     inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
@@ -424,7 +424,7 @@
   background: rgba(220, 225, 232, 0.5);
   border-radius: var(--fing-radius-md);
   box-shadow:
-    inset 4px 4px 8px rgba(163, 177, 198, 0.4),
+    inset 4px 4px 8px rgba(var(--fing-border-base-rgb), 0.4),
     inset -4px -4px 8px rgba(255, 255, 255, 0.7);
 }
 

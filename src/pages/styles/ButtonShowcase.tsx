@@ -82,10 +82,7 @@ export function ButtonShowcase() {
     marginBottom: '8px',
     fontFamily: 'var(--fing-font-display)',
     letterSpacing: '0.05em',
-    textShadow: `
-      1px 1px 0px rgba(255, 255, 255, 0.8),
-      -1px -1px 0px rgba(130, 140, 155, 0.5)
-    `,
+    textShadow: '1px 1px 0px var(--shadow-light), -1px -1px 0px var(--shadow-dark)',
   };
 
   const subtitleStyles: React.CSSProperties = {
@@ -93,10 +90,7 @@ export function ButtonShowcase() {
     color: 'var(--text-secondary)',
     fontFamily: 'var(--fing-font-mono)',
     letterSpacing: '0.02em',
-    textShadow: `
-      0.5px 0.5px 0px rgba(255, 255, 255, 0.6),
-      -0.5px -0.5px 0px rgba(130, 140, 155, 0.4)
-    `,
+    textShadow: '0.5px 0.5px 0px var(--shadow-light), -0.5px -0.5px 0px var(--shadow-dark)',
   };
 
   const categoryStyles: React.CSSProperties = {
@@ -109,10 +103,7 @@ export function ButtonShowcase() {
     letterSpacing: '0.08em',
     paddingBottom: '12px',
     borderBottom: '3px solid var(--fing-accent-primary)',
-    textShadow: `
-      -1px -1px 0px rgba(255, 255, 255, 0.9),
-      1px 1px 0px rgba(147, 157, 170, 0.5)
-    `,
+    textShadow: '-1px -1px 0px var(--shadow-light), 1px 1px 0px var(--shadow-dark)',
   };
 
   const labelStyles: React.CSSProperties = {
@@ -282,20 +273,20 @@ export function ButtonShowcase() {
                   fontSize: '14px',
                   fontWeight: 600,
                   color: 'var(--text-primary)',
-                  textShadow: '0.75px 0.75px 0px rgba(255, 255, 255, 0.7), -0.75px -0.75px 0px rgba(130, 140, 155, 0.5)',
+                  textShadow: '0.75px 0.75px 0px var(--shadow-light), -0.75px -0.75px 0px var(--shadow-dark)',
                   transition: 'all 150ms ease',
                 }}
                 onMouseDown={(e) => {
                   e.currentTarget.style.boxShadow = 'var(--inset-2)';
-                  e.currentTarget.style.textShadow = '-1px -1px 0px rgba(255, 255, 255, 0.95), 1px 1px 0px rgba(147, 157, 170, 0.55)';
+                  e.currentTarget.style.textShadow = '-1px -1px 0px var(--shadow-light), 1px 1px 0px var(--shadow-dark)';
                 }}
                 onMouseUp={(e) => {
                   e.currentTarget.style.boxShadow = 'var(--raised-2)';
-                  e.currentTarget.style.textShadow = '0.75px 0.75px 0px rgba(255, 255, 255, 0.7), -0.75px -0.75px 0px rgba(130, 140, 155, 0.5)';
+                  e.currentTarget.style.textShadow = '0.75px 0.75px 0px var(--shadow-light), -0.75px -0.75px 0px var(--shadow-dark)';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.boxShadow = 'var(--raised-2)';
-                  e.currentTarget.style.textShadow = '0.75px 0.75px 0px rgba(255, 255, 255, 0.7), -0.75px -0.75px 0px rgba(130, 140, 155, 0.5)';
+                  e.currentTarget.style.textShadow = '0.75px 0.75px 0px var(--shadow-light), -0.75px -0.75px 0px var(--shadow-dark)';
                 }}
               >
                 <Plus size={20} />
@@ -321,7 +312,7 @@ export function ButtonShowcase() {
                   fontSize: '14px',
                   fontWeight: 600,
                   color: 'var(--text-primary)',
-                  textShadow: '0.75px 0.75px 0px rgba(255, 255, 255, 0.7), -0.75px -0.75px 0px rgba(130, 140, 155, 0.5)',
+                  textShadow: '0.75px 0.75px 0px var(--shadow-light), -0.75px -0.75px 0px var(--shadow-dark)',
                   transition: 'all 150ms ease',
                 }}
                 onMouseDown={(e) => {
@@ -358,7 +349,7 @@ export function ButtonShowcase() {
                   fontSize: '13px',
                   fontWeight: 600,
                   color: 'var(--text-primary)',
-                  textShadow: '0.75px 0.75px 0px rgba(255, 255, 255, 0.7), -0.75px -0.75px 0px rgba(130, 140, 155, 0.5)',
+                  textShadow: '0.75px 0.75px 0px var(--shadow-light), -0.75px -0.75px 0px var(--shadow-dark)',
                   transition: 'all 150ms ease',
                 }}
                 onMouseDown={(e) => {
@@ -503,7 +494,7 @@ export function ButtonShowcase() {
                   fontSize: '13px',
                   fontWeight: 600,
                   color: 'var(--text-primary)',
-                  textShadow: '0.75px 0.75px 0px rgba(255, 255, 255, 0.7), -0.75px -0.75px 0px rgba(130, 140, 155, 0.5)',
+                  textShadow: '0.75px 0.75px 0px var(--shadow-light), -0.75px -0.75px 0px var(--shadow-dark)',
                   transition: 'all 150ms ease',
                 }}
               >
@@ -535,7 +526,7 @@ export function ButtonShowcase() {
                   fontSize: '13px',
                   fontWeight: 600,
                   color: 'var(--text-primary)',
-                  textShadow: '0.75px 0.75px 0px rgba(255, 255, 255, 0.7), -0.75px -0.75px 0px rgba(130, 140, 155, 0.5)',
+                  textShadow: '0.75px 0.75px 0px var(--shadow-light), -0.75px -0.75px 0px var(--shadow-dark)',
                   transition: 'all 150ms ease',
                 }}
               >
@@ -567,7 +558,7 @@ export function ButtonShowcase() {
                   fontSize: '13px',
                   fontWeight: 600,
                   color: 'var(--text-primary)',
-                  textShadow: '0.75px 0.75px 0px rgba(255, 255, 255, 0.7), -0.75px -0.75px 0px rgba(130, 140, 155, 0.5)',
+                  textShadow: '0.75px 0.75px 0px var(--shadow-light), -0.75px -0.75px 0px var(--shadow-dark)',
                   transition: 'all 150ms ease',
                 }}
               >
@@ -600,7 +591,7 @@ export function ButtonShowcase() {
                   fontSize: '13px',
                   fontWeight: 600,
                   color: 'var(--text-primary)',
-                  textShadow: '0.75px 0.75px 0px rgba(255, 255, 255, 0.7), -0.75px -0.75px 0px rgba(130, 140, 155, 0.5)',
+                  textShadow: '0.75px 0.75px 0px var(--shadow-light), -0.75px -0.75px 0px var(--shadow-dark)',
                   transition: 'all 150ms ease',
                 }}
               >
@@ -632,7 +623,7 @@ export function ButtonShowcase() {
                   fontSize: '13px',
                   fontWeight: 600,
                   color: 'var(--text-primary)',
-                  textShadow: '0.75px 0.75px 0px rgba(255, 255, 255, 0.7), -0.75px -0.75px 0px rgba(130, 140, 155, 0.5)',
+                  textShadow: '0.75px 0.75px 0px var(--shadow-light), -0.75px -0.75px 0px var(--shadow-dark)',
                   transition: 'all 150ms ease',
                 }}
               >
@@ -663,7 +654,7 @@ export function ButtonShowcase() {
                   fontSize: '13px',
                   fontWeight: 600,
                   color: 'var(--text-primary)',
-                  textShadow: '0.75px 0.75px 0px rgba(255, 255, 255, 0.7), -0.75px -0.75px 0px rgba(130, 140, 155, 0.5)',
+                  textShadow: '0.75px 0.75px 0px var(--shadow-light), -0.75px -0.75px 0px var(--shadow-dark)',
                   transition: 'all 150ms ease',
                 }}
               >
@@ -747,7 +738,7 @@ export function ButtonShowcase() {
                   fontSize: '13px',
                   fontWeight: 600,
                   color: 'var(--text-primary)',
-                  textShadow: '-1px -1px 0px rgba(255, 255, 255, 0.95), 1px 1px 0px rgba(147, 157, 170, 0.55)',
+                  textShadow: '-1px -1px 0px var(--shadow-light), 1px 1px 0px var(--shadow-dark)',
                   transition: 'all 150ms ease',
                 }}
               >
@@ -776,7 +767,7 @@ export function ButtonShowcase() {
                   fontSize: '13px',
                   fontWeight: 600,
                   color: 'var(--text-primary)',
-                  textShadow: '-1px -1px 0px rgba(255, 255, 255, 0.95), 1px 1px 0px rgba(147, 157, 170, 0.55)',
+                  textShadow: '-1px -1px 0px var(--shadow-light), 1px 1px 0px var(--shadow-dark)',
                   transition: 'all 150ms ease',
                 }}
               >
@@ -842,7 +833,7 @@ export function ButtonShowcase() {
                   fontSize: '14px',
                   fontWeight: 600,
                   color: 'var(--text-primary)',
-                  textShadow: '0.75px 0.75px 0px rgba(255, 255, 255, 0.7), -0.75px -0.75px 0px rgba(130, 140, 155, 0.5)',
+                  textShadow: '0.75px 0.75px 0px var(--shadow-light), -0.75px -0.75px 0px var(--shadow-dark)',
                   transition: 'all 150ms ease',
                 }}
               >
@@ -858,9 +849,9 @@ export function ButtonShowcase() {
                 style={{
                   width: '60px',
                   height: '60px',
-                  background: 'rgba(58, 106, 114, 0.15)',
+                  background: 'rgba(var(--fing-accent-rgb), 0.15)',
                   borderRadius: '50%',
-                  boxShadow: 'var(--raised-2), inset 0 0 0 2px rgba(58, 106, 114, 0.3)',
+                  boxShadow: 'var(--raised-2), inset 0 0 0 2px rgba(var(--fing-accent-rgb), 0.3)',
                   border: 'none',
                   cursor: 'pointer',
                   display: 'flex',
@@ -899,7 +890,7 @@ export function ButtonShowcase() {
                   fontSize: '14px',
                   fontWeight: 600,
                   color: 'var(--text-primary)',
-                  textShadow: '0.75px 0.75px 0px rgba(255, 255, 255, 0.7), -0.75px -0.75px 0px rgba(130, 140, 155, 0.5)',
+                  textShadow: '0.75px 0.75px 0px var(--shadow-light), -0.75px -0.75px 0px var(--shadow-dark)',
                   transition: 'all 150ms ease',
                 }}
               >
@@ -915,7 +906,7 @@ export function ButtonShowcase() {
                 style={{
                   width: '70px',
                   height: '80px',
-                  background: 'rgba(58, 106, 114, 0.1)',
+                  background: 'rgba(var(--fing-accent-rgb), 0.1)',
                   clipPath: 'polygon(50% 0%, 100% 15%, 100% 65%, 50% 100%, 0% 65%, 0% 15%)',
                   filter: 'drop-shadow(3px 3px 6px var(--shadow-dark)) drop-shadow(-3px -3px 6px var(--shadow-light))',
                   border: 'none',
@@ -1553,7 +1544,7 @@ export function ButtonShowcase() {
                   fontWeight: 600,
                   letterSpacing: '0.05em',
                   color: 'var(--marble-dark)',
-                  textShadow: '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(130, 140, 155, 0.65)',
+                  textShadow: '1px 1px 0px var(--shadow-light), -1px -1px 0px var(--shadow-dark)',
                   transition: 'all 150ms ease',
                 }}
                 onMouseEnter={(e) => {
@@ -1566,11 +1557,11 @@ export function ButtonShowcase() {
                 }}
                 onMouseDown={(e) => {
                   e.currentTarget.style.boxShadow = 'inset 2px 2px 4px var(--shadow-dark), inset -2px -2px 4px var(--shadow-light)';
-                  e.currentTarget.style.textShadow = '-1px -1px 0px rgba(255, 255, 255, 0.95), 1px 1px 0px rgba(147, 157, 170, 0.55)';
+                  e.currentTarget.style.textShadow = '-1px -1px 0px var(--shadow-light), 1px 1px 0px var(--shadow-dark)';
                 }}
                 onMouseUp={(e) => {
                   e.currentTarget.style.boxShadow = 'inset 0 0 0 1px var(--shadow-light), inset 0 0 0 2px rgba(168, 172, 179, 0.3), 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light)';
-                  e.currentTarget.style.textShadow = '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(130, 140, 155, 0.65)';
+                  e.currentTarget.style.textShadow = '1px 1px 0px var(--shadow-light), -1px -1px 0px var(--shadow-dark)';
                 }}
               >
                 Portfolio
@@ -1590,7 +1581,7 @@ export function ButtonShowcase() {
                     size={12}
                     style={{
                       color: 'inherit',
-                      filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))',
+                      filter: 'drop-shadow(-0.5px -0.5px 0px var(--shadow-light)) drop-shadow(0.5px 0.5px 0px var(--shadow-dark))',
                     }}
                   />
                 </span>
@@ -1621,7 +1612,7 @@ export function ButtonShowcase() {
                   fontWeight: 600,
                   letterSpacing: '0.05em',
                   color: 'var(--marble-dark)',
-                  textShadow: '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(130, 140, 155, 0.65)',
+                  textShadow: '1px 1px 0px var(--shadow-light), -1px -1px 0px var(--shadow-dark)',
                   transition: 'all 150ms ease',
                 }}
               >
@@ -1642,7 +1633,7 @@ export function ButtonShowcase() {
                     size={10}
                     style={{
                       color: 'inherit',
-                      filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))',
+                      filter: 'drop-shadow(-0.5px -0.5px 0px var(--shadow-light)) drop-shadow(0.5px 0.5px 0px var(--shadow-dark))',
                     }}
                   />
                 </span>
@@ -1704,7 +1695,7 @@ export function ButtonShowcase() {
                     fontWeight: 600,
                     letterSpacing: '0.05em',
                     color: 'var(--marble-dark)',
-                    textShadow: '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(130, 140, 155, 0.65)',
+                    textShadow: '1px 1px 0px var(--shadow-light), -1px -1px 0px var(--shadow-dark)',
                     transition: 'all 150ms ease',
                   }}
                   onMouseEnter={(e) => {
@@ -1731,7 +1722,7 @@ export function ButtonShowcase() {
                       size={11}
                       style={{
                         color: 'inherit',
-                        filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))',
+                        filter: 'drop-shadow(-0.5px -0.5px 0px var(--shadow-light)) drop-shadow(0.5px 0.5px 0px var(--shadow-dark))',
                       }}
                     />
                   </span>
@@ -1800,7 +1791,7 @@ export function ButtonShowcase() {
                     fontWeight: 600,
                     letterSpacing: '0.05em',
                     color: 'var(--marble-dark)',
-                    textShadow: '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(130, 140, 155, 0.65)',
+                    textShadow: '1px 1px 0px var(--shadow-light), -1px -1px 0px var(--shadow-dark)',
                     transition: 'all 150ms ease',
                   }}
                 >
@@ -1821,7 +1812,7 @@ export function ButtonShowcase() {
                       size={size.iconSize * 0.6}
                       style={{
                         color: 'inherit',
-                        filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))',
+                        filter: 'drop-shadow(-0.5px -0.5px 0px var(--shadow-light)) drop-shadow(0.5px 0.5px 0px var(--shadow-dark))',
                       }}
                     />
                   </span>
@@ -1864,7 +1855,7 @@ export function ButtonShowcase() {
                   fontWeight: 600,
                   letterSpacing: '0.05em',
                   color: 'var(--marble-dark)',
-                  textShadow: '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(130, 140, 155, 0.65)',
+                  textShadow: '1px 1px 0px var(--shadow-light), -1px -1px 0px var(--shadow-dark)',
                 }}
               >
                 Sharp
@@ -1897,7 +1888,7 @@ export function ButtonShowcase() {
                   fontWeight: 600,
                   letterSpacing: '0.05em',
                   color: 'var(--marble-dark)',
-                  textShadow: '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(130, 140, 155, 0.65)',
+                  textShadow: '1px 1px 0px var(--shadow-light), -1px -1px 0px var(--shadow-dark)',
                 }}
               >
                 Rounded
@@ -1930,7 +1921,7 @@ export function ButtonShowcase() {
                   fontWeight: 600,
                   letterSpacing: '0.05em',
                   color: 'var(--marble-dark)',
-                  textShadow: '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(130, 140, 155, 0.65)',
+                  textShadow: '1px 1px 0px var(--shadow-light), -1px -1px 0px var(--shadow-dark)',
                 }}
               >
                 Pill
@@ -1962,7 +1953,7 @@ export function ButtonShowcase() {
                   color: 'var(--marble-dark)',
                 }}
               >
-                <Plus size={18} style={{ filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))' }} />
+                <Plus size={18} style={{ filter: 'drop-shadow(-0.5px -0.5px 0px var(--shadow-light)) drop-shadow(0.5px 0.5px 0px var(--shadow-dark))' }} />
               </button>
               <span style={labelStyles}>Circle</span>
             </div>
@@ -1990,7 +1981,7 @@ export function ButtonShowcase() {
                   color: 'var(--marble-dark)',
                 }}
               >
-                <Settings size={18} style={{ filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))' }} />
+                <Settings size={18} style={{ filter: 'drop-shadow(-0.5px -0.5px 0px var(--shadow-light)) drop-shadow(0.5px 0.5px 0px var(--shadow-dark))' }} />
               </button>
               <span style={labelStyles}>Square</span>
             </div>
@@ -2029,10 +2020,10 @@ export function ButtonShowcase() {
                   fontWeight: 600,
                   letterSpacing: '0.05em',
                   color: 'var(--marble-dark)',
-                  textShadow: '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(130, 140, 155, 0.65)',
+                  textShadow: '1px 1px 0px var(--shadow-light), -1px -1px 0px var(--shadow-dark)',
                 }}
               >
-                <Download size={14} style={{ filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))' }} />
+                <Download size={14} style={{ filter: 'drop-shadow(-0.5px -0.5px 0px var(--shadow-light)) drop-shadow(0.5px 0.5px 0px var(--shadow-dark))' }} />
                 Download
               </button>
               <span style={labelStyles}>Left Icon</span>
@@ -2062,11 +2053,11 @@ export function ButtonShowcase() {
                   fontWeight: 600,
                   letterSpacing: '0.05em',
                   color: 'var(--marble-dark)',
-                  textShadow: '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(130, 140, 155, 0.65)',
+                  textShadow: '1px 1px 0px var(--shadow-light), -1px -1px 0px var(--shadow-dark)',
                 }}
               >
                 Continue
-                <ArrowRight size={14} style={{ filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))' }} />
+                <ArrowRight size={14} style={{ filter: 'drop-shadow(-0.5px -0.5px 0px var(--shadow-light)) drop-shadow(0.5px 0.5px 0px var(--shadow-dark))' }} />
               </button>
               <span style={labelStyles}>Right Icon</span>
             </div>
@@ -2095,7 +2086,7 @@ export function ButtonShowcase() {
                   fontWeight: 600,
                   letterSpacing: '0.05em',
                   color: 'var(--marble-dark)',
-                  textShadow: '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(130, 140, 155, 0.65)',
+                  textShadow: '1px 1px 0px var(--shadow-light), -1px -1px 0px var(--shadow-dark)',
                 }}
               >
                 View All
@@ -2111,7 +2102,7 @@ export function ButtonShowcase() {
                     boxShadow: 'inset 1px 1px 2px var(--shadow-dark), inset -1px -1px 2px var(--shadow-light)',
                   }}
                 >
-                  <ChevronRight size={11} style={{ color: 'inherit', filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))' }} />
+                  <ChevronRight size={11} style={{ color: 'inherit', filter: 'drop-shadow(-0.5px -0.5px 0px var(--shadow-light)) drop-shadow(0.5px 0.5px 0px var(--shadow-dark))' }} />
                 </span>
               </button>
               <span style={labelStyles}>Circle Inset Icon</span>
@@ -2141,7 +2132,7 @@ export function ButtonShowcase() {
                   fontWeight: 600,
                   letterSpacing: '0.05em',
                   color: 'var(--marble-dark)',
-                  textShadow: '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(130, 140, 155, 0.65)',
+                  textShadow: '1px 1px 0px var(--shadow-light), -1px -1px 0px var(--shadow-dark)',
                 }}
               >
                 <span
@@ -2156,7 +2147,7 @@ export function ButtonShowcase() {
                     boxShadow: 'inset 1px 1px 2px var(--shadow-dark), inset -1px -1px 2px var(--shadow-light)',
                   }}
                 >
-                  <Plus size={11} style={{ color: 'inherit', filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))' }} />
+                  <Plus size={11} style={{ color: 'inherit', filter: 'drop-shadow(-0.5px -0.5px 0px var(--shadow-light)) drop-shadow(0.5px 0.5px 0px var(--shadow-dark))' }} />
                 </span>
                 Add New
               </button>
@@ -2187,7 +2178,7 @@ export function ButtonShowcase() {
                   fontWeight: 600,
                   letterSpacing: '0.05em',
                   color: 'var(--marble-dark)',
-                  textShadow: '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(130, 140, 155, 0.65)',
+                  textShadow: '1px 1px 0px var(--shadow-light), -1px -1px 0px var(--shadow-dark)',
                 }}
               >
                 <span
@@ -2202,7 +2193,7 @@ export function ButtonShowcase() {
                     boxShadow: 'inset 1px 1px 2px var(--shadow-dark), inset -1px -1px 2px var(--shadow-light)',
                   }}
                 >
-                  <Eye size={11} style={{ color: 'inherit', filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))' }} />
+                  <Eye size={11} style={{ color: 'inherit', filter: 'drop-shadow(-0.5px -0.5px 0px var(--shadow-light)) drop-shadow(0.5px 0.5px 0px var(--shadow-dark))' }} />
                 </span>
                 Preview
                 <span
@@ -2217,7 +2208,7 @@ export function ButtonShowcase() {
                     boxShadow: 'inset 1px 1px 2px var(--shadow-dark), inset -1px -1px 2px var(--shadow-light)',
                   }}
                 >
-                  <ExternalLink size={10} style={{ color: 'inherit', filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))' }} />
+                  <ExternalLink size={10} style={{ color: 'inherit', filter: 'drop-shadow(-0.5px -0.5px 0px var(--shadow-light)) drop-shadow(0.5px 0.5px 0px var(--shadow-dark))' }} />
                 </span>
               </button>
               <span style={labelStyles}>Both Icons</span>
@@ -2257,11 +2248,11 @@ export function ButtonShowcase() {
                   fontWeight: 600,
                   letterSpacing: '0.05em',
                   color: 'var(--marble-dark)',
-                  textShadow: '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(130, 140, 155, 0.65)',
+                  textShadow: '1px 1px 0px var(--shadow-light), -1px -1px 0px var(--shadow-dark)',
                 }}
               >
                 <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '20px', height: '20px', borderRadius: '50%', background: 'var(--marble-base)', boxShadow: 'inset 1px 1px 2px var(--shadow-dark), inset -1px -1px 2px var(--shadow-light)' }}>
-                  <Settings size={11} style={{ color: 'var(--marble-dark)', filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))' }} />
+                  <Settings size={11} style={{ color: 'var(--marble-dark)', filter: 'drop-shadow(-0.5px -0.5px 0px var(--shadow-light)) drop-shadow(0.5px 0.5px 0px var(--shadow-dark))' }} />
                 </span>
                 Settings
               </button>
@@ -2292,11 +2283,11 @@ export function ButtonShowcase() {
                   fontWeight: 600,
                   letterSpacing: '0.05em',
                   color: 'var(--marble-dark)',
-                  textShadow: '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(130, 140, 155, 0.65)',
+                  textShadow: '1px 1px 0px var(--shadow-light), -1px -1px 0px var(--shadow-dark)',
                 }}
               >
                 <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '20px', height: '20px', borderRadius: '50%', background: 'var(--marble-base)', boxShadow: 'inset 1px 1px 2px var(--shadow-dark), inset -1px -1px 2px var(--shadow-light)' }}>
-                  <TrendingUp size={11} style={{ color: 'var(--fing-accent-primary)', filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))' }} />
+                  <TrendingUp size={11} style={{ color: 'var(--fing-accent-primary)', filter: 'drop-shadow(-0.5px -0.5px 0px var(--shadow-light)) drop-shadow(0.5px 0.5px 0px var(--shadow-dark))' }} />
                 </span>
                 Portfolio
               </button>
@@ -2327,11 +2318,11 @@ export function ButtonShowcase() {
                   fontWeight: 600,
                   letterSpacing: '0.05em',
                   color: 'var(--marble-dark)',
-                  textShadow: '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(130, 140, 155, 0.65)',
+                  textShadow: '1px 1px 0px var(--shadow-light), -1px -1px 0px var(--shadow-dark)',
                 }}
               >
                 <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '20px', height: '20px', borderRadius: '50%', background: 'var(--marble-base)', boxShadow: 'inset 1px 1px 2px var(--shadow-dark), inset -1px -1px 2px var(--shadow-light)' }}>
-                  <Check size={11} style={{ color: 'var(--fing-status-positive)', filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))' }} />
+                  <Check size={11} style={{ color: 'var(--fing-status-positive)', filter: 'drop-shadow(-0.5px -0.5px 0px var(--shadow-light)) drop-shadow(0.5px 0.5px 0px var(--shadow-dark))' }} />
                 </span>
                 Confirm
               </button>
@@ -2362,11 +2353,11 @@ export function ButtonShowcase() {
                   fontWeight: 600,
                   letterSpacing: '0.05em',
                   color: 'var(--marble-dark)',
-                  textShadow: '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(130, 140, 155, 0.65)',
+                  textShadow: '1px 1px 0px var(--shadow-light), -1px -1px 0px var(--shadow-dark)',
                 }}
               >
                 <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '20px', height: '20px', borderRadius: '50%', background: 'var(--marble-base)', boxShadow: 'inset 1px 1px 2px var(--shadow-dark), inset -1px -1px 2px var(--shadow-light)' }}>
-                  <AlertTriangle size={11} style={{ color: 'var(--fing-status-warning)', filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))' }} />
+                  <AlertTriangle size={11} style={{ color: 'var(--fing-status-warning)', filter: 'drop-shadow(-0.5px -0.5px 0px var(--shadow-light)) drop-shadow(0.5px 0.5px 0px var(--shadow-dark))' }} />
                 </span>
                 Review
               </button>
@@ -2397,11 +2388,11 @@ export function ButtonShowcase() {
                   fontWeight: 600,
                   letterSpacing: '0.05em',
                   color: 'var(--marble-dark)',
-                  textShadow: '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(130, 140, 155, 0.65)',
+                  textShadow: '1px 1px 0px var(--shadow-light), -1px -1px 0px var(--shadow-dark)',
                 }}
               >
                 <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '20px', height: '20px', borderRadius: '50%', background: 'var(--marble-base)', boxShadow: 'inset 1px 1px 2px var(--shadow-dark), inset -1px -1px 2px var(--shadow-light)' }}>
-                  <Trash2 size={11} style={{ color: 'var(--fing-status-negative)', filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))' }} />
+                  <Trash2 size={11} style={{ color: 'var(--fing-status-negative)', filter: 'drop-shadow(-0.5px -0.5px 0px var(--shadow-light)) drop-shadow(0.5px 0.5px 0px var(--shadow-dark))' }} />
                 </span>
                 Delete
               </button>
@@ -2445,7 +2436,7 @@ export function ButtonShowcase() {
                       fontWeight: i === 1 ? 600 : 500,
                       letterSpacing: '0.05em',
                       color: i === 1 ? 'var(--fing-accent-primary)' : 'var(--marble-dark)',
-                      textShadow: i === 1 ? '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(130, 140, 155, 0.65)' : 'none',
+                      textShadow: i === 1 ? '1px 1px 0px var(--shadow-light), -1px -1px 0px var(--shadow-dark)' : 'none',
                       transition: 'all 150ms ease',
                     }}
                   >
@@ -2480,10 +2471,10 @@ export function ButtonShowcase() {
                     fontWeight: 600,
                     letterSpacing: '0.05em',
                     color: 'var(--marble-dark)',
-                    textShadow: '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(130, 140, 155, 0.65)',
+                    textShadow: '1px 1px 0px var(--shadow-light), -1px -1px 0px var(--shadow-dark)',
                   }}
                 >
-                  <Save size={14} style={{ filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))' }} />
+                  <Save size={14} style={{ filter: 'drop-shadow(-0.5px -0.5px 0px var(--shadow-light)) drop-shadow(0.5px 0.5px 0px var(--shadow-dark))' }} />
                   Save
                 </button>
                 <button
@@ -2504,7 +2495,7 @@ export function ButtonShowcase() {
                     color: 'var(--marble-dark)',
                   }}
                 >
-                  <ChevronDown size={14} style={{ filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))' }} />
+                  <ChevronDown size={14} style={{ filter: 'drop-shadow(-0.5px -0.5px 0px var(--shadow-light)) drop-shadow(0.5px 0.5px 0px var(--shadow-dark))' }} />
                 </button>
               </div>
               <span style={labelStyles}>Split Button</span>
@@ -2546,7 +2537,7 @@ export function ButtonShowcase() {
                     }}
                     title={label}
                   >
-                    <Icon size={16} style={{ filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))' }} />
+                    <Icon size={16} style={{ filter: 'drop-shadow(-0.5px -0.5px 0px var(--shadow-light)) drop-shadow(0.5px 0.5px 0px var(--shadow-dark))' }} />
                   </button>
                 ))}
               </div>
@@ -2597,7 +2588,7 @@ export function ButtonShowcase() {
                   fontWeight: 600,
                   letterSpacing: '0.05em',
                   color: 'var(--marble-dark)',
-                  textShadow: '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(130, 140, 155, 0.65)',
+                  textShadow: '1px 1px 0px var(--shadow-light), -1px -1px 0px var(--shadow-dark)',
                 }}
               >
                 Pill Frame RAISED
@@ -2651,7 +2642,7 @@ export function ButtonShowcase() {
                     fontWeight: 600,
                     letterSpacing: '0.05em',
                     color: 'var(--marble-dark)',
-                    textShadow: '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(130, 140, 155, 0.65)',
+                    textShadow: '1px 1px 0px var(--shadow-light), -1px -1px 0px var(--shadow-dark)',
                   }}
                 >
                   View All
@@ -2695,7 +2686,7 @@ export function ButtonShowcase() {
                   fontWeight: 600,
                   letterSpacing: '0.05em',
                   color: 'var(--marble-dark)',
-                  textShadow: '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(130, 140, 155, 0.65)',
+                  textShadow: '1px 1px 0px var(--shadow-light), -1px -1px 0px var(--shadow-dark)',
                 }}
               >
                 Glass Button
@@ -2749,7 +2740,7 @@ export function ButtonShowcase() {
                   color: 'var(--fing-accent-primary)',
                   fontFamily: 'var(--fing-font-primary)',
                   fontSize: '13px',
-                  textShadow: '-0.5px -0.5px 0px rgba(255,255,255,0.8), 0.5px 0.5px 0px rgba(147,157,170,0.4)',
+                  textShadow: '-0.5px -0.5px 0px var(--shadow-light), 0.5px 0.5px 0px var(--shadow-dark)',
                 }}>
                   {title}:
                 </strong>

@@ -21,8 +21,8 @@
 
 /* Info */
 .info {
-  font-size: var(--text-cuerpo-1);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--fing-text-sm);
+  font-weight: var(--fing-font-regular);
   color: var(--foreground-muted);
   font-family: var(--fing-font-led);
   text-transform: uppercase;

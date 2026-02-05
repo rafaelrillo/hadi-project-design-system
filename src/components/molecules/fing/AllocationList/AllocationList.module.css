@@ -16,7 +16,7 @@
   justify-content: center;
   padding: var(--fing-space-8);
   color: var(--fing-text-tertiary);
-  font-size: var(--fing-font-sm);
+  font-size: var(--fing-text-sm);
 }
 
 .item {
@@ -49,14 +49,14 @@
 
 .symbol {
   font-family: var(--fing-font-mono);
-  font-size: var(--fing-font-sm);
+  font-size: var(--fing-text-sm);
   font-weight: 600;
   color: var(--fing-text-primary);
   letter-spacing: 0.02em;
 }
 
 .name {
-  font-size: var(--fing-font-xs);
+  font-size: var(--fing-text-xs);
   color: var(--fing-text-tertiary);
   white-space: nowrap;
   overflow: hidden;
@@ -72,13 +72,13 @@
 
 .value {
   font-family: var(--fing-font-mono);
-  font-size: var(--fing-font-sm);
+  font-size: var(--fing-text-sm);
   color: var(--fing-text-secondary);
 }
 
 .change {
   font-family: var(--fing-font-mono);
-  font-size: var(--fing-font-xs);
+  font-size: var(--fing-text-xs);
   font-weight: 500;
 }
 
@@ -106,7 +106,7 @@
 
 .percent {
   font-family: var(--fing-font-mono);
-  font-size: var(--fing-font-xs);
+  font-size: var(--fing-text-xs);
   color: var(--fing-text-tertiary);
   min-width: 40px;
   text-align: right;
@@ -118,11 +118,11 @@
 }
 
 .compact .symbol {
-  font-size: var(--fing-font-xs);
+  font-size: var(--fing-text-xs);
 }
 
 .compact .value {
-  font-size: var(--fing-font-xs);
+  font-size: var(--fing-text-xs);
 }
 
 .compact .barContainer {

@@ -56,7 +56,7 @@ export function InsetContainer({
   ].filter(Boolean).join(' ');
 
   return (
-    <Component className={containerClasses} style={style}>
+    <Component className={containerClasses} style={style} data-surface="inset">
       {children}
     </Component>
   );

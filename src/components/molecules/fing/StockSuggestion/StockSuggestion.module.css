@@ -47,7 +47,7 @@
 
 .symbol {
   font-family: var(--fing-font-ticker);
-  font-size: var(--fing-font-base);
+  font-size: var(--fing-text-base);
   font-weight: 600;
   color: var(--fing-text-primary);
   letter-spacing: 0.08em;
@@ -55,7 +55,7 @@
 
 .name {
   font-family: var(--fing-font-primary);
-  font-size: var(--fing-font-xs);
+  font-size: var(--fing-text-xs);
   color: var(--fing-text-secondary);
 }
 
@@ -118,7 +118,7 @@
 
 .priceValue {
   font-family: var(--fing-font-numeric);
-  font-size: var(--fing-font-sm);
+  font-size: var(--fing-text-sm);
   font-weight: 500;
   color: var(--fing-text-primary);
   letter-spacing: var(--fing-tracking-led);
@@ -138,14 +138,14 @@
 }
 
 .priceChange {
-  font-size: var(--fing-font-xs);
+  font-size: var(--fing-text-xs);
   font-weight: 400;
   opacity: 0.8;
 }
 
 .sectorValue {
   font-family: var(--fing-font-primary);
-  font-size: var(--fing-font-sm);
+  font-size: var(--fing-text-sm);
   color: var(--fing-text-secondary);
 }
 
@@ -174,7 +174,7 @@
 
 .confidenceValue {
   font-family: var(--fing-font-numeric);
-  font-size: var(--fing-font-xs);
+  font-size: var(--fing-text-xs);
   font-weight: 500;
   color: var(--fing-text-secondary);
   letter-spacing: var(--fing-tracking-led);
@@ -199,7 +199,7 @@
   padding: 12px 16px;
   margin: 0;
   font-family: var(--fing-font-primary);
-  font-size: var(--fing-font-sm);
+  font-size: var(--fing-text-sm);
   color: var(--fing-text-secondary);
   line-height: 1.6;
   border-top: 1px solid var(--fing-border-subtle);

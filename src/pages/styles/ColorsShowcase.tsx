@@ -121,19 +121,19 @@ export function ColorsShowcase() {
     const colors: Record<string, { color: string; shadow: string }> = {
       teal: {
         color: 'var(--fing-accent-tertiary, #6fb3b5)',
-        shadow: '1px 1px 1px var(--shadow-light), -1px -1px 1px rgba(58, 106, 114, 0.4)',
+        shadow: '1px 1px 1px var(--shadow-light), -1px -1px 1px rgba(var(--fing-accent-rgb), 0.4)',
       },
       positive: {
         color: '#7cb89a',
-        shadow: '1px 1px 1px var(--shadow-light), -1px -1px 1px rgba(22, 163, 74, 0.3)',
+        shadow: '1px 1px 1px var(--shadow-light), -1px -1px 1px rgba(var(--fing-positive-rgb), 0.3)',
       },
       negative: {
         color: '#8a5a4a',
-        shadow: '1px 1px 1px var(--shadow-light), -1px -1px 1px rgba(220, 38, 38, 0.3)',
+        shadow: '1px 1px 1px var(--shadow-light), -1px -1px 1px rgba(var(--fing-negative-rgb), 0.3)',
       },
       warning: {
         color: '#a08a4a',
-        shadow: '1px 1px 1px var(--shadow-light), -1px -1px 1px rgba(217, 119, 6, 0.3)',
+        shadow: '1px 1px 1px var(--shadow-light), -1px -1px 1px rgba(var(--fing-warning-rgb), 0.3)',
       },
     };
     return {
@@ -147,19 +147,19 @@ export function ColorsShowcase() {
     const colors: Record<string, { color: string; shadow: string }> = {
       teal: {
         color: 'var(--fing-accent-tertiary, #6fb3b5)',
-        shadow: '-1px -1px 1px var(--shadow-light), 1px 1px 1px rgba(58, 106, 114, 0.4)',
+        shadow: '-1px -1px 1px var(--shadow-light), 1px 1px 1px rgba(var(--fing-accent-rgb), 0.4)',
       },
       positive: {
         color: '#7cb89a',
-        shadow: '-1px -1px 1px var(--shadow-light), 1px 1px 1px rgba(22, 163, 74, 0.3)',
+        shadow: '-1px -1px 1px var(--shadow-light), 1px 1px 1px rgba(var(--fing-positive-rgb), 0.3)',
       },
       negative: {
         color: '#8a5a4a',
-        shadow: '-1px -1px 1px var(--shadow-light), 1px 1px 1px rgba(220, 38, 38, 0.3)',
+        shadow: '-1px -1px 1px var(--shadow-light), 1px 1px 1px rgba(var(--fing-negative-rgb), 0.3)',
       },
       warning: {
         color: '#a08a4a',
-        shadow: '-1px -1px 1px var(--shadow-light), 1px 1px 1px rgba(217, 119, 6, 0.3)',
+        shadow: '-1px -1px 1px var(--shadow-light), 1px 1px 1px rgba(var(--fing-warning-rgb), 0.3)',
       },
     };
     return {
@@ -181,16 +181,17 @@ export function ColorsShowcase() {
   ];
 
   const accentColors: ColorToken[] = [
-    { name: 'Accent Primary', variable: '--fing-accent-primary', value: '#3a6a72', description: 'Teal principal' },
-    { name: 'Accent Secondary', variable: '--fing-accent-secondary', value: '#5ba3a5', description: 'Teal secundario' },
-    { name: 'Accent Tertiary', variable: '--fing-accent-tertiary', value: '#6fb3b5', description: 'Teal claro' },
+    { name: 'Petrol', variable: '--fing-accent', value: '#3a6a72', description: 'Brand primary' },
+    { name: 'Petrol Light', variable: '--fing-accent-light', value: '#4a7a82', description: 'Hover state' },
+    { name: 'Petrol Dark', variable: '--fing-accent-dark', value: '#2a5a62', description: 'Active state' },
+    { name: 'Steel (Text)', variable: '--fing-text-accent', value: '#4a6a7a', description: 'Secondary accent' },
   ];
 
   const statusColors: ColorToken[] = [
-    { name: 'Positive', variable: '--fing-status-positive', value: '#4a7a6a', description: 'Success' },
-    { name: 'Negative', variable: '--fing-status-negative', value: '#b85c5c', description: 'Error' },
-    { name: 'Warning', variable: '--fing-status-warning', value: '#c4a35a', description: 'Warning' },
-    { name: 'Info', variable: '--fing-status-info', value: '#5a8fb8', description: 'Info' },
+    { name: 'Positive (Jade)', variable: '--fing-positive', value: '#4a7a6a', description: 'Success - green stone' },
+    { name: 'Warning (Gold)', variable: '--fing-warning', value: '#a08a4a', description: 'Warning - pure metal' },
+    { name: 'Negative (Rust)', variable: '--fing-negative', value: '#8a5a4a', description: 'Error - iron oxide' },
+    { name: 'Info (Steel)', variable: '--fing-info', value: '#4a6a7a', description: 'Info - refined iron' },
   ];
 
   const glassColors: ColorToken[] = [
@@ -455,6 +456,168 @@ export function ColorsShowcase() {
         </div>
       </section>
 
+      {/* RGB Companion System */}
+      <section style={sectionStyles}>
+        <div style={sectionTitleStyles}>RGB Companions — Opacity System</div>
+        <p style={{
+          ...lpStyles('subtle'),
+          fontSize: '13px',
+          marginBottom: '20px',
+          lineHeight: 1.6,
+        }}>
+          Every semantic color has an <code style={{ fontFamily: 'var(--fing-font-mono)', fontSize: '11px' }}>-rgb</code> companion variable
+          enabling opacity variations without hardcoding RGBA values.
+        </p>
+
+        {/* RGB variable table */}
+        <div style={{
+          background: 'var(--marble-base)',
+          borderRadius: '14px',
+          boxShadow: 'var(--inset-2)',
+          padding: '20px',
+          marginBottom: '20px',
+        }}>
+          {[
+            { name: 'Petrol', var: '--fing-accent-rgb', rgb: '58, 106, 114', hex: '#3a6a72' },
+            { name: 'Jade', var: '--fing-positive-rgb', rgb: '74, 122, 106', hex: '#4a7a6a' },
+            { name: 'Gold', var: '--fing-warning-rgb', rgb: '160, 138, 74', hex: '#a08a4a' },
+            { name: 'Rust', var: '--fing-negative-rgb', rgb: '138, 90, 74', hex: '#8a5a4a' },
+            { name: 'Steel', var: '--fing-info-rgb', rgb: '74, 106, 122', hex: '#4a6a7a' },
+            { name: 'Charcoal', var: '--fing-black-rgb', rgb: '37, 37, 40', hex: '#252528' },
+            { name: 'Border', var: '--fing-border-base-rgb', rgb: '163, 177, 198', hex: '#a3b1c6' },
+          ].map((item) => (
+            <div key={item.var} style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '12px',
+              padding: '8px 0',
+              borderBottom: '1px solid var(--fing-border-subtle)',
+            }}>
+              <div style={{
+                width: '32px', height: '32px', borderRadius: '8px',
+                backgroundColor: item.hex, flexShrink: 0,
+                boxShadow: 'var(--raised-1)',
+              }} />
+              <span style={{
+                ...lpInsetStyles('subtle'), fontSize: '12px', fontWeight: 600, width: '70px',
+              }}>{item.name}</span>
+              <code style={{
+                fontFamily: 'var(--fing-font-mono)', fontSize: '10px',
+                color: 'var(--fing-accent)', flex: 1,
+              }}>{item.var}</code>
+              <code style={{
+                fontFamily: 'var(--fing-font-mono)', fontSize: '10px',
+                ...lpInsetStyles('whisper'),
+              }}>{item.rgb}</code>
+            </div>
+          ))}
+        </div>
+
+        {/* Usage example */}
+        <div style={{
+          background: 'var(--marble-base)',
+          borderRadius: '14px',
+          boxShadow: 'var(--inset-3)',
+          padding: '20px',
+          marginBottom: '20px',
+        }}>
+          <div style={{ ...lpInsetStyles('subtle'), fontSize: '11px', fontWeight: 600, marginBottom: '12px', letterSpacing: '0.1em', textTransform: 'uppercase' as const }}>
+            Usage Pattern
+          </div>
+          <pre style={{
+            margin: 0, fontFamily: 'var(--fing-font-mono)', fontSize: '11px', lineHeight: 1.8,
+            ...lpInsetStyles('whisper'), whiteSpace: 'pre-wrap',
+          }}>
+{`/* Before — hardcoded RGBA */
+border: 1px solid rgba(var(--fing-accent-rgb), 0.4);
+background: rgba(var(--fing-accent-rgb), 0.08);
+
+/* After — RGB companion */
+border: 1px solid rgba(var(--fing-accent-rgb), 0.4);
+background: rgba(var(--fing-accent-rgb), 0.08);`}
+          </pre>
+        </div>
+
+        {/* Live opacity scale */}
+        <div style={{ ...lpStyles('subtle'), fontSize: '11px', fontWeight: 600, marginBottom: '12px', letterSpacing: '0.1em', textTransform: 'uppercase' as const }}>
+          Petrol Opacity Scale
+        </div>
+        <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+          {[0.05, 0.1, 0.15, 0.2, 0.3, 0.4, 0.5, 0.6, 0.8, 1.0].map((opacity) => (
+            <div key={opacity} style={{
+              width: '64px', textAlign: 'center',
+              background: 'var(--marble-base)', borderRadius: '12px',
+              boxShadow: 'var(--raised-1)', padding: '8px 4px',
+            }}>
+              <div style={{
+                width: '48px', height: '48px', borderRadius: '8px', margin: '0 auto 6px',
+                backgroundColor: `rgba(var(--fing-accent-rgb), ${opacity})`,
+                border: '1px solid var(--fing-border-subtle)',
+              }} />
+              <code style={{
+                fontFamily: 'var(--fing-font-mono)', fontSize: '9px',
+                ...lpStyles('whisper'),
+              }}>{opacity}</code>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Status System */}
+      <section style={sectionStyles}>
+        <div style={sectionTitleStyles}>Status System — Complete Token Set</div>
+        <p style={{
+          ...lpStyles('subtle'), fontSize: '13px', marginBottom: '20px', lineHeight: 1.6,
+        }}>
+          Each semantic color generates a full set of status tokens: base, text, subtle, muted, and border.
+        </p>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: '16px' }}>
+          {(['positive', 'warning', 'negative', 'info'] as const).map((status) => {
+            const names: Record<string, string> = { positive: 'Jade', warning: 'Gold', negative: 'Rust', info: 'Steel' };
+            return (
+              <div key={status} style={{
+                background: 'var(--marble-base)', borderRadius: '14px',
+                boxShadow: 'var(--inset-2)', padding: '16px',
+              }}>
+                <div style={{
+                  ...lpInsetStyles('subtle'), fontSize: '12px', fontWeight: 600, marginBottom: '12px',
+                  color: `var(--fing-${status})`,
+                }}>
+                  {names[status]}
+                </div>
+                {[
+                  { label: 'base', var: `--fing-${status}` },
+                  { label: 'text', var: `--fing-status-${status}-text` },
+                  { label: 'subtle', var: `--fing-status-${status}-subtle` },
+                  { label: 'muted', var: `--fing-status-${status}-muted` },
+                  { label: 'border', var: `--fing-status-${status}-border` },
+                ].map((token) => (
+                  <div key={token.var} style={{
+                    display: 'flex', alignItems: 'center', gap: '8px',
+                    padding: '4px 0', fontSize: '10px',
+                  }}>
+                    <div style={{
+                      width: '20px', height: '20px', borderRadius: '4px',
+                      backgroundColor: `var(${token.var})`, flexShrink: 0,
+                      border: '1px solid var(--fing-border-subtle)',
+                    }} />
+                    <span style={{ fontFamily: 'var(--fing-font-mono)', ...lpInsetStyles('whisper') }}>
+                      {token.label}
+                    </span>
+                    <code style={{
+                      fontFamily: 'var(--fing-font-mono)', fontSize: '9px',
+                      color: 'var(--fing-text-accent)', marginLeft: 'auto',
+                    }}>
+                      {token.var}
+                    </code>
+                  </div>
+                ))}
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
       {/* Code Example */}
       <section style={sectionStyles}>
         <div style={sectionTitleStyles}>Código de Referencia</div>
@@ -473,27 +636,24 @@ export function ColorsShowcase() {
             textShadow: '0.75px 0.75px 0px var(--shadow-light), -0.75px -0.75px 0px var(--shadow-dark)',
             whiteSpace: 'pre-wrap',
           }}>
-{`:root {
-  /* Stone Marble Base */
-  --marble-base: #d5d8dc;
-  --marble-light: #e2e5e9;
-  --marble-dark: #c8ccd1;
+{`/* colors.css — Canonical Source of Truth */
+:root {
+  /* Base + RGB companion */
+  --fing-accent: #3a6a72;
+  --fing-accent-rgb: 58, 106, 114;
 
-  /* Shadows */
-  --shadow-light: rgba(255, 255, 255, 0.95);
-  --shadow-dark: rgba(147, 157, 170, 0.55);
+  /* Use RGB for opacity variations */
+  background: rgba(var(--fing-accent-rgb), 0.08);
+  border: 1px solid rgba(var(--fing-accent-rgb), 0.4);
 
-  /* Raised Levels (1-5) */
-  --raised-1: 2px 2px 4px var(--shadow-dark), -2px -2px 4px var(--shadow-light);
-  --raised-2: 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
+  /* Status system (auto-derived) */
+  --fing-status-positive-subtle: rgba(var(--fing-positive-rgb), 0.15);
+  --fing-status-positive-muted: rgba(var(--fing-positive-rgb), 0.1);
+  --fing-status-positive-border: rgba(var(--fing-positive-rgb), 0.3);
 
-  /* Inset Levels (1-5) */
-  --inset-1: inset 2px 2px 4px var(--shadow-dark), inset -2px -2px 4px var(--shadow-light);
-  --inset-2: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
-
-  /* Glass */
-  --glass-bg: rgba(255, 255, 255, 0.25);
-  --glass-border: rgba(255, 255, 255, 0.35);
+  /* Letterpress uses RGB too */
+  --lp-positive: 0.5px 0.5px 0px rgba(255,255,255,0.9),
+    -0.5px -0.5px 0px rgba(var(--fing-positive-rgb), 0.25);
 }`}
           </pre>
         </div>

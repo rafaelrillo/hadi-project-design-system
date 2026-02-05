@@ -299,6 +299,70 @@ a:focus-visible {
 .capitalize { text-transform: capitalize; }
 .normal-case { text-transform: none; }
 
+/* ─────────────────────────────────────────────────────────────────────────────
+   TEXT EFFECTS - Carved (Debossed) & Embossed (Raised) Neumorphic
+   RULE: RAISED container → .text-carved   (text pressed into surface)
+         INSET container  → .text-embossed (text raised from surface)
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Carved (debossed) - for text in RAISED containers */
+.text-carved                  { text-shadow: var(--lp-primary); }
+.text-carved-strong           { text-shadow: var(--lp-primary-strong); }
+.text-carved-sm               { text-shadow: var(--lp-carved-sm); }
+.text-carved-md               { text-shadow: var(--lp-carved-md); }
+.text-carved-lg               { text-shadow: var(--lp-carved-lg); }
+.text-carved-whisper          { text-shadow: var(--lp-whisper); }
+.text-carved-positive         { text-shadow: var(--lp-positive); }
+.text-carved-positive-strong  { text-shadow: var(--lp-positive-strong); }
+.text-carved-positive-md      { text-shadow: var(--lp-positive-md); }
+.text-carved-warning          { text-shadow: var(--lp-warning); }
+.text-carved-warning-strong   { text-shadow: var(--lp-warning-strong); }
+.text-carved-warning-md       { text-shadow: var(--lp-warning-md); }
+.text-carved-negative         { text-shadow: var(--lp-negative); }
+.text-carved-negative-strong  { text-shadow: var(--lp-negative-strong); }
+.text-carved-negative-md      { text-shadow: var(--lp-negative-md); }
+.text-carved-info             { text-shadow: var(--lp-info); }
+.text-carved-info-strong      { text-shadow: var(--lp-info-strong); }
+.text-carved-accent           { text-shadow: var(--lp-accent); }
+.text-carved-accent-strong    { text-shadow: var(--lp-accent-strong); }
+.text-carved-steel            { text-shadow: var(--lp-steel); }
+.text-carved-steel-strong     { text-shadow: var(--lp-steel-strong); }
+.text-carved-petrol           { text-shadow: var(--lp-petrol); }
+.text-carved-petrol-strong    { text-shadow: var(--lp-petrol-strong); }
+.text-carved-petrol-md        { text-shadow: var(--lp-petrol-md); }
+.text-carved-muted            { text-shadow: var(--lp-muted); }
+
+/* Embossed (raised) - for text in INSET containers */
+.text-embossed                { text-shadow: var(--lp-embossed); }
+.text-embossed-subtle         { text-shadow: var(--lp-embossed-subtle); }
+.text-embossed-strong         { text-shadow: var(--lp-embossed-strong); }
+.text-embossed-sm             { text-shadow: var(--lp-embossed-sm); }
+.text-embossed-petrol         { text-shadow: var(--lp-embossed-petrol); }
+.text-embossed-petrol-sm      { text-shadow: var(--lp-embossed-petrol-sm); }
+.text-embossed-positive       { text-shadow: var(--lp-embossed-positive); }
+.text-embossed-positive-sm    { text-shadow: var(--lp-embossed-positive-sm); }
+.text-embossed-warning        { text-shadow: var(--lp-embossed-warning); }
+.text-embossed-warning-sm     { text-shadow: var(--lp-embossed-warning-sm); }
+.text-embossed-negative       { text-shadow: var(--lp-embossed-negative); }
+.text-embossed-negative-sm    { text-shadow: var(--lp-embossed-negative-sm); }
+.text-embossed-info           { text-shadow: var(--lp-embossed-info); }
+.text-embossed-info-sm        { text-shadow: var(--lp-embossed-info-sm); }
+
+/* Glow - non-directional glow for active/highlighted elements */
+.text-glow-petrol             { text-shadow: var(--lp-glow-petrol); }
+.text-glow-positive           { text-shadow: var(--lp-glow-positive); }
+.text-glow-negative           { text-shadow: var(--lp-glow-negative); }
+
+/* Icon letterpress (use with filter property) */
+.icon-carved                  { filter: var(--lp-icon); }
+.icon-carved-accent           { filter: var(--lp-icon-accent); }
+.icon-carved-negative         { filter: var(--lp-icon-negative); }
+.icon-glow                    { filter: var(--lp-icon-glow); }
+.icon-glow-negative           { filter: var(--lp-icon-glow-negative); }
+
+/* No effect - explicitly removes text-shadow */
+.text-flat                    { text-shadow: none; }
+
 /* Truncate */
 .truncate {
   overflow: hidden;

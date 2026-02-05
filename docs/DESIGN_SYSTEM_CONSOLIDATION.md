@@ -1,125 +1,107 @@
 # FING Design System Consolidation
 
-**Fecha:** 2026-01-27
+**Fecha Inicio:** 2026-01-27
+**Última Actualización:** 2026-02-05
 **Branch:** `redesign/stock-market-ui`
 
 ---
 
 ## Resumen Ejecutivo
 
-Se realizó una auditoría profunda del design system FING/SENTINEL y una consolidación de los tokens CSS. El objetivo fue establecer una **única fuente de verdad** para tipografía, colores, sombras y efectos letterpress, usando los componentes `FingHome` y `DashboardPage` como referencia canónica de lo que realmente está implementado.
+Se realizó una auditoría profunda del design system FING/SENTINEL y una consolidación completa de los tokens CSS. El objetivo fue establecer una **única fuente de verdad** para tipografía, colores, sombras, letterpress, animaciones, wordmark y botones.
+
+### Estado Actual
+
+| Métrica | Antes | Después |
+|---------|-------|---------|
+| `theme.css` | ~84KB (~1500 líneas) | ~780 líneas |
+| Archivos CSS modulares | 1 | **8** |
+| Valores hardcodeados | 23+ letterpress | 0 |
+| Showcases | 10 | **13** |
+| Archivos experimentales en prod | 2 | 0 |
 
 ---
 
-## Contexto y Problema
-
-### Estado Inicial
-
-El design system tenía **problemas de fragmentación**:
-
-1. **theme.css masivo (84KB)** - Un archivo monolítico con ~1500 líneas de variables CSS, muchas duplicadas o legacy
-2. **Valores hardcodeados** - Los componentes del Home tenían valores de letterpress escritos directamente en lugar de usar variables
-3. **Código experimental mezclado** - Archivos como `light-engine.css` y `textures.css` se importaban globalmente aunque eran experimentales
-4. **Falta de documentación** - No había claridad sobre qué era oficial vs experimental
-5. **Inconsistencias** - Variables `--lp-*` definidas en theme.css pero no usadas en los componentes
-
-### Hallazgos de la Auditoría
-
-| Área | Hallazgo |
-|------|----------|
-| **Tipografía** | 5 fuentes importadas (DM Sans, IBM Plex Mono, IBM Plex Sans, Libre Baskerville, Cormorant Garamond), pero 56 declaraciones hardcodeadas de 'Inter' y 'Space Mono' en charts |
-| **Colores** | 200+ variables CSS, paleta Natural Mineral correctamente implementada |
-| **Sombras** | 5 niveles RAISED, 5 niveles INSET, sistema Glass - bien estructurado |
-| **Letterpress** | 7 variables `--lp-*` definidas pero 23 valores hardcodeados en FingHome.module.css |
-| **Experimental** | light-engine.css y textures.css importados globalmente sin ser producción |
-
----
-
-## Solución Implementada
-
-### Principio Guía
-
-> **"El Home es la fuente de verdad"**
->
-> Los valores reales usados en `FingHome.tsx` y `DashboardPage.tsx` son el estándar. Extraer esos valores exactos a archivos CSS modulares.
-
-### Arquitectura Nueva
+## Arquitectura CSS Final
 
 ```
 src/styles/
 │
-├── [DESIGN SYSTEM OFICIAL]
-│   ├── colors.css          ← Paleta Natural Mineral
-│   ├── typography.css      ← Familias, tamaños, pesos, tracking
-│   ├── shadows.css         ← Sistema RAISED/INSET/GLASS
-│   ├── letterpress.css     ← Text-shadows para neumorfismo
-│   ├── globals.css         ← Reset y base styles
-│   └── theme.css           ← Variables adicionales (en proceso de limpieza)
+├── index.css              ← PUNTO DE ENTRADA (importar solo este)
 │
-└── lab/                    ← [EXPERIMENTAL]
+├── [DESIGN SYSTEM OFICIAL - Orden de cascada]
+│   ├── globals.css        ← Reset y base styles
+│   ├── colors.css         ← Paleta Natural Mineral + RGB companions
+│   ├── typography.css     ← Familias, tamaños, pesos, tracking
+│   ├── shadows.css        ← Sistema RAISED/INSET/GLASS (5 niveles cada uno)
+│   ├── letterpress.css    ← Text-shadows neumórficos + utility classes
+│   ├── animations.css     ← Keyframes + scroll-triggered + stagger
+│   ├── wordmark.css       ← 12 variantes inset para FING wordmark
+│   ├── buttons.css        ← Glass colors + sizes + transitions
+│   ├── theme.css          ← Legacy (consolidándose)
+│   └── responsive.css     ← Breakpoints y helpers responsive
+│
+├── typography/
+│   └── fing.css           ← Estilos tipográficos específicos FING
+│
+└── lab/                   ← [EXPERIMENTAL - NO importar en main.tsx]
     ├── README.md
-    ├── light-engine.css    ← Sistema de iluminación dinámica
-    ├── textures.css        ← Texturas para Material Theming
-    └── legacy/             ← Variables deprecadas
+    ├── light-engine.css   ← Sistema de iluminación dinámica
+    ├── textures.css       ← Texturas para Material Theming
+    └── legacy/            ← Variables deprecadas
 ```
 
 ---
 
-## Archivos Creados
+## Archivos CSS Creados
 
-### 1. `colors.css` - Paleta Natural Mineral
+### 1. `colors.css` - Paleta Natural Mineral (~200 líneas)
 
-**Propósito:** Centralizar todos los colores del sistema en un solo archivo.
+**Propósito:** Centralizar todos los colores del sistema.
 
 **Contenido:**
-- Colores base del mármol (`--marble-base`, `--marble-light`, `--marble-dark`)
+- Colores base del mármol (`--marble-base: #d5d8dc`, `--marble-light`, `--marble-dark`, `--marble-deeper`)
 - Negro primario Charcoal (`--fing-black: #252528`)
 - Acento Petrol (`--fing-accent: #3a6a72`)
-- Colores semánticos: Jade (positivo), Gold (warning), Rust (negativo), Steel (info)
-- Colores de texto, bordes, charts, y glows
-
-**Por qué colores naturales:**
-La paleta usa nombres de minerales/materiales naturales para reforzar la estética "Stone Marble" y dar coherencia conceptual:
-- **Charcoal** - carbón de madera quemada
-- **Petrol** - depósitos de petróleo
-- **Jade** - piedra verde
-- **Gold** - oro puro
-- **Rust** - óxido de hierro
-- **Steel** - aleación de hierro refinado
+- Colores semánticos con RGB companions:
+  - Jade (`--fing-positive: #4a7a6a`) - positivo/éxito
+  - Gold (`--fing-warning: #a08a4a`) - advertencia
+  - Rust (`--fing-negative: #8a5a4a`) - negativo/error
+  - Steel (`--fing-info: #4a6a7a`) - información
 
 ---
 
-### 2. `typography.css` - Sistema Tipográfico
+### 2. `typography.css` - Sistema Tipográfico (~120 líneas)
 
-**Propósito:** Definir todas las fuentes, tamaños, pesos y espaciados.
+**Propósito:** Definir fuentes, tamaños, pesos y espaciados.
 
 **Contenido:**
 - Font families: DM Sans (UI), IBM Plex Mono (datos), Libre Baskerville (display), Cormorant Garamond (wordmark)
-- Escala de tamaños rem (12px-60px)
-- Escala de tamaños px para datos (10px-48px)
+- Escala rem (0.75rem - 3.75rem) para UI
+- Escala px (10px - 48px) para datos financieros
 - Pesos: 300, 400, 500, 600, 700
-- Letter-spacing: desde -0.02em hasta 0.25em
+- Letter-spacing: -0.02em a 0.25em
 - Line-heights: 1 a 2
-
-**Por qué dos escalas:**
-- **rem-based:** Para UI general, respeta preferencias del usuario
-- **px-based:** Para datos financieros donde la precisión visual es crítica
 
 ---
 
-### 3. `shadows.css` - Sistema de Sombras Neumórficas
+### 3. `shadows.css` - Sistema Neumórfico (~100 líneas)
 
 **Propósito:** Definir la jerarquía visual RAISED → INSET → GLASS.
 
 **Contenido:**
-- Colores base de sombra (`--shadow-light`, `--shadow-dark`)
-- 5 niveles de RAISED (elementos elevados)
-- 5 niveles de INSET (elementos hundidos)
-- Variables de GLASS (transparencia para items dentro de insets)
-- Sombras especiales extraídas del Home (ridge-frame, etymology-card, etc.)
-- Border radius estándar
+```css
+/* 5 niveles RAISED (elementos elevados) */
+--raised-1 a --raised-5
 
-**Regla crítica documentada:**
+/* 5 niveles INSET (elementos hundidos) */
+--inset-1 a --inset-5
+
+/* GLASS (transparencia para items en insets) */
+--glass-bg, --glass-bg-hover, --glass-bg-active, --glass-border
+```
+
+**Regla Crítica:**
 ```
 NUNCA anidar mismo nivel (RAISED dentro de RAISED)
 NUNCA saltar niveles (FONDO directo a GLASS)
@@ -128,13 +110,11 @@ SIEMPRE alternar: RAISED → INSET → GLASS
 
 ---
 
-### 4. `letterpress.css` - Efectos de Texto Neumórficos
+### 4. `letterpress.css` - Efectos de Texto (~180 líneas)
 
-**Propósito:** Crear efecto de texto "presionado" o "elevado" según el contexto.
+**Propósito:** Text-shadows que crean efecto "tallado" o "elevado".
 
-**Contenido:**
-
-**Para contenedores RAISED (texto parece hundido):**
+**Variables para contenedores RAISED (texto hundido):**
 ```css
 --lp-primary        /* Charcoal */
 --lp-positive       /* Jade */
@@ -142,123 +122,244 @@ SIEMPRE alternar: RAISED → INSET → GLASS
 --lp-negative       /* Rust */
 --lp-info           /* Steel */
 --lp-accent         /* Petrol */
---lp-steel          /* Steel (text accent) */
---lp-petrol         /* Petrol brand */
---lp-petrol-whisper /* Petrol sutil */
---lp-muted          /* Texto muted */
+--lp-primary-strong /* Charcoal fuerte (para títulos grandes) */
 ```
 
-**Para contenedores INSET (texto parece elevado):**
+**Variables para contenedores INSET (texto elevado):**
 ```css
 --lp-embossed           /* Estándar */
 --lp-embossed-subtle    /* Sutil */
---lp-embossed-sm        /* Pequeño */
 --lp-embossed-petrol    /* Con tinte petrol */
---lp-embossed-petrol-sm /* Petrol pequeño */
 ```
 
-**Por qué esta dualidad:**
-La regla tipográfica neumórfica establece que:
-- En RAISED container → tipografía INSET (cavada)
-- En INSET container → tipografía RAISED (embossed)
+**Escala de profundidades (9 niveles):**
+```css
+--lp-depth-whisper     /* 0.3px - casi plano */
+--lp-depth-feather     /* 0.4px */
+--lp-depth-subtle      /* 0.5px */
+--lp-depth-soft        /* 0.75px */
+--lp-depth-medium      /* 1px - estándar */
+--lp-depth-defined     /* 1.25px */
+--lp-depth-deep        /* 1.5px */
+--lp-depth-bold        /* 2px */
+--lp-depth-monumental  /* 2.5px - para display */
+```
 
-Esto crea coherencia visual donde todo parece tallado en la misma superficie de mármol.
+**Utility Classes:**
+```css
+.text-positive, .text-jade     /* Verde con letterpress */
+.text-warning, .text-gold      /* Dorado con letterpress */
+.text-negative, .text-rust     /* Rojo con letterpress */
+.text-info, .text-steel        /* Azul con letterpress */
+.text-accent, .text-petrol     /* Petrol con letterpress */
+.text-primary, .text-charcoal  /* Negro con letterpress */
+.text-primary-strong           /* Negro fuerte */
+```
 
 ---
 
-### 5. `lab/README.md` - Documentación del Lab
+### 5. `animations.css` - Sistema de Animaciones (~350 líneas)
 
-**Propósito:** Establecer reglas claras para código experimental.
+**Propósito:** Keyframes, scroll-triggered animations, y stagger system.
 
-**Reglas:**
-1. NO importar en `main.tsx`
-2. Solo importar en páginas de showcase
-3. Documentar con fecha
-4. Promover a producción o eliminar en 30 días
+**Tokens de animación:**
+```css
+--fing-duration-instant: 100ms
+--fing-duration-fast: 200ms
+--fing-duration-normal: 300ms
+--fing-duration-slow: 500ms
+--fing-duration-slower: 700ms
+
+--fing-ease-out: cubic-bezier(0.16, 1, 0.3, 1)
+--fing-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1)
+--fing-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1)
+```
+
+**Keyframes disponibles (17+):**
+
+| Categoría | Animaciones |
+|-----------|-------------|
+| **Atmosféricas** | `fing-breathe`, `fing-pulse-subtle`, `fing-glow` |
+| **Entrada** | `fing-emerge`, `fing-fade-in`, `fing-scale-in`, `fing-slide-up` |
+| **Efectos** | `fing-shimmer`, `fing-ripple`, `fing-bounce-subtle` |
+| **Stock Market** | `fing-ticker-positive`, `fing-ticker-negative`, `fing-chart-draw` |
+
+**Scroll-Triggered Animations:**
+```html
+<!-- Se activa cuando entra en viewport -->
+<div data-animate="fade-in">Content</div>
+
+<!-- Con stagger para listas -->
+<div data-animate="slide-up" data-animate-stagger>
+  <div>Item 1</div>
+  <div>Item 2</div>
+  <div>Item 3</div>
+</div>
+```
+
+**Soporte para reduced motion:**
+```css
+@media (prefers-reduced-motion: reduce) {
+  /* Todas las animaciones se desactivan automáticamente */
+}
+```
+
+---
+
+### 6. `wordmark.css` - FING Wordmark Inset System (~193 líneas)
+
+**Propósito:** 12 variaciones de efecto tallado para el wordmark FING.
+
+**Tipografía:**
+```css
+--fing-wordmark-font: 'Cormorant Garamond', serif
+--fing-wordmark-weight: 300
+--fing-wordmark-tracking: 0.06em
+```
+
+**12 Variaciones:**
+
+| # | Variante | Descripción | Uso |
+|---|----------|-------------|-----|
+| 1 | `whisper` | Casi plano, muy sutil | Mínimo efecto |
+| 2 | `soft` | Suave estándar | Equilibrio |
+| 3 | `medium` | Moderado, equilibrado | Mayoría de usos |
+| 4 | `deep` | Profundo, más sombra | Más presencia |
+| 5 | `carved` ⭐ | Tallado invertido | **RECOMENDADO** |
+| 6 | `pressed` ⭐ | Presionado con gradiente | **ALTERNATIVA** |
+| 7 | `bowl` | Cuenco con gradiente radial | Depresión suave |
+| 8 | `channel` | Canal/ranura horizontal | Efecto de ranura |
+| 9 | `etched` | Grabado con borde interior | Definición extra |
+| 10 | `crater` | Cráter profundo direccional | Hero/Display |
+| 11 | `pillow` | Almohadilla diagonal | Efecto suave |
+| 12 | `sharp` | Bordes definidos | Técnico/preciso |
+
+**Tokens por variante:**
+```css
+/* Container inset shadow */
+--fing-wm-inset-carved: inset 5px 5px 10px rgba(...), inset -5px -5px 10px rgba(...);
+
+/* Text shadow */
+--fing-wm-text-carved: -1px -1px 0px rgba(...), 1px 1px 2px rgba(...);
+
+/* Background gradient (para pressed, bowl, crater, pillow) */
+--fing-wm-bg-pressed: linear-gradient(145deg, #caced3, #dce0e5);
+```
+
+---
+
+### 7. `buttons.css` - Sistema de Botones (~177 líneas)
+
+**Propósito:** Tokens completos para botones neumórficos y glass.
+
+**Neumorphism Shadows:**
+```css
+--fing-btn-neu-light: rgba(255, 255, 255, 0.7)
+--fing-btn-neu-dark: rgba(var(--fing-border-base-rgb), 0.6)
+```
+
+**Glass Base:**
+```css
+--fing-btn-glass-blur: 16px
+--fing-btn-glass-shine: rgba(255, 255, 255, 0.5)
+```
+
+**8 Glass Colors:**
+
+| Color | Uso | Variables |
+|-------|-----|-----------|
+| Petrol | Accent/Primary | `--fing-glass-petrol-*` |
+| Gold | Warning | `--fing-glass-gold-*` |
+| Rust | Negative/Danger | `--fing-glass-rust-*` |
+| Jade | Positive/Success | `--fing-glass-jade-*` |
+| Violet | Special | `--fing-glass-violet-*` |
+| Steel | Info | `--fing-glass-steel-*` |
+| Smoke | Neutral | `--fing-glass-smoke-*` |
+| Frost | Subtle | `--fing-glass-frost-*` |
+
+Cada color tiene: `-bg`, `-bg-hover`, `-border`, `-glow`, `-text`
+
+**5 Tamaños:**
+```css
+--fing-btn-height-xs: 30px   --fing-btn-padding-xs: 0 12px   --fing-btn-font-xs: 11px
+--fing-btn-height-sm: 36px   --fing-btn-padding-sm: 0 14px   --fing-btn-font-sm: 12px
+--fing-btn-height-md: 44px   --fing-btn-padding-md: 0 20px   --fing-btn-font-md: 13px
+--fing-btn-height-lg: 52px   --fing-btn-padding-lg: 0 26px   --fing-btn-font-lg: 14px
+--fing-btn-height-xl: 60px   --fing-btn-padding-xl: 0 32px   --fing-btn-font-xl: 15px
+```
+
+**Border Radius:**
+```css
+--fing-btn-radius: 12px
+--fing-btn-radius-sm: 10px
+--fing-btn-radius-pill: 9999px
+```
+
+**Transitions:**
+```css
+--fing-btn-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1)
+--fing-btn-transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1)
+```
+
+---
+
+## Showcases Creados/Actualizados
+
+### Nuevos Showcases
+
+| Ruta | Archivo | Descripción |
+|------|---------|-------------|
+| `/showcase/styles/letterpress` | `LetterpressShowcase.tsx` | Escala de profundidades, RAISED vs INSET, utility classes |
+| `/showcase/styles/css-animations` | `CSSAnimationsShowcase.tsx` | Todas las animaciones con scroll-triggered demos |
+
+### Contenido de LetterpressShowcase
+
+1. **Escala de Profundidades** - 9 niveles de whisper a monumental
+2. **RAISED vs INSET** - Comparación lado a lado
+3. **Por Familia Tipográfica** - Display, Primary, Mono
+4. **Matriz Color × Profundidad** - 5 colores × 3 profundidades
+5. **Utility Classes** - KPI Cards, Stock Table, Alerts
+
+### Contenido de CSSAnimationsShowcase
+
+1. **Atmosféricas** - breathe, pulse-subtle, glow (infinite)
+2. **Entrada** - emerge, fade-in, scale-in, slide-up (one-time)
+3. **Efectos** - shimmer, ripple, bounce-subtle
+4. **Stock Market** - ticker-positive, ticker-negative, chart-draw
+5. **Scroll-Triggered** - Demos con Intersection Observer
+6. **Stagger** - Animaciones secuenciales para listas
 
 ---
 
 ## Archivos Modificados
 
-### 1. `main.tsx` - Imports Reorganizados
+### `index.css` - Imports Centralizados
 
-**Antes:**
-```tsx
-import './styles/theme.css';
-import './styles/textures.css';
-import './styles/light-engine.css';
-```
-
-**Después:**
-```tsx
-// DESIGN SYSTEM OFICIAL
-import './styles/colors.css';
-import './styles/typography.css';
-import './styles/shadows.css';
-import './styles/letterpress.css';
-
-// LAB (comentado - solo para showcase)
-// import './styles/lab/textures.css';
-// import './styles/lab/light-engine.css';
-```
-
-**Por qué:** Separar claramente qué es producción vs experimental.
-
----
-
-### 2. `FingHome.module.css` - Migración a Variables
-
-**Antes (23 ocurrencias como esta):**
 ```css
-.sectionLabel {
-  color: var(--fing-text-accent);
-  text-shadow:
-    0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
-    -0.5px -0.5px 0px rgba(74, 106, 122, 0.25);
-}
+/* 1. RESET & BASE */
+@import './globals.css';
+
+/* 2. DESIGN TOKENS (Source of Truth) */
+@import './colors.css';
+@import './typography.css';
+@import './shadows.css';
+@import './letterpress.css';
+@import './animations.css';
+@import './wordmark.css';
+@import './buttons.css';
+
+/* 3. LEGACY THEME (Being Consolidated) */
+@import './theme.css';
+
+/* 4. RESPONSIVE UTILITIES */
+@import './responsive.css';
+
+/* 5. COMPONENT-SPECIFIC */
+@import './typography/fing.css';
 ```
 
-**Después:**
-```css
-.sectionLabel {
-  color: var(--fing-text-accent);
-  text-shadow: var(--lp-steel);
-}
-```
+### `ShowcaseLayout.tsx` - Sidebar Reorganizado
 
-**Cambios realizados:**
-| Patrón Original | Variable Nueva | Ocurrencias |
-|-----------------|----------------|-------------|
-| Steel letterpress | `--lp-steel` | 7 |
-| Muted letterpress | `--lp-muted` | 5 |
-| Petrol letterpress | `--lp-petrol` | 2 |
-| Petrol whisper | `--lp-petrol-whisper` | 6 |
-| Embossed subtle | `--lp-embossed-subtle` | 2 |
-| Embossed petrol | `--lp-embossed-petrol` | 1 |
-
-**Por qué:**
-1. Consistencia - un solo lugar para cambiar valores
-2. Mantenibilidad - más fácil ajustar el sistema completo
-3. Documentación - el nombre de la variable explica su propósito
-
----
-
-### 3. `ShowcaseLayout.tsx` - Sidebar Reorganizado
-
-**Antes:**
-```
-├── Home
-├── Light Engine
-├── FING Components
-├── Styles (mezclado oficial + experimental)
-├── Atoms
-├── Molecules
-├── Organisms
-├── Charts
-├── Animations
-```
-
-**Después:**
 ```
 ├── Home
 ├── FING Components
@@ -269,7 +370,9 @@ import './styles/letterpress.css';
 │   ├── Colors
 │   ├── Typography
 │   ├── Shadows
-│   ├── Letterpress      ← NUEVO
+│   ├── Letterpress
+│   ├── CSS Animations   ← NUEVO
+│   ├── Text Catalog
 │   ├── Spacing
 │   ├── Border Radius
 │   ├── Icons
@@ -286,106 +389,49 @@ import './styles/letterpress.css';
     └── Light Engine
 ```
 
-**Por qué:**
-1. Claridad visual entre oficial y experimental
-2. El Lab tiene separador visual (línea punteada)
-3. Fácil identificar qué es "production ready"
+### `App.tsx` - Rutas Añadidas
 
----
-
-### 4. `App.tsx` - Nueva Ruta
-
-**Agregado:**
 ```tsx
-const LetterpressShowcase = lazy(() =>
-  import('./pages/styles').then(m => ({ default: m.LetterpressShowcase }))
-);
+const LetterpressShowcase = lazy(() => import('./pages/styles').then(m => ({ default: m.LetterpressShowcase })));
+const CSSAnimationsShowcase = lazy(() => import('./pages/styles').then(m => ({ default: m.CSSAnimationsShowcase })));
 
-// En routes:
-<Route path="styles/letterpress" element={
-  <Suspense fallback={<ShowcaseLoader />}>
-    <LetterpressShowcase />
-  </Suspense>
-} />
-```
-
----
-
-## Página Nueva Creada
-
-### `LetterpressShowcase.tsx`
-
-**Ruta:** `/showcase/styles/letterpress`
-
-**Contenido:**
-1. Explicación de la regla RAISED/INSET
-2. Demo de letterpress semánticos (Charcoal, Jade, Gold, Rust, Steel, Petrol)
-3. Demo de variantes de contexto (Steel, Petrol, Petrol Whisper, Muted)
-4. Demo de embossed para contenedores INSET
-5. Ejemplos de código CSS
-
----
-
-## Archivos Movidos
-
-| Archivo | Origen | Destino | Razón |
-|---------|--------|---------|-------|
-| `light-engine.css` | `src/styles/` | `src/styles/lab/` | Experimental, requiere LightEngineProvider |
-| `textures.css` | `src/styles/` | `src/styles/lab/` | Experimental, depende de themeStore |
-
----
-
-## Impacto
-
-### Beneficios Inmediatos
-
-1. **Reducción de código duplicado** - Un solo lugar para cada token
-2. **Mejor DX** - Variables con nombres semánticos (`--lp-positive` vs hardcoded rgba)
-3. **Documentación viva** - El showcase muestra exactamente cómo usar cada variable
-4. **Separación clara** - Fácil saber qué es producción vs experimento
-
-### Métricas
-
-| Métrica | Antes | Después |
-|---------|-------|---------|
-| Archivos CSS oficiales | 1 (theme.css 84KB) | 5 archivos modulares |
-| Valores letterpress hardcodeados | 23 | 0 |
-| Archivos experimentales en producción | 2 | 0 |
-| Páginas de showcase | 10 | 11 (+Letterpress) |
-
-### Build
-
-El build sigue funcionando correctamente:
-```
-✓ built in 4.47s
+// Routes:
+<Route path="styles/letterpress" element={<LetterpressShowcase />} />
+<Route path="styles/css-animations" element={<CSSAnimationsShowcase />} />
 ```
 
 ---
 
 ## Trabajo Pendiente
 
+### Inmediato
+- [ ] Evaluar ~780 líneas restantes de `theme.css`
+- [ ] Identificar variables legacy que pueden deprecarse
+- [ ] Crear showcase para `buttons.css`
+
 ### Corto Plazo
-- [ ] Migrar variables `--sentinel-*` legacy de theme.css a lab/legacy/
-- [ ] Revisar los 56 hardcoded fonts en charts (Inter, Space Mono)
-- [ ] Crear showcase para cada archivo CSS oficial
+- [ ] Migrar variables `--sentinel-*` legacy a `lab/legacy/`
+- [ ] Revisar 56 hardcoded fonts en charts (Inter, Space Mono)
+- [ ] Documentar uso de cada archivo CSS
 
 ### Mediano Plazo
-- [ ] Reducir theme.css eliminando duplicados
-- [ ] Evaluar si light-engine puede promoverse a producción
-- [ ] Documentar Material Theming system
-
-### Largo Plazo
-- [ ] Implementar dark theme usando las mismas variables
-- [ ] Crear CLI para generar tokens automáticamente
-- [ ] Tests visuales de regresión para el design system
+- [ ] Reducir `theme.css` a <500 líneas
+- [ ] Evaluar promoción de `light-engine.css` a producción
+- [ ] Tests visuales de regresión
 
 ---
 
 ## Cómo Usar el Sistema
 
-### Para Desarrolladores
+### Importar CSS
 
-**Texto en contenedor RAISED:**
+```tsx
+// En main.tsx - SOLO importar index.css
+import '@/styles/index.css';
+```
+
+### Texto en contenedor RAISED
+
 ```css
 .myTitle {
   color: var(--fing-accent);
@@ -393,7 +439,8 @@ El build sigue funcionando correctamente:
 }
 ```
 
-**Texto en contenedor INSET:**
+### Texto en contenedor INSET
+
 ```css
 .myTitle {
   color: var(--marble-dark);
@@ -401,37 +448,59 @@ El build sigue funcionando correctamente:
 }
 ```
 
-**Sombras neumórficas:**
+### Sombras neumórficas
+
 ```css
 .card {
   background: var(--marble-base);
   box-shadow: var(--raised-3);
-  border-radius: var(--radius-lg);
 }
 
 .cardContent {
-  background: var(--marble-dark);
   box-shadow: var(--inset-2);
+}
+
+.item {
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
 }
 ```
 
-### Para Diseñadores
+### Scroll-triggered animation
 
-Los tokens oficiales están en:
-- `/showcase/styles/colors` - Paleta completa
-- `/showcase/styles/typography` - Escala tipográfica
-- `/showcase/styles/shadows` - Sistema de elevación
-- `/showcase/styles/letterpress` - Efectos de texto
+```html
+<div data-animate="fade-in">Aparece al hacer scroll</div>
+```
+
+### Glass button
+
+```css
+.button {
+  background: var(--fing-glass-petrol-bg);
+  border: 1px solid var(--fing-glass-petrol-border);
+  color: var(--fing-glass-petrol-text);
+  height: var(--fing-btn-height-md);
+  padding: var(--fing-btn-padding-md);
+  border-radius: var(--fing-btn-radius);
+  transition: var(--fing-btn-transition);
+}
+
+.button:hover {
+  background: var(--fing-glass-petrol-bg-hover);
+  box-shadow: 0 0 12px var(--fing-glass-petrol-glow);
+}
+```
 
 ---
 
 ## Conclusión
 
-Esta consolidación establece una base sólida para el design system FING. Los tokens ahora tienen:
+La consolidación ha reducido `theme.css` de ~84KB a ~780 líneas, extrayendo tokens a 7 archivos CSS modulares y bien documentados. El sistema ahora tiene:
 
-1. **Una única fuente de verdad** - Archivos CSS modulares y específicos
-2. **Documentación clara** - Showcases para cada sistema
-3. **Separación de concerns** - Producción vs Lab
-4. **Consistencia** - Variables semánticas usadas en todos los componentes
+1. **Una única fuente de verdad** - Cada tipo de token en su archivo
+2. **Documentación viva** - Showcases para cada sistema
+3. **Separación clara** - Producción vs Lab
+4. **Scroll animations** - Sistema completo con Intersection Observer
+5. **Utility classes** - Para uso rápido de letterpress
 
-El siguiente paso natural es continuar limpiando theme.css y eventualmente deprecarlo en favor de los archivos modulares.
+El próximo paso es continuar evaluando `theme.css` para identificar más tokens que puedan extraerse o deprecarse.

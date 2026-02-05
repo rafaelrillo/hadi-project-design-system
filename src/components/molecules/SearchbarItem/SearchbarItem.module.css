@@ -61,7 +61,7 @@
   border: none;
   outline: none;
   background-color: transparent;
-  font-size: var(--fing-font-sm);
+  font-size: var(--fing-text-sm);
   font-weight: 400;
   color: var(--fing-text-primary);
   font-family: var(--fing-font-led);

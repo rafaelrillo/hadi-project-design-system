@@ -23,10 +23,10 @@
 }
 
 .productName {
-  font-size: var(--text-siglas);
-  font-weight: var(--font-weight-bold);
+  font-size: var(--fing-text-2xl);
+  font-weight: var(--fing-font-bold);
   color: var(--primary);
-  line-height: var(--line-height-default);
+  line-height: var(--fing-leading-normal);
   font-family: var(--fing-font-ticker);
   margin: 0;
   text-transform: uppercase;
@@ -35,10 +35,10 @@
 }
 
 .version {
-  font-size: var(--text-cuerpo-2);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--fing-text-xs);
+  font-weight: var(--fing-font-regular);
   color: var(--foreground-muted);
-  line-height: var(--line-height-default);
+  line-height: var(--fing-leading-normal);
   font-family: var(--fing-font-led);
   margin: 0;
   text-transform: uppercase;

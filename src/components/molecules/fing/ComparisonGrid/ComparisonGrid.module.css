@@ -14,7 +14,7 @@
   justify-content: center;
   padding: var(--fing-space-8);
   color: var(--fing-text-tertiary);
-  font-size: var(--fing-font-sm);
+  font-size: var(--fing-text-sm);
 }
 
 .header {
@@ -27,7 +27,7 @@
 }
 
 .header > div {
-  font-size: var(--fing-font-xs);
+  font-size: var(--fing-text-xs);
   font-weight: 500;
   color: var(--fing-text-tertiary);
   text-transform: uppercase;
@@ -62,21 +62,21 @@
 }
 
 .metricName {
-  font-size: var(--fing-font-sm);
+  font-size: var(--fing-text-sm);
   color: var(--fing-text-primary);
   font-weight: 500;
 }
 
 .currentValue {
   font-family: var(--fing-font-mono);
-  font-size: var(--fing-font-sm);
+  font-size: var(--fing-text-sm);
   color: var(--fing-text-secondary);
   text-align: right;
 }
 
 .newValue {
   font-family: var(--fing-font-mono);
-  font-size: var(--fing-font-sm);
+  font-size: var(--fing-text-sm);
   color: var(--fing-text-primary);
   font-weight: 600;
   text-align: right;
@@ -84,7 +84,7 @@
 
 .delta {
   font-family: var(--fing-font-mono);
-  font-size: var(--fing-font-xs);
+  font-size: var(--fing-text-xs);
   font-weight: 600;
   text-align: right;
   padding: 2px 6px;

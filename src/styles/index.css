@@ -28,6 +28,9 @@
 @import './typography.css';       /* Font families, sizes, weights, tracking */
 @import './shadows.css';          /* RAISED/INSET/GLASS shadow hierarchy */
 @import './letterpress.css';      /* Letterpress text shadows for neumorphism */
+@import './animations.css';       /* Keyframes and animation utilities */
+@import './wordmark.css';         /* FING wordmark inset typography system */
+@import './buttons.css';          /* Button system: neumorphism, glass, sizes */
 
 /* ─────────────────────────────────────────────────────────────────────────────
    3. LEGACY THEME (Being Consolidated)

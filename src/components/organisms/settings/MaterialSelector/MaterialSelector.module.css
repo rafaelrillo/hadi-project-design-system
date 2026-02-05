@@ -201,7 +201,9 @@
   height: 22px;
   border-radius: 6px;
   border: 2px solid rgba(255, 255, 255, 0.6);
-  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow:
+    inset 1px 1px 2px rgba(var(--fing-border-base-rgb), 0.15),
+    inset -1px -1px 2px rgba(255, 255, 255, 0.5);
   flex-shrink: 0;
 }
 

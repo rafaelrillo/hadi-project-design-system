@@ -1,0 +1,523 @@
+/* ═══════════════════════════════════════════════════════════════════════════════
+   FING ANIMATIONS SYSTEM
+   Atmospheric animations that bring the system to life without distraction
+
+   USAGE:
+   - Use utility classes: .fing-animate-breathe, .fing-animate-pulse, etc.
+   - For scroll-triggered: add [data-animate] attribute, animation plays on viewport entry
+   - For replay on scroll: add [data-animate-replay] attribute
+
+   CATEGORIES:
+   - Atmospheric: breathe, pulse, float (infinite, subtle)
+   - Entrance: emerge, fade-in, scale-in (once, on entry)
+   - Effects: glow, shimmer, blink (visual feedback)
+   - Stock Market: value-flash, ticker-scroll, data-glow (financial data)
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   ANIMATION TOKENS
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* Durations */
+  --fing-duration-instant: 100ms;
+  --fing-duration-fast: 150ms;
+  --fing-duration-normal: 250ms;
+  --fing-duration-slow: 400ms;
+  --fing-duration-slower: 600ms;
+  --fing-duration-slowest: 3s;
+  --fing-duration-ambient: 8s;
+
+  /* Easings */
+  --fing-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --fing-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --fing-ease-smooth: ease-in-out;
+  --fing-ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Stock Market specific */
+  --fing-data-pulse: rgba(var(--fing-accent-rgb), 0.15);
+  --fing-data-glow: rgba(var(--fing-accent-rgb), 0.5);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   ATMOSPHERIC KEYFRAMES
+   Subtle animations that run infinitely
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* Breathing - very slow, almost imperceptible opacity change */
+@keyframes fing-breathe {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.97;
+  }
+}
+
+/* Subtle pulse for active elements */
+@keyframes fing-pulse-subtle {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.005);
+    opacity: 0.95;
+  }
+}
+
+/* System status indicator pulse */
+@keyframes fing-system-pulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+/* Floating effect for highlighted elements */
+@keyframes fing-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+/* Slow rotation for indicators */
+@keyframes fing-rotate-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Subtle blink for cursors or indicators */
+@keyframes fing-blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   ENTRANCE KEYFRAMES
+   One-time animations for elements entering the viewport
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* Emerge from below with fade */
+@keyframes fing-emerge {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Simple fade in */
+@keyframes fing-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Scale in with fade */
+@keyframes fing-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Slide in from left */
+@keyframes fing-slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Slide in from right */
+@keyframes fing-slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Pop in with bounce */
+@keyframes fing-pop-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  70% {
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   EFFECT KEYFRAMES
+   Visual feedback animations
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* Pulsing glow effect */
+@keyframes fing-glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 15px var(--fing-accent-glow);
+  }
+  50% {
+    box-shadow: 0 0 25px var(--fing-accent-glow);
+  }
+}
+
+/* Shimmer for loading states */
+@keyframes fing-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Gradient shift */
+@keyframes fing-gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Ripple effect */
+@keyframes fing-ripple {
+  0% {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   STOCK MARKET KEYFRAMES
+   Animations for real-time financial data
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* Value change flash */
+@keyframes fing-value-flash {
+  0% {
+    background-color: transparent;
+  }
+  15% {
+    background-color: var(--fing-data-pulse);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+/* Positive value flash (green) */
+@keyframes fing-value-flash-positive {
+  0% {
+    background-color: transparent;
+  }
+  15% {
+    background-color: rgba(var(--fing-positive-rgb), 0.2);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+/* Negative value flash (red) */
+@keyframes fing-value-flash-negative {
+  0% {
+    background-color: transparent;
+  }
+  15% {
+    background-color: rgba(var(--fing-negative-rgb), 0.2);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+/* Infinite ticker scroll */
+@keyframes fing-ticker-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Data glow for active values */
+@keyframes fing-data-glow {
+  0%, 100% {
+    text-shadow: 0 0 0 transparent;
+  }
+  50% {
+    text-shadow: 0 0 8px var(--fing-data-glow);
+  }
+}
+
+/* Retro scanline (very subtle) */
+@keyframes fing-scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+/* Data rain - falling characters */
+@keyframes fing-data-rain {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   UTILITY CLASSES - ATMOSPHERIC (Infinite)
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.fing-animate-breathe {
+  animation: fing-breathe var(--fing-duration-ambient) var(--fing-ease-smooth) infinite;
+}
+
+.fing-animate-pulse {
+  animation: fing-pulse-subtle var(--fing-duration-slowest) var(--fing-ease-smooth) infinite;
+}
+
+.fing-animate-system-pulse {
+  animation: fing-system-pulse 2s var(--fing-ease-smooth) infinite;
+}
+
+.fing-animate-float {
+  animation: fing-float 3s var(--fing-ease-smooth) infinite;
+}
+
+.fing-animate-rotate {
+  animation: fing-rotate-slow 20s linear infinite;
+}
+
+.fing-animate-blink {
+  animation: fing-blink 1.5s var(--fing-ease-smooth) infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   UTILITY CLASSES - ENTRANCE (Once, on viewport entry)
+   These start paused and play when [data-animate-visible] is added
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.fing-animate-emerge {
+  animation: fing-emerge var(--fing-duration-slow) var(--fing-ease-out) forwards;
+}
+
+.fing-animate-fade-in {
+  animation: fing-fade-in var(--fing-duration-normal) var(--fing-ease-out) forwards;
+}
+
+.fing-animate-scale-in {
+  animation: fing-scale-in var(--fing-duration-normal) var(--fing-ease-out) forwards;
+}
+
+.fing-animate-slide-left {
+  animation: fing-slide-in-left var(--fing-duration-slow) var(--fing-ease-out) forwards;
+}
+
+.fing-animate-slide-right {
+  animation: fing-slide-in-right var(--fing-duration-slow) var(--fing-ease-out) forwards;
+}
+
+.fing-animate-pop {
+  animation: fing-pop-in var(--fing-duration-slow) var(--fing-ease-bounce) forwards;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   UTILITY CLASSES - EFFECTS
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.fing-animate-glow {
+  animation: fing-glow-pulse var(--fing-duration-slowest) var(--fing-ease-smooth) infinite;
+}
+
+.fing-animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--marble-base) 0%,
+    var(--marble-light) 50%,
+    var(--marble-base) 100%
+  );
+  background-size: 200% 100%;
+  animation: fing-shimmer 2s linear infinite;
+}
+
+.fing-animate-gradient {
+  background-size: 200% 200%;
+  animation: fing-gradient-shift 8s var(--fing-ease-smooth) infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   UTILITY CLASSES - STOCK MARKET
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.fing-animate-value-flash {
+  animation: fing-value-flash 1s var(--fing-ease-out) forwards;
+}
+
+.fing-animate-value-flash-positive {
+  animation: fing-value-flash-positive 1s var(--fing-ease-out) forwards;
+}
+
+.fing-animate-value-flash-negative {
+  animation: fing-value-flash-negative 1s var(--fing-ease-out) forwards;
+}
+
+.fing-animate-ticker {
+  animation: fing-ticker-scroll 30s linear infinite;
+}
+
+.fing-animate-data-glow {
+  animation: fing-data-glow 2s var(--fing-ease-smooth) infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   SCROLL-TRIGGERED ANIMATIONS
+   Add [data-animate] to pause until visible, [data-animate-replay] to replay each time
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* Elements with [data-animate] start hidden */
+[data-animate] {
+  opacity: 0;
+}
+
+/* When visible, allow animation to play */
+[data-animate].is-visible {
+  opacity: 1;
+}
+
+/* Specific entrance animations for scroll trigger */
+[data-animate="emerge"] {
+  opacity: 0;
+  transform: translateY(20px);
+}
+[data-animate="emerge"].is-visible {
+  animation: fing-emerge var(--fing-duration-slow) var(--fing-ease-out) forwards;
+}
+
+[data-animate="fade"] {
+  opacity: 0;
+}
+[data-animate="fade"].is-visible {
+  animation: fing-fade-in var(--fing-duration-normal) var(--fing-ease-out) forwards;
+}
+
+[data-animate="scale"] {
+  opacity: 0;
+  transform: scale(0.95);
+}
+[data-animate="scale"].is-visible {
+  animation: fing-scale-in var(--fing-duration-normal) var(--fing-ease-out) forwards;
+}
+
+[data-animate="slide-left"] {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+[data-animate="slide-left"].is-visible {
+  animation: fing-slide-in-left var(--fing-duration-slow) var(--fing-ease-out) forwards;
+}
+
+[data-animate="slide-right"] {
+  opacity: 0;
+  transform: translateX(20px);
+}
+[data-animate="slide-right"].is-visible {
+  animation: fing-slide-in-right var(--fing-duration-slow) var(--fing-ease-out) forwards;
+}
+
+[data-animate="pop"] {
+  opacity: 0;
+  transform: scale(0.8);
+}
+[data-animate="pop"].is-visible {
+  animation: fing-pop-in var(--fing-duration-slow) var(--fing-ease-bounce) forwards;
+}
+
+/* Stagger delays for children */
+[data-animate-stagger] > *:nth-child(1) { --stagger-delay: 0ms; }
+[data-animate-stagger] > *:nth-child(2) { --stagger-delay: 50ms; }
+[data-animate-stagger] > *:nth-child(3) { --stagger-delay: 100ms; }
+[data-animate-stagger] > *:nth-child(4) { --stagger-delay: 150ms; }
+[data-animate-stagger] > *:nth-child(5) { --stagger-delay: 200ms; }
+[data-animate-stagger] > *:nth-child(6) { --stagger-delay: 250ms; }
+[data-animate-stagger] > *:nth-child(7) { --stagger-delay: 300ms; }
+[data-animate-stagger] > *:nth-child(8) { --stagger-delay: 350ms; }
+
+[data-animate-stagger] > [data-animate].is-visible {
+  animation-delay: var(--stagger-delay, 0ms);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   REDUCED MOTION
+   Respect user preferences for reduced motion
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  [data-animate] {
+    opacity: 1;
+    transform: none;
+  }
+}

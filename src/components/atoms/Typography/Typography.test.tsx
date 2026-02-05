@@ -143,4 +143,107 @@ describe('Typography Components', () => {
       expect(screen.getByRole('heading', { level: 4 })).toBeInTheDocument();
     });
   });
+
+  describe('Text Effects', () => {
+    it('should render Heading1 with carved effect without errors', () => {
+      render(<Heading1 effect="carved">Carved Text</Heading1>);
+      expect(screen.getByRole('heading', { level: 1 })).toBeInTheDocument();
+      expect(screen.getByText('Carved Text')).toBeInTheDocument();
+    });
+
+    it('should render Paragraph with embossed effect without errors', () => {
+      render(<Paragraph effect="embossed">Embossed Text</Paragraph>);
+      expect(screen.getByText('Embossed Text')).toBeInTheDocument();
+    });
+
+    it('should render all carved standard variants without errors', () => {
+      const { container } = render(
+        <div>
+          <Heading1 effect="carved">A</Heading1>
+          <Heading2 effect="carved-strong">B</Heading2>
+          <Heading3 effect="carved-petrol">C</Heading3>
+          <Heading4 effect="carved-steel">D</Heading4>
+          <Paragraph effect="carved-muted">E</Paragraph>
+          <Label effect="carved-positive">F</Label>
+          <ProductKey effect="carved-accent">G</ProductKey>
+        </div>
+      );
+      expect(container.querySelectorAll('h1, h2, h3, h4, p, label, span')).toHaveLength(7);
+    });
+
+    it('should render carved intensity variants without errors', () => {
+      const { container } = render(
+        <div>
+          <Heading1 effect="carved-whisper">A</Heading1>
+          <Heading2 effect="carved-positive-strong">B</Heading2>
+          <Heading3 effect="carved-warning-strong">C</Heading3>
+          <Heading4 effect="carved-negative-strong">D</Heading4>
+          <Paragraph effect="carved-info-strong">E</Paragraph>
+          <Label effect="carved-accent-strong">F</Label>
+          <ProductKey effect="carved-petrol-md">G</ProductKey>
+        </div>
+      );
+      expect(container.querySelectorAll('h1, h2, h3, h4, p, label, span')).toHaveLength(7);
+    });
+
+    it('should render carved medium semantic variants without errors', () => {
+      const { container } = render(
+        <div>
+          <Heading1 effect="carved-positive-md">A</Heading1>
+          <Heading2 effect="carved-warning-md">B</Heading2>
+          <Heading3 effect="carved-negative-md">C</Heading3>
+        </div>
+      );
+      expect(container.querySelectorAll('h1, h2, h3')).toHaveLength(3);
+    });
+
+    it('should render all embossed standard variants without errors', () => {
+      const { container } = render(
+        <div>
+          <Heading1 effect="embossed">A</Heading1>
+          <Heading2 effect="embossed-subtle">B</Heading2>
+          <Heading3 effect="embossed-strong">C</Heading3>
+          <Heading4 effect="embossed-petrol">D</Heading4>
+          <Paragraph effect="embossed-positive">E</Paragraph>
+          <Label effect="embossed-warning">F</Label>
+          <ProductKey effect="embossed-info">G</ProductKey>
+        </div>
+      );
+      expect(container.querySelectorAll('h1, h2, h3, h4, p, label, span')).toHaveLength(7);
+    });
+
+    it('should render embossed small semantic variants without errors', () => {
+      const { container } = render(
+        <div>
+          <Heading1 effect="embossed-petrol-sm">A</Heading1>
+          <Heading2 effect="embossed-positive-sm">B</Heading2>
+          <Heading3 effect="embossed-warning-sm">C</Heading3>
+          <Heading4 effect="embossed-negative-sm">D</Heading4>
+          <Paragraph effect="embossed-info-sm">E</Paragraph>
+        </div>
+      );
+      expect(container.querySelectorAll('h1, h2, h3, h4, p')).toHaveLength(5);
+    });
+
+    it('should render glow variants without errors', () => {
+      const { container } = render(
+        <div>
+          <Heading1 effect="glow-petrol">A</Heading1>
+          <Heading2 effect="glow-positive">B</Heading2>
+          <Heading3 effect="glow-negative">C</Heading3>
+        </div>
+      );
+      expect(container.querySelectorAll('h1, h2, h3')).toHaveLength(3);
+    });
+
+    it('should preserve custom className when effect is applied', () => {
+      render(<Paragraph effect="carved" className="my-custom">Combined</Paragraph>);
+      expect(screen.getByText('Combined')).toHaveClass('my-custom');
+    });
+
+    it('should preserve htmlFor on Label with effect', () => {
+      render(<Label effect="carved-muted" htmlFor="test-input">Label</Label>);
+      expect(screen.getByText('Label')).toHaveAttribute('for', 'test-input');
+    });
+  });
 });

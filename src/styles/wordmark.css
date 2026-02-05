@@ -1,0 +1,193 @@
+/* ═══════════════════════════════════════════════════════════════════════════════
+   FING WORDMARK - Inset Typography System
+   Cormorant Garamond Light with 12 carved/inset variations
+
+   USAGE:
+   - Import FingWordmark component from @atoms/FingWordmark
+   - Use variant prop: "carved" (recommended), "pressed", "whisper", etc.
+   - Showcase: /showcase/styles/wordmark
+
+   VARIANTS:
+   1. whisper  - Almost flat, very subtle
+   2. soft     - Soft standard
+   3. medium   - Moderate, balanced
+   4. deep     - Deep, more shadow
+   5. carved   - Inverted carving (RECOMMENDED)
+   6. pressed  - Strong pressed (RECOMMENDED ALT)
+   7. bowl     - Bowl with radial gradient
+   8. channel  - Channel/groove, horizontal shadows
+   9. etched   - Engraved with inner border
+   10. crater  - Deep crater with directional shadow
+   11. pillow  - Pillow with soft diagonal gradient
+   12. sharp   - Defined edges, less blur
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ═══════════════════════════════════════════════════════════════════════════
+     WORDMARK FONT
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  --fing-wordmark-font: 'Cormorant Garamond', serif;
+  --fing-wordmark-weight: 300;
+  --fing-wordmark-tracking: 0.06em;
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     SHADOW BASE COLORS
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  --fing-wm-shadow-light: rgba(255, 255, 255, 0.9);
+  --fing-wm-shadow-dark: rgba(147, 157, 170, 0.55);
+  --fing-wm-shadow-darker: rgba(130, 140, 155, 0.55);
+  --fing-wm-shadow-darkest: rgba(115, 125, 140, 0.65);
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     INSET CONTAINER PRESETS
+     Box-shadow values for the wordmark container
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  /* 1. WHISPER - Almost flat, very subtle */
+  --fing-wm-inset-whisper:
+    inset 2px 2px 4px rgba(147, 157, 170, 0.3),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.7);
+
+  /* 2. SOFT - Soft standard */
+  --fing-wm-inset-soft:
+    inset 3px 3px 6px rgba(147, 157, 170, 0.4),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.85);
+
+  /* 3. MEDIUM - Moderate, balanced */
+  --fing-wm-inset-medium:
+    inset 4px 4px 8px rgba(147, 157, 170, 0.5),
+    inset -4px -4px 8px rgba(255, 255, 255, 0.9);
+
+  /* 4. DEEP - Deep, more shadow */
+  --fing-wm-inset-deep:
+    inset 6px 6px 12px rgba(130, 140, 155, 0.6),
+    inset -6px -6px 12px rgba(255, 255, 255, 0.95);
+
+  /* 5. CARVED - Inverted carving (RECOMMENDED) */
+  --fing-wm-inset-carved:
+    inset 5px 5px 10px rgba(130, 140, 155, 0.55),
+    inset -5px -5px 10px rgba(255, 255, 255, 0.9);
+
+  /* 6. PRESSED - Strong pressed (RECOMMENDED ALT) */
+  --fing-wm-inset-pressed:
+    inset 8px 8px 16px rgba(115, 125, 140, 0.65),
+    inset -8px -8px 16px rgba(255, 255, 255, 0.85);
+
+  /* 7. BOWL - Bowl with radial gradient */
+  --fing-wm-inset-bowl:
+    inset 4px 4px 12px rgba(130, 140, 155, 0.5),
+    inset -4px -4px 12px rgba(255, 255, 255, 0.8),
+    inset 0 2px 4px rgba(130, 140, 155, 0.3);
+
+  /* 8. CHANNEL - Channel/groove, horizontal shadows */
+  --fing-wm-inset-channel:
+    inset 0 4px 8px rgba(130, 140, 155, 0.5),
+    inset 0 -4px 8px rgba(255, 255, 255, 0.9),
+    inset 4px 0 8px rgba(130, 140, 155, 0.25),
+    inset -4px 0 8px rgba(255, 255, 255, 0.5);
+
+  /* 9. ETCHED - Engraved with inner border */
+  --fing-wm-inset-etched:
+    inset 4px 4px 8px rgba(130, 140, 155, 0.45),
+    inset -4px -4px 8px rgba(255, 255, 255, 0.9),
+    inset 0 0 0 1px rgba(130, 140, 155, 0.15);
+
+  /* 10. CRATER - Deep crater with directional shadow */
+  --fing-wm-inset-crater:
+    inset 8px 8px 20px rgba(115, 125, 140, 0.6),
+    inset -6px -6px 15px rgba(255, 255, 255, 0.7);
+
+  /* 11. PILLOW - Pillow with soft diagonal gradient */
+  --fing-wm-inset-pillow:
+    inset 5px 5px 10px rgba(130, 140, 155, 0.4),
+    inset -5px -5px 10px rgba(255, 255, 255, 0.85);
+
+  /* 12. SHARP - Defined edges, less blur */
+  --fing-wm-inset-sharp:
+    inset 3px 3px 3px rgba(115, 125, 140, 0.6),
+    inset -3px -3px 3px rgba(255, 255, 255, 0.95);
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     TEXT SHADOW PRESETS
+     Text-shadow values for the wordmark text
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  /* 1. WHISPER */
+  --fing-wm-text-whisper:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.8),
+    -0.5px -0.5px 0px rgba(147, 157, 170, 0.35);
+
+  /* 2. SOFT */
+  --fing-wm-text-soft:
+    1px 1px 0px rgba(255, 255, 255, 0.9),
+    -1px -1px 1px rgba(147, 157, 170, 0.4);
+
+  /* 3. MEDIUM */
+  --fing-wm-text-medium:
+    1.5px 1.5px 1px rgba(255, 255, 255, 0.95),
+    -1.5px -1.5px 1px rgba(147, 157, 170, 0.45);
+
+  /* 4. DEEP */
+  --fing-wm-text-deep:
+    2px 2px 1px rgba(255, 255, 255, 1),
+    -2px -2px 2px rgba(130, 140, 155, 0.5);
+
+  /* 5. CARVED - Inverted shadow direction (RECOMMENDED) */
+  --fing-wm-text-carved:
+    -1px -1px 0px rgba(255, 255, 255, 0.9),
+    1px 1px 2px rgba(130, 140, 155, 0.6);
+
+  /* 6. PRESSED - Inverted for pressed effect */
+  --fing-wm-text-pressed:
+    -1.5px -1.5px 1px rgba(255, 255, 255, 0.8),
+    1.5px 1.5px 2px rgba(115, 125, 140, 0.7);
+
+  /* 7. BOWL */
+  --fing-wm-text-bowl:
+    1.5px 1.5px 1px rgba(255, 255, 255, 0.95),
+    -1.5px -1.5px 1px rgba(130, 140, 155, 0.4);
+
+  /* 8. CHANNEL */
+  --fing-wm-text-channel:
+    0 1.5px 1px rgba(255, 255, 255, 0.95),
+    0 -1.5px 1px rgba(130, 140, 155, 0.45);
+
+  /* 9. ETCHED */
+  --fing-wm-text-etched:
+    1px 1px 0px rgba(255, 255, 255, 0.95),
+    -1px -1px 1px rgba(130, 140, 155, 0.5);
+
+  /* 10. CRATER */
+  --fing-wm-text-crater:
+    2px 2px 2px rgba(255, 255, 255, 0.8),
+    -2px -2px 2px rgba(115, 125, 140, 0.5);
+
+  /* 11. PILLOW */
+  --fing-wm-text-pillow:
+    1px 1px 1px rgba(255, 255, 255, 0.9),
+    -1px -1px 1px rgba(130, 140, 155, 0.4);
+
+  /* 12. SHARP */
+  --fing-wm-text-sharp:
+    1px 1px 0px rgba(255, 255, 255, 1),
+    -1px -1px 0px rgba(115, 125, 140, 0.55);
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     GRADIENT BACKGROUNDS
+     Special backgrounds for specific variants
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  /* Pressed - directional gradient */
+  --fing-wm-bg-pressed: linear-gradient(145deg, #caced3, #dce0e5);
+
+  /* Bowl - radial gradient */
+  --fing-wm-bg-bowl: radial-gradient(ellipse at center, #cdd1d6 0%, #d5d8dc 70%);
+
+  /* Crater - directional radial gradient */
+  --fing-wm-bg-crater: radial-gradient(ellipse at 30% 30%, #d5d8dc 0%, #c5c9ce 100%);
+
+  /* Pillow - diagonal gradient */
+  --fing-wm-bg-pillow: linear-gradient(135deg, #d0d4d9 0%, #dadee3 50%, #d0d4d9 100%);
+}

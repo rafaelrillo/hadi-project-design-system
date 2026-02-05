@@ -119,9 +119,9 @@ function IconsContent() {
                   minWidth: '180px',
                   transition: 'box-shadow 50ms linear',
                 }}>
-                  <Terminal size={size.pixels} color="#3a6a72" />
-                  <Code size={size.pixels} color="#3a6a72" />
-                  <Database size={size.pixels} color="#3a6a72" />
+                  <Terminal size={size.pixels} color="var(--fing-accent)" />
+                  <Code size={size.pixels} color="var(--fing-accent)" />
+                  <Database size={size.pixels} color="var(--fing-accent)" />
                 </div>
                 <div style={{ flex: 1 }}>
                   <div style={{ fontSize: '14px', fontWeight: 600, color: 'var(--fing-text-primary)', marginBottom: '4px', fontFamily: 'var(--fing-font-display)' }}>
@@ -129,7 +129,7 @@ function IconsContent() {
                   </div>
                   <code style={{
                     fontSize: '11px',
-                    backgroundColor: 'rgba(58, 106, 114, 0.15)',
+                    backgroundColor: 'rgba(var(--fing-accent-rgb), 0.15)',
                     padding: '2px 8px',
                     borderRadius: '15px',
                     color: 'var(--fing-accent-primary)',
@@ -137,7 +137,7 @@ function IconsContent() {
                   }}>
                     {size.pixels}px
                   </code>
-                  <div style={{ fontSize: '11px', color: '#9BA4B0', marginTop: '4px', fontFamily: 'var(--fing-font-mono)' }}>
+                  <div style={{ fontSize: '11px', color: 'var(--fing-text-tertiary)', marginTop: '4px', fontFamily: 'var(--fing-font-mono)' }}>
                     {size.usage}
                   </div>
                 </div>
@@ -164,7 +164,7 @@ function IconsContent() {
               <div style={glassIconBox(item.hue, item.sat)}>
                 <item.icon size={24} color={`hsl(${item.hue}, ${item.sat * 0.8}%, 30%)`} />
               </div>
-              <div style={{ marginTop: '8px', fontSize: '11px', color: '#636E72', fontFamily: 'var(--fing-font-mono)' }}>
+              <div style={{ marginTop: '8px', fontSize: '11px', color: 'var(--fing-text-secondary)', fontFamily: 'var(--fing-font-mono)' }}>
                 {item.label}
               </div>
             </div>
@@ -189,7 +189,7 @@ function IconsContent() {
               justifyContent: 'center',
               transition: 'box-shadow 50ms linear',
             }}>
-              <Icon size={24} color="#3a6a72" />
+              <Icon size={24} color="var(--fing-accent)" />
             </div>
           ))}
         </div>
@@ -226,7 +226,7 @@ function IconsContent() {
           background: MARBLE.base,
           fontSize: '12px',
           fontFamily: 'var(--fing-font-mono)',
-          color: '#636E72',
+          color: 'var(--fing-text-secondary)',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>
@@ -247,7 +247,7 @@ function IconsContent() {
           background: MARBLE.base,
           fontSize: '12px',
           fontFamily: 'var(--fing-font-mono)',
-          color: '#636E72',
+          color: 'var(--fing-text-secondary)',
           transition: 'box-shadow 50ms linear',
         }}>
           <pre style={{ margin: 0, whiteSpace: 'pre-wrap' }}>{`import { Terminal, Code } from 'lucide-react';

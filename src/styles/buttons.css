@@ -1,0 +1,198 @@
+/* ═══════════════════════════════════════════════════════════════════════════════
+   FING BUTTON SYSTEM TOKENS
+   Sistema completo de botones: Neumorphism + Glass + Híbridos
+
+   USAGE:
+   - Import from Button components in @atoms/Button
+   - Glass colors support 8 variants: petrol, gold, rust, jade, violet, steel, smoke, frost
+   - Sizes: xs, sm, md, lg, xl
+   - Showcase: /showcase/styles/buttons
+
+   HIERARCHY:
+   - Neumorphism shadows for raised buttons on marble backgrounds
+   - Glass colors for accent/semantic buttons within inset containers
+   - Hybrid combinations for special cases
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ═══════════════════════════════════════════════════════════════════════════
+     BUTTON NEUMORPHISM SHADOWS (Light Theme)
+     For raised buttons on marble backgrounds
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  --fing-btn-neu-light: rgba(255, 255, 255, 0.7);
+  --fing-btn-neu-dark: rgba(var(--fing-border-base-rgb), 0.6);
+  --fing-btn-neu-light-soft: rgba(255, 255, 255, 0.5);
+  --fing-btn-neu-dark-soft: rgba(var(--fing-border-base-rgb), 0.4);
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     BUTTON GLASS BASE
+     Shared glass effect tokens
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  --fing-btn-glass-blur: 16px;
+  --fing-btn-glass-shine: rgba(255, 255, 255, 0.5);
+  --fing-btn-glass-shadow: rgba(var(--fing-border-base-rgb), 0.4);
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     GLASS COLORS - PETROL (Accent)
+     Primary accent color derived from petroleum deposits
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  --fing-glass-petrol-bg: rgba(var(--fing-accent-rgb), 0.15);
+  --fing-glass-petrol-bg-hover: rgba(var(--fing-accent-rgb), 0.25);
+  --fing-glass-petrol-border: rgba(var(--fing-accent-rgb), 0.35);
+  --fing-glass-petrol-glow: rgba(var(--fing-accent-rgb), 0.4);
+  --fing-glass-petrol-text: var(--fing-accent-dark);
+
+  /* Legacy alias - Teal */
+  --fing-glass-teal-bg: var(--fing-glass-petrol-bg);
+  --fing-glass-teal-bg-hover: var(--fing-glass-petrol-bg-hover);
+  --fing-glass-teal-border: var(--fing-glass-petrol-border);
+  --fing-glass-teal-glow: var(--fing-glass-petrol-glow);
+  --fing-glass-teal-text: var(--fing-glass-petrol-text);
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     GLASS COLORS - GOLD (Warning)
+     Warning color derived from pure gold metal
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  --fing-glass-gold-bg: rgba(var(--fing-warning-rgb), 0.15);
+  --fing-glass-gold-bg-hover: rgba(var(--fing-warning-rgb), 0.25);
+  --fing-glass-gold-border: rgba(var(--fing-warning-rgb), 0.35);
+  --fing-glass-gold-glow: rgba(var(--fing-warning-rgb), 0.4);
+  --fing-glass-gold-text: var(--fing-warning-dark);
+
+  /* Legacy alias - Amber */
+  --fing-glass-amber-bg: var(--fing-glass-gold-bg);
+  --fing-glass-amber-bg-hover: var(--fing-glass-gold-bg-hover);
+  --fing-glass-amber-border: var(--fing-glass-gold-border);
+  --fing-glass-amber-glow: var(--fing-glass-gold-glow);
+  --fing-glass-amber-text: var(--fing-glass-gold-text);
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     GLASS COLORS - RUST (Negative)
+     Negative/danger color derived from iron oxide
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  --fing-glass-rust-bg: rgba(var(--fing-negative-rgb), 0.15);
+  --fing-glass-rust-bg-hover: rgba(var(--fing-negative-rgb), 0.25);
+  --fing-glass-rust-border: rgba(var(--fing-negative-rgb), 0.35);
+  --fing-glass-rust-glow: rgba(var(--fing-negative-rgb), 0.4);
+  --fing-glass-rust-text: var(--fing-negative-dark);
+
+  /* Legacy alias - Rose */
+  --fing-glass-rose-bg: var(--fing-glass-rust-bg);
+  --fing-glass-rose-bg-hover: var(--fing-glass-rust-bg-hover);
+  --fing-glass-rose-border: var(--fing-glass-rust-border);
+  --fing-glass-rose-glow: var(--fing-glass-rust-glow);
+  --fing-glass-rose-text: var(--fing-glass-rust-text);
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     GLASS COLORS - JADE (Positive)
+     Positive/success color derived from jade stone
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  --fing-glass-jade-bg: rgba(var(--fing-positive-rgb), 0.15);
+  --fing-glass-jade-bg-hover: rgba(var(--fing-positive-rgb), 0.25);
+  --fing-glass-jade-border: rgba(var(--fing-positive-rgb), 0.35);
+  --fing-glass-jade-glow: rgba(var(--fing-positive-rgb), 0.4);
+  --fing-glass-jade-text: var(--fing-positive-dark);
+
+  /* Legacy alias - Emerald */
+  --fing-glass-emerald-bg: var(--fing-glass-jade-bg);
+  --fing-glass-emerald-bg-hover: var(--fing-glass-jade-bg-hover);
+  --fing-glass-emerald-border: var(--fing-glass-jade-border);
+  --fing-glass-emerald-glow: var(--fing-glass-jade-glow);
+  --fing-glass-emerald-text: var(--fing-glass-jade-text);
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     GLASS COLORS - VIOLET
+     Accent variant for special emphasis
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  --fing-glass-violet-bg: rgba(138, 110, 180, 0.15);
+  --fing-glass-violet-bg-hover: rgba(138, 110, 180, 0.25);
+  --fing-glass-violet-border: rgba(138, 110, 180, 0.35);
+  --fing-glass-violet-glow: rgba(138, 110, 180, 0.4);
+  --fing-glass-violet-text: #6B4E99;
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     GLASS COLORS - STEEL (Info)
+     Info color derived from refined iron alloy
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  --fing-glass-steel-bg: rgba(var(--fing-info-rgb), 0.15);
+  --fing-glass-steel-bg-hover: rgba(var(--fing-info-rgb), 0.25);
+  --fing-glass-steel-border: rgba(var(--fing-info-rgb), 0.35);
+  --fing-glass-steel-glow: rgba(var(--fing-info-rgb), 0.4);
+  --fing-glass-steel-text: var(--fing-info-dark);
+
+  /* Legacy alias - Sky */
+  --fing-glass-sky-bg: var(--fing-glass-steel-bg);
+  --fing-glass-sky-bg-hover: var(--fing-glass-steel-bg-hover);
+  --fing-glass-sky-border: var(--fing-glass-steel-border);
+  --fing-glass-sky-glow: var(--fing-glass-steel-glow);
+  --fing-glass-sky-text: var(--fing-glass-steel-text);
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     GLASS COLORS - SMOKE (Neutral)
+     Neutral/secondary actions
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  --fing-glass-smoke-bg: rgba(var(--fing-status-neutral-rgb), 0.1);
+  --fing-glass-smoke-bg-hover: rgba(var(--fing-status-neutral-rgb), 0.18);
+  --fing-glass-smoke-border: rgba(var(--fing-status-neutral-rgb), 0.25);
+  --fing-glass-smoke-glow: rgba(var(--fing-status-neutral-rgb), 0.3);
+  --fing-glass-smoke-text: #4B5563;
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     GLASS COLORS - FROST
+     Light/subtle variant for backgrounds
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  --fing-glass-frost-bg: rgba(200, 220, 255, 0.12);
+  --fing-glass-frost-bg-hover: rgba(200, 220, 255, 0.2);
+  --fing-glass-frost-border: rgba(200, 220, 255, 0.25);
+  --fing-glass-frost-glow: rgba(200, 220, 255, 0.35);
+  --fing-glass-frost-text: #4A6A99;
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     BUTTON SIZES
+     Height, padding, and font size for each size variant
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  /* Heights */
+  --fing-btn-height-xs: 30px;
+  --fing-btn-height-sm: 36px;
+  --fing-btn-height-md: 44px;
+  --fing-btn-height-lg: 52px;
+  --fing-btn-height-xl: 60px;
+
+  /* Padding */
+  --fing-btn-padding-xs: 0 12px;
+  --fing-btn-padding-sm: 0 14px;
+  --fing-btn-padding-md: 0 20px;
+  --fing-btn-padding-lg: 0 26px;
+  --fing-btn-padding-xl: 0 32px;
+
+  /* Font sizes */
+  --fing-btn-font-xs: 11px;
+  --fing-btn-font-sm: 12px;
+  --fing-btn-font-md: 13px;
+  --fing-btn-font-lg: 14px;
+  --fing-btn-font-xl: 15px;
+
+  /* Border radius */
+  --fing-btn-radius: 12px;
+  --fing-btn-radius-sm: 10px;
+  --fing-btn-radius-pill: 9999px;
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     BUTTON TRANSITIONS
+     Animation timing for state changes
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  --fing-btn-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --fing-btn-transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}

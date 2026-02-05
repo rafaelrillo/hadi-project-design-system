@@ -53,7 +53,7 @@
 
 .assetClass {
   font-family: var(--fing-font-primary);
-  font-size: var(--fing-font-xs);
+  font-size: var(--fing-text-xs);
   font-weight: 500;
   color: var(--fing-text-secondary);
   text-transform: uppercase;
@@ -105,7 +105,7 @@
 .actionBadge {
   flex-shrink: 0;
   font-family: var(--fing-font-numeric);
-  font-size: var(--fing-font-xs);
+  font-size: var(--fing-text-xs);
   font-weight: 600;
   padding: 6px 10px;
   border-radius: var(--fing-radius-sm);
@@ -138,7 +138,7 @@
 
 .title {
   font-family: var(--fing-font-primary);
-  font-size: var(--fing-font-base);
+  font-size: var(--fing-text-base);
   font-weight: 500;
   color: var(--fing-text-primary);
   margin: 0;
@@ -147,7 +147,7 @@
 
 .rationale {
   font-family: var(--fing-font-primary);
-  font-size: var(--fing-font-sm);
+  font-size: var(--fing-text-sm);
   font-weight: 400;
   color: var(--fing-text-secondary);
   line-height: 1.6;
@@ -183,7 +183,7 @@
 
 .footerValue {
   font-family: var(--fing-font-numeric);
-  font-size: var(--fing-font-sm);
+  font-size: var(--fing-text-sm);
   font-weight: 500;
   color: var(--fing-text-primary);
   letter-spacing: var(--fing-tracking-led);

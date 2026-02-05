@@ -39,7 +39,7 @@
   color: var(--fing-accent-primary);
   text-shadow:
     0.75px 0.75px 0px rgba(255, 255, 255, 0.7),
-    -0.75px -0.75px 0px rgba(58, 106, 114, 0.35);
+    -0.75px -0.75px 0px rgba(var(--fing-accent-rgb), 0.35);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -90,7 +90,7 @@
   color: var(--fing-accent-primary);
   text-shadow:
     0.5px 0.5px 0px rgba(255, 255, 255, 0.7),
-    -0.5px -0.5px 0px rgba(58, 106, 114, 0.4);
+    -0.5px -0.5px 0px rgba(var(--fing-accent-rgb), 0.4);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -235,7 +235,7 @@
   color: var(--fing-accent-primary);
   text-shadow:
     0.75px 0.75px 0px rgba(255, 255, 255, 0.7),
-    -0.75px -0.75px 0px rgba(58, 106, 114, 0.5);
+    -0.75px -0.75px 0px rgba(var(--fing-accent-rgb), 0.5);
 }
 
 .legendTextNasdaq {

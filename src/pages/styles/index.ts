@@ -11,3 +11,5 @@ export { LightEngineShowcase } from './LightEngineShowcase';
 export { StoneMarbleShowcase } from './StoneMarbleShowcase';
 export { WordmarkShowcase } from './WordmarkShowcase';
 export { LetterpressShowcase } from './LetterpressShowcase';
+export { CSSAnimationsShowcase } from './CSSAnimationsShowcase';
+export { TypographyCatalogShowcase } from './TypographyCatalogShowcase';

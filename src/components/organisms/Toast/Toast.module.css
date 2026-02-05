@@ -80,10 +80,9 @@
 
   /* Light neumorphic elevation */
   box-shadow:
-    8px 8px 16px rgba(163, 177, 198, 0.35),
-    -8px -8px 16px rgba(255, 255, 255, 0.9),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9),
-    inset 0 -1px 0 rgba(163, 177, 198, 0.1);
+    var(--raised-3),
+    var(--fing-shadow-highlight-strong),
+    inset 0 -1px 0 rgba(var(--fing-border-base-rgb), 0.1);
 }
 
 /* Inner light highlight */
@@ -111,12 +110,11 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .typeDefault {
-  border-left: 3px solid rgba(58, 106, 114, 0.7);
+  border-left: 3px solid rgba(var(--fing-accent-rgb), 0.7);
   box-shadow:
-    8px 8px 16px rgba(163, 177, 198, 0.35),
-    -8px -8px 16px rgba(255, 255, 255, 0.9),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9),
-    inset 3px 0 15px rgba(58, 106, 114, 0.08);
+    var(--raised-3),
+    var(--fing-shadow-highlight-strong),
+    inset 3px 0 15px rgba(var(--fing-accent-rgb), 0.08);
 }
 
 .typeDefault .toastIcon {
@@ -125,12 +123,11 @@
 
 .typeSuccess {
   background: rgba(255, 255, 255, 0.95);
-  border-left: 3px solid rgba(74, 222, 128, 0.7);
+  border-left: 3px solid rgba(var(--fing-positive-rgb), 0.7);
   box-shadow:
-    8px 8px 16px rgba(163, 177, 198, 0.35),
-    -8px -8px 16px rgba(255, 255, 255, 0.9),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9),
-    inset 3px 0 15px rgba(74, 222, 128, 0.08);
+    var(--raised-3),
+    var(--fing-shadow-highlight-strong),
+    inset 3px 0 15px rgba(var(--fing-positive-rgb), 0.08);
 }
 
 .typeSuccess .toastIcon {
@@ -139,12 +136,11 @@
 
 .typeError {
   background: rgba(255, 255, 255, 0.95);
-  border-left: 3px solid rgba(248, 113, 113, 0.7);
+  border-left: 3px solid rgba(var(--fing-negative-rgb), 0.7);
   box-shadow:
-    8px 8px 16px rgba(163, 177, 198, 0.35),
-    -8px -8px 16px rgba(255, 255, 255, 0.9),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9),
-    inset 3px 0 15px rgba(248, 113, 113, 0.08);
+    var(--raised-3),
+    var(--fing-shadow-highlight-strong),
+    inset 3px 0 15px rgba(var(--fing-negative-rgb), 0.08);
 }
 
 .typeError .toastIcon {
@@ -153,12 +149,11 @@
 
 .typeWarning {
   background: rgba(255, 255, 255, 0.95);
-  border-left: 3px solid rgba(251, 191, 36, 0.7);
+  border-left: 3px solid rgba(var(--fing-warning-rgb), 0.7);
   box-shadow:
-    8px 8px 16px rgba(163, 177, 198, 0.35),
-    -8px -8px 16px rgba(255, 255, 255, 0.9),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9),
-    inset 3px 0 15px rgba(251, 191, 36, 0.08);
+    var(--raised-3),
+    var(--fing-shadow-highlight-strong),
+    inset 3px 0 15px rgba(var(--fing-warning-rgb), 0.08);
 }
 
 .typeWarning .toastIcon {
@@ -167,12 +162,11 @@
 
 .typeInfo {
   background: rgba(255, 255, 255, 0.95);
-  border-left: 3px solid rgba(96, 165, 250, 0.7);
+  border-left: 3px solid rgba(var(--fing-info-rgb), 0.7);
   box-shadow:
-    8px 8px 16px rgba(163, 177, 198, 0.35),
-    -8px -8px 16px rgba(255, 255, 255, 0.9),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9),
-    inset 3px 0 15px rgba(96, 165, 250, 0.08);
+    var(--raised-3),
+    var(--fing-shadow-highlight-strong),
+    inset 3px 0 15px rgba(var(--fing-info-rgb), 0.08);
 }
 
 .typeInfo .toastIcon {
@@ -202,7 +196,7 @@
     0 2px 4px hsla(175, 21%, 35%, 0.10),
     0 4px 8px hsla(175, 21%, 35%, 0.08),
     0 8px 16px hsla(175, 21%, 35%, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    var(--fing-shadow-highlight);
 }
 
 /* Glass luminous top edge */
@@ -241,7 +235,7 @@
     0 2px 4px hsla(145, 27%, 35%, 0.10),
     0 4px 8px hsla(145, 27%, 35%, 0.08),
     0 8px 16px hsla(145, 27%, 35%, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    var(--fing-shadow-highlight);
 }
 
 .glassSuccess .toastIcon {
@@ -263,7 +257,7 @@
     0 2px 4px hsla(355, 21%, 35%, 0.10),
     0 4px 8px hsla(355, 21%, 35%, 0.08),
     0 8px 16px hsla(355, 21%, 35%, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    var(--fing-shadow-highlight);
 }
 
 .glassError .toastIcon {
@@ -285,7 +279,7 @@
     0 2px 4px hsla(35, 33%, 35%, 0.10),
     0 4px 8px hsla(35, 33%, 35%, 0.08),
     0 8px 16px hsla(35, 33%, 35%, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    var(--fing-shadow-highlight);
 }
 
 .glassWarning .toastIcon {
@@ -307,7 +301,7 @@
     0 2px 4px hsla(215, 30%, 35%, 0.10),
     0 4px 8px hsla(215, 30%, 35%, 0.08),
     0 8px 16px hsla(215, 30%, 35%, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    var(--fing-shadow-highlight);
 }
 
 .glassInfo .toastIcon {
@@ -368,8 +362,8 @@
   align-self: flex-start;
   margin-top: var(--fing-space-2);
   padding: var(--fing-space-1) var(--fing-space-3);
-  background: rgba(58, 106, 114, 0.1);
-  border: 1px solid rgba(58, 106, 114, 0.3);
+  background: rgba(var(--fing-accent-rgb), 0.1);
+  border: 1px solid rgba(var(--fing-accent-rgb), 0.3);
   border-radius: var(--fing-radius-md);
   color: var(--fing-accent-primary);
   font-family: var(--fing-font-primary);
@@ -381,23 +375,20 @@
   backdrop-filter: blur(var(--fing-blur-xs));
   -webkit-backdrop-filter: blur(var(--fing-blur-xs));
 
-  box-shadow:
-    2px 2px 4px rgba(163, 177, 198, 0.2),
-    -2px -2px 4px rgba(255, 255, 255, 0.7);
+  box-shadow: var(--raised-1);
 }
 
 .toastAction:hover {
-  background: rgba(58, 106, 114, 0.18);
-  border-color: rgba(58, 106, 114, 0.5);
+  background: rgba(var(--fing-accent-rgb), 0.18);
+  border-color: rgba(var(--fing-accent-rgb), 0.5);
   box-shadow:
-    3px 3px 6px rgba(163, 177, 198, 0.25),
-    -3px -3px 6px rgba(255, 255, 255, 0.8),
-    0 2px 10px rgba(58, 106, 114, 0.15);
+    var(--raised-2),
+    0 2px 10px rgba(var(--fing-accent-rgb), 0.15);
 }
 
 .toastAction:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px rgba(58, 106, 114, 0.3);
+  box-shadow: var(--shadow-focus-ring-sm);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -419,22 +410,18 @@
   cursor: pointer;
   transition: all 0.15s ease;
 
-  box-shadow:
-    2px 2px 4px rgba(163, 177, 198, 0.2),
-    -2px -2px 4px rgba(255, 255, 255, 0.7);
+  box-shadow: var(--raised-1);
 }
 
 .toastDismiss:hover {
   color: var(--fing-text-primary);
   background: rgba(255, 255, 255, 0.9);
-  box-shadow:
-    3px 3px 6px rgba(163, 177, 198, 0.25),
-    -3px -3px 6px rgba(255, 255, 255, 0.9);
+  box-shadow: var(--raised-2);
 }
 
 .toastDismiss:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px rgba(58, 106, 114, 0.3);
+  box-shadow: var(--shadow-focus-ring-sm);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────

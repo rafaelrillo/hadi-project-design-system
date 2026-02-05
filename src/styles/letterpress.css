@@ -346,3 +346,56 @@
     -0.5px -0.5px 0px rgba(255, 255, 255, 0.5),
     0.5px 0.5px 0px rgba(147, 157, 170, 0.2);
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   LETTERPRESS TEXT UTILITIES - Natural Mineral Colors
+   Use on marble background for neumorphic text effect
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* Positive - Jade */
+.text-positive,
+.text-jade {
+  color: var(--fing-positive);
+  text-shadow: var(--lp-positive);
+}
+
+/* Warning - Gold */
+.text-warning,
+.text-gold {
+  color: var(--fing-warning);
+  text-shadow: var(--lp-warning);
+}
+
+/* Negative - Rust */
+.text-negative,
+.text-rust {
+  color: var(--fing-negative);
+  text-shadow: var(--lp-negative);
+}
+
+/* Info - Steel */
+.text-info,
+.text-steel {
+  color: var(--fing-info);
+  text-shadow: var(--lp-info);
+}
+
+/* Accent - Petrol */
+.text-accent,
+.text-petrol {
+  color: var(--fing-accent);
+  text-shadow: var(--lp-accent);
+}
+
+/* Primary - Charcoal */
+.text-primary,
+.text-charcoal {
+  color: var(--fing-black);
+  text-shadow: var(--lp-primary);
+}
+
+/* Primary Strong - Charcoal (for headlines) */
+.text-primary-strong {
+  color: var(--fing-black);
+  text-shadow: var(--lp-primary-strong);
+}
