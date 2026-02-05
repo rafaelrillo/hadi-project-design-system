@@ -1,28 +1,35 @@
 /* Path: src/components/showcase/ComponentPreview.module.css */
-/* FING Design System Version */
+/* ═══════════════════════════════════════════════════════════════════════════════
+   COMPONENT PREVIEW - Glass level (inside INSET containers)
+
+   Hierarchy position: RAISED > INSET > GLASS (this)
+   Uses glass system variables from theme.css
+   ═══════════════════════════════════════════════════════════════════════════════ */
 
 .container {
   padding: var(--fing-space-6);
-  border-radius: var(--fing-radius-md);
+  border-radius: 12px;
   display: flex;
   flex-wrap: wrap;
   gap: var(--fing-space-4);
   align-items: flex-start;
-  border: 1px solid rgba(163, 177, 198, 0.2);
-  background: rgba(255, 255, 255, 0.25);
+
+  /* Glass level - semi-transparent on inset surface */
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
 
 /* Background variants */
 .bgWhite {
-  background: rgba(255, 255, 255, 0.5);
+  background: var(--glass-bg-hover);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
 
 .bgGray {
-  background: rgba(200, 210, 220, 0.3);
+  background: rgba(var(--fing-border-base-rgb), 0.15);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
@@ -30,12 +37,12 @@
 .bgTransparent {
   background: transparent;
   backdrop-filter: none;
-  border: 1px dashed rgba(163, 177, 198, 0.4);
+  border: 1px dashed rgba(var(--fing-border-base-rgb), 0.4);
 }
 
 /* Dark variant for contrast */
 .bgDark {
-  background: rgba(45, 52, 54, 0.1);
+  background: rgba(var(--fing-black-rgb), 0.08);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }

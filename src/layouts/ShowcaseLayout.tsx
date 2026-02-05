@@ -43,7 +43,8 @@ import {
   Gem,
   Fingerprint,
   FlaskConical,
-  Stamp
+  Stamp,
+  BookOpen
 } from 'lucide-react';
 
 export function ShowcaseLayout() {
@@ -86,17 +87,14 @@ export function ShowcaseLayout() {
 
   const sidebarStyles: React.CSSProperties = {
     width: '280px',
-    backgroundColor: 'rgba(255, 255, 255, 0.7)',
-    backdropFilter: 'blur(20px)',
-    WebkitBackdropFilter: 'blur(20px)',
-    borderRight: '1px solid rgba(255, 255, 255, 0.8)',
+    backgroundColor: 'var(--marble-light)',
     position: 'fixed',
     left: 0,
     top: 0,
     height: '100vh',
     overflowY: 'auto',
     zIndex: 100,
-    boxShadow: '4px 0 24px var(--shadow-dark)'
+    boxShadow: 'var(--raised-3)'
   };
 
   const logoContainerStyles: React.CSSProperties = {
@@ -153,7 +151,7 @@ export function ShowcaseLayout() {
     flex: 1,
     padding: '40px',
     minHeight: '100vh',
-    backgroundColor: 'transparent'
+    backgroundColor: 'var(--marble-base)'
   };
 
   const atomsItems = [
@@ -198,6 +196,7 @@ export function ShowcaseLayout() {
     { path: '/showcase/styles/typography', label: 'Typography', icon: Type },
     { path: '/showcase/styles/shadows', label: 'Shadows', icon: Copy },
     { path: '/showcase/styles/letterpress', label: 'Letterpress', icon: Stamp },
+    { path: '/showcase/styles/text-catalog', label: 'Text Catalog', icon: BookOpen },
     { path: '/showcase/styles/spacing', label: 'Spacing', icon: Ruler },
     { path: '/showcase/styles/border-radius', label: 'Border Radius', icon: Circle },
     { path: '/showcase/styles/icons', label: 'Icons', icon: Image },

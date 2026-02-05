@@ -20,96 +20,20 @@
      ═══════════════════════════════════════════════════════════════════════════ */
 
   /* ═══════════════════════════════════════════════════════════════════════════
-     FING BRAND COLORS
-     Logo, identity, and brand-specific tokens
+     FING BRAND — Tokens NOT in colors.css
+     Base colors (accent, semantic, text, logo, emblem) → colors.css
      ═══════════════════════════════════════════════════════════════════════════ */
 
-  /* ─────────────────────────────────────────────────────────────────────────
-     LOGO COLORS - Dark Variant (on dark backgrounds)
-     ───────────────────────────────────────────────────────────────────────── */
-  --fing-logo-slate-1: #3a3a42;
-  --fing-logo-slate-2: #44444c;
-
-  /* ─────────────────────────────────────────────────────────────────────────
-     LOGO COLORS - Stone Variant (on stone/marble backgrounds)
-     ───────────────────────────────────────────────────────────────────────── */
-  --fing-logo-marble-1: #eceef2;
-  --fing-logo-marble-2: #f0f2f5;
-
-  /* ─────────────────────────────────────────────────────────────────────────
-     LOGO COLORS - Light Variant (on white backgrounds)
-     ───────────────────────────────────────────────────────────────────────── */
-  --fing-logo-light-1: #e8e8ec;
-  --fing-logo-light-2: #ededf0;
-
-  /* ─────────────────────────────────────────────────────────────────────────
-     BRAND ACCENT - Petrol (natural mineral color)
-     ───────────────────────────────────────────────────────────────────────── */
-  --fing-accent: #3a6a72;
-  --fing-accent-light: #4a7a82;
-  --fing-accent-dark: #2a5a62;
-
-  /* Text accent - Steel (refined iron alloy) */
-  --fing-text-accent: #4a6a7a;
-
-  /* Legacy aliases */
-  --fing-teal: var(--fing-accent);
-  --fing-teal-light: var(--fing-accent-light);
-  --fing-teal-dark: var(--fing-accent-dark);
-
-  /* ─────────────────────────────────────────────────────────────────────────
-     BRAND SEMANTIC - Natural mineral colors for "Senior Analyst" voice
-     ───────────────────────────────────────────────────────────────────────── */
-
-  /* Positive/Success - Jade (green stone) */
-  --fing-positive: #4a7a6a;
-  --fing-positive-light: #5a8a7a;
-  --fing-positive-dark: #3a6a5a;
-
-  /* Warning - Gold (pure metal) */
-  --fing-warning: #a08a4a;
-  --fing-warning-light: #b09a5a;
-  --fing-warning-dark: #8a7a3a;
-
-  /* Negative/Error - Rust (iron oxide) */
-  --fing-negative: #8a5a4a;
-  --fing-negative-light: #9a6a5a;
-  --fing-negative-dark: #7a4a3a;
-
-  /* Info - Steel (same as text accent) */
-  --fing-info: #4a6a7a;
-  --fing-info-light: #5a7a8a;
-  --fing-info-dark: #3a5a6a;
-
-  /* ─────────────────────────────────────────────────────────────────────────
-     PRIMARY BLACK - Charcoal (burned wood carbon)
-     ───────────────────────────────────────────────────────────────────────── */
-  --fing-black: #252528;
-  --fing-black-rgb: 37, 37, 40;
-
-  /* ─────────────────────────────────────────────────────────────────────────
-     BRAND TEXT
-     ───────────────────────────────────────────────────────────────────────── */
-  --fing-text-primary: var(--fing-black);
-  --fing-text-light: #f0f0f2;
-  --fing-text-muted: #8a8f96;
+  /* Text alias for backward compat */
   --fing-text-dark: var(--fing-black);
 
   /* ─────────────────────────────────────────────────────────────────────────
-     FING EMBLEM - Radar Symbol Tokens
+     FING EMBLEM - Non-color tokens (shadow depths, animation)
+     Color tokens (--fing-symbol-*, --fing-carve-*, --fing-teal-glow) → colors.css
      ───────────────────────────────────────────────────────────────────────── */
   --fing-marble-base: #d5d8dc;
   --fing-shadow-light: rgba(255, 255, 255, 0.95);
   --fing-shadow-dark: rgba(147, 157, 170, 0.55);
-  --fing-teal-glow: rgba(58, 106, 114, 0.5);  /* Petrol glow */
-
-  /* Radar symbol colors */
-  --fing-symbol-fill: #babec4;
-  --fing-symbol-stroke: #b2b6bc;
-
-  /* Carve/Engrave effect colors */
-  --fing-carve-light: rgba(255, 255, 255, 0.92);
-  --fing-carve-dark: rgba(140, 150, 165, 0.65);
 
   /* Emblem animation tokens */
   --fing-anim-duration: 3s;
@@ -287,38 +211,10 @@
      ───────────────────────────────────────────────────────────────────────── */
   --texture-opacity: 0.03;
 
-  /* ─────────────────────────────────────────────────────────────────────────
-     MARBLE SHADOW COLORS (dynamically updated via Material Theming)
-     ───────────────────────────────────────────────────────────────────────── */
-  --shadow-light: rgba(255, 255, 255, 0.95);
-  --shadow-dark: rgba(147, 157, 170, 0.55);
-  --shadow-darker: rgba(130, 140, 155, 0.65);
-
-  /* ─────────────────────────────────────────────────────────────────────────
-     MARBLE RAISED SHADOWS (elevación)
-     ───────────────────────────────────────────────────────────────────────── */
-  --raised-1: 2px 2px 4px var(--shadow-dark), -2px -2px 4px var(--shadow-light);
-  --raised-2: 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
-  --raised-3: 6px 6px 12px var(--shadow-dark), -6px -6px 12px var(--shadow-light);
-  --raised-4: 8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light);
-  --raised-5: 12px 12px 24px var(--shadow-dark), -12px -12px 24px var(--shadow-light);
-
-  /* ─────────────────────────────────────────────────────────────────────────
-     MARBLE INSET SHADOWS (profundidad)
-     ───────────────────────────────────────────────────────────────────────── */
-  --inset-1: inset 2px 2px 4px var(--shadow-dark), inset -2px -2px 4px var(--shadow-light);
-  --inset-2: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
-  --inset-3: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light);
-  --inset-4: inset 6px 6px 12px var(--shadow-dark), inset -6px -6px 12px var(--shadow-light);
-  --inset-5: inset 8px 8px 16px var(--shadow-darker), inset -8px -8px 16px var(--shadow-light);
-
-  /* ─────────────────────────────────────────────────────────────────────────
-     MARBLE GLASS
-     ───────────────────────────────────────────────────────────────────────── */
-  --glass-bg: rgba(255, 255, 255, 0.25);
-  --glass-border: rgba(255, 255, 255, 0.35);
-  --glass-bg-strong: rgba(255, 255, 255, 0.40);
-  --glass-border-strong: rgba(255, 255, 255, 0.50);
+  /* → shadows.css: --shadow-light, --shadow-dark, --shadow-darker */
+  /* → shadows.css: --raised-1 through --raised-5 */
+  /* → shadows.css: --inset-1 through --inset-5 */
+  /* → shadows.css: --glass-bg, --glass-border, --glass-bg-strong, --glass-border-strong */
 
   /* ─────────────────────────────────────────────────────────────────────────────
      DYNAMIC LIGHT ENGINE - Core Variables
@@ -339,9 +235,7 @@
   --transition-transform: transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-background: background 100ms linear;
 
-  /* Padding standards */
-  --panel-padding: 32px;
-  --inset-padding: 20px;
+  /* Padding standards - use --fing-space-* scale instead */
   --badge-padding: 6px 12px;
   --button-padding: 14px 28px;
 
@@ -401,8 +295,8 @@
   --fing-glass-inset-focus: var(--marble-base);
 
   /* Glass con tinte de acento */
-  --fing-glass-accent: rgba(58, 106, 114, 0.08);
-  --fing-glass-accent-strong: rgba(58, 106, 114, 0.15);
+  --fing-glass-accent: rgba(var(--fing-accent-rgb), 0.08);
+  --fing-glass-accent-strong: rgba(var(--fing-accent-rgb), 0.15);
 
   /* ═══ COLORES PARA SOMBRAS NEUMÓRFICAS (STONE MARBLE) ═══ */
   --fing-neu-light: var(--shadow-light);
@@ -416,10 +310,10 @@
      ═══════════════════════════════════════════════════════════════════════════ */
 
   /* Shadow Colors - SUBTLE opacities */
-  --fing-neu-dark-subtle: rgba(163, 177, 198, 0.08);
-  --fing-neu-dark-light: rgba(163, 177, 198, 0.10);
-  --fing-neu-dark-medium: rgba(163, 177, 198, 0.12);
-  --fing-neu-dark-strong-subtle: rgba(163, 177, 198, 0.14);
+  --fing-neu-dark-subtle: rgba(var(--fing-border-base-rgb), 0.08);
+  --fing-neu-dark-light: rgba(var(--fing-border-base-rgb), 0.10);
+  --fing-neu-dark-medium: rgba(var(--fing-border-base-rgb), 0.12);
+  --fing-neu-dark-strong-subtle: rgba(var(--fing-border-base-rgb), 0.14);
 
   --fing-neu-light-subtle: rgba(255, 255, 255, 0.25);
   --fing-neu-light-light: rgba(255, 255, 255, 0.30);
@@ -476,8 +370,8 @@
   /* ═══ BORDES GLASS - Sutiles en light theme ═══ */
   --fing-glass-border: rgba(255, 255, 255, 0.8);
   --fing-glass-border-hover: rgba(255, 255, 255, 0.9);
-  --fing-glass-border-focus: rgba(58, 106, 114, 0.5);
-  --fing-glass-border-glow: rgba(58, 106, 114, 0.3);
+  --fing-glass-border-focus: rgba(var(--fing-accent-rgb), 0.5);
+  --fing-glass-border-glow: rgba(var(--fing-accent-rgb), 0.3);
 
   /* ═══ BACKDROP BLUR VALUES ═══ */
   --fing-blur-xs: 4px;
@@ -499,8 +393,8 @@
   --fing-bg-modal: var(--fing-glass-elevated);
 
   --fing-bg-input: var(--fing-glass-inset);
-  --fing-bg-subtle: rgba(163, 177, 198, 0.08);
-  --fing-bg-subtle-hover: rgba(163, 177, 198, 0.12);
+  --fing-bg-subtle: rgba(var(--fing-border-base-rgb), 0.08);
+  --fing-bg-subtle-hover: rgba(var(--fing-border-base-rgb), 0.12);
   --fing-bg-interactive: var(--fing-glass-bg);
   --fing-bg-interactive-hover: var(--fing-glass-bg-hover);
 
@@ -508,32 +402,17 @@
   --fing-bg-scrim: rgba(224, 229, 236, 0.85);
 
   /* Gradientes atmosféricos de fondo */
-  --fing-ambient-top: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(58, 106, 114, 0.08), transparent);
-  --fing-ambient-bottom: radial-gradient(ellipse 60% 40% at 100% 100%, rgba(58, 106, 114, 0.05), transparent);
+  --fing-ambient-top: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(var(--fing-accent-rgb), 0.08), transparent);
+  --fing-ambient-bottom: radial-gradient(ellipse 60% 40% at 100% 100%, rgba(var(--fing-accent-rgb), 0.05), transparent);
 
   /* ─────────────────────────────────────────────────────────────────────────────
-     TEXTO - Jerarquía tipográfica (Light Theme)
-     Usar Charcoal (#252528) como negro primario - nunca negro puro
+     TEXTO - UI-level text tokens
+     Base text colors (primary, secondary, tertiary, muted, disabled, inverse) → colors.css
      ───────────────────────────────────────────────────────────────────────────── */
 
-  --fing-text-primary: var(--fing-black);             /* Texto principal - Charcoal */
-  --fing-text-secondary: rgba(var(--fing-black-rgb), 0.75);  /* Texto secundario, labels */
-  --fing-text-tertiary: rgba(var(--fing-black-rgb), 0.55);   /* Texto terciario, hints */
-  --fing-text-muted: rgba(var(--fing-black-rgb), 0.4);       /* Texto muy sutil */
-  --fing-text-disabled: rgba(var(--fing-black-rgb), 0.3);    /* Texto deshabilitado */
-  --fing-text-inverse: #FFFFFF;                       /* Texto sobre fondos oscuros/acento */
   --fing-text-link: #3D8587;                          /* Links - acento más oscuro para contraste */
 
-  /* ─────────────────────────────────────────────────────────────────────────────
-     BORDES Y LÍNEAS (Light Theme)
-     Sutiles con grises - transparencia controlada
-     ───────────────────────────────────────────────────────────────────────────── */
-
-  --fing-border-subtle: rgba(163, 177, 198, 0.2);    /* Bordes casi invisibles */
-  --fing-border-default: rgba(163, 177, 198, 0.35); /* Bordes estándar */
-  --fing-border-strong: rgba(163, 177, 198, 0.5);    /* Bordes con énfasis (hover) */
-  --fing-border-focus: var(--fing-accent);           /* Focus rings - Petrol */
-  --fing-border-accent: rgba(58, 106, 114, 0.4);    /* Bordes de acento - Petrol */
+  /* Borders → colors.css (--fing-border-subtle, default, strong, focus, accent) */
 
   /* ─────────────────────────────────────────────────────────────────────────────
      ACENTO - El color distintivo de Fing (Light Theme)
@@ -544,51 +423,15 @@
   --fing-accent-hover: var(--fing-accent-dark);    /* Darker petrol #2a5a62 */
   --fing-accent-secondary: var(--fing-accent-light); /* Lighter petrol #4a7a82 */
   --fing-accent-tertiary: #5a8a92;                 /* Even lighter for tertiary */
-  --fing-accent-subtle: rgba(58, 106, 114, 0.12);  /* Petrol subtle */
-  --fing-accent-glow: rgba(58, 106, 114, 0.25);    /* Petrol glow */
-  --fing-accent-muted: rgba(58, 106, 114, 0.5);    /* Petrol muted */
+  --fing-accent-subtle: rgba(var(--fing-accent-rgb), 0.12);  /* Petrol subtle */
+  --fing-accent-muted: rgba(var(--fing-accent-rgb), 0.5);    /* Petrol muted */
 
   /* HSL components for dynamic color manipulation */
   --fing-accent-h: 188;
   --fing-accent-s: 33%;
   --fing-accent-l: 34%;
 
-  /* ─────────────────────────────────────────────────────────────────────────────
-     ESTADOS SEMÁNTICOS (Light Theme)
-     Natural mineral colors for institutional voice
-     ───────────────────────────────────────────────────────────────────────────── */
-
-  /* Positivo/Ganancia - Jade (green stone) */
-  --fing-status-positive: var(--fing-positive);           /* #4a7a6a */
-  --fing-status-positive-subtle: rgba(74, 122, 106, 0.15);
-  --fing-status-positive-muted: rgba(74, 122, 106, 0.1);
-  --fing-status-positive-text: var(--fing-positive-dark); /* #3a6a5a */
-  --fing-status-positive-border: rgba(74, 122, 106, 0.3);
-
-  /* Negativo/Pérdida - Rust (iron oxide) */
-  --fing-status-negative: var(--fing-negative);           /* #8a5a4a */
-  --fing-status-negative-subtle: rgba(138, 90, 74, 0.15);
-  --fing-status-negative-muted: rgba(138, 90, 74, 0.1);
-  --fing-status-negative-text: var(--fing-negative-dark); /* #7a4a3a */
-  --fing-status-negative-border: rgba(138, 90, 74, 0.3);
-
-  /* Advertencia - Gold (pure metal) */
-  --fing-status-warning: var(--fing-warning);             /* #a08a4a */
-  --fing-status-warning-subtle: rgba(160, 138, 74, 0.15);
-  --fing-status-warning-muted: rgba(160, 138, 74, 0.1);
-  --fing-status-warning-text: var(--fing-warning-dark);   /* #8a7a3a */
-  --fing-status-warning-border: rgba(160, 138, 74, 0.3);
-
-  /* Informativo - Steel (refined iron) */
-  --fing-status-info: var(--fing-info);                   /* #4a6a7a */
-  --fing-status-info-subtle: rgba(74, 106, 122, 0.15);
-  --fing-status-info-muted: rgba(74, 106, 122, 0.1);
-  --fing-status-info-text: var(--fing-info-dark);         /* #3a5a6a */
-  --fing-status-info-border: rgba(74, 106, 122, 0.3);
-
-  /* Neutral - Gris medio */
-  --fing-status-neutral: #6B7280;
-  --fing-status-neutral-subtle: rgba(107, 114, 128, 0.15);
+  /* Status system (--fing-status-*) → colors.css */
 
   /* ─────────────────────────────────────────────────────────────────────────────
      NIVELES DE RIESGO (específico de Fing)
@@ -602,11 +445,11 @@
   --fing-risk-severe: var(--fing-negative);           /* Rust #8a5a4a */
 
   /* Fondos sutiles para cada nivel */
-  --fing-risk-low-bg: rgba(74, 122, 106, 0.1);        /* Jade bg */
-  --fing-risk-moderate-bg: rgba(58, 106, 114, 0.1);   /* Petrol bg */
-  --fing-risk-elevated-bg: rgba(160, 138, 74, 0.1);   /* Gold bg */
+  --fing-risk-low-bg: rgba(var(--fing-positive-rgb), 0.1);        /* Jade bg */
+  --fing-risk-moderate-bg: rgba(var(--fing-accent-rgb), 0.1);   /* Petrol bg */
+  --fing-risk-elevated-bg: rgba(var(--fing-warning-rgb), 0.1);   /* Gold bg */
   --fing-risk-high-bg: rgba(154, 106, 90, 0.1);       /* Terracotta bg */
-  --fing-risk-severe-bg: rgba(138, 90, 74, 0.1);      /* Rust bg */
+  --fing-risk-severe-bg: rgba(var(--fing-negative-rgb), 0.1);      /* Rust bg */
 
   /* ─────────────────────────────────────────────────────────────────────────────
      NIVEL DE CONFIANZA DEL SISTEMA
@@ -641,91 +484,15 @@
   --fing-chart-7: var(--fing-negative);    /* Serie 7 - Rust */
   --fing-chart-8: #5a6a6a;                 /* Serie 8 - Slate grey */
 
-  --fing-chart-grid: rgba(163, 177, 198, 0.25);       /* Líneas de grid */
+  --fing-chart-grid: rgba(var(--fing-border-base-rgb), 0.25);       /* Líneas de grid */
   --fing-chart-axis: #5F6C7A;                         /* Texto de ejes */
   --fing-chart-tooltip-bg: #FFFFFF;                   /* Fondo de tooltips */
-  --fing-chart-tooltip-border: rgba(163, 177, 198, 0.3);
-  --fing-chart-crosshair: rgba(58, 106, 114, 0.6);   /* Línea de crosshair - Petrol */
+  --fing-chart-tooltip-border: rgba(var(--fing-border-base-rgb), 0.3);
+  --fing-chart-crosshair: rgba(var(--fing-accent-rgb), 0.6);   /* Línea de crosshair - Petrol */
 
   /* ─────────────────────────────────────────────────────────────────────────────
-     TIPOGRAFÍA - Fuentes
-     DM Sans para UI general (geométrica, amigable - Fing Brand)
-     Libre Baskerville para display/headlines (elegancia serif)
-     IBM Plex Mono para datos financieros (precisión)
+     TIPOGRAFÍA → See typography.css (source of truth)
      ───────────────────────────────────────────────────────────────────────────── */
-
-  /* Font Families - FING/FING Typography System */
-  --fing-font-primary: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --fing-font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  --fing-font-mono: 'IBM Plex Mono', 'SF Mono', 'Fira Code', 'Consolas', monospace;
-
-  /* ─────────────────────────────────────────────────────────────────────────────
-     TIPOGRAFÍA - Escala
-     Basada en 16px, escala armónica
-     ───────────────────────────────────────────────────────────────────────────── */
-
-  --fing-text-xs: 0.75rem;      /* 12px */
-  --fing-text-sm: 0.875rem;     /* 14px */
-  --fing-text-base: 1rem;       /* 16px */
-  --fing-text-lg: 1.125rem;     /* 18px */
-  --fing-text-xl: 1.25rem;      /* 20px */
-  --fing-text-2xl: 1.5rem;      /* 24px */
-  --fing-text-3xl: 1.875rem;    /* 30px */
-  --fing-text-4xl: 2.25rem;     /* 36px */
-  --fing-text-5xl: 3rem;        /* 48px */
-  --fing-text-6xl: 3.75rem;     /* 60px */
-
-  /* Compatibilidad con sistema anterior */
-  --text-siglas: var(--fing-text-2xl);
-  --text-titulo-1: var(--fing-text-lg);
-  --text-titulo-2: var(--fing-text-base);
-  --text-cuerpo-1: var(--fing-text-sm);
-  --text-cuerpo-2: var(--fing-text-xs);
-
-  /* ─────────────────────────────────────────────────────────────────────────────
-     TIPOGRAFÍA - Pesos
-     ───────────────────────────────────────────────────────────────────────────── */
-
-  --fing-font-light: 300;
-  --fing-font-regular: 400;
-  --fing-font-medium: 500;
-  --fing-font-semibold: 600;
-  --fing-font-bold: 700;
-
-  /* Compatibilidad */
-  --font-weight-light: var(--fing-font-light);
-  --font-weight-normal: var(--fing-font-regular);
-  --font-weight-medium: var(--fing-font-medium);
-  --font-weight-semibold: var(--fing-font-semibold);
-  --font-weight-bold: var(--fing-font-bold);
-
-  /* ─────────────────────────────────────────────────────────────────────────────
-     TIPOGRAFÍA - Line Heights
-     ───────────────────────────────────────────────────────────────────────────── */
-
-  --fing-leading-none: 1;
-  --fing-leading-tight: 1.25;
-  --fing-leading-snug: 1.375;
-  --fing-leading-normal: 1.5;
-  --fing-leading-relaxed: 1.625;
-  --fing-leading-loose: 2;
-
-  /* Compatibilidad */
-  --line-height-default: var(--fing-leading-normal);
-  --line-height-tight: var(--fing-leading-tight);
-  --line-height-normal: var(--fing-leading-normal);
-  --line-height-relaxed: var(--fing-leading-relaxed);
-
-  /* ─────────────────────────────────────────────────────────────────────────────
-     TIPOGRAFÍA - Letter Spacing
-     ───────────────────────────────────────────────────────────────────────────── */
-
-  --fing-tracking-tighter: -0.05em;
-  --fing-tracking-tight: -0.025em;
-  --fing-tracking-normal: 0;
-  --fing-tracking-wide: 0.025em;
-  --fing-tracking-wider: 0.05em;
-  --fing-tracking-widest: 0.1em;
 
   /* ─────────────────────────────────────────────────────────────────────────────
      ESPACIADO
@@ -763,15 +530,7 @@
   --fing-space-section: var(--fing-space-10);
   --fing-space-page: var(--fing-space-8);
 
-  /* Compatibilidad */
-  --spacing-xs: var(--fing-space-1);
-  --spacing-sm: var(--fing-space-2);
-  --spacing-md: var(--fing-space-4);
-  --spacing-lg: var(--fing-space-6);
-  --spacing-xl: var(--fing-space-8);
-  --spacing-2xl: var(--fing-space-12);
-  --spacing-3xl: var(--fing-space-16);
-
+  /* Semantic spacing aliases */
   --content-padding: var(--fing-space-6);
   --gap-elements: var(--fing-space-4);
   --container-padding: var(--fing-space-5);
@@ -905,39 +664,10 @@
   --fing-shadow-dropdown: var(--fing-neu-elevated-lg);
   --fing-shadow-modal: var(--fing-neu-elevated-xl);
 
-  /* ═══ SOMBRAS TRADICIONALES (Light Theme) ═══ */
-  --fing-shadow-xs: 0 1px 2px rgba(163, 177, 198, 0.25);
-  --fing-shadow-sm: 0 2px 8px rgba(163, 177, 198, 0.3);
-  --fing-shadow-md: 0 4px 16px rgba(163, 177, 198, 0.35);
-  --fing-shadow-lg: 0 8px 24px rgba(163, 177, 198, 0.4);
-  --fing-shadow-xl: 0 12px 32px rgba(163, 177, 198, 0.45);
-  --fing-shadow-2xl: 0 24px 48px rgba(163, 177, 198, 0.5);
-
-  /* Inner shadow para focus rings */
-  --fing-shadow-inner: inset 0 2px 4px rgba(163, 177, 198, 0.3);
-  --fing-shadow-inner-strong: inset 0 4px 8px rgba(163, 177, 198, 0.4);
-
-  /* Highlight superior (sutil línea de luz) */
-  --fing-shadow-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.6);
-  --fing-shadow-highlight-strong: inset 0 1px 0 rgba(255, 255, 255, 0.8);
-
-  /* ═══ GLOW EFFECTS (Light Theme) ═══ */
-  --fing-shadow-glow-sm: 0 0 10px rgba(58, 106, 114, 0.2);
-  --fing-shadow-glow-md: 0 0 20px rgba(58, 106, 114, 0.25);
-  --fing-shadow-glow-lg: 0 0 30px rgba(58, 106, 114, 0.3);
-
-  --fing-glow-positive: 0 0 15px rgba(74, 122, 106, 0.25);   /* Jade glow */
-  --fing-glow-negative: 0 0 15px rgba(138, 90, 74, 0.25);   /* Rust glow */
-  --fing-glow-warning: 0 0 15px rgba(160, 138, 74, 0.25);   /* Gold glow */
-  --fing-glow-info: 0 0 15px rgba(74, 106, 122, 0.25);      /* Steel glow */
-
-  /* ═══ COMPATIBILIDAD ═══ */
-  --elevation-sm: var(--fing-shadow-sm);
-  --elevation-md: var(--fing-shadow-md);
-  --elevation-lg: var(--fing-shadow-lg);
-  --shadow-sm: var(--fing-shadow-sm);
-  --shadow-md: var(--fing-shadow-md);
-  --shadow-lg: var(--fing-shadow-lg);
+  /* → shadows.css: --fing-shadow-xs through --fing-shadow-2xl */
+  /* → shadows.css: --fing-shadow-inner, --fing-shadow-highlight */
+  /* → shadows.css: --fing-shadow-glow-*, --fing-glow-* */
+  /* → shadows.css: --elevation-*, --shadow-sm/md/lg compatibility aliases */
   --shadow-card: var(--fing-shadow-card);
 
   /* ─────────────────────────────────────────────────────────────────────────────
@@ -948,12 +678,12 @@
   --fing-glass-light: rgba(255, 255, 255, 0.4);
   --fing-glass-medium: rgba(255, 255, 255, 0.55);
   --fing-glass-heavy: rgba(255, 255, 255, 0.7);
-  --fing-glass-accent: rgba(58, 106, 114, 0.08);
-  --fing-glass-accent-strong: rgba(58, 106, 114, 0.15);
+  --fing-glass-accent: rgba(var(--fing-accent-rgb), 0.08);
+  --fing-glass-accent-strong: rgba(var(--fing-accent-rgb), 0.15);
 
   /* Gradientes de borde con luz */
-  --fing-border-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(58, 106, 114, 0.2) 100%);
-  --fing-border-gradient-subtle: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(58, 106, 114, 0.1) 100%);
+  --fing-border-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(var(--fing-accent-rgb), 0.2) 100%);
+  --fing-border-gradient-subtle: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(var(--fing-accent-rgb), 0.1) 100%);
 
   /* Highlights internos (efecto de luz superior) */
   --fing-inner-highlight-subtle: inset 0 1px 0 rgba(255, 255, 255, 0.25);
@@ -961,15 +691,7 @@
   --fing-inner-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.45);
   --fing-inner-highlight-strong: inset 0 1px 0 rgba(255, 255, 255, 0.55);
 
-  /* Sombras con glow de acento */
-  --fing-shadow-glow-accent: 0 4px 20px rgba(163, 177, 198, 0.3), 0 0 30px rgba(58, 106, 114, 0.1);
-  --fing-shadow-glow-accent-strong: 0 4px 24px rgba(163, 177, 198, 0.4), 0 0 40px rgba(58, 106, 114, 0.15);
-
-  /* Glow por estado semántico - Natural minerals (light theme) */
-  --fing-glow-positive-lg: 0 0 30px rgba(74, 122, 106, 0.15);   /* Jade */
-  --fing-glow-negative-lg: 0 0 30px rgba(138, 90, 74, 0.15);   /* Rust */
-  --fing-glow-warning-lg: 0 0 30px rgba(160, 138, 74, 0.15);   /* Gold */
-  --fing-glow-info-lg: 0 0 30px rgba(74, 106, 122, 0.15);      /* Steel */
+  /* → shadows.css: --fing-shadow-glow-accent, --fing-glow-*-lg */
 
   /* Backdrop blur values */
   --fing-blur-sm: blur(8px);
@@ -1119,19 +841,19 @@
   /* Estados - Natural mineral glows */
   --success: var(--fing-status-positive);
   --success-light: var(--fing-status-positive-subtle);
-  --success-glow: rgba(74, 122, 106, 0.5);               /* Jade glow */
+  --success-glow: rgba(var(--fing-positive-rgb), 0.5);               /* Jade glow */
 
   --warning: var(--fing-status-warning);
   --warning-light: var(--fing-status-warning-subtle);
-  --warning-glow: rgba(160, 138, 74, 0.5);               /* Gold glow */
+  --warning-glow: rgba(var(--fing-warning-rgb), 0.5);               /* Gold glow */
 
   --destructive: var(--fing-status-negative);
   --destructive-dark: var(--fing-negative-dark);
   --destructive-light: var(--fing-status-negative-subtle);
-  --destructive-glow: rgba(138, 90, 74, 0.5);            /* Rust glow */
+  --destructive-glow: rgba(var(--fing-negative-rgb), 0.5);            /* Rust glow */
 
   --info: var(--fing-status-info);
-  --info-glow: rgba(74, 106, 122, 0.5);                  /* Steel glow */
+  --info-glow: rgba(var(--fing-info-rgb), 0.5);                  /* Steel glow */
 
   /* Grises (compatibilidad) */
   --color-white: #ffffff;
@@ -1142,29 +864,9 @@
   --color-gray-2: var(--fing-text-tertiary);
   --color-gray-1: var(--fing-text-primary);
 
-  /* Font (compatibilidad) */
-  --font-mono: var(--fing-font-mono);
-  --font-display: var(--fing-font-display);
-
   /* ─────────────────────────────────────────────────────────────────────────────
      ALIAS FOR COMPONENTS
      ───────────────────────────────────────────────────────────────────────────── */
-
-  /* Font size aliases used by components */
-  --fing-font-xs: var(--fing-text-xs);
-  --fing-font-sm: var(--fing-text-sm);
-  --fing-font-base: var(--fing-text-base);
-  --fing-font-lg: var(--fing-text-lg);
-  --fing-font-xl: var(--fing-text-xl);
-  --fing-font-2xl: var(--fing-text-2xl);
-  --fing-font-3xl: var(--fing-text-3xl);
-
-  /* Spacing aliases */
-  --fing-spacing-xs: var(--fing-space-1);
-  --fing-spacing-sm: var(--fing-space-2);
-  --fing-spacing-md: var(--fing-space-4);
-  --fing-spacing-lg: var(--fing-space-6);
-  --fing-spacing-xl: var(--fing-space-8);
 
   /* Radius aliases */
   --fing-radius-xs: 2px;
@@ -1181,18 +883,18 @@
      ───────────────────────────────────────────────────────────────────────────── */
 
   /* === DATA VISUALIZATION === */
-  --fing-data-glow: rgba(58, 106, 114, 0.2);
-  --fing-data-pulse: rgba(58, 106, 114, 0.3);
+  --fing-data-glow: rgba(var(--fing-accent-rgb), 0.2);
+  --fing-data-pulse: rgba(var(--fing-accent-rgb), 0.3);
 
   /* === TICKER TAPE (mantener oscuro para contraste) === */
   --fing-ticker-bg: #1a1f2e;
-  --fing-ticker-border: rgba(58, 106, 114, 0.2);
+  --fing-ticker-border: rgba(var(--fing-accent-rgb), 0.2);
   --fing-ticker-separator: rgba(255, 255, 255, 0.1);
 
   /* === GRID SYSTEM === */
-  --fing-grid-line: rgba(163, 177, 198, 0.15);
-  --fing-grid-line-strong: rgba(163, 177, 198, 0.25);
-  --fing-grid-accent: rgba(58, 106, 114, 0.12);
+  --fing-grid-line: rgba(var(--fing-border-base-rgb), 0.15);
+  --fing-grid-line-strong: rgba(var(--fing-border-base-rgb), 0.25);
+  --fing-grid-accent: rgba(var(--fing-accent-rgb), 0.12);
 
   /* === CANDLESTICK === */
   --fing-candle-bullish: var(--fing-status-positive);
@@ -1211,60 +913,20 @@
   --fing-value-unchanged: var(--fing-text-secondary);
   --fing-value-up: var(--fing-status-positive);
   --fing-value-down: var(--fing-status-negative);
-  --fing-value-flash: rgba(58, 106, 114, 0.3);
+  --fing-value-flash: rgba(var(--fing-accent-rgb), 0.3);
 
   /* === PANEL SYSTEM === */
-  --fing-panel-border: rgba(163, 177, 198, 0.25);
-  --fing-panel-header-bg: rgba(58, 106, 114, 0.08);
-  --fing-panel-divider: rgba(163, 177, 198, 0.2);
+  --fing-panel-border: rgba(var(--fing-border-base-rgb), 0.25);
+  --fing-panel-header-bg: rgba(var(--fing-accent-rgb), 0.08);
+  --fing-panel-divider: rgba(var(--fing-border-base-rgb), 0.2);
 
-  /* === FING TYPOGRAPHY SYSTEM ===
-
-     Libre Baskerville: Títulos y headers - elegancia serif clásica
-     IBM Plex Mono: Tickers, símbolos y datos tabulares - precisión profesional
-     IBM Plex Sans: UI general - claridad y legibilidad
-  */
-
-  /* Títulos y headers - serif elegante */
-  --fing-font-display: 'Libre Baskerville', Georgia, 'Times New Roman', serif;
-
-  /* Tickers y símbolos de acciones */
-  --fing-font-ticker: 'IBM Plex Mono', 'SF Mono', monospace;
-
-  /* Datos en tablas y contenido monoespaciado */
-  --fing-font-data: 'IBM Plex Mono', 'SF Mono', monospace;
-
-  /* Headers style (compatibilidad) */
-  --fing-font-led: 'IBM Plex Sans', sans-serif;
-
-  /* Numeric data - alias to data font */
-  --fing-font-numeric: var(--fing-font-data);
-  /* DotMatrix aliases - redirigen a IBM Plex Mono */
-  --fing-font-dotmatrix-duo: var(--fing-font-data);
-  /* DotMatrix Condensed alias */
-  --fing-font-dotmatrix-condensed: var(--fing-font-data);
-
-  /* Escala comprimida para alta densidad */
-  --fing-data-xs: 10px;
-  --fing-data-sm: 11px;
-  --fing-data-base: 12px;
-  --fing-data-md: 13px;
-  --fing-data-lg: 14px;
-  --fing-data-xl: 16px;
-  --fing-data-2xl: 20px;
-  --fing-data-3xl: 28px;
-  --fing-data-4xl: 36px;
-  --fing-data-5xl: 48px;
-
-  /* Letter spacing para monospace */
-  --fing-tracking-data: 0em;
-  --fing-tracking-led: 0.05em;
+  /* FING Typography → See typography.css (source of truth) */
 
   /* LED Glow Effects (Light Theme - Natural minerals) */
-  --fing-led-glow-positive: 0 0 8px rgba(74, 122, 106, 0.3), 0 0 16px rgba(74, 122, 106, 0.15);  /* Jade */
-  --fing-led-glow-negative: 0 0 8px rgba(138, 90, 74, 0.3), 0 0 16px rgba(138, 90, 74, 0.15);    /* Rust */
-  --fing-led-glow-accent: 0 0 8px rgba(58, 106, 114, 0.3), 0 0 16px rgba(58, 106, 114, 0.15);    /* Petrol */
-  --fing-led-glow-neutral: 0 0 6px rgba(107, 114, 128, 0.2);
+  --fing-led-glow-positive: 0 0 8px rgba(var(--fing-positive-rgb), 0.3), 0 0 16px rgba(var(--fing-positive-rgb), 0.15);  /* Jade */
+  --fing-led-glow-negative: 0 0 8px rgba(var(--fing-negative-rgb), 0.3), 0 0 16px rgba(var(--fing-negative-rgb), 0.15);    /* Rust */
+  --fing-led-glow-accent: 0 0 8px rgba(var(--fing-accent-rgb), 0.3), 0 0 16px rgba(var(--fing-accent-rgb), 0.15);    /* Petrol */
+  --fing-led-glow-neutral: 0 0 6px rgba(var(--fing-status-neutral-rgb), 0.2);
 
   /* ═══ SIDEBAR DARK THEME (Mantener oscuro para contraste) ═══ */
   --fing-sidebar-bg: rgba(20, 25, 35, 0.95);
@@ -1272,7 +934,7 @@
   --fing-sidebar-text: rgba(255, 255, 255, 0.85);
   --fing-sidebar-text-muted: rgba(255, 255, 255, 0.6);
   --fing-sidebar-border: rgba(255, 255, 255, 0.08);
-  --fing-sidebar-active-bg: rgba(58, 106, 114, 0.2);
+  --fing-sidebar-active-bg: rgba(var(--fing-accent-rgb), 0.2);
 
   /* ═══════════════════════════════════════════════════════════════════════════════
      FING BUTTON SYSTEM TOKENS
@@ -1283,24 +945,24 @@
      Button Neumorphism Shadows (Light Theme)
      ───────────────────────────────────────────── */
   --fing-btn-neu-light: rgba(255, 255, 255, 0.7);
-  --fing-btn-neu-dark: rgba(163, 177, 198, 0.6);
+  --fing-btn-neu-dark: rgba(var(--fing-border-base-rgb), 0.6);
   --fing-btn-neu-light-soft: rgba(255, 255, 255, 0.5);
-  --fing-btn-neu-dark-soft: rgba(163, 177, 198, 0.4);
+  --fing-btn-neu-dark-soft: rgba(var(--fing-border-base-rgb), 0.4);
 
   /* ─────────────────────────────────────────────
      Button Glass Base
      ───────────────────────────────────────────── */
   --fing-btn-glass-blur: 16px;
   --fing-btn-glass-shine: rgba(255, 255, 255, 0.5);
-  --fing-btn-glass-shadow: rgba(163, 177, 198, 0.4);
+  --fing-btn-glass-shadow: rgba(var(--fing-border-base-rgb), 0.4);
 
   /* ─────────────────────────────────────────────
      Glass Colors - Petrol (Accent)
      ───────────────────────────────────────────── */
-  --fing-glass-petrol-bg: rgba(58, 106, 114, 0.15);
-  --fing-glass-petrol-bg-hover: rgba(58, 106, 114, 0.25);
-  --fing-glass-petrol-border: rgba(58, 106, 114, 0.35);
-  --fing-glass-petrol-glow: rgba(58, 106, 114, 0.4);
+  --fing-glass-petrol-bg: rgba(var(--fing-accent-rgb), 0.15);
+  --fing-glass-petrol-bg-hover: rgba(var(--fing-accent-rgb), 0.25);
+  --fing-glass-petrol-border: rgba(var(--fing-accent-rgb), 0.35);
+  --fing-glass-petrol-glow: rgba(var(--fing-accent-rgb), 0.4);
   --fing-glass-petrol-text: var(--fing-accent-dark);
 
   /* Legacy alias */
@@ -1313,10 +975,10 @@
   /* ─────────────────────────────────────────────
      Glass Colors - Gold (Warning)
      ───────────────────────────────────────────── */
-  --fing-glass-gold-bg: rgba(160, 138, 74, 0.15);
-  --fing-glass-gold-bg-hover: rgba(160, 138, 74, 0.25);
-  --fing-glass-gold-border: rgba(160, 138, 74, 0.35);
-  --fing-glass-gold-glow: rgba(160, 138, 74, 0.4);
+  --fing-glass-gold-bg: rgba(var(--fing-warning-rgb), 0.15);
+  --fing-glass-gold-bg-hover: rgba(var(--fing-warning-rgb), 0.25);
+  --fing-glass-gold-border: rgba(var(--fing-warning-rgb), 0.35);
+  --fing-glass-gold-glow: rgba(var(--fing-warning-rgb), 0.4);
   --fing-glass-gold-text: var(--fing-warning-dark);
 
   /* Legacy alias */
@@ -1329,10 +991,10 @@
   /* ─────────────────────────────────────────────
      Glass Colors - Rust (Negative)
      ───────────────────────────────────────────── */
-  --fing-glass-rust-bg: rgba(138, 90, 74, 0.15);
-  --fing-glass-rust-bg-hover: rgba(138, 90, 74, 0.25);
-  --fing-glass-rust-border: rgba(138, 90, 74, 0.35);
-  --fing-glass-rust-glow: rgba(138, 90, 74, 0.4);
+  --fing-glass-rust-bg: rgba(var(--fing-negative-rgb), 0.15);
+  --fing-glass-rust-bg-hover: rgba(var(--fing-negative-rgb), 0.25);
+  --fing-glass-rust-border: rgba(var(--fing-negative-rgb), 0.35);
+  --fing-glass-rust-glow: rgba(var(--fing-negative-rgb), 0.4);
   --fing-glass-rust-text: var(--fing-negative-dark);
 
   /* Legacy alias */
@@ -1345,10 +1007,10 @@
   /* ─────────────────────────────────────────────
      Glass Colors - Jade (Positive)
      ───────────────────────────────────────────── */
-  --fing-glass-jade-bg: rgba(74, 122, 106, 0.15);
-  --fing-glass-jade-bg-hover: rgba(74, 122, 106, 0.25);
-  --fing-glass-jade-border: rgba(74, 122, 106, 0.35);
-  --fing-glass-jade-glow: rgba(74, 122, 106, 0.4);
+  --fing-glass-jade-bg: rgba(var(--fing-positive-rgb), 0.15);
+  --fing-glass-jade-bg-hover: rgba(var(--fing-positive-rgb), 0.25);
+  --fing-glass-jade-border: rgba(var(--fing-positive-rgb), 0.35);
+  --fing-glass-jade-glow: rgba(var(--fing-positive-rgb), 0.4);
   --fing-glass-jade-text: var(--fing-positive-dark);
 
   /* ─────────────────────────────────────────────
@@ -1372,10 +1034,10 @@
   /* ─────────────────────────────────────────────
      Glass Colors - Steel (Info)
      ───────────────────────────────────────────── */
-  --fing-glass-steel-bg: rgba(74, 106, 122, 0.15);
-  --fing-glass-steel-bg-hover: rgba(74, 106, 122, 0.25);
-  --fing-glass-steel-border: rgba(74, 106, 122, 0.35);
-  --fing-glass-steel-glow: rgba(74, 106, 122, 0.4);
+  --fing-glass-steel-bg: rgba(var(--fing-info-rgb), 0.15);
+  --fing-glass-steel-bg-hover: rgba(var(--fing-info-rgb), 0.25);
+  --fing-glass-steel-border: rgba(var(--fing-info-rgb), 0.35);
+  --fing-glass-steel-glow: rgba(var(--fing-info-rgb), 0.4);
   --fing-glass-steel-text: var(--fing-info-dark);
 
   /* Legacy alias */
@@ -1388,10 +1050,10 @@
   /* ─────────────────────────────────────────────
      Glass Colors - Smoke (Neutral)
      ───────────────────────────────────────────── */
-  --fing-glass-smoke-bg: rgba(107, 114, 128, 0.1);
-  --fing-glass-smoke-bg-hover: rgba(107, 114, 128, 0.18);
-  --fing-glass-smoke-border: rgba(107, 114, 128, 0.25);
-  --fing-glass-smoke-glow: rgba(107, 114, 128, 0.3);
+  --fing-glass-smoke-bg: rgba(var(--fing-status-neutral-rgb), 0.1);
+  --fing-glass-smoke-bg-hover: rgba(var(--fing-status-neutral-rgb), 0.18);
+  --fing-glass-smoke-border: rgba(var(--fing-status-neutral-rgb), 0.25);
+  --fing-glass-smoke-glow: rgba(var(--fing-status-neutral-rgb), 0.3);
   --fing-glass-smoke-text: #4B5563;
 
   /* ─────────────────────────────────────────────
@@ -1683,7 +1345,7 @@
   color: var(--fing-positive);
   text-shadow:
     0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
-    -0.5px -0.5px 0px rgba(74, 122, 106, 0.25);
+    -0.5px -0.5px 0px rgba(var(--fing-positive-rgb), 0.25);
 }
 
 /* Warning - Gold */
@@ -1692,7 +1354,7 @@
   color: var(--fing-warning);
   text-shadow:
     0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
-    -0.5px -0.5px 0px rgba(160, 138, 74, 0.25);
+    -0.5px -0.5px 0px rgba(var(--fing-warning-rgb), 0.25);
 }
 
 /* Negative - Rust */
@@ -1701,7 +1363,7 @@
   color: var(--fing-negative);
   text-shadow:
     0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
-    -0.5px -0.5px 0px rgba(138, 90, 74, 0.25);
+    -0.5px -0.5px 0px rgba(var(--fing-negative-rgb), 0.25);
 }
 
 /* Info - Steel */
@@ -1710,7 +1372,7 @@
   color: var(--fing-info);
   text-shadow:
     0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
-    -0.5px -0.5px 0px rgba(74, 106, 122, 0.25);
+    -0.5px -0.5px 0px rgba(var(--fing-info-rgb), 0.25);
 }
 
 /* Accent - Petrol */
@@ -1719,7 +1381,7 @@
   color: var(--fing-accent);
   text-shadow:
     0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
-    -0.5px -0.5px 0px rgba(58, 106, 114, 0.25);
+    -0.5px -0.5px 0px rgba(var(--fing-accent-rgb), 0.25);
 }
 
 /* Primary - Charcoal */
@@ -1728,7 +1390,7 @@
   color: var(--fing-black);
   text-shadow:
     0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
-    -0.5px -0.5px 0px rgba(37, 37, 40, 0.2);
+    -0.5px -0.5px 0px rgba(var(--fing-black-rgb), 0.2);
 }
 
 /* Primary Strong - Charcoal (for headlines) */
@@ -1736,17 +1398,7 @@
   color: var(--fing-black);
   text-shadow:
     1px 1px 0px rgba(255, 255, 255, 0.9),
-    -1px -1px 0px rgba(37, 37, 40, 0.25);
+    -1px -1px 0px rgba(var(--fing-black-rgb), 0.25);
 }
 
-/* Letterpress Token Variables */
-:root {
-  /* Letterpress shadows for semantic colors */
-  --lp-primary: 0.5px 0.5px 0px rgba(255,255,255,0.9), -0.5px -0.5px 0px rgba(37,37,40,0.2);
-  --lp-primary-strong: 1px 1px 0px rgba(255,255,255,0.9), -1px -1px 0px rgba(37,37,40,0.25);
-  --lp-positive: 0.5px 0.5px 0px rgba(255,255,255,0.9), -0.5px -0.5px 0px rgba(74,122,106,0.25);
-  --lp-warning: 0.5px 0.5px 0px rgba(255,255,255,0.9), -0.5px -0.5px 0px rgba(160,138,74,0.25);
-  --lp-negative: 0.5px 0.5px 0px rgba(255,255,255,0.9), -0.5px -0.5px 0px rgba(138,90,74,0.25);
-  --lp-info: 0.5px 0.5px 0px rgba(255,255,255,0.9), -0.5px -0.5px 0px rgba(74,106,122,0.25);
-  --lp-accent: 0.5px 0.5px 0px rgba(255,255,255,0.9), -0.5px -0.5px 0px rgba(58,106,114,0.25);
-}
+/* Letterpress Token Variables → letterpress.css (canonical source) */

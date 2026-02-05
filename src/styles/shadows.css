@@ -171,6 +171,114 @@
     0 0 0 1px rgba(58, 106, 114, 0.15);
 
   /* ═══════════════════════════════════════════════════════════════════════════
+     TRADITIONAL SHADOWS (Non-Neumorphic)
+     Unidirectional drop shadows for specific use cases
+     Requires: --fing-border-base-rgb from colors.css
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  --fing-shadow-xs: 0 1px 2px rgba(var(--fing-border-base-rgb), 0.25);
+  --fing-shadow-sm: 0 2px 8px rgba(var(--fing-border-base-rgb), 0.3);
+  --fing-shadow-md: 0 4px 16px rgba(var(--fing-border-base-rgb), 0.35);
+  --fing-shadow-lg: 0 8px 24px rgba(var(--fing-border-base-rgb), 0.4);
+  --fing-shadow-xl: 0 12px 32px rgba(var(--fing-border-base-rgb), 0.45);
+  --fing-shadow-2xl: 0 24px 48px rgba(var(--fing-border-base-rgb), 0.5);
+
+  /* Inner shadow for focus rings */
+  --fing-shadow-inner: inset 0 2px 4px rgba(var(--fing-border-base-rgb), 0.3);
+  --fing-shadow-inner-strong: inset 0 4px 8px rgba(var(--fing-border-base-rgb), 0.4);
+
+  /* Top highlight (subtle light line) */
+  --fing-shadow-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  --fing-shadow-highlight-strong: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     GLOW EFFECTS
+     Accent and semantic status glows
+     Requires: RGB companions from colors.css
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  /* Accent glow (Petrol) */
+  --fing-shadow-glow-sm: 0 0 10px rgba(var(--fing-accent-rgb), 0.2);
+  --fing-shadow-glow-md: 0 0 20px rgba(var(--fing-accent-rgb), 0.25);
+  --fing-shadow-glow-lg: 0 0 30px rgba(var(--fing-accent-rgb), 0.3);
+
+  /* Accent glow with shadow base */
+  --fing-shadow-glow-accent: 0 4px 20px rgba(var(--fing-border-base-rgb), 0.3), 0 0 30px rgba(var(--fing-accent-rgb), 0.1);
+  --fing-shadow-glow-accent-strong: 0 4px 24px rgba(var(--fing-border-base-rgb), 0.4), 0 0 40px rgba(var(--fing-accent-rgb), 0.15);
+
+  /* Semantic status glows - Natural Minerals */
+  --fing-glow-positive: 0 0 15px rgba(var(--fing-positive-rgb), 0.25);     /* Jade */
+  --fing-glow-negative: 0 0 15px rgba(var(--fing-negative-rgb), 0.25);     /* Rust */
+  --fing-glow-warning: 0 0 15px rgba(var(--fing-warning-rgb), 0.25);       /* Gold */
+  --fing-glow-info: 0 0 15px rgba(var(--fing-info-rgb), 0.25);             /* Steel */
+
+  /* Large semantic glows */
+  --fing-glow-positive-lg: 0 0 30px rgba(var(--fing-positive-rgb), 0.15);  /* Jade */
+  --fing-glow-negative-lg: 0 0 30px rgba(var(--fing-negative-rgb), 0.15);  /* Rust */
+  --fing-glow-warning-lg: 0 0 30px rgba(var(--fing-warning-rgb), 0.15);    /* Gold */
+  --fing-glow-info-lg: 0 0 30px rgba(var(--fing-info-rgb), 0.15);          /* Steel */
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     INTERACTION STATE SHADOWS
+     Standard patterns for hover, active, disabled, and focus states
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  /* Hover: Increase elevation (raised-2 → raised-3) */
+  --shadow-hover:
+    6px 6px 12px var(--shadow-dark),
+    -6px -6px 12px var(--shadow-light);
+
+  /* Active/Pressed: Transition to inset */
+  --shadow-active:
+    inset 3px 3px 6px var(--shadow-dark),
+    inset -3px -3px 6px var(--shadow-light);
+
+  /* Disabled: Very subtle, almost flat */
+  --shadow-disabled:
+    1px 1px 2px var(--shadow-dark),
+    -1px -1px 2px var(--shadow-light);
+
+  /* Focus ring: Accent glow outline */
+  --shadow-focus-ring: 0 0 0 3px rgba(var(--fing-accent-rgb), 0.25);
+  --shadow-focus-ring-sm: 0 0 0 2px rgba(var(--fing-accent-rgb), 0.3);
+  --shadow-focus-ring-strong: 0 0 0 4px rgba(var(--fing-accent-rgb), 0.35);
+
+  /* Combined: Raised + Focus (for focused buttons) */
+  --shadow-raised-focus:
+    var(--raised-2),
+    0 0 0 3px rgba(var(--fing-accent-rgb), 0.25);
+
+  /* Combined: Inset + Focus (for focused inputs) */
+  --shadow-inset-focus:
+    var(--inset-2),
+    0 0 0 2px rgba(var(--fing-accent-rgb), 0.2);
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     COMPONENT SHADOW COMPOSITES
+     Reusable patterns combining base tokens for common component needs
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  /* Glass layered shadow (progressive depth for glass headers/panels) */
+  --shadow-glass-layered:
+    0 1px 2px rgba(var(--fing-border-base-rgb), 0.1),
+    0 2px 4px rgba(var(--fing-border-base-rgb), 0.1),
+    0 4px 8px rgba(var(--fing-border-base-rgb), 0.1),
+    0 8px 16px rgba(var(--fing-border-base-rgb), 0.08),
+    var(--fing-shadow-highlight-strong);
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     COMPATIBILITY ALIASES
+     Legacy names pointing to current tokens
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  --elevation-sm: var(--fing-shadow-sm);
+  --elevation-md: var(--fing-shadow-md);
+  --elevation-lg: var(--fing-shadow-lg);
+  --shadow-sm: var(--fing-shadow-sm);
+  --shadow-md: var(--fing-shadow-md);
+  --shadow-lg: var(--fing-shadow-lg);
+
+  /* ═══════════════════════════════════════════════════════════════════════════
      BORDER RADIUS - Stone Marble Standard Values
      ═══════════════════════════════════════════════════════════════════════════ */
 

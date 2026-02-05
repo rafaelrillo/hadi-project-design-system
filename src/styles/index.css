@@ -1,93 +1,56 @@
-/* Path: src/components/showcase/ShowcaseSection.module.css */
+/* Path: src/styles/index.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   SHOWCASE SECTION - Stone Marble Neumorphism
+   FING DESIGN SYSTEM - Centralized Imports
 
-   Hierarchy: RAISED (section) → INSET (content) → GLASS (items)
-   Shadows: Standard --raised-* / --inset-* from shadows.css
-   Typography: RAISED container → carved/debossed letterpress
-   Reference: DashboardPage panels
+   This file establishes the correct cascade order for all CSS.
+   Import ONLY this file in main.tsx.
+
+   ORDER MATTERS:
+   1. Reset/Base (globals)
+   2. Design Tokens (colors, typography, shadows, letterpress)
+   3. Legacy Variables (theme.css - being consolidated)
+   4. Utilities (responsive)
+   5. Component-specific typography (fing.css)
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   SECTION - Elevated Panel (RAISED)
+   1. RESET & BASE
+   CSS reset, default styles, utility classes
    ───────────────────────────────────────────────────────────────────────────── */
-
-.section {
-  background: var(--marble-base);
-  padding: 32px;
-  border-radius: 20px;
-  margin-bottom: 32px;
-  position: relative;
-
-  /* Standard neumorphic elevation */
-  box-shadow: var(--raised-3);
-
-  /* Shadow transitions */
-  transition: box-shadow 50ms linear;
-}
+@import './globals.css';
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   TITLE - Carved letterpress on RAISED surface
+   2. DESIGN TOKENS (Source of Truth)
+   These files define the canonical tokens of the system.
+   colors.css, typography.css, shadows.css, letterpress.css
    ───────────────────────────────────────────────────────────────────────────── */
-
-.title {
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 20px;
-  font-family: var(--fing-font-display);
-  letter-spacing: -0.01em;
-
-  /* Carved letterpress - text sinks into raised surface */
-  color: var(--fing-text-primary);
-  text-shadow:
-    1px 1px 1px var(--shadow-light),
-    -1px -1px 1px var(--shadow-dark);
-}
-
-.titleWithDescription {
-  margin-bottom: 8px;
-}
+@import './colors.css';           /* Natural Mineral color palette + RGB companions */
+@import './typography.css';       /* Font families, sizes, weights, tracking */
+@import './shadows.css';          /* RAISED/INSET/GLASS shadow hierarchy */
+@import './letterpress.css';      /* Letterpress text shadows for neumorphism */
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   DESCRIPTION - Subtle carved on RAISED surface
+   3. LEGACY THEME (Being Consolidated)
+   theme.css contains variables being migrated to the files above.
+   Load AFTER canonical files so canonical values take precedence.
    ───────────────────────────────────────────────────────────────────────────── */
-
-.description {
-  font-size: 13px;
-  margin-bottom: 20px;
-  font-family: var(--fing-font-mono);
-  line-height: 1.5;
-
-  /* Subtle carved letterpress */
-  color: var(--fing-text-secondary);
-  text-shadow:
-    0.5px 0.5px 0px var(--shadow-light),
-    -0.5px -0.5px 0px var(--shadow-dark);
-}
+@import './theme.css';
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   CONTENT AREA - Inset Neumorphic (INSET)
+   4. RESPONSIVE UTILITIES
+   Breakpoint-specific styles and responsive helpers
    ───────────────────────────────────────────────────────────────────────────── */
-
-.content {
-  background: var(--marble-base);
-  border-radius: 15px;
-  padding: 24px;
-
-  /* Standard neumorphic inset */
-  box-shadow: var(--inset-3);
-
-  /* Shadow transitions */
-  transition: box-shadow 50ms linear;
-}
+@import './responsive.css';
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   REDUCED MOTION
+   5. COMPONENT-SPECIFIC TYPOGRAPHY
+   Additional FING typography styles
    ───────────────────────────────────────────────────────────────────────────── */
+@import './typography/fing.css';
 
-@media (prefers-reduced-motion: reduce) {
-  .section,
-  .content {
-    transition: none;
-  }
-}
+/* ─────────────────────────────────────────────────────────────────────────────
+   LAB / EXPERIMENTAL
+   These are NOT imported here. Import them directly in showcase pages only:
+   - src/styles/lab/textures.css    → Material Theming experiments
+   - src/styles/lab/light-engine.css → Dynamic light engine
+   ───────────────────────────────────────────────────────────────────────────── */

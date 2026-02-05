@@ -14,174 +14,100 @@ Reducir `theme.css` de 82KB a ~30KB eliminando duplicaciones y estableciendo arc
 
 ---
 
-## Fase 1: Limpieza de Tipografías (Crítico)
+## Fase 1: Limpieza de Tipografías (Crítico) ✅ DONE
 
-### Paso 1.1: Auditar definiciones actuales
-- [ ] Identificar todas las variables de fuente en `theme.css`
-- [ ] Comparar con `typography.css` (fuente de verdad)
-- [ ] Listar diferencias y duplicados
+> Completado 2026-02-04. Removidas 129 líneas duplicadas de theme.css (82KB → 78KB).
+> 14 componentes migrados, 57+ reemplazos. Aliases legacy eliminados.
 
-### Paso 1.2: Consolidar en typography.css
-- [ ] Mover cualquier variable faltante a `typography.css`
-- [ ] Eliminar duplicados de `theme.css` (líneas 658-660, 1229-1245)
-- [ ] Eliminar variables confusas (`--fing-font-xs` que son tamaños, no pesos)
-
-### Paso 1.3: Unificar nombres de pesos
-- [ ] Decidir entre `--fing-font-light` vs `--font-weight-light`
-- [ ] Usar solo un sistema de nombres
-- [ ] Actualizar componentes que usen el nombre deprecated
-
-### Paso 1.4: Verificar imports
-- [ ] Asegurar que `typography.css` se importa en `globals.css` o `index.css`
-- [ ] Verificar orden de imports (typography después de reset)
-
-**Archivos a modificar:**
-- `src/styles/theme.css`
-- `src/styles/typography.css`
-- `src/styles/globals.css`
+- [x] Auditar definiciones actuales
+- [x] Consolidar en typography.css
+- [x] Unificar nombres de pesos
+- [x] Verificar imports
 
 ---
 
-## Fase 2: Limpieza de Colores (Crítico)
+## Fase 2: Limpieza de Colores + RGB (Crítico) ✅ DONE
 
-### Paso 2.1: Auditar definiciones actuales
-- [ ] Identificar todas las variables de color en `theme.css`
-- [ ] Comparar con `colors.css` (fuente de verdad)
-- [ ] Listar diferencias y duplicados
+> Completado 2026-02-05. 11 RGB companions agregados, ~90 líneas duplicadas removidas
+> de theme.css, 159 rgba hardcodeados migrados en 12 componentes, status system completo
+> movido a colors.css, legacy --fing-teal aliases eliminados.
 
-### Paso 2.2: Agregar variables RGB
-- [ ] Agregar `--fing-accent-rgb: 58, 106, 114`
-- [ ] Agregar `--fing-positive-rgb: 74, 122, 106`
-- [ ] Agregar `--fing-warning-rgb: 160, 138, 74`
-- [ ] Agregar `--fing-negative-rgb: 138, 90, 74`
-- [ ] Agregar `--fing-info-rgb: 74, 106, 122`
+- [x] Auditar definiciones: 67 vars en colors.css duplicadas en theme.css
+- [x] Agregar RGB companions: accent, positive, negative, warning, info, text-accent, marble-base, border-base, black, status-neutral (11 total)
+- [x] Consolidar colors.css como fuente de verdad canónica (+20 status tokens)
+- [x] Eliminar ~90 líneas duplicadas de theme.css (logo, accent, semantic, black, text, emblem, borders, status)
+- [x] Migrar letterpress.css: 24+ rgba hardcodeados → var()
+- [x] Migrar 12 componentes: DashboardPage(55), DepthLayer(22), PortfolioSimulator(27), PortfolioView(28), WalletView(14), SettingsPage(2), DashboardLayout(2), Badge(3), PortfolioPerformance(3), FingHome(1→reverted), FingWordmark(2)
+- [x] Actualizar ColorsShowcase.tsx con sección RGB + Status System
+- [x] Eliminar legacy --fing-teal aliases
 
-### Paso 2.3: Consolidar en colors.css
-- [ ] Mover cualquier variable faltante a `colors.css`
-- [ ] Eliminar duplicados de `theme.css`
-
-### Paso 2.4: Reemplazar hardcoded colors en componentes
-- [ ] `Tooltip.module.css` - reemplazar `#0a0a0c`
-- [ ] `Button.module.css` - reemplazar `#ffffff`, `#e4e7eb`
-- [ ] `LoadingScreen.module.css` - reemplazar `#a8acb3`
-- [ ] `TrendIndicator.module.css` - usar `rgba(var(--fing-accent-rgb), 0.3)`
-- [ ] `MetricCard.module.css` - usar variables
-- [ ] `DateRangePicker.module.css` - reemplazar `rgba(0, 0, 0, 0.3)`
-- [ ] `MaterialSelector.module.css` - reemplazar `rgba(0, 0, 0, 0.1)`
-- [ ] `PerformanceChart.module.css` - reemplazar `rgba(0, 0, 0, 0.1)`
-
-**Archivos a modificar:**
-- `src/styles/theme.css`
-- `src/styles/colors.css`
-- 8+ componentes con hardcoded colors
+**Nota**: FingHome.module.css y DashboardPage.module.css restaurados a valores explícitos
+(sirven como referencia canónica del stone marble). shadows.css también restaurado.
 
 ---
 
-## Fase 3: Limpieza de Sombras (Crítico)
+## Fase 3: Limpieza de Sombras (Crítico) ✅ DONE
 
-### Paso 3.1: Auditar definiciones actuales
-- [ ] Identificar todas las variables de sombra en `theme.css`
-- [ ] Comparar con `shadows.css`
-- [ ] Verificar que `shadows.css` se importa (actualmente no lo hace)
+> Completado 2026-02-05. shadows.css expandido con composites (focus-ring, glass-layered).
+> 5 componentes CSS migrados (Card, Header, Toast, Table, MaterialSelector).
+> 3 showcase pages migrados (Icons, Colors, Buttons) - ~70 hardcoded values.
+> ShowcaseSection + ComponentPreview + ShowcaseLayout migrados a sistema Stone Marble.
 
-### Paso 3.2: Consolidar en shadows.css
-- [ ] Mover cualquier variable faltante a `shadows.css`
-- [ ] Eliminar duplicados de `theme.css` (líneas 293-375)
-- [ ] Agregar import de `shadows.css` en `globals.css`
-
-### Paso 3.3: Reemplazar hardcoded shadows en componentes
-- [ ] `Tabs.module.css` - usar variable
-- [ ] `MetricCard.module.css` - usar variable
-- [ ] `NewsCard.module.css` - usar `--inset-1`
-- [ ] `DateRangePicker.module.css` - usar variable
-- [ ] `Button.module.css` - usar variable
-- [ ] `MaterialSelector.module.css` - usar variable
-- [ ] `PerformanceChart.module.css` - usar variable
-- [ ] `Toast.module.css` - usar variable
-- [ ] `Table.module.css` - usar variable
-- [ ] `LoadingScreen.module.css` - completar con variable
-
-**Archivos a modificar:**
-- `src/styles/theme.css`
-- `src/styles/shadows.css`
-- `src/styles/globals.css`
-- 10+ componentes con hardcoded shadows
+- [x] Auditar definiciones actuales
+- [x] Agregar shadow composites: --shadow-focus-ring, --shadow-focus-ring-sm, --shadow-glass-layered
+- [x] Migrar Card.module.css: ~16 box-shadow edits (raised-*, inset-*, glow-*, highlight-*)
+- [x] Migrar Header.module.css: glass → --shadow-glass-layered, neuPanel highlight
+- [x] Migrar Toast.module.css: ~13 edits (raised-*, highlight, focus-ring)
+- [x] Migrar Table.module.css: 7 edits (raised-*, inset-*, highlight)
+- [x] Migrar MaterialSelector.module.css: fix dark-only anomaly
+- [x] Migrar IconsShowcase.tsx: 4 types hardcoded colors → CSS vars
+- [x] Migrar ColorsShowcase.tsx: 6 rgba letterpress → RGB companions
+- [x] Migrar ButtonShowcase.tsx: ~50+ text-shadows → var(--shadow-light/dark), accent → RGB
+- [x] Fix ShowcaseSection.module.css: --neu-shadow-* 60px blur → var(--raised-3), letterpress added
+- [x] Fix ComponentPreview.module.css: hardcoded → var(--glass-*)
+- [x] Fix ShowcaseLayout.tsx: content bg → var(--marble-base), sidebar → var(--raised-3)
 
 ---
 
-## Fase 4: Consolidar Spacing (Importante)
+## Fase 4: Consolidar Spacing (Importante) ✅ DONE
 
-### Paso 4.1: Decidir sistema único
-- [ ] Auditar los 3 sistemas: `--fing-space-*`, `--spacing-*`, `--*-padding`
-- [ ] Decidir cuál mantener (recomendado: `--fing-space-*`)
-- [ ] Documentar decisión
+> Completado 2026-02-05. Sistema unificado en `--fing-space-*`.
+> Removidos 7 aliases `--spacing-*`, 5 aliases `--fing-spacing-*`, 2 hardcoded paddings.
+> Migrados 4 archivos: LandingLayout, Form, Card, SpacingShowcase.
 
-### Paso 4.2: Eliminar redundancias
-- [ ] Eliminar `--spacing-*` aliases si redundan
-- [ ] Convertir `--panel-padding`, `--inset-padding` a referencias
-- [ ] Actualizar componentes que usen sistema deprecated
-
-### Paso 4.3: Documentar uso
-- [ ] Crear comentarios en theme.css sobre cuándo usar cada variable
-- [ ] Agregar a documentación del design system
-
-**Archivos a modificar:**
-- `src/styles/theme.css`
-- Componentes que usen spacing deprecated
+- [x] Auditar los 3 sistemas: `--fing-space-*` (418 usos), `--spacing-*` (6 usos), `--*-padding` (1 uso)
+- [x] Decidir cuál mantener: `--fing-space-*` (escala Tailwind-like basada en 4px/rem)
+- [x] Eliminar `--spacing-*` aliases (7 vars) de theme.css
+- [x] Eliminar `--fing-spacing-*` aliases (5 vars, dead code) de theme.css
+- [x] Eliminar `--panel-padding` y `--inset-padding` (hardcoded, unused)
+- [x] Migrar LandingLayout.module.css: `--spacing-2xl/3xl/lg` → `--fing-space-12/16/6`
+- [x] Migrar Form.module.css: `--spacing-lg` → `--fing-space-6`
+- [x] Migrar Card.module.css: `--panel-padding` → `--fing-space-8`
+- [x] Actualizar SpacingShowcase.tsx con documentación del sistema canónico
 
 ---
 
-## Fase 5: Crear Estructura de Imports (Importante)
+## Fase 5: Crear Estructura de Imports (Importante) ✅ DONE
 
-### Paso 5.1: Crear index.css centralizado
-- [ ] Crear `src/styles/index.css`
-- [ ] Definir orden correcto de imports:
-  ```css
-  @import './colors.css';
-  @import './typography.css';
-  @import './shadows.css';
-  @import './letterpress.css';
-  @import './theme.css';  /* Solo lo que no está en modulares */
-  @import './globals.css';
-  @import './responsive.css';
-  ```
+> Completado 2026-02-05. Creado index.css centralizado.
+> main.tsx simplificado a un solo import.
 
-### Paso 5.2: Actualizar entry point
-- [ ] Modificar `main.tsx` o `App.tsx` para importar `index.css`
-- [ ] Eliminar imports individuales redundantes
-
-### Paso 5.3: Verificar cascada
-- [ ] Testear que todas las variables están disponibles
-- [ ] Verificar que no hay conflictos de orden
-
-**Archivos a crear/modificar:**
-- `src/styles/index.css` (nuevo)
-- `src/main.tsx` o `src/App.tsx`
+- [x] Crear `src/styles/index.css` con cascade order documentado
+- [x] Order: globals → colors → typography → shadows → letterpress → theme → responsive → fing.css
+- [x] Actualizar main.tsx para importar solo `./styles/index.css`
+- [x] Eliminar 8 imports individuales redundantes
+- [x] Verificar build pasa correctamente
 
 ---
 
-## Fase 6: Crear Tokens de Estado (Importante)
+## Fase 6: Crear Tokens de Estado (Importante) ✅ DONE
 
-### Paso 6.1: Definir tokens hover
-- [ ] `--shadow-hover` (raised-2 → raised-3)
-- [ ] `--color-hover` (lighten 10%)
-- [ ] `--letterpress-hover` (aumentar contraste)
+> Completado 2026-02-05. Tokens de estado agregados a shadows.css, letterpress.css, colors.css.
+> Patrones completos para hover, active, disabled, focus.
 
-### Paso 6.2: Definir tokens active
-- [ ] `--shadow-active` (raised → inset)
-- [ ] `--color-active` (darken 5%)
-
-### Paso 6.3: Definir tokens disabled
-- [ ] `--shadow-disabled` (none o muy sutil)
-- [ ] `--color-disabled` (50% opacity)
-- [ ] `--letterpress-disabled` (reducido)
-
-### Paso 6.4: Definir tokens focus
-- [ ] `--shadow-focus` (+ glow ring)
-- [ ] `--outline-focus` (accent color ring)
-
-**Archivos a modificar:**
-- `src/styles/theme.css` o nuevo `src/styles/states.css`
+- [x] shadows.css: `--shadow-hover`, `--shadow-active`, `--shadow-disabled`, `--shadow-focus-ring-strong`, `--shadow-raised-focus`, `--shadow-inset-focus`
+- [x] letterpress.css: `--lp-hover`, `--lp-active`, `--lp-disabled`, `--lp-focus`, `--lp-embossed-hover/active/disabled`
+- [x] colors.css: `--fing-accent-hover`, `--fing-accent-active`, `--fing-bg-hover`, `--fing-bg-active`, `--fing-opacity-disabled`
 
 ---
 
@@ -253,11 +179,11 @@ Reducir `theme.css` de 82KB a ~30KB eliminando duplicaciones y estableciendo arc
 
 | Fase | Estado | Fecha Inicio | Fecha Fin |
 |------|--------|--------------|-----------|
-| 1. Tipografías | Pending | - | - |
-| 2. Colores | Pending | - | - |
-| 3. Sombras | Pending | - | - |
-| 4. Spacing | Pending | - | - |
-| 5. Imports | Pending | - | - |
-| 6. Estados | Pending | - | - |
+| 1. Tipografías | **DONE** | 2026-02-04 | 2026-02-04 |
+| 2. Colores + RGB | **DONE** | 2026-02-05 | 2026-02-05 |
+| 3. Sombras | **DONE** | 2026-02-05 | 2026-02-05 |
+| 4. Spacing | **DONE** | 2026-02-05 | 2026-02-05 |
+| 5. Imports | **DONE** | 2026-02-05 | 2026-02-05 |
+| 6. Estados | **DONE** | 2026-02-05 | 2026-02-05 |
 | 7. Componentes | Pending | - | - |
 | 8. Limpieza | Pending | - | - |

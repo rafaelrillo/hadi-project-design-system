@@ -95,19 +95,29 @@ export function SpacingShowcase() {
   // SPACING DATA
   // ═══════════════════════════════════════════════════════════════════════════
 
+  // Core scale (4px base, Tailwind-like)
   const spacingScale: SpacingToken[] = [
-    { name: 'Extra Small', variable: '--spacing-xs', value: '5px', usage: 'Espaciado mínimo entre elementos' },
-    { name: 'Small', variable: '--spacing-sm', value: '10px', usage: 'Espaciado pequeño entre elementos relacionados' },
-    { name: 'Medium', variable: '--spacing-md', value: '15px', usage: 'Espaciado medio entre secciones relacionadas' },
-    { name: 'Large', variable: '--spacing-lg', value: '20px', usage: 'Espaciado estándar entre elementos y secciones' },
-    { name: 'Extra Large', variable: '--spacing-xl', value: '30px', usage: 'Espaciado grande entre secciones principales' },
-    { name: '2X Large', variable: '--spacing-2xl', value: '40px', usage: 'Espaciado extra grande para separación de bloques' },
+    { name: 'Space 0', variable: '--fing-space-0', value: '0', usage: 'Sin espaciado' },
+    { name: 'Space 1', variable: '--fing-space-1', value: '4px', usage: 'Espaciado mínimo, gaps pequeños' },
+    { name: 'Space 2', variable: '--fing-space-2', value: '8px', usage: 'Espaciado pequeño entre elementos' },
+    { name: 'Space 3', variable: '--fing-space-3', value: '12px', usage: 'Espaciado entre elementos relacionados' },
+    { name: 'Space 4', variable: '--fing-space-4', value: '16px', usage: 'Espaciado estándar (1rem)' },
+    { name: 'Space 5', variable: '--fing-space-5', value: '20px', usage: 'Padding de contenedores pequeños' },
+    { name: 'Space 6', variable: '--fing-space-6', value: '24px', usage: 'Padding de cards, secciones' },
+    { name: 'Space 8', variable: '--fing-space-8', value: '32px', usage: 'Padding de paneles, páginas' },
+    { name: 'Space 10', variable: '--fing-space-10', value: '40px', usage: 'Separación entre secciones' },
+    { name: 'Space 12', variable: '--fing-space-12', value: '48px', usage: 'Espaciado extra grande' },
+    { name: 'Space 16', variable: '--fing-space-16', value: '64px', usage: 'Separación de bloques principales' },
   ];
 
+  // Semantic aliases
   const specialSpacings: SpacingToken[] = [
-    { name: 'Content Padding', variable: '--content-padding', value: '30px', usage: 'Padding del área de contenido principal' },
-    { name: 'Gap Elements', variable: '--gap-elements', value: '20px', usage: 'Gap estándar entre elementos (grid, flex)' },
-    { name: 'Container Padding', variable: '--container-padding', value: '20px', usage: 'Padding interno de contenedores' },
+    { name: 'Component', variable: '--fing-space-component', value: '16px', usage: 'Espaciado interno de componentes (= space-4)' },
+    { name: 'Card', variable: '--fing-space-card', value: '24px', usage: 'Padding de cards (= space-6)' },
+    { name: 'Section', variable: '--fing-space-section', value: '40px', usage: 'Separación entre secciones (= space-10)' },
+    { name: 'Page', variable: '--fing-space-page', value: '32px', usage: 'Padding de página (= space-8)' },
+    { name: 'Content Padding', variable: '--content-padding', value: '24px', usage: 'Padding del área de contenido (= space-6)' },
+    { name: 'Gap Elements', variable: '--gap-elements', value: '16px', usage: 'Gap estándar entre elementos (= space-4)' },
   ];
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -196,12 +206,12 @@ export function SpacingShowcase() {
       {/* Header */}
       <header style={headerStyles}>
         <h1 style={headerTitleStyles}>FING Spacing</h1>
-        <p style={headerSubtitleStyles}>Sistema de espaciado Stone Marble - Escala basada en 5px</p>
+        <p style={headerSubtitleStyles}>Sistema de espaciado Stone Marble - Escala basada en 4px (rem)</p>
       </header>
 
       {/* Spacing Scale */}
       <section style={sectionStyles}>
-        <div style={sectionTitleStyles}>Escala de Espaciado</div>
+        <div style={sectionTitleStyles}>Escala Base (--fing-space-*)</div>
         <div>
           {spacingScale.map((token) => (
             <SpacingSample key={token.variable} token={token} />
@@ -257,7 +267,7 @@ export function SpacingShowcase() {
 
       {/* Special Spacings */}
       <section style={sectionStyles}>
-        <div style={sectionTitleStyles}>Espaciados Especiales</div>
+        <div style={sectionTitleStyles}>Aliases Semánticos</div>
         <div>
           {specialSpacings.map((token) => (
             <SpacingSample key={token.variable} token={token} />
@@ -290,14 +300,14 @@ export function SpacingShowcase() {
             background: 'var(--marble-base)',
             borderRadius: '14px',
             boxShadow: 'var(--raised-2)',
-            padding: '20px', // --container-padding
+            padding: '20px', // --fing-space-5
           }}>
             <div style={{
               ...lpStyles('medium'),
               fontFamily: 'var(--fing-font-display)',
               fontSize: '16px',
               fontWeight: 600,
-              marginBottom: '10px', // --spacing-sm
+              marginBottom: '12px', // --fing-space-3
             }}>
               Card Title
             </div>
@@ -305,11 +315,11 @@ export function SpacingShowcase() {
               ...lpStyles('whisper'),
               fontFamily: 'var(--fing-font-primary)',
               fontSize: '12px',
-              marginBottom: '20px', // --spacing-lg
+              marginBottom: '16px', // --fing-space-4
             }}>
               Content with proper spacing between elements
             </div>
-            <div style={{ display: 'flex', gap: '10px' }}> {/* --spacing-sm */}
+            <div style={{ display: 'flex', gap: '8px' }}> {/* --fing-space-2 */}
               <div style={{
                 padding: '8px 16px',
                 background: 'var(--fing-glass-teal-bg)',
@@ -364,35 +374,43 @@ export function SpacingShowcase() {
             whiteSpace: 'pre-wrap',
           }}>
 {`:root {
-  /* Base Scale (5px increments) */
-  --spacing-xs: 5px;
-  --spacing-sm: 10px;
-  --spacing-md: 15px;
-  --spacing-lg: 20px;
-  --spacing-xl: 30px;
-  --spacing-2xl: 40px;
+  /* Base Scale (4px base, Tailwind-like) */
+  --fing-space-0: 0;
+  --fing-space-1: 0.25rem;     /* 4px */
+  --fing-space-2: 0.5rem;      /* 8px */
+  --fing-space-3: 0.75rem;     /* 12px */
+  --fing-space-4: 1rem;        /* 16px */
+  --fing-space-5: 1.25rem;     /* 20px */
+  --fing-space-6: 1.5rem;      /* 24px */
+  --fing-space-8: 2rem;        /* 32px */
+  --fing-space-10: 2.5rem;     /* 40px */
+  --fing-space-12: 3rem;       /* 48px */
+  --fing-space-16: 4rem;       /* 64px */
 
-  /* Special Spacings */
-  --content-padding: 30px;
-  --gap-elements: 20px;
-  --container-padding: 20px;
+  /* Semantic Aliases */
+  --fing-space-component: var(--fing-space-4);
+  --fing-space-card: var(--fing-space-6);
+  --fing-space-section: var(--fing-space-10);
+  --fing-space-page: var(--fing-space-8);
+  --content-padding: var(--fing-space-6);
+  --gap-elements: var(--fing-space-4);
 }
 
 /* Usage Examples */
 .card {
-  padding: var(--container-padding);
-  margin-bottom: var(--spacing-lg);
+  padding: var(--fing-space-card);
+  margin-bottom: var(--fing-space-6);
   border-radius: 14px;
 }
 
 .section {
-  padding: var(--content-padding);
-  gap: var(--gap-elements);
+  padding: var(--fing-space-section);
+  gap: var(--fing-space-4);
 }
 
 .button-group {
   display: flex;
-  gap: var(--spacing-sm);
+  gap: var(--fing-space-2);
 }`}
           </pre>
         </div>
