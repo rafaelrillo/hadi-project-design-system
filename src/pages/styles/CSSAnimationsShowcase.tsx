@@ -2,6 +2,7 @@
 // FING Design System - Animations Showcase with Intersection Observer
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { ShowcaseSection } from '../../components/showcase';
+import { showcase } from '../showcaseStyles';
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // INTERSECTION OBSERVER HOOK
@@ -53,17 +54,12 @@ function AnimatedBox({ animation, label, description, duration, isInfinite, chil
     setKey(k => k + 1);
   }, []);
 
-  const MARBLE = {
-    base: '#d5d8dc',
-    dark: '#c8ccd1',
-  };
-
   return (
     <div
       ref={ref}
       style={{
         padding: '20px',
-        background: MARBLE.base,
+        background: 'var(--marble-base)',
         borderRadius: '16px',
         boxShadow: 'var(--raised-2)',
         display: 'flex',
@@ -115,7 +111,7 @@ function AnimatedBox({ animation, label, description, duration, isInfinite, chil
       {/* Animation Demo */}
       <div
         style={{
-          background: MARBLE.dark,
+          background: 'var(--marble-dark)',
           borderRadius: '12px',
           boxShadow: 'var(--inset-2)',
           padding: '24px',
@@ -212,11 +208,6 @@ function DataAnimateDemo() {
     return () => observer.disconnect();
   }, [key]);
 
-  const MARBLE = {
-    base: '#d5d8dc',
-    dark: '#c8ccd1',
-  };
-
   return (
     <div>
       <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '16px' }}>
@@ -261,7 +252,7 @@ function DataAnimateDemo() {
             data-animate-replay
             style={{
               padding: '24px',
-              background: MARBLE.base,
+              background: 'var(--marble-base)',
               borderRadius: '14px',
               boxShadow: 'var(--raised-2)',
               textAlign: 'center',
@@ -325,10 +316,6 @@ function StaggerDemo() {
     return () => observer.disconnect();
   }, [key]);
 
-  const MARBLE = {
-    base: '#d5d8dc',
-  };
-
   const stocks = [
     { symbol: 'AAPL', price: '$178.42', change: '+2.34%', positive: true },
     { symbol: 'MSFT', price: '$378.91', change: '+0.87%', positive: true },
@@ -364,7 +351,7 @@ function StaggerDemo() {
         key={key}
         data-animate-stagger
         style={{
-          background: MARBLE.base,
+          background: 'var(--marble-base)',
           borderRadius: '16px',
           boxShadow: 'var(--raised-2)',
           overflow: 'hidden',
@@ -430,36 +417,6 @@ function StaggerDemo() {
 // ═══════════════════════════════════════════════════════════════════════════════
 
 export function CSSAnimationsShowcase() {
-  const MARBLE = {
-    base: '#d5d8dc',
-  };
-
-  const pageHeaderStyles: React.CSSProperties = {
-    marginBottom: '32px',
-    padding: '24px',
-    background: MARBLE.base,
-    borderRadius: '15px',
-    boxShadow: 'var(--raised-3)',
-  };
-
-  const titleStyles: React.CSSProperties = {
-    fontSize: '28px',
-    fontWeight: 700,
-    color: 'var(--fing-accent)',
-    marginBottom: '8px',
-    fontFamily: 'var(--fing-font-display)',
-    textTransform: 'uppercase',
-    letterSpacing: '0.1em',
-  };
-
-  const descStyles: React.CSSProperties = {
-    fontSize: '14px',
-    color: 'var(--fing-text-secondary)',
-    fontFamily: 'var(--fing-font-mono)',
-    textTransform: 'uppercase',
-    letterSpacing: '0.03em',
-  };
-
   const gridStyles: React.CSSProperties = {
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
@@ -469,12 +426,12 @@ export function CSSAnimationsShowcase() {
   return (
     <div>
       {/* Header */}
-      <div style={pageHeaderStyles}>
-        <h1 style={titleStyles}>Animations</h1>
-        <p style={descStyles}>
+      <header style={showcase.header.container}>
+        <h1 style={showcase.header.title}>Animations</h1>
+        <p style={showcase.header.description}>
           Scroll-triggered & atmospheric animations
         </p>
-      </div>
+      </header>
 
       {/* Atmospheric */}
       <ShowcaseSection
@@ -737,8 +694,8 @@ export function CSSAnimationsShowcase() {
       >
         <div style={{
           padding: '24px',
-          background: MARBLE.base,
-          borderRadius: '16px',
+          background: 'var(--marble-base)',
+          borderRadius: '20px',
           boxShadow: 'var(--raised-2)',
         }}>
           <pre style={{

@@ -1,6 +1,7 @@
 // Path: src/pages/styles/ColorsShowcase.tsx
 // FING Design System - Stone Marble Color Palette
 import React from 'react';
+import { showcase } from '../showcaseStyles';
 
 interface ColorToken {
   name: string;
@@ -11,40 +12,19 @@ interface ColorToken {
 
 export function ColorsShowcase() {
   // ═══════════════════════════════════════════════════════════════════════════
-  // STYLES - Stone Marble Design System
+  // STYLES - Stone Marble Design System (using unified showcase styles)
   // ═══════════════════════════════════════════════════════════════════════════
 
   const showcaseStyles: React.CSSProperties = {
+    ...showcase.page.wrapper,
     minHeight: '100vh',
-    background: 'var(--marble-base)',
     padding: '32px',
     fontFamily: 'var(--fing-font-primary)',
   };
 
-  const headerStyles: React.CSSProperties = {
-    textAlign: 'center',
-    marginBottom: '32px',
-  };
-
-  const headerTitleStyles: React.CSSProperties = {
-    fontFamily: 'var(--fing-font-display)',
-    fontSize: '32px',
-    fontWeight: 700,
-    letterSpacing: '-0.02em',
-    color: 'var(--marble-base)',
-    textShadow: '2px 2px 2px var(--shadow-light), -2px -2px 2px var(--shadow-dark)',
-  };
-
-  const headerSubtitleStyles: React.CSSProperties = {
-    fontSize: '14px',
-    marginTop: '8px',
-    color: 'var(--marble-base)',
-    textShadow: '0.75px 0.75px 0px var(--shadow-light), -0.75px -0.75px 0px var(--shadow-dark)',
-  };
-
   const sectionStyles: React.CSSProperties = {
-    background: 'var(--marble-base)',
-    borderRadius: '24px',
+    background: showcase.colors.marble,
+    borderRadius: '20px',
     boxShadow: 'var(--raised-3)',
     padding: '32px',
     marginBottom: '24px',
@@ -56,21 +36,15 @@ export function ColorsShowcase() {
     fontWeight: 600,
     letterSpacing: '0.12em',
     textTransform: 'uppercase',
-    color: 'var(--marble-base)',
-    textShadow: '1px 1px 1px var(--shadow-light), -1px -1px 1px var(--shadow-dark)',
+    color: showcase.colors.marble,
+    textShadow: 'var(--lp-embossed-subtle)',
     marginBottom: '24px',
     paddingBottom: '12px',
-    borderBottom: '1px solid var(--marble-dark)',
-  };
-
-  const gridStyles: React.CSSProperties = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-    gap: '16px',
+    borderBottom: `1px solid ${showcase.colors.marbleDark}`,
   };
 
   const swatchContainerStyles: React.CSSProperties = {
-    background: 'var(--marble-base)',
+    background: showcase.colors.marble,
     borderRadius: '14px',
     boxShadow: 'var(--inset-2)',
     padding: '16px',
@@ -88,30 +62,30 @@ export function ColorsShowcase() {
     flexShrink: 0,
   });
 
-  // Letterpress para superficies RAISED (elevadas)
+  // Letterpress para superficies RAISED (elevadas) - using CSS variables
   const lpStyles = (intensity: 'whisper' | 'subtle' | 'soft' | 'medium'): React.CSSProperties => {
     const shadows: Record<string, string> = {
-      whisper: '0.5px 0.5px 0px var(--shadow-light), -0.5px -0.5px 0px var(--shadow-dark)',
-      subtle: '0.75px 0.75px 0px var(--shadow-light), -0.75px -0.75px 0px var(--shadow-dark)',
-      soft: '1px 1px 1px var(--shadow-light), -1px -1px 1px var(--shadow-dark)',
-      medium: '1.5px 1.5px 1px var(--shadow-light), -1.5px -1.5px 1px var(--shadow-dark)',
+      whisper: 'var(--lp-embossed-whisper)',
+      subtle: 'var(--lp-embossed-subtle)',
+      soft: 'var(--lp-embossed)',
+      medium: 'var(--lp-embossed-strong)',
     };
     return {
-      color: 'var(--marble-base)',
+      color: showcase.colors.marble,
       textShadow: shadows[intensity],
     };
   };
 
-  // Letterpress para superficies INSET (cavadas) - sombras invertidas
+  // Letterpress para superficies INSET (cavadas) - using CSS variables
   const lpInsetStyles = (intensity: 'whisper' | 'subtle' | 'soft' | 'medium'): React.CSSProperties => {
     const shadows: Record<string, string> = {
-      whisper: '-0.5px -0.5px 0px var(--shadow-light), 0.5px 0.5px 0px var(--shadow-dark)',
-      subtle: '-0.75px -0.75px 0px var(--shadow-light), 0.75px 0.75px 0px var(--shadow-dark)',
-      soft: '-1px -1px 1px var(--shadow-light), 1px 1px 1px var(--shadow-dark)',
-      medium: '-1.5px -1.5px 1px var(--shadow-light), 1.5px 1.5px 1px var(--shadow-dark)',
+      whisper: 'var(--lp-whisper)',
+      subtle: 'var(--lp-subtle)',
+      soft: 'var(--lp-soft)',
+      medium: 'var(--lp-medium)',
     };
     return {
-      color: 'var(--marble-base)',
+      color: showcase.colors.marble,
       textShadow: shadows[intensity],
     };
   };
@@ -121,19 +95,19 @@ export function ColorsShowcase() {
     const colors: Record<string, { color: string; shadow: string }> = {
       teal: {
         color: 'var(--fing-accent-tertiary, #6fb3b5)',
-        shadow: '1px 1px 1px var(--shadow-light), -1px -1px 1px rgba(var(--fing-accent-rgb), 0.4)',
+        shadow: 'var(--lp-accent)',
       },
       positive: {
-        color: '#7cb89a',
-        shadow: '1px 1px 1px var(--shadow-light), -1px -1px 1px rgba(var(--fing-positive-rgb), 0.3)',
+        color: 'var(--fing-positive)',
+        shadow: 'var(--lp-positive)',
       },
       negative: {
-        color: '#8a5a4a',
-        shadow: '1px 1px 1px var(--shadow-light), -1px -1px 1px rgba(var(--fing-negative-rgb), 0.3)',
+        color: 'var(--fing-negative)',
+        shadow: 'var(--lp-negative)',
       },
       warning: {
-        color: '#a08a4a',
-        shadow: '1px 1px 1px var(--shadow-light), -1px -1px 1px rgba(var(--fing-warning-rgb), 0.3)',
+        color: 'var(--fing-warning)',
+        shadow: 'var(--lp-warning)',
       },
     };
     return {
@@ -142,24 +116,24 @@ export function ColorsShowcase() {
     };
   };
 
-  // Letterpress con color para superficies INSET - sombras invertidas
+  // Letterpress con color para superficies INSET - using embossed variants
   const lpColorInsetStyles = (color: 'teal' | 'positive' | 'negative' | 'warning'): React.CSSProperties => {
     const colors: Record<string, { color: string; shadow: string }> = {
       teal: {
         color: 'var(--fing-accent-tertiary, #6fb3b5)',
-        shadow: '-1px -1px 1px var(--shadow-light), 1px 1px 1px rgba(var(--fing-accent-rgb), 0.4)',
+        shadow: 'var(--lp-embossed-petrol)',
       },
       positive: {
-        color: '#7cb89a',
-        shadow: '-1px -1px 1px var(--shadow-light), 1px 1px 1px rgba(var(--fing-positive-rgb), 0.3)',
+        color: 'var(--fing-positive)',
+        shadow: 'var(--lp-embossed-positive)',
       },
       negative: {
-        color: '#8a5a4a',
-        shadow: '-1px -1px 1px var(--shadow-light), 1px 1px 1px rgba(var(--fing-negative-rgb), 0.3)',
+        color: 'var(--fing-negative)',
+        shadow: 'var(--lp-embossed-negative)',
       },
       warning: {
-        color: '#a08a4a',
-        shadow: '-1px -1px 1px var(--shadow-light), 1px 1px 1px rgba(var(--fing-warning-rgb), 0.3)',
+        color: 'var(--fing-warning)',
+        shadow: 'var(--lp-embossed-warning)',
       },
     };
     return {
@@ -269,15 +243,15 @@ export function ColorsShowcase() {
   return (
     <div style={showcaseStyles}>
       {/* Header */}
-      <header style={headerStyles}>
-        <h1 style={headerTitleStyles}>FING Colors</h1>
-        <p style={headerSubtitleStyles}>Sistema de colores Stone Marble - Referencia visual de todas las variables</p>
+      <header style={showcase.header.container}>
+        <h1 style={showcase.header.title}>FING Colors</h1>
+        <p style={showcase.header.description}>Sistema de colores Stone Marble - Referencia visual de todas las variables</p>
       </header>
 
       {/* Stone Marble Base */}
       <section style={sectionStyles}>
         <div style={sectionTitleStyles}>Stone Marble (Base del Sistema)</div>
-        <div style={gridStyles}>
+        <div style={showcase.grid.large}>
           {marbleColors.map((color) => (
             <ColorSwatch key={color.variable} color={color} />
           ))}
@@ -287,7 +261,7 @@ export function ColorsShowcase() {
       {/* Accent Colors */}
       <section style={sectionStyles}>
         <div style={sectionTitleStyles}>Colores de Acento (Teal Institucional)</div>
-        <div style={gridStyles}>
+        <div style={showcase.grid.large}>
           {accentColors.map((color) => (
             <ColorSwatch key={color.variable} color={color} />
           ))}
@@ -296,7 +270,7 @@ export function ColorsShowcase() {
         <div style={{
           marginTop: '24px',
           padding: '20px',
-          background: 'var(--marble-base)',
+          background: showcase.colors.marble,
           borderRadius: '14px',
           boxShadow: 'var(--inset-2)',
           display: 'flex',
@@ -326,7 +300,7 @@ export function ColorsShowcase() {
       {/* Status Colors */}
       <section style={sectionStyles}>
         <div style={sectionTitleStyles}>Colores de Estado (Feedback Semántico)</div>
-        <div style={gridStyles}>
+        <div style={showcase.grid.large}>
           {statusColors.map((color) => (
             <ColorSwatch key={color.variable} color={color} />
           ))}
@@ -349,7 +323,7 @@ export function ColorsShowcase() {
               key={i}
               style={{
                 padding: '10px 20px',
-                background: 'var(--marble-base)',
+                background: showcase.colors.marble,
                 borderRadius: '100px',
                 boxShadow: 'var(--raised-1)',
               }}
@@ -370,7 +344,7 @@ export function ColorsShowcase() {
       {/* Glass Colors */}
       <section style={sectionStyles}>
         <div style={sectionTitleStyles}>Colores Glass (Glassmorphism)</div>
-        <div style={gridStyles}>
+        <div style={showcase.grid.large}>
           {glassColors.map((color) => (
             <ColorSwatch key={color.variable} color={color} />
           ))}
@@ -379,7 +353,7 @@ export function ColorsShowcase() {
         <div style={{
           marginTop: '24px',
           padding: '20px',
-          background: 'var(--marble-base)',
+          background: showcase.colors.marble,
           borderRadius: '14px',
           boxShadow: 'var(--inset-3)',
           display: 'flex',
@@ -416,7 +390,7 @@ export function ColorsShowcase() {
       {/* Text Colors */}
       <section style={sectionStyles}>
         <div style={sectionTitleStyles}>Colores de Texto (Jerarquía Tipográfica)</div>
-        <div style={gridStyles}>
+        <div style={showcase.grid.large}>
           {textColors.map((color) => (
             <ColorSwatch key={color.variable} color={color} />
           ))}
@@ -425,7 +399,7 @@ export function ColorsShowcase() {
         <div style={{
           marginTop: '24px',
           padding: '24px',
-          background: 'var(--marble-base)',
+          background: showcase.colors.marble,
           borderRadius: '14px',
           boxShadow: 'var(--inset-2)',
         }}>
@@ -471,7 +445,7 @@ export function ColorsShowcase() {
 
         {/* RGB variable table */}
         <div style={{
-          background: 'var(--marble-base)',
+          background: showcase.colors.marble,
           borderRadius: '14px',
           boxShadow: 'var(--inset-2)',
           padding: '20px',
@@ -515,7 +489,7 @@ export function ColorsShowcase() {
 
         {/* Usage example */}
         <div style={{
-          background: 'var(--marble-base)',
+          background: showcase.colors.marble,
           borderRadius: '14px',
           boxShadow: 'var(--inset-3)',
           padding: '20px',
@@ -546,7 +520,7 @@ background: rgba(var(--fing-accent-rgb), 0.08);`}
           {[0.05, 0.1, 0.15, 0.2, 0.3, 0.4, 0.5, 0.6, 0.8, 1.0].map((opacity) => (
             <div key={opacity} style={{
               width: '64px', textAlign: 'center',
-              background: 'var(--marble-base)', borderRadius: '12px',
+              background: showcase.colors.marble, borderRadius: '12px',
               boxShadow: 'var(--raised-1)', padding: '8px 4px',
             }}>
               <div style={{
@@ -576,7 +550,7 @@ background: rgba(var(--fing-accent-rgb), 0.08);`}
             const names: Record<string, string> = { positive: 'Jade', warning: 'Gold', negative: 'Rust', info: 'Steel' };
             return (
               <div key={status} style={{
-                background: 'var(--marble-base)', borderRadius: '14px',
+                background: showcase.colors.marble, borderRadius: '14px',
                 boxShadow: 'var(--inset-2)', padding: '16px',
               }}>
                 <div style={{
@@ -623,7 +597,7 @@ background: rgba(var(--fing-accent-rgb), 0.08);`}
         <div style={sectionTitleStyles}>Código de Referencia</div>
         <div style={{
           padding: '24px',
-          background: 'var(--marble-base)',
+          background: showcase.colors.marble,
           borderRadius: '14px',
           boxShadow: 'var(--inset-3)',
         }}>
@@ -632,8 +606,8 @@ background: rgba(var(--fing-accent-rgb), 0.08);`}
             fontFamily: 'var(--fing-font-mono)',
             fontSize: '11px',
             lineHeight: 1.6,
-            color: 'var(--marble-base)',
-            textShadow: '0.75px 0.75px 0px var(--shadow-light), -0.75px -0.75px 0px var(--shadow-dark)',
+            color: showcase.colors.marble,
+            textShadow: 'var(--lp-embossed-subtle)',
             whiteSpace: 'pre-wrap',
           }}>
 {`/* colors.css — Canonical Source of Truth */

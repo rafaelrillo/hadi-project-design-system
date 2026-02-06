@@ -11,6 +11,7 @@ import {
   Stepper,
 } from '@components/atoms/Button';
 import { ShowcaseSection } from '@components/showcase';
+import { showcase } from '../showcaseStyles';
 import {
   Save,
   Trash2,
@@ -58,58 +59,26 @@ export function ButtonShowcase() {
   const [stepperValue, setStepperValue] = useState(5);
 
   // ═══════════════════════════════════════════════════════════════════════════
-  // STONE MARBLE STYLES
+  // STONE MARBLE STYLES - Using unified showcase styles
   // ═══════════════════════════════════════════════════════════════════════════
-
-  const pageStyles: React.CSSProperties = {
-    background: 'var(--marble-base)',
-    minHeight: '100%',
-    padding: '32px',
-  };
-
-  const headerStyles: React.CSSProperties = {
-    marginBottom: '40px',
-    padding: '32px',
-    background: 'var(--marble-base)',
-    borderRadius: '20px',
-    boxShadow: 'var(--raised-4)',
-  };
-
-  const titleStyles: React.CSSProperties = {
-    fontSize: '32px',
-    fontWeight: 700,
-    color: 'var(--text-primary)',
-    marginBottom: '8px',
-    fontFamily: 'var(--fing-font-display)',
-    letterSpacing: '0.05em',
-    textShadow: '1px 1px 0px var(--shadow-light), -1px -1px 0px var(--shadow-dark)',
-  };
-
-  const subtitleStyles: React.CSSProperties = {
-    fontSize: '14px',
-    color: 'var(--text-secondary)',
-    fontFamily: 'var(--fing-font-mono)',
-    letterSpacing: '0.02em',
-    textShadow: '0.5px 0.5px 0px var(--shadow-light), -0.5px -0.5px 0px var(--shadow-dark)',
-  };
 
   const categoryStyles: React.CSSProperties = {
     fontSize: '22px',
     fontWeight: 700,
-    color: 'var(--fing-accent-primary)',
+    color: showcase.colors.accent,
     marginBottom: '12px',
     marginTop: '56px',
     fontFamily: 'var(--fing-font-display)',
     letterSpacing: '0.08em',
     paddingBottom: '12px',
-    borderBottom: '3px solid var(--fing-accent-primary)',
-    textShadow: '-1px -1px 0px var(--shadow-light), 1px 1px 0px var(--shadow-dark)',
+    borderBottom: `3px solid ${showcase.colors.accent}`,
+    textShadow: 'var(--lp-accent)',
   };
 
   const labelStyles: React.CSSProperties = {
     fontSize: '11px',
     fontWeight: 600,
-    color: 'var(--text-muted)',
+    color: showcase.colors.textMuted,
     fontFamily: 'var(--fing-font-mono)',
     letterSpacing: '0.08em',
     marginTop: '10px',
@@ -118,7 +87,7 @@ export function ButtonShowcase() {
   };
 
   const gridStyles: React.CSSProperties = {
-    display: 'grid',
+    ...showcase.grid.medium,
     gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))',
     gap: '28px',
     alignItems: 'start',
@@ -132,22 +101,19 @@ export function ButtonShowcase() {
   };
 
   const insetContainerStyles: React.CSSProperties = {
-    background: 'var(--marble-base)',
-    borderRadius: '16px',
-    boxShadow: 'var(--inset-2)',
-    padding: '20px',
+    ...showcase.inset(2),
     marginTop: '16px',
   };
 
   return (
     <LightEngineProvider initialAnimating={true} initialSpeed={0.3}>
-      <div style={pageStyles}>
+      <div style={showcase.page.wrapper}>
         {/* ═══════════════════════════════════════════════════════════════════
             HEADER
             ═══════════════════════════════════════════════════════════════════ */}
-        <header style={headerStyles}>
-          <h1 style={titleStyles}>BUTTON SYSTEM</h1>
-          <p style={subtitleStyles}>
+        <header style={showcase.header.container}>
+          <h1 style={showcase.header.title}>BUTTON SYSTEM</h1>
+          <p style={showcase.header.description}>
             36 variantes: 20 Stone Marble + 8 Glass + 8 Glass-Neu Hybrid
           </p>
         </header>
@@ -1661,7 +1627,7 @@ export function ButtonShowcase() {
                 gap: '16px',
               }}
             >
-              <span style={{ ...labelStyles, marginTop: 0, color: 'var(--text-secondary)' }}>Card RAISED</span>
+              <span style={{ ...labelStyles, marginTop: 0, color: showcase.colors.textSecondary }}>Card RAISED</span>
 
               {/* Contenedor INSET */}
               <div
@@ -1734,13 +1700,13 @@ export function ButtonShowcase() {
 
           {/* Código de referencia */}
           <div style={{ ...insetContainerStyles, marginTop: '24px' }}>
-            <p style={{ ...labelStyles, marginBottom: '12px', marginTop: 0, textAlign: 'left', color: 'var(--fing-accent-primary)' }}>
+            <p style={{ ...labelStyles, marginBottom: '12px', marginTop: 0, textAlign: 'left', color: showcase.colors.accent }}>
               ESTRUCTURA DE JERARQUÍA:
             </p>
             <pre style={{
               fontFamily: 'var(--fing-font-mono)',
               fontSize: '11px',
-              color: 'var(--text-secondary)',
+              color: showcase.colors.textSecondary,
               lineHeight: 1.6,
               margin: 0,
             }}>
@@ -2563,7 +2529,7 @@ export function ButtonShowcase() {
                 boxShadow: 'var(--inset-2)',
               }}
             >
-              <p style={{ ...labelStyles, marginTop: 0, marginBottom: '16px', textAlign: 'left', color: 'var(--fing-accent-primary)' }}>
+              <p style={{ ...labelStyles, marginTop: 0, marginBottom: '16px', textAlign: 'left', color: showcase.colors.accent }}>
                 Sobre fondo marble-base:
               </p>
               <button
@@ -2608,7 +2574,7 @@ export function ButtonShowcase() {
                 boxShadow: 'var(--raised-3)',
               }}
             >
-              <p style={{ ...labelStyles, marginTop: 0, marginBottom: '16px', textAlign: 'left', color: 'var(--fing-accent-primary)' }}>
+              <p style={{ ...labelStyles, marginTop: 0, marginBottom: '16px', textAlign: 'left', color: showcase.colors.accent }}>
                 Dentro de Card RAISED:
               </p>
               <div
@@ -2665,7 +2631,7 @@ export function ButtonShowcase() {
                 boxShadow: 'var(--inset-3)',
               }}
             >
-              <p style={{ ...labelStyles, marginTop: 0, marginBottom: '16px', textAlign: 'left', color: 'var(--fing-accent-primary)' }}>
+              <p style={{ ...labelStyles, marginTop: 0, marginBottom: '16px', textAlign: 'left', color: showcase.colors.accent }}>
                 Dentro de sección INSET:
               </p>
               <button
@@ -2737,16 +2703,16 @@ export function ButtonShowcase() {
                 }}
               >
                 <strong style={{
-                  color: 'var(--fing-accent-primary)',
+                  color: showcase.colors.accent,
                   fontFamily: 'var(--fing-font-primary)',
                   fontSize: '13px',
-                  textShadow: '-0.5px -0.5px 0px var(--shadow-light), 0.5px 0.5px 0px var(--shadow-dark)',
+                  textShadow: 'var(--lp-accent)',
                 }}>
                   {title}:
                 </strong>
                 <p style={{
                   margin: '8px 0 0',
-                  color: 'var(--text-secondary)',
+                  color: showcase.colors.textSecondary,
                   fontFamily: 'var(--fing-font-mono)',
                   fontSize: '11px',
                 }}>

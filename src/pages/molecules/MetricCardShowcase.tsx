@@ -5,6 +5,7 @@ import { MetricCard } from '../../components/molecules/MetricCard';
 import { ShowcaseSection } from '../../components/showcase';
 import { LightEngineProvider, useLightEngine } from '@/contexts/LightEngineContext';
 import { DollarSign, Users, TrendingUp, ShoppingCart, Activity, Percent } from 'lucide-react';
+import { showcase } from '../showcaseStyles';
 
 function MetricCardContent() {
   const { lightAngle } = useLightEngine();
@@ -14,56 +15,23 @@ function MetricCardContent() {
     return { x: Math.cos(shadowAngle), y: Math.sin(shadowAngle) };
   }, [lightAngle]);
 
-  const MARBLE = {
-    base: '#d5d8dc',
-    shadowDark: '#a8acb3',
-    shadowLight: '#ffffff',
-  };
-
   const getNeuPanelShadow = (distance: number, blur: number): string => {
     const { x, y } = shadowOffsets;
-    return `${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}`;
+    return `${-x * distance}px ${-y * distance}px ${blur}px var(--shadow-light), ${x * distance}px ${y * distance}px ${blur}px var(--shadow-dark)`;
   };
 
   const getNeuInsetShadow = (distance: number, blur: number): string => {
     const { x, y } = shadowOffsets;
-    return `inset ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}`;
-  };
-
-  const pageHeaderStyles: React.CSSProperties = {
-    marginBottom: '32px',
-    padding: '24px',
-    background: MARBLE.base,
-    borderRadius: '15px',
-    boxShadow: getNeuPanelShadow(20, 60),
-    transition: 'box-shadow 50ms linear',
-  };
-
-  const titleStyles: React.CSSProperties = {
-    fontSize: '28px',
-    fontWeight: 700,
-    color: 'var(--fing-accent-primary)',
-    marginBottom: '8px',
-    fontFamily: 'var(--fing-font-display)',
-    textTransform: 'uppercase',
-    letterSpacing: '0.1em',
-  };
-
-  const descStyles: React.CSSProperties = {
-    fontSize: '14px',
-    color: 'var(--fing-text-secondary)',
-    fontFamily: 'var(--fing-font-mono)',
-    textTransform: 'uppercase',
-    letterSpacing: '0.03em',
+    return `inset ${x * distance}px ${y * distance}px ${blur}px var(--shadow-dark), inset ${-x * distance}px ${-y * distance}px ${blur}px var(--shadow-light)`;
   };
 
   const sparklineData = [10, 15, 12, 18, 22, 19, 25, 28, 24, 30, 35, 32];
 
   return (
-    <div style={{ background: MARBLE.base, minHeight: '100%', padding: '24px' }}>
-      <header style={pageHeaderStyles}>
-        <h1 style={titleStyles}>&gt; MetricCard_</h1>
-        <p style={descStyles}>// Card versátil para KPIs con tendencias y visualizaciones</p>
+    <div style={{ background: 'var(--marble-base)', minHeight: '100%', padding: '24px' }}>
+      <header style={showcase.header.container}>
+        <h1 style={showcase.header.title}>&gt; MetricCard_</h1>
+        <p style={showcase.header.description}>// Card versatil para KPIs con tendencias y visualizaciones</p>
       </header>
 
       <ShowcaseSection
@@ -182,15 +150,15 @@ function MetricCardContent() {
         </div>
       </ShowcaseSection>
 
-      <ShowcaseSection title="Especificaciones Técnicas">
+      <ShowcaseSection title="Especificaciones Tecnicas">
         <div style={{
           padding: '20px',
-          borderRadius: '15px',
+          borderRadius: '20px',
           boxShadow: getNeuInsetShadow(5, 15),
-          background: MARBLE.base,
+          background: 'var(--marble-base)',
           fontSize: '12px',
           fontFamily: 'var(--fing-font-mono)',
-          color: '#636E72',
+          color: 'var(--fing-text-muted)',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>

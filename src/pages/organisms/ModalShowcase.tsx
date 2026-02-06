@@ -7,6 +7,7 @@ import { ShowcaseSection } from '../../components/showcase';
 import { FormField } from '../../components/molecules/FormField';
 import { InputText, Textarea } from '../../components/atoms/Input';
 import { LightEngineProvider, useLightEngine } from '@/contexts/LightEngineContext';
+import { showcase } from '../showcaseStyles';
 
 function ModalContent() {
   const { lightAngle } = useLightEngine();
@@ -22,9 +23,9 @@ function ModalContent() {
   }, [lightAngle]);
 
   const MARBLE = {
-    base: '#d5d8dc',
-    shadowDark: '#a8acb3',
-    shadowLight: '#ffffff',
+    base: 'var(--marble-base)',
+    shadowDark: 'var(--shadow-dark)',
+    shadowLight: 'var(--shadow-light)',
   };
 
   const getNeuPanelShadow = (distance: number, blur: number): string => {
@@ -37,48 +38,21 @@ function ModalContent() {
     return `inset ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}`;
   };
 
-  const pageHeaderStyles: React.CSSProperties = {
-    marginBottom: '32px',
-    padding: '24px',
-    background: MARBLE.base,
-    borderRadius: '15px',
-    boxShadow: getNeuPanelShadow(20, 60),
-    transition: 'box-shadow 50ms linear',
-  };
-
-  const titleStyles: React.CSSProperties = {
-    fontSize: '28px',
-    fontWeight: 700,
-    color: 'var(--fing-accent-primary)',
-    marginBottom: '8px',
-    fontFamily: 'var(--fing-font-display)',
-    textTransform: 'uppercase',
-    letterSpacing: '0.1em',
-  };
-
-  const descStyles: React.CSSProperties = {
-    fontSize: '14px',
-    color: 'var(--fing-text-secondary)',
-    fontFamily: 'var(--fing-font-mono)',
-    textTransform: 'uppercase',
-    letterSpacing: '0.03em',
-  };
-
   const buttonContainerStyles: React.CSSProperties = {
     padding: '24px',
-    background: MARBLE.base,
-    borderRadius: '15px',
+    background: 'var(--marble-base)',
+    borderRadius: '20px',
     boxShadow: getNeuPanelShadow(8, 24),
     transition: 'box-shadow 50ms linear',
     display: 'inline-block',
   };
 
   return (
-    <div style={{ background: MARBLE.base, minHeight: '100%', padding: '24px' }}>
-      <header style={pageHeaderStyles}>
-        <h1 style={titleStyles}>&gt; Modal_</h1>
-        <p style={descStyles}>
-          // Modal con dos variantes (center y drawer), título, contenido, footer opcional
+    <div style={{ background: 'var(--marble-base)', minHeight: '100%', padding: '24px' }}>
+      <header style={showcase.header.container}>
+        <h1 style={showcase.header.title}>&gt; Modal_</h1>
+        <p style={showcase.header.description}>
+          // Modal con dos variantes (center y drawer), titulo, contenido, footer opcional
         </p>
       </header>
 
@@ -132,8 +106,8 @@ function ModalContent() {
             <div style={{
               marginTop: '20px',
               padding: '16px',
-              background: MARBLE.base,
-              borderRadius: '15px',
+              background: 'var(--marble-base)',
+              borderRadius: '12px',
               boxShadow: getNeuInsetShadow(3, 8),
             }}>
               <h4 style={{ fontSize: '14px', fontWeight: 600, marginBottom: '8px' }}>Características:</h4>
@@ -231,9 +205,9 @@ function ModalContent() {
             </p>
             <div style={{
               padding: '12px',
-              background: MARBLE.base,
+              background: 'var(--marble-base)',
               borderLeft: '4px solid var(--fing-status-negative)',
-              borderRadius: '15px',
+              borderRadius: '12px',
               boxShadow: getNeuInsetShadow(3, 8),
             }}>
               <strong>Advertencia:</strong> Esta acción no se puede deshacer.
@@ -293,9 +267,9 @@ function ModalContent() {
             <p style={{
               marginTop: '24px',
               padding: '12px',
-              background: MARBLE.base,
+              background: 'var(--marble-base)',
               borderLeft: '4px solid var(--fing-accent-primary)',
-              borderRadius: '15px',
+              borderRadius: '12px',
               boxShadow: getNeuInsetShadow(3, 8),
               fontFamily: 'var(--fing-font-mono)',
             }}>
@@ -305,15 +279,15 @@ function ModalContent() {
         </Modal>
       </ShowcaseSection>
 
-      <ShowcaseSection title="Especificaciones Técnicas">
+      <ShowcaseSection title="Especificaciones Tecnicas">
         <div style={{
           padding: '20px',
-          borderRadius: '15px',
+          borderRadius: '20px',
           boxShadow: getNeuInsetShadow(5, 15),
-          background: MARBLE.base,
+          background: 'var(--marble-base)',
           fontSize: '12px',
           fontFamily: 'var(--fing-font-mono)',
-          color: '#636E72',
+          color: 'var(--fing-text-muted)',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>

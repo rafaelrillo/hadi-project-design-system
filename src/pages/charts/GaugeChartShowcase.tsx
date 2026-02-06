@@ -1,10 +1,10 @@
 // Path: src/pages/charts/GaugeChartShowcase.tsx
 // FING Design System - Glass-Neumorphism Gauge Chart
-import React, { useMemo } from 'react';
+import React from 'react';
 import { ShowcaseSection } from '../../components/showcase';
 import { GaugeChart } from '../../components/charts/echarts';
 import type { GaugeData } from '../../components/charts/echarts';
-import { LightEngineProvider, useLightEngine } from '@/contexts/LightEngineContext';
+import { showcase } from '../showcaseStyles';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // SAMPLE DATA
@@ -20,79 +20,27 @@ const completion: GaugeData = { value: 92, name: 'Completion' };
 // COMPONENT
 // ─────────────────────────────────────────────────────────────────────────────
 
-function GaugeChartContent() {
-  const { lightAngle } = useLightEngine();
-
-  const shadowOffsets = useMemo(() => {
-    const shadowAngle = (lightAngle + 180) * (Math.PI / 180);
-    return { x: Math.cos(shadowAngle), y: Math.sin(shadowAngle) };
-  }, [lightAngle]);
-
-  const MARBLE = {
-    base: '#d5d8dc',
-    shadowDark: '#a8acb3',
-    shadowLight: '#ffffff',
-  };
-
-  const getNeuPanelShadow = (distance: number, blur: number): string => {
-    const { x, y } = shadowOffsets;
-    return `${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}`;
-  };
-
-  const getNeuInsetShadow = (distance: number, blur: number): string => {
-    const { x, y } = shadowOffsets;
-    return `inset ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}`;
-  };
-
-  const pageHeaderStyles: React.CSSProperties = {
-    marginBottom: '32px',
-    padding: '24px',
-    background: MARBLE.base,
-    borderRadius: '15px',
-    boxShadow: getNeuPanelShadow(20, 60),
-    transition: 'box-shadow 50ms linear',
-  };
-
-  const titleStyles: React.CSSProperties = {
-    fontSize: '28px',
-    fontWeight: 700,
-    color: 'var(--fing-accent-primary)',
-    marginBottom: '8px',
-    fontFamily: 'var(--fing-font-display)',
-    textTransform: 'uppercase',
-    letterSpacing: '0.1em',
-  };
-
-  const descStyles: React.CSSProperties = {
-    fontSize: '14px',
-    color: 'var(--fing-text-secondary)',
-    fontFamily: 'var(--fing-font-mono)',
-    textTransform: 'uppercase',
-    letterSpacing: '0.03em',
-  };
-
+export function GaugeChartShowcase() {
   const chartContainerStyles: React.CSSProperties = {
     padding: '24px',
-    background: MARBLE.base,
-    borderRadius: '15px',
-    boxShadow: getNeuPanelShadow(8, 24),
-    transition: 'box-shadow 50ms linear',
+    background: 'var(--marble-base)',
+    borderRadius: '20px',
+    boxShadow: 'var(--raised-2)',
   };
 
   const tableContainerStyles: React.CSSProperties = {
     padding: '20px',
-    borderRadius: '15px',
-    boxShadow: getNeuInsetShadow(5, 15),
-    background: MARBLE.base,
+    borderRadius: '20px',
+    boxShadow: 'var(--inset-2)',
+    background: 'var(--marble-base)',
     overflowX: 'auto',
-    transition: 'box-shadow 50ms linear',
   };
 
   return (
-    <div style={{ background: MARBLE.base, minHeight: '100%', padding: '24px' }}>
-      <header style={pageHeaderStyles}>
-        <h1 style={titleStyles}>&gt; GaugeChart_</h1>
-        <p style={descStyles}>// Indicador radial para KPIs y progreso</p>
+    <div style={{ background: 'var(--marble-base)', minHeight: '100%', padding: '24px' }}>
+      <header style={showcase.header.container}>
+        <h1 style={showcase.header.title}>&gt; GaugeChart_</h1>
+        <p style={showcase.header.description}>// Indicador radial para KPIs y progreso</p>
       </header>
 
       <ShowcaseSection title="Default" description="Basic gauge with standard styling">
@@ -175,7 +123,7 @@ function GaugeChartContent() {
         </div>
       </ShowcaseSection>
 
-      <ShowcaseSection title="Especificaciones Técnicas">
+      <ShowcaseSection title="Especificaciones Tecnicas">
         <div style={tableContainerStyles}>
           <table style={{
             width: '100%',
@@ -185,10 +133,10 @@ function GaugeChartContent() {
           }}>
             <thead>
               <tr>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent-primary)', fontWeight: 600 }}>Prop</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent-primary)', fontWeight: 600 }}>Type</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent-primary)', fontWeight: 600 }}>Default</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent-primary)', fontWeight: 600 }}>Description</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent)', fontWeight: 600 }}>Prop</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent)', fontWeight: 600 }}>Type</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent)', fontWeight: 600 }}>Default</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent)', fontWeight: 600 }}>Description</th>
               </tr>
             </thead>
             <tbody>
@@ -203,9 +151,9 @@ function GaugeChartContent() {
               ].map((row, i) => (
                 <tr key={i}>
                   <td style={{ padding: '12px 16px', color: 'var(--fing-text-primary)' }}>{row.prop}</td>
-                  <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.type}</td>
-                  <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.default}</td>
-                  <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.desc}</td>
+                  <td style={{ padding: '12px 16px', color: 'var(--fing-text-muted)' }}>{row.type}</td>
+                  <td style={{ padding: '12px 16px', color: 'var(--fing-text-muted)' }}>{row.default}</td>
+                  <td style={{ padding: '12px 16px', color: 'var(--fing-text-muted)' }}>{row.desc}</td>
                 </tr>
               ))}
             </tbody>
@@ -213,14 +161,6 @@ function GaugeChartContent() {
         </div>
       </ShowcaseSection>
     </div>
-  );
-}
-
-export function GaugeChartShowcase() {
-  return (
-    <LightEngineProvider initialAnimating={true} initialSpeed={0.3}>
-      <GaugeChartContent />
-    </LightEngineProvider>
   );
 }
 

@@ -24,6 +24,7 @@ import {
 } from 'lucide-react';
 import { LightEngineProvider, useLightEngine } from '@/contexts/LightEngineContext';
 import { FingEmblem } from '@/components/atoms/FingEmblem';
+import { showcase } from '../showcaseStyles';
 
 function SidebarContent() {
   const { lightAngle } = useLightEngine();
@@ -35,9 +36,9 @@ function SidebarContent() {
   }, [lightAngle]);
 
   const MARBLE = {
-    base: '#d5d8dc',
-    shadowDark: '#a8acb3',
-    shadowLight: '#ffffff',
+    base: 'var(--marble-base)',
+    shadowDark: 'var(--shadow-dark)',
+    shadowLight: 'var(--shadow-light)',
   };
 
   const getNeuPanelShadow = (distance: number, blur: number): string => {
@@ -50,37 +51,10 @@ function SidebarContent() {
     return `inset ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}`;
   };
 
-  const pageHeaderStyles: React.CSSProperties = {
-    marginBottom: '32px',
-    padding: '24px',
-    background: MARBLE.base,
-    borderRadius: '15px',
-    boxShadow: getNeuPanelShadow(20, 60),
-    transition: 'box-shadow 50ms linear',
-  };
-
-  const titleStyles: React.CSSProperties = {
-    fontSize: '28px',
-    fontWeight: 700,
-    color: 'var(--fing-accent-primary)',
-    marginBottom: '8px',
-    fontFamily: 'var(--fing-font-display)',
-    textTransform: 'uppercase',
-    letterSpacing: '0.1em',
-  };
-
-  const descStyles: React.CSSProperties = {
-    fontSize: '14px',
-    color: 'var(--fing-text-secondary)',
-    fontFamily: 'var(--fing-font-mono)',
-    textTransform: 'uppercase',
-    letterSpacing: '0.03em',
-  };
-
   const sidebarContainerStyles: React.CSSProperties = {
     padding: '20px',
-    background: MARBLE.base,
-    borderRadius: '15px',
+    background: 'var(--marble-base)',
+    borderRadius: '20px',
     boxShadow: getNeuPanelShadow(8, 24),
     transition: 'box-shadow 50ms linear',
   };
@@ -153,10 +127,10 @@ function SidebarContent() {
   };
 
   return (
-    <div style={{ background: MARBLE.base, minHeight: '100%', padding: '24px' }}>
-      <header style={pageHeaderStyles}>
-        <h1 style={titleStyles}>&gt; Sidebar_</h1>
-        <p style={descStyles}>
+    <div style={{ background: 'var(--marble-base)', minHeight: '100%', padding: '24px' }}>
+      <header style={showcase.header.container}>
+        <h1 style={showcase.header.title}>&gt; Sidebar_</h1>
+        <p style={showcase.header.description}>
           // Neumorphic sidebar with inset sections + glass items
         </p>
       </header>
@@ -184,7 +158,7 @@ function SidebarContent() {
               flex: 1,
               marginLeft: '24px',
               padding: '32px',
-              background: MARBLE.base,
+              background: 'var(--marble-base)',
               borderRadius: '24px',
               boxShadow: getNeuPanelShadow(8, 24),
               display: 'flex',
@@ -233,12 +207,12 @@ function SidebarContent() {
               flex: 1,
               marginLeft: '24px',
               padding: '24px',
-              background: MARBLE.base,
+              background: 'var(--marble-base)',
               borderRadius: '20px',
               boxShadow: getNeuInsetShadow(5, 15),
             }}>
-              <p style={{ color: '#5a6578', fontSize: '14px', fontFamily: 'var(--fing-font-mono)' }}>
-                // Cada sección tiene su propio contenedor inset
+              <p style={{ color: 'var(--fing-text-muted)', fontSize: '14px', fontFamily: 'var(--fing-font-mono)' }}>
+                // Cada seccion tiene su propio contenedor inset
               </p>
             </div>
           </div>
@@ -264,15 +238,15 @@ function SidebarContent() {
               flex: 1,
               marginLeft: '24px',
               padding: '24px',
-              background: MARBLE.base,
+              background: 'var(--marble-base)',
               borderRadius: '20px',
               boxShadow: getNeuPanelShadow(4, 12),
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
             }}>
-              <p style={{ color: '#8896a6', fontSize: '14px', fontFamily: 'var(--fing-font-mono)' }}>
-                // Menú simple sin secciones
+              <p style={{ color: 'var(--fing-text-muted)', fontSize: '14px', fontFamily: 'var(--fing-font-mono)' }}>
+                // Menu simple sin secciones
               </p>
             </div>
           </div>
@@ -296,14 +270,14 @@ function SidebarContent() {
               flex: 1,
               marginLeft: '24px',
               padding: '24px',
-              background: MARBLE.base,
+              background: 'var(--marble-base)',
               borderRadius: '20px',
               boxShadow: getNeuPanelShadow(4, 12),
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
             }}>
-              <p style={{ color: '#8896a6', fontSize: '14px', fontFamily: 'var(--fing-font-mono)' }}>
+              <p style={{ color: 'var(--fing-text-muted)', fontSize: '14px', fontFamily: 'var(--fing-font-mono)' }}>
                 // collapsed=true para modo compacto
               </p>
             </div>
@@ -327,11 +301,11 @@ function SidebarContent() {
               flex: 1,
               marginLeft: '24px',
               padding: '24px',
-              background: MARBLE.base,
+              background: 'var(--marble-base)',
               borderRadius: '20px',
               boxShadow: getNeuInsetShadow(5, 15),
             }}>
-              <p style={{ color: '#5a6578', fontSize: '14px', fontFamily: 'var(--fing-font-mono)' }}>
+              <p style={{ color: 'var(--fing-text-muted)', fontSize: '14px', fontFamily: 'var(--fing-font-mono)' }}>
                 // Sin user, sin search, sin footer
               </p>
             </div>
@@ -369,11 +343,11 @@ function SidebarContent() {
                 padding: 0,
                 margin: 0,
                 fontSize: '13px',
-                color: '#5a6578',
+                color: 'var(--fing-text-muted)',
                 fontFamily: 'var(--fing-font-mono)',
                 lineHeight: '2',
               }}>
-                <li>+ Background: #d5d8dc</li>
+                <li>+ Background: var(--marble-base)</li>
                 <li>+ Border-radius: 24px</li>
                 <li>+ Elevated shadow</li>
                 <li>+ Dynamic via Light Engine</li>
@@ -395,7 +369,7 @@ function SidebarContent() {
                 padding: 0,
                 margin: 0,
                 fontSize: '13px',
-                color: '#5a6578',
+                color: 'var(--fing-text-muted)',
                 fontFamily: 'var(--fing-font-mono)',
                 lineHeight: '2',
               }}>
@@ -421,7 +395,7 @@ function SidebarContent() {
                 padding: 0,
                 margin: 0,
                 fontSize: '13px',
-                color: '#5a6578',
+                color: 'var(--fing-text-muted)',
                 fontFamily: 'var(--fing-font-mono)',
                 lineHeight: '2',
               }}>
@@ -440,12 +414,12 @@ function SidebarContent() {
       <ShowcaseSection title="Technical Specifications">
         <div style={{
           padding: '20px',
-          borderRadius: '15px',
+          borderRadius: '20px',
           boxShadow: getNeuInsetShadow(5, 15),
-          background: MARBLE.base,
+          background: 'var(--marble-base)',
           fontSize: '12px',
           fontFamily: 'var(--fing-font-mono)',
-          color: '#636E72',
+          color: 'var(--fing-text-muted)',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>
@@ -484,12 +458,12 @@ function SidebarContent() {
       <ShowcaseSection title="Usage Example">
         <div style={{
           padding: '20px',
-          borderRadius: '15px',
+          borderRadius: '20px',
           boxShadow: getNeuInsetShadow(5, 15),
-          background: MARBLE.base,
+          background: 'var(--marble-base)',
           fontSize: '12px',
           fontFamily: 'var(--fing-font-mono)',
-          color: '#636E72',
+          color: 'var(--fing-text-muted)',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>

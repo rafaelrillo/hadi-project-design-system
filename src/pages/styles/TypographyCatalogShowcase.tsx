@@ -7,12 +7,13 @@ import type { CSSProperties } from 'react';
 import { Heading1, Heading3, Heading4, Paragraph, Label } from '../../components/atoms/Typography';
 import type { TextEffect } from '../../components/atoms/Typography';
 import { ShowcaseSection, ComponentPreview } from '../../components/showcase';
+import { showcase } from '../showcaseStyles';
 
-// Reusable marble container styles
+// Reusable marble container styles using CSS variables
 const raised = (level: 1 | 2 | 3 = 2): CSSProperties => ({
   background: 'var(--marble-base)',
   boxShadow: `var(--raised-${level})`,
-  borderRadius: '16px',
+  borderRadius: '20px',
   padding: '24px',
 });
 
@@ -26,6 +27,7 @@ const inset = (level: 1 | 2 | 3 = 2): CSSProperties => ({
 const glass: CSSProperties = {
   background: 'var(--glass-bg)',
   backdropFilter: 'blur(8px)',
+  WebkitBackdropFilter: 'blur(8px)',
   border: '1px solid var(--glass-border)',
   borderRadius: '12px',
   padding: '16px',
@@ -44,24 +46,11 @@ const semanticColors = {
 };
 
 export function TypographyCatalogShowcase() {
-  const pageHeaderStyles: CSSProperties = { marginBottom: '32px' };
-  const titleStyles: CSSProperties = {
-    fontSize: '28px', fontWeight: 700, color: 'var(--primary)',
-    marginBottom: '8px', fontFamily: 'var(--fing-font-mono)',
-    textTransform: 'uppercase', letterSpacing: '0.1em',
-    textShadow: '0 0 15px var(--accent-glow)',
-  };
-  const descStyles: CSSProperties = {
-    fontSize: '14px', color: 'var(--foreground-muted)',
-    fontFamily: 'var(--fing-font-mono)', textTransform: 'uppercase',
-    letterSpacing: '0.03em',
-  };
-
   return (
     <div>
-      <header style={pageHeaderStyles}>
-        <h1 style={titleStyles}>&gt; Text_Catalog_</h1>
-        <p style={descStyles}>
+      <header style={showcase.header.container}>
+        <h1 style={showcase.header.title}>&gt; Text_Catalog_</h1>
+        <p style={showcase.header.description}>
           // Catalogo definitivo: tipografia + efectos + colores
         </p>
       </header>

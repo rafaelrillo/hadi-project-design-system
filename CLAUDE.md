@@ -677,10 +677,19 @@ src/
 │   │   └── echarts/        # 24 tipos de graficos
 │   └── animations/         # Componentes de animacion
 ├── pages/
-│   └── styles/             # Showcases del design system
-│       └── StoneMarbleShowcase.tsx
+│   ├── showcaseStyles.ts       # Módulo central de estilos showcase
+│   ├── styles/                 # Showcases del design system
+│   │   ├── _SHOWCASE_TEMPLATE.tsx  # Template de referencia
+│   │   └── ...                 # 14 showcase pages
+│   ├── atoms/                  # 6 showcase pages
+│   ├── molecules/              # 9 showcase pages
+│   ├── organisms/              # 8 showcase pages
+│   ├── charts/                 # 18 showcase pages
+│   └── animations/             # 6 showcase pages
 └── styles/
-    └── theme.css           # Variables CSS globales
+    ├── theme.css               # Variables CSS globales
+    └── lab/
+        └── LIGHT_ENGINE_REFERENCE.md  # Documentación Light Engine
 ```
 
 ---
@@ -708,6 +717,42 @@ import styles from './Component.module.css';
   style={{ boxShadow: getRaisedShadow(8, 16) }}
 >
 ```
+
+### Showcase Pages Pattern
+```tsx
+import { showcase } from '../showcaseStyles';
+import { ShowcaseSection } from '../../components/showcase';
+
+export function MyShowcase() {
+  return (
+    <div style={{ background: 'var(--marble-base)', minHeight: '100%', padding: '24px' }}>
+      {/* Header estándar con letterpress */}
+      <header style={showcase.header.container}>
+        <h1 style={showcase.header.title}>PAGE TITLE</h1>
+        <p style={showcase.header.description}>Description text</p>
+      </header>
+
+      {/* Secciones con ShowcaseSection */}
+      <ShowcaseSection title="Section" description="Description">
+        {/* Contenido directo - ya estamos en INSET */}
+        <div style={showcase.raised(2)}>
+          {/* RAISED dentro de INSET = OK */}
+        </div>
+      </ShowcaseSection>
+    </div>
+  );
+}
+```
+
+**showcaseStyles exports:**
+- `showcase.header.container/title/description` - Header estándar
+- `showcase.raised(level)` - Container RAISED (1-5)
+- `showcase.inset(level)` - Container INSET (1-5)
+- `showcase.glass` - Elemento GLASS
+- `showcase.grid.small/medium/large/flex` - Layouts de grid
+- `showcase.label.varName/spec/section` - Etiquetas
+- `showcase.text.headingCarved/bodyCarved/headingEmbossed/bodyEmbossed` - Tipografía
+- `showcase.table.container/header/cell` - Estilos de tabla
 
 ---
 
@@ -796,11 +841,11 @@ npm run lint          # ESLint
 ### DO (Hacer)
 
 1. **Usar Stone Marble Hierarchy**: RAISED → INSET → GLASS
-2. **Usar LightEngineContext**: Para sombras dinamicas
-3. **Seguir el patron de showcases**: Con `LightEngineProvider` wrapper
-4. **Usar variables CSS**: `--marble-base`, `--raised-*`, `--inset-*`, `--glass-*`
+2. **Usar showcaseStyles module**: Para páginas de showcase (`import { showcase } from '../showcaseStyles'`)
+3. **Seguir el patron de headers**: `showcase.header.container`, `showcase.header.title`, `showcase.header.description`
+4. **Usar variables CSS**: `--marble-base`, `--raised-*`, `--inset-*`, `--glass-*`, `--lp-*`
 5. **Border radius**: 20px containers, 15px sections, 12px items
-6. **Transiciones suaves**: `50ms linear` para sombras
+6. **Letterpress effects**: RAISED container → carved text, INSET container → embossed text
 
 ### DON'T (No hacer)
 
@@ -908,6 +953,20 @@ npm run lint          # ESLint
     - Orden de cascada documentado
   - [x] Reducción de `theme.css`: ~84KB → ~780 líneas
   - [x] Documentación actualizada en `docs/DESIGN_SYSTEM_CONSOLIDATION.md`
+- [x] **Showcase Styles Unification** (2026-02-06)
+  - [x] Creación de módulo central `showcaseStyles.ts` con estilos estándar
+  - [x] Unificación de 61 páginas showcase con patrones consistentes:
+    - styles/ (14 archivos)
+    - atoms/ (6 archivos)
+    - molecules/ (9 archivos)
+    - organisms/ (8 archivos)
+    - charts/ (18 archivos)
+    - animations/ (6 archivos)
+  - [x] Header estándar con letterpress effect (`--lp-petrol-whisper`)
+  - [x] Reemplazo de colores hardcodeados por CSS variables
+  - [x] BorderRadius unificado (20px containers)
+  - [x] Template de referencia `_SHOWCASE_TEMPLATE.tsx`
+  - [x] Documentación de Light Engine para desarrollo futuro
 
 ---
 
@@ -972,6 +1031,29 @@ npm run lint          # ESLint
   - Legacy aliases mantenidos para compatibilidad (teal, amber, rose, sky, emerald)
 - **Resultado**: `theme.css` reducido de ~84KB a ~780 líneas
 - **Razón**: Continuar modularización para mejor mantenibilidad y documentación
+
+**[2026-02-06] Showcase Styles Unification**
+- **Decision**: Unificar todas las páginas de showcase con un módulo de estilos central
+- **Problema identificado**:
+  - 61+ páginas de showcase con estilos inconsistentes
+  - Headers con diferentes shadows, colores y tipografía
+  - Colores hardcodeados (`#d5d8dc`, `#a8acb3`) en lugar de CSS variables
+  - Falta de letterpress effects en títulos
+- **Solución implementada**:
+  - `showcaseStyles.ts` - Módulo central con todos los estilos estándar
+  - `_SHOWCASE_TEMPLATE.tsx` - Template de referencia para nuevas páginas
+  - `LIGHT_ENGINE_REFERENCE.md` - Documentación del Light Engine para futuro
+- **Archivos clave creados**:
+  - `/src/pages/showcaseStyles.ts` - Exporta header, grid, label, text, table styles
+  - `/src/pages/styles/_SHOWCASE_TEMPLATE.tsx` - Patrón a seguir
+  - `/src/styles/lab/LIGHT_ENGINE_REFERENCE.md` - Documentación Light Engine
+- **Cambios aplicados a 61 archivos**:
+  - Import: `import { showcase } from '../showcaseStyles';`
+  - Header: `showcase.header.container`, `showcase.header.title`, `showcase.header.description`
+  - Colores: `var(--marble-base)`, `var(--shadow-dark)`, `var(--fing-accent)`
+  - Letterpress: `var(--lp-petrol-whisper)` para títulos
+  - BorderRadius: 20px para containers principales
+- **Razón**: Establecer consistencia visual, facilitar mantenimiento, y documentar patrones
 
 **[2026-01-19] FING Wordmark — Inset Typography System**
 - **Decision**: Crear sistema de wordmark con 12 variaciones inset usando Cormorant Garamond

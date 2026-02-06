@@ -4,6 +4,7 @@ import React, { useMemo } from 'react';
 import { ShowcaseSection } from '../../components/showcase';
 import { LightEngineProvider, useLightEngine } from '@/contexts/LightEngineContext';
 import { Circle, Square, RectangleHorizontal } from 'lucide-react';
+import { showcase } from '../showcaseStyles';
 
 // Inner component that uses the light engine context
 function BorderRadiusContent() {
@@ -20,9 +21,9 @@ function BorderRadiusContent() {
   }, [lightAngle]);
 
   const MARBLE = {
-    base: '#d5d8dc',
-    shadowDark: '#a8acb3',
-    shadowLight: '#ffffff',
+    base: 'var(--marble-base)',
+    shadowDark: 'var(--shadow-dark)',
+    shadowLight: 'var(--shadow-light)',
   };
 
   // Neumorphic elevated shadow
@@ -71,30 +72,17 @@ function BorderRadiusContent() {
   // STYLES
   // ═══════════════════════════════════════════════════════════════════════════
   const pageHeaderStyles: React.CSSProperties = {
-    marginBottom: '32px',
-    padding: '24px',
-    background: MARBLE.base,
-    borderRadius: '15px',
+    ...showcase.header.container,
     boxShadow: getNeuPanelShadow(20, 60),
     transition: 'box-shadow 50ms linear',
   };
 
   const titleStyles: React.CSSProperties = {
-    fontSize: '28px',
-    fontWeight: 700,
-    color: 'var(--fing-accent-primary)',
-    marginBottom: '8px',
-    fontFamily: 'var(--fing-font-display)',
-    textTransform: 'uppercase',
-    letterSpacing: '0.1em',
+    ...showcase.header.title,
   };
 
   const descStyles: React.CSSProperties = {
-    fontSize: '14px',
-    color: 'var(--fing-text-secondary)',
-    fontFamily: 'var(--fing-font-mono)',
-    textTransform: 'uppercase',
-    letterSpacing: '0.03em',
+    ...showcase.header.description,
   };
 
   const specTextStyles: React.CSSProperties = {
@@ -167,7 +155,7 @@ function BorderRadiusContent() {
   });
 
   return (
-    <div style={{ background: MARBLE.base, minHeight: '100%', padding: '24px' }}>
+    <div style={{ background: 'var(--marble-base)', minHeight: '100%', padding: '24px' }}>
       {/* Page Header */}
       <header style={pageHeaderStyles}>
         <h1 style={titleStyles}>&gt; Border Radius_</h1>
@@ -334,7 +322,7 @@ function BorderRadiusContent() {
       >
         <div style={{
           background: MARBLE.base,
-          borderRadius: '15px',
+          borderRadius: '20px',
           padding: '24px',
           boxShadow: getNeuPanelShadow(20, 60),
           transition: 'box-shadow 50ms linear',
@@ -352,7 +340,7 @@ function BorderRadiusContent() {
             ].map((item) => (
               <div key={item.label} style={{
                 padding: '20px',
-                borderRadius: '15px',
+                borderRadius: '20px',
                 boxShadow: getNeuInsetShadow(5, 15),
                 background: MARBLE.base,
                 transition: 'box-shadow 50ms linear',
@@ -377,7 +365,7 @@ function BorderRadiusContent() {
       >
         <div style={{
           padding: '20px',
-          borderRadius: '15px',
+          borderRadius: '20px',
           boxShadow: getNeuInsetShadow(5, 15),
           background: MARBLE.base,
           transition: 'box-shadow 50ms linear',
@@ -404,7 +392,7 @@ function BorderRadiusContent() {
       <ShowcaseSection title="Código de Ejemplo">
         <div style={{
           padding: '20px',
-          borderRadius: '15px',
+          borderRadius: '20px',
           boxShadow: getNeuInsetShadow(5, 15),
           background: MARBLE.base,
           fontSize: '12px',
@@ -417,7 +405,7 @@ const BORDER_RADIUS = '15px';
 
 // Panel, Card, Button, Input, etc.
 const component = {
-  borderRadius: '15px', // Always 15px
+  borderRadius: '20px', // Always 15px
 };
 
 // Circle for avatars

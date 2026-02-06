@@ -1,6 +1,7 @@
 // Path: src/pages/styles/StoneMarbleShowcase.tsx
 // FING Design System - Stone Marble Neumorphism Reference
 import React, { useState } from 'react';
+import { showcase } from '../showcaseStyles';
 
 type Section = 'typography' | 'containers' | 'buttons' | 'inputs' | 'badges' | 'indicators' | 'cards' | 'decorative' | 'icons';
 
@@ -22,35 +23,14 @@ export function StoneMarbleShowcase() {
   ];
 
   // ═══════════════════════════════════════════════════════════════════════════
-  // STYLES - Using CSS variables from theme.css
+  // STYLES - Using CSS variables from theme.css and unified showcase styles
   // ═══════════════════════════════════════════════════════════════════════════
 
   const showcaseStyles: React.CSSProperties = {
     minHeight: '100vh',
-    background: 'var(--marble-base)',
+    background: showcase.colors.marble,
     padding: '32px',
     fontFamily: 'var(--fing-font-primary)',
-  };
-
-  const headerStyles: React.CSSProperties = {
-    textAlign: 'center',
-    marginBottom: '32px',
-  };
-
-  const headerTitleStyles: React.CSSProperties = {
-    fontFamily: 'var(--fing-font-display)',
-    fontSize: '32px',
-    fontWeight: 700,
-    letterSpacing: '-0.02em',
-    color: 'var(--marble-base)',
-    textShadow: 'var(--lp-carved, 2px 2px 2px var(--shadow-light), -2px -2px 2px var(--shadow-dark))',
-  };
-
-  const headerSubtitleStyles: React.CSSProperties = {
-    fontSize: '14px',
-    marginTop: '8px',
-    color: 'var(--marble-base)',
-    textShadow: 'var(--lp-subtle, 0.75px 0.75px 0px var(--shadow-light), -0.75px -0.75px 0px var(--shadow-dark))',
   };
 
   const navStyles: React.CSSProperties = {
@@ -59,7 +39,7 @@ export function StoneMarbleShowcase() {
     gap: '6px',
     marginBottom: '32px',
     flexWrap: 'wrap',
-    background: 'var(--marble-base)',
+    background: showcase.colors.marble,
     padding: '6px',
     borderRadius: '16px',
     boxShadow: 'var(--inset-2)',
@@ -77,17 +57,17 @@ export function StoneMarbleShowcase() {
     fontWeight: isActive ? 600 : 500,
     cursor: 'pointer',
     transition: 'all 0.2s',
-    background: isActive ? 'var(--marble-base)' : 'transparent',
-    color: 'var(--marble-base)',
+    background: isActive ? showcase.colors.marble : 'transparent',
+    color: showcase.colors.marble,
     textShadow: isActive
-      ? '1px 1px 1px var(--shadow-light), -1px -1px 1px var(--shadow-dark)'
-      : '0.75px 0.75px 0px var(--shadow-light), -0.75px -0.75px 0px var(--shadow-dark)',
+      ? 'var(--lp-embossed)'
+      : 'var(--lp-embossed-subtle)',
     boxShadow: isActive ? 'var(--raised-2)' : 'none',
   });
 
   const sectionStyles: React.CSSProperties = {
-    background: 'var(--marble-base)',
-    borderRadius: '24px',
+    background: showcase.colors.marble,
+    borderRadius: '20px',
     boxShadow: 'var(--raised-3)',
     padding: '32px',
     marginBottom: '24px',
@@ -99,8 +79,8 @@ export function StoneMarbleShowcase() {
     fontWeight: 600,
     letterSpacing: '0.12em',
     textTransform: 'uppercase',
-    color: 'var(--marble-base)',
-    textShadow: '1px 1px 1px var(--shadow-light), -1px -1px 1px var(--shadow-dark)',
+    color: showcase.colors.marble,
+    textShadow: 'var(--lp-embossed)',
     marginBottom: '24px',
     paddingBottom: '12px',
     borderBottom: '1px solid var(--marble-dark)',
@@ -122,43 +102,43 @@ export function StoneMarbleShowcase() {
     textAlign: 'center',
   };
 
-  // Letterpress styles
+  // Letterpress styles - using CSS variables
   const lpStyles = (intensity: string): React.CSSProperties => {
     const shadows: Record<string, string> = {
-      whisper: '0.5px 0.5px 0px var(--shadow-light), -0.5px -0.5px 0px var(--shadow-dark)',
-      subtle: '0.75px 0.75px 0px var(--shadow-light), -0.75px -0.75px 0px var(--shadow-dark)',
-      soft: '1px 1px 0px var(--shadow-light), -1px -1px 0px var(--shadow-dark)',
-      medium: '1px 1px 1px var(--shadow-light), -1px -1px 1px var(--shadow-dark)',
-      strong: '1.5px 1.5px 1px var(--shadow-light), -1.5px -1.5px 1px var(--shadow-dark)',
-      deep: '2px 2px 1px var(--shadow-light), -2px -2px 1px var(--shadow-dark)',
-      carved: '2px 2px 2px var(--shadow-light), -2px -2px 2px var(--shadow-dark)',
-      stamped: '3px 3px 2px var(--shadow-light), -3px -3px 2px var(--shadow-dark)',
-      monumental: '4px 4px 3px var(--shadow-light), -4px -4px 3px var(--shadow-dark)',
+      whisper: 'var(--lp-embossed-subtle)',
+      subtle: 'var(--lp-embossed-subtle)',
+      soft: 'var(--lp-embossed-subtle)',
+      medium: 'var(--lp-embossed)',
+      strong: 'var(--lp-embossed)',
+      deep: 'var(--lp-embossed)',
+      carved: 'var(--lp-embossed)',
+      stamped: 'var(--lp-embossed)',
+      monumental: 'var(--lp-embossed)',
     };
     return {
-      color: 'var(--marble-base)',
+      color: showcase.colors.marble,
       textShadow: shadows[intensity] || shadows.medium,
     };
   };
 
-  // Colored letterpress
+  // Colored letterpress - using CSS variables
   const lpColorStyles = (color: 'teal' | 'positive' | 'negative' | 'warning'): React.CSSProperties => {
     const colors: Record<string, { color: string; shadow: string }> = {
       teal: {
         color: 'var(--fing-accent-tertiary, #6fb3b5)',
-        shadow: '1px 1px 1px var(--shadow-light), -1px -1px 1px rgba(58, 106, 114, 0.4)',
+        shadow: 'var(--lp-petrol)',
       },
       positive: {
-        color: '#7cb89a',
-        shadow: '1px 1px 1px var(--shadow-light), -1px -1px 1px rgba(22, 163, 74, 0.3)',
+        color: 'var(--fing-positive)',
+        shadow: 'var(--lp-positive)',
       },
       negative: {
-        color: '#8a5a4a',
-        shadow: '1px 1px 1px var(--shadow-light), -1px -1px 1px rgba(220, 38, 38, 0.3)',
+        color: 'var(--fing-negative)',
+        shadow: 'var(--lp-negative)',
       },
       warning: {
-        color: '#a08a4a',
-        shadow: '1px 1px 1px var(--shadow-light), -1px -1px 1px rgba(217, 119, 6, 0.3)',
+        color: 'var(--fing-warning)',
+        shadow: 'var(--lp-warning)',
       },
     };
     return {
@@ -167,11 +147,11 @@ export function StoneMarbleShowcase() {
     };
   };
 
-  // Container styles
+  // Container styles - using unified showcase colors
   const raisedStyles = (level: number): React.CSSProperties => {
     const radii = [12, 14, 16, 18, 20];
     return {
-      background: 'var(--marble-base)',
+      background: showcase.colors.marble,
       borderRadius: `${radii[level - 1]}px`,
       boxShadow: `var(--raised-${level})`,
     };
@@ -180,7 +160,7 @@ export function StoneMarbleShowcase() {
   const insetStyles = (level: number): React.CSSProperties => {
     const radii = [10, 12, 14, 16, 18];
     return {
-      background: 'var(--marble-base)',
+      background: showcase.colors.marble,
       borderRadius: `${radii[level - 1]}px`,
       boxShadow: `var(--inset-${level})`,
     };
@@ -200,7 +180,7 @@ export function StoneMarbleShowcase() {
     backdropFilter: 'blur(12px)',
   };
 
-  // Button styles
+  // Button styles - using unified showcase colors and CSS variables
   const btnBaseStyles: React.CSSProperties = {
     display: 'inline-flex',
     alignItems: 'center',
@@ -213,20 +193,20 @@ export function StoneMarbleShowcase() {
     fontSize: '13px',
     fontWeight: 600,
     transition: 'all 0.15s ease',
-    color: 'var(--marble-base)',
-    textShadow: '1px 1px 1px var(--shadow-light), -1px -1px 1px var(--shadow-dark)',
+    color: showcase.colors.marble,
+    textShadow: 'var(--lp-embossed)',
   };
 
   const btnRaisedStyles: React.CSSProperties = {
     ...btnBaseStyles,
-    background: 'var(--marble-base)',
+    background: showcase.colors.marble,
     borderRadius: '12px',
     boxShadow: 'var(--raised-2)',
   };
 
   const btnInsetStyles: React.CSSProperties = {
     ...btnBaseStyles,
-    background: 'var(--marble-base)',
+    background: showcase.colors.marble,
     borderRadius: '12px',
     boxShadow: 'var(--inset-1)',
   };
@@ -247,27 +227,27 @@ export function StoneMarbleShowcase() {
     borderRadius: '12px',
   };
 
-  // Input styles
+  // Input styles - using unified showcase colors
   const inputStyles: React.CSSProperties = {
     width: '100%',
     padding: '14px 18px',
     border: 'none',
     fontFamily: 'var(--fing-font-primary)',
     fontSize: '14px',
-    background: 'var(--marble-base)',
+    background: showcase.colors.marble,
     borderRadius: '12px',
     boxShadow: 'var(--inset-2)',
     color: '#4a5568',
     outline: 'none',
   };
 
-  // Toggle styles
+  // Toggle styles - using unified showcase colors
   const toggleTrackStyles = (isActive: boolean): React.CSSProperties => ({
     width: '56px',
     height: '30px',
     background: isActive
       ? 'linear-gradient(135deg, var(--fing-accent-tertiary, #6fb3b5), var(--fing-accent-primary, #3a6a72))'
-      : 'var(--marble-base)',
+      : showcase.colors.marble,
     borderRadius: '100px',
     boxShadow: 'var(--inset-2)',
     position: 'relative',
@@ -277,7 +257,7 @@ export function StoneMarbleShowcase() {
   const toggleKnobStyles = (isActive: boolean): React.CSSProperties => ({
     width: '24px',
     height: '24px',
-    background: isActive ? 'white' : 'var(--marble-base)',
+    background: isActive ? 'white' : showcase.colors.marble,
     borderRadius: '50%',
     boxShadow: 'var(--raised-2)',
     position: 'absolute',
@@ -296,9 +276,9 @@ export function StoneMarbleShowcase() {
     fontWeight: 600,
   };
 
-  // Stat card styles
+  // Stat card styles - using unified showcase colors
   const statCardStyles: React.CSSProperties = {
-    background: 'var(--marble-base)',
+    background: showcase.colors.marble,
     borderRadius: '16px',
     boxShadow: 'var(--raised-2)',
     padding: '20px',
@@ -307,7 +287,7 @@ export function StoneMarbleShowcase() {
   const statIconStyles: React.CSSProperties = {
     width: '48px',
     height: '48px',
-    background: 'var(--marble-base)',
+    background: showcase.colors.marble,
     borderRadius: '12px',
     boxShadow: 'var(--inset-2)',
     display: 'flex',
@@ -317,11 +297,11 @@ export function StoneMarbleShowcase() {
     marginBottom: '16px',
   };
 
-  // Meter styles
+  // Meter styles - using unified showcase colors
   const meterStyles: React.CSSProperties = {
     width: '120px',
     height: '120px',
-    background: 'var(--marble-base)',
+    background: showcase.colors.marble,
     borderRadius: '50%',
     boxShadow: 'var(--raised-3)',
     display: 'flex',
@@ -332,7 +312,7 @@ export function StoneMarbleShowcase() {
   const meterInnerStyles: React.CSSProperties = {
     width: '90px',
     height: '90px',
-    background: 'var(--marble-base)',
+    background: showcase.colors.marble,
     borderRadius: '50%',
     boxShadow: 'var(--inset-3)',
     display: 'flex',
@@ -341,24 +321,24 @@ export function StoneMarbleShowcase() {
     justifyContent: 'center',
   };
 
-  // Table row styles
+  // Table row styles - using unified showcase colors
   const tableRowStyles: React.CSSProperties = {
     display: 'grid',
     gridTemplateColumns: '40px 80px 1fr 80px 80px',
     gap: '12px',
     alignItems: 'center',
     padding: '14px 16px',
-    background: 'var(--marble-base)',
+    background: showcase.colors.marble,
     borderRadius: '12px',
     boxShadow: 'var(--raised-1)',
     marginBottom: '8px',
   };
 
-  // Emblem styles
+  // Emblem styles - using unified showcase colors
   const emblemStyles: React.CSSProperties = {
     width: '100px',
     height: '100px',
-    background: 'var(--marble-base)',
+    background: showcase.colors.marble,
     borderRadius: '50%',
     boxShadow: 'var(--raised-4), inset 0 0 20px rgba(147, 157, 170, 0.1)',
     display: 'flex',
@@ -369,7 +349,7 @@ export function StoneMarbleShowcase() {
   const emblemInnerStyles: React.CSSProperties = {
     width: '70px',
     height: '70px',
-    background: 'var(--marble-base)',
+    background: showcase.colors.marble,
     borderRadius: '50%',
     boxShadow: 'var(--inset-3)',
     display: 'flex',
@@ -394,9 +374,9 @@ export function StoneMarbleShowcase() {
 
   return (
     <div style={showcaseStyles}>
-      <header style={headerStyles}>
-        <h1 style={headerTitleStyles}>FING Stone Marble</h1>
-        <p style={headerSubtitleStyles}>Sistema de diseño neumórfico completo - Referencia visual de todas las variables</p>
+      <header style={showcase.header.container}>
+        <h1 style={showcase.header.title}>FING Stone Marble</h1>
+        <p style={showcase.header.description}>Sistema de diseno neumorfico completo - Referencia visual de todas las variables</p>
       </header>
 
       <nav style={navStyles}>

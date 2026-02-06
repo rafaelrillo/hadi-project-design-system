@@ -1,6 +1,7 @@
 // Path: src/pages/styles/TypographyShowcase.tsx
 // FING Design System - Typography System Reference Guide
 import React, { useState, useMemo } from 'react';
+import { showcase } from '../showcaseStyles';
 
 type TypographySection =
   | 'overview'
@@ -27,10 +28,10 @@ export function TypographyShowcase() {
   // ═══════════════════════════════════════════════════════════════════════════
 
   const MARBLE = {
-    base: '#d5d8dc',
-    light: '#e2e5e9',
-    dark: '#c8ccd1',
-    deeper: '#b8bcc2',
+    base: 'var(--marble-base)',
+    light: 'var(--marble-light)',
+    dark: 'var(--marble-dark)',
+    deeper: 'var(--marble-deeper)',
   };
 
   const FONTS = {
@@ -586,12 +587,13 @@ export function TypographyShowcase() {
 
   const page: React.CSSProperties = {
     minHeight: '100vh',
-    background: MARBLE.base,
+    background: 'var(--marble-base)',
     padding: '40px',
     fontFamily: FONTS.primary,
   };
 
   const header: React.CSSProperties = {
+    ...showcase.header.container,
     textAlign: 'center',
     marginBottom: '40px',
   };
@@ -625,15 +627,16 @@ export function TypographyShowcase() {
   });
 
   const card: React.CSSProperties = {
-    background: MARBLE.base,
-    borderRadius: '24px',
+    background: 'var(--marble-base)',
+    borderRadius: '20px',
     boxShadow: 'var(--raised-3)',
     padding: '32px',
     marginBottom: '24px',
   };
 
   const cardTitle: React.CSSProperties = {
-    ...fx.title('strong'),
+    color: 'var(--fing-accent)',
+    textShadow: 'var(--lp-petrol-whisper)',
     fontFamily: FONTS.primary,
     fontSize: '11px',
     fontWeight: 700,
@@ -641,12 +644,12 @@ export function TypographyShowcase() {
     textTransform: 'uppercase' as const,
     marginBottom: '24px',
     paddingBottom: '16px',
-    borderBottom: `1px solid ${MARBLE.dark}`,
+    borderBottom: '1px solid var(--marble-dark)',
   };
 
   const insetBox: React.CSSProperties = {
-    background: MARBLE.base,
-    borderRadius: '16px',
+    background: 'var(--marble-base)',
+    borderRadius: '12px',
     boxShadow: 'var(--inset-2)',
     padding: '24px',
   };
@@ -681,21 +684,20 @@ export function TypographyShowcase() {
       {/* Header */}
       <header style={header}>
         <h1 style={{
-          ...fx.embossed(5),
+          ...showcase.header.title,
           fontFamily: FONTS.display,
           fontSize: '42px',
-          fontWeight: 700,
           letterSpacing: '-0.02em',
           margin: 0,
         }}>
           Typography System
         </h1>
         <p style={{
-          ...fx.caption(),
+          ...showcase.header.description,
           fontSize: '15px',
           marginTop: '12px',
         }}>
-          FING Design System - Guía de Referencia Tipográfica
+          FING Design System - Guia de Referencia Tipografica
         </p>
       </header>
 

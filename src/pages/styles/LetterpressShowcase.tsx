@@ -9,35 +9,37 @@ import { ShowcaseSection } from '../../components/showcase';
 // ═══════════════════════════════════════════════════════════════════════════════
 
 export function LetterpressShowcase() {
-  const MARBLE = {
-    base: '#d5d8dc',
-    dark: '#c8ccd1',
-  };
+  // Standard: Use CSS variables, not hardcoded colors
+  const MARBLE_BASE = 'var(--marble-base)';
 
   const pageHeaderStyles: React.CSSProperties = {
     marginBottom: '32px',
     padding: '24px',
-    background: MARBLE.base,
-    borderRadius: '15px',
+    background: MARBLE_BASE,
+    borderRadius: '20px',
     boxShadow: 'var(--raised-3)',
   };
 
   const titleStyles: React.CSSProperties = {
     fontSize: '28px',
     fontWeight: 700,
-    color: 'var(--fing-accent-primary)',
+    color: 'var(--fing-accent)',
     marginBottom: '8px',
     fontFamily: 'var(--fing-font-display)',
     textTransform: 'uppercase',
     letterSpacing: '0.1em',
+    // Standard: RAISED container → carved text (using CSS variable)
+    textShadow: 'var(--lp-petrol-whisper)',
   };
 
   const descStyles: React.CSSProperties = {
     fontSize: '14px',
-    color: 'var(--fing-text-secondary)',
+    color: 'var(--fing-text-muted)',
     fontFamily: 'var(--fing-font-mono)',
     textTransform: 'uppercase',
     letterSpacing: '0.03em',
+    // Standard: RAISED container → carved text (using CSS variable)
+    textShadow: 'var(--lp-muted)',
   };
 
   const gridStyles: React.CSSProperties = {
@@ -50,7 +52,7 @@ export function LetterpressShowcase() {
   // Letterpress Card - RAISED container
   const cardStyles: React.CSSProperties = {
     padding: '24px',
-    background: MARBLE.base,
+    background: MARBLE_BASE,
     borderRadius: '16px',
     boxShadow: 'var(--raised-2)',
   };
@@ -58,7 +60,7 @@ export function LetterpressShowcase() {
   // Letterpress Card - INSET container
   const insetCardStyles: React.CSSProperties = {
     padding: '24px',
-    background: MARBLE.dark,
+    background: 'var(--marble-dark)',
     borderRadius: '16px',
     boxShadow: 'var(--inset-2)',
   };
@@ -205,7 +207,7 @@ export function LetterpressShowcase() {
       >
         <div style={{
           padding: '24px',
-          background: MARBLE.base,
+          background: MARBLE_BASE,
           borderRadius: '16px',
           boxShadow: 'var(--raised-2)',
           marginBottom: '24px',
@@ -695,7 +697,7 @@ export function LetterpressShowcase() {
         {/* Intro */}
         <div style={{
           padding: '20px 24px',
-          background: MARBLE.base,
+          background: MARBLE_BASE,
           borderRadius: '14px',
           boxShadow: 'var(--inset-2)',
           marginBottom: '24px',
@@ -1080,7 +1082,7 @@ export function LetterpressShowcase() {
       >
         <div style={{
           padding: '24px',
-          background: MARBLE.base,
+          background: MARBLE_BASE,
           borderRadius: '16px',
           boxShadow: 'var(--raised-2)',
         }}>

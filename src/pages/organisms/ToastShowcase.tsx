@@ -5,6 +5,7 @@ import { ShowcaseSection } from '../../components/showcase';
 import { Button } from '../../components/atoms/Button';
 import { CheckCircle, AlertCircle, AlertTriangle, Info, Wifi, Download, Mail, Trash2, Sparkles } from 'lucide-react';
 import { LightEngineProvider } from '@/contexts/LightEngineContext';
+import { showcase } from '../showcaseStyles';
 
 // Glass toast demo component
 function GlassToastDemo() {
@@ -48,58 +49,33 @@ function GlassToastDemo() {
 function ToastDemoContent() {
   const { toast, success, error, warning, info, dismissAll } = useToast();
 
-  const pageHeaderStyles: React.CSSProperties = {
-    marginBottom: '32px',
-    padding: '24px',
-    background: 'var(--neu-base)',
-    borderRadius: '15px',
-    boxShadow: '-20px -20px 60px var(--neu-shadow-light), 20px 20px 60px var(--neu-shadow-dark)',
-  };
-
-  const titleStyles: React.CSSProperties = {
-    fontSize: '28px',
-    fontWeight: 700,
-    color: 'var(--fing-accent-primary)',
-    marginBottom: '8px',
-    fontFamily: 'var(--fing-font-display)',
-    textTransform: 'uppercase',
-    letterSpacing: '0.1em',
-  };
-
-  const descStyles: React.CSSProperties = {
-    fontSize: '14px',
-    color: 'var(--fing-text-secondary)',
-    fontFamily: 'var(--fing-font-mono)',
-    textTransform: 'uppercase',
-    letterSpacing: '0.03em',
-  };
 
   const specTextStyles: React.CSSProperties = {
     fontSize: '12px',
-    color: 'var(--fing-text-secondary)',
+    color: 'var(--fing-text-muted)',
     lineHeight: '1.8',
     fontFamily: 'var(--fing-font-mono)',
   };
 
   const codeBlockStyles: React.CSSProperties = {
     fontSize: '12px',
-    color: 'var(--fing-text-secondary)',
+    color: 'var(--fing-text-muted)',
     lineHeight: '1.6',
     fontFamily: 'var(--fing-font-mono)',
-    backgroundColor: 'var(--neu-base)',
+    backgroundColor: 'var(--marble-base)',
     padding: '16px',
-    borderRadius: '12px',
+    borderRadius: '20px',
     border: '1px solid rgba(0,0,0,0.05)',
-    boxShadow: 'inset 3px 3px 8px var(--neu-shadow-dark), inset -3px -3px 8px var(--neu-shadow-light)',
+    boxShadow: 'var(--inset-2)',
   };
 
   return (
-    <div style={{ background: 'var(--neu-base)', minHeight: '100%', padding: '24px' }}>
+    <div style={{ background: 'var(--marble-base)', minHeight: '100%', padding: '24px' }}>
       {/* Page Header */}
-      <header style={pageHeaderStyles}>
-        <h1 style={titleStyles}>&gt; Toast_</h1>
-        <p style={descStyles}>
-          // Sistema de notificaciones toast con múltiples tipos, posiciones y acciones
+      <header style={showcase.header.container}>
+        <h1 style={showcase.header.title}>&gt; Toast_</h1>
+        <p style={showcase.header.description}>
+          // Sistema de notificaciones toast con multiples tipos, posiciones y acciones
         </p>
       </header>
 

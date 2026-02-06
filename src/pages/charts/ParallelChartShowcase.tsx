@@ -1,10 +1,10 @@
 // Path: src/pages/charts/ParallelChartShowcase.tsx
 // FING Design System - Glass-Neumorphism Parallel Chart
-import React, { useMemo } from 'react';
+import React from 'react';
 import { ShowcaseSection } from '../../components/showcase';
 import { ParallelChart } from '../../components/charts/echarts';
 import type { ParallelDimension, ParallelSeriesData } from '../../components/charts/echarts';
-import { LightEngineProvider, useLightEngine } from '@/contexts/LightEngineContext';
+import { showcase } from '../showcaseStyles';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // SAMPLE DATA
@@ -47,60 +47,27 @@ const portfolioData: ParallelSeriesData[] = [
 // COMPONENT
 // ─────────────────────────────────────────────────────────────────────────────
 
-function ParallelChartContent() {
-  const { lightAngle } = useLightEngine();
-
-  const shadowOffsets = useMemo(() => {
-    const shadowAngle = (lightAngle + 180) * (Math.PI / 180);
-    return { x: Math.cos(shadowAngle), y: Math.sin(shadowAngle) };
-  }, [lightAngle]);
-
-  const MARBLE = {
-    base: '#d5d8dc',
-    shadowDark: '#a8acb3',
-    shadowLight: '#ffffff',
-  };
-
-  const getNeuPanelShadow = (distance: number, blur: number): string => {
-    const { x, y } = shadowOffsets;
-    return `${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}`;
-  };
-
-  const getNeuInsetShadow = (distance: number, blur: number): string => {
-    const { x, y } = shadowOffsets;
-    return `inset ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}`;
-  };
-
-  const pageHeaderStyles: React.CSSProperties = {
-    marginBottom: '32px', padding: '24px', background: MARBLE.base, borderRadius: '15px',
-    boxShadow: getNeuPanelShadow(20, 60), transition: 'box-shadow 50ms linear',
-  };
-
-  const titleStyles: React.CSSProperties = {
-    fontSize: '28px', fontWeight: 700, color: 'var(--fing-accent-primary)', marginBottom: '8px',
-    fontFamily: 'var(--fing-font-display)', textTransform: 'uppercase', letterSpacing: '0.1em',
-  };
-
-  const descStyles: React.CSSProperties = {
-    fontSize: '14px', color: 'var(--fing-text-secondary)', fontFamily: 'var(--fing-font-mono)',
-    textTransform: 'uppercase', letterSpacing: '0.03em',
-  };
-
+export function ParallelChartShowcase() {
   const chartContainerStyles: React.CSSProperties = {
-    padding: '24px', background: MARBLE.base, borderRadius: '15px',
-    boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear',
+    padding: '24px',
+    background: 'var(--marble-base)',
+    borderRadius: '20px',
+    boxShadow: 'var(--raised-2)',
   };
 
   const tableContainerStyles: React.CSSProperties = {
-    padding: '20px', borderRadius: '15px', boxShadow: getNeuInsetShadow(5, 15),
-    background: MARBLE.base, overflowX: 'auto', transition: 'box-shadow 50ms linear',
+    padding: '20px',
+    borderRadius: '20px',
+    boxShadow: 'var(--inset-2)',
+    background: 'var(--marble-base)',
+    overflowX: 'auto',
   };
 
   return (
-    <div style={{ background: MARBLE.base, minHeight: '100%', padding: '24px' }}>
-      <header style={pageHeaderStyles}>
-        <h1 style={titleStyles}>&gt; ParallelChart_</h1>
-        <p style={descStyles}>// Visualización multi-dimensional con ejes paralelos</p>
+    <div style={{ background: 'var(--marble-base)', minHeight: '100%', padding: '24px' }}>
+      <header style={showcase.header.container}>
+        <h1 style={showcase.header.title}>&gt; ParallelChart_</h1>
+        <p style={showcase.header.description}>// Visualizacion multi-dimensional con ejes paralelos</p>
       </header>
 
       <ShowcaseSection title="Stock Metrics Comparison" description="Compare fundamental metrics across stocks">
@@ -127,15 +94,15 @@ function ParallelChartContent() {
         </div>
       </ShowcaseSection>
 
-      <ShowcaseSection title="Especificaciones Técnicas">
+      <ShowcaseSection title="Especificaciones Tecnicas">
         <div style={tableContainerStyles}>
           <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12px', fontFamily: 'var(--fing-font-mono)' }}>
             <thead>
               <tr>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent-primary)', fontWeight: 600 }}>Prop</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent-primary)', fontWeight: 600 }}>Type</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent-primary)', fontWeight: 600 }}>Default</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent-primary)', fontWeight: 600 }}>Description</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent)', fontWeight: 600 }}>Prop</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent)', fontWeight: 600 }}>Type</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent)', fontWeight: 600 }}>Default</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent)', fontWeight: 600 }}>Description</th>
               </tr>
             </thead>
             <tbody>
@@ -148,9 +115,9 @@ function ParallelChartContent() {
               ].map((row, i) => (
                 <tr key={i}>
                   <td style={{ padding: '12px 16px', color: 'var(--fing-text-primary)' }}>{row.prop}</td>
-                  <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.type}</td>
-                  <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.default}</td>
-                  <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.desc}</td>
+                  <td style={{ padding: '12px 16px', color: 'var(--fing-text-muted)' }}>{row.type}</td>
+                  <td style={{ padding: '12px 16px', color: 'var(--fing-text-muted)' }}>{row.default}</td>
+                  <td style={{ padding: '12px 16px', color: 'var(--fing-text-muted)' }}>{row.desc}</td>
                 </tr>
               ))}
             </tbody>
@@ -158,14 +125,6 @@ function ParallelChartContent() {
         </div>
       </ShowcaseSection>
     </div>
-  );
-}
-
-export function ParallelChartShowcase() {
-  return (
-    <LightEngineProvider initialAnimating={true} initialSpeed={0.3}>
-      <ParallelChartContent />
-    </LightEngineProvider>
   );
 }
 

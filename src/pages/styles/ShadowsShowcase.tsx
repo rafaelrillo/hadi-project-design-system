@@ -5,7 +5,7 @@
 
 import type { CSSProperties } from 'react';
 import { useMemo } from 'react';
-import { ShowcaseSection, ComponentPreview } from '../../components/showcase';
+import { ShowcaseSection } from '../../components/showcase';
 import { LightEngineProvider, useLightEngine } from '@/contexts/LightEngineContext';
 import { Label, Heading4, Paragraph } from '../../components/atoms/Typography';
 import { Sun } from 'lucide-react';
@@ -101,9 +101,8 @@ function ShadowsCatalogContent() {
     marginBottom: '32px',
     padding: '24px',
     background: MARBLE_BASE,
-    borderRadius: '15px',
-    boxShadow: getNeuPanelShadow(20, 60),
-    transition: 'box-shadow 50ms linear',
+    borderRadius: '20px',
+    boxShadow: 'var(--raised-3)',
   };
 
   const titleStyles: CSSProperties = {
@@ -111,17 +110,21 @@ function ShadowsCatalogContent() {
     fontWeight: 700,
     color: 'var(--fing-accent)',
     marginBottom: '8px',
-    fontFamily: 'var(--fing-font-mono)',
+    fontFamily: 'var(--fing-font-display)',
     textTransform: 'uppercase',
     letterSpacing: '0.1em',
+    // Standard: RAISED container → carved text (using CSS variable)
+    textShadow: 'var(--lp-petrol-whisper)',
   };
 
   const descStyles: CSSProperties = {
     fontSize: '14px',
-    color: 'var(--foreground-muted)',
+    color: 'var(--fing-text-muted)',
     fontFamily: 'var(--fing-font-mono)',
     textTransform: 'uppercase',
     letterSpacing: '0.03em',
+    // Standard: RAISED container → carved text (using CSS variable)
+    textShadow: 'var(--lp-muted)',
   };
 
   // Shadow level specs
@@ -158,39 +161,35 @@ function ShadowsCatalogContent() {
         title="RAISED Shadows (5 Levels)"
         description="Elementos que flotan sobre la superficie de marmol. Referencia: FingHome buttons, cards"
       >
-        <ComponentPreview>
-          <div style={{ width: '100%' }}>
-            <div style={raised(3)}>
-              <Label effect="carved-muted" style={{ color: 'var(--foreground-muted)' }}>
-                RAISED — External dual shadows creating elevation
-              </Label>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '32px', justifyContent: 'center', marginTop: '20px' }}>
-                {raisedLevels.map(({ level, offset, blur, use }) => (
-                  <div key={level} style={{ textAlign: 'center', maxWidth: '140px' }}>
-                    <div style={{ ...demoBox, boxShadow: `var(--raised-${level})` }}>
-                      <Heading4 effect="carved-accent-strong" style={{ color: 'var(--fing-accent)', fontSize: '24px' }}>
-                        {level}
-                      </Heading4>
-                      <span style={{ fontSize: '10px', color: 'var(--foreground-muted)', fontFamily: 'var(--fing-font-mono)' }}>
-                        Level
-                      </span>
-                    </div>
-                    <div style={varName}>--raised-{level}</div>
-                    <div style={specLabel}>{offset} / {blur} blur</div>
-                    <div style={{ ...specLabel, fontSize: '9px' }}>{use}</div>
-                  </div>
-                ))}
+        <div style={raised(3)}>
+          <Label effect="carved-muted" style={{ color: 'var(--foreground-muted)' }}>
+            RAISED — External dual shadows creating elevation
+          </Label>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '32px', justifyContent: 'center', marginTop: '20px' }}>
+            {raisedLevels.map(({ level, offset, blur, use }) => (
+              <div key={level} style={{ textAlign: 'center', maxWidth: '140px' }}>
+                <div style={{ ...demoBox, boxShadow: `var(--raised-${level})` }}>
+                  <Heading4 effect="carved-accent-strong" style={{ color: 'var(--fing-accent)', fontSize: '24px' }}>
+                    {level}
+                  </Heading4>
+                  <span style={{ fontSize: '10px', color: 'var(--foreground-muted)', fontFamily: 'var(--fing-font-mono)' }}>
+                    Level
+                  </span>
+                </div>
+                <div style={varName}>--raised-{level}</div>
+                <div style={specLabel}>{offset} / {blur} blur</div>
+                <div style={{ ...specLabel, fontSize: '9px' }}>{use}</div>
               </div>
-
-              {/* FingHome reference */}
-              <div style={{ marginTop: '24px', ...inset(1), padding: '16px' }}>
-                <Label effect="embossed" style={{ fontSize: '10px' }}>
-                  FingHome: btnPrimary=raised-3, btnPrimary:hover=raised-4, btnSecondary=raised-2, cards=raised-3
-                </Label>
-              </div>
-            </div>
+            ))}
           </div>
-        </ComponentPreview>
+
+          {/* FingHome reference */}
+          <div style={{ marginTop: '24px', ...inset(1), padding: '16px' }}>
+            <Label effect="embossed" style={{ fontSize: '10px' }}>
+              FingHome: btnPrimary=raised-3, btnPrimary:hover=raised-4, btnSecondary=raised-2, cards=raised-3
+            </Label>
+          </div>
+        </div>
       </ShowcaseSection>
 
       {/* ═══════════════════════════════════════════════════════════════════
@@ -200,39 +199,35 @@ function ShadowsCatalogContent() {
         title="INSET Shadows (5 Levels)"
         description="Cavidades talladas en la superficie de marmol. Referencia: FingHome logo, synthesis, voice"
       >
-        <ComponentPreview>
-          <div style={{ width: '100%' }}>
-            <div style={inset(2)}>
-              <Label effect="embossed" style={{ fontSize: '11px' }}>
-                INSET — Internal dual shadows creating depth
-              </Label>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '32px', justifyContent: 'center', marginTop: '20px' }}>
-                {insetLevels.map(({ level, offset, blur, use }) => (
-                  <div key={level} style={{ textAlign: 'center', maxWidth: '140px' }}>
-                    <div style={{ ...demoBox, boxShadow: `var(--inset-${level})` }}>
-                      <Heading4 effect="embossed-subtle" style={{ fontSize: '24px' }}>
-                        {level}
-                      </Heading4>
-                      <span style={{ fontSize: '10px', fontFamily: 'var(--fing-font-mono)' }}>
-                        Level
-                      </span>
-                    </div>
-                    <div style={varName}>--inset-{level}</div>
-                    <div style={specLabel}>{offset} / {blur} blur</div>
-                    <div style={{ ...specLabel, fontSize: '9px' }}>{use}</div>
-                  </div>
-                ))}
+        <div style={inset(2)}>
+          <Label effect="embossed" style={{ fontSize: '11px' }}>
+            INSET — Internal dual shadows creating depth
+          </Label>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '32px', justifyContent: 'center', marginTop: '20px' }}>
+            {insetLevels.map(({ level, offset, blur, use }) => (
+              <div key={level} style={{ textAlign: 'center', maxWidth: '140px' }}>
+                <div style={{ ...demoBox, boxShadow: `var(--inset-${level})` }}>
+                  <Heading4 effect="embossed-subtle" style={{ fontSize: '24px' }}>
+                    {level}
+                  </Heading4>
+                  <span style={{ fontSize: '10px', fontFamily: 'var(--fing-font-mono)' }}>
+                    Level
+                  </span>
+                </div>
+                <div style={varName}>--inset-{level}</div>
+                <div style={specLabel}>{offset} / {blur} blur</div>
+                <div style={{ ...specLabel, fontSize: '9px' }}>{use}</div>
               </div>
-
-              {/* FingHome reference */}
-              <div style={{ marginTop: '24px', ...raised(1), padding: '16px' }}>
-                <Label effect="carved-muted" style={{ fontSize: '10px' }}>
-                  FingHome: heroLogo=inset-3, synthesisCard=inset-3, voiceExamples=inset-2, antiPill=inset-2
-                </Label>
-              </div>
-            </div>
+            ))}
           </div>
-        </ComponentPreview>
+
+          {/* FingHome reference */}
+          <div style={{ marginTop: '24px', ...raised(1), padding: '16px' }}>
+            <Label effect="carved-muted" style={{ fontSize: '10px' }}>
+              FingHome: heroLogo=inset-3, synthesisCard=inset-3, voiceExamples=inset-2, antiPill=inset-2
+            </Label>
+          </div>
+        </div>
       </ShowcaseSection>
 
       {/* ═══════════════════════════════════════════════════════════════════
@@ -242,70 +237,66 @@ function ShadowsCatalogContent() {
         title="Stone Marble Hierarchy"
         description="RAISED > INSET > GLASS — Nunca anidar mismo nivel, nunca saltar niveles"
       >
-        <ComponentPreview>
-          <div style={{ width: '100%' }}>
-            {/* RAISED container */}
-            <div style={{ ...raised(3), position: 'relative' }}>
-              <Label effect="carved-steel" style={{ color: 'var(--fing-text-accent)', fontSize: '10px' }}>
-                LEVEL 1: RAISED (--raised-3)
-              </Label>
-              <Paragraph effect="carved-muted" style={{ color: 'var(--foreground-muted)', fontSize: '12px', marginTop: '4px' }}>
-                Container principal flotando sobre fondo. Texto: carved (hundido)
-              </Paragraph>
+        {/* RAISED container */}
+        <div style={{ ...raised(3), position: 'relative' }}>
+          <Label effect="carved-steel" style={{ color: 'var(--fing-text-accent)', fontSize: '10px' }}>
+            LEVEL 1: RAISED (--raised-3)
+          </Label>
+          <Paragraph effect="carved-muted" style={{ color: 'var(--foreground-muted)', fontSize: '12px', marginTop: '4px' }}>
+            Container principal flotando sobre fondo. Texto: carved (hundido)
+          </Paragraph>
 
-              {/* INSET inside RAISED */}
-              <div style={{ ...inset(2), marginTop: '16px' }}>
-                <Label effect="embossed" style={{ fontSize: '10px' }}>
-                  LEVEL 2: INSET (--inset-2)
+          {/* INSET inside RAISED */}
+          <div style={{ ...inset(2), marginTop: '16px' }}>
+            <Label effect="embossed" style={{ fontSize: '10px' }}>
+              LEVEL 2: INSET (--inset-2)
+            </Label>
+            <Paragraph effect="embossed-subtle" style={{ fontSize: '12px', marginTop: '4px' }}>
+              Seccion tallada dentro del raised. Texto: embossed (elevado)
+            </Paragraph>
+
+            {/* GLASS inside INSET */}
+            <div style={{ display: 'flex', gap: '12px', marginTop: '16px' }}>
+              <div style={{ ...glass, flex: 1 }}>
+                <Label effect="carved-whisper" style={{ fontSize: '10px' }}>
+                  LEVEL 3: GLASS
                 </Label>
-                <Paragraph effect="embossed-subtle" style={{ fontSize: '12px', marginTop: '4px' }}>
-                  Seccion tallada dentro del raised. Texto: embossed (elevado)
+                <Paragraph effect="carved-whisper" style={{ fontSize: '11px', marginTop: '2px' }}>
+                  Item flotando dentro del inset
                 </Paragraph>
-
-                {/* GLASS inside INSET */}
-                <div style={{ display: 'flex', gap: '12px', marginTop: '16px' }}>
-                  <div style={{ ...glass, flex: 1 }}>
-                    <Label effect="carved-whisper" style={{ fontSize: '10px' }}>
-                      LEVEL 3: GLASS
-                    </Label>
-                    <Paragraph effect="carved-whisper" style={{ fontSize: '11px', marginTop: '2px' }}>
-                      Item flotando dentro del inset
-                    </Paragraph>
-                  </div>
-                  <div style={{ ...glass, flex: 1, background: 'var(--glass-bg-hover)' }}>
-                    <Label effect="carved-whisper" style={{ fontSize: '10px' }}>
-                      GLASS :hover
-                    </Label>
-                    <Paragraph effect="carved-whisper" style={{ fontSize: '11px', marginTop: '2px' }}>
-                      --glass-bg-hover
-                    </Paragraph>
-                  </div>
-                  <div style={{ ...glass, flex: 1, background: 'var(--glass-bg-active)' }}>
-                    <Label effect="carved-whisper" style={{ fontSize: '10px' }}>
-                      GLASS :active
-                    </Label>
-                    <Paragraph effect="carved-whisper" style={{ fontSize: '11px', marginTop: '2px' }}>
-                      --glass-bg-active
-                    </Paragraph>
-                  </div>
-                </div>
               </div>
-
-              {/* Rules */}
-              <div style={{ marginTop: '16px', display: 'flex', gap: '12px', fontSize: '10px', fontFamily: 'var(--fing-font-mono)' }}>
-                <Label effect="carved-positive" style={{ color: 'var(--fing-positive)', fontSize: '10px' }}>
-                  DO: RAISED &gt; INSET &gt; GLASS
+              <div style={{ ...glass, flex: 1, background: 'var(--glass-bg-hover)' }}>
+                <Label effect="carved-whisper" style={{ fontSize: '10px' }}>
+                  GLASS :hover
                 </Label>
-                <Label effect="carved-negative" style={{ color: 'var(--fing-negative)', fontSize: '10px' }}>
-                  NO: RAISED &gt; RAISED (same level)
+                <Paragraph effect="carved-whisper" style={{ fontSize: '11px', marginTop: '2px' }}>
+                  --glass-bg-hover
+                </Paragraph>
+              </div>
+              <div style={{ ...glass, flex: 1, background: 'var(--glass-bg-active)' }}>
+                <Label effect="carved-whisper" style={{ fontSize: '10px' }}>
+                  GLASS :active
                 </Label>
-                <Label effect="carved-negative" style={{ color: 'var(--fing-negative)', fontSize: '10px' }}>
-                  NO: FONDO &gt; GLASS (skip level)
-                </Label>
+                <Paragraph effect="carved-whisper" style={{ fontSize: '11px', marginTop: '2px' }}>
+                  --glass-bg-active
+                </Paragraph>
               </div>
             </div>
           </div>
-        </ComponentPreview>
+
+          {/* Rules */}
+          <div style={{ marginTop: '16px', display: 'flex', gap: '12px', fontSize: '10px', fontFamily: 'var(--fing-font-mono)' }}>
+            <Label effect="carved-positive" style={{ color: 'var(--fing-positive)', fontSize: '10px' }}>
+              DO: RAISED &gt; INSET &gt; GLASS
+            </Label>
+            <Label effect="carved-negative" style={{ color: 'var(--fing-negative)', fontSize: '10px' }}>
+              NO: RAISED &gt; RAISED (same level)
+            </Label>
+            <Label effect="carved-negative" style={{ color: 'var(--fing-negative)', fontSize: '10px' }}>
+              NO: FONDO &gt; GLASS (skip level)
+            </Label>
+          </div>
+        </div>
       </ShowcaseSection>
 
       {/* ═══════════════════════════════════════════════════════════════════
@@ -315,66 +306,62 @@ function ShadowsCatalogContent() {
         title="Dashboard Header Shadows"
         description="Uso real de sombras en DashboardPage. Referencia: DashboardPage.module.css"
       >
-        <ComponentPreview>
-          <div style={{ width: '100%' }}>
-            <div style={raised(3)}>
-              <Label effect="carved-muted" style={{ color: 'var(--foreground-muted)', fontSize: '10px' }}>
-                .greetingFrame — box-shadow: var(--raised-3)
+        <div style={raised(3)}>
+          <Label effect="carved-muted" style={{ color: 'var(--foreground-muted)', fontSize: '10px' }}>
+            .greetingFrame — box-shadow: var(--raised-3)
+          </Label>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginTop: '12px' }}>
+            {/* Avatar */}
+            <div style={{
+              width: '48px', height: '48px', borderRadius: '50%',
+              background: 'var(--marble-base)', boxShadow: 'var(--raised-3)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+            }}>
+              <span style={{
+                fontSize: '20px', fontWeight: 600, color: 'var(--fing-accent)',
+                textShadow: 'var(--lp-petrol-strong)', fontFamily: 'var(--fing-font-mono)',
+              }}>
+                JD
+              </span>
+            </div>
+            <div>
+              <Heading4 effect="carved-accent-strong" style={{ color: 'var(--fing-accent)', fontSize: '24px' }}>
+                Welcome, John
+              </Heading4>
+              <Label effect="carved-muted" style={{ fontSize: '10px', marginTop: '2px' }}>
+                .headerAvatar — box-shadow: var(--raised-3)
               </Label>
-
-              <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginTop: '12px' }}>
-                {/* Avatar */}
-                <div style={{
-                  width: '48px', height: '48px', borderRadius: '50%',
-                  background: 'var(--marble-base)', boxShadow: 'var(--raised-3)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                }}>
-                  <span style={{
-                    fontSize: '20px', fontWeight: 600, color: 'var(--fing-accent)',
-                    textShadow: 'var(--lp-petrol-strong)', fontFamily: 'var(--fing-font-mono)',
-                  }}>
-                    JD
-                  </span>
-                </div>
-                <div>
-                  <Heading4 effect="carved-accent-strong" style={{ color: 'var(--fing-accent)', fontSize: '24px' }}>
-                    Welcome, John
-                  </Heading4>
-                  <Label effect="carved-muted" style={{ fontSize: '10px', marginTop: '2px' }}>
-                    .headerAvatar — box-shadow: var(--raised-3)
-                  </Label>
-                </div>
-              </div>
-
-              {/* Balance pill */}
-              <div style={{ marginTop: '20px', ...raised(3), padding: '20px', borderRadius: '20px' }}>
-                <Label effect="carved-muted" style={{ fontSize: '10px' }}>
-                  .balancePill — box-shadow: var(--raised-3)
-                </Label>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '24px', marginTop: '8px' }}>
-                  <div>
-                    <span style={{
-                      fontSize: '32px', fontWeight: 700, color: 'var(--foreground)',
-                      textShadow: 'var(--lp-carved-lg)', fontFamily: 'var(--fing-font-mono)',
-                    }}>
-                      $124,500.00
-                    </span>
-                  </div>
-                  <div style={{
-                    width: '36px', height: '36px', borderRadius: '50%',
-                    background: 'var(--marble-base)', boxShadow: 'var(--inset-2)',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  }}>
-                    <span style={{ fontSize: '14px' }}>💎</span>
-                  </div>
-                  <Label effect="carved-muted" style={{ fontSize: '10px' }}>
-                    .balancePillIcon — var(--inset-2)
-                  </Label>
-                </div>
-              </div>
             </div>
           </div>
-        </ComponentPreview>
+
+          {/* Balance pill */}
+          <div style={{ marginTop: '20px', ...raised(3), padding: '20px', borderRadius: '20px' }}>
+            <Label effect="carved-muted" style={{ fontSize: '10px' }}>
+              .balancePill — box-shadow: var(--raised-3)
+            </Label>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '24px', marginTop: '8px' }}>
+              <div>
+                <span style={{
+                  fontSize: '32px', fontWeight: 700, color: 'var(--foreground)',
+                  textShadow: 'var(--lp-carved-lg)', fontFamily: 'var(--fing-font-mono)',
+                }}>
+                  $124,500.00
+                </span>
+              </div>
+              <div style={{
+                width: '36px', height: '36px', borderRadius: '50%',
+                background: 'var(--marble-base)', boxShadow: 'var(--inset-2)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+              }}>
+                <span style={{ fontSize: '14px' }}>💎</span>
+              </div>
+              <Label effect="carved-muted" style={{ fontSize: '10px' }}>
+                .balancePillIcon — var(--inset-2)
+              </Label>
+            </div>
+          </div>
+        </div>
       </ShowcaseSection>
 
       {/* ═══════════════════════════════════════════════════════════════════
@@ -384,9 +371,7 @@ function ShadowsCatalogContent() {
         title="Specialty Shadows"
         description="Sombras compuestas extraidas de FingHome. Definidas en shadows.css"
       >
-        <ComponentPreview>
-          <div style={{ width: '100%' }}>
-            <div style={raised(2)}>
+        <div style={raised(2)}>
               <Label effect="carved-muted" style={{ color: 'var(--foreground-muted)' }}>
                 Specialty — Shadows with multiple layers or unique compositions
               </Label>
@@ -481,9 +466,7 @@ function ShadowsCatalogContent() {
                   ))}
                 </div>
               </div>
-            </div>
-          </div>
-        </ComponentPreview>
+        </div>
       </ShowcaseSection>
 
       {/* ═══════════════════════════════════════════════════════════════════
@@ -493,9 +476,7 @@ function ShadowsCatalogContent() {
         title="Glass System"
         description="Items semi-transparentes dentro de contenedores INSET. Referencia: DashboardPage glass cards"
       >
-        <ComponentPreview>
-          <div style={{ width: '100%' }}>
-            <div style={raised(2)}>
+        <div style={raised(2)}>
               <Label effect="carved-muted" style={{ color: 'var(--foreground-muted)' }}>
                 Glass items float INSIDE inset containers — never directly on RAISED
               </Label>
@@ -596,9 +577,7 @@ function ShadowsCatalogContent() {
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </ComponentPreview>
+        </div>
       </ShowcaseSection>
 
       {/* ═══════════════════════════════════════════════════════════════════
@@ -608,9 +587,7 @@ function ShadowsCatalogContent() {
         title="Semantic Shadow Aliases"
         description="Aliases semanticos que apuntan a --fing-neu-* (Light Engine). Definidos en theme.css"
       >
-        <ComponentPreview>
-          <div style={{ width: '100%' }}>
-            <div style={raised(2)}>
+        <div style={raised(2)}>
               <Label effect="carved-muted" style={{ color: 'var(--foreground-muted)' }}>
                 Semantic names for component shadows — Reference Light Engine tokens
               </Label>
@@ -658,9 +635,7 @@ function ShadowsCatalogContent() {
                   ))}
                 </tbody>
               </table>
-            </div>
-          </div>
-        </ComponentPreview>
+        </div>
       </ShowcaseSection>
 
       {/* ═══════════════════════════════════════════════════════════════════
@@ -670,9 +645,7 @@ function ShadowsCatalogContent() {
         title="Glow Effects"
         description="Brillos de acento y estado semantico. Definidos en shadows.css"
       >
-        <ComponentPreview>
-          <div style={{ width: '100%' }}>
-            <div style={raised(2)}>
+        <div style={raised(2)}>
               {/* Accent glows */}
               <Label effect="carved-steel" style={{ color: 'var(--fing-text-accent)', fontSize: '10px' }}>
                 ACCENT GLOW — Petrol color glow (3 sizes)
@@ -753,9 +726,7 @@ function ShadowsCatalogContent() {
                   ))}
                 </div>
               </div>
-            </div>
-          </div>
-        </ComponentPreview>
+        </div>
       </ShowcaseSection>
 
       {/* ═══════════════════════════════════════════════════════════════════
@@ -765,9 +736,7 @@ function ShadowsCatalogContent() {
         title="Traditional Shadows"
         description="Sombras unidireccionales (no-neumorficas) para casos especificos. Definidas en shadows.css"
       >
-        <ComponentPreview>
-          <div style={{ width: '100%' }}>
-            <div style={raised(2)}>
+        <div style={raised(2)}>
               <Label effect="carved-muted" style={{ color: 'var(--foreground-muted)' }}>
                 Unidirectional drop shadows — Based on --fing-border-base-rgb (163, 177, 198)
               </Label>
@@ -826,9 +795,7 @@ function ShadowsCatalogContent() {
                   ))}
                 </div>
               </div>
-            </div>
-          </div>
-        </ComponentPreview>
+        </div>
       </ShowcaseSection>
 
       {/* ═══════════════════════════════════════════════════════════════════

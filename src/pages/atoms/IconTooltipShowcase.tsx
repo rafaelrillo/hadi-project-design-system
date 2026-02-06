@@ -5,6 +5,7 @@ import { Icon } from '../../components/atoms/Icon';
 import { Tooltip } from '../../components/atoms/Tooltip';
 import { ShowcaseSection } from '../../components/showcase';
 import { LightEngineProvider, useLightEngine } from '@/contexts/LightEngineContext';
+import { showcase } from '../showcaseStyles';
 import { Home, Search, Settings, User, Bell, Mail, Star, Download, Edit, Trash2, Eye, Check, X, AlertCircle, Info, HelpCircle, Terminal, Code, Database, Cpu } from 'lucide-react';
 
 function IconTooltipContent() {
@@ -15,20 +16,14 @@ function IconTooltipContent() {
     return { x: Math.cos(shadowAngle), y: Math.sin(shadowAngle) };
   }, [lightAngle]);
 
-  const MARBLE = {
-    base: '#d5d8dc',
-    shadowDark: '#a8acb3',
-    shadowLight: '#ffffff',
-  };
-
   const getNeuPanelShadow = (distance: number, blur: number): string => {
     const { x, y } = shadowOffsets;
-    return `${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}`;
+    return `${-x * distance}px ${-y * distance}px ${blur}px var(--shadow-light), ${x * distance}px ${y * distance}px ${blur}px var(--shadow-dark)`;
   };
 
   const getNeuInsetShadow = (distance: number, blur: number): string => {
     const { x, y } = shadowOffsets;
-    return `inset ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}`;
+    return `inset ${x * distance}px ${y * distance}px ${blur}px var(--shadow-dark), inset ${-x * distance}px ${-y * distance}px ${blur}px var(--shadow-light)`;
   };
 
   const getGlassReflection = (): string => {
@@ -38,38 +33,11 @@ function IconTooltipContent() {
     return `inset 0 ${-y < 0 ? '-1px' : '1px'} 0 hsla(0, 0%, 100%, ${topHighlight}), inset ${-x < 0 ? '-1px' : '1px'} 0 0 hsla(0, 0%, 100%, ${leftHighlight})`;
   };
 
-  const pageHeaderStyles: React.CSSProperties = {
-    marginBottom: '32px',
-    padding: '24px',
-    background: MARBLE.base,
-    borderRadius: '15px',
-    boxShadow: getNeuPanelShadow(20, 60),
-    transition: 'box-shadow 50ms linear',
-  };
-
-  const titleStyles: React.CSSProperties = {
-    fontSize: '28px',
-    fontWeight: 700,
-    color: 'var(--fing-accent-primary)',
-    marginBottom: '8px',
-    fontFamily: 'var(--fing-font-display)',
-    textTransform: 'uppercase',
-    letterSpacing: '0.1em',
-  };
-
-  const descStyles: React.CSSProperties = {
-    fontSize: '14px',
-    color: 'var(--fing-text-secondary)',
-    fontFamily: 'var(--fing-font-mono)',
-    textTransform: 'uppercase',
-    letterSpacing: '0.03em',
-  };
-
   const iconBoxStyles: React.CSSProperties = {
     width: '52px',
     height: '52px',
-    background: MARBLE.base,
-    borderRadius: '15px',
+    background: 'var(--marble-base)',
+    borderRadius: '20px',
     boxShadow: getNeuPanelShadow(8, 24),
     display: 'flex',
     alignItems: 'center',
@@ -83,7 +51,7 @@ function IconTooltipContent() {
     background: `linear-gradient(${lightAngle + 45}deg, hsla(${hue}, ${sat}%, 70%, 0.28) 0%, hsla(${hue}, ${sat}%, 65%, 0.12) 50%, hsla(${hue}, ${sat}%, 60%, 0.20) 100%)`,
     backdropFilter: 'blur(8px)',
     WebkitBackdropFilter: 'blur(8px)',
-    borderRadius: '15px',
+    borderRadius: '20px',
     border: `1px solid hsla(${hue}, ${sat}%, 80%, 0.35)`,
     display: 'flex',
     alignItems: 'center',
@@ -93,10 +61,10 @@ function IconTooltipContent() {
   });
 
   return (
-    <div style={{ background: MARBLE.base, minHeight: '100%', padding: '24px' }}>
-      <header style={pageHeaderStyles}>
-        <h1 style={titleStyles}>&gt; Icon & Tooltip_</h1>
-        <p style={descStyles}>// Iconos Lucide con 4 tamaños y Tooltip con variantes</p>
+    <div style={{ background: 'var(--marble-base)', minHeight: '100%', padding: '24px' }}>
+      <header style={showcase.header.container}>
+        <h1 style={showcase.header.title}>&gt; Icon & Tooltip_</h1>
+        <p style={showcase.header.description}>// Iconos Lucide con 4 tamaños y Tooltip con variantes</p>
       </header>
 
       <ShowcaseSection
@@ -108,8 +76,8 @@ function IconTooltipContent() {
           alignItems: 'center',
           gap: '24px',
           padding: '24px',
-          background: MARBLE.base,
-          borderRadius: '15px',
+          background: 'var(--marble-base)',
+          borderRadius: '20px',
           boxShadow: getNeuPanelShadow(8, 24),
           transition: 'box-shadow 50ms linear',
         }}>
@@ -123,7 +91,7 @@ function IconTooltipContent() {
               <div style={iconBoxStyles}>
                 <Icon icon={Terminal} size={item.size} />
               </div>
-              <span style={{ fontSize: '11px', color: '#636E72', fontFamily: 'var(--fing-font-mono)' }}>{item.label}</span>
+              <span style={{ fontSize: '11px', color: 'var(--fing-text-muted)', fontFamily: 'var(--fing-font-mono)' }}>{item.label}</span>
             </div>
           ))}
         </div>
@@ -151,7 +119,7 @@ function IconTooltipContent() {
               <div style={glassIconBox(item.hue, item.sat)}>
                 <item.icon size={24} color={`hsl(${item.hue}, ${item.sat * 0.8}%, 30%)`} />
               </div>
-              <div style={{ marginTop: '8px', fontSize: '11px', color: '#636E72', fontFamily: 'var(--fing-font-mono)' }}>
+              <div style={{ marginTop: '8px', fontSize: '11px', color: 'var(--fing-text-muted)', fontFamily: 'var(--fing-font-mono)' }}>
                 {item.label}
               </div>
             </div>
@@ -187,7 +155,7 @@ function IconTooltipContent() {
               <div style={iconBoxStyles}>
                 <Icon icon={IconComp} size="md" color="primary" />
               </div>
-              <span style={{ fontSize: '10px', textAlign: 'center', color: '#636E72', fontFamily: 'var(--fing-font-mono)', textTransform: 'uppercase' }}>{label}</span>
+              <span style={{ fontSize: '10px', textAlign: 'center', color: 'var(--fing-text-muted)', fontFamily: 'var(--fing-font-mono)', textTransform: 'uppercase' }}>{label}</span>
             </div>
           ))}
         </div>
@@ -202,8 +170,8 @@ function IconTooltipContent() {
           gap: '40px',
           alignItems: 'center',
           padding: '32px',
-          background: MARBLE.base,
-          borderRadius: '15px',
+          background: 'var(--marble-base)',
+          borderRadius: '20px',
           boxShadow: getNeuPanelShadow(8, 24),
           justifyContent: 'center',
           transition: 'box-shadow 50ms linear',
@@ -214,7 +182,7 @@ function IconTooltipContent() {
                 <Icon icon={Info} size="md" color="primary" />
               </div>
             </Tooltip>
-            <span style={{ fontSize: '11px', color: '#636E72', fontFamily: 'var(--fing-font-mono)', textTransform: 'uppercase' }}>Dark (hover)</span>
+            <span style={{ fontSize: '11px', color: 'var(--fing-text-muted)', fontFamily: 'var(--fing-font-mono)', textTransform: 'uppercase' }}>Dark (hover)</span>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
             <Tooltip content="Tooltip claro" variant="light">
@@ -222,7 +190,7 @@ function IconTooltipContent() {
                 <Icon icon={HelpCircle} size="md" color="primary" />
               </div>
             </Tooltip>
-            <span style={{ fontSize: '11px', color: '#636E72', fontFamily: 'var(--fing-font-mono)', textTransform: 'uppercase' }}>Light (hover)</span>
+            <span style={{ fontSize: '11px', color: 'var(--fing-text-muted)', fontFamily: 'var(--fing-font-mono)', textTransform: 'uppercase' }}>Light (hover)</span>
           </div>
         </div>
       </ShowcaseSection>
@@ -236,8 +204,8 @@ function IconTooltipContent() {
           gridTemplateColumns: 'repeat(2, 1fr)',
           gap: '32px',
           padding: '48px',
-          background: MARBLE.base,
-          borderRadius: '15px',
+          background: 'var(--marble-base)',
+          borderRadius: '20px',
           boxShadow: getNeuInsetShadow(5, 15),
           transition: 'box-shadow 50ms linear',
         }}>
@@ -253,7 +221,7 @@ function IconTooltipContent() {
                   <Icon icon={AlertCircle} size="md" color="primary" />
                 </div>
               </Tooltip>
-              <span style={{ fontSize: '11px', color: '#636E72', fontFamily: 'var(--fing-font-mono)', textTransform: 'uppercase' }}>{item.label}</span>
+              <span style={{ fontSize: '11px', color: 'var(--fing-text-muted)', fontFamily: 'var(--fing-font-mono)', textTransform: 'uppercase' }}>{item.label}</span>
             </div>
           ))}
         </div>
@@ -267,8 +235,8 @@ function IconTooltipContent() {
           display: 'flex',
           gap: '16px',
           padding: '24px',
-          background: MARBLE.base,
-          borderRadius: '15px',
+          background: 'var(--marble-base)',
+          borderRadius: '20px',
           boxShadow: getNeuPanelShadow(8, 24),
           alignItems: 'center',
           justifyContent: 'center',
@@ -297,24 +265,24 @@ function IconTooltipContent() {
       <ShowcaseSection title="Especificaciones Técnicas">
         <div style={{
           padding: '20px',
-          borderRadius: '15px',
+          borderRadius: '20px',
           boxShadow: getNeuInsetShadow(5, 15),
-          background: MARBLE.base,
+          background: 'var(--marble-base)',
           fontSize: '12px',
           fontFamily: 'var(--fing-font-mono)',
-          color: '#636E72',
+          color: 'var(--fing-text-muted)',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>
-          <p><strong style={{ color: 'var(--fing-accent-primary)' }}>Icon:</strong></p>
+          <p><strong style={{ color: 'var(--fing-accent)' }}>Icon:</strong></p>
           <p>✓ <strong>Basado en:</strong> Lucide React</p>
           <p>✓ <strong>Tamaños:</strong> xs (16px), sm (20px), md (24px), lg (32px)</p>
           <p>✓ <strong>Contenedor:</strong> 52x52px neumórfico elevado</p>
           <p>✓ <strong>Glass:</strong> HSLA con backdrop-filter blur</p>
 
-          <p style={{ marginTop: '16px' }}><strong style={{ color: 'var(--fing-accent-primary)' }}>Tooltip:</strong></p>
+          <p style={{ marginTop: '16px' }}><strong style={{ color: 'var(--fing-accent)' }}>Tooltip:</strong></p>
           <p>✓ <strong>Padding:</strong> 8px 12px</p>
-          <p>✓ <strong>Border radius:</strong> 15px</p>
+          <p>✓ <strong>Border radius:</strong> 20px</p>
           <p>✓ <strong>Font:</strong> Space Mono, 12px</p>
           <p>✓ <strong>Dark:</strong> bg #252528</p>
           <p>✓ <strong>Light:</strong> bg #FFFFFF</p>

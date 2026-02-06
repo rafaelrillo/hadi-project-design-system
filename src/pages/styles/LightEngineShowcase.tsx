@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import { LineChart } from '@/components/charts/echarts';
 import { ShowcaseSection, ComponentPreview } from '../../components/showcase';
+import { showcase } from '../showcaseStyles';
 
 // Throttle interval for shadow updates (ms)
 const SHADOW_UPDATE_INTERVAL = 100;
@@ -81,12 +82,12 @@ export function LightEngineShowcase() {
   }, []);
 
   // ═══════════════════════════════════════════════════════════════════════════
-  // DYNAMIC SHADOW GENERATORS
+  // DYNAMIC SHADOW GENERATORS - using unified showcase colors
   // ═══════════════════════════════════════════════════════════════════════════
   const LIGHT = {
-    base: '#d5d8dc',
-    shadowDark: 'rgba(147, 157, 170, 0.55)',
-    shadowLight: 'rgba(255, 255, 255, 0.95)',
+    base: showcase.colors.marble,
+    shadowDark: showcase.colors.shadowDark,
+    shadowLight: showcase.colors.shadowLight,
   };
 
   const getNeuPanelShadow = (distance: number, blur: number): string => {
@@ -238,33 +239,13 @@ export function LightEngineShowcase() {
   };
 
   // ═══════════════════════════════════════════════════════════════════════════
-  // STATIC DOCUMENTATION STYLES
+  // STATIC DOCUMENTATION STYLES - using unified showcase styles
   // ═══════════════════════════════════════════════════════════════════════════
-  const pageHeaderStyles: React.CSSProperties = {
-    marginBottom: '48px'
-  };
-
-  const titleStyles: React.CSSProperties = {
-    fontSize: '32px',
-    fontWeight: 300,
-    color: 'var(--fing-text-primary)',
-    marginBottom: '12px',
-    fontFamily: 'var(--fing-font-display)',
-    letterSpacing: '-0.02em'
-  };
-
-  const descStyles: React.CSSProperties = {
-    fontSize: '14px',
-    color: 'var(--fing-text-secondary)',
-    fontFamily: 'var(--fing-font-primary)',
-    lineHeight: 1.7,
-    maxWidth: '700px'
-  };
 
   const sectionHeaderStyles: React.CSSProperties = {
     fontSize: '14px',
     fontWeight: 500,
-    color: 'var(--fing-accent-primary)',
+    color: showcase.colors.accent,
     marginTop: '64px',
     marginBottom: '24px',
     fontFamily: 'var(--fing-font-primary)',
@@ -276,10 +257,10 @@ export function LightEngineShowcase() {
 
   const conceptBoxStyles: React.CSSProperties = {
     padding: '24px',
-    backgroundColor: 'var(--fing-glass-bg)',
+    backgroundColor: 'var(--glass-bg)',
     backdropFilter: 'blur(12px)',
-    borderRadius: 'var(--fing-radius-lg)',
-    border: '1px solid var(--fing-glass-border)',
+    borderRadius: '20px',
+    border: '1px solid var(--glass-border)',
     marginBottom: '24px'
   };
 
@@ -287,9 +268,9 @@ export function LightEngineShowcase() {
     fontFamily: 'var(--fing-font-mono)',
     fontSize: '12px',
     backgroundColor: 'var(--fing-bg-void)',
-    color: 'var(--fing-text-secondary)',
+    color: showcase.colors.textSecondary,
     padding: '16px',
-    borderRadius: 'var(--fing-radius-md)',
+    borderRadius: '12px',
     overflow: 'auto',
     lineHeight: 1.6
   };
@@ -297,8 +278,8 @@ export function LightEngineShowcase() {
   const demoBoxBase: React.CSSProperties = {
     width: '140px',
     height: '140px',
-    backgroundColor: 'var(--fing-bg-surface)',
-    borderRadius: 'var(--fing-radius-lg)',
+    backgroundColor: showcase.colors.marble,
+    borderRadius: '20px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -309,9 +290,9 @@ export function LightEngineShowcase() {
 
   return (
     <div style={{ padding: '32px' }}>
-      <header style={pageHeaderStyles}>
-        <h1 style={titleStyles}>Light Engine</h1>
-        <p style={descStyles}>
+      <header style={showcase.header.container}>
+        <h1 style={showcase.header.title}>Light Engine</h1>
+        <p style={showcase.header.description}>
           Motor de iluminacion unificado basado en los principios de Josh W. Comeau.
           Una sola fuente de luz global afecta todos los elementos, creando sombras
           consistentes, profesionales y con profundidad realista.
@@ -325,7 +306,7 @@ export function LightEngineShowcase() {
 
       <div
         style={{
-          background: LIGHT.base,
+          background: showcase.colors.marble,
           borderRadius: '20px',
           padding: '40px',
           position: 'relative',

@@ -2,6 +2,7 @@
 // FING Brand Guidelines - Stone Marble Design System
 import React from 'react';
 import { FingEmblem, FingLockupHorizontal, FingLockupVertical, type FingEmblemAnimation } from '@atoms/FingEmblem';
+import { showcase } from '../showcaseStyles';
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // FING LOGO COMPONENTS
@@ -43,7 +44,7 @@ const FingLogo: React.FC<FingLogoProps> = ({ variant, size = 1, showWordmark = t
     dark: { color: textColors.dark },
     stone: {
       color: textColors.stone,
-      textShadow: '1.5px 1.5px 2px var(--shadow-light), -1.5px -1.5px 2px var(--shadow-dark)',
+      textShadow: 'var(--lp-embossed)',
     },
     white: { color: textColors.white },
     light: { color: textColors.light },
@@ -121,24 +122,24 @@ export function BrandShowcase() {
   // La luz viene de arriba-izquierda, creando sombra abajo-derecha dentro del texto
   const typoInset = {
     whisper: {
-      color: 'var(--marble-dark)',
-      textShadow: '0.5px 0.5px 0px rgba(255, 255, 255, 0.7), -0.5px -0.5px 0px rgba(130, 140, 155, 0.4)',
+      color: showcase.colors.marbleDark,
+      textShadow: 'var(--lp-muted)',
     } as React.CSSProperties,
     soft: {
-      color: 'var(--marble-dark)',
-      textShadow: '0.75px 0.75px 0px rgba(255, 255, 255, 0.7), -0.75px -0.75px 0px rgba(130, 140, 155, 0.5)',
+      color: showcase.colors.marbleDark,
+      textShadow: 'var(--lp-muted)',
     } as React.CSSProperties,
     medium: {
-      color: 'var(--marble-dark)',
-      textShadow: '1px 1px 0px rgba(255, 255, 255, 0.8), -1px -1px 0px rgba(130, 140, 155, 0.5)',
+      color: showcase.colors.marbleDark,
+      textShadow: 'var(--lp-primary)',
     } as React.CSSProperties,
     strong: {
-      color: 'var(--marble-dark)',
-      textShadow: '1.5px 1.5px 1px rgba(255, 255, 255, 0.85), -1.5px -1.5px 1px rgba(130, 140, 155, 0.55)',
+      color: showcase.colors.marbleDark,
+      textShadow: 'var(--lp-primary-strong)',
     } as React.CSSProperties,
     display: {
-      color: 'var(--marble-dark)',
-      textShadow: '2px 2px 1px rgba(255, 255, 255, 0.9), -2px -2px 1px rgba(130, 140, 155, 0.6)',
+      color: showcase.colors.marbleDark,
+      textShadow: 'var(--lp-primary-strong)',
     } as React.CSSProperties,
   };
 
@@ -146,24 +147,24 @@ export function BrandShowcase() {
   // La luz viene de arriba-izquierda, creando highlight arriba-izquierda del texto
   const typoRaised = {
     whisper: {
-      color: 'var(--marble-base)',
-      textShadow: '-0.5px -0.5px 0px rgba(255, 255, 255, 0.9), 0.5px 0.5px 0px rgba(147, 157, 170, 0.4)',
+      color: showcase.colors.marble,
+      textShadow: 'var(--lp-embossed-subtle)',
     } as React.CSSProperties,
     soft: {
-      color: 'var(--marble-base)',
-      textShadow: '-0.75px -0.75px 0px rgba(255, 255, 255, 0.9), 0.75px 0.75px 0px rgba(147, 157, 170, 0.45)',
+      color: showcase.colors.marble,
+      textShadow: 'var(--lp-embossed-subtle)',
     } as React.CSSProperties,
     medium: {
-      color: 'var(--marble-base)',
-      textShadow: '-1px -1px 0px rgba(255, 255, 255, 0.95), 1px 1px 0px rgba(147, 157, 170, 0.5)',
+      color: showcase.colors.marble,
+      textShadow: 'var(--lp-embossed)',
     } as React.CSSProperties,
     strong: {
-      color: 'var(--marble-base)',
-      textShadow: '-1.5px -1.5px 0px rgba(255, 255, 255, 0.95), 1.5px 1.5px 1px rgba(147, 157, 170, 0.55)',
+      color: showcase.colors.marble,
+      textShadow: 'var(--lp-embossed)',
     } as React.CSSProperties,
     display: {
-      color: 'var(--marble-base)',
-      textShadow: '-2px -2px 1px rgba(255, 255, 255, 0.95), 2px 2px 1px rgba(147, 157, 170, 0.6)',
+      color: showcase.colors.marble,
+      textShadow: 'var(--lp-embossed)',
     } as React.CSSProperties,
   };
 
@@ -171,39 +172,34 @@ export function BrandShowcase() {
   const typoAccent = {
     teal: {
       color: 'var(--fing-teal)',
-      textShadow: '-0.75px -0.75px 0px rgba(255, 255, 255, 0.8), 0.75px 0.75px 0px rgba(58, 106, 114, 0.3)',
+      textShadow: 'var(--lp-petrol-whisper)',
     } as React.CSSProperties,
     tealStrong: {
       color: 'var(--fing-teal)',
-      textShadow: '-1px -1px 0px rgba(255, 255, 255, 0.85), 1px 1px 0px rgba(58, 106, 114, 0.35)',
+      textShadow: 'var(--lp-petrol)',
     } as React.CSSProperties,
     positive: {
       color: 'var(--fing-positive)',
-      textShadow: '-0.75px -0.75px 0px rgba(255, 255, 255, 0.8), 0.75px 0.75px 0px rgba(74, 154, 124, 0.3)',
+      textShadow: 'var(--lp-positive)',
     } as React.CSSProperties,
     negative: {
       color: 'var(--fing-negative)',
-      textShadow: '-0.75px -0.75px 0px rgba(255, 255, 255, 0.8), 0.75px 0.75px 0px rgba(201, 138, 138, 0.3)',
+      textShadow: 'var(--lp-negative)',
     } as React.CSSProperties,
   };
 
   // ═══ CONTAINER STYLES ═══
   const showcaseStyles: React.CSSProperties = {
     minHeight: '100vh',
-    background: 'var(--marble-base)',
+    background: showcase.colors.marble,
     padding: '32px',
     fontFamily: 'var(--fing-font-primary)',
   };
 
-  const headerStyles: React.CSSProperties = {
-    textAlign: 'center',
-    marginBottom: '48px',
-  };
-
   // RAISED container (section) styles
   const sectionStyles: React.CSSProperties = {
-    background: 'var(--marble-base)',
-    borderRadius: '24px',
+    background: showcase.colors.marble,
+    borderRadius: '20px',
     boxShadow: 'var(--raised-3)',
     padding: '32px',
     marginBottom: '24px',
@@ -211,7 +207,7 @@ export function BrandShowcase() {
 
   // INSET container styles
   const insetStyles: React.CSSProperties = {
-    background: 'var(--marble-base)',
+    background: showcase.colors.marble,
     borderRadius: '16px',
     boxShadow: 'var(--inset-2)',
     padding: '24px',
@@ -249,23 +245,12 @@ export function BrandShowcase() {
   // ═══ RENDER ═══
   return (
     <div style={showcaseStyles}>
-      {/* Header - sobre fondo BASE, usa tipografía INSET */}
-      <header style={headerStyles}>
-        <h1 style={{
-          fontFamily: 'var(--fing-font-display)',
-          fontSize: '36px',
-          fontWeight: 700,
-          letterSpacing: '-0.02em',
-          marginBottom: '8px',
-          ...typoInset.display,
-        }}>
+      {/* Header - usando unified showcase styles */}
+      <header style={showcase.header.container}>
+        <h1 style={showcase.header.title}>
           FING Brand Guidelines
         </h1>
-        <p style={{
-          fontSize: '16px',
-          fontStyle: 'italic',
-          ...typoInset.soft,
-        }}>
+        <p style={showcase.header.description}>
           Quiet intelligence
         </p>
       </header>

@@ -6,6 +6,7 @@ import { Badge } from '../../components/atoms/Badge';
 import { ShowcaseSection } from '../../components/showcase';
 import { Users, TrendingUp, ShoppingCart, Bell, CheckCircle, AlertCircle, Zap, Star, Shield } from 'lucide-react';
 import { LightEngineProvider, useLightEngine } from '@/contexts/LightEngineContext';
+import { showcase } from '../showcaseStyles';
 
 function CardContent() {
   const { lightAngle } = useLightEngine();
@@ -15,20 +16,14 @@ function CardContent() {
     return { x: Math.cos(shadowAngle), y: Math.sin(shadowAngle) };
   }, [lightAngle]);
 
-  const MARBLE = {
-    base: '#d5d8dc',
-    shadowDark: '#a8acb3',
-    shadowLight: '#ffffff',
-  };
-
   const getNeuPanelShadow = (distance: number, blur: number): string => {
     const { x, y } = shadowOffsets;
-    return `${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}`;
+    return `${-x * distance}px ${-y * distance}px ${blur}px var(--shadow-light), ${x * distance}px ${y * distance}px ${blur}px var(--shadow-dark)`;
   };
 
   const getNeuInsetShadow = (distance: number, blur: number): string => {
     const { x, y } = shadowOffsets;
-    return `inset ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}`;
+    return `inset ${x * distance}px ${y * distance}px ${blur}px var(--shadow-dark), inset ${-x * distance}px ${-y * distance}px ${blur}px var(--shadow-light)`;
   };
 
   const getGlassReflection = (): string => {
@@ -38,37 +33,10 @@ function CardContent() {
     return `inset 0 ${-y < 0 ? '-1px' : '1px'} 0 hsla(0, 0%, 100%, ${topHighlight}), inset ${-x < 0 ? '-1px' : '1px'} 0 0 hsla(0, 0%, 100%, ${leftHighlight})`;
   };
 
-  const pageHeaderStyles: React.CSSProperties = {
-    marginBottom: '32px',
-    padding: '24px',
-    background: MARBLE.base,
-    borderRadius: '15px',
-    boxShadow: getNeuPanelShadow(20, 60),
-    transition: 'box-shadow 50ms linear',
-  };
-
-  const titleStyles: React.CSSProperties = {
-    fontSize: '28px',
-    fontWeight: 700,
-    color: 'var(--fing-accent-primary)',
-    marginBottom: '8px',
-    fontFamily: 'var(--fing-font-display)',
-    textTransform: 'uppercase',
-    letterSpacing: '0.1em',
-  };
-
-  const descStyles: React.CSSProperties = {
-    fontSize: '14px',
-    color: 'var(--fing-text-secondary)',
-    fontFamily: 'var(--fing-font-mono)',
-    textTransform: 'uppercase',
-    letterSpacing: '0.03em',
-  };
-
   const cardContainerStyles: React.CSSProperties = {
     padding: '24px',
-    background: MARBLE.base,
-    borderRadius: '15px',
+    background: 'var(--marble-base)',
+    borderRadius: '20px',
     boxShadow: getNeuPanelShadow(8, 24),
     transition: 'box-shadow 50ms linear',
   };
@@ -78,17 +46,17 @@ function CardContent() {
     background: `linear-gradient(${lightAngle + 45}deg, hsla(${hue}, ${sat}%, 70%, 0.28) 0%, hsla(${hue}, ${sat}%, 65%, 0.12) 50%, hsla(${hue}, ${sat}%, 60%, 0.20) 100%)`,
     backdropFilter: 'blur(8px)',
     WebkitBackdropFilter: 'blur(8px)',
-    borderRadius: '15px',
+    borderRadius: '20px',
     border: `1px solid hsla(${hue}, ${sat}%, 80%, 0.35)`,
     boxShadow: `${getGlassReflection()}, ${shadowOffsets.x * 2}px ${shadowOffsets.y * 3}px 6px hsla(${hue}, ${sat * 0.6}%, 35%, 0.12)`,
     transition: 'box-shadow 50ms linear, background 100ms linear',
   });
 
   return (
-    <div style={{ background: MARBLE.base, minHeight: '100%', padding: '24px' }}>
-      <header style={pageHeaderStyles}>
-        <h1 style={titleStyles}>&gt; Card_</h1>
-        <p style={descStyles}>// Contenedor flexible con header, footer y contenido</p>
+    <div style={{ background: 'var(--marble-base)', minHeight: '100%', padding: '24px' }}>
+      <header style={showcase.header.container}>
+        <h1 style={showcase.header.title}>&gt; Card_</h1>
+        <p style={showcase.header.description}>// Contenedor flexible con header, footer y contenido</p>
       </header>
 
       <ShowcaseSection
@@ -143,8 +111,8 @@ function CardContent() {
                 <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
                   <div style={{
                     padding: '12px',
-                    background: MARBLE.base,
-                    borderRadius: '15px',
+                    background: 'var(--marble-base)',
+                    borderRadius: '20px',
                     boxShadow: getNeuInsetShadow(3, 8),
                     display: 'flex',
                   }}>
@@ -216,8 +184,8 @@ function CardContent() {
           ].map((notif) => (
             <div key={notif.title} style={{
               padding: '20px',
-              background: MARBLE.base,
-              borderRadius: '15px',
+              background: 'var(--marble-base)',
+              borderRadius: '20px',
               boxShadow: getNeuPanelShadow(6, 18),
               display: 'flex',
               gap: '16px',
@@ -226,7 +194,7 @@ function CardContent() {
               <div style={{
                 width: '44px',
                 height: '44px',
-                background: MARBLE.base,
+                background: 'var(--marble-base)',
                 borderRadius: '50%',
                 boxShadow: getNeuInsetShadow(3, 8),
                 display: 'flex',
@@ -248,12 +216,12 @@ function CardContent() {
       <ShowcaseSection title="Especificaciones Técnicas">
         <div style={{
           padding: '20px',
-          borderRadius: '15px',
+          borderRadius: '20px',
           boxShadow: getNeuInsetShadow(5, 15),
-          background: MARBLE.base,
+          background: 'var(--marble-base)',
           fontSize: '12px',
           fontFamily: 'var(--fing-font-mono)',
-          color: '#636E72',
+          color: 'var(--fing-text-muted)',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>

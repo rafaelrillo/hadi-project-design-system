@@ -6,6 +6,7 @@ import type { DataGridColumn } from '../../components/organisms/DataGrid';
 import { ShowcaseSection } from '../../components/showcase';
 import { Badge } from '../../components/atoms/Badge';
 import { LightEngineProvider, useLightEngine } from '@/contexts/LightEngineContext';
+import { showcase } from '../showcaseStyles';
 
 interface StockData {
   id: string;
@@ -58,9 +59,9 @@ function DataGridContent() {
   }, [lightAngle]);
 
   const MARBLE = {
-    base: '#d5d8dc',
-    shadowDark: '#a8acb3',
-    shadowLight: '#ffffff',
+    base: 'var(--marble-base)',
+    shadowDark: 'var(--shadow-dark)',
+    shadowLight: 'var(--shadow-light)',
   };
 
   const getNeuPanelShadow = (distance: number, blur: number): string => {
@@ -73,37 +74,10 @@ function DataGridContent() {
     return `inset ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}`;
   };
 
-  const pageHeaderStyles: React.CSSProperties = {
-    marginBottom: '32px',
-    padding: '24px',
-    background: MARBLE.base,
-    borderRadius: '15px',
-    boxShadow: getNeuPanelShadow(20, 60),
-    transition: 'box-shadow 50ms linear',
-  };
-
-  const titleStyles: React.CSSProperties = {
-    fontSize: '28px',
-    fontWeight: 700,
-    color: 'var(--fing-accent-primary)',
-    marginBottom: '8px',
-    fontFamily: 'var(--fing-font-display)',
-    textTransform: 'uppercase',
-    letterSpacing: '0.1em',
-  };
-
-  const descStyles: React.CSSProperties = {
-    fontSize: '14px',
-    color: 'var(--fing-text-secondary)',
-    fontFamily: 'var(--fing-font-mono)',
-    textTransform: 'uppercase',
-    letterSpacing: '0.03em',
-  };
-
   const gridContainerStyles: React.CSSProperties = {
     padding: '20px',
-    background: MARBLE.base,
-    borderRadius: '15px',
+    background: 'var(--marble-base)',
+    borderRadius: '20px',
     boxShadow: getNeuPanelShadow(8, 24),
     transition: 'box-shadow 50ms linear',
   };
@@ -206,11 +180,11 @@ function DataGridContent() {
   ];
 
   return (
-    <div style={{ background: MARBLE.base, minHeight: '100%', padding: '24px' }}>
-      <header style={pageHeaderStyles}>
-        <h1 style={titleStyles}>&gt; DataGrid_</h1>
-        <p style={descStyles}>
-          // Tabla avanzada con sorting, filtering, paginación y virtualización
+    <div style={{ background: 'var(--marble-base)', minHeight: '100%', padding: '24px' }}>
+      <header style={showcase.header.container}>
+        <h1 style={showcase.header.title}>&gt; DataGrid_</h1>
+        <p style={showcase.header.description}>
+          // Tabla avanzada con sorting, filtering, paginacion y virtualizacion
         </p>
       </header>
 
@@ -309,7 +283,7 @@ function DataGridContent() {
                 padding: '16px',
                 fontFamily: 'var(--fing-font-mono)',
                 fontSize: '13px',
-                background: MARBLE.base,
+                background: 'var(--marble-base)',
                 borderRadius: '12px',
                 boxShadow: getNeuInsetShadow(3, 8),
               }}>
@@ -447,15 +421,15 @@ function DataGridContent() {
         </div>
       </ShowcaseSection>
 
-      <ShowcaseSection title="Especificaciones Técnicas">
+      <ShowcaseSection title="Especificaciones Tecnicas">
         <div style={{
           padding: '20px',
-          borderRadius: '15px',
+          borderRadius: '20px',
           boxShadow: getNeuInsetShadow(5, 15),
-          background: MARBLE.base,
+          background: 'var(--marble-base)',
           fontSize: '12px',
           fontFamily: 'var(--fing-font-mono)',
-          color: '#636E72',
+          color: 'var(--fing-text-muted)',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>

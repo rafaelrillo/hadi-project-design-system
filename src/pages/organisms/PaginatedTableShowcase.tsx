@@ -5,6 +5,7 @@ import { PaginatedTable } from '../../components/organisms/PaginatedTable';
 import { TableColumn, TableRow } from '../../components/organisms/Table';
 import { ShowcaseSection } from '../../components/showcase';
 import { LightEngineProvider, useLightEngine } from '@/contexts/LightEngineContext';
+import { showcase } from '../showcaseStyles';
 
 function PaginatedTableContent() {
   const { lightAngle } = useLightEngine();
@@ -21,9 +22,9 @@ function PaginatedTableContent() {
   }, [lightAngle]);
 
   const MARBLE = {
-    base: '#d5d8dc',
-    shadowDark: '#a8acb3',
-    shadowLight: '#ffffff',
+    base: 'var(--marble-base)',
+    shadowDark: 'var(--shadow-dark)',
+    shadowLight: 'var(--shadow-light)',
   };
 
   const getNeuPanelShadow = (distance: number, blur: number): string => {
@@ -36,37 +37,10 @@ function PaginatedTableContent() {
     return `inset ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}`;
   };
 
-  const pageHeaderStyles: React.CSSProperties = {
-    marginBottom: '32px',
-    padding: '24px',
-    background: MARBLE.base,
-    borderRadius: '15px',
-    boxShadow: getNeuPanelShadow(20, 60),
-    transition: 'box-shadow 50ms linear',
-  };
-
-  const titleStyles: React.CSSProperties = {
-    fontSize: '28px',
-    fontWeight: 700,
-    color: 'var(--fing-accent-primary)',
-    marginBottom: '8px',
-    fontFamily: 'var(--fing-font-display)',
-    textTransform: 'uppercase',
-    letterSpacing: '0.1em',
-  };
-
-  const descStyles: React.CSSProperties = {
-    fontSize: '14px',
-    color: 'var(--fing-text-secondary)',
-    fontFamily: 'var(--fing-font-mono)',
-    textTransform: 'uppercase',
-    letterSpacing: '0.03em',
-  };
-
   const tableContainerStyles: React.CSSProperties = {
     padding: '20px',
-    background: MARBLE.base,
-    borderRadius: '15px',
+    background: 'var(--marble-base)',
+    borderRadius: '20px',
     boxShadow: getNeuPanelShadow(8, 24),
     transition: 'box-shadow 50ms linear',
   };
@@ -140,7 +114,7 @@ function PaginatedTableContent() {
     expandedContent: (
       <div style={{
         padding: '16px',
-        background: MARBLE.base,
+        background: 'var(--marble-base)',
         borderRadius: '12px',
         boxShadow: getNeuInsetShadow(3, 8),
         fontSize: '14px',
@@ -155,11 +129,11 @@ function PaginatedTableContent() {
   }));
 
   return (
-    <div style={{ background: MARBLE.base, minHeight: '100%', padding: '24px' }}>
-      <header style={pageHeaderStyles}>
-        <h1 style={titleStyles}>&gt; Paginated Table_</h1>
-        <p style={descStyles}>
-          // Tabla con paginación integrada que combina Table + Pagination
+    <div style={{ background: 'var(--marble-base)', minHeight: '100%', padding: '24px' }}>
+      <header style={showcase.header.container}>
+        <h1 style={showcase.header.title}>&gt; Paginated Table_</h1>
+        <p style={showcase.header.description}>
+          // Tabla con paginacion integrada que combina Table + Pagination
         </p>
       </header>
 
@@ -186,7 +160,7 @@ function PaginatedTableContent() {
           <div style={{
             marginBottom: '16px',
             fontSize: '14px',
-            color: '#636E72',
+            color: 'var(--fing-text-muted)',
             fontFamily: 'var(--fing-font-mono)',
           }}>
             Filas seleccionadas: {selectedRows.length > 0 ? selectedRows.join(', ') : 'Ninguna'}
@@ -258,8 +232,8 @@ function PaginatedTableContent() {
       >
         <div style={{
           padding: '24px',
-          background: MARBLE.base,
-          borderRadius: '15px',
+          background: 'var(--marble-base)',
+          borderRadius: '20px',
           boxShadow: getNeuInsetShadow(5, 15),
           transition: 'box-shadow 50ms linear',
         }}>
@@ -275,7 +249,7 @@ function PaginatedTableContent() {
           </h2>
           <p style={{
             fontSize: '14px',
-            color: '#636E72',
+            color: 'var(--fing-text-muted)',
             marginBottom: '20px',
             fontFamily: 'var(--fing-font-mono)',
           }}>
@@ -285,9 +259,9 @@ function PaginatedTableContent() {
           {selectedRows.length > 0 && (
             <div style={{
               padding: '12px 16px',
-              background: MARBLE.base,
+              background: 'var(--marble-base)',
               borderLeft: '4px solid var(--fing-accent-primary)',
-              borderRadius: '15px',
+              borderRadius: '12px',
               boxShadow: getNeuPanelShadow(4, 12),
               marginBottom: '16px',
               fontSize: '14px',
@@ -312,15 +286,15 @@ function PaginatedTableContent() {
         </div>
       </ShowcaseSection>
 
-      <ShowcaseSection title="Especificaciones Técnicas">
+      <ShowcaseSection title="Especificaciones Tecnicas">
         <div style={{
           padding: '20px',
-          borderRadius: '15px',
+          borderRadius: '20px',
           boxShadow: getNeuInsetShadow(5, 15),
-          background: MARBLE.base,
+          background: 'var(--marble-base)',
           fontSize: '12px',
           fontFamily: 'var(--fing-font-mono)',
-          color: '#636E72',
+          color: 'var(--fing-text-muted)',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>

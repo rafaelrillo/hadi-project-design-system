@@ -4,6 +4,7 @@ import React, { useMemo } from 'react';
 import { Badge } from '../../components/atoms/Badge';
 import { ShowcaseSection } from '../../components/showcase';
 import { LightEngineProvider, useLightEngine } from '@/contexts/LightEngineContext';
+import { showcase } from '../showcaseStyles';
 
 function BadgeContent() {
   const { lightAngle } = useLightEngine();
@@ -13,20 +14,14 @@ function BadgeContent() {
     return { x: Math.cos(shadowAngle), y: Math.sin(shadowAngle) };
   }, [lightAngle]);
 
-  const MARBLE = {
-    base: '#d5d8dc',
-    shadowDark: '#a8acb3',
-    shadowLight: '#ffffff',
-  };
-
   const getNeuPanelShadow = (distance: number, blur: number): string => {
     const { x, y } = shadowOffsets;
-    return `${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}`;
+    return `${-x * distance}px ${-y * distance}px ${blur}px var(--shadow-light), ${x * distance}px ${y * distance}px ${blur}px var(--shadow-dark)`;
   };
 
   const getNeuInsetShadow = (distance: number, blur: number): string => {
     const { x, y } = shadowOffsets;
-    return `inset ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}`;
+    return `inset ${x * distance}px ${y * distance}px ${blur}px var(--shadow-dark), inset ${-x * distance}px ${-y * distance}px ${blur}px var(--shadow-light)`;
   };
 
   const getGlassReflection = (): string => {
@@ -36,40 +31,13 @@ function BadgeContent() {
     return `inset 0 ${-y < 0 ? '-1px' : '1px'} 0 hsla(0, 0%, 100%, ${topHighlight}), inset ${-x < 0 ? '-1px' : '1px'} 0 0 hsla(0, 0%, 100%, ${leftHighlight})`;
   };
 
-  const pageHeaderStyles: React.CSSProperties = {
-    marginBottom: '32px',
-    padding: '24px',
-    background: MARBLE.base,
-    borderRadius: '15px',
-    boxShadow: getNeuPanelShadow(20, 60),
-    transition: 'box-shadow 50ms linear',
-  };
-
-  const titleStyles: React.CSSProperties = {
-    fontSize: '28px',
-    fontWeight: 700,
-    color: 'var(--fing-accent-primary)',
-    marginBottom: '8px',
-    fontFamily: 'var(--fing-font-display)',
-    textTransform: 'uppercase',
-    letterSpacing: '0.1em',
-  };
-
-  const descStyles: React.CSSProperties = {
-    fontSize: '14px',
-    color: 'var(--fing-text-secondary)',
-    fontFamily: 'var(--fing-font-mono)',
-    textTransform: 'uppercase',
-    letterSpacing: '0.03em',
-  };
-
   const badgeContainerStyles: React.CSSProperties = {
     display: 'flex',
     flexWrap: 'wrap',
     gap: '12px',
     padding: '20px',
-    background: MARBLE.base,
-    borderRadius: '15px',
+    background: 'var(--marble-base)',
+    borderRadius: '20px',
     boxShadow: getNeuPanelShadow(8, 24),
     transition: 'box-shadow 50ms linear',
   };
@@ -79,17 +47,17 @@ function BadgeContent() {
     background: `linear-gradient(${lightAngle + 45}deg, hsla(${hue}, ${sat}%, 70%, 0.28) 0%, hsla(${hue}, ${sat}%, 65%, 0.12) 50%, hsla(${hue}, ${sat}%, 60%, 0.20) 100%)`,
     backdropFilter: 'blur(8px)',
     WebkitBackdropFilter: 'blur(8px)',
-    borderRadius: '15px',
+    borderRadius: '20px',
     border: `1px solid hsla(${hue}, ${sat}%, 80%, 0.35)`,
     boxShadow: `${getGlassReflection()}, ${shadowOffsets.x * 2}px ${shadowOffsets.y * 3}px 6px hsla(${hue}, ${sat * 0.6}%, 35%, 0.12)`,
     transition: 'box-shadow 50ms linear, background 100ms linear',
   });
 
   return (
-    <div style={{ background: MARBLE.base, minHeight: '100%', padding: '24px' }}>
-      <header style={pageHeaderStyles}>
-        <h1 style={titleStyles}>&gt; Badge_</h1>
-        <p style={descStyles}>// Indicador visual de estado o categoría</p>
+    <div style={{ background: 'var(--marble-base)', minHeight: '100%', padding: '24px' }}>
+      <header style={showcase.header.container}>
+        <h1 style={showcase.header.title}>&gt; Badge_</h1>
+        <p style={showcase.header.description}>// Indicador visual de estado o categoría</p>
       </header>
 
       <ShowcaseSection
@@ -208,7 +176,7 @@ function BadgeContent() {
         <p style={{
           marginTop: '16px',
           fontSize: '12px',
-          color: '#636E72',
+          color: 'var(--fing-text-muted)',
           fontFamily: 'var(--fing-font-mono)',
         }}>
           Las sombras responden dinámicamente al Light Engine global
@@ -222,8 +190,8 @@ function BadgeContent() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '100%' }}>
           <div style={{
             padding: '20px',
-            background: MARBLE.base,
-            borderRadius: '15px',
+            background: 'var(--marble-base)',
+            borderRadius: '20px',
             boxShadow: getNeuInsetShadow(5, 15),
             transition: 'box-shadow 50ms linear',
           }}>
@@ -248,8 +216,8 @@ function BadgeContent() {
 
           <div style={{
             padding: '20px',
-            background: MARBLE.base,
-            borderRadius: '15px',
+            background: 'var(--marble-base)',
+            borderRadius: '20px',
             boxShadow: getNeuInsetShadow(5, 15),
             transition: 'box-shadow 50ms linear',
           }}>
@@ -277,20 +245,20 @@ function BadgeContent() {
       <ShowcaseSection title="Especificaciones Técnicas">
         <div style={{
           padding: '20px',
-          borderRadius: '15px',
+          borderRadius: '20px',
           boxShadow: getNeuInsetShadow(5, 15),
-          background: MARBLE.base,
+          background: 'var(--marble-base)',
           fontSize: '12px',
           fontFamily: 'var(--fing-font-mono)',
-          color: '#636E72',
+          color: 'var(--fing-text-muted)',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Padding:</strong> 4px 8px</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Border radius:</strong> 15px (neumórfico)</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Tipografía:</strong> 12px Semibold, Space Mono</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Display:</strong> inline-flex, align-items center</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Glass:</strong> HSLA colores con backdrop-filter blur</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent)' }}>Padding:</strong> 4px 8px</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent)' }}>Border radius:</strong> 20px (neumórfico)</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent)' }}>Tipografía:</strong> 12px Semibold, Space Mono</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent)' }}>Display:</strong> inline-flex, align-items center</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent)' }}>Glass:</strong> HSLA colores con backdrop-filter blur</p>
         </div>
       </ShowcaseSection>
     </div>

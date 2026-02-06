@@ -1,10 +1,10 @@
 // Path: src/pages/charts/PictorialBarChartShowcase.tsx
 // FING Design System - Glass-Neumorphism PictorialBar Chart
-import React, { useMemo } from 'react';
+import React from 'react';
 import { ShowcaseSection } from '../../components/showcase';
 import { PictorialBarChart, pictorialSymbols } from '../../components/charts/echarts';
 import type { PictorialBarDataPoint } from '../../components/charts/echarts';
-import { LightEngineProvider, useLightEngine } from '@/contexts/LightEngineContext';
+import { showcase } from '../showcaseStyles';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // SAMPLE DATA
@@ -43,53 +43,20 @@ const walletData: PictorialBarDataPoint[] = [
 // COMPONENT
 // ─────────────────────────────────────────────────────────────────────────────
 
-function PictorialBarChartContent() {
-  const { lightAngle } = useLightEngine();
-
-  const shadowOffsets = useMemo(() => {
-    const shadowAngle = (lightAngle + 180) * (Math.PI / 180);
-    return { x: Math.cos(shadowAngle), y: Math.sin(shadowAngle) };
-  }, [lightAngle]);
-
-  const MARBLE = {
-    base: '#d5d8dc',
-    shadowDark: '#a8acb3',
-    shadowLight: '#ffffff',
-  };
-
-  const getNeuPanelShadow = (distance: number, blur: number): string => {
-    const { x, y } = shadowOffsets;
-    return `${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}`;
-  };
-
-  const getNeuInsetShadow = (distance: number, blur: number): string => {
-    const { x, y } = shadowOffsets;
-    return `inset ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}`;
-  };
-
-  const pageHeaderStyles: React.CSSProperties = {
-    marginBottom: '32px', padding: '24px', background: MARBLE.base, borderRadius: '15px',
-    boxShadow: getNeuPanelShadow(20, 60), transition: 'box-shadow 50ms linear',
-  };
-
-  const titleStyles: React.CSSProperties = {
-    fontSize: '28px', fontWeight: 700, color: 'var(--fing-accent-primary)', marginBottom: '8px',
-    fontFamily: 'var(--fing-font-display)', textTransform: 'uppercase', letterSpacing: '0.1em',
-  };
-
-  const descStyles: React.CSSProperties = {
-    fontSize: '14px', color: 'var(--fing-text-secondary)', fontFamily: 'var(--fing-font-mono)',
-    textTransform: 'uppercase', letterSpacing: '0.03em',
-  };
-
+export function PictorialBarChartShowcase() {
   const chartContainerStyles: React.CSSProperties = {
-    padding: '24px', background: MARBLE.base, borderRadius: '15px',
-    boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear',
+    padding: '24px',
+    background: 'var(--marble-base)',
+    borderRadius: '20px',
+    boxShadow: 'var(--raised-2)',
   };
 
   const tableContainerStyles: React.CSSProperties = {
-    padding: '20px', borderRadius: '15px', boxShadow: getNeuInsetShadow(5, 15),
-    background: MARBLE.base, overflowX: 'auto', transition: 'box-shadow 50ms linear',
+    padding: '20px',
+    borderRadius: '20px',
+    boxShadow: 'var(--inset-2)',
+    background: 'var(--marble-base)',
+    overflowX: 'auto',
   };
 
   const symbolChipStyles: React.CSSProperties = {
@@ -98,14 +65,14 @@ function PictorialBarChartContent() {
     borderRadius: '8px',
     fontSize: '12px',
     fontFamily: 'var(--fing-font-mono)',
-    color: '#636E72',
+    color: 'var(--fing-text-muted)',
   };
 
   return (
-    <div style={{ background: MARBLE.base, minHeight: '100%', padding: '24px' }}>
-      <header style={pageHeaderStyles}>
-        <h1 style={titleStyles}>&gt; PictorialBarChart_</h1>
-        <p style={descStyles}>// Barras con símbolos personalizados</p>
+    <div style={{ background: 'var(--marble-base)', minHeight: '100%', padding: '24px' }}>
+      <header style={showcase.header.container}>
+        <h1 style={showcase.header.title}>&gt; PictorialBarChart_</h1>
+        <p style={showcase.header.description}>// Barras con simbolos personalizados</p>
       </header>
 
       <ShowcaseSection title="Default (Round Rectangle)" description="Basic pictorial bar with rounded rectangle symbols">
@@ -159,33 +126,33 @@ function PictorialBarChartContent() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '24px' }}>
             <div>
               <PictorialBarChart data={walletData.slice(0, 3)} height={220} symbol={pictorialSymbols.circle} symbolSize={40} showLabels={false} />
-              <p style={{ textAlign: 'center', color: '#636E72', fontSize: '12px', marginTop: '8px', fontFamily: 'var(--fing-font-mono)' }}>Circle</p>
+              <p style={{ textAlign: 'center', color: 'var(--fing-text-muted)', fontSize: '12px', marginTop: '8px', fontFamily: 'var(--fing-font-mono)' }}>Circle</p>
             </div>
             <div>
               <PictorialBarChart data={walletData.slice(0, 3)} height={220} symbol={pictorialSymbols.diamond} symbolSize={40} showLabels={false} />
-              <p style={{ textAlign: 'center', color: '#636E72', fontSize: '12px', marginTop: '8px', fontFamily: 'var(--fing-font-mono)' }}>Diamond</p>
+              <p style={{ textAlign: 'center', color: 'var(--fing-text-muted)', fontSize: '12px', marginTop: '8px', fontFamily: 'var(--fing-font-mono)' }}>Diamond</p>
             </div>
             <div>
               <PictorialBarChart data={walletData.slice(0, 3)} height={220} symbol={pictorialSymbols.roundRect} showLabels={false} />
-              <p style={{ textAlign: 'center', color: '#636E72', fontSize: '12px', marginTop: '8px', fontFamily: 'var(--fing-font-mono)' }}>Round Rect</p>
+              <p style={{ textAlign: 'center', color: 'var(--fing-text-muted)', fontSize: '12px', marginTop: '8px', fontFamily: 'var(--fing-font-mono)' }}>Round Rect</p>
             </div>
             <div>
               <PictorialBarChart data={walletData.slice(0, 3)} height={220} symbol={pictorialSymbols.triangle} symbolSize={40} showLabels={false} />
-              <p style={{ textAlign: 'center', color: '#636E72', fontSize: '12px', marginTop: '8px', fontFamily: 'var(--fing-font-mono)' }}>Triangle</p>
+              <p style={{ textAlign: 'center', color: 'var(--fing-text-muted)', fontSize: '12px', marginTop: '8px', fontFamily: 'var(--fing-font-mono)' }}>Triangle</p>
             </div>
           </div>
         </div>
       </ShowcaseSection>
 
-      <ShowcaseSection title="Especificaciones Técnicas">
+      <ShowcaseSection title="Especificaciones Tecnicas">
         <div style={tableContainerStyles}>
           <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12px', fontFamily: 'var(--fing-font-mono)' }}>
             <thead>
               <tr>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent-primary)', fontWeight: 600 }}>Prop</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent-primary)', fontWeight: 600 }}>Type</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent-primary)', fontWeight: 600 }}>Default</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent-primary)', fontWeight: 600 }}>Description</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent)', fontWeight: 600 }}>Prop</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent)', fontWeight: 600 }}>Type</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent)', fontWeight: 600 }}>Default</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent)', fontWeight: 600 }}>Description</th>
               </tr>
             </thead>
             <tbody>
@@ -203,9 +170,9 @@ function PictorialBarChartContent() {
               ].map((row, i) => (
                 <tr key={i}>
                   <td style={{ padding: '12px 16px', color: 'var(--fing-text-primary)' }}>{row.prop}</td>
-                  <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.type}</td>
-                  <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.default}</td>
-                  <td style={{ padding: '12px 16px', color: '#636E72' }}>{row.desc}</td>
+                  <td style={{ padding: '12px 16px', color: 'var(--fing-text-muted)' }}>{row.type}</td>
+                  <td style={{ padding: '12px 16px', color: 'var(--fing-text-muted)' }}>{row.default}</td>
+                  <td style={{ padding: '12px 16px', color: 'var(--fing-text-muted)' }}>{row.desc}</td>
                 </tr>
               ))}
             </tbody>
@@ -219,21 +186,13 @@ function PictorialBarChartContent() {
               <span key={key} style={symbolChipStyles}>{key}</span>
             ))}
           </div>
-          <p style={{ marginTop: '12px', fontSize: '12px', color: '#636E72', fontStyle: 'italic', fontFamily: 'var(--fing-font-mono)' }}>
+          <p style={{ marginTop: '12px', fontSize: '12px', color: 'var(--fing-text-muted)', fontStyle: 'italic', fontFamily: 'var(--fing-font-mono)' }}>
             Note: Basic shapes (circle, rect, roundRect, triangle, diamond, pin, arrow) work best.
             Custom SVG path symbols (person, dollar, chart, growth, star) may require specific symbolSize tuning.
           </p>
         </div>
       </ShowcaseSection>
     </div>
-  );
-}
-
-export function PictorialBarChartShowcase() {
-  return (
-    <LightEngineProvider initialAnimating={true} initialSpeed={0.3}>
-      <PictorialBarChartContent />
-    </LightEngineProvider>
   );
 }
 

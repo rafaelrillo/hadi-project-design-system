@@ -10,6 +10,7 @@ import {
   RECOMMENDED_VARIANTS,
   type FingWordmarkVariant,
 } from '@atoms/FingWordmark';
+import { showcase } from '../showcaseStyles';
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // VARIANT DESCRIPTIONS
@@ -71,67 +72,62 @@ const variantDescriptions: Record<FingWordmarkVariant, { name: string; descripti
 // ═══════════════════════════════════════════════════════════════════════════════
 
 export function WordmarkShowcase() {
-  // Neumorphic Typography System
+  // Neumorphic Typography System - using CSS variables
   const typoInset = {
     soft: {
-      color: 'var(--marble-dark)',
-      textShadow: '0.75px 0.75px 0px rgba(255, 255, 255, 0.7), -0.75px -0.75px 0px rgba(130, 140, 155, 0.5)',
+      color: showcase.colors.marbleDark,
+      textShadow: 'var(--lp-muted)',
     } as React.CSSProperties,
     medium: {
-      color: 'var(--marble-dark)',
-      textShadow: '1px 1px 0px rgba(255, 255, 255, 0.8), -1px -1px 0px rgba(130, 140, 155, 0.5)',
+      color: showcase.colors.marbleDark,
+      textShadow: 'var(--lp-primary)',
     } as React.CSSProperties,
     display: {
-      color: 'var(--marble-dark)',
-      textShadow: '2px 2px 1px rgba(255, 255, 255, 0.9), -2px -2px 1px rgba(130, 140, 155, 0.6)',
+      color: showcase.colors.marbleDark,
+      textShadow: 'var(--lp-primary-strong)',
     } as React.CSSProperties,
   };
 
   const typoRaised = {
     whisper: {
-      color: 'var(--marble-base)',
-      textShadow: '-0.5px -0.5px 0px rgba(255, 255, 255, 0.9), 0.5px 0.5px 0px rgba(147, 157, 170, 0.4)',
+      color: showcase.colors.marble,
+      textShadow: 'var(--lp-embossed-subtle)',
     } as React.CSSProperties,
     soft: {
-      color: 'var(--marble-base)',
-      textShadow: '-0.75px -0.75px 0px rgba(255, 255, 255, 0.9), 0.75px 0.75px 0px rgba(147, 157, 170, 0.45)',
+      color: showcase.colors.marble,
+      textShadow: 'var(--lp-embossed-subtle)',
     } as React.CSSProperties,
     medium: {
-      color: 'var(--marble-base)',
-      textShadow: '-1px -1px 0px rgba(255, 255, 255, 0.95), 1px 1px 0px rgba(147, 157, 170, 0.5)',
+      color: showcase.colors.marble,
+      textShadow: 'var(--lp-embossed)',
     } as React.CSSProperties,
   };
 
   const typoAccent = {
     teal: {
       color: 'var(--fing-teal)',
-      textShadow: '-0.75px -0.75px 0px rgba(255, 255, 255, 0.8), 0.75px 0.75px 0px rgba(58, 106, 114, 0.3)',
+      textShadow: 'var(--lp-petrol-whisper)',
     } as React.CSSProperties,
   };
 
-  // Container Styles
+  // Container Styles - using unified showcase styles
   const showcaseStyles: React.CSSProperties = {
     minHeight: '100vh',
-    background: 'var(--marble-base)',
+    background: showcase.colors.marble,
     padding: '32px',
     fontFamily: 'var(--fing-font-primary)',
   };
 
-  const headerStyles: React.CSSProperties = {
-    textAlign: 'center',
-    marginBottom: '48px',
-  };
-
   const sectionStyles: React.CSSProperties = {
-    background: 'var(--marble-base)',
-    borderRadius: '24px',
+    background: showcase.colors.marble,
+    borderRadius: '20px',
     boxShadow: 'var(--raised-3)',
     padding: '32px',
     marginBottom: '24px',
   };
 
   const insetStyles: React.CSSProperties = {
-    background: 'var(--marble-base)',
+    background: showcase.colors.marble,
     borderRadius: '16px',
     boxShadow: 'var(--inset-2)',
     padding: '24px',
@@ -139,30 +135,19 @@ export function WordmarkShowcase() {
 
   return (
     <div style={showcaseStyles}>
-      {/* Header */}
-      <header style={headerStyles}>
-        <h1 style={{
-          fontFamily: 'var(--fing-font-display)',
-          fontSize: '36px',
-          fontWeight: 700,
-          letterSpacing: '-0.02em',
-          marginBottom: '8px',
-          ...typoInset.display,
-        }}>
+      {/* Header - using unified showcase styles */}
+      <header style={showcase.header.container}>
+        <h1 style={showcase.header.title}>
           FING Wordmark
         </h1>
-        <p style={{
-          fontSize: '16px',
-          fontStyle: 'italic',
-          marginBottom: '24px',
-          ...typoInset.soft,
-        }}>
+        <p style={showcase.header.description}>
           12 Inset/Cavado Variations
         </p>
         <div style={{
           display: 'flex',
           justifyContent: 'center',
           gap: '16px',
+          marginTop: '24px',
         }}>
           <FingWordmark variant="carved" size={48} />
         </div>

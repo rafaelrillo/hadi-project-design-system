@@ -1,6 +1,7 @@
 // Path: src/pages/styles/SpacingShowcase.tsx
 // FING Design System - Stone Marble Spacing
 import React from 'react';
+import { showcase } from '../showcaseStyles';
 
 interface SpacingToken {
   name: string;
@@ -22,29 +23,20 @@ export function SpacingShowcase() {
   };
 
   const headerStyles: React.CSSProperties = {
-    textAlign: 'center',
-    marginBottom: '32px',
+    ...showcase.header.container,
   };
 
   const headerTitleStyles: React.CSSProperties = {
-    fontFamily: 'var(--fing-font-display)',
-    fontSize: '32px',
-    fontWeight: 700,
-    letterSpacing: '-0.02em',
-    color: 'var(--marble-base)',
-    textShadow: '2px 2px 2px var(--shadow-light), -2px -2px 2px var(--shadow-dark)',
+    ...showcase.header.title,
   };
 
   const headerSubtitleStyles: React.CSSProperties = {
-    fontSize: '14px',
-    marginTop: '8px',
-    color: 'var(--marble-base)',
-    textShadow: '0.75px 0.75px 0px var(--shadow-light), -0.75px -0.75px 0px var(--shadow-dark)',
+    ...showcase.header.description,
   };
 
   const sectionStyles: React.CSSProperties = {
     background: 'var(--marble-base)',
-    borderRadius: '24px',
+    borderRadius: '20px',
     boxShadow: 'var(--raised-3)',
     padding: '32px',
     marginBottom: '24px',
@@ -56,8 +48,8 @@ export function SpacingShowcase() {
     fontWeight: 600,
     letterSpacing: '0.12em',
     textTransform: 'uppercase',
-    color: 'var(--marble-base)',
-    textShadow: '1px 1px 1px var(--shadow-light), -1px -1px 1px var(--shadow-dark)',
+    color: 'var(--fing-accent)',
+    textShadow: 'var(--lp-petrol-whisper)',
     marginBottom: '24px',
     paddingBottom: '12px',
     borderBottom: '1px solid var(--marble-dark)',
@@ -66,24 +58,24 @@ export function SpacingShowcase() {
   // Letterpress para superficies RAISED (elevadas)
   const lpStyles = (intensity: 'whisper' | 'subtle' | 'soft' | 'medium'): React.CSSProperties => {
     const shadows: Record<string, string> = {
-      whisper: '0.5px 0.5px 0px var(--shadow-light), -0.5px -0.5px 0px var(--shadow-dark)',
-      subtle: '0.75px 0.75px 0px var(--shadow-light), -0.75px -0.75px 0px var(--shadow-dark)',
-      soft: '1px 1px 1px var(--shadow-light), -1px -1px 1px var(--shadow-dark)',
-      medium: '1.5px 1.5px 1px var(--shadow-light), -1.5px -1.5px 1px var(--shadow-dark)',
+      whisper: 'var(--lp-muted)',
+      subtle: 'var(--lp-primary)',
+      soft: 'var(--lp-primary)',
+      medium: 'var(--lp-primary-strong)',
     };
     return {
-      color: 'var(--marble-base)',
+      color: 'var(--fing-text-primary)',
       textShadow: shadows[intensity],
     };
   };
 
-  // Letterpress para superficies INSET (cavadas) - sombras invertidas
+  // Letterpress para superficies INSET (cavadas) - sombras invertidas (embossed effect)
   const lpInsetStyles = (intensity: 'whisper' | 'subtle' | 'soft' | 'medium'): React.CSSProperties => {
     const shadows: Record<string, string> = {
-      whisper: '-0.5px -0.5px 0px var(--shadow-light), 0.5px 0.5px 0px var(--shadow-dark)',
-      subtle: '-0.75px -0.75px 0px var(--shadow-light), 0.75px 0.75px 0px var(--shadow-dark)',
-      soft: '-1px -1px 1px var(--shadow-light), 1px 1px 1px var(--shadow-dark)',
-      medium: '-1.5px -1.5px 1px var(--shadow-light), 1.5px 1.5px 1px var(--shadow-dark)',
+      whisper: 'var(--lp-embossed-subtle)',
+      subtle: 'var(--lp-embossed-subtle)',
+      soft: 'var(--lp-embossed)',
+      medium: 'var(--lp-embossed)',
     };
     return {
       color: 'var(--marble-base)',
@@ -369,8 +361,8 @@ export function SpacingShowcase() {
             fontFamily: 'var(--fing-font-mono)',
             fontSize: '11px',
             lineHeight: 1.6,
-            color: 'var(--marble-base)',
-            textShadow: '-0.75px -0.75px 0px var(--shadow-light), 0.75px 0.75px 0px var(--shadow-dark)',
+            color: 'var(--fing-text-muted)',
+            textShadow: 'var(--lp-muted)',
             whiteSpace: 'pre-wrap',
           }}>
 {`:root {

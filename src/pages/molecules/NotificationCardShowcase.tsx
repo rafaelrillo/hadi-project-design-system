@@ -4,6 +4,7 @@ import React, { useState, useMemo } from 'react';
 import { NotificationCard } from '../../components/molecules/NotificationCard';
 import { ShowcaseSection } from '../../components/showcase';
 import { LightEngineProvider, useLightEngine } from '@/contexts/LightEngineContext';
+import { showcase } from '../showcaseStyles';
 
 function NotificationCardContent() {
   const { lightAngle } = useLightEngine();
@@ -17,64 +18,31 @@ function NotificationCardContent() {
     return { x: Math.cos(shadowAngle), y: Math.sin(shadowAngle) };
   }, [lightAngle]);
 
-  const MARBLE = {
-    base: '#d5d8dc',
-    shadowDark: '#a8acb3',
-    shadowLight: '#ffffff',
-  };
-
   const getNeuPanelShadow = (distance: number, blur: number): string => {
     const { x, y } = shadowOffsets;
-    return `${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}`;
+    return `${-x * distance}px ${-y * distance}px ${blur}px var(--shadow-light), ${x * distance}px ${y * distance}px ${blur}px var(--shadow-dark)`;
   };
 
   const getNeuInsetShadow = (distance: number, blur: number): string => {
     const { x, y } = shadowOffsets;
-    return `inset ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}`;
-  };
-
-  const pageHeaderStyles: React.CSSProperties = {
-    marginBottom: '32px',
-    padding: '24px',
-    background: MARBLE.base,
-    borderRadius: '15px',
-    boxShadow: getNeuPanelShadow(20, 60),
-    transition: 'box-shadow 50ms linear',
-  };
-
-  const titleStyles: React.CSSProperties = {
-    fontSize: '28px',
-    fontWeight: 700,
-    color: 'var(--fing-accent-primary)',
-    marginBottom: '8px',
-    fontFamily: 'var(--fing-font-display)',
-    textTransform: 'uppercase',
-    letterSpacing: '0.1em',
-  };
-
-  const descStyles: React.CSSProperties = {
-    fontSize: '14px',
-    color: 'var(--fing-text-secondary)',
-    fontFamily: 'var(--fing-font-mono)',
-    textTransform: 'uppercase',
-    letterSpacing: '0.03em',
+    return `inset ${x * distance}px ${y * distance}px ${blur}px var(--shadow-dark), inset ${-x * distance}px ${-y * distance}px ${blur}px var(--shadow-light)`;
   };
 
   const notifContainerStyles: React.CSSProperties = {
     maxWidth: '500px',
     width: '100%',
     padding: '20px',
-    background: MARBLE.base,
-    borderRadius: '15px',
+    background: 'var(--marble-base)',
+    borderRadius: '20px',
     boxShadow: getNeuPanelShadow(8, 24),
     transition: 'box-shadow 50ms linear',
   };
 
   return (
-    <div style={{ background: MARBLE.base, minHeight: '100%', padding: '24px' }}>
-      <header style={pageHeaderStyles}>
-        <h1 style={titleStyles}>&gt; NotificationCard_</h1>
-        <p style={descStyles}>// Tarjeta de notificación con variantes semánticas</p>
+    <div style={{ background: 'var(--marble-base)', minHeight: '100%', padding: '24px' }}>
+      <header style={showcase.header.container}>
+        <h1 style={showcase.header.title}>&gt; NotificationCard_</h1>
+        <p style={showcase.header.description}>// Tarjeta de notificacion con variantes semanticas</p>
       </header>
 
       <ShowcaseSection
@@ -161,8 +129,8 @@ function NotificationCardContent() {
           maxWidth: '500px',
           width: '100%',
           padding: '20px',
-          background: MARBLE.base,
-          borderRadius: '15px',
+          background: 'var(--marble-base)',
+          borderRadius: '20px',
           boxShadow: getNeuInsetShadow(5, 15),
           display: 'flex',
           flexDirection: 'column',
@@ -205,10 +173,10 @@ function NotificationCardContent() {
             <div style={{
               padding: '20px',
               textAlign: 'center',
-              color: '#636E72',
+              color: 'var(--fing-text-muted)',
               fontSize: '14px',
-              background: MARBLE.base,
-              borderRadius: '15px',
+              background: 'var(--marble-base)',
+              borderRadius: '20px',
               boxShadow: getNeuPanelShadow(4, 12),
               fontFamily: 'var(--fing-font-mono)',
             }}>
@@ -218,15 +186,15 @@ function NotificationCardContent() {
         </div>
       </ShowcaseSection>
 
-      <ShowcaseSection title="Especificaciones Técnicas">
+      <ShowcaseSection title="Especificaciones Tecnicas">
         <div style={{
           padding: '20px',
-          borderRadius: '15px',
+          borderRadius: '20px',
           boxShadow: getNeuInsetShadow(5, 15),
-          background: MARBLE.base,
+          background: 'var(--marble-base)',
           fontSize: '12px',
           fontFamily: 'var(--fing-font-mono)',
-          color: '#636E72',
+          color: 'var(--fing-text-muted)',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>

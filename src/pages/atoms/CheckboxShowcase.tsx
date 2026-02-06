@@ -4,6 +4,7 @@ import React, { useState, useMemo } from 'react';
 import { Checkbox } from '../../components/atoms/Checkbox';
 import { ShowcaseSection } from '../../components/showcase';
 import { LightEngineProvider, useLightEngine } from '@/contexts/LightEngineContext';
+import { showcase } from '../showcaseStyles';
 
 function CheckboxContent() {
   const { lightAngle } = useLightEngine();
@@ -16,47 +17,14 @@ function CheckboxContent() {
     return { x: Math.cos(shadowAngle), y: Math.sin(shadowAngle) };
   }, [lightAngle]);
 
-  const MARBLE = {
-    base: '#d5d8dc',
-    shadowDark: '#a8acb3',
-    shadowLight: '#ffffff',
-  };
-
   const getNeuPanelShadow = (distance: number, blur: number): string => {
     const { x, y } = shadowOffsets;
-    return `${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}, ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}`;
+    return `${-x * distance}px ${-y * distance}px ${blur}px var(--shadow-light), ${x * distance}px ${y * distance}px ${blur}px var(--shadow-dark)`;
   };
 
   const getNeuInsetShadow = (distance: number, blur: number): string => {
     const { x, y } = shadowOffsets;
-    return `inset ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}`;
-  };
-
-  const pageHeaderStyles: React.CSSProperties = {
-    marginBottom: '32px',
-    padding: '24px',
-    background: MARBLE.base,
-    borderRadius: '15px',
-    boxShadow: getNeuPanelShadow(20, 60),
-    transition: 'box-shadow 50ms linear',
-  };
-
-  const titleStyles: React.CSSProperties = {
-    fontSize: '28px',
-    fontWeight: 700,
-    color: 'var(--fing-accent-primary)',
-    marginBottom: '8px',
-    fontFamily: 'var(--fing-font-display)',
-    textTransform: 'uppercase',
-    letterSpacing: '0.1em',
-  };
-
-  const descStyles: React.CSSProperties = {
-    fontSize: '14px',
-    color: 'var(--fing-text-secondary)',
-    fontFamily: 'var(--fing-font-mono)',
-    textTransform: 'uppercase',
-    letterSpacing: '0.03em',
+    return `inset ${x * distance}px ${y * distance}px ${blur}px var(--shadow-dark), inset ${-x * distance}px ${-y * distance}px ${blur}px var(--shadow-light)`;
   };
 
   const checkboxContainerStyles: React.CSSProperties = {
@@ -64,8 +32,8 @@ function CheckboxContent() {
     flexDirection: 'column',
     gap: '16px',
     padding: '24px',
-    background: MARBLE.base,
-    borderRadius: '15px',
+    background: 'var(--marble-base)',
+    borderRadius: '20px',
     boxShadow: getNeuPanelShadow(8, 24),
     transition: 'box-shadow 50ms linear',
   };
@@ -84,10 +52,10 @@ function CheckboxContent() {
   };
 
   return (
-    <div style={{ background: MARBLE.base, minHeight: '100%', padding: '24px' }}>
-      <header style={pageHeaderStyles}>
-        <h1 style={titleStyles}>&gt; Checkbox_</h1>
-        <p style={descStyles}>// Componente de selección múltiple</p>
+    <div style={{ background: 'var(--marble-base)', minHeight: '100%', padding: '24px' }}>
+      <header style={showcase.header.container}>
+        <h1 style={showcase.header.title}>&gt; Checkbox_</h1>
+        <p style={showcase.header.description}>// Componente de selección múltiple</p>
       </header>
 
       <ShowcaseSection
@@ -164,8 +132,8 @@ function CheckboxContent() {
       >
         <div style={{
           padding: '24px',
-          background: MARBLE.base,
-          borderRadius: '15px',
+          background: 'var(--marble-base)',
+          borderRadius: '20px',
           boxShadow: getNeuInsetShadow(5, 15),
           maxWidth: '400px',
           transition: 'box-shadow 50ms linear',
@@ -178,6 +146,7 @@ function CheckboxContent() {
             fontFamily: 'var(--fing-font-display)',
             textTransform: 'uppercase',
             letterSpacing: '0.05em',
+            textShadow: 'var(--lp-primary)',
           }}>
             Selecciona tus intereses:
           </h3>
@@ -190,8 +159,8 @@ function CheckboxContent() {
                   alignItems: 'center',
                   gap: '12px',
                   padding: '12px',
-                  background: MARBLE.base,
-                  borderRadius: '15px',
+                  background: 'var(--marble-base)',
+                  borderRadius: '20px',
                   boxShadow: checked ? getNeuInsetShadow(3, 8) : getNeuPanelShadow(4, 12),
                   transition: 'box-shadow 150ms ease',
                 }}>
@@ -213,20 +182,20 @@ function CheckboxContent() {
       <ShowcaseSection title="Especificaciones Técnicas">
         <div style={{
           padding: '20px',
-          borderRadius: '15px',
+          borderRadius: '20px',
           boxShadow: getNeuInsetShadow(5, 15),
-          background: MARBLE.base,
+          background: 'var(--marble-base)',
           fontSize: '12px',
           fontFamily: 'var(--fing-font-mono)',
-          color: '#636E72',
+          color: 'var(--fing-text-muted)',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Tamaño:</strong> 20x20px</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Border radius:</strong> 6px (redondeado)</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Sombra unchecked:</strong> Elevado neumórfico</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Sombra checked:</strong> Inset neumórfico</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Accent color:</strong> var(--fing-accent-primary)</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent)' }}>Tamaño:</strong> 20x20px</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent)' }}>Border radius:</strong> 6px (redondeado)</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent)' }}>Sombra unchecked:</strong> Elevado neumórfico</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent)' }}>Sombra checked:</strong> Inset neumórfico</p>
+          <p>✓ <strong style={{ color: 'var(--fing-accent)' }}>Accent color:</strong> var(--fing-accent)</p>
         </div>
       </ShowcaseSection>
     </div>

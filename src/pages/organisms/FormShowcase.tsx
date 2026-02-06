@@ -8,6 +8,7 @@ import { Checkbox } from '../../components/atoms/Checkbox';
 import { Button } from '../../components/atoms/Button';
 import { ShowcaseSection } from '../../components/showcase';
 import { LightEngineProvider, useLightEngine } from '@/contexts/LightEngineContext';
+import { showcase } from '../showcaseStyles';
 
 function FormContent() {
   const { lightAngle } = useLightEngine();
@@ -20,9 +21,9 @@ function FormContent() {
   }, [lightAngle]);
 
   const MARBLE = {
-    base: '#d5d8dc',
-    shadowDark: '#a8acb3',
-    shadowLight: '#ffffff',
+    base: 'var(--marble-base)',
+    shadowDark: 'var(--shadow-dark)',
+    shadowLight: 'var(--shadow-light)',
   };
 
   const getNeuPanelShadow = (distance: number, blur: number): string => {
@@ -35,37 +36,10 @@ function FormContent() {
     return `inset ${x * distance}px ${y * distance}px ${blur}px ${MARBLE.shadowDark}, inset ${-x * distance}px ${-y * distance}px ${blur}px ${MARBLE.shadowLight}`;
   };
 
-  const pageHeaderStyles: React.CSSProperties = {
-    marginBottom: '32px',
-    padding: '24px',
-    background: MARBLE.base,
-    borderRadius: '15px',
-    boxShadow: getNeuPanelShadow(20, 60),
-    transition: 'box-shadow 50ms linear',
-  };
-
-  const titleStyles: React.CSSProperties = {
-    fontSize: '28px',
-    fontWeight: 700,
-    color: 'var(--fing-accent-primary)',
-    marginBottom: '8px',
-    fontFamily: 'var(--fing-font-display)',
-    textTransform: 'uppercase',
-    letterSpacing: '0.1em',
-  };
-
-  const descStyles: React.CSSProperties = {
-    fontSize: '14px',
-    color: 'var(--fing-text-secondary)',
-    fontFamily: 'var(--fing-font-mono)',
-    textTransform: 'uppercase',
-    letterSpacing: '0.03em',
-  };
-
   const formContainerStyles: React.CSSProperties = {
     padding: '24px',
-    background: MARBLE.base,
-    borderRadius: '15px',
+    background: 'var(--marble-base)',
+    borderRadius: '20px',
     boxShadow: getNeuPanelShadow(8, 24),
     transition: 'box-shadow 50ms linear',
   };
@@ -79,10 +53,10 @@ function FormContent() {
   ];
 
   return (
-    <div style={{ background: MARBLE.base, minHeight: '100%', padding: '24px' }}>
-      <header style={pageHeaderStyles}>
-        <h1 style={titleStyles}>&gt; Form_</h1>
-        <p style={descStyles}>
+    <div style={{ background: 'var(--marble-base)', minHeight: '100%', padding: '24px' }}>
+      <header style={showcase.header.container}>
+        <h1 style={showcase.header.title}>&gt; Form_</h1>
+        <p style={showcase.header.description}>
           // Contenedor de formulario con layout en 1 o 2 columnas
         </p>
       </header>
@@ -210,8 +184,8 @@ function FormContent() {
           maxWidth: '800px',
           width: '100%',
           padding: '24px',
-          background: MARBLE.base,
-          borderRadius: '15px',
+          background: 'var(--marble-base)',
+          borderRadius: '20px',
           boxShadow: getNeuInsetShadow(5, 15),
           transition: 'box-shadow 50ms linear',
         }}>
@@ -227,7 +201,7 @@ function FormContent() {
           </h2>
           <p style={{
             fontSize: '14px',
-            color: '#636E72',
+            color: 'var(--fing-text-muted)',
             marginBottom: '24px',
             fontFamily: 'var(--fing-font-mono)',
           }}>
@@ -320,15 +294,15 @@ function FormContent() {
         </div>
       </ShowcaseSection>
 
-      <ShowcaseSection title="Especificaciones Técnicas">
+      <ShowcaseSection title="Especificaciones Tecnicas">
         <div style={{
           padding: '20px',
-          borderRadius: '15px',
+          borderRadius: '20px',
           boxShadow: getNeuInsetShadow(5, 15),
-          background: MARBLE.base,
+          background: 'var(--marble-base)',
           fontSize: '12px',
           fontFamily: 'var(--fing-font-mono)',
-          color: '#636E72',
+          color: 'var(--fing-text-muted)',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>

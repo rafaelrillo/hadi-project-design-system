@@ -3,37 +3,15 @@
 import type { CSSProperties } from 'react';
 import { Heading1, Heading2, Heading3, Heading4, Paragraph, Label, ProductKey } from '../../components/atoms/Typography';
 import { ShowcaseSection, ComponentPreview } from '../../components/showcase';
+import { showcase } from '../showcaseStyles';
 
 export function TypographyShowcase() {
-  const pageHeaderStyles: CSSProperties = {
-    marginBottom: '32px'
-  };
-
-  const titleStyles: CSSProperties = {
-    fontSize: '28px',
-    fontWeight: 700,
-    color: 'var(--primary)',
-    marginBottom: '8px',
-    fontFamily: 'var(--fing-font-mono)',
-    textTransform: 'uppercase',
-    letterSpacing: '0.1em',
-    textShadow: '0 0 15px var(--accent-glow)'
-  };
-
-  const descStyles: CSSProperties = {
-    fontSize: '14px',
-    color: 'var(--foreground-muted)',
-    fontFamily: 'var(--fing-font-mono)',
-    textTransform: 'uppercase',
-    letterSpacing: '0.03em'
-  };
-
   return (
-    <div>
+    <div style={{ background: 'var(--marble-base)', minHeight: '100%', padding: '24px' }}>
       {/* Page Header */}
-      <header style={pageHeaderStyles}>
-        <h1 style={titleStyles}>&gt; Typography_</h1>
-        <p style={descStyles}>
+      <header style={showcase.header.container}>
+        <h1 style={showcase.header.title}>&gt; Typography_</h1>
+        <p style={showcase.header.description}>
           // Sistema tipográfico con componentes semánticos
         </p>
       </header>

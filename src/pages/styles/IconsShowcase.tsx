@@ -4,6 +4,7 @@ import React, { useMemo } from 'react';
 import { ShowcaseSection } from '../../components/showcase';
 import { LightEngineProvider, useLightEngine } from '@/contexts/LightEngineContext';
 import { Terminal, Code, Database, Cpu, Home, Search, Settings, User, Check, X, TrendingUp, DollarSign, BarChart2, Activity } from 'lucide-react';
+import { showcase } from '../showcaseStyles';
 
 function IconsContent() {
   const { lightAngle } = useLightEngine();
@@ -14,9 +15,9 @@ function IconsContent() {
   }, [lightAngle]);
 
   const MARBLE = {
-    base: '#d5d8dc',
-    shadowDark: '#a8acb3',
-    shadowLight: '#ffffff',
+    base: 'var(--marble-base)',
+    shadowDark: 'var(--shadow-dark)',
+    shadowLight: 'var(--shadow-light)',
   };
 
   const getNeuPanelShadow = (distance: number, blur: number): string => {
@@ -37,30 +38,17 @@ function IconsContent() {
   };
 
   const pageHeaderStyles: React.CSSProperties = {
-    marginBottom: '32px',
-    padding: '24px',
-    background: MARBLE.base,
-    borderRadius: '15px',
+    ...showcase.header.container,
     boxShadow: getNeuPanelShadow(20, 60),
     transition: 'box-shadow 50ms linear',
   };
 
   const titleStyles: React.CSSProperties = {
-    fontSize: '28px',
-    fontWeight: 700,
-    color: 'var(--fing-accent-primary)',
-    marginBottom: '8px',
-    fontFamily: 'var(--fing-font-display)',
-    textTransform: 'uppercase',
-    letterSpacing: '0.1em',
+    ...showcase.header.title,
   };
 
   const descStyles: React.CSSProperties = {
-    fontSize: '14px',
-    color: 'var(--fing-text-secondary)',
-    fontFamily: 'var(--fing-font-mono)',
-    textTransform: 'uppercase',
-    letterSpacing: '0.03em',
+    ...showcase.header.description,
   };
 
   const iconSizes = [
@@ -76,7 +64,7 @@ function IconsContent() {
     background: `linear-gradient(${lightAngle + 45}deg, hsla(${hue}, ${sat}%, 70%, 0.28) 0%, hsla(${hue}, ${sat}%, 65%, 0.12) 50%, hsla(${hue}, ${sat}%, 60%, 0.20) 100%)`,
     backdropFilter: 'blur(8px)',
     WebkitBackdropFilter: 'blur(8px)',
-    borderRadius: '15px',
+    borderRadius: '20px',
     border: `1px solid hsla(${hue}, ${sat}%, 80%, 0.35)`,
     display: 'flex',
     alignItems: 'center',
@@ -86,7 +74,7 @@ function IconsContent() {
   });
 
   return (
-    <div style={{ background: MARBLE.base, minHeight: '100%', padding: '24px' }}>
+    <div style={{ background: 'var(--marble-base)', minHeight: '100%', padding: '24px' }}>
       <header style={pageHeaderStyles}>
         <h1 style={titleStyles}>&gt; Icons_</h1>
         <p style={descStyles}>// Lucide React con estilo Glass-Neumorphism</p>
@@ -101,7 +89,7 @@ function IconsContent() {
             <div key={size.variable} style={{
               padding: '20px',
               background: MARBLE.base,
-              borderRadius: '15px',
+              borderRadius: '20px',
               boxShadow: getNeuInsetShadow(3, 10),
               marginBottom: '16px',
               transition: 'box-shadow 50ms linear',
@@ -114,7 +102,7 @@ function IconsContent() {
                   gap: '12px',
                   padding: '16px',
                   background: MARBLE.base,
-                  borderRadius: '15px',
+                  borderRadius: '20px',
                   boxShadow: getNeuPanelShadow(8, 24),
                   minWidth: '180px',
                   transition: 'box-shadow 50ms linear',
@@ -131,7 +119,7 @@ function IconsContent() {
                     fontSize: '11px',
                     backgroundColor: 'rgba(var(--fing-accent-rgb), 0.15)',
                     padding: '2px 8px',
-                    borderRadius: '15px',
+                    borderRadius: '20px',
                     color: 'var(--fing-accent-primary)',
                     fontFamily: 'var(--fing-font-mono)'
                   }}>
@@ -182,7 +170,7 @@ function IconsContent() {
               width: '52px',
               height: '52px',
               background: MARBLE.base,
-              borderRadius: '15px',
+              borderRadius: '20px',
               boxShadow: getNeuPanelShadow(8, 24),
               display: 'flex',
               alignItems: 'center',
@@ -205,7 +193,7 @@ function IconsContent() {
               width: '52px',
               height: '52px',
               background: MARBLE.base,
-              borderRadius: '15px',
+              borderRadius: '20px',
               boxShadow: getNeuInsetShadow(5, 15),
               display: 'flex',
               alignItems: 'center',
@@ -221,7 +209,7 @@ function IconsContent() {
       <ShowcaseSection title="Especificaciones Técnicas">
         <div style={{
           padding: '20px',
-          borderRadius: '15px',
+          borderRadius: '20px',
           boxShadow: getNeuInsetShadow(5, 15),
           background: MARBLE.base,
           fontSize: '12px',
@@ -242,7 +230,7 @@ function IconsContent() {
       <ShowcaseSection title="Código de Ejemplo">
         <div style={{
           padding: '20px',
-          borderRadius: '15px',
+          borderRadius: '20px',
           boxShadow: getNeuInsetShadow(5, 15),
           background: MARBLE.base,
           fontSize: '12px',
