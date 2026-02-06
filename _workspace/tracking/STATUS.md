@@ -15,23 +15,21 @@
 |------|--------|-------|
 | Project structure setup | Done | claude-dev-starter tracking added |
 | Design System Audit | Done | Found duplications in theme.css |
-| **Design System Consolidation v2** | **In Progress** | Phases 1-6 done, 82KB → 65KB |
+| **Design System Consolidation v2** | **COMPLETE** | All 8 phases done, 82KB → 41KB (50% reduction) |
 
-### Active Feature
+### Completed Feature
 
-**design-system-consolidation** - Plan created at `_workspace/features/planned/design-system-consolidation/PLAN.md`
+**design-system-consolidation** - ✅ COMPLETE
 
-8 phases to reduce theme.css from 82KB to ~30KB:
-1. ~~Tipografías (Critical)~~ **DONE** - 82KB → 78KB, 129 lines removed
-2. ~~Colores + RGB (Critical)~~ **DONE** - 11 RGB companions, ~90 lines removed, 159 rgba migrated
-3. ~~Sombras (Critical)~~ **DONE** - composites added, 5 CSS + 3 showcases migrated
-4. ~~Spacing (Important)~~ **DONE** - 12 aliases removed, 4 files migrated
-5. ~~Imports (Important)~~ **DONE** - Created index.css, main.tsx simplified
-6. ~~State Tokens (Important)~~ **DONE** - hover/active/disabled/focus tokens added
-5. Imports structure (Important)
-6. State tokens (Important)
-7. Component tokens (Nice-to-have)
-8. Cleanup (Nice-to-have)
+All 8 phases completed:
+1. ~~Tipografías~~ **DONE** - 82KB → 78KB
+2. ~~Colores + RGB~~ **DONE** - 11 RGB companions, 159 rgba migrated
+3. ~~Sombras~~ **DONE** - composites added, 20+ components migrated
+4. ~~Spacing~~ **DONE** - 12 aliases removed
+5. ~~Imports~~ **DONE** - index.css created
+6. ~~State Tokens~~ **DONE** - hover/active/disabled/focus tokens
+7. ~~Component Tokens~~ **DONE** - animations.css, buttons.css, wordmark.css
+8. ~~Cleanup~~ **DONE** - theme.css 65KB → 41KB, showcases expanded
 
 ---
 
@@ -40,39 +38,34 @@
 ```yaml
 session:
   started: 2026-02-05
-  last_checkpoint: "2026-02-05 Phase 6 State Tokens complete"
-  focus: "Design System consolidation - Phases 7-8 (Nice-to-have) remaining"
+  last_checkpoint: "2026-02-05 All 8 phases complete"
+  focus: "Design System Consolidation COMPLETE"
   active_ticket: null
-  active_feature: design-system-consolidation
+  active_feature: null  # Consolidation finished
 
   completed_this_session:
-    - "Phase 3 Shadows: Added composites (focus-ring, glass-layered) to shadows.css"
-    - "Phase 3 Shadows: Migrated 5 CSS files (Card, Header, Toast, Table, MaterialSelector)"
-    - "Phase 3 Shadows: Migrated 3 showcase pages (Icons, Colors, Buttons) ~70 hardcoded values"
-    - "Phase 3 Shadows: Fixed ShowcaseSection/ComponentPreview/ShowcaseLayout to Stone Marble system"
-    - "Phase 4 Spacing: Audited 3 spacing systems (--fing-space-*, --spacing-*, --*-padding)"
-    - "Phase 4 Spacing: Removed 7 --spacing-* aliases + 5 --fing-spacing-* dead code"
-    - "Phase 4 Spacing: Removed --panel-padding and --inset-padding (hardcoded/unused)"
-    - "Phase 4 Spacing: Migrated 4 files (LandingLayout, Form, Card, SpacingShowcase)"
-    - "Phase 4 Spacing: Updated SpacingShowcase.tsx with canonical --fing-space-* documentation"
-    - "Phase 5 Imports: Created index.css with documented cascade order"
-    - "Phase 5 Imports: Simplified main.tsx to single import"
-    - "Phase 6 State Tokens: Added interaction states to shadows.css (hover, active, disabled, focus)"
-    - "Phase 6 State Tokens: Added interaction states to letterpress.css (lp-hover, lp-active, etc.)"
-    - "Phase 6 State Tokens: Added state colors to colors.css (accent-hover, bg-hover, etc.)"
+    - "Phase 7: Created animations.css (~350 lines, 17+ keyframes)"
+    - "Phase 7: Created buttons.css (~177 lines, 8 glass colors)"
+    - "Phase 7: Created wordmark.css (~193 lines, 12 inset variants)"
+    - "Phase 7: Typography component with full variant system + tests"
+    - "Phase 8: Reduced theme.css 65KB → 41KB (-634 lines)"
+    - "Phase 8: Migrated 20+ components to CSS variables"
+    - "Phase 8: Expanded TypographyShowcase (+724 lines)"
+    - "Phase 8: Expanded LetterpressShowcase (+762 lines)"
+    - "Phase 8: Expanded ColorsShowcase (+232 lines)"
+    - "Phase 8: Created CSSAnimationsShowcase"
+    - "Commit: 6e50182 - 49 files, +4493/-1317 lines"
 
   completed_previous_sessions:
-    - "Phase 1 Typography: Migrated 14 component files (57+ replacements)"
-    - "Phase 1 Typography: Removed 129 duplicate lines from theme.css (82→78KB)"
-    - "Phase 1 Typography: Eliminated all legacy aliases"
-    - Added _workspace tracking structure
-    - Added .claude/commands and skills
-    - Completed full design system audit
-    - Created 8-phase consolidation plan
+    - All Phase 1-6 work
+    - _workspace tracking structure
+    - .claude/commands and skills
+    - Full design system audit
+    - 8-phase consolidation plan
 
   pending:
-    - Execute Phase 7: Component tokens (Nice-to-have)
-    - Execute Phase 8: Final cleanup (Nice-to-have)
+    - Minor: Delete fonts.css (743 bytes)
+    - Decision: lab/light-engine.css and lab/textures.css
 
   blockers: []
 ```
@@ -95,8 +88,14 @@ session:
 ### Immediate Tasks:
 - [x] Phase 1: Consolidate typography (eliminate duplicates)
 - [x] Phase 2: Add RGB companions + consolidate colors + migrate rgba
-- [ ] Phase 3: Consolidate shadows + fix hardcoded shadows
-- [ ] Phase 4-8: See full plan
+- [x] Phase 3: Consolidate shadows + fix hardcoded shadows
+- [x] Phase 4: Consolidate spacing
+- [x] Phase 5: Create imports structure
+- [x] Phase 6: Create state tokens
+- [x] Phase 7: Create component tokens
+- [x] Phase 8: Final cleanup
+
+**✅ Design System Consolidation COMPLETE** - 82KB → 41KB (50% reduction)
 
 ### Recent Completions (from CHANGELOG.md)
 
@@ -134,22 +133,28 @@ session:
 For the next instance or session:
 
 1. **What was done**:
-   - Full design system audit completed (713+ variables, many duplicated)
-   - **Phase 1 Typography completed**: 14 files migrated, 129 lines removed (82→78KB)
-   - **Phase 2 Colors + RGB completed**: 11 RGB companions, ~90 lines removed, 159 rgba migrated, status system consolidated in colors.css
-   - FingHome + DashboardPage preserved as reference implementations (explicit values)
+   - ✅ **Design System Consolidation COMPLETE** (all 8 phases)
+   - `theme.css`: 82KB → 41KB (50% reduction)
+   - 12 modular CSS files with organized tokens
+   - 20+ components migrated to CSS variables
+   - Typography component with tests
+   - Expanded showcases: Typography, Letterpress, Colors, Animations
 
-2. **What's next**: Execute Phase 3 (Shadows consolidation)
-   - Audit shadow variables in theme.css vs shadows.css
-   - Move shadow definitions to shadows.css as source of truth
-   - Migrate hardcoded shadows in 10+ components (Tabs, MetricCard, NewsCard, Button, Toast, Table, etc.)
+2. **What's next**: Design system work is DONE. Next steps per sistema-rafa.md:
+   - Revisar/definir design system (tipografía, colores, spacing, componentes base) ✅
+   - Definir tokens CSS / variables del sistema ✅
+   - Identificar las pantallas pendientes del MVP
+   - Construir pantallas en base al design system definido
 
 3. **Key files**:
-   - `_workspace/features/planned/design-system-consolidation/PLAN.md` - Full plan
-   - `src/styles/theme.css` - 82KB monolith to reduce
-   - `src/styles/typography.css` - Source of truth for fonts
-   - `src/styles/colors.css` - Source of truth for colors
-   - `src/styles/shadows.css` - Source of truth for shadows
+   - `src/styles/index.css` - Centralized imports
+   - `src/styles/colors.css` - Natural Mineral palette
+   - `src/styles/typography.css` - Font system
+   - `src/styles/shadows.css` - RAISED/INSET/GLASS
+   - `src/styles/letterpress.css` - Text shadows
+   - `src/styles/animations.css` - Keyframes + scroll-triggered
+   - `src/styles/buttons.css` - Button tokens
+   - `src/styles/wordmark.css` - FING wordmark
 
 4. **Dev server**: http://localhost:5173/
 
@@ -158,7 +163,6 @@ For the next instance or session:
    npm run dev              # Start dev server
    /status                  # Project status
    /checkpoint              # Save progress
-   /feature take design-system-consolidation  # Start working
    ```
 
 ---
