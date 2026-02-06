@@ -14,17 +14,21 @@
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   1. RESET & BASE
+   1. COLOR TOKENS (Must load first - provides RGB companions)
+   All other files depend on these RGB companion variables
+   ───────────────────────────────────────────────────────────────────────────── */
+@import './colors.css';           /* Natural Mineral color palette + RGB companions */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   2. RESET & BASE
    CSS reset, default styles, utility classes
    ───────────────────────────────────────────────────────────────────────────── */
 @import './globals.css';
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   2. DESIGN TOKENS (Source of Truth)
+   3. DESIGN TOKENS (Source of Truth)
    These files define the canonical tokens of the system.
-   colors.css, typography.css, shadows.css, letterpress.css
    ───────────────────────────────────────────────────────────────────────────── */
-@import './colors.css';           /* Natural Mineral color palette + RGB companions */
 @import './typography.css';       /* Font families, sizes, weights, tracking */
 @import './shadows.css';          /* RAISED/INSET/GLASS shadow hierarchy */
 @import './letterpress.css';      /* Letterpress text shadows for neumorphism */
@@ -33,20 +37,20 @@
 @import './buttons.css';          /* Button system: neumorphism, glass, sizes */
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   3. LEGACY THEME (Being Consolidated)
+   4. LEGACY THEME (Being Consolidated)
    theme.css contains variables being migrated to the files above.
    Load AFTER canonical files so canonical values take precedence.
    ───────────────────────────────────────────────────────────────────────────── */
 @import './theme.css';
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   4. RESPONSIVE UTILITIES
+   5. RESPONSIVE UTILITIES
    Breakpoint-specific styles and responsive helpers
    ───────────────────────────────────────────────────────────────────────────── */
 @import './responsive.css';
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   5. COMPONENT-SPECIFIC TYPOGRAPHY
+   6. COMPONENT-SPECIFIC TYPOGRAPHY
    Additional FING typography styles
    ───────────────────────────────────────────────────────────────────────────── */
 @import './typography/fing.css';
