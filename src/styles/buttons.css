@@ -20,9 +20,9 @@
      For raised buttons on marble backgrounds
      ═══════════════════════════════════════════════════════════════════════════ */
 
-  --fing-btn-neu-light: rgba(255, 255, 255, 0.7);
+  --fing-btn-neu-light: rgba(var(--fing-white-rgb), 0.7);
   --fing-btn-neu-dark: rgba(var(--fing-border-base-rgb), 0.6);
-  --fing-btn-neu-light-soft: rgba(255, 255, 255, 0.5);
+  --fing-btn-neu-light-soft: rgba(var(--fing-white-rgb), 0.5);
   --fing-btn-neu-dark-soft: rgba(var(--fing-border-base-rgb), 0.4);
 
   /* ═══════════════════════════════════════════════════════════════════════════
@@ -31,7 +31,7 @@
      ═══════════════════════════════════════════════════════════════════════════ */
 
   --fing-btn-glass-blur: 16px;
-  --fing-btn-glass-shine: rgba(255, 255, 255, 0.5);
+  --fing-btn-glass-shine: rgba(var(--fing-white-rgb), 0.5);
   --fing-btn-glass-shadow: rgba(var(--fing-border-base-rgb), 0.4);
 
   /* ═══════════════════════════════════════════════════════════════════════════
@@ -111,11 +111,11 @@
      Accent variant for special emphasis
      ═══════════════════════════════════════════════════════════════════════════ */
 
-  --fing-glass-violet-bg: rgba(138, 110, 180, 0.15);
-  --fing-glass-violet-bg-hover: rgba(138, 110, 180, 0.25);
-  --fing-glass-violet-border: rgba(138, 110, 180, 0.35);
-  --fing-glass-violet-glow: rgba(138, 110, 180, 0.4);
-  --fing-glass-violet-text: #6B4E99;
+  --fing-glass-violet-bg: rgba(var(--fing-glass-violet-rgb), 0.15);
+  --fing-glass-violet-bg-hover: rgba(var(--fing-glass-violet-rgb), 0.25);
+  --fing-glass-violet-border: rgba(var(--fing-glass-violet-rgb), 0.35);
+  --fing-glass-violet-glow: rgba(var(--fing-glass-violet-rgb), 0.4);
+  /* --fing-glass-violet-text defined in colors.css */
 
   /* ═══════════════════════════════════════════════════════════════════════════
      GLASS COLORS - STEEL (Info)
@@ -151,11 +151,11 @@
      Light/subtle variant for backgrounds
      ═══════════════════════════════════════════════════════════════════════════ */
 
-  --fing-glass-frost-bg: rgba(200, 220, 255, 0.12);
-  --fing-glass-frost-bg-hover: rgba(200, 220, 255, 0.2);
-  --fing-glass-frost-border: rgba(200, 220, 255, 0.25);
-  --fing-glass-frost-glow: rgba(200, 220, 255, 0.35);
-  --fing-glass-frost-text: #4A6A99;
+  --fing-glass-frost-bg: rgba(var(--fing-glass-frost-rgb), 0.12);
+  --fing-glass-frost-bg-hover: rgba(var(--fing-glass-frost-rgb), 0.2);
+  --fing-glass-frost-border: rgba(var(--fing-glass-frost-rgb), 0.25);
+  --fing-glass-frost-glow: rgba(var(--fing-glass-frost-rgb), 0.35);
+  /* --fing-glass-frost-text defined in colors.css */
 
   /* ═══════════════════════════════════════════════════════════════════════════
      BUTTON SIZES

@@ -17,14 +17,43 @@
 
 :root {
   /* ═══════════════════════════════════════════════════════════════════════════
+     SHADOW RGB COMPANIONS - For neumorphic shadows
+     These RGB values enable dynamic opacity in shadows throughout the system.
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  /* White/Highlight - used for light shadow side */
+  --fing-white-rgb: 255, 255, 255;
+
+  /* Shadow Dark - primary dark shadow (used in --raised-*, --inset-*) */
+  --fing-shadow-dark-rgb: 147, 157, 170;
+
+  /* Shadow Darker - deeper shadow variant */
+  --fing-shadow-darker-rgb: 130, 140, 155;
+
+  /* Shadow Darkest - deepest shadow (wordmark, deep insets) */
+  --fing-shadow-darkest-rgb: 115, 125, 140;
+
+  /* Shadow Alt - alternative dark for borders */
+  --fing-shadow-alt-rgb: 168, 172, 179;
+
+  /* Muted shadow - for text shadows */
+  --fing-shadow-muted-rgb: 138, 143, 150;
+
+  /* Carve shadow - for carved/etched effects */
+  --fing-carve-dark-rgb: 140, 150, 165;
+
+  /* ═══════════════════════════════════════════════════════════════════════════
      MARBLE SURFACE - Base Background
      ═══════════════════════════════════════════════════════════════════════════ */
 
   --marble-base: #d5d8dc;           /* Primary surface color */
   --marble-base-rgb: 213, 216, 220;
   --marble-light: #e2e5e9;          /* Lighter variant */
+  --marble-light-rgb: 226, 229, 233;
   --marble-dark: #c8ccd1;           /* Darker variant */
+  --marble-dark-rgb: 200, 204, 209;
   --marble-deeper: #b8bcc2;         /* Deep inset background */
+  --marble-deeper-rgb: 184, 188, 194;
 
   /* ═══════════════════════════════════════════════════════════════════════════
      PRIMARY BLACK - Charcoal (burned wood carbon)
@@ -136,8 +165,8 @@
   --fing-teal-glow: rgba(var(--fing-accent-rgb), 0.5);
 
   /* Carve effect colors */
-  --fing-carve-light: rgba(255, 255, 255, 0.92);
-  --fing-carve-dark: rgba(140, 150, 165, 0.65);
+  --fing-carve-light: rgba(var(--fing-white-rgb), 0.92);
+  --fing-carve-dark: rgba(var(--fing-carve-dark-rgb), 0.65);
 
   /* ═══════════════════════════════════════════════════════════════════════════
      BORDER COLORS
@@ -159,12 +188,15 @@
   --fing-chart-3: var(--fing-positive);    /* Jade */
   --fing-chart-4: var(--fing-info);        /* Steel */
   --fing-chart-5: #6a5a7a;                 /* Amethyst */
+  --fing-chart-5-rgb: 106, 90, 122;
   --fing-chart-6: var(--fing-warning);     /* Gold */
   --fing-chart-7: var(--fing-negative);    /* Rust */
   --fing-chart-8: #5a6a6a;                 /* Slate */
+  --fing-chart-8-rgb: 90, 106, 106;
 
   --fing-chart-grid: rgba(var(--fing-border-base-rgb), 0.25);
   --fing-chart-axis: #5F6C7A;
+  --fing-chart-axis-rgb: 95, 108, 122;
 
   /* ═══════════════════════════════════════════════════════════════════════════
      GLASS TINT COLORS
@@ -173,6 +205,14 @@
 
   --fing-glass-accent: rgba(var(--fing-accent-rgb), 0.08);
   --fing-glass-accent-strong: rgba(var(--fing-accent-rgb), 0.15);
+
+  /* Glass RGB companions for opacity variations in buttons.css */
+  --fing-glass-violet-rgb: 138, 110, 180;
+  --fing-glass-violet-text: #6B4E99;
+  --fing-glass-smoke-rgb: 75, 85, 99;
+  --fing-glass-smoke-text: #4B5563;
+  --fing-glass-frost-rgb: 200, 220, 255;
+  --fing-glass-frost-text: #4A6A99;
 
   /* ═══════════════════════════════════════════════════════════════════════════
      STATUS SYSTEM - Complete semantic status tokens

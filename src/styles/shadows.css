@@ -15,13 +15,13 @@
      These match the marble surface characteristics
      ═══════════════════════════════════════════════════════════════════════════ */
 
-  /* Standard shadow colors */
-  --shadow-light: rgba(255, 255, 255, 0.95);
-  --shadow-dark: rgba(147, 157, 170, 0.55);
-  --shadow-darker: rgba(130, 140, 155, 0.65);
+  /* Standard shadow colors - using RGB companions from colors.css */
+  --shadow-light: rgba(var(--fing-white-rgb), 0.95);
+  --shadow-dark: rgba(var(--fing-shadow-dark-rgb), 0.55);
+  --shadow-darker: rgba(var(--fing-shadow-darker-rgb), 0.65);
 
   /* Alternative shadow color values (used in some components) */
-  --shadow-dark-alt: rgba(168, 172, 179, 0.5);  /* #a8acb3 at 50% */
+  --shadow-dark-alt: rgba(var(--fing-shadow-alt-rgb), 0.5);
 
   /* ═══════════════════════════════════════════════════════════════════════════
      RAISED SHADOWS (5 Levels)
@@ -78,14 +78,14 @@
      Transparent items floating within inset containers
      ═══════════════════════════════════════════════════════════════════════════ */
 
-  --glass-bg: rgba(255, 255, 255, 0.25);
-  --glass-bg-hover: rgba(255, 255, 255, 0.35);
-  --glass-bg-active: rgba(255, 255, 255, 0.45);
-  --glass-bg-strong: rgba(255, 255, 255, 0.40);
+  --glass-bg: rgba(var(--fing-white-rgb), 0.25);
+  --glass-bg-hover: rgba(var(--fing-white-rgb), 0.35);
+  --glass-bg-active: rgba(var(--fing-white-rgb), 0.45);
+  --glass-bg-strong: rgba(var(--fing-white-rgb), 0.40);
 
-  --glass-border: rgba(255, 255, 255, 0.35);
-  --glass-border-strong: rgba(255, 255, 255, 0.50);
-  --glass-border-hover: rgba(255, 255, 255, 0.60);
+  --glass-border: rgba(var(--fing-white-rgb), 0.35);
+  --glass-border-strong: rgba(var(--fing-white-rgb), 0.50);
+  --glass-border-hover: rgba(var(--fing-white-rgb), 0.60);
 
   /* ═══════════════════════════════════════════════════════════════════════════
      SPECIALTY SHADOWS - Extracted from Home Components
@@ -93,64 +93,64 @@
 
   /* Ridge Frame - Double inner border + raised effect (used for buttons) */
   --shadow-ridge-frame:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.8),
-    inset 0 0 0 2px rgba(168, 172, 179, 0.25),
-    2px 2px 4px rgba(147, 157, 170, 0.5),
-    -2px -2px 4px rgba(255, 255, 255, 0.9);
+    inset 0 0 0 1px rgba(var(--fing-white-rgb), 0.8),
+    inset 0 0 0 2px rgba(var(--fing-shadow-alt-rgb), 0.25),
+    2px 2px 4px rgba(var(--fing-shadow-dark-rgb), 0.5),
+    -2px -2px 4px rgba(var(--fing-white-rgb), 0.9);
 
   /* Ridge Frame Hover */
   --shadow-ridge-frame-hover:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.9),
-    inset 0 0 0 2px rgba(168, 172, 179, 0.3),
-    3px 3px 6px rgba(147, 157, 170, 0.55),
-    -3px -3px 6px rgba(255, 255, 255, 0.95);
+    inset 0 0 0 1px rgba(var(--fing-white-rgb), 0.9),
+    inset 0 0 0 2px rgba(var(--fing-shadow-alt-rgb), 0.3),
+    3px 3px 6px rgba(var(--fing-shadow-dark-rgb), 0.55),
+    -3px -3px 6px rgba(var(--fing-white-rgb), 0.95);
 
   /* Ridge Frame Active/Pressed */
   --shadow-ridge-frame-active:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.6),
-    inset 0 0 0 2px rgba(168, 172, 179, 0.35),
-    inset 2px 2px 4px rgba(147, 157, 170, 0.3),
-    inset -1px -1px 2px rgba(255, 255, 255, 0.5);
+    inset 0 0 0 1px rgba(var(--fing-white-rgb), 0.6),
+    inset 0 0 0 2px rgba(var(--fing-shadow-alt-rgb), 0.35),
+    inset 2px 2px 4px rgba(var(--fing-shadow-dark-rgb), 0.3),
+    inset -1px -1px 2px rgba(var(--fing-white-rgb), 0.5);
 
   /* Pill Frame Wrapper - Inset container for buttons */
   --shadow-pill-frame:
-    inset 2px 2px 4px rgba(147, 157, 170, 0.45),
-    inset -2px -2px 4px rgba(255, 255, 255, 0.85);
+    inset 2px 2px 4px rgba(var(--fing-shadow-dark-rgb), 0.45),
+    inset -2px -2px 4px rgba(var(--fing-white-rgb), 0.85);
 
   /* Etymology Card - Raised with subtle depth */
   --shadow-etymology-card:
-    4px 4px 10px rgba(147, 157, 170, 0.45),
-    -4px -4px 10px rgba(255, 255, 255, 0.9);
+    4px 4px 10px rgba(var(--fing-shadow-dark-rgb), 0.45),
+    -4px -4px 10px rgba(var(--fing-white-rgb), 0.9);
 
   /* Synthesis Card - Deep inset */
   --shadow-synthesis-card:
-    inset 4px 4px 10px rgba(147, 157, 170, 0.5),
-    inset -4px -4px 10px rgba(255, 255, 255, 0.85);
+    inset 4px 4px 10px rgba(var(--fing-shadow-dark-rgb), 0.5),
+    inset -4px -4px 10px rgba(var(--fing-white-rgb), 0.85);
 
   /* Voice Card - Raised container */
   --shadow-voice-card:
-    5px 5px 12px rgba(147, 157, 170, 0.45),
-    -5px -5px 12px rgba(255, 255, 255, 0.9);
+    5px 5px 12px rgba(var(--fing-shadow-dark-rgb), 0.45),
+    -5px -5px 12px rgba(var(--fing-white-rgb), 0.9);
 
   /* Voice Example - Inset area */
   --shadow-voice-example:
-    inset 2px 2px 5px rgba(147, 157, 170, 0.4),
-    inset -2px -2px 5px rgba(255, 255, 255, 0.85);
+    inset 2px 2px 5px rgba(var(--fing-shadow-dark-rgb), 0.4),
+    inset -2px -2px 5px rgba(var(--fing-white-rgb), 0.85);
 
   /* Anti Pill - Small raised */
   --shadow-anti-pill:
-    2px 2px 5px rgba(147, 157, 170, 0.35),
-    -2px -2px 5px rgba(255, 255, 255, 0.85);
+    2px 2px 5px rgba(var(--fing-shadow-dark-rgb), 0.35),
+    -2px -2px 5px rgba(var(--fing-white-rgb), 0.85);
 
   /* Demo Raised Container */
   --shadow-demo-raised:
-    8px 8px 16px rgba(147, 157, 170, 0.5),
-    -8px -8px 16px rgba(255, 255, 255, 0.9);
+    8px 8px 16px rgba(var(--fing-shadow-dark-rgb), 0.5),
+    -8px -8px 16px rgba(var(--fing-white-rgb), 0.9);
 
   /* Demo Inner Inset */
   --shadow-demo-inset:
-    inset 6px 6px 12px rgba(147, 157, 170, 0.55),
-    inset -6px -6px 12px rgba(255, 255, 255, 0.85);
+    inset 6px 6px 12px rgba(var(--fing-shadow-dark-rgb), 0.55),
+    inset -6px -6px 12px rgba(var(--fing-white-rgb), 0.85);
 
   /* ═══════════════════════════════════════════════════════════════════════════
      GLASS EFFECTS - Teal Tinted (Petrol Accent)
@@ -161,14 +161,14 @@
   --glass-teal-gradient:
     linear-gradient(
       135deg,
-      rgba(255, 255, 255, 0.25) 0%,
-      rgba(58, 106, 114, 0.12) 100%
+      rgba(var(--fing-white-rgb), 0.25) 0%,
+      rgba(var(--fing-accent-rgb), 0.12) 100%
     );
 
   /* Glass card shadow with teal glow */
   --glass-teal-shadow:
-    0 4px 24px rgba(147, 157, 170, 0.35),
-    0 0 0 1px rgba(58, 106, 114, 0.15);
+    0 4px 24px rgba(var(--fing-shadow-dark-rgb), 0.35),
+    0 0 0 1px rgba(var(--fing-accent-rgb), 0.15);
 
   /* ═══════════════════════════════════════════════════════════════════════════
      TRADITIONAL SHADOWS (Non-Neumorphic)
@@ -188,8 +188,8 @@
   --fing-shadow-inner-strong: inset 0 4px 8px rgba(var(--fing-border-base-rgb), 0.4);
 
   /* Top highlight (subtle light line) */
-  --fing-shadow-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.6);
-  --fing-shadow-highlight-strong: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  --fing-shadow-highlight: inset 0 1px 0 rgba(var(--fing-white-rgb), 0.6);
+  --fing-shadow-highlight-strong: inset 0 1px 0 rgba(var(--fing-white-rgb), 0.8);
 
   /* ═══════════════════════════════════════════════════════════════════════════
      GLOW EFFECTS

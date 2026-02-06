@@ -454,8 +454,8 @@ p {
 /* ═══ LEVEL 3: GLASS - Floating items inside INSET (NO neumorphic shadows) ═══ */
 
 .glass-item {
-  background: var(--fing-glass-item-bg, rgba(255, 255, 255, 0.35));
-  border: 1px solid var(--fing-glass-item-border, rgba(255, 255, 255, 0.40));
+  background: var(--fing-glass-item-bg);
+  border: 1px solid var(--fing-glass-item-border);
   border-radius: var(--fing-radius-md, 12px);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -463,13 +463,13 @@ p {
 }
 
 .glass-item:hover {
-  background: var(--fing-glass-item-bg-hover, rgba(255, 255, 255, 0.45));
-  border-color: var(--fing-glass-item-border-hover, rgba(255, 255, 255, 0.50));
+  background: var(--fing-glass-item-bg-hover);
+  border-color: var(--fing-glass-item-border-hover);
 }
 
 .glass-item-active {
-  background: var(--fing-glass-item-bg-active, rgba(255, 255, 255, 0.50));
-  border-color: var(--fing-glass-item-border-active, rgba(255, 255, 255, 0.55));
+  background: var(--fing-glass-item-bg-active);
+  border-color: var(--fing-glass-item-border-active);
 }
 
 /* ═══ LEGACY UTILITIES (kept for backwards compatibility) ═══ */
@@ -517,9 +517,9 @@ p {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.4),
-    rgba(255, 255, 255, 0.6),
-    rgba(255, 255, 255, 0.4),
+    rgba(var(--fing-white-rgb), 0.4),
+    rgba(var(--fing-white-rgb), 0.6),
+    rgba(var(--fing-white-rgb), 0.4),
     transparent
   );
   border-radius: var(--fing-radius-lg) var(--fing-radius-lg) 0 0;
@@ -543,7 +543,7 @@ p {
 
 /* Inner highlight utility */
 .inner-highlight {
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  box-shadow: inset 0 1px 0 rgba(var(--fing-white-rgb), 0.7);
 }
 
 /* Luminous border utilities */

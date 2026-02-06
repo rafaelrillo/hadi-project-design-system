@@ -32,8 +32,8 @@
      Color tokens (--fing-symbol-*, --fing-carve-*, --fing-teal-glow) → colors.css
      ───────────────────────────────────────────────────────────────────────── */
   --fing-marble-base: #d5d8dc;
-  --fing-shadow-light: rgba(255, 255, 255, 0.95);
-  --fing-shadow-dark: rgba(147, 157, 170, 0.55);
+  --fing-shadow-light: rgba(var(--fing-white-rgb), 0.95);
+  --fing-shadow-dark: rgba(var(--fing-shadow-dark-rgb), 0.55);
 
   /* Emblem animation tokens */
   --fing-anim-duration: 3s;
@@ -122,11 +122,11 @@
   /* Glass primario - para cards y contenedores */
   --fing-glass-bg: var(--glass-bg);
   --fing-glass-bg-hover: var(--glass-bg-strong);
-  --fing-glass-bg-active: rgba(255, 255, 255, 0.55);
+  --fing-glass-bg-active: rgba(var(--fing-white-rgb), 0.55);
 
   /* Glass elevado - para elementos flotantes */
   --fing-glass-elevated: var(--glass-bg-strong);
-  --fing-glass-elevated-hover: rgba(255, 255, 255, 0.55);
+  --fing-glass-elevated-hover: rgba(var(--fing-white-rgb), 0.55);
 
   /* Glass hundido - para inputs y áreas recesadas */
   --fing-glass-inset: var(--marble-dark);
@@ -139,7 +139,7 @@
   /* ═══ COLORES PARA SOMBRAS NEUMÓRFICAS (STONE MARBLE) ═══ */
   --fing-neu-light: var(--shadow-light);
   --fing-neu-dark: var(--shadow-dark);
-  --fing-neu-light-strong: rgba(255, 255, 255, 1);
+  --fing-neu-light-strong: rgba(var(--fing-white-rgb), 1);
   --fing-neu-dark-strong: var(--shadow-darker);
 
   /* ═══════════════════════════════════════════════════════════════════════════
@@ -153,10 +153,10 @@
   --fing-neu-dark-medium: rgba(var(--fing-border-base-rgb), 0.12);
   --fing-neu-dark-strong-subtle: rgba(var(--fing-border-base-rgb), 0.14);
 
-  --fing-neu-light-subtle: rgba(255, 255, 255, 0.25);
-  --fing-neu-light-light: rgba(255, 255, 255, 0.30);
-  --fing-neu-light-medium: rgba(255, 255, 255, 0.35);
-  --fing-neu-light-strong-subtle: rgba(255, 255, 255, 0.40);
+  --fing-neu-light-subtle: rgba(var(--fing-white-rgb), 0.25);
+  --fing-neu-light-light: rgba(var(--fing-white-rgb), 0.30);
+  --fing-neu-light-medium: rgba(var(--fing-white-rgb), 0.35);
+  --fing-neu-light-strong-subtle: rgba(var(--fing-white-rgb), 0.40);
 
   /* ─────────────────────────────────────────────────────────────────────────────
      LEVEL 1: RAISED (Elevated containers - floats above surface)
@@ -198,16 +198,16 @@
      LEVEL 3: GLASS (Floating items - NO neumorphic shadows, just transparency)
      ───────────────────────────────────────────────────────────────────────────── */
 
-  --fing-glass-item-bg: rgba(255, 255, 255, 0.35);
-  --fing-glass-item-bg-hover: rgba(255, 255, 255, 0.45);
-  --fing-glass-item-bg-active: rgba(255, 255, 255, 0.50);
-  --fing-glass-item-border: rgba(255, 255, 255, 0.40);
-  --fing-glass-item-border-hover: rgba(255, 255, 255, 0.50);
-  --fing-glass-item-border-active: rgba(255, 255, 255, 0.55);
+  --fing-glass-item-bg: rgba(var(--fing-white-rgb), 0.35);
+  --fing-glass-item-bg-hover: rgba(var(--fing-white-rgb), 0.45);
+  --fing-glass-item-bg-active: rgba(var(--fing-white-rgb), 0.50);
+  --fing-glass-item-border: rgba(var(--fing-white-rgb), 0.40);
+  --fing-glass-item-border-hover: rgba(var(--fing-white-rgb), 0.50);
+  --fing-glass-item-border-active: rgba(var(--fing-white-rgb), 0.55);
 
   /* ═══ BORDES GLASS - Sutiles en light theme ═══ */
-  --fing-glass-border: rgba(255, 255, 255, 0.8);
-  --fing-glass-border-hover: rgba(255, 255, 255, 0.9);
+  --fing-glass-border: rgba(var(--fing-white-rgb), 0.8);
+  --fing-glass-border-hover: rgba(var(--fing-white-rgb), 0.9);
   --fing-glass-border-focus: rgba(var(--fing-accent-rgb), 0.5);
   --fing-glass-border-glow: rgba(var(--fing-accent-rgb), 0.3);
 
@@ -236,7 +236,7 @@
   --fing-bg-interactive: var(--fing-glass-bg);
   --fing-bg-interactive-hover: var(--fing-glass-bg-hover);
 
-  --fing-bg-glass: rgba(255, 255, 255, 0.7);
+  --fing-bg-glass: rgba(var(--fing-white-rgb), 0.7);
   --fing-bg-scrim: rgba(224, 229, 236, 0.85);
 
   /* Gradientes atmosféricos de fondo */
@@ -513,21 +513,21 @@
      Efectos de vidrio con blancos y transparencias
      ───────────────────────────────────────────────────────────────────────────── */
 
-  --fing-glass-light: rgba(255, 255, 255, 0.4);
-  --fing-glass-medium: rgba(255, 255, 255, 0.55);
-  --fing-glass-heavy: rgba(255, 255, 255, 0.7);
+  --fing-glass-light: rgba(var(--fing-white-rgb), 0.4);
+  --fing-glass-medium: rgba(var(--fing-white-rgb), 0.55);
+  --fing-glass-heavy: rgba(var(--fing-white-rgb), 0.7);
   --fing-glass-accent: rgba(var(--fing-accent-rgb), 0.08);
   --fing-glass-accent-strong: rgba(var(--fing-accent-rgb), 0.15);
 
   /* Gradientes de borde con luz */
-  --fing-border-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(var(--fing-accent-rgb), 0.2) 100%);
-  --fing-border-gradient-subtle: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(var(--fing-accent-rgb), 0.1) 100%);
+  --fing-border-gradient: linear-gradient(135deg, rgba(var(--fing-white-rgb), 0.8) 0%, rgba(var(--fing-accent-rgb), 0.2) 100%);
+  --fing-border-gradient-subtle: linear-gradient(135deg, rgba(var(--fing-white-rgb), 0.6) 0%, rgba(var(--fing-accent-rgb), 0.1) 100%);
 
   /* Highlights internos (efecto de luz superior) */
-  --fing-inner-highlight-subtle: inset 0 1px 0 rgba(255, 255, 255, 0.25);
-  --fing-inner-highlight-medium: inset 0 1px 0 rgba(255, 255, 255, 0.35);
-  --fing-inner-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.45);
-  --fing-inner-highlight-strong: inset 0 1px 0 rgba(255, 255, 255, 0.55);
+  --fing-inner-highlight-subtle: inset 0 1px 0 rgba(var(--fing-white-rgb), 0.25);
+  --fing-inner-highlight-medium: inset 0 1px 0 rgba(var(--fing-white-rgb), 0.35);
+  --fing-inner-highlight: inset 0 1px 0 rgba(var(--fing-white-rgb), 0.45);
+  --fing-inner-highlight-strong: inset 0 1px 0 rgba(var(--fing-white-rgb), 0.55);
 
   /* → shadows.css: --fing-shadow-glow-accent, --fing-glow-*-lg */
 
@@ -727,7 +727,7 @@
   /* === TICKER TAPE (mantener oscuro para contraste) === */
   --fing-ticker-bg: #1a1f2e;
   --fing-ticker-border: rgba(var(--fing-accent-rgb), 0.2);
-  --fing-ticker-separator: rgba(255, 255, 255, 0.1);
+  --fing-ticker-separator: rgba(var(--fing-white-rgb), 0.1);
 
   /* === GRID SYSTEM === */
   --fing-grid-line: rgba(var(--fing-border-base-rgb), 0.15);
@@ -769,9 +769,9 @@
   /* ═══ SIDEBAR DARK THEME (Mantener oscuro para contraste) ═══ */
   --fing-sidebar-bg: rgba(20, 25, 35, 0.95);
   --fing-sidebar-bg-hover: rgba(30, 35, 48, 0.95);
-  --fing-sidebar-text: rgba(255, 255, 255, 0.85);
-  --fing-sidebar-text-muted: rgba(255, 255, 255, 0.6);
-  --fing-sidebar-border: rgba(255, 255, 255, 0.08);
+  --fing-sidebar-text: rgba(var(--fing-white-rgb), 0.85);
+  --fing-sidebar-text-muted: rgba(var(--fing-white-rgb), 0.6);
+  --fing-sidebar-border: rgba(var(--fing-white-rgb), 0.08);
   --fing-sidebar-active-bg: rgba(var(--fing-accent-rgb), 0.2);
 }
 
