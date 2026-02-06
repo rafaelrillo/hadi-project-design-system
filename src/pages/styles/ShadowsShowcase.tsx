@@ -78,11 +78,8 @@ function ShadowsCatalogContent() {
     return { x, y };
   }, [lightAngle]);
 
-  const MARBLE = {
-    base: '#d5d8dc',
-    shadowDark: '#a8acb3',
-    shadowLight: '#ffffff',
-  };
+  // Use CSS variables instead of hardcoded values
+  const MARBLE_BASE = 'var(--marble-base)';
 
   const getNeuPanelShadow = (distance: number, blur: number): string => {
     const { x, y } = shadowOffsets;
@@ -90,20 +87,20 @@ function ShadowsCatalogContent() {
     const hlY = -y * distance;
     const shX = x * distance;
     const shY = y * distance;
-    return `${hlX}px ${hlY}px ${blur}px ${MARBLE.shadowLight}, ${shX}px ${shY}px ${blur}px ${MARBLE.shadowDark}`;
+    return `${hlX}px ${hlY}px ${blur}px var(--shadow-light), ${shX}px ${shY}px ${blur}px var(--shadow-dark)`;
   };
 
   const getNeuInsetShadow = (distance: number, blur: number): string => {
     const { x, y } = shadowOffsets;
     const shX = x * distance;
     const shY = y * distance;
-    return `inset ${shX}px ${shY}px ${blur}px ${MARBLE.shadowDark}, inset ${-shX}px ${-shY}px ${blur}px ${MARBLE.shadowLight}`;
+    return `inset ${shX}px ${shY}px ${blur}px var(--shadow-dark), inset ${-shX}px ${-shY}px ${blur}px var(--shadow-light)`;
   };
 
   const pageHeaderStyles: CSSProperties = {
     marginBottom: '32px',
     padding: '24px',
-    background: MARBLE.base,
+    background: MARBLE_BASE,
     borderRadius: '15px',
     boxShadow: getNeuPanelShadow(20, 60),
     transition: 'box-shadow 50ms linear',
@@ -145,7 +142,7 @@ function ShadowsCatalogContent() {
   ];
 
   return (
-    <div style={{ background: MARBLE.base, minHeight: '100%', padding: '24px' }}>
+    <div style={{ background: MARBLE_BASE, minHeight: '100%', padding: '24px' }}>
       {/* Page Header */}
       <header style={pageHeaderStyles}>
         <h1 style={titleStyles}>&gt; Shadow_Catalog_</h1>
@@ -891,7 +888,7 @@ function ShadowsCatalogContent() {
         {/* Light angle indicator */}
         <div style={{
           marginTop: '16px', padding: '12px', borderRadius: '12px',
-          boxShadow: getNeuInsetShadow(3, 10), background: MARBLE.base,
+          boxShadow: getNeuInsetShadow(3, 10), background: MARBLE_BASE,
           display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
           transition: 'box-shadow 50ms linear',
         }}>
