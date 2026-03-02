@@ -293,6 +293,88 @@ body {
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
+   ANIMATIONS - Entry & Ambient
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Entry animation - emerge from below with fade */
+@keyframes emerge {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Ripple animation for radar - waves emanating from center */
+@keyframes rippleFade {
+  0%, 10% { opacity: 0.3; }
+  30%, 70% { opacity: 1; }
+  90%, 100% { opacity: 0.3; }
+}
+
+/* Apply emerge animation with stagger delays */
+.emblem-outer {
+  animation: emerge 800ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0ms;
+}
+
+.wordmark {
+  opacity: 0;
+  animation: emerge 800ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 150ms;
+}
+
+.descriptor {
+  opacity: 0;
+  animation: emerge 600ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 300ms;
+}
+
+.value-prop {
+  opacity: 0;
+  animation: emerge 600ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 450ms;
+}
+
+.divider {
+  opacity: 0;
+  animation: emerge 600ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 600ms;
+}
+
+.coming-soon {
+  opacity: 0;
+  animation: emerge 600ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 750ms;
+}
+
+.footer {
+  opacity: 0;
+  animation: emerge 600ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 900ms;
+}
+
+/* Radar ripple animation - cascading opacity on rings */
+.radar .center-dot {
+  animation: rippleFade 6s ease-in-out infinite;
+}
+
+.radar .ring-1 {
+  animation: rippleFade 6s ease-in-out infinite 0.8s;
+}
+
+.radar .ring-2 {
+  animation: rippleFade 6s ease-in-out infinite 1.6s;
+}
+
+.radar .ring-3 {
+  animation: rippleFade 6s ease-in-out infinite 2.4s;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
    REDUCED MOTION
    ───────────────────────────────────────────────────────────────────────────── */
 
@@ -300,5 +382,15 @@ body {
   * {
     animation: none !important;
     transition: none !important;
+  }
+
+  /* Show elements without animation */
+  .wordmark,
+  .descriptor,
+  .value-prop,
+  .divider,
+  .coming-soon,
+  .footer {
+    opacity: 1 !important;
   }
 }
