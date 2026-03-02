@@ -19,5 +19,5 @@ export * from './Form';
 export * from './ErrorBoundary';
 export * from './AddToPortfolioModal';
 
-// Fing-specific organisms
-export * from './fing';
+// Quafi-specific organisms
+export * from './quafi';

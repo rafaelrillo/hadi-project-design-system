@@ -11,8 +11,8 @@ function ShowcaseLoader() {
       alignItems: 'center',
       justifyContent: 'center',
       height: '50vh',
-      color: 'var(--fing-text-tertiary)',
-      fontFamily: 'var(--fing-font-mono)',
+      color: 'var(--quafi-text-tertiary)',
+      fontFamily: 'var(--quafi-font-mono)',
       fontSize: '14px',
     }}>
       Loading...
@@ -20,9 +20,9 @@ function ShowcaseLoader() {
   );
 }
 
-// FING Showcase (standalone, outside ShowcaseLayout)
-const FingShowcase = lazy(() => import('../pages/fing/FingShowcase').then(m => ({ default: m.FingShowcase })));
-const Level4Showcase = lazy(() => import('../pages/fing/Level4Showcase').then(m => ({ default: m.Level4Showcase })));
+// QUAFI Showcase (standalone, outside ShowcaseLayout)
+const QuafiShowcase = lazy(() => import('../pages/quafi/QuafiShowcase').then(m => ({ default: m.QuafiShowcase })));
+const Level4Showcase = lazy(() => import('../pages/quafi/Level4Showcase').then(m => ({ default: m.Level4Showcase })));
 
 // Styles
 const BrandShowcase = lazy(() => import('../pages/styles').then(m => ({ default: m.BrandShowcase })));
@@ -102,18 +102,18 @@ const LayoutAnimationsShowcase = lazy(() => import('../pages/animations').then(m
 const DragAnimationsShowcase = lazy(() => import('../pages/animations').then(m => ({ default: m.DragAnimationsShowcase })));
 
 /**
- * Standalone FING showcase routes (outside ShowcaseLayout).
- * Used at /showcase/fing and /showcase/fing/level4.
+ * Standalone QUAFI showcase routes (outside ShowcaseLayout).
+ * Used at /showcase/quafi and /showcase/quafi/level4.
  */
-export function standaloneFingRoutes() {
+export function standaloneQuafiRoutes() {
   return (
     <>
-      <Route path="/showcase/fing" element={
+      <Route path="/showcase/quafi" element={
         <Suspense fallback={<ShowcaseLoader />}>
-          <FingShowcase />
+          <QuafiShowcase />
         </Suspense>
       } />
-      <Route path="/showcase/fing/level4" element={
+      <Route path="/showcase/quafi/level4" element={
         <Suspense fallback={<ShowcaseLoader />}>
           <Level4Showcase />
         </Suspense>

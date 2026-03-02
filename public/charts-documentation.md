@@ -1,8 +1,8 @@
-# FING Charts Library Documentation
+# QUAFI Charts Library Documentation
 
 > **Version**: 2.0
 > **Library**: Apache ECharts 5.6.0
-> **Design System**: FING / SENTINEL Stone Marble
+> **Design System**: QUAFI / SENTINEL Stone Marble
 > **Last Updated**: January 2026
 
 ---
@@ -49,12 +49,12 @@
 
 ## Overview
 
-The FING Charts Library is a comprehensive collection of 20 chart components built on Apache ECharts, specifically designed for financial data visualization. All charts follow the FING/SENTINEL Stone Marble design system with consistent styling, animations, and interactions.
+The QUAFI Charts Library is a comprehensive collection of 20 chart components built on Apache ECharts, specifically designed for financial data visualization. All charts follow the QUAFI/SENTINEL Stone Marble design system with consistent styling, animations, and interactions.
 
 ### Key Features
 
 - **20 Chart Types**: From basic line charts to advanced parallel coordinates
-- **Consistent Theming**: All charts use the FING color palette and styling
+- **Consistent Theming**: All charts use the QUAFI color palette and styling
 - **TypeScript Support**: Full type definitions for all props and data structures
 - **Responsive**: Charts adapt to container size
 - **Interactive**: Built-in tooltips, zoom, and legend interactions
@@ -87,7 +87,7 @@ npm install echarts echarts-for-react
 src/components/charts/echarts/
 ├── index.ts              # Exports all components
 ├── types.ts              # TypeScript type definitions
-├── fingTheme.ts          # FING theme colors and formatters
+├── quafiTheme.ts          # QUAFI theme colors and formatters
 ├── EChart.tsx            # Base EChart wrapper component
 ├── LineChart.tsx         # Line chart component
 ├── BarChart.tsx          # Bar chart component
@@ -1633,9 +1633,9 @@ import { PictorialBarChart, pictorialSymbols } from '@components/charts/echarts'
 
 ## Theme & Styling
 
-### FING Color Palette
+### QUAFI Color Palette
 
-The charts use the FING/SENTINEL natural mineral color palette:
+The charts use the QUAFI/SENTINEL natural mineral color palette:
 
 ```typescript
 // Primary colors
@@ -1725,7 +1725,7 @@ tooltipFormatters.integer    // 1,234
 
 ### Accessibility
 
-1. **Color contrast** - The FING palette ensures WCAG AA compliance
+1. **Color contrast** - The QUAFI palette ensures WCAG AA compliance
 2. **Tooltips** - All charts have keyboard-accessible tooltips
 3. **Labels** - Use clear, descriptive labels for all data
 4. **Alt text** - Provide chart descriptions for screen readers
@@ -1772,5 +1772,5 @@ const chartHeight = window.innerWidth < 768 ? 200 : 400;
 
 ---
 
-*FING Design System - Charts Library v2.0*
+*QUAFI Design System - Charts Library v2.0*
 *Generated: January 2026*

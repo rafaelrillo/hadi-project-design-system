@@ -1,36 +1,36 @@
 // Path: src/pages/styles/BrandShowcase.tsx
-// FING Brand Guidelines - Stone Marble Design System
+// QUAFI Brand Guidelines - Stone Marble Design System
 import React from 'react';
-import { FingEmblem, FingLockupHorizontal, FingLockupVertical, type FingEmblemAnimation } from '@atoms/FingEmblem';
+import { QuafiEmblem, QuafiLockupHorizontal, QuafiLockupVertical, type QuafiEmblemAnimation } from '@atoms/QuafiEmblem';
 import { showcase } from '../showcaseStyles';
 
 // ═══════════════════════════════════════════════════════════════════════════════
-// FING LOGO COMPONENTS
+// QUAFI LOGO COMPONENTS
 // ═══════════════════════════════════════════════════════════════════════════════
 
-interface FingLogoProps {
+interface QuafiLogoProps {
   variant: 'dark' | 'stone' | 'white' | 'light';
   size?: number;
   showWordmark?: boolean;
 }
 
-const FingLogo: React.FC<FingLogoProps> = ({ variant, size = 1, showWordmark = true }) => {
+const QuafiLogo: React.FC<QuafiLogoProps> = ({ variant, size = 1, showWordmark = true }) => {
   const baseWidth = 58 * size;
   const baseHeight = 44 * size;
   const fontSize = 34 * size;
 
   const fills: Record<string, [string, string]> = {
-    dark: ['var(--fing-logo-slate-1)', 'var(--fing-logo-slate-2)'],
-    stone: ['var(--fing-logo-marble-1)', 'var(--fing-logo-marble-2)'],
+    dark: ['var(--quafi-logo-slate-1)', 'var(--quafi-logo-slate-2)'],
+    stone: ['var(--quafi-logo-marble-1)', 'var(--quafi-logo-marble-2)'],
     white: ['rgba(255,255,255,0.88)', 'rgba(255,255,255,0.95)'],
-    light: ['var(--fing-logo-light-1)', 'var(--fing-logo-light-2)'],
+    light: ['var(--quafi-logo-light-1)', 'var(--quafi-logo-light-2)'],
   };
 
   const textColors: Record<string, string> = {
-    dark: 'var(--fing-text-light)',
+    dark: 'var(--quafi-text-light)',
     stone: 'var(--marble-base)',
     white: '#ffffff',
-    light: 'var(--fing-text-dark)',
+    light: 'var(--quafi-text-dark)',
   };
 
   const filters: Record<string, React.CSSProperties> = {
@@ -64,29 +64,29 @@ const FingLogo: React.FC<FingLogoProps> = ({ variant, size = 1, showWordmark = t
       {showWordmark && (
         <span
           style={{
-            fontFamily: 'var(--fing-font-primary)',
+            fontFamily: 'var(--quafi-font-primary)',
             fontWeight: 500,
             letterSpacing: '0.06em',
             fontSize,
             ...wordmarkStyles[variant],
           }}
         >
-          fing
+          quafi
         </span>
       )}
     </div>
   );
 };
 
-const FingSymbol: React.FC<{ variant: 'dark' | 'stone' | 'white' | 'light'; size?: number }> = ({
+const QuafiSymbol: React.FC<{ variant: 'dark' | 'stone' | 'white' | 'light'; size?: number }> = ({
   variant,
   size = 70,
 }) => {
   const fills: Record<string, [string, string]> = {
-    dark: ['var(--fing-logo-slate-1)', 'var(--fing-logo-slate-2)'],
-    stone: ['var(--fing-logo-marble-1)', 'var(--fing-logo-marble-2)'],
+    dark: ['var(--quafi-logo-slate-1)', 'var(--quafi-logo-slate-2)'],
+    stone: ['var(--quafi-logo-marble-1)', 'var(--quafi-logo-marble-2)'],
     white: ['rgba(255,255,255,0.88)', 'rgba(255,255,255,0.95)'],
-    light: ['var(--fing-logo-light-1)', 'var(--fing-logo-light-2)'],
+    light: ['var(--quafi-logo-light-1)', 'var(--quafi-logo-light-2)'],
   };
 
   const filters: Record<string, React.CSSProperties> = {
@@ -171,19 +171,19 @@ export function BrandShowcase() {
   // Tipografía con color de acento - para usar en contenedores INSET
   const typoAccent = {
     teal: {
-      color: 'var(--fing-teal)',
+      color: 'var(--quafi-teal)',
       textShadow: 'var(--lp-petrol-whisper)',
     } as React.CSSProperties,
     tealStrong: {
-      color: 'var(--fing-teal)',
+      color: 'var(--quafi-teal)',
       textShadow: 'var(--lp-petrol)',
     } as React.CSSProperties,
     positive: {
-      color: 'var(--fing-positive)',
+      color: 'var(--quafi-positive)',
       textShadow: 'var(--lp-positive)',
     } as React.CSSProperties,
     negative: {
-      color: 'var(--fing-negative)',
+      color: 'var(--quafi-negative)',
       textShadow: 'var(--lp-negative)',
     } as React.CSSProperties,
   };
@@ -193,7 +193,7 @@ export function BrandShowcase() {
     minHeight: '100vh',
     background: showcase.colors.marble,
     padding: '32px',
-    fontFamily: 'var(--fing-font-primary)',
+    fontFamily: 'var(--quafi-font-primary)',
   };
 
   // RAISED container (section) styles
@@ -215,17 +215,17 @@ export function BrandShowcase() {
 
   // ═══ DATA ═══
   const brandColors = [
-    { name: 'Fing Teal', variable: '--fing-teal', value: '#3a6a72' },
-    { name: 'Fing Positive', variable: '--fing-positive', value: '#4a7a6a' },
-    { name: 'Fing Negative', variable: '--fing-negative', value: '#8a5a4a' },
-    { name: 'Fing Warning', variable: '--fing-warning', value: '#a08a4a' },
+    { name: 'Quafi Teal', variable: '--quafi-teal', value: '#3a6a72' },
+    { name: 'Quafi Positive', variable: '--quafi-positive', value: '#4a7a6a' },
+    { name: 'Quafi Negative', variable: '--quafi-negative', value: '#8a5a4a' },
+    { name: 'Quafi Warning', variable: '--quafi-warning', value: '#a08a4a' },
   ];
 
   const logoColors = [
-    { name: 'Slate 1', variable: '--fing-logo-slate-1', value: '#3a3a42' },
-    { name: 'Slate 2', variable: '--fing-logo-slate-2', value: '#44444c' },
-    { name: 'Marble 1', variable: '--fing-logo-marble-1', value: '#eceef2' },
-    { name: 'Marble 2', variable: '--fing-logo-marble-2', value: '#f0f2f5' },
+    { name: 'Slate 1', variable: '--quafi-logo-slate-1', value: '#3a3a42' },
+    { name: 'Slate 2', variable: '--quafi-logo-slate-2', value: '#44444c' },
+    { name: 'Marble 1', variable: '--quafi-logo-marble-1', value: '#eceef2' },
+    { name: 'Marble 2', variable: '--quafi-logo-marble-2', value: '#f0f2f5' },
   ];
 
   const traits = [
@@ -248,7 +248,7 @@ export function BrandShowcase() {
       {/* Header - usando unified showcase styles */}
       <header style={showcase.header.container}>
         <h1 style={showcase.header.title}>
-          FING Brand Guidelines
+          QUAFI Brand Guidelines
         </h1>
         <p style={showcase.header.description}>
           Quiet intelligence
@@ -331,7 +331,7 @@ export function BrandShowcase() {
             The Synthesis
           </div>
           <div style={{
-            fontFamily: 'var(--fing-font-primary)',
+            fontFamily: 'var(--quafi-font-primary)',
             fontSize: '48px',
             fontWeight: 500,
             marginBottom: '16px',
@@ -364,13 +364,13 @@ export function BrandShowcase() {
           Logo Variations
         </div>
         <p style={{ ...typoInset.soft, fontSize: '14px', marginBottom: '24px', maxWidth: '600px' }}>
-          The Fing logo consists of two organic forms — representing duality (risk/return),
+          The Quafi logo consists of two organic forms — representing duality (risk/return),
           balance, and dialogue. They overlap, creating depth.
         </p>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '20px' }}>
           {/* Dark */}
           <div style={{
-            background: 'var(--fing-logo-slate-1)',
+            background: 'var(--quafi-logo-slate-1)',
             borderRadius: '20px',
             padding: '48px',
             display: 'flex',
@@ -378,7 +378,7 @@ export function BrandShowcase() {
             alignItems: 'center',
             gap: '16px',
           }}>
-            <FingLogo variant="dark" size={1} />
+            <QuafiLogo variant="dark" size={1} />
             <span style={{ fontSize: '10px', fontWeight: 500, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.6)' }}>
               Primary — Dark
             </span>
@@ -393,7 +393,7 @@ export function BrandShowcase() {
             gap: '16px',
             padding: '48px',
           }}>
-            <FingLogo variant="stone" size={1} />
+            <QuafiLogo variant="stone" size={1} />
             <span style={{ ...typoRaised.whisper, fontSize: '10px', fontWeight: 500, letterSpacing: '0.15em', textTransform: 'uppercase' }}>
               Stone Marble
             </span>
@@ -401,7 +401,7 @@ export function BrandShowcase() {
 
           {/* Teal/Accent */}
           <div style={{
-            background: 'linear-gradient(135deg, var(--fing-teal), var(--fing-teal-dark))',
+            background: 'linear-gradient(135deg, var(--quafi-teal), var(--quafi-teal-dark))',
             borderRadius: '20px',
             padding: '48px',
             display: 'flex',
@@ -409,7 +409,7 @@ export function BrandShowcase() {
             alignItems: 'center',
             gap: '16px',
           }}>
-            <FingLogo variant="white" size={1} />
+            <QuafiLogo variant="white" size={1} />
             <span style={{ fontSize: '10px', fontWeight: 500, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)' }}>
               Accent
             </span>
@@ -425,7 +425,7 @@ export function BrandShowcase() {
             alignItems: 'center',
             gap: '16px',
           }}>
-            <FingLogo variant="light" size={1} />
+            <QuafiLogo variant="light" size={1} />
             <span style={{ fontSize: '10px', fontWeight: 500, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#8a8f96' }}>
               Light
             </span>
@@ -456,13 +456,13 @@ export function BrandShowcase() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px' }}>
           <div style={{
             aspectRatio: '1',
-            background: 'var(--fing-logo-slate-1)',
+            background: 'var(--quafi-logo-slate-1)',
             borderRadius: '16px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
           }}>
-            <FingSymbol variant="dark" size={60} />
+            <QuafiSymbol variant="dark" size={60} />
           </div>
           <div style={{
             aspectRatio: '1',
@@ -472,17 +472,17 @@ export function BrandShowcase() {
             justifyContent: 'center',
             padding: 0,
           }}>
-            <FingSymbol variant="stone" size={60} />
+            <QuafiSymbol variant="stone" size={60} />
           </div>
           <div style={{
             aspectRatio: '1',
-            background: 'linear-gradient(135deg, var(--fing-teal), var(--fing-teal-dark))',
+            background: 'linear-gradient(135deg, var(--quafi-teal), var(--quafi-teal-dark))',
             borderRadius: '16px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
           }}>
-            <FingSymbol variant="white" size={60} />
+            <QuafiSymbol variant="white" size={60} />
           </div>
           <div style={{
             aspectRatio: '1',
@@ -492,13 +492,13 @@ export function BrandShowcase() {
             alignItems: 'center',
             justifyContent: 'center',
           }}>
-            <FingSymbol variant="light" size={60} />
+            <QuafiSymbol variant="light" size={60} />
           </div>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════════
-          SECTION 3B: FING EMBLEM - Radar Symbol (RAISED container)
+          SECTION 3B: QUAFI EMBLEM - Radar Symbol (RAISED container)
           ═══════════════════════════════════════════════════════════════════════ */}
       <section style={sectionStyles}>
         <div style={{
@@ -511,10 +511,10 @@ export function BrandShowcase() {
           borderBottom: '1px solid var(--marble-dark)',
           ...typoAccent.teal,
         }}>
-          FING Emblem — Radar Symbol
+          QUAFI Emblem — Radar Symbol
         </div>
         <p style={{ ...typoInset.soft, fontSize: '14px', marginBottom: '24px', maxWidth: '700px' }}>
-          The FING emblem consists of a radar/pulse symbol (central dot + 3 concentric rings)
+          The QUAFI emblem consists of a radar/pulse symbol (central dot + 3 concentric rings)
           carved with a subtle inset effect inside a circular stone marble container.
           It represents <strong>quiet intelligence</strong> — scanning, analyzing, resolving.
         </p>
@@ -527,8 +527,8 @@ export function BrandShowcase() {
           <div style={{ display: 'flex', alignItems: 'flex-end', gap: '24px', flexWrap: 'wrap' }}>
             {[32, 48, 64, 100, 120].map((size) => (
               <div key={size} style={{ ...insetStyles, padding: '24px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
-                <FingEmblem size={size} />
-                <span style={{ ...typoRaised.whisper, fontSize: '10px', fontFamily: 'var(--fing-font-mono)' }}>{size}px</span>
+                <QuafiEmblem size={size} />
+                <span style={{ ...typoRaised.whisper, fontSize: '10px', fontFamily: 'var(--quafi-font-mono)' }}>{size}px</span>
               </div>
             ))}
           </div>
@@ -540,9 +540,9 @@ export function BrandShowcase() {
             Animations
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '16px' }}>
-            {(['none', 'breathe', 'pulse', 'glow', 'ripple', 'rotate'] as FingEmblemAnimation[]).map((anim) => (
+            {(['none', 'breathe', 'pulse', 'glow', 'ripple', 'rotate'] as QuafiEmblemAnimation[]).map((anim) => (
               <div key={anim} style={{ ...insetStyles, padding: '24px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
-                <FingEmblem size={64} animation={anim} />
+                <QuafiEmblem size={64} animation={anim} />
                 <span style={{ ...typoRaised.whisper, fontSize: '10px', textTransform: 'capitalize' }}>{anim}</span>
               </div>
             ))}
@@ -557,7 +557,7 @@ export function BrandShowcase() {
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
             {/* Horizontal Lockup */}
             <div style={{ ...insetStyles, padding: '40px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>
-              <FingLockupHorizontal size={70} animation="ripple" />
+              <QuafiLockupHorizontal size={70} animation="ripple" />
               <span style={{ ...typoRaised.whisper, fontSize: '10px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
                 Horizontal Lockup
               </span>
@@ -565,7 +565,7 @@ export function BrandShowcase() {
 
             {/* Vertical Lockup */}
             <div style={{ ...insetStyles, padding: '40px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>
-              <FingLockupVertical size={80} />
+              <QuafiLockupVertical size={80} />
               <span style={{ ...typoRaised.whisper, fontSize: '10px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
                 Vertical Lockup
               </span>
@@ -591,7 +591,7 @@ export function BrandShowcase() {
           Brand Colors
         </div>
         <p style={{ ...typoInset.soft, fontSize: '14px', marginBottom: '24px' }}>
-          The Fing palette balances warm neutrals with a distinctive teal accent.
+          The Quafi palette balances warm neutrals with a distinctive teal accent.
           Semantic colors are conservative, reflecting the "Senior Analyst" voice.
         </p>
 
@@ -616,7 +616,7 @@ export function BrandShowcase() {
                   {color.name}
                 </div>
                 <code style={{
-                  fontFamily: 'var(--fing-font-mono)',
+                  fontFamily: 'var(--quafi-font-mono)',
                   fontSize: '10px',
                   ...typoAccent.teal,
                 }}>
@@ -647,7 +647,7 @@ export function BrandShowcase() {
                   {color.name}
                 </div>
                 <code style={{
-                  fontFamily: 'var(--fing-font-mono)',
+                  fontFamily: 'var(--quafi-font-mono)',
                   fontSize: '10px',
                   ...typoAccent.teal,
                 }}>
@@ -696,7 +696,7 @@ export function BrandShowcase() {
             </div>
             <div style={{
               ...typoRaised.display,
-              fontFamily: 'var(--fing-font-primary)',
+              fontFamily: 'var(--quafi-font-primary)',
               fontSize: '48px',
               fontWeight: 500,
               letterSpacing: '-0.02em',
@@ -719,7 +719,7 @@ export function BrandShowcase() {
             </div>
             <div style={{
               ...typoRaised.strong,
-              fontFamily: 'var(--fing-font-primary)',
+              fontFamily: 'var(--quafi-font-primary)',
               fontSize: '32px',
               fontWeight: 500,
             }}>
@@ -741,7 +741,7 @@ export function BrandShowcase() {
             </div>
             <div style={{
               ...typoRaised.medium,
-              fontFamily: 'var(--fing-font-primary)',
+              fontFamily: 'var(--quafi-font-primary)',
               fontSize: '16px',
               fontWeight: 400,
               lineHeight: 1.7,
@@ -764,7 +764,7 @@ export function BrandShowcase() {
               Mono — IBM Plex Mono
             </div>
             <div style={{
-              fontFamily: 'var(--fing-font-mono)',
+              fontFamily: 'var(--quafi-font-mono)',
               fontSize: '16px',
               fontWeight: 400,
               ...typoAccent.tealStrong,
@@ -792,7 +792,7 @@ export function BrandShowcase() {
           Brand Personality
         </div>
         <p style={{ ...typoInset.soft, fontSize: '14px', marginBottom: '24px', maxWidth: '700px' }}>
-          FING embodies the archetype of the <strong>Senior Analyst</strong> — someone who has seen complete cycles,
+          QUAFI embodies the archetype of the <strong>Senior Analyst</strong> — someone who has seen complete cycles,
           who isn't impressed by daily noise, who speaks only when there's something worth saying.
         </p>
 
@@ -859,7 +859,7 @@ export function BrandShowcase() {
             <div key={item.text} style={{ ...insetStyles, textAlign: 'center', padding: '32px 24px' }}>
               <div style={{
                 ...typoRaised.strong,
-                fontFamily: 'var(--fing-font-primary)',
+                fontFamily: 'var(--quafi-font-primary)',
                 fontSize: '22px',
                 fontWeight: 400,
                 fontStyle: 'italic',
@@ -872,7 +872,7 @@ export function BrandShowcase() {
                 fontWeight: 500,
                 letterSpacing: '0.1em',
                 textTransform: 'uppercase',
-                color: 'var(--fing-text-muted)',
+                color: 'var(--quafi-text-muted)',
               }}>
                 {item.emphasis}
               </div>
@@ -910,14 +910,14 @@ export function BrandShowcase() {
               height: '120px',
               marginBottom: '16px',
             }}>
-              <FingLogo variant="stone" size={0.7} />
+              <QuafiLogo variant="stone" size={0.7} />
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <span style={{
                 width: '24px',
                 height: '24px',
                 borderRadius: '50%',
-                background: 'var(--fing-positive)',
+                background: 'var(--quafi-positive)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -939,7 +939,7 @@ export function BrandShowcase() {
               marginBottom: '16px',
             }}>
               <div style={{ transform: 'scaleX(1.4)' }}>
-                <FingLogo variant="stone" size={0.7} />
+                <QuafiLogo variant="stone" size={0.7} />
               </div>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -947,7 +947,7 @@ export function BrandShowcase() {
                 width: '24px',
                 height: '24px',
                 borderRadius: '50%',
-                background: 'var(--fing-negative)',
+                background: 'var(--quafi-negative)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -968,14 +968,14 @@ export function BrandShowcase() {
               height: '120px',
               marginBottom: '16px',
             }}>
-              <FingLogo variant="stone" size={0.7} />
+              <QuafiLogo variant="stone" size={0.7} />
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <span style={{
                 width: '24px',
                 height: '24px',
                 borderRadius: '50%',
-                background: 'var(--fing-positive)',
+                background: 'var(--quafi-positive)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -997,7 +997,7 @@ export function BrandShowcase() {
               marginBottom: '16px',
             }}>
               <div style={{ transform: 'rotate(15deg)' }}>
-                <FingLogo variant="stone" size={0.7} />
+                <QuafiLogo variant="stone" size={0.7} />
               </div>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -1005,7 +1005,7 @@ export function BrandShowcase() {
                 width: '24px',
                 height: '24px',
                 borderRadius: '50%',
-                background: 'var(--fing-negative)',
+                background: 'var(--quafi-negative)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -1022,10 +1022,10 @@ export function BrandShowcase() {
       {/* Footer - sobre fondo BASE, usa tipografía INSET */}
       <footer style={{ textAlign: 'center', padding: '32px 0' }}>
         <div style={{ marginBottom: '16px' }}>
-          <FingLogo variant="stone" size={0.6} />
+          <QuafiLogo variant="stone" size={0.6} />
         </div>
         <p style={{ ...typoInset.whisper, fontSize: '11px' }}>
-          © 2025 Fing. Brand Guidelines v1.0
+          © 2025 Quafi. Brand Guidelines v1.0
         </p>
       </footer>
     </div>

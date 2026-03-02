@@ -1,6 +1,6 @@
 /* Path: src/components/molecules/Card/Card.module.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   FING DESIGN SYSTEM v3.2 - Card Component
+   QUAFI DESIGN SYSTEM v3.2 - Card Component
 
    LIGHT NEUMORPHISM - Soft, tactile depth on light surfaces
    - Light semi-transparent background with subtle blur
@@ -17,10 +17,10 @@
   position: relative;
   background: rgba(255, 255, 255, 0.35);
   border: 1px solid rgba(255, 255, 255, 0.6);
-  border-radius: var(--fing-radius-card);
+  border-radius: var(--quafi-radius-card);
   overflow: hidden;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  font-family: var(--fing-font-primary);
+  font-family: var(--quafi-font-primary);
   box-sizing: border-box;
 
   /* Glass effect - strong frosted blur */
@@ -28,7 +28,7 @@
   -webkit-backdrop-filter: blur(16px);
 
   /* Light neumorphic shadow */
-  box-shadow: var(--raised-3), var(--fing-shadow-highlight-strong);
+  box-shadow: var(--raised-3), var(--quafi-shadow-highlight-strong);
 }
 
 /* Top luminous edge - simulates light hitting glass */
@@ -59,8 +59,8 @@
   /* Enhanced shadow on hover */
   box-shadow:
     var(--raised-4),
-    var(--fing-shadow-highlight-strong),
-    0 0 30px rgba(var(--fing-accent-rgb), 0.12);
+    var(--quafi-shadow-highlight-strong),
+    0 0 30px rgba(var(--quafi-accent-rgb), 0.12);
 }
 
 .card:hover::before {
@@ -83,21 +83,21 @@
 }
 
 .interactive:hover {
-  border-color: rgba(var(--fing-accent-rgb), 0.4);
+  border-color: rgba(var(--quafi-accent-rgb), 0.4);
 }
 
 .interactive:focus-visible {
   outline: none;
-  border-color: var(--fing-accent-primary);
+  border-color: var(--quafi-accent-primary);
   box-shadow:
     var(--raised-3),
-    var(--fing-shadow-highlight),
+    var(--quafi-shadow-highlight),
     var(--shadow-focus-ring);
 }
 
 .interactive:active {
   transform: translateY(0);
-  box-shadow: var(--raised-2), var(--fing-shadow-highlight);
+  box-shadow: var(--raised-2), var(--quafi-shadow-highlight);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -105,35 +105,35 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .variantSuccess {
-  border-left: 3px solid var(--fing-status-positive);
+  border-left: 3px solid var(--quafi-status-positive);
   box-shadow:
     var(--raised-3),
-    var(--fing-shadow-highlight),
-    inset 3px 0 12px rgba(var(--fing-positive-rgb), 0.15);
+    var(--quafi-shadow-highlight),
+    inset 3px 0 12px rgba(var(--quafi-positive-rgb), 0.15);
 }
 
 .variantWarning {
-  border-left: 3px solid var(--fing-status-warning);
+  border-left: 3px solid var(--quafi-status-warning);
   box-shadow:
     var(--raised-3),
-    var(--fing-shadow-highlight),
-    inset 3px 0 12px rgba(var(--fing-warning-rgb), 0.15);
+    var(--quafi-shadow-highlight),
+    inset 3px 0 12px rgba(var(--quafi-warning-rgb), 0.15);
 }
 
 .variantError {
-  border-left: 3px solid var(--fing-status-negative);
+  border-left: 3px solid var(--quafi-status-negative);
   box-shadow:
     var(--raised-3),
-    var(--fing-shadow-highlight),
-    inset 3px 0 12px rgba(var(--fing-negative-rgb), 0.15);
+    var(--quafi-shadow-highlight),
+    inset 3px 0 12px rgba(var(--quafi-negative-rgb), 0.15);
 }
 
 .variantNeutral {
-  border-left: 3px solid var(--fing-accent-primary);
+  border-left: 3px solid var(--quafi-accent-primary);
   box-shadow:
     var(--raised-3),
-    var(--fing-shadow-highlight),
-    inset 3px 0 12px rgba(var(--fing-accent-rgb), 0.15);
+    var(--quafi-shadow-highlight),
+    inset 3px 0 12px rgba(var(--quafi-accent-rgb), 0.15);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -147,16 +147,16 @@
 }
 
 .title {
-  font-family: var(--fing-font-primary);
+  font-family: var(--quafi-font-primary);
   font-size: 16px;
-  font-weight: var(--fing-font-semibold);
-  color: var(--fing-text-primary);
+  font-weight: var(--quafi-font-semibold);
+  color: var(--quafi-text-primary);
   line-height: 1.4;
 }
 
 .subtitle {
   font-size: 13px;
-  color: var(--fing-text-secondary);
+  color: var(--quafi-text-secondary);
   margin-top: 4px;
 }
 
@@ -203,33 +203,33 @@
 /* Elevated - Stronger neumorphic effect */
 .elevated {
   background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(var(--fing-blur-lg));
-  -webkit-backdrop-filter: blur(var(--fing-blur-lg));
-  box-shadow: var(--raised-5), var(--fing-shadow-highlight-strong);
+  backdrop-filter: blur(var(--quafi-blur-lg));
+  -webkit-backdrop-filter: blur(var(--quafi-blur-lg));
+  box-shadow: var(--raised-5), var(--quafi-shadow-highlight-strong);
 }
 
 .elevated:hover {
   box-shadow:
     16px 16px 32px var(--shadow-dark),
     -16px -16px 32px var(--shadow-light),
-    var(--fing-shadow-highlight-strong),
-    0 0 40px rgba(var(--fing-accent-rgb), 0.15);
+    var(--quafi-shadow-highlight-strong),
+    0 0 40px rgba(var(--quafi-accent-rgb), 0.15);
 }
 
 /* Highlighted - Accent glow */
 .highlighted {
-  border-color: rgba(var(--fing-accent-rgb), 0.5);
+  border-color: rgba(var(--quafi-accent-rgb), 0.5);
   box-shadow:
     var(--raised-3),
-    var(--fing-shadow-highlight),
-    var(--fing-shadow-glow-md);
+    var(--quafi-shadow-highlight),
+    var(--quafi-shadow-glow-md);
 }
 
 .highlighted:hover {
   box-shadow:
     var(--raised-5),
-    var(--fing-shadow-highlight-strong),
-    var(--fing-shadow-glow-lg);
+    var(--quafi-shadow-highlight-strong),
+    var(--quafi-shadow-glow-lg);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -237,20 +237,20 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .glow {
-  border-color: rgba(var(--fing-accent-rgb), 0.6);
+  border-color: rgba(var(--quafi-accent-rgb), 0.6);
   box-shadow:
     var(--raised-3),
-    var(--fing-shadow-highlight-strong),
-    0 0 25px rgba(var(--fing-accent-rgb), 0.25),
-    0 0 50px rgba(var(--fing-accent-rgb), 0.15);
+    var(--quafi-shadow-highlight-strong),
+    0 0 25px rgba(var(--quafi-accent-rgb), 0.25),
+    0 0 50px rgba(var(--quafi-accent-rgb), 0.15);
 }
 
 .glow:hover {
   box-shadow:
     var(--raised-5),
-    var(--fing-shadow-highlight-strong),
-    0 0 35px rgba(var(--fing-accent-rgb), 0.35),
-    0 0 70px rgba(var(--fing-accent-rgb), 0.2);
+    var(--quafi-shadow-highlight-strong),
+    0 0 35px rgba(var(--quafi-accent-rgb), 0.35),
+    0 0 70px rgba(var(--quafi-accent-rgb), 0.2);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -259,8 +259,8 @@
 
 .pressed {
   background: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(var(--fing-blur-sm));
-  -webkit-backdrop-filter: blur(var(--fing-blur-sm));
+  backdrop-filter: blur(var(--quafi-blur-sm));
+  -webkit-backdrop-filter: blur(var(--quafi-blur-sm));
   box-shadow: var(--inset-4);
 }
 
@@ -289,17 +289,17 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: var(--fing-status-positive);
+  background-color: var(--quafi-status-positive);
   box-shadow: 0 0 10px currentColor;
-  animation: fing-pulse-subtle 3s ease-in-out infinite;
+  animation: quafi-pulse-subtle 3s ease-in-out infinite;
 }
 
 .statusWarning::after {
-  background-color: var(--fing-status-warning);
+  background-color: var(--quafi-status-warning);
 }
 
 .statusError::after {
-  background-color: var(--fing-status-negative);
+  background-color: var(--quafi-status-negative);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -307,7 +307,7 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .compact {
-  border-radius: var(--fing-radius-lg);
+  border-radius: var(--quafi-radius-lg);
 }
 
 .compact .header {
@@ -364,7 +364,7 @@
 .neuPanel {
   background: var(--neu-base);
   border-radius: var(--radius-standard);
-  padding: var(--fing-space-8);
+  padding: var(--quafi-space-8);
   border: none;
 
   /* Base neumorphic shadow - overridden by inline styles when Light Engine active */
@@ -389,12 +389,12 @@
 
 .neuPanel .header {
   background: transparent;
-  border-bottom-color: rgba(var(--fing-border-base-rgb), 0.2);
+  border-bottom-color: rgba(var(--quafi-border-base-rgb), 0.2);
 }
 
 .neuPanel .footer {
   background: transparent;
-  border-top-color: rgba(var(--fing-border-base-rgb), 0.2);
+  border-top-color: rgba(var(--quafi-border-base-rgb), 0.2);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────

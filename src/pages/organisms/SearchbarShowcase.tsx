@@ -1,5 +1,5 @@
 // Path: src/pages/organisms/SearchbarShowcase.tsx
-// FING Design System - Glass-Neumorphism Searchbar
+// QUAFI Design System - Glass-Neumorphism Searchbar
 import React, { useState, useMemo } from 'react';
 import { Searchbar } from '../../components/organisms/Searchbar';
 import { ShowcaseSection } from '../../components/showcase';
@@ -80,7 +80,7 @@ function SearchbarContent() {
       >
         <div style={searchContainerStyles}>
           <Searchbar
-            productName="FING"
+            productName="QUAFI"
             version="v1.0.1"
             onSearch={() => alert('Búsqueda ejecutada')}
           />
@@ -93,7 +93,7 @@ function SearchbarContent() {
       >
         <div style={searchContainerStyles}>
           <Searchbar
-            productName="FING"
+            productName="QUAFI"
             version="v1.0.1"
             filters={[
               {
@@ -114,7 +114,7 @@ function SearchbarContent() {
       >
         <div style={searchContainerStyles}>
           <Searchbar
-            productName="FING"
+            productName="QUAFI"
             version="v1.0.1"
             filters={[
               {
@@ -136,7 +136,7 @@ function SearchbarContent() {
       >
         <div style={searchContainerStyles}>
           <Searchbar
-            productName="FING"
+            productName="QUAFI"
             version="v1.0.1"
             filters={[
               {
@@ -212,7 +212,7 @@ function SearchbarContent() {
       >
         <div style={searchContainerStyles}>
           <Searchbar
-            productName="FING"
+            productName="QUAFI"
             version="v1.0.1"
             filters={[
               {
@@ -243,7 +243,7 @@ function SearchbarContent() {
           transition: 'box-shadow 50ms linear',
         }}>
           <Searchbar
-            productName="FING"
+            productName="QUAFI"
             version="Design System v1.0.1"
             filters={[
               {
@@ -284,16 +284,16 @@ function SearchbarContent() {
               fontSize: '16px',
               fontWeight: 600,
               marginBottom: '12px',
-              fontFamily: 'var(--fing-font-display)',
+              fontFamily: 'var(--quafi-font-display)',
               textTransform: 'uppercase',
-              color: 'var(--fing-text-primary)',
+              color: 'var(--quafi-text-primary)',
             }}>
               Resultados de búsqueda
             </h3>
             <p style={{
               fontSize: '14px',
-              color: 'var(--fing-text-muted)',
-              fontFamily: 'var(--fing-font-mono)',
+              color: 'var(--quafi-text-muted)',
+              fontFamily: 'var(--quafi-font-mono)',
             }}>
               {filter1 || filter2 || textFilter ? (
                 <>
@@ -317,21 +317,21 @@ function SearchbarContent() {
           boxShadow: getNeuInsetShadow(5, 15),
           background: 'var(--marble-base)',
           fontSize: '12px',
-          fontFamily: 'var(--fing-font-mono)',
-          color: 'var(--fing-text-muted)',
+          fontFamily: 'var(--quafi-font-mono)',
+          color: 'var(--quafi-text-muted)',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Altura total:</strong> 40px (fija)</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Layout:</strong> flex, gap 20px, justify-content space-between</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Product name:</strong> 24px Bold (700), color accent</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Version:</strong> 12px Regular (400), color secundario</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Filters container:</strong> flex, gap 20px, flex 1</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Dropdown filter width:</strong> 192px (default), customizable</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Text filter width:</strong> 297px (default), customizable</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Search button:</strong> width 192px, border-radius 15px</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Submit:</strong> Se ejecuta onSearch al presionar Enter o click en botón</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Disabled:</strong> Deshabilita todos los filtros y el botón</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Altura total:</strong> 40px (fija)</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Layout:</strong> flex, gap 20px, justify-content space-between</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Product name:</strong> 24px Bold (700), color accent</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Version:</strong> 12px Regular (400), color secundario</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Filters container:</strong> flex, gap 20px, flex 1</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Dropdown filter width:</strong> 192px (default), customizable</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Text filter width:</strong> 297px (default), customizable</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Search button:</strong> width 192px, border-radius 15px</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Submit:</strong> Se ejecuta onSearch al presionar Enter o click en botón</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Disabled:</strong> Deshabilita todos los filtros y el botón</p>
         </div>
       </ShowcaseSection>
     </div>

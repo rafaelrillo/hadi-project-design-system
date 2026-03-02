@@ -1,11 +1,11 @@
 // Path: src/pages/Landing/components/LandingNav/LandingNav.tsx
-// FING Brand Navigation - Stone Marble Neumorphism
+// QUAFI Brand Navigation - Stone Marble Neumorphism
 
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowRight } from "lucide-react";
-import { FingEmblem } from "@/components/atoms/FingEmblem";
+import { QuafiEmblem } from "@/components/atoms/QuafiEmblem";
 import styles from "./LandingNav.module.css";
 
 const navLinks = [
@@ -38,7 +38,7 @@ export function LandingNav() {
       <div className={styles.container}>
         {/* Logo */}
         <Link to="/" className={styles.logo}>
-          <FingEmblem size={32} animation="none" />
+          <QuafiEmblem size={32} animation="none" />
           <span className={styles.logoText}>quafi</span>
         </Link>
 

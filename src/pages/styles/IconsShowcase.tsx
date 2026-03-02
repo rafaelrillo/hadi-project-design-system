@@ -1,5 +1,5 @@
 // Path: src/pages/styles/IconsShowcase.tsx
-// FING Design System - Glass-Neumorphism Icons
+// QUAFI Design System - Glass-Neumorphism Icons
 import React, { useMemo } from 'react';
 import { ShowcaseSection } from '../../components/showcase';
 import { LightEngineProvider, useLightEngine } from '@/contexts/LightEngineContext';
@@ -107,25 +107,25 @@ function IconsContent() {
                   minWidth: '180px',
                   transition: 'box-shadow 50ms linear',
                 }}>
-                  <Terminal size={size.pixels} color="var(--fing-accent)" />
-                  <Code size={size.pixels} color="var(--fing-accent)" />
-                  <Database size={size.pixels} color="var(--fing-accent)" />
+                  <Terminal size={size.pixels} color="var(--quafi-accent)" />
+                  <Code size={size.pixels} color="var(--quafi-accent)" />
+                  <Database size={size.pixels} color="var(--quafi-accent)" />
                 </div>
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: '14px', fontWeight: 600, color: 'var(--fing-text-primary)', marginBottom: '4px', fontFamily: 'var(--fing-font-display)' }}>
+                  <div style={{ fontSize: '14px', fontWeight: 600, color: 'var(--quafi-text-primary)', marginBottom: '4px', fontFamily: 'var(--quafi-font-display)' }}>
                     {size.name}
                   </div>
                   <code style={{
                     fontSize: '11px',
-                    backgroundColor: 'rgba(var(--fing-accent-rgb), 0.15)',
+                    backgroundColor: 'rgba(var(--quafi-accent-rgb), 0.15)',
                     padding: '2px 8px',
                     borderRadius: '20px',
-                    color: 'var(--fing-accent-primary)',
-                    fontFamily: 'var(--fing-font-mono)'
+                    color: 'var(--quafi-accent-primary)',
+                    fontFamily: 'var(--quafi-font-mono)'
                   }}>
                     {size.pixels}px
                   </code>
-                  <div style={{ fontSize: '11px', color: 'var(--fing-text-tertiary)', marginTop: '4px', fontFamily: 'var(--fing-font-mono)' }}>
+                  <div style={{ fontSize: '11px', color: 'var(--quafi-text-tertiary)', marginTop: '4px', fontFamily: 'var(--quafi-font-mono)' }}>
                     {size.usage}
                   </div>
                 </div>
@@ -152,7 +152,7 @@ function IconsContent() {
               <div style={glassIconBox(item.hue, item.sat)}>
                 <item.icon size={24} color={`hsl(${item.hue}, ${item.sat * 0.8}%, 30%)`} />
               </div>
-              <div style={{ marginTop: '8px', fontSize: '11px', color: 'var(--fing-text-secondary)', fontFamily: 'var(--fing-font-mono)' }}>
+              <div style={{ marginTop: '8px', fontSize: '11px', color: 'var(--quafi-text-secondary)', fontFamily: 'var(--quafi-font-mono)' }}>
                 {item.label}
               </div>
             </div>
@@ -177,7 +177,7 @@ function IconsContent() {
               justifyContent: 'center',
               transition: 'box-shadow 50ms linear',
             }}>
-              <Icon size={24} color="var(--fing-accent)" />
+              <Icon size={24} color="var(--quafi-accent)" />
             </div>
           ))}
         </div>
@@ -213,17 +213,17 @@ function IconsContent() {
           boxShadow: getNeuInsetShadow(5, 15),
           background: MARBLE.base,
           fontSize: '12px',
-          fontFamily: 'var(--fing-font-mono)',
-          color: 'var(--fing-text-secondary)',
+          fontFamily: 'var(--quafi-font-mono)',
+          color: 'var(--quafi-text-secondary)',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Librería:</strong> Lucide React (MIT)</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Tamaño estándar:</strong> 24px</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Escala:</strong> 16px, 20px, 24px, 32px</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Color primario:</strong> var(--fing-accent-primary)</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Stroke width:</strong> 2px</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Contenedores:</strong> Elevated, Inset, Glass</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Librería:</strong> Lucide React (MIT)</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Tamaño estándar:</strong> 24px</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Escala:</strong> 16px, 20px, 24px, 32px</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Color primario:</strong> var(--quafi-accent-primary)</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Stroke width:</strong> 2px</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Contenedores:</strong> Elevated, Inset, Glass</p>
         </div>
       </ShowcaseSection>
 
@@ -234,8 +234,8 @@ function IconsContent() {
           boxShadow: getNeuInsetShadow(5, 15),
           background: MARBLE.base,
           fontSize: '12px',
-          fontFamily: 'var(--fing-font-mono)',
-          color: 'var(--fing-text-secondary)',
+          fontFamily: 'var(--quafi-font-mono)',
+          color: 'var(--quafi-text-secondary)',
           transition: 'box-shadow 50ms linear',
         }}>
           <pre style={{ margin: 0, whiteSpace: 'pre-wrap' }}>{`import { Terminal, Code } from 'lucide-react';
@@ -246,9 +246,9 @@ function IconsContent() {
 <Database size={16} /> // Extra pequeño
 
 // Con colores del tema
-<Terminal color="var(--fing-accent-primary)" />
-<Check color="var(--fing-status-positive)" />
-<X color="var(--fing-status-negative)" />
+<Terminal color="var(--quafi-accent-primary)" />
+<Check color="var(--quafi-status-positive)" />
+<X color="var(--quafi-status-negative)" />
 
 // En contenedor neumórfico
 <div style={{ boxShadow: getNeuPanelShadow(8, 24) }}>

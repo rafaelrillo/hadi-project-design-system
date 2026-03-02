@@ -2,13 +2,13 @@
 
 import { useState, useMemo, useCallback, useEffect } from 'react';
 import { Search, ArrowLeft, ArrowRight, Check, FlaskConical, GitCompare } from 'lucide-react';
-import { Stepper, Step } from '@/components/molecules/fing/Stepper';
-import { StockSearchResult } from '@/components/molecules/fing/StockSearchResult';
-import { SelectedStockCard } from '@/components/molecules/fing/SelectedStockCard';
-import { AllocationSlider } from '@/components/molecules/fing/AllocationSlider';
-import { RiskProfileSelector, RiskProfile } from '@/components/molecules/fing/RiskProfileSelector';
+import { Stepper, Step } from '@/components/molecules/quafi/Stepper';
+import { StockSearchResult } from '@/components/molecules/quafi/StockSearchResult';
+import { SelectedStockCard } from '@/components/molecules/quafi/SelectedStockCard';
+import { AllocationSlider } from '@/components/molecules/quafi/AllocationSlider';
+import { RiskProfileSelector, RiskProfile } from '@/components/molecules/quafi/RiskProfileSelector';
 import { Button } from '@/components/atoms/Button';
-import { ComparisonGrid } from '@/components/molecules/fing/ComparisonGrid';
+import { ComparisonGrid } from '@/components/molecules/quafi/ComparisonGrid';
 import { usePortfolioStore, useMarketStore } from '@/store';
 import styles from './PortfolioSimulator.module.css';
 

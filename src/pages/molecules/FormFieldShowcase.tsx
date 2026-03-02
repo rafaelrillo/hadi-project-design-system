@@ -1,5 +1,5 @@
 // Path: src/pages/molecules/FormFieldShowcase.tsx
-// FING Design System - Glass-Neumorphism Form Fields
+// QUAFI Design System - Glass-Neumorphism Form Fields
 import React, { useState, useMemo } from "react";
 import { FormField } from "../../components/molecules/FormField";
 import {
@@ -185,8 +185,8 @@ function FormFieldContent() {
               fontSize: "16px",
               fontWeight: 600,
               margin: 0,
-              color: "var(--fing-text-primary)",
-              fontFamily: "var(--fing-font-display)",
+              color: "var(--quafi-text-primary)",
+              fontFamily: "var(--quafi-font-display)",
               textTransform: "uppercase",
               letterSpacing: "0.05em",
             }}
@@ -248,8 +248,8 @@ function FormFieldContent() {
               style={{
                 fontSize: "14px",
                 cursor: "pointer",
-                color: "var(--fing-text-primary)",
-                fontFamily: "var(--fing-font-mono)",
+                color: "var(--quafi-text-primary)",
+                fontFamily: "var(--quafi-font-mono)",
               }}
             >
               Acepto los términos y condiciones
@@ -267,8 +267,8 @@ function FormFieldContent() {
                 cursor: "pointer",
                 fontSize: "14px",
                 fontWeight: 600,
-                color: "var(--fing-accent)",
-                fontFamily: "var(--fing-font-mono)",
+                color: "var(--quafi-accent)",
+                fontFamily: "var(--quafi-font-mono)",
                 transition: "box-shadow 150ms ease",
               }}
             >
@@ -284,8 +284,8 @@ function FormFieldContent() {
                 cursor: "pointer",
                 fontSize: "14px",
                 fontWeight: 500,
-                color: "var(--fing-text-muted)",
-                fontFamily: "var(--fing-font-mono)",
+                color: "var(--quafi-text-muted)",
+                fontFamily: "var(--quafi-font-mono)",
                 transition: "box-shadow 150ms ease",
               }}
             >
@@ -303,43 +303,43 @@ function FormFieldContent() {
             boxShadow: getNeuInsetShadow(5, 15),
             background: "var(--marble-base)",
             fontSize: "12px",
-            fontFamily: "var(--fing-font-mono)",
-            color: "var(--fing-text-muted)",
+            fontFamily: "var(--quafi-font-mono)",
+            color: "var(--quafi-text-muted)",
             lineHeight: "1.8",
             transition: "box-shadow 50ms linear",
           }}
         >
           <p>
             ✓{" "}
-            <strong style={{ color: "var(--fing-accent-primary)" }}>
+            <strong style={{ color: "var(--quafi-accent-primary)" }}>
               Display:
             </strong>{" "}
             flex, flex-direction column
           </p>
           <p>
             ✓{" "}
-            <strong style={{ color: "var(--fing-accent-primary)" }}>
+            <strong style={{ color: "var(--quafi-accent-primary)" }}>
               Gap:
             </strong>{" "}
             8px entre elementos
           </p>
           <p>
             ✓{" "}
-            <strong style={{ color: "var(--fing-accent-primary)" }}>
+            <strong style={{ color: "var(--quafi-accent-primary)" }}>
               Label:
             </strong>{" "}
             12px, color #252528
           </p>
           <p>
             ✓{" "}
-            <strong style={{ color: "var(--fing-accent-primary)" }}>
+            <strong style={{ color: "var(--quafi-accent-primary)" }}>
               Required:
             </strong>{" "}
-            asterisco color var(--fing-status-negative)
+            asterisco color var(--quafi-status-negative)
           </p>
           <p>
             ✓{" "}
-            <strong style={{ color: "var(--fing-accent-primary)" }}>
+            <strong style={{ color: "var(--quafi-accent-primary)" }}>
               Helper/Error:
             </strong>{" "}
             11px, color #636E72 / negative

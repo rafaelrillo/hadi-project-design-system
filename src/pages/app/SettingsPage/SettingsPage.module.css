@@ -1,5 +1,5 @@
 /* Path: src/pages/app/SettingsPage/SettingsPage.module.css */
-/* FING Settings Page - Stone Marble Neumorphism */
+/* QUAFI Settings Page - Stone Marble Neumorphism */
 
 .container {
   padding: 32px;
@@ -28,13 +28,13 @@
   justify-content: center;
   flex-shrink: 0;
 
-  color: var(--fing-accent);
+  color: var(--quafi-accent);
 }
 
 .headerIcon svg {
   filter:
     drop-shadow(1px 1px 1px var(--shadow-light))
-    drop-shadow(-1px -1px 1px rgba(var(--fing-accent-rgb), 0.4));
+    drop-shadow(-1px -1px 1px rgba(var(--quafi-accent-rgb), 0.4));
 }
 
 .headerText {
@@ -44,16 +44,16 @@
 }
 
 .title {
-  font-family: var(--fing-font-primary);
+  font-family: var(--quafi-font-primary);
   font-size: 28px;
   font-weight: 600;
   margin: 0;
 
   /* Letterpress petrol */
-  color: var(--fing-accent);
+  color: var(--quafi-accent);
   text-shadow:
     1px 1px 1px var(--shadow-light),
-    -1px -1px 1px rgba(var(--fing-accent-rgb), 0.4);
+    -1px -1px 1px rgba(var(--quafi-accent-rgb), 0.4);
 }
 
 .subtitle {
@@ -94,7 +94,7 @@
 }
 
 .sectionTitle {
-  font-family: var(--fing-font-primary);
+  font-family: var(--quafi-font-primary);
   font-size: 16px;
   font-weight: 600;
   margin: 0;

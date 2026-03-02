@@ -1,0 +1,225 @@
+/* Path: src/components/molecules/fing/FactorWeight/FactorWeight.module.css */
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   FACTOR WEIGHT
+   Shows which factors weigh most in the current analysis
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.container {
+  background: var(--quafi-bg-elevated);
+  border: 1px solid var(--quafi-border-subtle);
+  border-radius: var(--quafi-radius-md);
+  padding: 20px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   HEADER
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.header {
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--quafi-border-subtle);
+}
+
+.title {
+  font-family: var(--quafi-font-primary);
+  font-size: var(--quafi-text-xs);
+  font-weight: 500;
+  color: var(--quafi-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   FACTORS LIST
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.factorsList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.factorRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 8px 0;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+/* Animation states */
+.animated .factorRow {
+  animation: factorReveal 500ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: calc(var(--factor-index, 0) * 80ms);
+}
+
+@keyframes factorReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Non-animated state */
+.container:not(.animated) .factorRow {
+  opacity: 1;
+  transform: none;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   FACTOR INFO
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.factorInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.factorName {
+  font-family: var(--quafi-font-primary);
+  font-size: var(--quafi-text-sm);
+  font-weight: 400;
+  color: var(--quafi-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   FACTOR METRICS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.factorMetrics {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.barContainer {
+  width: 120px;
+  height: 6px;
+  background: var(--quafi-bg-subtle);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.bar {
+  height: 100%;
+  border-radius: 3px;
+  transition: width var(--quafi-transition-slow);
+  background: var(--quafi-text-tertiary);
+}
+
+/* Impact colors */
+.positive .bar {
+  background: var(--quafi-status-positive);
+}
+
+.negative .bar {
+  background: var(--quafi-status-negative);
+}
+
+.neutral .bar {
+  background: var(--quafi-text-tertiary);
+}
+
+.weight {
+  font-family: var(--quafi-font-numeric);
+  font-size: var(--quafi-text-xs);
+  font-weight: 500;
+  color: var(--quafi-text-secondary);
+  letter-spacing: var(--quafi-tracking-led);
+  min-width: 36px;
+  text-align: right;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   TREND INDICATOR
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.trend {
+  font-size: 12px;
+  width: 16px;
+  text-align: center;
+  opacity: 0.7;
+  transition: opacity var(--quafi-transition-fast);
+}
+
+.factorRow:hover .trend {
+  opacity: 1;
+}
+
+.trendUp {
+  color: var(--quafi-status-positive-text);
+}
+
+.trendDown {
+  color: var(--quafi-status-negative-text);
+}
+
+.trendStable {
+  color: var(--quafi-text-tertiary);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   EXPAND BUTTON
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.expandButton {
+  display: block;
+  width: 100%;
+  margin-top: 16px;
+  padding: 10px;
+  background: transparent;
+  border: 1px solid var(--quafi-border-subtle);
+  border-radius: var(--quafi-radius-sm);
+  font-family: var(--quafi-font-primary);
+  font-size: var(--quafi-text-xs);
+  color: var(--quafi-text-secondary);
+  cursor: pointer;
+  transition:
+    background-color var(--quafi-transition-fast),
+    border-color var(--quafi-transition-fast),
+    color var(--quafi-transition-fast);
+}
+
+.expandButton:hover {
+  background: var(--quafi-bg-subtle);
+  border-color: var(--quafi-border-default);
+  color: var(--quafi-text-primary);
+}
+
+.expandButton:focus-visible {
+  outline: 2px solid var(--quafi-accent-primary);
+  outline-offset: 2px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   REDUCED MOTION
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  .animated .factorRow {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .bar {
+    transition: none;
+  }
+
+  .trend {
+    transition: none;
+  }
+
+  .expandButton {
+    transition: none;
+  }
+}

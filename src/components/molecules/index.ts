@@ -14,5 +14,5 @@ export * from './SearchbarItem';
 export * from './SidebarItem';
 export * from './Tabs';
 
-// FING Specialized Molecules
-export * from './fing';
+// QUAFI Specialized Molecules
+export * from './quafi';

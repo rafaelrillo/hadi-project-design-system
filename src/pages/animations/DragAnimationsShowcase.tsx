@@ -1,5 +1,5 @@
 // Path: src/pages/animations/DragAnimationsShowcase.tsx
-// FING Design System - Glass-Neumorphism Drag Animations
+// QUAFI Design System - Glass-Neumorphism Drag Animations
 import { useRef, useMemo } from "react";
 import { DraggablePanel } from "../../components/animations/DraggablePanel";
 import { ShowcaseSection } from "../../components/showcase";
@@ -78,8 +78,8 @@ function DragAnimationsContent() {
                 top: "50%",
                 left: "50%",
                 transform: "translate(-50%, -50%)",
-                color: "var(--fing-text-muted)",
-                fontFamily: "var(--fing-font-mono)",
+                color: "var(--quafi-text-muted)",
+                fontFamily: "var(--quafi-font-mono)",
                 fontSize: "12px",
                 textAlign: "center",
                 pointerEvents: "none",
@@ -102,17 +102,17 @@ function DragAnimationsContent() {
                 background: MARBLE.base,
                 borderRadius: "20px",
                 boxShadow: getNeuPanelShadow(6, 18),
-                borderLeft: "4px solid var(--fing-accent)",
+                borderLeft: "4px solid var(--quafi-accent)",
               }}
             >
               <Move
-                style={{ color: "var(--fing-accent)", marginBottom: "8px" }}
+                style={{ color: "var(--quafi-accent)", marginBottom: "8px" }}
                 size={20}
               />
               <h4
                 style={{
-                  color: "var(--fing-text-primary)",
-                  fontFamily: "var(--fing-font-mono)",
+                  color: "var(--quafi-text-primary)",
+                  fontFamily: "var(--quafi-font-mono)",
                   fontSize: "12px",
                 }}
               >
@@ -120,8 +120,8 @@ function DragAnimationsContent() {
               </h4>
               <p
                 style={{
-                  color: "var(--fing-text-muted)",
-                  fontFamily: "var(--fing-font-mono)",
+                  color: "var(--quafi-text-muted)",
+                  fontFamily: "var(--quafi-font-mono)",
                   fontSize: "10px",
                 }}
               >
@@ -143,17 +143,17 @@ function DragAnimationsContent() {
                 background: MARBLE.base,
                 borderRadius: "20px",
                 boxShadow: getNeuPanelShadow(6, 18),
-                borderLeft: "4px solid var(--fing-positive)",
+                borderLeft: "4px solid var(--quafi-positive)",
               }}
             >
               <Move
-                style={{ color: "var(--fing-positive)", marginBottom: "8px" }}
+                style={{ color: "var(--quafi-positive)", marginBottom: "8px" }}
                 size={20}
               />
               <h4
                 style={{
-                  color: "var(--fing-text-primary)",
-                  fontFamily: "var(--fing-font-mono)",
+                  color: "var(--quafi-text-primary)",
+                  fontFamily: "var(--quafi-font-mono)",
                   fontSize: "12px",
                 }}
               >
@@ -161,8 +161,8 @@ function DragAnimationsContent() {
               </h4>
               <p
                 style={{
-                  color: "var(--fing-text-muted)",
-                  fontFamily: "var(--fing-font-mono)",
+                  color: "var(--quafi-text-muted)",
+                  fontFamily: "var(--quafi-font-mono)",
                   fontSize: "10px",
                 }}
               >
@@ -185,15 +185,15 @@ function DragAnimationsContent() {
                 background: MARBLE.base,
                 borderRadius: "20px",
                 boxShadow: getNeuPanelShadow(6, 18),
-                borderLeft: "4px solid var(--fing-warning)",
+                borderLeft: "4px solid var(--quafi-warning)",
                 textAlign: "center",
                 cursor: "grab",
               }}
             >
               <h4
                 style={{
-                  color: "var(--fing-warning)",
-                  fontFamily: "var(--fing-font-mono)",
+                  color: "var(--quafi-warning)",
+                  fontFamily: "var(--quafi-font-mono)",
                   fontSize: "12px",
                 }}
               >
@@ -201,8 +201,8 @@ function DragAnimationsContent() {
               </h4>
               <p
                 style={{
-                  color: "var(--fing-text-muted)",
-                  fontFamily: "var(--fing-font-mono)",
+                  color: "var(--quafi-text-muted)",
+                  fontFamily: "var(--quafi-font-mono)",
                   fontSize: "10px",
                 }}
               >
@@ -224,15 +224,15 @@ function DragAnimationsContent() {
                 background: MARBLE.base,
                 borderRadius: "20px",
                 boxShadow: getNeuPanelShadow(6, 18),
-                borderLeft: "4px solid var(--fing-info)",
+                borderLeft: "4px solid var(--quafi-info)",
                 textAlign: "center",
                 cursor: "grab",
               }}
             >
               <h4
                 style={{
-                  color: "var(--fing-info)",
-                  fontFamily: "var(--fing-font-mono)",
+                  color: "var(--quafi-info)",
+                  fontFamily: "var(--quafi-font-mono)",
                   fontSize: "12px",
                 }}
               >
@@ -240,8 +240,8 @@ function DragAnimationsContent() {
               </h4>
               <p
                 style={{
-                  color: "var(--fing-text-muted)",
-                  fontFamily: "var(--fing-font-mono)",
+                  color: "var(--quafi-text-muted)",
+                  fontFamily: "var(--quafi-font-mono)",
                   fontSize: "10px",
                 }}
               >
@@ -260,35 +260,35 @@ function DragAnimationsContent() {
             boxShadow: getNeuInsetShadow(5, 15),
             background: MARBLE.base,
             fontSize: "12px",
-            fontFamily: "var(--fing-font-mono)",
-            color: "var(--fing-text-muted)",
+            fontFamily: "var(--quafi-font-mono)",
+            color: "var(--quafi-text-muted)",
             lineHeight: "1.8",
             transition: "box-shadow 50ms linear",
           }}
         >
           <p>
             ✓{" "}
-            <strong style={{ color: "var(--fing-accent)" }}>
+            <strong style={{ color: "var(--quafi-accent)" }}>
               constraints:
             </strong>{" "}
             Ref to parent element for boundaries
           </p>
           <p>
-            ✓ <strong style={{ color: "var(--fing-accent)" }}>axis:</strong> "x"
+            ✓ <strong style={{ color: "var(--quafi-accent)" }}>axis:</strong> "x"
             | "y" | undefined (both)
           </p>
           <p>
-            ✓ <strong style={{ color: "var(--fing-accent)" }}>elastic:</strong>{" "}
+            ✓ <strong style={{ color: "var(--quafi-accent)" }}>elastic:</strong>{" "}
             0-1 bounce factor at boundaries
           </p>
           <p>
             ✓{" "}
-            <strong style={{ color: "var(--fing-accent)" }}>showHandle:</strong>{" "}
+            <strong style={{ color: "var(--quafi-accent)" }}>showHandle:</strong>{" "}
             Visual drag handle indicator
           </p>
           <p>
             ✓{" "}
-            <strong style={{ color: "var(--fing-accent)" }}>
+            <strong style={{ color: "var(--quafi-accent)" }}>
               handlePosition:
             </strong>{" "}
             "top" | "bottom" | "left" | "right"

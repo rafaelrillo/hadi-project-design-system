@@ -1,28 +1,28 @@
 /* Path: src/components/showcase/SidebarGroup.module.css */
-/* FING Design System Version */
+/* QUAFI Design System Version */
 
 /* Group Header */
 .groupHeader {
   display: flex;
   align-items: center;
-  gap: var(--fing-space-2);
+  gap: var(--quafi-space-2);
   padding: 12px 16px;
   cursor: pointer;
   background-color: transparent;
   border: none;
   width: 100%;
-  color: var(--fing-text-primary);
-  font-family: var(--fing-font-primary);
-  font-size: var(--fing-text-sm);
-  font-weight: var(--fing-font-medium);
-  transition: all var(--fing-transition-fast);
+  color: var(--quafi-text-primary);
+  font-family: var(--quafi-font-primary);
+  font-size: var(--quafi-text-sm);
+  font-weight: var(--quafi-font-medium);
+  transition: all var(--quafi-transition-fast);
   user-select: none;
   letter-spacing: 0.02em;
 }
 
 .groupHeader:hover {
-  background-color: var(--fing-bg-subtle);
-  color: var(--fing-accent-primary);
+  background-color: var(--quafi-bg-subtle);
+  color: var(--quafi-accent-primary);
 }
 
 /* Title */
@@ -46,33 +46,33 @@
 .item {
   display: flex;
   align-items: center;
-  gap: var(--fing-space-2);
-  padding: var(--fing-space-2) 16px var(--fing-space-2) 40px;
-  color: var(--fing-text-secondary);
+  gap: var(--quafi-space-2);
+  padding: var(--quafi-space-2) 16px var(--quafi-space-2) 40px;
+  color: var(--quafi-text-secondary);
   text-decoration: none;
-  font-family: var(--fing-font-primary);
+  font-family: var(--quafi-font-primary);
   font-size: 12px;
-  font-weight: var(--fing-font-regular);
+  font-weight: var(--quafi-font-regular);
   background-color: transparent;
   border-left: 3px solid transparent;
-  transition: all var(--fing-transition-fast);
+  transition: all var(--quafi-transition-fast);
   letter-spacing: 0.02em;
 }
 
 .item:hover {
-  background-color: var(--fing-bg-subtle);
-  color: var(--fing-text-primary);
-  border-left-color: var(--fing-border-default);
+  background-color: var(--quafi-bg-subtle);
+  color: var(--quafi-text-primary);
+  border-left-color: var(--quafi-border-default);
 }
 
 .itemActive {
-  color: var(--fing-accent-primary);
-  font-weight: var(--fing-font-medium);
-  background-color: var(--fing-bg-elevated);
-  border-left: 3px solid var(--fing-accent-primary);
+  color: var(--quafi-accent-primary);
+  font-weight: var(--quafi-font-medium);
+  background-color: var(--quafi-bg-elevated);
+  border-left: 3px solid var(--quafi-accent-primary);
 }
 
 .itemActive:hover {
-  background-color: var(--fing-bg-elevated);
-  color: var(--fing-accent-primary);
+  background-color: var(--quafi-bg-elevated);
+  color: var(--quafi-accent-primary);
 }

@@ -15,7 +15,7 @@ import {
   Flame,
   Zap,
 } from 'lucide-react';
-import { NewsCard } from '@/components/molecules/fing/NewsCard';
+import { NewsCard } from '@/components/molecules/quafi/NewsCard';
 import { Button } from '@/components/atoms/Button';
 import { Dropdown } from '@/components/atoms/Dropdown';
 import { useNews } from '@/hooks/useNews';

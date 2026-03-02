@@ -1,19 +1,19 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { FingHome } from "./pages/FingHome";
+import { QuafiHome } from "./pages/QuafiHome";
 import { appRoutes } from "./routes/appRoutes";
-import { showcaseRoutes, standaloneFingRoutes } from "./routes/showcaseRoutes";
+import { showcaseRoutes, standaloneQuafiRoutes } from "./routes/showcaseRoutes";
 
 function AppRoutes() {
   return (
     <Routes>
-      {/* FING Home Page - Root */}
-      <Route path="/" element={<FingHome />} />
+      {/* QUAFI Home Page - Root */}
+      <Route path="/" element={<QuafiHome />} />
 
-      {/* FING App - Investment Analysis Application */}
+      {/* QUAFI App - Investment Analysis Application */}
       {appRoutes()}
 
-      {/* FING Showcase - Standalone pages (outside ShowcaseLayout) */}
-      {standaloneFingRoutes()}
+      {/* QUAFI Showcase - Standalone pages (outside ShowcaseLayout) */}
+      {standaloneQuafiRoutes()}
 
       {/* Showcase Layout Routes */}
       {showcaseRoutes()}

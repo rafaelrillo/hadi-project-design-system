@@ -1,5 +1,5 @@
 // Path: src/pages/organisms/FormShowcase.tsx
-// FING Design System - Glass-Neumorphism Forms
+// QUAFI Design System - Glass-Neumorphism Forms
 import React, { useState, useMemo } from "react";
 import { Form } from "../../components/organisms/Form";
 import { FormField } from "../../components/molecules/FormField";
@@ -226,9 +226,9 @@ function FormContent() {
               fontSize: "20px",
               fontWeight: 600,
               marginBottom: "8px",
-              fontFamily: "var(--fing-font-display)",
+              fontFamily: "var(--quafi-font-display)",
               textTransform: "uppercase",
-              color: "var(--fing-text-primary)",
+              color: "var(--quafi-text-primary)",
             }}
           >
             Crear Nueva Cuenta
@@ -236,9 +236,9 @@ function FormContent() {
           <p
             style={{
               fontSize: "14px",
-              color: "var(--fing-text-muted)",
+              color: "var(--quafi-text-muted)",
               marginBottom: "24px",
-              fontFamily: "var(--fing-font-mono)",
+              fontFamily: "var(--quafi-font-mono)",
             }}
           >
             Completa el formulario para registrarte en la plataforma
@@ -336,8 +336,8 @@ function FormContent() {
                       style={{
                         fontSize: "14px",
                         cursor: "pointer",
-                        fontFamily: "var(--fing-font-mono)",
-                        color: "var(--fing-text-primary)",
+                        fontFamily: "var(--quafi-font-mono)",
+                        color: "var(--quafi-text-primary)",
                       }}
                     >
                       Acepto los términos y condiciones *
@@ -360,8 +360,8 @@ function FormContent() {
                       style={{
                         fontSize: "14px",
                         cursor: "pointer",
-                        fontFamily: "var(--fing-font-mono)",
-                        color: "var(--fing-text-primary)",
+                        fontFamily: "var(--quafi-font-mono)",
+                        color: "var(--quafi-text-primary)",
                       }}
                     >
                       Quiero recibir novedades por email
@@ -382,71 +382,71 @@ function FormContent() {
             boxShadow: getNeuInsetShadow(5, 15),
             background: "var(--marble-base)",
             fontSize: "12px",
-            fontFamily: "var(--fing-font-mono)",
-            color: "var(--fing-text-muted)",
+            fontFamily: "var(--quafi-font-mono)",
+            color: "var(--quafi-text-muted)",
             lineHeight: "1.8",
             transition: "box-shadow 50ms linear",
           }}
         >
           <p>
             ✓{" "}
-            <strong style={{ color: "var(--fing-accent-primary)" }}>
+            <strong style={{ color: "var(--quafi-accent-primary)" }}>
               Width:
             </strong>{" "}
             100% (se adapta al contenedor)
           </p>
           <p>
             ✓{" "}
-            <strong style={{ color: "var(--fing-accent-primary)" }}>
+            <strong style={{ color: "var(--quafi-accent-primary)" }}>
               Layout:
             </strong>{" "}
             CSS Grid
           </p>
           <p>
             ✓{" "}
-            <strong style={{ color: "var(--fing-accent-primary)" }}>
+            <strong style={{ color: "var(--quafi-accent-primary)" }}>
               Columns:
             </strong>{" "}
             1 o 2 (prop columns)
           </p>
           <p>
             ✓{" "}
-            <strong style={{ color: "var(--fing-accent-primary)" }}>
+            <strong style={{ color: "var(--quafi-accent-primary)" }}>
               Gap:
             </strong>{" "}
             20px entre campos
           </p>
           <p>
             ✓{" "}
-            <strong style={{ color: "var(--fing-accent-primary)" }}>
+            <strong style={{ color: "var(--quafi-accent-primary)" }}>
               Footer margin-top:
             </strong>{" "}
             20px
           </p>
           <p>
             ✓{" "}
-            <strong style={{ color: "var(--fing-accent-primary)" }}>
+            <strong style={{ color: "var(--quafi-accent-primary)" }}>
               Footer layout:
             </strong>{" "}
             flex, gap 20px, justify-content flex-end
           </p>
           <p>
             ✓{" "}
-            <strong style={{ color: "var(--fing-accent-primary)" }}>
+            <strong style={{ color: "var(--quafi-accent-primary)" }}>
               onSubmit:
             </strong>{" "}
             Automáticamente ejecuta e.preventDefault()
           </p>
           <p>
             ✓{" "}
-            <strong style={{ color: "var(--fing-accent-primary)" }}>
+            <strong style={{ color: "var(--quafi-accent-primary)" }}>
               Submit button:
             </strong>{" "}
             Debe tener type="submit" para activar onSubmit
           </p>
           <p>
             ✓{" "}
-            <strong style={{ color: "var(--fing-accent-primary)" }}>
+            <strong style={{ color: "var(--quafi-accent-primary)" }}>
               Campos full-width:
             </strong>{" "}
             Usar style gridColumn: '1 / -1' en el campo

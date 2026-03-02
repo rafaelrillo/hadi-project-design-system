@@ -1,8 +1,8 @@
 // Path: src/pages/Landing/components/FeatureShowcase/FeatureShowcase.tsx
 import { motion } from 'framer-motion';
-import { MarketStateIndicator, RiskGauge } from '@/components/organisms/fing';
-import { RecommendationCard, HistoricalAlignment } from '@/components/molecules/fing';
-import type { AssetClass } from '@/components/molecules/fing/RecommendationCard/RecommendationCard';
+import { MarketStateIndicator, RiskGauge } from '@/components/organisms/quafi';
+import { RecommendationCard, HistoricalAlignment } from '@/components/molecules/quafi';
+import type { AssetClass } from '@/components/molecules/quafi/RecommendationCard/RecommendationCard';
 import { useMarketStore } from '@/store';
 import styles from './FeatureShowcase.module.css';
 

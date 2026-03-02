@@ -1,6 +1,6 @@
 /* Path: src/components/organisms/Table/Table.module.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   FING DESIGN SYSTEM v3.2 - Table Component
+   QUAFI DESIGN SYSTEM v3.2 - Table Component
 
    LIGHT NEUMORPHISM - Soft light glass data tables
    - Light semi-transparent glass backgrounds
@@ -17,15 +17,15 @@
   overflow-x: auto;
   background: rgba(255, 255, 255, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.7);
-  border-radius: var(--fing-radius-lg);
+  border-radius: var(--quafi-radius-lg);
   position: relative;
 
   /* Glass blur */
-  backdrop-filter: blur(var(--fing-blur-md));
-  -webkit-backdrop-filter: blur(var(--fing-blur-md));
+  backdrop-filter: blur(var(--quafi-blur-md));
+  -webkit-backdrop-filter: blur(var(--quafi-blur-md));
 
   /* Light neumorphic elevation */
-  box-shadow: var(--raised-3), var(--fing-shadow-highlight);
+  box-shadow: var(--raised-3), var(--quafi-shadow-highlight);
 }
 
 /* Luminous top edge */
@@ -44,7 +44,7 @@
     rgba(255, 255, 255, 0.8),
     transparent
   );
-  border-radius: var(--fing-radius-lg) var(--fing-radius-lg) 0 0;
+  border-radius: var(--quafi-radius-lg) var(--quafi-radius-lg) 0 0;
   pointer-events: none;
   z-index: 1;
 }
@@ -57,9 +57,9 @@
   --table-row-height: 44px;
   width: 100%;
   border-collapse: collapse;
-  font-family: var(--fing-font-led);
-  font-size: var(--fing-text-sm);
-  letter-spacing: var(--fing-tracking-led);
+  font-family: var(--quafi-font-led);
+  font-size: var(--quafi-text-sm);
+  letter-spacing: var(--quafi-tracking-led);
   background: transparent;
 }
 
@@ -69,7 +69,7 @@
 
 .tableFull {
   border: 1px solid rgba(163, 177, 198, 0.2);
-  border-radius: var(--fing-radius-lg);
+  border-radius: var(--quafi-radius-lg);
   overflow: hidden;
 }
 
@@ -83,15 +83,15 @@
 }
 
 .th {
-  padding: var(--fing-space-3) var(--fing-space-4);
+  padding: var(--quafi-space-3) var(--quafi-space-4);
   height: var(--table-row-height);
   text-align: left;
-  font-weight: var(--fing-font-semibold);
-  font-size: var(--fing-text-xs);
-  color: var(--fing-text-secondary);
+  font-weight: var(--quafi-font-semibold);
+  font-size: var(--quafi-text-xs);
+  color: var(--quafi-text-secondary);
   letter-spacing: 0.03em;
   white-space: nowrap;
-  font-family: var(--fing-font-primary);
+  font-family: var(--quafi-font-primary);
   background: transparent;
 }
 
@@ -133,12 +133,12 @@
 }
 
 .thSortable:hover {
-  color: var(--fing-accent-primary);
+  color: var(--quafi-accent-primary);
   background: rgba(255, 255, 255, 0.4);
 }
 
 .thSorted {
-  color: var(--fing-accent-primary);
+  color: var(--quafi-accent-primary);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -178,12 +178,12 @@
 }
 
 .trRounded {
-  border-radius: var(--fing-radius-md);
+  border-radius: var(--quafi-radius-md);
 }
 
 .trSelectedIndicator {
   border-left: 3px solid rgba(91, 163, 165, 0.6);
-  box-shadow: inset 3px 0 10px rgba(var(--fing-accent-rgb), 0.1);
+  box-shadow: inset 3px 0 10px rgba(var(--quafi-accent-rgb), 0.1);
 }
 
 .trClickable {
@@ -192,7 +192,7 @@
 
 .trFocused {
   outline: none;
-  box-shadow: inset 0 0 0 2px rgba(var(--fing-accent-rgb), 0.4);
+  box-shadow: inset 0 0 0 2px rgba(var(--quafi-accent-rgb), 0.4);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -200,13 +200,13 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .td {
-  padding: var(--fing-space-3) var(--fing-space-4);
+  padding: var(--quafi-space-3) var(--quafi-space-4);
   height: var(--table-row-height);
-  font-size: var(--fing-text-sm);
-  font-weight: var(--fing-font-normal);
-  color: var(--fing-text-primary);
-  font-family: var(--fing-font-led);
-  letter-spacing: var(--fing-tracking-led);
+  font-size: var(--quafi-text-sm);
+  font-weight: var(--quafi-font-normal);
+  color: var(--quafi-text-primary);
+  font-family: var(--quafi-font-led);
+  letter-spacing: var(--quafi-tracking-led);
   text-align: left;
   vertical-align: middle;
 }
@@ -230,36 +230,36 @@
 
 .actionsContainer {
   display: inline-flex;
-  gap: var(--fing-space-2);
-  margin-left: var(--fing-space-2);
+  gap: var(--quafi-space-2);
+  margin-left: var(--quafi-space-2);
 }
 
 .actionButton {
   background: rgba(255, 255, 255, 0.5);
   border: none;
   cursor: pointer;
-  padding: var(--fing-space-1);
+  padding: var(--quafi-space-1);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--fing-text-tertiary);
+  color: var(--quafi-text-tertiary);
   transition: all 0.15s ease;
-  border-radius: var(--fing-radius-sm);
+  border-radius: var(--quafi-radius-sm);
   box-shadow: var(--raised-1);
 }
 
 .actionButton:hover {
-  color: var(--fing-accent-primary);
+  color: var(--quafi-accent-primary);
   background: rgba(255, 255, 255, 0.7);
   box-shadow: var(--raised-2);
 }
 
 .actionButtonDestructive {
-  color: var(--fing-status-negative);
+  color: var(--quafi-status-negative);
 }
 
 .actionButtonDestructive:hover {
-  color: var(--fing-status-negative);
+  color: var(--quafi-status-negative);
   background: rgba(248, 113, 113, 0.1);
 }
 
@@ -271,19 +271,19 @@
   background: none;
   border: none;
   cursor: pointer;
-  padding: var(--fing-space-1);
+  padding: var(--quafi-space-1);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--fing-text-tertiary);
+  color: var(--quafi-text-tertiary);
   transition: all 0.15s ease;
   width: 24px;
   height: 24px;
-  border-radius: var(--fing-radius-sm);
+  border-radius: var(--quafi-radius-sm);
 }
 
 .expandButton:hover {
-  color: var(--fing-accent-primary);
+  color: var(--quafi-accent-primary);
   background: rgba(255, 255, 255, 0.5);
   box-shadow: var(--raised-1);
 }
@@ -293,7 +293,7 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .expandedCell {
-  padding: var(--fing-space-4);
+  padding: var(--quafi-space-4);
   background: rgba(255, 255, 255, 0.4);
   border-left: 3px solid rgba(91, 163, 165, 0.5);
 
@@ -318,14 +318,14 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .empty {
-  padding: var(--fing-space-12);
+  padding: var(--quafi-space-12);
   text-align: center;
-  color: var(--fing-text-secondary);
+  color: var(--quafi-text-secondary);
 }
 
 .emptyIcon {
-  margin-bottom: var(--fing-space-3);
-  color: var(--fing-text-tertiary);
+  margin-bottom: var(--quafi-space-3);
+  color: var(--quafi-text-tertiary);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -344,10 +344,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--fing-accent-primary);
+  color: var(--quafi-accent-primary);
 
-  backdrop-filter: blur(var(--fing-blur-sm));
-  -webkit-backdrop-filter: blur(var(--fing-blur-sm));
+  backdrop-filter: blur(var(--quafi-blur-sm));
+  -webkit-backdrop-filter: blur(var(--quafi-blur-sm));
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -374,11 +374,11 @@
 }
 
 .tdPositive {
-  color: var(--fing-status-positive);
+  color: var(--quafi-status-positive);
 }
 
 .tdNegative {
-  color: var(--fing-status-negative);
+  color: var(--quafi-status-negative);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -396,7 +396,7 @@
   box-shadow:
     8px 8px 16px var(--neu-shadow-dark),
     -8px -8px 16px var(--neu-shadow-light),
-    var(--fing-shadow-highlight);
+    var(--quafi-shadow-highlight);
 }
 
 .neuPanel::before {

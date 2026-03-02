@@ -1,11 +1,11 @@
 /* Path: src/components/organisms/Form/Form.module.css */
-/* FING Design System */
+/* QUAFI Design System */
 
 /* Form */
 .form {
   width: 100%;
-  font-family: var(--fing-font-led);
-  letter-spacing: var(--fing-tracking-led);
+  font-family: var(--quafi-font-led);
+  letter-spacing: var(--quafi-tracking-led);
 }
 
 /* Fields Container */
@@ -24,5 +24,5 @@
   display: flex;
   justify-content: flex-end;
   gap: var(--gap-elements);
-  margin-top: var(--fing-space-6);
+  margin-top: var(--quafi-space-6);
 }

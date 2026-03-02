@@ -1,5 +1,5 @@
 /* Path: src/components/organisms/settings/MaterialSelector/MaterialSelector.module.css */
-/* FING Material Selector - Stone Marble Neumorphism */
+/* QUAFI Material Selector - Stone Marble Neumorphism */
 
 .container {
   padding: 24px;
@@ -10,13 +10,13 @@
 }
 
 .title {
-  font-family: var(--fing-font-primary);
+  font-family: var(--quafi-font-primary);
   font-size: 18px;
   font-weight: 600;
   margin: 0 0 8px 0;
 
   /* Letterpress petrol */
-  color: var(--fing-accent);
+  color: var(--quafi-accent);
   text-shadow:
     1px 1px 1px var(--shadow-light),
     -1px -1px 1px rgba(58, 106, 114, 0.4);
@@ -50,14 +50,14 @@
 }
 
 .currentName {
-  font-family: var(--fing-font-display);
+  font-family: var(--quafi-font-display);
   font-size: 20px;
   font-weight: 600;
   display: block;
   margin-bottom: 4px;
 
   /* Embossed text in inset container */
-  color: var(--fing-accent);
+  color: var(--quafi-accent);
   text-shadow:
     -1px -1px 0px var(--shadow-light),
     1px 1px 1px rgba(58, 106, 114, 0.3);
@@ -106,7 +106,7 @@
 }
 
 .tokenHex {
-  font-family: var(--fing-font-mono);
+  font-family: var(--quafi-font-mono);
   font-size: 10px;
 
   color: var(--text-muted);
@@ -130,7 +130,7 @@
   text-transform: uppercase;
   margin-bottom: 16px;
 
-  color: var(--fing-accent);
+  color: var(--quafi-accent);
   text-shadow:
     0.5px 0.5px 0px var(--shadow-light),
     -0.5px -0.5px 0px rgba(58, 106, 114, 0.25);
@@ -178,7 +178,7 @@
   border: none;
   border-radius: 12px;
   cursor: pointer;
-  font-family: var(--fing-font-primary);
+  font-family: var(--quafi-font-primary);
   font-size: 12px;
   font-weight: 500;
   background: var(--marble-base);
@@ -202,7 +202,7 @@
   border-radius: 6px;
   border: 2px solid rgba(255, 255, 255, 0.6);
   box-shadow:
-    inset 1px 1px 2px rgba(var(--fing-border-base-rgb), 0.15),
+    inset 1px 1px 2px rgba(var(--quafi-border-base-rgb), 0.15),
     inset -1px -1px 2px rgba(255, 255, 255, 0.5);
   flex-shrink: 0;
 }
@@ -215,7 +215,7 @@
 }
 
 .materialChip.active .chipName {
-  color: var(--fing-accent);
+  color: var(--quafi-accent);
   text-shadow:
     -0.5px -0.5px 0px var(--shadow-light),
     0.5px 0.5px 0px rgba(58, 106, 114, 0.3);
@@ -237,7 +237,7 @@
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  font-family: var(--fing-font-mono);
+  font-family: var(--quafi-font-mono);
   font-size: 10px;
   font-weight: 500;
   background: var(--marble-base);
@@ -256,7 +256,7 @@
 
 .textureChip.active {
   box-shadow: var(--inset-2);
-  color: var(--fing-accent);
+  color: var(--quafi-accent);
   text-shadow:
     -0.5px -0.5px 0px var(--shadow-light),
     0.5px 0.5px 0px rgba(58, 106, 114, 0.3);
@@ -329,13 +329,13 @@
 }
 
 .sliderValue {
-  font-family: var(--fing-font-mono);
+  font-family: var(--quafi-font-mono);
   font-size: 12px;
   font-weight: 600;
   min-width: 35px;
   text-align: right;
 
-  color: var(--fing-accent);
+  color: var(--quafi-accent);
   text-shadow:
     -0.5px -0.5px 0px var(--shadow-light),
     0.5px 0.5px 0px rgba(58, 106, 114, 0.3);
@@ -351,7 +351,7 @@
   border: none;
   border-radius: 12px;
   cursor: pointer;
-  font-family: var(--fing-font-primary);
+  font-family: var(--quafi-font-primary);
   font-size: 12px;
   font-weight: 500;
   background: var(--marble-base);
@@ -366,7 +366,7 @@
 
 .resetButton:hover {
   box-shadow: var(--raised-3);
-  color: var(--fing-accent);
+  color: var(--quafi-accent);
   text-shadow:
     0.5px 0.5px 0px var(--shadow-light),
     -0.5px -0.5px 0px rgba(58, 106, 114, 0.25);

@@ -1,5 +1,5 @@
 // Path: src/pages/molecules/MenuItemShowcase.tsx
-// FING Design System - Glass-Neumorphism Menu Items
+// QUAFI Design System - Glass-Neumorphism Menu Items
 import React, { useState, useMemo } from 'react';
 import { MenuItem } from '../../components/molecules/MenuItem';
 import { ShowcaseSection } from '../../components/showcase';
@@ -107,8 +107,8 @@ function MenuItemContent() {
             marginBottom: '16px',
             fontSize: '12px',
             fontWeight: 600,
-            color: 'var(--fing-text-muted)',
-            fontFamily: 'var(--fing-font-mono)',
+            color: 'var(--quafi-text-muted)',
+            fontFamily: 'var(--quafi-font-mono)',
             textTransform: 'uppercase',
             letterSpacing: '0.05em',
           }}>
@@ -131,17 +131,17 @@ function MenuItemContent() {
           boxShadow: getNeuInsetShadow(5, 15),
           background: 'var(--marble-base)',
           fontSize: '12px',
-          fontFamily: 'var(--fing-font-mono)',
-          color: 'var(--fing-text-muted)',
+          fontFamily: 'var(--quafi-font-mono)',
+          color: 'var(--quafi-text-muted)',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Altura:</strong> 40px</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Padding:</strong> 12px 16px</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Gap:</strong> 12px entre ícono y label</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Border radius:</strong> 15px</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Ícono:</strong> 20px</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Label:</strong> 14px, 400 normal / 600 active</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Altura:</strong> 40px</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Padding:</strong> 12px 16px</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Gap:</strong> 12px entre ícono y label</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Border radius:</strong> 15px</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Ícono:</strong> 20px</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Label:</strong> 14px, 400 normal / 600 active</p>
         </div>
       </ShowcaseSection>
     </div>

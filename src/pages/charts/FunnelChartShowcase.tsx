@@ -1,5 +1,5 @@
 // Path: src/pages/charts/FunnelChartShowcase.tsx
-// FING Design System - Glass-Neumorphism Funnel Chart
+// QUAFI Design System - Glass-Neumorphism Funnel Chart
 import React, { useMemo } from 'react';
 import { ShowcaseSection } from '../../components/showcase';
 import { FunnelChart } from '../../components/charts/echarts';
@@ -164,14 +164,14 @@ function FunnelChartContent() {
             width: '100%',
             borderCollapse: 'collapse',
             fontSize: '12px',
-            fontFamily: 'var(--fing-font-mono)',
+            fontFamily: 'var(--quafi-font-mono)',
           }}>
             <thead>
               <tr>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent)', fontWeight: 600 }}>Prop</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent)', fontWeight: 600 }}>Type</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent)', fontWeight: 600 }}>Default</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent)', fontWeight: 600 }}>Description</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--quafi-accent)', fontWeight: 600 }}>Prop</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--quafi-accent)', fontWeight: 600 }}>Type</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--quafi-accent)', fontWeight: 600 }}>Default</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--quafi-accent)', fontWeight: 600 }}>Description</th>
               </tr>
             </thead>
             <tbody>
@@ -186,10 +186,10 @@ function FunnelChartContent() {
                 { prop: 'formatValue', type: '(v: number) => string', default: '-', desc: 'Value formatter' },
               ].map((row, i) => (
                 <tr key={i}>
-                  <td style={{ padding: '12px 16px', color: 'var(--fing-text-primary)' }}>{row.prop}</td>
-                  <td style={{ padding: '12px 16px', color: 'var(--fing-text-muted)' }}>{row.type}</td>
-                  <td style={{ padding: '12px 16px', color: 'var(--fing-text-muted)' }}>{row.default}</td>
-                  <td style={{ padding: '12px 16px', color: 'var(--fing-text-muted)' }}>{row.desc}</td>
+                  <td style={{ padding: '12px 16px', color: 'var(--quafi-text-primary)' }}>{row.prop}</td>
+                  <td style={{ padding: '12px 16px', color: 'var(--quafi-text-muted)' }}>{row.type}</td>
+                  <td style={{ padding: '12px 16px', color: 'var(--quafi-text-muted)' }}>{row.default}</td>
+                  <td style={{ padding: '12px 16px', color: 'var(--quafi-text-muted)' }}>{row.desc}</td>
                 </tr>
               ))}
             </tbody>

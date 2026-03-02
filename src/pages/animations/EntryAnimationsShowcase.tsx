@@ -1,5 +1,5 @@
 // Path: src/pages/animations/EntryAnimationsShowcase.tsx
-// FING Design System - Glass-Neumorphism Entry Animations
+// QUAFI Design System - Glass-Neumorphism Entry Animations
 import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { FadeIn } from '../../components/animations/FadeIn';
@@ -65,8 +65,8 @@ function EntryAnimationsContent() {
             {directions.map(({ dir, icon: Icon, label }, i) => (
               <FadeIn key={dir} direction={dir} delay={i * 0.1}>
                 <div style={{ ...cardStyles, textAlign: 'center' }}>
-                  <Icon style={{ color: 'var(--fing-accent)', marginBottom: '8px' }} size={24} />
-                  <p style={{ color: 'var(--fing-text-primary)', fontFamily: 'var(--fing-font-mono)', fontSize: '12px' }}>{label}</p>
+                  <Icon style={{ color: 'var(--quafi-accent)', marginBottom: '8px' }} size={24} />
+                  <p style={{ color: 'var(--quafi-text-primary)', fontFamily: 'var(--quafi-font-mono)', fontSize: '12px' }}>{label}</p>
                 </div>
               </FadeIn>
             ))}
@@ -78,7 +78,7 @@ function EntryAnimationsContent() {
         <div style={{ padding: '24px', background: MARBLE.base, borderRadius: '20px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px', width: '100%' }}>
             <div>
-              <h4 style={{ color: 'var(--fing-text-muted)', marginBottom: '16px', fontFamily: 'var(--fing-font-mono)', fontSize: '12px' }}>
+              <h4 style={{ color: 'var(--quafi-text-muted)', marginBottom: '16px', fontFamily: 'var(--quafi-font-mono)', fontSize: '12px' }}>
                 // Normal Speed, Up Direction
               </h4>
               <StaggerList speed="normal" direction="up" itemClassName="">
@@ -89,8 +89,8 @@ function EntryAnimationsContent() {
                     borderRadius: '20px',
                     boxShadow: getNeuInsetShadow(3, 8),
                     marginBottom: '8px',
-                    color: 'var(--fing-positive)',
-                    fontFamily: 'var(--fing-font-mono)',
+                    color: 'var(--quafi-positive)',
+                    fontFamily: 'var(--quafi-font-mono)',
                     fontSize: '12px',
                     transition: 'box-shadow 50ms linear',
                   }}>
@@ -100,7 +100,7 @@ function EntryAnimationsContent() {
               </StaggerList>
             </div>
             <div>
-              <h4 style={{ color: 'var(--fing-text-muted)', marginBottom: '16px', fontFamily: 'var(--fing-font-mono)', fontSize: '12px' }}>
+              <h4 style={{ color: 'var(--quafi-text-muted)', marginBottom: '16px', fontFamily: 'var(--quafi-font-mono)', fontSize: '12px' }}>
                 // Slow Speed, Left Direction
               </h4>
               <StaggerList speed="slow" direction="left" itemClassName="">
@@ -111,8 +111,8 @@ function EntryAnimationsContent() {
                     borderRadius: '20px',
                     boxShadow: getNeuInsetShadow(3, 8),
                     marginBottom: '8px',
-                    color: 'var(--fing-info)',
-                    fontFamily: 'var(--fing-font-mono)',
+                    color: 'var(--quafi-info)',
+                    fontFamily: 'var(--quafi-font-mono)',
                     fontSize: '12px',
                     transition: 'box-shadow 50ms linear',
                   }}>
@@ -135,7 +135,7 @@ function EntryAnimationsContent() {
           >
             {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
               <motion.div key={i} variants={staggerItem} style={cardStyles}>
-                <p style={{ color: 'var(--fing-accent)', fontFamily: 'var(--fing-font-mono)', fontSize: '14px' }}>
+                <p style={{ color: 'var(--quafi-accent)', fontFamily: 'var(--quafi-font-mono)', fontSize: '14px' }}>
                   Item {i}
                 </p>
               </motion.div>
@@ -151,15 +151,15 @@ function EntryAnimationsContent() {
           boxShadow: getNeuInsetShadow(5, 15),
           background: MARBLE.base,
           fontSize: '12px',
-          fontFamily: 'var(--fing-font-mono)',
-          color: 'var(--fing-text-muted)',
+          fontFamily: 'var(--quafi-font-mono)',
+          color: 'var(--quafi-text-muted)',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>
-          <p>✓ <strong style={{ color: 'var(--fing-accent)' }}>FadeIn directions:</strong> up, down, left, right, scale</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent)' }}>StaggerList speeds:</strong> fast, normal, slow</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent)' }}>Stagger delay:</strong> 0.05s (fast), 0.08s (normal), 0.12s (slow)</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent)' }}>Default duration:</strong> 0.4s ease-out</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent)' }}>FadeIn directions:</strong> up, down, left, right, scale</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent)' }}>StaggerList speeds:</strong> fast, normal, slow</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent)' }}>Stagger delay:</strong> 0.05s (fast), 0.08s (normal), 0.12s (slow)</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent)' }}>Default duration:</strong> 0.4s ease-out</p>
         </div>
       </ShowcaseSection>
     </div>

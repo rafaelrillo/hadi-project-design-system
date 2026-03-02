@@ -19,8 +19,8 @@ export * from './Slider';
 export * from './StatCounter';
 
 // Brand Atoms
-export * from './FingEmblem';
-export * from './FingWordmark';
+export * from './QuafiEmblem';
+export * from './QuafiWordmark';
 
-// FING Specialized Atoms
-export * from './fing';
+// QUAFI Specialized Atoms
+export * from './quafi';

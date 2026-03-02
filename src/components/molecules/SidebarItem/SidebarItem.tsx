@@ -57,10 +57,10 @@ export function SidebarItem({
   );
 
   const iconColor = disabled
-    ? 'var(--fing-text-disabled)'
+    ? 'var(--quafi-text-disabled)'
     : isActive
-    ? 'var(--fing-accent-primary)'
-    : 'var(--fing-text-secondary)';
+    ? 'var(--quafi-accent-primary)'
+    : 'var(--quafi-text-secondary)';
 
   const Component = href ? 'a' : 'button';
 

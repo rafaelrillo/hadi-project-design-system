@@ -1,6 +1,6 @@
 /* Path: src/styles/index.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   FING DESIGN SYSTEM - Centralized Imports
+   QUAFI DESIGN SYSTEM - Centralized Imports
 
    This file establishes the correct cascade order for all CSS.
    Import ONLY this file in main.tsx.
@@ -10,7 +10,7 @@
    2. Design Tokens (colors, typography, shadows, letterpress)
    3. Legacy Variables (theme.css - being consolidated)
    4. Utilities (responsive)
-   5. Component-specific typography (fing.css)
+   5. Component-specific typography (quafi.css)
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -33,7 +33,7 @@
 @import './shadows.css';          /* RAISED/INSET/GLASS shadow hierarchy */
 @import './letterpress.css';      /* Letterpress text shadows for neumorphism */
 @import './animations.css';       /* Keyframes and animation utilities */
-@import './wordmark.css';         /* FING wordmark inset typography system */
+@import './wordmark.css';         /* QUAFI wordmark inset typography system */
 @import './buttons.css';          /* Button system: neumorphism, glass, sizes */
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -51,9 +51,9 @@
 
 /* ─────────────────────────────────────────────────────────────────────────────
    6. COMPONENT-SPECIFIC TYPOGRAPHY
-   Additional FING typography styles
+   Additional QUAFI typography styles
    ───────────────────────────────────────────────────────────────────────────── */
-@import './typography/fing.css';
+@import './typography/quafi.css';
 
 /* ─────────────────────────────────────────────────────────────────────────────
    LAB / EXPERIMENTAL

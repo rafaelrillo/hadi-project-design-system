@@ -1,6 +1,6 @@
 /* Path: src/components/atoms/Button/Button.module.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   FING DESIGN SYSTEM v4.0 - Button System
+   QUAFI DESIGN SYSTEM v4.0 - Button System
 
    Complete button system with:
    - 15 Neumorphic variants
@@ -14,7 +14,7 @@
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 .button {
-  font-family: var(--fing-font-primary);
+  font-family: var(--quafi-font-primary);
   font-weight: 500;
   line-height: 1;
   letter-spacing: 0.01em;
@@ -30,14 +30,14 @@
   -webkit-tap-highlight-color: transparent;
   user-select: none;
   white-space: nowrap;
-  transition: var(--fing-btn-transition);
-  border-radius: var(--fing-btn-radius);
-  background: var(--fing-bg-elevated);
-  color: var(--fing-text-secondary);
+  transition: var(--quafi-btn-transition);
+  border-radius: var(--quafi-btn-radius);
+  background: var(--quafi-bg-elevated);
+  color: var(--quafi-text-secondary);
 }
 
 .button:focus-visible {
-  outline: 2px solid var(--fing-accent-primary);
+  outline: 2px solid var(--quafi-accent-primary);
   outline-offset: 3px;
 }
 
@@ -67,42 +67,42 @@
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 .xs {
-  height: var(--fing-btn-height-xs);
-  padding: var(--fing-btn-padding-xs);
-  font-size: var(--fing-btn-font-xs);
-  border-radius: var(--fing-btn-radius-sm);
+  height: var(--quafi-btn-height-xs);
+  padding: var(--quafi-btn-padding-xs);
+  font-size: var(--quafi-btn-font-xs);
+  border-radius: var(--quafi-btn-radius-sm);
   gap: 6px;
 }
 
 .sm {
-  height: var(--fing-btn-height-sm);
-  padding: var(--fing-btn-padding-sm);
-  font-size: var(--fing-btn-font-sm);
-  border-radius: var(--fing-btn-radius-sm);
+  height: var(--quafi-btn-height-sm);
+  padding: var(--quafi-btn-padding-sm);
+  font-size: var(--quafi-btn-font-sm);
+  border-radius: var(--quafi-btn-radius-sm);
   gap: 6px;
 }
 
 .md {
-  height: var(--fing-btn-height-md);
-  padding: var(--fing-btn-padding-md);
-  font-size: var(--fing-btn-font-md);
-  border-radius: var(--fing-btn-radius);
+  height: var(--quafi-btn-height-md);
+  padding: var(--quafi-btn-padding-md);
+  font-size: var(--quafi-btn-font-md);
+  border-radius: var(--quafi-btn-radius);
   gap: 8px;
 }
 
 .lg {
-  height: var(--fing-btn-height-lg);
-  padding: var(--fing-btn-padding-lg);
-  font-size: var(--fing-btn-font-lg);
-  border-radius: var(--fing-btn-radius);
+  height: var(--quafi-btn-height-lg);
+  padding: var(--quafi-btn-padding-lg);
+  font-size: var(--quafi-btn-font-lg);
+  border-radius: var(--quafi-btn-radius);
   gap: 10px;
 }
 
 .xl {
-  height: var(--fing-btn-height-xl);
-  padding: var(--fing-btn-padding-xl);
-  font-size: var(--fing-btn-font-xl);
-  border-radius: var(--fing-btn-radius);
+  height: var(--quafi-btn-height-xl);
+  padding: var(--quafi-btn-padding-xl);
+  font-size: var(--quafi-btn-font-xl);
+  border-radius: var(--quafi-btn-radius);
   gap: 12px;
 }
 
@@ -111,7 +111,7 @@
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 .pill {
-  border-radius: var(--fing-btn-radius-pill);
+  border-radius: var(--quafi-btn-radius-pill);
 }
 
 .fullWidth {
@@ -440,7 +440,7 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .marbleAccent {
-  background: linear-gradient(145deg, var(--fing-accent-secondary), var(--fing-accent-primary));
+  background: linear-gradient(145deg, var(--quafi-accent-secondary), var(--quafi-accent-primary));
   color: #ffffff;
   font-weight: 600;
   box-shadow: var(--raised-3);
@@ -456,7 +456,7 @@
 
 .marbleAccent:active:not(:disabled) {
   transform: translateY(0);
-  background: linear-gradient(145deg, var(--fing-accent-primary), var(--fing-accent-secondary));
+  background: linear-gradient(145deg, var(--quafi-accent-primary), var(--quafi-accent-secondary));
   box-shadow:
     inset 4px 4px 8px rgba(0, 0, 0, 0.15),
     inset -4px -4px 8px rgba(255, 255, 255, 0.1);
@@ -468,10 +468,10 @@
 
 .marbleAccentInset {
   background: var(--marble-base);
-  color: var(--fing-accent-primary);
+  color: var(--quafi-accent-primary);
   font-weight: 600;
   box-shadow: var(--inset-2);
-  border: 2px solid var(--fing-accent-primary);
+  border: 2px solid var(--quafi-accent-primary);
   text-shadow:
     -1px -1px 0px rgba(255, 255, 255, 0.9),
     1px 1px 0px rgba(147, 157, 170, 0.5);
@@ -542,7 +542,7 @@
 .marbleFrame:hover:not(:disabled) {
   transform: translateY(-2px);
   box-shadow: var(--raised-4);
-  outline-color: var(--fing-accent-primary);
+  outline-color: var(--quafi-accent-primary);
 }
 
 .marbleFrame:active:not(:disabled) {
@@ -576,7 +576,7 @@
 .marbleSeal:hover:not(:disabled) {
   transform: scale(1.05);
   box-shadow: var(--raised-4);
-  border-color: var(--fing-accent-primary);
+  border-color: var(--quafi-accent-primary);
 }
 
 .marbleSeal:active:not(:disabled) {
@@ -719,7 +719,7 @@
 }
 
 .marbleGlow:hover:not(:disabled) {
-  color: var(--fing-accent-primary);
+  color: var(--quafi-accent-primary);
   transform: translateY(-2px);
   box-shadow:
     var(--raised-3),
@@ -758,7 +758,7 @@
   border-radius: 20px;
   border: none;
   cursor: pointer;
-  font-family: var(--fing-font-primary, 'DM Sans', sans-serif);
+  font-family: var(--quafi-font-primary, 'DM Sans', sans-serif);
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.05em;
@@ -789,7 +789,7 @@
     0 0 10px rgba(58, 106, 114, 0.12);
 
   /* Brand color on hover */
-  color: var(--fing-accent, #3a6a72);
+  color: var(--quafi-accent, #3a6a72);
 }
 
 .selectedGhostNav:active:not(:disabled) {
@@ -837,7 +837,7 @@
 }
 
 .selectedGhostNav:hover .selectedGhostNavIcon {
-  color: var(--fing-accent, #3a6a72);
+  color: var(--quafi-accent, #3a6a72);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════════
@@ -849,29 +849,29 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .glassTeal {
-  background: var(--fing-glass-teal-bg);
-  backdrop-filter: blur(var(--fing-btn-glass-blur)) saturate(180%);
-  -webkit-backdrop-filter: blur(var(--fing-btn-glass-blur)) saturate(180%);
-  border: 1px solid var(--fing-glass-teal-border);
-  color: var(--fing-glass-teal-text);
+  background: var(--quafi-glass-teal-bg);
+  backdrop-filter: blur(var(--quafi-btn-glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--quafi-btn-glass-blur)) saturate(180%);
+  border: 1px solid var(--quafi-glass-teal-border);
+  color: var(--quafi-glass-teal-text);
   box-shadow:
-    0 4px 16px var(--fing-btn-glass-shadow),
-    inset 0 1px 0 var(--fing-btn-glass-shine);
+    0 4px 16px var(--quafi-btn-glass-shadow),
+    inset 0 1px 0 var(--quafi-btn-glass-shine);
 }
 
 .glassTeal:hover:not(:disabled) {
-  background: var(--fing-glass-teal-bg-hover);
+  background: var(--quafi-glass-teal-bg-hover);
   transform: translateY(-2px);
   box-shadow:
-    0 8px 24px var(--fing-btn-glass-shadow),
-    0 0 20px var(--fing-glass-teal-glow),
-    inset 0 1px 0 var(--fing-btn-glass-shine);
+    0 8px 24px var(--quafi-btn-glass-shadow),
+    0 0 20px var(--quafi-glass-teal-glow),
+    inset 0 1px 0 var(--quafi-btn-glass-shine);
 }
 
 .glassTeal:active:not(:disabled) {
   transform: translateY(1px);
   box-shadow:
-    0 2px 8px var(--fing-btn-glass-shadow),
+    0 2px 8px var(--quafi-btn-glass-shadow),
     inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -880,29 +880,29 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .glassAmber {
-  background: var(--fing-glass-amber-bg);
-  backdrop-filter: blur(var(--fing-btn-glass-blur)) saturate(180%);
-  -webkit-backdrop-filter: blur(var(--fing-btn-glass-blur)) saturate(180%);
-  border: 1px solid var(--fing-glass-amber-border);
-  color: var(--fing-glass-amber-text);
+  background: var(--quafi-glass-amber-bg);
+  backdrop-filter: blur(var(--quafi-btn-glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--quafi-btn-glass-blur)) saturate(180%);
+  border: 1px solid var(--quafi-glass-amber-border);
+  color: var(--quafi-glass-amber-text);
   box-shadow:
-    0 4px 16px var(--fing-btn-glass-shadow),
-    inset 0 1px 0 var(--fing-btn-glass-shine);
+    0 4px 16px var(--quafi-btn-glass-shadow),
+    inset 0 1px 0 var(--quafi-btn-glass-shine);
 }
 
 .glassAmber:hover:not(:disabled) {
-  background: var(--fing-glass-amber-bg-hover);
+  background: var(--quafi-glass-amber-bg-hover);
   transform: translateY(-2px);
   box-shadow:
-    0 8px 24px var(--fing-btn-glass-shadow),
-    0 0 20px var(--fing-glass-amber-glow),
-    inset 0 1px 0 var(--fing-btn-glass-shine);
+    0 8px 24px var(--quafi-btn-glass-shadow),
+    0 0 20px var(--quafi-glass-amber-glow),
+    inset 0 1px 0 var(--quafi-btn-glass-shine);
 }
 
 .glassAmber:active:not(:disabled) {
   transform: translateY(1px);
   box-shadow:
-    0 2px 8px var(--fing-btn-glass-shadow),
+    0 2px 8px var(--quafi-btn-glass-shadow),
     inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -911,29 +911,29 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .glassRose {
-  background: var(--fing-glass-rose-bg);
-  backdrop-filter: blur(var(--fing-btn-glass-blur)) saturate(180%);
-  -webkit-backdrop-filter: blur(var(--fing-btn-glass-blur)) saturate(180%);
-  border: 1px solid var(--fing-glass-rose-border);
-  color: var(--fing-glass-rose-text);
+  background: var(--quafi-glass-rose-bg);
+  backdrop-filter: blur(var(--quafi-btn-glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--quafi-btn-glass-blur)) saturate(180%);
+  border: 1px solid var(--quafi-glass-rose-border);
+  color: var(--quafi-glass-rose-text);
   box-shadow:
-    0 4px 16px var(--fing-btn-glass-shadow),
-    inset 0 1px 0 var(--fing-btn-glass-shine);
+    0 4px 16px var(--quafi-btn-glass-shadow),
+    inset 0 1px 0 var(--quafi-btn-glass-shine);
 }
 
 .glassRose:hover:not(:disabled) {
-  background: var(--fing-glass-rose-bg-hover);
+  background: var(--quafi-glass-rose-bg-hover);
   transform: translateY(-2px);
   box-shadow:
-    0 8px 24px var(--fing-btn-glass-shadow),
-    0 0 20px var(--fing-glass-rose-glow),
-    inset 0 1px 0 var(--fing-btn-glass-shine);
+    0 8px 24px var(--quafi-btn-glass-shadow),
+    0 0 20px var(--quafi-glass-rose-glow),
+    inset 0 1px 0 var(--quafi-btn-glass-shine);
 }
 
 .glassRose:active:not(:disabled) {
   transform: translateY(1px);
   box-shadow:
-    0 2px 8px var(--fing-btn-glass-shadow),
+    0 2px 8px var(--quafi-btn-glass-shadow),
     inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -942,29 +942,29 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .glassViolet {
-  background: var(--fing-glass-violet-bg);
-  backdrop-filter: blur(var(--fing-btn-glass-blur)) saturate(180%);
-  -webkit-backdrop-filter: blur(var(--fing-btn-glass-blur)) saturate(180%);
-  border: 1px solid var(--fing-glass-violet-border);
-  color: var(--fing-glass-violet-text);
+  background: var(--quafi-glass-violet-bg);
+  backdrop-filter: blur(var(--quafi-btn-glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--quafi-btn-glass-blur)) saturate(180%);
+  border: 1px solid var(--quafi-glass-violet-border);
+  color: var(--quafi-glass-violet-text);
   box-shadow:
-    0 4px 16px var(--fing-btn-glass-shadow),
-    inset 0 1px 0 var(--fing-btn-glass-shine);
+    0 4px 16px var(--quafi-btn-glass-shadow),
+    inset 0 1px 0 var(--quafi-btn-glass-shine);
 }
 
 .glassViolet:hover:not(:disabled) {
-  background: var(--fing-glass-violet-bg-hover);
+  background: var(--quafi-glass-violet-bg-hover);
   transform: translateY(-2px);
   box-shadow:
-    0 8px 24px var(--fing-btn-glass-shadow),
-    0 0 20px var(--fing-glass-violet-glow),
-    inset 0 1px 0 var(--fing-btn-glass-shine);
+    0 8px 24px var(--quafi-btn-glass-shadow),
+    0 0 20px var(--quafi-glass-violet-glow),
+    inset 0 1px 0 var(--quafi-btn-glass-shine);
 }
 
 .glassViolet:active:not(:disabled) {
   transform: translateY(1px);
   box-shadow:
-    0 2px 8px var(--fing-btn-glass-shadow),
+    0 2px 8px var(--quafi-btn-glass-shadow),
     inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -973,29 +973,29 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .glassEmerald {
-  background: var(--fing-glass-emerald-bg);
-  backdrop-filter: blur(var(--fing-btn-glass-blur)) saturate(180%);
-  -webkit-backdrop-filter: blur(var(--fing-btn-glass-blur)) saturate(180%);
-  border: 1px solid var(--fing-glass-emerald-border);
-  color: var(--fing-glass-emerald-text);
+  background: var(--quafi-glass-emerald-bg);
+  backdrop-filter: blur(var(--quafi-btn-glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--quafi-btn-glass-blur)) saturate(180%);
+  border: 1px solid var(--quafi-glass-emerald-border);
+  color: var(--quafi-glass-emerald-text);
   box-shadow:
-    0 4px 16px var(--fing-btn-glass-shadow),
-    inset 0 1px 0 var(--fing-btn-glass-shine);
+    0 4px 16px var(--quafi-btn-glass-shadow),
+    inset 0 1px 0 var(--quafi-btn-glass-shine);
 }
 
 .glassEmerald:hover:not(:disabled) {
-  background: var(--fing-glass-emerald-bg-hover);
+  background: var(--quafi-glass-emerald-bg-hover);
   transform: translateY(-2px);
   box-shadow:
-    0 8px 24px var(--fing-btn-glass-shadow),
-    0 0 20px var(--fing-glass-emerald-glow),
-    inset 0 1px 0 var(--fing-btn-glass-shine);
+    0 8px 24px var(--quafi-btn-glass-shadow),
+    0 0 20px var(--quafi-glass-emerald-glow),
+    inset 0 1px 0 var(--quafi-btn-glass-shine);
 }
 
 .glassEmerald:active:not(:disabled) {
   transform: translateY(1px);
   box-shadow:
-    0 2px 8px var(--fing-btn-glass-shadow),
+    0 2px 8px var(--quafi-btn-glass-shadow),
     inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -1004,29 +1004,29 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .glassSky {
-  background: var(--fing-glass-sky-bg);
-  backdrop-filter: blur(var(--fing-btn-glass-blur)) saturate(180%);
-  -webkit-backdrop-filter: blur(var(--fing-btn-glass-blur)) saturate(180%);
-  border: 1px solid var(--fing-glass-sky-border);
-  color: var(--fing-glass-sky-text);
+  background: var(--quafi-glass-sky-bg);
+  backdrop-filter: blur(var(--quafi-btn-glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--quafi-btn-glass-blur)) saturate(180%);
+  border: 1px solid var(--quafi-glass-sky-border);
+  color: var(--quafi-glass-sky-text);
   box-shadow:
-    0 4px 16px var(--fing-btn-glass-shadow),
-    inset 0 1px 0 var(--fing-btn-glass-shine);
+    0 4px 16px var(--quafi-btn-glass-shadow),
+    inset 0 1px 0 var(--quafi-btn-glass-shine);
 }
 
 .glassSky:hover:not(:disabled) {
-  background: var(--fing-glass-sky-bg-hover);
+  background: var(--quafi-glass-sky-bg-hover);
   transform: translateY(-2px);
   box-shadow:
-    0 8px 24px var(--fing-btn-glass-shadow),
-    0 0 20px var(--fing-glass-sky-glow),
-    inset 0 1px 0 var(--fing-btn-glass-shine);
+    0 8px 24px var(--quafi-btn-glass-shadow),
+    0 0 20px var(--quafi-glass-sky-glow),
+    inset 0 1px 0 var(--quafi-btn-glass-shine);
 }
 
 .glassSky:active:not(:disabled) {
   transform: translateY(1px);
   box-shadow:
-    0 2px 8px var(--fing-btn-glass-shadow),
+    0 2px 8px var(--quafi-btn-glass-shadow),
     inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -1035,29 +1035,29 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .glassSmoke {
-  background: var(--fing-glass-smoke-bg);
-  backdrop-filter: blur(var(--fing-btn-glass-blur)) saturate(180%);
-  -webkit-backdrop-filter: blur(var(--fing-btn-glass-blur)) saturate(180%);
-  border: 1px solid var(--fing-glass-smoke-border);
-  color: var(--fing-glass-smoke-text);
+  background: var(--quafi-glass-smoke-bg);
+  backdrop-filter: blur(var(--quafi-btn-glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--quafi-btn-glass-blur)) saturate(180%);
+  border: 1px solid var(--quafi-glass-smoke-border);
+  color: var(--quafi-glass-smoke-text);
   box-shadow:
-    0 4px 16px var(--fing-btn-glass-shadow),
-    inset 0 1px 0 var(--fing-btn-glass-shine);
+    0 4px 16px var(--quafi-btn-glass-shadow),
+    inset 0 1px 0 var(--quafi-btn-glass-shine);
 }
 
 .glassSmoke:hover:not(:disabled) {
-  background: var(--fing-glass-smoke-bg-hover);
+  background: var(--quafi-glass-smoke-bg-hover);
   transform: translateY(-2px);
   box-shadow:
-    0 8px 24px var(--fing-btn-glass-shadow),
-    0 0 20px var(--fing-glass-smoke-glow),
-    inset 0 1px 0 var(--fing-btn-glass-shine);
+    0 8px 24px var(--quafi-btn-glass-shadow),
+    0 0 20px var(--quafi-glass-smoke-glow),
+    inset 0 1px 0 var(--quafi-btn-glass-shine);
 }
 
 .glassSmoke:active:not(:disabled) {
   transform: translateY(1px);
   box-shadow:
-    0 2px 8px var(--fing-btn-glass-shadow),
+    0 2px 8px var(--quafi-btn-glass-shadow),
     inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -1066,29 +1066,29 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .glassFrost {
-  background: var(--fing-glass-frost-bg);
-  backdrop-filter: blur(var(--fing-btn-glass-blur)) saturate(180%);
-  -webkit-backdrop-filter: blur(var(--fing-btn-glass-blur)) saturate(180%);
-  border: 1px solid var(--fing-glass-frost-border);
-  color: var(--fing-glass-frost-text);
+  background: var(--quafi-glass-frost-bg);
+  backdrop-filter: blur(var(--quafi-btn-glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--quafi-btn-glass-blur)) saturate(180%);
+  border: 1px solid var(--quafi-glass-frost-border);
+  color: var(--quafi-glass-frost-text);
   box-shadow:
-    0 4px 16px var(--fing-btn-glass-shadow),
-    inset 0 1px 0 var(--fing-btn-glass-shine);
+    0 4px 16px var(--quafi-btn-glass-shadow),
+    inset 0 1px 0 var(--quafi-btn-glass-shine);
 }
 
 .glassFrost:hover:not(:disabled) {
-  background: var(--fing-glass-frost-bg-hover);
+  background: var(--quafi-glass-frost-bg-hover);
   transform: translateY(-2px);
   box-shadow:
-    0 8px 24px var(--fing-btn-glass-shadow),
-    0 0 20px var(--fing-glass-frost-glow),
-    inset 0 1px 0 var(--fing-btn-glass-shine);
+    0 8px 24px var(--quafi-btn-glass-shadow),
+    0 0 20px var(--quafi-glass-frost-glow),
+    inset 0 1px 0 var(--quafi-btn-glass-shine);
 }
 
 .glassFrost:active:not(:disabled) {
   transform: translateY(1px);
   box-shadow:
-    0 2px 8px var(--fing-btn-glass-shadow),
+    0 2px 8px var(--quafi-btn-glass-shadow),
     inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -1101,32 +1101,32 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .glassNeuTeal {
-  background: var(--fing-glass-teal-bg);
+  background: var(--quafi-glass-teal-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--fing-glass-teal-border);
-  color: var(--fing-glass-teal-text);
+  border: 1px solid var(--quafi-glass-teal-border);
+  color: var(--quafi-glass-teal-text);
   box-shadow:
-    -4px -4px 8px var(--fing-btn-neu-light),
-    4px 4px 8px var(--fing-btn-neu-dark),
-    inset 0 1px 0 var(--fing-btn-glass-shine);
+    -4px -4px 8px var(--quafi-btn-neu-light),
+    4px 4px 8px var(--quafi-btn-neu-dark),
+    inset 0 1px 0 var(--quafi-btn-glass-shine);
 }
 
 .glassNeuTeal:hover:not(:disabled) {
-  background: var(--fing-glass-teal-bg-hover);
+  background: var(--quafi-glass-teal-bg-hover);
   transform: translateY(-2px);
   box-shadow:
-    -6px -6px 12px var(--fing-btn-neu-light),
-    6px 6px 12px var(--fing-btn-neu-dark),
-    0 0 16px var(--fing-glass-teal-glow),
-    inset 0 1px 0 var(--fing-btn-glass-shine);
+    -6px -6px 12px var(--quafi-btn-neu-light),
+    6px 6px 12px var(--quafi-btn-neu-dark),
+    0 0 16px var(--quafi-glass-teal-glow),
+    inset 0 1px 0 var(--quafi-btn-glass-shine);
 }
 
 .glassNeuTeal:active:not(:disabled) {
   transform: translateY(0);
   box-shadow:
-    inset 3px 3px 6px var(--fing-btn-neu-dark),
-    inset -3px -3px 6px var(--fing-btn-neu-light);
+    inset 3px 3px 6px var(--quafi-btn-neu-dark),
+    inset -3px -3px 6px var(--quafi-btn-neu-light);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -1134,32 +1134,32 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .glassNeuAmber {
-  background: var(--fing-glass-amber-bg);
+  background: var(--quafi-glass-amber-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--fing-glass-amber-border);
-  color: var(--fing-glass-amber-text);
+  border: 1px solid var(--quafi-glass-amber-border);
+  color: var(--quafi-glass-amber-text);
   box-shadow:
-    -4px -4px 8px var(--fing-btn-neu-light),
-    4px 4px 8px var(--fing-btn-neu-dark),
-    inset 0 1px 0 var(--fing-btn-glass-shine);
+    -4px -4px 8px var(--quafi-btn-neu-light),
+    4px 4px 8px var(--quafi-btn-neu-dark),
+    inset 0 1px 0 var(--quafi-btn-glass-shine);
 }
 
 .glassNeuAmber:hover:not(:disabled) {
-  background: var(--fing-glass-amber-bg-hover);
+  background: var(--quafi-glass-amber-bg-hover);
   transform: translateY(-2px);
   box-shadow:
-    -6px -6px 12px var(--fing-btn-neu-light),
-    6px 6px 12px var(--fing-btn-neu-dark),
-    0 0 16px var(--fing-glass-amber-glow),
-    inset 0 1px 0 var(--fing-btn-glass-shine);
+    -6px -6px 12px var(--quafi-btn-neu-light),
+    6px 6px 12px var(--quafi-btn-neu-dark),
+    0 0 16px var(--quafi-glass-amber-glow),
+    inset 0 1px 0 var(--quafi-btn-glass-shine);
 }
 
 .glassNeuAmber:active:not(:disabled) {
   transform: translateY(0);
   box-shadow:
-    inset 3px 3px 6px var(--fing-btn-neu-dark),
-    inset -3px -3px 6px var(--fing-btn-neu-light);
+    inset 3px 3px 6px var(--quafi-btn-neu-dark),
+    inset -3px -3px 6px var(--quafi-btn-neu-light);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -1167,32 +1167,32 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .glassNeuRose {
-  background: var(--fing-glass-rose-bg);
+  background: var(--quafi-glass-rose-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--fing-glass-rose-border);
-  color: var(--fing-glass-rose-text);
+  border: 1px solid var(--quafi-glass-rose-border);
+  color: var(--quafi-glass-rose-text);
   box-shadow:
-    -4px -4px 8px var(--fing-btn-neu-light),
-    4px 4px 8px var(--fing-btn-neu-dark),
-    inset 0 1px 0 var(--fing-btn-glass-shine);
+    -4px -4px 8px var(--quafi-btn-neu-light),
+    4px 4px 8px var(--quafi-btn-neu-dark),
+    inset 0 1px 0 var(--quafi-btn-glass-shine);
 }
 
 .glassNeuRose:hover:not(:disabled) {
-  background: var(--fing-glass-rose-bg-hover);
+  background: var(--quafi-glass-rose-bg-hover);
   transform: translateY(-2px);
   box-shadow:
-    -6px -6px 12px var(--fing-btn-neu-light),
-    6px 6px 12px var(--fing-btn-neu-dark),
-    0 0 16px var(--fing-glass-rose-glow),
-    inset 0 1px 0 var(--fing-btn-glass-shine);
+    -6px -6px 12px var(--quafi-btn-neu-light),
+    6px 6px 12px var(--quafi-btn-neu-dark),
+    0 0 16px var(--quafi-glass-rose-glow),
+    inset 0 1px 0 var(--quafi-btn-glass-shine);
 }
 
 .glassNeuRose:active:not(:disabled) {
   transform: translateY(0);
   box-shadow:
-    inset 3px 3px 6px var(--fing-btn-neu-dark),
-    inset -3px -3px 6px var(--fing-btn-neu-light);
+    inset 3px 3px 6px var(--quafi-btn-neu-dark),
+    inset -3px -3px 6px var(--quafi-btn-neu-light);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -1200,32 +1200,32 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .glassNeuViolet {
-  background: var(--fing-glass-violet-bg);
+  background: var(--quafi-glass-violet-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--fing-glass-violet-border);
-  color: var(--fing-glass-violet-text);
+  border: 1px solid var(--quafi-glass-violet-border);
+  color: var(--quafi-glass-violet-text);
   box-shadow:
-    -4px -4px 8px var(--fing-btn-neu-light),
-    4px 4px 8px var(--fing-btn-neu-dark),
-    inset 0 1px 0 var(--fing-btn-glass-shine);
+    -4px -4px 8px var(--quafi-btn-neu-light),
+    4px 4px 8px var(--quafi-btn-neu-dark),
+    inset 0 1px 0 var(--quafi-btn-glass-shine);
 }
 
 .glassNeuViolet:hover:not(:disabled) {
-  background: var(--fing-glass-violet-bg-hover);
+  background: var(--quafi-glass-violet-bg-hover);
   transform: translateY(-2px);
   box-shadow:
-    -6px -6px 12px var(--fing-btn-neu-light),
-    6px 6px 12px var(--fing-btn-neu-dark),
-    0 0 16px var(--fing-glass-violet-glow),
-    inset 0 1px 0 var(--fing-btn-glass-shine);
+    -6px -6px 12px var(--quafi-btn-neu-light),
+    6px 6px 12px var(--quafi-btn-neu-dark),
+    0 0 16px var(--quafi-glass-violet-glow),
+    inset 0 1px 0 var(--quafi-btn-glass-shine);
 }
 
 .glassNeuViolet:active:not(:disabled) {
   transform: translateY(0);
   box-shadow:
-    inset 3px 3px 6px var(--fing-btn-neu-dark),
-    inset -3px -3px 6px var(--fing-btn-neu-light);
+    inset 3px 3px 6px var(--quafi-btn-neu-dark),
+    inset -3px -3px 6px var(--quafi-btn-neu-light);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -1233,32 +1233,32 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .glassNeuEmerald {
-  background: var(--fing-glass-emerald-bg);
+  background: var(--quafi-glass-emerald-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--fing-glass-emerald-border);
-  color: var(--fing-glass-emerald-text);
+  border: 1px solid var(--quafi-glass-emerald-border);
+  color: var(--quafi-glass-emerald-text);
   box-shadow:
-    -4px -4px 8px var(--fing-btn-neu-light),
-    4px 4px 8px var(--fing-btn-neu-dark),
-    inset 0 1px 0 var(--fing-btn-glass-shine);
+    -4px -4px 8px var(--quafi-btn-neu-light),
+    4px 4px 8px var(--quafi-btn-neu-dark),
+    inset 0 1px 0 var(--quafi-btn-glass-shine);
 }
 
 .glassNeuEmerald:hover:not(:disabled) {
-  background: var(--fing-glass-emerald-bg-hover);
+  background: var(--quafi-glass-emerald-bg-hover);
   transform: translateY(-2px);
   box-shadow:
-    -6px -6px 12px var(--fing-btn-neu-light),
-    6px 6px 12px var(--fing-btn-neu-dark),
-    0 0 16px var(--fing-glass-emerald-glow),
-    inset 0 1px 0 var(--fing-btn-glass-shine);
+    -6px -6px 12px var(--quafi-btn-neu-light),
+    6px 6px 12px var(--quafi-btn-neu-dark),
+    0 0 16px var(--quafi-glass-emerald-glow),
+    inset 0 1px 0 var(--quafi-btn-glass-shine);
 }
 
 .glassNeuEmerald:active:not(:disabled) {
   transform: translateY(0);
   box-shadow:
-    inset 3px 3px 6px var(--fing-btn-neu-dark),
-    inset -3px -3px 6px var(--fing-btn-neu-light);
+    inset 3px 3px 6px var(--quafi-btn-neu-dark),
+    inset -3px -3px 6px var(--quafi-btn-neu-light);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -1266,32 +1266,32 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .glassNeuSky {
-  background: var(--fing-glass-sky-bg);
+  background: var(--quafi-glass-sky-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--fing-glass-sky-border);
-  color: var(--fing-glass-sky-text);
+  border: 1px solid var(--quafi-glass-sky-border);
+  color: var(--quafi-glass-sky-text);
   box-shadow:
-    -4px -4px 8px var(--fing-btn-neu-light),
-    4px 4px 8px var(--fing-btn-neu-dark),
-    inset 0 1px 0 var(--fing-btn-glass-shine);
+    -4px -4px 8px var(--quafi-btn-neu-light),
+    4px 4px 8px var(--quafi-btn-neu-dark),
+    inset 0 1px 0 var(--quafi-btn-glass-shine);
 }
 
 .glassNeuSky:hover:not(:disabled) {
-  background: var(--fing-glass-sky-bg-hover);
+  background: var(--quafi-glass-sky-bg-hover);
   transform: translateY(-2px);
   box-shadow:
-    -6px -6px 12px var(--fing-btn-neu-light),
-    6px 6px 12px var(--fing-btn-neu-dark),
-    0 0 16px var(--fing-glass-sky-glow),
-    inset 0 1px 0 var(--fing-btn-glass-shine);
+    -6px -6px 12px var(--quafi-btn-neu-light),
+    6px 6px 12px var(--quafi-btn-neu-dark),
+    0 0 16px var(--quafi-glass-sky-glow),
+    inset 0 1px 0 var(--quafi-btn-glass-shine);
 }
 
 .glassNeuSky:active:not(:disabled) {
   transform: translateY(0);
   box-shadow:
-    inset 3px 3px 6px var(--fing-btn-neu-dark),
-    inset -3px -3px 6px var(--fing-btn-neu-light);
+    inset 3px 3px 6px var(--quafi-btn-neu-dark),
+    inset -3px -3px 6px var(--quafi-btn-neu-light);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -1299,32 +1299,32 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .glassNeuSmoke {
-  background: var(--fing-glass-smoke-bg);
+  background: var(--quafi-glass-smoke-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--fing-glass-smoke-border);
-  color: var(--fing-glass-smoke-text);
+  border: 1px solid var(--quafi-glass-smoke-border);
+  color: var(--quafi-glass-smoke-text);
   box-shadow:
-    -4px -4px 8px var(--fing-btn-neu-light),
-    4px 4px 8px var(--fing-btn-neu-dark),
-    inset 0 1px 0 var(--fing-btn-glass-shine);
+    -4px -4px 8px var(--quafi-btn-neu-light),
+    4px 4px 8px var(--quafi-btn-neu-dark),
+    inset 0 1px 0 var(--quafi-btn-glass-shine);
 }
 
 .glassNeuSmoke:hover:not(:disabled) {
-  background: var(--fing-glass-smoke-bg-hover);
+  background: var(--quafi-glass-smoke-bg-hover);
   transform: translateY(-2px);
   box-shadow:
-    -6px -6px 12px var(--fing-btn-neu-light),
-    6px 6px 12px var(--fing-btn-neu-dark),
-    0 0 16px var(--fing-glass-smoke-glow),
-    inset 0 1px 0 var(--fing-btn-glass-shine);
+    -6px -6px 12px var(--quafi-btn-neu-light),
+    6px 6px 12px var(--quafi-btn-neu-dark),
+    0 0 16px var(--quafi-glass-smoke-glow),
+    inset 0 1px 0 var(--quafi-btn-glass-shine);
 }
 
 .glassNeuSmoke:active:not(:disabled) {
   transform: translateY(0);
   box-shadow:
-    inset 3px 3px 6px var(--fing-btn-neu-dark),
-    inset -3px -3px 6px var(--fing-btn-neu-light);
+    inset 3px 3px 6px var(--quafi-btn-neu-dark),
+    inset -3px -3px 6px var(--quafi-btn-neu-light);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -1332,32 +1332,32 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .glassNeuFrost {
-  background: var(--fing-glass-frost-bg);
+  background: var(--quafi-glass-frost-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--fing-glass-frost-border);
-  color: var(--fing-glass-frost-text);
+  border: 1px solid var(--quafi-glass-frost-border);
+  color: var(--quafi-glass-frost-text);
   box-shadow:
-    -4px -4px 8px var(--fing-btn-neu-light),
-    4px 4px 8px var(--fing-btn-neu-dark),
-    inset 0 1px 0 var(--fing-btn-glass-shine);
+    -4px -4px 8px var(--quafi-btn-neu-light),
+    4px 4px 8px var(--quafi-btn-neu-dark),
+    inset 0 1px 0 var(--quafi-btn-glass-shine);
 }
 
 .glassNeuFrost:hover:not(:disabled) {
-  background: var(--fing-glass-frost-bg-hover);
+  background: var(--quafi-glass-frost-bg-hover);
   transform: translateY(-2px);
   box-shadow:
-    -6px -6px 12px var(--fing-btn-neu-light),
-    6px 6px 12px var(--fing-btn-neu-dark),
-    0 0 16px var(--fing-glass-frost-glow),
-    inset 0 1px 0 var(--fing-btn-glass-shine);
+    -6px -6px 12px var(--quafi-btn-neu-light),
+    6px 6px 12px var(--quafi-btn-neu-dark),
+    0 0 16px var(--quafi-glass-frost-glow),
+    inset 0 1px 0 var(--quafi-btn-glass-shine);
 }
 
 .glassNeuFrost:active:not(:disabled) {
   transform: translateY(0);
   box-shadow:
-    inset 3px 3px 6px var(--fing-btn-neu-dark),
-    inset -3px -3px 6px var(--fing-btn-neu-light);
+    inset 3px 3px 6px var(--quafi-btn-neu-dark),
+    inset -3px -3px 6px var(--quafi-btn-neu-light);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════════
@@ -1404,7 +1404,7 @@
   height: 20px;
   padding: 0 6px;
   border-radius: 10px;
-  background: var(--fing-status-negative);
+  background: var(--quafi-status-negative);
   color: white;
   font-size: 11px;
   font-weight: 600;
@@ -1421,8 +1421,8 @@
   left: 50%;
   transform: translateX(-50%);
   padding: 6px 10px;
-  background: var(--fing-bg-elevated);
-  color: var(--fing-text-primary);
+  background: var(--quafi-bg-elevated);
+  color: var(--quafi-text-primary);
   font-size: 12px;
   border-radius: 6px;
   white-space: nowrap;
@@ -1430,8 +1430,8 @@
   visibility: hidden;
   transition: opacity 0.2s, visibility 0.2s;
   box-shadow:
-    -3px -3px 6px var(--fing-btn-neu-light),
-    3px 3px 6px var(--fing-btn-neu-dark);
+    -3px -3px 6px var(--quafi-btn-neu-light),
+    3px 3px 6px var(--quafi-btn-neu-dark);
   z-index: 100;
 }
 
@@ -1446,15 +1446,15 @@
 
 .toggleTrack {
   position: relative;
-  background: var(--fing-bg-elevated);
+  background: var(--quafi-bg-elevated);
   border-radius: 100px;
   border: none;
   cursor: pointer;
   padding: 3px;
   box-shadow:
-    inset 3px 3px 6px var(--fing-btn-neu-dark),
-    inset -3px -3px 6px var(--fing-btn-neu-light);
-  transition: var(--fing-btn-transition);
+    inset 3px 3px 6px var(--quafi-btn-neu-dark),
+    inset -3px -3px 6px var(--quafi-btn-neu-light);
+  transition: var(--quafi-btn-transition);
 }
 
 .toggleTrack:disabled {
@@ -1480,11 +1480,11 @@
 .toggleKnob {
   position: absolute;
   top: 3px;
-  background: var(--fing-bg-elevated);
+  background: var(--quafi-bg-elevated);
   border-radius: 50%;
   box-shadow:
-    2px 2px 4px var(--fing-btn-neu-dark),
-    -2px -2px 4px var(--fing-btn-neu-light);
+    2px 2px 4px var(--quafi-btn-neu-dark),
+    -2px -2px 4px var(--quafi-btn-neu-light);
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -1507,11 +1507,11 @@
 }
 
 .toggleTrack.on .toggleKnob {
-  background: var(--fing-accent-primary);
+  background: var(--quafi-accent-primary);
   box-shadow:
-    2px 2px 4px var(--fing-btn-neu-dark),
-    -2px -2px 4px var(--fing-btn-neu-light),
-    0 0 12px var(--fing-accent-glow);
+    2px 2px 4px var(--quafi-btn-neu-dark),
+    -2px -2px 4px var(--quafi-btn-neu-light),
+    0 0 12px var(--quafi-accent-glow);
 }
 
 .toggleTrack.sm.on .toggleKnob {
@@ -1545,18 +1545,18 @@
 }
 
 .buttonGroupNeu {
-  background: var(--fing-bg-elevated);
+  background: var(--quafi-bg-elevated);
   box-shadow:
-    -6px -6px 12px var(--fing-btn-neu-light),
-    6px 6px 12px var(--fing-btn-neu-dark);
+    -6px -6px 12px var(--quafi-btn-neu-light),
+    6px 6px 12px var(--quafi-btn-neu-dark);
 }
 
 .buttonGroupGlass {
-  background: var(--fing-glass-bg);
+  background: var(--quafi-glass-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--fing-glass-border);
-  box-shadow: 0 4px 16px var(--fing-btn-glass-shadow);
+  border: 1px solid var(--quafi-glass-border);
+  box-shadow: 0 4px 16px var(--quafi-btn-glass-shadow);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════════
@@ -1565,21 +1565,21 @@
 
 .tabGroup {
   display: inline-flex;
-  background: var(--fing-bg-elevated);
+  background: var(--quafi-bg-elevated);
   border-radius: 14px;
   padding: 6px;
   gap: 4px;
   box-shadow:
-    -6px -6px 12px var(--fing-btn-neu-light),
-    6px 6px 12px var(--fing-btn-neu-dark);
+    -6px -6px 12px var(--quafi-btn-neu-light),
+    6px 6px 12px var(--quafi-btn-neu-dark);
 }
 
 .tabButton {
   background: transparent;
-  color: var(--fing-text-secondary);
+  color: var(--quafi-text-secondary);
   border: none;
   border-radius: 10px;
-  font-family: var(--fing-font-primary);
+  font-family: var(--quafi-font-primary);
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -1604,17 +1604,17 @@
 }
 
 .tabButton:hover:not(.tabButtonActive) {
-  color: var(--fing-text-primary);
+  color: var(--quafi-text-primary);
   background: rgba(255, 255, 255, 0.3);
 }
 
 .tabButtonActive {
-  background: var(--fing-bg-elevated);
-  color: var(--fing-accent-primary);
+  background: var(--quafi-bg-elevated);
+  color: var(--quafi-accent-primary);
   /* Raised/elevated shadow instead of inset */
   box-shadow:
-    -3px -3px 6px var(--fing-btn-neu-light),
-    3px 3px 6px var(--fing-btn-neu-dark);
+    -3px -3px 6px var(--quafi-btn-neu-light),
+    3px 3px 6px var(--quafi-btn-neu-dark);
 }
 
 /* Tab with icon - flex layout for icon + label */
@@ -1675,23 +1675,23 @@
 }
 
 .stepperNeu {
-  background: var(--fing-bg-elevated);
+  background: var(--quafi-bg-elevated);
   box-shadow:
-    -5px -5px 10px var(--fing-btn-neu-light),
-    5px 5px 10px var(--fing-btn-neu-dark);
+    -5px -5px 10px var(--quafi-btn-neu-light),
+    5px 5px 10px var(--quafi-btn-neu-dark);
 }
 
 .stepperGlass {
-  background: var(--fing-glass-bg);
+  background: var(--quafi-glass-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--fing-glass-border);
+  border: 1px solid var(--quafi-glass-border);
 }
 
 .stepperButton {
   background: transparent;
   border: none;
-  color: var(--fing-text-secondary);
+  color: var(--quafi-text-secondary);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -1700,7 +1700,7 @@
 }
 
 .stepperButton:hover:not(:disabled) {
-  color: var(--fing-text-primary);
+  color: var(--quafi-text-primary);
   background: rgba(255, 255, 255, 0.3);
 }
 
@@ -1714,9 +1714,9 @@
 }
 
 .stepperValue {
-  font-family: var(--fing-font-mono);
+  font-family: var(--quafi-font-mono);
   font-weight: 600;
-  color: var(--fing-text-primary);
+  color: var(--quafi-text-primary);
   text-align: center;
   background: transparent;
   border: none;

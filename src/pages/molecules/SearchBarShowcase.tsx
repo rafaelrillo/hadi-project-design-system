@@ -1,5 +1,5 @@
 // Path: src/pages/molecules/SearchBarShowcase.tsx
-// FING Design System - Glass-Neumorphism Search Bar
+// QUAFI Design System - Glass-Neumorphism Search Bar
 import React, { useState, useMemo } from 'react';
 import { SearchBar } from '../../components/molecules/SearchBar';
 import { ShowcaseSection } from '../../components/showcase';
@@ -92,8 +92,8 @@ function SearchBarContent() {
                 fontSize: '12px',
                 fontWeight: 600,
                 marginBottom: '12px',
-                color: 'var(--fing-text-muted)',
-                fontFamily: 'var(--fing-font-mono)',
+                color: 'var(--quafi-text-muted)',
+                fontFamily: 'var(--quafi-font-mono)',
                 textTransform: 'uppercase',
               }}>
                 Resultados de busqueda:
@@ -102,8 +102,8 @@ function SearchBarContent() {
                 <div key={index} style={{
                   fontSize: '14px',
                   padding: '8px 0',
-                  color: 'var(--fing-text-primary)',
-                  fontFamily: 'var(--fing-font-mono)',
+                  color: 'var(--quafi-text-primary)',
+                  fontFamily: 'var(--quafi-font-mono)',
                   borderBottom: index < searchResults.length - 1 ? '1px solid rgba(0,0,0,0.05)' : 'none',
                 }}>
                   • {result}
@@ -156,16 +156,16 @@ function SearchBarContent() {
               fontSize: '16px',
               fontWeight: 600,
               marginBottom: '8px',
-              color: 'var(--fing-text-primary)',
-              fontFamily: 'var(--fing-font-display)',
+              color: 'var(--quafi-text-primary)',
+              fontFamily: 'var(--quafi-font-display)',
               textTransform: 'uppercase',
             }}>
               Biblioteca de Documentos
             </h3>
             <p style={{
               fontSize: '14px',
-              color: 'var(--fing-text-muted)',
-              fontFamily: 'var(--fing-font-mono)',
+              color: 'var(--quafi-text-muted)',
+              fontFamily: 'var(--quafi-font-mono)',
             }}>
               Encuentra documentos por nombre o contenido
             </p>
@@ -187,8 +187,8 @@ function SearchBarContent() {
                   boxShadow: getNeuPanelShadow(4, 12),
                   fontSize: '14px',
                   cursor: 'pointer',
-                  color: 'var(--fing-text-primary)',
-                  fontFamily: 'var(--fing-font-mono)',
+                  color: 'var(--quafi-text-primary)',
+                  fontFamily: 'var(--quafi-font-mono)',
                   transition: 'box-shadow 150ms ease',
                 }}
               >
@@ -206,17 +206,17 @@ function SearchBarContent() {
           boxShadow: getNeuInsetShadow(5, 15),
           background: 'var(--marble-base)',
           fontSize: '12px',
-          fontFamily: 'var(--fing-font-mono)',
-          color: 'var(--fing-text-muted)',
+          fontFamily: 'var(--quafi-font-mono)',
+          color: 'var(--quafi-text-muted)',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Altura:</strong> 40px</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Padding:</strong> 0 40px (espacio para íconos)</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Border radius:</strong> 15px</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Ícono Search:</strong> 18px, position left</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Botón Clear:</strong> X icon 16px, position right</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Enter key:</strong> Activa onSearch callback</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Altura:</strong> 40px</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Padding:</strong> 0 40px (espacio para íconos)</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Border radius:</strong> 15px</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Ícono Search:</strong> 18px, position left</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Botón Clear:</strong> X icon 16px, position right</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Enter key:</strong> Activa onSearch callback</p>
         </div>
       </ShowcaseSection>
     </div>

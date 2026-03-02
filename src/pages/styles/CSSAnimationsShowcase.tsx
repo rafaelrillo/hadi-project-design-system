@@ -1,5 +1,5 @@
 // Path: src/pages/styles/AnimationsShowcase.tsx
-// FING Design System - Animations Showcase with Intersection Observer
+// QUAFI Design System - Animations Showcase with Intersection Observer
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { ShowcaseSection } from '../../components/showcase';
 import { showcase } from '../showcaseStyles';
@@ -73,16 +73,16 @@ function AnimatedBox({ animation, label, description, duration, isInfinite, chil
           <div style={{
             fontSize: '13px',
             fontWeight: 600,
-            fontFamily: 'var(--fing-font-primary)',
-            color: 'var(--fing-black)',
+            fontFamily: 'var(--quafi-font-primary)',
+            color: 'var(--quafi-black)',
             marginBottom: '2px',
           }}>
             {label}
           </div>
           <div style={{
             fontSize: '10px',
-            fontFamily: 'var(--fing-font-mono)',
-            color: 'var(--fing-text-muted)',
+            fontFamily: 'var(--quafi-font-mono)',
+            color: 'var(--quafi-text-muted)',
           }}>
             {duration || 'once'} {isInfinite && '∞'}
           </div>
@@ -93,13 +93,13 @@ function AnimatedBox({ animation, label, description, duration, isInfinite, chil
             style={{
               padding: '6px 12px',
               fontSize: '10px',
-              fontFamily: 'var(--fing-font-mono)',
+              fontFamily: 'var(--quafi-font-mono)',
               fontWeight: 500,
               background: 'var(--glass-bg)',
               border: '1px solid var(--glass-border)',
               borderRadius: '6px',
               cursor: 'pointer',
-              color: 'var(--fing-accent)',
+              color: 'var(--quafi-accent)',
               transition: 'all 0.15s ease',
             }}
           >
@@ -142,10 +142,10 @@ function AnimatedBox({ animation, label, description, duration, isInfinite, chil
               justifyContent: 'center',
             }}>
               <span style={{
-                fontFamily: 'var(--fing-font-mono)',
+                fontFamily: 'var(--quafi-font-mono)',
                 fontSize: '20px',
                 fontWeight: 700,
-                color: 'var(--fing-accent)',
+                color: 'var(--quafi-accent)',
               }}>
                 F
               </span>
@@ -157,8 +157,8 @@ function AnimatedBox({ animation, label, description, duration, isInfinite, chil
       {/* Description */}
       <div style={{
         fontSize: '11px',
-        fontFamily: 'var(--fing-font-primary)',
-        color: 'var(--fing-text-secondary)',
+        fontFamily: 'var(--quafi-font-primary)',
+        color: 'var(--quafi-text-secondary)',
         lineHeight: 1.4,
       }}>
         {description}
@@ -167,9 +167,9 @@ function AnimatedBox({ animation, label, description, duration, isInfinite, chil
       {/* Code */}
       <code style={{
         fontSize: '10px',
-        fontFamily: 'var(--fing-font-mono)',
-        background: 'var(--fing-glass-accent)',
-        color: 'var(--fing-accent)',
+        fontFamily: 'var(--quafi-font-mono)',
+        background: 'var(--quafi-glass-accent)',
+        color: 'var(--quafi-accent)',
         padding: '6px 10px',
         borderRadius: '6px',
       }}>
@@ -216,9 +216,9 @@ function DataAnimateDemo() {
           style={{
             padding: '8px 16px',
             fontSize: '11px',
-            fontFamily: 'var(--fing-font-mono)',
+            fontFamily: 'var(--quafi-font-mono)',
             fontWeight: 500,
-            background: 'var(--fing-accent)',
+            background: 'var(--quafi-accent)',
             border: 'none',
             borderRadius: '8px',
             cursor: 'pointer',
@@ -259,25 +259,25 @@ function DataAnimateDemo() {
             }}
           >
             <div style={{
-              fontFamily: 'var(--fing-font-display)',
+              fontFamily: 'var(--quafi-font-display)',
               fontSize: '24px',
               fontWeight: 700,
-              color: 'var(--fing-accent)',
+              color: 'var(--quafi-accent)',
               marginBottom: '8px',
             }}>
               {i + 1}
             </div>
             <div style={{
               fontSize: '12px',
-              fontFamily: 'var(--fing-font-mono)',
-              color: 'var(--fing-text-secondary)',
+              fontFamily: 'var(--quafi-font-mono)',
+              color: 'var(--quafi-text-secondary)',
             }}>
               {item.label}
             </div>
             <code style={{
               fontSize: '9px',
-              fontFamily: 'var(--fing-font-mono)',
-              color: 'var(--fing-text-muted)',
+              fontFamily: 'var(--quafi-font-mono)',
+              color: 'var(--quafi-text-muted)',
               marginTop: '8px',
               display: 'block',
             }}>
@@ -333,9 +333,9 @@ function StaggerDemo() {
           style={{
             padding: '8px 16px',
             fontSize: '11px',
-            fontFamily: 'var(--fing-font-mono)',
+            fontFamily: 'var(--quafi-font-mono)',
             fontWeight: 500,
-            background: 'var(--fing-accent)',
+            background: 'var(--quafi-accent)',
             border: 'none',
             borderRadius: '8px',
             cursor: 'pointer',
@@ -367,40 +367,40 @@ function StaggerDemo() {
               gap: '16px',
               alignItems: 'center',
               padding: '16px 24px',
-              borderBottom: i < stocks.length - 1 ? '1px solid var(--fing-border-subtle)' : 'none',
+              borderBottom: i < stocks.length - 1 ? '1px solid var(--quafi-border-subtle)' : 'none',
               opacity: 0,
               transform: 'translateY(20px)',
             }}
           >
             <span style={{
-              fontFamily: 'var(--fing-font-mono)',
+              fontFamily: 'var(--quafi-font-mono)',
               fontSize: '14px',
               fontWeight: 700,
-              color: 'var(--fing-accent)',
+              color: 'var(--quafi-accent)',
             }}>
               {stock.symbol}
             </span>
             <span style={{
-              fontFamily: 'var(--fing-font-mono)',
+              fontFamily: 'var(--quafi-font-mono)',
               fontSize: '14px',
               fontWeight: 600,
-              color: 'var(--fing-black)',
+              color: 'var(--quafi-black)',
             }}>
               {stock.price}
             </span>
             <span style={{
-              fontFamily: 'var(--fing-font-mono)',
+              fontFamily: 'var(--quafi-font-mono)',
               fontSize: '13px',
               fontWeight: 600,
-              color: stock.positive ? 'var(--fing-positive)' : 'var(--fing-negative)',
+              color: stock.positive ? 'var(--quafi-positive)' : 'var(--quafi-negative)',
               textAlign: 'right',
             }}>
               {stock.change}
             </span>
             <span style={{
               fontSize: '10px',
-              fontFamily: 'var(--fing-font-mono)',
-              color: 'var(--fing-text-muted)',
+              fontFamily: 'var(--quafi-font-mono)',
+              color: 'var(--quafi-text-muted)',
               textAlign: 'right',
             }}>
               +{(i + 1) * 50}ms
@@ -440,21 +440,21 @@ export function CSSAnimationsShowcase() {
       >
         <div style={gridStyles}>
           <AnimatedBox
-            animation="fing-animate-breathe"
+            animation="quafi-animate-breathe"
             label="Breathe"
             description="Very slow, almost imperceptible opacity change. Perfect for backgrounds."
             duration="8s"
             isInfinite
           />
           <AnimatedBox
-            animation="fing-animate-pulse"
+            animation="quafi-animate-pulse"
             label="Pulse"
             description="Subtle scale and opacity pulse for active elements."
             duration="3s"
             isInfinite
           />
           <AnimatedBox
-            animation="fing-animate-system-pulse"
+            animation="quafi-animate-system-pulse"
             label="System Pulse"
             description="Status indicator pulse for system activity."
             duration="2s"
@@ -464,18 +464,18 @@ export function CSSAnimationsShowcase() {
               width: '12px',
               height: '12px',
               borderRadius: '50%',
-              background: 'var(--fing-positive)',
+              background: 'var(--quafi-positive)',
             }} />
           </AnimatedBox>
           <AnimatedBox
-            animation="fing-animate-float"
+            animation="quafi-animate-float"
             label="Float"
             description="Gentle floating motion for highlighted elements."
             duration="3s"
             isInfinite
           />
           <AnimatedBox
-            animation="fing-animate-rotate"
+            animation="quafi-animate-rotate"
             label="Rotate"
             description="Slow rotation for loading indicators."
             duration="20s"
@@ -484,13 +484,13 @@ export function CSSAnimationsShowcase() {
             <div style={{
               width: '40px',
               height: '40px',
-              border: '3px solid var(--fing-accent)',
+              border: '3px solid var(--quafi-accent)',
               borderTopColor: 'transparent',
               borderRadius: '50%',
             }} />
           </AnimatedBox>
           <AnimatedBox
-            animation="fing-animate-blink"
+            animation="quafi-animate-blink"
             label="Blink"
             description="Cursor or indicator blinking effect."
             duration="1.5s"
@@ -499,7 +499,7 @@ export function CSSAnimationsShowcase() {
             <div style={{
               width: '2px',
               height: '24px',
-              background: 'var(--fing-accent)',
+              background: 'var(--quafi-accent)',
             }} />
           </AnimatedBox>
         </div>
@@ -512,37 +512,37 @@ export function CSSAnimationsShowcase() {
       >
         <div style={gridStyles}>
           <AnimatedBox
-            animation="fing-animate-emerge"
+            animation="quafi-animate-emerge"
             label="Emerge"
             description="Fade in from below. Great for cards and content blocks."
             duration="400ms"
           />
           <AnimatedBox
-            animation="fing-animate-fade-in"
+            animation="quafi-animate-fade-in"
             label="Fade In"
             description="Simple opacity fade. Most versatile entrance animation."
             duration="250ms"
           />
           <AnimatedBox
-            animation="fing-animate-scale-in"
+            animation="quafi-animate-scale-in"
             label="Scale In"
             description="Subtle scale with fade. Good for modals and dialogs."
             duration="250ms"
           />
           <AnimatedBox
-            animation="fing-animate-slide-left"
+            animation="quafi-animate-slide-left"
             label="Slide Left"
             description="Slide in from the left side."
             duration="400ms"
           />
           <AnimatedBox
-            animation="fing-animate-slide-right"
+            animation="quafi-animate-slide-right"
             label="Slide Right"
             description="Slide in from the right side."
             duration="400ms"
           />
           <AnimatedBox
-            animation="fing-animate-pop"
+            animation="quafi-animate-pop"
             label="Pop"
             description="Bouncy entrance with overshoot. For attention-grabbing elements."
             duration="400ms"
@@ -557,14 +557,14 @@ export function CSSAnimationsShowcase() {
       >
         <div style={gridStyles}>
           <AnimatedBox
-            animation="fing-animate-glow"
+            animation="quafi-animate-glow"
             label="Glow Pulse"
             description="Pulsing glow effect for focused or active elements."
             duration="3s"
             isInfinite
           />
           <AnimatedBox
-            animation="fing-animate-shimmer"
+            animation="quafi-animate-shimmer"
             label="Shimmer"
             description="Loading skeleton shimmer effect."
             duration="2s"
@@ -574,10 +574,10 @@ export function CSSAnimationsShowcase() {
               width: '100%',
               height: '40px',
               borderRadius: '8px',
-            }} className="fing-animate-shimmer" />
+            }} className="quafi-animate-shimmer" />
           </AnimatedBox>
           <AnimatedBox
-            animation="fing-animate-gradient"
+            animation="quafi-animate-gradient"
             label="Gradient Shift"
             description="Slow gradient movement for backgrounds."
             duration="8s"
@@ -586,7 +586,7 @@ export function CSSAnimationsShowcase() {
               width: '80px',
               height: '60px',
               borderRadius: '12px',
-              background: 'linear-gradient(135deg, var(--fing-accent), var(--fing-accent-dark), var(--fing-accent))',
+              background: 'linear-gradient(135deg, var(--quafi-accent), var(--quafi-accent-dark), var(--quafi-accent))',
               backgroundSize: '200% 200%',
             }}
           >
@@ -602,16 +602,16 @@ export function CSSAnimationsShowcase() {
       >
         <div style={gridStyles}>
           <AnimatedBox
-            animation="fing-animate-value-flash"
+            animation="quafi-animate-value-flash"
             label="Value Flash"
             description="Background flash when a value changes."
             duration="1s"
           >
             <span style={{
-              fontFamily: 'var(--fing-font-mono)',
+              fontFamily: 'var(--quafi-font-mono)',
               fontSize: '24px',
               fontWeight: 700,
-              color: 'var(--fing-black)',
+              color: 'var(--quafi-black)',
               padding: '8px 16px',
               borderRadius: '8px',
             }}>
@@ -619,16 +619,16 @@ export function CSSAnimationsShowcase() {
             </span>
           </AnimatedBox>
           <AnimatedBox
-            animation="fing-animate-value-flash-positive"
+            animation="quafi-animate-value-flash-positive"
             label="Flash Positive"
             description="Green flash for positive changes."
             duration="1s"
           >
             <span style={{
-              fontFamily: 'var(--fing-font-mono)',
+              fontFamily: 'var(--quafi-font-mono)',
               fontSize: '24px',
               fontWeight: 700,
-              color: 'var(--fing-positive)',
+              color: 'var(--quafi-positive)',
               padding: '8px 16px',
               borderRadius: '8px',
             }}>
@@ -636,16 +636,16 @@ export function CSSAnimationsShowcase() {
             </span>
           </AnimatedBox>
           <AnimatedBox
-            animation="fing-animate-value-flash-negative"
+            animation="quafi-animate-value-flash-negative"
             label="Flash Negative"
             description="Red flash for negative changes."
             duration="1s"
           >
             <span style={{
-              fontFamily: 'var(--fing-font-mono)',
+              fontFamily: 'var(--quafi-font-mono)',
               fontSize: '24px',
               fontWeight: 700,
-              color: 'var(--fing-negative)',
+              color: 'var(--quafi-negative)',
               padding: '8px 16px',
               borderRadius: '8px',
             }}>
@@ -653,17 +653,17 @@ export function CSSAnimationsShowcase() {
             </span>
           </AnimatedBox>
           <AnimatedBox
-            animation="fing-animate-data-glow"
+            animation="quafi-animate-data-glow"
             label="Data Glow"
             description="Text glow for active/live data."
             duration="2s"
             isInfinite
           >
             <span style={{
-              fontFamily: 'var(--fing-font-mono)',
+              fontFamily: 'var(--quafi-font-mono)',
               fontSize: '24px',
               fontWeight: 700,
-              color: 'var(--fing-accent)',
+              color: 'var(--quafi-accent)',
             }}>
               LIVE
             </span>
@@ -699,16 +699,16 @@ export function CSSAnimationsShowcase() {
           boxShadow: 'var(--raised-2)',
         }}>
           <pre style={{
-            fontFamily: 'var(--fing-font-mono)',
+            fontFamily: 'var(--quafi-font-mono)',
             fontSize: '12px',
-            color: 'var(--fing-text-secondary)',
+            color: 'var(--quafi-text-secondary)',
             lineHeight: 1.6,
             margin: 0,
             whiteSpace: 'pre-wrap',
           }}>
 {`/* 1. Utility Classes (direct) */
-<div className="fing-animate-emerge">Content</div>
-<div className="fing-animate-pulse">Always pulsing</div>
+<div className="quafi-animate-emerge">Content</div>
+<div className="quafi-animate-pulse">Always pulsing</div>
 
 /* 2. Data Attributes (scroll-triggered) */
 <div data-animate="emerge">Animates on scroll</div>
@@ -723,7 +723,7 @@ export function CSSAnimationsShowcase() {
 
 /* 4. Intersection Observer (manual) */
 const { ref, isVisible } = useInView();
-<div ref={ref} className={isVisible ? 'fing-animate-emerge' : ''}>
+<div ref={ref} className={isVisible ? 'quafi-animate-emerge' : ''}>
   Custom logic
 </div>`}
           </pre>

@@ -150,7 +150,7 @@ class AuthService {
   private getMockUser(): User {
     return {
       id: "user-1",
-      email: "demo@fing.app",
+      email: "demo@quafi.app",
       name: "Demo User",
       role: "analyst",
       plan: "b2c",

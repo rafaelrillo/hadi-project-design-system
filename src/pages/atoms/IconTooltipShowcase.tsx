@@ -1,5 +1,5 @@
 // Path: src/pages/atoms/IconTooltipShowcase.tsx
-// FING Design System - Glass-Neumorphism Icons & Tooltips
+// QUAFI Design System - Glass-Neumorphism Icons & Tooltips
 import React, { useMemo } from 'react';
 import { Icon } from '../../components/atoms/Icon';
 import { Tooltip } from '../../components/atoms/Tooltip';
@@ -91,7 +91,7 @@ function IconTooltipContent() {
               <div style={iconBoxStyles}>
                 <Icon icon={Terminal} size={item.size} />
               </div>
-              <span style={{ fontSize: '11px', color: 'var(--fing-text-muted)', fontFamily: 'var(--fing-font-mono)' }}>{item.label}</span>
+              <span style={{ fontSize: '11px', color: 'var(--quafi-text-muted)', fontFamily: 'var(--quafi-font-mono)' }}>{item.label}</span>
             </div>
           ))}
         </div>
@@ -119,7 +119,7 @@ function IconTooltipContent() {
               <div style={glassIconBox(item.hue, item.sat)}>
                 <item.icon size={24} color={`hsl(${item.hue}, ${item.sat * 0.8}%, 30%)`} />
               </div>
-              <div style={{ marginTop: '8px', fontSize: '11px', color: 'var(--fing-text-muted)', fontFamily: 'var(--fing-font-mono)' }}>
+              <div style={{ marginTop: '8px', fontSize: '11px', color: 'var(--quafi-text-muted)', fontFamily: 'var(--quafi-font-mono)' }}>
                 {item.label}
               </div>
             </div>
@@ -155,7 +155,7 @@ function IconTooltipContent() {
               <div style={iconBoxStyles}>
                 <Icon icon={IconComp} size="md" color="primary" />
               </div>
-              <span style={{ fontSize: '10px', textAlign: 'center', color: 'var(--fing-text-muted)', fontFamily: 'var(--fing-font-mono)', textTransform: 'uppercase' }}>{label}</span>
+              <span style={{ fontSize: '10px', textAlign: 'center', color: 'var(--quafi-text-muted)', fontFamily: 'var(--quafi-font-mono)', textTransform: 'uppercase' }}>{label}</span>
             </div>
           ))}
         </div>
@@ -182,7 +182,7 @@ function IconTooltipContent() {
                 <Icon icon={Info} size="md" color="primary" />
               </div>
             </Tooltip>
-            <span style={{ fontSize: '11px', color: 'var(--fing-text-muted)', fontFamily: 'var(--fing-font-mono)', textTransform: 'uppercase' }}>Dark (hover)</span>
+            <span style={{ fontSize: '11px', color: 'var(--quafi-text-muted)', fontFamily: 'var(--quafi-font-mono)', textTransform: 'uppercase' }}>Dark (hover)</span>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
             <Tooltip content="Tooltip claro" variant="light">
@@ -190,7 +190,7 @@ function IconTooltipContent() {
                 <Icon icon={HelpCircle} size="md" color="primary" />
               </div>
             </Tooltip>
-            <span style={{ fontSize: '11px', color: 'var(--fing-text-muted)', fontFamily: 'var(--fing-font-mono)', textTransform: 'uppercase' }}>Light (hover)</span>
+            <span style={{ fontSize: '11px', color: 'var(--quafi-text-muted)', fontFamily: 'var(--quafi-font-mono)', textTransform: 'uppercase' }}>Light (hover)</span>
           </div>
         </div>
       </ShowcaseSection>
@@ -221,7 +221,7 @@ function IconTooltipContent() {
                   <Icon icon={AlertCircle} size="md" color="primary" />
                 </div>
               </Tooltip>
-              <span style={{ fontSize: '11px', color: 'var(--fing-text-muted)', fontFamily: 'var(--fing-font-mono)', textTransform: 'uppercase' }}>{item.label}</span>
+              <span style={{ fontSize: '11px', color: 'var(--quafi-text-muted)', fontFamily: 'var(--quafi-font-mono)', textTransform: 'uppercase' }}>{item.label}</span>
             </div>
           ))}
         </div>
@@ -269,18 +269,18 @@ function IconTooltipContent() {
           boxShadow: getNeuInsetShadow(5, 15),
           background: 'var(--marble-base)',
           fontSize: '12px',
-          fontFamily: 'var(--fing-font-mono)',
-          color: 'var(--fing-text-muted)',
+          fontFamily: 'var(--quafi-font-mono)',
+          color: 'var(--quafi-text-muted)',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>
-          <p><strong style={{ color: 'var(--fing-accent)' }}>Icon:</strong></p>
+          <p><strong style={{ color: 'var(--quafi-accent)' }}>Icon:</strong></p>
           <p>✓ <strong>Basado en:</strong> Lucide React</p>
           <p>✓ <strong>Tamaños:</strong> xs (16px), sm (20px), md (24px), lg (32px)</p>
           <p>✓ <strong>Contenedor:</strong> 52x52px neumórfico elevado</p>
           <p>✓ <strong>Glass:</strong> HSLA con backdrop-filter blur</p>
 
-          <p style={{ marginTop: '16px' }}><strong style={{ color: 'var(--fing-accent)' }}>Tooltip:</strong></p>
+          <p style={{ marginTop: '16px' }}><strong style={{ color: 'var(--quafi-accent)' }}>Tooltip:</strong></p>
           <p>✓ <strong>Padding:</strong> 8px 12px</p>
           <p>✓ <strong>Border radius:</strong> 20px</p>
           <p>✓ <strong>Font:</strong> Space Mono, 12px</p>

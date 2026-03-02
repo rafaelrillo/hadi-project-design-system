@@ -1,0 +1,169 @@
+/* Path: src/components/molecules/fing/HistoricalAlignment/HistoricalAlignment.module.css */
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   HISTORICAL ALIGNMENT
+   Compares current state with historical patterns
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.container {
+  background: var(--quafi-bg-elevated);
+  border: 1px solid var(--quafi-border-subtle);
+  border-radius: var(--quafi-radius-md);
+  padding: 20px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   HEADER
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.header {
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--quafi-border-subtle);
+}
+
+.title {
+  font-family: var(--quafi-font-primary);
+  font-size: var(--quafi-text-xs);
+  font-weight: 500;
+  color: var(--quafi-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.intro {
+  font-family: var(--quafi-font-primary);
+  font-size: var(--quafi-text-sm);
+  color: var(--quafi-text-secondary);
+  margin: 0 0 16px 0;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   PERIODS LIST
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.periodsList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.periodCard {
+  background: var(--quafi-bg-subtle);
+  border: 1px solid var(--quafi-border-subtle);
+  border-radius: var(--quafi-radius-sm);
+  padding: 14px;
+  transition:
+    border-color var(--quafi-transition-fast),
+    background-color var(--quafi-transition-fast);
+}
+
+.periodCard:hover {
+  border-color: var(--quafi-border-default);
+}
+
+/* Primary (highest similarity) card */
+.primary {
+  background: hsla(var(--quafi-accent-teal-h), var(--quafi-accent-teal-s), var(--quafi-accent-teal-l), 0.05);
+  border-color: hsla(var(--quafi-accent-teal-h), var(--quafi-accent-teal-s), var(--quafi-accent-teal-l), 0.2);
+}
+
+.primary:hover {
+  border-color: hsla(var(--quafi-accent-teal-h), var(--quafi-accent-teal-s), var(--quafi-accent-teal-l), 0.3);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   PERIOD HEADER
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.periodHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.periodInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.periodLabel {
+  font-family: var(--quafi-font-primary);
+  font-size: var(--quafi-text-sm);
+  font-weight: 500;
+  color: var(--quafi-text-primary);
+}
+
+.periodYear {
+  font-family: var(--quafi-font-numeric);
+  font-size: var(--quafi-text-xs);
+  color: var(--quafi-text-tertiary);
+  letter-spacing: var(--quafi-tracking-led);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   SIMILARITY BADGE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.similarityBadge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.similarityValue {
+  font-family: var(--quafi-font-numeric);
+  font-size: var(--quafi-text-sm);
+  font-weight: 600;
+  color: var(--quafi-accent-primary);
+  letter-spacing: var(--quafi-tracking-led);
+  text-shadow: var(--quafi-glow-accent);
+}
+
+.similarityBars {
+  display: flex;
+  gap: 2px;
+}
+
+.similarityBar {
+  width: 4px;
+  height: 12px;
+  background: var(--quafi-bg-interactive);
+  border-radius: 1px;
+  transition: background-color var(--quafi-transition-fast);
+}
+
+.similarityBar.active {
+  background: var(--quafi-accent-primary);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   OUTCOME
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.outcome {
+  font-family: var(--quafi-font-primary);
+  font-size: var(--quafi-text-xs);
+  color: var(--quafi-text-secondary);
+  margin: 10px 0 0 0;
+  padding-top: 10px;
+  border-top: 1px solid var(--quafi-border-subtle);
+  line-height: 1.5;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   REDUCED MOTION
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  .periodCard {
+    transition: none;
+  }
+
+  .similarityBar {
+    transition: none;
+  }
+}

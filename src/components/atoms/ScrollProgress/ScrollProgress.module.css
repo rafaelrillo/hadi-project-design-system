@@ -5,7 +5,7 @@
   top: 0;
   bottom: 0;
   width: 4px;
-  z-index: var(--fing-z-fixed);
+  z-index: var(--quafi-z-fixed);
   pointer-events: none;
 }
 
@@ -20,7 +20,7 @@
 .track {
   width: 100%;
   height: 100%;
-  background-color: var(--fing-border-subtle);
+  background-color: var(--quafi-border-subtle);
 }
 
 .fill {
@@ -28,8 +28,8 @@
   height: 100%;
   background: linear-gradient(
     to bottom,
-    var(--fing-accent-primary),
-    var(--fing-accent-secondary)
+    var(--quafi-accent-primary),
+    var(--quafi-accent-secondary)
   );
-  box-shadow: 0 0 10px var(--fing-accent-glow);
+  box-shadow: 0 0 10px var(--quafi-accent-glow);
 }

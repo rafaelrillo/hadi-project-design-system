@@ -1,5 +1,5 @@
 // Path: src/pages/styles/ColorsShowcase.tsx
-// FING Design System - Stone Marble Color Palette
+// QUAFI Design System - Stone Marble Color Palette
 import React from 'react';
 import { showcase } from '../showcaseStyles';
 
@@ -19,7 +19,7 @@ export function ColorsShowcase() {
     ...showcase.page.wrapper,
     minHeight: '100vh',
     padding: '32px',
-    fontFamily: 'var(--fing-font-primary)',
+    fontFamily: 'var(--quafi-font-primary)',
   };
 
   const sectionStyles: React.CSSProperties = {
@@ -31,7 +31,7 @@ export function ColorsShowcase() {
   };
 
   const sectionTitleStyles: React.CSSProperties = {
-    fontFamily: 'var(--fing-font-primary)',
+    fontFamily: 'var(--quafi-font-primary)',
     fontSize: '11px',
     fontWeight: 600,
     letterSpacing: '0.12em',
@@ -94,19 +94,19 @@ export function ColorsShowcase() {
   const lpColorStyles = (color: 'teal' | 'positive' | 'negative' | 'warning'): React.CSSProperties => {
     const colors: Record<string, { color: string; shadow: string }> = {
       teal: {
-        color: 'var(--fing-accent-tertiary, #6fb3b5)',
+        color: 'var(--quafi-accent-tertiary, #6fb3b5)',
         shadow: 'var(--lp-accent)',
       },
       positive: {
-        color: 'var(--fing-positive)',
+        color: 'var(--quafi-positive)',
         shadow: 'var(--lp-positive)',
       },
       negative: {
-        color: 'var(--fing-negative)',
+        color: 'var(--quafi-negative)',
         shadow: 'var(--lp-negative)',
       },
       warning: {
-        color: 'var(--fing-warning)',
+        color: 'var(--quafi-warning)',
         shadow: 'var(--lp-warning)',
       },
     };
@@ -120,19 +120,19 @@ export function ColorsShowcase() {
   const lpColorInsetStyles = (color: 'teal' | 'positive' | 'negative' | 'warning'): React.CSSProperties => {
     const colors: Record<string, { color: string; shadow: string }> = {
       teal: {
-        color: 'var(--fing-accent-tertiary, #6fb3b5)',
+        color: 'var(--quafi-accent-tertiary, #6fb3b5)',
         shadow: 'var(--lp-embossed-petrol)',
       },
       positive: {
-        color: 'var(--fing-positive)',
+        color: 'var(--quafi-positive)',
         shadow: 'var(--lp-embossed-positive)',
       },
       negative: {
-        color: 'var(--fing-negative)',
+        color: 'var(--quafi-negative)',
         shadow: 'var(--lp-embossed-negative)',
       },
       warning: {
-        color: 'var(--fing-warning)',
+        color: 'var(--quafi-warning)',
         shadow: 'var(--lp-embossed-warning)',
       },
     };
@@ -155,30 +155,30 @@ export function ColorsShowcase() {
   ];
 
   const accentColors: ColorToken[] = [
-    { name: 'Petrol', variable: '--fing-accent', value: '#3a6a72', description: 'Brand primary' },
-    { name: 'Petrol Light', variable: '--fing-accent-light', value: '#4a7a82', description: 'Hover state' },
-    { name: 'Petrol Dark', variable: '--fing-accent-dark', value: '#2a5a62', description: 'Active state' },
-    { name: 'Steel (Text)', variable: '--fing-text-accent', value: '#4a6a7a', description: 'Secondary accent' },
+    { name: 'Petrol', variable: '--quafi-accent', value: '#3a6a72', description: 'Brand primary' },
+    { name: 'Petrol Light', variable: '--quafi-accent-light', value: '#4a7a82', description: 'Hover state' },
+    { name: 'Petrol Dark', variable: '--quafi-accent-dark', value: '#2a5a62', description: 'Active state' },
+    { name: 'Steel (Text)', variable: '--quafi-text-accent', value: '#4a6a7a', description: 'Secondary accent' },
   ];
 
   const statusColors: ColorToken[] = [
-    { name: 'Positive (Jade)', variable: '--fing-positive', value: '#4a7a6a', description: 'Success - green stone' },
-    { name: 'Warning (Gold)', variable: '--fing-warning', value: '#a08a4a', description: 'Warning - pure metal' },
-    { name: 'Negative (Rust)', variable: '--fing-negative', value: '#8a5a4a', description: 'Error - iron oxide' },
-    { name: 'Info (Steel)', variable: '--fing-info', value: '#4a6a7a', description: 'Info - refined iron' },
+    { name: 'Positive (Jade)', variable: '--quafi-positive', value: '#4a7a6a', description: 'Success - green stone' },
+    { name: 'Warning (Gold)', variable: '--quafi-warning', value: '#a08a4a', description: 'Warning - pure metal' },
+    { name: 'Negative (Rust)', variable: '--quafi-negative', value: '#8a5a4a', description: 'Error - iron oxide' },
+    { name: 'Info (Steel)', variable: '--quafi-info', value: '#4a6a7a', description: 'Info - refined iron' },
   ];
 
   const glassColors: ColorToken[] = [
     { name: 'Glass BG', variable: '--glass-bg', value: 'rgba(255,255,255,0.25)', description: 'Fondo glass' },
     { name: 'Glass BG Strong', variable: '--glass-bg-strong', value: 'rgba(255,255,255,0.40)', description: 'Glass fuerte' },
     { name: 'Glass Border', variable: '--glass-border', value: 'rgba(255,255,255,0.35)', description: 'Borde glass' },
-    { name: 'Glass Teal BG', variable: '--fing-glass-teal-bg', value: 'rgba(58,106,114,0.15)', description: 'Glass teal' },
+    { name: 'Glass Teal BG', variable: '--quafi-glass-teal-bg', value: 'rgba(58,106,114,0.15)', description: 'Glass teal' },
   ];
 
   const textColors: ColorToken[] = [
-    { name: 'Text Primary', variable: '--fing-text-primary', value: '#252528', description: 'Texto principal' },
-    { name: 'Text Secondary', variable: '--fing-text-secondary', value: '#636E72', description: 'Texto secundario' },
-    { name: 'Text Tertiary', variable: '--fing-text-tertiary', value: '#9BA4B0', description: 'Texto terciario' },
+    { name: 'Text Primary', variable: '--quafi-text-primary', value: '#252528', description: 'Texto principal' },
+    { name: 'Text Secondary', variable: '--quafi-text-secondary', value: '#636E72', description: 'Texto secundario' },
+    { name: 'Text Tertiary', variable: '--quafi-text-tertiary', value: '#9BA4B0', description: 'Texto terciario' },
   ];
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -191,7 +191,7 @@ export function ColorsShowcase() {
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={{
           ...lpInsetStyles('medium'),
-          fontFamily: 'var(--fing-font-primary)',
+          fontFamily: 'var(--quafi-font-primary)',
           fontSize: '13px',
           fontWeight: 600,
           marginBottom: '4px',
@@ -201,15 +201,15 @@ export function ColorsShowcase() {
         <div style={{
           display: 'inline-block',
           padding: '3px 10px',
-          background: 'var(--fing-glass-teal-bg)',
-          border: '1px solid var(--fing-glass-teal-border)',
+          background: 'var(--quafi-glass-teal-bg)',
+          border: '1px solid var(--quafi-glass-teal-border)',
           borderRadius: '100px',
           marginBottom: '4px',
         }}>
           <code style={{
-            fontFamily: 'var(--fing-font-mono)',
+            fontFamily: 'var(--quafi-font-mono)',
             fontSize: '10px',
-            color: 'var(--fing-glass-teal-text)',
+            color: 'var(--quafi-glass-teal-text)',
             fontWeight: 500,
           }}>
             {color.variable}
@@ -217,7 +217,7 @@ export function ColorsShowcase() {
         </div>
         <div style={{
           ...lpInsetStyles('whisper'),
-          fontFamily: 'var(--fing-font-mono)',
+          fontFamily: 'var(--quafi-font-mono)',
           fontSize: '10px',
         }}>
           {color.value}
@@ -244,7 +244,7 @@ export function ColorsShowcase() {
     <div style={showcaseStyles}>
       {/* Header */}
       <header style={showcase.header.container}>
-        <h1 style={showcase.header.title}>FING Colors</h1>
+        <h1 style={showcase.header.title}>QUAFI Colors</h1>
         <p style={showcase.header.description}>Sistema de colores Stone Marble - Referencia visual de todas las variables</p>
       </header>
 
@@ -280,7 +280,7 @@ export function ColorsShowcase() {
         }}>
           <div style={{
             ...lpColorInsetStyles('teal'),
-            fontFamily: 'var(--fing-font-mono)',
+            fontFamily: 'var(--quafi-font-mono)',
             fontSize: '32px',
             fontWeight: 700,
           }}>
@@ -288,7 +288,7 @@ export function ColorsShowcase() {
           </div>
           <div style={{
             ...lpColorInsetStyles('positive'),
-            fontFamily: 'var(--fing-font-mono)',
+            fontFamily: 'var(--quafi-font-mono)',
             fontSize: '18px',
             fontWeight: 600,
           }}>
@@ -330,7 +330,7 @@ export function ColorsShowcase() {
             >
               <span style={{
                 ...item.style,
-                fontFamily: 'var(--fing-font-mono)',
+                fontFamily: 'var(--quafi-font-mono)',
                 fontSize: '13px',
                 fontWeight: 600,
               }}>
@@ -372,16 +372,16 @@ export function ColorsShowcase() {
           </div>
           <div style={{
             padding: '12px 24px',
-            background: 'var(--fing-glass-teal-bg)',
-            border: '1px solid var(--fing-glass-teal-border)',
+            background: 'var(--quafi-glass-teal-bg)',
+            border: '1px solid var(--quafi-glass-teal-border)',
             borderRadius: '12px',
             backdropFilter: 'blur(8px)',
           }}>
             <span style={{
-              fontFamily: 'var(--fing-font-primary)',
+              fontFamily: 'var(--quafi-font-primary)',
               fontSize: '13px',
               fontWeight: 600,
-              color: 'var(--fing-glass-teal-text)',
+              color: 'var(--quafi-glass-teal-text)',
             }}>Glass Teal</span>
           </div>
         </div>
@@ -405,7 +405,7 @@ export function ColorsShowcase() {
         }}>
           <div style={{
             ...lpInsetStyles('medium'),
-            fontFamily: 'var(--fing-font-display)',
+            fontFamily: 'var(--quafi-font-display)',
             fontSize: '24px',
             fontWeight: 700,
             marginBottom: '8px',
@@ -414,7 +414,7 @@ export function ColorsShowcase() {
           </div>
           <div style={{
             ...lpInsetStyles('soft'),
-            fontFamily: 'var(--fing-font-primary)',
+            fontFamily: 'var(--quafi-font-primary)',
             fontSize: '14px',
             marginBottom: '4px',
           }}>
@@ -422,7 +422,7 @@ export function ColorsShowcase() {
           </div>
           <div style={{
             ...lpInsetStyles('whisper'),
-            fontFamily: 'var(--fing-font-mono)',
+            fontFamily: 'var(--quafi-font-mono)',
             fontSize: '11px',
           }}>
             // metadata o texto terciario
@@ -439,7 +439,7 @@ export function ColorsShowcase() {
           marginBottom: '20px',
           lineHeight: 1.6,
         }}>
-          Every semantic color has an <code style={{ fontFamily: 'var(--fing-font-mono)', fontSize: '11px' }}>-rgb</code> companion variable
+          Every semantic color has an <code style={{ fontFamily: 'var(--quafi-font-mono)', fontSize: '11px' }}>-rgb</code> companion variable
           enabling opacity variations without hardcoding RGBA values.
         </p>
 
@@ -452,20 +452,20 @@ export function ColorsShowcase() {
           marginBottom: '20px',
         }}>
           {[
-            { name: 'Petrol', var: '--fing-accent-rgb', rgb: '58, 106, 114', hex: '#3a6a72' },
-            { name: 'Jade', var: '--fing-positive-rgb', rgb: '74, 122, 106', hex: '#4a7a6a' },
-            { name: 'Gold', var: '--fing-warning-rgb', rgb: '160, 138, 74', hex: '#a08a4a' },
-            { name: 'Rust', var: '--fing-negative-rgb', rgb: '138, 90, 74', hex: '#8a5a4a' },
-            { name: 'Steel', var: '--fing-info-rgb', rgb: '74, 106, 122', hex: '#4a6a7a' },
-            { name: 'Charcoal', var: '--fing-black-rgb', rgb: '37, 37, 40', hex: '#252528' },
-            { name: 'Border', var: '--fing-border-base-rgb', rgb: '163, 177, 198', hex: '#a3b1c6' },
+            { name: 'Petrol', var: '--quafi-accent-rgb', rgb: '58, 106, 114', hex: '#3a6a72' },
+            { name: 'Jade', var: '--quafi-positive-rgb', rgb: '74, 122, 106', hex: '#4a7a6a' },
+            { name: 'Gold', var: '--quafi-warning-rgb', rgb: '160, 138, 74', hex: '#a08a4a' },
+            { name: 'Rust', var: '--quafi-negative-rgb', rgb: '138, 90, 74', hex: '#8a5a4a' },
+            { name: 'Steel', var: '--quafi-info-rgb', rgb: '74, 106, 122', hex: '#4a6a7a' },
+            { name: 'Charcoal', var: '--quafi-black-rgb', rgb: '37, 37, 40', hex: '#252528' },
+            { name: 'Border', var: '--quafi-border-base-rgb', rgb: '163, 177, 198', hex: '#a3b1c6' },
           ].map((item) => (
             <div key={item.var} style={{
               display: 'flex',
               alignItems: 'center',
               gap: '12px',
               padding: '8px 0',
-              borderBottom: '1px solid var(--fing-border-subtle)',
+              borderBottom: '1px solid var(--quafi-border-subtle)',
             }}>
               <div style={{
                 width: '32px', height: '32px', borderRadius: '8px',
@@ -476,11 +476,11 @@ export function ColorsShowcase() {
                 ...lpInsetStyles('subtle'), fontSize: '12px', fontWeight: 600, width: '70px',
               }}>{item.name}</span>
               <code style={{
-                fontFamily: 'var(--fing-font-mono)', fontSize: '10px',
-                color: 'var(--fing-accent)', flex: 1,
+                fontFamily: 'var(--quafi-font-mono)', fontSize: '10px',
+                color: 'var(--quafi-accent)', flex: 1,
               }}>{item.var}</code>
               <code style={{
-                fontFamily: 'var(--fing-font-mono)', fontSize: '10px',
+                fontFamily: 'var(--quafi-font-mono)', fontSize: '10px',
                 ...lpInsetStyles('whisper'),
               }}>{item.rgb}</code>
             </div>
@@ -499,16 +499,16 @@ export function ColorsShowcase() {
             Usage Pattern
           </div>
           <pre style={{
-            margin: 0, fontFamily: 'var(--fing-font-mono)', fontSize: '11px', lineHeight: 1.8,
+            margin: 0, fontFamily: 'var(--quafi-font-mono)', fontSize: '11px', lineHeight: 1.8,
             ...lpInsetStyles('whisper'), whiteSpace: 'pre-wrap',
           }}>
 {`/* Before — hardcoded RGBA */
-border: 1px solid rgba(var(--fing-accent-rgb), 0.4);
-background: rgba(var(--fing-accent-rgb), 0.08);
+border: 1px solid rgba(var(--quafi-accent-rgb), 0.4);
+background: rgba(var(--quafi-accent-rgb), 0.08);
 
 /* After — RGB companion */
-border: 1px solid rgba(var(--fing-accent-rgb), 0.4);
-background: rgba(var(--fing-accent-rgb), 0.08);`}
+border: 1px solid rgba(var(--quafi-accent-rgb), 0.4);
+background: rgba(var(--quafi-accent-rgb), 0.08);`}
           </pre>
         </div>
 
@@ -525,11 +525,11 @@ background: rgba(var(--fing-accent-rgb), 0.08);`}
             }}>
               <div style={{
                 width: '48px', height: '48px', borderRadius: '8px', margin: '0 auto 6px',
-                backgroundColor: `rgba(var(--fing-accent-rgb), ${opacity})`,
-                border: '1px solid var(--fing-border-subtle)',
+                backgroundColor: `rgba(var(--quafi-accent-rgb), ${opacity})`,
+                border: '1px solid var(--quafi-border-subtle)',
               }} />
               <code style={{
-                fontFamily: 'var(--fing-font-mono)', fontSize: '9px',
+                fontFamily: 'var(--quafi-font-mono)', fontSize: '9px',
                 ...lpStyles('whisper'),
               }}>{opacity}</code>
             </div>
@@ -555,16 +555,16 @@ background: rgba(var(--fing-accent-rgb), 0.08);`}
               }}>
                 <div style={{
                   ...lpInsetStyles('subtle'), fontSize: '12px', fontWeight: 600, marginBottom: '12px',
-                  color: `var(--fing-${status})`,
+                  color: `var(--quafi-${status})`,
                 }}>
                   {names[status]}
                 </div>
                 {[
-                  { label: 'base', var: `--fing-${status}` },
-                  { label: 'text', var: `--fing-status-${status}-text` },
-                  { label: 'subtle', var: `--fing-status-${status}-subtle` },
-                  { label: 'muted', var: `--fing-status-${status}-muted` },
-                  { label: 'border', var: `--fing-status-${status}-border` },
+                  { label: 'base', var: `--quafi-${status}` },
+                  { label: 'text', var: `--quafi-status-${status}-text` },
+                  { label: 'subtle', var: `--quafi-status-${status}-subtle` },
+                  { label: 'muted', var: `--quafi-status-${status}-muted` },
+                  { label: 'border', var: `--quafi-status-${status}-border` },
                 ].map((token) => (
                   <div key={token.var} style={{
                     display: 'flex', alignItems: 'center', gap: '8px',
@@ -573,14 +573,14 @@ background: rgba(var(--fing-accent-rgb), 0.08);`}
                     <div style={{
                       width: '20px', height: '20px', borderRadius: '4px',
                       backgroundColor: `var(${token.var})`, flexShrink: 0,
-                      border: '1px solid var(--fing-border-subtle)',
+                      border: '1px solid var(--quafi-border-subtle)',
                     }} />
-                    <span style={{ fontFamily: 'var(--fing-font-mono)', ...lpInsetStyles('whisper') }}>
+                    <span style={{ fontFamily: 'var(--quafi-font-mono)', ...lpInsetStyles('whisper') }}>
                       {token.label}
                     </span>
                     <code style={{
-                      fontFamily: 'var(--fing-font-mono)', fontSize: '9px',
-                      color: 'var(--fing-text-accent)', marginLeft: 'auto',
+                      fontFamily: 'var(--quafi-font-mono)', fontSize: '9px',
+                      color: 'var(--quafi-text-accent)', marginLeft: 'auto',
                     }}>
                       {token.var}
                     </code>
@@ -603,7 +603,7 @@ background: rgba(var(--fing-accent-rgb), 0.08);`}
         }}>
           <pre style={{
             margin: 0,
-            fontFamily: 'var(--fing-font-mono)',
+            fontFamily: 'var(--quafi-font-mono)',
             fontSize: '11px',
             lineHeight: 1.6,
             color: showcase.colors.marble,
@@ -613,21 +613,21 @@ background: rgba(var(--fing-accent-rgb), 0.08);`}
 {`/* colors.css — Canonical Source of Truth */
 :root {
   /* Base + RGB companion */
-  --fing-accent: #3a6a72;
-  --fing-accent-rgb: 58, 106, 114;
+  --quafi-accent: #3a6a72;
+  --quafi-accent-rgb: 58, 106, 114;
 
   /* Use RGB for opacity variations */
-  background: rgba(var(--fing-accent-rgb), 0.08);
-  border: 1px solid rgba(var(--fing-accent-rgb), 0.4);
+  background: rgba(var(--quafi-accent-rgb), 0.08);
+  border: 1px solid rgba(var(--quafi-accent-rgb), 0.4);
 
   /* Status system (auto-derived) */
-  --fing-status-positive-subtle: rgba(var(--fing-positive-rgb), 0.15);
-  --fing-status-positive-muted: rgba(var(--fing-positive-rgb), 0.1);
-  --fing-status-positive-border: rgba(var(--fing-positive-rgb), 0.3);
+  --quafi-status-positive-subtle: rgba(var(--quafi-positive-rgb), 0.15);
+  --quafi-status-positive-muted: rgba(var(--quafi-positive-rgb), 0.1);
+  --quafi-status-positive-border: rgba(var(--quafi-positive-rgb), 0.3);
 
   /* Letterpress uses RGB too */
   --lp-positive: 0.5px 0.5px 0px rgba(255,255,255,0.9),
-    -0.5px -0.5px 0px rgba(var(--fing-positive-rgb), 0.25);
+    -0.5px -0.5px 0px rgba(var(--quafi-positive-rgb), 0.25);
 }`}
           </pre>
         </div>

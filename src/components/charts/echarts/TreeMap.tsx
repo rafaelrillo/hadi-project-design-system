@@ -2,7 +2,7 @@
 import { useMemo } from 'react';
 import type { EChartsOption } from 'echarts';
 import { EChart } from './EChart';
-import { fingColors, chartPalette, tooltipFormatters } from './fingTheme';
+import { quafiColors, chartPalette, tooltipFormatters } from './quafiTheme';
 import type { TreeMapNode, BaseChartProps } from './types';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -87,17 +87,17 @@ export function TreeMap({
 
           return `
             <div style="font-family: 'Inter', sans-serif; font-size: 12px;">
-              <div style="color: ${fingColors.textTertiary}; font-size: 10px; margin-bottom: 8px;">${path}</div>
+              <div style="color: ${quafiColors.textTertiary}; font-size: 10px; margin-bottom: 8px;">${path}</div>
               <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
                 <span style="width: 10px; height: 10px; border-radius: 2px; background: ${p.color};"></span>
                 <span style="font-weight: 500;">${p.name}</span>
               </div>
               <div style="display: flex; justify-content: space-between; gap: 24px;">
-                <span style="color: ${fingColors.textTertiary};">Value</span>
+                <span style="color: ${quafiColors.textTertiary};">Value</span>
                 <span style="font-family: 'Space Mono', monospace; font-weight: 600;">${formatValue(p.value)}</span>
               </div>
               <div style="display: flex; justify-content: space-between; gap: 24px;">
-                <span style="color: ${fingColors.textTertiary};">Share</span>
+                <span style="color: ${quafiColors.textTertiary};">Share</span>
                 <span style="font-family: 'Space Mono', monospace; font-weight: 600;">${percent}%</span>
               </div>
             </div>
@@ -126,30 +126,30 @@ export function TreeMap({
                 fontSize: 12,
                 fontWeight: 600,
                 fontFamily: "'Inter', sans-serif",
-                color: fingColors.textPrimary,
+                color: quafiColors.textPrimary,
                 lineHeight: 20,
               },
               value: {
                 fontSize: 11,
                 fontFamily: "'Space Mono', monospace",
-                color: fingColors.textSecondary,
+                color: quafiColors.textSecondary,
               },
               percent: {
                 fontSize: 10,
                 fontFamily: "'Space Mono', monospace",
-                color: fingColors.textTertiary,
+                color: quafiColors.textTertiary,
               },
             },
           },
           upperLabel: {
             show: true,
             height: 24,
-            color: fingColors.textSecondary,
+            color: quafiColors.textSecondary,
             fontFamily: "'Space Grotesk', sans-serif",
             fontSize: 12,
           },
           itemStyle: {
-            borderColor: fingColors.bgBase,
+            borderColor: quafiColors.bgBase,
             borderWidth: 2,
             gapWidth: 2,
           },
@@ -165,16 +165,16 @@ export function TreeMap({
                 bottom: 10,
                 left: 10,
                 itemStyle: {
-                  color: fingColors.bgSubtle,
-                  borderColor: fingColors.borderDefault,
+                  color: quafiColors.bgSubtle,
+                  borderColor: quafiColors.borderDefault,
                   textStyle: {
-                    color: fingColors.textSecondary,
+                    color: quafiColors.textSecondary,
                     fontSize: 11,
                   },
                 },
                 emphasis: {
                   itemStyle: {
-                    color: fingColors.bgInteractive,
+                    color: quafiColors.bgInteractive,
                   },
                 },
               }

@@ -1,7 +1,7 @@
 // Path: src/pages/styles/ShadowsShowcase.tsx
-// FING Design System — Shadow Catalog
+// QUAFI Design System — Shadow Catalog
 // Catalogo definitivo: sombras + jerarquia + uso
-// Referencia: FingHome.module.css + DashboardPage.module.css
+// Referencia: QuafiHome.module.css + DashboardPage.module.css
 
 import type { CSSProperties } from 'react';
 import { useMemo } from 'react';
@@ -38,7 +38,7 @@ const glass: CSSProperties = {
 
 const specLabel: CSSProperties = {
   fontSize: '10px',
-  fontFamily: 'var(--fing-font-mono)',
+  fontFamily: 'var(--quafi-font-mono)',
   color: 'var(--foreground-muted)',
   marginTop: '8px',
   textAlign: 'center' as const,
@@ -46,8 +46,8 @@ const specLabel: CSSProperties = {
 
 const varName: CSSProperties = {
   fontSize: '11px',
-  fontFamily: 'var(--fing-font-mono)',
-  color: 'var(--fing-accent)',
+  fontFamily: 'var(--quafi-font-mono)',
+  color: 'var(--quafi-accent)',
   textAlign: 'center' as const,
 };
 
@@ -108,9 +108,9 @@ function ShadowsCatalogContent() {
   const titleStyles: CSSProperties = {
     fontSize: '28px',
     fontWeight: 700,
-    color: 'var(--fing-accent)',
+    color: 'var(--quafi-accent)',
     marginBottom: '8px',
-    fontFamily: 'var(--fing-font-display)',
+    fontFamily: 'var(--quafi-font-display)',
     textTransform: 'uppercase',
     letterSpacing: '0.1em',
     // Standard: RAISED container → carved text (using CSS variable)
@@ -119,8 +119,8 @@ function ShadowsCatalogContent() {
 
   const descStyles: CSSProperties = {
     fontSize: '14px',
-    color: 'var(--fing-text-muted)',
-    fontFamily: 'var(--fing-font-mono)',
+    color: 'var(--quafi-text-muted)',
+    fontFamily: 'var(--quafi-font-mono)',
     textTransform: 'uppercase',
     letterSpacing: '0.03em',
     // Standard: RAISED container → carved text (using CSS variable)
@@ -155,11 +155,11 @@ function ShadowsCatalogContent() {
       </header>
 
       {/* ═══════════════════════════════════════════════════════════════════
-           1. RAISED LEVELS (1-5) — Referencia: shadows.css + FingHome
+           1. RAISED LEVELS (1-5) — Referencia: shadows.css + QuafiHome
            ═══════════════════════════════════════════════════════════════════ */}
       <ShowcaseSection
         title="RAISED Shadows (5 Levels)"
-        description="Elementos que flotan sobre la superficie de marmol. Referencia: FingHome buttons, cards"
+        description="Elementos que flotan sobre la superficie de marmol. Referencia: QuafiHome buttons, cards"
       >
         <div style={raised(3)}>
           <Label effect="carved-muted" style={{ color: 'var(--foreground-muted)' }}>
@@ -169,10 +169,10 @@ function ShadowsCatalogContent() {
             {raisedLevels.map(({ level, offset, blur, use }) => (
               <div key={level} style={{ textAlign: 'center', maxWidth: '140px' }}>
                 <div style={{ ...demoBox, boxShadow: `var(--raised-${level})` }}>
-                  <Heading4 effect="carved-accent-strong" style={{ color: 'var(--fing-accent)', fontSize: '24px' }}>
+                  <Heading4 effect="carved-accent-strong" style={{ color: 'var(--quafi-accent)', fontSize: '24px' }}>
                     {level}
                   </Heading4>
-                  <span style={{ fontSize: '10px', color: 'var(--foreground-muted)', fontFamily: 'var(--fing-font-mono)' }}>
+                  <span style={{ fontSize: '10px', color: 'var(--foreground-muted)', fontFamily: 'var(--quafi-font-mono)' }}>
                     Level
                   </span>
                 </div>
@@ -183,21 +183,21 @@ function ShadowsCatalogContent() {
             ))}
           </div>
 
-          {/* FingHome reference */}
+          {/* QuafiHome reference */}
           <div style={{ marginTop: '24px', ...inset(1), padding: '16px' }}>
             <Label effect="embossed" style={{ fontSize: '10px' }}>
-              FingHome: btnPrimary=raised-3, btnPrimary:hover=raised-4, btnSecondary=raised-2, cards=raised-3
+              QuafiHome: btnPrimary=raised-3, btnPrimary:hover=raised-4, btnSecondary=raised-2, cards=raised-3
             </Label>
           </div>
         </div>
       </ShowcaseSection>
 
       {/* ═══════════════════════════════════════════════════════════════════
-           2. INSET LEVELS (1-5) — Referencia: shadows.css + FingHome
+           2. INSET LEVELS (1-5) — Referencia: shadows.css + QuafiHome
            ═══════════════════════════════════════════════════════════════════ */}
       <ShowcaseSection
         title="INSET Shadows (5 Levels)"
-        description="Cavidades talladas en la superficie de marmol. Referencia: FingHome logo, synthesis, voice"
+        description="Cavidades talladas en la superficie de marmol. Referencia: QuafiHome logo, synthesis, voice"
       >
         <div style={inset(2)}>
           <Label effect="embossed" style={{ fontSize: '11px' }}>
@@ -210,7 +210,7 @@ function ShadowsCatalogContent() {
                   <Heading4 effect="embossed-subtle" style={{ fontSize: '24px' }}>
                     {level}
                   </Heading4>
-                  <span style={{ fontSize: '10px', fontFamily: 'var(--fing-font-mono)' }}>
+                  <span style={{ fontSize: '10px', fontFamily: 'var(--quafi-font-mono)' }}>
                     Level
                   </span>
                 </div>
@@ -221,10 +221,10 @@ function ShadowsCatalogContent() {
             ))}
           </div>
 
-          {/* FingHome reference */}
+          {/* QuafiHome reference */}
           <div style={{ marginTop: '24px', ...raised(1), padding: '16px' }}>
             <Label effect="carved-muted" style={{ fontSize: '10px' }}>
-              FingHome: heroLogo=inset-3, synthesisCard=inset-3, voiceExamples=inset-2, antiPill=inset-2
+              QuafiHome: heroLogo=inset-3, synthesisCard=inset-3, voiceExamples=inset-2, antiPill=inset-2
             </Label>
           </div>
         </div>
@@ -239,7 +239,7 @@ function ShadowsCatalogContent() {
       >
         {/* RAISED container */}
         <div style={{ ...raised(3), position: 'relative' }}>
-          <Label effect="carved-steel" style={{ color: 'var(--fing-text-accent)', fontSize: '10px' }}>
+          <Label effect="carved-steel" style={{ color: 'var(--quafi-text-accent)', fontSize: '10px' }}>
             LEVEL 1: RAISED (--raised-3)
           </Label>
           <Paragraph effect="carved-muted" style={{ color: 'var(--foreground-muted)', fontSize: '12px', marginTop: '4px' }}>
@@ -285,14 +285,14 @@ function ShadowsCatalogContent() {
           </div>
 
           {/* Rules */}
-          <div style={{ marginTop: '16px', display: 'flex', gap: '12px', fontSize: '10px', fontFamily: 'var(--fing-font-mono)' }}>
-            <Label effect="carved-positive" style={{ color: 'var(--fing-positive)', fontSize: '10px' }}>
+          <div style={{ marginTop: '16px', display: 'flex', gap: '12px', fontSize: '10px', fontFamily: 'var(--quafi-font-mono)' }}>
+            <Label effect="carved-positive" style={{ color: 'var(--quafi-positive)', fontSize: '10px' }}>
               DO: RAISED &gt; INSET &gt; GLASS
             </Label>
-            <Label effect="carved-negative" style={{ color: 'var(--fing-negative)', fontSize: '10px' }}>
+            <Label effect="carved-negative" style={{ color: 'var(--quafi-negative)', fontSize: '10px' }}>
               NO: RAISED &gt; RAISED (same level)
             </Label>
-            <Label effect="carved-negative" style={{ color: 'var(--fing-negative)', fontSize: '10px' }}>
+            <Label effect="carved-negative" style={{ color: 'var(--quafi-negative)', fontSize: '10px' }}>
               NO: FONDO &gt; GLASS (skip level)
             </Label>
           </div>
@@ -319,14 +319,14 @@ function ShadowsCatalogContent() {
               display: 'flex', alignItems: 'center', justifyContent: 'center',
             }}>
               <span style={{
-                fontSize: '20px', fontWeight: 600, color: 'var(--fing-accent)',
-                textShadow: 'var(--lp-petrol-strong)', fontFamily: 'var(--fing-font-mono)',
+                fontSize: '20px', fontWeight: 600, color: 'var(--quafi-accent)',
+                textShadow: 'var(--lp-petrol-strong)', fontFamily: 'var(--quafi-font-mono)',
               }}>
                 JD
               </span>
             </div>
             <div>
-              <Heading4 effect="carved-accent-strong" style={{ color: 'var(--fing-accent)', fontSize: '24px' }}>
+              <Heading4 effect="carved-accent-strong" style={{ color: 'var(--quafi-accent)', fontSize: '24px' }}>
                 Welcome, John
               </Heading4>
               <Label effect="carved-muted" style={{ fontSize: '10px', marginTop: '2px' }}>
@@ -344,7 +344,7 @@ function ShadowsCatalogContent() {
               <div>
                 <span style={{
                   fontSize: '32px', fontWeight: 700, color: 'var(--foreground)',
-                  textShadow: 'var(--lp-carved-lg)', fontFamily: 'var(--fing-font-mono)',
+                  textShadow: 'var(--lp-carved-lg)', fontFamily: 'var(--quafi-font-mono)',
                 }}>
                   $124,500.00
                 </span>
@@ -365,11 +365,11 @@ function ShadowsCatalogContent() {
       </ShowcaseSection>
 
       {/* ═══════════════════════════════════════════════════════════════════
-           5. SPECIALTY SHADOWS — Referencia: FingHome / shadows.css
+           5. SPECIALTY SHADOWS — Referencia: QuafiHome / shadows.css
            ═══════════════════════════════════════════════════════════════════ */}
       <ShowcaseSection
         title="Specialty Shadows"
-        description="Sombras compuestas extraidas de FingHome. Definidas en shadows.css"
+        description="Sombras compuestas extraidas de QuafiHome. Definidas en shadows.css"
       >
         <div style={raised(2)}>
               <Label effect="carved-muted" style={{ color: 'var(--foreground-muted)' }}>
@@ -378,7 +378,7 @@ function ShadowsCatalogContent() {
 
               {/* Ridge Frame buttons */}
               <div style={{ marginTop: '20px' }}>
-                <Label effect="carved-steel" style={{ color: 'var(--fing-text-accent)', fontSize: '10px' }}>
+                <Label effect="carved-steel" style={{ color: 'var(--quafi-text-accent)', fontSize: '10px' }}>
                   RIDGE FRAME — Double inner border + raised effect (buttons)
                 </Label>
                 <div style={{ display: 'flex', gap: '20px', marginTop: '12px', alignItems: 'flex-end' }}>
@@ -388,7 +388,7 @@ function ShadowsCatalogContent() {
                       boxShadow: 'var(--shadow-ridge-frame)',
                       borderRadius: '12px',
                     }}>
-                      <Paragraph effect="carved-petrol" style={{ color: 'var(--fing-accent)', fontSize: '13px', fontWeight: 600 }}>
+                      <Paragraph effect="carved-petrol" style={{ color: 'var(--quafi-accent)', fontSize: '13px', fontWeight: 600 }}>
                         Normal
                       </Paragraph>
                     </div>
@@ -400,7 +400,7 @@ function ShadowsCatalogContent() {
                       boxShadow: 'var(--shadow-ridge-frame-hover)',
                       borderRadius: '12px',
                     }}>
-                      <Paragraph effect="carved-petrol" style={{ color: 'var(--fing-accent)', fontSize: '13px', fontWeight: 600 }}>
+                      <Paragraph effect="carved-petrol" style={{ color: 'var(--quafi-accent)', fontSize: '13px', fontWeight: 600 }}>
                         Hover
                       </Paragraph>
                     </div>
@@ -423,8 +423,8 @@ function ShadowsCatalogContent() {
 
               {/* Card specialty shadows */}
               <div style={{ marginTop: '28px' }}>
-                <Label effect="carved-steel" style={{ color: 'var(--fing-text-accent)', fontSize: '10px' }}>
-                  CARD SHADOWS — Content containers from FingHome
+                <Label effect="carved-steel" style={{ color: 'var(--quafi-text-accent)', fontSize: '10px' }}>
+                  CARD SHADOWS — Content containers from QuafiHome
                 </Label>
                 <div style={{ display: 'flex', gap: '20px', marginTop: '12px', flexWrap: 'wrap' }}>
                   {[
@@ -446,8 +446,8 @@ function ShadowsCatalogContent() {
 
               {/* Inset specialty shadows */}
               <div style={{ marginTop: '28px' }}>
-                <Label effect="carved-steel" style={{ color: 'var(--fing-text-accent)', fontSize: '10px' }}>
-                  INSET SPECIALTY — Carved containers from FingHome
+                <Label effect="carved-steel" style={{ color: 'var(--quafi-text-accent)', fontSize: '10px' }}>
+                  INSET SPECIALTY — Carved containers from QuafiHome
                 </Label>
                 <div style={{ display: 'flex', gap: '20px', marginTop: '12px', flexWrap: 'wrap' }}>
                   {[
@@ -561,7 +561,7 @@ function ShadowsCatalogContent() {
                     padding: '20px',
                     boxShadow: 'var(--glass-teal-shadow)',
                   }}>
-                    <Heading4 effect="carved-petrol" style={{ color: 'var(--fing-accent)', fontSize: '14px' }}>
+                    <Heading4 effect="carved-petrol" style={{ color: 'var(--quafi-accent)', fontSize: '14px' }}>
                       Glass Teal Card
                     </Heading4>
                     <Paragraph effect="carved-muted" style={{ color: 'var(--foreground-muted)', fontSize: '11px', marginTop: '4px' }}>
@@ -569,7 +569,7 @@ function ShadowsCatalogContent() {
                     </Paragraph>
                   </div>
                   <div style={{ flex: 1 }}>
-                    <div style={{ fontSize: '11px', fontFamily: 'var(--fing-font-mono)', color: 'var(--foreground-muted)', lineHeight: '1.8' }}>
+                    <div style={{ fontSize: '11px', fontFamily: 'var(--quafi-font-mono)', color: 'var(--foreground-muted)', lineHeight: '1.8' }}>
                       <p><strong>gradient:</strong> 135deg, white 25% → petrol 12%</p>
                       <p><strong>shadow:</strong> 0 4px 24px gray + 1px petrol ring</p>
                       <p><strong>use:</strong> Dashboard KPI cards</p>
@@ -585,14 +585,14 @@ function ShadowsCatalogContent() {
            ═══════════════════════════════════════════════════════════════════ */}
       <ShowcaseSection
         title="Semantic Shadow Aliases"
-        description="Aliases semanticos que apuntan a --fing-neu-* (Light Engine). Definidos en theme.css"
+        description="Aliases semanticos que apuntan a --quafi-neu-* (Light Engine). Definidos en theme.css"
       >
         <div style={raised(2)}>
               <Label effect="carved-muted" style={{ color: 'var(--foreground-muted)' }}>
                 Semantic names for component shadows — Reference Light Engine tokens
               </Label>
 
-              <table style={{ width: '100%', marginTop: '16px', borderCollapse: 'collapse', fontFamily: 'var(--fing-font-mono)' }}>
+              <table style={{ width: '100%', marginTop: '16px', borderCollapse: 'collapse', fontFamily: 'var(--quafi-font-mono)' }}>
                 <thead>
                   <tr>
                     <th style={{ textAlign: 'left', padding: '8px', borderBottom: '1px solid var(--border)', fontSize: '10px', color: 'var(--foreground-muted)' }}>ALIAS</th>
@@ -603,20 +603,20 @@ function ShadowsCatalogContent() {
                 </thead>
                 <tbody>
                   {[
-                    { alias: '--fing-shadow-card', resolves: '--fing-neu-elevated-md', use: 'Card default', shadow: 'var(--fing-shadow-card)' },
-                    { alias: '--fing-shadow-card-hover', resolves: '--fing-neu-hover-md', use: 'Card hover', shadow: 'var(--fing-shadow-card-hover)' },
-                    { alias: '--fing-shadow-card-sm', resolves: '--fing-neu-elevated-sm', use: 'Small card', shadow: 'var(--fing-shadow-card-sm)' },
-                    { alias: '--fing-shadow-card-lg', resolves: '--fing-neu-elevated-lg', use: 'Large card', shadow: 'var(--fing-shadow-card-lg)' },
-                    { alias: '--fing-shadow-button', resolves: '--fing-neu-elevated-sm', use: 'Button default', shadow: 'var(--fing-shadow-button)' },
-                    { alias: '--fing-shadow-button-hover', resolves: '--fing-neu-hover-sm', use: 'Button hover', shadow: 'var(--fing-shadow-button-hover)' },
-                    { alias: '--fing-shadow-button-active', resolves: '--fing-neu-active', use: 'Button active', shadow: 'var(--fing-shadow-button-active)' },
-                    { alias: '--fing-shadow-input', resolves: '--fing-neu-pressed-sm', use: 'Input field', shadow: 'var(--fing-shadow-input)' },
-                    { alias: '--fing-shadow-dropdown', resolves: '--fing-neu-elevated-lg', use: 'Dropdown menu', shadow: 'var(--fing-shadow-dropdown)' },
-                    { alias: '--fing-shadow-modal', resolves: '--fing-neu-elevated-xl', use: 'Modal dialog', shadow: 'var(--fing-shadow-modal)' },
+                    { alias: '--quafi-shadow-card', resolves: '--quafi-neu-elevated-md', use: 'Card default', shadow: 'var(--quafi-shadow-card)' },
+                    { alias: '--quafi-shadow-card-hover', resolves: '--quafi-neu-hover-md', use: 'Card hover', shadow: 'var(--quafi-shadow-card-hover)' },
+                    { alias: '--quafi-shadow-card-sm', resolves: '--quafi-neu-elevated-sm', use: 'Small card', shadow: 'var(--quafi-shadow-card-sm)' },
+                    { alias: '--quafi-shadow-card-lg', resolves: '--quafi-neu-elevated-lg', use: 'Large card', shadow: 'var(--quafi-shadow-card-lg)' },
+                    { alias: '--quafi-shadow-button', resolves: '--quafi-neu-elevated-sm', use: 'Button default', shadow: 'var(--quafi-shadow-button)' },
+                    { alias: '--quafi-shadow-button-hover', resolves: '--quafi-neu-hover-sm', use: 'Button hover', shadow: 'var(--quafi-shadow-button-hover)' },
+                    { alias: '--quafi-shadow-button-active', resolves: '--quafi-neu-active', use: 'Button active', shadow: 'var(--quafi-shadow-button-active)' },
+                    { alias: '--quafi-shadow-input', resolves: '--quafi-neu-pressed-sm', use: 'Input field', shadow: 'var(--quafi-shadow-input)' },
+                    { alias: '--quafi-shadow-dropdown', resolves: '--quafi-neu-elevated-lg', use: 'Dropdown menu', shadow: 'var(--quafi-shadow-dropdown)' },
+                    { alias: '--quafi-shadow-modal', resolves: '--quafi-neu-elevated-xl', use: 'Modal dialog', shadow: 'var(--quafi-shadow-modal)' },
                   ].map((item) => (
                     <tr key={item.alias}>
                       <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}>
-                        <Label effect="carved-petrol" style={{ color: 'var(--fing-accent)', fontSize: '11px' }}>{item.alias}</Label>
+                        <Label effect="carved-petrol" style={{ color: 'var(--quafi-accent)', fontSize: '11px' }}>{item.alias}</Label>
                       </td>
                       <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}>
                         <Label effect="carved-muted" style={{ fontSize: '10px' }}>{item.resolves}</Label>
@@ -647,21 +647,21 @@ function ShadowsCatalogContent() {
       >
         <div style={raised(2)}>
               {/* Accent glows */}
-              <Label effect="carved-steel" style={{ color: 'var(--fing-text-accent)', fontSize: '10px' }}>
+              <Label effect="carved-steel" style={{ color: 'var(--quafi-text-accent)', fontSize: '10px' }}>
                 ACCENT GLOW — Petrol color glow (3 sizes)
               </Label>
               <div style={{ display: 'flex', gap: '24px', marginTop: '12px', justifyContent: 'center' }}>
                 {[
-                  { name: '--fing-shadow-glow-sm', label: 'SM', blur: '10px' },
-                  { name: '--fing-shadow-glow-md', label: 'MD', blur: '20px' },
-                  { name: '--fing-shadow-glow-lg', label: 'LG', blur: '30px' },
+                  { name: '--quafi-shadow-glow-sm', label: 'SM', blur: '10px' },
+                  { name: '--quafi-shadow-glow-md', label: 'MD', blur: '20px' },
+                  { name: '--quafi-shadow-glow-lg', label: 'LG', blur: '30px' },
                 ].map((item) => (
                   <div key={item.name} style={{ textAlign: 'center' }}>
                     <div style={{
                       ...demoBox, width: '90px', height: '90px',
                       boxShadow: `var(${item.name})`, borderRadius: '50%',
                     }}>
-                      <Heading4 effect="carved-accent-strong" style={{ color: 'var(--fing-accent)', fontSize: '14px' }}>
+                      <Heading4 effect="carved-accent-strong" style={{ color: 'var(--quafi-accent)', fontSize: '14px' }}>
                         {item.label}
                       </Heading4>
                     </div>
@@ -673,15 +673,15 @@ function ShadowsCatalogContent() {
 
               {/* Status glows */}
               <div style={{ marginTop: '28px' }}>
-                <Label effect="carved-steel" style={{ color: 'var(--fing-text-accent)', fontSize: '10px' }}>
+                <Label effect="carved-steel" style={{ color: 'var(--quafi-text-accent)', fontSize: '10px' }}>
                   SEMANTIC STATUS GLOWS — Natural Mineral colors
                 </Label>
                 <div style={{ display: 'flex', gap: '24px', marginTop: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
                   {[
-                    { name: '--fing-glow-positive', label: 'Jade', color: 'var(--fing-positive)', effect: 'carved-positive' as const },
-                    { name: '--fing-glow-negative', label: 'Rust', color: 'var(--fing-negative)', effect: 'carved-negative' as const },
-                    { name: '--fing-glow-warning', label: 'Gold', color: 'var(--fing-warning)', effect: 'carved-warning' as const },
-                    { name: '--fing-glow-info', label: 'Steel', color: 'var(--fing-info)', effect: 'carved-info' as const },
+                    { name: '--quafi-glow-positive', label: 'Jade', color: 'var(--quafi-positive)', effect: 'carved-positive' as const },
+                    { name: '--quafi-glow-negative', label: 'Rust', color: 'var(--quafi-negative)', effect: 'carved-negative' as const },
+                    { name: '--quafi-glow-warning', label: 'Gold', color: 'var(--quafi-warning)', effect: 'carved-warning' as const },
+                    { name: '--quafi-glow-info', label: 'Steel', color: 'var(--quafi-info)', effect: 'carved-info' as const },
                   ].map((item) => (
                     <div key={item.name} style={{ textAlign: 'center' }}>
                       <div style={{
@@ -701,15 +701,15 @@ function ShadowsCatalogContent() {
 
               {/* Large glows */}
               <div style={{ marginTop: '28px' }}>
-                <Label effect="carved-steel" style={{ color: 'var(--fing-text-accent)', fontSize: '10px' }}>
+                <Label effect="carved-steel" style={{ color: 'var(--quafi-text-accent)', fontSize: '10px' }}>
                   LARGE GLOWS — Wider radius for emphasis
                 </Label>
                 <div style={{ display: 'flex', gap: '24px', marginTop: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
                   {[
-                    { name: '--fing-glow-positive-lg', label: 'Jade LG', color: 'var(--fing-positive)', effect: 'carved-positive' as const },
-                    { name: '--fing-glow-negative-lg', label: 'Rust LG', color: 'var(--fing-negative)', effect: 'carved-negative' as const },
-                    { name: '--fing-glow-warning-lg', label: 'Gold LG', color: 'var(--fing-warning)', effect: 'carved-warning' as const },
-                    { name: '--fing-glow-info-lg', label: 'Steel LG', color: 'var(--fing-info)', effect: 'carved-info' as const },
+                    { name: '--quafi-glow-positive-lg', label: 'Jade LG', color: 'var(--quafi-positive)', effect: 'carved-positive' as const },
+                    { name: '--quafi-glow-negative-lg', label: 'Rust LG', color: 'var(--quafi-negative)', effect: 'carved-negative' as const },
+                    { name: '--quafi-glow-warning-lg', label: 'Gold LG', color: 'var(--quafi-warning)', effect: 'carved-warning' as const },
+                    { name: '--quafi-glow-info-lg', label: 'Steel LG', color: 'var(--quafi-info)', effect: 'carved-info' as const },
                   ].map((item) => (
                     <div key={item.name} style={{ textAlign: 'center' }}>
                       <div style={{
@@ -738,18 +738,18 @@ function ShadowsCatalogContent() {
       >
         <div style={raised(2)}>
               <Label effect="carved-muted" style={{ color: 'var(--foreground-muted)' }}>
-                Unidirectional drop shadows — Based on --fing-border-base-rgb (163, 177, 198)
+                Unidirectional drop shadows — Based on --quafi-border-base-rgb (163, 177, 198)
               </Label>
 
               {/* Drop shadows scale */}
               <div style={{ display: 'flex', gap: '20px', marginTop: '20px', justifyContent: 'center', flexWrap: 'wrap' }}>
                 {[
-                  { name: '--fing-shadow-xs', label: 'XS', spec: '0 1px 2px / 25%' },
-                  { name: '--fing-shadow-sm', label: 'SM', spec: '0 2px 8px / 30%' },
-                  { name: '--fing-shadow-md', label: 'MD', spec: '0 4px 16px / 35%' },
-                  { name: '--fing-shadow-lg', label: 'LG', spec: '0 8px 24px / 40%' },
-                  { name: '--fing-shadow-xl', label: 'XL', spec: '0 12px 32px / 45%' },
-                  { name: '--fing-shadow-2xl', label: '2XL', spec: '0 24px 48px / 50%' },
+                  { name: '--quafi-shadow-xs', label: 'XS', spec: '0 1px 2px / 25%' },
+                  { name: '--quafi-shadow-sm', label: 'SM', spec: '0 2px 8px / 30%' },
+                  { name: '--quafi-shadow-md', label: 'MD', spec: '0 4px 16px / 35%' },
+                  { name: '--quafi-shadow-lg', label: 'LG', spec: '0 8px 24px / 40%' },
+                  { name: '--quafi-shadow-xl', label: 'XL', spec: '0 12px 32px / 45%' },
+                  { name: '--quafi-shadow-2xl', label: '2XL', spec: '0 24px 48px / 50%' },
                 ].map((item) => (
                   <div key={item.name} style={{ textAlign: 'center' }}>
                     <div style={{
@@ -757,7 +757,7 @@ function ShadowsCatalogContent() {
                       boxShadow: `var(${item.name})`,
                       background: '#fff',
                     }}>
-                      <Heading4 style={{ fontSize: '14px', color: 'var(--fing-text-primary)' }}>
+                      <Heading4 style={{ fontSize: '14px', color: 'var(--quafi-text-primary)' }}>
                         {item.label}
                       </Heading4>
                     </div>
@@ -769,15 +769,15 @@ function ShadowsCatalogContent() {
 
               {/* Inner shadows */}
               <div style={{ marginTop: '28px' }}>
-                <Label effect="carved-steel" style={{ color: 'var(--fing-text-accent)', fontSize: '10px' }}>
+                <Label effect="carved-steel" style={{ color: 'var(--quafi-text-accent)', fontSize: '10px' }}>
                   INNER & HIGHLIGHT — Focus rings and light lines
                 </Label>
                 <div style={{ display: 'flex', gap: '20px', marginTop: '12px', justifyContent: 'center' }}>
                   {[
-                    { name: '--fing-shadow-inner', label: 'Inner', spec: 'inset 0 2px 4px / 30%' },
-                    { name: '--fing-shadow-inner-strong', label: 'Inner Strong', spec: 'inset 0 4px 8px / 40%' },
-                    { name: '--fing-shadow-highlight', label: 'Highlight', spec: 'inset 0 1px 0 / white 60%' },
-                    { name: '--fing-shadow-highlight-strong', label: 'Highlight Strong', spec: 'inset 0 1px 0 / white 80%' },
+                    { name: '--quafi-shadow-inner', label: 'Inner', spec: 'inset 0 2px 4px / 30%' },
+                    { name: '--quafi-shadow-inner-strong', label: 'Inner Strong', spec: 'inset 0 4px 8px / 40%' },
+                    { name: '--quafi-shadow-highlight', label: 'Highlight', spec: 'inset 0 1px 0 / white 60%' },
+                    { name: '--quafi-shadow-highlight-strong', label: 'Highlight Strong', spec: 'inset 0 1px 0 / white 80%' },
                   ].map((item) => (
                     <div key={item.name} style={{ textAlign: 'center' }}>
                       <div style={{
@@ -785,7 +785,7 @@ function ShadowsCatalogContent() {
                         boxShadow: `var(${item.name})`,
                         background: 'var(--marble-dark)',
                       }}>
-                        <span style={{ fontSize: '10px', fontFamily: 'var(--fing-font-mono)', color: 'var(--foreground-muted)' }}>
+                        <span style={{ fontSize: '10px', fontFamily: 'var(--quafi-font-mono)', color: 'var(--foreground-muted)' }}>
                           {item.label}
                         </span>
                       </div>
@@ -812,14 +812,14 @@ function ShadowsCatalogContent() {
                 ...demoBox,
                 boxShadow: getNeuPanelShadow(level * 4, level * 12),
               }}>
-                <div style={{ fontSize: '24px', fontWeight: 700, color: 'var(--fing-text-primary)', fontFamily: 'var(--fing-font-mono)' }}>
+                <div style={{ fontSize: '24px', fontWeight: 700, color: 'var(--quafi-text-primary)', fontFamily: 'var(--quafi-font-mono)' }}>
                   {level}
                 </div>
-                <div style={{ fontSize: '10px', color: '#636E72', fontFamily: 'var(--fing-font-mono)' }}>
+                <div style={{ fontSize: '10px', color: '#636E72', fontFamily: 'var(--quafi-font-mono)' }}>
                   Dynamic
                 </div>
               </div>
-              <div style={{ marginTop: '12px', fontSize: '11px', color: '#636E72', fontFamily: 'var(--fing-font-mono)' }}>
+              <div style={{ marginTop: '12px', fontSize: '11px', color: '#636E72', fontFamily: 'var(--quafi-font-mono)' }}>
                 {level * 4}px / {level * 12}px blur
               </div>
             </div>
@@ -838,14 +838,14 @@ function ShadowsCatalogContent() {
                 ...demoBox,
                 boxShadow: getNeuInsetShadow(config.dist, config.blur),
               }}>
-                <div style={{ fontSize: '14px', fontWeight: 600, color: 'var(--fing-text-primary)', fontFamily: 'var(--fing-font-mono)' }}>
+                <div style={{ fontSize: '14px', fontWeight: 600, color: 'var(--quafi-text-primary)', fontFamily: 'var(--quafi-font-mono)' }}>
                   {config.label}
                 </div>
-                <div style={{ fontSize: '10px', color: '#636E72', fontFamily: 'var(--fing-font-mono)' }}>
+                <div style={{ fontSize: '10px', color: '#636E72', fontFamily: 'var(--quafi-font-mono)' }}>
                   Inset
                 </div>
               </div>
-              <div style={{ marginTop: '12px', fontSize: '11px', color: '#636E72', fontFamily: 'var(--fing-font-mono)' }}>
+              <div style={{ marginTop: '12px', fontSize: '11px', color: '#636E72', fontFamily: 'var(--quafi-font-mono)' }}>
                 {config.dist}px / {config.blur}px blur
               </div>
             </div>
@@ -860,7 +860,7 @@ function ShadowsCatalogContent() {
           transition: 'box-shadow 50ms linear',
         }}>
           <Sun size={16} style={{ color: '#F59E0B' }} />
-          <span style={{ fontSize: '12px', color: '#636E72', fontFamily: 'var(--fing-font-mono)' }}>
+          <span style={{ fontSize: '12px', color: '#636E72', fontFamily: 'var(--quafi-font-mono)' }}>
             Light Angle: {Math.round(lightAngle)}°
           </span>
         </div>
@@ -873,42 +873,42 @@ function ShadowsCatalogContent() {
         title="Reglas de Uso"
         description="Como elegir la sombra correcta segun el contexto"
       >
-        <div style={{ fontSize: '12px', color: 'var(--foreground)', lineHeight: '2', fontFamily: 'var(--fing-font-mono)' }}>
-          <p><strong style={{ color: 'var(--fing-accent)' }}>JERARQUIA (regla critica):</strong></p>
+        <div style={{ fontSize: '12px', color: 'var(--foreground)', lineHeight: '2', fontFamily: 'var(--quafi-font-mono)' }}>
+          <p><strong style={{ color: 'var(--quafi-accent)' }}>JERARQUIA (regla critica):</strong></p>
           <p>FONDO (#d5d8dc) → RAISED → INSET → GLASS</p>
           <p>Nunca anidar mismo nivel. Nunca saltar niveles.</p>
 
-          <p style={{ marginTop: '16px' }}><strong style={{ color: 'var(--fing-accent)' }}>TIPOGRAFIA:</strong></p>
+          <p style={{ marginTop: '16px' }}><strong style={{ color: 'var(--quafi-accent)' }}>TIPOGRAFIA:</strong></p>
           <p>Container RAISED → texto CARVED (hundido en superficie)</p>
           <p>Container INSET  → texto EMBOSSED (elevado desde superficie)</p>
           <p>Container GLASS  → texto CARVED-WHISPER o GLOW</p>
 
-          <p style={{ marginTop: '16px' }}><strong style={{ color: 'var(--fing-accent)' }}>NIVELES POR COMPONENTE:</strong></p>
+          <p style={{ marginTop: '16px' }}><strong style={{ color: 'var(--quafi-accent)' }}>NIVELES POR COMPONENTE:</strong></p>
           <p>Badges, toggles  → raised-1 / inset-1</p>
           <p>Buttons, inputs  → raised-2 / inset-2</p>
           <p>Cards, panels    → raised-3 / inset-3 (default)</p>
           <p>Dropdowns, hover → raised-4 / inset-4</p>
           <p>Modals, hero     → raised-5 / inset-5</p>
 
-          <p style={{ marginTop: '16px' }}><strong style={{ color: 'var(--fing-accent)' }}>SHADOW COLORS:</strong></p>
+          <p style={{ marginTop: '16px' }}><strong style={{ color: 'var(--quafi-accent)' }}>SHADOW COLORS:</strong></p>
           <p>--shadow-light: rgba(255, 255, 255, 0.95) — highlight top-left</p>
           <p>--shadow-dark:  rgba(147, 157, 170, 0.55) — shadow bottom-right</p>
           <p>--shadow-darker: rgba(130, 140, 155, 0.65) — for inset-5 depth</p>
 
-          <p style={{ marginTop: '16px' }}><strong style={{ color: 'var(--fing-accent)' }}>TRANSITIONS:</strong></p>
+          <p style={{ marginTop: '16px' }}><strong style={{ color: 'var(--quafi-accent)' }}>TRANSITIONS:</strong></p>
           <p>box-shadow: 50ms linear (--transition-shadow)</p>
           <p>Usar transition en elementos con sombras dinamicas o hover</p>
 
-          <p style={{ marginTop: '16px' }}><strong style={{ color: 'var(--fing-accent)' }}>BORDER RADIUS POR NIVEL:</strong></p>
+          <p style={{ marginTop: '16px' }}><strong style={{ color: 'var(--quafi-accent)' }}>BORDER RADIUS POR NIVEL:</strong></p>
           <p>--radius-sm: 8px   (badges, small elements)</p>
           <p>--radius-md: 12px  (inputs, items)</p>
           <p>--radius-lg: 15px  (cards, sections)</p>
           <p>--radius-xl: 20px  (containers, panels)</p>
           <p>--radius-full: 9999px (pills, avatars)</p>
 
-          <p style={{ marginTop: '16px' }}><strong style={{ color: 'var(--fing-accent)' }}>ARCHIVOS FUENTE:</strong></p>
+          <p style={{ marginTop: '16px' }}><strong style={{ color: 'var(--quafi-accent)' }}>ARCHIVOS FUENTE:</strong></p>
           <p>shadows.css → raised, inset, glass, specialty, traditional, glows</p>
-          <p>theme.css   → --fing-neu-* (light engine), semantic aliases</p>
+          <p>theme.css   → --quafi-neu-* (light engine), semantic aliases</p>
           <p>letterpress.css → text-shadow effects (carved, embossed, glow)</p>
         </div>
       </ShowcaseSection>

@@ -24,21 +24,21 @@
   width: 96px;
   height: 96px;
   border-radius: 50%;
-  background: var(--fing-bg-elevated);
-  border: 1px solid var(--fing-border-subtle);
-  color: var(--fing-accent-primary);
+  background: var(--quafi-bg-elevated);
+  border: 1px solid var(--quafi-border-subtle);
+  color: var(--quafi-accent-primary);
 }
 
 .title {
   font-size: 24px;
   font-weight: 600;
-  color: var(--fing-text-primary);
+  color: var(--quafi-text-primary);
   margin: 0;
 }
 
 .description {
   font-size: 14px;
-  color: var(--fing-text-secondary);
+  color: var(--quafi-text-secondary);
   margin: 0;
   max-width: 280px;
 }

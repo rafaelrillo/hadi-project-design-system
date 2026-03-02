@@ -1,5 +1,5 @@
 // Path: src/pages/charts/CalendarChartShowcase.tsx
-// FING Design System - Glass-Neumorphism Calendar Chart
+// QUAFI Design System - Glass-Neumorphism Calendar Chart
 import React, { useMemo } from 'react';
 import { ShowcaseSection } from '../../components/showcase';
 import { CalendarChart } from '../../components/charts/echarts';
@@ -121,13 +121,13 @@ function CalendarChartContent() {
 
       <ShowcaseSection title="Especificaciones Tecnicas">
         <div style={tableContainerStyles}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12px', fontFamily: 'var(--fing-font-mono)' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12px', fontFamily: 'var(--quafi-font-mono)' }}>
             <thead>
               <tr>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent)', fontWeight: 600 }}>Prop</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent)', fontWeight: 600 }}>Type</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent)', fontWeight: 600 }}>Default</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent)', fontWeight: 600 }}>Description</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--quafi-accent)', fontWeight: 600 }}>Prop</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--quafi-accent)', fontWeight: 600 }}>Type</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--quafi-accent)', fontWeight: 600 }}>Default</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--quafi-accent)', fontWeight: 600 }}>Description</th>
               </tr>
             </thead>
             <tbody>
@@ -141,10 +141,10 @@ function CalendarChartContent() {
                 { prop: 'formatValue', type: '(v: number) => string', default: '-', desc: 'Value formatter' },
               ].map((row, i) => (
                 <tr key={i}>
-                  <td style={{ padding: '12px 16px', color: 'var(--fing-text-primary)' }}>{row.prop}</td>
-                  <td style={{ padding: '12px 16px', color: 'var(--fing-text-muted)' }}>{row.type}</td>
-                  <td style={{ padding: '12px 16px', color: 'var(--fing-text-muted)' }}>{row.default}</td>
-                  <td style={{ padding: '12px 16px', color: 'var(--fing-text-muted)' }}>{row.desc}</td>
+                  <td style={{ padding: '12px 16px', color: 'var(--quafi-text-primary)' }}>{row.prop}</td>
+                  <td style={{ padding: '12px 16px', color: 'var(--quafi-text-muted)' }}>{row.type}</td>
+                  <td style={{ padding: '12px 16px', color: 'var(--quafi-text-muted)' }}>{row.default}</td>
+                  <td style={{ padding: '12px 16px', color: 'var(--quafi-text-muted)' }}>{row.desc}</td>
                 </tr>
               ))}
             </tbody>

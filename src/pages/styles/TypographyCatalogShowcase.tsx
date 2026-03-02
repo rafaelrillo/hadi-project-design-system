@@ -1,7 +1,7 @@
 // Path: src/pages/styles/TypographyCatalogShowcase.tsx
-// FING Design System — Catálogo Tipográfico Definitivo
+// QUAFI Design System — Catálogo Tipográfico Definitivo
 // Combina Typography components + Letterpress effects + Semantic colors
-// Referencia: FingHome.module.css + DashboardPage.module.css
+// Referencia: QuafiHome.module.css + DashboardPage.module.css
 
 import type { CSSProperties } from 'react';
 import { Heading1, Heading3, Heading4, Paragraph, Label } from '../../components/atoms/Typography';
@@ -35,12 +35,12 @@ const glass: CSSProperties = {
 
 // Semantic color map
 const semanticColors = {
-  petrol: { color: 'var(--fing-accent)', label: 'Petrol' },
-  steel: { color: 'var(--fing-text-accent)', label: 'Steel' },
-  positive: { color: 'var(--fing-positive)', label: 'Jade' },
-  warning: { color: 'var(--fing-warning)', label: 'Gold' },
-  negative: { color: 'var(--fing-negative)', label: 'Rust' },
-  info: { color: 'var(--fing-info)', label: 'Steel' },
+  petrol: { color: 'var(--quafi-accent)', label: 'Petrol' },
+  steel: { color: 'var(--quafi-text-accent)', label: 'Steel' },
+  positive: { color: 'var(--quafi-positive)', label: 'Jade' },
+  warning: { color: 'var(--quafi-warning)', label: 'Gold' },
+  negative: { color: 'var(--quafi-negative)', label: 'Rust' },
+  info: { color: 'var(--quafi-info)', label: 'Steel' },
   muted: { color: 'var(--foreground-muted)', label: 'Muted' },
   primary: { color: 'var(--foreground)', label: 'Charcoal' },
 };
@@ -56,11 +56,11 @@ export function TypographyCatalogShowcase() {
       </header>
 
       {/* ═══════════════════════════════════════════════════════════════════
-           1. HERO & DISPLAY — Referencia FingHome
+           1. HERO & DISPLAY — Referencia QuafiHome
            ═══════════════════════════════════════════════════════════════════ */}
       <ShowcaseSection
         title="Hero & Display"
-        description="Texto hero y display. Referencia: FingHome hero section"
+        description="Texto hero y display. Referencia: QuafiHome hero section"
       >
         <ComponentPreview>
           <div style={{ width: '100%' }}>
@@ -70,11 +70,11 @@ export function TypographyCatalogShowcase() {
               </Label>
               <div style={{ marginTop: '12px' }}>
                 <span style={{
-                  fontSize: '72px', fontWeight: 300, color: 'var(--fing-accent)',
-                  fontFamily: 'var(--fing-wordmark-font, "Cormorant Garamond", serif)',
+                  fontSize: '72px', fontWeight: 300, color: 'var(--quafi-accent)',
+                  fontFamily: 'var(--quafi-wordmark-font, "Cormorant Garamond", serif)',
                   letterSpacing: '0.06em', textShadow: 'var(--lp-petrol-whisper)',
                 }}>
-                  FING
+                  QUAFI
                 </span>
               </div>
 
@@ -88,14 +88,14 @@ export function TypographyCatalogShowcase() {
               <Label effect="carved-muted" style={{ color: semanticColors.muted.color, marginTop: '24px' }}>
                 voiceHeadline — 20px Regular, Petrol, --lp-petrol-whisper
               </Label>
-              <Heading1 effect="carved-petrol" style={{ color: 'var(--fing-accent)', fontSize: '20px', fontWeight: 400, marginTop: '4px' }}>
+              <Heading1 effect="carved-petrol" style={{ color: 'var(--quafi-accent)', fontSize: '20px', fontWeight: 400, marginTop: '4px' }}>
                 The market shows signs of consolidation
               </Heading1>
 
               <Label effect="carved-muted" style={{ color: semanticColors.muted.color, marginTop: '24px' }}>
                 accessTitle — 26px Regular, Petrol, --lp-petrol-whisper
               </Label>
-              <Heading1 effect="carved-petrol" style={{ color: 'var(--fing-accent)', fontSize: '26px', fontWeight: 400, marginTop: '4px' }}>
+              <Heading1 effect="carved-petrol" style={{ color: 'var(--quafi-accent)', fontSize: '26px', fontWeight: 400, marginTop: '4px' }}>
                 The Engine of Conclusions
               </Heading1>
             </div>
@@ -104,11 +104,11 @@ export function TypographyCatalogShowcase() {
       </ShowcaseSection>
 
       {/* ═══════════════════════════════════════════════════════════════════
-           2. SECTION LABELS & NAVIGATION — Referencia FingHome
+           2. SECTION LABELS & NAVIGATION — Referencia QuafiHome
            ═══════════════════════════════════════════════════════════════════ */}
       <ShowcaseSection
         title="Section Labels & Navigation"
-        description="Etiquetas de seccion, nav items, footer. Referencia: FingHome"
+        description="Etiquetas de seccion, nav items, footer. Referencia: QuafiHome"
       >
         <ComponentPreview>
           <div style={{ width: '100%' }}>
@@ -116,7 +116,7 @@ export function TypographyCatalogShowcase() {
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '24px' }}>
                 <div>
                   <Label effect="carved-muted" style={{ color: semanticColors.muted.color }}>sectionLabel</Label>
-                  <Label effect="carved-steel" style={{ color: 'var(--fing-text-accent)', marginTop: '8px', display: 'block', fontSize: '10px' }}>
+                  <Label effect="carved-steel" style={{ color: 'var(--quafi-text-accent)', marginTop: '8px', display: 'block', fontSize: '10px' }}>
                     ETYMOLOGY
                   </Label>
                   <Paragraph effect="carved-muted" style={{ color: semanticColors.muted.color, fontSize: '12px', marginTop: '2px' }}>
@@ -126,7 +126,7 @@ export function TypographyCatalogShowcase() {
 
                 <div>
                   <Label effect="carved-muted" style={{ color: semanticColors.muted.color }}>scrollIndicator</Label>
-                  <Label effect="carved-steel" style={{ color: 'var(--fing-text-accent)', marginTop: '8px', display: 'block', fontSize: '10px' }}>
+                  <Label effect="carved-steel" style={{ color: 'var(--quafi-text-accent)', marginTop: '8px', display: 'block', fontSize: '10px' }}>
                     SCROLL DOWN
                   </Label>
                   <Paragraph effect="carved-muted" style={{ color: semanticColors.muted.color, fontSize: '12px', marginTop: '2px' }}>
@@ -147,7 +147,7 @@ export function TypographyCatalogShowcase() {
                 <div>
                   <Label effect="carved-muted" style={{ color: semanticColors.muted.color }}>btnPrimary</Label>
                   <div style={{ ...raised(1), padding: '8px 16px', display: 'inline-block', marginTop: '8px', borderRadius: '8px' }}>
-                    <Paragraph effect="carved-petrol" style={{ color: 'var(--fing-accent)' }}>Explore</Paragraph>
+                    <Paragraph effect="carved-petrol" style={{ color: 'var(--quafi-accent)' }}>Explore</Paragraph>
                   </div>
                   <Paragraph effect="carved-muted" style={{ color: semanticColors.muted.color, fontSize: '12px', marginTop: '4px' }}>
                     13px, 500, Petrol, --lp-petrol
@@ -166,8 +166,8 @@ export function TypographyCatalogShowcase() {
 
                 <div>
                   <Label effect="carved-muted" style={{ color: semanticColors.muted.color }}>footerText</Label>
-                  <Label effect="carved-steel" style={{ color: 'var(--fing-text-accent)', marginTop: '8px', display: 'block' }}>
-                    FING 2026
+                  <Label effect="carved-steel" style={{ color: 'var(--quafi-text-accent)', marginTop: '8px', display: 'block' }}>
+                    QUAFI 2026
                   </Label>
                   <Paragraph effect="carved-muted" style={{ color: semanticColors.muted.color, fontSize: '12px', marginTop: '2px' }}>
                     12px, 400, Steel, --lp-steel
@@ -180,28 +180,28 @@ export function TypographyCatalogShowcase() {
       </ShowcaseSection>
 
       {/* ═══════════════════════════════════════════════════════════════════
-           3. ETYMOLOGY & SYNTHESIS — Referencia FingHome
+           3. ETYMOLOGY & SYNTHESIS — Referencia QuafiHome
            ═══════════════════════════════════════════════════════════════════ */}
       <ShowcaseSection
         title="Etymology & Synthesis"
-        description="Contenido editorial con carved en RAISED y embossed en INSET. Referencia: FingHome"
+        description="Contenido editorial con carved en RAISED y embossed en INSET. Referencia: QuafiHome"
       >
         <ComponentPreview>
           <div style={{ width: '100%', display: 'flex', gap: '16px' }}>
             {/* Etymology - RAISED */}
             <div style={{ flex: 1, ...raised(2) }}>
-              <Label effect="carved-steel" style={{ color: 'var(--fing-text-accent)' }}>
+              <Label effect="carved-steel" style={{ color: 'var(--quafi-text-accent)' }}>
                 RAISED Container
               </Label>
               <div style={{ marginTop: '16px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
                 <div>
-                  <Label effect="carved-steel" style={{ color: 'var(--fing-text-accent)', fontSize: '12px' }}>etymologyRoot</Label>
+                  <Label effect="carved-steel" style={{ color: 'var(--quafi-text-accent)', fontSize: '12px' }}>etymologyRoot</Label>
                   <Paragraph effect="carved-muted" style={{ color: semanticColors.muted.color, fontSize: '11px' }}>12px, 600, Steel, --lp-steel</Paragraph>
                 </div>
                 <div>
                   <span style={{
-                    fontSize: '24px', fontStyle: 'italic', color: 'var(--fing-accent)',
-                    fontFamily: 'var(--fing-font-mono)', textShadow: 'var(--lp-petrol-whisper)',
+                    fontSize: '24px', fontStyle: 'italic', color: 'var(--quafi-accent)',
+                    fontFamily: 'var(--quafi-font-mono)', textShadow: 'var(--lp-petrol-whisper)',
                   }}>
                     finis
                   </span>
@@ -228,14 +228,14 @@ export function TypographyCatalogShowcase() {
               <div style={{ marginTop: '16px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
                 <div>
                   <Heading3 effect="embossed-subtle" style={{ fontSize: '16px' }}>
-                    FIN + ING = <span style={{ color: 'var(--fing-accent)', textShadow: 'var(--lp-embossed-petrol)' }}>FING</span>
+                    FIN + ING = <span style={{ color: 'var(--quafi-accent)', textShadow: 'var(--lp-embossed-petrol)' }}>QUAFI</span>
                   </Heading3>
                   <Paragraph effect="carved-muted" style={{ color: semanticColors.muted.color, fontSize: '11px' }}>
                     synthesisFormula: 16px, 500, --lp-embossed-subtle + --lp-embossed-petrol
                   </Paragraph>
                 </div>
                 <div>
-                  <Paragraph effect="embossed-petrol-sm" style={{ color: 'var(--fing-accent)', fontStyle: 'italic' }}>
+                  <Paragraph effect="embossed-petrol-sm" style={{ color: 'var(--quafi-accent)', fontStyle: 'italic' }}>
                     "The market shows signs of consolidation"
                   </Paragraph>
                   <Paragraph effect="carved-muted" style={{ color: semanticColors.muted.color, fontSize: '11px' }}>
@@ -244,8 +244,8 @@ export function TypographyCatalogShowcase() {
                 </div>
                 <div>
                   <span style={{
-                    fontSize: '11px', color: 'var(--fing-text-accent)', textShadow: 'var(--lp-embossed-sm)',
-                    fontFamily: 'var(--fing-font-mono)', textTransform: 'uppercase', letterSpacing: '0.05em',
+                    fontSize: '11px', color: 'var(--quafi-text-accent)', textShadow: 'var(--lp-embossed-sm)',
+                    fontFamily: 'var(--quafi-font-mono)', textTransform: 'uppercase', letterSpacing: '0.05em',
                   }}>
                     NOT: "BUY NOW!"
                   </span>
@@ -277,15 +277,15 @@ export function TypographyCatalogShowcase() {
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                 }}>
                   <span style={{
-                    fontSize: '20px', fontWeight: 600, color: 'var(--fing-accent)',
+                    fontSize: '20px', fontWeight: 600, color: 'var(--quafi-accent)',
                     textShadow: 'var(--lp-petrol-strong)',
-                    fontFamily: 'var(--fing-font-mono)',
+                    fontFamily: 'var(--quafi-font-mono)',
                   }}>
                     JD
                   </span>
                 </div>
                 <div>
-                  <Heading1 effect="carved-accent-strong" style={{ color: 'var(--fing-accent)', fontSize: '24px' }}>
+                  <Heading1 effect="carved-accent-strong" style={{ color: 'var(--quafi-accent)', fontSize: '24px' }}>
                     Welcome, John
                   </Heading1>
                   <Paragraph effect="carved-muted" style={{ color: semanticColors.muted.color, fontSize: '11px' }}>
@@ -299,7 +299,7 @@ export function TypographyCatalogShowcase() {
                 <div>
                   <span style={{
                     fontSize: '32px', fontWeight: 700, color: 'var(--text-primary, var(--foreground))',
-                    textShadow: 'var(--lp-carved-lg)', fontFamily: 'var(--fing-font-mono)',
+                    textShadow: 'var(--lp-carved-lg)', fontFamily: 'var(--quafi-font-mono)',
                   }}>
                     $124,500.00
                   </span>
@@ -308,7 +308,7 @@ export function TypographyCatalogShowcase() {
                   </Paragraph>
                 </div>
                 <div>
-                  <Label effect="carved-petrol" style={{ color: 'var(--fing-accent)', fontSize: '10px' }}>
+                  <Label effect="carved-petrol" style={{ color: 'var(--quafi-accent)', fontSize: '10px' }}>
                     PORTFOLIO VALUE
                   </Label>
                   <Paragraph effect="carved-muted" style={{ color: semanticColors.muted.color, fontSize: '11px' }}>
@@ -331,10 +331,10 @@ export function TypographyCatalogShowcase() {
         <ComponentPreview>
           <div style={{ width: '100%', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px' }}>
             {([
-              { value: '$124,500', label: 'PORTFOLIO VALUE', effect: 'carved-accent-strong' as TextEffect, labelEffect: 'embossed-petrol-sm' as TextEffect, valueColor: 'var(--fing-accent)', labelColor: 'var(--fing-accent)', desc: 'Petrol' },
-              { value: '+12.4%', label: 'RETURN YTD', effect: 'carved-positive-strong' as TextEffect, labelEffect: 'embossed-positive-sm' as TextEffect, valueColor: 'var(--fing-positive)', labelColor: 'var(--fing-positive)', desc: 'Jade' },
-              { value: '0.78', label: 'SHARPE RATIO', effect: 'carved-warning-strong' as TextEffect, labelEffect: 'embossed-warning-sm' as TextEffect, valueColor: 'var(--fing-warning)', labelColor: 'var(--fing-warning)', desc: 'Gold' },
-              { value: '-3.2%', label: 'MAX DRAWDOWN', effect: 'carved-negative-strong' as TextEffect, labelEffect: 'embossed-negative-sm' as TextEffect, valueColor: 'var(--fing-negative)', labelColor: 'var(--fing-negative)', desc: 'Rust' },
+              { value: '$124,500', label: 'PORTFOLIO VALUE', effect: 'carved-accent-strong' as TextEffect, labelEffect: 'embossed-petrol-sm' as TextEffect, valueColor: 'var(--quafi-accent)', labelColor: 'var(--quafi-accent)', desc: 'Petrol' },
+              { value: '+12.4%', label: 'RETURN YTD', effect: 'carved-positive-strong' as TextEffect, labelEffect: 'embossed-positive-sm' as TextEffect, valueColor: 'var(--quafi-positive)', labelColor: 'var(--quafi-positive)', desc: 'Jade' },
+              { value: '0.78', label: 'SHARPE RATIO', effect: 'carved-warning-strong' as TextEffect, labelEffect: 'embossed-warning-sm' as TextEffect, valueColor: 'var(--quafi-warning)', labelColor: 'var(--quafi-warning)', desc: 'Gold' },
+              { value: '-3.2%', label: 'MAX DRAWDOWN', effect: 'carved-negative-strong' as TextEffect, labelEffect: 'embossed-negative-sm' as TextEffect, valueColor: 'var(--quafi-negative)', labelColor: 'var(--quafi-negative)', desc: 'Rust' },
             ]).map((kpi) => (
               <div key={kpi.label}>
                 <div style={{ ...raised(2), textAlign: 'center' }}>
@@ -372,13 +372,13 @@ export function TypographyCatalogShowcase() {
               {/* Buy section title */}
               <div style={{ display: 'flex', gap: '24px', marginBottom: '16px' }}>
                 <div>
-                  <Heading3 effect="carved-petrol-md" style={{ color: 'var(--fing-accent)' }}>
+                  <Heading3 effect="carved-petrol-md" style={{ color: 'var(--quafi-accent)' }}>
                     Top Picks
                   </Heading3>
                   <Label effect="carved-muted" style={{ fontSize: '10px' }}>cardTitle: 14px, 600, Petrol, carved-petrol-md</Label>
                 </div>
                 <div>
-                  <Heading3 effect="carved-negative-md" style={{ color: 'var(--fing-negative)' }}>
+                  <Heading3 effect="carved-negative-md" style={{ color: 'var(--quafi-negative)' }}>
                     Top Sells
                   </Heading3>
                   <Label effect="carved-muted" style={{ fontSize: '10px' }}>dataTableTitleSell: 12px, 600, Rust, carved-negative-md</Label>
@@ -399,39 +399,39 @@ export function TypographyCatalogShowcase() {
                 {/* Row 1 */}
                 <div style={{ display: 'grid', gridTemplateColumns: '50px 90px 1fr 100px 90px', gap: '12px', alignItems: 'center', padding: '12px 0', borderBottom: '1px solid var(--border)' }}>
                   <div style={{ ...inset(1), width: '32px', height: '32px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 0 }}>
-                    <Heading4 effect="embossed-petrol-sm" style={{ color: 'var(--fing-accent)', fontSize: '12px' }}>01</Heading4>
+                    <Heading4 effect="embossed-petrol-sm" style={{ color: 'var(--quafi-accent)', fontSize: '12px' }}>01</Heading4>
                   </div>
                   <Heading4 effect="carved-strong" style={{ fontSize: '13px' }}>AAPL</Heading4>
                   <Paragraph effect="carved" style={{ fontSize: '12px' }}>Apple Inc.</Paragraph>
                   <Paragraph effect="carved" style={{ fontSize: '12px', textAlign: 'right', color: 'var(--text-secondary, var(--foreground-muted))' }}>$189.84</Paragraph>
-                  <Paragraph effect="carved-positive-md" style={{ color: 'var(--fing-positive)', fontSize: '12px', textAlign: 'right' }}>+2.34%</Paragraph>
+                  <Paragraph effect="carved-positive-md" style={{ color: 'var(--quafi-positive)', fontSize: '12px', textAlign: 'right' }}>+2.34%</Paragraph>
                 </div>
 
                 {/* Row 2 */}
                 <div style={{ display: 'grid', gridTemplateColumns: '50px 90px 1fr 100px 90px', gap: '12px', alignItems: 'center', padding: '12px 0', borderBottom: '1px solid var(--border)' }}>
                   <div style={{ ...inset(1), width: '32px', height: '32px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 0 }}>
-                    <Heading4 effect="embossed-petrol-sm" style={{ color: 'var(--fing-accent)', fontSize: '12px' }}>02</Heading4>
+                    <Heading4 effect="embossed-petrol-sm" style={{ color: 'var(--quafi-accent)', fontSize: '12px' }}>02</Heading4>
                   </div>
                   <Heading4 effect="carved-strong" style={{ fontSize: '13px' }}>NVDA</Heading4>
                   <Paragraph effect="carved" style={{ fontSize: '12px' }}>NVIDIA Corp.</Paragraph>
                   <Paragraph effect="carved" style={{ fontSize: '12px', textAlign: 'right', color: 'var(--text-secondary, var(--foreground-muted))' }}>$878.36</Paragraph>
-                  <Paragraph effect="carved-negative-md" style={{ color: 'var(--fing-negative)', fontSize: '12px', textAlign: 'right' }}>-1.82%</Paragraph>
+                  <Paragraph effect="carved-negative-md" style={{ color: 'var(--quafi-negative)', fontSize: '12px', textAlign: 'right' }}>-1.82%</Paragraph>
                 </div>
 
                 {/* Row 3 - Sell rank */}
                 <div style={{ display: 'grid', gridTemplateColumns: '50px 90px 1fr 100px 90px', gap: '12px', alignItems: 'center', padding: '12px 0' }}>
                   <div style={{ ...inset(1), width: '32px', height: '32px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 0 }}>
-                    <Heading4 effect="embossed-negative-sm" style={{ color: 'var(--fing-negative)', fontSize: '12px' }}>03</Heading4>
+                    <Heading4 effect="embossed-negative-sm" style={{ color: 'var(--quafi-negative)', fontSize: '12px' }}>03</Heading4>
                   </div>
                   <Heading4 effect="carved-strong" style={{ fontSize: '13px' }}>TSLA</Heading4>
                   <Paragraph effect="carved" style={{ fontSize: '12px' }}>Tesla Inc.</Paragraph>
                   <Paragraph effect="carved" style={{ fontSize: '12px', textAlign: 'right', color: 'var(--text-secondary, var(--foreground-muted))' }}>$245.12</Paragraph>
-                  <Paragraph effect="carved-warning-md" style={{ color: 'var(--fing-warning)', fontSize: '12px', textAlign: 'right' }}>+0.12%</Paragraph>
+                  <Paragraph effect="carved-warning-md" style={{ color: 'var(--quafi-warning)', fontSize: '12px', textAlign: 'right' }}>+0.12%</Paragraph>
                 </div>
               </div>
 
               {/* Legend */}
-              <div style={{ marginTop: '12px', display: 'flex', gap: '16px', fontSize: '10px', fontFamily: 'var(--fing-font-mono)' }}>
+              <div style={{ marginTop: '12px', display: 'flex', gap: '16px', fontSize: '10px', fontFamily: 'var(--quafi-font-mono)' }}>
                 <Label effect="carved-muted" style={{ fontSize: '10px' }}>Rank: embossed-petrol-sm / embossed-negative-sm</Label>
                 <Label effect="carved-muted" style={{ fontSize: '10px' }}>Ticker: carved-strong 13px</Label>
                 <Label effect="carved-muted" style={{ fontSize: '10px' }}>Price: carved 12px</Label>
@@ -447,7 +447,7 @@ export function TypographyCatalogShowcase() {
            ═══════════════════════════════════════════════════════════════════ */}
       <ShowcaseSection
         title="Buttons"
-        description="Texto en botones RAISED. Referencia: DashboardPage + FingHome"
+        description="Texto en botones RAISED. Referencia: DashboardPage + QuafiHome"
       >
         <ComponentPreview>
           <div style={{ width: '100%' }}>
@@ -457,7 +457,7 @@ export function TypographyCatalogShowcase() {
                 {/* raisedButton */}
                 <div>
                   <div style={{ ...raised(2), padding: '12px 24px', borderRadius: '12px', cursor: 'pointer' }}>
-                    <Heading4 effect="carved-accent-strong" style={{ color: 'var(--fing-accent)', fontSize: '13px' }}>
+                    <Heading4 effect="carved-accent-strong" style={{ color: 'var(--quafi-accent)', fontSize: '13px' }}>
                       View Portfolio
                     </Heading4>
                   </div>
@@ -469,7 +469,7 @@ export function TypographyCatalogShowcase() {
                 {/* pillFrameButton */}
                 <div>
                   <div style={{ ...raised(2), padding: '10px 20px', borderRadius: '20px', cursor: 'pointer' }}>
-                    <Paragraph effect="carved-accent-strong" style={{ color: 'var(--fing-accent)', fontSize: '13px', fontWeight: 600 }}>
+                    <Paragraph effect="carved-accent-strong" style={{ color: 'var(--quafi-accent)', fontSize: '13px', fontWeight: 600 }}>
                       Simulate
                     </Paragraph>
                   </div>
@@ -481,7 +481,7 @@ export function TypographyCatalogShowcase() {
                 {/* pillFrameButtonSm */}
                 <div>
                   <div style={{ ...raised(1), padding: '8px 16px', borderRadius: '20px', cursor: 'pointer' }}>
-                    <Paragraph effect="carved-petrol-md" style={{ color: 'var(--fing-accent)', fontSize: '12px', fontWeight: 600 }}>
+                    <Paragraph effect="carved-petrol-md" style={{ color: 'var(--quafi-accent)', fontSize: '12px', fontWeight: 600 }}>
                       Details
                     </Paragraph>
                   </div>
@@ -490,10 +490,10 @@ export function TypographyCatalogShowcase() {
                   </Label>
                 </div>
 
-                {/* FingHome btnPrimary */}
+                {/* QuafiHome btnPrimary */}
                 <div>
                   <div style={{ ...raised(1), padding: '8px 16px', borderRadius: '8px', cursor: 'pointer' }}>
-                    <Paragraph effect="carved-petrol" style={{ color: 'var(--fing-accent)', fontSize: '13px', fontWeight: 500 }}>
+                    <Paragraph effect="carved-petrol" style={{ color: 'var(--quafi-accent)', fontSize: '13px', fontWeight: 500 }}>
                       Explore
                     </Paragraph>
                   </div>
@@ -502,7 +502,7 @@ export function TypographyCatalogShowcase() {
                   </Label>
                 </div>
 
-                {/* FingHome btnSecondary */}
+                {/* QuafiHome btnSecondary */}
                 <div>
                   <div style={{ ...raised(1), padding: '8px 16px', borderRadius: '8px', cursor: 'pointer' }}>
                     <Paragraph effect="carved-muted" style={{ color: semanticColors.muted.color, fontSize: '13px', fontWeight: 500 }}>
@@ -535,12 +535,12 @@ export function TypographyCatalogShowcase() {
                 <div style={{ marginTop: '4px' }}>
                   <span style={{
                     fontSize: '34px', fontWeight: 700, color: 'var(--foreground)',
-                    textShadow: 'var(--lp-carved-lg)', fontFamily: 'var(--fing-font-mono)',
+                    textShadow: 'var(--lp-carved-lg)', fontFamily: 'var(--quafi-font-mono)',
                   }}>
                     $124,500
                   </span>
                 </div>
-                <Paragraph effect="carved-positive-md" style={{ color: 'var(--fing-positive)', marginTop: '4px', fontSize: '16px', fontWeight: 600 }}>
+                <Paragraph effect="carved-positive-md" style={{ color: 'var(--quafi-positive)', marginTop: '4px', fontSize: '16px', fontWeight: 600 }}>
                   +2.34% today
                 </Paragraph>
                 <Label effect="carved-muted" style={{ fontSize: '10px', marginTop: '4px' }}>
@@ -568,7 +568,7 @@ export function TypographyCatalogShowcase() {
                   <div key={item.ticker} style={glass}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
-                        <Heading4 effect="glow-petrol" style={{ color: 'var(--fing-accent)', fontSize: '11px' }}>
+                        <Heading4 effect="glow-petrol" style={{ color: 'var(--quafi-accent)', fontSize: '11px' }}>
                           {item.rank}
                         </Heading4>
                         <Paragraph effect="carved-whisper" style={{ fontSize: '13px', fontWeight: 600 }}>
@@ -577,7 +577,7 @@ export function TypographyCatalogShowcase() {
                       </div>
                       <Paragraph
                         effect={item.positive ? 'carved-positive' : 'carved-negative'}
-                        style={{ color: item.positive ? 'var(--fing-positive)' : 'var(--fing-negative)', fontSize: '12px', fontWeight: 600 }}
+                        style={{ color: item.positive ? 'var(--quafi-positive)' : 'var(--quafi-negative)', fontSize: '12px', fontWeight: 600 }}
                       >
                         {item.change}
                       </Paragraph>
@@ -619,20 +619,20 @@ export function TypographyCatalogShowcase() {
               {/* Floating legend - embossed text over inset */}
               <div style={{ marginTop: '12px', display: 'flex', gap: '20px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--fing-accent)' }} />
+                  <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--quafi-accent)' }} />
                   <span style={{
                     fontSize: '11px', fontWeight: 600, color: 'var(--marble-base, var(--foreground-muted))',
-                    textShadow: 'var(--lp-embossed)', fontFamily: 'var(--fing-font-mono)',
+                    textShadow: 'var(--lp-embossed)', fontFamily: 'var(--quafi-font-mono)',
                     textTransform: 'uppercase', letterSpacing: '0.05em',
                   }}>
                     Portfolio
                   </span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--fing-positive)' }} />
+                  <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--quafi-positive)' }} />
                   <span style={{
                     fontSize: '11px', fontWeight: 600, color: 'var(--marble-base, var(--foreground-muted))',
-                    textShadow: 'var(--lp-embossed)', fontFamily: 'var(--fing-font-mono)',
+                    textShadow: 'var(--lp-embossed)', fontFamily: 'var(--quafi-font-mono)',
                     textTransform: 'uppercase', letterSpacing: '0.05em',
                   }}>
                     S&P 500
@@ -656,7 +656,7 @@ export function TypographyCatalogShowcase() {
           <div style={{ width: '100%' }}>
             <div style={raised(2)}>
               <Label effect="carved-muted">RAISED — Carved Text Matrix</Label>
-              <table style={{ width: '100%', marginTop: '16px', borderCollapse: 'collapse', fontFamily: 'var(--fing-font-mono)' }}>
+              <table style={{ width: '100%', marginTop: '16px', borderCollapse: 'collapse', fontFamily: 'var(--quafi-font-mono)' }}>
                 <thead>
                   <tr>
                     <th style={{ textAlign: 'left', padding: '8px', borderBottom: '1px solid var(--border)', fontSize: '10px', color: 'var(--foreground-muted)' }}>COLOR</th>
@@ -674,39 +674,39 @@ export function TypographyCatalogShowcase() {
                   </tr>
                   <tr>
                     <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Label effect="carved-muted">Petrol</Label></td>
-                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="carved-petrol" style={{ color: 'var(--fing-accent)' }}>The quick brown fox</Heading4></td>
-                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="carved-petrol-md" style={{ color: 'var(--fing-accent)' }}>The quick brown fox</Heading4></td>
-                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="carved-accent-strong" style={{ color: 'var(--fing-accent)' }}>The quick brown fox</Heading4></td>
+                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="carved-petrol" style={{ color: 'var(--quafi-accent)' }}>The quick brown fox</Heading4></td>
+                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="carved-petrol-md" style={{ color: 'var(--quafi-accent)' }}>The quick brown fox</Heading4></td>
+                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="carved-accent-strong" style={{ color: 'var(--quafi-accent)' }}>The quick brown fox</Heading4></td>
                   </tr>
                   <tr>
                     <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Label effect="carved-muted">Positive</Label></td>
-                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="carved-positive" style={{ color: 'var(--fing-positive)' }}>+12.4% gain</Heading4></td>
-                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="carved-positive-md" style={{ color: 'var(--fing-positive)' }}>+12.4% gain</Heading4></td>
-                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="carved-positive-strong" style={{ color: 'var(--fing-positive)' }}>+12.4% gain</Heading4></td>
+                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="carved-positive" style={{ color: 'var(--quafi-positive)' }}>+12.4% gain</Heading4></td>
+                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="carved-positive-md" style={{ color: 'var(--quafi-positive)' }}>+12.4% gain</Heading4></td>
+                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="carved-positive-strong" style={{ color: 'var(--quafi-positive)' }}>+12.4% gain</Heading4></td>
                   </tr>
                   <tr>
                     <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Label effect="carved-muted">Warning</Label></td>
-                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="carved-warning" style={{ color: 'var(--fing-warning)' }}>0.78 ratio</Heading4></td>
-                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="carved-warning-md" style={{ color: 'var(--fing-warning)' }}>0.78 ratio</Heading4></td>
-                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="carved-warning-strong" style={{ color: 'var(--fing-warning)' }}>0.78 ratio</Heading4></td>
+                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="carved-warning" style={{ color: 'var(--quafi-warning)' }}>0.78 ratio</Heading4></td>
+                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="carved-warning-md" style={{ color: 'var(--quafi-warning)' }}>0.78 ratio</Heading4></td>
+                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="carved-warning-strong" style={{ color: 'var(--quafi-warning)' }}>0.78 ratio</Heading4></td>
                   </tr>
                   <tr>
                     <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Label effect="carved-muted">Negative</Label></td>
-                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="carved-negative" style={{ color: 'var(--fing-negative)' }}>-3.2% loss</Heading4></td>
-                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="carved-negative-md" style={{ color: 'var(--fing-negative)' }}>-3.2% loss</Heading4></td>
-                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="carved-negative-strong" style={{ color: 'var(--fing-negative)' }}>-3.2% loss</Heading4></td>
+                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="carved-negative" style={{ color: 'var(--quafi-negative)' }}>-3.2% loss</Heading4></td>
+                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="carved-negative-md" style={{ color: 'var(--quafi-negative)' }}>-3.2% loss</Heading4></td>
+                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="carved-negative-strong" style={{ color: 'var(--quafi-negative)' }}>-3.2% loss</Heading4></td>
                   </tr>
                   <tr>
                     <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Label effect="carved-muted">Info</Label></td>
-                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="carved-info" style={{ color: 'var(--fing-info)' }}>Risk level: low</Heading4></td>
-                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="carved-info" style={{ color: 'var(--fing-info)' }}>—</Heading4></td>
-                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="carved-info-strong" style={{ color: 'var(--fing-info)' }}>Risk level: low</Heading4></td>
+                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="carved-info" style={{ color: 'var(--quafi-info)' }}>Risk level: low</Heading4></td>
+                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="carved-info" style={{ color: 'var(--quafi-info)' }}>—</Heading4></td>
+                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="carved-info-strong" style={{ color: 'var(--quafi-info)' }}>Risk level: low</Heading4></td>
                   </tr>
                   <tr>
                     <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Label effect="carved-muted">Steel</Label></td>
-                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="carved-steel" style={{ color: 'var(--fing-text-accent)' }}>Section label</Heading4></td>
-                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="carved-steel" style={{ color: 'var(--fing-text-accent)' }}>—</Heading4></td>
-                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="carved-strong" style={{ color: 'var(--fing-text-accent)', textShadow: 'var(--lp-steel-strong)' }}>Section label</Heading4></td>
+                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="carved-steel" style={{ color: 'var(--quafi-text-accent)' }}>Section label</Heading4></td>
+                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="carved-steel" style={{ color: 'var(--quafi-text-accent)' }}>—</Heading4></td>
+                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="carved-strong" style={{ color: 'var(--quafi-text-accent)', textShadow: 'var(--lp-steel-strong)' }}>Section label</Heading4></td>
                   </tr>
                   <tr>
                     <td style={{ padding: '8px' }}><Label effect="carved-muted">Muted</Label></td>
@@ -732,7 +732,7 @@ export function TypographyCatalogShowcase() {
           <div style={{ width: '100%' }}>
             <div style={inset(2)}>
               <Label effect="embossed">INSET — Embossed Text Matrix</Label>
-              <table style={{ width: '100%', marginTop: '16px', borderCollapse: 'collapse', fontFamily: 'var(--fing-font-mono)' }}>
+              <table style={{ width: '100%', marginTop: '16px', borderCollapse: 'collapse', fontFamily: 'var(--quafi-font-mono)' }}>
                 <thead>
                   <tr>
                     <th style={{ textAlign: 'left', padding: '8px', borderBottom: '1px solid var(--border)', fontSize: '10px' }}>COLOR</th>
@@ -752,38 +752,38 @@ export function TypographyCatalogShowcase() {
                   </tr>
                   <tr>
                     <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Label effect="embossed">Petrol</Label></td>
-                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="embossed-petrol-sm" style={{ color: 'var(--fing-accent)' }}>Petrol sm</Heading4></td>
-                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="embossed-petrol" style={{ color: 'var(--fing-accent)', opacity: 0.8 }}>—</Heading4></td>
-                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="embossed-petrol" style={{ color: 'var(--fing-accent)' }}>Petrol</Heading4></td>
-                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="embossed-petrol" style={{ color: 'var(--fing-accent)' }}>—</Heading4></td>
+                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="embossed-petrol-sm" style={{ color: 'var(--quafi-accent)' }}>Petrol sm</Heading4></td>
+                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="embossed-petrol" style={{ color: 'var(--quafi-accent)', opacity: 0.8 }}>—</Heading4></td>
+                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="embossed-petrol" style={{ color: 'var(--quafi-accent)' }}>Petrol</Heading4></td>
+                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="embossed-petrol" style={{ color: 'var(--quafi-accent)' }}>—</Heading4></td>
                   </tr>
                   <tr>
                     <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Label effect="embossed">Positive</Label></td>
-                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="embossed-positive-sm" style={{ color: 'var(--fing-positive)' }}>+12.4%</Heading4></td>
-                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="embossed-positive" style={{ color: 'var(--fing-positive)', opacity: 0.8 }}>—</Heading4></td>
-                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="embossed-positive" style={{ color: 'var(--fing-positive)' }}>+12.4%</Heading4></td>
-                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="embossed-positive" style={{ color: 'var(--fing-positive)' }}>—</Heading4></td>
+                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="embossed-positive-sm" style={{ color: 'var(--quafi-positive)' }}>+12.4%</Heading4></td>
+                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="embossed-positive" style={{ color: 'var(--quafi-positive)', opacity: 0.8 }}>—</Heading4></td>
+                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="embossed-positive" style={{ color: 'var(--quafi-positive)' }}>+12.4%</Heading4></td>
+                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="embossed-positive" style={{ color: 'var(--quafi-positive)' }}>—</Heading4></td>
                   </tr>
                   <tr>
                     <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Label effect="embossed">Warning</Label></td>
-                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="embossed-warning-sm" style={{ color: 'var(--fing-warning)' }}>0.78</Heading4></td>
-                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="embossed-warning" style={{ color: 'var(--fing-warning)', opacity: 0.8 }}>—</Heading4></td>
-                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="embossed-warning" style={{ color: 'var(--fing-warning)' }}>0.78</Heading4></td>
-                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="embossed-warning" style={{ color: 'var(--fing-warning)' }}>—</Heading4></td>
+                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="embossed-warning-sm" style={{ color: 'var(--quafi-warning)' }}>0.78</Heading4></td>
+                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="embossed-warning" style={{ color: 'var(--quafi-warning)', opacity: 0.8 }}>—</Heading4></td>
+                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="embossed-warning" style={{ color: 'var(--quafi-warning)' }}>0.78</Heading4></td>
+                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="embossed-warning" style={{ color: 'var(--quafi-warning)' }}>—</Heading4></td>
                   </tr>
                   <tr>
                     <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Label effect="embossed">Negative</Label></td>
-                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="embossed-negative-sm" style={{ color: 'var(--fing-negative)' }}>-3.2%</Heading4></td>
-                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="embossed-negative" style={{ color: 'var(--fing-negative)', opacity: 0.8 }}>—</Heading4></td>
-                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="embossed-negative" style={{ color: 'var(--fing-negative)' }}>-3.2%</Heading4></td>
-                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="embossed-negative" style={{ color: 'var(--fing-negative)' }}>—</Heading4></td>
+                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="embossed-negative-sm" style={{ color: 'var(--quafi-negative)' }}>-3.2%</Heading4></td>
+                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="embossed-negative" style={{ color: 'var(--quafi-negative)', opacity: 0.8 }}>—</Heading4></td>
+                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="embossed-negative" style={{ color: 'var(--quafi-negative)' }}>-3.2%</Heading4></td>
+                    <td style={{ padding: '8px', borderBottom: '1px solid var(--border)' }}><Heading4 effect="embossed-negative" style={{ color: 'var(--quafi-negative)' }}>—</Heading4></td>
                   </tr>
                   <tr>
                     <td style={{ padding: '8px' }}><Label effect="embossed">Info</Label></td>
-                    <td style={{ padding: '8px' }}><Heading4 effect="embossed-info-sm" style={{ color: 'var(--fing-info)' }}>Steel sm</Heading4></td>
-                    <td style={{ padding: '8px' }}><Heading4 effect="embossed-info" style={{ color: 'var(--fing-info)', opacity: 0.8 }}>—</Heading4></td>
-                    <td style={{ padding: '8px' }}><Heading4 effect="embossed-info" style={{ color: 'var(--fing-info)' }}>Steel</Heading4></td>
-                    <td style={{ padding: '8px' }}><Heading4 effect="embossed-info" style={{ color: 'var(--fing-info)' }}>—</Heading4></td>
+                    <td style={{ padding: '8px' }}><Heading4 effect="embossed-info-sm" style={{ color: 'var(--quafi-info)' }}>Steel sm</Heading4></td>
+                    <td style={{ padding: '8px' }}><Heading4 effect="embossed-info" style={{ color: 'var(--quafi-info)', opacity: 0.8 }}>—</Heading4></td>
+                    <td style={{ padding: '8px' }}><Heading4 effect="embossed-info" style={{ color: 'var(--quafi-info)' }}>Steel</Heading4></td>
+                    <td style={{ padding: '8px' }}><Heading4 effect="embossed-info" style={{ color: 'var(--quafi-info)' }}>—</Heading4></td>
                   </tr>
                 </tbody>
               </table>
@@ -806,19 +806,19 @@ export function TypographyCatalogShowcase() {
               <div style={{ marginTop: '16px', display: 'flex', gap: '24px', alignItems: 'center' }}>
                 <div style={{ textAlign: 'center' }}>
                   <div style={{ ...glass, width: '48px', height: '48px', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '50%' }}>
-                    <Heading3 effect="glow-petrol" style={{ color: 'var(--fing-accent)' }}>01</Heading3>
+                    <Heading3 effect="glow-petrol" style={{ color: 'var(--quafi-accent)' }}>01</Heading3>
                   </div>
                   <Label effect="carved-muted" style={{ fontSize: '10px', marginTop: '4px' }}>glow-petrol</Label>
                 </div>
                 <div style={{ textAlign: 'center' }}>
                   <div style={{ ...glass, width: '48px', height: '48px', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '50%' }}>
-                    <Heading3 effect="glow-positive" style={{ color: 'var(--fing-positive)' }}>02</Heading3>
+                    <Heading3 effect="glow-positive" style={{ color: 'var(--quafi-positive)' }}>02</Heading3>
                   </div>
                   <Label effect="carved-muted" style={{ fontSize: '10px', marginTop: '4px' }}>glow-positive</Label>
                 </div>
                 <div style={{ textAlign: 'center' }}>
                   <div style={{ ...glass, width: '48px', height: '48px', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '50%' }}>
-                    <Heading3 effect="glow-negative" style={{ color: 'var(--fing-negative)' }}>03</Heading3>
+                    <Heading3 effect="glow-negative" style={{ color: 'var(--quafi-negative)' }}>03</Heading3>
                   </div>
                   <Label effect="carved-muted" style={{ fontSize: '10px', marginTop: '4px' }}>glow-negative</Label>
                 </div>
@@ -835,7 +835,7 @@ export function TypographyCatalogShowcase() {
         title="Regla de Uso"
         description="Como elegir el efecto correcto segun el contexto"
       >
-        <div style={{ fontSize: '12px', color: 'var(--foreground)', lineHeight: '2', fontFamily: 'var(--fing-font-mono)' }}>
+        <div style={{ fontSize: '12px', color: 'var(--foreground)', lineHeight: '2', fontFamily: 'var(--quafi-font-mono)' }}>
           <p><strong style={{ color: 'var(--primary)' }}>REGLA BASE:</strong></p>
           <p>Container RAISED → Texto CARVED (hundido en superficie)</p>
           <p>Container INSET  → Texto EMBOSSED (elevado desde superficie)</p>

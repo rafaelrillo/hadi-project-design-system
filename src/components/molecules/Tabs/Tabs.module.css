@@ -1,6 +1,6 @@
 /* Path: src/components/molecules/Tabs/Tabs.module.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   FING DESIGN SYSTEM v3.2 - Tabs Component
+   QUAFI DESIGN SYSTEM v3.2 - Tabs Component
 
    LIGHT NEUMORPHISM - Tab navigation with soft depth
    - Container: Inset glass (sunken)
@@ -14,17 +14,17 @@
 .tabs {
   display: flex;
   gap: 4px;
-  background: var(--fing-glass-inset);
+  background: var(--quafi-glass-inset);
   padding: 4px;
-  border-radius: var(--fing-radius-md);
-  border: 1px solid var(--fing-glass-border);
+  border-radius: var(--quafi-radius-md);
+  border: 1px solid var(--quafi-glass-border);
 
   /* Glass blur */
-  backdrop-filter: blur(var(--fing-blur-sm));
-  -webkit-backdrop-filter: blur(var(--fing-blur-sm));
+  backdrop-filter: blur(var(--quafi-blur-sm));
+  -webkit-backdrop-filter: blur(var(--quafi-blur-sm));
 
   /* Neumorphic pressed shadow */
-  box-shadow: var(--fing-neu-pressed-sm);
+  box-shadow: var(--quafi-neu-pressed-sm);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -38,18 +38,18 @@
   padding: 10px 16px;
   border: none;
   background: transparent;
-  color: var(--fing-text-muted);
-  font-family: var(--fing-font-primary);
+  color: var(--quafi-text-muted);
+  font-family: var(--quafi-font-primary);
   font-size: 12px;
-  font-weight: var(--fing-font-medium);
-  border-radius: var(--fing-radius-sm);
+  font-weight: var(--quafi-font-medium);
+  border-radius: var(--quafi-radius-sm);
   cursor: pointer;
   transition: all 0.2s ease;
   white-space: nowrap;
 }
 
 .tab:hover:not(.disabled):not(.active) {
-  color: var(--fing-text-secondary);
+  color: var(--quafi-text-secondary);
   background: rgba(255, 255, 255, 0.5);
 }
 
@@ -60,16 +60,16 @@
 
 /* Active tab - Light-Neumorphic elevated */
 .tab.active {
-  color: var(--fing-text-primary);
-  background: var(--fing-glass-bg);
+  color: var(--quafi-text-primary);
+  background: var(--quafi-glass-bg);
 
   /* Glass blur on active */
-  backdrop-filter: blur(var(--fing-blur-sm));
-  -webkit-backdrop-filter: blur(var(--fing-blur-sm));
+  backdrop-filter: blur(var(--quafi-blur-sm));
+  -webkit-backdrop-filter: blur(var(--quafi-blur-sm));
 
   /* Elevated + inner highlight */
   box-shadow:
-    var(--fing-neu-elevated-xs),
+    var(--quafi-neu-elevated-xs),
     inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
@@ -109,34 +109,34 @@
 }
 
 .pills .tab {
-  background: var(--fing-glass-bg);
-  border: 1px solid var(--fing-glass-border);
-  border-radius: var(--fing-radius-full);
+  background: var(--quafi-glass-bg);
+  border: 1px solid var(--quafi-glass-border);
+  border-radius: var(--quafi-radius-full);
   padding: 8px 16px;
 
-  backdrop-filter: blur(var(--fing-blur-sm));
-  -webkit-backdrop-filter: blur(var(--fing-blur-sm));
+  backdrop-filter: blur(var(--quafi-blur-sm));
+  -webkit-backdrop-filter: blur(var(--quafi-blur-sm));
 
   box-shadow:
-    var(--fing-neu-elevated-xs),
+    var(--quafi-neu-elevated-xs),
     inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
 .pills .tab:hover:not(.disabled):not(.active) {
-  border-color: var(--fing-glass-border-hover);
-  background: var(--fing-glass-bg-hover);
+  border-color: var(--quafi-glass-border-hover);
+  background: var(--quafi-glass-bg-hover);
   box-shadow:
-    var(--fing-neu-elevated-sm),
+    var(--quafi-neu-elevated-sm),
     inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
 .pills .tab.active {
   background: rgba(255, 255, 255, 0.8);
-  color: var(--fing-accent-primary);
+  color: var(--quafi-accent-primary);
   border-color: rgba(58, 106, 114, 0.4);
 
   box-shadow:
-    var(--fing-neu-elevated-sm),
+    var(--quafi-neu-elevated-sm),
     inset 0 1px 0 rgba(255, 255, 255, 0.7),
     0 4px 15px rgba(58, 106, 114, 0.2);
 }
@@ -162,16 +162,16 @@
 .neuInset .tab {
   background: transparent;
   border-radius: calc(var(--radius-standard) - 4px);
-  color: var(--fing-text-secondary);
+  color: var(--quafi-text-secondary);
 }
 
 .neuInset .tab:hover:not(.disabled):not(.active) {
-  color: var(--fing-text-primary);
+  color: var(--quafi-text-primary);
   background: rgba(255, 255, 255, 0.4);
 }
 
 .neuInset .tab.active {
-  color: var(--fing-accent-primary);
+  color: var(--quafi-accent-primary);
   background: linear-gradient(
     180deg,
     hsla(175, 35%, 70%, 0.28) 0%,
@@ -207,7 +207,7 @@
 .underline {
   background: transparent;
   border: none;
-  border-bottom: 1px solid var(--fing-border-subtle);
+  border-bottom: 1px solid var(--quafi-border-subtle);
   border-radius: 0;
   padding: 0;
   gap: 0;
@@ -225,13 +225,13 @@
 
 .underline .tab:hover:not(.disabled):not(.active) {
   background: transparent;
-  color: var(--fing-text-secondary);
+  color: var(--quafi-text-secondary);
 }
 
 .underline .tab.active {
   background: transparent;
-  color: var(--fing-accent-primary);
-  border-bottom-color: var(--fing-accent-primary);
+  color: var(--quafi-accent-primary);
+  border-bottom-color: var(--quafi-accent-primary);
   box-shadow: none;
 }
 

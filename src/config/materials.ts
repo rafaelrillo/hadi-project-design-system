@@ -1,5 +1,5 @@
 // Path: src/config/materials.ts
-// FING Material Theming System - Material Definitions
+// QUAFI Material Theming System - Material Definitions
 
 export interface MaterialPalette {
   id: string;
@@ -242,13 +242,13 @@ export const MATERIALS: Record<string, MaterialPalette> = {
   },
 
   // ═══════════════════════════════════════════════════════════════
-  // FING DEFAULT (current)
+  // QUAFI DEFAULT (current)
   // ═══════════════════════════════════════════════════════════════
   stone: {
     id: 'stone',
     name: 'Stone',
     category: 'stone',
-    origin: 'FING default — neutral balanced gray',
+    origin: 'QUAFI default — neutral balanced gray',
     base: '#d5d8dc',
     light: '#e2e5e9',
     dark: '#c8ccd1',

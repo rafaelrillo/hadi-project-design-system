@@ -2,7 +2,7 @@
 import { useMemo } from 'react';
 import type { EChartsOption } from 'echarts';
 import { EChart } from './EChart';
-import { fingColors, chartPalette } from './fingTheme';
+import { quafiColors, chartPalette } from './quafiTheme';
 import type { RadarIndicator, RadarSeriesData, BaseChartProps } from './types';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -62,7 +62,7 @@ export function RadarChart({
           indicators.forEach((ind, i) => {
             html += `
               <div style="display: flex; justify-content: space-between; gap: 16px; margin-bottom: 4px;">
-                <span style="color: ${fingColors.textTertiary};">${ind.name}</span>
+                <span style="color: ${quafiColors.textTertiary};">${ind.name}</span>
                 <span style="font-family: 'Space Mono', monospace;">${p.value[i]}</span>
               </div>
             `;
@@ -77,7 +77,7 @@ export function RadarChart({
             top: title ? 30 : 0,
             right: 0,
             textStyle: {
-              color: fingColors.textSecondary,
+              color: quafiColors.textSecondary,
               fontSize: 11,
             },
           }
@@ -92,24 +92,24 @@ export function RadarChart({
           min: ind.min,
         })),
         axisName: {
-          color: fingColors.textSecondary,
+          color: quafiColors.textSecondary,
           fontSize: 11,
           fontFamily: "'Inter', sans-serif",
         },
         axisLine: {
           lineStyle: {
-            color: fingColors.borderDefault,
+            color: quafiColors.borderDefault,
           },
         },
         splitLine: {
           lineStyle: {
-            color: fingColors.borderSubtle,
+            color: quafiColors.borderSubtle,
           },
         },
         splitArea: {
           show: true,
           areaStyle: {
-            color: ['transparent', fingColors.bgSubtle],
+            color: ['transparent', quafiColors.bgSubtle],
           },
         },
       },

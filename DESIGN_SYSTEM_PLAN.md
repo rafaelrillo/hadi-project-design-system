@@ -1,8 +1,8 @@
-# SENTINEL Design System - Implementation Plan
+# QUAFI Design System - Implementation Plan
 
 ## Overview
 
-Este plan detalla la implementación del nuevo design system basado en **Neumorphism + Glassmorphism** con **Dynamic Light Engine**. Todas las propiedades están extraídas del archivo `src/pages/Home.tsx` (SENTINEL Dynamic Light Engine Demo).
+Este plan detalla la implementación del nuevo design system basado en **Neumorphism + Glassmorphism** con **Dynamic Light Engine**. Todas las propiedades están extraídas del archivo `src/pages/Home.tsx` (QUAFI Dynamic Light Engine Demo).
 
 **Branch actual**: `redesign/stock-market-ui`
 **Archivo de referencia**: `src/pages/Home.tsx`
@@ -228,7 +228,7 @@ const getGlassReflection = (): string => {
   color: #2D3436;
   font-size: 14px;
   font-weight: 600;
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--quafi-font-mono);
   cursor: pointer;
   transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1),
               box-shadow 50ms linear;
@@ -259,7 +259,7 @@ const getGlassReflection = (): string => {
   font-size: 42px;
   font-weight: 700;
   color: #2D3436;
-  font-family: var(--sentinel-font-display);
+  font-family: var(--quafi-font-display);
   letter-spacing: 0.02em;
 }
 
@@ -267,7 +267,7 @@ const getGlassReflection = (): string => {
 .subtitle {
   font-size: 14px;
   color: #636E72;
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--quafi-font-mono);
 }
 
 /* Section title (label) */
@@ -275,7 +275,7 @@ const getGlassReflection = (): string => {
   font-size: 12px;
   font-weight: 600;
   color: #4A9A9C;
-  font-family: var(--sentinel-font-mono);
+  font-family: var(--quafi-font-mono);
   text-transform: uppercase;
   letter-spacing: 0.12em;
 }
@@ -285,7 +285,7 @@ const getGlassReflection = (): string => {
   font-size: 20px;
   font-weight: 600;
   color: #2D3436;
-  font-family: var(--sentinel-font-display);
+  font-family: var(--quafi-font-display);
 }
 ```
 

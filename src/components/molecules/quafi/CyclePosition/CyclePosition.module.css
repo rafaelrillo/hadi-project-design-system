@@ -1,0 +1,234 @@
+/* Path: src/components/molecules/fing/CyclePosition/CyclePosition.module.css */
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   CYCLE POSITION
+   Shows position in the economic cycle
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.container {
+  background: var(--quafi-bg-elevated);
+  border: 1px solid var(--quafi-border-subtle);
+  border-radius: var(--quafi-radius-md);
+  padding: 20px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   HEADER
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--quafi-border-subtle);
+}
+
+.title {
+  font-family: var(--quafi-font-primary);
+  font-size: var(--quafi-text-xs);
+  font-weight: 500;
+  color: var(--quafi-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.confidence {
+  font-family: var(--quafi-font-numeric);
+  font-size: var(--quafi-text-xs);
+  color: var(--quafi-text-tertiary);
+  letter-spacing: var(--quafi-tracking-led);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   CYCLE VISUALIZATION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.cycleVisual {
+  margin-bottom: 20px;
+}
+
+.cycleSvg {
+  width: 100%;
+  height: 80px;
+}
+
+.cyclePath {
+  stroke: var(--quafi-border-default);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.cyclePathActive {
+  stroke-width: 3;
+  stroke-linecap: round;
+  opacity: 0.8;
+}
+
+.cyclePathActive.expansion {
+  stroke: var(--quafi-status-positive);
+}
+
+.cyclePathActive.peak {
+  stroke: var(--quafi-accent-primary);
+}
+
+.cyclePathActive.contraction {
+  stroke: var(--quafi-status-negative);
+}
+
+.cyclePathActive.trough {
+  stroke: var(--quafi-status-warning);
+}
+
+/* Position Dot */
+.positionDot {
+  fill: var(--quafi-bg-base);
+  stroke-width: 3;
+}
+
+.positionDot.expansion {
+  stroke: var(--quafi-status-positive);
+}
+
+.positionDot.peak {
+  stroke: var(--quafi-accent-primary);
+}
+
+.positionDot.contraction {
+  stroke: var(--quafi-status-negative);
+}
+
+.positionDot.trough {
+  stroke: var(--quafi-status-warning);
+}
+
+/* Pulse Ring */
+.pulseRing {
+  fill: none;
+  stroke-width: 2;
+  opacity: 0;
+  animation: pulse 2s ease-out infinite;
+}
+
+.pulseRing.expansion {
+  stroke: var(--quafi-status-positive);
+}
+
+.pulseRing.peak {
+  stroke: var(--quafi-accent-primary);
+}
+
+.pulseRing.contraction {
+  stroke: var(--quafi-status-negative);
+}
+
+.pulseRing.trough {
+  stroke: var(--quafi-status-warning);
+}
+
+@keyframes pulse {
+  0% {
+    r: 6;
+    opacity: 0.6;
+  }
+  100% {
+    r: 14;
+    opacity: 0;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   PHASE LABELS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.phaseLabels {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 8px;
+  margin-top: 8px;
+}
+
+.phaseLabel {
+  font-family: var(--quafi-font-primary);
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--quafi-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  transition: color var(--quafi-transition-fast);
+}
+
+.phaseLabel.active {
+  color: var(--quafi-text-primary);
+  font-weight: 500;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   STATUS SECTION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.statusSection {
+  padding-top: 16px;
+  border-top: 1px solid var(--quafi-border-subtle);
+}
+
+.currentPhase {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.currentLabel {
+  font-family: var(--quafi-font-primary);
+  font-size: var(--quafi-text-sm);
+  color: var(--quafi-text-secondary);
+}
+
+.currentValue {
+  font-family: var(--quafi-font-primary);
+  font-size: var(--quafi-text-sm);
+  font-weight: 600;
+}
+
+.currentValue.expansion {
+  color: var(--quafi-status-positive-text);
+}
+
+.currentValue.peak {
+  color: var(--quafi-accent-primary);
+}
+
+.currentValue.contraction {
+  color: var(--quafi-status-negative-text);
+}
+
+.currentValue.trough {
+  color: var(--quafi-status-warning-text);
+}
+
+.description {
+  font-family: var(--quafi-font-primary);
+  font-size: var(--quafi-text-xs);
+  color: var(--quafi-text-secondary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   REDUCED MOTION
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  .pulseRing {
+    animation: none;
+    opacity: 0.3;
+  }
+
+  .phaseLabel {
+    transition: none;
+  }
+}

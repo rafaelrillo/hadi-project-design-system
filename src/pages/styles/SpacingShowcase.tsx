@@ -1,5 +1,5 @@
 // Path: src/pages/styles/SpacingShowcase.tsx
-// FING Design System - Stone Marble Spacing
+// QUAFI Design System - Stone Marble Spacing
 import React from 'react';
 import { showcase } from '../showcaseStyles';
 
@@ -19,7 +19,7 @@ export function SpacingShowcase() {
     minHeight: '100vh',
     background: 'var(--marble-base)',
     padding: '32px',
-    fontFamily: 'var(--fing-font-primary)',
+    fontFamily: 'var(--quafi-font-primary)',
   };
 
   const headerStyles: React.CSSProperties = {
@@ -43,12 +43,12 @@ export function SpacingShowcase() {
   };
 
   const sectionTitleStyles: React.CSSProperties = {
-    fontFamily: 'var(--fing-font-primary)',
+    fontFamily: 'var(--quafi-font-primary)',
     fontSize: '11px',
     fontWeight: 600,
     letterSpacing: '0.12em',
     textTransform: 'uppercase',
-    color: 'var(--fing-accent)',
+    color: 'var(--quafi-accent)',
     textShadow: 'var(--lp-petrol-whisper)',
     marginBottom: '24px',
     paddingBottom: '12px',
@@ -64,7 +64,7 @@ export function SpacingShowcase() {
       medium: 'var(--lp-primary-strong)',
     };
     return {
-      color: 'var(--fing-text-primary)',
+      color: 'var(--quafi-text-primary)',
       textShadow: shadows[intensity],
     };
   };
@@ -89,25 +89,25 @@ export function SpacingShowcase() {
 
   // Core scale (4px base, Tailwind-like)
   const spacingScale: SpacingToken[] = [
-    { name: 'Space 0', variable: '--fing-space-0', value: '0', usage: 'Sin espaciado' },
-    { name: 'Space 1', variable: '--fing-space-1', value: '4px', usage: 'Espaciado mínimo, gaps pequeños' },
-    { name: 'Space 2', variable: '--fing-space-2', value: '8px', usage: 'Espaciado pequeño entre elementos' },
-    { name: 'Space 3', variable: '--fing-space-3', value: '12px', usage: 'Espaciado entre elementos relacionados' },
-    { name: 'Space 4', variable: '--fing-space-4', value: '16px', usage: 'Espaciado estándar (1rem)' },
-    { name: 'Space 5', variable: '--fing-space-5', value: '20px', usage: 'Padding de contenedores pequeños' },
-    { name: 'Space 6', variable: '--fing-space-6', value: '24px', usage: 'Padding de cards, secciones' },
-    { name: 'Space 8', variable: '--fing-space-8', value: '32px', usage: 'Padding de paneles, páginas' },
-    { name: 'Space 10', variable: '--fing-space-10', value: '40px', usage: 'Separación entre secciones' },
-    { name: 'Space 12', variable: '--fing-space-12', value: '48px', usage: 'Espaciado extra grande' },
-    { name: 'Space 16', variable: '--fing-space-16', value: '64px', usage: 'Separación de bloques principales' },
+    { name: 'Space 0', variable: '--quafi-space-0', value: '0', usage: 'Sin espaciado' },
+    { name: 'Space 1', variable: '--quafi-space-1', value: '4px', usage: 'Espaciado mínimo, gaps pequeños' },
+    { name: 'Space 2', variable: '--quafi-space-2', value: '8px', usage: 'Espaciado pequeño entre elementos' },
+    { name: 'Space 3', variable: '--quafi-space-3', value: '12px', usage: 'Espaciado entre elementos relacionados' },
+    { name: 'Space 4', variable: '--quafi-space-4', value: '16px', usage: 'Espaciado estándar (1rem)' },
+    { name: 'Space 5', variable: '--quafi-space-5', value: '20px', usage: 'Padding de contenedores pequeños' },
+    { name: 'Space 6', variable: '--quafi-space-6', value: '24px', usage: 'Padding de cards, secciones' },
+    { name: 'Space 8', variable: '--quafi-space-8', value: '32px', usage: 'Padding de paneles, páginas' },
+    { name: 'Space 10', variable: '--quafi-space-10', value: '40px', usage: 'Separación entre secciones' },
+    { name: 'Space 12', variable: '--quafi-space-12', value: '48px', usage: 'Espaciado extra grande' },
+    { name: 'Space 16', variable: '--quafi-space-16', value: '64px', usage: 'Separación de bloques principales' },
   ];
 
   // Semantic aliases
   const specialSpacings: SpacingToken[] = [
-    { name: 'Component', variable: '--fing-space-component', value: '16px', usage: 'Espaciado interno de componentes (= space-4)' },
-    { name: 'Card', variable: '--fing-space-card', value: '24px', usage: 'Padding de cards (= space-6)' },
-    { name: 'Section', variable: '--fing-space-section', value: '40px', usage: 'Separación entre secciones (= space-10)' },
-    { name: 'Page', variable: '--fing-space-page', value: '32px', usage: 'Padding de página (= space-8)' },
+    { name: 'Component', variable: '--quafi-space-component', value: '16px', usage: 'Espaciado interno de componentes (= space-4)' },
+    { name: 'Card', variable: '--quafi-space-card', value: '24px', usage: 'Padding de cards (= space-6)' },
+    { name: 'Section', variable: '--quafi-space-section', value: '40px', usage: 'Separación entre secciones (= space-10)' },
+    { name: 'Page', variable: '--quafi-space-page', value: '32px', usage: 'Padding de página (= space-8)' },
     { name: 'Content Padding', variable: '--content-padding', value: '24px', usage: 'Padding del área de contenido (= space-6)' },
     { name: 'Gap Elements', variable: '--gap-elements', value: '16px', usage: 'Gap estándar entre elementos (= space-4)' },
   ];
@@ -144,7 +144,7 @@ export function SpacingShowcase() {
           ...lpStyles('subtle'),
           fontSize: '10px',
           fontWeight: 600,
-          fontFamily: 'var(--fing-font-mono)',
+          fontFamily: 'var(--quafi-font-mono)',
         }}>
           {token.value}
         </span>
@@ -154,7 +154,7 @@ export function SpacingShowcase() {
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={{
           ...lpInsetStyles('medium'),
-          fontFamily: 'var(--fing-font-primary)',
+          fontFamily: 'var(--quafi-font-primary)',
           fontSize: '13px',
           fontWeight: 600,
           marginBottom: '6px',
@@ -164,15 +164,15 @@ export function SpacingShowcase() {
         <div style={{
           display: 'inline-block',
           padding: '3px 10px',
-          background: 'var(--fing-glass-teal-bg)',
-          border: '1px solid var(--fing-glass-teal-border)',
+          background: 'var(--quafi-glass-teal-bg)',
+          border: '1px solid var(--quafi-glass-teal-border)',
           borderRadius: '100px',
           marginBottom: '6px',
         }}>
           <code style={{
-            fontFamily: 'var(--fing-font-mono)',
+            fontFamily: 'var(--quafi-font-mono)',
             fontSize: '10px',
-            color: 'var(--fing-glass-teal-text)',
+            color: 'var(--quafi-glass-teal-text)',
             fontWeight: 500,
           }}>
             {token.variable}
@@ -180,7 +180,7 @@ export function SpacingShowcase() {
         </div>
         <div style={{
           ...lpInsetStyles('whisper'),
-          fontFamily: 'var(--fing-font-mono)',
+          fontFamily: 'var(--quafi-font-mono)',
           fontSize: '10px',
         }}>
           {token.usage}
@@ -197,13 +197,13 @@ export function SpacingShowcase() {
     <div style={showcaseStyles}>
       {/* Header */}
       <header style={headerStyles}>
-        <h1 style={headerTitleStyles}>FING Spacing</h1>
+        <h1 style={headerTitleStyles}>QUAFI Spacing</h1>
         <p style={headerSubtitleStyles}>Sistema de espaciado Stone Marble - Escala basada en 4px (rem)</p>
       </header>
 
       {/* Spacing Scale */}
       <section style={sectionStyles}>
-        <div style={sectionTitleStyles}>Escala Base (--fing-space-*)</div>
+        <div style={sectionTitleStyles}>Escala Base (--quafi-space-*)</div>
         <div>
           {spacingScale.map((token) => (
             <SpacingSample key={token.variable} token={token} />
@@ -220,7 +220,7 @@ export function SpacingShowcase() {
         }}>
           <div style={{
             ...lpInsetStyles('whisper'),
-            fontFamily: 'var(--fing-font-mono)',
+            fontFamily: 'var(--quafi-font-mono)',
             fontSize: '10px',
             letterSpacing: '0.1em',
             textTransform: 'uppercase',
@@ -245,7 +245,7 @@ export function SpacingShowcase() {
               >
                 <span style={{
                   ...lpStyles('whisper'),
-                  fontFamily: 'var(--fing-font-mono)',
+                  fontFamily: 'var(--quafi-font-mono)',
                   fontSize: '8px',
                   fontWeight: 600,
                 }}>
@@ -278,7 +278,7 @@ export function SpacingShowcase() {
         }}>
           <div style={{
             ...lpInsetStyles('whisper'),
-            fontFamily: 'var(--fing-font-mono)',
+            fontFamily: 'var(--quafi-font-mono)',
             fontSize: '10px',
             letterSpacing: '0.1em',
             textTransform: 'uppercase',
@@ -292,52 +292,52 @@ export function SpacingShowcase() {
             background: 'var(--marble-base)',
             borderRadius: '14px',
             boxShadow: 'var(--raised-2)',
-            padding: '20px', // --fing-space-5
+            padding: '20px', // --quafi-space-5
           }}>
             <div style={{
               ...lpStyles('medium'),
-              fontFamily: 'var(--fing-font-display)',
+              fontFamily: 'var(--quafi-font-display)',
               fontSize: '16px',
               fontWeight: 600,
-              marginBottom: '12px', // --fing-space-3
+              marginBottom: '12px', // --quafi-space-3
             }}>
               Card Title
             </div>
             <div style={{
               ...lpStyles('whisper'),
-              fontFamily: 'var(--fing-font-primary)',
+              fontFamily: 'var(--quafi-font-primary)',
               fontSize: '12px',
-              marginBottom: '16px', // --fing-space-4
+              marginBottom: '16px', // --quafi-space-4
             }}>
               Content with proper spacing between elements
             </div>
-            <div style={{ display: 'flex', gap: '8px' }}> {/* --fing-space-2 */}
+            <div style={{ display: 'flex', gap: '8px' }}> {/* --quafi-space-2 */}
               <div style={{
                 padding: '8px 16px',
-                background: 'var(--fing-glass-teal-bg)',
-                border: '1px solid var(--fing-glass-teal-border)',
+                background: 'var(--quafi-glass-teal-bg)',
+                border: '1px solid var(--quafi-glass-teal-border)',
                 borderRadius: '8px',
               }}>
                 <span style={{
-                  fontFamily: 'var(--fing-font-primary)',
+                  fontFamily: 'var(--quafi-font-primary)',
                   fontSize: '12px',
                   fontWeight: 500,
-                  color: 'var(--fing-glass-teal-text)',
+                  color: 'var(--quafi-glass-teal-text)',
                 }}>
                   Action 1
                 </span>
               </div>
               <div style={{
                 padding: '8px 16px',
-                background: 'var(--fing-glass-teal-bg)',
-                border: '1px solid var(--fing-glass-teal-border)',
+                background: 'var(--quafi-glass-teal-bg)',
+                border: '1px solid var(--quafi-glass-teal-border)',
                 borderRadius: '8px',
               }}>
                 <span style={{
-                  fontFamily: 'var(--fing-font-primary)',
+                  fontFamily: 'var(--quafi-font-primary)',
                   fontSize: '12px',
                   fontWeight: 500,
-                  color: 'var(--fing-glass-teal-text)',
+                  color: 'var(--quafi-glass-teal-text)',
                 }}>
                   Action 2
                 </span>
@@ -358,51 +358,51 @@ export function SpacingShowcase() {
         }}>
           <pre style={{
             margin: 0,
-            fontFamily: 'var(--fing-font-mono)',
+            fontFamily: 'var(--quafi-font-mono)',
             fontSize: '11px',
             lineHeight: 1.6,
-            color: 'var(--fing-text-muted)',
+            color: 'var(--quafi-text-muted)',
             textShadow: 'var(--lp-muted)',
             whiteSpace: 'pre-wrap',
           }}>
 {`:root {
   /* Base Scale (4px base, Tailwind-like) */
-  --fing-space-0: 0;
-  --fing-space-1: 0.25rem;     /* 4px */
-  --fing-space-2: 0.5rem;      /* 8px */
-  --fing-space-3: 0.75rem;     /* 12px */
-  --fing-space-4: 1rem;        /* 16px */
-  --fing-space-5: 1.25rem;     /* 20px */
-  --fing-space-6: 1.5rem;      /* 24px */
-  --fing-space-8: 2rem;        /* 32px */
-  --fing-space-10: 2.5rem;     /* 40px */
-  --fing-space-12: 3rem;       /* 48px */
-  --fing-space-16: 4rem;       /* 64px */
+  --quafi-space-0: 0;
+  --quafi-space-1: 0.25rem;     /* 4px */
+  --quafi-space-2: 0.5rem;      /* 8px */
+  --quafi-space-3: 0.75rem;     /* 12px */
+  --quafi-space-4: 1rem;        /* 16px */
+  --quafi-space-5: 1.25rem;     /* 20px */
+  --quafi-space-6: 1.5rem;      /* 24px */
+  --quafi-space-8: 2rem;        /* 32px */
+  --quafi-space-10: 2.5rem;     /* 40px */
+  --quafi-space-12: 3rem;       /* 48px */
+  --quafi-space-16: 4rem;       /* 64px */
 
   /* Semantic Aliases */
-  --fing-space-component: var(--fing-space-4);
-  --fing-space-card: var(--fing-space-6);
-  --fing-space-section: var(--fing-space-10);
-  --fing-space-page: var(--fing-space-8);
-  --content-padding: var(--fing-space-6);
-  --gap-elements: var(--fing-space-4);
+  --quafi-space-component: var(--quafi-space-4);
+  --quafi-space-card: var(--quafi-space-6);
+  --quafi-space-section: var(--quafi-space-10);
+  --quafi-space-page: var(--quafi-space-8);
+  --content-padding: var(--quafi-space-6);
+  --gap-elements: var(--quafi-space-4);
 }
 
 /* Usage Examples */
 .card {
-  padding: var(--fing-space-card);
-  margin-bottom: var(--fing-space-6);
+  padding: var(--quafi-space-card);
+  margin-bottom: var(--quafi-space-6);
   border-radius: 14px;
 }
 
 .section {
-  padding: var(--fing-space-section);
-  gap: var(--fing-space-4);
+  padding: var(--quafi-space-section);
+  gap: var(--quafi-space-4);
 }
 
 .button-group {
   display: flex;
-  gap: var(--fing-space-2);
+  gap: var(--quafi-space-2);
 }`}
           </pre>
         </div>

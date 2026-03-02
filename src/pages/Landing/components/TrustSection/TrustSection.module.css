@@ -1,8 +1,8 @@
 /* Path: src/pages/Landing/components/TrustSection/TrustSection.module.css */
 
 .section {
-  padding: var(--fing-space-24) var(--fing-space-6);
-  background-color: var(--fing-bg-elevated);
+  padding: var(--quafi-space-24) var(--quafi-space-6);
+  background-color: var(--quafi-bg-elevated);
   position: relative;
 }
 
@@ -13,62 +13,62 @@
 
 .header {
   text-align: center;
-  margin-bottom: var(--fing-space-12);
+  margin-bottom: var(--quafi-space-12);
 }
 
 .title {
-  font-family: var(--fing-font-led);
-  font-size: var(--fing-text-3xl);
-  font-weight: var(--fing-font-bold);
-  color: var(--fing-text-primary);
-  letter-spacing: var(--fing-tracking-led);
-  margin: 0 0 var(--fing-space-4);
+  font-family: var(--quafi-font-led);
+  font-size: var(--quafi-text-3xl);
+  font-weight: var(--quafi-font-bold);
+  color: var(--quafi-text-primary);
+  letter-spacing: var(--quafi-tracking-led);
+  margin: 0 0 var(--quafi-space-4);
 }
 
 .subtitle {
-  font-family: var(--fing-font-primary);
-  font-size: var(--fing-text-lg);
-  color: var(--fing-text-secondary);
+  font-family: var(--quafi-font-primary);
+  font-size: var(--quafi-text-lg);
+  color: var(--quafi-text-secondary);
   margin: 0;
 }
 
 .statsGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--fing-space-8);
+  gap: var(--quafi-space-8);
 }
 
 .statCard {
-  padding: var(--fing-space-8);
-  background-color: var(--fing-bg-surface);
-  border: 1px solid var(--fing-border-subtle);
-  border-radius: var(--fing-radius-lg);
+  padding: var(--quafi-space-8);
+  background-color: var(--quafi-bg-surface);
+  border: 1px solid var(--quafi-border-subtle);
+  border-radius: var(--quafi-radius-lg);
   text-align: center;
-  transition: all var(--fing-duration-normal);
+  transition: all var(--quafi-duration-normal);
 }
 
 .statCard:hover {
-  border-color: var(--fing-accent-primary);
-  box-shadow: 0 0 30px var(--fing-accent-glow);
+  border-color: var(--quafi-accent-primary);
+  box-shadow: 0 0 30px var(--quafi-accent-glow);
   transform: translateY(-4px);
 }
 
 /* Responsive */
 @media (max-width: 768px) {
   .section {
-    padding: var(--fing-space-16) var(--fing-space-4);
+    padding: var(--quafi-space-16) var(--quafi-space-4);
   }
 
   .title {
-    font-size: var(--fing-text-2xl);
+    font-size: var(--quafi-text-2xl);
   }
 
   .statsGrid {
     grid-template-columns: 1fr;
-    gap: var(--fing-space-4);
+    gap: var(--quafi-space-4);
   }
 
   .statCard {
-    padding: var(--fing-space-6);
+    padding: var(--quafi-space-6);
   }
 }

@@ -1,5 +1,5 @@
 // Path: src/pages/styles/TypographyShowcase.tsx
-// FING Design System - Typography System Reference Guide
+// QUAFI Design System - Typography System Reference Guide
 import React, { useState, useMemo } from 'react';
 import { showcase } from '../showcaseStyles';
 
@@ -635,7 +635,7 @@ export function TypographyShowcase() {
   };
 
   const cardTitle: React.CSSProperties = {
-    color: 'var(--fing-accent)',
+    color: 'var(--quafi-accent)',
     textShadow: 'var(--lp-petrol-whisper)',
     fontFamily: FONTS.primary,
     fontSize: '11px',
@@ -697,7 +697,7 @@ export function TypographyShowcase() {
           fontSize: '15px',
           marginTop: '12px',
         }}>
-          FING Design System - Guia de Referencia Tipografica
+          QUAFI Design System - Guia de Referencia Tipografica
         </p>
       </header>
 
@@ -720,7 +720,7 @@ export function TypographyShowcase() {
             <div style={cardTitle}>Sistema Tipográfico</div>
             <div style={insetBox}>
               <p style={{ ...fx.body(), fontSize: '15px', lineHeight: 1.8, margin: 0 }}>
-                FING utiliza un sistema de <strong>tres familias tipográficas</strong> cuidadosamente
+                QUAFI utiliza un sistema de <strong>tres familias tipográficas</strong> cuidadosamente
                 seleccionadas para crear una jerarquía visual clara y profesional. Cada familia tiene un
                 propósito específico que refuerza la identidad de marca y optimiza la legibilidad de
                 datos financieros.
@@ -751,7 +751,7 @@ export function TypographyShowcase() {
                     fontSize: '11px',
                     letterSpacing: '0.05em',
                   }}>
-                    --fing-font-display
+                    --quafi-font-display
                   </div>
                 </div>
                 <div style={{ flex: 2 }}>
@@ -774,7 +774,7 @@ export function TypographyShowcase() {
                   fontSize: '28px',
                   fontWeight: 700,
                 }}>
-                  FING
+                  QUAFI
                 </div>
                 <div style={label}>Brand / Logo</div>
               </div>
@@ -826,7 +826,7 @@ export function TypographyShowcase() {
                     fontSize: '11px',
                     letterSpacing: '0.05em',
                   }}>
-                    --fing-font-primary
+                    --quafi-font-primary
                   </div>
                 </div>
                 <div style={{ flex: 2 }}>
@@ -913,7 +913,7 @@ export function TypographyShowcase() {
                     fontSize: '11px',
                     letterSpacing: '0.05em',
                   }}>
-                    --fing-font-mono
+                    --quafi-font-mono
                   </div>
                 </div>
                 <div style={{ flex: 2 }}>
@@ -991,7 +991,7 @@ export function TypographyShowcase() {
             <div style={cardTitle}>Escala Tipográfica</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {[
-                { name: 'Hero', size: '48px', weight: 700, font: 'display', sample: 'FING' },
+                { name: 'Hero', size: '48px', weight: 700, font: 'display', sample: 'QUAFI' },
                 { name: 'H1', size: '36px', weight: 700, font: 'display', sample: 'Page Title' },
                 { name: 'H2', size: '28px', weight: 700, font: 'display', sample: 'Section Header' },
                 { name: 'H3', size: '22px', weight: 600, font: 'primary', sample: 'Card Title' },
@@ -1575,7 +1575,7 @@ export function TypographyShowcase() {
                           fontSize: '28px',
                           fontWeight: 700,
                         }}>
-                          FING
+                          QUAFI
                         </div>
                         <code style={{ ...fx.muted(), fontFamily: FONTS.mono, fontSize: '10px' }}>
                           fx.embossed({level})
@@ -1606,7 +1606,7 @@ export function TypographyShowcase() {
                           fontSize: '28px',
                           fontWeight: 700,
                         }}>
-                          FING
+                          QUAFI
                         </div>
                         <code style={{ ...fx.muted(), fontFamily: FONTS.mono, fontSize: '10px' }}>
                           fx.debossed({level})
@@ -2680,7 +2680,7 @@ export function TypographyShowcase() {
                       fontWeight: 700,
                       textAlign: 'center',
                     }}>
-                      FING
+                      QUAFI
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <code style={{ ...fx.teal(), fontFamily: FONTS.mono, fontSize: '10px' }}>

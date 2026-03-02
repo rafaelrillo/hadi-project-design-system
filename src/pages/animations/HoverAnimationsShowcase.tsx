@@ -1,5 +1,5 @@
 // Path: src/pages/animations/HoverAnimationsShowcase.tsx
-// FING Design System - Glass-Neumorphism Hover Animations
+// QUAFI Design System - Glass-Neumorphism Hover Animations
 import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { MotionCard } from '../../components/animations/MotionCard';
@@ -43,11 +43,11 @@ function HoverAnimationsContent() {
   const buttonStyles: React.CSSProperties = {
     padding: '12px 24px',
     background: MARBLE.base,
-    color: 'var(--fing-accent)',
+    color: 'var(--quafi-accent)',
     border: 'none',
     borderRadius: '20px',
     boxShadow: getNeuPanelShadow(4, 12),
-    fontFamily: 'var(--fing-font-mono)',
+    fontFamily: 'var(--quafi-font-mono)',
     fontWeight: 600,
     cursor: 'pointer',
     textTransform: 'uppercase',
@@ -66,16 +66,16 @@ function HoverAnimationsContent() {
         <div style={{ padding: '24px', background: MARBLE.base, borderRadius: '20px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', width: '100%' }}>
             <MotionCard variant="default" style={cardStyles}>
-              <h4 style={{ color: 'var(--fing-text-primary)', marginBottom: '8px', fontFamily: 'var(--fing-font-mono)' }}>Default</h4>
-              <p style={{ color: 'var(--fing-text-muted)', fontSize: '12px' }}>Border glow on hover</p>
+              <h4 style={{ color: 'var(--quafi-text-primary)', marginBottom: '8px', fontFamily: 'var(--quafi-font-mono)' }}>Default</h4>
+              <p style={{ color: 'var(--quafi-text-muted)', fontSize: '12px' }}>Border glow on hover</p>
             </MotionCard>
             <MotionCard variant="scale" style={cardStyles}>
-              <h4 style={{ color: 'var(--fing-text-primary)', marginBottom: '8px', fontFamily: 'var(--fing-font-mono)' }}>Scale</h4>
-              <p style={{ color: 'var(--fing-text-muted)', fontSize: '12px' }}>Subtle scale on hover</p>
+              <h4 style={{ color: 'var(--quafi-text-primary)', marginBottom: '8px', fontFamily: 'var(--quafi-font-mono)' }}>Scale</h4>
+              <p style={{ color: 'var(--quafi-text-muted)', fontSize: '12px' }}>Subtle scale on hover</p>
             </MotionCard>
             <MotionCard variant="glow" style={cardStyles}>
-              <h4 style={{ color: 'var(--fing-text-primary)', marginBottom: '8px', fontFamily: 'var(--fing-font-mono)' }}>Glow</h4>
-              <p style={{ color: 'var(--fing-text-muted)', fontSize: '12px' }}>Box shadow glow</p>
+              <h4 style={{ color: 'var(--quafi-text-primary)', marginBottom: '8px', fontFamily: 'var(--quafi-font-mono)' }}>Glow</h4>
+              <p style={{ color: 'var(--quafi-text-muted)', fontSize: '12px' }}>Box shadow glow</p>
             </MotionCard>
           </div>
         </div>
@@ -85,10 +85,10 @@ function HoverAnimationsContent() {
         <div style={{ padding: '24px', background: MARBLE.base, borderRadius: '20px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
           <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
             {[
-              { label: 'Execute', color: 'var(--fing-accent)' },
-              { label: 'Confirm', color: 'var(--fing-positive)' },
-              { label: 'Cancel', color: 'var(--fing-negative)' },
-              { label: 'Info', color: 'var(--fing-info)' }
+              { label: 'Execute', color: 'var(--quafi-accent)' },
+              { label: 'Confirm', color: 'var(--quafi-positive)' },
+              { label: 'Cancel', color: 'var(--quafi-negative)' },
+              { label: 'Info', color: 'var(--quafi-info)' }
             ].map(({ label, color }) => (
               <motion.button
                 key={label}
@@ -111,19 +111,19 @@ function HoverAnimationsContent() {
               style={{ ...cardStyles, width: '150px', textAlign: 'center' }}
               whileHover={{ y: -5 }}
             >
-              <p style={{ color: 'var(--fing-text-primary)', fontFamily: 'var(--fing-font-mono)', fontSize: '12px' }}>Lift Up</p>
+              <p style={{ color: 'var(--quafi-text-primary)', fontFamily: 'var(--quafi-font-mono)', fontSize: '12px' }}>Lift Up</p>
             </motion.div>
             <motion.div
               style={{ ...cardStyles, width: '150px', textAlign: 'center' }}
               whileHover={{ rotate: 2, scale: 1.02 }}
             >
-              <p style={{ color: 'var(--fing-text-primary)', fontFamily: 'var(--fing-font-mono)', fontSize: '12px' }}>Tilt</p>
+              <p style={{ color: 'var(--quafi-text-primary)', fontFamily: 'var(--quafi-font-mono)', fontSize: '12px' }}>Tilt</p>
             </motion.div>
             <motion.div
               style={{ ...cardStyles, width: '150px', textAlign: 'center' }}
               whileHover={{ scale: 1.05 }}
             >
-              <p style={{ color: 'var(--fing-text-primary)', fontFamily: 'var(--fing-font-mono)', fontSize: '12px' }}>Scale</p>
+              <p style={{ color: 'var(--quafi-text-primary)', fontFamily: 'var(--quafi-font-mono)', fontSize: '12px' }}>Scale</p>
             </motion.div>
           </div>
         </div>
@@ -136,15 +136,15 @@ function HoverAnimationsContent() {
           boxShadow: getNeuInsetShadow(5, 15),
           background: MARBLE.base,
           fontSize: '12px',
-          fontFamily: 'var(--fing-font-mono)',
-          color: 'var(--fing-text-muted)',
+          fontFamily: 'var(--quafi-font-mono)',
+          color: 'var(--quafi-text-muted)',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>
-          <p>✓ <strong style={{ color: 'var(--fing-accent)' }}>MotionCard variants:</strong> default, scale, glow</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent)' }}>Spring config:</strong> stiffness: 400, damping: 17</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent)' }}>Hover scale:</strong> 1.05 (5% increase)</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent)' }}>Tap scale:</strong> 0.95 (5% decrease)</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent)' }}>MotionCard variants:</strong> default, scale, glow</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent)' }}>Spring config:</strong> stiffness: 400, damping: 17</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent)' }}>Hover scale:</strong> 1.05 (5% increase)</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent)' }}>Tap scale:</strong> 0.95 (5% decrease)</p>
         </div>
       </ShowcaseSection>
     </div>

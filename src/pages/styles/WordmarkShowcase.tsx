@@ -1,22 +1,22 @@
 // Path: src/pages/styles/WordmarkShowcase.tsx
-// FING Wordmark Showcase - 12 Inset/Cavado Variations
+// QUAFI Wordmark Showcase - 12 Inset/Cavado Variations
 // Typography: Cormorant Garamond Light
 
 import React from 'react';
 import {
-  FingWordmark,
-  FingWordmarkText,
+  QuafiWordmark,
+  QuafiWordmarkText,
   WORDMARK_VARIANTS,
   RECOMMENDED_VARIANTS,
-  type FingWordmarkVariant,
-} from '@atoms/FingWordmark';
+  type QuafiWordmarkVariant,
+} from '@atoms/QuafiWordmark';
 import { showcase } from '../showcaseStyles';
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // VARIANT DESCRIPTIONS
 // ═══════════════════════════════════════════════════════════════════════════════
 
-const variantDescriptions: Record<FingWordmarkVariant, { name: string; description: string }> = {
+const variantDescriptions: Record<QuafiWordmarkVariant, { name: string; description: string }> = {
   whisper: {
     name: 'WHISPER',
     description: 'Casi plano, muy sutil. Para aplicaciones donde se necesita mínimo efecto.',
@@ -105,7 +105,7 @@ export function WordmarkShowcase() {
 
   const typoAccent = {
     teal: {
-      color: 'var(--fing-teal)',
+      color: 'var(--quafi-teal)',
       textShadow: 'var(--lp-petrol-whisper)',
     } as React.CSSProperties,
   };
@@ -115,7 +115,7 @@ export function WordmarkShowcase() {
     minHeight: '100vh',
     background: showcase.colors.marble,
     padding: '32px',
-    fontFamily: 'var(--fing-font-primary)',
+    fontFamily: 'var(--quafi-font-primary)',
   };
 
   const sectionStyles: React.CSSProperties = {
@@ -138,7 +138,7 @@ export function WordmarkShowcase() {
       {/* Header - using unified showcase styles */}
       <header style={showcase.header.container}>
         <h1 style={showcase.header.title}>
-          FING Wordmark
+          QUAFI Wordmark
         </h1>
         <p style={showcase.header.description}>
           12 Inset/Cavado Variations
@@ -149,7 +149,7 @@ export function WordmarkShowcase() {
           gap: '16px',
           marginTop: '24px',
         }}>
-          <FingWordmark variant="carved" size={48} />
+          <QuafiWordmark variant="carved" size={48} />
         </div>
       </header>
 
@@ -180,7 +180,7 @@ export function WordmarkShowcase() {
               <strong>Font:</strong> Cormorant Garamond<br />
               <strong>Weight:</strong> 300 (Light)<br />
               <strong>Letter Spacing:</strong> 0.06em<br />
-              <strong>Google Fonts:</strong> <code style={{ fontFamily: 'var(--fing-font-mono)', fontSize: '11px' }}>family=Cormorant+Garamond:wght@300</code>
+              <strong>Google Fonts:</strong> <code style={{ fontFamily: 'var(--quafi-font-mono)', fontSize: '11px' }}>family=Cormorant+Garamond:wght@300</code>
             </div>
           </div>
 
@@ -190,7 +190,7 @@ export function WordmarkShowcase() {
               CSS Implementation
             </div>
             <pre style={{
-              fontFamily: 'var(--fing-font-mono)',
+              fontFamily: 'var(--quafi-font-mono)',
               fontSize: '11px',
               background: 'rgba(0,0,0,0.05)',
               padding: '16px',
@@ -198,7 +198,7 @@ export function WordmarkShowcase() {
               overflow: 'auto',
               ...typoRaised.whisper,
             }}>
-{`.fing-wordmark {
+{`.quafi-wordmark {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 300;
   letter-spacing: 0.06em;
@@ -239,7 +239,7 @@ export function WordmarkShowcase() {
                 minHeight: '160px',
                 marginBottom: '16px',
               }}>
-                <FingWordmark variant={variant} size={72} />
+                <QuafiWordmark variant={variant} size={72} />
               </div>
               <div style={{ ...typoRaised.medium, fontSize: '14px', fontWeight: 600, marginBottom: '8px' }}>
                 {variantDescriptions[variant].name}
@@ -279,7 +279,7 @@ export function WordmarkShowcase() {
                 minHeight: '120px',
                 marginBottom: '16px',
               }}>
-                <FingWordmark variant={variant} size={48} containerPadding={24} />
+                <QuafiWordmark variant={variant} size={48} containerPadding={24} />
               </div>
               <div style={{
                 display: 'flex',
@@ -288,9 +288,9 @@ export function WordmarkShowcase() {
                 marginBottom: '8px',
               }}>
                 <span style={{
-                  fontFamily: 'var(--fing-font-mono)',
+                  fontFamily: 'var(--quafi-font-mono)',
                   fontSize: '10px',
-                  color: 'var(--fing-teal)',
+                  color: 'var(--quafi-teal)',
                   background: 'rgba(58, 106, 114, 0.1)',
                   padding: '2px 6px',
                   borderRadius: '4px',
@@ -332,8 +332,8 @@ export function WordmarkShowcase() {
         <div style={{ display: 'flex', alignItems: 'flex-end', gap: '24px', flexWrap: 'wrap', justifyContent: 'center' }}>
           {[24, 36, 48, 72, 96, 120].map((size) => (
             <div key={size} style={{ ...insetStyles, padding: '24px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
-              <FingWordmark variant="carved" size={size} containerPadding={size * 0.4} containerRadius={size * 0.2} />
-              <span style={{ ...typoRaised.whisper, fontSize: '10px', fontFamily: 'var(--fing-font-mono)' }}>
+              <QuafiWordmark variant="carved" size={size} containerPadding={size * 0.4} containerRadius={size * 0.2} />
+              <span style={{ ...typoRaised.whisper, fontSize: '10px', fontFamily: 'var(--quafi-font-mono)' }}>
                 {size}px
               </span>
             </div>
@@ -365,7 +365,7 @@ export function WordmarkShowcase() {
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '48px', flexWrap: 'wrap' }}>
             {RECOMMENDED_VARIANTS.map((variant) => (
               <div key={variant} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
-                <FingWordmarkText variant={variant} size={72} />
+                <QuafiWordmarkText variant={variant} size={72} />
                 <span style={{ ...typoRaised.whisper, fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
                   {variant}
                 </span>
@@ -405,7 +405,7 @@ export function WordmarkShowcase() {
               minHeight: '100px',
               marginBottom: '12px',
             }}>
-              <FingWordmark variant="carved" size={48} />
+              <QuafiWordmark variant="carved" size={48} />
             </div>
             <div style={{ ...typoRaised.soft, fontSize: '11px' }}>
               Use <strong>CARVED</strong> or <strong>PRESSED</strong> for the most authentic carved-in-stone effect.
@@ -424,7 +424,7 @@ export function WordmarkShowcase() {
               minHeight: '100px',
               marginBottom: '12px',
             }}>
-              <FingWordmark variant="soft" size={36} containerPadding={16} />
+              <QuafiWordmark variant="soft" size={36} containerPadding={16} />
             </div>
             <div style={{ ...typoRaised.soft, fontSize: '11px' }}>
               Use <strong>SOFT</strong> or <strong>MEDIUM</strong> for repeated UI elements. Less dramatic, better for balance.
@@ -443,7 +443,7 @@ export function WordmarkShowcase() {
               minHeight: '100px',
               marginBottom: '12px',
             }}>
-              <FingWordmark variant="crater" size={48} />
+              <QuafiWordmark variant="crater" size={48} />
             </div>
             <div style={{ ...typoRaised.soft, fontSize: '11px' }}>
               Use <strong>DEEP</strong> or <strong>CRATER</strong> for maximum impact in large hero presentations.
@@ -471,7 +471,7 @@ export function WordmarkShowcase() {
 
         <div style={insetStyles}>
           <pre style={{
-            fontFamily: 'var(--fing-font-mono)',
+            fontFamily: 'var(--quafi-font-mono)',
             fontSize: '11px',
             lineHeight: 1.8,
             overflow: 'auto',
@@ -479,26 +479,26 @@ export function WordmarkShowcase() {
           }}>
 {`:root {
   /* Wordmark Font */
-  --fing-wordmark-font: 'Cormorant Garamond', serif;
-  --fing-wordmark-weight: 300;
-  --fing-wordmark-tracking: 0.06em;
+  --quafi-wordmark-font: 'Cormorant Garamond', serif;
+  --quafi-wordmark-weight: 300;
+  --quafi-wordmark-tracking: 0.06em;
 
   /* Recommended: Carved */
-  --fing-wm-inset-carved:
+  --quafi-wm-inset-carved:
     inset 5px 5px 10px rgba(130, 140, 155, 0.55),
     inset -5px -5px 10px rgba(255, 255, 255, 0.9);
-  --fing-wm-text-carved:
+  --quafi-wm-text-carved:
     -1px -1px 0px rgba(255, 255, 255, 0.9),
     1px 1px 2px rgba(130, 140, 155, 0.6);
 
   /* Recommended: Pressed */
-  --fing-wm-inset-pressed:
+  --quafi-wm-inset-pressed:
     inset 8px 8px 16px rgba(115, 125, 140, 0.65),
     inset -8px -8px 16px rgba(255, 255, 255, 0.85);
-  --fing-wm-text-pressed:
+  --quafi-wm-text-pressed:
     -1.5px -1.5px 1px rgba(255, 255, 255, 0.8),
     1.5px 1.5px 2px rgba(115, 125, 140, 0.7);
-  --fing-wm-bg-pressed: linear-gradient(145deg, #caced3, #dce0e5);
+  --quafi-wm-bg-pressed: linear-gradient(145deg, #caced3, #dce0e5);
 }`}
           </pre>
         </div>
@@ -523,16 +523,16 @@ export function WordmarkShowcase() {
 
         <div style={insetStyles}>
           <pre style={{
-            fontFamily: 'var(--fing-font-mono)',
+            fontFamily: 'var(--quafi-font-mono)',
             fontSize: '11px',
             lineHeight: 1.8,
             overflow: 'auto',
             ...typoRaised.whisper,
           }}>
-{`import { FingWordmark, FingWordmarkText } from '@atoms/FingWordmark';
+{`import { QuafiWordmark, QuafiWordmarkText } from '@atoms/QuafiWordmark';
 
 // With container (default)
-<FingWordmark
+<QuafiWordmark
   variant="carved"
   size={72}
   containerPadding={32}
@@ -540,7 +540,7 @@ export function WordmarkShowcase() {
 />
 
 // Text only (no container)
-<FingWordmarkText variant="carved" size={72} />
+<QuafiWordmarkText variant="carved" size={72} />
 
 // Available variants:
 // 'whisper' | 'soft' | 'medium' | 'deep'
@@ -553,10 +553,10 @@ export function WordmarkShowcase() {
       {/* Footer */}
       <footer style={{ textAlign: 'center', padding: '32px 0' }}>
         <div style={{ marginBottom: '16px' }}>
-          <FingWordmark variant="carved" size={36} />
+          <QuafiWordmark variant="carved" size={36} />
         </div>
         <p style={{ ...typoInset.soft, fontSize: '11px' }}>
-          FING Wordmark System v1.0 — Stone Marble Design System
+          QUAFI Wordmark System v1.0 — Stone Marble Design System
         </p>
       </footer>
     </div>

@@ -1,0 +1,144 @@
+/* Path: src/components/atoms/QuafiWordmark/QuafiWordmark.module.css */
+/* QUAFI Wordmark Component Styles */
+
+.container {
+  transition: box-shadow 200ms ease, transform 200ms ease;
+}
+
+.wordmark {
+  display: block;
+  transition: text-shadow 200ms ease;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   VARIANT-SPECIFIC CLASSES (optional utility classes)
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* Whisper - Petrol brand color (subtle) */
+.insetWhisper {
+  box-shadow: var(--quafi-wm-inset-whisper);
+}
+
+.textWhisper {
+  text-shadow:
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.8),
+    -0.5px -0.5px 0px rgba(var(--quafi-accent-rgb), 0.35);
+  color: var(--quafi-accent);
+}
+
+/* Soft */
+.insetSoft {
+  box-shadow: var(--quafi-wm-inset-soft);
+}
+
+.textSoft {
+  text-shadow: var(--quafi-wm-text-soft);
+  color: #d5d8dc;
+}
+
+/* Medium */
+.insetMedium {
+  box-shadow: var(--quafi-wm-inset-medium);
+}
+
+.textMedium {
+  text-shadow: var(--quafi-wm-text-medium);
+  color: #d5d8dc;
+}
+
+/* Deep */
+.insetDeep {
+  box-shadow: var(--quafi-wm-inset-deep);
+}
+
+.textDeep {
+  text-shadow: var(--quafi-wm-text-deep);
+  color: #d5d8dc;
+}
+
+/* Carved (Recommended) - Petrol brand color */
+.insetCarved {
+  box-shadow: var(--quafi-wm-inset-carved);
+}
+
+.textCarved {
+  text-shadow:
+    1.5px 1.5px 0px rgba(255, 255, 255, 0.85),
+    -1.5px -1.5px 1px rgba(var(--quafi-accent-rgb), 0.4);
+  color: var(--quafi-accent);
+}
+
+/* Pressed (Recommended Alternative) */
+.insetPressed {
+  background: var(--quafi-wm-bg-pressed);
+  box-shadow: var(--quafi-wm-inset-pressed);
+}
+
+.textPressed {
+  text-shadow: var(--quafi-wm-text-pressed);
+  color: #c5c9ce;
+}
+
+/* Bowl */
+.insetBowl {
+  background: var(--quafi-wm-bg-bowl);
+  box-shadow: var(--quafi-wm-inset-bowl);
+}
+
+.textBowl {
+  text-shadow: var(--quafi-wm-text-bowl);
+  color: #d5d8dc;
+}
+
+/* Channel */
+.insetChannel {
+  box-shadow: var(--quafi-wm-inset-channel);
+}
+
+.textChannel {
+  text-shadow: var(--quafi-wm-text-channel);
+  color: #d5d8dc;
+}
+
+/* Etched */
+.insetEtched {
+  box-shadow: var(--quafi-wm-inset-etched);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.textEtched {
+  text-shadow: var(--quafi-wm-text-etched);
+  color: #d5d8dc;
+}
+
+/* Crater */
+.insetCrater {
+  background: var(--quafi-wm-bg-crater);
+  box-shadow: var(--quafi-wm-inset-crater);
+}
+
+.textCrater {
+  text-shadow: var(--quafi-wm-text-crater);
+  color: #caced3;
+}
+
+/* Pillow */
+.insetPillow {
+  background: var(--quafi-wm-bg-pillow);
+  box-shadow: var(--quafi-wm-inset-pillow);
+}
+
+.textPillow {
+  text-shadow: var(--quafi-wm-text-pillow);
+  color: #d5d8dc;
+}
+
+/* Sharp */
+.insetSharp {
+  box-shadow: var(--quafi-wm-inset-sharp);
+}
+
+.textSharp {
+  text-shadow: var(--quafi-wm-text-sharp);
+  color: #d5d8dc;
+}

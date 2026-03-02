@@ -34,11 +34,11 @@
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 20px;
-  font-family: var(--fing-font-display);
+  font-family: var(--quafi-font-display);
   letter-spacing: -0.01em;
 
   /* Carved letterpress - text sinks into raised surface */
-  color: var(--fing-text-primary);
+  color: var(--quafi-text-primary);
   text-shadow:
     1px 1px 1px var(--shadow-light),
     -1px -1px 1px var(--shadow-dark);
@@ -55,11 +55,11 @@
 .description {
   font-size: 13px;
   margin-bottom: 20px;
-  font-family: var(--fing-font-mono);
+  font-family: var(--quafi-font-mono);
   line-height: 1.5;
 
   /* Subtle carved letterpress */
-  color: var(--fing-text-secondary);
+  color: var(--quafi-text-secondary);
   text-shadow:
     0.5px 0.5px 0px var(--shadow-light),
     -0.5px -0.5px 0px var(--shadow-dark);

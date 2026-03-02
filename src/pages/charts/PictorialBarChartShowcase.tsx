@@ -1,5 +1,5 @@
 // Path: src/pages/charts/PictorialBarChartShowcase.tsx
-// FING Design System - Glass-Neumorphism PictorialBar Chart
+// QUAFI Design System - Glass-Neumorphism PictorialBar Chart
 import React from 'react';
 import { ShowcaseSection } from '../../components/showcase';
 import { PictorialBarChart, pictorialSymbols } from '../../components/charts/echarts';
@@ -64,8 +64,8 @@ export function PictorialBarChartShowcase() {
     background: 'rgba(91, 163, 165, 0.15)',
     borderRadius: '8px',
     fontSize: '12px',
-    fontFamily: 'var(--fing-font-mono)',
-    color: 'var(--fing-text-muted)',
+    fontFamily: 'var(--quafi-font-mono)',
+    color: 'var(--quafi-text-muted)',
   };
 
   return (
@@ -126,19 +126,19 @@ export function PictorialBarChartShowcase() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '24px' }}>
             <div>
               <PictorialBarChart data={walletData.slice(0, 3)} height={220} symbol={pictorialSymbols.circle} symbolSize={40} showLabels={false} />
-              <p style={{ textAlign: 'center', color: 'var(--fing-text-muted)', fontSize: '12px', marginTop: '8px', fontFamily: 'var(--fing-font-mono)' }}>Circle</p>
+              <p style={{ textAlign: 'center', color: 'var(--quafi-text-muted)', fontSize: '12px', marginTop: '8px', fontFamily: 'var(--quafi-font-mono)' }}>Circle</p>
             </div>
             <div>
               <PictorialBarChart data={walletData.slice(0, 3)} height={220} symbol={pictorialSymbols.diamond} symbolSize={40} showLabels={false} />
-              <p style={{ textAlign: 'center', color: 'var(--fing-text-muted)', fontSize: '12px', marginTop: '8px', fontFamily: 'var(--fing-font-mono)' }}>Diamond</p>
+              <p style={{ textAlign: 'center', color: 'var(--quafi-text-muted)', fontSize: '12px', marginTop: '8px', fontFamily: 'var(--quafi-font-mono)' }}>Diamond</p>
             </div>
             <div>
               <PictorialBarChart data={walletData.slice(0, 3)} height={220} symbol={pictorialSymbols.roundRect} showLabels={false} />
-              <p style={{ textAlign: 'center', color: 'var(--fing-text-muted)', fontSize: '12px', marginTop: '8px', fontFamily: 'var(--fing-font-mono)' }}>Round Rect</p>
+              <p style={{ textAlign: 'center', color: 'var(--quafi-text-muted)', fontSize: '12px', marginTop: '8px', fontFamily: 'var(--quafi-font-mono)' }}>Round Rect</p>
             </div>
             <div>
               <PictorialBarChart data={walletData.slice(0, 3)} height={220} symbol={pictorialSymbols.triangle} symbolSize={40} showLabels={false} />
-              <p style={{ textAlign: 'center', color: 'var(--fing-text-muted)', fontSize: '12px', marginTop: '8px', fontFamily: 'var(--fing-font-mono)' }}>Triangle</p>
+              <p style={{ textAlign: 'center', color: 'var(--quafi-text-muted)', fontSize: '12px', marginTop: '8px', fontFamily: 'var(--quafi-font-mono)' }}>Triangle</p>
             </div>
           </div>
         </div>
@@ -146,13 +146,13 @@ export function PictorialBarChartShowcase() {
 
       <ShowcaseSection title="Especificaciones Tecnicas">
         <div style={tableContainerStyles}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12px', fontFamily: 'var(--fing-font-mono)' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12px', fontFamily: 'var(--quafi-font-mono)' }}>
             <thead>
               <tr>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent)', fontWeight: 600 }}>Prop</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent)', fontWeight: 600 }}>Type</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent)', fontWeight: 600 }}>Default</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent)', fontWeight: 600 }}>Description</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--quafi-accent)', fontWeight: 600 }}>Prop</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--quafi-accent)', fontWeight: 600 }}>Type</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--quafi-accent)', fontWeight: 600 }}>Default</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--quafi-accent)', fontWeight: 600 }}>Description</th>
               </tr>
             </thead>
             <tbody>
@@ -169,10 +169,10 @@ export function PictorialBarChartShowcase() {
                 { prop: 'maxValue', type: 'number', default: 'auto', desc: 'Maximum axis value' },
               ].map((row, i) => (
                 <tr key={i}>
-                  <td style={{ padding: '12px 16px', color: 'var(--fing-text-primary)' }}>{row.prop}</td>
-                  <td style={{ padding: '12px 16px', color: 'var(--fing-text-muted)' }}>{row.type}</td>
-                  <td style={{ padding: '12px 16px', color: 'var(--fing-text-muted)' }}>{row.default}</td>
-                  <td style={{ padding: '12px 16px', color: 'var(--fing-text-muted)' }}>{row.desc}</td>
+                  <td style={{ padding: '12px 16px', color: 'var(--quafi-text-primary)' }}>{row.prop}</td>
+                  <td style={{ padding: '12px 16px', color: 'var(--quafi-text-muted)' }}>{row.type}</td>
+                  <td style={{ padding: '12px 16px', color: 'var(--quafi-text-muted)' }}>{row.default}</td>
+                  <td style={{ padding: '12px 16px', color: 'var(--quafi-text-muted)' }}>{row.desc}</td>
                 </tr>
               ))}
             </tbody>
@@ -180,13 +180,13 @@ export function PictorialBarChartShowcase() {
         </div>
 
         <div style={{ marginTop: '24px' }}>
-          <h4 style={{ color: 'var(--fing-text-primary)', marginBottom: '12px', fontSize: '14px', fontWeight: 600 }}>Available Symbols (pictorialSymbols)</h4>
+          <h4 style={{ color: 'var(--quafi-text-primary)', marginBottom: '12px', fontSize: '14px', fontWeight: 600 }}>Available Symbols (pictorialSymbols)</h4>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
             {Object.keys(pictorialSymbols).map((key) => (
               <span key={key} style={symbolChipStyles}>{key}</span>
             ))}
           </div>
-          <p style={{ marginTop: '12px', fontSize: '12px', color: 'var(--fing-text-muted)', fontStyle: 'italic', fontFamily: 'var(--fing-font-mono)' }}>
+          <p style={{ marginTop: '12px', fontSize: '12px', color: 'var(--quafi-text-muted)', fontStyle: 'italic', fontFamily: 'var(--quafi-font-mono)' }}>
             Note: Basic shapes (circle, rect, roundRect, triangle, diamond, pin, arrow) work best.
             Custom SVG path symbols (person, dollar, chart, growth, star) may require specific symbolSize tuning.
           </p>

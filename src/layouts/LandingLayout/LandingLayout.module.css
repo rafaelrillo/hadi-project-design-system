@@ -33,13 +33,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: var(--fing-space-12);
+  padding: var(--quafi-space-12);
   text-align: center;
 }
 
 /* Section helper */
 .section {
-  padding: var(--fing-space-16) var(--fing-space-12);
+  padding: var(--quafi-space-16) var(--quafi-space-12);
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -48,5 +48,5 @@
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 var(--fing-space-6);
+  padding: 0 var(--quafi-space-6);
 }

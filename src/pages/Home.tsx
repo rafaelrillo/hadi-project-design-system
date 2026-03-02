@@ -1,10 +1,10 @@
 // Path: src/pages/Home.tsx
-// FING Design System - Home Page
+// QUAFI Design System - Home Page
 
 import { Link } from 'react-router-dom';
 import { LogIn } from 'lucide-react';
-import { FingEmblem } from '@/components/atoms/FingEmblem';
-import { FingWordmarkText } from '@/components/atoms/FingWordmark';
+import { QuafiEmblem } from '@/components/atoms/QuafiEmblem';
+import { QuafiWordmarkText } from '@/components/atoms/QuafiWordmark';
 
 export function Home() {
   return (
@@ -28,17 +28,17 @@ export function Home() {
           gap: '24px',
         }}
       >
-        {/* FING Emblem */}
-        <FingEmblem size={180} animation="none" svgScale={0.85} />
+        {/* QUAFI Emblem */}
+        <QuafiEmblem size={180} animation="none" svgScale={0.85} />
 
-        {/* FING Wordmark */}
-        <FingWordmarkText variant="carved" size={96} />
+        {/* QUAFI Wordmark */}
+        <QuafiWordmarkText variant="carved" size={96} />
 
         {/* Design System Label */}
         <p
           style={{
             fontSize: '18px',
-            fontFamily: 'var(--fing-font-mono)',
+            fontFamily: 'var(--quafi-font-mono)',
             color: '#636E72',
             letterSpacing: '0.1em',
             textTransform: 'uppercase',
@@ -64,10 +64,10 @@ export function Home() {
           backdropFilter: 'blur(8px)',
           border: '1px solid rgba(255, 255, 255, 0.5)',
           borderRadius: '15px',
-          color: 'var(--fing-text-primary)',
+          color: 'var(--quafi-text-primary)',
           fontSize: '14px',
           fontWeight: 600,
-          fontFamily: 'var(--fing-font-mono)',
+          fontFamily: 'var(--quafi-font-mono)',
           textDecoration: 'none',
           cursor: 'pointer',
           boxShadow: `

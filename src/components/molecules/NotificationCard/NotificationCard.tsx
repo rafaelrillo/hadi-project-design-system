@@ -24,19 +24,19 @@ export function NotificationCard({
   const variantConfig = {
     success: {
       className: styles.variantSuccess,
-      iconColor: 'var(--fing-status-positive)'
+      iconColor: 'var(--quafi-status-positive)'
     },
     error: {
       className: styles.variantError,
-      iconColor: 'var(--fing-status-negative)'
+      iconColor: 'var(--quafi-status-negative)'
     },
     warning: {
       className: styles.variantWarning,
-      iconColor: 'var(--fing-status-warning)'
+      iconColor: 'var(--quafi-status-warning)'
     },
     info: {
       className: styles.variantInfo,
-      iconColor: 'var(--fing-accent-primary)'
+      iconColor: 'var(--quafi-accent-primary)'
     }
   };
 
@@ -72,7 +72,7 @@ export function NotificationCard({
           className={styles.closeButton}
           aria-label="Cerrar notificación"
         >
-          <X size={16} color="var(--fing-text-secondary)" />
+          <X size={16} color="var(--quafi-text-secondary)" />
         </button>
       )}
     </div>

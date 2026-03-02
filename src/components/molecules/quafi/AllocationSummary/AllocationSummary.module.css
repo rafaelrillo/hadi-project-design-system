@@ -1,0 +1,177 @@
+/* Path: src/components/molecules/fing/AllocationSummary/AllocationSummary.module.css */
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   ALLOCATION SUMMARY
+   Portfolio allocation breakdown
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.container {
+  background: var(--quafi-bg-elevated);
+  border: 1px solid var(--quafi-border-subtle);
+  border-radius: var(--quafi-radius-md);
+  padding: 20px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   HEADER
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.header {
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--quafi-border-subtle);
+}
+
+.title {
+  font-family: var(--quafi-font-primary);
+  font-size: var(--quafi-text-xs);
+  font-weight: 500;
+  color: var(--quafi-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   ALLOCATIONS LIST
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.allocationsList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.allocationRow {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 16px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   BAR SECTION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.barSection {
+  flex: 1;
+  min-width: 0;
+}
+
+.barTrack {
+  height: 8px;
+  background: var(--quafi-bg-subtle);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.barFill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width var(--quafi-transition-slow);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   LABEL SECTION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.labelSection {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 100px;
+}
+
+.colorDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.assetClass {
+  font-family: var(--quafi-font-primary);
+  font-size: var(--quafi-text-sm);
+  color: var(--quafi-text-primary);
+  white-space: nowrap;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   VALUE SECTION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.valueSection {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 80px;
+  justify-content: flex-end;
+}
+
+.percentage {
+  font-family: var(--quafi-font-numeric);
+  font-size: var(--quafi-text-sm);
+  font-weight: 600;
+  color: var(--quafi-text-primary);
+  letter-spacing: var(--quafi-tracking-led);
+  min-width: 36px;
+  text-align: right;
+}
+
+.change {
+  font-family: var(--quafi-font-numeric);
+  font-size: var(--quafi-text-xs);
+  font-weight: 400;
+  letter-spacing: var(--quafi-tracking-led);
+  white-space: nowrap;
+}
+
+.change.positive {
+  color: var(--quafi-status-positive-text);
+  text-shadow: var(--quafi-glow-positive);
+}
+
+.change.negative {
+  color: var(--quafi-status-negative-text);
+  text-shadow: var(--quafi-glow-negative);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   TOTAL
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.total {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 16px;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--quafi-border-subtle);
+}
+
+.totalLabel {
+  font-family: var(--quafi-font-primary);
+  font-size: var(--quafi-text-xs);
+  color: var(--quafi-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.totalValue {
+  font-family: var(--quafi-font-numeric);
+  font-size: var(--quafi-text-sm);
+  font-weight: 600;
+  color: var(--quafi-text-secondary);
+  letter-spacing: var(--quafi-tracking-led);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   REDUCED MOTION
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  .barFill {
+    transition: none;
+  }
+}

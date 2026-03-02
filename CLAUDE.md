@@ -1,8 +1,8 @@
-# SENTINEL Design System
+# QUAFI Design System
 
 ## Descripcion del Proyecto
 
-**SENTINEL** es una plataforma de analisis de inversiones y recomendaciones del mercado de valores. El design system utiliza **Stone Marble Neumorphism**: superficies con aspecto de marmol pulido, usando una jerarquia estricta de elevaciones e insets.
+**QUAFI** es un motor de optimizacion de portfolios (API B2B + App B2C). El design system utiliza **Stone Marble Neumorphism**: superficies con aspecto de marmol pulido, usando una jerarquia estricta de elevaciones e insets.
 
 **Branch actual**: `redesign/stock-market-ui`
 
@@ -17,11 +17,11 @@
 
 ---
 
-## FING Brand Identity
+## QUAFI Brand Identity
 
 ### Origen del Nombre
 
-**FING** = **FIN** (fīnis) + **ING** (ingenium)
+**QUAFI** = **FIN** (fīnis) + **ING** (ingenium)
 
 - **FINIS → FINANCE**: Del latin "fīnis" — resolver, concluir. El significado original no era sobre dinero, sino sobre **completar lo pendiente**: saldar deudas, cumplir compromisos, alcanzar objetivos.
 - **INGENIUM → ENGINE**: Del latin "ingenium" — "lo que nace dentro". Antes de significar "maquina", engine significaba **ingenio**: la capacidad humana de crear dispositivos que resuelven problemas.
@@ -30,7 +30,7 @@
 
 ### Personalidad de Marca
 
-FING encarna el arquetipo del **Senior Analyst** — alguien que ha visto ciclos completos, que no se impresiona por el ruido diario, que solo habla cuando hay algo que valga la pena decir.
+QUAFI encarna el arquetipo del **Senior Analyst** — alguien que ha visto ciclos completos, que no se impresiona por el ruido diario, que solo habla cuando hay algo que valga la pena decir.
 
 | Trait | Descripcion |
 |-------|-------------|
@@ -63,28 +63,28 @@ FING encarna el arquetipo del **Senior Analyst** — alguien que ha visto ciclos
 El logo consiste en dos formas organicas que representan **dualidad** (riesgo/retorno), **balance** y **dialogo**. Se superponen creando profundidad.
 
 **4 Variantes:**
-1. **Dark** (fondos oscuros): `--fing-logo-slate-1`, `--fing-logo-slate-2`
-2. **Stone** (fondos marble): `--fing-logo-marble-1`, `--fing-logo-marble-2`
+1. **Dark** (fondos oscuros): `--quafi-logo-slate-1`, `--quafi-logo-slate-2`
+2. **Stone** (fondos marble): `--quafi-logo-marble-1`, `--quafi-logo-marble-2`
 3. **White** (fondos de acento teal)
-4. **Light** (fondos blancos): `--fing-logo-light-1`, `--fing-logo-light-2`
+4. **Light** (fondos blancos): `--quafi-logo-light-1`, `--quafi-logo-light-2`
 
-### FING Emblem — Radar Symbol
+### QUAFI Emblem — Radar Symbol
 
-El emblema de FING es un **simbolo de radar/pulso** (punto central + 3 aros concentricos) tallado con efecto sutil dentro de un **contenedor circular hundido (inset)**. Representa "quiet intelligence" — escaneando, analizando, resolviendo.
+El emblema de QUAFI es un **simbolo de radar/pulso** (punto central + 3 aros concentricos) tallado con efecto sutil dentro de un **contenedor circular hundido (inset)**. Representa "quiet intelligence" — escaneando, analizando, resolviendo.
 
 #### Componente
 
 ```tsx
-import { FingEmblem, FingLockupHorizontal, FingLockupVertical } from '@atoms/FingEmblem';
+import { QuafiEmblem, QuafiLockupHorizontal, QuafiLockupVertical } from '@atoms/QuafiEmblem';
 
 // Emblema basico
-<FingEmblem size={100} animation="ripple" />
+<QuafiEmblem size={100} animation="ripple" />
 
 // Lockup horizontal (emblema + wordmark)
-<FingLockupHorizontal size={70} animation="ripple" />
+<QuafiLockupHorizontal size={70} animation="ripple" />
 
 // Lockup vertical
-<FingLockupVertical size={80} />
+<QuafiLockupVertical size={80} />
 ```
 
 #### Props
@@ -111,28 +111,28 @@ import { FingEmblem, FingLockupHorizontal, FingLockupVertical } from '@atoms/Fin
 
 ```css
 /* Emblem base */
---fing-marble-base: #d5d8dc;
---fing-shadow-light: rgba(255, 255, 255, 0.95);
---fing-shadow-dark: rgba(147, 157, 170, 0.55);
---fing-teal-glow: rgba(58, 106, 114, 0.5);  /* Petrol glow */
+--quafi-marble-base: #d5d8dc;
+--quafi-shadow-light: rgba(255, 255, 255, 0.95);
+--quafi-shadow-dark: rgba(147, 157, 170, 0.55);
+--quafi-teal-glow: rgba(58, 106, 114, 0.5);  /* Petrol glow */
 
 /* Radar symbol */
---fing-symbol-fill: #babec4;
---fing-symbol-stroke: #b2b6bc;
+--quafi-symbol-fill: #babec4;
+--quafi-symbol-stroke: #b2b6bc;
 
 /* Carve effect */
---fing-carve-light: rgba(255, 255, 255, 0.92);
---fing-carve-dark: rgba(140, 150, 165, 0.65);
+--quafi-carve-light: rgba(255, 255, 255, 0.92);
+--quafi-carve-dark: rgba(140, 150, 165, 0.65);
 ```
 
 #### Ubicacion
 
-- Archivo: `src/components/atoms/FingEmblem/`
-- Showcase: `/showcase/styles/brand` (seccion "FING Emblem — Radar Symbol")
+- Archivo: `src/components/atoms/QuafiEmblem/`
+- Showcase: `/showcase/styles/brand` (seccion "QUAFI Emblem — Radar Symbol")
 
-### FING Wordmark — Inset Typography System
+### QUAFI Wordmark — Inset Typography System
 
-El wordmark de FING utiliza **Cormorant Garamond Light** con 12 variaciones de efecto inset/cavado que se alinean con la filosofia Stone Marble.
+El wordmark de QUAFI utiliza **Cormorant Garamond Light** con 12 variaciones de efecto inset/cavado que se alinean con la filosofia Stone Marble.
 
 #### Tipografia
 
@@ -145,20 +145,20 @@ El wordmark de FING utiliza **Cormorant Garamond Light** con 12 variaciones de e
 #### Componente
 
 ```tsx
-import { FingWordmark, FingWordmarkText } from '@atoms/FingWordmark';
+import { QuafiWordmark, QuafiWordmarkText } from '@atoms/QuafiWordmark';
 
 // Con contenedor (default)
-<FingWordmark variant="carved" size={72} />
+<QuafiWordmark variant="carved" size={72} />
 
 // Solo texto (sin contenedor)
-<FingWordmarkText variant="carved" size={72} />
+<QuafiWordmarkText variant="carved" size={72} />
 ```
 
 #### Props
 
 | Prop | Tipo | Default | Descripcion |
 |------|------|---------|-------------|
-| `variant` | `FingWordmarkVariant` | `'carved'` | Variacion de inset |
+| `variant` | `QuafiWordmarkVariant` | `'carved'` | Variacion de inset |
 | `size` | `number` | `72` | Tamaño de fuente en px |
 | `showContainer` | `boolean` | `true` | Mostrar contenedor |
 | `containerPadding` | `number` | `32` | Padding del contenedor |
@@ -185,27 +185,27 @@ import { FingWordmark, FingWordmarkText } from '@atoms/FingWordmark';
 
 ```css
 /* Wordmark Font */
---fing-wordmark-font: 'Cormorant Garamond', serif;
---fing-wordmark-weight: 300;
---fing-wordmark-tracking: 0.06em;
+--quafi-wordmark-font: 'Cormorant Garamond', serif;
+--quafi-wordmark-weight: 300;
+--quafi-wordmark-tracking: 0.06em;
 
 /* Recomendado: Carved */
---fing-wm-inset-carved: inset 5px 5px 10px rgba(130, 140, 155, 0.55),
+--quafi-wm-inset-carved: inset 5px 5px 10px rgba(130, 140, 155, 0.55),
                         inset -5px -5px 10px rgba(255, 255, 255, 0.9);
---fing-wm-text-carved: -1px -1px 0px rgba(255, 255, 255, 0.9),
+--quafi-wm-text-carved: -1px -1px 0px rgba(255, 255, 255, 0.9),
                        1px 1px 2px rgba(130, 140, 155, 0.6);
 
 /* Recomendado: Pressed */
---fing-wm-inset-pressed: inset 8px 8px 16px rgba(115, 125, 140, 0.65),
+--quafi-wm-inset-pressed: inset 8px 8px 16px rgba(115, 125, 140, 0.65),
                          inset -8px -8px 16px rgba(255, 255, 255, 0.85);
---fing-wm-text-pressed: -1.5px -1.5px 1px rgba(255, 255, 255, 0.8),
+--quafi-wm-text-pressed: -1.5px -1.5px 1px rgba(255, 255, 255, 0.8),
                         1.5px 1.5px 2px rgba(115, 125, 140, 0.7);
---fing-wm-bg-pressed: linear-gradient(145deg, #caced3, #dce0e5);
+--quafi-wm-bg-pressed: linear-gradient(145deg, #caced3, #dce0e5);
 ```
 
 #### Ubicacion
 
-- Archivo: `src/components/atoms/FingWordmark/`
+- Archivo: `src/components/atoms/QuafiWordmark/`
 - Showcase: `/showcase/styles/wordmark`
 
 ### Colores de Marca — Natural Mineral Palette
@@ -214,62 +214,62 @@ Todos los colores semanticos derivan de materiales naturales: minerales, piedras
 
 ```css
 /* Primary Black - Charcoal (burned wood carbon) */
---fing-black: #252528;
---fing-black-rgb: 37, 37, 40;
+--quafi-black: #252528;
+--quafi-black-rgb: 37, 37, 40;
 
 /* Logo Colors - Dark Variant */
---fing-logo-slate-1: #3a3a42;
---fing-logo-slate-2: #44444c;
+--quafi-logo-slate-1: #3a3a42;
+--quafi-logo-slate-2: #44444c;
 
 /* Logo Colors - Stone Variant */
---fing-logo-marble-1: #eceef2;
---fing-logo-marble-2: #f0f2f5;
+--quafi-logo-marble-1: #eceef2;
+--quafi-logo-marble-2: #f0f2f5;
 
 /* Logo Colors - Light Variant */
---fing-logo-light-1: #e8e8ec;
---fing-logo-light-2: #ededf0;
+--quafi-logo-light-1: #e8e8ec;
+--quafi-logo-light-2: #ededf0;
 
 /* Brand Accent - Petrol (petroleum deposits) */
---fing-accent: #3a6a72;
---fing-accent-light: #4a7a82;
---fing-accent-dark: #2a5a62;
+--quafi-accent: #3a6a72;
+--quafi-accent-light: #4a7a82;
+--quafi-accent-dark: #2a5a62;
 
 /* Text Accent - Steel (refined iron alloy) */
---fing-text-accent: #4a6a7a;
+--quafi-text-accent: #4a6a7a;
 
 /* Semantic Colors - Natural Minerals */
---fing-positive: #4a7a6a;       /* Jade (green stone) */
---fing-positive-light: #5a8a7a;
---fing-positive-dark: #3a6a5a;
+--quafi-positive: #4a7a6a;       /* Jade (green stone) */
+--quafi-positive-light: #5a8a7a;
+--quafi-positive-dark: #3a6a5a;
 
---fing-warning: #a08a4a;        /* Gold (pure metal) */
---fing-warning-light: #b09a5a;
---fing-warning-dark: #8a7a3a;
+--quafi-warning: #a08a4a;        /* Gold (pure metal) */
+--quafi-warning-light: #b09a5a;
+--quafi-warning-dark: #8a7a3a;
 
---fing-negative: #8a5a4a;       /* Rust (iron oxide) */
---fing-negative-light: #9a6a5a;
---fing-negative-dark: #7a4a3a;
+--quafi-negative: #8a5a4a;       /* Rust (iron oxide) */
+--quafi-negative-light: #9a6a5a;
+--quafi-negative-dark: #7a4a3a;
 
---fing-info: #4a6a7a;           /* Steel (same as text accent) */
---fing-info-light: #5a7a8a;
---fing-info-dark: #3a5a6a;
+--quafi-info: #4a6a7a;           /* Steel (same as text accent) */
+--quafi-info-light: #5a7a8a;
+--quafi-info-dark: #3a5a6a;
 
 /* Text Colors */
---fing-text-primary: var(--fing-black);
---fing-text-light: #f0f0f2;
---fing-text-muted: #8a8f96;
---fing-text-dark: var(--fing-black);
+--quafi-text-primary: var(--quafi-black);
+--quafi-text-light: #f0f0f2;
+--quafi-text-muted: #8a8f96;
+--quafi-text-dark: var(--quafi-black);
 ```
 
 | Token | Name | Hex | Natural Origin |
 |-------|------|-----|----------------|
-| `--fing-black` | Charcoal | #252528 | Burned wood carbon |
-| `--fing-accent` | Petrol | #3a6a72 | Petroleum deposits |
-| `--fing-text-accent` | Steel | #4a6a7a | Refined iron alloy |
-| `--fing-positive` | Jade | #4a7a6a | Jade stone |
-| `--fing-warning` | Gold | #a08a4a | Pure gold metal |
-| `--fing-negative` | Rust | #8a5a4a | Iron oxide |
-| `--fing-info` | Steel | #4a6a7a | Refined iron alloy |
+| `--quafi-black` | Charcoal | #252528 | Burned wood carbon |
+| `--quafi-accent` | Petrol | #3a6a72 | Petroleum deposits |
+| `--quafi-text-accent` | Steel | #4a6a7a | Refined iron alloy |
+| `--quafi-positive` | Jade | #4a7a6a | Jade stone |
+| `--quafi-warning` | Gold | #a08a4a | Pure gold metal |
+| `--quafi-negative` | Rust | #8a5a4a | Iron oxide |
+| `--quafi-info` | Steel | #4a6a7a | Refined iron alloy |
 | `--marble-base` | Marble | #d5d8dc | Natural stone |
 
 ### Letterpress Text Shadows
@@ -279,7 +279,7 @@ Para texto coloreado sobre fondo marble, usar este patron:
 ```css
 /* Positive - Jade */
 .text-positive {
-  color: var(--fing-positive);
+  color: var(--quafi-positive);
   text-shadow:
     0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
     -0.5px -0.5px 0px rgba(74, 122, 106, 0.25);
@@ -287,7 +287,7 @@ Para texto coloreado sobre fondo marble, usar este patron:
 
 /* Warning - Gold */
 .text-warning {
-  color: var(--fing-warning);
+  color: var(--quafi-warning);
   text-shadow:
     0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
     -0.5px -0.5px 0px rgba(160, 138, 74, 0.25);
@@ -295,7 +295,7 @@ Para texto coloreado sobre fondo marble, usar este patron:
 
 /* Negative - Rust */
 .text-negative {
-  color: var(--fing-negative);
+  color: var(--quafi-negative);
   text-shadow:
     0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
     -0.5px -0.5px 0px rgba(138, 90, 74, 0.25);
@@ -304,7 +304,7 @@ Para texto coloreado sobre fondo marble, usar este patron:
 /* Primary - Charcoal */
 .text-primary,
 .text-charcoal {
-  color: var(--fing-black);
+  color: var(--quafi-black);
   text-shadow:
     0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
     -0.5px -0.5px 0px rgba(37, 37, 40, 0.2);
@@ -312,7 +312,7 @@ Para texto coloreado sobre fondo marble, usar este patron:
 
 /* Primary Strong - Charcoal (for larger text) */
 .text-primary-strong {
-  color: var(--fing-black);
+  color: var(--quafi-black);
   text-shadow:
     1px 1px 0px rgba(255, 255, 255, 0.9),
     -1px -1px 0px rgba(37, 37, 40, 0.25);
@@ -341,7 +341,7 @@ Para texto coloreado sobre fondo marble, usar este patron:
 | **DM Sans** | UI general, titulos, cuerpo | `--sentinel-font-primary` |
 | **IBM Plex Mono** | Datos financieros, tickers | `--sentinel-font-mono` |
 | **Libre Baskerville** | Display, headlines elegantes | `--sentinel-font-display` |
-| **Cormorant Garamond** | Wordmark FING | `--fing-wordmark-font` |
+| **Cormorant Garamond** | Wordmark QUAFI | `--quafi-wordmark-font` |
 
 ### Brand Showcase
 
@@ -359,7 +359,7 @@ Archivo: `src/pages/styles/BrandShowcase.tsx`
 | Lenguaje | TypeScript | Strict mode | |
 | Build | Vite | | Path aliases configurados |
 | State | Zustand | | 6 stores: auth, market, portfolio, wallet, news, recommendations |
-| Charts | **ECharts** | 5.6.0 | 24 tipos de graficos + tema SENTINEL |
+| Charts | **ECharts** | 5.6.0 | 24 tipos de graficos + tema QUAFI |
 | Animaciones | Framer Motion | | Transiciones suaves |
 | Iconos | Lucide React | | |
 | Routing | React Router DOM | v6 | Lazy loading por ruta |
@@ -771,7 +771,7 @@ export function MyShowcase() {
 | **Jerarquia** | TreeChart, TreeMap, SunburstChart |
 | **Especiales** | PictorialBarChart |
 
-### Tema SENTINEL
+### Tema QUAFI
 
 Definido en `src/components/charts/echarts/sentinelTheme.ts`:
 - Paleta de 8 colores para series
@@ -813,8 +813,8 @@ npm run lint          # ESLint
 ## Rutas del Showcase
 
 ```
-/showcase/styles/brand          → FING Brand Guidelines
-/showcase/styles/wordmark       → FING Wordmark Inset Variations
+/showcase/styles/brand          → QUAFI Brand Guidelines
+/showcase/styles/wordmark       → QUAFI Wordmark Inset Variations
 /showcase/styles/colors         → Paleta de colores
 /showcase/styles/typography     → Sistema tipografico
 /showcase/styles/shadows        → Sombras y elevaciones
@@ -831,7 +831,7 @@ npm run lint          # ESLint
 /showcase/organisms/*           → Organismos (Sidebar, Modal, etc.)
 /showcase/charts/*              → Graficos ECharts
 /showcase/animations/*          → Animaciones
-/showcase/sentinel/*            → Componentes SENTINEL
+/showcase/quafi/*               → Componentes QUAFI
 ```
 
 ---
@@ -870,17 +870,17 @@ npm run lint          # ESLint
   - [x] Variables CSS para 5 niveles de sombras
   - [x] InsetContainer component
   - [x] StoneMarbleShowcase
-- [x] **FING Brand Integration** (2026-01-18)
+- [x] **QUAFI Brand Integration** (2026-01-18)
   - [x] Variables CSS para colores de logo (slate, marble, light)
-  - [x] Colores semanticos conservadores (--fing-positive, --fing-negative, --fing-warning)
+  - [x] Colores semanticos conservadores (--quafi-positive, --quafi-negative, --quafi-warning)
   - [x] Migracion tipografica a DM Sans
   - [x] BrandShowcase.tsx con guidelines completas
   - [x] Documentacion en CLAUDE.md
-- [x] **FING Emblem — Radar Symbol** (2026-01-18)
-  - [x] FingEmblem component con 6 animaciones (breathe, pulse, glow, ripple, rotate, heartbeat)
+- [x] **QUAFI Emblem — Radar Symbol** (2026-01-18)
+  - [x] QuafiEmblem component con 6 animaciones (breathe, pulse, glow, ripple, rotate, heartbeat)
   - [x] Contenedor inset circular con efecto de tallado SVG
   - [x] Lockups horizontal y vertical con wordmark
-  - [x] Tokens CSS para emblem (--fing-symbol-fill, --fing-symbol-stroke, --fing-carve-*)
+  - [x] Tokens CSS para emblem (--quafi-symbol-fill, --quafi-symbol-stroke, --quafi-carve-*)
   - [x] Integracion en DashboardLayout, LandingHero, SidebarShowcase, ShowcaseLayout
   - [x] Seccion en BrandShowcase con demos de tamaños y animaciones
 - [x] **Natural Mineral Color Palette** (2026-01-19)
@@ -895,23 +895,23 @@ npm run lint          # ESLint
   - [x] Letterpress text shadow utilities (.text-positive, .text-warning, .text-primary, etc.)
   - [x] CSS variables para letterpress (--lp-positive, --lp-warning, --lp-primary, etc.)
   - [x] Documentacion actualizada en CLAUDE.md
-- [x] **FING Wordmark — Inset Typography System** (2026-01-19)
+- [x] **QUAFI Wordmark — Inset Typography System** (2026-01-19)
   - [x] Cormorant Garamond Light (300) como fuente del wordmark
   - [x] 12 variaciones de efecto inset/cavado
-  - [x] FingWordmark y FingWordmarkText components
-  - [x] Variables CSS para containers (--fing-wm-inset-*) y texto (--fing-wm-text-*)
+  - [x] QuafiWordmark y QuafiWordmarkText components
+  - [x] Variables CSS para containers (--quafi-wm-inset-*) y texto (--quafi-wm-text-*)
   - [x] 4 gradientes especiales (pressed, bowl, crater, pillow)
   - [x] WordmarkShowcase con demos de todas las variaciones
   - [x] Ruta: `/showcase/styles/wordmark`
 - [x] **Design System Consolidation + Lab Separation** (2026-01-27)
   - [x] Auditoría profunda del design system (tipografía, colores, sombras, letterpress)
-  - [x] Extracción de tokens desde FingHome y DashboardPage como fuente de verdad
+  - [x] Extracción de tokens desde QuafiHome y DashboardPage como fuente de verdad
   - [x] Creación de archivos CSS modulares:
     - `colors.css` - Paleta Natural Mineral
     - `typography.css` - Familias, tamaños, pesos, tracking
     - `shadows.css` - Sistema RAISED/INSET/GLASS
     - `letterpress.css` - Text-shadows neumórficos
-  - [x] Migración de 23 valores letterpress hardcodeados a variables en FingHome.module.css
+  - [x] Migración de 23 valores letterpress hardcodeados a variables en QuafiHome.module.css
   - [x] Separación de código experimental en `src/styles/lab/`:
     - Movido `light-engine.css` y `textures.css` al lab
     - Creado `lab/README.md` con reglas de uso
@@ -976,7 +976,7 @@ npm run lint          # ESLint
 - **Decision**: Consolidar tokens CSS en archivos modulares y separar código experimental en lab/
 - **Problema identificado**:
   - theme.css monolítico de 84KB con variables duplicadas
-  - 23 valores letterpress hardcodeados en FingHome.module.css
+  - 23 valores letterpress hardcodeados en QuafiHome.module.css
   - Código experimental (light-engine, textures) importado globalmente
   - Falta de claridad entre oficial vs experimental
 - **Solución implementada**:
@@ -1009,7 +1009,7 @@ npm run lint          # ESLint
   - Falta de showcase para animaciones CSS nativas
 - **Solución implementada**:
   - `animations.css` - Sistema completo de animaciones con scroll-triggered
-  - `wordmark.css` - 12 variantes inset para FING wordmark
+  - `wordmark.css` - 12 variantes inset para QUAFI wordmark
   - `buttons.css` - 8 glass colors, 5 tamaños, transitions
   - `CSSAnimationsShowcase.tsx` - Showcase interactivo con demos
 - **Archivos clave creados**:
@@ -1018,8 +1018,8 @@ npm run lint          # ESLint
   - `/src/styles/buttons.css` - Button system tokens (~177 líneas)
   - `/src/pages/styles/CSSAnimationsShowcase.tsx` - Showcase de animaciones
 - **Características de animations.css**:
-  - Tokens de duración: `--fing-duration-instant` (100ms) a `--fing-duration-slower` (700ms)
-  - Tokens de easing: `--fing-ease-out`, `--fing-ease-in-out`, `--fing-ease-spring`
+  - Tokens de duración: `--quafi-duration-instant` (100ms) a `--quafi-duration-slower` (700ms)
+  - Tokens de easing: `--quafi-ease-out`, `--quafi-ease-in-out`, `--quafi-ease-spring`
   - 17+ @keyframes organizados por categoría
   - Sistema `[data-animate]` para scroll-triggered con Intersection Observer
   - Sistema `[data-animate-stagger]` para animaciones secuenciales
@@ -1050,29 +1050,29 @@ npm run lint          # ESLint
 - **Cambios aplicados a 61 archivos**:
   - Import: `import { showcase } from '../showcaseStyles';`
   - Header: `showcase.header.container`, `showcase.header.title`, `showcase.header.description`
-  - Colores: `var(--marble-base)`, `var(--shadow-dark)`, `var(--fing-accent)`
+  - Colores: `var(--marble-base)`, `var(--shadow-dark)`, `var(--quafi-accent)`
   - Letterpress: `var(--lp-petrol-whisper)` para títulos
   - BorderRadius: 20px para containers principales
 - **Razón**: Establecer consistencia visual, facilitar mantenimiento, y documentar patrones
 
-**[2026-01-19] FING Wordmark — Inset Typography System**
+**[2026-01-19] QUAFI Wordmark — Inset Typography System**
 - **Decision**: Crear sistema de wordmark con 12 variaciones inset usando Cormorant Garamond
 - **Cambios principales**:
   - Tipografia: Cormorant Garamond Light (weight 300, letter-spacing 0.06em)
   - 12 variaciones: whisper, soft, medium, deep, carved, pressed, bowl, channel, etched, crater, pillow, sharp
   - Variaciones recomendadas: **CARVED** (tallado invertido) y **PRESSED** (gradiente direccional)
-  - Componentes: FingWordmark (con contenedor) y FingWordmarkText (solo texto)
+  - Componentes: QuafiWordmark (con contenedor) y QuafiWordmarkText (solo texto)
 - **Archivos clave**:
-  - `/src/components/atoms/FingWordmark/FingWordmark.tsx`
-  - `/src/components/atoms/FingWordmark/FingWordmark.module.css`
-  - `/src/styles/theme.css` (tokens --fing-wm-*, --fing-wordmark-*)
+  - `/src/components/atoms/QuafiWordmark/QuafiWordmark.tsx`
+  - `/src/components/atoms/QuafiWordmark/QuafiWordmark.module.css`
+  - `/src/styles/theme.css` (tokens --quafi-wm-*, --quafi-wordmark-*)
   - `/src/pages/styles/WordmarkShowcase.tsx`
   - `/index.html` (import Cormorant Garamond)
 - **Variables CSS agregadas**:
-  - Font: `--fing-wordmark-font`, `--fing-wordmark-weight`, `--fing-wordmark-tracking`
-  - Containers: `--fing-wm-inset-whisper` a `--fing-wm-inset-sharp`
-  - Text shadows: `--fing-wm-text-whisper` a `--fing-wm-text-sharp`
-  - Gradientes: `--fing-wm-bg-pressed`, `--fing-wm-bg-bowl`, `--fing-wm-bg-crater`, `--fing-wm-bg-pillow`
+  - Font: `--quafi-wordmark-font`, `--quafi-wordmark-weight`, `--quafi-wordmark-tracking`
+  - Containers: `--quafi-wm-inset-whisper` a `--quafi-wm-inset-sharp`
+  - Text shadows: `--quafi-wm-text-whisper` a `--quafi-wm-text-sharp`
+  - Gradientes: `--quafi-wm-bg-pressed`, `--quafi-wm-bg-bowl`, `--quafi-wm-bg-crater`, `--quafi-wm-bg-pillow`
 - **Razon**: El wordmark necesita un efecto "carved in stone" que se alinee con la estetica Stone Marble
 
 **[2026-01-19] Natural Mineral Color Palette**
@@ -1094,32 +1094,32 @@ npm run lint          # ESLint
   - Variables: `--lp-positive`, `--lp-warning`, `--lp-negative`, `--lp-info`, `--lp-accent`, `--lp-primary`, `--lp-primary-strong`
 - **Razon**: Todos los colores ahora tienen un origen natural (minerales, piedras, metales, tierra, carbon) para coherencia con la estetica Stone Marble
 
-**[2026-01-18] FING Emblem — Radar Symbol**
-- **Decision**: Crear nuevo emblema combinando el logo de SENTINEL con FING
+**[2026-01-18] QUAFI Emblem — Radar Symbol**
+- **Decision**: Crear nuevo emblema combinando el logo de QUAFI con QUAFI
 - **Cambios principales**:
-  - Componente FingEmblem: punto central + 3 aros concentricos en contenedor inset
+  - Componente QuafiEmblem: punto central + 3 aros concentricos en contenedor inset
   - 6 animaciones CSS: breathe, pulse, glow, ripple, rotate, heartbeat
   - Efecto de tallado SVG usando filtros (feOffset, feGaussianBlur, feMerge)
   - Lockups con wordmark en posicion horizontal y vertical
 - **Archivos clave**:
-  - `/src/components/atoms/FingEmblem/FingEmblem.tsx`
-  - `/src/components/atoms/FingEmblem/FingEmblem.module.css`
-  - `/src/styles/theme.css` (tokens --fing-symbol-*, --fing-carve-*)
+  - `/src/components/atoms/QuafiEmblem/QuafiEmblem.tsx`
+  - `/src/components/atoms/QuafiEmblem/QuafiEmblem.module.css`
+  - `/src/styles/theme.css` (tokens --quafi-symbol-*, --quafi-carve-*)
 - **Integracion**:
   - DashboardLayout: Sidebar logo con animation="ripple"
   - LandingHero: Hero logo size=120 con animation="ripple"
   - ShowcaseLayout: Sidebar logo size=36 con animation="breathe"
   - SidebarShowcase: Demos con animation="ripple"
 
-**[2026-01-18] FING Brand Integration**
-- **Decision**: Integrar el branding de FING al design system SENTINEL
+**[2026-01-18] QUAFI Brand Integration**
+- **Decision**: Integrar el branding de QUAFI al design system QUAFI
 - **Cambios principales**:
   - Tipografia primaria: IBM Plex Sans → DM Sans
   - Colores semanticos conservadores alineados con voz "Senior Analyst"
   - Variables CSS para colores del logo (4 variantes)
   - BrandShowcase con guidelines completas
 - **Archivos clave**:
-  - `/src/styles/theme.css` (nuevas variables --fing-*)
+  - `/src/styles/theme.css` (nuevas variables --quafi-*)
   - `/src/pages/styles/BrandShowcase.tsx`
   - `/index.html` (import DM Sans)
 

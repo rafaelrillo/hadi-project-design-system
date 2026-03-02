@@ -2,7 +2,7 @@
 import { useMemo } from 'react';
 import type { EChartsOption } from 'echarts';
 import { EChart } from './EChart';
-import { fingColors } from './fingTheme';
+import { quafiColors } from './quafiTheme';
 import type { GaugeData, BaseChartProps } from './types';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -28,26 +28,26 @@ export interface GaugeChartProps extends BaseChartProps {
 
 const variantColors = {
   default: [
-    [0.3, fingColors.positive],
-    [0.7, fingColors.warning],
-    [1, fingColors.negative],
+    [0.3, quafiColors.positive],
+    [0.7, quafiColors.warning],
+    [1, quafiColors.negative],
   ],
   risk: [
-    [0.2, fingColors.riskLow],
-    [0.4, fingColors.riskModerate],
-    [0.6, fingColors.riskElevated],
-    [0.8, fingColors.riskHigh],
-    [1, fingColors.riskSevere],
+    [0.2, quafiColors.riskLow],
+    [0.4, quafiColors.riskModerate],
+    [0.6, quafiColors.riskElevated],
+    [0.8, quafiColors.riskHigh],
+    [1, quafiColors.riskSevere],
   ],
   progress: [
-    [0.5, fingColors.warning],
-    [0.8, fingColors.accentPrimary],
-    [1, fingColors.positive],
+    [0.5, quafiColors.warning],
+    [0.8, quafiColors.accentPrimary],
+    [1, quafiColors.positive],
   ],
   score: [
-    [0.4, fingColors.negative],
-    [0.7, fingColors.warning],
-    [1, fingColors.positive],
+    [0.4, quafiColors.negative],
+    [0.7, quafiColors.warning],
+    [1, quafiColors.positive],
   ],
 };
 
@@ -115,7 +115,7 @@ export function GaugeChart({
             distance: -18,
             length: 4,
             lineStyle: {
-              color: fingColors.textTertiary,
+              color: quafiColors.textTertiary,
               width: 1,
             },
           },
@@ -124,14 +124,14 @@ export function GaugeChart({
             distance: -22,
             length: 8,
             lineStyle: {
-              color: fingColors.textTertiary,
+              color: quafiColors.textTertiary,
               width: 1,
             },
           },
           axisLabel: {
             show: true,
             distance: 28,
-            color: fingColors.textTertiary,
+            color: quafiColors.textTertiary,
             fontSize: 10,
             fontFamily: "'Space Mono', monospace",
           },
@@ -141,7 +141,7 @@ export function GaugeChart({
             size: 16,
             itemStyle: {
               borderWidth: 4,
-              borderColor: fingColors.bgOverlay,
+              borderColor: quafiColors.bgOverlay,
               color: 'auto',
             },
           },
@@ -163,7 +163,7 @@ export function GaugeChart({
                 offsetCenter: [0, '55%'],
                 fontSize: 12,
                 fontFamily: "'Inter', sans-serif",
-                color: fingColors.textSecondary,
+                color: quafiColors.textSecondary,
               }
             : { show: false },
           data: [

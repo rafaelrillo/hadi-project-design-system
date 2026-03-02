@@ -1,6 +1,6 @@
 /* Path: src/components/molecules/NotificationCard/NotificationCard.module.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   FING DESIGN SYSTEM - NotificationCard Component
+   QUAFI DESIGN SYSTEM - NotificationCard Component
 
    Alert/notification cards with status variants
    Clean, professional styling
@@ -11,16 +11,16 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .container {
-  border-radius: var(--fing-radius-md);
-  padding: var(--fing-space-4);
+  border-radius: var(--quafi-radius-md);
+  padding: var(--quafi-space-4);
   display: flex;
-  gap: var(--fing-space-3);
+  gap: var(--quafi-space-3);
   align-items: flex-start;
   position: relative;
-  box-shadow: var(--fing-shadow-md);
-  font-family: var(--fing-font-primary);
-  border: 1px solid var(--fing-border-default);
-  background-color: var(--fing-bg-elevated);
+  box-shadow: var(--quafi-shadow-md);
+  font-family: var(--quafi-font-primary);
+  border: 1px solid var(--quafi-border-default);
+  background-color: var(--quafi-bg-elevated);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -28,19 +28,19 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .variantSuccess {
-  border-left: 3px solid var(--fing-status-positive);
+  border-left: 3px solid var(--quafi-status-positive);
 }
 
 .variantError {
-  border-left: 3px solid var(--fing-status-negative);
+  border-left: 3px solid var(--quafi-status-negative);
 }
 
 .variantWarning {
-  border-left: 3px solid var(--fing-status-warning);
+  border-left: 3px solid var(--quafi-status-warning);
 }
 
 .variantInfo {
-  border-left: 3px solid var(--fing-accent-primary);
+  border-left: 3px solid var(--quafi-accent-primary);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -55,19 +55,19 @@
 }
 
 .variantSuccess .iconContainer {
-  color: var(--fing-status-positive-text);
+  color: var(--quafi-status-positive-text);
 }
 
 .variantError .iconContainer {
-  color: var(--fing-status-negative-text);
+  color: var(--quafi-status-negative-text);
 }
 
 .variantWarning .iconContainer {
-  color: var(--fing-status-warning-text);
+  color: var(--quafi-status-warning-text);
 }
 
 .variantInfo .iconContainer {
-  color: var(--fing-accent-primary);
+  color: var(--quafi-accent-primary);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -78,23 +78,23 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: var(--fing-space-1);
+  gap: var(--quafi-space-1);
 }
 
 .title {
-  font-size: var(--fing-text-sm);
-  font-weight: var(--fing-font-semibold);
-  color: var(--fing-text-primary);
-  font-family: var(--fing-font-primary);
+  font-size: var(--quafi-text-sm);
+  font-weight: var(--quafi-font-semibold);
+  color: var(--quafi-text-primary);
+  font-family: var(--quafi-font-primary);
   line-height: 1.4;
   margin: 0;
 }
 
 .message {
-  font-size: var(--fing-text-sm);
-  font-weight: var(--fing-font-normal);
-  color: var(--fing-text-secondary);
-  font-family: var(--fing-font-primary);
+  font-size: var(--quafi-text-sm);
+  font-weight: var(--quafi-font-normal);
+  color: var(--quafi-text-secondary);
+  font-family: var(--quafi-font-primary);
   line-height: 1.5;
   margin: 0;
 }
@@ -105,26 +105,26 @@
 
 .closeButton {
   position: absolute;
-  top: var(--fing-space-3);
-  right: var(--fing-space-3);
+  top: var(--quafi-space-3);
+  right: var(--quafi-space-3);
   background: transparent;
   border: none;
   cursor: pointer;
-  padding: var(--fing-space-1);
+  padding: var(--quafi-space-1);
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--fing-radius-sm);
-  transition: var(--fing-transition-fast);
-  color: var(--fing-text-tertiary);
+  border-radius: var(--quafi-radius-sm);
+  transition: var(--quafi-transition-fast);
+  color: var(--quafi-text-tertiary);
 }
 
 .closeButton:hover {
-  background-color: var(--fing-bg-subtle);
-  color: var(--fing-text-primary);
+  background-color: var(--quafi-bg-subtle);
+  color: var(--quafi-text-primary);
 }
 
 .closeButton:focus-visible {
-  outline: 2px solid var(--fing-accent-primary);
+  outline: 2px solid var(--quafi-accent-primary);
   outline-offset: 2px;
 }

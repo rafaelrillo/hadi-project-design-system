@@ -1,11 +1,11 @@
 // Path: src/pages/Landing/components/LandingHero/LandingHero.tsx
-// FING Brand Landing Page - Stone Marble Neumorphism
+// QUAFI Brand Landing Page - Stone Marble Neumorphism
 
 import { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { Monitor, ArrowRight, Briefcase } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { FingEmblem } from "@/components/atoms/FingEmblem";
+import { QuafiEmblem } from "@/components/atoms/QuafiEmblem";
 import { useIsMobile } from "@/hooks/useBreakpoint";
 import styles from "./LandingHero.module.css";
 
@@ -73,7 +73,7 @@ export function LandingHero() {
         <motion.div className={styles.heroSection} variants={itemVariants}>
           {/* Emblem */}
           <div className={styles.emblemContainer}>
-            <FingEmblem size={isMobile ? 100 : 140} animation="rippleSlow" />
+            <QuafiEmblem size={isMobile ? 100 : 140} animation="rippleSlow" />
           </div>
 
           {/* Wordmark */}

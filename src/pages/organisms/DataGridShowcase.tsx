@@ -1,5 +1,5 @@
 // Path: src/pages/organisms/DataGridShowcase.tsx
-// FING Design System - Glass-Neumorphism DataGrid
+// QUAFI Design System - Glass-Neumorphism DataGrid
 import React, { useState, useMemo } from 'react';
 import { DataGrid, sum, avg } from '../../components/organisms/DataGrid';
 import type { DataGridColumn } from '../../components/organisms/DataGrid';
@@ -103,7 +103,7 @@ function DataGridContent() {
       width: 100,
       cell: (value) => {
         const num = value as number;
-        const color = num >= 0 ? 'var(--fing-status-positive)' : 'var(--fing-status-negative)';
+        const color = num >= 0 ? 'var(--quafi-status-positive)' : 'var(--quafi-status-negative)';
         return <span style={{ color }}>{num >= 0 ? '+' : ''}{num.toFixed(2)}%</span>;
       }
     },
@@ -210,7 +210,7 @@ function DataGridContent() {
             marginBottom: '12px',
             fontSize: '12px',
             color: '#636E72',
-            fontFamily: 'var(--fing-font-mono)',
+            fontFamily: 'var(--quafi-font-mono)',
           }}>
             Selected: {selectedRows.length > 0 ? selectedRows.join(', ') : 'None'}
           </p>
@@ -281,13 +281,13 @@ function DataGridContent() {
             renderExpandedRow={(row) => (
               <div style={{
                 padding: '16px',
-                fontFamily: 'var(--fing-font-mono)',
+                fontFamily: 'var(--quafi-font-mono)',
                 fontSize: '13px',
                 background: 'var(--marble-base)',
                 borderRadius: '12px',
                 boxShadow: getNeuInsetShadow(3, 8),
               }}>
-                <h4 style={{ margin: '0 0 12px 0', color: 'var(--fing-accent-primary)' }}>{row.name} Details</h4>
+                <h4 style={{ margin: '0 0 12px 0', color: 'var(--quafi-accent-primary)' }}>{row.name} Details</h4>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
                   <div>
                     <span style={{ color: '#636E72' }}>Market Cap:</span>
@@ -336,7 +336,7 @@ function DataGridContent() {
               marginBottom: '8px',
               fontSize: '12px',
               color: '#636E72',
-              fontFamily: 'var(--fing-font-mono)',
+              fontFamily: 'var(--quafi-font-mono)',
             }}>
               Striped:
             </p>
@@ -351,7 +351,7 @@ function DataGridContent() {
               marginBottom: '8px',
               fontSize: '12px',
               color: '#636E72',
-              fontFamily: 'var(--fing-font-mono)',
+              fontFamily: 'var(--quafi-font-mono)',
             }}>
               Compact:
             </p>
@@ -406,7 +406,7 @@ function DataGridContent() {
             renderExpandedRow={(row) => (
               <div style={{
                 padding: '12px',
-                fontFamily: 'var(--fing-font-mono)',
+                fontFamily: 'var(--quafi-font-mono)',
                 fontSize: '12px',
                 color: '#636E72',
               }}>
@@ -428,22 +428,22 @@ function DataGridContent() {
           boxShadow: getNeuInsetShadow(5, 15),
           background: 'var(--marble-base)',
           fontSize: '12px',
-          fontFamily: 'var(--fing-font-mono)',
-          color: 'var(--fing-text-muted)',
+          fontFamily: 'var(--quafi-font-mono)',
+          color: 'var(--quafi-text-muted)',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Sorting:</strong> Click en header, asc → desc → none</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Filtering:</strong> Text, select, number range, date range, boolean</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Selection:</strong> Single o multiple con checkbox</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Pagination:</strong> Client-side con page size configurable</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Expansion:</strong> Filas expandibles con contenido custom</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Footer:</strong> Agregaciones sum, avg, min, max, count</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Export:</strong> CSV con nombre configurable</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Virtualization:</strong> Para +1000 filas</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Column Resize:</strong> Drag para redimensionar</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Keyboard Nav:</strong> Arrow keys, Home, End</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Sticky Header:</strong> Header fijo al hacer scroll</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Sorting:</strong> Click en header, asc → desc → none</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Filtering:</strong> Text, select, number range, date range, boolean</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Selection:</strong> Single o multiple con checkbox</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Pagination:</strong> Client-side con page size configurable</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Expansion:</strong> Filas expandibles con contenido custom</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Footer:</strong> Agregaciones sum, avg, min, max, count</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Export:</strong> CSV con nombre configurable</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Virtualization:</strong> Para +1000 filas</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Column Resize:</strong> Drag para redimensionar</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Keyboard Nav:</strong> Arrow keys, Home, End</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Sticky Header:</strong> Header fijo al hacer scroll</p>
         </div>
       </ShowcaseSection>
     </div>

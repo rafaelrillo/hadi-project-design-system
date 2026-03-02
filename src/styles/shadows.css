@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════════════════════════════
-   FING SHADOWS SYSTEM - Stone Marble Neumorphism
-   Extracted from FingHome + DashboardPage (Source of Truth)
+   QUAFI SHADOWS SYSTEM - Stone Marble Neumorphism
+   Extracted from QuafiHome + DashboardPage (Source of Truth)
 
    HIERARCHY: RAISED → INSET → GLASS (never skip levels, never nest same level)
 
@@ -16,12 +16,12 @@
      ═══════════════════════════════════════════════════════════════════════════ */
 
   /* Standard shadow colors - using RGB companions from colors.css */
-  --shadow-light: rgba(var(--fing-white-rgb), 0.95);
-  --shadow-dark: rgba(var(--fing-shadow-dark-rgb), 0.55);
-  --shadow-darker: rgba(var(--fing-shadow-darker-rgb), 0.65);
+  --shadow-light: rgba(var(--quafi-white-rgb), 0.95);
+  --shadow-dark: rgba(var(--quafi-shadow-dark-rgb), 0.55);
+  --shadow-darker: rgba(var(--quafi-shadow-darker-rgb), 0.65);
 
   /* Alternative shadow color values (used in some components) */
-  --shadow-dark-alt: rgba(var(--fing-shadow-alt-rgb), 0.5);
+  --shadow-dark-alt: rgba(var(--quafi-shadow-alt-rgb), 0.5);
 
   /* ═══════════════════════════════════════════════════════════════════════════
      RAISED SHADOWS (5 Levels)
@@ -78,14 +78,14 @@
      Transparent items floating within inset containers
      ═══════════════════════════════════════════════════════════════════════════ */
 
-  --glass-bg: rgba(var(--fing-white-rgb), 0.25);
-  --glass-bg-hover: rgba(var(--fing-white-rgb), 0.35);
-  --glass-bg-active: rgba(var(--fing-white-rgb), 0.45);
-  --glass-bg-strong: rgba(var(--fing-white-rgb), 0.40);
+  --glass-bg: rgba(var(--quafi-white-rgb), 0.25);
+  --glass-bg-hover: rgba(var(--quafi-white-rgb), 0.35);
+  --glass-bg-active: rgba(var(--quafi-white-rgb), 0.45);
+  --glass-bg-strong: rgba(var(--quafi-white-rgb), 0.40);
 
-  --glass-border: rgba(var(--fing-white-rgb), 0.35);
-  --glass-border-strong: rgba(var(--fing-white-rgb), 0.50);
-  --glass-border-hover: rgba(var(--fing-white-rgb), 0.60);
+  --glass-border: rgba(var(--quafi-white-rgb), 0.35);
+  --glass-border-strong: rgba(var(--quafi-white-rgb), 0.50);
+  --glass-border-hover: rgba(var(--quafi-white-rgb), 0.60);
 
   /* ═══════════════════════════════════════════════════════════════════════════
      SPECIALTY SHADOWS - Extracted from Home Components
@@ -93,64 +93,64 @@
 
   /* Ridge Frame - Double inner border + raised effect (used for buttons) */
   --shadow-ridge-frame:
-    inset 0 0 0 1px rgba(var(--fing-white-rgb), 0.8),
-    inset 0 0 0 2px rgba(var(--fing-shadow-alt-rgb), 0.25),
-    2px 2px 4px rgba(var(--fing-shadow-dark-rgb), 0.5),
-    -2px -2px 4px rgba(var(--fing-white-rgb), 0.9);
+    inset 0 0 0 1px rgba(var(--quafi-white-rgb), 0.8),
+    inset 0 0 0 2px rgba(var(--quafi-shadow-alt-rgb), 0.25),
+    2px 2px 4px rgba(var(--quafi-shadow-dark-rgb), 0.5),
+    -2px -2px 4px rgba(var(--quafi-white-rgb), 0.9);
 
   /* Ridge Frame Hover */
   --shadow-ridge-frame-hover:
-    inset 0 0 0 1px rgba(var(--fing-white-rgb), 0.9),
-    inset 0 0 0 2px rgba(var(--fing-shadow-alt-rgb), 0.3),
-    3px 3px 6px rgba(var(--fing-shadow-dark-rgb), 0.55),
-    -3px -3px 6px rgba(var(--fing-white-rgb), 0.95);
+    inset 0 0 0 1px rgba(var(--quafi-white-rgb), 0.9),
+    inset 0 0 0 2px rgba(var(--quafi-shadow-alt-rgb), 0.3),
+    3px 3px 6px rgba(var(--quafi-shadow-dark-rgb), 0.55),
+    -3px -3px 6px rgba(var(--quafi-white-rgb), 0.95);
 
   /* Ridge Frame Active/Pressed */
   --shadow-ridge-frame-active:
-    inset 0 0 0 1px rgba(var(--fing-white-rgb), 0.6),
-    inset 0 0 0 2px rgba(var(--fing-shadow-alt-rgb), 0.35),
-    inset 2px 2px 4px rgba(var(--fing-shadow-dark-rgb), 0.3),
-    inset -1px -1px 2px rgba(var(--fing-white-rgb), 0.5);
+    inset 0 0 0 1px rgba(var(--quafi-white-rgb), 0.6),
+    inset 0 0 0 2px rgba(var(--quafi-shadow-alt-rgb), 0.35),
+    inset 2px 2px 4px rgba(var(--quafi-shadow-dark-rgb), 0.3),
+    inset -1px -1px 2px rgba(var(--quafi-white-rgb), 0.5);
 
   /* Pill Frame Wrapper - Inset container for buttons */
   --shadow-pill-frame:
-    inset 2px 2px 4px rgba(var(--fing-shadow-dark-rgb), 0.45),
-    inset -2px -2px 4px rgba(var(--fing-white-rgb), 0.85);
+    inset 2px 2px 4px rgba(var(--quafi-shadow-dark-rgb), 0.45),
+    inset -2px -2px 4px rgba(var(--quafi-white-rgb), 0.85);
 
   /* Etymology Card - Raised with subtle depth */
   --shadow-etymology-card:
-    4px 4px 10px rgba(var(--fing-shadow-dark-rgb), 0.45),
-    -4px -4px 10px rgba(var(--fing-white-rgb), 0.9);
+    4px 4px 10px rgba(var(--quafi-shadow-dark-rgb), 0.45),
+    -4px -4px 10px rgba(var(--quafi-white-rgb), 0.9);
 
   /* Synthesis Card - Deep inset */
   --shadow-synthesis-card:
-    inset 4px 4px 10px rgba(var(--fing-shadow-dark-rgb), 0.5),
-    inset -4px -4px 10px rgba(var(--fing-white-rgb), 0.85);
+    inset 4px 4px 10px rgba(var(--quafi-shadow-dark-rgb), 0.5),
+    inset -4px -4px 10px rgba(var(--quafi-white-rgb), 0.85);
 
   /* Voice Card - Raised container */
   --shadow-voice-card:
-    5px 5px 12px rgba(var(--fing-shadow-dark-rgb), 0.45),
-    -5px -5px 12px rgba(var(--fing-white-rgb), 0.9);
+    5px 5px 12px rgba(var(--quafi-shadow-dark-rgb), 0.45),
+    -5px -5px 12px rgba(var(--quafi-white-rgb), 0.9);
 
   /* Voice Example - Inset area */
   --shadow-voice-example:
-    inset 2px 2px 5px rgba(var(--fing-shadow-dark-rgb), 0.4),
-    inset -2px -2px 5px rgba(var(--fing-white-rgb), 0.85);
+    inset 2px 2px 5px rgba(var(--quafi-shadow-dark-rgb), 0.4),
+    inset -2px -2px 5px rgba(var(--quafi-white-rgb), 0.85);
 
   /* Anti Pill - Small raised */
   --shadow-anti-pill:
-    2px 2px 5px rgba(var(--fing-shadow-dark-rgb), 0.35),
-    -2px -2px 5px rgba(var(--fing-white-rgb), 0.85);
+    2px 2px 5px rgba(var(--quafi-shadow-dark-rgb), 0.35),
+    -2px -2px 5px rgba(var(--quafi-white-rgb), 0.85);
 
   /* Demo Raised Container */
   --shadow-demo-raised:
-    8px 8px 16px rgba(var(--fing-shadow-dark-rgb), 0.5),
-    -8px -8px 16px rgba(var(--fing-white-rgb), 0.9);
+    8px 8px 16px rgba(var(--quafi-shadow-dark-rgb), 0.5),
+    -8px -8px 16px rgba(var(--quafi-white-rgb), 0.9);
 
   /* Demo Inner Inset */
   --shadow-demo-inset:
-    inset 6px 6px 12px rgba(var(--fing-shadow-dark-rgb), 0.55),
-    inset -6px -6px 12px rgba(var(--fing-white-rgb), 0.85);
+    inset 6px 6px 12px rgba(var(--quafi-shadow-dark-rgb), 0.55),
+    inset -6px -6px 12px rgba(var(--quafi-white-rgb), 0.85);
 
   /* ═══════════════════════════════════════════════════════════════════════════
      GLASS EFFECTS - Teal Tinted (Petrol Accent)
@@ -161,35 +161,35 @@
   --glass-teal-gradient:
     linear-gradient(
       135deg,
-      rgba(var(--fing-white-rgb), 0.25) 0%,
-      rgba(var(--fing-accent-rgb), 0.12) 100%
+      rgba(var(--quafi-white-rgb), 0.25) 0%,
+      rgba(var(--quafi-accent-rgb), 0.12) 100%
     );
 
   /* Glass card shadow with teal glow */
   --glass-teal-shadow:
-    0 4px 24px rgba(var(--fing-shadow-dark-rgb), 0.35),
-    0 0 0 1px rgba(var(--fing-accent-rgb), 0.15);
+    0 4px 24px rgba(var(--quafi-shadow-dark-rgb), 0.35),
+    0 0 0 1px rgba(var(--quafi-accent-rgb), 0.15);
 
   /* ═══════════════════════════════════════════════════════════════════════════
      TRADITIONAL SHADOWS (Non-Neumorphic)
      Unidirectional drop shadows for specific use cases
-     Requires: --fing-border-base-rgb from colors.css
+     Requires: --quafi-border-base-rgb from colors.css
      ═══════════════════════════════════════════════════════════════════════════ */
 
-  --fing-shadow-xs: 0 1px 2px rgba(var(--fing-border-base-rgb), 0.25);
-  --fing-shadow-sm: 0 2px 8px rgba(var(--fing-border-base-rgb), 0.3);
-  --fing-shadow-md: 0 4px 16px rgba(var(--fing-border-base-rgb), 0.35);
-  --fing-shadow-lg: 0 8px 24px rgba(var(--fing-border-base-rgb), 0.4);
-  --fing-shadow-xl: 0 12px 32px rgba(var(--fing-border-base-rgb), 0.45);
-  --fing-shadow-2xl: 0 24px 48px rgba(var(--fing-border-base-rgb), 0.5);
+  --quafi-shadow-xs: 0 1px 2px rgba(var(--quafi-border-base-rgb), 0.25);
+  --quafi-shadow-sm: 0 2px 8px rgba(var(--quafi-border-base-rgb), 0.3);
+  --quafi-shadow-md: 0 4px 16px rgba(var(--quafi-border-base-rgb), 0.35);
+  --quafi-shadow-lg: 0 8px 24px rgba(var(--quafi-border-base-rgb), 0.4);
+  --quafi-shadow-xl: 0 12px 32px rgba(var(--quafi-border-base-rgb), 0.45);
+  --quafi-shadow-2xl: 0 24px 48px rgba(var(--quafi-border-base-rgb), 0.5);
 
   /* Inner shadow for focus rings */
-  --fing-shadow-inner: inset 0 2px 4px rgba(var(--fing-border-base-rgb), 0.3);
-  --fing-shadow-inner-strong: inset 0 4px 8px rgba(var(--fing-border-base-rgb), 0.4);
+  --quafi-shadow-inner: inset 0 2px 4px rgba(var(--quafi-border-base-rgb), 0.3);
+  --quafi-shadow-inner-strong: inset 0 4px 8px rgba(var(--quafi-border-base-rgb), 0.4);
 
   /* Top highlight (subtle light line) */
-  --fing-shadow-highlight: inset 0 1px 0 rgba(var(--fing-white-rgb), 0.6);
-  --fing-shadow-highlight-strong: inset 0 1px 0 rgba(var(--fing-white-rgb), 0.8);
+  --quafi-shadow-highlight: inset 0 1px 0 rgba(var(--quafi-white-rgb), 0.6);
+  --quafi-shadow-highlight-strong: inset 0 1px 0 rgba(var(--quafi-white-rgb), 0.8);
 
   /* ═══════════════════════════════════════════════════════════════════════════
      GLOW EFFECTS
@@ -198,25 +198,25 @@
      ═══════════════════════════════════════════════════════════════════════════ */
 
   /* Accent glow (Petrol) */
-  --fing-shadow-glow-sm: 0 0 10px rgba(var(--fing-accent-rgb), 0.2);
-  --fing-shadow-glow-md: 0 0 20px rgba(var(--fing-accent-rgb), 0.25);
-  --fing-shadow-glow-lg: 0 0 30px rgba(var(--fing-accent-rgb), 0.3);
+  --quafi-shadow-glow-sm: 0 0 10px rgba(var(--quafi-accent-rgb), 0.2);
+  --quafi-shadow-glow-md: 0 0 20px rgba(var(--quafi-accent-rgb), 0.25);
+  --quafi-shadow-glow-lg: 0 0 30px rgba(var(--quafi-accent-rgb), 0.3);
 
   /* Accent glow with shadow base */
-  --fing-shadow-glow-accent: 0 4px 20px rgba(var(--fing-border-base-rgb), 0.3), 0 0 30px rgba(var(--fing-accent-rgb), 0.1);
-  --fing-shadow-glow-accent-strong: 0 4px 24px rgba(var(--fing-border-base-rgb), 0.4), 0 0 40px rgba(var(--fing-accent-rgb), 0.15);
+  --quafi-shadow-glow-accent: 0 4px 20px rgba(var(--quafi-border-base-rgb), 0.3), 0 0 30px rgba(var(--quafi-accent-rgb), 0.1);
+  --quafi-shadow-glow-accent-strong: 0 4px 24px rgba(var(--quafi-border-base-rgb), 0.4), 0 0 40px rgba(var(--quafi-accent-rgb), 0.15);
 
   /* Semantic status glows - Natural Minerals */
-  --fing-glow-positive: 0 0 15px rgba(var(--fing-positive-rgb), 0.25);     /* Jade */
-  --fing-glow-negative: 0 0 15px rgba(var(--fing-negative-rgb), 0.25);     /* Rust */
-  --fing-glow-warning: 0 0 15px rgba(var(--fing-warning-rgb), 0.25);       /* Gold */
-  --fing-glow-info: 0 0 15px rgba(var(--fing-info-rgb), 0.25);             /* Steel */
+  --quafi-glow-positive: 0 0 15px rgba(var(--quafi-positive-rgb), 0.25);     /* Jade */
+  --quafi-glow-negative: 0 0 15px rgba(var(--quafi-negative-rgb), 0.25);     /* Rust */
+  --quafi-glow-warning: 0 0 15px rgba(var(--quafi-warning-rgb), 0.25);       /* Gold */
+  --quafi-glow-info: 0 0 15px rgba(var(--quafi-info-rgb), 0.25);             /* Steel */
 
   /* Large semantic glows */
-  --fing-glow-positive-lg: 0 0 30px rgba(var(--fing-positive-rgb), 0.15);  /* Jade */
-  --fing-glow-negative-lg: 0 0 30px rgba(var(--fing-negative-rgb), 0.15);  /* Rust */
-  --fing-glow-warning-lg: 0 0 30px rgba(var(--fing-warning-rgb), 0.15);    /* Gold */
-  --fing-glow-info-lg: 0 0 30px rgba(var(--fing-info-rgb), 0.15);          /* Steel */
+  --quafi-glow-positive-lg: 0 0 30px rgba(var(--quafi-positive-rgb), 0.15);  /* Jade */
+  --quafi-glow-negative-lg: 0 0 30px rgba(var(--quafi-negative-rgb), 0.15);  /* Rust */
+  --quafi-glow-warning-lg: 0 0 30px rgba(var(--quafi-warning-rgb), 0.15);    /* Gold */
+  --quafi-glow-info-lg: 0 0 30px rgba(var(--quafi-info-rgb), 0.15);          /* Steel */
 
   /* ═══════════════════════════════════════════════════════════════════════════
      INTERACTION STATE SHADOWS
@@ -239,19 +239,19 @@
     -1px -1px 2px var(--shadow-light);
 
   /* Focus ring: Accent glow outline */
-  --shadow-focus-ring: 0 0 0 3px rgba(var(--fing-accent-rgb), 0.25);
-  --shadow-focus-ring-sm: 0 0 0 2px rgba(var(--fing-accent-rgb), 0.3);
-  --shadow-focus-ring-strong: 0 0 0 4px rgba(var(--fing-accent-rgb), 0.35);
+  --shadow-focus-ring: 0 0 0 3px rgba(var(--quafi-accent-rgb), 0.25);
+  --shadow-focus-ring-sm: 0 0 0 2px rgba(var(--quafi-accent-rgb), 0.3);
+  --shadow-focus-ring-strong: 0 0 0 4px rgba(var(--quafi-accent-rgb), 0.35);
 
   /* Combined: Raised + Focus (for focused buttons) */
   --shadow-raised-focus:
     var(--raised-2),
-    0 0 0 3px rgba(var(--fing-accent-rgb), 0.25);
+    0 0 0 3px rgba(var(--quafi-accent-rgb), 0.25);
 
   /* Combined: Inset + Focus (for focused inputs) */
   --shadow-inset-focus:
     var(--inset-2),
-    0 0 0 2px rgba(var(--fing-accent-rgb), 0.2);
+    0 0 0 2px rgba(var(--quafi-accent-rgb), 0.2);
 
   /* ═══════════════════════════════════════════════════════════════════════════
      COMPONENT SHADOW COMPOSITES
@@ -260,23 +260,23 @@
 
   /* Glass layered shadow (progressive depth for glass headers/panels) */
   --shadow-glass-layered:
-    0 1px 2px rgba(var(--fing-border-base-rgb), 0.1),
-    0 2px 4px rgba(var(--fing-border-base-rgb), 0.1),
-    0 4px 8px rgba(var(--fing-border-base-rgb), 0.1),
-    0 8px 16px rgba(var(--fing-border-base-rgb), 0.08),
-    var(--fing-shadow-highlight-strong);
+    0 1px 2px rgba(var(--quafi-border-base-rgb), 0.1),
+    0 2px 4px rgba(var(--quafi-border-base-rgb), 0.1),
+    0 4px 8px rgba(var(--quafi-border-base-rgb), 0.1),
+    0 8px 16px rgba(var(--quafi-border-base-rgb), 0.08),
+    var(--quafi-shadow-highlight-strong);
 
   /* ═══════════════════════════════════════════════════════════════════════════
      COMPATIBILITY ALIASES
      Legacy names pointing to current tokens
      ═══════════════════════════════════════════════════════════════════════════ */
 
-  --elevation-sm: var(--fing-shadow-sm);
-  --elevation-md: var(--fing-shadow-md);
-  --elevation-lg: var(--fing-shadow-lg);
-  --shadow-sm: var(--fing-shadow-sm);
-  --shadow-md: var(--fing-shadow-md);
-  --shadow-lg: var(--fing-shadow-lg);
+  --elevation-sm: var(--quafi-shadow-sm);
+  --elevation-md: var(--quafi-shadow-md);
+  --elevation-lg: var(--quafi-shadow-lg);
+  --shadow-sm: var(--quafi-shadow-sm);
+  --shadow-md: var(--quafi-shadow-md);
+  --shadow-lg: var(--quafi-shadow-lg);
 
   /* ═══════════════════════════════════════════════════════════════════════════
      BORDER RADIUS - Stone Marble Standard Values

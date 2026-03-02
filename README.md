@@ -1,10 +1,10 @@
-# SENTINEL Design System v2.0.0
+# QUAFI Design System v2.0.0
 
 Investment analysis observatory design system for building financial applications.
 
 ## Description
 
-SENTINEL is a professional design system for investment and financial analysis applications. Built with React 19, Vite, and TypeScript, it provides a complete set of components designed specifically for displaying market data, investment recommendations, and portfolio analysis with clarity and confidence.
+QUAFI is a professional design system for investment and financial analysis applications. Built with React 19, Vite, and TypeScript, it provides a complete set of components designed specifically for displaying market data, investment recommendations, and portfolio analysis with clarity and confidence.
 
 ## Design Philosophy
 
@@ -26,7 +26,7 @@ SENTINEL is a professional design system for investment and financial analysis a
 
 ### Architecture
 
-- **Design System**: SENTINEL v2.0.0
+- **Design System**: QUAFI v2.0.0
 - **Architecture Pattern**: Atomic Design
 - **Styling**: CSS Modules + CSS Custom Properties (NO Tailwind CSS)
 
@@ -71,10 +71,10 @@ npm run test:e2e
 
 | Token | Value | Usage |
 |-------|-------|-------|
-| `--sentinel-bg-base` | `#0a0b10` | Page background |
-| `--sentinel-accent-primary` | `#5ba3a5` | Primary teal accent |
-| `--sentinel-status-positive` | `#5a9e7a` | Positive/gains |
-| `--sentinel-status-negative` | `#c47070` | Negative/losses |
+| `--quafi-bg-base` | `#0a0b10` | Page background |
+| `--quafi-accent-primary` | `#5ba3a5` | Primary teal accent |
+| `--quafi-status-positive` | `#5a9e7a` | Positive/gains |
+| `--quafi-status-negative` | `#c47070` | Negative/losses |
 
 ## Component Hierarchy
 
@@ -118,46 +118,46 @@ What should I do?
 src/
 ├── components/
 │   ├── atoms/
-│   │   └── sentinel/           # Core SENTINEL components
+│   │   └── quafi/           # Core QUAFI components
 │   ├── molecules/
-│   │   └── sentinel/           # Context & Action components
+│   │   └── quafi/           # Context & Action components
 │   └── charts/
 │       └── FinancialLineChart/ # Financial charts
 ├── layouts/
-│   └── SentinelDashboard/      # Dashboard layout
+│   └── QuafiDashboard/      # Dashboard layout
 ├── pages/
 │   ├── Landing/                # Landing page
-│   └── sentinel/               # SENTINEL showcase
+│   └── quafi/               # QUAFI showcase
 ├── styles/
 │   ├── globals.css             # Global styles
 │   ├── theme.css               # Legacy tokens
-│   └── sentinel.css            # SENTINEL tokens
+│   └── quafi.css            # QUAFI tokens
 └── App.tsx
 ```
 
 ## Documentation
 
-- **SENTINEL-COMPONENTS.md** - Complete component reference
+- **QUAFI-COMPONENTS.md** - Complete component reference
 - **REBRAND-GUIDE.md** - Transformation documentation
 
 ## Key Features
 
 ### CSS Custom Properties
 
-All SENTINEL tokens are prefixed with `--sentinel-*`:
+All QUAFI tokens are prefixed with `--quafi-*`:
 
 ```css
---sentinel-bg-base
---sentinel-accent-primary
---sentinel-text-primary
---sentinel-transition-slow
+--quafi-bg-base
+--quafi-accent-primary
+--quafi-text-primary
+--quafi-transition-slow
 ```
 
 ### Path Aliases
 
 ```typescript
-import { MarketStateIndicator } from '@/components/atoms/sentinel';
-import { RecommendationCard } from '@/components/molecules/sentinel';
+import { MarketStateIndicator } from '@/components/atoms/quafi';
+import { RecommendationCard } from '@/components/molecules/quafi';
 ```
 
 ### Accessibility
@@ -171,7 +171,7 @@ import { RecommendationCard } from '@/components/molecules/sentinel';
 
 1. **NO Tailwind CSS** - Pure CSS with CSS Custom Properties
 2. **Path Injection** - Every file starts with `// Path: path/to/file`
-3. **SENTINEL Tokens** - Use `--sentinel-*` prefixed variables
+3. **QUAFI Tokens** - Use `--quafi-*` prefixed variables
 4. **Slow Animations** - 400-700ms durations for data reveals
 
 ## License
@@ -181,5 +181,5 @@ Private - Internal Use Only
 ---
 
 **Version**: 2.0.0
-**Design System**: SENTINEL Observatory
+**Design System**: QUAFI Observatory
 **Last Updated**: December 2024

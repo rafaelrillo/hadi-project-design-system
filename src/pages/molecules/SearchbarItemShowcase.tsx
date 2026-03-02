@@ -1,5 +1,5 @@
 // Path: src/pages/molecules/SearchbarItemShowcase.tsx
-// FING Design System - Glass-Neumorphism Searchbar Item
+// QUAFI Design System - Glass-Neumorphism Searchbar Item
 import React, { useState, useMemo } from 'react';
 import { SearchbarItem } from '../../components/molecules/SearchbarItem';
 import { ShowcaseSection } from '../../components/showcase';
@@ -93,8 +93,8 @@ function SearchbarItemContent() {
                 fontSize: '12px',
                 fontWeight: 600,
                 marginBottom: '12px',
-                color: 'var(--fing-text-muted)',
-                fontFamily: 'var(--fing-font-mono)',
+                color: 'var(--quafi-text-muted)',
+                fontFamily: 'var(--quafi-font-mono)',
                 textTransform: 'uppercase',
               }}>
                 Resultados:
@@ -103,8 +103,8 @@ function SearchbarItemContent() {
                 <div key={index} style={{
                   fontSize: '14px',
                   padding: '8px 0',
-                  color: 'var(--fing-text-primary)',
-                  fontFamily: 'var(--fing-font-mono)',
+                  color: 'var(--quafi-text-primary)',
+                  fontFamily: 'var(--quafi-font-mono)',
                 }}>
                   • {result}
                 </div>
@@ -119,7 +119,7 @@ function SearchbarItemContent() {
         description="Border destaca al hacer focus"
       >
         <div style={searchContainerStyles}>
-          <div style={{ fontSize: '12px', marginBottom: '12px', color: 'var(--fing-text-muted)', fontFamily: 'var(--fing-font-mono)' }}>
+          <div style={{ fontSize: '12px', marginBottom: '12px', color: 'var(--quafi-text-muted)', fontFamily: 'var(--quafi-font-mono)' }}>
             Click en el input para ver el focus:
           </div>
           <SearchbarItem placeholder="Click aqui..." />
@@ -157,17 +157,17 @@ function SearchbarItemContent() {
           boxShadow: getNeuInsetShadow(5, 15),
           background: 'var(--marble-base)',
           fontSize: '12px',
-          fontFamily: 'var(--fing-font-mono)',
-          color: 'var(--fing-text-muted)',
+          fontFamily: 'var(--quafi-font-mono)',
+          color: 'var(--quafi-text-muted)',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Altura:</strong> 40px</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Border radius:</strong> 15px</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Search icon button:</strong> 40x40px, clickeable</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Input:</strong> flex 1, padding 0 8px</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Clear button:</strong> 32x32px, X icon 16px</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Diferencia con SearchBar:</strong> Layout integrado con ícono clickeable</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Altura:</strong> 40px</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Border radius:</strong> 15px</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Search icon button:</strong> 40x40px, clickeable</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Input:</strong> flex 1, padding 0 8px</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Clear button:</strong> 32x32px, X icon 16px</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Diferencia con SearchBar:</strong> Layout integrado con ícono clickeable</p>
         </div>
       </ShowcaseSection>
     </div>

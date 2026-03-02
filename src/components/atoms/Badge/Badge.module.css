@@ -1,6 +1,6 @@
 /* Path: src/components/atoms/Badge/Badge.module.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   FING DESIGN SYSTEM v3.2 - Badge Component
+   QUAFI DESIGN SYSTEM v3.2 - Badge Component
 
    LIGHT NEUMORPHISM - Small glass status indicators
    - Semi-transparent light backgrounds
@@ -16,20 +16,20 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-family: var(--fing-font-primary);
+  font-family: var(--quafi-font-primary);
   font-size: 12px;
-  font-weight: var(--fing-font-medium);
+  font-weight: var(--quafi-font-medium);
   letter-spacing: 0.02em;
   padding: 6px 12px;
-  border-radius: var(--fing-radius-full);
+  border-radius: var(--quafi-radius-full);
   border: 1px solid transparent;
   white-space: nowrap;
   line-height: 1.2;
   transition: all 0.2s ease;
 
   /* Glass blur */
-  backdrop-filter: blur(var(--fing-blur-xs));
-  -webkit-backdrop-filter: blur(var(--fing-blur-xs));
+  backdrop-filter: blur(var(--quafi-blur-xs));
+  -webkit-backdrop-filter: blur(var(--quafi-blur-xs));
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -37,12 +37,12 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .default {
-  background: var(--fing-glass-bg);
-  border-color: var(--fing-glass-border);
-  color: var(--fing-text-primary);
+  background: var(--quafi-glass-bg);
+  border-color: var(--quafi-glass-border);
+  color: var(--quafi-text-primary);
 
   box-shadow:
-    var(--fing-neu-elevated-xs),
+    var(--quafi-neu-elevated-xs),
     inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
@@ -52,11 +52,11 @@
 
 .primary {
   background: rgba(255, 255, 255, 0.6);
-  border-color: rgba(var(--fing-accent-rgb), 0.3);
-  color: var(--fing-accent-primary);
+  border-color: rgba(var(--quafi-accent-rgb), 0.3);
+  color: var(--quafi-accent-primary);
 
   box-shadow:
-    var(--fing-neu-elevated-xs),
+    var(--quafi-neu-elevated-xs),
     inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
@@ -67,10 +67,10 @@
 .success {
   background: rgba(255, 255, 255, 0.6);
   border-color: rgba(74, 222, 128, 0.35);
-  color: var(--fing-status-positive);
+  color: var(--quafi-status-positive);
 
   box-shadow:
-    var(--fing-neu-elevated-xs),
+    var(--quafi-neu-elevated-xs),
     inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
@@ -81,10 +81,10 @@
 .error {
   background: rgba(255, 255, 255, 0.6);
   border-color: rgba(248, 113, 113, 0.35);
-  color: var(--fing-status-negative);
+  color: var(--quafi-status-negative);
 
   box-shadow:
-    var(--fing-neu-elevated-xs),
+    var(--quafi-neu-elevated-xs),
     inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
@@ -95,10 +95,10 @@
 .warning {
   background: rgba(255, 255, 255, 0.6);
   border-color: rgba(251, 191, 36, 0.35);
-  color: var(--fing-status-warning);
+  color: var(--quafi-status-warning);
 
   box-shadow:
-    var(--fing-neu-elevated-xs),
+    var(--quafi-neu-elevated-xs),
     inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
@@ -109,10 +109,10 @@
 .info {
   background: rgba(255, 255, 255, 0.6);
   border-color: rgba(96, 165, 250, 0.35);
-  color: var(--fing-status-info);
+  color: var(--quafi-status-info);
 
   box-shadow:
-    var(--fing-neu-elevated-xs),
+    var(--quafi-neu-elevated-xs),
     inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
@@ -122,8 +122,8 @@
 
 .neutral {
   background: rgba(255, 255, 255, 0.4);
-  border-color: var(--fing-border-subtle);
-  color: var(--fing-text-secondary);
+  border-color: var(--quafi-border-subtle);
+  color: var(--quafi-text-secondary);
   backdrop-filter: none;
   box-shadow: none;
 }
@@ -145,7 +145,7 @@
   -webkit-backdrop-filter: blur(4px);
 
   box-shadow:
-    var(--fing-neu-elevated-xs),
+    var(--quafi-neu-elevated-xs),
     inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
@@ -165,7 +165,7 @@
   -webkit-backdrop-filter: blur(4px);
   border: 1px solid hsla(var(--glass-hue-primary), calc(var(--glass-sat-primary) * 1%), 75%, 0.25);
   border-radius: var(--radius-standard);
-  font-weight: var(--fing-font-semibold);
+  font-weight: var(--quafi-font-semibold);
 
   /* Fast transition for light engine responsiveness */
   transition: var(--transition-shadow);
@@ -182,27 +182,27 @@
 }
 
 .outlined.primary {
-  border-color: var(--fing-accent-primary);
+  border-color: var(--quafi-accent-primary);
 }
 
 .outlined.success {
-  border-color: var(--fing-status-positive);
+  border-color: var(--quafi-status-positive);
 }
 
 .outlined.error {
-  border-color: var(--fing-status-negative);
+  border-color: var(--quafi-status-negative);
 }
 
 .outlined.warning {
-  border-color: var(--fing-status-warning);
+  border-color: var(--quafi-status-warning);
 }
 
 .outlined.info {
-  border-color: var(--fing-status-info);
+  border-color: var(--quafi-status-info);
 }
 
 .outlined.neutral {
-  border-color: var(--fing-border-default);
+  border-color: var(--quafi-border-default);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -211,22 +211,22 @@
 
 .solid.primary {
   background: rgba(255, 255, 255, 0.8);
-  border-color: rgba(var(--fing-accent-rgb), 0.5);
-  color: var(--fing-accent-primary);
+  border-color: rgba(var(--quafi-accent-rgb), 0.5);
+  color: var(--quafi-accent-primary);
 
   box-shadow:
-    var(--fing-neu-elevated-xs),
+    var(--quafi-neu-elevated-xs),
     inset 0 1px 0 rgba(255, 255, 255, 0.7),
-    0 2px 10px rgba(var(--fing-accent-rgb), 0.25);
+    0 2px 10px rgba(var(--quafi-accent-rgb), 0.25);
 }
 
 .solid.success {
   background: rgba(255, 255, 255, 0.8);
   border-color: rgba(74, 222, 128, 0.5);
-  color: var(--fing-status-positive);
+  color: var(--quafi-status-positive);
 
   box-shadow:
-    var(--fing-neu-elevated-xs),
+    var(--quafi-neu-elevated-xs),
     inset 0 1px 0 rgba(255, 255, 255, 0.7),
     0 2px 10px rgba(74, 222, 128, 0.25);
 }
@@ -234,10 +234,10 @@
 .solid.error {
   background: rgba(255, 255, 255, 0.8);
   border-color: rgba(248, 113, 113, 0.5);
-  color: var(--fing-status-negative);
+  color: var(--quafi-status-negative);
 
   box-shadow:
-    var(--fing-neu-elevated-xs),
+    var(--quafi-neu-elevated-xs),
     inset 0 1px 0 rgba(255, 255, 255, 0.7),
     0 2px 10px rgba(248, 113, 113, 0.25);
 }
@@ -245,10 +245,10 @@
 .solid.warning {
   background: rgba(255, 255, 255, 0.8);
   border-color: rgba(251, 191, 36, 0.5);
-  color: var(--fing-status-warning);
+  color: var(--quafi-status-warning);
 
   box-shadow:
-    var(--fing-neu-elevated-xs),
+    var(--quafi-neu-elevated-xs),
     inset 0 1px 0 rgba(255, 255, 255, 0.7),
     0 2px 10px rgba(251, 191, 36, 0.25);
 }
@@ -256,10 +256,10 @@
 .solid.info {
   background: rgba(255, 255, 255, 0.8);
   border-color: rgba(96, 165, 250, 0.5);
-  color: var(--fing-status-info);
+  color: var(--quafi-status-info);
 
   box-shadow:
-    var(--fing-neu-elevated-xs),
+    var(--quafi-neu-elevated-xs),
     inset 0 1px 0 rgba(255, 255, 255, 0.7),
     0 2px 10px rgba(96, 165, 250, 0.25);
 }
@@ -306,7 +306,7 @@
 .sm {
   font-size: 10px;
   padding: 4px 8px;
-  border-radius: var(--fing-radius-full);
+  border-radius: var(--quafi-radius-full);
 }
 
 .sm.withDot::before {
@@ -317,7 +317,7 @@
 .lg {
   font-size: 13px;
   padding: 8px 14px;
-  border-radius: var(--fing-radius-full);
+  border-radius: var(--quafi-radius-full);
 }
 
 .lg.withDot::before {

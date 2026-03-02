@@ -3,9 +3,9 @@
 // to avoid naming conflicts between atomic design levels.
 //
 // Use:
-//   import { Button } from '@fing/design-system/atoms'
-//   import { Card } from '@fing/design-system/molecules'
-//   import { Sidebar } from '@fing/design-system/organisms'
+//   import { Button } from '@quafi/design-system/atoms'
+//   import { Card } from '@quafi/design-system/molecules'
+//   import { Sidebar } from '@quafi/design-system/organisms'
 //
 // Each level is exported separately in package.json "exports".
 

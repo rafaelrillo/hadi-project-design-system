@@ -1,5 +1,5 @@
 // Path: src/pages/molecules/PaginationShowcase.tsx
-// FING Design System - Glass-Neumorphism Pagination
+// QUAFI Design System - Glass-Neumorphism Pagination
 import React, { useState } from 'react';
 import { Pagination } from '../../components/molecules/Pagination';
 import { ShowcaseSection } from '../../components/showcase';
@@ -15,15 +15,15 @@ export function PaginationShowcase() {
   const infoLabelStyles: React.CSSProperties = {
     marginBottom: '12px',
     fontSize: '14px',
-    color: 'var(--fing-text-secondary)',
-    fontFamily: 'var(--fing-font-mono)',
+    color: 'var(--quafi-text-secondary)',
+    fontFamily: 'var(--quafi-font-mono)',
   };
 
   const specTextStyles: React.CSSProperties = {
     fontSize: '12px',
-    color: 'var(--fing-text-muted)',
+    color: 'var(--quafi-text-muted)',
     lineHeight: '1.8',
-    fontFamily: 'var(--fing-font-mono)',
+    fontFamily: 'var(--quafi-font-mono)',
   };
 
   return (
@@ -44,7 +44,7 @@ export function PaginationShowcase() {
         >
           <div>
             <div style={infoLabelStyles}>
-              Pagina actual: <strong style={{ color: 'var(--fing-accent)' }}>{page1}</strong> de 10
+              Pagina actual: <strong style={{ color: 'var(--quafi-accent)' }}>{page1}</strong> de 10
             </div>
             <Pagination
               currentPage={page1}
@@ -62,7 +62,7 @@ export function PaginationShowcase() {
         >
           <div>
             <div style={infoLabelStyles}>
-              Pagina actual: <strong style={{ color: 'var(--fing-accent)' }}>{page2}</strong> de 20
+              Pagina actual: <strong style={{ color: 'var(--quafi-accent)' }}>{page2}</strong> de 20
             </div>
             <Pagination
               currentPage={page2}
@@ -80,7 +80,7 @@ export function PaginationShowcase() {
         >
           <div>
             <div style={infoLabelStyles}>
-              Pagina actual: <strong style={{ color: 'var(--fing-accent)' }}>{page3}</strong> de 100
+              Pagina actual: <strong style={{ color: 'var(--quafi-accent)' }}>{page3}</strong> de 100
             </div>
             <Pagination
               currentPage={page3}
@@ -115,7 +115,7 @@ export function PaginationShowcase() {
         >
           <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', width: '100%' }}>
             <div>
-              <div style={{ marginBottom: '8px', fontSize: '12px', color: 'var(--fing-text-muted)', fontFamily: 'var(--fing-font-mono)' }}>3 paginas totales:</div>
+              <div style={{ marginBottom: '8px', fontSize: '12px', color: 'var(--quafi-text-muted)', fontFamily: 'var(--quafi-font-mono)' }}>3 paginas totales:</div>
               <Pagination
                 currentPage={2}
                 totalPages={3}
@@ -124,7 +124,7 @@ export function PaginationShowcase() {
               />
             </div>
             <div>
-              <div style={{ marginBottom: '8px', fontSize: '12px', color: 'var(--fing-text-muted)', fontFamily: 'var(--fing-font-mono)' }}>5 paginas totales:</div>
+              <div style={{ marginBottom: '8px', fontSize: '12px', color: 'var(--quafi-text-muted)', fontFamily: 'var(--quafi-font-mono)' }}>5 paginas totales:</div>
               <Pagination
                 currentPage={3}
                 totalPages={5}
@@ -133,7 +133,7 @@ export function PaginationShowcase() {
               />
             </div>
             <div>
-              <div style={{ marginBottom: '8px', fontSize: '12px', color: 'var(--fing-text-muted)', fontFamily: 'var(--fing-font-mono)' }}>50 paginas totales:</div>
+              <div style={{ marginBottom: '8px', fontSize: '12px', color: 'var(--quafi-text-muted)', fontFamily: 'var(--quafi-font-mono)' }}>50 paginas totales:</div>
               <Pagination
                 currentPage={25}
                 totalPages={50}
@@ -151,11 +151,11 @@ export function PaginationShowcase() {
         >
           <div style={{ width: '100%' }}>
             <div style={{ marginBottom: '16px' }}>
-              <div style={{ fontSize: '16px', fontWeight: 600, marginBottom: '8px', color: 'var(--fing-text-primary)', fontFamily: 'var(--fing-font-mono)', textTransform: 'uppercase' }}>
+              <div style={{ fontSize: '16px', fontWeight: 600, marginBottom: '8px', color: 'var(--quafi-text-primary)', fontFamily: 'var(--quafi-font-mono)', textTransform: 'uppercase' }}>
                 Resultados de Busqueda
               </div>
-              <div style={{ fontSize: '14px', color: 'var(--fing-text-secondary)', fontFamily: 'var(--fing-font-mono)' }}>
-                Mostrando pagina <strong style={{ color: 'var(--fing-accent)' }}>{pageNeu}</strong> de 15 - 150 resultados totales
+              <div style={{ fontSize: '14px', color: 'var(--quafi-text-secondary)', fontFamily: 'var(--quafi-font-mono)' }}>
+                Mostrando pagina <strong style={{ color: 'var(--quafi-accent)' }}>{pageNeu}</strong> de 15 - 150 resultados totales
               </div>
             </div>
 
@@ -166,7 +166,7 @@ export function PaginationShowcase() {
               borderRadius: '20px',
               boxShadow: 'var(--inset-2)',
             }}>
-              <div style={{ fontSize: '14px', color: 'var(--fing-text-secondary)', fontFamily: 'var(--fing-font-mono)' }}>
+              <div style={{ fontSize: '14px', color: 'var(--quafi-text-secondary)', fontFamily: 'var(--quafi-font-mono)' }}>
                 [Contenido de la pagina {pageNeu}]
               </div>
             </div>
@@ -184,22 +184,22 @@ export function PaginationShowcase() {
         {/* Technical Specifications */}
         <ShowcaseSection title="Especificaciones Tecnicas">
           <div style={specTextStyles}>
-            <p><strong style={{ color: 'var(--fing-accent)' }}>Botones de Numeros:</strong></p>
-            <p>- <strong style={{ color: 'var(--fing-accent)' }}>Tamano:</strong> 20x20px (circular)</p>
-            <p>- <strong style={{ color: 'var(--fing-accent)' }}>Border-radius:</strong> 50%</p>
-            <p>- <strong style={{ color: 'var(--fing-accent)' }}>Estilo neuInset:</strong> Glass activo con sombras neumorficas</p>
-            <p>- <strong style={{ color: 'var(--fing-accent)' }}>Font-size:</strong> 12px</p>
+            <p><strong style={{ color: 'var(--quafi-accent)' }}>Botones de Numeros:</strong></p>
+            <p>- <strong style={{ color: 'var(--quafi-accent)' }}>Tamano:</strong> 20x20px (circular)</p>
+            <p>- <strong style={{ color: 'var(--quafi-accent)' }}>Border-radius:</strong> 50%</p>
+            <p>- <strong style={{ color: 'var(--quafi-accent)' }}>Estilo neuInset:</strong> Glass activo con sombras neumorficas</p>
+            <p>- <strong style={{ color: 'var(--quafi-accent)' }}>Font-size:</strong> 12px</p>
 
-            <p style={{ marginTop: '16px' }}><strong style={{ color: 'var(--fing-accent)' }}>Botones de Flechas:</strong></p>
-            <p>- <strong style={{ color: 'var(--fing-accent)' }}>Tamano:</strong> 20x20px (circular)</p>
-            <p>- <strong style={{ color: 'var(--fing-accent)' }}>Iconos:</strong> ChevronLeft y ChevronRight, 14px</p>
-            <p>- <strong style={{ color: 'var(--fing-accent)' }}>Hover:</strong> Elevacion con sombra dinamica</p>
+            <p style={{ marginTop: '16px' }}><strong style={{ color: 'var(--quafi-accent)' }}>Botones de Flechas:</strong></p>
+            <p>- <strong style={{ color: 'var(--quafi-accent)' }}>Tamano:</strong> 20x20px (circular)</p>
+            <p>- <strong style={{ color: 'var(--quafi-accent)' }}>Iconos:</strong> ChevronLeft y ChevronRight, 14px</p>
+            <p>- <strong style={{ color: 'var(--quafi-accent)' }}>Hover:</strong> Elevacion con sombra dinamica</p>
 
-            <p style={{ marginTop: '16px' }}><strong style={{ color: 'var(--fing-accent)' }}>General:</strong></p>
-            <p>- <strong style={{ color: 'var(--fing-accent)' }}>Gap:</strong> 8px entre elementos</p>
-            <p>- <strong style={{ color: 'var(--fing-accent)' }}>Disabled:</strong> opacity 0.6</p>
-            <p>- <strong style={{ color: 'var(--fing-accent)' }}>maxVisiblePages:</strong> 5 por defecto</p>
-            <p>- <strong style={{ color: 'var(--fing-accent)' }}>Light Engine:</strong> Sombras dinamicas integradas</p>
+            <p style={{ marginTop: '16px' }}><strong style={{ color: 'var(--quafi-accent)' }}>General:</strong></p>
+            <p>- <strong style={{ color: 'var(--quafi-accent)' }}>Gap:</strong> 8px entre elementos</p>
+            <p>- <strong style={{ color: 'var(--quafi-accent)' }}>Disabled:</strong> opacity 0.6</p>
+            <p>- <strong style={{ color: 'var(--quafi-accent)' }}>maxVisiblePages:</strong> 5 por defecto</p>
+            <p>- <strong style={{ color: 'var(--quafi-accent)' }}>Light Engine:</strong> Sombras dinamicas integradas</p>
           </div>
         </ShowcaseSection>
       </div>

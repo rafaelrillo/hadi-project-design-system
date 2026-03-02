@@ -1,0 +1,135 @@
+/* Path: src/components/molecules/fing/AllocationList/AllocationList.module.css */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--quafi-space-3);
+}
+
+.compact {
+  gap: var(--quafi-space-2);
+}
+
+.emptyState {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--quafi-space-8);
+  color: var(--quafi-text-tertiary);
+  font-size: var(--quafi-text-sm);
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--quafi-space-2);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--quafi-space-3);
+}
+
+.symbolGroup {
+  display: flex;
+  align-items: center;
+  gap: var(--quafi-space-2);
+  min-width: 0;
+  flex: 1;
+}
+
+.colorDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.symbol {
+  font-family: var(--quafi-font-mono);
+  font-size: var(--quafi-text-sm);
+  font-weight: 600;
+  color: var(--quafi-text-primary);
+  letter-spacing: 0.02em;
+}
+
+.name {
+  font-size: var(--quafi-text-xs);
+  color: var(--quafi-text-tertiary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.values {
+  display: flex;
+  align-items: center;
+  gap: var(--quafi-space-3);
+  flex-shrink: 0;
+}
+
+.value {
+  font-family: var(--quafi-font-mono);
+  font-size: var(--quafi-text-sm);
+  color: var(--quafi-text-secondary);
+}
+
+.change {
+  font-family: var(--quafi-font-mono);
+  font-size: var(--quafi-text-xs);
+  font-weight: 500;
+}
+
+.change.positive {
+  color: var(--quafi-status-positive-text);
+}
+
+.change.negative {
+  color: var(--quafi-status-negative-text);
+}
+
+.barContainer {
+  display: flex;
+  align-items: center;
+  gap: var(--quafi-space-2);
+  height: 6px;
+}
+
+.bar {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 400ms var(--quafi-easing-default);
+  opacity: 0.8;
+}
+
+.percent {
+  font-family: var(--quafi-font-mono);
+  font-size: var(--quafi-text-xs);
+  color: var(--quafi-text-tertiary);
+  min-width: 40px;
+  text-align: right;
+}
+
+/* Compact mode adjustments */
+.compact .item {
+  gap: var(--quafi-space-1);
+}
+
+.compact .symbol {
+  font-size: var(--quafi-text-xs);
+}
+
+.compact .value {
+  font-size: var(--quafi-text-xs);
+}
+
+.compact .barContainer {
+  height: 4px;
+}
+
+.compact .percent {
+  font-size: 10px;
+  min-width: 32px;
+}

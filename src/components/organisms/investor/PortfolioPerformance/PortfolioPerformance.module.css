@@ -11,7 +11,7 @@
 
 .performanceCard {
   background: var(--marble-base);
-  border-radius: var(--fing-radius-xl);
+  border-radius: var(--quafi-radius-xl);
   padding: 20px;
   box-shadow: var(--raised-3);
 }
@@ -28,7 +28,7 @@
 }
 
 .title {
-  font-family: var(--fing-font-led);
+  font-family: var(--quafi-font-led);
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.06em;
@@ -36,10 +36,10 @@
   margin: 0;
 
   /* Letterpress Petrol - Brand color */
-  color: var(--fing-accent-primary);
+  color: var(--quafi-accent-primary);
   text-shadow:
     0.75px 0.75px 0px rgba(255, 255, 255, 0.7),
-    -0.75px -0.75px 0px rgba(var(--fing-accent-rgb), 0.35);
+    -0.75px -0.75px 0px rgba(var(--quafi-accent-rgb), 0.35);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -58,7 +58,7 @@
 /* Tab Individual - Like sidebar selector */
 .tab {
   padding: 6px 12px;
-  font-family: var(--fing-font-primary);
+  font-family: var(--quafi-font-primary);
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.02em;
@@ -69,14 +69,14 @@
   transition: all 150ms ease;
 
   /* Non-selected: RAISED/embossed text effect */
-  color: var(--fing-text-secondary);
+  color: var(--quafi-text-secondary);
   text-shadow:
     -0.75px -0.75px 0px rgba(255, 255, 255, 0.9),
     0.75px 0.75px 0px rgba(147, 157, 170, 0.5);
 }
 
 .tab:hover:not(.tabActive) {
-  color: var(--fing-text-primary);
+  color: var(--quafi-text-primary);
 }
 
 .tabActive {
@@ -87,10 +87,10 @@
     -2px -2px 4px rgba(255, 255, 255, 0.5);
 
   /* Teal color with INSET/engraved text effect */
-  color: var(--fing-accent-primary);
+  color: var(--quafi-accent-primary);
   text-shadow:
     0.5px 0.5px 0px rgba(255, 255, 255, 0.7),
-    -0.5px -0.5px 0px rgba(var(--fing-accent-rgb), 0.4);
+    -0.5px -0.5px 0px rgba(var(--quafi-accent-rgb), 0.4);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -117,7 +117,7 @@
 }
 
 .compareLabel {
-  font-family: var(--fing-font-primary);
+  font-family: var(--quafi-font-primary);
   font-size: 12px;
   font-weight: 500;
 
@@ -134,7 +134,7 @@
   background: var(--marble-base);
   border: none;
   border-radius: 8px;
-  font-family: var(--fing-font-primary);
+  font-family: var(--quafi-font-primary);
   font-size: 12px;
   font-weight: 500;
   box-shadow: var(--inset-1);
@@ -172,23 +172,23 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   FING INDICATOR - Same as sidebar logo
+   QUAFI INDICATOR - Same as sidebar logo
    ───────────────────────────────────────────────────────────────────────────── */
 
-.fingIndicator {
+.quafiIndicator {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.fingLogo {
+.quafiLogo {
   display: flex;
   align-items: center;
   justify-content: center;
 
-  /* Apply brand teal color to FingEmblem (same as sidebar) */
-  --fing-symbol-fill: var(--fing-accent-primary);
-  --fing-symbol-stroke: var(--fing-accent-primary);
+  /* Apply brand teal color to QuafiEmblem (same as sidebar) */
+  --quafi-symbol-fill: var(--quafi-accent-primary);
+  --quafi-symbol-stroke: var(--quafi-accent-primary);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -212,7 +212,7 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  font-family: var(--fing-font-primary);
+  font-family: var(--quafi-font-primary);
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.02em;
@@ -225,17 +225,17 @@
   flex-shrink: 0;
 }
 
-/* FING text - brand typography */
-.legendTextFing {
-  font-family: var(--fing-font-led);
+/* QUAFI text - brand typography */
+.legendTextQuafi {
+  font-family: var(--quafi-font-led);
   font-size: 16px;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--fing-accent-primary);
+  color: var(--quafi-accent-primary);
   text-shadow:
     0.75px 0.75px 0px rgba(255, 255, 255, 0.7),
-    -0.75px -0.75px 0px rgba(var(--fing-accent-rgb), 0.5);
+    -0.75px -0.75px 0px rgba(var(--quafi-accent-rgb), 0.5);
 }
 
 .legendTextNasdaq {

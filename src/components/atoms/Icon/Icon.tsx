@@ -17,17 +17,17 @@ const sizeMap = {
   lg: 32
 };
 
-// Using CSS custom properties for FING theming
+// Using CSS custom properties for QUAFI theming
 const colorMap: Record<string, string> = {
-  default: 'var(--fing-text-primary)',
-  secondary: 'var(--fing-text-secondary)',
-  primary: 'var(--fing-accent-primary)',
-  brand: 'var(--fing-accent-primary)',
-  destructive: 'var(--fing-status-negative)',
-  success: 'var(--fing-status-positive)',
-  warning: 'var(--fing-status-warning)',
-  info: 'var(--fing-accent-secondary)',
-  muted: 'var(--fing-text-tertiary)'
+  default: 'var(--quafi-text-primary)',
+  secondary: 'var(--quafi-text-secondary)',
+  primary: 'var(--quafi-accent-primary)',
+  brand: 'var(--quafi-accent-primary)',
+  destructive: 'var(--quafi-status-negative)',
+  success: 'var(--quafi-status-positive)',
+  warning: 'var(--quafi-status-warning)',
+  info: 'var(--quafi-accent-secondary)',
+  muted: 'var(--quafi-text-tertiary)'
 };
 
 export function Icon({

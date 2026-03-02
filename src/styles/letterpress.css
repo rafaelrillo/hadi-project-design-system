@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════════════════════════════
-   FING LETTERPRESS SYSTEM
-   Extracted from FingHome + DashboardPage (Source of Truth)
+   QUAFI LETTERPRESS SYSTEM
+   Extracted from QuafiHome + DashboardPage (Source of Truth)
 
    Letterpress Effect: Opposing light/dark shadows create "pressed into surface" look
    - Light shadow: Upper-left (simulates light hitting raised edge)
@@ -20,49 +20,49 @@
   --lp-offset: 0.5px;
   --lp-offset-strong: 1px;
 
-  /* Light component (always white highlight) - uses --fing-white-rgb from colors.css */
-  --lp-light: rgba(var(--fing-white-rgb), 0.9);
-  --lp-light-subtle: rgba(var(--fing-white-rgb), 0.8);
-  --lp-light-strong: rgba(var(--fing-white-rgb), 0.95);
+  /* Light component (always white highlight) - uses --quafi-white-rgb from colors.css */
+  --lp-light: rgba(var(--quafi-white-rgb), 0.9);
+  --lp-light-subtle: rgba(var(--quafi-white-rgb), 0.8);
+  --lp-light-strong: rgba(var(--quafi-white-rgb), 0.95);
 
   /* ═══════════════════════════════════════════════════════════════════════════
      LETTERPRESS - SEMANTIC COLORS (Natural Mineral Palette)
-     Use with corresponding --fing-* color for text color
+     Use with corresponding --quafi-* color for text color
      ═══════════════════════════════════════════════════════════════════════════ */
 
   /* Primary - Charcoal (#252528) */
   --lp-primary:
     0.5px 0.5px 0px var(--lp-light),
-    -0.5px -0.5px 0px rgba(var(--fing-black-rgb), 0.2);
+    -0.5px -0.5px 0px rgba(var(--quafi-black-rgb), 0.2);
 
   --lp-primary-strong:
     1px 1px 0px var(--lp-light),
-    -1px -1px 0px rgba(var(--fing-black-rgb), 0.25);
+    -1px -1px 0px rgba(var(--quafi-black-rgb), 0.25);
 
   /* Positive - Jade (#4a7a6a) */
   --lp-positive:
     0.5px 0.5px 0px var(--lp-light),
-    -0.5px -0.5px 0px rgba(var(--fing-positive-rgb), 0.25);
+    -0.5px -0.5px 0px rgba(var(--quafi-positive-rgb), 0.25);
 
   /* Warning - Gold (#a08a4a) */
   --lp-warning:
     0.5px 0.5px 0px var(--lp-light),
-    -0.5px -0.5px 0px rgba(var(--fing-warning-rgb), 0.25);
+    -0.5px -0.5px 0px rgba(var(--quafi-warning-rgb), 0.25);
 
   /* Negative - Rust (#8a5a4a) */
   --lp-negative:
     0.5px 0.5px 0px var(--lp-light),
-    -0.5px -0.5px 0px rgba(var(--fing-negative-rgb), 0.25);
+    -0.5px -0.5px 0px rgba(var(--quafi-negative-rgb), 0.25);
 
   /* Info - Steel (#4a6a7a) */
   --lp-info:
     0.5px 0.5px 0px var(--lp-light),
-    -0.5px -0.5px 0px rgba(var(--fing-info-rgb), 0.25);
+    -0.5px -0.5px 0px rgba(var(--quafi-info-rgb), 0.25);
 
   /* Accent - Petrol (#3a6a72) */
   --lp-accent:
     0.5px 0.5px 0px var(--lp-light),
-    -0.5px -0.5px 0px rgba(var(--fing-accent-rgb), 0.25);
+    -0.5px -0.5px 0px rgba(var(--quafi-accent-rgb), 0.25);
 
   /* ═══════════════════════════════════════════════════════════════════════════
      LETTERPRESS - STRONG CARVED (1px offset)
@@ -71,28 +71,28 @@
 
   /* Strong Positive - Jade (for KPI values showing gains) */
   --lp-positive-strong:
-    1px 1px 0px rgba(var(--fing-white-rgb), 0.8),
-    -1px -1px 0px rgba(var(--fing-positive-rgb), 0.4);
+    1px 1px 0px rgba(var(--quafi-white-rgb), 0.8),
+    -1px -1px 0px rgba(var(--quafi-positive-rgb), 0.4);
 
   /* Strong Warning - Gold (for KPI values showing caution) */
   --lp-warning-strong:
-    1px 1px 0px rgba(var(--fing-white-rgb), 0.8),
-    -1px -1px 0px rgba(var(--fing-warning-rgb), 0.4);
+    1px 1px 0px rgba(var(--quafi-white-rgb), 0.8),
+    -1px -1px 0px rgba(var(--quafi-warning-rgb), 0.4);
 
   /* Strong Negative - Rust (for KPI values showing losses) */
   --lp-negative-strong:
-    1px 1px 0px rgba(var(--fing-white-rgb), 0.8),
-    -1px -1px 0px rgba(var(--fing-negative-rgb), 0.4);
+    1px 1px 0px rgba(var(--quafi-white-rgb), 0.8),
+    -1px -1px 0px rgba(var(--quafi-negative-rgb), 0.4);
 
   /* Strong Info - Steel */
   --lp-info-strong:
-    1px 1px 0px rgba(var(--fing-white-rgb), 0.8),
-    -1px -1px 0px rgba(var(--fing-info-rgb), 0.4);
+    1px 1px 0px rgba(var(--quafi-white-rgb), 0.8),
+    -1px -1px 0px rgba(var(--quafi-info-rgb), 0.4);
 
   /* Strong Accent - Petrol (for button text, emphasized values) */
   --lp-accent-strong:
-    1px 1px 0px rgba(var(--fing-white-rgb), 0.8),
-    -1px -1px 0px rgba(var(--fing-accent-rgb), 0.4);
+    1px 1px 0px rgba(var(--quafi-white-rgb), 0.8),
+    -1px -1px 0px rgba(var(--quafi-accent-rgb), 0.4);
 
   /* ═══════════════════════════════════════════════════════════════════════════
      LETTERPRESS - MEDIUM CARVED (0.75px offset)
@@ -101,23 +101,23 @@
 
   /* Medium Petrol - for card titles and table headers */
   --lp-petrol-md:
-    0.75px 0.75px 0px rgba(var(--fing-white-rgb), 0.7),
-    -0.75px -0.75px 0px rgba(var(--fing-accent-rgb), 0.35);
+    0.75px 0.75px 0px rgba(var(--quafi-white-rgb), 0.7),
+    -0.75px -0.75px 0px rgba(var(--quafi-accent-rgb), 0.35);
 
   /* Medium Positive - Jade (for positive change values) */
   --lp-positive-md:
-    0.75px 0.75px 0px rgba(var(--fing-white-rgb), 0.8),
-    -0.75px -0.75px 0px rgba(var(--fing-positive-rgb), 0.35);
+    0.75px 0.75px 0px rgba(var(--quafi-white-rgb), 0.8),
+    -0.75px -0.75px 0px rgba(var(--quafi-positive-rgb), 0.35);
 
   /* Medium Warning - Gold */
   --lp-warning-md:
-    0.75px 0.75px 0px rgba(var(--fing-white-rgb), 0.8),
-    -0.75px -0.75px 0px rgba(var(--fing-warning-rgb), 0.35);
+    0.75px 0.75px 0px rgba(var(--quafi-white-rgb), 0.8),
+    -0.75px -0.75px 0px rgba(var(--quafi-warning-rgb), 0.35);
 
   /* Medium Negative - Rust (for negative change values, sell headers) */
   --lp-negative-md:
-    0.75px 0.75px 0px rgba(var(--fing-white-rgb), 0.8),
-    -0.75px -0.75px 0px rgba(var(--fing-negative-rgb), 0.35);
+    0.75px 0.75px 0px rgba(var(--quafi-white-rgb), 0.8),
+    -0.75px -0.75px 0px rgba(var(--quafi-negative-rgb), 0.35);
 
   /* ═══════════════════════════════════════════════════════════════════════════
      LETTERPRESS - SIZE VARIANTS (Carved)
@@ -127,57 +127,57 @@
   /* Carved small - for labels and captions */
   --lp-carved-sm:
     0.5px 0.5px 0px var(--lp-light-subtle),
-    -0.5px -0.5px 0px rgba(var(--fing-shadow-darker-rgb), 0.3);
+    -0.5px -0.5px 0px rgba(var(--quafi-shadow-darker-rgb), 0.3);
 
   /* Carved medium - for body and section headings */
   --lp-carved-md:
-    0.75px 0.75px 0px rgba(var(--fing-white-rgb), 0.85),
-    -0.75px -0.75px 0px rgba(var(--fing-shadow-darker-rgb), 0.4);
+    0.75px 0.75px 0px rgba(var(--quafi-white-rgb), 0.85),
+    -0.75px -0.75px 0px rgba(var(--quafi-shadow-darker-rgb), 0.4);
 
   /* Carved large - for hero and display headings */
   --lp-carved-lg:
     1px 1px 0px var(--lp-light),
-    -1px -1px 0px rgba(var(--fing-shadow-darker-rgb), 0.5);
+    -1px -1px 0px rgba(var(--quafi-shadow-darker-rgb), 0.5);
 
   /* Carved whisper - ultra-subtle for mobile/compact views */
   --lp-whisper:
-    0.5px 0.5px 0px rgba(var(--fing-white-rgb), 0.6),
-    -0.5px -0.5px 0px rgba(var(--fing-shadow-darker-rgb), 0.2);
+    0.5px 0.5px 0px rgba(var(--quafi-white-rgb), 0.6),
+    -0.5px -0.5px 0px rgba(var(--quafi-shadow-darker-rgb), 0.2);
 
   /* ═══════════════════════════════════════════════════════════════════════════
      LETTERPRESS - CONTEXT VARIANTS
-     Extracted from FingHome.module.css actual usage
+     Extracted from QuafiHome.module.css actual usage
      ═══════════════════════════════════════════════════════════════════════════ */
 
   /* Steel (Text Accent) - Used in descriptors and labels */
   --lp-steel:
-    0.5px 0.5px 0px rgba(var(--fing-white-rgb), 0.9),
-    -0.5px -0.5px 0px rgba(var(--fing-info-rgb), 0.25);
+    0.5px 0.5px 0px rgba(var(--quafi-white-rgb), 0.9),
+    -0.5px -0.5px 0px rgba(var(--quafi-info-rgb), 0.25);
 
   /* Steel Strong - Used in headlines */
   --lp-steel-strong:
-    1px 1px 0px rgba(var(--fing-white-rgb), 0.85),
-    -1px -1px 1px rgba(var(--fing-info-rgb), 0.3);
+    1px 1px 0px rgba(var(--quafi-white-rgb), 0.85),
+    -1px -1px 1px rgba(var(--quafi-info-rgb), 0.3);
 
   /* Petrol - Used for accent text */
   --lp-petrol:
-    0.5px 0.5px 0px rgba(var(--fing-white-rgb), 0.8),
-    -0.5px -0.5px 0px rgba(var(--fing-accent-rgb), 0.35);
+    0.5px 0.5px 0px rgba(var(--quafi-white-rgb), 0.8),
+    -0.5px -0.5px 0px rgba(var(--quafi-accent-rgb), 0.35);
 
   /* Petrol Strong - Used for larger accent text */
   --lp-petrol-strong:
-    1px 1px 0px rgba(var(--fing-white-rgb), 0.85),
-    -1px -1px 1px rgba(var(--fing-accent-rgb), 0.4);
+    1px 1px 0px rgba(var(--quafi-white-rgb), 0.85),
+    -1px -1px 1px rgba(var(--quafi-accent-rgb), 0.4);
 
   /* Petrol Whisper - Subtle petrol (used in wordmark, highlights) */
   --lp-petrol-whisper:
-    0.5px 0.5px 0px rgba(var(--fing-white-rgb), 0.8),
-    -0.5px -0.5px 0px rgba(var(--fing-accent-rgb), 0.35);
+    0.5px 0.5px 0px rgba(var(--quafi-white-rgb), 0.8),
+    -0.5px -0.5px 0px rgba(var(--quafi-accent-rgb), 0.35);
 
   /* Muted - Used for section labels and subtle text */
   --lp-muted:
-    0.5px 0.5px 0px rgba(var(--fing-white-rgb), 0.7),
-    -0.5px -0.5px 0px rgba(var(--fing-shadow-muted-rgb), 0.3);
+    0.5px 0.5px 0px rgba(var(--quafi-white-rgb), 0.7),
+    -0.5px -0.5px 0px rgba(var(--quafi-shadow-muted-rgb), 0.3);
 
   /* ═══════════════════════════════════════════════════════════════════════════
      LETTERPRESS - INSET CONTAINER TYPOGRAPHY (Embossed/Raised)
@@ -187,72 +187,72 @@
   /* Standard embossed text in inset container */
   --lp-embossed:
     -1.5px -1.5px 0px var(--lp-light-strong),
-    1.5px 1.5px 0px rgba(var(--fing-shadow-dark-rgb), 0.55);
+    1.5px 1.5px 0px rgba(var(--quafi-shadow-dark-rgb), 0.55);
 
   /* Subtle embossed text */
   --lp-embossed-subtle:
     -1px -1px 0px var(--lp-light),
-    1px 1px 0px rgba(var(--fing-shadow-dark-rgb), 0.45);
+    1px 1px 0px rgba(var(--quafi-shadow-dark-rgb), 0.45);
 
   /* Strong embossed text */
   --lp-embossed-strong:
-    -2px -2px 0px rgba(var(--fing-white-rgb), 1),
-    2px 2px 1px rgba(var(--fing-shadow-darker-rgb), 0.6);
+    -2px -2px 0px rgba(var(--quafi-white-rgb), 1),
+    2px 2px 1px rgba(var(--quafi-shadow-darker-rgb), 0.6);
 
-  /* Embossed with Petrol tint - for FING branded text in inset */
+  /* Embossed with Petrol tint - for QUAFI branded text in inset */
   --lp-embossed-petrol:
     -1.5px -1.5px 1px var(--lp-light),
-    1.5px 1.5px 1px rgba(var(--fing-accent-rgb), 0.3);
+    1.5px 1.5px 1px rgba(var(--quafi-accent-rgb), 0.3);
 
   /* Embossed small - for smaller text in inset containers */
   --lp-embossed-sm:
     -0.5px -0.5px 0px var(--lp-light),
-    0.5px 0.5px 0px rgba(var(--fing-shadow-dark-rgb), 0.4);
+    0.5px 0.5px 0px rgba(var(--quafi-shadow-dark-rgb), 0.4);
 
   /* Embossed with Petrol tint small */
   --lp-embossed-petrol-sm:
-    -0.75px -0.75px 0px rgba(var(--fing-white-rgb), 0.9),
-    0.75px 0.75px 0px rgba(var(--fing-accent-rgb), 0.25);
+    -0.75px -0.75px 0px rgba(var(--quafi-white-rgb), 0.9),
+    0.75px 0.75px 0px rgba(var(--quafi-accent-rgb), 0.25);
 
   /* Embossed Positive small - Jade tint for KPI labels */
   --lp-embossed-positive-sm:
-    -0.5px -0.5px 0px rgba(var(--fing-white-rgb), 0.9),
-    0.5px 0.5px 0px rgba(var(--fing-positive-rgb), 0.4);
+    -0.5px -0.5px 0px rgba(var(--quafi-white-rgb), 0.9),
+    0.5px 0.5px 0px rgba(var(--quafi-positive-rgb), 0.4);
 
   /* Embossed Warning small - Gold tint for KPI labels */
   --lp-embossed-warning-sm:
-    -0.5px -0.5px 0px rgba(var(--fing-white-rgb), 0.9),
-    0.5px 0.5px 0px rgba(var(--fing-warning-rgb), 0.4);
+    -0.5px -0.5px 0px rgba(var(--quafi-white-rgb), 0.9),
+    0.5px 0.5px 0px rgba(var(--quafi-warning-rgb), 0.4);
 
   /* Embossed Negative small - Rust tint for KPI labels */
   --lp-embossed-negative-sm:
-    -0.5px -0.5px 0px rgba(var(--fing-white-rgb), 0.9),
-    0.5px 0.5px 0px rgba(var(--fing-negative-rgb), 0.4);
+    -0.5px -0.5px 0px rgba(var(--quafi-white-rgb), 0.9),
+    0.5px 0.5px 0px rgba(var(--quafi-negative-rgb), 0.4);
 
   /* Embossed Info small - Steel tint */
   --lp-embossed-info-sm:
-    -0.5px -0.5px 0px rgba(var(--fing-white-rgb), 0.9),
-    0.5px 0.5px 0px rgba(var(--fing-info-rgb), 0.4);
+    -0.5px -0.5px 0px rgba(var(--quafi-white-rgb), 0.9),
+    0.5px 0.5px 0px rgba(var(--quafi-info-rgb), 0.4);
 
   /* Embossed Positive - Jade tint in inset containers */
   --lp-embossed-positive:
-    -1px -1px 0px rgba(var(--fing-white-rgb), 0.9),
-    1px 1px 0px rgba(var(--fing-positive-rgb), 0.35);
+    -1px -1px 0px rgba(var(--quafi-white-rgb), 0.9),
+    1px 1px 0px rgba(var(--quafi-positive-rgb), 0.35);
 
   /* Embossed Warning - Gold tint in inset containers */
   --lp-embossed-warning:
-    -1px -1px 0px rgba(var(--fing-white-rgb), 0.9),
-    1px 1px 0px rgba(var(--fing-warning-rgb), 0.35);
+    -1px -1px 0px rgba(var(--quafi-white-rgb), 0.9),
+    1px 1px 0px rgba(var(--quafi-warning-rgb), 0.35);
 
   /* Embossed Negative - Rust tint in inset containers */
   --lp-embossed-negative:
-    -1px -1px 0px rgba(var(--fing-white-rgb), 0.9),
-    1px 1px 0px rgba(var(--fing-negative-rgb), 0.35);
+    -1px -1px 0px rgba(var(--quafi-white-rgb), 0.9),
+    1px 1px 0px rgba(var(--quafi-negative-rgb), 0.35);
 
   /* Embossed Info - Steel tint in inset containers */
   --lp-embossed-info:
-    -1px -1px 0px rgba(var(--fing-white-rgb), 0.9),
-    1px 1px 0px rgba(var(--fing-info-rgb), 0.35);
+    -1px -1px 0px rgba(var(--quafi-white-rgb), 0.9),
+    1px 1px 0px rgba(var(--quafi-info-rgb), 0.35);
 
   /* ═══════════════════════════════════════════════════════════════════════════
      LETTERPRESS - DASHBOARD SPECIFIC
@@ -261,27 +261,27 @@
 
   /* Title in raised container - carved effect */
   --lp-title-carved:
-    0.75px 0.75px 0px rgba(var(--fing-white-rgb), 0.7),
-    -0.75px -0.75px 0px rgba(var(--fing-shadow-darker-rgb), 0.5);
+    0.75px 0.75px 0px rgba(var(--quafi-white-rgb), 0.7),
+    -0.75px -0.75px 0px rgba(var(--quafi-shadow-darker-rgb), 0.5);
 
   /* Data table cell - subtle */
   --lp-data:
     0.5px 0.5px 0px var(--lp-light-subtle),
-    -0.5px -0.5px 0px rgba(var(--fing-shadow-darker-rgb), 0.3);
+    -0.5px -0.5px 0px rgba(var(--quafi-shadow-darker-rgb), 0.3);
 
   /* Rank number - accent colored */
   --lp-rank:
-    0.5px 0.5px 0px rgba(var(--fing-white-rgb), 0.75),
-    -0.5px -0.5px 0px rgba(var(--fing-accent-rgb), 0.35);
+    0.5px 0.5px 0px rgba(var(--quafi-white-rgb), 0.75),
+    -0.5px -0.5px 0px rgba(var(--quafi-accent-rgb), 0.35);
 
   /* ═══════════════════════════════════════════════════════════════════════════
      GLOW EFFECTS
      Non-directional glow for active/highlighted elements
      ═══════════════════════════════════════════════════════════════════════════ */
 
-  --lp-glow-petrol: 0 0 6px rgba(var(--fing-accent-rgb), 0.5);
-  --lp-glow-negative: 0 0 6px rgba(var(--fing-negative-rgb), 0.5);
-  --lp-glow-positive: 0 0 6px rgba(var(--fing-positive-rgb), 0.5);
+  --lp-glow-petrol: 0 0 6px rgba(var(--quafi-accent-rgb), 0.5);
+  --lp-glow-negative: 0 0 6px rgba(var(--quafi-negative-rgb), 0.5);
+  --lp-glow-positive: 0 0 6px rgba(var(--quafi-positive-rgb), 0.5);
 
   /* ═══════════════════════════════════════════════════════════════════════════
      ICON LETTERPRESS
@@ -290,21 +290,21 @@
 
   --lp-icon:
     drop-shadow(-0.5px -0.5px 0px var(--lp-light))
-    drop-shadow(0.5px 0.5px 0px rgba(var(--fing-shadow-darker-rgb), 0.4));
+    drop-shadow(0.5px 0.5px 0px rgba(var(--quafi-shadow-darker-rgb), 0.4));
 
   --lp-icon-accent:
     drop-shadow(-0.5px -0.5px 0px var(--lp-light))
-    drop-shadow(0.5px 0.5px 0px rgba(var(--fing-accent-rgb), 0.4));
+    drop-shadow(0.5px 0.5px 0px rgba(var(--quafi-accent-rgb), 0.4));
 
   --lp-icon-negative:
     drop-shadow(-0.5px -0.5px 0px var(--lp-light-subtle))
-    drop-shadow(0.5px 0.5px 0px rgba(var(--fing-negative-rgb), 0.5));
+    drop-shadow(0.5px 0.5px 0px rgba(var(--quafi-negative-rgb), 0.5));
 
   --lp-icon-glow:
-    drop-shadow(0 0 4px rgba(var(--fing-accent-rgb), 0.5));
+    drop-shadow(0 0 4px rgba(var(--quafi-accent-rgb), 0.5));
 
   --lp-icon-glow-negative:
-    drop-shadow(0 0 4px rgba(var(--fing-negative-rgb), 0.4));
+    drop-shadow(0 0 4px rgba(var(--quafi-negative-rgb), 0.4));
 
   /* ═══════════════════════════════════════════════════════════════════════════
      INTERACTION STATE TOKENS
@@ -314,37 +314,37 @@
   /* Hover: Increased contrast for emphasis */
   --lp-hover:
     0.75px 0.75px 0px var(--lp-light-strong),
-    -0.75px -0.75px 0px rgba(var(--fing-shadow-darker-rgb), 0.45);
+    -0.75px -0.75px 0px rgba(var(--quafi-shadow-darker-rgb), 0.45);
 
   /* Active/Pressed: Flatter effect when element is pressed */
   --lp-active:
-    0.25px 0.25px 0px rgba(var(--fing-white-rgb), 0.7),
-    -0.25px -0.25px 0px rgba(var(--fing-shadow-darker-rgb), 0.25);
+    0.25px 0.25px 0px rgba(var(--quafi-white-rgb), 0.7),
+    -0.25px -0.25px 0px rgba(var(--quafi-shadow-darker-rgb), 0.25);
 
   /* Disabled: Reduced contrast, barely visible */
   --lp-disabled:
-    0.25px 0.25px 0px rgba(var(--fing-white-rgb), 0.5),
-    -0.25px -0.25px 0px rgba(var(--fing-shadow-darker-rgb), 0.15);
+    0.25px 0.25px 0px rgba(var(--quafi-white-rgb), 0.5),
+    -0.25px -0.25px 0px rgba(var(--quafi-shadow-darker-rgb), 0.15);
 
   /* Focus: Standard letterpress with subtle glow */
   --lp-focus:
     0.5px 0.5px 0px var(--lp-light),
-    -0.5px -0.5px 0px rgba(var(--fing-accent-rgb), 0.35);
+    -0.5px -0.5px 0px rgba(var(--quafi-accent-rgb), 0.35);
 
   /* Embossed hover (for inset containers) */
   --lp-embossed-hover:
-    -1.75px -1.75px 0px rgba(var(--fing-white-rgb), 1),
-    1.75px 1.75px 0px rgba(var(--fing-shadow-dark-rgb), 0.6);
+    -1.75px -1.75px 0px rgba(var(--quafi-white-rgb), 1),
+    1.75px 1.75px 0px rgba(var(--quafi-shadow-dark-rgb), 0.6);
 
   /* Embossed active (for inset containers) */
   --lp-embossed-active:
     -0.5px -0.5px 0px var(--lp-light-subtle),
-    0.5px 0.5px 0px rgba(var(--fing-shadow-dark-rgb), 0.35);
+    0.5px 0.5px 0px rgba(var(--quafi-shadow-dark-rgb), 0.35);
 
   /* Embossed disabled (for inset containers) */
   --lp-embossed-disabled:
-    -0.5px -0.5px 0px rgba(var(--fing-white-rgb), 0.5),
-    0.5px 0.5px 0px rgba(var(--fing-shadow-dark-rgb), 0.2);
+    -0.5px -0.5px 0px rgba(var(--quafi-white-rgb), 0.5),
+    0.5px 0.5px 0px rgba(var(--quafi-shadow-dark-rgb), 0.2);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════════
@@ -355,47 +355,47 @@
 /* Positive - Jade */
 .text-positive,
 .text-jade {
-  color: var(--fing-positive);
+  color: var(--quafi-positive);
   text-shadow: var(--lp-positive);
 }
 
 /* Warning - Gold */
 .text-warning,
 .text-gold {
-  color: var(--fing-warning);
+  color: var(--quafi-warning);
   text-shadow: var(--lp-warning);
 }
 
 /* Negative - Rust */
 .text-negative,
 .text-rust {
-  color: var(--fing-negative);
+  color: var(--quafi-negative);
   text-shadow: var(--lp-negative);
 }
 
 /* Info - Steel */
 .text-info,
 .text-steel {
-  color: var(--fing-info);
+  color: var(--quafi-info);
   text-shadow: var(--lp-info);
 }
 
 /* Accent - Petrol */
 .text-accent,
 .text-petrol {
-  color: var(--fing-accent);
+  color: var(--quafi-accent);
   text-shadow: var(--lp-accent);
 }
 
 /* Primary - Charcoal */
 .text-primary,
 .text-charcoal {
-  color: var(--fing-black);
+  color: var(--quafi-black);
   text-shadow: var(--lp-primary);
 }
 
 /* Primary Strong - Charcoal (for headlines) */
 .text-primary-strong {
-  color: var(--fing-black);
+  color: var(--quafi-black);
   text-shadow: var(--lp-primary-strong);
 }

@@ -7,11 +7,11 @@
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 .container {
-  padding: var(--fing-space-6);
+  padding: var(--quafi-space-6);
   border-radius: 12px;
   display: flex;
   flex-wrap: wrap;
-  gap: var(--fing-space-4);
+  gap: var(--quafi-space-4);
   align-items: flex-start;
 
   /* Glass level - semi-transparent on inset surface */
@@ -29,7 +29,7 @@
 }
 
 .bgGray {
-  background: rgba(var(--fing-border-base-rgb), 0.15);
+  background: rgba(var(--quafi-border-base-rgb), 0.15);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
@@ -37,12 +37,12 @@
 .bgTransparent {
   background: transparent;
   backdrop-filter: none;
-  border: 1px dashed rgba(var(--fing-border-base-rgb), 0.4);
+  border: 1px dashed rgba(var(--quafi-border-base-rgb), 0.4);
 }
 
 /* Dark variant for contrast */
 .bgDark {
-  background: rgba(var(--fing-black-rgb), 0.08);
+  background: rgba(var(--quafi-black-rgb), 0.08);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }

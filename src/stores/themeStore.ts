@@ -1,5 +1,5 @@
 // Path: src/stores/themeStore.ts
-// FING Material Theming Store
+// QUAFI Material Theming Store
 
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
@@ -68,7 +68,7 @@ export const useThemeStore = create<ThemeState>()(
       getCurrentMaterial: () => MATERIALS[get().materialId] || MATERIALS[DEFAULT_MATERIAL],
     }),
     {
-      name: 'fing-theme',
+      name: 'quafi-theme',
     }
   )
 );
@@ -93,7 +93,7 @@ function applyMaterialToDOM(material: MaterialPalette) {
   root.style.setProperty('--shadow-darker', material.shadowDarker);
 
   // Also update the background of body/root
-  root.style.setProperty('--fing-bg-base', material.base);
+  root.style.setProperty('--quafi-bg-base', material.base);
 }
 
 function applyTextureToDOM(texture: TextureType) {
@@ -101,14 +101,14 @@ function applyTextureToDOM(texture: TextureType) {
 
   // Remove all texture classes
   root.classList.forEach((className) => {
-    if (className.startsWith('fing-texture')) {
+    if (className.startsWith('quafi-texture')) {
       root.classList.remove(className);
     }
   });
 
   // Add base texture class and specific texture
-  root.classList.add('fing-texture');
-  root.classList.add(`fing-texture-${texture}`);
+  root.classList.add('quafi-texture');
+  root.classList.add(`quafi-texture-${texture}`);
 }
 
 // ═══════════════════════════════════════════════════════════════

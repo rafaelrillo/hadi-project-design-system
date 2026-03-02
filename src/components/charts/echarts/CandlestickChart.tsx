@@ -2,7 +2,7 @@
 import { useMemo } from 'react';
 import type { EChartsOption } from 'echarts';
 import { EChart } from './EChart';
-import { fingColors, tooltipFormatters } from './fingTheme';
+import { quafiColors, tooltipFormatters } from './quafiTheme';
 import type { OHLCData, BaseChartProps } from './types';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -27,8 +27,8 @@ export function CandlestickChart({
   height = 400,
   showVolume = true,
   showDataZoom = true,
-  upColor = fingColors.positive,
-  downColor = fingColors.negative,
+  upColor = quafiColors.positive,
+  downColor = quafiColors.negative,
   title,
   className,
   animate = true,
@@ -73,7 +73,7 @@ export function CandlestickChart({
           const [open, close, low, high] = candleData.data;
           return `
             <div style="font-family: 'Space Mono', monospace; font-size: 11px;">
-              <div style="margin-bottom: 8px; color: ${fingColors.textTertiary};">${candleData.axisValue}</div>
+              <div style="margin-bottom: 8px; color: ${quafiColors.textTertiary};">${candleData.axisValue}</div>
               ${tooltipFormatters.ohlc({ open, high, low, close })}
             </div>
           `;
@@ -105,9 +105,9 @@ export function CandlestickChart({
           type: 'category',
           data: dates,
           boundaryGap: true,
-          axisLine: { lineStyle: { color: fingColors.borderSubtle } },
+          axisLine: { lineStyle: { color: quafiColors.borderSubtle } },
           axisLabel: {
-            color: fingColors.textTertiary,
+            color: quafiColors.textTertiary,
             fontSize: 10,
             fontFamily: "'Space Mono', monospace",
           },
@@ -138,12 +138,12 @@ export function CandlestickChart({
           axisLine: { show: false },
           axisTick: { show: false },
           axisLabel: {
-            color: fingColors.textTertiary,
+            color: quafiColors.textTertiary,
             fontSize: 10,
             fontFamily: "'Space Mono', monospace",
           },
           splitLine: {
-            lineStyle: { color: fingColors.borderSubtle },
+            lineStyle: { color: quafiColors.borderSubtle },
           },
         },
         ...(showVolume
@@ -176,14 +176,14 @@ export function CandlestickChart({
               end: 100,
               bottom: 10,
               height: 20,
-              backgroundColor: fingColors.bgSubtle,
-              borderColor: fingColors.borderSubtle,
-              fillerColor: fingColors.accentSubtle,
+              backgroundColor: quafiColors.bgSubtle,
+              borderColor: quafiColors.borderSubtle,
+              fillerColor: quafiColors.accentSubtle,
               handleStyle: {
-                color: fingColors.accentPrimary,
+                color: quafiColors.accentPrimary,
               },
               textStyle: {
-                color: fingColors.textTertiary,
+                color: quafiColors.textTertiary,
                 fontSize: 10,
               },
             },

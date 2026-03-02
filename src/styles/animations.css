@@ -1,9 +1,9 @@
 /* ═══════════════════════════════════════════════════════════════════════════════
-   FING ANIMATIONS SYSTEM
+   QUAFI ANIMATIONS SYSTEM
    Atmospheric animations that bring the system to life without distraction
 
    USAGE:
-   - Use utility classes: .fing-animate-breathe, .fing-animate-pulse, etc.
+   - Use utility classes: .quafi-animate-breathe, .quafi-animate-pulse, etc.
    - For scroll-triggered: add [data-animate] attribute, animation plays on viewport entry
    - For replay on scroll: add [data-animate-replay] attribute
 
@@ -20,23 +20,23 @@
 
 :root {
   /* Durations */
-  --fing-duration-instant: 100ms;
-  --fing-duration-fast: 150ms;
-  --fing-duration-normal: 250ms;
-  --fing-duration-slow: 400ms;
-  --fing-duration-slower: 600ms;
-  --fing-duration-slowest: 3s;
-  --fing-duration-ambient: 8s;
+  --quafi-duration-instant: 100ms;
+  --quafi-duration-fast: 150ms;
+  --quafi-duration-normal: 250ms;
+  --quafi-duration-slow: 400ms;
+  --quafi-duration-slower: 600ms;
+  --quafi-duration-slowest: 3s;
+  --quafi-duration-ambient: 8s;
 
   /* Easings */
-  --fing-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --fing-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
-  --fing-ease-smooth: ease-in-out;
-  --fing-ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --quafi-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --quafi-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --quafi-ease-smooth: ease-in-out;
+  --quafi-ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
 
   /* Stock Market specific */
-  --fing-data-pulse: rgba(var(--fing-accent-rgb), 0.15);
-  --fing-data-glow: rgba(var(--fing-accent-rgb), 0.5);
+  --quafi-data-pulse: rgba(var(--quafi-accent-rgb), 0.15);
+  --quafi-data-glow: rgba(var(--quafi-accent-rgb), 0.5);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════════
@@ -45,7 +45,7 @@
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 /* Breathing - very slow, almost imperceptible opacity change */
-@keyframes fing-breathe {
+@keyframes quafi-breathe {
   0%, 100% {
     opacity: 1;
   }
@@ -55,7 +55,7 @@
 }
 
 /* Subtle pulse for active elements */
-@keyframes fing-pulse-subtle {
+@keyframes quafi-pulse-subtle {
   0%, 100% {
     transform: scale(1);
     opacity: 1;
@@ -67,7 +67,7 @@
 }
 
 /* System status indicator pulse */
-@keyframes fing-system-pulse {
+@keyframes quafi-system-pulse {
   0%, 100% {
     opacity: 0.6;
     transform: scale(1);
@@ -79,7 +79,7 @@
 }
 
 /* Floating effect for highlighted elements */
-@keyframes fing-float {
+@keyframes quafi-float {
   0%, 100% {
     transform: translateY(0);
   }
@@ -89,7 +89,7 @@
 }
 
 /* Slow rotation for indicators */
-@keyframes fing-rotate-slow {
+@keyframes quafi-rotate-slow {
   from {
     transform: rotate(0deg);
   }
@@ -99,7 +99,7 @@
 }
 
 /* Subtle blink for cursors or indicators */
-@keyframes fing-blink {
+@keyframes quafi-blink {
   0%, 100% {
     opacity: 1;
   }
@@ -114,7 +114,7 @@
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 /* Emerge from below with fade */
-@keyframes fing-emerge {
+@keyframes quafi-emerge {
   from {
     opacity: 0;
     transform: translateY(20px);
@@ -126,7 +126,7 @@
 }
 
 /* Simple fade in */
-@keyframes fing-fade-in {
+@keyframes quafi-fade-in {
   from {
     opacity: 0;
   }
@@ -136,7 +136,7 @@
 }
 
 /* Scale in with fade */
-@keyframes fing-scale-in {
+@keyframes quafi-scale-in {
   from {
     opacity: 0;
     transform: scale(0.95);
@@ -148,7 +148,7 @@
 }
 
 /* Slide in from left */
-@keyframes fing-slide-in-left {
+@keyframes quafi-slide-in-left {
   from {
     opacity: 0;
     transform: translateX(-20px);
@@ -160,7 +160,7 @@
 }
 
 /* Slide in from right */
-@keyframes fing-slide-in-right {
+@keyframes quafi-slide-in-right {
   from {
     opacity: 0;
     transform: translateX(20px);
@@ -172,7 +172,7 @@
 }
 
 /* Pop in with bounce */
-@keyframes fing-pop-in {
+@keyframes quafi-pop-in {
   0% {
     opacity: 0;
     transform: scale(0.8);
@@ -192,17 +192,17 @@
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 /* Pulsing glow effect */
-@keyframes fing-glow-pulse {
+@keyframes quafi-glow-pulse {
   0%, 100% {
-    box-shadow: 0 0 15px var(--fing-accent-glow);
+    box-shadow: 0 0 15px var(--quafi-accent-glow);
   }
   50% {
-    box-shadow: 0 0 25px var(--fing-accent-glow);
+    box-shadow: 0 0 25px var(--quafi-accent-glow);
   }
 }
 
 /* Shimmer for loading states */
-@keyframes fing-shimmer {
+@keyframes quafi-shimmer {
   0% {
     background-position: -200% 0;
   }
@@ -212,7 +212,7 @@
 }
 
 /* Gradient shift */
-@keyframes fing-gradient-shift {
+@keyframes quafi-gradient-shift {
   0% {
     background-position: 0% 50%;
   }
@@ -225,7 +225,7 @@
 }
 
 /* Ripple effect */
-@keyframes fing-ripple {
+@keyframes quafi-ripple {
   0% {
     transform: scale(0);
     opacity: 0.5;
@@ -242,12 +242,12 @@
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 /* Value change flash */
-@keyframes fing-value-flash {
+@keyframes quafi-value-flash {
   0% {
     background-color: transparent;
   }
   15% {
-    background-color: var(--fing-data-pulse);
+    background-color: var(--quafi-data-pulse);
   }
   100% {
     background-color: transparent;
@@ -255,12 +255,12 @@
 }
 
 /* Positive value flash (green) */
-@keyframes fing-value-flash-positive {
+@keyframes quafi-value-flash-positive {
   0% {
     background-color: transparent;
   }
   15% {
-    background-color: rgba(var(--fing-positive-rgb), 0.2);
+    background-color: rgba(var(--quafi-positive-rgb), 0.2);
   }
   100% {
     background-color: transparent;
@@ -268,12 +268,12 @@
 }
 
 /* Negative value flash (red) */
-@keyframes fing-value-flash-negative {
+@keyframes quafi-value-flash-negative {
   0% {
     background-color: transparent;
   }
   15% {
-    background-color: rgba(var(--fing-negative-rgb), 0.2);
+    background-color: rgba(var(--quafi-negative-rgb), 0.2);
   }
   100% {
     background-color: transparent;
@@ -281,29 +281,29 @@
 }
 
 /* Infinite ticker scroll */
-@keyframes fing-ticker-scroll {
+@keyframes quafi-ticker-scroll {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
 
 /* Data glow for active values */
-@keyframes fing-data-glow {
+@keyframes quafi-data-glow {
   0%, 100% {
     text-shadow: 0 0 0 transparent;
   }
   50% {
-    text-shadow: 0 0 8px var(--fing-data-glow);
+    text-shadow: 0 0 8px var(--quafi-data-glow);
   }
 }
 
 /* Retro scanline (very subtle) */
-@keyframes fing-scanline {
+@keyframes quafi-scanline {
   0% { transform: translateY(-100%); }
   100% { transform: translateY(100vh); }
 }
 
 /* Data rain - falling characters */
-@keyframes fing-data-rain {
+@keyframes quafi-data-rain {
   0% {
     transform: translateY(-100%);
     opacity: 0;
@@ -324,28 +324,28 @@
    UTILITY CLASSES - ATMOSPHERIC (Infinite)
    ═══════════════════════════════════════════════════════════════════════════════ */
 
-.fing-animate-breathe {
-  animation: fing-breathe var(--fing-duration-ambient) var(--fing-ease-smooth) infinite;
+.quafi-animate-breathe {
+  animation: quafi-breathe var(--quafi-duration-ambient) var(--quafi-ease-smooth) infinite;
 }
 
-.fing-animate-pulse {
-  animation: fing-pulse-subtle var(--fing-duration-slowest) var(--fing-ease-smooth) infinite;
+.quafi-animate-pulse {
+  animation: quafi-pulse-subtle var(--quafi-duration-slowest) var(--quafi-ease-smooth) infinite;
 }
 
-.fing-animate-system-pulse {
-  animation: fing-system-pulse 2s var(--fing-ease-smooth) infinite;
+.quafi-animate-system-pulse {
+  animation: quafi-system-pulse 2s var(--quafi-ease-smooth) infinite;
 }
 
-.fing-animate-float {
-  animation: fing-float 3s var(--fing-ease-smooth) infinite;
+.quafi-animate-float {
+  animation: quafi-float 3s var(--quafi-ease-smooth) infinite;
 }
 
-.fing-animate-rotate {
-  animation: fing-rotate-slow 20s linear infinite;
+.quafi-animate-rotate {
+  animation: quafi-rotate-slow 20s linear infinite;
 }
 
-.fing-animate-blink {
-  animation: fing-blink 1.5s var(--fing-ease-smooth) infinite;
+.quafi-animate-blink {
+  animation: quafi-blink 1.5s var(--quafi-ease-smooth) infinite;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════════
@@ -353,39 +353,39 @@
    These start paused and play when [data-animate-visible] is added
    ═══════════════════════════════════════════════════════════════════════════════ */
 
-.fing-animate-emerge {
-  animation: fing-emerge var(--fing-duration-slow) var(--fing-ease-out) forwards;
+.quafi-animate-emerge {
+  animation: quafi-emerge var(--quafi-duration-slow) var(--quafi-ease-out) forwards;
 }
 
-.fing-animate-fade-in {
-  animation: fing-fade-in var(--fing-duration-normal) var(--fing-ease-out) forwards;
+.quafi-animate-fade-in {
+  animation: quafi-fade-in var(--quafi-duration-normal) var(--quafi-ease-out) forwards;
 }
 
-.fing-animate-scale-in {
-  animation: fing-scale-in var(--fing-duration-normal) var(--fing-ease-out) forwards;
+.quafi-animate-scale-in {
+  animation: quafi-scale-in var(--quafi-duration-normal) var(--quafi-ease-out) forwards;
 }
 
-.fing-animate-slide-left {
-  animation: fing-slide-in-left var(--fing-duration-slow) var(--fing-ease-out) forwards;
+.quafi-animate-slide-left {
+  animation: quafi-slide-in-left var(--quafi-duration-slow) var(--quafi-ease-out) forwards;
 }
 
-.fing-animate-slide-right {
-  animation: fing-slide-in-right var(--fing-duration-slow) var(--fing-ease-out) forwards;
+.quafi-animate-slide-right {
+  animation: quafi-slide-in-right var(--quafi-duration-slow) var(--quafi-ease-out) forwards;
 }
 
-.fing-animate-pop {
-  animation: fing-pop-in var(--fing-duration-slow) var(--fing-ease-bounce) forwards;
+.quafi-animate-pop {
+  animation: quafi-pop-in var(--quafi-duration-slow) var(--quafi-ease-bounce) forwards;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════════
    UTILITY CLASSES - EFFECTS
    ═══════════════════════════════════════════════════════════════════════════════ */
 
-.fing-animate-glow {
-  animation: fing-glow-pulse var(--fing-duration-slowest) var(--fing-ease-smooth) infinite;
+.quafi-animate-glow {
+  animation: quafi-glow-pulse var(--quafi-duration-slowest) var(--quafi-ease-smooth) infinite;
 }
 
-.fing-animate-shimmer {
+.quafi-animate-shimmer {
   background: linear-gradient(
     90deg,
     var(--marble-base) 0%,
@@ -393,36 +393,36 @@
     var(--marble-base) 100%
   );
   background-size: 200% 100%;
-  animation: fing-shimmer 2s linear infinite;
+  animation: quafi-shimmer 2s linear infinite;
 }
 
-.fing-animate-gradient {
+.quafi-animate-gradient {
   background-size: 200% 200%;
-  animation: fing-gradient-shift 8s var(--fing-ease-smooth) infinite;
+  animation: quafi-gradient-shift 8s var(--quafi-ease-smooth) infinite;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════════
    UTILITY CLASSES - STOCK MARKET
    ═══════════════════════════════════════════════════════════════════════════════ */
 
-.fing-animate-value-flash {
-  animation: fing-value-flash 1s var(--fing-ease-out) forwards;
+.quafi-animate-value-flash {
+  animation: quafi-value-flash 1s var(--quafi-ease-out) forwards;
 }
 
-.fing-animate-value-flash-positive {
-  animation: fing-value-flash-positive 1s var(--fing-ease-out) forwards;
+.quafi-animate-value-flash-positive {
+  animation: quafi-value-flash-positive 1s var(--quafi-ease-out) forwards;
 }
 
-.fing-animate-value-flash-negative {
-  animation: fing-value-flash-negative 1s var(--fing-ease-out) forwards;
+.quafi-animate-value-flash-negative {
+  animation: quafi-value-flash-negative 1s var(--quafi-ease-out) forwards;
 }
 
-.fing-animate-ticker {
-  animation: fing-ticker-scroll 30s linear infinite;
+.quafi-animate-ticker {
+  animation: quafi-ticker-scroll 30s linear infinite;
 }
 
-.fing-animate-data-glow {
-  animation: fing-data-glow 2s var(--fing-ease-smooth) infinite;
+.quafi-animate-data-glow {
+  animation: quafi-data-glow 2s var(--quafi-ease-smooth) infinite;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════════
@@ -446,14 +446,14 @@
   transform: translateY(20px);
 }
 [data-animate="emerge"].is-visible {
-  animation: fing-emerge var(--fing-duration-slow) var(--fing-ease-out) forwards;
+  animation: quafi-emerge var(--quafi-duration-slow) var(--quafi-ease-out) forwards;
 }
 
 [data-animate="fade"] {
   opacity: 0;
 }
 [data-animate="fade"].is-visible {
-  animation: fing-fade-in var(--fing-duration-normal) var(--fing-ease-out) forwards;
+  animation: quafi-fade-in var(--quafi-duration-normal) var(--quafi-ease-out) forwards;
 }
 
 [data-animate="scale"] {
@@ -461,7 +461,7 @@
   transform: scale(0.95);
 }
 [data-animate="scale"].is-visible {
-  animation: fing-scale-in var(--fing-duration-normal) var(--fing-ease-out) forwards;
+  animation: quafi-scale-in var(--quafi-duration-normal) var(--quafi-ease-out) forwards;
 }
 
 [data-animate="slide-left"] {
@@ -469,7 +469,7 @@
   transform: translateX(-20px);
 }
 [data-animate="slide-left"].is-visible {
-  animation: fing-slide-in-left var(--fing-duration-slow) var(--fing-ease-out) forwards;
+  animation: quafi-slide-in-left var(--quafi-duration-slow) var(--quafi-ease-out) forwards;
 }
 
 [data-animate="slide-right"] {
@@ -477,7 +477,7 @@
   transform: translateX(20px);
 }
 [data-animate="slide-right"].is-visible {
-  animation: fing-slide-in-right var(--fing-duration-slow) var(--fing-ease-out) forwards;
+  animation: quafi-slide-in-right var(--quafi-duration-slow) var(--quafi-ease-out) forwards;
 }
 
 [data-animate="pop"] {
@@ -485,7 +485,7 @@
   transform: scale(0.8);
 }
 [data-animate="pop"].is-visible {
-  animation: fing-pop-in var(--fing-duration-slow) var(--fing-ease-bounce) forwards;
+  animation: quafi-pop-in var(--quafi-duration-slow) var(--quafi-ease-bounce) forwards;
 }
 
 /* Stagger delays for children */

@@ -1,5 +1,5 @@
 // Path: src/pages/styles/ButtonShowcase.tsx
-// FING Design System - Complete Button System Showcase (Stone Marble + Glass)
+// QUAFI Design System - Complete Button System Showcase (Stone Marble + Glass)
 
 import React, { useState } from 'react';
 import {
@@ -68,7 +68,7 @@ export function ButtonShowcase() {
     color: showcase.colors.accent,
     marginBottom: '12px',
     marginTop: '56px',
-    fontFamily: 'var(--fing-font-display)',
+    fontFamily: 'var(--quafi-font-display)',
     letterSpacing: '0.08em',
     paddingBottom: '12px',
     borderBottom: `3px solid ${showcase.colors.accent}`,
@@ -79,7 +79,7 @@ export function ButtonShowcase() {
     fontSize: '11px',
     fontWeight: 600,
     color: showcase.colors.textMuted,
-    fontFamily: 'var(--fing-font-mono)',
+    fontFamily: 'var(--quafi-font-mono)',
     letterSpacing: '0.08em',
     marginTop: '10px',
     textAlign: 'center',
@@ -235,7 +235,7 @@ export function ButtonShowcase() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontFamily: 'var(--fing-font-primary)',
+                  fontFamily: 'var(--quafi-font-primary)',
                   fontSize: '14px',
                   fontWeight: 600,
                   color: 'var(--text-primary)',
@@ -274,7 +274,7 @@ export function ButtonShowcase() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontFamily: 'var(--fing-font-primary)',
+                  fontFamily: 'var(--quafi-font-primary)',
                   fontSize: '14px',
                   fontWeight: 600,
                   color: 'var(--text-primary)',
@@ -311,7 +311,7 @@ export function ButtonShowcase() {
                   alignItems: 'center',
                   justifyContent: 'center',
                   gap: '8px',
-                  fontFamily: 'var(--fing-font-primary)',
+                  fontFamily: 'var(--quafi-font-primary)',
                   fontSize: '13px',
                   fontWeight: 600,
                   color: 'var(--text-primary)',
@@ -456,7 +456,7 @@ export function ButtonShowcase() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontFamily: 'var(--fing-font-primary)',
+                  fontFamily: 'var(--quafi-font-primary)',
                   fontSize: '13px',
                   fontWeight: 600,
                   color: 'var(--text-primary)',
@@ -488,7 +488,7 @@ export function ButtonShowcase() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontFamily: 'var(--fing-font-primary)',
+                  fontFamily: 'var(--quafi-font-primary)',
                   fontSize: '13px',
                   fontWeight: 600,
                   color: 'var(--text-primary)',
@@ -520,7 +520,7 @@ export function ButtonShowcase() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontFamily: 'var(--fing-font-primary)',
+                  fontFamily: 'var(--quafi-font-primary)',
                   fontSize: '13px',
                   fontWeight: 600,
                   color: 'var(--text-primary)',
@@ -553,7 +553,7 @@ export function ButtonShowcase() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontFamily: 'var(--fing-font-primary)',
+                  fontFamily: 'var(--quafi-font-primary)',
                   fontSize: '13px',
                   fontWeight: 600,
                   color: 'var(--text-primary)',
@@ -585,7 +585,7 @@ export function ButtonShowcase() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontFamily: 'var(--fing-font-primary)',
+                  fontFamily: 'var(--quafi-font-primary)',
                   fontSize: '13px',
                   fontWeight: 600,
                   color: 'var(--text-primary)',
@@ -616,7 +616,7 @@ export function ButtonShowcase() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontFamily: 'var(--fing-font-primary)',
+                  fontFamily: 'var(--quafi-font-primary)',
                   fontSize: '13px',
                   fontWeight: 600,
                   color: 'var(--text-primary)',
@@ -700,7 +700,7 @@ export function ButtonShowcase() {
                   alignItems: 'center',
                   justifyContent: 'center',
                   gap: '8px',
-                  fontFamily: 'var(--fing-font-primary)',
+                  fontFamily: 'var(--quafi-font-primary)',
                   fontSize: '13px',
                   fontWeight: 600,
                   color: 'var(--text-primary)',
@@ -729,7 +729,7 @@ export function ButtonShowcase() {
                   alignItems: 'center',
                   justifyContent: 'center',
                   gap: '8px',
-                  fontFamily: 'var(--fing-font-primary)',
+                  fontFamily: 'var(--quafi-font-primary)',
                   fontSize: '13px',
                   fontWeight: 600,
                   color: 'var(--text-primary)',
@@ -795,7 +795,7 @@ export function ButtonShowcase() {
                   alignItems: 'center',
                   justifyContent: 'center',
                   gap: '10px',
-                  fontFamily: 'var(--fing-font-primary)',
+                  fontFamily: 'var(--quafi-font-primary)',
                   fontSize: '14px',
                   fontWeight: 600,
                   color: 'var(--text-primary)',
@@ -815,15 +815,15 @@ export function ButtonShowcase() {
                 style={{
                   width: '60px',
                   height: '60px',
-                  background: 'rgba(var(--fing-accent-rgb), 0.15)',
+                  background: 'rgba(var(--quafi-accent-rgb), 0.15)',
                   borderRadius: '50%',
-                  boxShadow: 'var(--raised-2), inset 0 0 0 2px rgba(var(--fing-accent-rgb), 0.3)',
+                  boxShadow: 'var(--raised-2), inset 0 0 0 2px rgba(var(--quafi-accent-rgb), 0.3)',
                   border: 'none',
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color: 'var(--fing-accent-primary)',
+                  color: 'var(--quafi-accent-primary)',
                   transition: 'all 150ms ease',
                 }}
               >
@@ -852,7 +852,7 @@ export function ButtonShowcase() {
                   alignItems: 'center',
                   justifyContent: 'center',
                   gap: '10px',
-                  fontFamily: 'var(--fing-font-primary)',
+                  fontFamily: 'var(--quafi-font-primary)',
                   fontSize: '14px',
                   fontWeight: 600,
                   color: 'var(--text-primary)',
@@ -872,7 +872,7 @@ export function ButtonShowcase() {
                 style={{
                   width: '70px',
                   height: '80px',
-                  background: 'rgba(var(--fing-accent-rgb), 0.1)',
+                  background: 'rgba(var(--quafi-accent-rgb), 0.1)',
                   clipPath: 'polygon(50% 0%, 100% 15%, 100% 65%, 50% 100%, 0% 65%, 0% 15%)',
                   filter: 'drop-shadow(3px 3px 6px var(--shadow-dark)) drop-shadow(-3px -3px 6px var(--shadow-light))',
                   border: 'none',
@@ -882,10 +882,10 @@ export function ButtonShowcase() {
                   alignItems: 'center',
                   justifyContent: 'center',
                   gap: '2px',
-                  fontFamily: 'var(--fing-font-mono)',
+                  fontFamily: 'var(--quafi-font-mono)',
                   fontSize: '10px',
                   fontWeight: 600,
-                  color: 'var(--fing-accent-primary)',
+                  color: 'var(--quafi-accent-primary)',
                   transition: 'all 150ms ease',
                 }}
               >
@@ -1505,7 +1505,7 @@ export function ButtonShowcase() {
                     -4px -4px 8px var(--shadow-light)
                   `,
                   cursor: 'pointer',
-                  fontFamily: 'var(--fing-font-primary)',
+                  fontFamily: 'var(--quafi-font-primary)',
                   fontSize: '13px',
                   fontWeight: 600,
                   letterSpacing: '0.05em',
@@ -1515,7 +1515,7 @@ export function ButtonShowcase() {
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.boxShadow = 'inset 0 0 0 1px var(--shadow-light), inset 0 0 0 2px rgba(168, 172, 179, 0.3), 6px 6px 12px var(--shadow-dark), -6px -6px 12px var(--shadow-light)';
-                  e.currentTarget.style.color = 'var(--fing-accent-primary)';
+                  e.currentTarget.style.color = 'var(--quafi-accent-primary)';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.boxShadow = 'inset 0 0 0 1px var(--shadow-light), inset 0 0 0 2px rgba(168, 172, 179, 0.3), 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light)';
@@ -1573,7 +1573,7 @@ export function ButtonShowcase() {
                     -3px -3px 6px var(--shadow-light)
                   `,
                   cursor: 'pointer',
-                  fontFamily: 'var(--fing-font-primary)',
+                  fontFamily: 'var(--quafi-font-primary)',
                   fontSize: '12px',
                   fontWeight: 600,
                   letterSpacing: '0.05em',
@@ -1656,7 +1656,7 @@ export function ButtonShowcase() {
                       -1px -1px 2px var(--shadow-light)
                     `,
                     cursor: 'pointer',
-                    fontFamily: 'var(--fing-font-primary)',
+                    fontFamily: 'var(--quafi-font-primary)',
                     fontSize: '12px',
                     fontWeight: 600,
                     letterSpacing: '0.05em',
@@ -1665,7 +1665,7 @@ export function ButtonShowcase() {
                     transition: 'all 150ms ease',
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.color = 'var(--fing-accent-primary)';
+                    e.currentTarget.style.color = 'var(--quafi-accent-primary)';
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.color = 'var(--marble-dark)';
@@ -1704,7 +1704,7 @@ export function ButtonShowcase() {
               ESTRUCTURA DE JERARQUÍA:
             </p>
             <pre style={{
-              fontFamily: 'var(--fing-font-mono)',
+              fontFamily: 'var(--quafi-font-mono)',
               fontSize: '11px',
               color: showcase.colors.textSecondary,
               lineHeight: 1.6,
@@ -1752,7 +1752,7 @@ export function ButtonShowcase() {
                       -2px -2px 4px var(--shadow-light)
                     `,
                     cursor: 'pointer',
-                    fontFamily: 'var(--fing-font-primary)',
+                    fontFamily: 'var(--quafi-font-primary)',
                     fontSize: size.fontSize,
                     fontWeight: 600,
                     letterSpacing: '0.05em',
@@ -1816,7 +1816,7 @@ export function ButtonShowcase() {
                     -2px -2px 4px var(--shadow-light)
                   `,
                   cursor: 'pointer',
-                  fontFamily: 'var(--fing-font-primary)',
+                  fontFamily: 'var(--quafi-font-primary)',
                   fontSize: '12px',
                   fontWeight: 600,
                   letterSpacing: '0.05em',
@@ -1849,7 +1849,7 @@ export function ButtonShowcase() {
                     -2px -2px 4px var(--shadow-light)
                   `,
                   cursor: 'pointer',
-                  fontFamily: 'var(--fing-font-primary)',
+                  fontFamily: 'var(--quafi-font-primary)',
                   fontSize: '12px',
                   fontWeight: 600,
                   letterSpacing: '0.05em',
@@ -1882,7 +1882,7 @@ export function ButtonShowcase() {
                     -2px -2px 4px var(--shadow-light)
                   `,
                   cursor: 'pointer',
-                  fontFamily: 'var(--fing-font-primary)',
+                  fontFamily: 'var(--quafi-font-primary)',
                   fontSize: '12px',
                   fontWeight: 600,
                   letterSpacing: '0.05em',
@@ -1981,7 +1981,7 @@ export function ButtonShowcase() {
                     -2px -2px 4px var(--shadow-light)
                   `,
                   cursor: 'pointer',
-                  fontFamily: 'var(--fing-font-primary)',
+                  fontFamily: 'var(--quafi-font-primary)',
                   fontSize: '12px',
                   fontWeight: 600,
                   letterSpacing: '0.05em',
@@ -2014,7 +2014,7 @@ export function ButtonShowcase() {
                     -2px -2px 4px var(--shadow-light)
                   `,
                   cursor: 'pointer',
-                  fontFamily: 'var(--fing-font-primary)',
+                  fontFamily: 'var(--quafi-font-primary)',
                   fontSize: '12px',
                   fontWeight: 600,
                   letterSpacing: '0.05em',
@@ -2047,7 +2047,7 @@ export function ButtonShowcase() {
                     -2px -2px 4px var(--shadow-light)
                   `,
                   cursor: 'pointer',
-                  fontFamily: 'var(--fing-font-primary)',
+                  fontFamily: 'var(--quafi-font-primary)',
                   fontSize: '12px',
                   fontWeight: 600,
                   letterSpacing: '0.05em',
@@ -2093,7 +2093,7 @@ export function ButtonShowcase() {
                     -2px -2px 4px var(--shadow-light)
                   `,
                   cursor: 'pointer',
-                  fontFamily: 'var(--fing-font-primary)',
+                  fontFamily: 'var(--quafi-font-primary)',
                   fontSize: '12px',
                   fontWeight: 600,
                   letterSpacing: '0.05em',
@@ -2139,7 +2139,7 @@ export function ButtonShowcase() {
                     -2px -2px 4px var(--shadow-light)
                   `,
                   cursor: 'pointer',
-                  fontFamily: 'var(--fing-font-primary)',
+                  fontFamily: 'var(--quafi-font-primary)',
                   fontSize: '12px',
                   fontWeight: 600,
                   letterSpacing: '0.05em',
@@ -2209,7 +2209,7 @@ export function ButtonShowcase() {
                     -2px -2px 4px var(--shadow-light)
                   `,
                   cursor: 'pointer',
-                  fontFamily: 'var(--fing-font-primary)',
+                  fontFamily: 'var(--quafi-font-primary)',
                   fontSize: '12px',
                   fontWeight: 600,
                   letterSpacing: '0.05em',
@@ -2244,7 +2244,7 @@ export function ButtonShowcase() {
                     -2px -2px 4px var(--shadow-light)
                   `,
                   cursor: 'pointer',
-                  fontFamily: 'var(--fing-font-primary)',
+                  fontFamily: 'var(--quafi-font-primary)',
                   fontSize: '12px',
                   fontWeight: 600,
                   letterSpacing: '0.05em',
@@ -2253,7 +2253,7 @@ export function ButtonShowcase() {
                 }}
               >
                 <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '20px', height: '20px', borderRadius: '50%', background: 'var(--marble-base)', boxShadow: 'inset 1px 1px 2px var(--shadow-dark), inset -1px -1px 2px var(--shadow-light)' }}>
-                  <TrendingUp size={11} style={{ color: 'var(--fing-accent-primary)', filter: 'drop-shadow(-0.5px -0.5px 0px var(--shadow-light)) drop-shadow(0.5px 0.5px 0px var(--shadow-dark))' }} />
+                  <TrendingUp size={11} style={{ color: 'var(--quafi-accent-primary)', filter: 'drop-shadow(-0.5px -0.5px 0px var(--shadow-light)) drop-shadow(0.5px 0.5px 0px var(--shadow-dark))' }} />
                 </span>
                 Portfolio
               </button>
@@ -2279,7 +2279,7 @@ export function ButtonShowcase() {
                     -2px -2px 4px var(--shadow-light)
                   `,
                   cursor: 'pointer',
-                  fontFamily: 'var(--fing-font-primary)',
+                  fontFamily: 'var(--quafi-font-primary)',
                   fontSize: '12px',
                   fontWeight: 600,
                   letterSpacing: '0.05em',
@@ -2288,7 +2288,7 @@ export function ButtonShowcase() {
                 }}
               >
                 <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '20px', height: '20px', borderRadius: '50%', background: 'var(--marble-base)', boxShadow: 'inset 1px 1px 2px var(--shadow-dark), inset -1px -1px 2px var(--shadow-light)' }}>
-                  <Check size={11} style={{ color: 'var(--fing-status-positive)', filter: 'drop-shadow(-0.5px -0.5px 0px var(--shadow-light)) drop-shadow(0.5px 0.5px 0px var(--shadow-dark))' }} />
+                  <Check size={11} style={{ color: 'var(--quafi-status-positive)', filter: 'drop-shadow(-0.5px -0.5px 0px var(--shadow-light)) drop-shadow(0.5px 0.5px 0px var(--shadow-dark))' }} />
                 </span>
                 Confirm
               </button>
@@ -2314,7 +2314,7 @@ export function ButtonShowcase() {
                     -2px -2px 4px var(--shadow-light)
                   `,
                   cursor: 'pointer',
-                  fontFamily: 'var(--fing-font-primary)',
+                  fontFamily: 'var(--quafi-font-primary)',
                   fontSize: '12px',
                   fontWeight: 600,
                   letterSpacing: '0.05em',
@@ -2323,7 +2323,7 @@ export function ButtonShowcase() {
                 }}
               >
                 <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '20px', height: '20px', borderRadius: '50%', background: 'var(--marble-base)', boxShadow: 'inset 1px 1px 2px var(--shadow-dark), inset -1px -1px 2px var(--shadow-light)' }}>
-                  <AlertTriangle size={11} style={{ color: 'var(--fing-status-warning)', filter: 'drop-shadow(-0.5px -0.5px 0px var(--shadow-light)) drop-shadow(0.5px 0.5px 0px var(--shadow-dark))' }} />
+                  <AlertTriangle size={11} style={{ color: 'var(--quafi-status-warning)', filter: 'drop-shadow(-0.5px -0.5px 0px var(--shadow-light)) drop-shadow(0.5px 0.5px 0px var(--shadow-dark))' }} />
                 </span>
                 Review
               </button>
@@ -2349,7 +2349,7 @@ export function ButtonShowcase() {
                     -2px -2px 4px var(--shadow-light)
                   `,
                   cursor: 'pointer',
-                  fontFamily: 'var(--fing-font-primary)',
+                  fontFamily: 'var(--quafi-font-primary)',
                   fontSize: '12px',
                   fontWeight: 600,
                   letterSpacing: '0.05em',
@@ -2358,7 +2358,7 @@ export function ButtonShowcase() {
                 }}
               >
                 <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '20px', height: '20px', borderRadius: '50%', background: 'var(--marble-base)', boxShadow: 'inset 1px 1px 2px var(--shadow-dark), inset -1px -1px 2px var(--shadow-light)' }}>
-                  <Trash2 size={11} style={{ color: 'var(--fing-status-negative)', filter: 'drop-shadow(-0.5px -0.5px 0px var(--shadow-light)) drop-shadow(0.5px 0.5px 0px var(--shadow-dark))' }} />
+                  <Trash2 size={11} style={{ color: 'var(--quafi-status-negative)', filter: 'drop-shadow(-0.5px -0.5px 0px var(--shadow-light)) drop-shadow(0.5px 0.5px 0px var(--shadow-dark))' }} />
                 </span>
                 Delete
               </button>
@@ -2397,11 +2397,11 @@ export function ButtonShowcase() {
                       border: 'none',
                       boxShadow: i === 1 ? '1px 1px 2px var(--shadow-dark), -1px -1px 2px var(--shadow-light)' : 'none',
                       cursor: 'pointer',
-                      fontFamily: 'var(--fing-font-primary)',
+                      fontFamily: 'var(--quafi-font-primary)',
                       fontSize: '11px',
                       fontWeight: i === 1 ? 600 : 500,
                       letterSpacing: '0.05em',
-                      color: i === 1 ? 'var(--fing-accent-primary)' : 'var(--marble-dark)',
+                      color: i === 1 ? 'var(--quafi-accent-primary)' : 'var(--marble-dark)',
                       textShadow: i === 1 ? '1px 1px 0px var(--shadow-light), -1px -1px 0px var(--shadow-dark)' : 'none',
                       transition: 'all 150ms ease',
                     }}
@@ -2432,7 +2432,7 @@ export function ButtonShowcase() {
                       -2px -2px 4px var(--shadow-light)
                     `,
                     cursor: 'pointer',
-                    fontFamily: 'var(--fing-font-primary)',
+                    fontFamily: 'var(--quafi-font-primary)',
                     fontSize: '12px',
                     fontWeight: 600,
                     letterSpacing: '0.05em',
@@ -2483,7 +2483,7 @@ export function ButtonShowcase() {
                   { icon: Copy, label: 'Copy' },
                   { icon: Edit3, label: 'Edit' },
                   { icon: Share2, label: 'Share' },
-                  { icon: Trash2, label: 'Delete', color: 'var(--fing-status-negative)' },
+                  { icon: Trash2, label: 'Delete', color: 'var(--quafi-status-negative)' },
                 ].map(({ icon: Icon, label, color }) => (
                   <button
                     key={label}
@@ -2549,7 +2549,7 @@ export function ButtonShowcase() {
                     -2px -2px 4px var(--shadow-light)
                   `,
                   cursor: 'pointer',
-                  fontFamily: 'var(--fing-font-primary)',
+                  fontFamily: 'var(--quafi-font-primary)',
                   fontSize: '12px',
                   fontWeight: 600,
                   letterSpacing: '0.05em',
@@ -2603,7 +2603,7 @@ export function ButtonShowcase() {
                       -1px -1px 2px var(--shadow-light)
                     `,
                     cursor: 'pointer',
-                    fontFamily: 'var(--fing-font-primary)',
+                    fontFamily: 'var(--quafi-font-primary)',
                     fontSize: '12px',
                     fontWeight: 600,
                     letterSpacing: '0.05em',
@@ -2647,7 +2647,7 @@ export function ButtonShowcase() {
                   border: '1px solid var(--glass-border)',
                   boxShadow: 'none',
                   cursor: 'pointer',
-                  fontFamily: 'var(--fing-font-primary)',
+                  fontFamily: 'var(--quafi-font-primary)',
                   fontSize: '12px',
                   fontWeight: 600,
                   letterSpacing: '0.05em',
@@ -2704,7 +2704,7 @@ export function ButtonShowcase() {
               >
                 <strong style={{
                   color: showcase.colors.accent,
-                  fontFamily: 'var(--fing-font-primary)',
+                  fontFamily: 'var(--quafi-font-primary)',
                   fontSize: '13px',
                   textShadow: 'var(--lp-accent)',
                 }}>
@@ -2713,7 +2713,7 @@ export function ButtonShowcase() {
                 <p style={{
                   margin: '8px 0 0',
                   color: showcase.colors.textSecondary,
-                  fontFamily: 'var(--fing-font-mono)',
+                  fontFamily: 'var(--quafi-font-mono)',
                   fontSize: '11px',
                 }}>
                   {variants}

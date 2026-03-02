@@ -1,5 +1,5 @@
 // Path: src/pages/organisms/ModalShowcase.tsx
-// FING Design System - Glass-Neumorphism Modals
+// QUAFI Design System - Glass-Neumorphism Modals
 import React, { useState, useMemo } from 'react';
 import { Modal } from '../../components/organisms/Modal';
 import { Button } from '../../components/atoms/Button';
@@ -206,7 +206,7 @@ function ModalContent() {
             <div style={{
               padding: '12px',
               background: 'var(--marble-base)',
-              borderLeft: '4px solid var(--fing-status-negative)',
+              borderLeft: '4px solid var(--quafi-status-negative)',
               borderRadius: '12px',
               boxShadow: getNeuInsetShadow(3, 8),
             }}>
@@ -268,10 +268,10 @@ function ModalContent() {
               marginTop: '24px',
               padding: '12px',
               background: 'var(--marble-base)',
-              borderLeft: '4px solid var(--fing-accent-primary)',
+              borderLeft: '4px solid var(--quafi-accent-primary)',
               borderRadius: '12px',
               boxShadow: getNeuInsetShadow(3, 8),
-              fontFamily: 'var(--fing-font-mono)',
+              fontFamily: 'var(--quafi-font-mono)',
             }}>
               El contenido del modal tiene scroll automático cuando excede el max-height de 90vh.
             </p>
@@ -286,12 +286,12 @@ function ModalContent() {
           boxShadow: getNeuInsetShadow(5, 15),
           background: 'var(--marble-base)',
           fontSize: '12px',
-          fontFamily: 'var(--fing-font-mono)',
-          color: 'var(--fing-text-muted)',
+          fontFamily: 'var(--quafi-font-mono)',
+          color: 'var(--quafi-text-muted)',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>
-          <p><strong style={{ color: 'var(--fing-accent-primary)' }}>Variante Center:</strong></p>
+          <p><strong style={{ color: 'var(--quafi-accent-primary)' }}>Variante Center:</strong></p>
           <p>✓ <strong>Max-width:</strong> 600px (default), customizable</p>
           <p>✓ <strong>Width:</strong> 90% de viewport</p>
           <p>✓ <strong>Max-height:</strong> 90vh</p>
@@ -299,14 +299,14 @@ function ModalContent() {
           <p>✓ <strong>Overlay:</strong> rgba(0,0,0,0.5)</p>
           <p>✓ <strong>Animation:</strong> fadeIn 200ms</p>
 
-          <p style={{ marginTop: '16px' }}><strong style={{ color: 'var(--fing-accent-primary)' }}>Variante Drawer:</strong></p>
+          <p style={{ marginTop: '16px' }}><strong style={{ color: 'var(--quafi-accent-primary)' }}>Variante Drawer:</strong></p>
           <p>✓ <strong>Width:</strong> 50%, max 960px</p>
           <p>✓ <strong>Height:</strong> 100vh</p>
           <p>✓ <strong>Position:</strong> flex-end (derecha)</p>
           <p>✓ <strong>Overlay:</strong> rgba(0,0,0,0.25)</p>
           <p>✓ <strong>Animation:</strong> slideInRight 200ms</p>
 
-          <p style={{ marginTop: '16px' }}><strong style={{ color: 'var(--fing-accent-primary)' }}>Interacciones:</strong></p>
+          <p style={{ marginTop: '16px' }}><strong style={{ color: 'var(--quafi-accent-primary)' }}>Interacciones:</strong></p>
           <p>✓ Click en overlay cierra el modal</p>
           <p>✓ Tecla Escape cierra el modal</p>
           <p>✓ Bloquea scroll del body cuando está abierto</p>

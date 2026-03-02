@@ -1,5 +1,5 @@
 // Path: src/pages/animations/LayoutAnimationsShowcase.tsx
-// FING Design System - Glass-Neumorphism Layout Animations
+// QUAFI Design System - Glass-Neumorphism Layout Animations
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { LayoutContainer } from '../../components/animations/LayoutTransition';
@@ -46,11 +46,11 @@ function LayoutAnimationsContent() {
   const buttonStyles: React.CSSProperties = {
     padding: '12px 24px',
     background: MARBLE.base,
-    color: 'var(--fing-accent)',
+    color: 'var(--quafi-accent)',
     border: 'none',
     borderRadius: '20px',
     boxShadow: getNeuPanelShadow(4, 12),
-    fontFamily: 'var(--fing-font-mono)',
+    fontFamily: 'var(--quafi-font-mono)',
     fontWeight: 600,
     cursor: 'pointer',
     textTransform: 'uppercase',
@@ -58,10 +58,10 @@ function LayoutAnimationsContent() {
   };
 
   const gridCards = [
-    { id: 1, title: 'API Gateway', color: 'var(--fing-positive)' },
-    { id: 2, title: 'Auth Service', color: 'var(--fing-info)' },
-    { id: 3, title: 'Database', color: 'var(--fing-warning)' },
-    { id: 4, title: 'Cache', color: 'var(--fing-accent)' }
+    { id: 1, title: 'API Gateway', color: 'var(--quafi-positive)' },
+    { id: 2, title: 'Auth Service', color: 'var(--quafi-info)' },
+    { id: 3, title: 'Database', color: 'var(--quafi-warning)' },
+    { id: 4, title: 'Cache', color: 'var(--quafi-accent)' }
   ];
 
   return (
@@ -91,16 +91,16 @@ function LayoutAnimationsContent() {
                     whileTap={{ scale: 0.98 }}
                     transition={{ type: 'spring', stiffness: 400, damping: 25 }}
                   >
-                    <Box style={{ color: expandedId === id ? 'var(--fing-accent)' : 'var(--fing-text-muted)', marginBottom: '8px' }} size={20} />
+                    <Box style={{ color: expandedId === id ? 'var(--quafi-accent)' : 'var(--quafi-text-muted)', marginBottom: '8px' }} size={20} />
                     <h4 style={{
-                      color: expandedId === id ? 'var(--fing-accent)' : 'var(--fing-text-primary)',
-                      fontFamily: 'var(--fing-font-mono)',
+                      color: expandedId === id ? 'var(--quafi-accent)' : 'var(--quafi-text-primary)',
+                      fontFamily: 'var(--quafi-font-mono)',
                       fontSize: '14px',
                       marginBottom: '4px'
                     }}>
                       {id.toUpperCase()}
                     </h4>
-                    <p style={{ color: 'var(--fing-text-muted)', fontFamily: 'var(--fing-font-mono)', fontSize: '11px' }}>
+                    <p style={{ color: 'var(--quafi-text-muted)', fontFamily: 'var(--quafi-font-mono)', fontSize: '11px' }}>
                       {expandedId === id ? 'Click to collapse' : 'Click to expand'}
                     </p>
                   </motion.div>
@@ -118,18 +118,18 @@ function LayoutAnimationsContent() {
                     transition={{ type: 'spring', stiffness: 300, damping: 25 }}
                     style={{
                       ...cardStyles,
-                      borderLeft: '4px solid var(--fing-accent)',
+                      borderLeft: '4px solid var(--quafi-accent)',
                       padding: '32px',
                       overflow: 'hidden'
                     }}
                   >
                     <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '16px' }}>
-                      <Grid style={{ color: 'var(--fing-accent)' }} size={32} />
-                      <h4 style={{ color: 'var(--fing-accent)', fontFamily: 'var(--fing-font-mono)', fontSize: '18px' }}>
+                      <Grid style={{ color: 'var(--quafi-accent)' }} size={32} />
+                      <h4 style={{ color: 'var(--quafi-accent)', fontFamily: 'var(--quafi-font-mono)', fontSize: '18px' }}>
                         {expandedId.toUpperCase()} EXPANDED
                       </h4>
                     </div>
-                    <p style={{ color: 'var(--fing-text-muted)', fontFamily: 'var(--fing-font-mono)', fontSize: '12px', marginBottom: '16px' }}>
+                    <p style={{ color: 'var(--quafi-text-muted)', fontFamily: 'var(--quafi-font-mono)', fontSize: '12px', marginBottom: '16px' }}>
                       Este panel muestra los detalles del nodo seleccionado. La transición usa AnimatePresence de Framer Motion
                       para animar la entrada y salida del elemento.
                     </p>
@@ -169,11 +169,11 @@ function LayoutAnimationsContent() {
                   transition={{ duration: 0.3 }}
                   style={{
                     ...cardStyles,
-                    borderLeft: '4px solid var(--fing-accent)',
+                    borderLeft: '4px solid var(--quafi-accent)',
                   }}
                 >
-                  <h4 style={{ color: 'var(--fing-accent)', marginBottom: '8px', fontFamily: 'var(--fing-font-mono)' }}>Animated Element</h4>
-                  <p style={{ color: 'var(--fing-text-muted)', fontFamily: 'var(--fing-font-mono)', fontSize: '12px' }}>
+                  <h4 style={{ color: 'var(--quafi-accent)', marginBottom: '8px', fontFamily: 'var(--quafi-font-mono)' }}>Animated Element</h4>
+                  <p style={{ color: 'var(--quafi-text-muted)', fontFamily: 'var(--quafi-font-mono)', fontSize: '12px' }}>
                     Este elemento anima al entrar y salir del DOM.
                   </p>
                 </motion.div>
@@ -199,7 +199,7 @@ function LayoutAnimationsContent() {
                   whileTap={{ scale: 0.98 }}
                   onClick={() => setSelectedCard(selectedCard === card.id ? null : card.id)}
                 >
-                  <h4 style={{ color: 'var(--fing-text-primary)', fontFamily: 'var(--fing-font-mono)', fontSize: '14px' }}>{card.title}</h4>
+                  <h4 style={{ color: 'var(--quafi-text-primary)', fontFamily: 'var(--quafi-font-mono)', fontSize: '14px' }}>{card.title}</h4>
                 </motion.div>
               ))}
             </div>
@@ -212,14 +212,14 @@ function LayoutAnimationsContent() {
                   exit={{ opacity: 0, height: 0 }}
                   style={{
                     ...cardStyles,
-                    borderLeft: '4px solid var(--fing-accent)',
+                    borderLeft: '4px solid var(--quafi-accent)',
                     overflow: 'hidden',
                   }}
                 >
-                  <h4 style={{ color: 'var(--fing-accent)', marginBottom: '8px', fontFamily: 'var(--fing-font-mono)' }}>
+                  <h4 style={{ color: 'var(--quafi-accent)', marginBottom: '8px', fontFamily: 'var(--quafi-font-mono)' }}>
                     {gridCards.find(c => c.id === selectedCard)?.title} Details
                   </h4>
-                  <p style={{ color: 'var(--fing-text-muted)', fontFamily: 'var(--fing-font-mono)', fontSize: '12px' }}>
+                  <p style={{ color: 'var(--quafi-text-muted)', fontFamily: 'var(--quafi-font-mono)', fontSize: '12px' }}>
                     Selected ID: {selectedCard}. Click the card again to deselect.
                   </p>
                 </motion.div>
@@ -236,15 +236,15 @@ function LayoutAnimationsContent() {
           boxShadow: getNeuInsetShadow(5, 15),
           background: MARBLE.base,
           fontSize: '12px',
-          fontFamily: 'var(--fing-font-mono)',
-          color: 'var(--fing-text-muted)',
+          fontFamily: 'var(--quafi-font-mono)',
+          color: 'var(--quafi-text-muted)',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>
-          <p>✓ <strong style={{ color: 'var(--fing-accent)' }}>LayoutContainer:</strong> Wrapper for layout animations</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent)' }}>AnimatePresence:</strong> Handles enter/exit animations</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent)' }}>mode="wait":</strong> Waits for exit before enter</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent)' }}>layout prop:</strong> Enables automatic layout animations</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent)' }}>LayoutContainer:</strong> Wrapper for layout animations</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent)' }}>AnimatePresence:</strong> Handles enter/exit animations</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent)' }}>mode="wait":</strong> Waits for exit before enter</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent)' }}>layout prop:</strong> Enables automatic layout animations</p>
         </div>
       </ShowcaseSection>
     </div>

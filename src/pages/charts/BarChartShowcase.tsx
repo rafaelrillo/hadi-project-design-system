@@ -1,5 +1,5 @@
 // Path: src/pages/charts/BarChartShowcase.tsx
-// FING Design System - Glass-Neumorphism Bar Chart
+// QUAFI Design System - Glass-Neumorphism Bar Chart
 import React, { useMemo } from 'react';
 import { ShowcaseSection } from '../../components/showcase';
 import { BarChart } from '../../components/charts/echarts';
@@ -24,12 +24,12 @@ const simpleBarData: BarDataPoint[] = [
 
 const performanceCategories = ['AAPL', 'MSFT', 'GOOGL', 'AMZN', 'META', 'TSLA'];
 const performanceData: BarDataPoint[] = [
-  { category: 'AAPL', value: 12.5, color: 'var(--fing-positive)' },
-  { category: 'MSFT', value: 8.3, color: 'var(--fing-positive)' },
-  { category: 'GOOGL', value: 5.2, color: 'var(--fing-positive)' },
-  { category: 'AMZN', value: -2.1, color: 'var(--fing-negative)' },
-  { category: 'META', value: -4.8, color: 'var(--fing-negative)' },
-  { category: 'TSLA', value: -8.2, color: 'var(--fing-negative)' },
+  { category: 'AAPL', value: 12.5, color: 'var(--quafi-positive)' },
+  { category: 'MSFT', value: 8.3, color: 'var(--quafi-positive)' },
+  { category: 'GOOGL', value: 5.2, color: 'var(--quafi-positive)' },
+  { category: 'AMZN', value: -2.1, color: 'var(--quafi-negative)' },
+  { category: 'META', value: -4.8, color: 'var(--quafi-negative)' },
+  { category: 'TSLA', value: -8.2, color: 'var(--quafi-negative)' },
 ];
 
 const quarterCategories = ['Tech', 'Health', 'Finance', 'Consumer'];
@@ -147,14 +147,14 @@ function BarChartContent() {
             width: '100%',
             borderCollapse: 'collapse',
             fontSize: '12px',
-            fontFamily: 'var(--fing-font-mono)',
+            fontFamily: 'var(--quafi-font-mono)',
           }}>
             <thead>
               <tr>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent)', fontWeight: 600 }}>Prop</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent)', fontWeight: 600 }}>Type</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent)', fontWeight: 600 }}>Default</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent)', fontWeight: 600 }}>Description</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--quafi-accent)', fontWeight: 600 }}>Prop</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--quafi-accent)', fontWeight: 600 }}>Type</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--quafi-accent)', fontWeight: 600 }}>Default</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--quafi-accent)', fontWeight: 600 }}>Description</th>
               </tr>
             </thead>
             <tbody>
@@ -169,10 +169,10 @@ function BarChartContent() {
                 { prop: 'formatValue', type: '(v: number) => string', default: '-', desc: 'Value formatter function' },
               ].map((row, i) => (
                 <tr key={i}>
-                  <td style={{ padding: '12px 16px', color: 'var(--fing-text-primary)' }}>{row.prop}</td>
-                  <td style={{ padding: '12px 16px', color: 'var(--fing-text-muted)' }}>{row.type}</td>
-                  <td style={{ padding: '12px 16px', color: 'var(--fing-text-muted)' }}>{row.default}</td>
-                  <td style={{ padding: '12px 16px', color: 'var(--fing-text-muted)' }}>{row.desc}</td>
+                  <td style={{ padding: '12px 16px', color: 'var(--quafi-text-primary)' }}>{row.prop}</td>
+                  <td style={{ padding: '12px 16px', color: 'var(--quafi-text-muted)' }}>{row.type}</td>
+                  <td style={{ padding: '12px 16px', color: 'var(--quafi-text-muted)' }}>{row.default}</td>
+                  <td style={{ padding: '12px 16px', color: 'var(--quafi-text-muted)' }}>{row.desc}</td>
                 </tr>
               ))}
             </tbody>

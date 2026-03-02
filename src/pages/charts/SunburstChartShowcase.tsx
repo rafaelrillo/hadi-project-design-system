@@ -1,5 +1,5 @@
 // Path: src/pages/charts/SunburstChartShowcase.tsx
-// FING Design System - Glass-Neumorphism Sunburst Chart
+// QUAFI Design System - Glass-Neumorphism Sunburst Chart
 import React, { useMemo } from 'react';
 import { ShowcaseSection } from '../../components/showcase';
 import { SunburstChart } from '../../components/charts/echarts';
@@ -113,11 +113,11 @@ function SunburstChartContent() {
           <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap', justifyContent: 'center' }}>
             <div style={{ width: '300px' }}>
               <SunburstChart data={[sectorData]} height={300} innerRadius="10%" showLabels={false} />
-              <p style={{ textAlign: 'center', color: 'var(--fing-text-muted)', fontSize: '12px', marginTop: '8px', fontFamily: 'var(--fing-font-mono)' }}>Inner: 10%</p>
+              <p style={{ textAlign: 'center', color: 'var(--quafi-text-muted)', fontSize: '12px', marginTop: '8px', fontFamily: 'var(--quafi-font-mono)' }}>Inner: 10%</p>
             </div>
             <div style={{ width: '300px' }}>
               <SunburstChart data={[sectorData]} height={300} innerRadius="30%" showLabels={false} />
-              <p style={{ textAlign: 'center', color: 'var(--fing-text-muted)', fontSize: '12px', marginTop: '8px', fontFamily: 'var(--fing-font-mono)' }}>Inner: 30%</p>
+              <p style={{ textAlign: 'center', color: 'var(--quafi-text-muted)', fontSize: '12px', marginTop: '8px', fontFamily: 'var(--quafi-font-mono)' }}>Inner: 30%</p>
             </div>
           </div>
         </div>
@@ -138,13 +138,13 @@ function SunburstChartContent() {
 
       <ShowcaseSection title="Especificaciones Tecnicas">
         <div style={tableContainerStyles}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12px', fontFamily: 'var(--fing-font-mono)' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12px', fontFamily: 'var(--quafi-font-mono)' }}>
             <thead>
               <tr>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent)', fontWeight: 600 }}>Prop</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent)', fontWeight: 600 }}>Type</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent)', fontWeight: 600 }}>Default</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent)', fontWeight: 600 }}>Description</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--quafi-accent)', fontWeight: 600 }}>Prop</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--quafi-accent)', fontWeight: 600 }}>Type</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--quafi-accent)', fontWeight: 600 }}>Default</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--quafi-accent)', fontWeight: 600 }}>Description</th>
               </tr>
             </thead>
             <tbody>
@@ -157,10 +157,10 @@ function SunburstChartContent() {
                 { prop: 'colors', type: 'string[]', default: 'chartPalette', desc: 'Custom color palette' },
               ].map((row, i) => (
                 <tr key={i}>
-                  <td style={{ padding: '12px 16px', color: 'var(--fing-text-primary)' }}>{row.prop}</td>
-                  <td style={{ padding: '12px 16px', color: 'var(--fing-text-muted)' }}>{row.type}</td>
-                  <td style={{ padding: '12px 16px', color: 'var(--fing-text-muted)' }}>{row.default}</td>
-                  <td style={{ padding: '12px 16px', color: 'var(--fing-text-muted)' }}>{row.desc}</td>
+                  <td style={{ padding: '12px 16px', color: 'var(--quafi-text-primary)' }}>{row.prop}</td>
+                  <td style={{ padding: '12px 16px', color: 'var(--quafi-text-muted)' }}>{row.type}</td>
+                  <td style={{ padding: '12px 16px', color: 'var(--quafi-text-muted)' }}>{row.default}</td>
+                  <td style={{ padding: '12px 16px', color: 'var(--quafi-text-muted)' }}>{row.desc}</td>
                 </tr>
               ))}
             </tbody>

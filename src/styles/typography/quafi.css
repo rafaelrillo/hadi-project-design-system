@@ -1,0 +1,386 @@
+/* src/styles/typography/fing.css */
+/* ═══════════════════════════════════════════════════════════════════════════════
+   QUAFI TYPOGRAPHY
+
+   Sistema tipográfico para Fing
+   - IBM Plex Sans para UI general (claridad profesional)
+   - Libre Baskerville para display/headlines (elegancia serif)
+   - IBM Plex Mono para datos financieros (precisión numérica)
+
+   NOTA: Las fuentes se cargan via Google Fonts CDN en index.html
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   BASE BODY STYLES
+   ───────────────────────────────────────────────────────────────────────────── */
+
+body {
+  font-family: var(--quafi-font-primary);
+  font-size: var(--quafi-text-sm);
+  font-weight: var(--quafi-font-regular);
+  line-height: var(--quafi-leading-normal);
+  color: var(--quafi-text-primary);
+  background-color: var(--quafi-bg-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   HEADINGS
+   h1-h3: Libre Baskerville (serif elegante)
+   h4-h6: IBM Plex Sans (sans-serif profesional)
+   ───────────────────────────────────────────────────────────────────────────── */
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--quafi-font-semibold);
+  line-height: var(--quafi-leading-tight);
+  letter-spacing: var(--quafi-tracking-tight);
+  color: var(--quafi-text-primary);
+  margin: 0;
+}
+
+/* Display headings - Libre Baskerville (serif) */
+h1, h2, h3 {
+  font-family: var(--quafi-font-display);
+  font-variant-numeric: lining-nums; /* Evitar oldstyle numerals en headings */
+}
+
+h1 {
+  font-size: var(--quafi-text-3xl);
+  font-weight: var(--quafi-font-bold);
+}
+
+h2 {
+  font-size: var(--quafi-text-2xl);
+  font-weight: var(--quafi-font-bold);
+}
+
+h3 {
+  font-size: var(--quafi-text-xl);
+  font-weight: var(--quafi-font-bold);
+}
+
+/* Section headings - IBM Plex Sans (sans-serif) */
+h4, h5, h6 {
+  font-family: var(--quafi-font-primary);
+}
+
+h4 {
+  font-size: var(--quafi-text-lg);
+  font-weight: var(--quafi-font-semibold);
+}
+
+h5 {
+  font-size: var(--quafi-text-base);
+  font-weight: var(--quafi-font-semibold);
+}
+
+h6 {
+  font-size: var(--quafi-text-sm);
+  font-weight: var(--quafi-font-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--quafi-tracking-wide);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   PARAGRAPH AND TEXT
+   ───────────────────────────────────────────────────────────────────────────── */
+
+p {
+  font-size: var(--quafi-text-sm);
+  line-height: var(--quafi-leading-relaxed);
+  color: var(--quafi-text-secondary);
+  margin: 0;
+}
+
+small {
+  font-size: var(--quafi-text-xs);
+  color: var(--quafi-text-tertiary);
+}
+
+strong, b {
+  font-weight: var(--quafi-font-semibold);
+}
+
+em, i {
+  font-style: italic;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   MONOSPACE - For Data, Numbers, Code
+   IBM Plex Mono para datos financieros con números tabulares
+   ───────────────────────────────────────────────────────────────────────────── */
+
+code, pre, kbd, samp, .mono, .data {
+  font-family: var(--quafi-font-mono);
+  font-feature-settings: "liga" 1, "calt" 1, "tnum" 1;
+  font-variant-numeric: tabular-nums lining-nums; /* Alineación perfecta en tablas */
+}
+
+code {
+  font-size: 0.9em;
+  padding: var(--quafi-space-0-5) var(--quafi-space-1);
+  background-color: var(--quafi-bg-elevated);
+  border-radius: var(--quafi-radius-sm);
+  color: var(--quafi-text-primary);
+}
+
+pre {
+  font-size: var(--quafi-text-sm);
+  padding: var(--quafi-space-4);
+  background-color: var(--quafi-bg-elevated);
+  border-radius: var(--quafi-radius-md);
+  overflow-x: auto;
+}
+
+/* Tabular numbers for financial data alignment */
+.tabular-nums {
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   LABELS AND CAPTIONS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+label {
+  font-size: var(--quafi-text-xs);
+  font-weight: var(--quafi-font-medium);
+  color: var(--quafi-text-secondary);
+  letter-spacing: var(--quafi-tracking-wide);
+  text-transform: uppercase;
+}
+
+figcaption, caption {
+  font-size: var(--quafi-text-xs);
+  color: var(--quafi-text-tertiary);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   LINKS
+   Subtle but clear, with smooth transitions
+   ───────────────────────────────────────────────────────────────────────────── */
+
+a {
+  color: var(--quafi-text-link);
+  text-decoration: none;
+  transition: var(--quafi-transition-fast);
+}
+
+a:hover {
+  color: var(--quafi-accent-primary);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--quafi-border-focus);
+  outline-offset: 2px;
+  border-radius: var(--quafi-radius-sm);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   SELECTION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+::selection {
+  background-color: var(--quafi-accent-subtle);
+  color: var(--quafi-text-primary);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   SCROLLBAR - Minimal, dark theme
+   ───────────────────────────────────────────────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--quafi-bg-base);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--quafi-border-default);
+  border-radius: var(--quafi-radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--quafi-border-strong);
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--quafi-border-default) var(--quafi-bg-base);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   PLACEHOLDER TEXT
+   ───────────────────────────────────────────────────────────────────────────── */
+
+::placeholder {
+  color: var(--quafi-text-tertiary);
+  opacity: 1;
+}
+
+:-ms-input-placeholder {
+  color: var(--quafi-text-tertiary);
+}
+
+::-ms-input-placeholder {
+  color: var(--quafi-text-tertiary);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   FOCUS STATES
+   ───────────────────────────────────────────────────────────────────────────── */
+
+:focus-visible {
+  outline: 2px solid var(--quafi-border-focus);
+  outline-offset: 2px;
+}
+
+/* Remove focus outline for mouse users */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   UTILITY CLASSES - Typography
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Size utilities */
+.text-xs { font-size: var(--quafi-text-xs); }
+.text-sm { font-size: var(--quafi-text-sm); }
+.text-base { font-size: var(--quafi-text-base); }
+.text-lg { font-size: var(--quafi-text-lg); }
+.text-xl { font-size: var(--quafi-text-xl); }
+.text-2xl { font-size: var(--quafi-text-2xl); }
+.text-3xl { font-size: var(--quafi-text-3xl); }
+.text-4xl { font-size: var(--quafi-text-4xl); }
+
+/* Weight utilities */
+.font-light { font-weight: var(--quafi-font-light); }
+.font-regular { font-weight: var(--quafi-font-regular); }
+.font-medium { font-weight: var(--quafi-font-medium); }
+.font-semibold { font-weight: var(--quafi-font-semibold); }
+.font-bold { font-weight: var(--quafi-font-bold); }
+
+/* Color utilities */
+.text-primary { color: var(--quafi-text-primary); }
+.text-secondary { color: var(--quafi-text-secondary); }
+.text-tertiary { color: var(--quafi-text-tertiary); }
+.text-disabled { color: var(--quafi-text-disabled); }
+.text-accent { color: var(--quafi-accent-primary); }
+.text-positive { color: var(--quafi-status-positive-text); }
+.text-negative { color: var(--quafi-status-negative-text); }
+.text-warning { color: var(--quafi-status-warning-text); }
+
+/* Tracking utilities */
+.tracking-tight { letter-spacing: var(--quafi-tracking-tight); }
+.tracking-normal { letter-spacing: var(--quafi-tracking-normal); }
+.tracking-wide { letter-spacing: var(--quafi-tracking-wide); }
+
+/* Line height utilities */
+.leading-none { line-height: var(--quafi-leading-none); }
+.leading-tight { line-height: var(--quafi-leading-tight); }
+.leading-normal { line-height: var(--quafi-leading-normal); }
+.leading-relaxed { line-height: var(--quafi-leading-relaxed); }
+
+/* Align utilities */
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+
+/* Transform utilities */
+.uppercase { text-transform: uppercase; }
+.lowercase { text-transform: lowercase; }
+.capitalize { text-transform: capitalize; }
+.normal-case { text-transform: none; }
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   TEXT EFFECTS - Carved (Debossed) & Embossed (Raised) Neumorphic
+   RULE: RAISED container → .text-carved   (text pressed into surface)
+         INSET container  → .text-embossed (text raised from surface)
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Carved (debossed) - for text in RAISED containers */
+.text-carved                  { text-shadow: var(--lp-primary); }
+.text-carved-strong           { text-shadow: var(--lp-primary-strong); }
+.text-carved-sm               { text-shadow: var(--lp-carved-sm); }
+.text-carved-md               { text-shadow: var(--lp-carved-md); }
+.text-carved-lg               { text-shadow: var(--lp-carved-lg); }
+.text-carved-whisper          { text-shadow: var(--lp-whisper); }
+.text-carved-positive         { text-shadow: var(--lp-positive); }
+.text-carved-positive-strong  { text-shadow: var(--lp-positive-strong); }
+.text-carved-positive-md      { text-shadow: var(--lp-positive-md); }
+.text-carved-warning          { text-shadow: var(--lp-warning); }
+.text-carved-warning-strong   { text-shadow: var(--lp-warning-strong); }
+.text-carved-warning-md       { text-shadow: var(--lp-warning-md); }
+.text-carved-negative         { text-shadow: var(--lp-negative); }
+.text-carved-negative-strong  { text-shadow: var(--lp-negative-strong); }
+.text-carved-negative-md      { text-shadow: var(--lp-negative-md); }
+.text-carved-info             { text-shadow: var(--lp-info); }
+.text-carved-info-strong      { text-shadow: var(--lp-info-strong); }
+.text-carved-accent           { text-shadow: var(--lp-accent); }
+.text-carved-accent-strong    { text-shadow: var(--lp-accent-strong); }
+.text-carved-steel            { text-shadow: var(--lp-steel); }
+.text-carved-steel-strong     { text-shadow: var(--lp-steel-strong); }
+.text-carved-petrol           { text-shadow: var(--lp-petrol); }
+.text-carved-petrol-strong    { text-shadow: var(--lp-petrol-strong); }
+.text-carved-petrol-md        { text-shadow: var(--lp-petrol-md); }
+.text-carved-muted            { text-shadow: var(--lp-muted); }
+
+/* Embossed (raised) - for text in INSET containers */
+.text-embossed                { text-shadow: var(--lp-embossed); }
+.text-embossed-subtle         { text-shadow: var(--lp-embossed-subtle); }
+.text-embossed-strong         { text-shadow: var(--lp-embossed-strong); }
+.text-embossed-sm             { text-shadow: var(--lp-embossed-sm); }
+.text-embossed-petrol         { text-shadow: var(--lp-embossed-petrol); }
+.text-embossed-petrol-sm      { text-shadow: var(--lp-embossed-petrol-sm); }
+.text-embossed-positive       { text-shadow: var(--lp-embossed-positive); }
+.text-embossed-positive-sm    { text-shadow: var(--lp-embossed-positive-sm); }
+.text-embossed-warning        { text-shadow: var(--lp-embossed-warning); }
+.text-embossed-warning-sm     { text-shadow: var(--lp-embossed-warning-sm); }
+.text-embossed-negative       { text-shadow: var(--lp-embossed-negative); }
+.text-embossed-negative-sm    { text-shadow: var(--lp-embossed-negative-sm); }
+.text-embossed-info           { text-shadow: var(--lp-embossed-info); }
+.text-embossed-info-sm        { text-shadow: var(--lp-embossed-info-sm); }
+
+/* Glow - non-directional glow for active/highlighted elements */
+.text-glow-petrol             { text-shadow: var(--lp-glow-petrol); }
+.text-glow-positive           { text-shadow: var(--lp-glow-positive); }
+.text-glow-negative           { text-shadow: var(--lp-glow-negative); }
+
+/* Icon letterpress (use with filter property) */
+.icon-carved                  { filter: var(--lp-icon); }
+.icon-carved-accent           { filter: var(--lp-icon-accent); }
+.icon-carved-negative         { filter: var(--lp-icon-negative); }
+.icon-glow                    { filter: var(--lp-icon-glow); }
+.icon-glow-negative           { filter: var(--lp-icon-glow-negative); }
+
+/* No effect - explicitly removes text-shadow */
+.text-flat                    { text-shadow: none; }
+
+/* Truncate */
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Line clamp */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

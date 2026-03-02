@@ -27,10 +27,10 @@ import type { CSSProperties } from 'react';
 export const colors = {
   marble: 'var(--marble-base)',
   marbleDark: 'var(--marble-dark)',
-  accent: 'var(--fing-accent)',
-  textPrimary: 'var(--fing-text-primary)',
-  textMuted: 'var(--fing-text-muted)',
-  textSecondary: 'var(--fing-text-secondary)',
+  accent: 'var(--quafi-accent)',
+  textPrimary: 'var(--quafi-text-primary)',
+  textMuted: 'var(--quafi-text-muted)',
+  textSecondary: 'var(--quafi-text-secondary)',
   shadowLight: 'var(--shadow-light)',
   shadowDark: 'var(--shadow-dark)',
 } as const;
@@ -55,7 +55,7 @@ export const header = {
     fontWeight: 700,
     color: colors.accent,
     marginBottom: '8px',
-    fontFamily: 'var(--fing-font-display)',
+    fontFamily: 'var(--quafi-font-display)',
     textTransform: 'uppercase',
     letterSpacing: '0.1em',
     textShadow: 'var(--lp-petrol-whisper)',
@@ -65,7 +65,7 @@ export const header = {
   description: {
     fontSize: '14px',
     color: colors.textMuted,
-    fontFamily: 'var(--fing-font-mono)',
+    fontFamily: 'var(--quafi-font-mono)',
     textTransform: 'uppercase',
     letterSpacing: '0.03em',
     textShadow: 'var(--lp-muted)',
@@ -224,7 +224,7 @@ export const label = {
   /** Variable name (e.g., --raised-3) */
   varName: {
     fontSize: '11px',
-    fontFamily: 'var(--fing-font-mono)',
+    fontFamily: 'var(--quafi-font-mono)',
     color: colors.accent,
     marginTop: '12px',
     textAlign: 'center',
@@ -234,7 +234,7 @@ export const label = {
   /** Spec/description label */
   spec: {
     fontSize: '10px',
-    fontFamily: 'var(--fing-font-mono)',
+    fontFamily: 'var(--quafi-font-mono)',
     color: colors.textMuted,
     marginTop: '4px',
     textAlign: 'center',
@@ -244,7 +244,7 @@ export const label = {
   section: {
     fontSize: '11px',
     fontWeight: 600,
-    fontFamily: 'var(--fing-font-mono)',
+    fontFamily: 'var(--quafi-font-mono)',
     color: colors.textMuted,
     textTransform: 'uppercase',
     letterSpacing: '0.08em',
@@ -259,7 +259,7 @@ export const label = {
 export const text = {
   /** Heading in RAISED container (carved effect) */
   headingCarved: {
-    fontFamily: 'var(--fing-font-display)',
+    fontFamily: 'var(--quafi-font-display)',
     fontWeight: 600,
     color: colors.textPrimary,
     textShadow: 'var(--lp-primary)',
@@ -267,7 +267,7 @@ export const text = {
 
   /** Heading in INSET container (embossed effect) */
   headingEmbossed: {
-    fontFamily: 'var(--fing-font-display)',
+    fontFamily: 'var(--quafi-font-display)',
     fontWeight: 600,
     color: colors.marble,
     textShadow: 'var(--lp-embossed)',
@@ -275,21 +275,21 @@ export const text = {
 
   /** Body text in RAISED (carved muted) */
   bodyCarved: {
-    fontFamily: 'var(--fing-font-primary)',
+    fontFamily: 'var(--quafi-font-primary)',
     color: colors.textMuted,
     textShadow: 'var(--lp-muted)',
   } as CSSProperties,
 
   /** Body text in INSET (embossed subtle) */
   bodyEmbossed: {
-    fontFamily: 'var(--fing-font-primary)',
+    fontFamily: 'var(--quafi-font-primary)',
     color: colors.textSecondary,
     textShadow: 'var(--lp-embossed-subtle)',
   } as CSSProperties,
 
   /** Mono code/data text */
   mono: {
-    fontFamily: 'var(--fing-font-mono)',
+    fontFamily: 'var(--quafi-font-mono)',
     fontSize: '12px',
   } as CSSProperties,
 };
@@ -302,7 +302,7 @@ export const table = {
   container: {
     width: '100%',
     borderCollapse: 'collapse',
-    fontFamily: 'var(--fing-font-mono)',
+    fontFamily: 'var(--quafi-font-mono)',
     fontSize: '12px',
   } as CSSProperties,
 

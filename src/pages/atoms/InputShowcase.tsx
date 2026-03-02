@@ -1,5 +1,5 @@
 // Path: src/pages/atoms/InputShowcase.tsx
-// FING Design System - Glass-Neumorphism Inputs
+// QUAFI Design System - Glass-Neumorphism Inputs
 import React, { useState, useMemo } from "react";
 import {
   InputText,
@@ -108,8 +108,8 @@ function InputContent() {
               style={{
                 fontSize: "12px",
                 marginBottom: "8px",
-                color: "var(--fing-status-negative)",
-                fontFamily: "var(--fing-font-mono)",
+                color: "var(--quafi-status-negative)",
+                fontFamily: "var(--quafi-font-mono)",
                 textTransform: "uppercase",
               }}
             >
@@ -127,8 +127,8 @@ function InputContent() {
               style={{
                 fontSize: "12px",
                 marginBottom: "8px",
-                color: "var(--fing-text-muted)",
-                fontFamily: "var(--fing-font-mono)",
+                color: "var(--quafi-text-muted)",
+                fontFamily: "var(--quafi-font-mono)",
                 textTransform: "uppercase",
               }}
             >
@@ -194,14 +194,14 @@ function InputContent() {
             boxShadow: getNeuInsetShadow(5, 15),
             background: "var(--marble-base)",
             fontSize: "12px",
-            fontFamily: "var(--fing-font-mono)",
-            color: "var(--fing-text-muted)",
+            fontFamily: "var(--quafi-font-mono)",
+            color: "var(--quafi-text-muted)",
             lineHeight: "1.8",
             transition: "box-shadow 50ms linear",
           }}
         >
           <p>
-            <strong style={{ color: "var(--fing-accent)" }}>
+            <strong style={{ color: "var(--quafi-accent)" }}>
               InputText & InputDropdown:
             </strong>
           </p>
@@ -221,13 +221,13 @@ function InputContent() {
             ✓ <strong>Sombra inset:</strong> Para efecto cavado
           </p>
           <p style={{ marginTop: "16px" }}>
-            <strong style={{ color: "var(--fing-accent)" }}>Textarea:</strong>
+            <strong style={{ color: "var(--quafi-accent)" }}>Textarea:</strong>
           </p>
           <p>
             ✓ <strong>Min-height:</strong> 80px
           </p>
           <p>
-            ✓ <strong>Contador:</strong> 12px, color var(--fing-text-muted)
+            ✓ <strong>Contador:</strong> 12px, color var(--quafi-text-muted)
           </p>
         </div>
       </ShowcaseSection>

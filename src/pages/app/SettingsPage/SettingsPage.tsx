@@ -1,5 +1,5 @@
 // Path: src/pages/app/SettingsPage/SettingsPage.tsx
-// FING Settings Page with Material Theming
+// QUAFI Settings Page with Material Theming
 
 import { Settings } from 'lucide-react';
 import { MaterialSelector } from '@/components/organisms/settings/MaterialSelector';

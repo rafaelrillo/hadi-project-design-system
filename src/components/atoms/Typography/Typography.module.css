@@ -1,20 +1,20 @@
 /* Path: src/components/atoms/Typography/Typography.module.css */
-/* FING Design System */
+/* QUAFI Design System */
 
 /* Base typography styles */
 .base {
-  font-family: var(--fing-font-led);
-  line-height: var(--fing-leading-normal);
+  font-family: var(--quafi-font-led);
+  line-height: var(--quafi-leading-normal);
   color: var(--foreground);
-  letter-spacing: var(--fing-tracking-led);
+  letter-spacing: var(--quafi-tracking-led);
   margin: 0;
 }
 
 /* Heading1 - h1 18px Bold */
 .heading1 {
   composes: base;
-  font-size: var(--fing-text-lg);
-  font-weight: var(--fing-font-bold);
+  font-size: var(--quafi-text-lg);
+  font-weight: var(--quafi-font-bold);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -22,8 +22,8 @@
 /* Heading2 - h2 16px Bold */
 .heading2 {
   composes: base;
-  font-size: var(--fing-text-base);
-  font-weight: var(--fing-font-bold);
+  font-size: var(--quafi-text-base);
+  font-weight: var(--quafi-font-bold);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -31,8 +31,8 @@
 /* Heading3 - h3 16px Semibold */
 .heading3 {
   composes: base;
-  font-size: var(--fing-text-base);
-  font-weight: var(--fing-font-semibold);
+  font-size: var(--quafi-text-base);
+  font-weight: var(--quafi-font-semibold);
   text-transform: uppercase;
   letter-spacing: 0.03em;
 }
@@ -40,23 +40,23 @@
 /* Heading4 - h4 14px Semibold */
 .heading4 {
   composes: base;
-  font-size: var(--fing-text-sm);
-  font-weight: var(--fing-font-semibold);
+  font-size: var(--quafi-text-sm);
+  font-weight: var(--quafi-font-semibold);
 }
 
 /* Paragraph - p 14px Regular */
 .paragraph {
   composes: base;
-  font-size: var(--fing-text-sm);
-  font-weight: var(--fing-font-regular);
-  line-height: var(--fing-leading-normal);
+  font-size: var(--quafi-text-sm);
+  font-weight: var(--quafi-font-regular);
+  line-height: var(--quafi-leading-normal);
 }
 
 /* Label - label 12px Regular */
 .label {
   composes: base;
-  font-size: var(--fing-text-xs);
-  font-weight: var(--fing-font-regular);
+  font-size: var(--quafi-text-xs);
+  font-weight: var(--quafi-font-regular);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--foreground-muted);
@@ -64,23 +64,23 @@
 
 /* ProductKey - 24px Bold, Orange (accent branding) */
 .productKey {
-  font-family: var(--fing-font-ticker);
-  font-size: var(--fing-text-2xl);
-  font-weight: var(--fing-font-bold);
-  line-height: var(--fing-leading-normal);
+  font-family: var(--quafi-font-ticker);
+  font-size: var(--quafi-text-2xl);
+  font-weight: var(--quafi-font-bold);
+  line-height: var(--quafi-leading-normal);
   color: var(--primary);
   margin: 0;
   display: inline-block;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  text-shadow: var(--fing-glow-accent);
+  text-shadow: var(--quafi-glow-accent);
 }
 
 /* Code - monospace styling */
 .code {
   composes: base;
-  font-size: var(--fing-text-xs);
-  font-weight: var(--fing-font-regular);
+  font-size: var(--quafi-text-xs);
+  font-weight: var(--quafi-font-regular);
   background-color: var(--background-tertiary);
   padding: 2px 6px;
   border-radius: var(--radius-sm);

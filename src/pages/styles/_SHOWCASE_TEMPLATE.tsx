@@ -25,9 +25,9 @@ import { Heading4, Label } from "../../components/atoms/Typography";
 
 const COLORS = {
   marble: "var(--marble-base)",
-  accent: "var(--fing-accent)",
-  textMuted: "var(--fing-text-muted)",
-  textPrimary: "var(--fing-text-primary)",
+  accent: "var(--quafi-accent)",
+  textMuted: "var(--quafi-text-muted)",
+  textPrimary: "var(--quafi-text-primary)",
 };
 
 // ═══════════════════════════════════════════════════════════════════════════════
@@ -47,7 +47,7 @@ const pageTitleStyles: CSSProperties = {
   fontWeight: 700,
   color: COLORS.accent,
   marginBottom: "8px",
-  fontFamily: "var(--fing-font-display)",
+  fontFamily: "var(--quafi-font-display)",
   textTransform: "uppercase",
   letterSpacing: "0.1em",
   // Carved whisper - Petrol tint (RAISED container = carved text)
@@ -57,7 +57,7 @@ const pageTitleStyles: CSSProperties = {
 const pageDescStyles: CSSProperties = {
   fontSize: "14px",
   color: COLORS.textMuted,
-  fontFamily: "var(--fing-font-mono)",
+  fontFamily: "var(--quafi-font-mono)",
   textTransform: "uppercase",
   letterSpacing: "0.03em",
   // Carved muted (RAISED container = carved text)
@@ -161,7 +161,7 @@ const labelStyles = {
   /** Variable name (ej: --raised-3) */
   varName: {
     fontSize: "11px",
-    fontFamily: "var(--fing-font-mono)",
+    fontFamily: "var(--quafi-font-mono)",
     color: COLORS.accent,
     marginTop: "12px",
     textAlign: "center",
@@ -171,7 +171,7 @@ const labelStyles = {
   /** Spec label (ej: 6px / 12px blur) */
   spec: {
     fontSize: "10px",
-    fontFamily: "var(--fing-font-mono)",
+    fontFamily: "var(--quafi-font-mono)",
     color: COLORS.textMuted,
     marginTop: "4px",
     textAlign: "center",
@@ -271,7 +271,7 @@ export function ShowcaseTemplate() {
           <table
             style={{
               width: "100%",
-              fontFamily: "var(--fing-font-mono)",
+              fontFamily: "var(--quafi-font-mono)",
               fontSize: "12px",
             }}
           >

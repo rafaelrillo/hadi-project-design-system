@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════════════════════
-   FING COLOR SYSTEM - Natural Mineral Palette
+   QUAFI COLOR SYSTEM - Natural Mineral Palette
    Canonical source of truth for ALL color definitions.
 
    All colors derive from natural materials:
@@ -12,7 +12,7 @@
    - Marble (natural stone)
 
    RGB companions enable opacity variations:
-     rgba(var(--fing-accent-rgb), 0.3)
+     rgba(var(--quafi-accent-rgb), 0.3)
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 :root {
@@ -22,25 +22,25 @@
      ═══════════════════════════════════════════════════════════════════════════ */
 
   /* White/Highlight - used for light shadow side */
-  --fing-white-rgb: 255, 255, 255;
+  --quafi-white-rgb: 255, 255, 255;
 
   /* Shadow Dark - primary dark shadow (used in --raised-*, --inset-*) */
-  --fing-shadow-dark-rgb: 147, 157, 170;
+  --quafi-shadow-dark-rgb: 147, 157, 170;
 
   /* Shadow Darker - deeper shadow variant */
-  --fing-shadow-darker-rgb: 130, 140, 155;
+  --quafi-shadow-darker-rgb: 130, 140, 155;
 
   /* Shadow Darkest - deepest shadow (wordmark, deep insets) */
-  --fing-shadow-darkest-rgb: 115, 125, 140;
+  --quafi-shadow-darkest-rgb: 115, 125, 140;
 
   /* Shadow Alt - alternative dark for borders */
-  --fing-shadow-alt-rgb: 168, 172, 179;
+  --quafi-shadow-alt-rgb: 168, 172, 179;
 
   /* Muted shadow - for text shadows */
-  --fing-shadow-muted-rgb: 138, 143, 150;
+  --quafi-shadow-muted-rgb: 138, 143, 150;
 
   /* Carve shadow - for carved/etched effects */
-  --fing-carve-dark-rgb: 140, 150, 165;
+  --quafi-carve-dark-rgb: 140, 150, 165;
 
   /* ═══════════════════════════════════════════════════════════════════════════
      MARBLE SURFACE - Base Background
@@ -60,69 +60,69 @@
      Never use pure black #000000 - always use Charcoal
      ═══════════════════════════════════════════════════════════════════════════ */
 
-  --fing-black: #252528;
-  --fing-black-rgb: 37, 37, 40;
+  --quafi-black: #252528;
+  --quafi-black-rgb: 37, 37, 40;
 
   /* ═══════════════════════════════════════════════════════════════════════════
      BRAND ACCENT - Petrol (petroleum deposits)
      Primary brand color for interactive elements
      ═══════════════════════════════════════════════════════════════════════════ */
 
-  --fing-accent: #3a6a72;
-  --fing-accent-rgb: 58, 106, 114;
-  --fing-accent-light: #4a7a82;
-  --fing-accent-light-rgb: 74, 122, 130;
-  --fing-accent-dark: #2a5a62;
-  --fing-accent-dark-rgb: 42, 90, 98;
-  --fing-accent-glow: rgba(var(--fing-accent-rgb), 0.25);
+  --quafi-accent: #3a6a72;
+  --quafi-accent-rgb: 58, 106, 114;
+  --quafi-accent-light: #4a7a82;
+  --quafi-accent-light-rgb: 74, 122, 130;
+  --quafi-accent-dark: #2a5a62;
+  --quafi-accent-dark-rgb: 42, 90, 98;
+  --quafi-accent-glow: rgba(var(--quafi-accent-rgb), 0.25);
 
   /* ═══════════════════════════════════════════════════════════════════════════
      TEXT ACCENT - Steel (refined iron alloy)
      For secondary accent text
      ═══════════════════════════════════════════════════════════════════════════ */
 
-  --fing-text-accent: #4a6a7a;
-  --fing-text-accent-rgb: 74, 106, 122;
+  --quafi-text-accent: #4a6a7a;
+  --quafi-text-accent-rgb: 74, 106, 122;
 
   /* ═══════════════════════════════════════════════════════════════════════════
      SEMANTIC COLORS - Natural Minerals
      ═══════════════════════════════════════════════════════════════════════════ */
 
   /* Positive/Success - Jade (green stone) */
-  --fing-positive: #4a7a6a;
-  --fing-positive-rgb: 74, 122, 106;
-  --fing-positive-light: #5a8a7a;
-  --fing-positive-dark: #3a6a5a;
+  --quafi-positive: #4a7a6a;
+  --quafi-positive-rgb: 74, 122, 106;
+  --quafi-positive-light: #5a8a7a;
+  --quafi-positive-dark: #3a6a5a;
 
   /* Warning - Gold (pure metal) */
-  --fing-warning: #a08a4a;
-  --fing-warning-rgb: 160, 138, 74;
-  --fing-warning-light: #b09a5a;
-  --fing-warning-dark: #8a7a3a;
+  --quafi-warning: #a08a4a;
+  --quafi-warning-rgb: 160, 138, 74;
+  --quafi-warning-light: #b09a5a;
+  --quafi-warning-dark: #8a7a3a;
 
   /* Negative/Error - Rust (iron oxide) */
-  --fing-negative: #8a5a4a;
-  --fing-negative-rgb: 138, 90, 74;
-  --fing-negative-light: #9a6a5a;
-  --fing-negative-dark: #7a4a3a;
+  --quafi-negative: #8a5a4a;
+  --quafi-negative-rgb: 138, 90, 74;
+  --quafi-negative-light: #9a6a5a;
+  --quafi-negative-dark: #7a4a3a;
 
   /* Info - Steel (same as text accent) */
-  --fing-info: #4a6a7a;
-  --fing-info-rgb: 74, 106, 122;
-  --fing-info-light: #5a7a8a;
-  --fing-info-dark: #3a5a6a;
+  --quafi-info: #4a6a7a;
+  --quafi-info-rgb: 74, 106, 122;
+  --quafi-info-light: #5a7a8a;
+  --quafi-info-dark: #3a5a6a;
 
   /* ═══════════════════════════════════════════════════════════════════════════
      TEXT COLORS
      ═══════════════════════════════════════════════════════════════════════════ */
 
-  --fing-text-primary: var(--fing-black);
-  --fing-text-secondary: rgba(var(--fing-black-rgb), 0.75);
-  --fing-text-tertiary: rgba(var(--fing-black-rgb), 0.55);
-  --fing-text-muted: #8a8f96;
-  --fing-text-disabled: rgba(var(--fing-black-rgb), 0.3);
-  --fing-text-inverse: #f0f0f2;
-  --fing-text-light: #f0f0f2;
+  --quafi-text-primary: var(--quafi-black);
+  --quafi-text-secondary: rgba(var(--quafi-black-rgb), 0.75);
+  --quafi-text-tertiary: rgba(var(--quafi-black-rgb), 0.55);
+  --quafi-text-muted: #8a8f96;
+  --quafi-text-disabled: rgba(var(--quafi-black-rgb), 0.3);
+  --quafi-text-inverse: #f0f0f2;
+  --quafi-text-light: #f0f0f2;
 
   /* ═══════════════════════════════════════════════════════════════════════════
      INTERACTION STATE COLORS
@@ -130,89 +130,89 @@
      ═══════════════════════════════════════════════════════════════════════════ */
 
   /* Accent hover/active */
-  --fing-accent-hover: var(--fing-accent-dark);        /* Darker petrol */
-  --fing-accent-active: #1f4a52;                       /* Even darker */
+  --quafi-accent-hover: var(--quafi-accent-dark);        /* Darker petrol */
+  --quafi-accent-active: #1f4a52;                       /* Even darker */
 
   /* Background hover states */
-  --fing-bg-hover: rgba(var(--fing-border-base-rgb), 0.08);
-  --fing-bg-active: rgba(var(--fing-border-base-rgb), 0.15);
+  --quafi-bg-hover: rgba(var(--quafi-border-base-rgb), 0.08);
+  --quafi-bg-active: rgba(var(--quafi-border-base-rgb), 0.15);
 
   /* Disabled opacity overlay */
-  --fing-opacity-disabled: 0.4;
+  --quafi-opacity-disabled: 0.4;
 
   /* ═══════════════════════════════════════════════════════════════════════════
-     LOGO COLORS - For FING emblem variants
+     LOGO COLORS - For QUAFI emblem variants
      ═══════════════════════════════════════════════════════════════════════════ */
 
   /* Dark Variant (on dark backgrounds) */
-  --fing-logo-slate-1: #3a3a42;
-  --fing-logo-slate-2: #44444c;
+  --quafi-logo-slate-1: #3a3a42;
+  --quafi-logo-slate-2: #44444c;
 
   /* Stone Variant (on marble backgrounds) */
-  --fing-logo-marble-1: #eceef2;
-  --fing-logo-marble-2: #f0f2f5;
+  --quafi-logo-marble-1: #eceef2;
+  --quafi-logo-marble-2: #f0f2f5;
 
   /* Light Variant (on white backgrounds) */
-  --fing-logo-light-1: #e8e8ec;
-  --fing-logo-light-2: #ededf0;
+  --quafi-logo-light-1: #e8e8ec;
+  --quafi-logo-light-2: #ededf0;
 
   /* ═══════════════════════════════════════════════════════════════════════════
      EMBLEM COLORS - Radar Symbol
      ═══════════════════════════════════════════════════════════════════════════ */
 
-  --fing-symbol-fill: #babec4;
-  --fing-symbol-stroke: #b2b6bc;
-  --fing-teal-glow: rgba(var(--fing-accent-rgb), 0.5);
+  --quafi-symbol-fill: #babec4;
+  --quafi-symbol-stroke: #b2b6bc;
+  --quafi-teal-glow: rgba(var(--quafi-accent-rgb), 0.5);
 
   /* Carve effect colors */
-  --fing-carve-light: rgba(var(--fing-white-rgb), 0.92);
-  --fing-carve-dark: rgba(var(--fing-carve-dark-rgb), 0.65);
+  --quafi-carve-light: rgba(var(--quafi-white-rgb), 0.92);
+  --quafi-carve-dark: rgba(var(--quafi-carve-dark-rgb), 0.65);
 
   /* ═══════════════════════════════════════════════════════════════════════════
      BORDER COLORS
      ═══════════════════════════════════════════════════════════════════════════ */
 
-  --fing-border-base-rgb: 163, 177, 198;
-  --fing-border-subtle: rgba(var(--fing-border-base-rgb), 0.2);
-  --fing-border-default: rgba(var(--fing-border-base-rgb), 0.35);
-  --fing-border-strong: rgba(var(--fing-border-base-rgb), 0.5);
-  --fing-border-focus: var(--fing-accent);
-  --fing-border-accent: rgba(var(--fing-accent-rgb), 0.4);
+  --quafi-border-base-rgb: 163, 177, 198;
+  --quafi-border-subtle: rgba(var(--quafi-border-base-rgb), 0.2);
+  --quafi-border-default: rgba(var(--quafi-border-base-rgb), 0.35);
+  --quafi-border-strong: rgba(var(--quafi-border-base-rgb), 0.5);
+  --quafi-border-focus: var(--quafi-accent);
+  --quafi-border-accent: rgba(var(--quafi-accent-rgb), 0.4);
 
   /* ═══════════════════════════════════════════════════════════════════════════
      CHART COLORS
      ═══════════════════════════════════════════════════════════════════════════ */
 
-  --fing-chart-1: var(--fing-accent);      /* Petrol */
-  --fing-chart-2: var(--fing-accent-dark); /* Dark Petrol */
-  --fing-chart-3: var(--fing-positive);    /* Jade */
-  --fing-chart-4: var(--fing-info);        /* Steel */
-  --fing-chart-5: #6a5a7a;                 /* Amethyst */
-  --fing-chart-5-rgb: 106, 90, 122;
-  --fing-chart-6: var(--fing-warning);     /* Gold */
-  --fing-chart-7: var(--fing-negative);    /* Rust */
-  --fing-chart-8: #5a6a6a;                 /* Slate */
-  --fing-chart-8-rgb: 90, 106, 106;
+  --quafi-chart-1: var(--quafi-accent);      /* Petrol */
+  --quafi-chart-2: var(--quafi-accent-dark); /* Dark Petrol */
+  --quafi-chart-3: var(--quafi-positive);    /* Jade */
+  --quafi-chart-4: var(--quafi-info);        /* Steel */
+  --quafi-chart-5: #6a5a7a;                 /* Amethyst */
+  --quafi-chart-5-rgb: 106, 90, 122;
+  --quafi-chart-6: var(--quafi-warning);     /* Gold */
+  --quafi-chart-7: var(--quafi-negative);    /* Rust */
+  --quafi-chart-8: #5a6a6a;                 /* Slate */
+  --quafi-chart-8-rgb: 90, 106, 106;
 
-  --fing-chart-grid: rgba(var(--fing-border-base-rgb), 0.25);
-  --fing-chart-axis: #5F6C7A;
-  --fing-chart-axis-rgb: 95, 108, 122;
+  --quafi-chart-grid: rgba(var(--quafi-border-base-rgb), 0.25);
+  --quafi-chart-axis: #5F6C7A;
+  --quafi-chart-axis-rgb: 95, 108, 122;
 
   /* ═══════════════════════════════════════════════════════════════════════════
      GLASS TINT COLORS
      For glass effects with color tinting
      ═══════════════════════════════════════════════════════════════════════════ */
 
-  --fing-glass-accent: rgba(var(--fing-accent-rgb), 0.08);
-  --fing-glass-accent-strong: rgba(var(--fing-accent-rgb), 0.15);
+  --quafi-glass-accent: rgba(var(--quafi-accent-rgb), 0.08);
+  --quafi-glass-accent-strong: rgba(var(--quafi-accent-rgb), 0.15);
 
   /* Glass RGB companions for opacity variations in buttons.css */
-  --fing-glass-violet-rgb: 138, 110, 180;
-  --fing-glass-violet-text: #6B4E99;
-  --fing-glass-smoke-rgb: 75, 85, 99;
-  --fing-glass-smoke-text: #4B5563;
-  --fing-glass-frost-rgb: 200, 220, 255;
-  --fing-glass-frost-text: #4A6A99;
+  --quafi-glass-violet-rgb: 138, 110, 180;
+  --quafi-glass-violet-text: #6B4E99;
+  --quafi-glass-smoke-rgb: 75, 85, 99;
+  --quafi-glass-smoke-text: #4B5563;
+  --quafi-glass-frost-rgb: 200, 220, 255;
+  --quafi-glass-frost-text: #4A6A99;
 
   /* ═══════════════════════════════════════════════════════════════════════════
      STATUS SYSTEM - Complete semantic status tokens
@@ -220,48 +220,48 @@
      ═══════════════════════════════════════════════════════════════════════════ */
 
   /* Status base aliases */
-  --fing-status-positive: var(--fing-positive);
-  --fing-status-negative: var(--fing-negative);
-  --fing-status-warning: var(--fing-warning);
-  --fing-status-info: var(--fing-info);
+  --quafi-status-positive: var(--quafi-positive);
+  --quafi-status-negative: var(--quafi-negative);
+  --quafi-status-warning: var(--quafi-warning);
+  --quafi-status-info: var(--quafi-info);
 
   /* Status text (darker variants for readability) */
-  --fing-status-positive-text: var(--fing-positive-dark);
-  --fing-status-negative-text: var(--fing-negative-dark);
-  --fing-status-warning-text: var(--fing-warning-dark);
-  --fing-status-info-text: var(--fing-info-dark);
+  --quafi-status-positive-text: var(--quafi-positive-dark);
+  --quafi-status-negative-text: var(--quafi-negative-dark);
+  --quafi-status-warning-text: var(--quafi-warning-dark);
+  --quafi-status-info-text: var(--quafi-info-dark);
 
   /* Status backgrounds - subtle (0.15 opacity) */
-  --fing-status-positive-subtle: rgba(var(--fing-positive-rgb), 0.15);
-  --fing-status-negative-subtle: rgba(var(--fing-negative-rgb), 0.15);
-  --fing-status-warning-subtle: rgba(var(--fing-warning-rgb), 0.15);
-  --fing-status-info-subtle: rgba(var(--fing-info-rgb), 0.15);
+  --quafi-status-positive-subtle: rgba(var(--quafi-positive-rgb), 0.15);
+  --quafi-status-negative-subtle: rgba(var(--quafi-negative-rgb), 0.15);
+  --quafi-status-warning-subtle: rgba(var(--quafi-warning-rgb), 0.15);
+  --quafi-status-info-subtle: rgba(var(--quafi-info-rgb), 0.15);
 
   /* Status backgrounds - muted (0.1 opacity) */
-  --fing-status-positive-muted: rgba(var(--fing-positive-rgb), 0.1);
-  --fing-status-negative-muted: rgba(var(--fing-negative-rgb), 0.1);
-  --fing-status-warning-muted: rgba(var(--fing-warning-rgb), 0.1);
-  --fing-status-info-muted: rgba(var(--fing-info-rgb), 0.1);
+  --quafi-status-positive-muted: rgba(var(--quafi-positive-rgb), 0.1);
+  --quafi-status-negative-muted: rgba(var(--quafi-negative-rgb), 0.1);
+  --quafi-status-warning-muted: rgba(var(--quafi-warning-rgb), 0.1);
+  --quafi-status-info-muted: rgba(var(--quafi-info-rgb), 0.1);
 
   /* Status borders (0.3 opacity) */
-  --fing-status-positive-border: rgba(var(--fing-positive-rgb), 0.3);
-  --fing-status-negative-border: rgba(var(--fing-negative-rgb), 0.3);
-  --fing-status-warning-border: rgba(var(--fing-warning-rgb), 0.3);
-  --fing-status-info-border: rgba(var(--fing-info-rgb), 0.3);
+  --quafi-status-positive-border: rgba(var(--quafi-positive-rgb), 0.3);
+  --quafi-status-negative-border: rgba(var(--quafi-negative-rgb), 0.3);
+  --quafi-status-warning-border: rgba(var(--quafi-warning-rgb), 0.3);
+  --quafi-status-info-border: rgba(var(--quafi-info-rgb), 0.3);
 
   /* Neutral status */
-  --fing-status-neutral: #6B7280;
-  --fing-status-neutral-rgb: 107, 114, 128;
-  --fing-status-neutral-subtle: rgba(var(--fing-status-neutral-rgb), 0.15);
+  --quafi-status-neutral: #6B7280;
+  --quafi-status-neutral-rgb: 107, 114, 128;
+  --quafi-status-neutral-subtle: rgba(var(--quafi-status-neutral-rgb), 0.15);
 
   /* ═══════════════════════════════════════════════════════════════════════════
      GLOW EFFECTS
      For focus states and highlights
      ═══════════════════════════════════════════════════════════════════════════ */
 
-  --fing-glow-positive: 0 0 15px rgba(var(--fing-positive-rgb), 0.25);
-  --fing-glow-negative: 0 0 15px rgba(var(--fing-negative-rgb), 0.25);
-  --fing-glow-warning: 0 0 15px rgba(var(--fing-warning-rgb), 0.25);
-  --fing-glow-info: 0 0 15px rgba(var(--fing-info-rgb), 0.25);
-  --fing-glow-accent: 0 0 15px rgba(var(--fing-accent-rgb), 0.25);
+  --quafi-glow-positive: 0 0 15px rgba(var(--quafi-positive-rgb), 0.25);
+  --quafi-glow-negative: 0 0 15px rgba(var(--quafi-negative-rgb), 0.25);
+  --quafi-glow-warning: 0 0 15px rgba(var(--quafi-warning-rgb), 0.25);
+  --quafi-glow-info: 0 0 15px rgba(var(--quafi-info-rgb), 0.25);
+  --quafi-glow-accent: 0 0 15px rgba(var(--quafi-accent-rgb), 0.25);
 }

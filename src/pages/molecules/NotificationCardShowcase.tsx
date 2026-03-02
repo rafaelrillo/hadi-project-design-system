@@ -1,5 +1,5 @@
 // Path: src/pages/molecules/NotificationCardShowcase.tsx
-// FING Design System - Glass-Neumorphism Notification Cards
+// QUAFI Design System - Glass-Neumorphism Notification Cards
 import React, { useState, useMemo } from 'react';
 import { NotificationCard } from '../../components/molecules/NotificationCard';
 import { ShowcaseSection } from '../../components/showcase';
@@ -173,12 +173,12 @@ function NotificationCardContent() {
             <div style={{
               padding: '20px',
               textAlign: 'center',
-              color: 'var(--fing-text-muted)',
+              color: 'var(--quafi-text-muted)',
               fontSize: '14px',
               background: 'var(--marble-base)',
               borderRadius: '20px',
               boxShadow: getNeuPanelShadow(4, 12),
-              fontFamily: 'var(--fing-font-mono)',
+              fontFamily: 'var(--quafi-font-mono)',
             }}>
               Todas las notificaciones fueron cerradas.
             </div>
@@ -193,18 +193,18 @@ function NotificationCardContent() {
           boxShadow: getNeuInsetShadow(5, 15),
           background: 'var(--marble-base)',
           fontSize: '12px',
-          fontFamily: 'var(--fing-font-mono)',
-          color: 'var(--fing-text-muted)',
+          fontFamily: 'var(--quafi-font-mono)',
+          color: 'var(--quafi-text-muted)',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Padding:</strong> 15px</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Border-left:</strong> 4px solid (color según variante)</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Border-radius:</strong> 15px</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Gap:</strong> 12px entre ícono y contenido</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Ícono:</strong> 20px, color según variante</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Título:</strong> 14px Semibold</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Mensaje:</strong> 12px Regular</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Padding:</strong> 15px</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Border-left:</strong> 4px solid (color según variante)</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Border-radius:</strong> 15px</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Gap:</strong> 12px entre ícono y contenido</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Ícono:</strong> 20px, color según variante</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Título:</strong> 14px Semibold</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Mensaje:</strong> 12px Regular</p>
         </div>
       </ShowcaseSection>
     </div>

@@ -1,5 +1,5 @@
 // Path: src/pages/atoms/ButtonShowcase.tsx
-// FING Design System - Complete Button System Showcase
+// QUAFI Design System - Complete Button System Showcase
 import React, { useState } from 'react';
 import {
   Button,
@@ -51,13 +51,13 @@ export function ButtonShowcase() {
   const categoryTitleStyles: React.CSSProperties = {
     fontSize: '20px',
     fontWeight: 700,
-    color: 'var(--fing-accent)',
+    color: 'var(--quafi-accent)',
     marginBottom: '8px',
     marginTop: '48px',
-    fontFamily: 'var(--fing-font-display)',
+    fontFamily: 'var(--quafi-font-display)',
     textTransform: 'uppercase',
     letterSpacing: '0.05em',
-    borderBottom: '2px solid var(--fing-accent)',
+    borderBottom: '2px solid var(--quafi-accent)',
     paddingBottom: '8px',
     textShadow: 'var(--lp-petrol-whisper)',
   };
@@ -65,8 +65,8 @@ export function ButtonShowcase() {
   const variantLabelStyles: React.CSSProperties = {
     fontSize: '11px',
     fontWeight: 500,
-    color: 'var(--fing-text-tertiary)',
-    fontFamily: 'var(--fing-font-mono)',
+    color: 'var(--quafi-text-tertiary)',
+    fontFamily: 'var(--quafi-font-mono)',
     textTransform: 'uppercase',
     letterSpacing: '0.05em',
     marginTop: '8px',
@@ -785,7 +785,7 @@ export function ButtonShowcase() {
                   borderRadius: '24px',
                   border: 'none',
                   cursor: 'pointer',
-                  fontFamily: 'var(--fing-font-primary)',
+                  fontFamily: 'var(--quafi-font-primary)',
                   fontSize: '13px',
                   fontWeight: 600,
                   letterSpacing: '0.05em',
@@ -795,7 +795,7 @@ export function ButtonShowcase() {
                     4px 4px 8px rgba(147, 157, 170, 0.55),
                     -4px -4px 8px rgba(255, 255, 255, 0.95)
                   `,
-                  color: 'var(--fing-accent)',
+                  color: 'var(--quafi-accent)',
                   textShadow: '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(58, 106, 114, 0.3)',
                   transition: 'all 150ms ease',
                 }}
@@ -816,7 +816,7 @@ export function ButtonShowcase() {
                   <Briefcase
                     size={12}
                     style={{
-                      color: 'var(--fing-accent)',
+                      color: 'var(--quafi-accent)',
                       filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))',
                     }}
                   />
@@ -849,7 +849,7 @@ export function ButtonShowcase() {
                     borderRadius: '24px',
                     border: 'none',
                     cursor: 'pointer',
-                    fontFamily: 'var(--fing-font-primary)',
+                    fontFamily: 'var(--quafi-font-primary)',
                     fontSize: '13px',
                     fontWeight: 600,
                     letterSpacing: '0.05em',
@@ -859,7 +859,7 @@ export function ButtonShowcase() {
                       2px 2px 4px rgba(147, 157, 170, 0.55),
                       -2px -2px 4px rgba(255, 255, 255, 0.95)
                     `,
-                    color: 'var(--fing-accent)',
+                    color: 'var(--quafi-accent)',
                     textShadow: '1px 1px 0px rgba(255, 255, 255, 0.85), -1px -1px 0px rgba(58, 106, 114, 0.3)',
                     transition: 'all 200ms ease',
                   }}
@@ -880,7 +880,7 @@ export function ButtonShowcase() {
                     <ChevronRight
                       size={14}
                       style={{
-                        color: 'var(--fing-accent)',
+                        color: 'var(--quafi-accent)',
                         filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))',
                       }}
                     />
@@ -914,7 +914,7 @@ export function ButtonShowcase() {
                     borderRadius: '20px',
                     border: 'none',
                     cursor: 'pointer',
-                    fontFamily: 'var(--fing-font-primary)',
+                    fontFamily: 'var(--quafi-font-primary)',
                     fontSize: '12px',
                     fontWeight: 600,
                     letterSpacing: '0.05em',
@@ -924,7 +924,7 @@ export function ButtonShowcase() {
                       1px 1px 2px rgba(147, 157, 170, 0.55),
                       -1px -1px 2px rgba(255, 255, 255, 0.95)
                     `,
-                    color: 'var(--fing-accent)',
+                    color: 'var(--quafi-accent)',
                     textShadow: '0.75px 0.75px 0px rgba(255, 255, 255, 0.85), -0.75px -0.75px 0px rgba(58, 106, 114, 0.25)',
                     transition: 'all 200ms ease',
                   }}
@@ -945,7 +945,7 @@ export function ButtonShowcase() {
                     <ArrowRight
                       size={11}
                       style={{
-                        color: 'var(--fing-accent)',
+                        color: 'var(--quafi-accent)',
                         filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))',
                       }}
                     />
@@ -966,52 +966,52 @@ export function ButtonShowcase() {
               gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
               gap: '16px',
               fontSize: '13px',
-              fontFamily: 'var(--fing-font-mono)',
+              fontFamily: 'var(--quafi-font-mono)',
             }}
           >
             <div style={{ padding: '16px', background: 'rgba(255,255,255,0.3)', borderRadius: '12px' }}>
-              <strong style={{ color: 'var(--fing-accent)' }}>Wrapper INSET:</strong>
-              <p style={{ margin: '8px 0 0', color: 'var(--fing-text-secondary)', fontSize: '11px' }}>
+              <strong style={{ color: 'var(--quafi-accent)' }}>Wrapper INSET:</strong>
+              <p style={{ margin: '8px 0 0', color: 'var(--quafi-text-secondary)', fontSize: '11px' }}>
                 padding: 4px (lg) / 3px (sm)<br />
                 border-radius: 28px / 24px<br />
                 box-shadow: var(--inset-1)
               </p>
             </div>
             <div style={{ padding: '16px', background: 'rgba(255,255,255,0.3)', borderRadius: '12px' }}>
-              <strong style={{ color: 'var(--fing-accent)' }}>Button RAISED:</strong>
-              <p style={{ margin: '8px 0 0', color: 'var(--fing-text-secondary)', fontSize: '11px' }}>
+              <strong style={{ color: 'var(--quafi-accent)' }}>Button RAISED:</strong>
+              <p style={{ margin: '8px 0 0', color: 'var(--quafi-text-secondary)', fontSize: '11px' }}>
                 border-radius: 24px / 20px<br />
                 shadow: inner borders + outer raised<br />
-                color: --fing-accent-primary
+                color: --quafi-accent-primary
               </p>
             </div>
             <div style={{ padding: '16px', background: 'rgba(255,255,255,0.3)', borderRadius: '12px' }}>
-              <strong style={{ color: 'var(--fing-accent)' }}>Icon Circle INSET:</strong>
-              <p style={{ margin: '8px 0 0', color: 'var(--fing-text-secondary)', fontSize: '11px' }}>
+              <strong style={{ color: 'var(--quafi-accent)' }}>Icon Circle INSET:</strong>
+              <p style={{ margin: '8px 0 0', color: 'var(--quafi-text-secondary)', fontSize: '11px' }}>
                 width/height: 22px / 20px<br />
                 border-radius: 50%<br />
                 box-shadow: inset shadows
               </p>
             </div>
             <div style={{ padding: '16px', background: 'rgba(255,255,255,0.3)', borderRadius: '12px' }}>
-              <strong style={{ color: 'var(--fing-accent)' }}>Icon RAISED:</strong>
-              <p style={{ margin: '8px 0 0', color: 'var(--fing-text-secondary)', fontSize: '11px' }}>
-                color: --fing-accent-primary<br />
+              <strong style={{ color: 'var(--quafi-accent)' }}>Icon RAISED:</strong>
+              <p style={{ margin: '8px 0 0', color: 'var(--quafi-text-secondary)', fontSize: '11px' }}>
+                color: --quafi-accent-primary<br />
                 filter: drop-shadow (carved effect)<br />
-                hover: --fing-accent-secondary
+                hover: --quafi-accent-secondary
               </p>
             </div>
             <div style={{ padding: '16px', background: 'rgba(255,255,255,0.3)', borderRadius: '12px' }}>
-              <strong style={{ color: 'var(--fing-accent)' }}>Hover States:</strong>
-              <p style={{ margin: '8px 0 0', color: 'var(--fing-text-secondary)', fontSize: '11px' }}>
+              <strong style={{ color: 'var(--quafi-accent)' }}>Hover States:</strong>
+              <p style={{ margin: '8px 0 0', color: 'var(--quafi-text-secondary)', fontSize: '11px' }}>
                 Button: teal gradient bg + glow<br />
                 Icon circle: teal gradient fill<br />
                 Icon: lighter teal color
               </p>
             </div>
             <div style={{ padding: '16px', background: 'rgba(255,255,255,0.3)', borderRadius: '12px' }}>
-              <strong style={{ color: 'var(--fing-accent)' }}>Active State:</strong>
-              <p style={{ margin: '8px 0 0', color: 'var(--fing-text-secondary)', fontSize: '11px' }}>
+              <strong style={{ color: 'var(--quafi-accent)' }}>Active State:</strong>
+              <p style={{ margin: '8px 0 0', color: 'var(--quafi-text-secondary)', fontSize: '11px' }}>
                 Button shadow: fully inset<br />
                 Creates "pressed" appearance
               </p>
@@ -1034,60 +1034,60 @@ export function ButtonShowcase() {
               gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
               gap: '16px',
               fontSize: '13px',
-              fontFamily: 'var(--fing-font-mono)',
+              fontFamily: 'var(--quafi-font-mono)',
             }}
           >
             <div style={{ padding: '16px', background: 'rgba(255,255,255,0.3)', borderRadius: '12px' }}>
-              <strong style={{ color: 'var(--fing-accent)' }}>Primary Actions:</strong>
-              <p style={{ margin: '8px 0 0', color: 'var(--fing-text-secondary)' }}>
+              <strong style={{ color: 'var(--quafi-accent)' }}>Primary Actions:</strong>
+              <p style={{ margin: '8px 0 0', color: 'var(--quafi-text-secondary)' }}>
                 glass-teal, marble-accent, glass-neu-teal
               </p>
             </div>
             <div style={{ padding: '16px', background: 'rgba(255,255,255,0.3)', borderRadius: '12px' }}>
-              <strong style={{ color: 'var(--fing-accent)' }}>Secondary Actions:</strong>
-              <p style={{ margin: '8px 0 0', color: 'var(--fing-text-secondary)' }}>
+              <strong style={{ color: 'var(--quafi-accent)' }}>Secondary Actions:</strong>
+              <p style={{ margin: '8px 0 0', color: 'var(--quafi-text-secondary)' }}>
                 marble-soft, marble-raised, glass-smoke
               </p>
             </div>
             <div style={{ padding: '16px', background: 'rgba(255,255,255,0.3)', borderRadius: '12px' }}>
-              <strong style={{ color: 'var(--fing-accent)' }}>Destructive:</strong>
-              <p style={{ margin: '8px 0 0', color: 'var(--fing-text-secondary)' }}>
+              <strong style={{ color: 'var(--quafi-accent)' }}>Destructive:</strong>
+              <p style={{ margin: '8px 0 0', color: 'var(--quafi-text-secondary)' }}>
                 glass-rose, glass-neu-rose
               </p>
             </div>
             <div style={{ padding: '16px', background: 'rgba(255,255,255,0.3)', borderRadius: '12px' }}>
-              <strong style={{ color: 'var(--fing-accent)' }}>Success/Confirm:</strong>
-              <p style={{ margin: '8px 0 0', color: 'var(--fing-text-secondary)' }}>
+              <strong style={{ color: 'var(--quafi-accent)' }}>Success/Confirm:</strong>
+              <p style={{ margin: '8px 0 0', color: 'var(--quafi-text-secondary)' }}>
                 glass-emerald, glass-neu-emerald
               </p>
             </div>
             <div style={{ padding: '16px', background: 'rgba(255,255,255,0.3)', borderRadius: '12px' }}>
-              <strong style={{ color: 'var(--fing-accent)' }}>Warning:</strong>
-              <p style={{ margin: '8px 0 0', color: 'var(--fing-text-secondary)' }}>
+              <strong style={{ color: 'var(--quafi-accent)' }}>Warning:</strong>
+              <p style={{ margin: '8px 0 0', color: 'var(--quafi-text-secondary)' }}>
                 glass-amber, glass-neu-amber
               </p>
             </div>
             <div style={{ padding: '16px', background: 'rgba(255,255,255,0.3)', borderRadius: '12px' }}>
-              <strong style={{ color: 'var(--fing-accent)' }}>Info/Links:</strong>
-              <p style={{ margin: '8px 0 0', color: 'var(--fing-text-secondary)' }}>
+              <strong style={{ color: 'var(--quafi-accent)' }}>Info/Links:</strong>
+              <p style={{ margin: '8px 0 0', color: 'var(--quafi-text-secondary)' }}>
                 glass-sky, glass-neu-sky
               </p>
             </div>
             <div style={{ padding: '16px', background: 'rgba(255,255,255,0.3)', borderRadius: '12px' }}>
-              <strong style={{ color: 'var(--fing-accent)' }}>Premium/Special:</strong>
-              <p style={{ margin: '8px 0 0', color: 'var(--fing-text-secondary)' }}>
+              <strong style={{ color: 'var(--quafi-accent)' }}>Premium/Special:</strong>
+              <p style={{ margin: '8px 0 0', color: 'var(--quafi-text-secondary)' }}>
                 glass-violet, glass-neu-violet, marble-pillow
               </p>
             </div>
             <div style={{ padding: '16px', background: 'rgba(255,255,255,0.3)', borderRadius: '12px' }}>
-              <strong style={{ color: 'var(--fing-accent)' }}>Toolbars:</strong>
-              <p style={{ margin: '8px 0 0', color: 'var(--fing-text-secondary)' }}>
+              <strong style={{ color: 'var(--quafi-accent)' }}>Toolbars:</strong>
+              <p style={{ margin: '8px 0 0', color: 'var(--quafi-text-secondary)' }}>
                 marble-raised, marble-outline, marble-ridge
               </p>
             </div>
             <div style={{ padding: '16px', background: 'rgba(255,255,255,0.3)', borderRadius: '12px' }}>
-              <strong style={{ color: 'var(--fing-accent)' }}>Toggle Active:</strong>
-              <p style={{ margin: '8px 0 0', color: 'var(--fing-text-secondary)' }}>
+              <strong style={{ color: 'var(--quafi-accent)' }}>Toggle Active:</strong>
+              <p style={{ margin: '8px 0 0', color: 'var(--quafi-text-secondary)' }}>
                 marble-inset, marble-embossed
               </p>
             </div>

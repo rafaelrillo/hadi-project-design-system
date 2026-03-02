@@ -1,5 +1,5 @@
 // Path: src/pages/molecules/MetricCardShowcase.tsx
-// FING Design System - Glass-Neumorphism Metric Cards
+// QUAFI Design System - Glass-Neumorphism Metric Cards
 import { useMemo } from "react";
 import { MetricCard } from "../../components/molecules/MetricCard";
 import { ShowcaseSection } from "../../components/showcase";
@@ -262,57 +262,57 @@ function MetricCardContent() {
             boxShadow: getNeuInsetShadow(5, 15),
             background: "var(--marble-base)",
             fontSize: "12px",
-            fontFamily: "var(--fing-font-mono)",
-            color: "var(--fing-text-muted)",
+            fontFamily: "var(--quafi-font-mono)",
+            color: "var(--quafi-text-muted)",
             lineHeight: "1.8",
             transition: "box-shadow 50ms linear",
           }}
         >
           <p>
             ✓{" "}
-            <strong style={{ color: "var(--fing-accent-primary)" }}>
+            <strong style={{ color: "var(--quafi-accent-primary)" }}>
               Sizes:
             </strong>{" "}
             sm, md, lg
           </p>
           <p>
             ✓{" "}
-            <strong style={{ color: "var(--fing-accent-primary)" }}>
+            <strong style={{ color: "var(--quafi-accent-primary)" }}>
               Variants:
             </strong>{" "}
             default, outlined, filled
           </p>
           <p>
             ✓{" "}
-            <strong style={{ color: "var(--fing-accent-primary)" }}>
+            <strong style={{ color: "var(--quafi-accent-primary)" }}>
               Status:
             </strong>{" "}
             default, success, warning, error, info
           </p>
           <p>
             ✓{" "}
-            <strong style={{ color: "var(--fing-accent-primary)" }}>
+            <strong style={{ color: "var(--quafi-accent-primary)" }}>
               Format:
             </strong>{" "}
             number, currency, percentage, custom
           </p>
           <p>
             ✓{" "}
-            <strong style={{ color: "var(--fing-accent-primary)" }}>
+            <strong style={{ color: "var(--quafi-accent-primary)" }}>
               Trend:
             </strong>{" "}
             up, down, stable con sentiment
           </p>
           <p>
             ✓{" "}
-            <strong style={{ color: "var(--fing-accent-primary)" }}>
+            <strong style={{ color: "var(--quafi-accent-primary)" }}>
               Sparkline:
             </strong>{" "}
             Array de números para mini-gráfico
           </p>
           <p>
             ✓{" "}
-            <strong style={{ color: "var(--fing-accent-primary)" }}>
+            <strong style={{ color: "var(--quafi-accent-primary)" }}>
               Progress:
             </strong>{" "}
             Barra con value/max

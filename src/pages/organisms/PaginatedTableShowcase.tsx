@@ -1,5 +1,5 @@
 // Path: src/pages/organisms/PaginatedTableShowcase.tsx
-// FING Design System - Glass-Neumorphism Paginated Tables
+// QUAFI Design System - Glass-Neumorphism Paginated Tables
 import React, { useState, useMemo } from 'react';
 import { PaginatedTable } from '../../components/organisms/PaginatedTable';
 import { TableColumn, TableRow } from '../../components/organisms/Table';
@@ -118,7 +118,7 @@ function PaginatedTableContent() {
         borderRadius: '12px',
         boxShadow: getNeuInsetShadow(3, 8),
         fontSize: '14px',
-        fontFamily: 'var(--fing-font-mono)',
+        fontFamily: 'var(--quafi-font-mono)',
       }}>
         <p><strong>Información adicional del usuario #{1001 + i}</strong></p>
         <p>Fecha de registro: 2024-{String((i % 12) + 1).padStart(2, '0')}-15</p>
@@ -160,8 +160,8 @@ function PaginatedTableContent() {
           <div style={{
             marginBottom: '16px',
             fontSize: '14px',
-            color: 'var(--fing-text-muted)',
-            fontFamily: 'var(--fing-font-mono)',
+            color: 'var(--quafi-text-muted)',
+            fontFamily: 'var(--quafi-font-mono)',
           }}>
             Filas seleccionadas: {selectedRows.length > 0 ? selectedRows.join(', ') : 'Ninguna'}
           </div>
@@ -241,17 +241,17 @@ function PaginatedTableContent() {
             fontSize: '20px',
             fontWeight: 600,
             marginBottom: '8px',
-            fontFamily: 'var(--fing-font-display)',
+            fontFamily: 'var(--quafi-font-display)',
             textTransform: 'uppercase',
-            color: 'var(--fing-text-primary)',
+            color: 'var(--quafi-text-primary)',
           }}>
             Gestión de Usuarios
           </h2>
           <p style={{
             fontSize: '14px',
-            color: 'var(--fing-text-muted)',
+            color: 'var(--quafi-text-muted)',
             marginBottom: '20px',
-            fontFamily: 'var(--fing-font-mono)',
+            fontFamily: 'var(--quafi-font-mono)',
           }}>
             Listado completo de usuarios del sistema con paginación
           </p>
@@ -260,12 +260,12 @@ function PaginatedTableContent() {
             <div style={{
               padding: '12px 16px',
               background: 'var(--marble-base)',
-              borderLeft: '4px solid var(--fing-accent-primary)',
+              borderLeft: '4px solid var(--quafi-accent-primary)',
               borderRadius: '12px',
               boxShadow: getNeuPanelShadow(4, 12),
               marginBottom: '16px',
               fontSize: '14px',
-              fontFamily: 'var(--fing-font-mono)',
+              fontFamily: 'var(--quafi-font-mono)',
             }}>
               <strong>{selectedRows.length}</strong> usuario(s) seleccionado(s): {selectedRows.join(', ')}
             </div>
@@ -293,21 +293,21 @@ function PaginatedTableContent() {
           boxShadow: getNeuInsetShadow(5, 15),
           background: 'var(--marble-base)',
           fontSize: '12px',
-          fontFamily: 'var(--fing-font-mono)',
-          color: 'var(--fing-text-muted)',
+          fontFamily: 'var(--quafi-font-mono)',
+          color: 'var(--quafi-text-muted)',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Container:</strong> flex column, gap 20px</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Components:</strong> Combina Table + Pagination</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Data slicing:</strong> Automático basado en currentPage e itemsPerPage</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Footer:</strong> flex space-between, align-items center</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Info text:</strong> "Mostrando X-Y de Z resultados" (14px Regular)</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Pagination:</strong> Alineada a la derecha</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>showInfo:</strong> true por default, puede ocultarse</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Footer visibility:</strong> Solo se muestra si totalPages {'>'} 1</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Props heredadas de Table:</strong> selectable, selectedRows, onRowSelect, expandable, onRowClick, rowHeight</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Props de paginación:</strong> currentPage, itemsPerPage, onPageChange</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Container:</strong> flex column, gap 20px</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Components:</strong> Combina Table + Pagination</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Data slicing:</strong> Automático basado en currentPage e itemsPerPage</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Footer:</strong> flex space-between, align-items center</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Info text:</strong> "Mostrando X-Y de Z resultados" (14px Regular)</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Pagination:</strong> Alineada a la derecha</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>showInfo:</strong> true por default, puede ocultarse</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Footer visibility:</strong> Solo se muestra si totalPages {'>'} 1</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Props heredadas de Table:</strong> selectable, selectedRows, onRowSelect, expandable, onRowClick, rowHeight</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Props de paginación:</strong> currentPage, itemsPerPage, onPageChange</p>
         </div>
       </ShowcaseSection>
     </div>

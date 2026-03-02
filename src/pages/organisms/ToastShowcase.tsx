@@ -1,5 +1,5 @@
 // Path: src/pages/organisms/ToastShowcase.tsx
-// FING Design System - Glass-Neumorphism Toasts
+// QUAFI Design System - Glass-Neumorphism Toasts
 import { ToastProvider, useToast } from '../../components/organisms/Toast';
 import { ShowcaseSection } from '../../components/showcase';
 import { Button } from '../../components/atoms/Button';
@@ -52,16 +52,16 @@ function ToastDemoContent() {
 
   const specTextStyles: React.CSSProperties = {
     fontSize: '12px',
-    color: 'var(--fing-text-muted)',
+    color: 'var(--quafi-text-muted)',
     lineHeight: '1.8',
-    fontFamily: 'var(--fing-font-mono)',
+    fontFamily: 'var(--quafi-font-mono)',
   };
 
   const codeBlockStyles: React.CSSProperties = {
     fontSize: '12px',
-    color: 'var(--fing-text-muted)',
+    color: 'var(--quafi-text-muted)',
     lineHeight: '1.6',
-    fontFamily: 'var(--fing-font-mono)',
+    fontFamily: 'var(--quafi-font-mono)',
     backgroundColor: 'var(--marble-base)',
     padding: '16px',
     borderRadius: '20px',
@@ -324,8 +324,8 @@ function ToastDemoContent() {
           <p style={{
             marginTop: '16px',
             fontSize: '12px',
-            color: 'var(--fing-text-tertiary)',
-            fontFamily: 'var(--fing-font-mono)',
+            color: 'var(--quafi-text-tertiary)',
+            fontFamily: 'var(--quafi-font-mono)',
           }}>
             Los toasts glass aparecen en la esquina superior derecha con sombras dinámicas del Light Engine
           </p>
@@ -335,16 +335,16 @@ function ToastDemoContent() {
       {/* Technical Specifications */}
       <ShowcaseSection title="Especificaciones Técnicas">
         <div style={specTextStyles}>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Types:</strong> default, success, error, warning, info</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Positions:</strong> top-left, top-center, top-right, bottom-left, bottom-center, bottom-right</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Duration:</strong> Configurable, 0 para persistente</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Actions:</strong> Botón de acción opcional con callback</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Icons:</strong> Iconos por defecto según tipo o custom</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Animations:</strong> Entrada/salida animada con reduced motion support</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>API:</strong> useToast hook con toast(), success(), error(), warning(), info()</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Control:</strong> dismiss(id), dismissAll(), update(id, options)</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Max Visible:</strong> Configurable, auto-remove de los más antiguos</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Accessibility:</strong> role="alert", aria-live, keyboard dismissible</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Types:</strong> default, success, error, warning, info</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Positions:</strong> top-left, top-center, top-right, bottom-left, bottom-center, bottom-right</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Duration:</strong> Configurable, 0 para persistente</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Actions:</strong> Botón de acción opcional con callback</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Icons:</strong> Iconos por defecto según tipo o custom</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Animations:</strong> Entrada/salida animada con reduced motion support</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>API:</strong> useToast hook con toast(), success(), error(), warning(), info()</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Control:</strong> dismiss(id), dismissAll(), update(id, options)</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Max Visible:</strong> Configurable, auto-remove de los más antiguos</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Accessibility:</strong> role="alert", aria-live, keyboard dismissible</p>
         </div>
       </ShowcaseSection>
 

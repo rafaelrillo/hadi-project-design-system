@@ -1,5 +1,5 @@
 // Path: src/pages/animations/ScrollAnimationsShowcase.tsx
-// FING Design System - Glass-Neumorphism Scroll Animations
+// QUAFI Design System - Glass-Neumorphism Scroll Animations
 import React, { useMemo } from 'react';
 import { ScrollReveal, ScrollProgress } from '../../components/animations/ScrollReveal';
 import { Parallax } from '../../components/animations/Parallax';
@@ -42,7 +42,7 @@ function ScrollAnimationsContent() {
 
   return (
     <div style={{ background: MARBLE.base, minHeight: '100%', padding: '24px' }}>
-      <ScrollProgress color="var(--fing-accent)" height={3} />
+      <ScrollProgress color="var(--quafi-accent)" height={3} />
 
       <header style={showcase.header.container}>
         <h1 style={showcase.header.title}>&gt; Scroll Animations_</h1>
@@ -56,11 +56,11 @@ function ScrollAnimationsContent() {
             boxShadow: getNeuInsetShadow(4, 12),
             textAlign: 'center',
           }}>
-            <Zap style={{ color: 'var(--fing-accent)', marginBottom: '16px' }} size={48} />
-            <h4 style={{ color: 'var(--fing-text-primary)', marginBottom: '8px', fontFamily: 'var(--fing-font-mono)' }}>
+            <Zap style={{ color: 'var(--quafi-accent)', marginBottom: '16px' }} size={48} />
+            <h4 style={{ color: 'var(--quafi-text-primary)', marginBottom: '8px', fontFamily: 'var(--quafi-font-mono)' }}>
               Scroll Progress Active
             </h4>
-            <p style={{ color: 'var(--fing-text-muted)', fontFamily: 'var(--fing-font-mono)', fontSize: '12px' }}>
+            <p style={{ color: 'var(--quafi-text-muted)', fontFamily: 'var(--quafi-font-mono)', fontSize: '12px' }}>
               La barra en la parte superior muestra el progreso de scroll.
             </p>
           </div>
@@ -73,12 +73,12 @@ function ScrollAnimationsContent() {
             <ScrollReveal key={i}>
               <div style={{
                 ...cardStyles,
-                borderLeft: '4px solid var(--fing-accent)',
+                borderLeft: '4px solid var(--quafi-accent)',
               }}>
-                <h4 style={{ color: 'var(--fing-text-primary)', marginBottom: '8px', fontFamily: 'var(--fing-font-mono)' }}>
+                <h4 style={{ color: 'var(--quafi-text-primary)', marginBottom: '8px', fontFamily: 'var(--quafi-font-mono)' }}>
                   Log Entry #{i}
                 </h4>
-                <p style={{ color: 'var(--fing-text-muted)', fontFamily: 'var(--fing-font-mono)', fontSize: '12px' }}>
+                <p style={{ color: 'var(--quafi-text-muted)', fontFamily: 'var(--quafi-font-mono)', fontSize: '12px' }}>
                   Este elemento aparece con animación cuando entra en el viewport.
                 </p>
               </div>
@@ -93,31 +93,31 @@ function ScrollAnimationsContent() {
             <Parallax speed={0.3}>
               <div style={{
                 ...cardStyles,
-                borderLeft: '4px solid var(--fing-positive)',
+                borderLeft: '4px solid var(--quafi-positive)',
                 textAlign: 'center',
               }}>
-                <ArrowDown style={{ color: 'var(--fing-positive)', marginBottom: '8px' }} size={24} />
-                <h4 style={{ color: 'var(--fing-text-primary)', marginBottom: '8px', fontFamily: 'var(--fing-font-mono)' }}>Slow (0.3)</h4>
+                <ArrowDown style={{ color: 'var(--quafi-positive)', marginBottom: '8px' }} size={24} />
+                <h4 style={{ color: 'var(--quafi-text-primary)', marginBottom: '8px', fontFamily: 'var(--quafi-font-mono)' }}>Slow (0.3)</h4>
               </div>
             </Parallax>
             <Parallax speed={0.6}>
               <div style={{
                 ...cardStyles,
-                borderLeft: '4px solid var(--fing-warning)',
+                borderLeft: '4px solid var(--quafi-warning)',
                 textAlign: 'center',
               }}>
-                <ArrowDown style={{ color: 'var(--fing-warning)', marginBottom: '8px' }} size={24} />
-                <h4 style={{ color: 'var(--fing-text-primary)', marginBottom: '8px', fontFamily: 'var(--fing-font-mono)' }}>Medium (0.6)</h4>
+                <ArrowDown style={{ color: 'var(--quafi-warning)', marginBottom: '8px' }} size={24} />
+                <h4 style={{ color: 'var(--quafi-text-primary)', marginBottom: '8px', fontFamily: 'var(--quafi-font-mono)' }}>Medium (0.6)</h4>
               </div>
             </Parallax>
             <Parallax speed={-0.4}>
               <div style={{
                 ...cardStyles,
-                borderLeft: '4px solid var(--fing-info)',
+                borderLeft: '4px solid var(--quafi-info)',
                 textAlign: 'center',
               }}>
-                <ArrowDown style={{ color: 'var(--fing-info)', marginBottom: '8px', transform: 'rotate(180deg)' }} size={24} />
-                <h4 style={{ color: 'var(--fing-text-primary)', marginBottom: '8px', fontFamily: 'var(--fing-font-mono)' }}>Reverse (-0.4)</h4>
+                <ArrowDown style={{ color: 'var(--quafi-info)', marginBottom: '8px', transform: 'rotate(180deg)' }} size={24} />
+                <h4 style={{ color: 'var(--quafi-text-primary)', marginBottom: '8px', fontFamily: 'var(--quafi-font-mono)' }}>Reverse (-0.4)</h4>
               </div>
             </Parallax>
           </div>
@@ -131,15 +131,15 @@ function ScrollAnimationsContent() {
           boxShadow: getNeuInsetShadow(5, 15),
           background: MARBLE.base,
           fontSize: '12px',
-          fontFamily: 'var(--fing-font-mono)',
-          color: 'var(--fing-text-muted)',
+          fontFamily: 'var(--quafi-font-mono)',
+          color: 'var(--quafi-text-muted)',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>
-          <p>✓ <strong style={{ color: 'var(--fing-accent)' }}>ScrollProgress:</strong> Fixed progress bar, customizable color and height</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent)' }}>ScrollReveal:</strong> Intersection Observer based, once: true</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent)' }}>Parallax speed:</strong> -1 to 1 (negative = opposite direction)</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent)' }}>Default threshold:</strong> 0.1 (10% visibility triggers animation)</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent)' }}>ScrollProgress:</strong> Fixed progress bar, customizable color and height</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent)' }}>ScrollReveal:</strong> Intersection Observer based, once: true</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent)' }}>Parallax speed:</strong> -1 to 1 (negative = opposite direction)</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent)' }}>Default threshold:</strong> 0.1 (10% visibility triggers animation)</p>
         </div>
       </ShowcaseSection>
     </div>

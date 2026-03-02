@@ -1,6 +1,6 @@
 /* Path: src/components/molecules/Pagination/Pagination.module.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   FING DESIGN SYSTEM - Pagination Component
+   QUAFI DESIGN SYSTEM - Pagination Component
 
    Page navigation controls
    Clean, minimal styling
@@ -13,9 +13,9 @@
 .container {
   display: flex;
   align-items: center;
-  gap: var(--fing-space-2);
-  font-family: var(--fing-font-led);
-  letter-spacing: var(--fing-tracking-led);
+  gap: var(--quafi-space-2);
+  font-family: var(--quafi-font-led);
+  letter-spacing: var(--quafi-tracking-led);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -25,38 +25,38 @@
 .button {
   height: 36px;
   min-width: 36px;
-  padding: 0 var(--fing-space-3);
-  font-size: var(--fing-text-sm);
-  font-weight: var(--fing-font-normal);
-  color: var(--fing-text-primary);
-  background-color: var(--fing-bg-elevated);
-  border: 1px solid var(--fing-border-default);
-  border-radius: var(--fing-radius-md);
+  padding: 0 var(--quafi-space-3);
+  font-size: var(--quafi-text-sm);
+  font-weight: var(--quafi-font-normal);
+  color: var(--quafi-text-primary);
+  background-color: var(--quafi-bg-elevated);
+  border: 1px solid var(--quafi-border-default);
+  border-radius: var(--quafi-radius-md);
   cursor: pointer;
-  font-family: var(--fing-font-led);
-  letter-spacing: var(--fing-tracking-led);
+  font-family: var(--quafi-font-led);
+  letter-spacing: var(--quafi-tracking-led);
   line-height: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: var(--fing-transition-normal);
+  transition: var(--quafi-transition-normal);
   outline: none;
 }
 
 .button:hover:not(:disabled) {
-  background-color: var(--fing-bg-overlay);
-  border-color: var(--fing-border-strong);
+  background-color: var(--quafi-bg-overlay);
+  border-color: var(--quafi-border-strong);
 }
 
 .button:focus-visible {
-  outline: 2px solid var(--fing-accent-primary);
+  outline: 2px solid var(--quafi-accent-primary);
   outline-offset: 2px;
 }
 
 .button:disabled {
-  background-color: var(--fing-bg-subtle);
-  border-color: var(--fing-border-subtle);
-  color: var(--fing-text-disabled);
+  background-color: var(--quafi-bg-subtle);
+  border-color: var(--quafi-border-subtle);
+  color: var(--quafi-text-disabled);
   cursor: not-allowed;
 }
 
@@ -68,44 +68,44 @@
   width: 32px;
   height: 32px;
   padding: 0;
-  font-size: var(--fing-text-sm);
-  font-weight: var(--fing-font-normal);
-  color: var(--fing-text-secondary);
+  font-size: var(--quafi-text-sm);
+  font-weight: var(--quafi-font-normal);
+  color: var(--quafi-text-secondary);
   background-color: transparent;
   border: 1px solid transparent;
-  border-radius: var(--fing-radius-sm);
+  border-radius: var(--quafi-radius-sm);
   cursor: pointer;
-  font-family: var(--fing-font-led);
-  letter-spacing: var(--fing-tracking-led);
+  font-family: var(--quafi-font-led);
+  letter-spacing: var(--quafi-tracking-led);
   line-height: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: var(--fing-transition-fast);
+  transition: var(--quafi-transition-fast);
   outline: none;
 }
 
 .pageNumber:hover:not(:disabled):not(.pageNumberActive) {
-  background-color: var(--fing-bg-overlay);
-  color: var(--fing-text-primary);
+  background-color: var(--quafi-bg-overlay);
+  color: var(--quafi-text-primary);
 }
 
 .pageNumber:focus-visible {
-  outline: 2px solid var(--fing-accent-primary);
+  outline: 2px solid var(--quafi-accent-primary);
   outline-offset: 2px;
 }
 
 /* Active page number */
 .pageNumberActive {
-  border: 1px solid var(--fing-accent-primary);
-  font-weight: var(--fing-font-medium);
-  color: var(--fing-accent-primary);
-  background-color: var(--fing-accent-subtle);
+  border: 1px solid var(--quafi-accent-primary);
+  font-weight: var(--quafi-font-medium);
+  color: var(--quafi-accent-primary);
+  background-color: var(--quafi-accent-subtle);
 }
 
 /* Disabled page number */
 .pageNumber:disabled {
-  color: var(--fing-text-disabled);
+  color: var(--quafi-text-disabled);
   cursor: not-allowed;
 }
 
@@ -117,33 +117,33 @@
   width: 32px;
   height: 32px;
   padding: 0;
-  font-size: var(--fing-text-sm);
-  color: var(--fing-text-secondary);
+  font-size: var(--quafi-text-sm);
+  color: var(--quafi-text-secondary);
   background-color: transparent;
   border: 1px solid transparent;
-  border-radius: var(--fing-radius-sm);
+  border-radius: var(--quafi-radius-sm);
   cursor: pointer;
-  font-family: var(--fing-font-led);
-  letter-spacing: var(--fing-tracking-led);
+  font-family: var(--quafi-font-led);
+  letter-spacing: var(--quafi-tracking-led);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: var(--fing-transition-fast);
+  transition: var(--quafi-transition-fast);
   outline: none;
 }
 
 .arrowButton:hover:not(:disabled) {
-  background-color: var(--fing-bg-overlay);
-  color: var(--fing-accent-primary);
+  background-color: var(--quafi-bg-overlay);
+  color: var(--quafi-accent-primary);
 }
 
 .arrowButton:focus-visible {
-  outline: 2px solid var(--fing-accent-primary);
+  outline: 2px solid var(--quafi-accent-primary);
   outline-offset: 2px;
 }
 
 .arrowButton:disabled {
-  color: var(--fing-text-disabled);
+  color: var(--quafi-text-disabled);
   cursor: not-allowed;
 }
 
@@ -157,10 +157,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--fing-text-sm);
-  color: var(--fing-text-tertiary);
-  font-family: var(--fing-font-led);
-  letter-spacing: var(--fing-tracking-led);
+  font-size: var(--quafi-text-sm);
+  color: var(--quafi-text-tertiary);
+  font-family: var(--quafi-font-led);
+  letter-spacing: var(--quafi-tracking-led);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -169,7 +169,7 @@
 
 .neuInset {
   background: var(--neu-base);
-  padding: var(--fing-space-1);
+  padding: var(--quafi-space-1);
   border-radius: var(--radius-standard);
 
   /* Neumorphic inset shadow */
@@ -182,24 +182,24 @@
 .neuInset .arrowButton {
   background: transparent;
   border: none;
-  color: var(--fing-text-secondary);
+  color: var(--quafi-text-secondary);
 }
 
 .neuInset .button:hover:not(:disabled),
 .neuInset .arrowButton:hover:not(:disabled) {
   background: rgba(255, 255, 255, 0.4);
-  color: var(--fing-text-primary);
+  color: var(--quafi-text-primary);
 }
 
 .neuInset .pageNumber {
   background: transparent;
   border: none;
-  color: var(--fing-text-secondary);
+  color: var(--quafi-text-secondary);
 }
 
 .neuInset .pageNumber:hover:not(:disabled):not(.pageNumberActive) {
   background: rgba(255, 255, 255, 0.4);
-  color: var(--fing-text-primary);
+  color: var(--quafi-text-primary);
 }
 
 .neuInset .pageNumberActive {
@@ -210,7 +210,7 @@
     hsla(175, 35%, 60%, 0.20) 100%
   );
   border: none;
-  color: var(--fing-accent-primary);
+  color: var(--quafi-accent-primary);
 
   /* Elevated neumorphic shadow */
   box-shadow:

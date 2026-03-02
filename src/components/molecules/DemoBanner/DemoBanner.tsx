@@ -10,7 +10,7 @@ interface DemoBannerProps {
 
 export function DemoBanner({
   message = "Demo Mode - Data is simulated for demonstration purposes",
-  storageKey = "fing-demo-banner-dismissed",
+  storageKey = "quafi-demo-banner-dismissed",
 }: DemoBannerProps) {
   const [isDismissed, setIsDismissed] = useState(true); // Start hidden to prevent flash
 

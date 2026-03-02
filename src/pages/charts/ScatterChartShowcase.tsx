@@ -1,5 +1,5 @@
 // Path: src/pages/charts/ScatterChartShowcase.tsx
-// FING Design System - Glass-Neumorphism Scatter Chart
+// QUAFI Design System - Glass-Neumorphism Scatter Chart
 import React, { useMemo } from 'react';
 import { ShowcaseSection } from '../../components/showcase';
 import { ScatterChart } from '../../components/charts/echarts';
@@ -134,11 +134,11 @@ function ScatterChartContent() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '24px', width: '100%' }}>
             <div>
               <ScatterChart data={riskReturnData} xAxisLabel="Risk" yAxisLabel="Return" height={300} symbolSize={10} />
-              <p style={{ textAlign: 'center', color: 'var(--fing-text-muted)', fontSize: '12px', marginTop: '8px', fontFamily: 'var(--fing-font-mono)' }}>Fixed Size: 10</p>
+              <p style={{ textAlign: 'center', color: 'var(--quafi-text-muted)', fontSize: '12px', marginTop: '8px', fontFamily: 'var(--quafi-font-mono)' }}>Fixed Size: 10</p>
             </div>
             <div>
               <ScatterChart data={riskReturnData} xAxisLabel="Risk" yAxisLabel="Return" height={300} symbolSize={20} />
-              <p style={{ textAlign: 'center', color: 'var(--fing-text-muted)', fontSize: '12px', marginTop: '8px', fontFamily: 'var(--fing-font-mono)' }}>Fixed Size: 20</p>
+              <p style={{ textAlign: 'center', color: 'var(--quafi-text-muted)', fontSize: '12px', marginTop: '8px', fontFamily: 'var(--quafi-font-mono)' }}>Fixed Size: 20</p>
             </div>
           </div>
         </div>
@@ -158,14 +158,14 @@ function ScatterChartContent() {
             width: '100%',
             borderCollapse: 'collapse',
             fontSize: '12px',
-            fontFamily: 'var(--fing-font-mono)',
+            fontFamily: 'var(--quafi-font-mono)',
           }}>
             <thead>
               <tr>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent)', fontWeight: 600 }}>Prop</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent)', fontWeight: 600 }}>Type</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent)', fontWeight: 600 }}>Default</th>
-                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--fing-accent)', fontWeight: 600 }}>Description</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--quafi-accent)', fontWeight: 600 }}>Prop</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--quafi-accent)', fontWeight: 600 }}>Type</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--quafi-accent)', fontWeight: 600 }}>Default</th>
+                <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--quafi-accent)', fontWeight: 600 }}>Description</th>
               </tr>
             </thead>
             <tbody>
@@ -179,10 +179,10 @@ function ScatterChartContent() {
                 { prop: 'colors', type: 'string[]', default: 'chartPalette', desc: 'Custom color palette' },
               ].map((row, i) => (
                 <tr key={i}>
-                  <td style={{ padding: '12px 16px', color: 'var(--fing-text-primary)' }}>{row.prop}</td>
-                  <td style={{ padding: '12px 16px', color: 'var(--fing-text-muted)' }}>{row.type}</td>
-                  <td style={{ padding: '12px 16px', color: 'var(--fing-text-muted)' }}>{row.default}</td>
-                  <td style={{ padding: '12px 16px', color: 'var(--fing-text-muted)' }}>{row.desc}</td>
+                  <td style={{ padding: '12px 16px', color: 'var(--quafi-text-primary)' }}>{row.prop}</td>
+                  <td style={{ padding: '12px 16px', color: 'var(--quafi-text-muted)' }}>{row.type}</td>
+                  <td style={{ padding: '12px 16px', color: 'var(--quafi-text-muted)' }}>{row.default}</td>
+                  <td style={{ padding: '12px 16px', color: 'var(--quafi-text-muted)' }}>{row.desc}</td>
                 </tr>
               ))}
             </tbody>

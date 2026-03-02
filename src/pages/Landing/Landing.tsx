@@ -1,5 +1,5 @@
 // Path: src/pages/Landing/Landing.tsx
-// FING Brand Landing Page - Stone Marble Neumorphism
+// QUAFI Brand Landing Page - Stone Marble Neumorphism
 
 import { LandingNav, LandingHero } from './components';
 import styles from './Landing.module.css';

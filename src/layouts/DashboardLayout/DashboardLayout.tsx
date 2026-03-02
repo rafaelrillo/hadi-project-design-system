@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 
 import { useAuthStore } from "../../store";
-import { AtmosphericBackground } from "../../components/atoms/fing";
+import { AtmosphericBackground } from "../../components/atoms/quafi";
 import { useIsMobile } from "../../hooks/useBreakpoint";
 import { MobileHeader } from "../../components/organisms/MobileHeader";
 import { BottomNavigation } from "../../components/organisms/BottomNavigation";
@@ -24,7 +24,7 @@ import {
   LightEngineProvider,
   useLightEngineOptional,
 } from "@contexts/LightEngineContext";
-import { FingEmblem } from "@atoms/FingEmblem";
+import { QuafiEmblem } from "@atoms/QuafiEmblem";
 
 import styles from "./DashboardLayout.module.css";
 
@@ -218,8 +218,8 @@ function DashboardLayoutInner({
     );
   }
 
-  // FING Emblem - Radar Symbol with slow ripple animation
-  const FingLogo = <FingEmblem size={40} animation="rippleSlow" />;
+  // QUAFI Emblem - Radar Symbol with slow ripple animation
+  const QuafiLogo = <QuafiEmblem size={40} animation="rippleSlow" />;
 
   // Desktop Layout
   return (
@@ -230,7 +230,7 @@ function DashboardLayoutInner({
       <div className={styles.layout}>
         {/* Neumorphic Sidebar with TabGroup Navigation */}
         <Sidebar
-          productLogo={FingLogo}
+          productLogo={QuafiLogo}
           mainTabs={mainTabs}
           activeTab={activeTabIndex}
           onTabChange={handleTabChange}

@@ -2,7 +2,7 @@
 import { useMemo } from 'react';
 import type { EChartsOption } from 'echarts';
 import { EChart } from './EChart';
-import { fingColors, chartPalette } from './fingTheme';
+import { quafiColors, chartPalette } from './quafiTheme';
 import type { GraphData, BaseChartProps } from './types';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -64,7 +64,7 @@ export function GraphChart({
               show: true,
               position: 'bottom' as const,
               formatter: '{b}',
-              color: fingColors.textSecondary,
+              color: quafiColors.textSecondary,
               fontSize: 10,
               fontFamily: "'Inter', sans-serif",
             }
@@ -76,7 +76,7 @@ export function GraphChart({
     const links = data.links.map((link) => ({
       ...link,
       lineStyle: {
-        color: fingColors.borderDefault,
+        color: quafiColors.borderDefault,
         width: link.value ? Math.max(1, Math.min(5, link.value / 10)) : 1,
         curveness: 0.2,
       },
@@ -116,9 +116,9 @@ export function GraphChart({
             return `
               <div style="font-family: 'Inter', sans-serif; font-size: 12px;">
                 <div style="display: flex; align-items: center; gap: 8px;">
-                  <span style="color: ${fingColors.textSecondary};">${p.data.source}</span>
-                  <span style="color: ${fingColors.textTertiary};">→</span>
-                  <span style="color: ${fingColors.textSecondary};">${p.data.target}</span>
+                  <span style="color: ${quafiColors.textSecondary};">${p.data.source}</span>
+                  <span style="color: ${quafiColors.textTertiary};">→</span>
+                  <span style="color: ${quafiColors.textSecondary};">${p.data.target}</span>
                 </div>
                 ${
                   p.data.value
@@ -151,7 +151,7 @@ export function GraphChart({
             top: title ? 30 : 0,
             right: 0,
             textStyle: {
-              color: fingColors.textSecondary,
+              color: quafiColors.textSecondary,
               fontSize: 11,
             },
           }

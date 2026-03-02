@@ -4,46 +4,46 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--fing-space-4);
-  padding: var(--fing-space-2) var(--fing-space-4);
+  gap: var(--quafi-space-4);
+  padding: var(--quafi-space-2) var(--quafi-space-4);
   background-color: rgba(77, 171, 154, 0.1);
-  border-bottom: 1px solid var(--fing-accent-subtle);
+  border-bottom: 1px solid var(--quafi-accent-subtle);
 }
 
 .content {
   display: flex;
   align-items: center;
-  gap: var(--fing-space-2);
+  gap: var(--quafi-space-2);
 }
 
 .icon {
-  color: var(--fing-accent-primary);
+  color: var(--quafi-accent-primary);
   opacity: 0.8;
 }
 
 .message {
-  font-family: var(--fing-font-led);
-  font-size: var(--fing-text-xs);
-  color: var(--fing-accent-primary);
-  letter-spacing: var(--fing-tracking-led);
-  text-shadow: var(--fing-glow-accent);
+  font-family: var(--quafi-font-led);
+  font-size: var(--quafi-text-xs);
+  color: var(--quafi-accent-primary);
+  letter-spacing: var(--quafi-tracking-led);
+  text-shadow: var(--quafi-glow-accent);
 }
 
 .closeButton {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--fing-space-1);
+  padding: var(--quafi-space-1);
   background: transparent;
   border: none;
-  border-radius: var(--fing-radius-sm);
-  color: var(--fing-accent-primary);
+  border-radius: var(--quafi-radius-sm);
+  color: var(--quafi-accent-primary);
   opacity: 0.6;
   cursor: pointer;
-  transition: var(--fing-transition-fast);
+  transition: var(--quafi-transition-fast);
 }
 
 .closeButton:hover {
   opacity: 1;
-  background-color: var(--fing-accent-subtle);
+  background-color: var(--quafi-accent-subtle);
 }

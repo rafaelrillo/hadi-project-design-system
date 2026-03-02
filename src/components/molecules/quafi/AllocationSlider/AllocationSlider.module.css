@@ -1,0 +1,196 @@
+/* Path: src/components/molecules/fing/AllocationSlider/AllocationSlider.module.css */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  background: var(--quafi-bg-elevated);
+  border: 1px solid var(--quafi-border-subtle);
+  border-radius: var(--quafi-radius-md);
+  transition: all var(--quafi-duration-fast) var(--quafi-ease-default);
+}
+
+.container:hover:not(.disabled) {
+  border-color: var(--quafi-border-hover);
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.dragging {
+  border-color: var(--quafi-accent-primary);
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.stockInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.ticker {
+  font-family: var(--quafi-font-ticker);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--quafi-text-primary);
+  letter-spacing: 0.08em;
+}
+
+.name {
+  font-size: 12px;
+  color: var(--quafi-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Value Display */
+.valueDisplay {
+  flex-shrink: 0;
+}
+
+.inputWrapper {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  background: var(--quafi-bg-surface);
+  border: 1px solid var(--quafi-border-default);
+  border-radius: var(--quafi-radius-sm);
+  padding: 4px 8px;
+  transition: border-color var(--quafi-duration-fast) var(--quafi-ease-default);
+}
+
+.inputWrapper:focus-within {
+  border-color: var(--quafi-accent-primary);
+}
+
+.percentInput {
+  width: 48px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--quafi-font-numeric);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--quafi-text-primary);
+  letter-spacing: var(--quafi-tracking-led);
+  text-align: right;
+  -moz-appearance: textfield;
+}
+
+.percentInput::-webkit-outer-spin-button,
+.percentInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.percentSymbol {
+  font-family: var(--quafi-font-numeric);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--quafi-text-secondary);
+  letter-spacing: var(--quafi-tracking-led);
+}
+
+.percentValue {
+  font-family: var(--quafi-font-numeric);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--quafi-text-primary);
+  letter-spacing: var(--quafi-tracking-led);
+}
+
+/* Track */
+.track {
+  position: relative;
+  height: 8px;
+  background: var(--quafi-bg-surface);
+  border-radius: 4px;
+  cursor: pointer;
+  touch-action: none;
+}
+
+.fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--quafi-accent-primary),
+    var(--quafi-accent-secondary)
+  );
+  border-radius: 4px;
+  transition: width var(--quafi-duration-fast) var(--quafi-ease-default);
+}
+
+.dragging .fill {
+  transition: none;
+}
+
+.thumb {
+  position: absolute;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  background: var(--quafi-bg-elevated);
+  border: 2px solid var(--quafi-accent-primary);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  cursor: grab;
+  transition:
+    box-shadow var(--quafi-duration-fast) var(--quafi-ease-default),
+    left var(--quafi-duration-fast) var(--quafi-ease-default);
+  outline: none;
+}
+
+.thumb:hover {
+  box-shadow: 0 0 0 4px rgba(var(--quafi-accent-primary-rgb, 91, 163, 165), 0.2);
+}
+
+.thumb:focus-visible {
+  box-shadow: 0 0 0 4px rgba(var(--quafi-accent-primary-rgb, 91, 163, 165), 0.3);
+}
+
+.dragging .thumb {
+  cursor: grabbing;
+  box-shadow: 0 0 0 6px rgba(var(--quafi-accent-primary-rgb, 91, 163, 165), 0.25);
+  transition: box-shadow var(--quafi-duration-fast) var(--quafi-ease-default);
+}
+
+/* Footer */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 8px;
+  border-top: 1px solid var(--quafi-border-subtle);
+}
+
+.price {
+  font-family: var(--quafi-font-numeric);
+  font-size: 12px;
+  color: var(--quafi-text-secondary);
+  letter-spacing: var(--quafi-tracking-led);
+}
+
+.dollarAmount {
+  font-family: var(--quafi-font-numeric);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--quafi-accent-primary);
+  letter-spacing: var(--quafi-tracking-led);
+  text-shadow: var(--quafi-glow-accent);
+}

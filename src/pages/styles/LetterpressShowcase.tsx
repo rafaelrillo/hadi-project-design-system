@@ -1,5 +1,5 @@
 // Path: src/pages/styles/LetterpressShowcase.tsx
-// FING Design System - Letterpress Text Shadows Showcase
+// QUAFI Design System - Letterpress Text Shadows Showcase
 import React from 'react';
 import { ShowcaseSection } from '../../components/showcase';
 
@@ -23,9 +23,9 @@ export function LetterpressShowcase() {
   const titleStyles: React.CSSProperties = {
     fontSize: '28px',
     fontWeight: 700,
-    color: 'var(--fing-accent)',
+    color: 'var(--quafi-accent)',
     marginBottom: '8px',
-    fontFamily: 'var(--fing-font-display)',
+    fontFamily: 'var(--quafi-font-display)',
     textTransform: 'uppercase',
     letterSpacing: '0.1em',
     // Standard: RAISED container → carved text (using CSS variable)
@@ -34,8 +34,8 @@ export function LetterpressShowcase() {
 
   const descStyles: React.CSSProperties = {
     fontSize: '14px',
-    color: 'var(--fing-text-muted)',
-    fontFamily: 'var(--fing-font-mono)',
+    color: 'var(--quafi-text-muted)',
+    fontFamily: 'var(--quafi-font-mono)',
     textTransform: 'uppercase',
     letterSpacing: '0.03em',
     // Standard: RAISED container → carved text (using CSS variable)
@@ -68,17 +68,17 @@ export function LetterpressShowcase() {
   const labelStyles: React.CSSProperties = {
     fontSize: '10px',
     fontWeight: 500,
-    fontFamily: 'var(--fing-font-mono)',
+    fontFamily: 'var(--quafi-font-mono)',
     textTransform: 'uppercase',
     letterSpacing: '0.15em',
-    color: 'var(--fing-text-muted)',
+    color: 'var(--quafi-text-muted)',
     marginBottom: '8px',
   };
 
   const codeStyles: React.CSSProperties = {
     fontSize: '11px',
-    fontFamily: 'var(--fing-font-mono)',
-    color: 'var(--fing-text-tertiary)',
+    fontFamily: 'var(--quafi-font-mono)',
+    color: 'var(--quafi-text-tertiary)',
     marginTop: '12px',
     padding: '8px 12px',
     background: 'var(--marble-dark)',
@@ -93,43 +93,43 @@ export function LetterpressShowcase() {
   const semanticLetterpress = [
     {
       name: '--lp-primary',
-      color: 'var(--fing-black)',
+      color: 'var(--quafi-black)',
       label: 'Charcoal',
       description: 'Primary text on RAISED containers',
     },
     {
       name: '--lp-primary-strong',
-      color: 'var(--fing-black)',
+      color: 'var(--quafi-black)',
       label: 'Charcoal Strong',
       description: 'Larger primary text',
     },
     {
       name: '--lp-positive',
-      color: 'var(--fing-positive)',
+      color: 'var(--quafi-positive)',
       label: 'Jade',
       description: 'Success/positive text',
     },
     {
       name: '--lp-warning',
-      color: 'var(--fing-warning)',
+      color: 'var(--quafi-warning)',
       label: 'Gold',
       description: 'Warning text',
     },
     {
       name: '--lp-negative',
-      color: 'var(--fing-negative)',
+      color: 'var(--quafi-negative)',
       label: 'Rust',
       description: 'Error/negative text',
     },
     {
       name: '--lp-info',
-      color: 'var(--fing-info)',
+      color: 'var(--quafi-info)',
       label: 'Steel',
       description: 'Info text',
     },
     {
       name: '--lp-accent',
-      color: 'var(--fing-accent)',
+      color: 'var(--quafi-accent)',
       label: 'Petrol',
       description: 'Brand accent text',
     },
@@ -138,25 +138,25 @@ export function LetterpressShowcase() {
   const contextLetterpress = [
     {
       name: '--lp-steel',
-      color: 'var(--fing-text-accent)',
+      color: 'var(--quafi-text-accent)',
       label: 'Steel',
       description: 'Secondary text accent',
     },
     {
       name: '--lp-petrol',
-      color: 'var(--fing-accent)',
+      color: 'var(--quafi-accent)',
       label: 'Petrol',
       description: 'Brand accent buttons',
     },
     {
       name: '--lp-petrol-whisper',
-      color: 'var(--fing-accent)',
+      color: 'var(--quafi-accent)',
       label: 'Petrol Whisper',
       description: 'Subtle petrol (wordmark, highlights)',
     },
     {
       name: '--lp-muted',
-      color: 'var(--fing-text-muted)',
+      color: 'var(--quafi-text-muted)',
       label: 'Muted',
       description: 'Muted/subtle text',
     },
@@ -213,9 +213,9 @@ export function LetterpressShowcase() {
           marginBottom: '24px',
         }}>
           <p style={{
-            fontFamily: 'var(--fing-font-mono)',
+            fontFamily: 'var(--quafi-font-mono)',
             fontSize: '14px',
-            color: 'var(--fing-text-secondary)',
+            color: 'var(--quafi-text-secondary)',
             lineHeight: 1.8,
           }}>
             <strong>RAISED container</strong> → Texto con <strong>letterpress</strong> (parece hundido)<br />
@@ -263,22 +263,22 @@ export function LetterpressShowcase() {
               <div key={item.name} style={cardStyles}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
                   <span style={labelStyles}>{item.name}</span>
-                  <code style={{ fontSize: '9px', fontFamily: 'var(--fing-font-mono)', color: 'var(--fing-text-muted)' }}>
+                  <code style={{ fontSize: '9px', fontFamily: 'var(--quafi-font-mono)', color: 'var(--quafi-text-muted)' }}>
                     {item.offset}
                   </code>
                 </div>
                 <div style={{
                   fontSize: item.size,
                   fontWeight: 600,
-                  fontFamily: 'var(--fing-font-display)',
+                  fontFamily: 'var(--quafi-font-display)',
                   color: 'var(--marble-base)',
                   textShadow: shadows[item.intensity],
                   marginBottom: '8px',
                   lineHeight: 1.2,
                 }}>
-                  FING
+                  QUAFI
                 </div>
-                <div style={{ fontSize: '10px', color: 'var(--fing-text-tertiary)' }}>
+                <div style={{ fontSize: '10px', color: 'var(--quafi-text-tertiary)' }}>
                   {item.useCase}
                 </div>
               </div>
@@ -300,13 +300,13 @@ export function LetterpressShowcase() {
             <div style={{
               fontSize: '10px',
               fontWeight: 600,
-              fontFamily: 'var(--fing-font-mono)',
+              fontFamily: 'var(--quafi-font-mono)',
               textTransform: 'uppercase',
               letterSpacing: '0.15em',
-              color: 'var(--fing-accent)',
+              color: 'var(--quafi-accent)',
               marginBottom: '12px',
               padding: '6px 12px',
-              background: 'var(--fing-glass-accent)',
+              background: 'var(--quafi-glass-accent)',
               borderRadius: '100px',
               display: 'inline-block',
             }}>
@@ -314,15 +314,15 @@ export function LetterpressShowcase() {
             </div>
             <div style={cardStyles}>
               {[
-                { label: 'Display 48px', size: '48px', font: 'var(--fing-font-display)', weight: 700, shadow: '3px 3px 2px var(--shadow-light), -3px -3px 2px var(--shadow-dark)' },
-                { label: 'Headline 32px', size: '32px', font: 'var(--fing-font-display)', weight: 700, shadow: '2px 2px 2px var(--shadow-light), -2px -2px 2px var(--shadow-dark)' },
-                { label: 'Title 24px', size: '24px', font: 'var(--fing-font-primary)', weight: 600, shadow: '1.5px 1.5px 1px var(--shadow-light), -1.5px -1.5px 1px var(--shadow-dark)' },
-                { label: 'Subtitle 18px', size: '18px', font: 'var(--fing-font-primary)', weight: 500, shadow: '1px 1px 1px var(--shadow-light), -1px -1px 1px var(--shadow-dark)' },
-                { label: 'Body 14px', size: '14px', font: 'var(--fing-font-primary)', weight: 400, shadow: '0.75px 0.75px 0px var(--shadow-light), -0.75px -0.75px 0px var(--shadow-dark)' },
-                { label: 'Mono 14px', size: '14px', font: 'var(--fing-font-mono)', weight: 500, shadow: '0.75px 0.75px 0px var(--shadow-light), -0.75px -0.75px 0px var(--shadow-dark)' },
+                { label: 'Display 48px', size: '48px', font: 'var(--quafi-font-display)', weight: 700, shadow: '3px 3px 2px var(--shadow-light), -3px -3px 2px var(--shadow-dark)' },
+                { label: 'Headline 32px', size: '32px', font: 'var(--quafi-font-display)', weight: 700, shadow: '2px 2px 2px var(--shadow-light), -2px -2px 2px var(--shadow-dark)' },
+                { label: 'Title 24px', size: '24px', font: 'var(--quafi-font-primary)', weight: 600, shadow: '1.5px 1.5px 1px var(--shadow-light), -1.5px -1.5px 1px var(--shadow-dark)' },
+                { label: 'Subtitle 18px', size: '18px', font: 'var(--quafi-font-primary)', weight: 500, shadow: '1px 1px 1px var(--shadow-light), -1px -1px 1px var(--shadow-dark)' },
+                { label: 'Body 14px', size: '14px', font: 'var(--quafi-font-primary)', weight: 400, shadow: '0.75px 0.75px 0px var(--shadow-light), -0.75px -0.75px 0px var(--shadow-dark)' },
+                { label: 'Mono 14px', size: '14px', font: 'var(--quafi-font-mono)', weight: 500, shadow: '0.75px 0.75px 0px var(--shadow-light), -0.75px -0.75px 0px var(--shadow-dark)' },
               ].map((item) => (
                 <div key={item.label} style={{ marginBottom: '16px' }}>
-                  <div style={{ fontSize: '9px', fontFamily: 'var(--fing-font-mono)', color: 'var(--fing-text-muted)', marginBottom: '4px' }}>
+                  <div style={{ fontSize: '9px', fontFamily: 'var(--quafi-font-mono)', color: 'var(--quafi-text-muted)', marginBottom: '4px' }}>
                     {item.label}
                   </div>
                   <div style={{
@@ -345,13 +345,13 @@ export function LetterpressShowcase() {
             <div style={{
               fontSize: '10px',
               fontWeight: 600,
-              fontFamily: 'var(--fing-font-mono)',
+              fontFamily: 'var(--quafi-font-mono)',
               textTransform: 'uppercase',
               letterSpacing: '0.15em',
-              color: 'var(--fing-warning)',
+              color: 'var(--quafi-warning)',
               marginBottom: '12px',
               padding: '6px 12px',
-              background: 'var(--fing-status-warning-subtle)',
+              background: 'var(--quafi-status-warning-subtle)',
               borderRadius: '100px',
               display: 'inline-block',
             }}>
@@ -359,15 +359,15 @@ export function LetterpressShowcase() {
             </div>
             <div style={insetCardStyles}>
               {[
-                { label: 'Display 48px', size: '48px', font: 'var(--fing-font-display)', weight: 700, shadow: '-3px -3px 2px var(--shadow-light), 3px 3px 2px var(--shadow-dark)' },
-                { label: 'Headline 32px', size: '32px', font: 'var(--fing-font-display)', weight: 700, shadow: '-2px -2px 2px var(--shadow-light), 2px 2px 2px var(--shadow-dark)' },
-                { label: 'Title 24px', size: '24px', font: 'var(--fing-font-primary)', weight: 600, shadow: '-1.5px -1.5px 1px var(--shadow-light), 1.5px 1.5px 1px var(--shadow-dark)' },
-                { label: 'Subtitle 18px', size: '18px', font: 'var(--fing-font-primary)', weight: 500, shadow: '-1px -1px 1px var(--shadow-light), 1px 1px 1px var(--shadow-dark)' },
-                { label: 'Body 14px', size: '14px', font: 'var(--fing-font-primary)', weight: 400, shadow: '-0.75px -0.75px 0px var(--shadow-light), 0.75px 0.75px 0px var(--shadow-dark)' },
-                { label: 'Mono 14px', size: '14px', font: 'var(--fing-font-mono)', weight: 500, shadow: '-0.75px -0.75px 0px var(--shadow-light), 0.75px 0.75px 0px var(--shadow-dark)' },
+                { label: 'Display 48px', size: '48px', font: 'var(--quafi-font-display)', weight: 700, shadow: '-3px -3px 2px var(--shadow-light), 3px 3px 2px var(--shadow-dark)' },
+                { label: 'Headline 32px', size: '32px', font: 'var(--quafi-font-display)', weight: 700, shadow: '-2px -2px 2px var(--shadow-light), 2px 2px 2px var(--shadow-dark)' },
+                { label: 'Title 24px', size: '24px', font: 'var(--quafi-font-primary)', weight: 600, shadow: '-1.5px -1.5px 1px var(--shadow-light), 1.5px 1.5px 1px var(--shadow-dark)' },
+                { label: 'Subtitle 18px', size: '18px', font: 'var(--quafi-font-primary)', weight: 500, shadow: '-1px -1px 1px var(--shadow-light), 1px 1px 1px var(--shadow-dark)' },
+                { label: 'Body 14px', size: '14px', font: 'var(--quafi-font-primary)', weight: 400, shadow: '-0.75px -0.75px 0px var(--shadow-light), 0.75px 0.75px 0px var(--shadow-dark)' },
+                { label: 'Mono 14px', size: '14px', font: 'var(--quafi-font-mono)', weight: 500, shadow: '-0.75px -0.75px 0px var(--shadow-light), 0.75px 0.75px 0px var(--shadow-dark)' },
               ].map((item) => (
                 <div key={item.label} style={{ marginBottom: '16px' }}>
-                  <div style={{ fontSize: '9px', fontFamily: 'var(--fing-font-mono)', color: 'var(--fing-text-tertiary)', marginBottom: '4px' }}>
+                  <div style={{ fontSize: '9px', fontFamily: 'var(--quafi-font-mono)', color: 'var(--quafi-text-tertiary)', marginBottom: '4px' }}>
                     {item.label}
                   </div>
                   <div style={{
@@ -405,15 +405,15 @@ export function LetterpressShowcase() {
             }}>
               <code style={{
                 fontSize: '10px',
-                fontFamily: 'var(--fing-font-mono)',
-                background: 'var(--fing-glass-accent)',
-                color: 'var(--fing-accent)',
+                fontFamily: 'var(--quafi-font-mono)',
+                background: 'var(--quafi-glass-accent)',
+                color: 'var(--quafi-accent)',
                 padding: '4px 10px',
                 borderRadius: '6px',
               }}>
-                --fing-font-display
+                --quafi-font-display
               </code>
-              <span style={{ fontSize: '11px', color: 'var(--fing-text-muted)' }}>Libre Baskerville</span>
+              <span style={{ fontSize: '11px', color: 'var(--quafi-text-muted)' }}>Libre Baskerville</span>
             </div>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '24px', alignItems: 'baseline' }}>
               {[
@@ -422,7 +422,7 @@ export function LetterpressShowcase() {
                 { text: 'The Long View', size: '28px', shadow: '1.5px 1.5px 1px var(--shadow-light), -1.5px -1.5px 1px var(--shadow-dark)' },
               ].map((item) => (
                 <span key={item.text} style={{
-                  fontFamily: 'var(--fing-font-display)',
+                  fontFamily: 'var(--quafi-font-display)',
                   fontSize: item.size,
                   fontWeight: 700,
                   color: 'var(--marble-base)',
@@ -444,15 +444,15 @@ export function LetterpressShowcase() {
             }}>
               <code style={{
                 fontSize: '10px',
-                fontFamily: 'var(--fing-font-mono)',
-                background: 'var(--fing-glass-accent)',
-                color: 'var(--fing-accent)',
+                fontFamily: 'var(--quafi-font-mono)',
+                background: 'var(--quafi-glass-accent)',
+                color: 'var(--quafi-accent)',
                 padding: '4px 10px',
                 borderRadius: '6px',
               }}>
-                --fing-font-primary
+                --quafi-font-primary
               </code>
-              <span style={{ fontSize: '11px', color: 'var(--fing-text-muted)' }}>DM Sans</span>
+              <span style={{ fontSize: '11px', color: 'var(--quafi-text-muted)' }}>DM Sans</span>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
               {[
@@ -463,7 +463,7 @@ export function LetterpressShowcase() {
                 { text: 'Analysis suggests a neutral position', size: '14px', weight: 400, shadow: '0.5px 0.5px 0px var(--shadow-light), -0.5px -0.5px 0px var(--shadow-dark)' },
               ].map((item) => (
                 <div key={item.text} style={{
-                  fontFamily: 'var(--fing-font-primary)',
+                  fontFamily: 'var(--quafi-font-primary)',
                   fontSize: item.size,
                   fontWeight: item.weight,
                   color: 'var(--marble-base)',
@@ -486,27 +486,27 @@ export function LetterpressShowcase() {
             }}>
               <code style={{
                 fontSize: '10px',
-                fontFamily: 'var(--fing-font-mono)',
-                background: 'var(--fing-glass-accent)',
-                color: 'var(--fing-accent)',
+                fontFamily: 'var(--quafi-font-mono)',
+                background: 'var(--quafi-glass-accent)',
+                color: 'var(--quafi-accent)',
                 padding: '4px 10px',
                 borderRadius: '6px',
               }}>
-                --fing-font-mono
+                --quafi-font-mono
               </code>
-              <span style={{ fontSize: '11px', color: 'var(--fing-text-muted)' }}>IBM Plex Mono</span>
+              <span style={{ fontSize: '11px', color: 'var(--quafi-text-muted)' }}>IBM Plex Mono</span>
             </div>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '32px', alignItems: 'baseline' }}>
               {[
                 { text: '$1,234,567.89', size: '36px', weight: 700, shadow: '2px 2px 2px var(--shadow-light), -2px -2px 2px var(--shadow-dark)', color: 'var(--marble-base)' },
-                { text: '+24.56%', size: '28px', weight: 700, shadow: '1.5px 1.5px 1px var(--shadow-light), -1.5px -1.5px 1px rgba(74, 122, 106, 0.3)', color: 'var(--fing-positive)' },
-                { text: '-12.34%', size: '28px', weight: 700, shadow: '1.5px 1.5px 1px var(--shadow-light), -1.5px -1.5px 1px rgba(138, 90, 74, 0.3)', color: 'var(--fing-negative)' },
-                { text: 'AAPL', size: '24px', weight: 600, shadow: '1px 1px 1px var(--shadow-light), -1px -1px 1px rgba(58, 106, 114, 0.3)', color: 'var(--fing-accent)' },
+                { text: '+24.56%', size: '28px', weight: 700, shadow: '1.5px 1.5px 1px var(--shadow-light), -1.5px -1.5px 1px rgba(74, 122, 106, 0.3)', color: 'var(--quafi-positive)' },
+                { text: '-12.34%', size: '28px', weight: 700, shadow: '1.5px 1.5px 1px var(--shadow-light), -1.5px -1.5px 1px rgba(138, 90, 74, 0.3)', color: 'var(--quafi-negative)' },
+                { text: 'AAPL', size: '24px', weight: 600, shadow: '1px 1px 1px var(--shadow-light), -1px -1px 1px rgba(58, 106, 114, 0.3)', color: 'var(--quafi-accent)' },
                 { text: '178.42', size: '20px', weight: 500, shadow: '1px 1px 1px var(--shadow-light), -1px -1px 1px var(--shadow-dark)', color: 'var(--marble-base)' },
                 { text: 'VOL: 52.3M', size: '14px', weight: 500, shadow: '0.75px 0.75px 0px var(--shadow-light), -0.75px -0.75px 0px var(--shadow-dark)', color: 'var(--marble-base)' },
               ].map((item, i) => (
                 <span key={i} style={{
-                  fontFamily: 'var(--fing-font-mono)',
+                  fontFamily: 'var(--quafi-font-mono)',
                   fontSize: item.size,
                   fontWeight: item.weight,
                   color: item.color,
@@ -539,8 +539,8 @@ export function LetterpressShowcase() {
             {['Charcoal', 'Petrol', 'Jade', 'Gold', 'Rust'].map((color) => (
               <div key={color} style={{
                 fontSize: '10px',
-                fontFamily: 'var(--fing-font-mono)',
-                color: 'var(--fing-text-muted)',
+                fontFamily: 'var(--quafi-font-mono)',
+                color: 'var(--quafi-text-muted)',
                 textAlign: 'center',
                 textTransform: 'uppercase',
                 letterSpacing: '0.1em',
@@ -558,23 +558,23 @@ export function LetterpressShowcase() {
               <React.Fragment key={row.depth}>
                 <div style={{
                   fontSize: '10px',
-                  fontFamily: 'var(--fing-font-mono)',
-                  color: 'var(--fing-text-muted)',
+                  fontFamily: 'var(--quafi-font-mono)',
+                  color: 'var(--quafi-text-muted)',
                   textTransform: 'uppercase',
                 }}>
                   {row.depth}
                 </div>
                 {[
-                  { color: 'var(--fing-black)', rgb: '37, 37, 40' },
-                  { color: 'var(--fing-accent)', rgb: '58, 106, 114' },
-                  { color: 'var(--fing-positive)', rgb: '74, 122, 106' },
-                  { color: 'var(--fing-warning)', rgb: '160, 138, 74' },
-                  { color: 'var(--fing-negative)', rgb: '138, 90, 74' },
+                  { color: 'var(--quafi-black)', rgb: '37, 37, 40' },
+                  { color: 'var(--quafi-accent)', rgb: '58, 106, 114' },
+                  { color: 'var(--quafi-positive)', rgb: '74, 122, 106' },
+                  { color: 'var(--quafi-warning)', rgb: '160, 138, 74' },
+                  { color: 'var(--quafi-negative)', rgb: '138, 90, 74' },
                 ].map((item, i) => (
                   <div key={i} style={{
                     fontSize: row.size,
                     fontWeight: 700,
-                    fontFamily: 'var(--fing-font-mono)',
+                    fontFamily: 'var(--quafi-font-mono)',
                     color: item.color,
                     textShadow: `${row.offset} ${row.offset} 0px var(--shadow-light), -${row.offset} -${row.offset} 0px rgba(${item.rgb}, 0.3)`,
                     textAlign: 'center',
@@ -608,7 +608,7 @@ export function LetterpressShowcase() {
               </div>
               <div style={{
                 fontSize: '12px',
-                color: 'var(--fing-text-tertiary)',
+                color: 'var(--quafi-text-tertiary)',
               }}>
                 {item.description}
               </div>
@@ -640,7 +640,7 @@ export function LetterpressShowcase() {
               </div>
               <div style={{
                 fontSize: '12px',
-                color: 'var(--fing-text-tertiary)',
+                color: 'var(--quafi-text-tertiary)',
               }}>
                 {item.description}
               </div>
@@ -660,7 +660,7 @@ export function LetterpressShowcase() {
         <div style={gridStyles}>
           {embossedLetterpress.map((item) => (
             <div key={item.name} style={insetCardStyles}>
-              <div style={{ ...labelStyles, color: 'var(--fing-text-tertiary)' }}>{item.label}</div>
+              <div style={{ ...labelStyles, color: 'var(--quafi-text-tertiary)' }}>{item.label}</div>
               <div style={{
                 fontSize: '24px',
                 fontWeight: 600,
@@ -672,7 +672,7 @@ export function LetterpressShowcase() {
               </div>
               <div style={{
                 fontSize: '12px',
-                color: 'var(--fing-text-muted)',
+                color: 'var(--quafi-text-muted)',
               }}>
                 {item.description}
               </div>
@@ -703,9 +703,9 @@ export function LetterpressShowcase() {
           marginBottom: '24px',
         }}>
           <p style={{
-            fontFamily: 'var(--fing-font-mono)',
+            fontFamily: 'var(--quafi-font-mono)',
             fontSize: '12px',
-            color: 'var(--fing-text-secondary)',
+            color: 'var(--quafi-text-secondary)',
             lineHeight: 1.6,
             margin: 0,
           }}>
@@ -718,22 +718,22 @@ export function LetterpressShowcase() {
           <div style={{
             fontSize: '11px',
             fontWeight: 600,
-            fontFamily: 'var(--fing-font-mono)',
+            fontFamily: 'var(--quafi-font-mono)',
             textTransform: 'uppercase',
             letterSpacing: '0.12em',
-            color: 'var(--fing-text-muted)',
+            color: 'var(--quafi-text-muted)',
             marginBottom: '16px',
           }}>
             Clases Semánticas
           </div>
           <div style={gridStyles}>
             {[
-              { class: '.text-positive', alias: '.text-jade', color: 'var(--fing-positive)', examples: ['+12.5%', 'Buy', 'Bullish', '$1,234.56'] },
-              { class: '.text-warning', alias: '.text-gold', color: 'var(--fing-warning)', examples: ['Alert', 'Hold', 'Moderate', 'Pending'] },
-              { class: '.text-negative', alias: '.text-rust', color: 'var(--fing-negative)', examples: ['-8.3%', 'Sell', 'Bearish', 'Decline'] },
-              { class: '.text-info', alias: '.text-steel', color: 'var(--fing-info)', examples: ['Info', 'Neutral', 'Processing', 'Analysis'] },
-              { class: '.text-accent', alias: '.text-petrol', color: 'var(--fing-accent)', examples: ['FING', 'Premium', 'Featured', 'Active'] },
-              { class: '.text-primary', alias: '.text-charcoal', color: 'var(--fing-black)', examples: ['Portfolio', 'Total Value', 'Holdings', 'Overview'] },
+              { class: '.text-positive', alias: '.text-jade', color: 'var(--quafi-positive)', examples: ['+12.5%', 'Buy', 'Bullish', '$1,234.56'] },
+              { class: '.text-warning', alias: '.text-gold', color: 'var(--quafi-warning)', examples: ['Alert', 'Hold', 'Moderate', 'Pending'] },
+              { class: '.text-negative', alias: '.text-rust', color: 'var(--quafi-negative)', examples: ['-8.3%', 'Sell', 'Bearish', 'Decline'] },
+              { class: '.text-info', alias: '.text-steel', color: 'var(--quafi-info)', examples: ['Info', 'Neutral', 'Processing', 'Analysis'] },
+              { class: '.text-accent', alias: '.text-petrol', color: 'var(--quafi-accent)', examples: ['QUAFI', 'Premium', 'Featured', 'Active'] },
+              { class: '.text-primary', alias: '.text-charcoal', color: 'var(--quafi-black)', examples: ['Portfolio', 'Total Value', 'Holdings', 'Overview'] },
             ].map((item) => (
               <div key={item.class} style={cardStyles}>
                 <div style={{
@@ -743,9 +743,9 @@ export function LetterpressShowcase() {
                 }}>
                   <code style={{
                     fontSize: '11px',
-                    fontFamily: 'var(--fing-font-mono)',
-                    background: 'var(--fing-glass-accent)',
-                    color: 'var(--fing-accent)',
+                    fontFamily: 'var(--quafi-font-mono)',
+                    background: 'var(--quafi-glass-accent)',
+                    color: 'var(--quafi-accent)',
                     padding: '4px 8px',
                     borderRadius: '6px',
                     fontWeight: 500,
@@ -754,8 +754,8 @@ export function LetterpressShowcase() {
                   </code>
                   <code style={{
                     fontSize: '10px',
-                    fontFamily: 'var(--fing-font-mono)',
-                    color: 'var(--fing-text-tertiary)',
+                    fontFamily: 'var(--quafi-font-mono)',
+                    color: 'var(--quafi-text-tertiary)',
                     padding: '4px 8px',
                   }}>
                     {item.alias}
@@ -773,7 +773,7 @@ export function LetterpressShowcase() {
                       style={{
                         fontSize: i === 0 ? '20px' : '14px',
                         fontWeight: i === 0 ? 700 : 500,
-                        fontFamily: i === 0 ? 'var(--fing-font-mono)' : 'var(--fing-font-primary)',
+                        fontFamily: i === 0 ? 'var(--quafi-font-mono)' : 'var(--quafi-font-primary)',
                       }}
                     >
                       {example}
@@ -790,10 +790,10 @@ export function LetterpressShowcase() {
           <div style={{
             fontSize: '11px',
             fontWeight: 600,
-            fontFamily: 'var(--fing-font-mono)',
+            fontFamily: 'var(--quafi-font-mono)',
             textTransform: 'uppercase',
             letterSpacing: '0.12em',
-            color: 'var(--fing-text-muted)',
+            color: 'var(--quafi-text-muted)',
             marginBottom: '16px',
           }}>
             Variante Strong (Headlines)
@@ -801,9 +801,9 @@ export function LetterpressShowcase() {
           <div style={cardStyles}>
             <code style={{
               fontSize: '11px',
-              fontFamily: 'var(--fing-font-mono)',
-              background: 'var(--fing-glass-accent)',
-              color: 'var(--fing-accent)',
+              fontFamily: 'var(--quafi-font-mono)',
+              background: 'var(--quafi-glass-accent)',
+              color: 'var(--quafi-accent)',
               padding: '4px 8px',
               borderRadius: '6px',
               fontWeight: 500,
@@ -813,13 +813,13 @@ export function LetterpressShowcase() {
               .text-primary-strong
             </code>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              <span className="text-primary-strong" style={{ fontSize: '32px', fontWeight: 700, fontFamily: 'var(--fing-font-display)' }}>
+              <span className="text-primary-strong" style={{ fontSize: '32px', fontWeight: 700, fontFamily: 'var(--quafi-font-display)' }}>
                 Portfolio Overview
               </span>
-              <span className="text-primary-strong" style={{ fontSize: '24px', fontWeight: 600, fontFamily: 'var(--fing-font-primary)' }}>
+              <span className="text-primary-strong" style={{ fontSize: '24px', fontWeight: 600, fontFamily: 'var(--quafi-font-primary)' }}>
                 Market Analysis
               </span>
-              <span className="text-primary-strong" style={{ fontSize: '18px', fontWeight: 600, fontFamily: 'var(--fing-font-primary)' }}>
+              <span className="text-primary-strong" style={{ fontSize: '18px', fontWeight: 600, fontFamily: 'var(--quafi-font-primary)' }}>
                 Investment Strategy
               </span>
             </div>
@@ -838,10 +838,10 @@ export function LetterpressShowcase() {
         <div style={{
           fontSize: '11px',
           fontWeight: 600,
-          fontFamily: 'var(--fing-font-mono)',
+          fontFamily: 'var(--quafi-font-mono)',
           textTransform: 'uppercase',
           letterSpacing: '0.12em',
-          color: 'var(--fing-text-muted)',
+          color: 'var(--quafi-text-muted)',
           marginBottom: '16px',
         }}>
           KPI Cards
@@ -859,10 +859,10 @@ export function LetterpressShowcase() {
             }}>
               <div style={{
                 fontSize: '11px',
-                fontFamily: 'var(--fing-font-mono)',
+                fontFamily: 'var(--quafi-font-mono)',
                 textTransform: 'uppercase',
                 letterSpacing: '0.1em',
-                color: 'var(--fing-text-muted)',
+                color: 'var(--quafi-text-muted)',
                 marginBottom: '8px',
               }}>
                 {kpi.label}
@@ -872,7 +872,7 @@ export function LetterpressShowcase() {
                 style={{
                   fontSize: '24px',
                   fontWeight: 700,
-                  fontFamily: 'var(--fing-font-mono)',
+                  fontFamily: 'var(--quafi-font-mono)',
                 }}
               >
                 {kpi.value}
@@ -885,10 +885,10 @@ export function LetterpressShowcase() {
         <div style={{
           fontSize: '11px',
           fontWeight: 600,
-          fontFamily: 'var(--fing-font-mono)',
+          fontFamily: 'var(--quafi-font-mono)',
           textTransform: 'uppercase',
           letterSpacing: '0.12em',
-          color: 'var(--fing-text-muted)',
+          color: 'var(--quafi-text-muted)',
           marginBottom: '16px',
           marginTop: '32px',
         }}>
@@ -913,22 +913,22 @@ export function LetterpressShowcase() {
                 gap: '16px',
                 alignItems: 'center',
                 padding: '16px 20px',
-                borderBottom: i < 3 ? '1px solid var(--fing-border-subtle)' : 'none',
+                borderBottom: i < 3 ? '1px solid var(--quafi-border-subtle)' : 'none',
               }}
             >
-              <span className="text-accent" style={{ fontSize: '14px', fontWeight: 700, fontFamily: 'var(--fing-font-mono)' }}>
+              <span className="text-accent" style={{ fontSize: '14px', fontWeight: 700, fontFamily: 'var(--quafi-font-mono)' }}>
                 {stock.symbol}
               </span>
-              <span className="text-primary" style={{ fontSize: '13px', fontFamily: 'var(--fing-font-primary)' }}>
+              <span className="text-primary" style={{ fontSize: '13px', fontFamily: 'var(--quafi-font-primary)' }}>
                 {stock.name}
               </span>
-              <span className="text-primary" style={{ fontSize: '14px', fontWeight: 600, fontFamily: 'var(--fing-font-mono)', textAlign: 'right' }}>
+              <span className="text-primary" style={{ fontSize: '14px', fontWeight: 600, fontFamily: 'var(--quafi-font-mono)', textAlign: 'right' }}>
                 {stock.price}
               </span>
-              <span className={stock.changeClass} style={{ fontSize: '13px', fontWeight: 600, fontFamily: 'var(--fing-font-mono)', textAlign: 'right' }}>
+              <span className={stock.changeClass} style={{ fontSize: '13px', fontWeight: 600, fontFamily: 'var(--quafi-font-mono)', textAlign: 'right' }}>
                 {stock.change}
               </span>
-              <span className={stock.signalClass} style={{ fontSize: '11px', fontWeight: 600, fontFamily: 'var(--fing-font-mono)', textTransform: 'uppercase' }}>
+              <span className={stock.signalClass} style={{ fontSize: '11px', fontWeight: 600, fontFamily: 'var(--quafi-font-mono)', textTransform: 'uppercase' }}>
                 {stock.signal}
               </span>
             </div>
@@ -939,10 +939,10 @@ export function LetterpressShowcase() {
         <div style={{
           fontSize: '11px',
           fontWeight: 600,
-          fontFamily: 'var(--fing-font-mono)',
+          fontFamily: 'var(--quafi-font-mono)',
           textTransform: 'uppercase',
           letterSpacing: '0.12em',
-          color: 'var(--fing-text-muted)',
+          color: 'var(--quafi-text-muted)',
           marginBottom: '16px',
           marginTop: '32px',
         }}>
@@ -954,18 +954,18 @@ export function LetterpressShowcase() {
         }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '16px' }}>
             <div>
-              <span className="text-accent" style={{ fontSize: '18px', fontWeight: 700, fontFamily: 'var(--fing-font-mono)' }}>
+              <span className="text-accent" style={{ fontSize: '18px', fontWeight: 700, fontFamily: 'var(--quafi-font-mono)' }}>
                 AAPL
               </span>
-              <span className="text-primary" style={{ fontSize: '13px', marginLeft: '12px', fontFamily: 'var(--fing-font-primary)' }}>
+              <span className="text-primary" style={{ fontSize: '13px', marginLeft: '12px', fontFamily: 'var(--quafi-font-primary)' }}>
                 Apple Inc.
               </span>
             </div>
             <span className="text-positive" style={{
               fontSize: '12px',
               fontWeight: 700,
-              fontFamily: 'var(--fing-font-mono)',
-              background: 'var(--fing-status-positive-subtle)',
+              fontFamily: 'var(--quafi-font-mono)',
+              background: 'var(--quafi-status-positive-subtle)',
               padding: '4px 12px',
               borderRadius: '100px',
               textTransform: 'uppercase',
@@ -975,20 +975,20 @@ export function LetterpressShowcase() {
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
             <div>
-              <div style={{ fontSize: '10px', fontFamily: 'var(--fing-font-mono)', color: 'var(--fing-text-muted)', marginBottom: '4px' }}>Current</div>
-              <span className="text-primary" style={{ fontSize: '20px', fontWeight: 600, fontFamily: 'var(--fing-font-mono)' }}>$178.42</span>
+              <div style={{ fontSize: '10px', fontFamily: 'var(--quafi-font-mono)', color: 'var(--quafi-text-muted)', marginBottom: '4px' }}>Current</div>
+              <span className="text-primary" style={{ fontSize: '20px', fontWeight: 600, fontFamily: 'var(--quafi-font-mono)' }}>$178.42</span>
             </div>
             <div>
-              <div style={{ fontSize: '10px', fontFamily: 'var(--fing-font-mono)', color: 'var(--fing-text-muted)', marginBottom: '4px' }}>Target</div>
-              <span className="text-positive" style={{ fontSize: '20px', fontWeight: 600, fontFamily: 'var(--fing-font-mono)' }}>$195.00</span>
+              <div style={{ fontSize: '10px', fontFamily: 'var(--quafi-font-mono)', color: 'var(--quafi-text-muted)', marginBottom: '4px' }}>Target</div>
+              <span className="text-positive" style={{ fontSize: '20px', fontWeight: 600, fontFamily: 'var(--quafi-font-mono)' }}>$195.00</span>
             </div>
             <div>
-              <div style={{ fontSize: '10px', fontFamily: 'var(--fing-font-mono)', color: 'var(--fing-text-muted)', marginBottom: '4px' }}>Upside</div>
-              <span className="text-positive" style={{ fontSize: '16px', fontWeight: 600, fontFamily: 'var(--fing-font-mono)' }}>+9.3%</span>
+              <div style={{ fontSize: '10px', fontFamily: 'var(--quafi-font-mono)', color: 'var(--quafi-text-muted)', marginBottom: '4px' }}>Upside</div>
+              <span className="text-positive" style={{ fontSize: '16px', fontWeight: 600, fontFamily: 'var(--quafi-font-mono)' }}>+9.3%</span>
             </div>
             <div>
-              <div style={{ fontSize: '10px', fontFamily: 'var(--fing-font-mono)', color: 'var(--fing-text-muted)', marginBottom: '4px' }}>Confidence</div>
-              <span className="text-accent" style={{ fontSize: '16px', fontWeight: 600, fontFamily: 'var(--fing-font-mono)' }}>High</span>
+              <div style={{ fontSize: '10px', fontFamily: 'var(--quafi-font-mono)', color: 'var(--quafi-text-muted)', marginBottom: '4px' }}>Confidence</div>
+              <span className="text-accent" style={{ fontSize: '16px', fontWeight: 600, fontFamily: 'var(--quafi-font-mono)' }}>High</span>
             </div>
           </div>
         </div>
@@ -997,10 +997,10 @@ export function LetterpressShowcase() {
         <div style={{
           fontSize: '11px',
           fontWeight: 600,
-          fontFamily: 'var(--fing-font-mono)',
+          fontFamily: 'var(--quafi-font-mono)',
           textTransform: 'uppercase',
           letterSpacing: '0.12em',
-          color: 'var(--fing-text-muted)',
+          color: 'var(--quafi-text-muted)',
           marginBottom: '16px',
           marginTop: '32px',
         }}>
@@ -1008,10 +1008,10 @@ export function LetterpressShowcase() {
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
           {[
-            { icon: '✓', message: 'Transaction completed successfully', class: 'text-positive', bg: 'var(--fing-status-positive-subtle)' },
-            { icon: '⚠', message: 'Market volatility detected — review positions', class: 'text-warning', bg: 'var(--fing-status-warning-subtle)' },
-            { icon: '✕', message: 'Order failed — insufficient funds', class: 'text-negative', bg: 'var(--fing-status-negative-subtle)' },
-            { icon: 'ℹ', message: 'New analysis available for your portfolio', class: 'text-info', bg: 'var(--fing-status-info-subtle)' },
+            { icon: '✓', message: 'Transaction completed successfully', class: 'text-positive', bg: 'var(--quafi-status-positive-subtle)' },
+            { icon: '⚠', message: 'Market volatility detected — review positions', class: 'text-warning', bg: 'var(--quafi-status-warning-subtle)' },
+            { icon: '✕', message: 'Order failed — insufficient funds', class: 'text-negative', bg: 'var(--quafi-status-negative-subtle)' },
+            { icon: 'ℹ', message: 'New analysis available for your portfolio', class: 'text-info', bg: 'var(--quafi-status-info-subtle)' },
           ].map((alert) => (
             <div
               key={alert.message}
@@ -1023,11 +1023,11 @@ export function LetterpressShowcase() {
                 background: alert.bg,
                 borderRadius: '10px',
                 borderLeft: `3px solid`,
-                borderLeftColor: `var(--fing-${alert.class.replace('text-', '')})`,
+                borderLeftColor: `var(--quafi-${alert.class.replace('text-', '')})`,
               }}
             >
               <span className={alert.class} style={{ fontSize: '16px' }}>{alert.icon}</span>
-              <span className={alert.class} style={{ fontSize: '13px', fontWeight: 500, fontFamily: 'var(--fing-font-primary)' }}>
+              <span className={alert.class} style={{ fontSize: '13px', fontWeight: 500, fontFamily: 'var(--quafi-font-primary)' }}>
                 {alert.message}
               </span>
             </div>
@@ -1045,18 +1045,18 @@ export function LetterpressShowcase() {
         <div style={cardStyles}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
             {[
-              { size: '32px', weight: 700, label: 'Display', font: 'var(--fing-font-display)' },
-              { size: '24px', weight: 600, label: 'H1', font: 'var(--fing-font-primary)' },
-              { size: '20px', weight: 600, label: 'H2', font: 'var(--fing-font-primary)' },
-              { size: '16px', weight: 500, label: 'Body', font: 'var(--fing-font-primary)' },
-              { size: '14px', weight: 500, label: 'Small', font: 'var(--fing-font-primary)' },
-              { size: '12px', weight: 500, label: 'Caption', font: 'var(--fing-font-mono)' },
+              { size: '32px', weight: 700, label: 'Display', font: 'var(--quafi-font-display)' },
+              { size: '24px', weight: 600, label: 'H1', font: 'var(--quafi-font-primary)' },
+              { size: '20px', weight: 600, label: 'H2', font: 'var(--quafi-font-primary)' },
+              { size: '16px', weight: 500, label: 'Body', font: 'var(--quafi-font-primary)' },
+              { size: '14px', weight: 500, label: 'Small', font: 'var(--quafi-font-primary)' },
+              { size: '12px', weight: 500, label: 'Caption', font: 'var(--quafi-font-mono)' },
             ].map((item) => (
               <div key={item.label} style={{ display: 'flex', alignItems: 'baseline', gap: '16px' }}>
                 <span style={{
                   fontSize: '10px',
-                  fontFamily: 'var(--fing-font-mono)',
-                  color: 'var(--fing-text-muted)',
+                  fontFamily: 'var(--quafi-font-mono)',
+                  color: 'var(--quafi-text-muted)',
                   width: '60px',
                   flexShrink: 0,
                 }}>
@@ -1067,7 +1067,7 @@ export function LetterpressShowcase() {
                   <span className="text-positive" style={{ fontSize: item.size, fontWeight: item.weight, fontFamily: item.font }}>+12.5%</span>
                   <span className="text-negative" style={{ fontSize: item.size, fontWeight: item.weight, fontFamily: item.font }}>-8.3%</span>
                   <span className="text-warning" style={{ fontSize: item.size, fontWeight: item.weight, fontFamily: item.font }}>Alert</span>
-                  <span className="text-accent" style={{ fontSize: item.size, fontWeight: item.weight, fontFamily: item.font }}>FING</span>
+                  <span className="text-accent" style={{ fontSize: item.size, fontWeight: item.weight, fontFamily: item.font }}>QUAFI</span>
                 </div>
               </div>
             ))}
@@ -1087,9 +1087,9 @@ export function LetterpressShowcase() {
           boxShadow: 'var(--raised-2)',
         }}>
           <pre style={{
-            fontFamily: 'var(--fing-font-mono)',
+            fontFamily: 'var(--quafi-font-mono)',
             fontSize: '13px',
-            color: 'var(--fing-text-secondary)',
+            color: 'var(--quafi-text-secondary)',
             lineHeight: 1.6,
             margin: 0,
             whiteSpace: 'pre-wrap',
@@ -1098,13 +1098,13 @@ export function LetterpressShowcase() {
 <span className="text-positive">+12.5%</span>
 <span className="text-negative">-8.3%</span>
 <span className="text-warning">Alert</span>
-<span className="text-accent">FING</span>
+<span className="text-accent">QUAFI</span>
 <span className="text-primary">Portfolio</span>
 <span className="text-primary-strong">Headline</span>
 
 /* En CSS con variables (más control) */
 .titleInRaisedContainer {
-  color: var(--fing-accent);
+  color: var(--quafi-accent);
   text-shadow: var(--lp-petrol);
 }
 
@@ -1116,13 +1116,13 @@ export function LetterpressShowcase() {
 
 /* Texto positivo (jade) */
 .positiveText {
-  color: var(--fing-positive);
+  color: var(--quafi-positive);
   text-shadow: var(--lp-positive);
 }
 
 /* Texto de advertencia (gold) */
 .warningText {
-  color: var(--fing-warning);
+  color: var(--quafi-warning);
   text-shadow: var(--lp-warning);
 }`}
           </pre>

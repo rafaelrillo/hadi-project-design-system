@@ -1,6 +1,6 @@
 /* Path: src/components/molecules/SidebarItem/SidebarItem.module.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   FING DESIGN SYSTEM - SidebarItem Component
+   QUAFI DESIGN SYSTEM - SidebarItem Component
 
    Navigation item for sidebar menus
    Clean styling with active state indicator
@@ -15,30 +15,30 @@
   display: flex;
   align-items: center;
   height: 40px;
-  padding: 0 var(--fing-space-4);
-  font-size: var(--fing-text-sm);
-  font-weight: var(--fing-font-normal);
-  color: var(--fing-text-secondary);
+  padding: 0 var(--quafi-space-4);
+  font-size: var(--quafi-text-sm);
+  font-weight: var(--quafi-font-normal);
+  color: var(--quafi-text-secondary);
   background-color: transparent;
   cursor: pointer;
-  font-family: var(--fing-font-primary);
+  font-family: var(--quafi-font-primary);
   line-height: 1.5;
   text-decoration: none;
   border: none;
   width: 100%;
   text-align: left;
-  transition: var(--fing-transition-normal);
+  transition: var(--quafi-transition-normal);
   outline: none;
   user-select: none;
 }
 
 .container:hover:not(.disabled) {
-  background-color: var(--fing-bg-overlay);
-  color: var(--fing-text-primary);
+  background-color: var(--quafi-bg-overlay);
+  color: var(--quafi-text-primary);
 }
 
 .container:focus-visible {
-  outline: 2px solid var(--fing-accent-primary);
+  outline: 2px solid var(--quafi-accent-primary);
   outline-offset: -2px;
 }
 
@@ -47,13 +47,13 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .active {
-  font-weight: var(--fing-font-medium);
-  color: var(--fing-accent-primary);
-  background-color: var(--fing-accent-subtle);
+  font-weight: var(--quafi-font-medium);
+  color: var(--quafi-accent-primary);
+  background-color: var(--quafi-accent-subtle);
 }
 
 .active:hover {
-  background-color: var(--fing-accent-subtle);
+  background-color: var(--quafi-accent-subtle);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -61,7 +61,7 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .disabled {
-  color: var(--fing-text-disabled);
+  color: var(--quafi-text-disabled);
   cursor: not-allowed;
   background-color: transparent;
 }
@@ -76,9 +76,9 @@
   top: 0;
   bottom: 0;
   width: 3px;
-  background-color: var(--fing-accent-primary);
+  background-color: var(--quafi-accent-primary);
   opacity: 0;
-  transition: opacity var(--fing-transition-normal);
+  transition: opacity var(--quafi-transition-normal);
 }
 
 .leftBarVisible {
@@ -90,7 +90,7 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .iconContainer {
-  margin-right: var(--fing-space-3);
+  margin-right: var(--quafi-space-3);
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -118,14 +118,14 @@
   justify-content: center;
   min-width: 20px;
   height: 20px;
-  padding: 0 var(--fing-space-1);
+  padding: 0 var(--quafi-space-1);
   font-size: 10px;
-  font-weight: var(--fing-font-semibold);
-  color: var(--fing-bg-base);
-  background-color: var(--fing-accent-primary);
-  border-radius: var(--fing-radius-full);
-  margin-left: var(--fing-space-2);
-  font-family: var(--fing-font-led);
-  letter-spacing: var(--fing-tracking-led);
-  text-shadow: var(--fing-glow-accent);
+  font-weight: var(--quafi-font-semibold);
+  color: var(--quafi-bg-base);
+  background-color: var(--quafi-accent-primary);
+  border-radius: var(--quafi-radius-full);
+  margin-left: var(--quafi-space-2);
+  font-family: var(--quafi-font-led);
+  letter-spacing: var(--quafi-tracking-led);
+  text-shadow: var(--quafi-glow-accent);
 }

@@ -21,7 +21,7 @@
   gap: 8px;
   margin-bottom: 24px;
   padding-bottom: 20px;
-  border-bottom: 1px solid var(--fing-border-subtle);
+  border-bottom: 1px solid var(--quafi-border-subtle);
 }
 
 .step {
@@ -37,51 +37,51 @@
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: var(--fing-bg-surface);
-  border: 2px solid var(--fing-border-default);
+  background: var(--quafi-bg-surface);
+  border: 2px solid var(--quafi-border-default);
   font-size: 12px;
   font-weight: 600;
-  color: var(--fing-text-tertiary);
-  transition: all var(--fing-duration-fast) var(--fing-ease-default);
+  color: var(--quafi-text-tertiary);
+  transition: all var(--quafi-duration-fast) var(--quafi-ease-default);
 }
 
 .step.active .stepNumber {
-  background: var(--fing-accent-primary);
-  border-color: var(--fing-accent-primary);
+  background: var(--quafi-accent-primary);
+  border-color: var(--quafi-accent-primary);
   color: white;
 }
 
 .step.completed .stepNumber {
-  background: var(--fing-status-positive);
-  border-color: var(--fing-status-positive);
+  background: var(--quafi-status-positive);
+  border-color: var(--quafi-status-positive);
   color: white;
 }
 
 .stepLabel {
   font-size: 13px;
   font-weight: 500;
-  color: var(--fing-text-tertiary);
-  transition: color var(--fing-duration-fast) var(--fing-ease-default);
+  color: var(--quafi-text-tertiary);
+  transition: color var(--quafi-duration-fast) var(--quafi-ease-default);
 }
 
 .step.active .stepLabel {
-  color: var(--fing-text-primary);
+  color: var(--quafi-text-primary);
 }
 
 .step.completed .stepLabel {
-  color: var(--fing-status-positive);
+  color: var(--quafi-status-positive);
 }
 
 .stepLine {
   width: 40px;
   height: 2px;
-  background: var(--fing-border-default);
+  background: var(--quafi-border-default);
   margin: 0 4px;
 }
 
 .step.completed + .step .stepLine,
 .step.active .stepLine {
-  background: var(--fing-accent-primary);
+  background: var(--quafi-accent-primary);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -93,8 +93,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 16px;
-  background: var(--fing-bg-surface);
-  border-radius: var(--fing-radius-md);
+  background: var(--quafi-bg-surface);
+  border-radius: var(--quafi-radius-md);
   margin-bottom: 24px;
 }
 
@@ -105,16 +105,16 @@
 }
 
 .stockTicker {
-  font-family: var(--fing-font-ticker);
+  font-family: var(--quafi-font-ticker);
   font-size: 18px;
   font-weight: 700;
-  color: var(--fing-text-primary);
+  color: var(--quafi-text-primary);
   letter-spacing: 0.08em;
 }
 
 .stockName {
   font-size: 13px;
-  color: var(--fing-text-secondary);
+  color: var(--quafi-text-secondary);
 }
 
 .stockPrice {
@@ -126,17 +126,17 @@
 
 .priceLabel {
   font-size: 11px;
-  color: var(--fing-text-tertiary);
+  color: var(--quafi-text-tertiary);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 .priceValue {
-  font-family: var(--fing-font-numeric);
+  font-family: var(--quafi-font-numeric);
   font-size: 20px;
   font-weight: 700;
-  color: var(--fing-text-primary);
-  letter-spacing: var(--fing-tracking-led);
+  color: var(--quafi-text-primary);
+  letter-spacing: var(--quafi-tracking-led);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -158,7 +158,7 @@
 .sectionTitle {
   font-size: 14px;
   font-weight: 600;
-  color: var(--fing-text-primary);
+  color: var(--quafi-text-primary);
   margin: 0;
 }
 
@@ -177,21 +177,21 @@
   align-items: center;
   justify-content: space-between;
   padding: 14px 16px;
-  background: var(--fing-bg-surface);
-  border: 1px solid var(--fing-border-default);
-  border-radius: var(--fing-radius-md);
+  background: var(--quafi-bg-surface);
+  border: 1px solid var(--quafi-border-default);
+  border-radius: var(--quafi-radius-md);
   cursor: pointer;
-  transition: all var(--fing-duration-fast) var(--fing-ease-default);
+  transition: all var(--quafi-duration-fast) var(--quafi-ease-default);
 }
 
 .portfolioOption:hover {
-  border-color: var(--fing-border-hover);
-  background: var(--fing-bg-hover);
+  border-color: var(--quafi-border-hover);
+  background: var(--quafi-bg-hover);
 }
 
 .portfolioOption.selected {
-  border-color: var(--fing-accent-primary);
-  background: rgba(var(--fing-accent-primary-rgb, 91, 163, 165), 0.1);
+  border-color: var(--quafi-accent-primary);
+  background: rgba(var(--quafi-accent-primary-rgb, 91, 163, 165), 0.1);
 }
 
 .portfolioInfo {
@@ -204,14 +204,14 @@
 .portfolioName {
   font-size: 14px;
   font-weight: 500;
-  color: var(--fing-text-primary);
+  color: var(--quafi-text-primary);
 }
 
 .portfolioValue {
-  font-family: var(--fing-font-numeric);
+  font-family: var(--quafi-font-numeric);
   font-size: 13px;
-  color: var(--fing-text-secondary);
-  letter-spacing: var(--fing-tracking-led);
+  color: var(--quafi-text-secondary);
+  letter-spacing: var(--quafi-tracking-led);
 }
 
 .portfolioCheck {
@@ -221,10 +221,10 @@
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background: var(--fing-accent-primary);
+  background: var(--quafi-accent-primary);
   color: white;
   opacity: 0;
-  transition: opacity var(--fing-duration-fast) var(--fing-ease-default);
+  transition: opacity var(--quafi-duration-fast) var(--quafi-ease-default);
 }
 
 .portfolioOption.selected .portfolioCheck {
@@ -240,9 +240,9 @@
   align-items: center;
   justify-content: space-between;
   padding: 16px;
-  background: var(--fing-bg-surface);
-  border: 1px solid var(--fing-border-default);
-  border-radius: var(--fing-radius-md);
+  background: var(--quafi-bg-surface);
+  border: 1px solid var(--quafi-border-default);
+  border-radius: var(--quafi-radius-md);
 }
 
 .cashInfo {
@@ -254,25 +254,25 @@
 
 .cashLabel {
   font-size: 11px;
-  color: var(--fing-text-tertiary);
+  color: var(--quafi-text-tertiary);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 .cashValue {
-  font-family: var(--fing-font-numeric);
+  font-family: var(--quafi-font-numeric);
   font-size: 16px;
   font-weight: 600;
-  color: var(--fing-status-positive);
-  letter-spacing: var(--fing-tracking-led);
+  color: var(--quafi-status-positive);
+  letter-spacing: var(--quafi-tracking-led);
 }
 
 .errorMessage {
   font-size: 12px;
-  color: var(--fing-status-negative);
+  color: var(--quafi-status-negative);
   padding: 8px 12px;
-  background: rgba(var(--fing-status-negative-rgb, 229, 115, 115), 0.1);
-  border-radius: var(--fing-radius-sm);
+  background: rgba(var(--quafi-status-negative-rgb, 229, 115, 115), 0.1);
+  border-radius: var(--quafi-radius-sm);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -284,22 +284,22 @@
   align-items: center;
   gap: 8px;
   padding: 12px 16px;
-  background: var(--fing-bg-surface);
-  border: 1px solid var(--fing-border-default);
-  border-radius: var(--fing-radius-md);
-  transition: border-color var(--fing-duration-fast) var(--fing-ease-default);
+  background: var(--quafi-bg-surface);
+  border: 1px solid var(--quafi-border-default);
+  border-radius: var(--quafi-radius-md);
+  transition: border-color var(--quafi-duration-fast) var(--quafi-ease-default);
 }
 
 .amountInput:focus-within {
-  border-color: var(--fing-accent-primary);
+  border-color: var(--quafi-accent-primary);
 }
 
 .currencySymbol {
-  font-family: var(--fing-font-numeric);
+  font-family: var(--quafi-font-numeric);
   font-size: 18px;
   font-weight: 600;
-  color: var(--fing-text-secondary);
-  letter-spacing: var(--fing-tracking-led);
+  color: var(--quafi-text-secondary);
+  letter-spacing: var(--quafi-tracking-led);
 }
 
 .input {
@@ -307,11 +307,11 @@
   background: transparent;
   border: none;
   outline: none;
-  font-family: var(--fing-font-numeric);
+  font-family: var(--quafi-font-numeric);
   font-size: 18px;
   font-weight: 600;
-  color: var(--fing-text-primary);
-  letter-spacing: var(--fing-tracking-led);
+  color: var(--quafi-text-primary);
+  letter-spacing: var(--quafi-tracking-led);
 }
 
 .input::-webkit-outer-spin-button,
@@ -325,27 +325,27 @@
   align-items: center;
   gap: 8px;
   padding: 10px 12px;
-  background: rgba(var(--fing-accent-primary-rgb, 91, 163, 165), 0.1);
-  border-radius: var(--fing-radius-sm);
+  background: rgba(var(--quafi-accent-primary-rgb, 91, 163, 165), 0.1);
+  border-radius: var(--quafi-radius-sm);
   font-size: 13px;
-  color: var(--fing-text-secondary);
+  color: var(--quafi-text-secondary);
 }
 
 .recommendedAmount svg {
-  color: var(--fing-accent-primary);
+  color: var(--quafi-accent-primary);
 }
 
 .useRecommended {
   margin-left: auto;
   padding: 4px 12px;
-  background: var(--fing-accent-primary);
+  background: var(--quafi-accent-primary);
   border: none;
-  border-radius: var(--fing-radius-sm);
+  border-radius: var(--quafi-radius-sm);
   font-size: 12px;
   font-weight: 500;
   color: white;
   cursor: pointer;
-  transition: opacity var(--fing-duration-fast) var(--fing-ease-default);
+  transition: opacity var(--quafi-duration-fast) var(--quafi-ease-default);
 }
 
 .useRecommended:hover {
@@ -353,11 +353,11 @@
 }
 
 .sharesPreview {
-  font-family: var(--fing-font-numeric);
+  font-family: var(--quafi-font-numeric);
   font-size: 13px;
-  color: var(--fing-text-tertiary);
+  color: var(--quafi-text-tertiary);
   text-align: right;
-  letter-spacing: var(--fing-tracking-led);
+  letter-spacing: var(--quafi-tracking-led);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -375,9 +375,9 @@
   align-items: flex-start;
   gap: 12px;
   padding: 16px;
-  background: var(--fing-bg-surface);
-  border: 1px solid var(--fing-border-subtle);
-  border-radius: var(--fing-radius-md);
+  background: var(--quafi-bg-surface);
+  border: 1px solid var(--quafi-border-subtle);
+  border-radius: var(--quafi-radius-md);
 }
 
 .benefitIcon {
@@ -386,9 +386,9 @@
   justify-content: center;
   width: 40px;
   height: 40px;
-  background: rgba(var(--fing-accent-primary-rgb, 91, 163, 165), 0.1);
-  border-radius: var(--fing-radius-md);
-  color: var(--fing-accent-primary);
+  background: rgba(var(--quafi-accent-primary-rgb, 91, 163, 165), 0.1);
+  border-radius: var(--quafi-radius-md);
+  color: var(--quafi-accent-primary);
   flex-shrink: 0;
 }
 
@@ -401,27 +401,27 @@
 .benefitLabel {
   font-size: 11px;
   font-weight: 600;
-  color: var(--fing-text-tertiary);
+  color: var(--quafi-text-tertiary);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 .benefitValue {
-  font-family: var(--fing-font-numeric);
+  font-family: var(--quafi-font-numeric);
   font-size: 18px;
   font-weight: 700;
-  color: var(--fing-text-primary);
-  letter-spacing: var(--fing-tracking-led);
+  color: var(--quafi-text-primary);
+  letter-spacing: var(--quafi-tracking-led);
 }
 
 .benefitValue.positive {
-  color: var(--fing-status-positive);
-  text-shadow: var(--fing-glow-positive);
+  color: var(--quafi-status-positive);
+  text-shadow: var(--quafi-glow-positive);
 }
 
 .benefitDetail {
   font-size: 12px;
-  color: var(--fing-text-secondary);
+  color: var(--quafi-text-secondary);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -433,25 +433,25 @@
   align-items: flex-start;
   gap: 12px;
   padding: 16px;
-  background: rgba(var(--fing-accent-primary-rgb, 91, 163, 165), 0.1);
-  border: 1px solid rgba(var(--fing-accent-primary-rgb, 91, 163, 165), 0.2);
-  border-radius: var(--fing-radius-md);
-  color: var(--fing-accent-primary);
+  background: rgba(var(--quafi-accent-primary-rgb, 91, 163, 165), 0.1);
+  border: 1px solid rgba(var(--quafi-accent-primary-rgb, 91, 163, 165), 0.2);
+  border-radius: var(--quafi-radius-md);
+  color: var(--quafi-accent-primary);
 }
 
 .impactText {
   font-size: 14px;
   line-height: 1.5;
-  color: var(--fing-text-secondary);
+  color: var(--quafi-text-secondary);
 }
 
 .impactText strong {
-  color: var(--fing-text-primary);
+  color: var(--quafi-text-primary);
 }
 
 .highlight {
   font-weight: 600;
-  color: var(--fing-accent-primary);
+  color: var(--quafi-accent-primary);
   text-transform: capitalize;
 }
 
@@ -465,9 +465,9 @@
   align-items: center;
   gap: 24px;
   padding: 24px;
-  background: var(--fing-bg-surface);
-  border: 1px solid var(--fing-border-subtle);
-  border-radius: var(--fing-radius-lg);
+  background: var(--quafi-bg-surface);
+  border: 1px solid var(--quafi-border-subtle);
+  border-radius: var(--quafi-radius-lg);
 }
 
 .confirmHeader {
@@ -483,15 +483,15 @@
   justify-content: center;
   width: 64px;
   height: 64px;
-  background: rgba(var(--fing-status-positive-rgb, 129, 199, 132), 0.15);
+  background: rgba(var(--quafi-status-positive-rgb, 129, 199, 132), 0.15);
   border-radius: 50%;
-  color: var(--fing-status-positive);
+  color: var(--quafi-status-positive);
 }
 
 .confirmTitle {
   font-size: 20px;
   font-weight: 600;
-  color: var(--fing-text-primary);
+  color: var(--quafi-text-primary);
   margin: 0;
 }
 
@@ -501,8 +501,8 @@
   flex-direction: column;
   gap: 12px;
   padding: 16px;
-  background: var(--fing-bg-base);
-  border-radius: var(--fing-radius-md);
+  background: var(--quafi-bg-base);
+  border-radius: var(--quafi-radius-md);
 }
 
 .confirmRow {
@@ -513,30 +513,30 @@
 
 .confirmLabel {
   font-size: 13px;
-  color: var(--fing-text-secondary);
+  color: var(--quafi-text-secondary);
 }
 
 .confirmValue {
   font-size: 14px;
   font-weight: 500;
-  color: var(--fing-text-primary);
+  color: var(--quafi-text-primary);
 }
 
 .confirmFooter {
   padding-top: 16px;
-  border-top: 1px solid var(--fing-border-subtle);
+  border-top: 1px solid var(--quafi-border-subtle);
   width: 100%;
   text-align: center;
 }
 
 .expectedReturn {
   font-size: 14px;
-  color: var(--fing-text-secondary);
+  color: var(--quafi-text-secondary);
 }
 
 .positive {
-  color: var(--fing-status-positive);
-  text-shadow: var(--fing-glow-positive);
+  color: var(--quafi-status-positive);
+  text-shadow: var(--quafi-glow-positive);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────

@@ -3,35 +3,35 @@
 .menu {
   display: flex;
   flex-direction: column;
-  gap: var(--fing-space-1);
+  gap: var(--quafi-space-1);
 }
 
 .menuItem {
   display: flex;
   align-items: center;
-  gap: var(--fing-space-4);
+  gap: var(--quafi-space-4);
   width: 100%;
-  padding: var(--fing-space-4);
+  padding: var(--quafi-space-4);
   background: transparent;
   border: none;
-  border-radius: var(--fing-radius-md);
-  color: var(--fing-text-primary);
-  font-family: var(--fing-font-primary);
-  font-size: var(--fing-text-base);
+  border-radius: var(--quafi-radius-md);
+  color: var(--quafi-text-primary);
+  font-family: var(--quafi-font-primary);
+  font-size: var(--quafi-text-base);
   text-align: left;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
-  transition: background var(--fing-duration-fast) var(--fing-ease-default);
-  min-height: var(--fing-touch-target-min);
+  transition: background var(--quafi-duration-fast) var(--quafi-ease-default);
+  min-height: var(--quafi-touch-target-min);
 }
 
 .menuItem:hover,
 .menuItem:active {
-  background: var(--fing-bg-subtle);
+  background: var(--quafi-bg-subtle);
 }
 
 .menuItem.destructive {
-  color: var(--fing-status-negative);
+  color: var(--quafi-status-negative);
 }
 
 .icon {
@@ -40,11 +40,11 @@
   justify-content: center;
   width: 24px;
   height: 24px;
-  color: var(--fing-text-secondary);
+  color: var(--quafi-text-secondary);
 }
 
 .menuItem.destructive .icon {
-  color: var(--fing-status-negative);
+  color: var(--quafi-status-negative);
 }
 
 .label {

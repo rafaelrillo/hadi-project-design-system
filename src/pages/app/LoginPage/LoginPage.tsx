@@ -3,10 +3,10 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Loader2, ChevronRight, ChevronLeft, Mail, Lock } from "lucide-react";
 import { useAuthStore } from "../../../store/authStore";
-import { AtmosphericBackground } from "../../../components/atoms/fing/AtmosphericBackground";
+import { AtmosphericBackground } from "../../../components/atoms/quafi/AtmosphericBackground";
 import { InputText } from "../../../components/atoms/Input";
-import { FingEmblem } from "../../../components/atoms/FingEmblem";
-import { FingWordmarkText } from "../../../components/atoms/FingWordmark";
+import { QuafiEmblem } from "../../../components/atoms/QuafiEmblem";
+import { QuafiWordmarkText } from "../../../components/atoms/QuafiWordmark";
 import styles from "./LoginPage.module.css";
 
 export function LoginPage() {
@@ -50,10 +50,10 @@ export function LoginPage() {
       <div className={styles.content}>
         {/* All elements emerge together from the marble surface */}
         <div className={styles.brandLockup}>
-          {/* FING Emblem with framed variant (outer raised + inner inset) */}
-          <FingEmblem size={140} animation="rippleSlow" variant="framed" />
+          {/* QUAFI Emblem with framed variant (outer raised + inner inset) */}
+          <QuafiEmblem size={140} animation="rippleSlow" variant="framed" />
           <div className={styles.brandText}>
-            <FingWordmarkText variant="carved" size={72} />
+            <QuafiWordmarkText variant="carved" size={72} />
             <p className={styles.subtitle}>Investment engine.</p>
           </div>
         </div>

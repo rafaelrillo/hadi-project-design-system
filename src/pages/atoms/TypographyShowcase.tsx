@@ -1,5 +1,5 @@
 // Path: src/pages/atoms/TypographyShowcase.tsx
-// FING Design System
+// QUAFI Design System
 import {
   Heading1,
   Heading2,
@@ -110,7 +110,7 @@ export function TypographyShowcase() {
                   marginTop: "4px",
                   backgroundColor: "var(--background-secondary)",
                   color: "var(--foreground)",
-                  fontFamily: "var(--fing-font-mono)",
+                  fontFamily: "var(--quafi-font-mono)",
                 }}
               />
             </div>
@@ -130,7 +130,7 @@ export function TypographyShowcase() {
                   marginTop: "4px",
                   backgroundColor: "var(--background-secondary)",
                   color: "var(--foreground)",
-                  fontFamily: "var(--fing-font-mono)",
+                  fontFamily: "var(--quafi-font-mono)",
                 }}
               />
             </div>
@@ -152,7 +152,7 @@ export function TypographyShowcase() {
               alignItems: "flex-start",
             }}
           >
-            <ProductKey>FING</ProductKey>
+            <ProductKey>QUAFI</ProductKey>
             <ProductKey>Design System v2.0.0</ProductKey>
             <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
               <ProductKey>SNT</ProductKey>
@@ -178,7 +178,7 @@ export function TypographyShowcase() {
             }}
           >
             <div>
-              <ProductKey>FING</ProductKey>
+              <ProductKey>QUAFI</ProductKey>
               <Paragraph
                 style={{ marginTop: "8px", color: "var(--foreground-muted)" }}
               >
@@ -318,19 +318,19 @@ export function TypographyShowcase() {
                   <Label effect="carved-muted">Petrol (Accent)</Label>
                   <Heading4
                     effect="carved-petrol"
-                    style={{ color: "var(--fing-accent)", marginTop: "4px" }}
+                    style={{ color: "var(--quafi-accent)", marginTop: "4px" }}
                   >
                     Standard
                   </Heading4>
                   <Heading4
                     effect="carved-petrol-md"
-                    style={{ color: "var(--fing-accent)", marginTop: "4px" }}
+                    style={{ color: "var(--quafi-accent)", marginTop: "4px" }}
                   >
                     Medium
                   </Heading4>
                   <Heading4
                     effect="carved-accent-strong"
-                    style={{ color: "var(--fing-accent)", marginTop: "4px" }}
+                    style={{ color: "var(--quafi-accent)", marginTop: "4px" }}
                   >
                     Strong
                   </Heading4>
@@ -340,19 +340,19 @@ export function TypographyShowcase() {
                   <Label effect="carved-muted">Positive (Jade)</Label>
                   <Heading4
                     effect="carved-positive"
-                    style={{ color: "var(--fing-positive)", marginTop: "4px" }}
+                    style={{ color: "var(--quafi-positive)", marginTop: "4px" }}
                   >
                     Standard
                   </Heading4>
                   <Heading4
                     effect="carved-positive-md"
-                    style={{ color: "var(--fing-positive)", marginTop: "4px" }}
+                    style={{ color: "var(--quafi-positive)", marginTop: "4px" }}
                   >
                     Medium
                   </Heading4>
                   <Heading4
                     effect="carved-positive-strong"
-                    style={{ color: "var(--fing-positive)", marginTop: "4px" }}
+                    style={{ color: "var(--quafi-positive)", marginTop: "4px" }}
                   >
                     Strong
                   </Heading4>
@@ -362,19 +362,19 @@ export function TypographyShowcase() {
                   <Label effect="carved-muted">Warning (Gold)</Label>
                   <Heading4
                     effect="carved-warning"
-                    style={{ color: "var(--fing-warning)", marginTop: "4px" }}
+                    style={{ color: "var(--quafi-warning)", marginTop: "4px" }}
                   >
                     Standard
                   </Heading4>
                   <Heading4
                     effect="carved-warning-md"
-                    style={{ color: "var(--fing-warning)", marginTop: "4px" }}
+                    style={{ color: "var(--quafi-warning)", marginTop: "4px" }}
                   >
                     Medium
                   </Heading4>
                   <Heading4
                     effect="carved-warning-strong"
-                    style={{ color: "var(--fing-warning)", marginTop: "4px" }}
+                    style={{ color: "var(--quafi-warning)", marginTop: "4px" }}
                   >
                     Strong
                   </Heading4>
@@ -384,19 +384,19 @@ export function TypographyShowcase() {
                   <Label effect="carved-muted">Negative (Rust)</Label>
                   <Heading4
                     effect="carved-negative"
-                    style={{ color: "var(--fing-negative)", marginTop: "4px" }}
+                    style={{ color: "var(--quafi-negative)", marginTop: "4px" }}
                   >
                     Standard
                   </Heading4>
                   <Heading4
                     effect="carved-negative-md"
-                    style={{ color: "var(--fing-negative)", marginTop: "4px" }}
+                    style={{ color: "var(--quafi-negative)", marginTop: "4px" }}
                   >
                     Medium
                   </Heading4>
                   <Heading4
                     effect="carved-negative-strong"
-                    style={{ color: "var(--fing-negative)", marginTop: "4px" }}
+                    style={{ color: "var(--quafi-negative)", marginTop: "4px" }}
                   >
                     Strong
                   </Heading4>
@@ -406,13 +406,13 @@ export function TypographyShowcase() {
                   <Label effect="carved-muted">Info (Steel)</Label>
                   <Heading4
                     effect="carved-info"
-                    style={{ color: "var(--fing-info)", marginTop: "4px" }}
+                    style={{ color: "var(--quafi-info)", marginTop: "4px" }}
                   >
                     Standard
                   </Heading4>
                   <Heading4
                     effect="carved-info-strong"
-                    style={{ color: "var(--fing-info)", marginTop: "4px" }}
+                    style={{ color: "var(--quafi-info)", marginTop: "4px" }}
                   >
                     Strong
                   </Heading4>
@@ -477,7 +477,7 @@ export function TypographyShowcase() {
                   <Label effect="embossed">sm — var(--lp-embossed-sm)</Label>
                   <Heading3
                     effect="embossed-petrol-sm"
-                    style={{ color: "var(--fing-accent)", marginTop: "4px" }}
+                    style={{ color: "var(--quafi-accent)", marginTop: "4px" }}
                   >
                     Small para labels y captions
                   </Heading3>
@@ -541,13 +541,13 @@ export function TypographyShowcase() {
                   <Label effect="embossed">Petrol</Label>
                   <Heading4
                     effect="embossed-petrol"
-                    style={{ color: "var(--fing-accent)", marginTop: "4px" }}
+                    style={{ color: "var(--quafi-accent)", marginTop: "4px" }}
                   >
                     Standard
                   </Heading4>
                   <Heading4
                     effect="embossed-petrol-sm"
-                    style={{ color: "var(--fing-accent)", marginTop: "4px" }}
+                    style={{ color: "var(--quafi-accent)", marginTop: "4px" }}
                   >
                     Small
                   </Heading4>
@@ -556,13 +556,13 @@ export function TypographyShowcase() {
                   <Label effect="embossed">Positive (Jade)</Label>
                   <Heading4
                     effect="embossed-positive"
-                    style={{ color: "var(--fing-positive)", marginTop: "4px" }}
+                    style={{ color: "var(--quafi-positive)", marginTop: "4px" }}
                   >
                     Standard
                   </Heading4>
                   <Heading4
                     effect="embossed-positive-sm"
-                    style={{ color: "var(--fing-positive)", marginTop: "4px" }}
+                    style={{ color: "var(--quafi-positive)", marginTop: "4px" }}
                   >
                     Small
                   </Heading4>
@@ -571,13 +571,13 @@ export function TypographyShowcase() {
                   <Label effect="embossed">Warning (Gold)</Label>
                   <Heading4
                     effect="embossed-warning"
-                    style={{ color: "var(--fing-warning)", marginTop: "4px" }}
+                    style={{ color: "var(--quafi-warning)", marginTop: "4px" }}
                   >
                     Standard
                   </Heading4>
                   <Heading4
                     effect="embossed-warning-sm"
-                    style={{ color: "var(--fing-warning)", marginTop: "4px" }}
+                    style={{ color: "var(--quafi-warning)", marginTop: "4px" }}
                   >
                     Small
                   </Heading4>
@@ -586,13 +586,13 @@ export function TypographyShowcase() {
                   <Label effect="embossed">Negative (Rust)</Label>
                   <Heading4
                     effect="embossed-negative"
-                    style={{ color: "var(--fing-negative)", marginTop: "4px" }}
+                    style={{ color: "var(--quafi-negative)", marginTop: "4px" }}
                   >
                     Standard
                   </Heading4>
                   <Heading4
                     effect="embossed-negative-sm"
-                    style={{ color: "var(--fing-negative)", marginTop: "4px" }}
+                    style={{ color: "var(--quafi-negative)", marginTop: "4px" }}
                   >
                     Small
                   </Heading4>
@@ -601,13 +601,13 @@ export function TypographyShowcase() {
                   <Label effect="embossed">Info (Steel)</Label>
                   <Heading4
                     effect="embossed-info"
-                    style={{ color: "var(--fing-info)", marginTop: "4px" }}
+                    style={{ color: "var(--quafi-info)", marginTop: "4px" }}
                   >
                     Standard
                   </Heading4>
                   <Heading4
                     effect="embossed-info-sm"
-                    style={{ color: "var(--fing-info)", marginTop: "4px" }}
+                    style={{ color: "var(--quafi-info)", marginTop: "4px" }}
                   >
                     Small
                   </Heading4>
@@ -646,19 +646,19 @@ export function TypographyShowcase() {
               >
                 <Heading2
                   effect="glow-petrol"
-                  style={{ color: "var(--fing-accent)" }}
+                  style={{ color: "var(--quafi-accent)" }}
                 >
                   Petrol Glow
                 </Heading2>
                 <Heading2
                   effect="glow-positive"
-                  style={{ color: "var(--fing-positive)" }}
+                  style={{ color: "var(--quafi-positive)" }}
                 >
                   Positive Glow
                 </Heading2>
                 <Heading2
                   effect="glow-negative"
-                  style={{ color: "var(--fing-negative)" }}
+                  style={{ color: "var(--quafi-negative)" }}
                 >
                   Negative Glow
                 </Heading2>
@@ -669,10 +669,10 @@ export function TypographyShowcase() {
       </ShowcaseSection>
 
       {/* ═══════════════════════════════════════════════════════════════════
-           USO REAL: FingHome
+           USO REAL: QuafiHome
            ═══════════════════════════════════════════════════════════════════ */}
       <ShowcaseSection
-        title="Uso Real: FingHome"
+        title="Uso Real: QuafiHome"
         description="Patrones tipograficos extraidos de la landing page. 100% usa variables --lp-*"
       >
         {/* Hero section */}
@@ -690,9 +690,9 @@ export function TypographyShowcase() {
               <div style={{ marginTop: "16px" }}>
                 <Heading1
                   effect="carved-petrol"
-                  style={{ color: "var(--fing-accent)", fontSize: "24px" }}
+                  style={{ color: "var(--quafi-accent)", fontSize: "24px" }}
                 >
-                  FING
+                  QUAFI
                 </Heading1>
                 <Paragraph
                   effect="carved-muted"
@@ -713,7 +713,7 @@ export function TypographyShowcase() {
                 >
                   <Paragraph
                     effect="carved-petrol"
-                    style={{ color: "var(--fing-accent)" }}
+                    style={{ color: "var(--quafi-accent)" }}
                   >
                     btnPrimary → --lp-petrol
                   </Paragraph>
@@ -753,7 +753,7 @@ export function TypographyShowcase() {
             >
               <Label
                 effect="carved-steel"
-                style={{ color: "var(--fing-text-accent)" }}
+                style={{ color: "var(--quafi-text-accent)" }}
               >
                 Secciones RAISED
               </Label>
@@ -767,13 +767,13 @@ export function TypographyShowcase() {
               >
                 <Heading4
                   effect="carved-steel"
-                  style={{ color: "var(--fing-text-accent)" }}
+                  style={{ color: "var(--quafi-text-accent)" }}
                 >
                   sectionLabel → --lp-steel
                 </Heading4>
                 <Heading3
                   effect="carved-petrol"
-                  style={{ color: "var(--fing-accent)" }}
+                  style={{ color: "var(--quafi-accent)" }}
                 >
                   etymologyWord → --lp-petrol-whisper
                 </Heading3>
@@ -810,13 +810,13 @@ export function TypographyShowcase() {
                 </Heading3>
                 <Heading3
                   effect="embossed-petrol"
-                  style={{ color: "var(--fing-accent)" }}
+                  style={{ color: "var(--quafi-accent)" }}
                 >
                   synthesisHighlight → --lp-embossed-petrol
                 </Heading3>
                 <Paragraph
                   effect="embossed-petrol-sm"
-                  style={{ color: "var(--fing-accent)" }}
+                  style={{ color: "var(--quafi-accent)" }}
                 >
                   voiceExample → --lp-embossed-petrol-sm
                 </Paragraph>
@@ -848,7 +848,7 @@ export function TypographyShowcase() {
               >
                 <Heading1
                   effect="carved-accent-strong"
-                  style={{ color: "var(--fing-accent)", fontSize: "28px" }}
+                  style={{ color: "var(--quafi-accent)", fontSize: "28px" }}
                 >
                   $124,500
                 </Heading1>
@@ -868,7 +868,7 @@ export function TypographyShowcase() {
               >
                 <Label
                   effect="embossed-petrol-sm"
-                  style={{ color: "var(--fing-accent)" }}
+                  style={{ color: "var(--quafi-accent)" }}
                 >
                   PORTFOLIO VALUE
                 </Label>
@@ -894,7 +894,7 @@ export function TypographyShowcase() {
               >
                 <Heading1
                   effect="carved-positive-strong"
-                  style={{ color: "var(--fing-positive)", fontSize: "28px" }}
+                  style={{ color: "var(--quafi-positive)", fontSize: "28px" }}
                 >
                   +12.4%
                 </Heading1>
@@ -914,7 +914,7 @@ export function TypographyShowcase() {
               >
                 <Label
                   effect="embossed-positive-sm"
-                  style={{ color: "var(--fing-positive)" }}
+                  style={{ color: "var(--quafi-positive)" }}
                 >
                   RETURN YTD
                 </Label>
@@ -940,7 +940,7 @@ export function TypographyShowcase() {
               >
                 <Heading1
                   effect="carved-warning-strong"
-                  style={{ color: "var(--fing-warning)", fontSize: "28px" }}
+                  style={{ color: "var(--quafi-warning)", fontSize: "28px" }}
                 >
                   0.78
                 </Heading1>
@@ -960,7 +960,7 @@ export function TypographyShowcase() {
               >
                 <Label
                   effect="embossed-warning-sm"
-                  style={{ color: "var(--fing-warning)" }}
+                  style={{ color: "var(--quafi-warning)" }}
                 >
                   SHARPE RATIO
                 </Label>
@@ -986,7 +986,7 @@ export function TypographyShowcase() {
               >
                 <Heading1
                   effect="carved-negative-strong"
-                  style={{ color: "var(--fing-negative)", fontSize: "28px" }}
+                  style={{ color: "var(--quafi-negative)", fontSize: "28px" }}
                 >
                   -3.2%
                 </Heading1>
@@ -1006,7 +1006,7 @@ export function TypographyShowcase() {
               >
                 <Label
                   effect="embossed-negative-sm"
-                  style={{ color: "var(--fing-negative)" }}
+                  style={{ color: "var(--quafi-negative)" }}
                 >
                   MAX DRAWDOWN
                 </Label>
@@ -1042,7 +1042,7 @@ export function TypographyShowcase() {
               {/* Card title */}
               <Heading3
                 effect="carved-petrol-md"
-                style={{ color: "var(--fing-accent)", marginBottom: "16px" }}
+                style={{ color: "var(--quafi-accent)", marginBottom: "16px" }}
               >
                 Top Picks — carved-petrol-md
               </Heading3>
@@ -1091,7 +1091,7 @@ export function TypographyShowcase() {
                 >
                   <Heading4
                     effect="embossed-petrol-sm"
-                    style={{ color: "var(--fing-accent)" }}
+                    style={{ color: "var(--quafi-accent)" }}
                   >
                     01
                   </Heading4>
@@ -1103,7 +1103,7 @@ export function TypographyShowcase() {
                   <Paragraph
                     effect="carved-positive-md"
                     style={{
-                      color: "var(--fing-positive)",
+                      color: "var(--quafi-positive)",
                       textAlign: "right",
                     }}
                   >
@@ -1124,7 +1124,7 @@ export function TypographyShowcase() {
                 >
                   <Heading4
                     effect="embossed-petrol-sm"
-                    style={{ color: "var(--fing-accent)" }}
+                    style={{ color: "var(--quafi-accent)" }}
                   >
                     02
                   </Heading4>
@@ -1136,7 +1136,7 @@ export function TypographyShowcase() {
                   <Paragraph
                     effect="carved-negative-md"
                     style={{
-                      color: "var(--fing-negative)",
+                      color: "var(--quafi-negative)",
                       textAlign: "right",
                     }}
                   >
@@ -1156,7 +1156,7 @@ export function TypographyShowcase() {
                 >
                   <Heading4
                     effect="embossed-petrol-sm"
-                    style={{ color: "var(--fing-accent)" }}
+                    style={{ color: "var(--quafi-accent)" }}
                   >
                     03
                   </Heading4>
@@ -1167,7 +1167,7 @@ export function TypographyShowcase() {
                   </Paragraph>
                   <Paragraph
                     effect="carved-warning-md"
-                    style={{ color: "var(--fing-warning)", textAlign: "right" }}
+                    style={{ color: "var(--quafi-warning)", textAlign: "right" }}
                   >
                     +0.12%
                   </Paragraph>
@@ -1215,7 +1215,7 @@ export function TypographyShowcase() {
                 >
                   <Heading4
                     effect="carved-accent-strong"
-                    style={{ color: "var(--fing-accent)" }}
+                    style={{ color: "var(--quafi-accent)" }}
                   >
                     View Portfolio
                   </Heading4>
@@ -1233,7 +1233,7 @@ export function TypographyShowcase() {
                 >
                   <Paragraph
                     effect="carved-petrol-md"
-                    style={{ color: "var(--fing-accent)" }}
+                    style={{ color: "var(--quafi-accent)" }}
                   >
                     Simulate
                   </Paragraph>
@@ -1251,7 +1251,7 @@ export function TypographyShowcase() {
                 >
                   <Paragraph
                     effect="carved-negative-md"
-                    style={{ color: "var(--fing-negative)" }}
+                    style={{ color: "var(--quafi-negative)" }}
                   >
                     Sell
                   </Paragraph>
@@ -1300,7 +1300,7 @@ export function TypographyShowcase() {
                 </Heading2>
                 <Paragraph
                   effect="carved-positive-md"
-                  style={{ color: "var(--fing-positive)", marginTop: "4px" }}
+                  style={{ color: "var(--quafi-positive)", marginTop: "4px" }}
                 >
                   +2.34% today
                 </Paragraph>
@@ -1331,7 +1331,7 @@ export function TypographyShowcase() {
                   >
                     <Heading4
                       effect="glow-petrol"
-                      style={{ color: "var(--fing-accent)" }}
+                      style={{ color: "var(--quafi-accent)" }}
                     >
                       01
                     </Heading4>
@@ -1339,7 +1339,7 @@ export function TypographyShowcase() {
                   </div>
                   <Paragraph
                     effect="carved-positive"
-                    style={{ color: "var(--fing-positive)" }}
+                    style={{ color: "var(--quafi-positive)" }}
                   >
                     +2.34%
                   </Paragraph>
@@ -1360,7 +1360,7 @@ export function TypographyShowcase() {
                   >
                     <Heading4
                       effect="glow-petrol"
-                      style={{ color: "var(--fing-accent)" }}
+                      style={{ color: "var(--quafi-accent)" }}
                     >
                       02
                     </Heading4>
@@ -1368,7 +1368,7 @@ export function TypographyShowcase() {
                   </div>
                   <Paragraph
                     effect="carved-negative"
-                    style={{ color: "var(--fing-negative)" }}
+                    style={{ color: "var(--quafi-negative)" }}
                   >
                     -1.82%
                   </Paragraph>
@@ -1391,7 +1391,7 @@ export function TypographyShowcase() {
             fontSize: "12px",
             color: "var(--foreground)",
             lineHeight: "2",
-            fontFamily: "var(--fing-font-mono)",
+            fontFamily: "var(--quafi-font-mono)",
           }}
         >
           <p style={{ marginBottom: "8px" }}>
@@ -1484,12 +1484,12 @@ export function TypographyShowcase() {
             fontSize: "12px",
             color: "var(--foreground)",
             lineHeight: "1.8",
-            fontFamily: "var(--fing-font-mono)",
+            fontFamily: "var(--quafi-font-mono)",
           }}
         >
           <p>
             <strong style={{ color: "var(--primary)" }}>Font-family:</strong>{" "}
-            IBM Plex Mono (var(--fing-font-mono))
+            IBM Plex Mono (var(--quafi-font-mono))
           </p>
           <p>
             <strong style={{ color: "var(--primary)" }}>Line-height:</strong>{" "}

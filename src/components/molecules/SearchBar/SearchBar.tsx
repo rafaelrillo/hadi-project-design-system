@@ -73,7 +73,7 @@ export function SearchBar({
       <div className={styles.searchIconContainer}>
         <Search
           size={18}
-          color={disabled ? 'var(--fing-text-disabled)' : 'var(--fing-text-tertiary)'}
+          color={disabled ? 'var(--quafi-text-disabled)' : 'var(--quafi-text-tertiary)'}
         />
       </div>
       <input
@@ -93,7 +93,7 @@ export function SearchBar({
           aria-label="Limpiar búsqueda"
           type="button"
         >
-          <X size={16} color="var(--fing-text-tertiary)" />
+          <X size={16} color="var(--quafi-text-tertiary)" />
         </button>
       )}
     </div>

@@ -1,5 +1,5 @@
 // Path: src/components/atoms/LoadingScreen/LoadingScreen.tsx
-import { FingEmblem } from "../FingEmblem";
+import { QuafiEmblem } from "../QuafiEmblem";
 import styles from "./LoadingScreen.module.css";
 
 interface LoadingScreenProps {
@@ -16,11 +16,11 @@ export function LoadingScreen({
       <div className={styles.content}>
         {showLogo && (
           <div className={styles.logoContainer}>
-            <FingEmblem size={80} animation="ripple" />
+            <QuafiEmblem size={80} animation="ripple" />
           </div>
         )}
 
-        <h1 className={styles.title}>FING</h1>
+        <h1 className={styles.title}>QUAFI</h1>
 
         <div className={styles.messageContainer}>
           <span className={styles.message}>{message}</span>

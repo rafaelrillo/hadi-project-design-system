@@ -1,5 +1,5 @@
 // Path: src/pages/molecules/SidebarItemShowcase.tsx
-// FING Design System - Glass-Neumorphism Sidebar Items
+// QUAFI Design System - Glass-Neumorphism Sidebar Items
 import React, { useState, useMemo } from 'react';
 import { SidebarItem } from '../../components/molecules/SidebarItem';
 import { ShowcaseSection } from '../../components/showcase';
@@ -139,17 +139,17 @@ function SidebarItemContent() {
           boxShadow: getNeuInsetShadow(5, 15),
           background: 'var(--marble-base)',
           fontSize: '12px',
-          fontFamily: 'var(--fing-font-mono)',
-          color: 'var(--fing-text-muted)',
+          fontFamily: 'var(--quafi-font-mono)',
+          color: 'var(--quafi-text-muted)',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Altura:</strong> 40px</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Padding:</strong> 0 16px</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Barra izquierda:</strong> 4px ancho, visible en active/hover</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Ícono:</strong> 18px, margin-right 12px</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Label:</strong> 14px, 400 normal / 600 active</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Badge:</strong> background accent, border-radius pill</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Altura:</strong> 40px</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Padding:</strong> 0 16px</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Barra izquierda:</strong> 4px ancho, visible en active/hover</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Ícono:</strong> 18px, margin-right 12px</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Label:</strong> 14px, 400 normal / 600 active</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent-primary)' }}>Badge:</strong> background accent, border-radius pill</p>
         </div>
       </ShowcaseSection>
     </div>

@@ -1,0 +1,634 @@
+/* Path: src/components/organisms/fing/ModelInsights/ModelInsights.module.css */
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   MODEL INSIGHTS - Level 4 Depth Component
+   Technical model details with QUAFI aesthetic
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.container {
+  background: var(--quafi-bg-elevated);
+  border: 1px solid var(--quafi-border-subtle);
+  border-radius: var(--quafi-radius-lg, 12px);
+  overflow: hidden;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   HEADER
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--quafi-border-subtle);
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.modelInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.modelIcon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--quafi-accent-subtle);
+  border-radius: var(--quafi-radius-md, 8px);
+  color: var(--quafi-accent-primary);
+}
+
+.modelMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.modelName {
+  font-family: var(--quafi-font-primary);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--quafi-text-primary);
+  margin: 0;
+}
+
+.modelVersion {
+  font-family: var(--quafi-font-numeric);
+  font-size: 11px;
+  color: var(--quafi-text-tertiary);
+  letter-spacing: var(--quafi-tracking-led);
+}
+
+.modelStats {
+  display: flex;
+  gap: 24px;
+}
+
+.statItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--quafi-text-secondary);
+}
+
+.statItem svg {
+  color: var(--quafi-accent-primary);
+}
+
+.statValue {
+  font-family: var(--quafi-font-numeric);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--quafi-text-primary);
+  letter-spacing: var(--quafi-tracking-led);
+}
+
+.statLabel {
+  font-family: var(--quafi-font-primary);
+  font-size: 11px;
+  color: var(--quafi-text-tertiary);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   STATUS BAR
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.statusBar {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 12px 24px;
+  background: var(--quafi-bg-base);
+  border-bottom: 1px solid var(--quafi-border-subtle);
+}
+
+.statusItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.statusLabel {
+  font-family: var(--quafi-font-primary);
+  font-size: 12px;
+  color: var(--quafi-text-tertiary);
+}
+
+.statusValue {
+  font-family: var(--quafi-font-numeric);
+  font-size: 12px;
+  color: var(--quafi-text-primary);
+  letter-spacing: var(--quafi-tracking-led);
+}
+
+.detailsToggle {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  background: transparent;
+  border: 1px solid var(--quafi-border-default);
+  border-radius: var(--quafi-radius-sm, 6px);
+  font-family: var(--quafi-font-primary);
+  font-size: 12px;
+  color: var(--quafi-text-secondary);
+  cursor: pointer;
+  transition: all 200ms;
+}
+
+.detailsToggle:hover {
+  background: var(--quafi-bg-subtle);
+  border-color: var(--quafi-accent-primary);
+  color: var(--quafi-accent-primary);
+}
+
+.toggleIcon {
+  transition: transform 300ms;
+}
+
+.toggleIcon.expanded {
+  transform: rotate(90deg);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   TABS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.content {
+  animation: fadeIn 400ms ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--quafi-border-subtle);
+  background: var(--quafi-bg-subtle);
+}
+
+.tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 20px;
+  background: transparent;
+  border: none;
+  font-family: var(--quafi-font-primary);
+  font-size: 13px;
+  color: var(--quafi-text-secondary);
+  cursor: pointer;
+  transition: all 200ms;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+}
+
+.tab:hover {
+  color: var(--quafi-text-primary);
+  background: var(--quafi-bg-interactive);
+}
+
+.tab.active {
+  color: var(--quafi-accent-primary);
+  border-bottom-color: var(--quafi-accent-primary);
+  background: var(--quafi-bg-elevated);
+}
+
+.tabCount {
+  padding: 2px 6px;
+  background: var(--quafi-bg-interactive);
+  border-radius: var(--quafi-radius-xs, 4px);
+  font-family: var(--quafi-font-numeric);
+  font-size: 10px;
+  color: var(--quafi-text-tertiary);
+  letter-spacing: var(--quafi-tracking-led);
+}
+
+.tab.active .tabCount {
+  background: var(--quafi-accent-subtle);
+  color: var(--quafi-accent-primary);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   TAB CONTENT
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.tabContent {
+  padding: 20px 24px;
+  min-height: 200px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   INPUTS PANEL
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.inputsPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.inputCategory {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.categoryTitle {
+  font-family: var(--quafi-font-numeric);
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--quafi-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0;
+}
+
+.inputsList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.inputItem {
+  background: var(--quafi-bg-base);
+  border: 1px solid var(--quafi-border-subtle);
+  border-radius: var(--quafi-radius-sm, 6px);
+  overflow: hidden;
+  transition: border-color 200ms;
+}
+
+.inputItem:hover {
+  border-color: var(--quafi-border-default);
+}
+
+.inputItem.expanded {
+  border-color: var(--quafi-accent-primary);
+}
+
+.inputItem[data-status="active"] .inputStatus {
+  color: var(--quafi-status-positive);
+}
+
+.inputItem[data-status="degraded"] .inputStatus {
+  color: var(--quafi-status-warning);
+}
+
+.inputItem[data-status="unavailable"] .inputStatus {
+  color: var(--quafi-text-disabled);
+}
+
+.inputHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 16px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.inputHeader:focus-visible {
+  outline: 2px solid var(--quafi-border-focus);
+  outline-offset: -2px;
+}
+
+.inputStatus {
+  flex-shrink: 0;
+}
+
+.inputName {
+  flex: 1;
+  font-family: var(--quafi-font-primary);
+  font-size: 13px;
+  color: var(--quafi-text-primary);
+}
+
+.inputWeight {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 120px;
+}
+
+.weightBar {
+  flex: 1;
+  height: 4px;
+  background: var(--quafi-accent-primary);
+  border-radius: 2px;
+  opacity: 0.6;
+}
+
+.weightValue {
+  font-family: var(--quafi-font-numeric);
+  font-size: 11px;
+  color: var(--quafi-text-tertiary);
+  letter-spacing: var(--quafi-tracking-led);
+  width: 40px;
+  text-align: right;
+}
+
+.inputDetails {
+  padding: 0 16px 12px 40px;
+  animation: slideDown 300ms ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.inputDescription {
+  font-family: var(--quafi-font-primary);
+  font-size: 12px;
+  color: var(--quafi-text-secondary);
+  margin: 0 0 8px 0;
+  line-height: 1.5;
+}
+
+.lastUpdate {
+  font-family: var(--quafi-font-numeric);
+  font-size: 10px;
+  color: var(--quafi-text-tertiary);
+  letter-spacing: var(--quafi-tracking-led);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   OUTPUTS PANEL
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.outputsPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.outputsList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+}
+
+.outputItem {
+  padding: 16px;
+  background: var(--quafi-bg-base);
+  border: 1px solid var(--quafi-border-subtle);
+  border-radius: var(--quafi-radius-md, 8px);
+}
+
+.outputHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.outputName {
+  font-family: var(--quafi-font-primary);
+  font-size: 12px;
+  color: var(--quafi-text-secondary);
+}
+
+.outputTrend {
+  font-family: var(--quafi-font-numeric);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: var(--quafi-tracking-led);
+  padding: 2px 6px;
+  border-radius: var(--quafi-radius-xs, 4px);
+}
+
+.outputTrend[data-trend="improving"] {
+  color: var(--quafi-status-positive-text);
+  background: var(--quafi-status-positive-subtle);
+}
+
+.outputTrend[data-trend="stable"] {
+  color: var(--quafi-text-tertiary);
+  background: var(--quafi-bg-subtle);
+}
+
+.outputTrend[data-trend="declining"] {
+  color: var(--quafi-status-negative-text);
+  background: var(--quafi-status-negative-subtle);
+}
+
+.outputValue {
+  font-family: var(--quafi-font-numeric);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--quafi-text-primary);
+  letter-spacing: var(--quafi-tracking-led);
+  margin-bottom: 12px;
+}
+
+.outputConfidence {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.confidenceLabel {
+  font-family: var(--quafi-font-primary);
+  font-size: 11px;
+  color: var(--quafi-text-tertiary);
+}
+
+.confidenceBar {
+  flex: 1;
+  height: 4px;
+  background: var(--quafi-bg-subtle);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.confidenceFill {
+  height: 100%;
+  background: var(--quafi-accent-primary);
+  border-radius: 2px;
+  transition: width 500ms ease;
+}
+
+.confidenceValue {
+  font-family: var(--quafi-font-numeric);
+  font-size: 11px;
+  color: var(--quafi-accent-primary);
+  letter-spacing: var(--quafi-tracking-led);
+  text-shadow: var(--quafi-glow-accent);
+}
+
+.emptyMessage {
+  text-align: center;
+  padding: 32px;
+  color: var(--quafi-text-tertiary);
+  font-family: var(--quafi-font-primary);
+  font-size: 14px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   METHODOLOGY PANEL
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.methodologyPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.methodologySection,
+.limitationsSection,
+.technicalSection {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sectionTitle {
+  font-family: var(--quafi-font-numeric);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--quafi-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.methodologyText {
+  font-family: var(--quafi-font-primary);
+  font-size: 13px;
+  color: var(--quafi-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.limitationsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.limitationItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-family: var(--quafi-font-primary);
+  font-size: 13px;
+  color: var(--quafi-text-secondary);
+  line-height: 1.5;
+}
+
+.limitationItem svg {
+  flex-shrink: 0;
+  margin-top: 3px;
+  color: var(--quafi-status-warning);
+}
+
+.versionInfo {
+  display: flex;
+  gap: 16px;
+  padding: 12px 16px;
+  background: var(--quafi-bg-base);
+  border-radius: var(--quafi-radius-sm, 6px);
+}
+
+.versionLabel {
+  font-family: var(--quafi-font-numeric);
+  font-size: 12px;
+  color: var(--quafi-text-primary);
+  letter-spacing: var(--quafi-tracking-led);
+}
+
+.versionDate {
+  font-family: var(--quafi-font-numeric);
+  font-size: 12px;
+  color: var(--quafi-text-tertiary);
+  letter-spacing: var(--quafi-tracking-led);
+}
+
+.changesList {
+  list-style: disc;
+  padding-left: 20px;
+  margin: 0;
+}
+
+.changesList li {
+  font-family: var(--quafi-font-primary);
+  font-size: 12px;
+  color: var(--quafi-text-secondary);
+  line-height: 1.6;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   RESPONSIVE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .modelStats {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .statusBar {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .detailsToggle {
+    width: 100%;
+    justify-content: center;
+    margin-left: 0;
+  }
+
+  .tabs {
+    overflow-x: auto;
+  }
+
+  .tab {
+    white-space: nowrap;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   REDUCED MOTION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .content,
+  .inputDetails,
+  .toggleIcon,
+  .confidenceFill {
+    animation: none;
+    transition: none;
+  }
+}

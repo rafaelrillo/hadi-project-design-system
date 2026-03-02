@@ -47,7 +47,7 @@ export function NoiseToSignal() {
           <span className={styles.label}>THE TRANSFORMATION</span>
           <h2 className={styles.title}>From Noise to Signal</h2>
           <p className={styles.subtitle}>
-            Markets generate infinite noise. FING extracts the signal.
+            Markets generate infinite noise. QUAFI extracts the signal.
           </p>
         </motion.div>
 
@@ -90,7 +90,7 @@ export function NoiseToSignal() {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <div className={styles.arrow}>
-              <span className={styles.arrowText}>FING</span>
+              <span className={styles.arrowText}>QUAFI</span>
               <span className={styles.arrowIcon}>→</span>
             </div>
           </motion.div>

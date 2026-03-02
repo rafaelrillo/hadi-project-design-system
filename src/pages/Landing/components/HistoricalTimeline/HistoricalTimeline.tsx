@@ -13,7 +13,7 @@ const timelineEvents: TimelineEvent[] = [
   {
     year: '2008',
     title: 'Financial Crisis',
-    description: 'FING would have identified systemic risk 47 days early',
+    description: 'QUAFI would have identified systemic risk 47 days early',
     type: 'crisis',
   },
   {
@@ -101,7 +101,7 @@ export function HistoricalTimeline() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          FING's algorithms have been backtested against decades of market events
+          QUAFI's algorithms have been backtested against decades of market events
         </motion.p>
       </div>
 

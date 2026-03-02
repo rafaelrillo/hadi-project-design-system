@@ -1,5 +1,5 @@
 // Path: src/components/organisms/settings/MaterialSelector/MaterialSelector.tsx
-// FING Material Selector Component
+// QUAFI Material Selector Component
 
 import { useThemeStore } from '@/stores/themeStore';
 import { MATERIALS, MATERIAL_CATEGORIES, TEXTURES } from '@/config/materials';

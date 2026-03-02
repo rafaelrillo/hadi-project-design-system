@@ -1,5 +1,5 @@
 // Path: src/pages/atoms/CheckboxShowcase.tsx
-// FING Design System - Glass-Neumorphism Checkboxes
+// QUAFI Design System - Glass-Neumorphism Checkboxes
 import React, { useState, useMemo } from 'react';
 import { Checkbox } from '../../components/atoms/Checkbox';
 import { ShowcaseSection } from '../../components/showcase';
@@ -41,8 +41,8 @@ function CheckboxContent() {
   const labelStyles: React.CSSProperties = {
     fontSize: '14px',
     cursor: 'pointer',
-    color: 'var(--fing-text-primary)',
-    fontFamily: 'var(--fing-font-mono)',
+    color: 'var(--quafi-text-primary)',
+    fontFamily: 'var(--quafi-font-mono)',
   };
 
   const disabledLabelStyles: React.CSSProperties = {
@@ -142,8 +142,8 @@ function CheckboxContent() {
             fontSize: '14px',
             fontWeight: 600,
             marginBottom: '20px',
-            color: 'var(--fing-text-primary)',
-            fontFamily: 'var(--fing-font-display)',
+            color: 'var(--quafi-text-primary)',
+            fontFamily: 'var(--quafi-font-display)',
             textTransform: 'uppercase',
             letterSpacing: '0.05em',
             textShadow: 'var(--lp-primary)',
@@ -186,16 +186,16 @@ function CheckboxContent() {
           boxShadow: getNeuInsetShadow(5, 15),
           background: 'var(--marble-base)',
           fontSize: '12px',
-          fontFamily: 'var(--fing-font-mono)',
-          color: 'var(--fing-text-muted)',
+          fontFamily: 'var(--quafi-font-mono)',
+          color: 'var(--quafi-text-muted)',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>
-          <p>✓ <strong style={{ color: 'var(--fing-accent)' }}>Tamaño:</strong> 20x20px</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent)' }}>Border radius:</strong> 6px (redondeado)</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent)' }}>Sombra unchecked:</strong> Elevado neumórfico</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent)' }}>Sombra checked:</strong> Inset neumórfico</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent)' }}>Accent color:</strong> var(--fing-accent)</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent)' }}>Tamaño:</strong> 20x20px</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent)' }}>Border radius:</strong> 6px (redondeado)</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent)' }}>Sombra unchecked:</strong> Elevado neumórfico</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent)' }}>Sombra checked:</strong> Inset neumórfico</p>
+          <p>✓ <strong style={{ color: 'var(--quafi-accent)' }}>Accent color:</strong> var(--quafi-accent)</p>
         </div>
       </ShowcaseSection>
     </div>

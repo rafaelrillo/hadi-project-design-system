@@ -1,5 +1,5 @@
 // Path: src/pages/app/DashboardPage/DashboardPage.tsx
-// FING 3.0 - Simple, Clean Dashboard
+// QUAFI 3.0 - Simple, Clean Dashboard
 
 import { useMemo, useEffect } from "react";
 import {
@@ -20,7 +20,7 @@ import { usePortfolioStore } from "../../../store";
 import { useCalibrationStore } from "../../../store/calibrationStore";
 
 // Components
-import { NewsCard } from "../../../components/molecules/fing/NewsCard";
+import { NewsCard } from "../../../components/molecules/quafi/NewsCard";
 import { PortfolioPerformance } from "../../../components/organisms/investor/PortfolioPerformance";
 
 import styles from "./DashboardPage.module.css";
@@ -398,7 +398,7 @@ export function DashboardPage() {
                 <TrendingUp
                   size={15}
                   style={{
-                    color: "var(--fing-accent-primary)",
+                    color: "var(--quafi-accent-primary)",
                     filter:
                       "drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))",
                   }}
@@ -510,7 +510,7 @@ export function DashboardPage() {
                 <Newspaper
                   size={15}
                   style={{
-                    color: "var(--fing-accent-primary)",
+                    color: "var(--quafi-accent-primary)",
                     filter:
                       "drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))",
                   }}

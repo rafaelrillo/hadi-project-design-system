@@ -5,15 +5,15 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 export {
-  fingColors,
+  quafiColors,
   chartPalette,
   sequentialColors,
   divergingColors,
   riskColors,
-  fingEChartsTheme,
+  quafiEChartsTheme,
   tooltipFormatters,
   animationPresets,
-} from './fingTheme';
+} from './quafiTheme';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // TYPES

@@ -1,6 +1,6 @@
 /* Path: src/components/molecules/FormField/FormField.module.css */
 /* ═══════════════════════════════════════════════════════════════════════════════
-   FING DESIGN SYSTEM - FormField Component
+   QUAFI DESIGN SYSTEM - FormField Component
 
    Form field wrapper with label and helper text
    ═══════════════════════════════════════════════════════════════════════════════ */
@@ -12,7 +12,7 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: var(--fing-space-1);
+  gap: var(--quafi-space-1);
   width: 100%;
 }
 
@@ -21,18 +21,18 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .label {
-  font-size: var(--fing-text-sm);
-  font-weight: var(--fing-font-medium);
-  color: var(--fing-text-secondary);
-  font-family: var(--fing-font-primary);
+  font-size: var(--quafi-text-sm);
+  font-weight: var(--quafi-font-medium);
+  color: var(--quafi-text-secondary);
+  font-family: var(--quafi-font-primary);
   line-height: 1.5;
   margin: 0;
 }
 
 /* Required asterisk */
 .required {
-  color: var(--fing-status-negative-text);
-  margin-left: var(--fing-space-1);
+  color: var(--quafi-status-negative-text);
+  margin-left: var(--quafi-space-1);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -40,10 +40,10 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .helperText {
-  font-size: var(--fing-text-xs);
-  font-weight: var(--fing-font-normal);
-  color: var(--fing-text-tertiary);
-  font-family: var(--fing-font-primary);
+  font-size: var(--quafi-text-xs);
+  font-weight: var(--quafi-font-normal);
+  color: var(--quafi-text-tertiary);
+  font-family: var(--quafi-font-primary);
   line-height: 1.5;
   margin: 0;
 }
@@ -53,10 +53,10 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 .errorMessage {
-  font-size: var(--fing-text-xs);
-  font-weight: var(--fing-font-normal);
-  color: var(--fing-status-negative-text);
-  font-family: var(--fing-font-primary);
+  font-size: var(--quafi-text-xs);
+  font-weight: var(--quafi-font-normal);
+  color: var(--quafi-status-negative-text);
+  font-family: var(--quafi-font-primary);
   line-height: 1.5;
   margin: 0;
 }

@@ -5,19 +5,19 @@
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
-  background: var(--fing-bg-base);
+  background: var(--quafi-bg-base);
 }
 
 .content {
   flex: 1;
-  padding: var(--fing-mobile-content-padding);
-  padding-top: calc(var(--fing-mobile-header-height) + var(--fing-safe-area-top) + var(--fing-space-4));
+  padding: var(--quafi-mobile-content-padding);
+  padding-top: calc(var(--quafi-mobile-header-height) + var(--quafi-safe-area-top) + var(--quafi-space-4));
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
 
 .content.withBottomNav {
-  padding-bottom: calc(var(--fing-mobile-bottom-nav-height) + var(--fing-safe-area-bottom) + var(--fing-space-4));
+  padding-bottom: calc(var(--quafi-mobile-bottom-nav-height) + var(--quafi-safe-area-bottom) + var(--quafi-space-4));
 }
 
 /* Hide on desktop - the ResponsiveLayout will handle switching */

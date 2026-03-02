@@ -2,7 +2,7 @@
 
 /* ═══════════════════════════════════════════════════════════════════════════════
    SEARCHBAR ITEM
-   FING Observatory Theme
+   QUAFI Observatory Theme
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 /* SearchbarItem container */
@@ -11,22 +11,22 @@
   display: flex;
   align-items: center;
   height: 40px;
-  background-color: var(--fing-bg-elevated);
-  border: 1px solid var(--fing-border-subtle);
-  border-radius: var(--fing-radius-sm);
-  font-family: var(--fing-font-led);
-  letter-spacing: var(--fing-tracking-led);
-  transition: all var(--fing-transition-normal);
+  background-color: var(--quafi-bg-elevated);
+  border: 1px solid var(--quafi-border-subtle);
+  border-radius: var(--quafi-radius-sm);
+  font-family: var(--quafi-font-led);
+  letter-spacing: var(--quafi-tracking-led);
+  transition: all var(--quafi-transition-normal);
   overflow: hidden;
 }
 
 .containerFocused {
-  border-color: var(--fing-accent-primary);
-  box-shadow: 0 0 0 2px var(--fing-focus-ring);
+  border-color: var(--quafi-accent-primary);
+  box-shadow: 0 0 0 2px var(--quafi-focus-ring);
 }
 
 .containerDisabled {
-  background-color: var(--fing-bg-subtle);
+  background-color: var(--quafi-bg-subtle);
   opacity: 0.5;
 }
 
@@ -39,18 +39,18 @@
   height: 40px;
   flex-shrink: 0;
   cursor: pointer;
-  color: var(--fing-text-tertiary);
+  color: var(--quafi-text-tertiary);
   background: transparent;
   border: none;
-  transition: all var(--fing-transition-normal);
+  transition: all var(--quafi-transition-normal);
 }
 
 .searchIconButton:hover:not(:disabled) {
-  color: var(--fing-accent-primary);
+  color: var(--quafi-accent-primary);
 }
 
 .searchIconButton:disabled {
-  color: var(--fing-text-disabled);
+  color: var(--quafi-text-disabled);
   cursor: not-allowed;
 }
 
@@ -61,29 +61,29 @@
   border: none;
   outline: none;
   background-color: transparent;
-  font-size: var(--fing-text-sm);
+  font-size: var(--quafi-text-sm);
   font-weight: 400;
-  color: var(--fing-text-primary);
-  font-family: var(--fing-font-led);
-  letter-spacing: var(--fing-tracking-led);
+  color: var(--quafi-text-primary);
+  font-family: var(--quafi-font-led);
+  letter-spacing: var(--quafi-tracking-led);
   line-height: 1.5;
   padding: 0 8px;
   cursor: text;
 }
 
 .input::placeholder {
-  color: var(--fing-text-tertiary);
+  color: var(--quafi-text-tertiary);
   text-transform: uppercase;
   letter-spacing: 0.03em;
 }
 
 .input:disabled {
-  color: var(--fing-text-disabled);
+  color: var(--quafi-text-disabled);
   cursor: not-allowed;
 }
 
 .input:disabled::placeholder {
-  color: var(--fing-text-disabled);
+  color: var(--quafi-text-disabled);
 }
 
 /* Clear button */
@@ -96,17 +96,17 @@
   margin-right: 4px;
   flex-shrink: 0;
   cursor: pointer;
-  color: var(--fing-text-tertiary);
+  color: var(--quafi-text-tertiary);
   background-color: transparent;
-  border: 1px solid var(--fing-border-subtle);
-  border-radius: var(--fing-radius-xs);
-  transition: all var(--fing-transition-normal);
+  border: 1px solid var(--quafi-border-subtle);
+  border-radius: var(--quafi-radius-xs);
+  transition: all var(--quafi-transition-normal);
 }
 
 .clearButton:hover:not(:disabled) {
-  background-color: var(--fing-bg-subtle);
-  border-color: var(--fing-accent-primary);
-  color: var(--fing-accent-primary);
+  background-color: var(--quafi-bg-subtle);
+  border-color: var(--quafi-accent-primary);
+  color: var(--quafi-accent-primary);
 }
 
 .clearButton:disabled {

@@ -1,5 +1,5 @@
 // Path: src/pages/charts/ChartsDocsShowcase.tsx
-// FING Design System - Charts Documentation for Product Designers
+// QUAFI Design System - Charts Documentation for Product Designers
 import React, { useMemo, useState } from 'react';
 import type { CSSProperties } from 'react';
 import { LightEngineProvider, useLightEngine } from '@/contexts/LightEngineContext';
@@ -1207,7 +1207,7 @@ function CodeBlock({ code, language = 'tsx' }: { code: string; language?: string
         background: '#2d2d2d',
         borderBottom: '1px solid #3d3d3d',
       }}>
-        <span style={{ color: '#888', fontSize: '11px', fontFamily: 'var(--sentinel-font-mono)' }}>
+        <span style={{ color: '#888', fontSize: '11px', fontFamily: 'var(--quafi-font-mono)' }}>
           {language}
         </span>
         <button
@@ -1221,7 +1221,7 @@ function CodeBlock({ code, language = 'tsx' }: { code: string; language?: string
             color: copied ? '#4a7a6a' : '#888',
             cursor: 'pointer',
             fontSize: '11px',
-            fontFamily: 'var(--sentinel-font-mono)',
+            fontFamily: 'var(--quafi-font-mono)',
           }}
         >
           {copied ? <Check size={12} /> : <Copy size={12} />}
@@ -1234,7 +1234,7 @@ function CodeBlock({ code, language = 'tsx' }: { code: string; language?: string
         overflow: 'auto',
         fontSize: '12px',
         lineHeight: 1.5,
-        fontFamily: 'var(--sentinel-font-mono)',
+        fontFamily: 'var(--quafi-font-mono)',
         color: '#d4d4d4',
       }}>
         <code>{code}</code>
@@ -1372,7 +1372,7 @@ function ChartDocCard({
     border: '1px solid rgba(255, 255, 255, 0.5)',
     borderRadius: '8px',
     fontSize: '10px',
-    fontFamily: 'var(--sentinel-font-mono)',
+    fontFamily: 'var(--quafi-font-mono)',
     color: '#3a6a72',
     textTransform: 'uppercase' as const,
     letterSpacing: '0.05em',
@@ -1755,7 +1755,7 @@ function ChartsDocsContent() {
   };
 
   // ═══════════════════════════════════════════════════════════════════════════
-  // FONTS - FING Typography System
+  // FONTS - QUAFI Typography System
   // ═══════════════════════════════════════════════════════════════════════════
   const FONTS = {
     display: "'Libre Baskerville', Georgia, serif",

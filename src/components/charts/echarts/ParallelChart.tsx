@@ -2,7 +2,7 @@
 import { useMemo } from 'react';
 import type { EChartsOption } from 'echarts';
 import { EChart } from './EChart';
-import { fingColors, chartPalette } from './fingTheme';
+import { quafiColors, chartPalette } from './quafiTheme';
 import type { BaseChartProps } from './types';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -72,20 +72,20 @@ export function ParallelChart({
       nameLocation: 'end' as const,
       nameGap: 20,
       nameTextStyle: {
-        color: fingColors.textSecondary,
+        color: quafiColors.textSecondary,
         fontSize: 11,
         fontFamily: "'Inter', sans-serif",
       },
       axisLine: {
         lineStyle: {
-          color: fingColors.borderDefault,
+          color: quafiColors.borderDefault,
         },
       },
       axisTick: {
         show: false,
       },
       axisLabel: {
-        color: fingColors.textTertiary,
+        color: quafiColors.textTertiary,
         fontSize: 10,
         fontFamily: "'Space Mono', monospace",
       },
@@ -140,7 +140,7 @@ export function ParallelChart({
             const value = p.data[i];
             html += `
               <div style="display: flex; justify-content: space-between; gap: 16px; margin-bottom: 4px;">
-                <span style="color: ${fingColors.textTertiary};">${dim.name}</span>
+                <span style="color: ${quafiColors.textTertiary};">${dim.name}</span>
                 <span style="font-family: 'Space Mono', monospace;">${typeof value === 'number' ? value.toFixed(2) : value}</span>
               </div>
             `;
@@ -157,7 +157,7 @@ export function ParallelChart({
             top: title ? 30 : 0,
             right: 0,
             textStyle: {
-              color: fingColors.textSecondary,
+              color: quafiColors.textSecondary,
               fontSize: 11,
             },
           }
@@ -173,19 +173,19 @@ export function ParallelChart({
           nameLocation: 'end',
           nameGap: 20,
           nameTextStyle: {
-            color: fingColors.textSecondary,
+            color: quafiColors.textSecondary,
             fontSize: 11,
           },
           axisLine: {
             lineStyle: {
-              color: fingColors.borderDefault,
+              color: quafiColors.borderDefault,
             },
           },
           axisTick: {
             show: false,
           },
           axisLabel: {
-            color: fingColors.textTertiary,
+            color: quafiColors.textTertiary,
             fontSize: 10,
           },
         },

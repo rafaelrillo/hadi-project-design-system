@@ -1,5 +1,5 @@
 // Path: src/pages/styles/LightEngineShowcase.tsx
-// FING Light Engine Showcase - Sistema de Iluminacion Unificado
+// QUAFI Light Engine Showcase - Sistema de Iluminacion Unificado
 import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import {
   Sun, Pause, Play, TrendingUp, DollarSign, BarChart2, Activity,
@@ -221,7 +221,7 @@ export function LightEngineShowcase() {
     fontSize: '12px',
     fontWeight: 600,
     color: '#3a6a72',
-    fontFamily: 'var(--fing-font-mono)',
+    fontFamily: 'var(--quafi-font-mono)',
     textTransform: 'uppercase' as const,
     letterSpacing: '0.12em',
     marginBottom: '20px',
@@ -233,8 +233,8 @@ export function LightEngineShowcase() {
   const cardTitle: React.CSSProperties = {
     fontSize: '20px',
     fontWeight: 600,
-    color: 'var(--fing-text-primary)',
-    fontFamily: 'var(--fing-font-display)',
+    color: 'var(--quafi-text-primary)',
+    fontFamily: 'var(--quafi-font-display)',
     marginBottom: '24px',
   };
 
@@ -248,10 +248,10 @@ export function LightEngineShowcase() {
     color: showcase.colors.accent,
     marginTop: '64px',
     marginBottom: '24px',
-    fontFamily: 'var(--fing-font-primary)',
+    fontFamily: 'var(--quafi-font-primary)',
     letterSpacing: '0.05em',
     textTransform: 'uppercase' as const,
-    borderBottom: '1px solid var(--fing-border-subtle)',
+    borderBottom: '1px solid var(--quafi-border-subtle)',
     paddingBottom: '12px'
   };
 
@@ -265,9 +265,9 @@ export function LightEngineShowcase() {
   };
 
   const codeBlockStyles: React.CSSProperties = {
-    fontFamily: 'var(--fing-font-mono)',
+    fontFamily: 'var(--quafi-font-mono)',
     fontSize: '12px',
-    backgroundColor: 'var(--fing-bg-void)',
+    backgroundColor: 'var(--quafi-bg-void)',
     color: showcase.colors.textSecondary,
     padding: '16px',
     borderRadius: '12px',
@@ -379,7 +379,7 @@ export function LightEngineShowcase() {
           backdropFilter: 'blur(12px)',
           borderRadius: '15px',
           boxShadow: '0 4px 24px rgba(0,0,0,0.15)',
-          fontFamily: 'var(--fing-font-mono)',
+          fontFamily: 'var(--quafi-font-mono)',
           fontSize: '12px',
           marginBottom: '32px',
           position: 'relative',
@@ -429,7 +429,7 @@ export function LightEngineShowcase() {
               onChange={(e) => handleManualAngleChange(parseFloat(e.target.value))}
               style={{ width: '100px', cursor: 'pointer' }}
             />
-            <span style={{ color: 'var(--fing-text-primary)', fontWeight: 600, minWidth: '36px' }}>
+            <span style={{ color: 'var(--quafi-text-primary)', fontWeight: 600, minWidth: '36px' }}>
               {Math.round(lightAngle)}°
             </span>
           </div>
@@ -463,7 +463,7 @@ export function LightEngineShowcase() {
                   <DollarSign size={20} color="#3a6a72" />
                 </div>
                 <div>
-                  <div style={{ fontSize: '20px', fontWeight: 700, color: 'var(--fing-text-primary)', fontFamily: 'var(--fing-font-mono)' }}>
+                  <div style={{ fontSize: '20px', fontWeight: 700, color: 'var(--quafi-text-primary)', fontFamily: 'var(--quafi-font-mono)' }}>
                     $124,500
                   </div>
                   <div style={{ fontSize: '11px', color: '#636E72' }}>Total Value</div>
@@ -475,7 +475,7 @@ export function LightEngineShowcase() {
                   <TrendingUp size={20} color="#22C55E" />
                 </div>
                 <div>
-                  <div style={{ fontSize: '20px', fontWeight: 700, color: '#22C55E', fontFamily: 'var(--fing-font-mono)' }}>
+                  <div style={{ fontSize: '20px', fontWeight: 700, color: '#22C55E', fontFamily: 'var(--quafi-font-mono)' }}>
                     +12.5%
                   </div>
                   <div style={{ fontSize: '11px', color: '#636E72' }}>Return</div>
@@ -499,7 +499,7 @@ export function LightEngineShowcase() {
                     fontSize: '10px',
                     fontWeight: 600,
                     color: '#636E72',
-                    fontFamily: 'var(--fing-font-mono)',
+                    fontFamily: 'var(--quafi-font-mono)',
                     boxShadow: getNeuPanelShadow(level * 3, level * 8),
                     transition: 'box-shadow 50ms linear',
                   }}
@@ -641,7 +641,7 @@ export function LightEngineShowcase() {
                 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                     <Activity size={14} color="#3a6a72" />
-                    <span style={{ fontWeight: 600, color: 'var(--fing-text-primary)', fontFamily: 'var(--fing-font-mono)', fontSize: '13px' }}>
+                    <span style={{ fontWeight: 600, color: 'var(--quafi-text-primary)', fontFamily: 'var(--quafi-font-mono)', fontSize: '13px' }}>
                       {item.symbol}
                     </span>
                   </div>
@@ -701,7 +701,7 @@ export function LightEngineShowcase() {
               zIndex: 10,
             }}>
               <BarChart2 size={14} color="#1e5a6b" />
-              <span style={{ fontSize: '9px', fontWeight: 700, color: '#154550', fontFamily: 'var(--fing-font-mono)' }}>24h</span>
+              <span style={{ fontSize: '9px', fontWeight: 700, color: '#154550', fontFamily: 'var(--quafi-font-mono)' }}>24h</span>
             </div>
           </div>
         </div>
@@ -743,28 +743,28 @@ export function LightEngineShowcase() {
       <div style={conceptBoxStyles}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
           <div>
-            <h3 style={{ fontSize: '16px', fontWeight: 600, color: 'var(--fing-text-primary)', marginBottom: '12px' }}>
+            <h3 style={{ fontSize: '16px', fontWeight: 600, color: 'var(--quafi-text-primary)', marginBottom: '12px' }}>
               Una Fuente de Luz
             </h3>
-            <p style={{ fontSize: '13px', color: 'var(--fing-text-secondary)', lineHeight: 1.6 }}>
+            <p style={{ fontSize: '13px', color: 'var(--quafi-text-secondary)', lineHeight: 1.6 }}>
               Todos los elementos comparten la misma direccion de luz (arriba-izquierda).
               Esto crea coherencia visual y simula un ambiente fisico real.
             </p>
           </div>
           <div>
-            <h3 style={{ fontSize: '16px', fontWeight: 600, color: 'var(--fing-text-primary)', marginBottom: '12px' }}>
+            <h3 style={{ fontSize: '16px', fontWeight: 600, color: 'var(--quafi-text-primary)', marginBottom: '12px' }}>
               Ratio Consistente
             </h3>
-            <p style={{ fontSize: '13px', color: 'var(--fing-text-secondary)', lineHeight: 1.6 }}>
+            <p style={{ fontSize: '13px', color: 'var(--quafi-text-secondary)', lineHeight: 1.6 }}>
               Offset vertical = 2x offset horizontal. Este ratio se mantiene
               en todos los niveles de elevacion para simular la misma fuente de luz.
             </p>
           </div>
           <div>
-            <h3 style={{ fontSize: '16px', fontWeight: 600, color: 'var(--fing-text-primary)', marginBottom: '12px' }}>
+            <h3 style={{ fontSize: '16px', fontWeight: 600, color: 'var(--quafi-text-primary)', marginBottom: '12px' }}>
               Sombras en Capas
             </h3>
-            <p style={{ fontSize: '13px', color: 'var(--fing-text-secondary)', lineHeight: 1.6 }}>
+            <p style={{ fontSize: '13px', color: 'var(--quafi-text-secondary)', lineHeight: 1.6 }}>
               Multiples box-shadows apiladas crean profundidad progresiva.
               Cada capa tiene offset y blur incrementales para realismo.
             </p>
@@ -783,9 +783,9 @@ export function LightEngineShowcase() {
       >
         <ComponentPreview>
           <div style={{
-            backgroundColor: 'var(--fing-bg-base)',
+            backgroundColor: 'var(--quafi-bg-base)',
             padding: '48px',
-            borderRadius: 'var(--fing-radius-xl)',
+            borderRadius: 'var(--quafi-radius-xl)',
             display: 'flex',
             gap: '32px',
             justifyContent: 'center',
@@ -798,22 +798,22 @@ export function LightEngineShowcase() {
                 style={{
                   ...demoBoxBase,
                   cursor: 'pointer',
-                  border: activeElevation === level ? '2px solid var(--fing-accent-primary)' : '2px solid transparent'
+                  border: activeElevation === level ? '2px solid var(--quafi-accent-primary)' : '2px solid transparent'
                 }}
                 onClick={() => setActiveElevation(level)}
               >
                 <span style={{
-                  fontFamily: 'var(--fing-font-display)',
+                  fontFamily: 'var(--quafi-font-display)',
                   fontSize: '24px',
                   fontWeight: 600,
-                  color: 'var(--fing-text-primary)'
+                  color: 'var(--quafi-text-primary)'
                 }}>
                   {level}
                 </span>
                 <span style={{
-                  fontFamily: 'var(--fing-font-mono)',
+                  fontFamily: 'var(--quafi-font-mono)',
                   fontSize: '11px',
-                  color: 'var(--fing-text-tertiary)'
+                  color: 'var(--quafi-text-tertiary)'
                 }}>
                   {level} capas
                 </span>
@@ -824,7 +824,7 @@ export function LightEngineShowcase() {
       </ShowcaseSection>
 
       <div style={conceptBoxStyles}>
-        <h4 style={{ fontSize: '13px', fontWeight: 600, color: 'var(--fing-accent-primary)', marginBottom: '12px' }}>
+        <h4 style={{ fontSize: '13px', fontWeight: 600, color: 'var(--quafi-accent-primary)', marginBottom: '12px' }}>
           Elevation {activeElevation} - Codigo CSS
         </h4>
         <pre style={codeBlockStyles}>
@@ -877,9 +877,9 @@ activeElevation === 4 ? `--elevation-4:
       >
         <ComponentPreview>
           <div style={{
-            backgroundColor: 'var(--fing-bg-base)',
+            backgroundColor: 'var(--quafi-bg-base)',
             padding: '48px',
-            borderRadius: 'var(--fing-radius-xl)',
+            borderRadius: 'var(--quafi-radius-xl)',
             display: 'flex',
             gap: '32px',
             justifyContent: 'center',
@@ -891,21 +891,21 @@ activeElevation === 4 ? `--elevation-4:
                 className={`neu-elevation-${level}`}
                 style={{
                   ...demoBoxBase,
-                  backgroundColor: 'var(--fing-bg-base)',
+                  backgroundColor: 'var(--quafi-bg-base)',
                 }}
               >
                 <span style={{
-                  fontFamily: 'var(--fing-font-display)',
+                  fontFamily: 'var(--quafi-font-display)',
                   fontSize: '24px',
                   fontWeight: 600,
-                  color: 'var(--fing-text-primary)'
+                  color: 'var(--quafi-text-primary)'
                 }}>
                   Neu {level}
                 </span>
                 <span style={{
-                  fontFamily: 'var(--fing-font-mono)',
+                  fontFamily: 'var(--quafi-font-mono)',
                   fontSize: '11px',
-                  color: 'var(--fing-text-tertiary)'
+                  color: 'var(--quafi-text-tertiary)'
                 }}>
                   elevated
                 </span>
@@ -921,9 +921,9 @@ activeElevation === 4 ? `--elevation-4:
       >
         <ComponentPreview>
           <div style={{
-            backgroundColor: 'var(--fing-bg-base)',
+            backgroundColor: 'var(--quafi-bg-base)',
             padding: '48px',
-            borderRadius: 'var(--fing-radius-xl)',
+            borderRadius: 'var(--quafi-radius-xl)',
             display: 'flex',
             gap: '32px',
             justifyContent: 'center',
@@ -935,21 +935,21 @@ activeElevation === 4 ? `--elevation-4:
                 className={`neu-inset-${level}`}
                 style={{
                   ...demoBoxBase,
-                  backgroundColor: 'var(--fing-bg-base)',
+                  backgroundColor: 'var(--quafi-bg-base)',
                 }}
               >
                 <span style={{
-                  fontFamily: 'var(--fing-font-display)',
+                  fontFamily: 'var(--quafi-font-display)',
                   fontSize: '20px',
                   fontWeight: 600,
-                  color: 'var(--fing-text-primary)'
+                  color: 'var(--quafi-text-primary)'
                 }}>
                   Inset {level}
                 </span>
                 <span style={{
-                  fontFamily: 'var(--fing-font-mono)',
+                  fontFamily: 'var(--quafi-font-mono)',
                   fontSize: '11px',
-                  color: 'var(--fing-text-tertiary)'
+                  color: 'var(--quafi-text-tertiary)'
                 }}>
                   hundido
                 </span>
@@ -972,7 +972,7 @@ activeElevation === 4 ? `--elevation-4:
           <div style={{
             background: 'linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)',
             padding: '48px',
-            borderRadius: 'var(--fing-radius-xl)',
+            borderRadius: 'var(--quafi-radius-xl)',
             display: 'flex',
             gap: '32px',
             justifyContent: 'center',
@@ -990,7 +990,7 @@ activeElevation === 4 ? `--elevation-4:
                 }}
               >
                 <span style={{
-                  fontFamily: 'var(--fing-font-display)',
+                  fontFamily: 'var(--quafi-font-display)',
                   fontSize: '20px',
                   fontWeight: 600,
                   color: 'white',
@@ -999,7 +999,7 @@ activeElevation === 4 ? `--elevation-4:
                   Glass {level}
                 </span>
                 <span style={{
-                  fontFamily: 'var(--fing-font-mono)',
+                  fontFamily: 'var(--quafi-font-mono)',
                   fontSize: '11px',
                   color: 'rgba(255,255,255,0.8)'
                 }}>
@@ -1017,7 +1017,7 @@ activeElevation === 4 ? `--elevation-4:
       <h2 style={sectionHeaderStyles}>Guia de Uso</h2>
 
       <div style={conceptBoxStyles}>
-        <h4 style={{ fontSize: '14px', fontWeight: 600, color: 'var(--fing-text-primary)', marginBottom: '16px' }}>
+        <h4 style={{ fontSize: '14px', fontWeight: 600, color: 'var(--quafi-text-primary)', marginBottom: '16px' }}>
           Variables CSS Disponibles
         </h4>
         <pre style={codeBlockStyles}>

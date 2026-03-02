@@ -1,4 +1,4 @@
-# FING Design System Consolidation
+# QUAFI Design System Consolidation
 
 **Fecha Inicio:** 2026-01-27
 **Última Actualización:** 2026-02-05
@@ -8,7 +8,7 @@
 
 ## Resumen Ejecutivo
 
-Se realizó una auditoría profunda del design system FING/SENTINEL y una consolidación completa de los tokens CSS. El objetivo fue establecer una **única fuente de verdad** para tipografía, colores, sombras, letterpress, animaciones, wordmark y botones.
+Se realizó una auditoría profunda del design system QUAFI/QUAFI y una consolidación completa de los tokens CSS. El objetivo fue establecer una **única fuente de verdad** para tipografía, colores, sombras, letterpress, animaciones, wordmark y botones.
 
 ### Estado Actual
 
@@ -36,13 +36,13 @@ src/styles/
 │   ├── shadows.css        ← Sistema RAISED/INSET/GLASS (5 niveles cada uno)
 │   ├── letterpress.css    ← Text-shadows neumórficos + utility classes
 │   ├── animations.css     ← Keyframes + scroll-triggered + stagger
-│   ├── wordmark.css       ← 12 variantes inset para FING wordmark
+│   ├── wordmark.css       ← 12 variantes inset para QUAFI wordmark
 │   ├── buttons.css        ← Glass colors + sizes + transitions
 │   ├── theme.css          ← Legacy (consolidándose)
 │   └── responsive.css     ← Breakpoints y helpers responsive
 │
 ├── typography/
-│   └── fing.css           ← Estilos tipográficos específicos FING
+│   └── quafi.css           ← Estilos tipográficos específicos QUAFI
 │
 └── lab/                   ← [EXPERIMENTAL - NO importar en main.tsx]
     ├── README.md
@@ -61,13 +61,13 @@ src/styles/
 
 **Contenido:**
 - Colores base del mármol (`--marble-base: #d5d8dc`, `--marble-light`, `--marble-dark`, `--marble-deeper`)
-- Negro primario Charcoal (`--fing-black: #252528`)
-- Acento Petrol (`--fing-accent: #3a6a72`)
+- Negro primario Charcoal (`--quafi-black: #252528`)
+- Acento Petrol (`--quafi-accent: #3a6a72`)
 - Colores semánticos con RGB companions:
-  - Jade (`--fing-positive: #4a7a6a`) - positivo/éxito
-  - Gold (`--fing-warning: #a08a4a`) - advertencia
-  - Rust (`--fing-negative: #8a5a4a`) - negativo/error
-  - Steel (`--fing-info: #4a6a7a`) - información
+  - Jade (`--quafi-positive: #4a7a6a`) - positivo/éxito
+  - Gold (`--quafi-warning: #a08a4a`) - advertencia
+  - Rust (`--quafi-negative: #8a5a4a`) - negativo/error
+  - Steel (`--quafi-info: #4a6a7a`) - información
 
 ---
 
@@ -164,25 +164,25 @@ SIEMPRE alternar: RAISED → INSET → GLASS
 
 **Tokens de animación:**
 ```css
---fing-duration-instant: 100ms
---fing-duration-fast: 200ms
---fing-duration-normal: 300ms
---fing-duration-slow: 500ms
---fing-duration-slower: 700ms
+--quafi-duration-instant: 100ms
+--quafi-duration-fast: 200ms
+--quafi-duration-normal: 300ms
+--quafi-duration-slow: 500ms
+--quafi-duration-slower: 700ms
 
---fing-ease-out: cubic-bezier(0.16, 1, 0.3, 1)
---fing-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1)
---fing-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1)
+--quafi-ease-out: cubic-bezier(0.16, 1, 0.3, 1)
+--quafi-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1)
+--quafi-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1)
 ```
 
 **Keyframes disponibles (17+):**
 
 | Categoría | Animaciones |
 |-----------|-------------|
-| **Atmosféricas** | `fing-breathe`, `fing-pulse-subtle`, `fing-glow` |
-| **Entrada** | `fing-emerge`, `fing-fade-in`, `fing-scale-in`, `fing-slide-up` |
-| **Efectos** | `fing-shimmer`, `fing-ripple`, `fing-bounce-subtle` |
-| **Stock Market** | `fing-ticker-positive`, `fing-ticker-negative`, `fing-chart-draw` |
+| **Atmosféricas** | `quafi-breathe`, `quafi-pulse-subtle`, `quafi-glow` |
+| **Entrada** | `quafi-emerge`, `quafi-fade-in`, `quafi-scale-in`, `quafi-slide-up` |
+| **Efectos** | `quafi-shimmer`, `quafi-ripple`, `quafi-bounce-subtle` |
+| **Stock Market** | `quafi-ticker-positive`, `quafi-ticker-negative`, `quafi-chart-draw` |
 
 **Scroll-Triggered Animations:**
 ```html
@@ -206,15 +206,15 @@ SIEMPRE alternar: RAISED → INSET → GLASS
 
 ---
 
-### 6. `wordmark.css` - FING Wordmark Inset System (~193 líneas)
+### 6. `wordmark.css` - QUAFI Wordmark Inset System (~193 líneas)
 
-**Propósito:** 12 variaciones de efecto tallado para el wordmark FING.
+**Propósito:** 12 variaciones de efecto tallado para el wordmark QUAFI.
 
 **Tipografía:**
 ```css
---fing-wordmark-font: 'Cormorant Garamond', serif
---fing-wordmark-weight: 300
---fing-wordmark-tracking: 0.06em
+--quafi-wordmark-font: 'Cormorant Garamond', serif
+--quafi-wordmark-weight: 300
+--quafi-wordmark-tracking: 0.06em
 ```
 
 **12 Variaciones:**
@@ -237,13 +237,13 @@ SIEMPRE alternar: RAISED → INSET → GLASS
 **Tokens por variante:**
 ```css
 /* Container inset shadow */
---fing-wm-inset-carved: inset 5px 5px 10px rgba(...), inset -5px -5px 10px rgba(...);
+--quafi-wm-inset-carved: inset 5px 5px 10px rgba(...), inset -5px -5px 10px rgba(...);
 
 /* Text shadow */
---fing-wm-text-carved: -1px -1px 0px rgba(...), 1px 1px 2px rgba(...);
+--quafi-wm-text-carved: -1px -1px 0px rgba(...), 1px 1px 2px rgba(...);
 
 /* Background gradient (para pressed, bowl, crater, pillow) */
---fing-wm-bg-pressed: linear-gradient(145deg, #caced3, #dce0e5);
+--quafi-wm-bg-pressed: linear-gradient(145deg, #caced3, #dce0e5);
 ```
 
 ---
@@ -254,51 +254,51 @@ SIEMPRE alternar: RAISED → INSET → GLASS
 
 **Neumorphism Shadows:**
 ```css
---fing-btn-neu-light: rgba(255, 255, 255, 0.7)
---fing-btn-neu-dark: rgba(var(--fing-border-base-rgb), 0.6)
+--quafi-btn-neu-light: rgba(255, 255, 255, 0.7)
+--quafi-btn-neu-dark: rgba(var(--quafi-border-base-rgb), 0.6)
 ```
 
 **Glass Base:**
 ```css
---fing-btn-glass-blur: 16px
---fing-btn-glass-shine: rgba(255, 255, 255, 0.5)
+--quafi-btn-glass-blur: 16px
+--quafi-btn-glass-shine: rgba(255, 255, 255, 0.5)
 ```
 
 **8 Glass Colors:**
 
 | Color | Uso | Variables |
 |-------|-----|-----------|
-| Petrol | Accent/Primary | `--fing-glass-petrol-*` |
-| Gold | Warning | `--fing-glass-gold-*` |
-| Rust | Negative/Danger | `--fing-glass-rust-*` |
-| Jade | Positive/Success | `--fing-glass-jade-*` |
-| Violet | Special | `--fing-glass-violet-*` |
-| Steel | Info | `--fing-glass-steel-*` |
-| Smoke | Neutral | `--fing-glass-smoke-*` |
-| Frost | Subtle | `--fing-glass-frost-*` |
+| Petrol | Accent/Primary | `--quafi-glass-petrol-*` |
+| Gold | Warning | `--quafi-glass-gold-*` |
+| Rust | Negative/Danger | `--quafi-glass-rust-*` |
+| Jade | Positive/Success | `--quafi-glass-jade-*` |
+| Violet | Special | `--quafi-glass-violet-*` |
+| Steel | Info | `--quafi-glass-steel-*` |
+| Smoke | Neutral | `--quafi-glass-smoke-*` |
+| Frost | Subtle | `--quafi-glass-frost-*` |
 
 Cada color tiene: `-bg`, `-bg-hover`, `-border`, `-glow`, `-text`
 
 **5 Tamaños:**
 ```css
---fing-btn-height-xs: 30px   --fing-btn-padding-xs: 0 12px   --fing-btn-font-xs: 11px
---fing-btn-height-sm: 36px   --fing-btn-padding-sm: 0 14px   --fing-btn-font-sm: 12px
---fing-btn-height-md: 44px   --fing-btn-padding-md: 0 20px   --fing-btn-font-md: 13px
---fing-btn-height-lg: 52px   --fing-btn-padding-lg: 0 26px   --fing-btn-font-lg: 14px
---fing-btn-height-xl: 60px   --fing-btn-padding-xl: 0 32px   --fing-btn-font-xl: 15px
+--quafi-btn-height-xs: 30px   --quafi-btn-padding-xs: 0 12px   --quafi-btn-font-xs: 11px
+--quafi-btn-height-sm: 36px   --quafi-btn-padding-sm: 0 14px   --quafi-btn-font-sm: 12px
+--quafi-btn-height-md: 44px   --quafi-btn-padding-md: 0 20px   --quafi-btn-font-md: 13px
+--quafi-btn-height-lg: 52px   --quafi-btn-padding-lg: 0 26px   --quafi-btn-font-lg: 14px
+--quafi-btn-height-xl: 60px   --quafi-btn-padding-xl: 0 32px   --quafi-btn-font-xl: 15px
 ```
 
 **Border Radius:**
 ```css
---fing-btn-radius: 12px
---fing-btn-radius-sm: 10px
---fing-btn-radius-pill: 9999px
+--quafi-btn-radius: 12px
+--quafi-btn-radius-sm: 10px
+--quafi-btn-radius-pill: 9999px
 ```
 
 **Transitions:**
 ```css
---fing-btn-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1)
---fing-btn-transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1)
+--quafi-btn-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1)
+--quafi-btn-transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1)
 ```
 
 ---
@@ -355,14 +355,14 @@ Cada color tiene: `-bg`, `-bg-hover`, `-border`, `-glow`, `-text`
 @import './responsive.css';
 
 /* 5. COMPONENT-SPECIFIC */
-@import './typography/fing.css';
+@import './typography/quafi.css';
 ```
 
 ### `ShowcaseLayout.tsx` - Sidebar Reorganizado
 
 ```
 ├── Home
-├── FING Components
+├── QUAFI Components
 │
 ├── Design System        ← OFICIAL
 │   ├── Brand
@@ -410,7 +410,7 @@ const CSSAnimationsShowcase = lazy(() => import('./pages/styles').then(m => ({ d
 - [ ] Crear showcase para `buttons.css`
 
 ### Corto Plazo
-- [ ] Migrar variables `--sentinel-*` legacy a `lab/legacy/`
+- [ ] Migrar variables `--quafi-*` legacy a `lab/legacy/`
 - [ ] Revisar 56 hardcoded fonts en charts (Inter, Space Mono)
 - [ ] Documentar uso de cada archivo CSS
 
@@ -434,7 +434,7 @@ import '@/styles/index.css';
 
 ```css
 .myTitle {
-  color: var(--fing-accent);
+  color: var(--quafi-accent);
   text-shadow: var(--lp-petrol);
 }
 ```
@@ -476,18 +476,18 @@ import '@/styles/index.css';
 
 ```css
 .button {
-  background: var(--fing-glass-petrol-bg);
-  border: 1px solid var(--fing-glass-petrol-border);
-  color: var(--fing-glass-petrol-text);
-  height: var(--fing-btn-height-md);
-  padding: var(--fing-btn-padding-md);
-  border-radius: var(--fing-btn-radius);
-  transition: var(--fing-btn-transition);
+  background: var(--quafi-glass-petrol-bg);
+  border: 1px solid var(--quafi-glass-petrol-border);
+  color: var(--quafi-glass-petrol-text);
+  height: var(--quafi-btn-height-md);
+  padding: var(--quafi-btn-padding-md);
+  border-radius: var(--quafi-btn-radius);
+  transition: var(--quafi-btn-transition);
 }
 
 .button:hover {
-  background: var(--fing-glass-petrol-bg-hover);
-  box-shadow: 0 0 12px var(--fing-glass-petrol-glow);
+  background: var(--quafi-glass-petrol-bg-hover);
+  box-shadow: 0 0 12px var(--quafi-glass-petrol-glow);
 }
 ```
 

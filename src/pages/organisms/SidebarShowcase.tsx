@@ -1,5 +1,5 @@
 // Path: src/pages/organisms/SidebarShowcase.tsx
-// FING Design System v5.0 - Neumorphic Sidebar Showcase
+// QUAFI Design System v5.0 - Neumorphic Sidebar Showcase
 import { useState, useMemo } from 'react';
 import { Sidebar } from '../../components/organisms/Sidebar';
 import type { SidebarSection } from '../../components/organisms/Sidebar';
@@ -23,7 +23,7 @@ import {
   Newspaper,
 } from 'lucide-react';
 import { LightEngineProvider, useLightEngine } from '@/contexts/LightEngineContext';
-import { FingEmblem } from '@/components/atoms/FingEmblem';
+import { QuafiEmblem } from '@/components/atoms/QuafiEmblem';
 import { showcase } from '../showcaseStyles';
 
 function SidebarContent() {
@@ -59,8 +59,8 @@ function SidebarContent() {
     transition: 'box-shadow 50ms linear',
   };
 
-  // FING Emblem Logo for sidebar
-  const FingLogo = <FingEmblem size={48} animation="ripple" />;
+  // QUAFI Emblem Logo for sidebar
+  const QuafiLogo = <QuafiEmblem size={48} animation="ripple" />;
 
   // Main navigation sections (like a real app)
   const mainSections: SidebarSection[] = [
@@ -123,7 +123,7 @@ function SidebarContent() {
   // User profile
   const user = {
     name: 'John Doe',
-    email: 'john.doe@fing.io',
+    email: 'john.doe@quafi.io',
   };
 
   return (
@@ -143,7 +143,7 @@ function SidebarContent() {
         <div style={sidebarContainerStyles}>
           <div style={{ height: '700px', position: 'relative', display: 'flex' }}>
             <Sidebar
-              productLogo={FingLogo}
+              productLogo={QuafiLogo}
               sections={mainSections}
               user={user}
               onUserClick={() => console.log('User profile clicked')}
@@ -169,7 +169,7 @@ function SidebarContent() {
               <h2 style={{
                 fontSize: '28px',
                 fontWeight: 700,
-                fontFamily: 'var(--fing-font-display)',
+                fontFamily: 'var(--quafi-font-display)',
                 color: '#2d3748',
                 marginBottom: '12px',
               }}>
@@ -178,7 +178,7 @@ function SidebarContent() {
               <p style={{
                 fontSize: '14px',
                 color: '#8896a6',
-                fontFamily: 'var(--fing-font-mono)',
+                fontFamily: 'var(--quafi-font-mono)',
                 textTransform: 'uppercase',
                 letterSpacing: '0.05em',
               }}>
@@ -197,7 +197,7 @@ function SidebarContent() {
         <div style={sidebarContainerStyles}>
           <div style={{ height: '650px', position: 'relative', display: 'flex' }}>
             <Sidebar
-              productLogo={FingLogo}
+              productLogo={QuafiLogo}
               sections={expandedSections}
               user={user}
               onSearch={(value) => console.log('Search:', value)}
@@ -211,7 +211,7 @@ function SidebarContent() {
               borderRadius: '20px',
               boxShadow: getNeuInsetShadow(5, 15),
             }}>
-              <p style={{ color: 'var(--fing-text-muted)', fontSize: '14px', fontFamily: 'var(--fing-font-mono)' }}>
+              <p style={{ color: 'var(--quafi-text-muted)', fontSize: '14px', fontFamily: 'var(--quafi-font-mono)' }}>
                 // Cada seccion tiene su propio contenedor inset
               </p>
             </div>
@@ -227,7 +227,7 @@ function SidebarContent() {
         <div style={sidebarContainerStyles}>
           <div style={{ height: '500px', position: 'relative', display: 'flex' }}>
             <Sidebar
-              productLogo={FingLogo}
+              productLogo={QuafiLogo}
               menuItems={simpleMenuItems}
               user={user}
               onSettingsClick={() => console.log('Settings')}
@@ -245,7 +245,7 @@ function SidebarContent() {
               alignItems: 'center',
               justifyContent: 'center',
             }}>
-              <p style={{ color: 'var(--fing-text-muted)', fontSize: '14px', fontFamily: 'var(--fing-font-mono)' }}>
+              <p style={{ color: 'var(--quafi-text-muted)', fontSize: '14px', fontFamily: 'var(--quafi-font-mono)' }}>
                 // Menu simple sin secciones
               </p>
             </div>
@@ -261,7 +261,7 @@ function SidebarContent() {
         <div style={sidebarContainerStyles}>
           <div style={{ height: '500px', position: 'relative', display: 'flex' }}>
             <Sidebar
-              productLogo={FingLogo}
+              productLogo={QuafiLogo}
               sections={mainSections}
               position="relative"
               collapsed={true}
@@ -277,7 +277,7 @@ function SidebarContent() {
               alignItems: 'center',
               justifyContent: 'center',
             }}>
-              <p style={{ color: 'var(--fing-text-muted)', fontSize: '14px', fontFamily: 'var(--fing-font-mono)' }}>
+              <p style={{ color: 'var(--quafi-text-muted)', fontSize: '14px', fontFamily: 'var(--quafi-font-mono)' }}>
                 // collapsed=true para modo compacto
               </p>
             </div>
@@ -293,7 +293,7 @@ function SidebarContent() {
         <div style={sidebarContainerStyles}>
           <div style={{ height: '400px', position: 'relative', display: 'flex' }}>
             <Sidebar
-              productLogo={FingLogo}
+              productLogo={QuafiLogo}
               menuItems={simpleMenuItems.slice(0, 4)}
               position="relative"
             />
@@ -305,7 +305,7 @@ function SidebarContent() {
               borderRadius: '20px',
               boxShadow: getNeuInsetShadow(5, 15),
             }}>
-              <p style={{ color: 'var(--fing-text-muted)', fontSize: '14px', fontFamily: 'var(--fing-font-mono)' }}>
+              <p style={{ color: 'var(--quafi-text-muted)', fontSize: '14px', fontFamily: 'var(--quafi-font-mono)' }}>
                 // Sin user, sin search, sin footer
               </p>
             </div>
@@ -332,9 +332,9 @@ function SidebarContent() {
               <h4 style={{
                 fontSize: '14px',
                 fontWeight: 600,
-                color: 'var(--fing-accent-primary)',
+                color: 'var(--quafi-accent-primary)',
                 marginBottom: '16px',
-                fontFamily: 'var(--fing-font-mono)',
+                fontFamily: 'var(--quafi-font-mono)',
               }}>
                 NEUMORPHIC CONTAINER
               </h4>
@@ -343,8 +343,8 @@ function SidebarContent() {
                 padding: 0,
                 margin: 0,
                 fontSize: '13px',
-                color: 'var(--fing-text-muted)',
-                fontFamily: 'var(--fing-font-mono)',
+                color: 'var(--quafi-text-muted)',
+                fontFamily: 'var(--quafi-font-mono)',
                 lineHeight: '2',
               }}>
                 <li>+ Background: var(--marble-base)</li>
@@ -358,9 +358,9 @@ function SidebarContent() {
               <h4 style={{
                 fontSize: '14px',
                 fontWeight: 600,
-                color: 'var(--fing-accent-primary)',
+                color: 'var(--quafi-accent-primary)',
                 marginBottom: '16px',
-                fontFamily: 'var(--fing-font-mono)',
+                fontFamily: 'var(--quafi-font-mono)',
               }}>
                 INSET SECTIONS (Cavados)
               </h4>
@@ -369,8 +369,8 @@ function SidebarContent() {
                 padding: 0,
                 margin: 0,
                 fontSize: '13px',
-                color: 'var(--fing-text-muted)',
-                fontFamily: 'var(--fing-font-mono)',
+                color: 'var(--quafi-text-muted)',
+                fontFamily: 'var(--quafi-font-mono)',
                 lineHeight: '2',
               }}>
                 <li>+ Inset shadow</li>
@@ -384,9 +384,9 @@ function SidebarContent() {
               <h4 style={{
                 fontSize: '14px',
                 fontWeight: 600,
-                color: 'var(--fing-accent-primary)',
+                color: 'var(--quafi-accent-primary)',
                 marginBottom: '16px',
-                fontFamily: 'var(--fing-font-mono)',
+                fontFamily: 'var(--quafi-font-mono)',
               }}>
                 GLASS ITEMS
               </h4>
@@ -395,8 +395,8 @@ function SidebarContent() {
                 padding: 0,
                 margin: 0,
                 fontSize: '13px',
-                color: 'var(--fing-text-muted)',
-                fontFamily: 'var(--fing-font-mono)',
+                color: 'var(--quafi-text-muted)',
+                fontFamily: 'var(--quafi-font-mono)',
                 lineHeight: '2',
               }}>
                 <li>+ Background: rgba(255,255,255,0.45)</li>
@@ -418,34 +418,34 @@ function SidebarContent() {
           boxShadow: getNeuInsetShadow(5, 15),
           background: 'var(--marble-base)',
           fontSize: '12px',
-          fontFamily: 'var(--fing-font-mono)',
-          color: 'var(--fing-text-muted)',
+          fontFamily: 'var(--quafi-font-mono)',
+          color: 'var(--quafi-text-muted)',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
             <div>
-              <p style={{ fontWeight: 600, color: 'var(--fing-accent-primary)', marginBottom: '8px' }}>MAIN CONTAINER</p>
+              <p style={{ fontWeight: 600, color: 'var(--quafi-accent-primary)', marginBottom: '8px' }}>MAIN CONTAINER</p>
               <p>+ Width: 280px (expanded), 80px (collapsed)</p>
               <p>+ Border-radius: 24px</p>
               <p>+ Shadow: 10px 10px 30px (elevated)</p>
               <p>+ Margin: 12px (floats)</p>
             </div>
             <div>
-              <p style={{ fontWeight: 600, color: 'var(--fing-accent-primary)', marginBottom: '8px' }}>INSET SECTIONS</p>
+              <p style={{ fontWeight: 600, color: 'var(--quafi-accent-primary)', marginBottom: '8px' }}>INSET SECTIONS</p>
               <p>+ Shadow: inset 3px 3px 8px</p>
               <p>+ Border-radius: 16px</p>
               <p>+ Padding: 8px</p>
             </div>
             <div>
-              <p style={{ fontWeight: 600, color: 'var(--fing-accent-primary)', marginBottom: '8px' }}>MENU ITEMS</p>
+              <p style={{ fontWeight: 600, color: 'var(--quafi-accent-primary)', marginBottom: '8px' }}>MENU ITEMS</p>
               <p>+ Padding: 11px 14px</p>
               <p>+ Border-radius: 12px</p>
               <p>+ Backdrop-blur: 8px (hover), 12px (active)</p>
               <p>+ Glass background on hover/active</p>
             </div>
             <div>
-              <p style={{ fontWeight: 600, color: 'var(--fing-accent-primary)', marginBottom: '8px' }}>USER PROFILE</p>
+              <p style={{ fontWeight: 600, color: 'var(--quafi-accent-primary)', marginBottom: '8px' }}>USER PROFILE</p>
               <p>+ Glass card with blur(10px)</p>
               <p>+ Avatar: 42x42px, border-radius: 50%</p>
               <p>+ Chevron indicator for dropdown</p>
@@ -462,8 +462,8 @@ function SidebarContent() {
           boxShadow: getNeuInsetShadow(5, 15),
           background: 'var(--marble-base)',
           fontSize: '12px',
-          fontFamily: 'var(--fing-font-mono)',
-          color: 'var(--fing-text-muted)',
+          fontFamily: 'var(--quafi-font-mono)',
+          color: 'var(--quafi-text-muted)',
           lineHeight: '1.8',
           transition: 'box-shadow 50ms linear',
         }}>

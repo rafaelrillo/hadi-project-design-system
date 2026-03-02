@@ -2,7 +2,7 @@
 import { useMemo } from 'react';
 import type { EChartsOption } from 'echarts';
 import { EChart } from './EChart';
-import { fingColors, chartPalette, tooltipFormatters } from './fingTheme';
+import { quafiColors, chartPalette, tooltipFormatters } from './quafiTheme';
 import type { SeriesData, TimeSeriesDataPoint, BaseChartProps } from './types';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -91,8 +91,8 @@ export function LineChart({
                 const point = paramArray[0];
                 return `
                   <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px;">
-                    <div style="color: ${fingColors.textTertiary}; margin-bottom: 4px;">${point.axisValue}</div>
-                    <div style="color: ${fingColors.textPrimary}; font-weight: 600;">${formatValue(point.value)}</div>
+                    <div style="color: ${quafiColors.textTertiary}; margin-bottom: 4px;">${point.axisValue}</div>
+                    <div style="color: ${quafiColors.textPrimary}; font-weight: 600;">${formatValue(point.value)}</div>
                   </div>
                 `;
               },
@@ -104,9 +104,9 @@ export function LineChart({
           type: 'category',
           data: times,
           show: !minimal,
-          axisLine: { lineStyle: { color: fingColors.borderSubtle } },
+          axisLine: { lineStyle: { color: quafiColors.borderSubtle } },
           axisLabel: {
-            color: fingColors.textTertiary,
+            color: quafiColors.textTertiary,
             fontSize: 10,
             fontFamily: "'Space Mono', monospace",
           },
@@ -118,13 +118,13 @@ export function LineChart({
           axisLine: { show: false },
           axisTick: { show: false },
           axisLabel: {
-            color: fingColors.textTertiary,
+            color: quafiColors.textTertiary,
             fontSize: 10,
             fontFamily: "'Space Mono', monospace",
             formatter: (value: number) => formatValue(value),
           },
           splitLine: {
-            lineStyle: { color: fingColors.borderSubtle },
+            lineStyle: { color: quafiColors.borderSubtle },
             show: !minimal,
           },
         },
@@ -206,13 +206,13 @@ export function LineChart({
                 color: string;
               }>;
               let html = `<div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px;">`;
-              html += `<div style="color: ${fingColors.textTertiary}; margin-bottom: 8px;">${paramArray[0].axisValue}</div>`;
+              html += `<div style="color: ${quafiColors.textTertiary}; margin-bottom: 8px;">${paramArray[0].axisValue}</div>`;
               paramArray.forEach((p) => {
                 html += `
                   <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
                     <span style="width: 8px; height: 8px; border-radius: 50%; background: ${p.color};"></span>
-                    <span style="color: ${fingColors.textSecondary};">${p.seriesName}</span>
-                    <span style="color: ${fingColors.textPrimary}; font-weight: 500; margin-left: auto;">${formatValue(p.value)}</span>
+                    <span style="color: ${quafiColors.textSecondary};">${p.seriesName}</span>
+                    <span style="color: ${quafiColors.textPrimary}; font-weight: 500; margin-left: auto;">${formatValue(p.value)}</span>
                   </div>
                 `;
               });
@@ -226,7 +226,7 @@ export function LineChart({
         top: title ? 30 : 0,
         right: 0,
         textStyle: {
-          color: fingColors.textSecondary,
+          color: quafiColors.textSecondary,
           fontSize: 11,
         },
       },
@@ -242,9 +242,9 @@ export function LineChart({
         type: 'category',
         data: allTimes,
         show: !minimal,
-        axisLine: { lineStyle: { color: fingColors.borderSubtle } },
+        axisLine: { lineStyle: { color: quafiColors.borderSubtle } },
         axisLabel: {
-          color: fingColors.textTertiary,
+          color: quafiColors.textTertiary,
           fontSize: 10,
           fontFamily: "'Space Mono', monospace",
         },
@@ -256,13 +256,13 @@ export function LineChart({
         axisLine: { show: false },
         axisTick: { show: false },
         axisLabel: {
-          color: fingColors.textTertiary,
+          color: quafiColors.textTertiary,
           fontSize: 10,
           fontFamily: "'Space Mono', monospace",
           formatter: (value: number) => formatValue(value),
         },
         splitLine: {
-          lineStyle: { color: fingColors.borderSubtle },
+          lineStyle: { color: quafiColors.borderSubtle },
           show: !minimal,
         },
       },

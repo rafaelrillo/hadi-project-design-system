@@ -2,7 +2,7 @@
 import { useMemo } from 'react';
 import type { EChartsOption } from 'echarts';
 import { EChart } from './EChart';
-import { fingColors, chartPalette, tooltipFormatters } from './fingTheme';
+import { quafiColors, chartPalette, tooltipFormatters } from './quafiTheme';
 import type { BaseChartProps } from './types';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -71,7 +71,7 @@ export function BarChart({
       const itemColors = data.map((d, i) => {
         if (d.color) return d.color;
         if (showPositiveNegative) {
-          return d.value >= 0 ? fingColors.positive : fingColors.negative;
+          return d.value >= 0 ? quafiColors.positive : quafiColors.negative;
         }
         return colors[i % colors.length];
       });
@@ -79,9 +79,9 @@ export function BarChart({
       const categoryAxis = {
         type: 'category' as const,
         data: categories,
-        axisLine: { lineStyle: { color: fingColors.borderSubtle } },
+        axisLine: { lineStyle: { color: quafiColors.borderSubtle } },
         axisLabel: {
-          color: fingColors.textTertiary,
+          color: quafiColors.textTertiary,
           fontSize: 11,
           fontFamily: "'Inter', sans-serif",
           rotate: horizontal ? 0 : categories.length > 10 ? 45 : 0,
@@ -93,13 +93,13 @@ export function BarChart({
         axisLine: { show: false },
         axisTick: { show: false },
         axisLabel: {
-          color: fingColors.textTertiary,
+          color: quafiColors.textTertiary,
           fontSize: 10,
           fontFamily: "'Space Mono', monospace",
           formatter: (value: number) => formatValue(value),
         },
         splitLine: {
-          lineStyle: { color: fingColors.borderSubtle },
+          lineStyle: { color: quafiColors.borderSubtle },
         },
       };
 
@@ -161,9 +161,9 @@ export function BarChart({
     const categoryAxis = {
       type: 'category' as const,
       data: categories,
-      axisLine: { lineStyle: { color: fingColors.borderSubtle } },
+      axisLine: { lineStyle: { color: quafiColors.borderSubtle } },
       axisLabel: {
-        color: fingColors.textTertiary,
+        color: quafiColors.textTertiary,
         fontSize: 11,
         fontFamily: "'Inter', sans-serif",
       },
@@ -174,13 +174,13 @@ export function BarChart({
       axisLine: { show: false },
       axisTick: { show: false },
       axisLabel: {
-        color: fingColors.textTertiary,
+        color: quafiColors.textTertiary,
         fontSize: 10,
         fontFamily: "'Space Mono', monospace",
         formatter: (value: number) => formatValue(value),
       },
       splitLine: {
-        lineStyle: { color: fingColors.borderSubtle },
+        lineStyle: { color: quafiColors.borderSubtle },
       },
     };
 
@@ -202,7 +202,7 @@ export function BarChart({
             html += `
               <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
                 <span style="width: 10px; height: 10px; border-radius: 2px; background: ${p.color};"></span>
-                <span style="color: ${fingColors.textSecondary};">${p.seriesName}</span>
+                <span style="color: ${quafiColors.textSecondary};">${p.seriesName}</span>
                 <span style="font-family: 'Space Mono', monospace; font-weight: 500; margin-left: auto;">${formatValue(p.value)}</span>
               </div>
             `;
@@ -217,7 +217,7 @@ export function BarChart({
         top: title ? 30 : 0,
         right: 0,
         textStyle: {
-          color: fingColors.textSecondary,
+          color: quafiColors.textSecondary,
           fontSize: 11,
         },
       },
