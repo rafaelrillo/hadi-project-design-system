@@ -1,0 +1,300 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Quafi | Simular Spec</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #F0F2F5;
+            --card: #FFFFFF;
+            --text: #1A202C;
+            --primary: #5A67D8; /* Indigo */
+            --warning: #C05621; /* Orange/Red */
+            --warning-bg: #FEEBC8;
+            --success: #48BB78;
+        }
+
+        body { font-family: 'Roboto', sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 40px; display: flex; justify-content: center; }
+        
+        .container { width: 100%; max-width: 1100px; background: var(--bg); }
+        
+        /* Stepper */
+        .stepper { display: flex; justify-content: space-between; margin-bottom: 30px; border-bottom: 2px solid #E2E8F0; padding-bottom: 10px; }
+        .step { font-weight: bold; color: #A0AEC0; }
+        .step.active { color: var(--primary); border-bottom: 3px solid var(--primary); margin-bottom: -12px; }
+
+        /* Cards */
+        .card { background: var(--card); border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); padding: 30px; margin-bottom: 20px; }
+        
+        /* Step 1 Styles */
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+        .input-group label { display: block; font-size: 0.85rem; font-weight: bold; margin-bottom: 8px; color: #4A5568; }
+        .input-ctrl { width: 100%; padding: 12px; border: 1px solid #CBD5E0; border-radius: 8px; font-size: 1rem; box-sizing: border-box; }
+        .btn-main { background: var(--primary); color: white; padding: 12px 30px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; float: right; margin-top: 20px; }
+        
+        /* Step 2 Styles */
+        .table-norm { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        .table-norm th { text-align: left; color: #718096; font-size: 0.8rem; padding: 10px; border-bottom: 2px solid #E2E8F0; }
+        .table-norm td { padding: 12px 10px; border-bottom: 1px solid #EDF2F7; font-weight: 500; }
+        .warning-box { background: var(--warning-bg); color: var(--warning); padding: 15px; border-radius: 8px; border-left: 5px solid var(--warning); margin-bottom: 20px; display: none; }
+
+        /* Step 3 Styles */
+        .dual-path { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .path-option { border: 2px solid #E2E8F0; border-radius: 12px; padding: 20px; cursor: pointer; transition: 0.2s; position: relative; }
+        .path-option:hover { border-color: var(--primary); transform: translateY(-3px); }
+        .path-option h3 { margin-top: 0; color: var(--primary); }
+        
+        .metric-comp { display: flex; justify-content: space-between; font-size: 0.9rem; margin: 8px 0; border-bottom: 1px dashed #E2E8F0; padding-bottom: 4px; }
+        .val-bad { color: #E53E3E; }
+        .val-good { color: #38A169; font-weight: bold; }
+        .badge { position: absolute; top: -10px; right: 20px; background: var(--primary); color: white; padding: 4px 10px; font-size: 0.7rem; border-radius: 12px; }
+
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <div class="stepper">
+        <div class="step active" id="st1">1. Definición</div>
+        <div class="step" id="st2">2. Normalización de Mercado</div>
+        <div class="step" id="st3">3. Dual Path (Proyección)</div>
+    </div>
+
+    <div id="view1" class="card">
+        <h2 style="margin-top:0;">Configuración de Inversión</h2>
+        <div class="form-grid">
+            <div class="input-group">
+                <label>Monto a Invertir (USD)</label>
+                <input type="number" id="inpAmount" class="input-ctrl" value="5000" placeholder="Ej: 10000">
+            </div>
+            <div class="input-group">
+                <label>Perfil de Riesgo</label>
+                <select class="input-ctrl">
+                    <option>Conservador</option>
+                    <option selected>Moderado</option>
+                    <option>Agresivo</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>Plazo Objetivo</label>
+                <select class="input-ctrl">
+                    <option>Corto (1 año)</option>
+                    <option selected>Mediano (3 años)</option>
+                    <option>Largo (5+ años)</option>
+                </select>
+            </div>
+        </div>
+        <button class="btn-main" onclick="runNormalizer()">Analizar Mercado ➔</button>
+        <div style="clear:both;"></div>
+    </div>
+
+    <div id="view2" class="card hidden">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+            <h2 style="margin:0;">Cartera Normalizada</h2>
+            <button class="btn-main" style="margin:0; background:#A0AEC0;" onclick="goStep(1)">← Ajustar Monto</button>
+        </div>
+        <p style="color:#718096; font-size:0.9rem;">Algoritmo de optimización ajustado a nominales enteros.</p>
+
+        <div id="minWarning" class="warning-box">
+            <strong>⚠️ Monto Insuficiente:</strong> 
+            El capital mínimo requerido es <span id="minCapVal" style="font-weight:bold;"></span> 
+            debido al activo <span id="minCapAsset" style="font-weight:bold;"></span>.
+        </div>
+
+        <table class="table-norm">
+            <thead>
+                <tr>
+                    <th>Ticker</th>
+                    <th>Peso Ideal (%)</th>
+                    <th>Precio Mkt</th>
+                    <th>Nominales (Q)</th>
+                    <th>Monto Normalizado</th>
+                </tr>
+            </thead>
+            <tbody id="assetTableBody">
+                </tbody>
+            <tfoot>
+                <tr style="background:#F7FAFC;">
+                    <td colspan="3" style="text-align:right; font-weight:bold;">Total Invertido:</td>
+                    <td id="totalInvested" style="font-weight:bold;">$0</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="3" style="text-align:right; color:#718096;">Caja Sobrante:</td>
+                    <td id="cashLeft" style="color:var(--success); font-weight:bold;">$0</td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <div style="margin-top:20px; text-align:right;">
+            <button id="btnProceed" class="btn-main" onclick="goStep(3)">Ver Proyecciones ➔</button>
+        </div>
+    </div>
+
+    <div id="view3" class="card hidden">
+        <h2 style="margin-top:0;">Estrategia de Ejecución (Dual Path)</h2>
+        <p style="color:#718096;">Compara el impacto de mantener tu cartera vieja vs. rotar todo.</p>
+        
+        <div class="dual-path">
+            <div class="path-option">
+                <h3>Opción A: Comprar (Inyección)</h3>
+                <p style="font-size:0.85rem; color:#4A5568;">Se agregan los nuevos activos a tu tenencia actual. No se vende nada.</p>
+                <hr style="border:0; border-top:1px solid #E2E8F0;">
+                
+                <h4>Proyección (3 Años)</h4>
+                <div class="metric-comp">
+                    <span>Retorno Anual (CAGR):</span>
+                    <span>12.5% <span style="font-size:0.8em; color:#718096;">(Antes: 12.0%)</span></span>
+                </div>
+                <div class="metric-comp">
+                    <span>Volatilidad:</span>
+                    <span>14.2% <span style="font-size:0.8em; color:#718096;">(Igual)</span></span>
+                </div>
+                <div class="metric-comp">
+                    <span>Eficiencia (Sharpe):</span>
+                    <span>1.10</span>
+                </div>
+                
+                <div style="margin-top:15px; background:#F7FAFC; padding:10px; border-radius:8px; font-size:0.9rem;">
+                    <strong>A Desembolsar:</strong> <span id="pathA_cost">$5,000</span>
+                </div>
+            </div>
+
+            <div class="path-option" style="border-color:var(--primary);">
+                <span class="badge">Recomendado</span>
+                <h3>Opción B: Sustituir (Rotación)</h3>
+                <p style="font-size:0.85rem; color:#4A5568;">Se vende la cartera ineficiente actual y se compra 100% la cartera óptima.</p>
+                <hr style="border:0; border-top:1px solid #E2E8F0;">
+                
+                <h4>Proyección (3 Años)</h4>
+                <div class="metric-comp">
+                    <span>Retorno Anual (CAGR):</span>
+                    <span class="val-good">16.8% ↗</span>
+                </div>
+                <div class="metric-comp">
+                    <span>Volatilidad:</span>
+                    <span class="val-good">11.5% ↘</span>
+                </div>
+                <div class="metric-comp">
+                    <span>Eficiencia (Sharpe):</span>
+                    <span class="val-good">1.85 ↗</span>
+                </div>
+                
+                <div style="margin-top:15px; background:#EBF4FF; padding:10px; border-radius:8px; font-size:0.9rem;">
+                    <strong>A Desembolsar (Neto):</strong> <span id="pathB_cost">~$4,800</span><br>
+                    <small style="color:#718096;">(Inversión - Venta Activos Viejos)</small>
+                </div>
+            </div>
+        </div>
+        
+        <button class="btn-main" style="width:100%; margin-top:30px;">Ejecutar Opción Seleccionada</button>
+    </div>
+
+</div>
+
+<script>
+    // --- DATOS MOCK DE MERCADO ---
+    const MARKET_PRICES = {
+        'SPY': 450.00,
+        'MELI': 1600.00, // Activo Caro
+        'KO': 60.00,
+        'GLD': 180.00
+    };
+
+    // --- PESOS OBJETIVO (Salida de Alg2) ---
+    const TARGET_WEIGHTS = [
+        { ticker: 'SPY', weight: 0.30 },
+        { ticker: 'MELI', weight: 0.20 }, // 20%
+        { ticker: 'KO', weight: 0.30 },
+        { ticker: 'GLD', weight: 0.20 }
+    ];
+
+    function runNormalizer() {
+        const amount = parseFloat(document.getElementById('inpAmount').value);
+        if(!amount) return;
+
+        const tableBody = document.getElementById('assetTableBody');
+        const warningBox = document.getElementById('minWarning');
+        const proceedBtn = document.getElementById('btnProceed');
+        
+        tableBody.innerHTML = '';
+        warningBox.style.display = 'none';
+        proceedBtn.disabled = false;
+        proceedBtn.style.opacity = 1;
+
+        let totalAllocated = 0;
+        let globalMinRequired = 0;
+        let constraintAsset = '';
+
+        // 1. CALCULO DEL PISO Y NORMALIZACIÓN
+        TARGET_WEIGHTS.forEach(asset => {
+            const price = MARKET_PRICES[asset.ticker];
+            
+            // FÓRMULA DE PISO: T_i = Price / Weight
+            const minReqForAsset = price / asset.weight;
+            
+            // Chequear si este es el nuevo máximo requerimiento
+            if (minReqForAsset > globalMinRequired) {
+                globalMinRequired = minReqForAsset;
+                constraintAsset = asset.ticker;
+            }
+
+            // Cálculo de nominales para el monto actual
+            // Monto Teórico = Total * Peso
+            const theoreticalAmount = amount * asset.weight;
+            // Nominales = Floor(Teórico / Precio)
+            const nominals = Math.floor(theoreticalAmount / price);
+            const normalizedAmount = nominals * price;
+
+            totalAllocated += normalizedAmount;
+
+            // Render Row
+            const row = `
+                <tr>
+                    <td><strong>${asset.ticker}</strong></td>
+                    <td>${(asset.weight * 100).toFixed(0)}%</td>
+                    <td>$${price}</td>
+                    <td style="font-weight:bold; color:${nominals === 0 ? 'red' : 'black'}">${nominals} u.</td>
+                    <td>$${normalizedAmount.toLocaleString()}</td>
+                </tr>
+            `;
+            tableBody.innerHTML += row;
+        });
+
+        // 2. CHECK DE MONTO MÍNIMO
+        if (amount < globalMinRequired) {
+            warningBox.style.display = 'block';
+            document.getElementById('minCapVal').innerText = '$' + globalMinRequired.toLocaleString();
+            document.getElementById('minCapAsset').innerText = constraintAsset;
+            
+            // Opcional: Bloquear avance si es crítico
+            // proceedBtn.disabled = true;
+            // proceedBtn.style.opacity = 0.5;
+        }
+
+        // 3. ACTUALIZAR FOOTER Y PASO 3
+        document.getElementById('totalInvested').innerText = '$' + totalAllocated.toLocaleString();
+        document.getElementById('cashLeft').innerText = '$' + (amount - totalAllocated).toLocaleString();
+        
+        // Actualizar datos del paso 3
+        document.getElementById('pathA_cost').innerText = '$' + amount.toLocaleString();
+
+        goStep(2);
+    }
+
+    function goStep(n) {
+        document.querySelectorAll('.card').forEach(el => el.classList.add('hidden'));
+        document.getElementById('view' + n).classList.remove('hidden');
+        
+        document.querySelectorAll('.step').forEach(el => el.classList.remove('active'));
+        document.getElementById('st' + n).classList.add('active');
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Quafi | Calibrar Final v5.2</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #F8FAFC;
+            --surface: #FFFFFF;
+            --primary: #4F46E5;
+            --primary-hover: #4338ca;
+            --text-main: #0F172A;
+            --text-sec: #64748B;
+            --success: #10B981;
+            --danger: #EF4444;
+            --border: #E2E8F0;
+        }
+
+        body { font-family: 'Manrope', sans-serif; background: var(--bg); color: var(--text-main); margin: 0; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+
+        /* HEADER */
+        header { background: var(--surface); padding: 15px 30px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-weight: 800; font-size: 1.2rem; color: var(--primary); }
+        .portfolio-val { font-size: 0.9rem; font-weight: 600; color: var(--text-sec); }
+        .val-num { color: var(--text-main); font-weight: 800; font-size: 1.1rem; margin-left: 5px; }
+
+        /* LAYOUT */
+        .workspace { display: grid; grid-template-columns: 280px 1fr 300px; gap: 20px; padding: 20px; height: calc(100% - 70px); }
+        
+        .panel { background: var(--surface); border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 4px 12px rgba(0,0,0,0.03); display: flex; flex-direction: column; overflow: hidden; }
+        .p-head { padding: 15px 20px; border-bottom: 1px solid var(--border); background: #FAFAFA; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; color: var(--text-sec); letter-spacing: 0.5px; }
+        
+        /* -- PANEL 1: INTELLIGENCE -- */
+        .intel-list { padding: 10px 0; overflow-y: auto; flex: 1; }
+        .intel-item { padding: 12px 20px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; transition: background 0.2s; }
+        .intel-item:hover { background: #F1F5F9; }
+        .ticker-box strong { display: block; font-size: 1rem; }
+        .tag-buy { font-size: 0.7rem; font-weight: 700; color: var(--success); background: #DCFCE7; padding: 2px 6px; border-radius: 4px; }
+        .tag-sell { font-size: 0.7rem; font-weight: 700; color: var(--danger); background: #FEE2E2; padding: 2px 6px; border-radius: 4px; }
+        
+        .intel-footer { padding: 20px; border-top: 1px solid var(--border); background: #F8FAFC; }
+        .btn-apply { width: 100%; background: var(--text-main); color: white; padding: 12px; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; transition: 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .btn-apply:hover { background: #000; transform: translateY(-1px); }
+
+        /* Switch */
+        .switch { position: relative; display: inline-block; width: 36px; height: 20px; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #CBD5E1; transition: .4s; border-radius: 34px; }
+        .slider:before { position: absolute; content: ""; height: 16px; width: 16px; left: 2px; bottom: 2px; background-color: white; transition: .4s; border-radius: 50%; }
+        input:checked + .slider { background-color: var(--primary); }
+        input:checked + .slider:before { transform: translateX(16px); }
+
+        /* -- PANEL 2: MATRIX TABLE (7 COLS) -- */
+        .p-body { padding: 0; overflow-y: auto; flex: 1; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+        th { text-align: left; padding: 12px 8px; background: #F8FAFC; color: var(--text-sec); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; position: sticky; top: 0; z-index: 10; border-bottom: 2px solid var(--border); white-space: nowrap; }
+        td { padding: 12px 8px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+        tr:hover { background: #F8FAFC; }
+
+        /* Percentage Bars */
+        .bar-wrapper { display: flex; flex-direction: column; gap: 2px; width: 100%; }
+        .bar-bg { width: 100%; height: 5px; background: #E2E8F0; border-radius: 3px; }
+        .bar-fill { height: 100%; border-radius: 3px; background: var(--text-sec); transition: width 0.5s; }
+        .bar-fill.target { background: var(--primary); }
+        .pct-text { font-size: 0.7rem; font-weight: 700; color: var(--text-main); }
+
+        .delta-val { font-weight: 700; font-feature-settings: "tnum"; font-size: 0.85rem; }
+        .pos { color: var(--success); }
+        .neg { color: var(--danger); }
+        .neu { color: var(--text-sec); opacity: 0.5; }
+        
+        .holdings-val { font-weight: 600; color: var(--text-main); background: #F1F5F9; padding: 3px 6px; border-radius: 4px; font-size: 0.75rem; display: inline-block; min-width: 30px; text-align: center; }
+        .target-val { font-weight: 700; color: var(--primary); background: #EEF2FF; padding: 3px 6px; border-radius: 4px; font-size: 0.75rem; display: inline-block; min-width: 30px; text-align: center; border: 1px solid #C7D2FE; }
+
+        /* -- PANEL 3: IMPACT -- */
+        .impact-container { padding: 20px; }
+        .metric-row { margin-bottom: 20px; }
+        .metric-label { font-size: 0.8rem; color: var(--text-sec); margin-bottom: 5px; display: block; }
+        .metric-comp { display: flex; align-items: baseline; justify-content: space-between; background: #F1F5F9; padding: 10px; border-radius: 8px; }
+        .val-before { font-size: 0.9rem; color: var(--text-sec); text-decoration: line-through; }
+        .arrow { font-size: 0.9rem; color: var(--text-sec); margin: 0 5px; }
+        .val-after { font-size: 1.1rem; font-weight: 800; color: var(--text-main); }
+        .val-after.better { color: var(--success); }
+        .val-after.worse { color: var(--danger); }
+
+        .cash-summary { margin-top: 30px; border: 2px dashed var(--border); border-radius: 12px; padding: 15px; text-align: center; background: #FFFCF5; }
+        .net-total { font-size: 1.5rem; font-weight: 800; display: block; margin: 5px 0; }
+        
+        .btn-exec { width: 100%; background: var(--primary); color: white; padding: 15px; border: none; border-radius: 10px; font-weight: 700; font-size: 1rem; margin-top: 20px; cursor: pointer; box-shadow: 0 4px 10px rgba(79, 70, 229, 0.3); transition: transform 0.1s; }
+        .btn-exec:hover { background: var(--primary-hover); }
+
+        /* LOADER */
+        .loader-overlay { position: absolute; top:0; left:0; width:100%; height:100%; background:rgba(255,255,255,0.8); z-index:50; display:none; align-items:center; justify-content:center; flex-direction:column; backdrop-filter:blur(2px); }
+        .spinner { width: 30px; height: 30px; border: 3px solid var(--primary); border-top-color: transparent; border-radius: 50%; animation: spin 1s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">Quafi <span style="font-weight:400; color:var(--text-sec);">| Calibrar</span></div>
+    <div class="portfolio-val">Valor Total: <span class="val-num" id="headerTotal">$10,000</span></div>
+</header>
+
+<div class="workspace">
+
+    <div class="panel">
+        <div class="p-head">Market Intelligence (IA)</div>
+        <div class="intel-list">
+            <div style="padding:0 20px 10px; font-size:0.75rem; color:var(--text-sec);">
+                Selecciona qué agregar o quitar.
+            </div>
+
+            <div class="intel-item">
+                <div class="ticker-box">
+                    <strong>NVDA</strong>
+                    <span class="tag-buy">AGREGAR</span>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="tg_NVDA">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="intel-item">
+                <div class="ticker-box">
+                    <strong>GLD</strong>
+                    <span class="tag-buy">AGREGAR</span>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="tg_GLD">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <hr style="border:0; border-top:1px dashed var(--border); margin:0;">
+
+            <div class="intel-item">
+                <div class="ticker-box">
+                    <strong>KO</strong>
+                    <span class="tag-sell">VENDER</span>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="tg_KO" checked>
+                    <span class="slider" style="background:#EF4444;"></span>
+                </label>
+            </div>
+        </div>
+
+        <div class="intel-footer">
+            <button class="btn-apply" onclick="runEngine()">
+                <span id="btnApplyText">Aplicar Cambios</span>
+                <span>↻</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="panel" style="position:relative;">
+        <div class="loader-overlay" id="loader">
+            <div class="spinner"></div>
+            <div style="margin-top:10px; font-weight:700; font-size:0.8rem; color:var(--primary);">Optimizando...</div>
+        </div>
+
+        <div class="p-head">Matriz de Rebalanceo</div>
+        <div class="p-body">
+            <table>
+                <thead>
+                    <tr>
+                        <th width="12%">Activo</th>
+                        <th width="15%">% Actual</th>
+                        <th width="15%">% Target</th>
+                        <th width="12%" style="text-align:center;">T. Actual</th>
+                        <th width="12%" style="text-align:center;">T. Target</th>
+                        <th width="15%">Operación</th>
+                        <th width="19%" style="text-align:right;">Monto ($)</th>
+                    </tr>
+                </thead>
+                <tbody id="matrixBody">
+                    </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="panel">
+        <div class="p-head">Impacto Financiero</div>
+        <div class="impact-container">
+            
+            <div class="metric-row">
+                <span class="metric-label">Eficiencia (Sharpe Ratio)</span>
+                <div class="metric-comp">
+                    <span class="val-before" id="beforeSharpe">1.15</span>
+                    <span class="arrow">➔</span>
+                    <span class="val-after" id="afterSharpe">1.15</span>
+                </div>
+            </div>
+
+            <div class="metric-row">
+                <span class="metric-label">Retorno Esperado (Anual)</span>
+                <div class="metric-comp">
+                    <span class="val-before" id="beforeReturn">11.2%</span>
+                    <span class="arrow">➔</span>
+                    <span class="val-after" id="afterReturn">11.2%</span>
+                </div>
+            </div>
+
+            <div class="metric-row">
+                <span class="metric-label">Volatilidad (Riesgo)</span>
+                <div class="metric-comp">
+                    <span class="val-before" id="beforeVol">15.5%</span>
+                    <span class="arrow">➔</span>
+                    <span class="val-after" id="afterVol">15.5%</span>
+                </div>
+            </div>
+
+            <div class="cash-summary">
+                <span class="metric-label" style="text-transform:uppercase;">Neto a Pagar/Cobrar</span>
+                <span class="net-total" id="netTicket">$0</span>
+                <small style="color:var(--text-sec); font-size:0.75rem;" id="ticketText">Equilibrio</small>
+            </div>
+
+            <button class="btn-exec">Confirmar Orden</button>
+
+        </div>
+    </div>
+
+</div>
+
+<script>
+    // --- MOCK DATA ---
+    const ASSET_DB = {
+        'SPY':  { price: 450, ret: 0.10, vol: 0.15, sharpe: 0.6 },
+        'MSFT': { price: 350, ret: 0.15, vol: 0.20, sharpe: 0.7 },
+        'MELI': { price: 1600, ret: 0.25, vol: 0.35, sharpe: 0.65 },
+        'KO':   { price: 60,  ret: 0.05, vol: 0.10, sharpe: 0.4 },
+        'NVDA': { price: 480, ret: 0.35, vol: 0.40, sharpe: 0.8 },
+        'GLD':  { price: 190, ret: 0.04, vol: 0.08, sharpe: 0.5 }
+    };
+
+    let userPortfolio = [
+        { ticker: 'SPY',  qty: 10 },
+        { ticker: 'MSFT', qty: 10 },
+        { ticker: 'MELI', qty: 2 },
+        { ticker: 'KO',   qty: 50 } 
+    ];
+
+    const BEFORE_METRICS = { sharpe: 1.15, ret: 11.2, vol: 15.5 };
+
+    // --- ENGINE ---
+
+    function runEngine() {
+        const loader = document.getElementById('loader');
+        loader.style.display = 'flex';
+        document.getElementById('btnApplyText').innerText = "Recalculando...";
+
+        setTimeout(() => {
+            calculateLogic();
+            loader.style.display = 'none';
+            document.getElementById('btnApplyText').innerText = "Aplicar Cambios";
+        }, 600);
+    }
+
+    function calculateLogic() {
+        // A. Patrimonio Total
+        let totalEquity = 0;
+        let currentMap = {}; 
+
+        userPortfolio.forEach(p => {
+            const val = p.qty * ASSET_DB[p.ticker].price;
+            totalEquity += val;
+            currentMap[p.ticker] = { qty: p.qty, val: val, pct: 0 };
+        });
+        
+        for (let t in currentMap) {
+            currentMap[t].pct = currentMap[t].val / totalEquity;
+        }
+
+        document.getElementById('headerTotal').innerText = '$' + totalEquity.toLocaleString();
+
+        // B. Inputs
+        const addNVDA = document.getElementById('tg_NVDA').checked;
+        const addGLD  = document.getElementById('tg_GLD').checked;
+        const keepKO  = document.getElementById('tg_KO').checked;
+
+        // C. Target Logic
+        let activeTickers = ['SPY', 'MSFT', 'MELI']; 
+        if (keepKO) activeTickers.push('KO');
+        if (addNVDA) activeTickers.push('NVDA');
+        if (addGLD) activeTickers.push('GLD');
+
+        let rawWeights = {};
+        let totalScore = 0;
+
+        activeTickers.forEach(t => {
+            let score = ASSET_DB[t].ret * 100; 
+            if (t === 'KO') score *= 0.5;
+            if (t === 'NVDA') score *= 1.2;
+            rawWeights[t] = score;
+            totalScore += score;
+        });
+
+        let targetMap = {};
+        activeTickers.forEach(t => {
+            targetMap[t] = rawWeights[t] / totalScore;
+        });
+        if (!keepKO) targetMap['KO'] = 0;
+
+        // D. Generate Rows
+        let allInvolved = new Set([...Object.keys(currentMap), ...Object.keys(targetMap)]);
+        let matrix = [];
+        let netCash = 0;
+        let w_sharpe = 0, w_ret = 0, w_vol = 0;
+
+        allInvolved.forEach(ticker => {
+            const currentQty = currentMap[ticker] ? currentMap[ticker].qty : 0;
+            const currentPct = currentMap[ticker] ? currentMap[ticker].pct : 0;
+            const price = ASSET_DB[ticker].price;
+            const targetWeight = targetMap[ticker] || 0;
+            
+            const targetAmount = totalEquity * targetWeight;
+            const targetQty = Math.floor(targetAmount / price);
+            const deltaQty = targetQty - currentQty;
+            const deltaAmt = deltaQty * price;
+            
+            netCash += deltaAmt;
+
+            if (targetWeight > 0) {
+                w_sharpe += targetWeight * ASSET_DB[ticker].sharpe;
+                w_ret += targetWeight * ASSET_DB[ticker].ret;
+                w_vol += targetWeight * ASSET_DB[ticker].vol;
+            }
+
+            matrix.push({
+                ticker: ticker,
+                price: price,
+                curQty: currentQty, 
+                tgtQty: targetQty, // NEW FIELD
+                curPct: currentPct,
+                tgtPct: targetWeight,
+                deltaQty: deltaQty,
+                deltaAmt: deltaAmt
+            });
+        });
+
+        matrix.sort((a,b) => b.tgtPct - a.tgtPct);
+
+        renderMatrix(matrix);
+        renderImpact(w_sharpe, w_ret, w_vol, netCash);
+    }
+
+    function renderMatrix(data) {
+        const tbody = document.getElementById('matrixBody');
+        tbody.innerHTML = '';
+
+        data.forEach(row => {
+            let qtyClass = 'neu';
+            let qtySign = '';
+            let amtClass = 'neu';
+            
+            if (row.deltaQty > 0) { 
+                qtyClass = 'pos'; qtySign = '+'; amtClass = 'pos';
+            } else if (row.deltaQty < 0) { 
+                qtyClass = 'neg'; qtySign = ''; amtClass = 'neg'; 
+            }
+
+            const html = `
+                <tr>
+                    <td>
+                        <strong>${row.ticker}</strong><br>
+                        <span style="color:var(--text-sec); font-size:0.75rem;">$${row.price}</span>
+                    </td>
+                    <td>
+                        <div class="bar-wrapper">
+                            <div class="pct-text">${(row.curPct * 100).toFixed(1)}%</div>
+                            <div class="bar-bg"><div class="bar-fill" style="width:${row.curPct * 100}%"></div></div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="bar-wrapper">
+                            <div class="pct-text" style="color:var(--primary);">${(row.tgtPct * 100).toFixed(1)}%</div>
+                            <div class="bar-bg"><div class="bar-fill target" style="width:${row.tgtPct * 100}%"></div></div>
+                        </div>
+                    </td>
+                    <td style="text-align:center;">
+                        <span class="holdings-val">${row.curQty} u.</span>
+                    </td>
+                    <td style="text-align:center;">
+                        <span class="target-val">${row.tgtQty} u.</span>
+                    </td>
+                    <td class="${qtyClass} delta-val">
+                        ${row.deltaQty === 0 ? '-' : qtySign + row.deltaQty}
+                    </td>
+                    <td style="text-align:right;" class="${amtClass} delta-val">
+                        ${row.deltaAmt === 0 ? '-' : '$' + row.deltaAmt.toLocaleString()}
+                    </td>
+                </tr>
+            `;
+            tbody.innerHTML += html;
+        });
+    }
+
+    function renderImpact(sharpe, ret, vol, cash) {
+        updateMetric('beforeSharpe', 'afterSharpe', BEFORE_METRICS.sharpe, (sharpe * 1.5).toFixed(2));
+        updateMetric('beforeReturn', 'afterReturn', BEFORE_METRICS.ret + '%', (ret * 100).toFixed(1) + '%');
+        
+        const volStr = (vol * 100).toFixed(1) + '%';
+        const elVol = document.getElementById('afterVol');
+        document.getElementById('beforeVol').innerText = BEFORE_METRICS.vol + '%';
+        elVol.innerText = volStr;
+        elVol.className = (vol * 100) < BEFORE_METRICS.vol ? 'val-after better' : 'val-after worse';
+
+        const elCash = document.getElementById('netTicket');
+        const elText = document.getElementById('ticketText');
+        
+        if (cash > 0) {
+            elCash.innerText = "+$" + cash.toLocaleString();
+            elCash.style.color = "var(--primary)";
+            elText.innerText = "A pagar (Inversión)";
+        } else if (cash < 0) {
+            elCash.innerText = "-$" + Math.abs(cash).toLocaleString();
+            elCash.style.color = "var(--success)";
+            elText.innerText = "A favor (Sobrante)";
+        } else {
+            elCash.innerText = "$0";
+            elCash.style.color = "var(--text-main)";
+            elText.innerText = "Equilibrio";
+        }
+    }
+
+    function updateMetric(idBefore, idAfter, valBefore, valAfter) {
+        document.getElementById(idBefore).innerText = valBefore;
+        const elAfter = document.getElementById(idAfter);
+        elAfter.innerText = valAfter;
+        const numB = parseFloat(valBefore);
+        const numA = parseFloat(valAfter);
+        elAfter.className = numA >= numB ? 'val-after better' : 'val-after worse';
+    }
+
+    calculateLogic();
+
+</script>
+
+</body>
+</html>
