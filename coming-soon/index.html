@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Quafi - Investment engine. Coming soon.">
+  <meta name="theme-color" content="#d5d8dc">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Quafi">
+  <meta property="og:description" content="Investment engine. Coming soon.">
+  <meta property="og:type" content="website">
+
+  <title>Quafi</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=DM+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="container">
+    <!-- Emblem - Framed variant: outer raised + inner inset -->
+    <div class="emblem-outer">
+      <div class="emblem-inner">
+        <svg class="radar" width="130" height="130" viewBox="0 0 100 100">
+          <defs>
+            <filter id="carve" x="-25%" y="-25%" width="150%" height="150%">
+              <feOffset dx="1.2" dy="1.2" in="SourceAlpha" result="light"/>
+              <feGaussianBlur in="light" stdDeviation="0.5" result="lightBlur"/>
+              <feFlood flood-color="rgba(255,255,255,0.95)" result="lightColor"/>
+              <feComposite in="lightColor" in2="lightBlur" operator="in" result="lightShadow"/>
+              <feOffset dx="-1.2" dy="-1.2" in="SourceAlpha" result="dark"/>
+              <feGaussianBlur in="dark" stdDeviation="0.7" result="darkBlur"/>
+              <feFlood flood-color="rgba(130,140,155,0.7)" result="darkColor"/>
+              <feComposite in="darkColor" in2="darkBlur" operator="in" result="darkShadow"/>
+              <feMerge>
+                <feMergeNode in="darkShadow"/>
+                <feMergeNode in="lightShadow"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+          <!-- Center Dot -->
+          <circle cx="50" cy="50" r="6" fill="#a8adb4" filter="url(#carve)"/>
+          <!-- Ring 1 -->
+          <circle cx="50" cy="50" r="16" fill="none" stroke="#a0a5ac" stroke-width="2.5" filter="url(#carve)"/>
+          <!-- Ring 2 -->
+          <circle cx="50" cy="50" r="27" fill="none" stroke="#a0a5ac" stroke-width="2.5" filter="url(#carve)"/>
+          <!-- Ring 3 -->
+          <circle cx="50" cy="50" r="39" fill="none" stroke="#a0a5ac" stroke-width="2.5" filter="url(#carve)"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Wordmark -->
+    <h1 class="wordmark">Quafi</h1>
+
+    <!-- Descriptor -->
+    <p class="descriptor">Investment engine.</p>
+
+    <!-- Value prop -->
+    <p class="value-prop">Build smarter portfolios. Keep them optimized.</p>
+
+    <!-- Divider -->
+    <div class="divider"></div>
+
+    <!-- Coming Soon -->
+    <p class="coming-soon">Coming Soon</p>
+  </main>
+
+  <footer class="footer">
+    <p>Quafi 2025</p>
+  </footer>
+</body>
+</html>
