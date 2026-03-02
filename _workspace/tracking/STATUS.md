@@ -1,11 +1,12 @@
-# SENTINEL Design System - Status
+# QUAFI Design System - Status
 
-> Current state of the SENTINEL Design System project.
+> Current state of the QUAFI Design System project.
 
 **Last Updated**: 2026-03-02
-**Last Checkpoint**: 2026-03-02 (Coming Soon + Product Documentation)
+**Last Checkpoint**: 2026-03-02 (Complete FING/SENTINEL → QUAFI Rebrand)
 **Active Instance**: Current
 **Branch**: `feature/quafi-modules`
+**Repo**: `quafi-design-system` (formerly `hadi-project-design-system`)
 
 ---
 
@@ -13,59 +14,78 @@
 
 | Item | Status | Notes |
 |------|--------|-------|
-| FING -> Quafi Rebrand | COMPLETE | All user-visible text renamed |
+| **FING/SENTINEL → QUAFI Rebrand** | **COMPLETE** | 378 files, ~8,000 CSS variables renamed |
+| Coming Soon Page | COMPLETE | quafi.io LIVE with auto-deploy |
 | Design System Consolidation v2 | COMPLETE | All 8 phases, 82KB to 41KB (50% reduction) |
 | Monorepo Preparation | COMPLETE | All 8 phases (0-7) done |
 | Hadi Backend Integration | COMPLETE | MVP Calibrate page working end-to-end |
 | Quafi Modules | COMPLETE | 3 modules: Calibrate, Simulate, Reports |
-| **Coming Soon Page** | **COMPLETE** | Static page ready for Cloudflare deploy |
-| **Product Documentation** | **COMPLETE** | QUAFI_PRODUCT.md created as source of truth |
+| Product Documentation | COMPLETE | QUAFI_PRODUCT.md created as source of truth |
 
 ---
 
-## Session 2026-03-02: Coming Soon + Documentation
+## Session 2026-03-02: Complete FING/SENTINEL → QUAFI Rebrand
 
 ### What was done
 
-1. **Committed previous work** (feature/quafi-modules)
-   - 60 files, +11,102 / -3,636 lines
-   - All 3 modules + rebrand + infrastructure
+1. **Complete CSS Variable Migration**
+   - `--fing-*` → `--quafi-*` (~8,000 occurrences)
+   - `--sentinel-*` → `--quafi-*` (~600 occurrences)
+   - 15 CSS files in `src/styles/` updated
 
-2. **Created Coming Soon page** (`coming-soon/`)
-   - Static HTML + CSS (~11KB total)
-   - Stone Marble design system
-   - Framed emblem variant (raised + inset)
-   - Copy: "Build smarter portfolios. Keep them optimized."
-   - Ready for Cloudflare Pages deploy
+2. **ECharts Theme Rename**
+   - `fingTheme.ts` → `quafiTheme.ts`
+   - `fingColors` → `quafiColors`
+   - `fingEChartsTheme` → `quafiEChartsTheme`
+   - Theme registration: `'fing'` → `'quafi'`
 
-3. **Unified Product Documentation**
-   - Read and analyzed all sources:
-     - `/Hadi/docs/VISION.md` — Engine vision
-     - `/Hadi/docs/CONTEXT.md` — Algorithm context
-     - `/Hadi/docs/ARCHITECTURE.md` — Technical architecture
-     - `facus-files/*.pdf` — Module specs from Facu
-   - Created `docs/QUAFI_PRODUCT.md` — Source of truth
-   - Defines: What Quafi is, how it works, business model, roadmap
+3. **Component Renames**
+   - `FingEmblem/` → `QuafiEmblem/`
+   - `FingWordmark/` → `QuafiWordmark/`
+   - `FingEmblemProps` → `QuafiEmblemProps`
+   - `FingLockupHorizontal` → `QuafiLockupHorizontal`
+   - etc.
 
-### Files Created
+4. **Directory Renames**
+   - `atoms/fing/` → `atoms/quafi/`
+   - `molecules/fing/` → `molecules/quafi/`
+   - `organisms/fing/` → `organisms/quafi/`
+   - `pages/FingHome/` → `pages/QuafiHome/`
+   - `pages/fing/` → `pages/quafi/`
+   - `layouts/FingDashboard/` → `layouts/QuafiDashboard/`
 
-| File | Purpose |
-|------|---------|
-| `coming-soon/index.html` | Static coming soon page |
-| `coming-soon/styles.css` | Stone Marble styles |
-| `docs/QUAFI_PRODUCT.md` | Product definition (source of truth) |
-| `docs/QUAFI_UNIFIED_VISION.md` | Synthesis of all documentation |
+5. **Other Renames**
+   - Animation classes: `.fing-animate-*` → `.quafi-animate-*`
+   - Storage keys: `fing-auth` → `quafi-auth`, etc.
+   - CSS file: `typography/fing.css` → `typography/quafi.css`
 
-### Key Decisions
+6. **Build Fixes**
+   - Fixed import paths after directory renames
+   - Fixed "Fingerprint" icon that was incorrectly renamed to "Quafierprint"
 
-- **Copy for Coming Soon**: "Build smarter portfolios. Keep them optimized."
-  - Descriptive, not hype
-  - Explains what it does (build + optimize)
-  - No buzzwords like "AI" or "behavioral economics"
+7. **Repository Rename**
+   - GitHub: `hadi-project-design-system` → `quafi-design-system`
+   - Local folder: renamed to `quafi-design-system/`
+   - Updated CLAUDE.md references
 
-- **Business Model Documented**:
-  - B2B (principal): API for fintech/brokers
-  - B2C (secondary): App for validation + showcase
+### Commit
+
+```
+refactor: complete FING/SENTINEL to QUAFI rebrand
+
+- Rename ~8,000 CSS variables from --fing-* to --quafi-*
+- Rename ~600 CSS variables from --sentinel-* to --quafi-*
+- Rename ECharts theme: fingTheme.ts → quafiTheme.ts
+- Rename components: FingEmblem → QuafiEmblem, FingWordmark → QuafiWordmark
+- Rename directories: atoms/fing → atoms/quafi, molecules/fing → molecules/quafi, etc.
+- Rename pages: FingHome → QuafiHome, FingDashboard → QuafiDashboard
+- Rename animation classes: .fing-animate-* → .quafi-animate-*
+- Rename storage keys: fing-auth → quafi-auth, etc.
+- Update all imports and references
+- Build verified successfully
+
+378 files changed
+```
 
 ---
 
@@ -73,26 +93,17 @@
 
 ### Immediate (Next Session)
 
-1. **Deploy Coming Soon to Cloudflare**
-   - Connect domain
-   - Deploy `coming-soon/` folder
-   - Verify live
-
-### Short-term
-
-2. **Task #2 from Rafa** (to be defined next session)
-   - Will use the product documentation created today
-
-3. **Polish UI of Calibrate**
+1. **Polish UI of Calibrate**
    - Loading states
    - Error recovery
    - Save presets
 
-### Medium-term
+2. **Move files to @quafi/* monorepo packages**
 
-4. **Push feature/quafi-modules to remote**
-5. **Merge to main when ready**
-6. **Tests for mathEngine + stores**
+### Short-term
+
+3. **Merge feature/quafi-modules to main**
+4. **Tests for mathEngine + stores**
 
 ---
 
@@ -101,58 +112,64 @@
 ```yaml
 session:
   date: 2026-03-02
-  checkpoint: "Coming Soon + Product Documentation"
+  checkpoint: "Complete FING/SENTINEL → QUAFI Rebrand"
   branch: feature/quafi-modules
+  repo: quafi-design-system
 
   completed:
-    - "Committed quafi-modules (60 files)"
-    - "Created coming-soon/ static page"
-    - "Created QUAFI_PRODUCT.md (source of truth)"
-    - "Created QUAFI_UNIFIED_VISION.md (synthesis)"
-    - "Researched Hadi backend + Facu specs"
+    - "Renamed ~8,000 CSS variables (--fing-* → --quafi-*)"
+    - "Renamed ~600 CSS variables (--sentinel-* → --quafi-*)"
+    - "Renamed ECharts theme (fingTheme → quafiTheme)"
+    - "Renamed components (FingEmblem → QuafiEmblem, etc.)"
+    - "Renamed directories (atoms/fing → atoms/quafi, etc.)"
+    - "Renamed pages (FingHome → QuafiHome, etc.)"
+    - "Renamed GitHub repo (hadi-project-design-system → quafi-design-system)"
+    - "Renamed local folder"
+    - "378 files changed, build verified"
 
   pending_next_session:
-    - "Deploy coming-soon to Cloudflare"
-    - "Task #2 from Rafa"
+    - "Polish UI of Calibrate"
+    - "Move files to @quafi/* packages"
 
   blockers: []
 ```
 
 ---
 
-## Reference: Coming Soon Files
+## Handoff
 
+```yaml
+handoff:
+  next_steps:
+    - "Start polishing Calibrate UI (loading states, error recovery)"
+    - "Consider moving to monorepo packages"
+
+  warnings:
+    - "Local folder is now quafi-design-system/"
+    - "GitHub repo is now quafi-design-system"
+    - "All --fing-* and --sentinel-* variables are now --quafi-*"
+
+  context:
+    - "quafi.io is LIVE with Coming Soon page"
+    - "Auto-deploy configured via GitHub Actions"
+    - "Branch feature/quafi-modules has all recent work"
 ```
-coming-soon/
-├── index.html   (2.8 KB)
-└── styles.css   (4.7 KB)
-
-Total: ~7.5 KB — ready for Cloudflare Pages
-```
-
-### To Deploy (Cloudflare Pages)
-
-**Option 1: Drag & Drop**
-1. Go to Cloudflare Dashboard → Pages
-2. Create project → "Upload assets"
-3. Drag `coming-soon/` folder
-4. Assign custom domain
-
-**Option 2: Git**
-1. Create separate repo with just `coming-soon/`
-2. Connect to Cloudflare Pages
-3. Build command: (empty)
-4. Output directory: `/`
 
 ---
 
 ## Previous Sessions
 
+### Session 2026-03-02 (Earlier): Coming Soon + Deploy
+- Created Coming Soon page with animations
+- Deployed to quafi.io via Cloudflare Pages
+- Configured GitHub Actions auto-deploy
+- Created product documentation
+
 ### Session 2026-02-11: Quafi Modules
 - Implemented Calibrate, Simulate, Reports
 - Created mathEngine, riskProfiles, stores
 - Connected to Hadi backend
-- FING → Quafi rebrand
+- Initial FING → Quafi rebrand (user-visible text only)
 
 ### Session 2026-02-06: Showcase Unification
 - Unified 61 showcase pages

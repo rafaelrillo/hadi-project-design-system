@@ -1,8 +1,94 @@
-# SENTINEL Design System - Tracking Changelog
+# QUAFI Design System - Tracking Changelog
 
 > Session tracking for claude-dev-starter integration.
 
 **Note**: Historical changes are documented in `/CHANGELOG.md` (root level).
+
+---
+
+## 2026-03-02 (Session 4)
+
+### Session: Complete FING/SENTINEL → QUAFI Rebrand
+
+**Focus**: Rename all internal references from FING/SENTINEL to QUAFI across the entire codebase.
+
+**Branch**: `feature/quafi-modules`
+
+**Scope**:
+- ~8,000 CSS variable occurrences (`--fing-*` → `--quafi-*`)
+- ~600 CSS variable occurrences (`--sentinel-*` → `--quafi-*`)
+- Component directories and files
+- ECharts theme
+- Animation classes
+- Storage keys
+- GitHub repository name
+
+**Files Modified (378 total)**:
+
+| Category | Count | Examples |
+|----------|-------|----------|
+| CSS in src/styles/ | 15 | colors.css, typography.css, shadows.css, etc. |
+| ECharts theme | 1 | fingTheme.ts → quafiTheme.ts |
+| Component directories | 6 | FingEmblem/, FingWordmark/, fing/, FingHome/, etc. |
+| Component CSS modules | 100+ | All *.module.css files |
+| TSX files | 150+ | All components using CSS variables |
+| Documentation | 3 | CLAUDE.md, README.md, DESIGN_SYSTEM_PLAN.md |
+
+**Key Renames**:
+
+| Before | After |
+|--------|-------|
+| `--fing-*` | `--quafi-*` |
+| `--sentinel-*` | `--quafi-*` |
+| `fingTheme.ts` | `quafiTheme.ts` |
+| `fingColors` | `quafiColors` |
+| `FingEmblem` | `QuafiEmblem` |
+| `FingWordmark` | `QuafiWordmark` |
+| `atoms/fing/` | `atoms/quafi/` |
+| `molecules/fing/` | `molecules/quafi/` |
+| `organisms/fing/` | `organisms/quafi/` |
+| `pages/FingHome/` | `pages/QuafiHome/` |
+| `layouts/FingDashboard/` | `layouts/QuafiDashboard/` |
+| `.fing-animate-*` | `.quafi-animate-*` |
+| `fing-auth` | `quafi-auth` |
+| `hadi-project-design-system` | `quafi-design-system` |
+
+**Build Fixes**:
+1. Import path `atoms/fing` → `atoms/quafi` in Watchlist.tsx
+2. "Fingerprint" icon incorrectly renamed to "Quafierprint" — reverted
+3. Import path `organisms/fing` → `organisms/quafi` in Level4Showcase.tsx
+
+**Commit**: `refactor: complete FING/SENTINEL to QUAFI rebrand` (378 files)
+
+**Repository Rename**:
+- GitHub: `gh repo rename quafi-design-system`
+- Local folder: `mv hadi-project-design-system quafi-design-system`
+- Remote URL updated automatically by gh CLI
+
+---
+
+## 2026-03-02 (Session 3)
+
+### Session: Coming Soon + Deploy + Product Documentation
+
+**Focus**: Create Coming Soon page for quafi.io and document the product.
+
+**Branch**: `feature/quafi-modules`
+
+**Files Created**:
+
+| File | Purpose |
+|------|---------|
+| `coming-soon/index.html` | Static coming soon page |
+| `coming-soon/styles.css` | Stone Marble styles + animations |
+| `docs/QUAFI_PRODUCT.md` | Product definition (source of truth) |
+| `docs/QUAFI_UNIFIED_VISION.md` | Synthesis of all documentation |
+| `docs/CLOUDFLARE_DEPLOY.md` | Deploy documentation |
+| `.github/workflows/deploy-coming-soon.yml` | Auto-deploy workflow |
+
+**Deployed**: quafi.io LIVE via Cloudflare Pages
+
+**Auto-deploy**: GitHub Actions with Wrangler CLI
 
 ---
 
@@ -74,7 +160,7 @@
 - Risk profiles map to curated ticker lists (not dynamic from any API)
 - Reports uses Promise.allSettled so a failed SPY benchmark doesn't kill the whole report
 
-### FING -> Quafi Rebrand
+### FING -> Quafi Rebrand (User-visible text only)
 
 Renamed all user-visible brand text from "FING" to "Quafi" across 10 files:
 - `index.html` — title + meta description
@@ -87,7 +173,7 @@ Renamed all user-visible brand text from "FING" to "Quafi" across 10 files:
 - `LandingHero.tsx` — brand name h1, philosophy text
 - `LandingFooter.tsx` — logo "Q"+"QUAFI", copyright
 
-Not renamed (intentionally): component/file names, CSS variables (--fing-*), store persistence keys, showcase pages, comments.
+Not renamed (intentionally at that time): component/file names, CSS variables (--fing-*), store persistence keys, showcase pages, comments.
 
 ---
 
@@ -176,6 +262,6 @@ Not renamed (intentionally): component/file names, CSS variables (--fing-*), sto
 See `/CHANGELOG.md` for complete project history including:
 - Design System Consolidation (2026-01-27)
 - Natural Mineral Color Palette (2026-01-19)
-- FING Wordmark System (2026-01-19)
-- FING Emblem (2026-01-18)
+- QUAFI Wordmark System (2026-01-19)
+- QUAFI Emblem (2026-01-18)
 - Stone Marble Design System (2026-01-17)
