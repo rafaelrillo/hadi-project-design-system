@@ -1,14 +1,22 @@
 // Path: src/pages/organisms/FormShowcase.tsx
 // FING Design System - Glass-Neumorphism Forms
-import React, { useState, useMemo } from 'react';
-import { Form } from '../../components/organisms/Form';
-import { FormField } from '../../components/molecules/FormField';
-import { InputText, InputDropdown, Textarea, DropdownOption } from '../../components/atoms/Input';
-import { Checkbox } from '../../components/atoms/Checkbox';
-import { Button } from '../../components/atoms/Button';
-import { ShowcaseSection } from '../../components/showcase';
-import { LightEngineProvider, useLightEngine } from '@/contexts/LightEngineContext';
-import { showcase } from '../showcaseStyles';
+import React, { useState, useMemo } from "react";
+import { Form } from "../../components/organisms/Form";
+import { FormField } from "../../components/molecules/FormField";
+import {
+  InputText,
+  InputDropdown,
+  Textarea,
+  InputDropdownOption,
+} from "../../components/atoms/Input";
+import { Checkbox } from "../../components/atoms/Checkbox";
+import { Button } from "../../components/atoms/Button";
+import { ShowcaseSection } from "../../components/showcase";
+import {
+  LightEngineProvider,
+  useLightEngine,
+} from "@/contexts/LightEngineContext";
+import { showcase } from "../showcaseStyles";
 
 function FormContent() {
   const { lightAngle } = useLightEngine();
@@ -21,9 +29,9 @@ function FormContent() {
   }, [lightAngle]);
 
   const MARBLE = {
-    base: 'var(--marble-base)',
-    shadowDark: 'var(--shadow-dark)',
-    shadowLight: 'var(--shadow-light)',
+    base: "var(--marble-base)",
+    shadowDark: "var(--shadow-dark)",
+    shadowLight: "var(--shadow-light)",
   };
 
   const getNeuPanelShadow = (distance: number, blur: number): string => {
@@ -37,23 +45,29 @@ function FormContent() {
   };
 
   const formContainerStyles: React.CSSProperties = {
-    padding: '24px',
-    background: 'var(--marble-base)',
-    borderRadius: '20px',
+    padding: "24px",
+    background: "var(--marble-base)",
+    borderRadius: "20px",
     boxShadow: getNeuPanelShadow(8, 24),
-    transition: 'box-shadow 50ms linear',
+    transition: "box-shadow 50ms linear",
   };
 
-  const countryOptions: DropdownOption[] = [
-    { value: 'ar', label: 'Argentina' },
-    { value: 'br', label: 'Brasil' },
-    { value: 'cl', label: 'Chile' },
-    { value: 'co', label: 'Colombia' },
-    { value: 'mx', label: 'México' }
+  const countryOptions: InputDropdownOption[] = [
+    { value: "ar", label: "Argentina" },
+    { value: "br", label: "Brasil" },
+    { value: "cl", label: "Chile" },
+    { value: "co", label: "Colombia" },
+    { value: "mx", label: "México" },
   ];
 
   return (
-    <div style={{ background: 'var(--marble-base)', minHeight: '100%', padding: '24px' }}>
+    <div
+      style={{
+        background: "var(--marble-base)",
+        minHeight: "100%",
+        padding: "24px",
+      }}
+    >
       <header style={showcase.header.container}>
         <h1 style={showcase.header.title}>&gt; Form_</h1>
         <p style={showcase.header.description}>
@@ -65,17 +79,19 @@ function FormContent() {
         title="Formulario de 1 Columna"
         description="Layout vertical con gap de 20px entre campos"
       >
-        <div style={{ ...formContainerStyles, maxWidth: '500px' }}>
+        <div style={{ ...formContainerStyles, maxWidth: "500px" }}>
           <Form
             columns={1}
             onSubmit={() => {
-              console.log('Form submitted');
-              alert('Formulario enviado!');
+              console.log("Form submitted");
+              alert("Formulario enviado!");
             }}
             footer={
               <>
                 <Button variant="secondary">Cancelar</Button>
-                <Button variant="primary" type="submit">Guardar</Button>
+                <Button variant="primary" type="submit">
+                  Guardar
+                </Button>
               </>
             }
           >
@@ -83,7 +99,11 @@ function FormContent() {
               <InputText placeholder="Juan Pérez" />
             </FormField>
 
-            <FormField label="Correo electrónico" required={true} helperText="Nunca compartiremos tu correo">
+            <FormField
+              label="Correo electrónico"
+              required={true}
+              helperText="Nunca compartiremos tu correo"
+            >
               <InputText type="email" placeholder="correo@ejemplo.com" />
             </FormField>
 
@@ -92,7 +112,10 @@ function FormContent() {
             </FormField>
 
             <FormField label="Mensaje">
-              <Textarea placeholder="Escribe tu mensaje aquí..." maxLength={500} />
+              <Textarea
+                placeholder="Escribe tu mensaje aquí..."
+                maxLength={500}
+              />
             </FormField>
           </Form>
         </div>
@@ -102,17 +125,19 @@ function FormContent() {
         title="Formulario de 2 Columnas"
         description="Layout en grid con 2 columnas, gap de 20px"
       >
-        <div style={{ ...formContainerStyles, maxWidth: '800px' }}>
+        <div style={{ ...formContainerStyles, maxWidth: "800px" }}>
           <Form
             columns={2}
             onSubmit={() => {
-              console.log('Form submitted');
-              alert('Registro completado!');
+              console.log("Form submitted");
+              alert("Registro completado!");
             }}
             footer={
               <>
                 <Button variant="secondary">Limpiar</Button>
-                <Button variant="primary" type="submit">Registrar</Button>
+                <Button variant="primary" type="submit">
+                  Registrar
+                </Button>
               </>
             }
           >
@@ -133,7 +158,10 @@ function FormContent() {
             </FormField>
 
             <FormField label="País" required={true}>
-              <InputDropdown options={countryOptions} placeholder="Selecciona tu país" />
+              <InputDropdown
+                options={countryOptions}
+                placeholder="Selecciona tu país"
+              />
             </FormField>
 
             <FormField label="Ciudad">
@@ -147,11 +175,11 @@ function FormContent() {
         title="Sin Footer"
         description="Formulario sin botones en el footer"
       >
-        <div style={{ ...formContainerStyles, maxWidth: '500px' }}>
+        <div style={{ ...formContainerStyles, maxWidth: "500px" }}>
           <Form
             columns={1}
             onSubmit={() => {
-              console.log('Search submitted');
+              console.log("Search submitted");
             }}
           >
             <FormField label="Buscar producto">
@@ -161,16 +189,18 @@ function FormContent() {
             <FormField label="Categoría">
               <InputDropdown
                 options={[
-                  { value: 'all', label: 'Todas' },
-                  { value: 'electronics', label: 'Electrónica' },
-                  { value: 'clothing', label: 'Ropa' }
+                  { value: "all", label: "Todas" },
+                  { value: "electronics", label: "Electrónica" },
+                  { value: "clothing", label: "Ropa" },
                 ]}
                 placeholder="Selecciona categoría"
               />
             </FormField>
 
             <div>
-              <Button variant="primary" type="submit">Buscar</Button>
+              <Button variant="primary" type="submit">
+                Buscar
+              </Button>
             </div>
           </Form>
         </div>
@@ -180,31 +210,37 @@ function FormContent() {
         title="Formulario Completo de Registro"
         description="Ejemplo de formulario complejo con múltiples tipos de campos"
       >
-        <div style={{
-          maxWidth: '800px',
-          width: '100%',
-          padding: '24px',
-          background: 'var(--marble-base)',
-          borderRadius: '20px',
-          boxShadow: getNeuInsetShadow(5, 15),
-          transition: 'box-shadow 50ms linear',
-        }}>
-          <h2 style={{
-            fontSize: '20px',
-            fontWeight: 600,
-            marginBottom: '8px',
-            fontFamily: 'var(--fing-font-display)',
-            textTransform: 'uppercase',
-            color: 'var(--fing-text-primary)',
-          }}>
+        <div
+          style={{
+            maxWidth: "800px",
+            width: "100%",
+            padding: "24px",
+            background: "var(--marble-base)",
+            borderRadius: "20px",
+            boxShadow: getNeuInsetShadow(5, 15),
+            transition: "box-shadow 50ms linear",
+          }}
+        >
+          <h2
+            style={{
+              fontSize: "20px",
+              fontWeight: 600,
+              marginBottom: "8px",
+              fontFamily: "var(--fing-font-display)",
+              textTransform: "uppercase",
+              color: "var(--fing-text-primary)",
+            }}
+          >
             Crear Nueva Cuenta
           </h2>
-          <p style={{
-            fontSize: '14px',
-            color: 'var(--fing-text-muted)',
-            marginBottom: '24px',
-            fontFamily: 'var(--fing-font-mono)',
-          }}>
+          <p
+            style={{
+              fontSize: "14px",
+              color: "var(--fing-text-muted)",
+              marginBottom: "24px",
+              fontFamily: "var(--fing-font-mono)",
+            }}
+          >
             Completa el formulario para registrarte en la plataforma
           </p>
 
@@ -212,15 +248,17 @@ function FormContent() {
             columns={2}
             onSubmit={() => {
               if (!terms) {
-                alert('Debes aceptar los términos y condiciones');
+                alert("Debes aceptar los términos y condiciones");
                 return;
               }
-              alert('¡Cuenta creada exitosamente!');
+              alert("¡Cuenta creada exitosamente!");
             }}
             footer={
               <>
                 <Button variant="secondary">Cancelar</Button>
-                <Button variant="primary" type="submit">Crear Cuenta</Button>
+                <Button variant="primary" type="submit">
+                  Crear Cuenta
+                </Button>
               </>
             }
           >
@@ -232,7 +270,11 @@ function FormContent() {
               <InputText placeholder="Tu apellido" />
             </FormField>
 
-            <FormField label="Email" required={true} helperText="Usaremos este email para iniciar sesión">
+            <FormField
+              label="Email"
+              required={true}
+              helperText="Usaremos este email para iniciar sesión"
+            >
               <InputText type="email" placeholder="correo@ejemplo.com" />
             </FormField>
 
@@ -240,7 +282,11 @@ function FormContent() {
               <InputText type="email" placeholder="correo@ejemplo.com" />
             </FormField>
 
-            <FormField label="Contraseña" required={true} helperText="Mínimo 8 caracteres">
+            <FormField
+              label="Contraseña"
+              required={true}
+              helperText="Mínimo 8 caracteres"
+            >
               <InputText type="password" placeholder="••••••••" />
             </FormField>
 
@@ -249,41 +295,75 @@ function FormContent() {
             </FormField>
 
             <FormField label="País" required={true}>
-              <InputDropdown options={countryOptions} placeholder="Selecciona tu país" />
+              <InputDropdown
+                options={countryOptions}
+                placeholder="Selecciona tu país"
+              />
             </FormField>
 
             <FormField label="Teléfono">
               <InputText type="tel" placeholder="+54 11 1234-5678" />
             </FormField>
 
-            <div style={{ gridColumn: '1 / -1' }}>
+            <div style={{ gridColumn: "1 / -1" }}>
               <FormField label="Biografía (opcional)">
-                <Textarea placeholder="Cuéntanos algo sobre ti..." maxLength={200} />
+                <Textarea
+                  placeholder="Cuéntanos algo sobre ti..."
+                  maxLength={200}
+                />
               </FormField>
             </div>
 
-            <div style={{ gridColumn: '1 / -1' }}>
+            <div style={{ gridColumn: "1 / -1" }}>
               <FormField label="">
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "12px",
+                  }}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "8px",
+                    }}
+                  >
                     <Checkbox checked={terms} onChange={setTerms} id="terms" />
-                    <label htmlFor="terms" style={{
-                      fontSize: '14px',
-                      cursor: 'pointer',
-                      fontFamily: 'var(--fing-font-mono)',
-                      color: 'var(--fing-text-primary)',
-                    }}>
+                    <label
+                      htmlFor="terms"
+                      style={{
+                        fontSize: "14px",
+                        cursor: "pointer",
+                        fontFamily: "var(--fing-font-mono)",
+                        color: "var(--fing-text-primary)",
+                      }}
+                    >
                       Acepto los términos y condiciones *
                     </label>
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <Checkbox checked={newsletter} onChange={setNewsletter} id="newsletter" />
-                    <label htmlFor="newsletter" style={{
-                      fontSize: '14px',
-                      cursor: 'pointer',
-                      fontFamily: 'var(--fing-font-mono)',
-                      color: 'var(--fing-text-primary)',
-                    }}>
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "8px",
+                    }}
+                  >
+                    <Checkbox
+                      checked={newsletter}
+                      onChange={setNewsletter}
+                      id="newsletter"
+                    />
+                    <label
+                      htmlFor="newsletter"
+                      style={{
+                        fontSize: "14px",
+                        cursor: "pointer",
+                        fontFamily: "var(--fing-font-mono)",
+                        color: "var(--fing-text-primary)",
+                      }}
+                    >
                       Quiero recibir novedades por email
                     </label>
                   </div>
@@ -295,26 +375,82 @@ function FormContent() {
       </ShowcaseSection>
 
       <ShowcaseSection title="Especificaciones Tecnicas">
-        <div style={{
-          padding: '20px',
-          borderRadius: '20px',
-          boxShadow: getNeuInsetShadow(5, 15),
-          background: 'var(--marble-base)',
-          fontSize: '12px',
-          fontFamily: 'var(--fing-font-mono)',
-          color: 'var(--fing-text-muted)',
-          lineHeight: '1.8',
-          transition: 'box-shadow 50ms linear',
-        }}>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Width:</strong> 100% (se adapta al contenedor)</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Layout:</strong> CSS Grid</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Columns:</strong> 1 o 2 (prop columns)</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Gap:</strong> 20px entre campos</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Footer margin-top:</strong> 20px</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Footer layout:</strong> flex, gap 20px, justify-content flex-end</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>onSubmit:</strong> Automáticamente ejecuta e.preventDefault()</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Submit button:</strong> Debe tener type="submit" para activar onSubmit</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Campos full-width:</strong> Usar style gridColumn: '1 / -1' en el campo</p>
+        <div
+          style={{
+            padding: "20px",
+            borderRadius: "20px",
+            boxShadow: getNeuInsetShadow(5, 15),
+            background: "var(--marble-base)",
+            fontSize: "12px",
+            fontFamily: "var(--fing-font-mono)",
+            color: "var(--fing-text-muted)",
+            lineHeight: "1.8",
+            transition: "box-shadow 50ms linear",
+          }}
+        >
+          <p>
+            ✓{" "}
+            <strong style={{ color: "var(--fing-accent-primary)" }}>
+              Width:
+            </strong>{" "}
+            100% (se adapta al contenedor)
+          </p>
+          <p>
+            ✓{" "}
+            <strong style={{ color: "var(--fing-accent-primary)" }}>
+              Layout:
+            </strong>{" "}
+            CSS Grid
+          </p>
+          <p>
+            ✓{" "}
+            <strong style={{ color: "var(--fing-accent-primary)" }}>
+              Columns:
+            </strong>{" "}
+            1 o 2 (prop columns)
+          </p>
+          <p>
+            ✓{" "}
+            <strong style={{ color: "var(--fing-accent-primary)" }}>
+              Gap:
+            </strong>{" "}
+            20px entre campos
+          </p>
+          <p>
+            ✓{" "}
+            <strong style={{ color: "var(--fing-accent-primary)" }}>
+              Footer margin-top:
+            </strong>{" "}
+            20px
+          </p>
+          <p>
+            ✓{" "}
+            <strong style={{ color: "var(--fing-accent-primary)" }}>
+              Footer layout:
+            </strong>{" "}
+            flex, gap 20px, justify-content flex-end
+          </p>
+          <p>
+            ✓{" "}
+            <strong style={{ color: "var(--fing-accent-primary)" }}>
+              onSubmit:
+            </strong>{" "}
+            Automáticamente ejecuta e.preventDefault()
+          </p>
+          <p>
+            ✓{" "}
+            <strong style={{ color: "var(--fing-accent-primary)" }}>
+              Submit button:
+            </strong>{" "}
+            Debe tener type="submit" para activar onSubmit
+          </p>
+          <p>
+            ✓{" "}
+            <strong style={{ color: "var(--fing-accent-primary)" }}>
+              Campos full-width:
+            </strong>{" "}
+            Usar style gridColumn: '1 / -1' en el campo
+          </p>
         </div>
       </ShowcaseSection>
     </div>

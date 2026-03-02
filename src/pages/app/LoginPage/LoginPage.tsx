@@ -54,7 +54,7 @@ export function LoginPage() {
           <FingEmblem size={140} animation="rippleSlow" variant="framed" />
           <div className={styles.brandText}>
             <FingWordmarkText variant="carved" size={72} />
-            <p className={styles.subtitle}>Finance engine.</p>
+            <p className={styles.subtitle}>Investment engine.</p>
           </div>
         </div>
 
@@ -66,7 +66,7 @@ export function LoginPage() {
               </label>
               <InputText
                 type="email"
-                placeholder="analyst@fing.io"
+                placeholder="analyst@quafi.io"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 disabled={isLoading}
@@ -117,9 +117,7 @@ export function LoginPage() {
           </form>
         </div>
 
-        <p className={styles.hint}>
-          Demo credentials: any email/password
-        </p>
+        <p className={styles.hint}>Demo credentials: any email/password</p>
       </div>
     </div>
   );

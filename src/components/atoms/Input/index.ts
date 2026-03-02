@@ -1,12 +1,15 @@
 // Path: src/components/atoms/Input/index.ts
-export { InputText } from './InputText';
-export type { InputTextProps } from './InputText';
+export { InputText } from "./InputText";
+export type { InputTextProps } from "./InputText";
 
-export { InputDropdown } from './InputDropdown';
-export type { InputDropdownProps, DropdownOption } from './InputDropdown';
+export { InputDropdown } from "./InputDropdown";
+export type {
+  InputDropdownProps,
+  DropdownOption as InputDropdownOption,
+} from "./InputDropdown";
 
-export { Textarea } from './Textarea';
-export type { TextareaProps } from './Textarea';
+export { Textarea } from "./Textarea";
+export type { TextareaProps } from "./Textarea";
 
-export { CurrencyInput } from './CurrencyInput';
-export type { CurrencyInputProps } from './CurrencyInput';
+export { CurrencyInput } from "./CurrencyInput";
+export type { CurrencyInputProps } from "./CurrencyInput";

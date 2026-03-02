@@ -1,17 +1,17 @@
 // Path: src/pages/Landing/components/LandingNav/LandingNav.tsx
 // FING Brand Navigation - Stone Marble Neumorphism
 
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ArrowRight } from 'lucide-react';
-import { FingEmblem } from '@/components/atoms/FingEmblem';
-import styles from './LandingNav.module.css';
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X, ArrowRight } from "lucide-react";
+import { FingEmblem } from "@/components/atoms/FingEmblem";
+import styles from "./LandingNav.module.css";
 
 const navLinks = [
-  { label: 'Features', href: '#features' },
-  { label: 'Design System', href: '/showcase' },
-  { label: 'App', href: '/app/dashboard' },
+  { label: "Features", href: "#features" },
+  { label: "Design System", href: "/showcase" },
+  { label: "App", href: "/app/dashboard" },
 ];
 
 export function LandingNav() {
@@ -20,9 +20,9 @@ export function LandingNav() {
 
   const handleNavClick = (href: string) => {
     setIsMobileMenuOpen(false);
-    if (href.startsWith('#')) {
+    if (href.startsWith("#")) {
       const element = document.querySelector(href);
-      element?.scrollIntoView({ behavior: 'smooth' });
+      element?.scrollIntoView({ behavior: "smooth" });
     } else {
       navigate(href);
     }
@@ -39,7 +39,7 @@ export function LandingNav() {
         {/* Logo */}
         <Link to="/" className={styles.logo}>
           <FingEmblem size={32} animation="none" />
-          <span className={styles.logoText}>fing</span>
+          <span className={styles.logoText}>quafi</span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -55,7 +55,7 @@ export function LandingNav() {
           ))}
           <button
             className={styles.ctaButton}
-            onClick={() => navigate('/showcase')}
+            onClick={() => navigate("/showcase")}
           >
             <span>Explore</span>
             <span className={styles.ctaIconCircle}>
@@ -80,7 +80,7 @@ export function LandingNav() {
           <motion.div
             className={styles.mobileMenu}
             initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
+            animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
           >
@@ -100,7 +100,7 @@ export function LandingNav() {
               className={styles.mobileCta}
               onClick={() => {
                 setIsMobileMenuOpen(false);
-                navigate('/showcase');
+                navigate("/showcase");
               }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}

@@ -1,13 +1,13 @@
 // Path: src/pages/Landing/components/LandingHero/LandingHero.tsx
 // FING Brand Landing Page - Stone Marble Neumorphism
 
-import { useEffect } from 'react';
-import { motion, useAnimation } from 'framer-motion';
-import { Monitor, ArrowRight, Briefcase } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
-import { FingEmblem } from '@/components/atoms/FingEmblem';
-import { useIsMobile } from '@/hooks/useBreakpoint';
-import styles from './LandingHero.module.css';
+import { useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
+import { Monitor, ArrowRight, Briefcase } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { FingEmblem } from "@/components/atoms/FingEmblem";
+import { useIsMobile } from "@/hooks/useBreakpoint";
+import styles from "./LandingHero.module.css";
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // MAIN COMPONENT
@@ -19,7 +19,7 @@ export function LandingHero() {
   const isMobile = useIsMobile();
 
   useEffect(() => {
-    controls.start('visible');
+    controls.start("visible");
   }, [controls]);
 
   const containerVariants = {
@@ -46,17 +46,17 @@ export function LandingHero() {
 
   // Brand data
   const traits = [
-    { name: 'Silent', desc: 'Speaks little, but with weight' },
-    { name: 'Patient', desc: 'Observes the long term' },
-    { name: 'Precise', desc: 'Every word counts' },
-    { name: 'Institutional', desc: 'Serious, professional' },
-    { name: 'Intelligent', desc: 'Sophisticated, not pretentious' },
+    { name: "Silent", desc: "Speaks little, but with weight" },
+    { name: "Patient", desc: "Observes the long term" },
+    { name: "Precise", desc: "Every word counts" },
+    { name: "Institutional", desc: "Serious, professional" },
+    { name: "Intelligent", desc: "Sophisticated, not pretentious" },
   ];
 
   const taglines = [
-    { text: 'Quiet intelligence', emphasis: 'The personality' },
-    { text: 'Resolve', emphasis: 'The action' },
-    { text: 'The long view', emphasis: 'The patience' },
+    { text: "Quiet intelligence", emphasis: "The personality" },
+    { text: "Resolve", emphasis: "The action" },
+    { text: "The long view", emphasis: "The patience" },
   ];
 
   return (
@@ -77,7 +77,7 @@ export function LandingHero() {
           </div>
 
           {/* Wordmark */}
-          <h1 className={styles.brandName}>fing</h1>
+          <h1 className={styles.brandName}>quafi</h1>
 
           {/* Subtitle */}
           <p className={styles.heroSubtitle}>Investment Analysis System</p>
@@ -96,8 +96,8 @@ export function LandingHero() {
               <span className={styles.nameAccentLabel}>FIN</span>
               <span className={styles.nameTitle}>is</span>
               <p className={styles.nameDesc}>
-                From Latin <em>fīnis</em> — to resolve, to conclude.
-                The root of "finance."
+                From Latin <em>fīnis</em> — to resolve, to conclude. The root of
+                "finance."
               </p>
             </div>
 
@@ -106,8 +106,8 @@ export function LandingHero() {
               <span className={styles.nameAccentLabel}>ING</span>
               <span className={styles.nameTitle}>enium</span>
               <p className={styles.nameDesc}>
-                From Latin <em>ingenium</em> — innate talent, ingenuity.
-                The root of "engine."
+                From Latin <em>ingenium</em> — innate talent, ingenuity. The
+                root of "engine."
               </p>
             </div>
           </div>
@@ -122,7 +122,8 @@ export function LandingHero() {
               <span className={styles.synthesisText}>enium</span>
             </div>
             <p className={styles.synthesisMeaning}>
-              The engine of conclusions. Intelligence that doesn't speculate — it resolves.
+              The engine of conclusions. Intelligence that doesn't speculate —
+              it resolves.
             </p>
           </div>
         </motion.div>
@@ -136,14 +137,14 @@ export function LandingHero() {
           <div className={styles.philosophyContent}>
             <h3 className={styles.philosophyTitle}>Stone Marble Neumorphism</h3>
             <p className={styles.philosophyText}>
-              Our interface is crafted from digital marble — cold, polished, enduring.
-              Every surface emerges from stone through subtle shadows and highlights,
-              creating depth without artifice.
+              Our interface is crafted from digital marble — cold, polished,
+              enduring. Every surface emerges from stone through subtle shadows
+              and highlights, creating depth without artifice.
             </p>
             <p className={styles.philosophyText}>
               This aesthetic isn't decorative. It's a statement:
-              <strong> investments made with FING are solid and stable</strong>.
-              Like marble that has endured centuries, our analysis is built on
+              <strong> investments made with Quafi are solid and stable</strong>
+              . Like marble that has endured centuries, our analysis is built on
               foundations that don't crack under pressure.
             </p>
           </div>
@@ -153,17 +154,23 @@ export function LandingHero() {
             <div className={styles.principleInset}>
               <span className={styles.principleIcon}>◆</span>
               <span className={styles.principleName}>Solid</span>
-              <span className={styles.principleDesc}>Built on enduring foundations</span>
+              <span className={styles.principleDesc}>
+                Built on enduring foundations
+              </span>
             </div>
             <div className={styles.principleInset}>
               <span className={styles.principleIcon}>◆</span>
               <span className={styles.principleName}>Stable</span>
-              <span className={styles.principleDesc}>Unwavering in volatile markets</span>
+              <span className={styles.principleDesc}>
+                Unwavering in volatile markets
+              </span>
             </div>
             <div className={styles.principleInset}>
               <span className={styles.principleIcon}>◆</span>
               <span className={styles.principleName}>Timeless</span>
-              <span className={styles.principleDesc}>Long-term vision, not trends</span>
+              <span className={styles.principleDesc}>
+                Long-term vision, not trends
+              </span>
             </div>
           </div>
         </motion.div>
@@ -215,7 +222,7 @@ export function LandingHero() {
           ) : (
             <button
               className={styles.ctaButtonPrimary}
-              onClick={() => navigate('/showcase')}
+              onClick={() => navigate("/showcase")}
             >
               Explore Design System
               <span className={styles.ctaIconCircle}>
@@ -226,7 +233,7 @@ export function LandingHero() {
 
           <button
             className={styles.ctaButtonSecondary}
-            onClick={() => navigate('/app/dashboard')}
+            onClick={() => navigate("/app/dashboard")}
           >
             Open App
             <span className={styles.ctaIconCircle}>
@@ -234,7 +241,6 @@ export function LandingHero() {
             </span>
           </button>
         </motion.div>
-
       </motion.div>
     </section>
   );

@@ -5,47 +5,55 @@
  * All environment variables are typed and validated here
  */
 
-export type MarketApiProvider = 'finnhub' | 'alphavantage' | 'polygon' | 'twelvedata' | 'tiingo' | 'mock';
+export type MarketApiProvider =
+  | "finnhub"
+  | "alphavantage"
+  | "polygon"
+  | "twelvedata"
+  | "tiingo"
+  | "mock";
 
 export const config = {
   api: {
     baseUrl: import.meta.env.VITE_API_URL || "http://localhost:3001/api",
     useMock: import.meta.env.VITE_USE_MOCK !== "false", // Default to mock
     wsUrl: import.meta.env.VITE_WS_URL || "ws://localhost:3001/ws",
+    hadiUrl: import.meta.env.VITE_HADI_API_URL || "http://localhost:8000",
   },
 
   financialApis: {
-    primary: (import.meta.env.VITE_PRIMARY_MARKET_API || 'mock') as MarketApiProvider,
+    primary: (import.meta.env.VITE_PRIMARY_MARKET_API ||
+      "mock") as MarketApiProvider,
 
     finnhub: {
-      apiKey: import.meta.env.VITE_FINNHUB_API_KEY || '',
-      baseUrl: 'https://finnhub.io/api/v1',
-      wsUrl: 'wss://ws.finnhub.io',
+      apiKey: import.meta.env.VITE_FINNHUB_API_KEY || "",
+      baseUrl: "https://finnhub.io/api/v1",
+      wsUrl: "wss://ws.finnhub.io",
       rateLimit: 60, // calls per minute
     },
 
     alphaVantage: {
-      apiKey: import.meta.env.VITE_ALPHA_VANTAGE_API_KEY || '',
-      baseUrl: 'https://www.alphavantage.co/query',
+      apiKey: import.meta.env.VITE_ALPHA_VANTAGE_API_KEY || "",
+      baseUrl: "https://www.alphavantage.co/query",
       rateLimit: 5, // calls per minute
     },
 
     polygon: {
-      apiKey: import.meta.env.VITE_POLYGON_API_KEY || '',
-      baseUrl: 'https://api.polygon.io',
+      apiKey: import.meta.env.VITE_POLYGON_API_KEY || "",
+      baseUrl: "https://api.polygon.io",
       rateLimit: 5, // calls per minute
     },
 
     twelveData: {
-      apiKey: import.meta.env.VITE_TWELVE_DATA_API_KEY || '',
-      baseUrl: 'https://api.twelvedata.com',
+      apiKey: import.meta.env.VITE_TWELVE_DATA_API_KEY || "",
+      baseUrl: "https://api.twelvedata.com",
       rateLimit: 8, // calls per minute
     },
 
     tiingo: {
-      apiKey: import.meta.env.VITE_TIINGO_API_KEY || '',
-      baseUrl: import.meta.env.VITE_TIINGO_BASE_URL || '/api/tiingo', // Uses proxy to avoid CORS
-      directBaseUrl: 'https://api.tiingo.com',
+      apiKey: import.meta.env.VITE_TIINGO_API_KEY || "",
+      baseUrl: import.meta.env.VITE_TIINGO_BASE_URL || "/api/tiingo", // Uses proxy to avoid CORS
+      directBaseUrl: "https://api.tiingo.com",
       rateLimit: 500, // requests per hour
     },
   },
@@ -57,10 +65,7 @@ export const config = {
       10
     ),
     useWebSocket: import.meta.env.VITE_USE_WEBSOCKET === "true",
-    cacheTTL: parseInt(
-      import.meta.env.VITE_CACHE_TTL || "30000",
-      10
-    ),
+    cacheTTL: parseInt(import.meta.env.VITE_CACHE_TTL || "30000", 10),
   },
 
   // Environment flags
@@ -81,18 +86,19 @@ export const isRealTimeEnabled = (): boolean => {
 
 // Helper to check if any API key is configured
 export const hasValidApiKey = (): boolean => {
-  const { primary, finnhub, alphaVantage, polygon, twelveData, tiingo } = config.financialApis;
+  const { primary, finnhub, alphaVantage, polygon, twelveData, tiingo } =
+    config.financialApis;
 
   switch (primary) {
-    case 'finnhub':
+    case "finnhub":
       return !!finnhub.apiKey;
-    case 'alphavantage':
+    case "alphavantage":
       return !!alphaVantage.apiKey;
-    case 'polygon':
+    case "polygon":
       return !!polygon.apiKey;
-    case 'twelvedata':
+    case "twelvedata":
       return !!twelveData.apiKey;
-    case 'tiingo':
+    case "tiingo":
       return !!tiingo.apiKey;
     default:
       return false;
@@ -101,18 +107,19 @@ export const hasValidApiKey = (): boolean => {
 
 // Get the active API configuration
 export const getActiveApiConfig = () => {
-  const { primary, finnhub, alphaVantage, polygon, twelveData, tiingo } = config.financialApis;
+  const { primary, finnhub, alphaVantage, polygon, twelveData, tiingo } =
+    config.financialApis;
 
   switch (primary) {
-    case 'finnhub':
+    case "finnhub":
       return finnhub;
-    case 'alphavantage':
+    case "alphavantage":
       return alphaVantage;
-    case 'polygon':
+    case "polygon":
       return polygon;
-    case 'twelvedata':
+    case "twelvedata":
       return twelveData;
-    case 'tiingo':
+    case "tiingo":
       return tiingo;
     default:
       return null;

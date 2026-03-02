@@ -6,6 +6,8 @@ export { DashboardPage } from "./DashboardPage";
 export { PortfolioSimulator } from "./PortfolioSimulator";
 export { PortfolioView } from "./PortfolioView";
 export { RecommendationsView } from "./RecommendationsView";
+export { SimulateView } from "./SimulateView";
+export { ReportsView } from "./ReportsView";
 export { WalletView } from "./WalletView";
 export { NewsView } from "./NewsView";
 export { ChatView } from "./ChatView";

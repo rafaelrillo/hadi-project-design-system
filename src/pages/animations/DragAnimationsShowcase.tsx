@@ -1,11 +1,14 @@
 // Path: src/pages/animations/DragAnimationsShowcase.tsx
 // FING Design System - Glass-Neumorphism Drag Animations
-import React, { useRef, useMemo } from 'react';
-import { DraggablePanel } from '../../components/animations/DraggablePanel';
-import { ShowcaseSection } from '../../components/showcase';
-import { showcase } from '../showcaseStyles';
-import { Move } from 'lucide-react';
-import { LightEngineProvider, useLightEngine } from '@/contexts/LightEngineContext';
+import { useRef, useMemo } from "react";
+import { DraggablePanel } from "../../components/animations/DraggablePanel";
+import { ShowcaseSection } from "../../components/showcase";
+import { showcase } from "../showcaseStyles";
+import { Move } from "lucide-react";
+import {
+  LightEngineProvider,
+  useLightEngine,
+} from "@/contexts/LightEngineContext";
 
 function DragAnimationsContent() {
   const { lightAngle } = useLightEngine();
@@ -17,9 +20,9 @@ function DragAnimationsContent() {
   }, [lightAngle]);
 
   const MARBLE = {
-    base: 'var(--marble-base)',
-    shadowDark: 'var(--shadow-dark)',
-    shadowLight: 'var(--shadow-light)',
+    base: "var(--marble-base)",
+    shadowDark: "var(--shadow-dark)",
+    shadowLight: "var(--shadow-light)",
   };
 
   const getNeuPanelShadow = (distance: number, blur: number): string => {
@@ -33,38 +36,55 @@ function DragAnimationsContent() {
   };
 
   return (
-    <div style={{ background: MARBLE.base, minHeight: '100%', padding: '24px' }}>
+    <div
+      style={{ background: MARBLE.base, minHeight: "100%", padding: "24px" }}
+    >
       <header style={showcase.header.container}>
         <h1 style={showcase.header.title}>&gt; Drag Interactions_</h1>
-        <p style={showcase.header.description}>// Paneles arrastrables con Framer Motion</p>
+        <p style={showcase.header.description}>
+          // Paneles arrastrables con Framer Motion
+        </p>
       </header>
 
-      <ShowcaseSection title="DraggablePanel" description="Paneles arrastrables con restricciones">
-        <div style={{ padding: '24px', background: MARBLE.base, borderRadius: '20px', boxShadow: getNeuPanelShadow(8, 24), transition: 'box-shadow 50ms linear' }}>
+      <ShowcaseSection
+        title="DraggablePanel"
+        description="Paneles arrastrables con restricciones"
+      >
+        <div
+          style={{
+            padding: "24px",
+            background: MARBLE.base,
+            borderRadius: "20px",
+            boxShadow: getNeuPanelShadow(8, 24),
+            transition: "box-shadow 50ms linear",
+          }}
+        >
           <div
             ref={dragConstraintsRef}
             style={{
-              width: '100%',
-              height: '400px',
+              width: "100%",
+              height: "400px",
               background: MARBLE.base,
-              borderRadius: '20px',
+              borderRadius: "20px",
               boxShadow: getNeuInsetShadow(5, 15),
-              position: 'relative',
-              overflow: 'hidden',
-              transition: 'box-shadow 50ms linear',
+              position: "relative",
+              overflow: "hidden",
+              transition: "box-shadow 50ms linear",
             }}
           >
-            <p style={{
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%, -50%)',
-              color: 'var(--fing-text-muted)',
-              fontFamily: 'var(--fing-font-mono)',
-              fontSize: '12px',
-              textAlign: 'center',
-              pointerEvents: 'none'
-            }}>
+            <p
+              style={{
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                color: "var(--fing-text-muted)",
+                fontFamily: "var(--fing-font-mono)",
+                fontSize: "12px",
+                textAlign: "center",
+                pointerEvents: "none",
+              }}
+            >
               // Área de arrastre - mueve los paneles
             </p>
 
@@ -74,20 +94,39 @@ function DragAnimationsContent() {
               showHandle={true}
               handlePosition="top"
               style={{
-                position: 'absolute',
-                top: '20px',
-                left: '20px',
-                width: '160px',
-                padding: '24px 16px 16px 16px',
+                position: "absolute",
+                top: "20px",
+                left: "20px",
+                width: "160px",
+                padding: "24px 16px 16px 16px",
                 background: MARBLE.base,
-                borderRadius: '20px',
+                borderRadius: "20px",
                 boxShadow: getNeuPanelShadow(6, 18),
-                borderLeft: '4px solid var(--fing-accent)',
+                borderLeft: "4px solid var(--fing-accent)",
               }}
             >
-              <Move style={{ color: 'var(--fing-accent)', marginBottom: '8px' }} size={20} />
-              <h4 style={{ color: 'var(--fing-text-primary)', fontFamily: 'var(--fing-font-mono)', fontSize: '12px' }}>Panel A</h4>
-              <p style={{ color: 'var(--fing-text-muted)', fontFamily: 'var(--fing-font-mono)', fontSize: '10px' }}>Free movement</p>
+              <Move
+                style={{ color: "var(--fing-accent)", marginBottom: "8px" }}
+                size={20}
+              />
+              <h4
+                style={{
+                  color: "var(--fing-text-primary)",
+                  fontFamily: "var(--fing-font-mono)",
+                  fontSize: "12px",
+                }}
+              >
+                Panel A
+              </h4>
+              <p
+                style={{
+                  color: "var(--fing-text-muted)",
+                  fontFamily: "var(--fing-font-mono)",
+                  fontSize: "10px",
+                }}
+              >
+                Free movement
+              </p>
             </DraggablePanel>
 
             <DraggablePanel
@@ -96,20 +135,39 @@ function DragAnimationsContent() {
               showHandle={true}
               handlePosition="top"
               style={{
-                position: 'absolute',
-                top: '20px',
-                right: '20px',
-                width: '160px',
-                padding: '24px 16px 16px 16px',
+                position: "absolute",
+                top: "20px",
+                right: "20px",
+                width: "160px",
+                padding: "24px 16px 16px 16px",
                 background: MARBLE.base,
-                borderRadius: '20px',
+                borderRadius: "20px",
                 boxShadow: getNeuPanelShadow(6, 18),
-                borderLeft: '4px solid var(--fing-positive)',
+                borderLeft: "4px solid var(--fing-positive)",
               }}
             >
-              <Move style={{ color: 'var(--fing-positive)', marginBottom: '8px' }} size={20} />
-              <h4 style={{ color: 'var(--fing-text-primary)', fontFamily: 'var(--fing-font-mono)', fontSize: '12px' }}>Panel B</h4>
-              <p style={{ color: 'var(--fing-text-muted)', fontFamily: 'var(--fing-font-mono)', fontSize: '10px' }}>More elastic</p>
+              <Move
+                style={{ color: "var(--fing-positive)", marginBottom: "8px" }}
+                size={20}
+              />
+              <h4
+                style={{
+                  color: "var(--fing-text-primary)",
+                  fontFamily: "var(--fing-font-mono)",
+                  fontSize: "12px",
+                }}
+              >
+                Panel B
+              </h4>
+              <p
+                style={{
+                  color: "var(--fing-text-muted)",
+                  fontFamily: "var(--fing-font-mono)",
+                  fontSize: "10px",
+                }}
+              >
+                More elastic
+              </p>
             </DraggablePanel>
 
             <DraggablePanel
@@ -118,22 +176,38 @@ function DragAnimationsContent() {
               elastic={0}
               showHandle={false}
               style={{
-                position: 'absolute',
-                bottom: '20px',
-                left: '50%',
-                transform: 'translateX(-50%)',
-                width: '200px',
-                padding: '16px',
+                position: "absolute",
+                bottom: "20px",
+                left: "50%",
+                transform: "translateX(-50%)",
+                width: "200px",
+                padding: "16px",
                 background: MARBLE.base,
-                borderRadius: '20px',
+                borderRadius: "20px",
                 boxShadow: getNeuPanelShadow(6, 18),
-                borderLeft: '4px solid var(--fing-warning)',
-                textAlign: 'center',
-                cursor: 'grab'
+                borderLeft: "4px solid var(--fing-warning)",
+                textAlign: "center",
+                cursor: "grab",
               }}
             >
-              <h4 style={{ color: 'var(--fing-warning)', fontFamily: 'var(--fing-font-mono)', fontSize: '12px' }}>Horizontal Only</h4>
-              <p style={{ color: 'var(--fing-text-muted)', fontFamily: 'var(--fing-font-mono)', fontSize: '10px' }}>axis="x"</p>
+              <h4
+                style={{
+                  color: "var(--fing-warning)",
+                  fontFamily: "var(--fing-font-mono)",
+                  fontSize: "12px",
+                }}
+              >
+                Horizontal Only
+              </h4>
+              <p
+                style={{
+                  color: "var(--fing-text-muted)",
+                  fontFamily: "var(--fing-font-mono)",
+                  fontSize: "10px",
+                }}
+              >
+                axis="x"
+              </p>
             </DraggablePanel>
 
             <DraggablePanel
@@ -142,43 +216,83 @@ function DragAnimationsContent() {
               elastic={0.1}
               showHandle={false}
               style={{
-                position: 'absolute',
-                top: '100px',
-                left: '20px',
-                width: '120px',
-                padding: '16px',
+                position: "absolute",
+                top: "100px",
+                left: "20px",
+                width: "120px",
+                padding: "16px",
                 background: MARBLE.base,
-                borderRadius: '20px',
+                borderRadius: "20px",
                 boxShadow: getNeuPanelShadow(6, 18),
-                borderLeft: '4px solid var(--fing-info)',
-                textAlign: 'center',
-                cursor: 'grab'
+                borderLeft: "4px solid var(--fing-info)",
+                textAlign: "center",
+                cursor: "grab",
               }}
             >
-              <h4 style={{ color: 'var(--fing-info)', fontFamily: 'var(--fing-font-mono)', fontSize: '12px' }}>Vertical</h4>
-              <p style={{ color: 'var(--fing-text-muted)', fontFamily: 'var(--fing-font-mono)', fontSize: '10px' }}>axis="y"</p>
+              <h4
+                style={{
+                  color: "var(--fing-info)",
+                  fontFamily: "var(--fing-font-mono)",
+                  fontSize: "12px",
+                }}
+              >
+                Vertical
+              </h4>
+              <p
+                style={{
+                  color: "var(--fing-text-muted)",
+                  fontFamily: "var(--fing-font-mono)",
+                  fontSize: "10px",
+                }}
+              >
+                axis="y"
+              </p>
             </DraggablePanel>
           </div>
         </div>
       </ShowcaseSection>
 
       <ShowcaseSection title="Especificaciones Técnicas">
-        <div style={{
-          padding: '20px',
-          borderRadius: '20px',
-          boxShadow: getNeuInsetShadow(5, 15),
-          background: MARBLE.base,
-          fontSize: '12px',
-          fontFamily: 'var(--fing-font-mono)',
-          color: 'var(--fing-text-muted)',
-          lineHeight: '1.8',
-          transition: 'box-shadow 50ms linear',
-        }}>
-          <p>✓ <strong style={{ color: 'var(--fing-accent)' }}>constraints:</strong> Ref to parent element for boundaries</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent)' }}>axis:</strong> "x" | "y" | undefined (both)</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent)' }}>elastic:</strong> 0-1 bounce factor at boundaries</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent)' }}>showHandle:</strong> Visual drag handle indicator</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent)' }}>handlePosition:</strong> "top" | "bottom" | "left" | "right"</p>
+        <div
+          style={{
+            padding: "20px",
+            borderRadius: "20px",
+            boxShadow: getNeuInsetShadow(5, 15),
+            background: MARBLE.base,
+            fontSize: "12px",
+            fontFamily: "var(--fing-font-mono)",
+            color: "var(--fing-text-muted)",
+            lineHeight: "1.8",
+            transition: "box-shadow 50ms linear",
+          }}
+        >
+          <p>
+            ✓{" "}
+            <strong style={{ color: "var(--fing-accent)" }}>
+              constraints:
+            </strong>{" "}
+            Ref to parent element for boundaries
+          </p>
+          <p>
+            ✓ <strong style={{ color: "var(--fing-accent)" }}>axis:</strong> "x"
+            | "y" | undefined (both)
+          </p>
+          <p>
+            ✓ <strong style={{ color: "var(--fing-accent)" }}>elastic:</strong>{" "}
+            0-1 bounce factor at boundaries
+          </p>
+          <p>
+            ✓{" "}
+            <strong style={{ color: "var(--fing-accent)" }}>showHandle:</strong>{" "}
+            Visual drag handle indicator
+          </p>
+          <p>
+            ✓{" "}
+            <strong style={{ color: "var(--fing-accent)" }}>
+              handlePosition:
+            </strong>{" "}
+            "top" | "bottom" | "left" | "right"
+          </p>
         </div>
       </ShowcaseSection>
     </div>

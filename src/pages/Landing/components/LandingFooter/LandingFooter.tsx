@@ -1,39 +1,39 @@
 // Path: src/pages/Landing/components/LandingFooter/LandingFooter.tsx
-import { Link } from 'react-router-dom';
-import { Github, Linkedin, Twitter } from 'lucide-react';
-import styles from './LandingFooter.module.css';
+import { Link } from "react-router-dom";
+import { Github, Linkedin, Twitter } from "lucide-react";
+import styles from "./LandingFooter.module.css";
 
 const footerLinks = {
   product: [
-    { label: 'Features', href: '#features' },
-    { label: 'Demo', href: '#demo' },
-    { label: 'Pricing', href: '#pricing' },
+    { label: "Features", href: "#features" },
+    { label: "Demo", href: "#demo" },
+    { label: "Pricing", href: "#pricing" },
   ],
   company: [
-    { label: 'About', href: '/about' },
-    { label: 'Careers', href: '/careers' },
-    { label: 'Blog', href: '/blog' },
+    { label: "About", href: "/about" },
+    { label: "Careers", href: "/careers" },
+    { label: "Blog", href: "/blog" },
   ],
   legal: [
-    { label: 'Privacy', href: '/privacy' },
-    { label: 'Terms', href: '/terms' },
-    { label: 'Security', href: '/security' },
+    { label: "Privacy", href: "/privacy" },
+    { label: "Terms", href: "/terms" },
+    { label: "Security", href: "/security" },
   ],
 };
 
 const socialLinks = [
-  { icon: Twitter, href: 'https://twitter.com', label: 'Twitter' },
-  { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-  { icon: Github, href: 'https://github.com', label: 'GitHub' },
+  { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
+  { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
+  { icon: Github, href: "https://github.com", label: "GitHub" },
 ];
 
 export function LandingFooter() {
   const currentYear = new Date().getFullYear();
 
   const handleLinkClick = (href: string) => {
-    if (href.startsWith('#')) {
+    if (href.startsWith("#")) {
       const element = document.querySelector(href);
-      element?.scrollIntoView({ behavior: 'smooth' });
+      element?.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -44,12 +44,10 @@ export function LandingFooter() {
           {/* Brand */}
           <div className={styles.brand}>
             <div className={styles.logo}>
-              <span className={styles.logoMark}>S</span>
-              <span className={styles.logoText}>FING</span>
+              <span className={styles.logoMark}>Q</span>
+              <span className={styles.logoText}>QUAFI</span>
             </div>
-            <p className={styles.tagline}>
-              Investment Observatory
-            </p>
+            <p className={styles.tagline}>Investment Observatory</p>
             <p className={styles.description}>
               Observa. Analiza. Recomienda. En silencio.
             </p>
@@ -77,7 +75,7 @@ export function LandingFooter() {
             <ul className={styles.linkList}>
               {footerLinks.product.map((link) => (
                 <li key={link.label}>
-                  {link.href.startsWith('#') ? (
+                  {link.href.startsWith("#") ? (
                     <button
                       className={styles.link}
                       onClick={() => handleLinkClick(link.href)}
@@ -126,11 +124,9 @@ export function LandingFooter() {
         {/* Bottom Bar */}
         <div className={styles.bottomBar}>
           <p className={styles.copyright}>
-            © {currentYear} FING. All rights reserved.
+            © {currentYear} Quafi. All rights reserved.
           </p>
-          <p className={styles.version}>
-            v2.0.0
-          </p>
+          <p className={styles.version}>v2.0.0</p>
         </div>
       </div>
     </footer>

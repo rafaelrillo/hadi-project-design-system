@@ -1,19 +1,27 @@
 // Path: src/pages/molecules/FormFieldShowcase.tsx
 // FING Design System - Glass-Neumorphism Form Fields
-import React, { useState, useMemo } from 'react';
-import { FormField } from '../../components/molecules/FormField';
-import { InputText, Textarea, InputDropdown, DropdownOption } from '../../components/atoms/Input';
-import { Checkbox } from '../../components/atoms/Checkbox';
-import { ShowcaseSection } from '../../components/showcase';
-import { LightEngineProvider, useLightEngine } from '@/contexts/LightEngineContext';
-import { showcase } from '../showcaseStyles';
+import React, { useState, useMemo } from "react";
+import { FormField } from "../../components/molecules/FormField";
+import {
+  InputText,
+  Textarea,
+  InputDropdown,
+  InputDropdownOption,
+} from "../../components/atoms/Input";
+import { Checkbox } from "../../components/atoms/Checkbox";
+import { ShowcaseSection } from "../../components/showcase";
+import {
+  LightEngineProvider,
+  useLightEngine,
+} from "@/contexts/LightEngineContext";
+import { showcase } from "../showcaseStyles";
 
 function FormFieldContent() {
   const { lightAngle } = useLightEngine();
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
-  const [country, setCountry] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [country, setCountry] = useState("");
   const [terms, setTerms] = useState(false);
 
   const shadowOffsets = useMemo(() => {
@@ -32,28 +40,36 @@ function FormFieldContent() {
   };
 
   const formContainerStyles: React.CSSProperties = {
-    maxWidth: '400px',
-    width: '100%',
-    padding: '24px',
-    background: 'var(--marble-base)',
-    borderRadius: '20px',
+    maxWidth: "400px",
+    width: "100%",
+    padding: "24px",
+    background: "var(--marble-base)",
+    borderRadius: "20px",
     boxShadow: getNeuPanelShadow(8, 24),
-    transition: 'box-shadow 50ms linear',
+    transition: "box-shadow 50ms linear",
   };
 
-  const countryOptions: DropdownOption[] = [
-    { value: 'ar', label: 'Argentina' },
-    { value: 'br', label: 'Brasil' },
-    { value: 'cl', label: 'Chile' },
-    { value: 'co', label: 'Colombia' },
-    { value: 'mx', label: 'México' }
+  const countryOptions: InputDropdownOption[] = [
+    { value: "ar", label: "Argentina" },
+    { value: "br", label: "Brasil" },
+    { value: "cl", label: "Chile" },
+    { value: "co", label: "Colombia" },
+    { value: "mx", label: "México" },
   ];
 
   return (
-    <div style={{ background: 'var(--marble-base)', minHeight: '100%', padding: '24px' }}>
+    <div
+      style={{
+        background: "var(--marble-base)",
+        minHeight: "100%",
+        padding: "24px",
+      }}
+    >
       <header style={showcase.header.container}>
         <h1 style={showcase.header.title}>&gt; FormField_</h1>
-        <p style={showcase.header.description}>// Contenedor para campos con label, helper text y errores</p>
+        <p style={showcase.header.description}>
+          // Contenedor para campos con label, helper text y errores
+        </p>
       </header>
 
       <ShowcaseSection
@@ -130,7 +146,7 @@ function FormFieldContent() {
         title="Con Textarea"
         description="FormField con campo de texto multilínea"
       >
-        <div style={{ ...formContainerStyles, maxWidth: '500px' }}>
+        <div style={{ ...formContainerStyles, maxWidth: "500px" }}>
           <FormField
             label="Mensaje"
             htmlFor="message-input"
@@ -150,35 +166,48 @@ function FormFieldContent() {
         title="Formulario Completo"
         description="Ejemplo de múltiples FormFields en un formulario"
       >
-        <div style={{
-          maxWidth: '500px',
-          width: '100%',
-          padding: '24px',
-          background: 'var(--marble-base)',
-          borderRadius: '20px',
-          boxShadow: getNeuInsetShadow(5, 15),
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '20px',
-          transition: 'box-shadow 50ms linear',
-        }}>
-          <h3 style={{
-            fontSize: '16px',
-            fontWeight: 600,
-            margin: 0,
-            color: 'var(--fing-text-primary)',
-            fontFamily: 'var(--fing-font-display)',
-            textTransform: 'uppercase',
-            letterSpacing: '0.05em',
-          }}>
+        <div
+          style={{
+            maxWidth: "500px",
+            width: "100%",
+            padding: "24px",
+            background: "var(--marble-base)",
+            borderRadius: "20px",
+            boxShadow: getNeuInsetShadow(5, 15),
+            display: "flex",
+            flexDirection: "column",
+            gap: "20px",
+            transition: "box-shadow 50ms linear",
+          }}
+        >
+          <h3
+            style={{
+              fontSize: "16px",
+              fontWeight: 600,
+              margin: 0,
+              color: "var(--fing-text-primary)",
+              fontFamily: "var(--fing-font-display)",
+              textTransform: "uppercase",
+              letterSpacing: "0.05em",
+            }}
+          >
             Formulario de Contacto
           </h3>
 
-          <FormField label="Nombre completo" required={true} htmlFor="form-name">
+          <FormField
+            label="Nombre completo"
+            required={true}
+            htmlFor="form-name"
+          >
             <InputText placeholder="Juan Pérez" />
           </FormField>
 
-          <FormField label="Correo electrónico" required={true} htmlFor="form-email" helperText="Nunca compartiremos tu correo">
+          <FormField
+            label="Correo electrónico"
+            required={true}
+            htmlFor="form-email"
+            helperText="Nunca compartiremos tu correo"
+          >
             <InputText type="email" placeholder="correo@ejemplo.com" />
           </FormField>
 
@@ -191,55 +220,75 @@ function FormFieldContent() {
             />
           </FormField>
 
-          <FormField label="Mensaje" htmlFor="form-message" helperText="Cuéntanos cómo podemos ayudarte">
+          <FormField
+            label="Mensaje"
+            htmlFor="form-message"
+            helperText="Cuéntanos cómo podemos ayudarte"
+          >
             <Textarea placeholder="Tu mensaje..." maxLength={500} />
           </FormField>
 
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '12px',
-            padding: '12px',
-            background: 'var(--marble-base)',
-            borderRadius: '20px',
-            boxShadow: terms ? getNeuInsetShadow(3, 8) : getNeuPanelShadow(4, 12),
-            transition: 'box-shadow 150ms ease',
-          }}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "12px",
+              padding: "12px",
+              background: "var(--marble-base)",
+              borderRadius: "20px",
+              boxShadow: terms
+                ? getNeuInsetShadow(3, 8)
+                : getNeuPanelShadow(4, 12),
+              transition: "box-shadow 150ms ease",
+            }}
+          >
             <Checkbox checked={terms} onChange={setTerms} id="terms-checkbox" />
-            <label htmlFor="terms-checkbox" style={{ fontSize: '14px', cursor: 'pointer', color: 'var(--fing-text-primary)', fontFamily: 'var(--fing-font-mono)' }}>
+            <label
+              htmlFor="terms-checkbox"
+              style={{
+                fontSize: "14px",
+                cursor: "pointer",
+                color: "var(--fing-text-primary)",
+                fontFamily: "var(--fing-font-mono)",
+              }}
+            >
               Acepto los términos y condiciones
             </label>
           </div>
 
-          <div style={{ marginTop: '8px', display: 'flex', gap: '12px' }}>
-            <button style={{
-              padding: '12px 24px',
-              background: 'var(--marble-base)',
-              border: 'none',
-              borderRadius: '20px',
-              boxShadow: getNeuPanelShadow(6, 18),
-              cursor: 'pointer',
-              fontSize: '14px',
-              fontWeight: 600,
-              color: 'var(--fing-accent)',
-              fontFamily: 'var(--fing-font-mono)',
-              transition: 'box-shadow 150ms ease',
-            }}>
+          <div style={{ marginTop: "8px", display: "flex", gap: "12px" }}>
+            <button
+              style={{
+                padding: "12px 24px",
+                background: "var(--marble-base)",
+                border: "none",
+                borderRadius: "20px",
+                boxShadow: getNeuPanelShadow(6, 18),
+                cursor: "pointer",
+                fontSize: "14px",
+                fontWeight: 600,
+                color: "var(--fing-accent)",
+                fontFamily: "var(--fing-font-mono)",
+                transition: "box-shadow 150ms ease",
+              }}
+            >
               Enviar
             </button>
-            <button style={{
-              padding: '12px 24px',
-              background: 'var(--marble-base)',
-              border: 'none',
-              borderRadius: '20px',
-              boxShadow: getNeuPanelShadow(4, 12),
-              cursor: 'pointer',
-              fontSize: '14px',
-              fontWeight: 500,
-              color: 'var(--fing-text-muted)',
-              fontFamily: 'var(--fing-font-mono)',
-              transition: 'box-shadow 150ms ease',
-            }}>
+            <button
+              style={{
+                padding: "12px 24px",
+                background: "var(--marble-base)",
+                border: "none",
+                borderRadius: "20px",
+                boxShadow: getNeuPanelShadow(4, 12),
+                cursor: "pointer",
+                fontSize: "14px",
+                fontWeight: 500,
+                color: "var(--fing-text-muted)",
+                fontFamily: "var(--fing-font-mono)",
+                transition: "box-shadow 150ms ease",
+              }}
+            >
               Cancelar
             </button>
           </div>
@@ -247,22 +296,54 @@ function FormFieldContent() {
       </ShowcaseSection>
 
       <ShowcaseSection title="Especificaciones Técnicas">
-        <div style={{
-          padding: '20px',
-          borderRadius: '20px',
-          boxShadow: getNeuInsetShadow(5, 15),
-          background: 'var(--marble-base)',
-          fontSize: '12px',
-          fontFamily: 'var(--fing-font-mono)',
-          color: 'var(--fing-text-muted)',
-          lineHeight: '1.8',
-          transition: 'box-shadow 50ms linear',
-        }}>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Display:</strong> flex, flex-direction column</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Gap:</strong> 8px entre elementos</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Label:</strong> 12px, color #252528</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Required:</strong> asterisco color var(--fing-status-negative)</p>
-          <p>✓ <strong style={{ color: 'var(--fing-accent-primary)' }}>Helper/Error:</strong> 11px, color #636E72 / negative</p>
+        <div
+          style={{
+            padding: "20px",
+            borderRadius: "20px",
+            boxShadow: getNeuInsetShadow(5, 15),
+            background: "var(--marble-base)",
+            fontSize: "12px",
+            fontFamily: "var(--fing-font-mono)",
+            color: "var(--fing-text-muted)",
+            lineHeight: "1.8",
+            transition: "box-shadow 50ms linear",
+          }}
+        >
+          <p>
+            ✓{" "}
+            <strong style={{ color: "var(--fing-accent-primary)" }}>
+              Display:
+            </strong>{" "}
+            flex, flex-direction column
+          </p>
+          <p>
+            ✓{" "}
+            <strong style={{ color: "var(--fing-accent-primary)" }}>
+              Gap:
+            </strong>{" "}
+            8px entre elementos
+          </p>
+          <p>
+            ✓{" "}
+            <strong style={{ color: "var(--fing-accent-primary)" }}>
+              Label:
+            </strong>{" "}
+            12px, color #252528
+          </p>
+          <p>
+            ✓{" "}
+            <strong style={{ color: "var(--fing-accent-primary)" }}>
+              Required:
+            </strong>{" "}
+            asterisco color var(--fing-status-negative)
+          </p>
+          <p>
+            ✓{" "}
+            <strong style={{ color: "var(--fing-accent-primary)" }}>
+              Helper/Error:
+            </strong>{" "}
+            11px, color #636E72 / negative
+          </p>
         </div>
       </ShowcaseSection>
     </div>

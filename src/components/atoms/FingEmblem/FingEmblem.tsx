@@ -1,23 +1,23 @@
 // Path: src/components/atoms/FingEmblem/FingEmblem.tsx
 // FING Emblem - Radar/Pulse Symbol with Stone Marble Inset Container
-import React from 'react';
-import styles from './FingEmblem.module.css';
+import React from "react";
+import styles from "./FingEmblem.module.css";
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // TYPES
 // ═══════════════════════════════════════════════════════════════════════════════
 
 export type FingEmblemAnimation =
-  | 'none'
-  | 'breathe'
-  | 'pulse'
-  | 'glow'
-  | 'rotate'
-  | 'ripple'
-  | 'rippleSlow'
-  | 'heartbeat';
+  | "none"
+  | "breathe"
+  | "pulse"
+  | "glow"
+  | "rotate"
+  | "ripple"
+  | "rippleSlow"
+  | "heartbeat";
 
-export type FingEmblemVariant = 'simple' | 'framed';
+export type FingEmblemVariant = "simple" | "framed";
 
 export interface FingEmblemProps {
   /** Size of the emblem container in pixels */
@@ -29,7 +29,7 @@ export interface FingEmblemProps {
   /** Whether to show the wordmark next to the emblem */
   showWordmark?: boolean;
   /** Wordmark position */
-  wordmarkPosition?: 'right' | 'bottom';
+  wordmarkPosition?: "right" | "bottom";
   /** Border radius in pixels (default: 50% = circular) */
   borderRadius?: number | string;
   /** Visual variant: 'simple' (inset only) or 'framed' (outer raised + inner inset) */
@@ -48,13 +48,14 @@ interface RadarSymbolProps {
 }
 
 const RadarSymbol: React.FC<RadarSymbolProps> = ({ size, animation }) => {
-  const getAnimClass = (element: 'dot' | 'ring1' | 'ring2' | 'ring3') => {
-    if (animation === 'none') return '';
+  const getAnimClass = (element: "dot" | "ring1" | "ring2" | "ring3") => {
+    if (animation === "none") return "";
 
-    const baseClass = styles[`anim${animation.charAt(0).toUpperCase() + animation.slice(1)}`];
+    const baseClass =
+      styles[`anim${animation.charAt(0).toUpperCase() + animation.slice(1)}`];
     const elementClass = styles[element];
 
-    return `${baseClass || ''} ${elementClass || ''}`.trim();
+    return `${baseClass || ""} ${elementClass || ""}`.trim();
   };
 
   return (
@@ -62,22 +63,38 @@ const RadarSymbol: React.FC<RadarSymbolProps> = ({ size, animation }) => {
       width={size}
       height={size}
       viewBox="0 0 100 100"
-      className={`${styles.radarSvg} ${animation !== 'none' ? styles[`anim${animation.charAt(0).toUpperCase() + animation.slice(1)}`] : ''}`}
+      className={`${styles.radarSvg} ${animation !== "none" ? styles[`anim${animation.charAt(0).toUpperCase() + animation.slice(1)}`] : ""}`}
     >
       <defs>
         {/* Carve/Engrave Filter - Creates subtle carved-in-stone effect */}
-        <filter id="fing-carve-subtle" x="-25%" y="-25%" width="150%" height="150%">
+        <filter
+          id="fing-carve-subtle"
+          x="-25%"
+          y="-25%"
+          width="150%"
+          height="150%"
+        >
           {/* Light shadow (from top-left) */}
           <feOffset dx="1" dy="1" in="SourceAlpha" result="light" />
           <feGaussianBlur in="light" stdDeviation="0.4" result="lightBlur" />
           <feFlood floodColor="rgba(255,255,255,0.92)" result="lightColor" />
-          <feComposite in="lightColor" in2="lightBlur" operator="in" result="lightShadow" />
+          <feComposite
+            in="lightColor"
+            in2="lightBlur"
+            operator="in"
+            result="lightShadow"
+          />
 
           {/* Dark shadow (from bottom-right) */}
           <feOffset dx="-1" dy="-1" in="SourceAlpha" result="dark" />
           <feGaussianBlur in="dark" stdDeviation="0.6" result="darkBlur" />
           <feFlood floodColor="rgba(140,150,165,0.65)" result="darkColor" />
-          <feComposite in="darkColor" in2="darkBlur" operator="in" result="darkShadow" />
+          <feComposite
+            in="darkColor"
+            in2="darkBlur"
+            operator="in"
+            result="darkShadow"
+          />
 
           {/* Merge: dark shadow + light shadow + source graphic */}
           <feMerge>
@@ -95,7 +112,7 @@ const RadarSymbol: React.FC<RadarSymbolProps> = ({ size, animation }) => {
         r="5"
         fill="var(--fing-symbol-fill, #babec4)"
         filter="url(#fing-carve-subtle)"
-        className={`${styles.centerDot} ${getAnimClass('dot')}`}
+        className={`${styles.centerDot} ${getAnimClass("dot")}`}
       />
 
       {/* Ring 1 - Inner */}
@@ -107,7 +124,7 @@ const RadarSymbol: React.FC<RadarSymbolProps> = ({ size, animation }) => {
         stroke="var(--fing-symbol-stroke, #b2b6bc)"
         strokeWidth="2"
         filter="url(#fing-carve-subtle)"
-        className={`${styles.ring} ${styles.ring1} ${getAnimClass('ring1')}`}
+        className={`${styles.ring} ${styles.ring1} ${getAnimClass("ring1")}`}
       />
 
       {/* Ring 2 - Middle */}
@@ -119,7 +136,7 @@ const RadarSymbol: React.FC<RadarSymbolProps> = ({ size, animation }) => {
         stroke="var(--fing-symbol-stroke, #b2b6bc)"
         strokeWidth="2"
         filter="url(#fing-carve-subtle)"
-        className={`${styles.ring} ${styles.ring2} ${getAnimClass('ring2')}`}
+        className={`${styles.ring} ${styles.ring2} ${getAnimClass("ring2")}`}
       />
 
       {/* Ring 3 - Outer */}
@@ -131,7 +148,7 @@ const RadarSymbol: React.FC<RadarSymbolProps> = ({ size, animation }) => {
         stroke="var(--fing-symbol-stroke, #b2b6bc)"
         strokeWidth="2"
         filter="url(#fing-carve-subtle)"
-        className={`${styles.ring} ${styles.ring3} ${getAnimClass('ring3')}`}
+        className={`${styles.ring} ${styles.ring3} ${getAnimClass("ring3")}`}
       />
     </svg>
   );
@@ -150,11 +167,8 @@ const Wordmark: React.FC<WordmarkProps> = ({ size }) => {
   const fontSize = Math.max(size * 0.38, 14);
 
   return (
-    <span
-      className={styles.wordmark}
-      style={{ fontSize }}
-    >
-      fing
+    <span className={styles.wordmark} style={{ fontSize }}>
+      quafi
     </span>
   );
 };
@@ -165,27 +179,35 @@ const Wordmark: React.FC<WordmarkProps> = ({ size }) => {
 
 export const FingEmblem: React.FC<FingEmblemProps> = ({
   size = 100,
-  animation = 'none',
-  className = '',
+  animation = "none",
+  className = "",
   showWordmark = false,
-  wordmarkPosition = 'right',
+  wordmarkPosition = "right",
   borderRadius,
-  variant = 'simple',
+  variant = "simple",
   svgScale,
 }) => {
   const containerClasses = [
     styles.emblemContainer,
-    showWordmark && styles[`wordmark${wordmarkPosition.charAt(0).toUpperCase() + wordmarkPosition.slice(1)}`],
+    showWordmark &&
+      styles[
+        `wordmark${wordmarkPosition.charAt(0).toUpperCase() + wordmarkPosition.slice(1)}`
+      ],
     className,
-  ].filter(Boolean).join(' ');
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   // Compute border radius style
-  const radiusStyle = borderRadius !== undefined
-    ? typeof borderRadius === 'number' ? `${borderRadius}px` : borderRadius
-    : '50%';
+  const radiusStyle =
+    borderRadius !== undefined
+      ? typeof borderRadius === "number"
+        ? `${borderRadius}px`
+        : borderRadius
+      : "50%";
 
   // Framed variant: outer raised ring + inner inset ring
-  if (variant === 'framed') {
+  if (variant === "framed") {
     const outerSize = size;
     const innerSize = size * 0.75;
     const framedSvgSize = size * (svgScale ?? 0.52);
@@ -194,7 +216,7 @@ export const FingEmblem: React.FC<FingEmblemProps> = ({
       <div className={containerClasses}>
         {/* Outer RAISED ring */}
         <div
-          className={`${styles.emblemOuter} ${animation === 'glow' ? styles.glowAnimation : ''}`}
+          className={`${styles.emblemOuter} ${animation === "glow" ? styles.glowAnimation : ""}`}
           style={{
             width: outerSize,
             height: outerSize,
@@ -223,8 +245,10 @@ export const FingEmblem: React.FC<FingEmblemProps> = ({
 
   const insetClasses = [
     styles.emblemInset,
-    animation === 'glow' && styles.glowAnimation,
-  ].filter(Boolean).join(' ');
+    animation === "glow" && styles.glowAnimation,
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   return (
     <div className={containerClasses}>
@@ -259,8 +283,8 @@ export interface FingLockupProps {
 /** Horizontal lockup: emblem + wordmark side by side */
 export const FingLockupHorizontal: React.FC<FingLockupProps> = ({
   size = 70,
-  animation = 'none',
-  className = '',
+  animation = "none",
+  className = "",
 }) => {
   return (
     <FingEmblem
@@ -276,8 +300,8 @@ export const FingLockupHorizontal: React.FC<FingLockupProps> = ({
 /** Vertical lockup: emblem on top, wordmark below */
 export const FingLockupVertical: React.FC<FingLockupProps> = ({
   size = 80,
-  animation = 'none',
-  className = '',
+  animation = "none",
+  className = "",
 }) => {
   return (
     <FingEmblem

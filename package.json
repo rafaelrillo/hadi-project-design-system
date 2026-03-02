@@ -1,17 +1,30 @@
 {
-  "name": "fing-design-system",
+  "name": "quafi-design-system",
   "version": "1.0.0",
   "type": "module",
-  "description": "FING Design System - Investment analysis and recommendation platform UI components",
+  "description": "Quafi Design System - Investment analysis and recommendation platform UI components",
   "overrides": {
     "@testing-library/react": {
       "react": "^19.0.0",
       "react-dom": "^19.0.0"
     }
   },
+  "exports": {
+    "./atoms": "./src/components/atoms/index.ts",
+    "./molecules": "./src/components/molecules/index.ts",
+    "./organisms": "./src/components/organisms/index.ts",
+    "./charts": "./src/components/charts/index.ts",
+    "./animations": "./src/components/animations/index.ts",
+    "./hooks": "./src/hooks/index.ts",
+    "./contexts": "./src/contexts/index.ts",
+    "./store": "./src/store/index.ts",
+    "./services": "./src/services/index.ts",
+    "./styles": "./src/styles/index.css"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "build:lib": "vite build --config vite.config.lib.ts && tsc --project tsconfig.lib.json",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "test": "jest",

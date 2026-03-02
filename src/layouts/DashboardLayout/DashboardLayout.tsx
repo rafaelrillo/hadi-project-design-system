@@ -1,27 +1,32 @@
 // Path: src/layouts/DashboardLayout/DashboardLayout.tsx
 
-import { useState, useMemo, type CSSProperties } from 'react';
-import { Outlet, useNavigate, useLocation } from 'react-router-dom';
+import { useState, useMemo, type CSSProperties } from "react";
+import { Outlet, useNavigate, useLocation } from "react-router-dom";
 import {
   Home,
   Briefcase,
   TrendingUp,
   Newspaper,
+  PlayCircle,
+  FileText,
   type LucideIcon,
-} from 'lucide-react';
+} from "lucide-react";
 
-import { useAuthStore } from '../../store';
-import { AtmosphericBackground } from '../../components/atoms/fing';
-import { useIsMobile } from '../../hooks/useBreakpoint';
-import { MobileHeader } from '../../components/organisms/MobileHeader';
-import { BottomNavigation } from '../../components/organisms/BottomNavigation';
-import { MoreMenu } from '../../components/organisms/MoreMenu';
-import { Sidebar } from '@organisms/Sidebar';
-import type { TabItem } from '@atoms/Button';
-import { LightEngineProvider, useLightEngineOptional } from '@contexts/LightEngineContext';
-import { FingEmblem } from '@atoms/FingEmblem';
+import { useAuthStore } from "../../store";
+import { AtmosphericBackground } from "../../components/atoms/fing";
+import { useIsMobile } from "../../hooks/useBreakpoint";
+import { MobileHeader } from "../../components/organisms/MobileHeader";
+import { BottomNavigation } from "../../components/organisms/BottomNavigation";
+import { MoreMenu } from "../../components/organisms/MoreMenu";
+import { Sidebar } from "@organisms/Sidebar";
+import type { TabItem } from "@atoms/Button";
+import {
+  LightEngineProvider,
+  useLightEngineOptional,
+} from "@contexts/LightEngineContext";
+import { FingEmblem } from "@atoms/FingEmblem";
 
-import styles from './DashboardLayout.module.css';
+import styles from "./DashboardLayout.module.css";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // NAV ITEMS
@@ -35,10 +40,16 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { path: '/app/dashboard', icon: Home, label: 'Home', end: true },
-  { path: '/app/dashboard/portfolio', icon: Briefcase, label: 'Portfolio' },
-  { path: '/app/dashboard/recommendations', icon: TrendingUp, label: 'Calibrate' },
-  { path: '/app/dashboard/news', icon: Newspaper, label: 'News' },
+  { path: "/app/dashboard", icon: Home, label: "Home", end: true },
+  { path: "/app/dashboard/portfolio", icon: Briefcase, label: "Portfolio" },
+  {
+    path: "/app/dashboard/recommendations",
+    icon: TrendingUp,
+    label: "Calibrate",
+  },
+  { path: "/app/dashboard/simulate", icon: PlayCircle, label: "Simulate" },
+  { path: "/app/dashboard/reports", icon: FileText, label: "Reports" },
+  { path: "/app/dashboard/news", icon: Newspaper, label: "News" },
 ];
 
 // const settingsItem: NavItem = { path: '/app/dashboard/settings', icon: Settings, label: 'Settings' };
@@ -47,7 +58,7 @@ const navItems: NavItem[] = [
 // LAYOUT STYLE TYPES
 // ─────────────────────────────────────────────────────────────────────────────
 
-export type LayoutStyle = 'default' | 'neuPanel';
+export type LayoutStyle = "default" | "neuPanel";
 
 export interface DashboardLayoutProps {
   /** Visual style for the main content container */
@@ -66,17 +77,49 @@ export interface DashboardLayoutProps {
 
 // Mobile navigation items
 const mobileNavItems = [
-  { id: 'home', label: 'Home', icon: <Home size={22} />, path: '/app/dashboard' },
-  { id: 'portfolio', label: 'Portfolio', icon: <Briefcase size={22} />, path: '/app/dashboard/portfolio' },
-  { id: 'calibrate', label: 'Calibrate', icon: <TrendingUp size={22} />, path: '/app/dashboard/recommendations' },
-  { id: 'news', label: 'News', icon: <Newspaper size={22} />, path: '/app/dashboard/news' },
+  {
+    id: "home",
+    label: "Home",
+    icon: <Home size={22} />,
+    path: "/app/dashboard",
+  },
+  {
+    id: "portfolio",
+    label: "Portfolio",
+    icon: <Briefcase size={22} />,
+    path: "/app/dashboard/portfolio",
+  },
+  {
+    id: "calibrate",
+    label: "Calibrate",
+    icon: <TrendingUp size={22} />,
+    path: "/app/dashboard/recommendations",
+  },
+  {
+    id: "simulate",
+    label: "Simulate",
+    icon: <PlayCircle size={22} />,
+    path: "/app/dashboard/simulate",
+  },
+  {
+    id: "reports",
+    label: "Reports",
+    icon: <FileText size={22} />,
+    path: "/app/dashboard/reports",
+  },
+  {
+    id: "news",
+    label: "News",
+    icon: <Newspaper size={22} />,
+    path: "/app/dashboard/news",
+  },
 ];
 
 // Inner component that uses the Light Engine context
 function DashboardLayoutInner({
-  layoutStyle = 'default',
+  layoutStyle = "default",
   dynamicShadows = true,
-}: Omit<DashboardLayoutProps, 'animateLight' | 'initialLightAngle'>) {
+}: Omit<DashboardLayoutProps, "animateLight" | "initialLightAngle">) {
   const navigate = useNavigate();
   const location = useLocation();
   const { logout } = useAuthStore();
@@ -111,20 +154,20 @@ function DashboardLayoutInner({
     }
   };
 
-
   // Get wrapper className for neuPanel style
   const getContentWrapperClassName = (): string => {
     const classes = [styles.content];
-    if (layoutStyle === 'neuPanel') classes.push(styles.neuPanelContent);
-    if (dynamicShadows && lightEngine && layoutStyle === 'neuPanel') {
+    if (layoutStyle === "neuPanel") classes.push(styles.neuPanelContent);
+    if (dynamicShadows && lightEngine && layoutStyle === "neuPanel") {
       classes.push(styles.dynamicShadows);
     }
-    return classes.join(' ');
+    return classes.join(" ");
   };
 
   // Get dynamic styles for neuPanel
   const getContentDynamicStyles = (): CSSProperties | undefined => {
-    if (layoutStyle !== 'neuPanel' || !dynamicShadows || !lightEngine) return undefined;
+    if (layoutStyle !== "neuPanel" || !dynamicShadows || !lightEngine)
+      return undefined;
 
     const { shadows } = lightEngine;
     return {
@@ -148,7 +191,7 @@ function DashboardLayoutInner({
 
   const handleLogout = () => {
     logout();
-    navigate('/app/login');
+    navigate("/app/login");
   };
 
   // Mobile Layout
@@ -157,17 +200,13 @@ function DashboardLayoutInner({
       <>
         <AtmosphericBackground variant="subtle" animated />
         <div className={styles.mobileLayout}>
-          <MobileHeader
-            onMenuClick={() => setIsMoreMenuOpen(true)}
-          />
+          <MobileHeader onMenuClick={() => setIsMoreMenuOpen(true)} />
 
           <main className={styles.mobileContent}>
             <Outlet />
           </main>
 
-          <BottomNavigation
-            items={mobileNavItems}
-          />
+          <BottomNavigation items={mobileNavItems} />
 
           <MoreMenu
             isOpen={isMoreMenuOpen}
@@ -195,7 +234,7 @@ function DashboardLayoutInner({
           mainTabs={mainTabs}
           activeTab={activeTabIndex}
           onTabChange={handleTabChange}
-          onSettingsClick={() => navigate('/app/dashboard/settings')}
+          onSettingsClick={() => navigate("/app/dashboard/settings")}
           onLogoutClick={handleLogout}
           position="fixed"
           dynamicShadows={dynamicShadows}
@@ -221,7 +260,7 @@ function DashboardLayoutInner({
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function DashboardLayout({
-  layoutStyle = 'default',
+  layoutStyle = "default",
   dynamicShadows = true,
   animateLight = true,
   initialLightAngle = 135,

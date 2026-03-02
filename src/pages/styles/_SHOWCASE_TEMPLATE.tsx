@@ -15,20 +15,19 @@
  * ═══════════════════════════════════════════════════════════════════════════════
  */
 
-import React from 'react';
-import type { CSSProperties } from 'react';
-import { ShowcaseSection } from '../../components/showcase';
-import { Heading4, Label, Paragraph } from '../../components/atoms/Typography';
+import type { CSSProperties } from "react";
+import { ShowcaseSection } from "../../components/showcase";
+import { Heading4, Label } from "../../components/atoms/Typography";
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // 1. COLOR REFERENCES - Siempre CSS variables
 // ═══════════════════════════════════════════════════════════════════════════════
 
 const COLORS = {
-  marble: 'var(--marble-base)',
-  accent: 'var(--fing-accent)',
-  textMuted: 'var(--fing-text-muted)',
-  textPrimary: 'var(--fing-text-primary)',
+  marble: "var(--marble-base)",
+  accent: "var(--fing-accent)",
+  textMuted: "var(--fing-text-muted)",
+  textPrimary: "var(--fing-text-primary)",
 };
 
 // ═══════════════════════════════════════════════════════════════════════════════
@@ -36,33 +35,33 @@ const COLORS = {
 // ═══════════════════════════════════════════════════════════════════════════════
 
 const pageHeaderStyles: CSSProperties = {
-  marginBottom: '32px',
-  padding: '24px',
+  marginBottom: "32px",
+  padding: "24px",
   background: COLORS.marble,
-  borderRadius: '20px',
-  boxShadow: 'var(--raised-3)',
+  borderRadius: "20px",
+  boxShadow: "var(--raised-3)",
 };
 
 const pageTitleStyles: CSSProperties = {
-  fontSize: '28px',
+  fontSize: "28px",
   fontWeight: 700,
   color: COLORS.accent,
-  marginBottom: '8px',
-  fontFamily: 'var(--fing-font-display)',
-  textTransform: 'uppercase',
-  letterSpacing: '0.1em',
+  marginBottom: "8px",
+  fontFamily: "var(--fing-font-display)",
+  textTransform: "uppercase",
+  letterSpacing: "0.1em",
   // Carved whisper - Petrol tint (RAISED container = carved text)
-  textShadow: 'var(--lp-petrol-whisper)',
+  textShadow: "var(--lp-petrol-whisper)",
 };
 
 const pageDescStyles: CSSProperties = {
-  fontSize: '14px',
+  fontSize: "14px",
   color: COLORS.textMuted,
-  fontFamily: 'var(--fing-font-mono)',
-  textTransform: 'uppercase',
-  letterSpacing: '0.03em',
+  fontFamily: "var(--fing-font-mono)",
+  textTransform: "uppercase",
+  letterSpacing: "0.03em",
   // Carved muted (RAISED container = carved text)
-  textShadow: 'var(--lp-muted)',
+  textShadow: "var(--lp-muted)",
 };
 
 // ═══════════════════════════════════════════════════════════════════════════════
@@ -77,8 +76,8 @@ const pageDescStyles: CSSProperties = {
 const raised = (level: 1 | 2 | 3 = 2): CSSProperties => ({
   background: COLORS.marble,
   boxShadow: `var(--raised-${level})`,
-  borderRadius: '16px',
-  padding: '24px',
+  borderRadius: "16px",
+  padding: "24px",
 });
 
 /**
@@ -87,20 +86,20 @@ const raised = (level: 1 | 2 | 3 = 2): CSSProperties => ({
 const inset = (level: 1 | 2 | 3 = 2): CSSProperties => ({
   background: COLORS.marble,
   boxShadow: `var(--inset-${level})`,
-  borderRadius: '12px',
-  padding: '20px',
+  borderRadius: "12px",
+  padding: "20px",
 });
 
 /**
  * Helper para crear elemento GLASS (solo dentro de INSET)
  */
 const glass: CSSProperties = {
-  background: 'var(--glass-bg)',
-  backdropFilter: 'blur(8px)',
-  WebkitBackdropFilter: 'blur(8px)',
-  border: '1px solid var(--glass-border)',
-  borderRadius: '12px',
-  padding: '16px',
+  background: "var(--glass-bg)",
+  backdropFilter: "blur(8px)",
+  WebkitBackdropFilter: "blur(8px)",
+  border: "1px solid var(--glass-border)",
+  borderRadius: "12px",
+  padding: "16px",
 };
 
 // ═══════════════════════════════════════════════════════════════════════════════
@@ -110,31 +109,31 @@ const glass: CSSProperties = {
 const gridStyles = {
   /** Grid para cards/demos medianos */
   medium: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
-    gap: '24px',
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
+    gap: "24px",
   } as CSSProperties,
 
   /** Grid para items pequeños */
   small: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))',
-    gap: '16px',
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))",
+    gap: "16px",
   } as CSSProperties,
 
   /** Grid para cards grandes */
   large: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-    gap: '28px',
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+    gap: "28px",
   } as CSSProperties,
 
   /** Flex wrap para demos inline */
   flex: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    gap: '24px',
-    justifyContent: 'center',
+    display: "flex",
+    flexWrap: "wrap",
+    gap: "24px",
+    justifyContent: "center",
   } as CSSProperties,
 };
 
@@ -143,14 +142,14 @@ const gridStyles = {
 // ═══════════════════════════════════════════════════════════════════════════════
 
 const demoBoxStyles: CSSProperties = {
-  width: '100px',
-  height: '80px',
+  width: "100px",
+  height: "80px",
   background: COLORS.marble,
-  borderRadius: '12px',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  justifyContent: 'center',
+  borderRadius: "12px",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
   // Shadow se aplica dinámicamente según demo
 };
 
@@ -161,21 +160,21 @@ const demoBoxStyles: CSSProperties = {
 const labelStyles = {
   /** Variable name (ej: --raised-3) */
   varName: {
-    fontSize: '11px',
-    fontFamily: 'var(--fing-font-mono)',
+    fontSize: "11px",
+    fontFamily: "var(--fing-font-mono)",
     color: COLORS.accent,
-    marginTop: '12px',
-    textAlign: 'center',
-    textShadow: 'var(--lp-petrol-whisper)',
+    marginTop: "12px",
+    textAlign: "center",
+    textShadow: "var(--lp-petrol-whisper)",
   } as CSSProperties,
 
   /** Spec label (ej: 6px / 12px blur) */
   spec: {
-    fontSize: '10px',
-    fontFamily: 'var(--fing-font-mono)',
+    fontSize: "10px",
+    fontFamily: "var(--fing-font-mono)",
     color: COLORS.textMuted,
-    marginTop: '4px',
-    textAlign: 'center',
+    marginTop: "4px",
+    textAlign: "center",
   } as CSSProperties,
 };
 
@@ -185,16 +184,15 @@ const labelStyles = {
 
 export function ShowcaseTemplate() {
   return (
-    <div style={{ background: COLORS.marble, minHeight: '100%', padding: '24px' }}>
-
+    <div
+      style={{ background: COLORS.marble, minHeight: "100%", padding: "24px" }}
+    >
       {/* ═══════════════════════════════════════════════════════════════════
            PAGE HEADER - RAISED container con título carved
            ═══════════════════════════════════════════════════════════════════ */}
       <header style={pageHeaderStyles}>
         <h1 style={pageTitleStyles}>Page Title</h1>
-        <p style={pageDescStyles}>
-          Page description in uppercase mono
-        </p>
+        <p style={pageDescStyles}>Page description in uppercase mono</p>
       </header>
 
       {/* ═══════════════════════════════════════════════════════════════════
@@ -215,10 +213,12 @@ export function ShowcaseTemplate() {
         */}
         <div style={gridStyles.flex}>
           {[1, 2, 3].map((item) => (
-            <div key={item} style={{ textAlign: 'center' }}>
-              <div style={{ ...demoBoxStyles, boxShadow: `var(--raised-${item})` }}>
+            <div key={item} style={{ textAlign: "center" }}>
+              <div
+                style={{ ...demoBoxStyles, boxShadow: `var(--raised-${item})` }}
+              >
                 {/* En RAISED box dentro de INSET = usar carved */}
-                <Heading4 effect="carved-muted" style={{ fontSize: '24px' }}>
+                <Heading4 effect="carved-muted" style={{ fontSize: "24px" }}>
                   {item}
                 </Heading4>
               </div>
@@ -244,14 +244,14 @@ export function ShowcaseTemplate() {
           </Label>
 
           {/* INSET dentro de RAISED = OK */}
-          <div style={{ ...inset(2), marginTop: '16px' }}>
+          <div style={{ ...inset(2), marginTop: "16px" }}>
             {/* En INSET = usar embossed para texto */}
             <Label effect="embossed">
               This is an INSET container inside the RAISED
             </Label>
 
             {/* GLASS dentro de INSET = OK */}
-            <div style={{ ...glass, marginTop: '12px' }}>
+            <div style={{ ...glass, marginTop: "12px" }}>
               <Label effect="carved-whisper">
                 This is a GLASS element inside INSET
               </Label>
@@ -268,33 +268,41 @@ export function ShowcaseTemplate() {
         description="Qué effect usar según el container"
       >
         <div style={raised(2)}>
-          <table style={{ width: '100%', fontFamily: 'var(--fing-font-mono)', fontSize: '12px' }}>
+          <table
+            style={{
+              width: "100%",
+              fontFamily: "var(--fing-font-mono)",
+              fontSize: "12px",
+            }}
+          >
             <thead>
               <tr>
-                <th style={{ textAlign: 'left', padding: '8px' }}>Container</th>
-                <th style={{ textAlign: 'left', padding: '8px' }}>Text Effect</th>
-                <th style={{ textAlign: 'left', padding: '8px' }}>Example</th>
+                <th style={{ textAlign: "left", padding: "8px" }}>Container</th>
+                <th style={{ textAlign: "left", padding: "8px" }}>
+                  Text Effect
+                </th>
+                <th style={{ textAlign: "left", padding: "8px" }}>Example</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td style={{ padding: '8px' }}>RAISED</td>
-                <td style={{ padding: '8px' }}>carved-*, letterpress</td>
-                <td style={{ padding: '8px' }}>
+                <td style={{ padding: "8px" }}>RAISED</td>
+                <td style={{ padding: "8px" }}>carved-*, letterpress</td>
+                <td style={{ padding: "8px" }}>
                   <Label effect="carved-muted">Carved text</Label>
                 </td>
               </tr>
               <tr>
-                <td style={{ padding: '8px' }}>INSET</td>
-                <td style={{ padding: '8px' }}>embossed-*</td>
-                <td style={{ padding: '8px' }}>
+                <td style={{ padding: "8px" }}>INSET</td>
+                <td style={{ padding: "8px" }}>embossed-*</td>
+                <td style={{ padding: "8px" }}>
                   <Label effect="embossed">Embossed text</Label>
                 </td>
               </tr>
               <tr>
-                <td style={{ padding: '8px' }}>GLASS</td>
-                <td style={{ padding: '8px' }}>carved-whisper</td>
-                <td style={{ padding: '8px' }}>
+                <td style={{ padding: "8px" }}>GLASS</td>
+                <td style={{ padding: "8px" }}>carved-whisper</td>
+                <td style={{ padding: "8px" }}>
                   <Label effect="carved-whisper">Whisper text</Label>
                 </td>
               </tr>
@@ -302,7 +310,6 @@ export function ShowcaseTemplate() {
           </table>
         </div>
       </ShowcaseSection>
-
     </div>
   );
 }

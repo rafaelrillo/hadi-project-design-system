@@ -1,33 +1,64 @@
 // Path: src/pages/app/DashboardPage/DashboardPage.tsx
 // FING 3.0 - Simple, Clean Dashboard
 
-import { useMemo, useEffect } from 'react';
-import { TrendingUp, TrendingDown, ArrowRight, Briefcase, Newspaper } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useMemo, useEffect } from "react";
+import {
+  TrendingUp,
+  TrendingDown,
+  ArrowRight,
+  Briefcase,
+  Newspaper,
+} from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 // Hooks
-import { useNews } from '../../../hooks/useNews';
-import { useIsMobile } from '../../../hooks/useBreakpoint';
+import { useNews } from "../../../hooks/useNews";
+import { useIsMobile } from "../../../hooks/useBreakpoint";
 
 // Store
-import { usePortfolioStore } from '../../../store';
+import { usePortfolioStore } from "../../../store";
+import { useCalibrationStore } from "../../../store/calibrationStore";
 
 // Components
-import { NewsCard } from '../../../components/molecules/fing/NewsCard';
-import { PortfolioPerformance } from '../../../components/organisms/investor/PortfolioPerformance';
+import { NewsCard } from "../../../components/molecules/fing/NewsCard";
+import { PortfolioPerformance } from "../../../components/organisms/investor/PortfolioPerformance";
 
-import styles from './DashboardPage.module.css';
+import styles from "./DashboardPage.module.css";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // MOCK DATA - Top Buys (stocks NOT in portfolio, recommended to buy)
 // ─────────────────────────────────────────────────────────────────────────────
 
 const TOP_BUYS = [
-  { ticker: 'META', name: 'Meta Platforms Inc.', score: 94, change: 2.15, price: 505.75 },
-  { ticker: 'AVGO', name: 'Broadcom Inc.', score: 91, change: 1.82, price: 168.45 },
-  { ticker: 'CRM', name: 'Salesforce Inc.', score: 88, change: 1.35, price: 272.30 },
-  { ticker: 'NFLX', name: 'Netflix Inc.', score: 86, change: 0.95, price: 478.20 },
-  { ticker: 'ADBE', name: 'Adobe Inc.', score: 84, change: 1.10, price: 524.80 },
+  {
+    ticker: "META",
+    name: "Meta Platforms Inc.",
+    score: 94,
+    change: 2.15,
+    price: 505.75,
+  },
+  {
+    ticker: "AVGO",
+    name: "Broadcom Inc.",
+    score: 91,
+    change: 1.82,
+    price: 168.45,
+  },
+  {
+    ticker: "CRM",
+    name: "Salesforce Inc.",
+    score: 88,
+    change: 1.35,
+    price: 272.3,
+  },
+  {
+    ticker: "NFLX",
+    name: "Netflix Inc.",
+    score: 86,
+    change: 0.95,
+    price: 478.2,
+  },
+  { ticker: "ADBE", name: "Adobe Inc.", score: 84, change: 1.1, price: 524.8 },
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -54,7 +85,7 @@ export function DashboardPage() {
     return [...holdings]
       .sort((a, b) => a.dayChangePercent - b.dayChangePercent) // Worst performers first
       .slice(0, 5)
-      .map(h => ({
+      .map((h) => ({
         ticker: h.symbol,
         name: h.name,
         change: h.dayChangePercent,
@@ -62,8 +93,95 @@ export function DashboardPage() {
       }));
   }, [holdings]);
 
+  // ── Calibration-derived data (if available) ──
+  const {
+    tickers: calibrationTickers,
+    optimizeResult,
+    marketScanResult,
+    isOptimizing,
+    runFullAnalysis,
+    checkBackend,
+  } = useCalibrationStore();
+
+  // Auto-run optimization if tickers exist but no results yet
+  useEffect(() => {
+    if (calibrationTickers.length >= 2 && !optimizeResult && !isOptimizing) {
+      checkBackend().then(() => {
+        const { backendAvailable: available } = useCalibrationStore.getState();
+        if (available) {
+          runFullAnalysis();
+        }
+      });
+    }
+  }, [
+    calibrationTickers,
+    optimizeResult,
+    isOptimizing,
+    checkBackend,
+    runFullAnalysis,
+  ]);
+
+  const kpis = useMemo(() => {
+    if (isOptimizing) {
+      return { score: "...", risk: "...", ytd: "...", hasData: false };
+    }
+    if (!optimizeResult) {
+      return { score: "87", risk: "42", ytd: "+16%", hasData: false };
+    }
+    const pm = optimizeResult.portfolio_metrics;
+    // Score: Sharpe ratio scaled to 0-100 (Sharpe ~2 = 100)
+    const sharpeScore = Math.min(
+      99,
+      Math.max(0, Math.round(pm.sharpe_ratio * 50))
+    );
+    // Risk: Annualized volatility as integer (lower = better)
+    const riskScore = Math.round(pm.volatility * Math.sqrt(252) * 100);
+    // YTD: Total cumulative return
+    const totalReturn =
+      optimizeResult.cumulative_returns.length > 0
+        ? optimizeResult.cumulative_returns[
+            optimizeResult.cumulative_returns.length - 1
+          ] * 100
+        : 0;
+    const ytdStr = `${totalReturn >= 0 ? "+" : ""}${totalReturn.toFixed(0)}%`;
+    return {
+      score: String(sharpeScore),
+      risk: String(riskScore),
+      ytd: ytdStr,
+      hasData: true,
+    };
+  }, [optimizeResult]);
+
+  const topBuys = useMemo(() => {
+    // If market scan ran, use opportunities as Top Buys
+    if (marketScanResult && marketScanResult.opportunities.length > 0) {
+      return marketScanResult.opportunities.slice(0, 5).map((opp) => ({
+        ticker: opp.ticker,
+        name: opp.ticker,
+        score: Math.round(opp.utilityScore * 100),
+        change: opp.utilityScore * 10,
+        price: 0,
+      }));
+    }
+    // If optimize ran, use top weighted tickers
+    if (optimizeResult) {
+      return Object.entries(optimizeResult.optimized_weights)
+        .filter(([, w]) => w > 0.001)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 5)
+        .map(([ticker, weight]) => ({
+          ticker,
+          name: ticker,
+          score: Math.round(weight * 100),
+          change: weight * 10,
+          price: 0,
+        }));
+    }
+    return TOP_BUYS;
+  }, [optimizeResult, marketScanResult]);
+
   // Mobile shows only top 3
-  const mobileTopBuys = TOP_BUYS.slice(0, 3);
+  const mobileTopBuys = topBuys.slice(0, 3);
   const mobileTopSells = topSells.slice(0, 3);
 
   // Calculate real portfolio totals
@@ -87,13 +205,17 @@ export function DashboardPage() {
           </div>
           <div className={styles.mobileValueBottom}>
             <span className={styles.mobileValueAmount}>
-              ${portfolioTotals.totalValue.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
+              $
+              {portfolioTotals.totalValue.toLocaleString("en-US", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              })}
             </span>
             <span
               className={styles.mobileValueChange}
               data-positive={portfolioTotals.gainPercent >= 0}
             >
-              {portfolioTotals.gainPercent >= 0 ? '+' : ''}
+              {portfolioTotals.gainPercent >= 0 ? "+" : ""}
               {portfolioTotals.gainPercent.toFixed(1)}%
             </span>
           </div>
@@ -115,12 +237,17 @@ export function DashboardPage() {
                 <div key={rec.ticker} className={styles.mobilePickItemBuy}>
                   <span className={styles.mobilePickRank}>#{index + 1}</span>
                   <span className={styles.mobilePickTicker}>{rec.ticker}</span>
-                  <span className={styles.mobilePickPrice}>${rec.price.toFixed(0)}</span>
+                  <span className={styles.mobilePickPrice}>
+                    {rec.price > 0
+                      ? `$${rec.price.toFixed(0)}`
+                      : `${rec.score}%`}
+                  </span>
                   <span
                     className={styles.mobilePickChange}
                     data-positive={rec.change >= 0}
                   >
-                    {rec.change >= 0 ? '+' : ''}{rec.change.toFixed(2)}%
+                    {rec.change >= 0 ? "+" : ""}
+                    {rec.change.toFixed(2)}%
                   </span>
                 </div>
               ))}
@@ -138,12 +265,15 @@ export function DashboardPage() {
                 <div key={rec.ticker} className={styles.mobilePickItemSell}>
                   <span className={styles.mobilePickRank}>#{index + 1}</span>
                   <span className={styles.mobilePickTicker}>{rec.ticker}</span>
-                  <span className={styles.mobilePickPrice}>${rec.price.toFixed(0)}</span>
+                  <span className={styles.mobilePickPrice}>
+                    ${rec.price.toFixed(0)}
+                  </span>
                   <span
                     className={styles.mobilePickChange}
                     data-positive={rec.change >= 0}
                   >
-                    {rec.change >= 0 ? '+' : ''}{rec.change.toFixed(2)}%
+                    {rec.change >= 0 ? "+" : ""}
+                    {rec.change.toFixed(2)}%
                   </span>
                 </div>
               ))}
@@ -154,12 +284,14 @@ export function DashboardPage() {
         {/* News Card */}
         <div
           className={styles.mobileNewsCard}
-          onClick={() => navigate('/app/dashboard/news')}
+          onClick={() => navigate("/app/dashboard/news")}
         >
           <Newspaper size={18} className={styles.mobileNewsIcon} />
           <div className={styles.mobileNewsContent}>
             <span className={styles.mobileNewsTitle}>Latest News</span>
-            <span className={styles.mobileNewsCount}>{news.length} articles</span>
+            <span className={styles.mobileNewsCount}>
+              {news.length} articles
+            </span>
           </div>
           <ArrowRight size={16} className={styles.mobileNewsArrow} />
         </div>
@@ -187,7 +319,7 @@ export function DashboardPage() {
 
         {/* Portfolio Button - Right side */}
         <button
-          onClick={() => navigate('/app/dashboard/portfolio')}
+          onClick={() => navigate("/app/dashboard/portfolio")}
           className={styles.raisedButton}
         >
           Portfolio
@@ -203,15 +335,16 @@ export function DashboardPage() {
         <div className={styles.balancePill}>
           {/* Inset circle with portfolio icon */}
           <div className={styles.balancePillIcon}>
-            <Briefcase
-              size={24}
-              className={styles.balancePillBriefcase}
-            />
+            <Briefcase size={24} className={styles.balancePillBriefcase} />
           </div>
           {/* Value and label */}
           <div className={styles.balancePillContent}>
             <div className={styles.balancePillValue}>
-              ${portfolioTotals.totalValue.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
+              $
+              {portfolioTotals.totalValue.toLocaleString("en-US", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              })}
             </div>
             <div className={styles.balancePillLabel}>TOTAL BALANCE</div>
           </div>
@@ -221,19 +354,19 @@ export function DashboardPage() {
         <div className={styles.balanceKpis}>
           <div className={styles.kpiMeter}>
             <div className={styles.kpiMeterInner}>
-              <span className={styles.kpiValue}>87</span>
+              <span className={styles.kpiValue}>{kpis.score}</span>
               <span className={styles.kpiLabel}>SCORE</span>
             </div>
           </div>
           <div className={styles.kpiMeter}>
             <div className={styles.kpiMeterInner}>
-              <span className={styles.kpiValueWarning}>42</span>
+              <span className={styles.kpiValueWarning}>{kpis.risk}</span>
               <span className={styles.kpiLabelWarning}>RISK</span>
             </div>
           </div>
           <div className={styles.kpiMeter}>
             <div className={styles.kpiMeterInner}>
-              <span className={styles.kpiValuePositive}>+16%</span>
+              <span className={styles.kpiValuePositive}>{kpis.ytd}</span>
               <span className={styles.kpiLabelPositive}>YTD</span>
             </div>
           </div>
@@ -251,21 +384,23 @@ export function DashboardPage() {
             <h3 className={styles.cardTitle}>
               <span
                 style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: '28px',
-                  height: '28px',
-                  borderRadius: '50%',
-                  background: 'var(--marble-base)',
-                  boxShadow: 'inset 1.5px 1.5px 3px var(--shadow-dark), inset -1.5px -1.5px 3px var(--shadow-light)',
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "28px",
+                  height: "28px",
+                  borderRadius: "50%",
+                  background: "var(--marble-base)",
+                  boxShadow:
+                    "inset 1.5px 1.5px 3px var(--shadow-dark), inset -1.5px -1.5px 3px var(--shadow-light)",
                 }}
               >
                 <TrendingUp
                   size={15}
                   style={{
-                    color: 'var(--fing-accent-primary)',
-                    filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))',
+                    color: "var(--fing-accent-primary)",
+                    filter:
+                      "drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))",
                   }}
                 />
               </span>
@@ -274,7 +409,7 @@ export function DashboardPage() {
             {/* Pill Frame INSET → RAISED Button */}
             <div className={styles.pillFrameWrapperSm}>
               <button
-                onClick={() => navigate('/app/dashboard/recommendations')}
+                onClick={() => navigate("/app/dashboard/recommendations")}
                 className={styles.pillFrameButtonSm}
               >
                 View All
@@ -294,17 +429,26 @@ export function DashboardPage() {
                 <span className={styles.dataTableTitle}>Top Buys</span>
               </div>
               <div className={styles.dataTableBody}>
-                {TOP_BUYS.slice(0, 3).map((rec, index) => (
+                {topBuys.slice(0, 3).map((rec, index) => (
                   <div key={rec.ticker} className={styles.rowFrameInset}>
                     <div className={styles.dataTableRowBuy}>
-                      <span className={styles.dataTableCellRank}>{index + 1}</span>
-                      <span className={styles.dataTableCellTicker}>{rec.ticker}</span>
-                      <span className={styles.dataTableCellPrice}>${rec.price.toFixed(0)}</span>
+                      <span className={styles.dataTableCellRank}>
+                        {index + 1}
+                      </span>
+                      <span className={styles.dataTableCellTicker}>
+                        {rec.ticker}
+                      </span>
+                      <span className={styles.dataTableCellPrice}>
+                        {rec.price > 0
+                          ? `$${rec.price.toFixed(0)}`
+                          : `${rec.score}%`}
+                      </span>
                       <span
                         className={styles.dataTableCellChange}
                         data-positive={rec.change >= 0}
                       >
-                        {rec.change >= 0 ? '+' : ''}{rec.change.toFixed(2)}%
+                        {rec.change >= 0 ? "+" : ""}
+                        {rec.change.toFixed(2)}%
                       </span>
                     </div>
                   </div>
@@ -322,14 +466,21 @@ export function DashboardPage() {
                 {topSells.slice(0, 3).map((rec, index) => (
                   <div key={rec.ticker} className={styles.rowFrameInset}>
                     <div className={styles.dataTableRowSell}>
-                      <span className={styles.dataTableCellRankSell}>{index + 1}</span>
-                      <span className={styles.dataTableCellTicker}>{rec.ticker}</span>
-                      <span className={styles.dataTableCellPrice}>${rec.price.toFixed(0)}</span>
+                      <span className={styles.dataTableCellRankSell}>
+                        {index + 1}
+                      </span>
+                      <span className={styles.dataTableCellTicker}>
+                        {rec.ticker}
+                      </span>
+                      <span className={styles.dataTableCellPrice}>
+                        ${rec.price.toFixed(0)}
+                      </span>
                       <span
                         className={styles.dataTableCellChange}
                         data-positive={rec.change >= 0}
                       >
-                        {rec.change >= 0 ? '+' : ''}{rec.change.toFixed(2)}%
+                        {rec.change >= 0 ? "+" : ""}
+                        {rec.change.toFixed(2)}%
                       </span>
                     </div>
                   </div>
@@ -345,21 +496,23 @@ export function DashboardPage() {
             <h3 className={styles.cardTitle}>
               <span
                 style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: '28px',
-                  height: '28px',
-                  borderRadius: '50%',
-                  background: 'var(--marble-base)',
-                  boxShadow: 'inset 1.5px 1.5px 3px var(--shadow-dark), inset -1.5px -1.5px 3px var(--shadow-light)',
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "28px",
+                  height: "28px",
+                  borderRadius: "50%",
+                  background: "var(--marble-base)",
+                  boxShadow:
+                    "inset 1.5px 1.5px 3px var(--shadow-dark), inset -1.5px -1.5px 3px var(--shadow-light)",
                 }}
               >
                 <Newspaper
                   size={15}
                   style={{
-                    color: 'var(--fing-accent-primary)',
-                    filter: 'drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))',
+                    color: "var(--fing-accent-primary)",
+                    filter:
+                      "drop-shadow(-0.5px -0.5px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 0.5px 0px rgba(130, 140, 155, 0.4))",
                   }}
                 />
               </span>
@@ -368,7 +521,7 @@ export function DashboardPage() {
             {/* Pill Frame INSET → RAISED Button */}
             <div className={styles.pillFrameWrapperSm}>
               <button
-                onClick={() => navigate('/app/dashboard/news')}
+                onClick={() => navigate("/app/dashboard/news")}
                 className={styles.pillFrameButtonSm}
               >
                 View All

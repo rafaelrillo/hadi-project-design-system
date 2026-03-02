@@ -5,3 +5,4 @@ export * from "./useKeyboardShortcuts";
 export * from "./useApi";
 export * from "./useNews";
 export * from "./useDynamicShadows";
+export * from "./useBreakpoint";

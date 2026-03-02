@@ -1,10 +1,10 @@
 // Path: src/pages/FingHome/FingHome.tsx
 // FING Home Page - Stone Marble Neumorphism with Natural Color Palette
 
-import { useNavigate } from 'react-router-dom';
-import { FingWordmarkText } from '@/components/atoms/FingWordmark';
-import { FingEmblem } from '@/components/atoms/FingEmblem';
-import styles from './FingHome.module.css';
+import { useNavigate } from "react-router-dom";
+import { FingWordmarkText } from "@/components/atoms/FingWordmark";
+import { FingEmblem } from "@/components/atoms/FingEmblem";
+import styles from "./FingHome.module.css";
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // FING HOME PAGE
@@ -27,19 +27,19 @@ export function FingHome() {
         <FingWordmarkText variant="carved" size={120} />
 
         {/* Descriptor */}
-        <p className={styles.heroDescriptor}>Finance engine.</p>
+        <p className={styles.heroDescriptor}>Investment engine.</p>
 
         {/* CTAs */}
         <div className={styles.heroCtas}>
           <button
             className={`${styles.btn} ${styles.btnPrimary}`}
-            onClick={() => navigate('/app/dashboard')}
+            onClick={() => navigate("/app/dashboard")}
           >
             Enter App
           </button>
           <button
             className={`${styles.btn} ${styles.btnSecondary}`}
-            onClick={() => navigate('/showcase')}
+            onClick={() => navigate("/showcase")}
           >
             Design System
           </button>
@@ -71,7 +71,9 @@ export function FingHome() {
           <div className={styles.etymologyCard}>
             <div className={styles.etymologyRoot}>FIN</div>
             <div className={styles.etymologyWord}>finis</div>
-            <div className={styles.etymologyMeaning}>to conclude, to settle</div>
+            <div className={styles.etymologyMeaning}>
+              to conclude, to settle
+            </div>
             <div className={styles.etymologyModern}>root of FINANCE</div>
           </div>
 
@@ -79,7 +81,9 @@ export function FingHome() {
           <div className={styles.etymologyCard}>
             <div className={styles.etymologyRoot}>ING</div>
             <div className={styles.etymologyWord}>ingenium</div>
-            <div className={styles.etymologyMeaning}>innate talent, ingenuity</div>
+            <div className={styles.etymologyMeaning}>
+              innate talent, ingenuity
+            </div>
             <div className={styles.etymologyModern}>root of ENGINE</div>
           </div>
         </div>
@@ -102,8 +106,9 @@ export function FingHome() {
           size={120}
           className={styles.etymologyWordmark}
           style={{
-            color: 'var(--fing-accent)',
-            textShadow: '1.5px 1.5px 0px rgba(255, 255, 255, 0.85), -1.5px -1.5px 1px rgba(58, 106, 114, 0.4)',
+            color: "var(--fing-accent)",
+            textShadow:
+              "1.5px 1.5px 0px rgba(255, 255, 255, 0.85), -1.5px -1.5px 1px rgba(58, 106, 114, 0.4)",
           }}
         />
       </section>
@@ -117,7 +122,7 @@ export function FingHome() {
         <div className={styles.voiceContainer}>
           {/* Headline */}
           <h2 className={styles.voiceHeadline}>
-            FING is the senior analyst.
+            Quafi is the senior analyst.
             <br />
             Speaks little. Means every word.
           </h2>
@@ -165,7 +170,7 @@ export function FingHome() {
 
           {/* RAISED to INSET Demo */}
           <div className={styles.systemDemo}>
-            <div style={{ textAlign: 'center' }}>
+            <div style={{ textAlign: "center" }}>
               <div className={styles.demoRaised}>
                 <div className={styles.demoInset}></div>
               </div>
@@ -185,19 +190,19 @@ export function FingHome() {
           <div className={styles.accessCtas}>
             <button
               className={`${styles.btn} ${styles.btnPrimary}`}
-              onClick={() => navigate('/app/dashboard')}
+              onClick={() => navigate("/app/dashboard")}
             >
               Enter App
             </button>
             <button
               className={`${styles.btn} ${styles.btnSecondary}`}
-              onClick={() => navigate('/showcase')}
+              onClick={() => navigate("/showcase")}
             >
               Explore Design System
             </button>
             <button
               className={`${styles.btn} ${styles.btnSecondary}`}
-              onClick={() => navigate('/showcase/styles/brand')}
+              onClick={() => navigate("/showcase/styles/brand")}
             >
               Brand Guidelines
             </button>
@@ -209,7 +214,7 @@ export function FingHome() {
           FOOTER
           ═══════════════════════════════════════════════════════════════════════ */}
       <footer className={styles.footer}>
-        <p className={styles.footerText}>FING 2025 - Finance engine.</p>
+        <p className={styles.footerText}>Quafi 2025 - Investment engine.</p>
       </footer>
     </div>
   );

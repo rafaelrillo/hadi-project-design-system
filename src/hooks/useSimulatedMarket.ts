@@ -22,7 +22,11 @@ export interface UseSimulatedMarketReturn {
 export function useSimulatedMarket(
   options: UseSimulatedMarketOptions = {}
 ): UseSimulatedMarketReturn {
-  const { updateInterval = 15000, autoStart = true, syncPortfolio = true } = options;
+  const {
+    updateInterval = 15000,
+    autoStart = true,
+    syncPortfolio = true,
+  } = options;
 
   const isLive = useMarketStore((state) => state.isLive);
   const lastUpdate = useMarketStore((state) => state.lastUpdate);
@@ -34,6 +38,7 @@ export function useSimulatedMarket(
   const updateHoldingsWithMarketData = usePortfolioStore(
     (state) => state.updateHoldingsWithMarketData
   );
+  const marketStocks = useMarketStore((state) => state.stocks);
 
   const syncCounterRef = useRef(0);
 
@@ -45,12 +50,18 @@ export function useSimulatedMarket(
       syncCounterRef.current += 1;
       // Sync every 2 updates
       if (syncCounterRef.current % 2 === 0) {
-        updateHoldingsWithMarketData();
+        updateHoldingsWithMarketData(marketStocks);
       }
     }, updateInterval);
 
     return () => clearInterval(syncInterval);
-  }, [isLive, syncPortfolio, updateInterval, updateHoldingsWithMarketData]);
+  }, [
+    isLive,
+    syncPortfolio,
+    updateInterval,
+    updateHoldingsWithMarketData,
+    marketStocks,
+  ]);
 
   // Auto-start on mount
   useEffect(() => {
@@ -65,7 +76,14 @@ export function useSimulatedMarket(
     return () => {
       stopLiveUpdates();
     };
-  }, [autoStart, updateInterval, setUpdateInterval, fetchStocks, startLiveUpdates, stopLiveUpdates]);
+  }, [
+    autoStart,
+    updateInterval,
+    setUpdateInterval,
+    fetchStocks,
+    startLiveUpdates,
+    stopLiveUpdates,
+  ]);
 
   const start = useCallback(() => {
     startLiveUpdates();
